@@ -23,31 +23,31 @@ The process by which it is written and checked is described in [How this manuscr
 
 ## Status
 
-*Updated 11 November 2026, 21:20. First draft complete: the PDF has 226 pages.*
+*Updated 11 November 2026, 22:45. First draft, revised after an independent referee review of the whole manuscript: 237 pages.*
 
 | | section | pages | status |
 |---|---|---|---|
-| Part I | 1. Introduction | 7 | reviewed; revised (with the abstract) |
-| | 2. Wilson theory | 1 | reviewed; revised after an independent reading |
-| | 3. Renormalization | 8 | reviewed; revised after an independent reading |
-| | 4. The continuum limit | 4 | reviewed; revised after an independent reading |
-| | 5. Stress and rotations | 2 | reviewed; revised after an independent reading |
-| | 6. Phases and reconstruction | 3 | reviewed; revised after an independent reading |
-| | 7. Trace and products | 4 | reviewed; revised after an independent reading |
-| | 8. Main theorems | 3 | reviewed; Theorem B restated as a five-clause theorem |
-| | 9. Constants and order of choice | 3 | reviewed |
-| Part II | 10. Local polynomial fields | 8 | reviewed; cross-section consistency checked |
-| | 11. Gauges and block integration | 26 | reviewed; cross-section consistency checked |
-| | 12. Path actions and the coupling reset | 13 | reviewed; cross-section consistency checked |
-| | 13. Activities and the inductive step | 30 | reviewed; cross-section consistency checked |
-| | 14. Trajectories, marked fields and ultraviolet convergence | 35 | reviewed; cross-section consistency checked |
-| | 15. Infinite volume and field calculus | 8 | reviewed; cross-section consistency checked |
-| | 16. Free fields, Ward identities and rotations | 19 | reviewed; cross-section consistency checked |
-| | 17. Slabs, phases and reconstruction | 13 | reviewed; cross-section consistency checked |
-| | 18. The trace law and non-free comparisons | 14 | reviewed; cross-section consistency checked |
-| | 19. Products and contact subtractions | 23 | reviewed; cross-section consistency checked |
+| Part I | 1. Introduction | 6 | reviewed; revised after an independent referee review (with the abstract) |
+| | 2. Wilson theory | 2 | reviewed; revised after an independent referee review |
+| | 3. Renormalization | 8 | reviewed; revised after an independent referee review |
+| | 4. The continuum limit | 3 | reviewed; revised after an independent referee review |
+| | 5. Stress and rotations | 3 | reviewed; revised after an independent referee review |
+| | 6. Phases and reconstruction | 3 | reviewed; revised after an independent referee review |
+| | 7. Trace and products | 3 | reviewed; revised after an independent referee review |
+| | 8. Main theorems | 4 | reviewed; Theorem B restated as a five-clause theorem; revised after referee review |
+| | 9. Constants and order of choice | 4 | reviewed; revised after an independent referee review |
+| Part II | 10. Local polynomial fields | 8 | reviewed; revised after an independent referee review |
+| | 11. Gauges and block integration | 28 | reviewed; revised after an independent referee review |
+| | 12. Path actions and the coupling reset | 13 | reviewed; revised after an independent referee review |
+| | 13. Activities and the inductive step | 33 | reviewed; revised after an independent referee review |
+| | 14. Trajectories, marked fields and ultraviolet convergence | 37 | reviewed; revised after an independent referee review |
+| | 15. Infinite volume and field calculus | 8 | reviewed; revised after an independent referee review |
+| | 16. Free fields, Ward identities and rotations | 19 | reviewed; revised after an independent referee review |
+| | 17. Slabs, phases and reconstruction | 15 | reviewed; revised after an independent referee review |
+| | 18. The trace law and non-free comparisons | 14 | reviewed; revised after an independent referee review |
+| | 19. Products and contact subtractions | 24 | reviewed; revised after an independent referee review |
 
-**Next:** an independent review of the whole manuscript, and the changes it leads to; then the project lead's reading.
+**Next:** a final cross-section check; then the project lead's reading.
 
 "Reviewed" means the full cycle of the [process](PROCESS.md) has run: owner, fresh-reader and truth reviews, re-check and
 delivery review. A section is marked *checked* only after the project lead's reading and any changes it leads to.
