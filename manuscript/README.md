@@ -23,7 +23,7 @@ The process by which it is written and checked is described in [How this manuscr
 
 ## Status
 
-*Updated 11 November 2026, 22:45. First draft, revised after an independent referee review of the whole manuscript: 241 pages.*
+*Updated 11 November 2026, 23:20. First draft, revised after an independent referee review of the whole manuscript and three rounds of cross-section checks: 242 pages.*
 
 | | section | pages | status |
 |---|---|---|---|
