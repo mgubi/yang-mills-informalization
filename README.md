@@ -98,18 +98,6 @@ Two independent AI readers read every candidate statement and judged its importa
 
 Corrections are welcome.
 
-## Authors and acknowledgements
-
-**Scott Armstrong** (CNRS and Laboratoire Jacques-Louis Lions, Sorbonne Université; Courant Institute School of Mathematics, Computing, and Data Science, New York University), in collaboration with the [humanise-yang-mills](https://github.com/hairer/humanise-yang-mills) project.
-
-The maps and outline were produced with AI agents (Claude, by Anthropic) under the author's direction.
-
-We thank the Yang–Mills group for releasing the source and their assessment.
-
-Scott Armstrong is supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme, grant agreement No. 101200828.
-
-To cite this repository, use [`CITATION.cff`](CITATION.cff).
-
 ## License
 
 The text and data in this repository are licensed under [CC BY 4.0](LICENSE). The Lean source it describes is © OpenAI and released under the Apache License 2.0; see the [source repository](https://github.com/yang-mills-group/OpenAI-YM-20261028).
