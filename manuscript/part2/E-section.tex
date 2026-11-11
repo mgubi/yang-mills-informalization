@@ -61,15 +61,15 @@ We collect the numerical requirements used in the marked proofs. For each stage~
 \end{equation}
 For each auxiliary section through the stage's degrees, require also $2(1+C_j)H_{j,d}A_d^{\rm sym}L^{-1/8}\le1/4$, where $H_{j,d}$ bounds its normalized healthy derivatives.
 \item\label{it:E-log} Choose ratios to satisfy~\eqref{eq:E-log-cost}, including every constant in~$\mathcal C_j$.
-\item\label{it:E-entries} On a comparison interval, put $\alpha_t=(\cutoffsize_t)^{1/16}$. Let $\mathcal E_t^{\rm G}$ be the sum of the covariance, rounding, Taylor and localization errors in the fixed finite source comparison. Require
+\item\label{it:E-entries} On a comparison interval, for an arity bound $n\ge2$, put $\alpha_t=(\cutoffsize_t)^{1/(8n)}$. Let $\mathcal E_t^{\rm G}$ be the sum of the covariance, rounding, Taylor and localization errors in the fixed finite source comparison. Require
 \begin{equation}\label{eq:E-Gaussian-entry}
- \alpha_t^2\mathcal C_j^{h_t(b)+v_t+2}\mathcal E_t^{\rm G}\le1,
+ \alpha_t^n\mathcal C_j^{h_t(b)+v_t+2}\mathcal E_t^{\rm G}\le1,
  \qquad Q_j^{\rm cmp}\le\log\cutoffsize_t/(16n),
  \qquad \widehat\beta_i\in[\widehat\beta_t/2,\widehat\beta_t]\quad(k_t\le i\le t).
 \end{equation}
 Here $Q_j^{\rm cmp}$ is the stage normalization constant in~\eqref{eq:E-comparison-cost}, enlarged to cover the source modes and amplitudes of the finitely many arity bounds $n\ge2$ admitted at stage~$j$, and the second bound is required for each of these~$n$. These constants are fixed first; the entry is then raised until $\log\cutoffsize_t\ge16n\,Q_j^{\rm cmp}$. The first bound is imposed with the stronger smallness used in~\eqref{eq:E-source-iteration}. The entry also meets the local marked bound in item~\ref{it:E-graph} and the forced-source bounds at every exponent between $98$ and $100$.
 \end{enumerate}
-The finite comparisons in item~\ref{it:E-entries} exhaust bounded separated configurations and finite derivative orders as~$j$ increases. Their errors and constants are calculated in Lemma~\ref{lem:E-Gaussian-sources}; none depends on the period.
+The finite comparisons in item~\ref{it:E-entries} exhaust bounded configurations with positive point separation, fixed arities and finite derivative orders as~$j$ increases. Their errors and constants are calculated in Lemma~\ref{lem:E-Gaussian-sources}; none depends on the period.
 
 The following choice gives both the sparse insertion grids and the intervals used for free comparison.
 \begin{lemma}[Scale and period choices]\label{lem:E1.1}
@@ -79,7 +79,7 @@ All requirements~\ref{it:E-columns}--\ref{it:E-entries} and~\eqref{eq:E-marker-s
 \qquad \log\ell_m/s_m\to0,\qquad4\mid L_p,\\
 (a_m/a_{k(m)})^4q_{k(m)}=o(s_{k(m)}).
 \end{gather*}
-The sides $L_p$ increase strictly; every positive integer divides infinitely many. For every fixed $b\ge1$ and finite comparison request, arbitrarily late intervals~\eqref{eq:E-window} meet the comparison requirements, with $k_t\to\infty$ and $J_i=J_t$ throughout.
+The sides $L_p$ increase strictly; every positive integer divides infinitely many. For every finite set of exponents $b\ge1$ and finite comparison requests, arbitrarily late terminal levels~$t$ meet the comparison requirements simultaneously on their intervals~\eqref{eq:E-window}, with $k_t\to\infty$ and $J_i=J_t$ throughout each interval.
 \end{lemma}
 \begin{proof}
 Use the scale definitions of Section~\ref{sec:renormalization} and the order of choices in Section~\ref{sec:constants}. First fix the entire sequence $K_j$ and the finite section bounds. Choose $C_j\ge64K_{j+1}^2$, and then fix $\mathcal C_j$ to include these columns and all source constants. Since $J_{m+1}\le J_m+1$, this gives $4K_{J_{m+1}}^2\le C_{J_m}$ even at a stage transition. Next choose nondecreasing odd stage ratios $\ell_j^{\rm st}\ge\max(3,j)$ large enough that
@@ -97,7 +97,7 @@ Choose consecutive constant-stage intervals, postponing each new stage until all
 \end{equation*}
 For the initial stage, choose $\bar\beta$ after its fixed ratio~$L_0$. For $B(b)=\lceil(\log b)^2\rceil$, the quotient $B(b+\slope\log L_0)^2/B(b)^2$ tends to one as $b\to\infty$. Choose $\bar\beta$ beyond a threshold where it is at most two for every $b\ge\bar\beta$. This covers every step of the first stage, including $i=0$. At a transition to a later ratio, impose the same bound at its entry and thereafter, with that ratio fixed. Impose the second condition of~\eqref{eq:E-marker-scales} with bound $1/j$ after entry to stage~$j$. Impose also $\varpi_j\le s_i/j$ and $\log\ell_j^{\rm st}\le s_i/j$ at its entry. These are lower bounds on that entry. They give both little-oh assertions and $\log\ell_i/s_i\to0$; $s_i\ge i\log3$ at every level.
 
-For each stage, the length $h_t(b)+v_t$ in~\eqref{eq:E-window} is $O_j((\log\log(2+s_t))^2+\log\log(2+s_t))=o(t)$. Lengthen that constant-stage interval to contain a terminal point with the whole interval~\eqref{eq:E-window} in the same stage and with its left endpoint beyond all earlier requested levels. Do this for $b\le j$ and the finitely many comparison orders at stage~$j$, on the compact sets of row configurations with coordinate separations at least $1/j$ and coordinates of absolute value at most~$j$. Their finitely many derivative bounds are uniform on each such compact set. The estimates~\eqref{eq:E-source-loss}--\eqref{eq:E-source-iteration} show that the first requirement in~\eqref{eq:E-Gaussian-entry} holds once that entry is late enough. The second is a lower bound on $\log\cutoffsize_t$ after $Q_j^{\rm cmp}$ is fixed. The total interval length is $o(t)$, so its coupling variation is $o(\widehat\beta_t)$ and gives the third requirement. These are lower bounds on a later entry or interval length. Each fixed request is then met at arbitrarily large stages. These choices do not alter earlier intervals. Taking $\ell_i=\ell^{\rm st}_{J_{i+1}}$ gives odd ratios, and $\ell_j^{\rm st}\ge j$ gives $\log\ell_i\to\infty$.
+For each stage, the length $h_t(b)+v_t$ in~\eqref{eq:E-window} is $O_j((\log\log(2+s_t))^2+\log\log(2+s_t))=o(t)$. Lengthen that constant-stage interval to contain a terminal point with the whole interval~\eqref{eq:E-window} in the same stage and with its left endpoint beyond all earlier requested levels. Do this with the longest interval $b=j$, all arities $n\le j$ and the finitely many comparison orders at stage~$j$, on the compact sets of row configurations with point separations at least $1/j$ and coordinates of absolute value at most~$j$. Every $1\le b\le j$ uses a subinterval of this interval. The length and error bounds are uniform for $b$ in any fixed compact subinterval of $[1,j]$; take the maximum of the finite comparison constants before postponing the common terminal level. Their finitely many derivative bounds are uniform on each such compact set. The estimates~\eqref{eq:E-source-loss}--\eqref{eq:E-source-iteration} show that the first requirement in~\eqref{eq:E-Gaussian-entry} holds once that entry is late enough. The second is a lower bound on $\log\cutoffsize_t$ after $Q_j^{\rm cmp}$ is fixed. The total interval length is $o(t)$, so its coupling variation is $o(\widehat\beta_t)$ and gives the third requirement. These are lower bounds on a later entry or interval length. Each fixed request is then met at arbitrarily large stages. These choices do not alter earlier intervals. Taking $\ell_i=\ell^{\rm st}_{J_{i+1}}$ gives odd ratios, and $\ell_j^{\rm st}\ge j$ gives $\log\ell_i\to\infty$.
 
 The level $k(m)$ exists: $a_iB_i^2$ decreases by at least the factor $2/3$ at each step. If $k(m)=u+1>m$, minimality gives
 \begin{equation}\label{eq:E-first-open}
@@ -445,13 +445,20 @@ R_I=\prod_{h\in I}F_h^{\rm row}-
 \end{equation}
 Only singleton and pair errors occur. The lifts~$b^\nu$ include the scale normalization, so~$F_h^{\rm row}$ carries no additional power of~$r_\nu$. A lift is the reference coefficient whose Wick-ordered leading polynomial at scale~$r_\nu$ is the specified basis element~$\mathfrak m_j$. The construction uses $r_\nu=a_{t_\nu}(\cutoffsize_{t_\nu})^b$ for one fixed $b>0$ chosen from the degree and the finite tests, before~$\nu$ varies.
 
-For a pair of slots define
+The source estimates below also apply to rows with any fixed arity bound~$n\ge2$. For a slot set $I_0$ with $|I_0|\le n$, define
 \begin{equation*}
- \mathsf C^{\rm Max}(z)=\mathcal G_{\{1\}}z_1+\mathcal G_{\{2\}}z_2+
- (\mathcal G_{\{1,2\}}-\mathcal G_{\{1\}}\mathcal G_{\{2\}})z_1z_2,
- \qquad z_1^2=z_2^2=0;
+ \mathsf G^{\rm Max}(z)=\sum_{J\subseteq I_0}\mathcal G_Jz_J,
+ \qquad \mathsf C^{\rm Max}(z)=\log\mathsf G^{\rm Max}(z),
+ \qquad z_i^2=0\quad(i\in I_0).
 \end{equation*}
-for one slot retain its linear term. The coefficients to be estimated are
+The logarithm is a finite polynomial because the constant term of $\mathsf G^{\rm Max}$ is one and its nonconstant part is nilpotent. Its coefficient on a nonempty~$I$ is
+\begin{equation*}
+ [z_I]\mathsf C^{\rm Max}
+ =\sum_{\mathcal P\text{ partition of }I}
+ (-1)^{|\mathcal P|-1}(|\mathcal P|-1)!
+ \prod_{J\in\mathcal P}\mathcal G_J.
+\end{equation*}
+Thus for two slots it is the two singleton means and the connected pair moment; the rank comparison uses just this case. In the source estimates, the row positions may range over any fixed compact set $K\subset\Conf{|I_0|}$ with $\sepinf\ge\delta>0$. Constants may depend on $K,\delta,n$ and the finite degree and derivative orders; the lifts are common to these positions. The coefficients to be estimated are
 \begin{equation}\label{eq:E-corrected-coefficients}
  \mathfrak c_I=[z_I]\left(e^{-\mathsf C^{\rm Max}(z)}\prod_h(1+z_hF_h^{\rm row})\right).
 \end{equation}

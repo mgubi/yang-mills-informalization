@@ -6,7 +6,7 @@ The remaining lemmas prepare the local integration used in Sections~\ref{sec:par
 
 Three uniformities require care. The frame cutoffs must work for arbitrarily many sites, and the free kernels must remain controlled after arbitrarily many integrations. The first follows from a contraction after centering the frame minimizers. For the second we separate the principal Fourier pole before inversion. In the determinant comparison, the fine cell contains~$\ell^4$ sites. Weighted inverses and the summable cube of a regulator prevent this number from entering the comparison constant.
 
-Throughout, use the group and metric of Definition~\ref{def:D01}, the Wilson term of Definition~\ref{def:D01}, and the level choices~\eqref{eq:I12-levels}. At a step~$m+1\to m$, put $j=J_{m+1}$, $\ell=\ell_m$, and $R=(j+3)\ell$. Periods satisfy the minimum-period requirement in Section~\ref{sec:constants}. All finite operators use counting inner products and are periodizations of the kernels described below. An adjoint at complex momentum means the analytic continuation of the real-momentum adjoint. Bounds for an input path action refer to Definition~\ref{def:D23} and Lemmas~\ref{lem:C1}--\ref{lem:C2} at the finer level. They are used in descending induction, starting with Wilson at the top level.
+Throughout, use the group and metric of Definition~\ref{def:D01}, the Wilson term of Definition~\ref{def:D01}, and the level choices~\eqref{eq:I12-levels}. At a step~$m+1\to m$, put $j=J_{m+1}$, $\ell=\ell_m$, and $R=(j+3)\ell$. Unless stated otherwise, periods satisfy the minimum-period requirement in Section~\ref{sec:constants}. All finite operators use counting inner products and are periodizations of the kernels described below. An adjoint at complex momentum means the analytic continuation of the real-momentum adjoint. Bounds for an input path action refer to Definition~\ref{def:D23} and Lemmas~\ref{lem:C1}--\ref{lem:C2} at the finer level. They are used in descending induction, starting with Wilson at the top level.
 
 \subsection*{Frames and predictors}
 
@@ -555,7 +555,7 @@ Fix one hypercubic orientation. Set $x=\widehat\beta_m$, $s=t_m$, $t=t_{m+1}$, $
 \begin{equation*}
 t_{\rm hi}=\bigl(x+\slope\log\ell\bigr)^{-49/100}.
 \end{equation*}
-The threshold $t_{\rm hi}$ distinguishes very large tests from tests at scale $t$. Here $\widehat\beta_{m+1}=x+\slope\log\ell$. By the formula for $t_m$ in Section~\ref{sec:renormalization} and $\cutoffsize_m=\exp((\log\log\widehat\beta_m)^2)$ in Section~\ref{sec:constants}, $t/s\to1$ and $B^nt/t_{\rm hi}\to0$ as $x\to\infty$, with $\ell$ fixed, for every fixed $n$. The input and output row maps on two-forms are $\mathcal B_f=(\sqrt{c_{{\rm dir},j}}I,\rho_f)^T$ and $\mathcal B_c=(\sqrt{c_{{\rm dir},J_m}}I,\rho_c)^T$. They satisfy $\mathcal B_f^*\mathcal B_f=\mathsf H_f$ and $\mathcal B_c^*\mathcal B_c=\mathsf H_c$. The free square-completion maps are
+In this and the remaining subsections, the estimates hold on every coarse torus of period $n_{\rm tor}\ge100(B+1)$, with fine period $\ell n_{\rm tor}$, using the same periodized kernels and local sector conditions. The threshold $t_{\rm hi}$ distinguishes very large tests from tests at scale $t$. Here $\widehat\beta_{m+1}=x+\slope\log\ell$. By the formula for $t_m$ in Section~\ref{sec:renormalization} and $\cutoffsize_m=\exp((\log\log\widehat\beta_m)^2)$ in Section~\ref{sec:constants}, $t/s\to1$ and $B^nt/t_{\rm hi}\to0$ as $x\to\infty$, with $\ell$ fixed, for every fixed $n$. The input and output row maps on two-forms are $\mathcal B_f=(\sqrt{c_{{\rm dir},j}}I,\rho_f)^T$ and $\mathcal B_c=(\sqrt{c_{{\rm dir},J_m}}I,\rho_c)^T$. They satisfy $\mathcal B_f^*\mathcal B_f=\mathsf H_f$ and $\mathcal B_c^*\mathcal B_c=\mathsf H_c$. The free square-completion maps are
 \begin{gather*}
 M_f=\mathcal B_f\mathsf H_f^{-1}T\mathcal B_c^*,\qquad
 M_n=\blockpenalty^{-1/2}d_1^*\mathcal B_c^*,\\
@@ -611,7 +611,7 @@ Let $D$ select the fine or mismatch tests exceeding $t_{\rm hi}$, and let $H$ be
 
 The positive fine and mismatch rows absorb the signed-row losses estimated below. The order of choices in the next lemma leaves its energy constant independent of the later coupling threshold.
 \begin{lemma}[Local large-field energy]\label{lem:B-D1}
-Fix the stage path bounds, free interpolation and penalty. For sufficiently large odd $\ell$, and then sufficiently large $W$, there is $\kappa>0$ such that, for all sufficiently large reference couplings and every period $L_pD_m$ admitted by Section~\ref{sec:constants},
+Fix the stage path bounds, free interpolation and penalty. For sufficiently large odd $\ell$, and then sufficiently large $W$, there is $\kappa>0$ such that, for all sufficiently large reference couplings and every coarse period $n_{\rm tor}\ge100(B+1)$,
 \begin{equation*}
 \mathcal E_A(U,V)\ge\kappa t_{m+1}^2|A|
 \end{equation*}
@@ -731,17 +731,20 @@ P_{ji}=\mathbf1_{j\in\Omega_i}(\mathsf A|_{\Omega_i}^{-1})_{ji},\qquad
 \end{equation}
 These are compressed inverse columns, symmetrized for the covariance. Both windows contain a radius-$B/60$ ball for large $B$, since the two projected endpoints are at distance at most one. The following argument applies to both prescriptions, with their own retained affine rows and mean. The Schur norm of a kernel is the maximum of its absolute row and column sums.
 
-Fix a coarse root $o$ for the derivative directions. Here the coarse flag tests remain the correct ones at the base field; derivatives hold their selected index sets, $Y$ and tags fixed, in coarse directions of size at most $s(1+\operatorname{dist}(o,e))^q$; $\upsilon_i=(1+\operatorname{dist}(o,i))^{qk}$. The proof gives the Schur bound needed below as well.
+Fix a coarse root $o$ for the derivative directions. Here the coarse flag tests remain the correct ones at the base field; derivatives hold their selected index sets, $Y$ and tags fixed, in coarse directions of size at most $s(1+\operatorname{dist}(o,e))^q$; $\upsilon_i=(1+\operatorname{dist}(o,i))^{qk}$. Assume $0<\beta\le2\widehat\beta_{m+1}$ and put $g=\beta^{-1/2}$. All bounds below hold for sufficiently large $x$.
 
-The following auxiliary estimate is needed to justify differentiating the common Gaussian law.
+For any principal coordinate set $\Omega$, write $\mathsf A_\Omega=\mathsf A[\Omega,\Omega]$ and $\Gamma_\Omega=\Gamma[\Omega,\Omega]$; their inverses are extended by zero outside $\Omega$. They control the Gaussian marginals and the compressed columns in~\eqref{eq:B-window}. In the next statement, $K$ ranges over $\mathsf A$, $\mathsf A^{-1}$, $\Gamma$, $\mathsf A_\Omega^{-1}$ and $\Gamma_\Omega^{-1}$, and $\mathsf E$ over $\mathsf A\Gamma-I$ and $\Gamma-\mathsf A^{-1}$. At derivative order zero, exponential entry bounds give exponential Schur bounds by summing over coordinate locations.
+
+The following estimate justifies differentiating the common Gaussian law and replacing its window covariance by the full inverse.
 \begin{lemma}[Window covariance bounds]\label{lem:B-windows}
-For each fixed ordered derivative order $k$ and direction power $q$, the actual sector matrices satisfy
-\begin{equation*}
-\mathsf A>0,\quad \Gamma>0,\quad
-|D^r\mathsf A_{ij}|\le C_ke^{-c\operatorname{dist}(i,j)}\upsilon_i^r,\quad
-|D^r(\mathsf A\Gamma-I)_{ij}|\le C_ke^{-cB}\mathrm e^{-c\operatorname{dist}(i,j)}\upsilon_i^r,
-\end{equation*}
-for $r\le k$. Moreover $|D^rm_Y(i)|\le C_kt\upsilon_i^r$ and $|D^r[g^{-1}(\mathsf Am_Y+\mathsf b)]_i|\le C_ke^{-cB}\upsilon_i^r$, where $g=\beta^{-1/2}$. Constants are uniform in the period and sector for sufficiently large $x$, with $0<\beta\le2\widehat\beta_{m+1}$ and correct coarse flags.
+For each fixed derivative order $k$ and direction power $q$, there are $c>0$ and $C_k<\infty$, depending only on the fixed stage and ratio data and $k,q$, such that, uniformly in the period, sector and $\Omega$, for $0\le r\le k$,
+\begin{gather*}
+\mathsf A\ge cI,\qquad\Gamma\ge cI,\\
+|D^rK_{ij}|\le C_k\mathrm e^{-c\operatorname{dist}(i,j)}\upsilon_i^r,\qquad
+|D^r\mathsf E_{ij}|\le C_k\mathrm e^{-cB-c\operatorname{dist}(i,j)}\upsilon_i^r,\\
+|D^rm_Y(i)|\le C_kt\upsilon_i^r,\qquad
+|D^r[g^{-1}(\mathsf Am_Y+\mathsf b)]_i|\le C_k\mathrm e^{-cB}\upsilon_i^r.
+\end{gather*}
 \end{lemma}
 \begin{proof}
 Use Definitions~\ref{def:D04}, \ref{def:D23}, the axial estimate in Lemma~\ref{lem:B3}, and the square rows above. The linearized square rows and an eligible predictor control a fine link by those row values in a fixed macro-patch plus $C\delta_x$ times the surrounding fine increments, where $\delta_x=C_{j,\ell}s$ tends to zero. Summing squares, using the bounded number of macro-patches meeting an edge, gives
@@ -757,9 +760,13 @@ A compressed inverse column solves $\mathsf APe_i=e_i$ inside its window. Outsid
 \|P-\mathsf A^{-1}\|_{\rm Schur}\le Ce^{-cB},\qquad
 \|\Gamma-\mathsf A^{-1}\|_{\rm Schur}\le Ce^{-cB}.
 \end{equation*}
-For sufficiently large $B$ this makes $\Gamma$ positive, since $\mathsf A^{-1}\ge\|\mathsf A\|^{-1}I$. Its row and column sums are bounded by a fixed constant. The same estimate gives $\mathsf A\Gamma-I=O(\mathrm e^{-cB})$.
+The entrywise column and inverse bounds retain exponential decay in $\operatorname{dist}(i,j)$, while the preceding difference has the factor $\mathrm e^{-cB}$. Taking the geometric mean of these bounds and decreasing $c$ gives both factors together. For sufficiently large $B$, the uniform upper bound on $\mathsf A$ and $\mathsf A^{-1}\ge\|\mathsf A\|^{-1}I$ give $\Gamma\ge c'I$ for a fixed $c'>0$. Its row and column sums are bounded by a fixed constant. The same estimate gives $\mathsf A\Gamma-I=O(\mathrm e^{-cB})$. Apply the exponential conjugation argument to $\Gamma$ and its principal compressions; their common lower bound gives the stated bounds for $\Gamma_\Omega^{-1}$.
 
-Differentiate $\mathsf A_\Omega^{-1}$ by $D(\mathsf A_\Omega^{-1})=-\mathsf A_\Omega^{-1}(D\mathsf A_\Omega)\mathsf A_\Omega^{-1}$ and iterate through order $k$. The index sets $\Omega$ stay fixed. Each derivative of a path coefficient is bounded by a fixed power of the path length and by the direction weight; $1+\operatorname{dist}(o,j)\le(1+\operatorname{dist}(o,i))(1+\operatorname{dist}(i,j))$ moves it to $\upsilon_i^r$. A smaller exponential rate sums all remaining powers. In every differentiated residual, at least one chain still crosses the window boundary. This proves the displayed derivative bounds for $\mathsf A$ and $\mathsf A\Gamma-I$.
+Differentiate $\mathsf A_\Omega^{-1}$ by $D(\mathsf A_\Omega^{-1})=-\mathsf A_\Omega^{-1}(D\mathsf A_\Omega)\mathsf A_\Omega^{-1}$ and iterate through order $k$. The index sets $\Omega$ stay fixed. Each derivative of a path coefficient is bounded by a fixed power of the path length and by the direction weight; $1+\operatorname{dist}(o,j)\le(1+\operatorname{dist}(o,i))(1+\operatorname{dist}(i,j))$ moves it to $\upsilon_i^r$. A smaller exponential rate sums all remaining powers. In every differentiated residual, at least one chain still crosses the window boundary. This proves the displayed derivative bounds for $\mathsf A$ and $\mathsf A\Gamma-I$. For the inverse difference, use
+\begin{equation*}
+\Gamma-\mathsf A^{-1}=\mathsf A^{-1}(\mathsf A\Gamma-I).
+\end{equation*}
+Every differentiated product retains the exponentially small residual factor. The same inverse differentiation formula, applied to $\mathsf A$, $\Gamma$ and their principal compressions, proves the remaining bounds for $K$. The spatial weights are moved to the first index as above; reducing the decay rate sums the intervening polynomial factors.
 
 The affine source is formed from the same retained rows and from a bounded smooth extension of the frozen logarithms. Its derivatives are $O(t)$ with the same spatial weights. Multiplication by $P^*$ proves the mean bound. Subtracting the exact inverse solution gives $\mathsf Am_Y+\mathsf b=(I-\mathsf AP^*)\mathsf b$, whose derivatives are $O(te^{-cB})$. Finally $g^{-1}\le C\widehat\beta_{m+1}^{1/2}$ and $B=\lceil(\log x)^2\rceil$; this fixed power is absorbed by decreasing $c$. The estimates refer to the actual $\mathsf A,\Gamma,m_Y$ of~\eqref{eq:B-window} throughout.
 \end{proof}

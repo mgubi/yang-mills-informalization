@@ -39,7 +39,13 @@ Consequently $32(1+C_{J_{i+1}})^2|v|_1\le T$ and $\vartheta_L R\le T$. The match
  |\Delta_N|_1\le\frac{2(1+C_{J_N})E''_{N,p}}{\ell_{N-1}^{1/8}},\qquad
  R_k\le2(1+C_{J_N})E''_{N,p}e^{-(s_N-s_k)/8}.
 \end{equation}
-Here $\Delta_N$ is the difference from the selected fine polynomial coordinate. The product $\prod_{i=k}^{N-1}\ell_i^{-1/8}$ is exactly $e^{-(s_N-s_k)/8}$. Thus this factor comes from the matched remainder inequalities, rather than from the physical diameter of the original stencil.
+Here $\Delta_N$ is the difference from the selected fine polynomial coordinate. The same bounds hold when a local source is first represented at any level $n\le N$, with its polynomial coordinate matched to the selected graph at a lower reference level. If $E''_{n;N,p}$ bounds its starting data after the coefficient contribution is absorbed, then
+\begin{equation}\label{eq:E-backward-match-level}
+ |\Delta_n|_1\le\frac{2(1+C_{J_n})E''_{n;N,p}}{\ell_{n-1}^{1/8}},\qquad
+ R_k\le2(1+C_{J_n})E''_{n;N,p}e^{-(s_n-s_k)/8}
+ \quad(r(e)\le k<n).
+\end{equation}
+Indeed the cone starts at the same zero matched coordinate, and its induction uses only the steps through~$n$. The boundary absorption uses the starting bound there. The product $\prod_{i=k}^{n-1}\ell_i^{-1/8}$ is exactly $e^{-(s_n-s_k)/8}$. Taking $n=N$ recovers~\eqref{eq:E-backward-match}. Thus this factor comes from the matched remainder inequalities, rather than from the physical diameter of the original stencil.
 
 To estimate the replicated residual, for a source of size $E$ started at $N$, use at level~$k$ the radius
 \begin{equation*}
@@ -62,17 +68,26 @@ For the auxiliary section, perform the construction on all its basis polynomials
 Indeed, before summing over the fixed basis the right side is the last-step factor $\ell_{N-1}^{-1/8}$ times the stage coefficient bound; the stage ratio was chosen after that bound. The matrix is therefore invertible and $|P^{-1}x|_1\le2|x|_1$. The construction is common to all later cell requests. Multiplication by $\factorscale_{t_N}\mathsf R_d$ changes a polynomial label into its auxiliary bare insertion coordinate; multiplication by $\mathsf Z$ changes that coordinate to the reference normalization. These are exactly the maps $B$ in the statement. The inverse bound preserves admissibility, and~\eqref{eq:E-local-error} compares the two sections on its transported equation ideal. Finite combinations use the same subpower factors. The argument only replaces eventual bounds on coefficients, so ordered-admissible families obey the corresponding ordered version as well.
 \end{proof}
 
-The next positional estimate is used for the rank test before any bounds on differentiated fields have been established. It concerns generic configurations, where every coordinate separates the insertion points.
+The next positional estimate is used before bounds on differentiated fields have been established. For a grid configuration~$x$ define its minimum coordinate separation on the physical torus by
+\begin{equation*}
+ g_p(x)=\min_{i\ne j}\min_{a=1,\ldots,4}\min_{z\in L_p\Z}
+ |x_i^a-x_j^a+z|,
+\end{equation*}
+with value $+\infty$ for one slot. This separation supplies the empty slabs for reflection positivity. A coordinate hybrid of $x,y$ chooses each coordinate from either configuration. Assume the insertions and their single-axis reflections are interior at a centered level~$D\le N$, with all their roots at most~$A\ge0$.
 \begin{lemma}[Displacement of correlation tests]\label{lem:E-displacement}
-Near each of the fixed generic row configurations, moments of bounded coefficient lists have a modulus of continuity independent of $N,p$ on full cutoff tails. More precisely, for sufficiently small $r>0$ and all sufficiently fine fixed centered levels, if all relevant centered roots and reflected roots are at most $A$, then
+For every $r>0$ with $a_D<r$, a one-coordinate grid move $x\mapsto y$ of size at most~$r$ from $g_p(x)\ge4r$ satisfies
 \begin{equation*}
  |M_{N,p}(v;x/a_N)-M_{N,p}(v;y/a_N)|
- \le \frac{4nA^n}{r}|x-y|
+ \le A^n|x-y|/r.
 \end{equation*}
-for sufficiently close grid configurations in that neighbourhood.
+If $|x-y|\le r$ and every coordinate hybrid has coordinate separation at least~$4r$, then
+\begin{equation*}
+ |M_{N,p}(v;x/a_N)-M_{N,p}(v;y/a_N)|
+ \le4nA^n|x-y|/r.
+\end{equation*}
 \end{lemma}
 \begin{proof}
-Use Definition~\ref{def:D27}, Lemma~\ref{lem:E2.3} and the reflection inequality~\eqref{eq:E-chess}. Choose the neighbourhood so that in each coordinate every directed torus distance between distinct points exceeds $4r$, uniformly in~$p$. This is possible for the row configurations: they are generic and lie strictly inside the smallest physical period box. Choose a centered level with $a_m<r$. The fixed stencil and its reflected stencils fit in the centered cells on a full cutoff tail.
+Use Definition~\ref{def:D27} and the reflection inequality~\eqref{eq:E-chess}; Lemma~\ref{lem:E2.3} supplies the assumed roots for bounded coefficient lists on full cutoff tails. The separation hypothesis gives every directed coordinate distance at least~$4r$, at any period. No fixed row neighbourhood is used.
 
 Fix an axis and all other coordinates. Reflection positivity and translation invariance give a positive transfer operator, rescaled to $0\le T\le1$. On the periodic axis the expectation is a normalized trace. If $X$ denotes the insertion being moved, its two adjacent empty slabs have lengths $n_1^{\rm sl},n_2^{\rm sl}$ in fine sites. A move by $l\ge0$ changes their factor by
 \begin{align}\label{eq:E-trace-displacement}
@@ -81,7 +96,7 @@ Fix an axis and all other coordinates. Reflection positivity and translation inv
  &=-T^{n_1^{\rm sl}}(1-T^l)XT^{n_2^{\rm sl}-l}
    +T^{n_1^{\rm sl}}X(1-T^l)T^{n_2^{\rm sl}-l}.
 \end{align}
-Both expressions are inserted in the same remaining cyclic product and divided by the same partition trace. The stencil is contained in a centered cell of lattice side $d_{\rm cell}=a_m/a_N$. Choose the neighbourhood and level so the directed separations exceed $2d_{\rm cell}+2r/a_N$ and $la_N\le r$. Splitting the two surrounding empty slabs at their reflection planes leaves $n_{\rm sl}+1\ge2r/a_N$ fine sites next to each occurrence of $1-T^l$. The spectral theorem gives
+Both expressions are inserted in the same remaining cyclic product and divided by the same partition trace. The stencil is contained in a centered cell of lattice side $d_{\rm cell}=a_D/a_N$. Since $a_D<r$, the directed separations exceed $2d_{\rm cell}+2r/a_N$, and $la_N\le r$ by assumption. Splitting the two surrounding empty slabs at their reflection planes leaves $n_{\rm sl}+1\ge2r/a_N$ fine sites next to each occurrence of $1-T^l$. The spectral theorem gives
 \begin{equation*}
  \|(1-T^l)T^{n_{\rm sl}}\|
  \le\sup_{0\le t\le1}l(1-t)t^{n_{\rm sl}}
@@ -89,5 +104,5 @@ Both expressions are inserted in the same remaining cyclic product and divided b
 \end{equation*}
 For each normalized trace in~\eqref{eq:E-trace-displacement}, reflection Schwarz at the slab ends and the chessboard inequality bound the remaining factors by the product of their centered roots, at most~$A^n$. One applies this inequality to the complete cyclic product, so no supremum norm of~$X$ is required. The two terms together are bounded by $A^nla_N/r$. An arity-one moment is translation invariant and has change zero.
 
-Replace the $4n$ coordinates one at a time. Choose the initial neighbourhood with a smaller concentric neighbourhood so that every intermediate configuration retains the same separations. Each one-coordinate displacement is at most $|x-y|$. Summing gives the display. The centered estimates apply to the fixed coefficient ball and its reflected images uniformly in~$p$, proving the claimed uniform modulus without using Lemma~\ref{lem:E2.4}.
+For a negative move reverse the chosen axis. Coordinate separation is unchanged and the assumed reflected roots have the same bound, so the same slab estimate applies. Replace the $4n$ coordinates one at a time. Each starting configuration is a coordinate hybrid and hence has the required separation. Each move is at most $|x-y|\le r$. Summing proves the second bound. The constants depend only on the roots, arity and slab margin, uniformly in~$N,p$. This argument does not use Lemma~\ref{lem:E2.4}.
 \end{proof}
