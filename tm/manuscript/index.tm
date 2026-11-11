@@ -33,12 +33,11 @@
   </table-of-contents>
 
   <\quotation>
-    \<#1F6A7\> <strong|Under construction: first draft nearly complete.>
-    Every section of Parts I and II is written and has been through its
-    review cycle; the introduction is being written and a consistency pass
-    and a full independent review are under way. Sections may still change
-    until they are marked <em|checked> in the <hlink|status table|#status>.
-    Do not cite it as a finished proof.
+    \<emoji-page-facing-up\> <strong|First draft complete (11 November
+    2026).> Every section of Parts I and II is written and has been through
+    its review cycle. An independent review of the whole manuscript is under
+    way, and sections may still change until they are marked <em|checked> in
+    the <hlink|status table|#status>. Do not cite it as a finished proof.
   </quotation>
 
   A manuscript, written in public, giving a complete mathematical proof of
@@ -54,12 +53,12 @@
 
   <\itemize-minus>
     <item><strong|Part I. The theorem and the architecture of its proof>
-    (about 30 pages): the setting and notation, the main theorem, the
+    (about 35 pages): the setting and notation, the main theorem, the
     principal statements on which the proof rests, each stated exactly with
     the idea of its proof, and the complete deduction of the main theorem
     from them.
 
-    <item><strong|Part II. Proofs> (about 180 pages, Sections 10\U19): the
+    <item><strong|Part II. Proofs> (about 190 pages, Sections 10\U19): the
     proofs of the principal propositions, with every estimate specific to the
     construction written out and standard results cited.
   </itemize-minus>
@@ -73,11 +72,12 @@
 
   <section|Status><label|status>
 
-  <em|Updated 11 November 2026, 21:00. The PDF has 212 pages.>
+  <em|Updated 11 November 2026, 21:20. First draft complete: the PDF has 226
+  pages.>
 
   <block|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|-1|1|-1|cell-hyphen|t>|<cwith|1|1|1|-1|cell-bborder|1ln>|<cwith|1|1|1|-1|cell-valign|bottom>|<table|<row|<cell|>|<cell|<strong|section>>|<cell|<strong|pages>>|<cell|<strong|status>>>|<row|<cell|Part
-  I>|<cell|1. Introduction>|<cell|7>|<cell|written; under review (with the
-  abstract)>>|<row|<cell|>|<cell|2. Wilson theory>|<cell|2>|<cell|reviewed;
+  I>|<cell|1. Introduction>|<cell|7>|<cell|reviewed; revised (with the
+  abstract)>>|<row|<cell|>|<cell|2. Wilson theory>|<cell|1>|<cell|reviewed;
   revised after an independent reading>>|<row|<cell|>|<cell|3.
   Renormalization>|<cell|8>|<cell|reviewed; revised after an independent
   reading>>|<row|<cell|>|<cell|4. The continuum
@@ -91,23 +91,29 @@
   reading>>|<row|<cell|>|<cell|8. Main theorems>|<cell|3>|<cell|reviewed;
   Theorem B restated as a five-clause theorem>>|<row|<cell|>|<cell|9.
   Constants and order of choice>|<cell|3>|<cell|reviewed>>|<row|<cell|Part
-  II>|<cell|10. Local polynomial fields>|<cell|8>|<cell|reviewed>>|<row|<cell|>|<cell|11.
-  Gauges and block integration>|<cell|25>|<cell|reviewed>>|<row|<cell|>|<cell|12.
-  Path actions and the coupling reset>|<cell|11>|<cell|reviewed; final fixes
-  applied>>|<row|<cell|>|<cell|13. Activities and the inductive
-  step>|<cell|30>|<cell|reviewed>>|<row|<cell|>|<cell|14. Trajectories,
-  marked fields and ultraviolet convergence>|<cell|34>|<cell|reviewed>>|<row|<cell|>|<cell|15.
-  Infinite volume and field calculus>|<cell|7>|<cell|reviewed; final fixes
-  applied>>|<row|<cell|>|<cell|16. Free fields, Ward identities and
-  rotations>|<cell|18>|<cell|reviewed>>|<row|<cell|>|<cell|17. Slabs, phases
-  and reconstruction>|<cell|14>|<cell|reviewed>>|<row|<cell|>|<cell|18. The
-  trace law and non-free comparisons>|<cell|13>|<cell|reviewed>>|<row|<cell|>|<cell|19.
-  Products and contact subtractions>|<cell|21>|<cell|reviewed>>>>>
+  II>|<cell|10. Local polynomial fields>|<cell|8>|<cell|reviewed;
+  cross-section consistency checked>>|<row|<cell|>|<cell|11. Gauges and block
+  integration>|<cell|26>|<cell|reviewed; cross-section consistency
+  checked>>|<row|<cell|>|<cell|12. Path actions and the coupling
+  reset>|<cell|13>|<cell|reviewed; cross-section consistency
+  checked>>|<row|<cell|>|<cell|13. Activities and the inductive
+  step>|<cell|30>|<cell|reviewed; cross-section consistency
+  checked>>|<row|<cell|>|<cell|14. Trajectories, marked fields and
+  ultraviolet convergence>|<cell|35>|<cell|reviewed; cross-section
+  consistency checked>>|<row|<cell|>|<cell|15. Infinite volume and field
+  calculus>|<cell|8>|<cell|reviewed; cross-section consistency
+  checked>>|<row|<cell|>|<cell|16. Free fields, Ward identities and
+  rotations>|<cell|19>|<cell|reviewed; cross-section consistency
+  checked>>|<row|<cell|>|<cell|17. Slabs, phases and
+  reconstruction>|<cell|13>|<cell|reviewed; cross-section consistency
+  checked>>|<row|<cell|>|<cell|18. The trace law and non-free
+  comparisons>|<cell|14>|<cell|reviewed; cross-section consistency
+  checked>>|<row|<cell|>|<cell|19. Products and contact
+  subtractions>|<cell|23>|<cell|reviewed; cross-section consistency
+  checked>>>>>
 
-  <strong|Next:> the introduction; a consistency pass across sections
-  (cross-references between Part I and Part II, and every result one section
-  takes from another); then an independent review of the whole manuscript,
-  and the changes it leads to.
+  <strong|Next:> an independent review of the whole manuscript, and the
+  changes it leads to; then the project lead's reading.
 
   "Reviewed" means the full cycle of the <hlink|process|PROCESS.tm> has run:
   owner, fresh-reader and truth reviews, re-check and delivery review. A
