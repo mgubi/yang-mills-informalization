@@ -33,10 +33,10 @@
   </table-of-contents>
 
   <\quotation>
-    \<emoji-construction\> <strong|Under construction.> This manuscript is
-    being written. Most sections do not exist yet, and those that do may
-    change substantially until they are marked <em|checked> in the
-    <hlink|status table|#status>. Do not cite it as a finished proof.
+    \<#1F6A7\> <strong|Under construction.> This manuscript is being written.
+    Most sections do not exist yet, and those that do may change
+    substantially until they are marked <em|checked> in the <hlink|status
+    table|#status>. Do not cite it as a finished proof.
   </quotation>
 
   A manuscript, written in public, giving a complete mathematical proof of

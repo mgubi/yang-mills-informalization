@@ -35,12 +35,13 @@
       Numbering as in main.tex: theorems, propositions, lemmas, corollaries,
       definitions and remarks share one counter, numbered within sections
       (number-long-article), and so do equations
-      (\\numberwithin{equation}{section}). Tables are numbered through the
+      (\\numberwithin{equation}{section}). As in LaTeX, unnumbered
+      sections and subsections (section*, subsection*) reset nothing. Tables are numbered through the
       document, without the section.
     </src-comment>
   </active*>
 
-  <assign|section-clean|<macro|<reset-subsection><reset-theorem-env><reset-equation>>>
+  <assign|section-clean|<macro|<if|<value|section-numbered>|<reset-subsection><reset-theorem-env><reset-equation>>>>
 
   <assign|display-figure-env|<macro|nr|<arg|nr>>>
 
@@ -79,7 +80,7 @@
 
   <assign|ym-letter-sections|<macro|<assign|display-section|<macro|nr|<number|<arg|nr>|Alpha>>>>>
 
-  <assign|ym-theorems-by-subsection|<macro|<assign|subsection-clean|<macro|<reset-subsubsection><reset-theorem-env>>><assign|display-theorem-env|<macro|nr|<if|<equal|<value|subsection-nr>|0>|<the-section>|<the-subsection>>.<arg|nr>>>>>
+  <assign|ym-theorems-by-subsection|<macro|<assign|subsection-clean|<macro|<if|<value|subsection-numbered>|<reset-subsubsection><reset-theorem-env>>>><assign|display-theorem-env|<macro|nr|<if|<equal|<value|subsection-nr>|0>|<the-section>|<the-subsection>>.<arg|nr>>>>>
   <\active*>
     <\src-comment>
       The heading of the bibliography, as in the LaTeX article class.

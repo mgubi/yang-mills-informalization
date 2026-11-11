@@ -38,8 +38,12 @@ SYM_RE = re.compile('|'.join(re.escape(k) for k in SYMS))
 MARKERS = {'tmsectionsAlph': 'ym-letter-sections',
            'tmtheoremsbysubsection': 'ym-theorems-by-subsection'}
 # BibTeX styles -> the TeXmacs implementations (no bibtex binary in CI)
+# (TeXmacs ships tm-plain, tm-abbrv, tm-alpha, tm-unsrt, tm-acm, tm-ieeetr,
+# tm-siam, tm-elsart-num, tm-abstract; no AMS style: amsplain, numeric and
+# sorted by author, is closest to tm-plain, amsalpha to tm-alpha)
 BIBSTYLES = {'plain': 'tm-plain', 'abbrv': 'tm-abbrv', 'alpha': 'tm-alpha', 'unsrt': 'tm-unsrt',
-             'acm': 'tm-acm', 'ieeetr': 'tm-ieeetr', 'siam': 'tm-siam'}
+             'acm': 'tm-acm', 'ieeetr': 'tm-ieeetr', 'siam': 'tm-siam',
+             'amsplain': 'tm-plain', 'amsalpha': 'tm-alpha'}
 
 
 def is_node(x, *labels):
@@ -283,7 +287,10 @@ def rewrite(x):
     if x[0] == 'bibliography' and len(x) >= 4:
         style = x[2] if isinstance(x[2], str) else ''
         x = list(x)
-        x[2] = BIBSTYLES.get(style, style if style.startswith('tm-') else 'tm-plain')
+        if style not in BIBSTYLES and not style.startswith('tm-'):
+            raise SystemExit(f'tex_post: no TeXmacs bibliography style for \\bibliographystyle{{{style}}}; '
+                             'add it to BIBSTYLES')
+        x[2] = BIBSTYLES.get(style, style)
     if x[0] in ('verbatim', 'label', 'reference', 'eqref', 'hlink', 'slink', 'cite'):
         return x
     return [x[0]] + [rewrite(k) for k in x[1:]]

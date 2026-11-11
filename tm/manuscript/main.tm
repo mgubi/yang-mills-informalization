@@ -5521,7 +5521,25 @@
   </lemma>
 
   <\bibliography|bib|tm-plain|references>
-    \;
+    <\bib-list|3>
+      <bibitem*|1><label|bib-FrohlichIsraelLiebSimon1978>Jürg Fröhlich,
+      Robert Israel, E.<nbsp>H.<nbsp>Lieb<localize|, and >Barry Simon.
+      <newblock>Phase transitions and reflection positivity. I. General
+      theory and long range lattice models.
+      <newblock><with|font-shape|italic|Communications in Mathematical
+      Physics>, 62(1):1\U34, 1978.<newblock>
+
+      <bibitem*|2><label|bib-Rudin1976>Walter Rudin.
+      <newblock><with|font-shape|italic|Principles of Mathematical Analysis>.
+      <newblock>McGraw-Hill, New York, 3<localize| edition>, 1976.<newblock>
+
+      <bibitem*|3><label|bib-Seiler1982>Erhard Seiler. <newblock>Lattice
+      gauge theories. <newblock><localize|In ><with|font-shape|italic|Gauge
+      Theories as a Problem of Constructive Quantum Field Theory and
+      Statistical Mechanics>, <localize|volume> 159<localize| of
+      ><with|font-shape|italic|Lecture Notes in Physics>, <localize|pages
+      >3\U98. Springer, Berlin, Heidelberg, 1982.<newblock>
+    </bib-list>
   </bibliography>
 </body>
 
@@ -5549,8 +5567,8 @@
     <associate|auto-20|<tuple|12|35>>
     <associate|auto-21|<tuple|12|36>>
     <associate|auto-22|<tuple|12.4|37>>
-    <associate|auto-23|<tuple|12.2|40>>
-    <associate|auto-24|<tuple|12.2|43>>
+    <associate|auto-23|<tuple|12.6|40>>
+    <associate|auto-24|<tuple|12.8|43>>
     <associate|auto-25|<tuple|12.4|45>>
     <associate|auto-26|<tuple|13|47>>
     <associate|auto-27|<tuple|14|49>>
@@ -5587,6 +5605,9 @@
     <associate|auto-7|<tuple|3.3|9>>
     <associate|auto-8|<tuple|3.4|9>>
     <associate|auto-9|<tuple|3.5|10>>
+    <associate|bib-FrohlichIsraelLiebSimon1978|<tuple|1|64>>
+    <associate|bib-Rudin1976|<tuple|2|64>>
+    <associate|bib-Seiler1982|<tuple|3|64>>
     <associate|def:D01|<tuple|2.1|3>>
     <associate|def:D02|<tuple|2.2|4>>
     <associate|def:D03|<tuple|2.3|4>>
@@ -5707,12 +5728,12 @@
     <associate|lem:B7|<tuple|11.10|35>>
     <associate|lem:C1|<tuple|12.3|37>>
     <associate|lem:C2|<tuple|12.4|37>>
-    <associate|lem:C3|<tuple|12.1|38>>
-    <associate|lem:C4|<tuple|12.2|39>>
-    <associate|lem:C5|<tuple|12.1|41>>
-    <associate|lem:C6|<tuple|12.2|42>>
-    <associate|lem:C7|<tuple|12.1|43>>
-    <associate|lem:C8|<tuple|12.1|46>>
+    <associate|lem:C3|<tuple|12.5|38>>
+    <associate|lem:C4|<tuple|12.6|39>>
+    <associate|lem:C5|<tuple|12.7|41>>
+    <associate|lem:C6|<tuple|12.8|42>>
+    <associate|lem:C7|<tuple|12.9|43>>
+    <associate|lem:C8|<tuple|12.10|46>>
     <associate|lem:D1|<tuple|13.3|47>>
     <associate|lem:D2|<tuple|13.4|48>>
     <associate|lem:D3|<tuple|13.6|48>>
@@ -5828,8 +5849,8 @@
     <associate|step:deduction-trace|<tuple|8|30>>
     <associate|step:deduction-uv|<tuple|3|29>>
     <associate|step:deduction-volume|<tuple|4|30>>
-    <associate|subsec:C-coefficient|<tuple|12.2|43>>
-    <associate|subsec:C-determinant|<tuple|12.2|40>>
+    <associate|subsec:C-coefficient|<tuple|12.8|43>>
+    <associate|subsec:C-determinant|<tuple|12.6|40>>
     <associate|subsec:C-matching|<tuple|12.4|37>>
     <associate|subsec:C-reset|<tuple|12.4|45>>
     <associate|tab:constant-choices|<tuple|1|31>>

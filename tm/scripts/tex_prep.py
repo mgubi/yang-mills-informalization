@@ -104,7 +104,40 @@ def numbering(s):
         return r'\tmtheoremsbysubsection' if re.search(known[0], body) else ''
     s = re.sub(r'\\makeatletter(.*?)\\makeatother', block, s, flags=re.S)
     s = s.replace(r'\renewcommand{\thesection}{\Alph{section}}', r'\tmsectionsAlph')
+    check_numbering(s)
     return s
+
+
+# The numbering ym-manuscript.ts implements. Anything else that changes
+# numbers stops the build: wrong numbers must not be published silently.
+THEOREMS = {                     # \newtheorem{env}[shared]{Name}[within]
+    'maintheorem': ('', 'Theorem', ''), 'theorem': ('', 'Theorem', 'section'),
+    'proposition': ('theorem', 'Proposition', ''), 'lemma': ('theorem', 'Lemma', ''),
+    'corollary': ('theorem', 'Corollary', ''), 'definition': ('theorem', 'Definition', ''),
+    'remark': ('theorem', 'Remark', ''), 'principal*': ('', r'\principalname', ''),
+}
+ALLOWED = [r'\\numberwithin\{equation\}\{section\}', r'\\setcounter\{tocdepth\}\{\d\}',
+           r'\\setcounter\{section\}\{0\}',
+           r'\\renewcommand\{\\themaintheorem\}\{\\Alph\{maintheorem\}\}']
+NUMBERING = re.compile(r'\\(?:renewcommand\*?\{\\the[A-Za-z]+\}|setcounter|addtocounter|stepcounter|'
+                       r'numberwithin|counterwithin\*?|counterwithout\*?|@addtoreset|appendix\b|'
+                       r'newtheorem\*?|newcounter|swapnumbers)[^\n]*')
+
+
+def check_numbering(s):
+    errors = []
+    for m in re.finditer(r'\\newtheorem(\*?)\{([^}]*)\}(?:\[([^\]]*)\])?\{((?:[^{}]|\{[^{}]*\})*)\}(?:\[([^\]]*)\])?', s):
+        star, env, shared, name, within = m.groups()
+        if THEOREMS.get(env + star) != (shared or '', name, within or ''):
+            errors.append(m.group(0))
+    for m in NUMBERING.finditer(s):
+        line = m.group(0)
+        if line.startswith('\\newtheorem') or any(re.match(a, line) for a in ALLOWED):
+            continue
+        errors.append(line)
+    if errors:
+        raise SystemExit('tex_prep: numbering of main.tex not recognised (adapt ym-manuscript.ts '
+                         'and tex_prep.py):\n  ' + '\n  '.join(errors))
 
 
 def longtables(s):

@@ -172,7 +172,8 @@ done
 # the bibliography database next to the manuscript, if it has a bibliography
 [[ -z $manuscript && -f "$here/manuscript/main.tm" ]] && manuscript=manuscript/main.tm
 bib=$B/md/tex/references.bib; [[ -f $bib ]] || bib=$repo/manuscript/references.bib
-if [[ -n $manuscript && -f "$stage/$manuscript" && -f $bib ]] && grep -aq '<bibliography' "$stage/$manuscript"; then
+# (the tag is written <\bibliography|...> as a block: match "bibliography|")
+if [[ -n $manuscript && -f "$stage/$manuscript" && -f $bib ]] && grep -aq 'bibliography|bib|' "$stage/$manuscript"; then
   cp "$bib" "$stage/$(dir_of "$manuscript")/references.bib"
 fi
 
@@ -200,6 +201,10 @@ if (( ${#export_[@]} )); then
   for p in "${export_[@]}"; do
     [[ -s "$html/${p%.tm}.html" ]] || { echo "missing $html/${p%.tm}.html" >&2; exit 1; }
   done
+  # a bibliography that could not be generated is an error, not an empty list
+  if grep -a 'Could not load BibTeX\|bibtex.*error' "$B/html.log" >&2; then
+    echo "bibliography not generated (log: $B/html.log)" >&2; exit 1
+  fi
 fi
 
 # --- 6. install --------------------------------------------------------------
@@ -258,6 +263,18 @@ print("\n".join(sorted(set(json.load(open(sys.argv[2]))) - old)))' "$state" "$br
     fi
   elif [[ $(python3 -c 'import json,sys; print(len(json.load(open(sys.argv[1]))))' "$broken") != 0 ]]; then
     echo "WARNING: the site has broken links (listed above); they come from the Markdown"
+  fi
+  # broken links inside the manuscript (labels, citations, its table of
+  # contents) are conversion errors, never source errors: stop, without
+  # recording the build, so that CI neither commits nor publishes it
+  internal=$(python3 -c '
+import json, sys
+print("\n".join(b for b in json.load(open(sys.argv[1]))
+               if b.startswith("manuscript/main.html -> #") or b.startswith("manuscript/main.html -> main.html#")))' "$broken")
+  if [[ -n "$internal" ]]; then
+    echo "error: broken links inside the manuscript:" >&2
+    printf '%s\n' "$internal" >&2
+    exit 1
   fi
 fi
 python3 "$scripts/plan.py" record "$state" "$here" "$B/md" "$mode" \
