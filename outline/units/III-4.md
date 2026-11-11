@@ -658,9 +658,9 @@ The determinant comparison must accommodate different active dimensions, hence i
 4. **Consumers and coverage.** The downstream reset and repeatable-step statements have not been checked here. The additional assigned packages for Wilson bulk terms, vacuum stability, proof interfaces, multisource terms and flat RG data are not covered by these steps. The closure-size figures in the opening metadata were retained without recounting.
 5. **References.** The precise results and bibliographic locations in Helgason, Glimm–Jaffe, Katznelson, Balaban and Dimock remain to be selected and verified. The cited Lean declarations are the evidence for the statements above.
 
-**Builds on:** [III.1](III-1.md), [I.1](I-1.md), [III.11](III-11.md), [III.10](III-10.md), [III.5](III-5.md), [III.7](III-7.md), [III.6](III-6.md), [III.16](III-16.md), [II.2](II-2.md), [III.2](III-2.md), [II.1](II-1.md), [III.9](III-9.md), [IV.1](IV-1.md), [III.3](III-3.md), [III.15](III-15.md), [III.8](III-8.md), [V.2](V-2.md), [VI.1](VI-1.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.11](III-11.md), [III.10](III-10.md), [III.7](III-7.md), [III.5](III-5.md), [III.16](III-16.md), [III.6](III-6.md), [II.2](II-2.md), [III.2](III-2.md), [III.9](III-9.md), [II.1](II-1.md), [III.8](III-8.md), [III.3](III-3.md), [III.15](III-15.md), [VIII.1](VIII-1.md).
 
-**Used by:** [III.10](III-10.md), [III.11](III-11.md), [III.2](III-2.md), [VII.6](VII-6.md), [VII.4](VII-4.md), [VII.2](VII-2.md), [VII.1](VII-1.md), [III.12](III-12.md), [III.13](III-13.md), [III.15](III-15.md).
+**Used by:** [III.10](III-10.md), [III.11](III-11.md), [III.2](III-2.md), [VII.6](VII-6.md), [III.13](III-13.md), [III.9](III-9.md), [III.12](III-12.md), [VII.2](VII-2.md), [VII.1](VII-1.md), [III.15](III-15.md).
 
 ## Lean source
 

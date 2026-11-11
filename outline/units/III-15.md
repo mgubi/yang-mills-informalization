@@ -180,9 +180,9 @@ with $V$ a reserve and $S'$ of rate $q<0$ (a contraction per surplus unmarked oc
 7. **Quantifier order.** In III.15.5 the function names $f,\eta,\delta$ (reserve, tolerances) are universally quantified *after* $L$; the written proof should make sure that each consumer instantiates them with data not depending on $x$.
 8. **Used-by list.** The used-by list names III.2, III.4, III.9–III.14 and VIII.1 as users. Only the use of `Chron.sails` by the rig module has been verified, along with the two Expenses modules under Integration's Preconstruction folder (which belong to III.14/III.13, by the chapter structure; probable).
 
-**Builds on:** [III.10](III-10.md), [III.1](III-1.md), [I.1](I-1.md), [II.2](II-2.md), [III.5](III-5.md), [III.6](III-6.md), [III.11](III-11.md), [II.1](II-1.md), [III.2](III-2.md), [III.9](III-9.md), [III.16](III-16.md), [VIII.1](VIII-1.md), [IV.1](IV-1.md), [III.4](III-4.md).
+**Builds on:** [III.10](III-10.md), [III.1](III-1.md), [I.1](I-1.md), [II.2](II-2.md), [III.5](III-5.md), [III.6](III-6.md), [III.11](III-11.md), [III.2](III-2.md), [II.1](II-1.md), [III.16](III-16.md), [III.9](III-9.md), [VIII.1](VIII-1.md), [III.4](III-4.md).
 
-**Used by:** [III.2](III-2.md), [III.13](III-13.md), [III.9](III-9.md), [III.10](III-10.md), [III.12](III-12.md), [III.11](III-11.md), [III.14](III-14.md), [III.4](III-4.md), [VIII.1](VIII-1.md).
+**Used by:** [III.2](III-2.md), [III.12](III-12.md), [III.13](III-13.md), [III.10](III-10.md), [III.9](III-9.md), [III.11](III-11.md), [III.14](III-14.md), [VIII.1](VIII-1.md), [III.4](III-4.md), [III.3](III-3.md).
 
 ## Lean source
 

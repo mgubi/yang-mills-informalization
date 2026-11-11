@@ -234,9 +234,9 @@ $$\mathrm{flux}_\chi(j(f,R_t))=\int P_t(y-x)\big[\partial_l(\chi\,v^bf_{bi})-\pa
 7. **Hypothesis `DimAbove`.** `Stations.equivalences` takes an upper bound on $\dim\mathcal F^S_d$. Where it is proved has not been traced (probably from the finite number of lattice labels of degree $d$ modulo the null space of IV.1).
 8. **Statement-level reading of the unit page.** The "key statements" list of the unit page includes several results whose roles have not been placed (`halves`, `cost_limit`, `spot_high`, `precise`, `align`, `triangle_test`, `charges_quiet`, `variation_center`, `classification`). They serve the Fock-space calculus, the cost estimates behind `Granular`, and the low-weight classification behind the stress-line computations. The chain between them and the lemmas above has not been traced.
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.1](VI-1.md), [VIII.1](VIII-1.md), [II.1](II-1.md).
+**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.1](VI-1.md), [II.1](II-1.md), [VIII.1](VIII-1.md).
 
-**Used by:** [VIII.1](VIII-1.md), [VII.2](VII-2.md), [III.11](III-11.md), [VII.6](VII-6.md), [VII.3](VII-3.md), [VII.1](VII-1.md).
+**Used by:** [VIII.1](VIII-1.md), [VII.2](VII-2.md), [III.11](III-11.md), [VII.3](VII-3.md), [VII.6](VII-6.md), [VII.1](VII-1.md).
 
 ## Lean source
 

@@ -364,9 +364,9 @@ Then the RG history from $N$ to $k$ satisfies the estimate for the invoice of th
 6. **Real structure and symmetry group in the Maxwell ranks.** Whether the symmetry action in the Maxwell ranks is by signed permutations only or by a larger subgroup of $O(4)$ should be checked in `Table.mirror` and `RealSpin`.
 7. **Statement-only blocks.** Lemmas 4.1, 4.11–4.13 and III.11.8–III.11.10 were read at statement level only.
 
-**Builds on:** [III.1](III-1.md), [II.2](II-2.md), [I.1](I-1.md), [II.1](II-1.md), [III.10](III-10.md), [III.4](III-4.md), [IV.1](IV-1.md), [III.16](III-16.md), [III.5](III-5.md), [III.9](III-9.md), [III.2](III-2.md), [III.3](III-3.md), [VI.2](VI-2.md), [VIII.1](VIII-1.md), [V.2](V-2.md), [III.15](III-15.md), [VI.1](VI-1.md), [III.6](III-6.md), [III.8](III-8.md), [III.7](III-7.md), [V.1](V-1.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [II.2](II-2.md), [II.1](II-1.md), [III.10](III-10.md), [III.16](III-16.md), [III.4](III-4.md), [IV.1](IV-1.md), [III.5](III-5.md), [V.2](V-2.md), [VIII.1](VIII-1.md), [III.2](III-2.md), [III.9](III-9.md), [III.3](III-3.md), [VI.2](VI-2.md), [III.15](III-15.md), [VI.1](VI-1.md), [III.8](III-8.md), [III.6](III-6.md).
 
-**Used by:** [VII.6](VII-6.md), [VII.4](VII-4.md), [III.4](III-4.md), [III.12](III-12.md), [III.2](III-2.md), [III.13](III-13.md), [VIII.1](VIII-1.md), [VII.2](VII-2.md), [VII.1](VII-1.md), [III.15](III-15.md).
+**Used by:** [VII.6](VII-6.md), [III.12](III-12.md), [III.4](III-4.md), [VII.4](VII-4.md), [III.2](III-2.md), [VIII.1](VIII-1.md), [III.13](III-13.md), [VII.2](VII-2.md), [VII.1](VII-1.md), [III.15](III-15.md).
 
 ## Lean source
 

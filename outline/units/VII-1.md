@@ -207,9 +207,9 @@ VII.1.1 is the input that makes "the lattice reading at order zero equals the co
 8. **Hypotheses of `tune_grades`.** The weak system `Portfolio` and the table work items contain the hypothesis that makes the two-point function converge to the free pair probe (`X.twoC`). Where that hypothesis is proved has not yet been traced (probably in VII.4 and VI.2). The statement of VII.1.6 should be checked against this.
 9. **Exponent in the Kelvin formula.** The relation between `R x ^ (j+1)` in [`harmonic_Green`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Harmonic.lean#L157-L180) and powers of $|x|^{-1}$ depends on the definition of `R` (not read); I took $R=|x|^{-2}$.
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [VII.3](VII-3.md), [III.7](III-7.md), [III.11](III-11.md), [III.1](III-1.md), [IV.1](IV-1.md), [II.1](II-1.md), [III.5](III-5.md), [III.6](III-6.md), [III.2](III-2.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [VI.2](VI-2.md), [III.4](III-4.md), [III.3](III-3.md), [VI.1](VI-1.md).
+**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [VII.3](VII-3.md), [III.7](III-7.md), [IV.1](IV-1.md), [III.1](III-1.md), [III.11](III-11.md), [II.1](II-1.md), [III.2](III-2.md), [II.2](II-2.md), [III.6](III-6.md), [VIII.1](VIII-1.md), [III.5](III-5.md), [VI.2](VI-2.md), [III.4](III-4.md), [III.3](III-3.md), [III.10](III-10.md), [VII.4](VII-4.md), [VI.1](VI-1.md).
 
-**Used by:** [III.2](III-2.md), [VIII.1](VIII-1.md), [III.13](III-13.md), [VII.2](VII-2.md).
+**Used by:** [III.2](III-2.md), [VIII.1](VIII-1.md), [VII.2](VII-2.md), [III.13](III-13.md).
 
 ## Lean source
 

@@ -445,9 +445,9 @@ The run instance is [`Campaign.realUV`](https://github.com/yang-mills-group/Open
 7. **Roles not understood.** The packages `Luna` (`dashF`, `stencilH`), `Umbra`, `Panel`, `Sym`, `Sector`, `E6`, `Rank` (`cams`, `linters`) and `Shroud` (`earned`); see Lemma 4.19.
 8. **Boundary analysis U3/U5.** The boundary analysis attributes the centred budget to `UVExtension.Poppy.acme` and `uv_whole`, and attributes the Cauchy property to the fan. Neither attribution matches the main-theorem route: the centred budget there is `gardena` (III.11), and the Cauchy property is Lemmas 4.20–4.24. `Poppy.acme` and `uv_whole` are outside the main-theorem closure.
 
-**Builds on:** [III.10](III-10.md), [III.1](III-1.md), [II.1](II-1.md), [I.1](I-1.md), [III.11](III-11.md), [III.9](III-9.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.16](III-16.md), [III.5](III-5.md), [III.2](III-2.md), [IV.1](IV-1.md), [III.15](III-15.md), [III.7](III-7.md), [III.6](III-6.md), [V.2](V-2.md), [III.4](III-4.md).
+**Builds on:** [III.1](III-1.md), [III.10](III-10.md), [I.1](I-1.md), [VIII.1](VIII-1.md), [II.1](II-1.md), [III.2](III-2.md), [III.16](III-16.md), [III.11](III-11.md), [III.9](III-9.md), [II.2](II-2.md), [III.5](III-5.md), [IV.1](IV-1.md), [III.15](III-15.md), [III.6](III-6.md), [III.7](III-7.md), [V.2](V-2.md), [III.4](III-4.md).
 
-**Used by:** [VIII.1](VIII-1.md), [III.2](III-2.md).
+**Used by:** [VIII.1](VIII-1.md), [III.2](III-2.md), [III.14](III-14.md).
 
 ## Lean source
 

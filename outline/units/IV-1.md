@@ -650,9 +650,9 @@ Three distinctions matter:
 
 4. **Alternative assembly.** [`Next.Extract.finish`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L79-L92) and [`common`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L111-L122) give another conditional route to the same bundle. They require relay costs and detector estimates in addition to the centered budgets. Their hypotheses were checked; they are not additional proofs of the ultraviolet inputs.
 
-**Builds on:** [I.1](I-1.md), [II.1](II-1.md), [III.16](III-16.md), [III.10](III-10.md), [III.1](III-1.md).
+**Builds on:** [I.1](I-1.md), [II.1](II-1.md), [III.16](III-16.md), [III.1](III-1.md), [III.10](III-10.md).
 
-**Used by:** [VIII.1](VIII-1.md), [VI.2](VI-2.md), [VI.1](VI-1.md), [VII.4](VII-4.md), [III.11](III-11.md), [V.1](V-1.md), [VII.2](VII-2.md), [III.13](III-13.md), [III.10](III-10.md), [III.6](III-6.md), [V.2](V-2.md), [V.3](V-3.md), [III.12](III-12.md), [VII.6](VII-6.md), [II.1](II-1.md), [VII.1](VII-1.md), [VII.3](VII-3.md), [III.8](III-8.md), [III.4](III-4.md), [VII.5](VII-5.md), [III.2](III-2.md), [III.3](III-3.md), [III.15](III-15.md), [III.7](III-7.md), [III.14](III-14.md).
+**Used by:** [VIII.1](VIII-1.md), [VII.4](VII-4.md), [VI.2](VI-2.md), [VI.1](VI-1.md), [VII.2](VII-2.md), [V.1](V-1.md), [III.11](III-11.md), [V.2](V-2.md), [V.3](V-3.md), [III.13](III-13.md), [III.6](III-6.md), [VII.3](VII-3.md), [III.10](III-10.md), [III.12](III-12.md), [VII.6](VII-6.md), [VII.1](VII-1.md), [II.1](II-1.md), [VII.5](VII-5.md), [III.8](III-8.md), [III.3](III-3.md), [III.2](III-2.md).
 
 ## Lean source
 

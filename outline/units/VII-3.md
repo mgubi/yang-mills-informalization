@@ -242,7 +242,7 @@ This part states definitions and finite-regulator identities; no statement in it
 8. **Wick profiles with logarithms.** The expansion class $\mathcal B$ includes $\log$ powers because massive modes give terms like $s\log s$ in Bessel-type kernels. The proof of `moment_expands` in the massive-mode development has not been read; this is checked only against the statement `Track.moments_expand`. (probable)
 9. **Which hypotheses of `Headline.TraceExclusions` come from where.** The fields `wick`, `maxwell`, `invariant` (Fock-space, Maxwell-identification and invariant-sector countertests) are produced from `Trace.Target.Result` (`H.exclude`); these proofs have not been read. Only the `wick` field's Euclidean part is described in §4.6. (tentative)
 
-**Builds on:** [III.16](III-16.md), [I.1](I-1.md), [IV.1](IV-1.md), [VI.2](VI-2.md), [VI.1](VI-1.md).
+**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.2](VI-2.md), [VI.1](VI-1.md), [II.1](II-1.md).
 
 **Used by:** [VII.1](VII-1.md), [VIII.1](VIII-1.md).
 

@@ -224,9 +224,9 @@ The unit page lists a number of results which are parts of other chains and are 
 7. **Stale docstrings.** The docstrings of `Org/Input.lean` ("Not proven", "mission") and of `Accepted.lean` ("NOT identified…", "No all-order comparison") refer to earlier states of the project; the formal statements should be taken as authoritative. The caveats stated there on what is *not* claimed (no all-order comparison with perturbation theory; no identification of the weak measuring frames with the trace's own) are still accurate as limits of `Broad` and should appear in the account of what is proved.
 8. **Public versus internal Wightman axioms.** The internal `WightmanAxioms` (14 fields) and the public `Reconstructed` + `view_axioms` agree only through `view_axioms`, whose proof has not been checked. The comparison with the public axioms in §1.10 (W0–W3) should be made there.
 
-**Builds on:** [III.12](III-12.md), [IV.1](IV-1.md), [VII.2](VII-2.md), [I.1](I-1.md), [VII.4](VII-4.md), [II.1](II-1.md), [VI.1](VI-1.md), [V.2](V-2.md), [III.1](III-1.md), [III.11](III-11.md), [III.10](III-10.md), [VII.3](VII-3.md), [V.1](V-1.md), [VI.2](VI-2.md), [III.16](III-16.md), [III.2](III-2.md), [III.9](III-9.md), [VII.1](VII-1.md), [III.15](III-15.md), [VII.6](VII-6.md), [II.2](II-2.md), [III.6](III-6.md).
+**Builds on:** [IV.1](IV-1.md), [I.1](I-1.md), [III.12](III-12.md), [VII.2](VII-2.md), [II.1](II-1.md), [VII.4](VII-4.md), [III.1](III-1.md), [V.2](V-2.md), [VI.1](VI-1.md), [III.16](III-16.md), [III.11](III-11.md), [III.10](III-10.md), [V.1](V-1.md), [VII.3](VII-3.md), [VI.2](VI-2.md), [III.2](III-2.md), [III.9](III-9.md), [VII.1](VII-1.md), [VII.6](VII-6.md), [II.2](II-2.md), [III.15](III-15.md), [III.6](III-6.md), [V.3](V-3.md).
 
-**Used by:** [III.12](III-12.md), [III.13](III-13.md), [III.10](III-10.md), [VII.4](VII-4.md), [V.3](V-3.md), [VII.2](VII-2.md), [III.11](III-11.md), [III.2](III-2.md), [VI.2](VI-2.md), [VI.1](VI-1.md), [VII.1](VII-1.md), [III.15](III-15.md), [V.1](V-1.md).
+**Used by:** [III.12](III-12.md), [III.13](III-13.md), [III.10](III-10.md), [VII.4](VII-4.md), [III.11](III-11.md), [III.2](III-2.md), [V.3](V-3.md), [VII.2](VII-2.md), [VI.1](VI-1.md), [VI.2](VI-2.md), [VII.1](VII-1.md), [V.1](V-1.md), [III.4](III-4.md), [III.15](III-15.md), [III.14](III-14.md), [III.6](III-6.md).
 
 ## Lean source
 

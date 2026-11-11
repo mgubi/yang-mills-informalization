@@ -251,7 +251,7 @@ The rest of the unit's 14,290 lines (most of them under `harbor`) are not on the
 6. **Relation to the claims of the group's assessment.** The assessment (§5–§6) describes the Gaussian-fluctuation analysis and the dependence on the block scale; the flat rate here corresponds to the quadratic-part convergence claim. The correspondence of the exponent $c$ and the age polynomial $d$ with anything stated there is not established.
 7. **Decoupling statement.** The docstring says the funded run depends "neither on the choice of perturbative prescription nor any additional mathematical premise" (Accepted.lean). This is a claim about the Lean hypotheses, and I confirmed it for the endpoint only (`constructionRun` has just $G$ simple and $b>0$), not for the whole closure.
 
-**Builds on:** [III.8](III-8.md), [III.1](III-1.md), [I.1](I-1.md), [III.7](III-7.md), [III.16](III-16.md), [III.6](III-6.md), [III.10](III-10.md), [III.15](III-15.md), [II.1](II-1.md), [III.3](III-3.md), [III.9](III-9.md), [III.2](III-2.md), [III.5](III-5.md), [IV.1](IV-1.md).
+**Builds on:** [III.8](III-8.md), [I.1](I-1.md), [III.1](III-1.md), [III.7](III-7.md), [III.16](III-16.md), [III.6](III-6.md), [III.10](III-10.md), [III.15](III-15.md), [II.1](II-1.md), [III.2](III-2.md), [III.3](III-3.md), [III.9](III-9.md), [III.5](III-5.md), [III.12](III-12.md), [VIII.1](VIII-1.md).
 
 ## Lean source
 

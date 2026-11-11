@@ -39,7 +39,7 @@ The repository presents the same proof at five levels of detail. Each level link
 - *Levels 1 and 3:* written by AI agents from the Lean and checked against it clause by clause.
 - *Level 4, the unit outlines:* each drafted by one model (Claude Sonnet), then checked against the Lean and rewritten by a second (Claude Opus), then edited by a third (GPT).
 - *Level 2:* written from the unit outlines by one model and edited by another.
-- *Level 5:* the dependency graph is computed from the source and checked against OpenAI's own compiled record.
+- *Level 5:* the dependency graph is computed from the compiled Lean and checked against OpenAI's own record.
 
 All links to Lean point to the fixed commit [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464) of the released source.
 
@@ -85,9 +85,9 @@ Everything after that uses only these bounds and reflection positivity. Parts IV
 
 ## How the map was made
 
-The dependency graph is computed from the source text. Every declaration and every reference between declarations is extracted.
+The dependency graph is computed from the compiled Lean: for every declaration, every declaration its elaborated statement and proof use, including the dependencies Lean inserts silently (2.26 million references).
 
-We checked it against the record of which declarations the main theorem uses, compiled by OpenAI and shipped with the release (`verification/declaration-usage.tsv`). After that correction the set of declarations our graph says the proof uses agrees with the compiled record to 99.95%.
+We checked it against the record of which declarations the main theorem uses, compiled by OpenAI and shipped with the release (`verification/declaration-usage.tsv`): the two agree to within 50 of about 74,000 declarations.
 
 The graph is then coarse-grained in stages:
 - lemmas used in only one proof are folded into it;
@@ -100,7 +100,7 @@ Two independent AI readers read every candidate statement and judged its importa
 
 | | |
 |---|---|
-| Dependency structure | Reliable: checked against OpenAI's compiled record. |
+| Dependency structure | Computed from the compiled Lean; the declarations it reaches from the main theorem agree with OpenAI's own record to within 50 of about 74,000. |
 | Units | Computed from the dependency graph, then cut along the mathematics. |
 | Plain-language summaries and glossary | AI-written; marked *certain*, *probable* or *tentative*. |
 | Precise statement of the main theorem | [Published](statement.md): checked definition by definition against the Lean. |

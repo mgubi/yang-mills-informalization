@@ -182,7 +182,7 @@ The second part (§1.4) is separate and elementary. In grades $\le3$ every physi
 **`DimAbove` and the reference.** It is read as the cap by the free Maxwell reference table `Bel C.book`. Confirm that the reference is the free Maxwell theory of VII.1 and VI.2.
 9. **Two `StarPath` definitions.** See §5.
 
-**Builds on:** [III.11](III-11.md), [II.2](II-2.md), [III.1](III-1.md), [II.1](II-1.md), [I.1](I-1.md), [IV.1](IV-1.md), [VI.2](VI-2.md), [III.4](III-4.md), [III.16](III-16.md), [III.10](III-10.md).
+**Builds on:** [III.11](III-11.md), [I.1](I-1.md), [III.1](III-1.md), [II.2](II-2.md), [II.1](II-1.md), [IV.1](IV-1.md), [III.4](III-4.md), [VI.2](VI-2.md), [III.16](III-16.md), [V.2](V-2.md), [III.10](III-10.md), [VI.1](VI-1.md).
 
 **Used by:** [III.2](III-2.md), [VII.2](VII-2.md), [VIII.1](VIII-1.md).
 

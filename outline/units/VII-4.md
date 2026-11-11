@@ -218,9 +218,9 @@ where $\sigma$ is the total degree, $u$ the exponent of the clearance of the ext
 9. **Contacts and the main theorem.** The detailed theorem (D2, D11–D13) is a projection; the public statement of the main theorem has only the OPE (P3) and no contact clause. Check in VIII.1 which of D2, D8, D10–D13 are quoted in the final statement (the assessment mentions nested OPE, contact extensions and the non-claims on uniqueness, OS axioms and lattice convergence for the extensions).
 10. **Sizes.** The line count is taken from the unit page. Which files outside the listed folders (for example `OPE/Exchange`, `OPE/Schemes`, `OPE/Prices`, `OPE/Splitting`, `OPE/Interpolate`, `OPE/Rough`, `OPE/Single`, `OPE/Subpower`) are counted in the 4,584 has not been verified.
 
-**Builds on:** [III.11](III-11.md), [IV.1](IV-1.md), [I.1](I-1.md), [III.1](III-1.md), [II.1](II-1.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.10](III-10.md), [V.1](V-1.md), [III.16](III-16.md), [III.4](III-4.md), [III.9](III-9.md), [III.7](III-7.md), [III.2](III-2.md), [III.6](III-6.md).
+**Builds on:** [I.1](I-1.md), [IV.1](IV-1.md), [III.11](III-11.md), [III.1](III-1.md), [II.1](II-1.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.16](III-16.md), [III.10](III-10.md), [V.1](V-1.md), [V.2](V-2.md), [III.9](III-9.md), [III.2](III-2.md).
 
-**Used by:** [VIII.1](VIII-1.md), [III.2](III-2.md), [III.13](III-13.md).
+**Used by:** [VIII.1](VIII-1.md), [III.2](III-2.md), [III.13](III-13.md), [VII.1](VII-1.md).
 
 ## Lean source
 

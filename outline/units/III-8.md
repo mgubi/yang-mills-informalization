@@ -426,7 +426,7 @@ Proof: expand $\prod_i(O_i+(Z_i-O_i))$ over subsets, and bound each term by the 
    - `AnalyticNext/QUARTIC_MATCH`: used by III.10, logically with III.7;
    - also `Packets`, `Isles`, `Anchor`, parts of `Cloud` and `Glyph`, `WilsonBulk/Web`, `ProofPorts/…`.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [IV.1](IV-1.md), [III.16](III-16.md), [II.2](II-2.md), [III.6](III-6.md), [II.1](II-1.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [IV.1](IV-1.md), [III.16](III-16.md), [II.2](II-2.md), [II.1](II-1.md), [III.6](III-6.md).
 
 **Used by:** [III.14](III-14.md), [VII.2](VII-2.md), [III.13](III-13.md), [III.4](III-4.md), [III.11](III-11.md).
 

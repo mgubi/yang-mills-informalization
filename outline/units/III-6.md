@@ -539,9 +539,9 @@ The conclusions concern a branch near the identity and uniqueness in a specified
 4. **Supporting proofs not checked in full.** The remaining unread supporting proofs are the metric/path-limit estimates identified after Lemma 4.3; the direct shell and action-derivative estimates used in Lemma 4.20; the convolution and graph-composition estimates used in Lemma 4.21; and the inherited-atom matching and bounds in Lemmas 4.23–4.24. F06–F09 and the primary-integral, atom-regularity, rotation and Ward packages are represented by their statements only. The period-comparison trace argument was checked; its geometric realization for the actual Hessians was not.
 5. **Attached packages.** The primary-integral package feeds the repeatable step in III.10; the rotation and Ward material belongs with VI.1. The application of the period comparison in [`Fresco.subscribed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/PHYSICAL_PERIOD_LIMIT_F933/Fresco.lean#L98-L148) remains unverified here. The size figures in the header are the inherited dependency-closure counts; they have not been recounted.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.1](VI-1.md), [II.1](II-1.md), [III.10](III-10.md), [III.3](III-3.md), [V.2](V-2.md), [V.1](V-1.md), [III.2](III-2.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [II.1](II-1.md), [VI.1](VI-1.md), [III.10](III-10.md), [III.3](III-3.md), [V.2](V-2.md), [V.1](V-1.md), [III.2](III-2.md), [VIII.1](VIII-1.md).
 
-**Used by:** [III.10](III-10.md), [III.2](III-2.md), [VII.2](VII-2.md), [III.4](III-4.md), [III.14](III-14.md), [III.3](III-3.md), [III.15](III-15.md), [III.7](III-7.md), [III.9](III-9.md), [III.13](III-13.md), [III.12](III-12.md), [III.11](III-11.md), [VII.1](VII-1.md), [III.8](III-8.md), [VIII.1](VIII-1.md), [VII.4](VII-4.md).
+**Used by:** [III.10](III-10.md), [III.2](III-2.md), [VII.2](VII-2.md), [III.4](III-4.md), [III.14](III-14.md), [III.3](III-3.md), [III.15](III-15.md), [III.7](III-7.md), [III.9](III-9.md), [III.13](III-13.md), [III.12](III-12.md), [VII.1](VII-1.md), [III.11](III-11.md), [III.8](III-8.md), [III.5](III-5.md), [VIII.1](VIII-1.md).
 
 ## Lean source
 

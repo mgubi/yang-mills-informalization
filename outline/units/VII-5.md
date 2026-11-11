@@ -144,7 +144,7 @@ VII.5.2–VII.5.4 belong mathematically to the stress-tensor identification of P
 6. **Proofs not yet checked.** `adjusted_exact`, `perturb_limit`, `eventually_unit`, `relative`, `retraction`'s companions, `flux_nontrivial`, `momentum2_turn`, `shell_affine`, and `SharpRead`. For `SharpRead` only the definition (a bound $u\cdot\mathrm{coeffSize}\le4(1+\text{columns})\,w$ on the "voice" of a duet with zero atoms and non-negative weight $w$) and the lemma it is used in have been examined; it belongs to the cost accounting of III.15, not to this unit's mathematics.
 7. **Possible extension.** If the written proof is meant to state asymptotic freedom in the usual sense (with two-loop terms or in a physical scheme), this unit does not contain it; the docstring says so explicitly.
 
-**Builds on:** [IV.1](IV-1.md), [VI.1](VI-1.md), [I.1](I-1.md).
+**Builds on:** [IV.1](IV-1.md), [I.1](I-1.md), [III.16](III-16.md), [VI.1](VI-1.md), [II.1](II-1.md).
 
 **Used by:** [VII.2](VII-2.md).
 

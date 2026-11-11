@@ -602,7 +602,7 @@ The coarsest coupling is prescribed exactly. Shooting chooses the bare coupling 
 5. **Numerical and bibliographic scope.** Lemma 4.18 gives the start-up numerical bounds; their use for source polynomials and first-step observations requires the norm definitions in III.12 and III.15. The cited numerical preparation does not itself construct those observables or their nonlinear continuations. The literature citations in §2 are background references; their exact bibliographic details and comparison with this construction remain unchecked here.
 6. **Verification scope.** The correspondence checks use the supplied Lean source and link table. No Lean build or independent axiom-closure check was performed. The package sizes and main-theorem dependency counts are retained from the unit map (tentative).
 
-**Builds on:** [III.1](III-1.md), [I.1](I-1.md), [III.2](III-2.md), [III.15](III-15.md), [III.16](III-16.md), [III.6](III-6.md), [II.1](II-1.md), [II.2](II-2.md), [III.10](III-10.md), [III.3](III-3.md), [VI.1](VI-1.md), [III.5](III-5.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.2](III-2.md), [III.15](III-15.md), [III.16](III-16.md), [II.2](II-2.md), [III.6](III-6.md), [II.1](II-1.md), [III.10](III-10.md), [III.3](III-3.md), [III.5](III-5.md), [III.4](III-4.md), [VI.1](VI-1.md).
 
 **Used by:** [III.13](III-13.md), [III.10](III-10.md), [III.12](III-12.md), [III.2](III-2.md), [III.11](III-11.md), [VII.2](VII-2.md), [III.4](III-4.md), [VIII.1](VIII-1.md), [III.15](III-15.md), [III.14](III-14.md), [VII.4](VII-4.md).
 

@@ -634,9 +634,9 @@ The finite slot family is chosen nonconstructively. Consequently the stencils an
 1. **Identification in the limit (tentative).** The auxiliary equation sections enter the volume-uniform comparison through [`Run.Ties`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L65-L71) and [`Hearthside`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fire.lean#L17-L20). This unit does not trace their regrading and transfer normalizations into the null-label quotient, or prove the converse identification with the free-Maxwell quotient. A literal equality $N_d=\mathcal E_d$ in the original primary coordinates has not been verified.
 2. **Later applications.** The section constants and reference-level conditions are explicit here. Their simultaneous compatibility with every later per-step estimate, and the full use of the local-merger identities, belong to III.2 and III.10–III.15 and are not verified by these local results.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [III.10](III-10.md).
+**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [III.1](III-1.md), [IV.1](IV-1.md), [III.10](III-10.md), [III.2](III-2.md).
 
-**Used by:** [III.11](III-11.md), [III.12](III-12.md), [III.13](III-13.md), [VII.2](VII-2.md), [III.2](III-2.md), [VIII.1](VIII-1.md), [III.10](III-10.md), [VII.4](VII-4.md), [VII.6](VII-6.md), [III.6](III-6.md), [IV.1](IV-1.md), [VII.1](VII-1.md), [III.4](III-4.md), [III.3](III-3.md), [III.9](III-9.md), [III.15](III-15.md), [VI.2](VI-2.md), [III.14](III-14.md), [V.1](V-1.md), [III.8](III-8.md), [V.2](V-2.md).
+**Used by:** [III.11](III-11.md), [III.12](III-12.md), [III.13](III-13.md), [VII.2](VII-2.md), [VIII.1](VIII-1.md), [III.2](III-2.md), [VII.4](VII-4.md), [VII.6](VII-6.md), [III.10](III-10.md), [III.6](III-6.md), [IV.1](IV-1.md), [VII.1](VII-1.md), [VI.2](VI-2.md), [V.1](V-1.md), [III.3](III-3.md), [III.9](III-9.md), [III.14](III-14.md), [III.4](III-4.md), [III.15](III-15.md), [V.3](V-3.md), [III.8](III-8.md), [VII.3](VII-3.md), [VII.5](VII-5.md), [V.2](V-2.md).
 
 ## Lean source
 

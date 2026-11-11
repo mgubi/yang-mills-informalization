@@ -488,9 +488,9 @@ Normalization and tree-gauge integration use finite sums and Haar invariance. Gl
 3. **Choice of neighbourhood and smoothing order.** The curvature proof uses pads at plaquette corners in $B_1$, whereas the stated synchronization result supplies them throughout $B_2$. The need for the larger neighbourhood in later estimates is not determined here. Likewise, $w\le L^{-4}$ needs only $J\ge1$; the later use of the stronger patch condition $J\ge4$ remains to be specified.
 4. **Additional files.** The small packages listed in the header are not described by the numbered results. Their contributions, and any further results from the exterior calculus or quadratic-kernel files beyond those cited here, remain to be incorporated into the relevant later units.
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [III.2](III-2.md).
+**Builds on:** [I.1](I-1.md), [III.2](III-2.md), [III.16](III-16.md).
 
-**Used by:** [III.10](III-10.md), [III.4](III-4.md), [III.11](III-11.md), [III.13](III-13.md), [III.12](III-12.md), [III.2](III-2.md), [III.7](III-7.md), [III.5](III-5.md), [III.6](III-6.md), [III.9](III-9.md), [VII.2](VII-2.md), [III.14](III-14.md), [II.1](II-1.md), [III.15](III-15.md), [VII.6](VII-6.md), [III.3](III-3.md), [VIII.1](VIII-1.md), [VII.4](VII-4.md), [III.8](III-8.md), [VII.1](VII-1.md), [V.2](V-2.md), [IV.1](IV-1.md), [II.2](II-2.md).
+**Used by:** [III.10](III-10.md), [III.4](III-4.md), [III.11](III-11.md), [III.13](III-13.md), [III.12](III-12.md), [III.2](III-2.md), [III.7](III-7.md), [III.6](III-6.md), [III.9](III-9.md), [VII.2](VII-2.md), [III.5](III-5.md), [III.14](III-14.md), [III.15](III-15.md), [II.1](II-1.md), [VII.6](VII-6.md), [VIII.1](VIII-1.md), [III.3](III-3.md), [VII.4](VII-4.md), [III.8](III-8.md), [VII.1](VII-1.md), [V.2](V-2.md), [IV.1](IV-1.md), [II.2](II-2.md).
 
 ## Lean source
 

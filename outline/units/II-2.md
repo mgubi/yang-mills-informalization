@@ -730,7 +730,7 @@ The source contains duplicate exponential and component constructions. Its secon
 
 **Builds on:** [I.1](I-1.md), [III.1](III-1.md).
 
-**Used by:** [III.11](III-11.md), [VII.6](VII-6.md), [III.12](III-12.md), [III.10](III-10.md), [VII.4](VII-4.md), [III.2](III-2.md), [III.5](III-5.md), [III.15](III-15.md), [III.13](III-13.md), [III.4](III-4.md), [VII.2](VII-2.md), [III.9](III-9.md), [VII.1](VII-1.md), [III.8](III-8.md), [VIII.1](VIII-1.md).
+**Used by:** [III.11](III-11.md), [III.12](III-12.md), [VII.6](VII-6.md), [VII.4](VII-4.md), [III.10](III-10.md), [III.13](III-13.md), [III.2](III-2.md), [III.15](III-15.md), [VII.2](VII-2.md), [III.4](III-4.md), [III.5](III-5.md), [III.9](III-9.md), [VII.1](VII-1.md), [VIII.1](VIII-1.md), [III.8](III-8.md).
 
 ## Lean source
 

@@ -767,9 +767,9 @@ The sector estimate needs global seed records to preserve the local point-charge
 4. **Flag locality.** In III.5.9(b), locality on $P$ applies to the raw coefficients. Their masked versions also inspect flags on $P$; those flags can depend on plaquettes extending outside $P$. A written proof must retain this flag dependence or enlarge the physical support before claiming ordinary link locality for the masked coefficients.
 5. **Verification scope.** This is a source correspondence check. No Lean build, axiom computation or rendered-page check was run.
 
-**Builds on:** [III.1](III-1.md), [I.1](I-1.md), [III.10](III-10.md), [II.2](II-2.md), [III.16](III-16.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.10](III-10.md), [II.2](II-2.md), [III.16](III-16.md), [III.6](III-6.md).
 
-**Used by:** [III.10](III-10.md), [III.4](III-4.md), [III.13](III-13.md), [III.11](III-11.md), [III.12](III-12.md), [III.2](III-2.md), [III.15](III-15.md), [VII.1](VII-1.md), [III.14](III-14.md), [III.9](III-9.md).
+**Used by:** [III.10](III-10.md), [III.13](III-13.md), [III.4](III-4.md), [III.11](III-11.md), [III.12](III-12.md), [III.2](III-2.md), [III.15](III-15.md), [VII.1](VII-1.md), [III.14](III-14.md), [III.9](III-9.md).
 
 ## Lean source
 

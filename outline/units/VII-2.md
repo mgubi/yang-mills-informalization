@@ -206,7 +206,7 @@ $$r_i^8\log^2(1/r_i)\;S_{\Theta\Theta}\bigl(r_i\,x_i\bigr)\to \frac{A_G}{\|x_0-x
 7. **Uniqueness of the stress tensor** (`free_rank`): the file lives in `YM/Further/PHYSICAL_PERIOD_LIMIT_F933` and its connection to the trace is only through `bills_free`. I do not know where VII.2.6 is used in the proof of VII.2.3. (tentative)
 8. **Role of `Integration`, `Nonperturbative`, `RG08/Calendar`.** These contribute 80, 64 and 74 lines; they have not been examined beyond `Headline.TraceExclusions`.
 
-**Builds on:** [I.1](I-1.md), [III.7](III-7.md), [III.1](III-1.md), [II.1](II-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [III.6](III-6.md), [VI.1](VI-1.md), [III.11](III-11.md), [V.2](V-2.md), [VI.2](VI-2.md), [III.9](III-9.md), [III.10](III-10.md), [III.8](III-8.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [VII.6](VII-6.md), [V.1](V-1.md), [III.3](III-3.md), [VII.5](VII-5.md), [III.4](III-4.md), [VII.1](VII-1.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.7](III-7.md), [III.16](III-16.md), [IV.1](IV-1.md), [II.1](II-1.md), [VI.1](VI-1.md), [III.6](III-6.md), [III.11](III-11.md), [V.2](V-2.md), [VI.2](VI-2.md), [VIII.1](VIII-1.md), [II.2](II-2.md), [III.9](III-9.md), [III.10](III-10.md), [III.8](III-8.md), [VII.6](VII-6.md), [VII.1](VII-1.md), [VII.5](VII-5.md), [III.3](III-3.md), [V.1](V-1.md), [III.2](III-2.md), [III.4](III-4.md).
 
 **Used by:** [III.2](III-2.md), [VIII.1](VIII-1.md).
 

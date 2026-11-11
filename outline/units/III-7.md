@@ -550,9 +550,9 @@ A determinant film records the second derivative before loop-momentum integratio
 3. **Supply of the global hypotheses.** III.4 supplies the free-field horizons and history conditions. The [`free/stationary connection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/B70FreeStationaryConnection.lean#L17-L56) explicitly constructs the two horizons with identical beds and interpolation kernels before applying the iteration. The discharge of these conditions in every downstream application has not been checked.
 4. **Limits of path data.** The projection results support the compactness argument in III.13: exponential weights give Hilbert-space parameters for curvature coefficients ([`fitting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Ink.lean#L79-L99)); coefficientwise convergence with uniform row bounds gives convergence of row-action jets ([`insideLine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Lines.lean#L89-L109)); compatible source jets and a common positive Hessian lower bound give continuity of stationary, tree-level and one-loop jets ([`interview`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Fumes.lean#L56-L87)). The complete compactness construction and passage through all its quantifiers belong to III.13 and remain outside this unit.
 
-**Builds on:** [III.1](III-1.md), [I.1](I-1.md), [III.16](III-16.md), [III.6](III-6.md), [III.10](III-10.md), [V.2](V-2.md), [VI.1](VI-1.md), [III.2](III-2.md), [V.1](V-1.md), [IV.1](IV-1.md).
+**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.16](III-16.md), [III.6](III-6.md), [III.10](III-10.md), [III.2](III-2.md).
 
-**Used by:** [VII.2](VII-2.md), [III.2](III-2.md), [III.13](III-13.md), [III.4](III-4.md), [III.14](III-14.md), [VII.1](VII-1.md), [III.12](III-12.md), [VII.4](VII-4.md), [III.11](III-11.md).
+**Used by:** [VII.2](VII-2.md), [III.2](III-2.md), [III.13](III-13.md), [III.4](III-4.md), [III.14](III-14.md), [VII.1](VII-1.md), [III.12](III-12.md).
 
 ## Lean source
 

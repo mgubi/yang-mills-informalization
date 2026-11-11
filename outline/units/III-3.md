@@ -523,9 +523,9 @@ Three auxiliary packages concern local observables and equation spaces:
 3. **Auxiliary spectral criterion.** The finite-test hypotheses of the cited cutoff-projector criterion must be supplied at its point of use. Its statement does not assert that a trajectory satisfies them.
 4. **Further proof detail.** The analytic coefficient-extraction machinery underlying the strip bounds and the deeper positivity and square-root proofs F06–F07 are inputs here; their full proofs remain outside this account. The symbol-class calculations in [`Gem.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Gem.lean) and [`Weight.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Weight.lean) support the covariance comparison, but no position-space continuum limit or contact-term statement is asserted in III.3.6.
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [III.1](III-1.md), [III.6](III-6.md), [II.1](II-1.md), [III.10](III-10.md), [IV.1](IV-1.md), [III.2](III-2.md).
+**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [III.1](III-1.md), [III.6](III-6.md), [II.1](II-1.md), [III.10](III-10.md), [IV.1](IV-1.md), [III.15](III-15.md).
 
-**Used by:** [III.2](III-2.md), [III.13](III-13.md), [III.6](III-6.md), [III.11](III-11.md), [III.10](III-10.md), [III.4](III-4.md), [III.14](III-14.md), [VII.2](VII-2.md), [III.9](III-9.md), [VII.1](VII-1.md).
+**Used by:** [III.2](III-2.md), [III.13](III-13.md), [III.6](III-6.md), [III.11](III-11.md), [III.10](III-10.md), [III.14](III-14.md), [III.4](III-4.md), [VII.2](VII-2.md), [III.9](III-9.md), [VII.1](VII-1.md).
 
 ## Lean source
 
