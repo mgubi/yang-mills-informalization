@@ -67,7 +67,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
 | **VI.1** | [Ward identities, the rotation action and the conserved stress tensor](units/VI-1.md) | 7,704 | 23 | edited |
-| **VI.2** | [The free Maxwell stress tensor and the local Ward charge](units/VI-2.md) | 14,179 | 38 | checked |
+| **VI.2** | [The free Maxwell stress tensor and the local Ward charge](units/VI-2.md) | 14,179 | 38 | edited |
 
 ## Part VII. Identification as Yang–Mills
 
@@ -76,8 +76,8 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
 | **VII.1** | [Short distances: convergence to free Maxwell fields](units/VII-1.md) | 8,117 | 16 | edited |
-| **VII.2** | [The trace of the stress tensor and the trace anomaly](units/VII-2.md) | 20,681 | 42 | draft |
-| **VII.3** | [The theory is not free: Gram positivity and exclusion of free-field profiles](units/VII-3.md) | 3,325 | 8 | draft |
+| **VII.2** | [The trace of the stress tensor and the trace anomaly](units/VII-2.md) | 20,681 | 42 | checked |
+| **VII.3** | [The theory is not free: Gram positivity and exclusion of free-field profiles](units/VII-3.md) | 3,325 | 8 | checked |
 | **VII.4** | [Operator product expansion and contact extensions](units/VII-4.md) | 10,243 | 18 | draft |
 | **VII.5** | [Asymptotic freedom of the running coupling](units/VII-5.md) | 232 | 1 | checked |
 | **VII.6** | [Scaling variants and fixed-field estimates](units/VII-6.md) | 4,205 | 9 | draft |
