@@ -1,147 +1,206 @@
 \subsection{The marginal flow}\label{sec:partII-C-marginal}
 
-The curvature-square term has the same scaling as the action in four dimensions. Its coefficient must therefore be extracted after every integration, rather than estimated as an irrelevant activity. We compute its one-loop change and then absorb the remaining scalar correction into the coupling by an exact identity of densities. Throughout we use the single construction of Proposition~\ref{prop:U1}.
+The curvature-square term has the same scaling as the action in four dimensions. We extract its coefficient after each integration, compute its one-loop change, and absorb the remaining scalar correction into the coupling by an identity of densities. Throughout we use the single construction of Proposition~\ref{prop:U1}.
 
-Fix $N,p$ and a step $m+1\to m$, and write $\ell=\ell_m$. On the coarse torus $\Lambda=\Lambda_{n_{p,m}}$, separate the path action as $\pathaction_{N,m}(\beta,U)=\beta\mathcal K_{\rm path}(U)+\mathcal L_{\rm loop}(U)$. Thus $\mathcal K_{\rm path}$ includes the clipped quadratic terms and the cubic and quartic atoms; $\mathcal L_{\rm loop}$ is the quadratic-atom sum. Near the identity all masks and clipping agree with their analytic expressions. The quadratic Taylor kernel $\widehat K_{\rm path}$ has Maxwell normalization
+Fix $N,p$ and a step $m+1\to m$, and write $\ell=\ell_m$ and $\Lambda=\Lambda_{n_{p,m}}$. Separate the path action as $\pathaction_{N,m}(\beta,U)=\beta\mathcal K^{\rm kin}_{N,m}(U)+\mathcal L^{(2)}_{N,m}(U)$. The kinetic term is the $H_4$-average of the clipped plaquette terms, masked row squares $\tfrac12\chi^{\rm hlth}_{m,x}|\mathcal L_{\mathfrak p}^{\rm path}|^2$, and cubic and quartic atoms; $\mathcal L^{(2)}_{N,m}$ is the quadratic-atom sum. Near the identity masks and clipping agree with their analytic expressions. The quadratic Taylor kernel $\widehat K^{\rm kin}_{N,m}$ has Maxwell normalization
 \begin{equation}\label{eq:C-maxwell-normalization}
- [t^2]\widehat K_{{\rm path};(2,\nu),(2,\nu)}(te_1)=\tfrac12\,.
+ [t^2]\widehat K^{\rm kin}_{N,m;(2,\nu),(2,\nu)}(te_1)=\tfrac12\,.
 \end{equation}
-Here $\nu$ is any colour index in the fixed orthonormal basis, the kernel represents $D^2/2!$, and $[t^2]$ denotes Taylor coefficient. Momenta are in unit lattice coordinates.
+Here $\nu$ is any colour in the fixed orthonormal basis, the kernel represents $D^2/2!$, and $[t^2]$ denotes Taylor coefficient. Momenta use unit lattice coordinates.
 
 \begin{lemma}[Extraction of the Maxwell term]\label{lem:C-maxwell-extraction}
-For an analytic, real two-leg kernel $\widehat Q$ with the gauge, colour, exchange and signed-permutation symmetries of the blocked action, set
+For an analytic, real two-leg kernel $\widehat Q$ with the gauge, colour, exchange and signed-permutation symmetries of the coarse effective action, set
 \begin{equation}\label{eq:C-alpha-definition}
- \mathfrak a(\widehat Q)=2\operatorname{Re}[t^2]\widehat Q_{(2,\nu),(2,\nu)}(te_1)\,.
+ \alpha^{(1)}_{F^2}(\widehat Q)=2\operatorname{Re}[t^2]\widehat Q_{(2,\nu),(2,\nu)}(te_1)\,.
 \end{equation}
-Then $\widehat Q-\mathfrak a(\widehat Q)\widehat K_{\rm path}$ vanishes to fourth order at zero momentum. The inherited quadratic atoms have zero coefficient in~\eqref{eq:C-alpha-definition}.
+Then $\widehat Q-\alpha^{(1)}_{F^2}(\widehat Q)\widehat K^{\rm kin}_{N,m}$ vanishes to fourth order at zero momentum. The level-$(m+1)$ quadratic atoms have zero coefficient in~\eqref{eq:C-alpha-definition}, also after composition with the stationary branch.
 \end{lemma}
 
 \begin{proof}
-Gauge invariance gives the two Ward contractions with $e^{ik^a}-1$. Their lowest homogeneous terms eliminate the constant and linear terms. Colour invariance and simplicity make the quadratic colour form a multiple of $\langle\cdot,\cdot\rangle_{\g}$. Reflections, permutations and the Ward contractions leave only $\tfrac12\mathfrak a(\widehat Q)(|\boldsymbol k|^2\delta_{ab}-k^ak^b)\delta_{\nu\nu'}$. After subtracting $\mathfrak a(\widehat Q)\widehat K_{\rm path}$, the lower jets vanish, so reflection in all axes eliminates the cubic term. Equation~\eqref{eq:C-maxwell-normalization} fixes the multiplier. For the inherited atoms the kernel is $\widehat s(-\boldsymbol k)^{\mathsf T}\widehat C(\boldsymbol k)\widehat s(\boldsymbol k)$, where $\widehat s$ is the linearized curvature. Each curvature contributes one power of momentum, and the vanishing zeroth and first moments give $\widehat C(\boldsymbol k)=O(|\boldsymbol k|^2)$.
+Gauge invariance gives the two Ward contractions with $e^{i\mathbf p^a}-1$. Their lowest terms eliminate the constant term and make the linear coefficient totally antisymmetric in its three indices; reflection in one of these axes eliminates it. Simplicity makes the invariant quadratic colour form a multiple of the trace metric. Reflections, permutations and the Ward contractions leave only $\tfrac12\alpha^{(1)}_{F^2}(\widehat Q)(|\mathbf p|^2\delta_{ab}-\mathbf p^a\mathbf p^b)\delta_{\nu\nu'}$. Equation~\eqref{eq:C-maxwell-normalization} fixes the multiplier. After subtraction, the lower coefficients vanish, so reflection in all axes eliminates the cubic term. The quadratic-atom kernel is $\widehat s(-\mathbf p)^{\mathsf T}\widehat C(\mathbf p)\widehat s(\mathbf p)$, where $\widehat s$ is the linearized curvature. Each curvature contributes one momentum factor; the vanishing zeroth and first moments give $\widehat C(\mathbf p)=O(|\mathbf p|^2)$. Composition with the branch preserves this fourth-order vanishing by the alias calculation below, with an additional factor $\ell^{-2}$ in its bound.
 \end{proof}
 
-We next identify the determinant whose coefficient is being extracted. Let $S(\mathcal A,\mathcal Z)$ be the fine leading action plus the block penalty, with coarse link increments $\mathcal A$ and free axial variables $\mathcal Z$. The stationary branch satisfies $\partial_{\mathcal Z}S(\mathcal A,\mathcal Z_*(\mathcal A))=0$ and $\mathcal Z_*(0)=0$. At zero its free Hessian is at least $\eta_j\mathrm{Id}$, uniformly in the torus, for $j=J_{m+1}$. The analytic implicit function theorem applies to $\partial_{\mathcal Z}S$ on these finite-dimensional link spaces, with inverse norm at most $\eta_j^{-1}$. Differentiating its equation gives
+We first identify the determinant. The joint variables are fine links $U$ and a frame at each block root. The joint action $\mathcal S_V$ is the $\beta$-coefficient of $\pathaction_{N,m+1}$, without quadratic atoms, plus
+$\blockpenalty\sum_e\wilsonterm(V_eQ_e^{\rm pred}(U)^{-1})$.
+It is invariant under fine gauge transformations acting on both variables. Near the identity, frames and predictors are the tag-independent minimizers of Definition~\ref{def:block-spin}. Its restriction to the axial slice is $S(\mathcal A,\mathcal Z)$, with coarse increments $\mathcal A$ and free fine-link variables $\mathcal Z$. The branch satisfies $\partial_{\mathcal Z}S(\mathcal A,\mathcal Z_*(\mathcal A))=0$, $\mathcal Z_*(0)=0$. Section~\ref{sec:partII-B} gives $\partial_{\mathcal Z}^2S(0,0)\ge\eta_{\rm Hess}\mathrm{Id}$ uniformly in the torus. The analytic implicit function theorem on these finite-dimensional link spaces gives
 \begin{equation}\label{eq:C-stationary-derivative}
  D\mathcal Z_*(0)=-\bigl(\partial_{\mathcal Z}^2S(0,0)\bigr)^{-1}\partial_{\mathcal A}\partial_{\mathcal Z}S(0,0)\,.
 \end{equation}
-This is the free interpolant in the axial coordinates. The tree action agrees with the coarse leading action through order four. Gaussian integration contributes $\tfrac12\log\det H_{\rm ax}-\log J_{\rm ax}$ to the action, where $H_{\rm ax}$ is the free-variable Hessian along this branch and $J_{\rm ax}$ its product Haar chart density. Write $\alpha_{\rm loop}=\mathfrak a(\widehat Q)$ for its infinite-volume quadratic kernel; the inherited loop action is added separately.
+This determines the free interpolant $A_0$. Fourth-order matching in Section~\ref{sec:partII-C} identifies the tree action with the coarse leading action through order four. Gaussian integration adds $\tfrac12\log\det H_{\rm ax}-\log j_G$, where $H_{\rm ax}$ is the axial Hessian along the branch and $j_G$ its product Haar chart density. Denote its infinite-volume quadratic kernel by $\widehat Q_{\rm det}$ (existence follows at the end of the next proof), and put $\alpha=\alpha^{(1)}_{N,m}\coloneqq\alpha^{(1)}_{F^2}(\widehat Q_{\rm det})$.
+
+Let $R_{\rm g}$ insert joint infinitesimal gauge directions and $R_{\rm ax}$ insert the free axial links. Transport the root frame along its axial tree to every fine site; $X_{\rm fr}$ is minus the left-logarithmic derivative of this transported frame. Its covariance gives $X_{\rm fr}R_{\rm g}=\mathrm{Id}$. Write $\operatorname{pr}_{\rm f}$ for projection onto fine links, so $\operatorname{pr}_{\rm f}R_{\rm g}=d_U$.
 
 \begin{lemma}[Determinant identification]\label{lem:C-determinant}
-Near the trivial coarse field, let $H_{\rm jt}$ be the left-trivialized joint Hessian, $R_{\rm ax}$ the inclusion of the axial variables and $F_{\rm gf}$ the gauge-completing map. Put $P_\mu=H_{\rm jt}+F_{\rm gf}^{\mathsf T}F_{\rm gf}$ and $G_\mu=F_{\rm gf}R_{\rm g}$, where $R_{\rm g}$ inserts joint gauge directions and $\mu=\ell^{-1}$. Then
+Put $\mu_{\rm reg}=\ell^{-1}$ and let $H_{\rm jt}$ be the left-increment joint Hessian along the stationary branch. Define
+\begin{align*}
+ F_{\rm gf}&=d_U^*\operatorname{pr}_{\rm f}+\mathfrak m_{\mu_{\rm reg}}X_{\rm fr},&
+ \mathsf K^{\rm comp}_{\mu_{\rm reg}}&=H_{\rm jt}+F_{\rm gf}^{\mathsf T}F_{\rm gf},&
+ \mathsf G^{\rm gh}_{\mu_{\rm reg}}&=F_{\rm gf}R_{\rm g}.
+\end{align*}
+Near the trivial coarse field,
 \begin{equation}\label{eq:C-faddeev-popov}
- \tfrac12\log\det H_{\rm ax}-\log J_{\rm ax}
- =\tfrac12\log\det P_\mu-\log\det G_\mu\,.
+ \tfrac12\log\det H_{\rm ax}-\log j_G
+ =\tfrac12\log\det\mathsf K^{\rm comp}_{\mu_{\rm reg}}-\log\det\mathsf G^{\rm gh}_{\mu_{\rm reg}}\,.
 \end{equation}
-If $\widehat Y_\mu$ is the infinite-volume quadratic Taylor kernel of the regulated fine-lattice action
+Let $\widehat Y_{\mu_{\rm reg}}$ be the infinite-volume quadratic Taylor kernel of
 \begin{equation}\label{eq:C-fine-determinant}
- \Pi_\mu(U)=\tfrac12\log\det(\mathcal H(U)+d_Ud_U^*+\mathcal M_\mu(U))
- -\log\det(d_U^*d_U+\mathfrak m_\mu(U))\,,
+ \Gamma^{(1)}_{\mu_{\rm reg}}(U)
+ =\tfrac12\log\det(\mathcal H(U)+d_Ud_U^*+\mathcal M_{\mu_{\rm reg}}(U))
+ -\log\det(d_U^*d_U+\mathfrak m_{\mu_{\rm reg}}(U))\,.
 \end{equation}
-then, for a constant $C_{\rm cmp}$ independent of $\ell,N,p$ at the fixed stage,
+Then a constant $C_{\rm cmp}$, independent of $\ell,N,p$ at fixed stage, satisfies
 \begin{equation}\label{eq:C-determinant-comparison}
- |\alpha_{\rm loop}-\mathfrak a(\widehat Y_\mu)|\le C_{\rm cmp}\,.
+ |\alpha-\alpha^{(1)}_{F^2}(\widehat Y_{\mu_{\rm reg}})|\le C_{\rm cmp}\,.
 \end{equation}
-Here $\mathcal H$ is the left-increment Hessian of the fine leading action, $d_U\phi(y,a)=\phi(y)-\operatorname{Ad}(U(y,a))\phi(y+e_a)$, $\mathfrak m_\mu=\mu^{20}(d_U^*d_U+\mu^2)^{-9}$, and $\mathcal M_\mu$ applies this regulator to each link component at its initial site.
+Here $\mathcal H$ is the fine leading-action Hessian, $d_U\phi(y,a)=\phi(y)-\operatorname{Ad}(U(y,a))\phi(y+e_a)$, $\mathfrak m_{\mu_{\rm reg}}=\mu_{\rm reg}^{20}(d_U^*d_U+\mu_{\rm reg}^2)^{-9}$, and $\mathcal M_{\mu_{\rm reg}}$ applies this regulator to each link component at its initial site.
 \end{lemma}
 
+The action~\eqref{eq:C-fine-determinant} uses background-field Feynman gauge: vector gauge fixing $d_Ud_U^*$ and ghost $d_U^*d_U$, with infrared regulation at the block scale; see~\cite[Secs.~2.3 and 3.1]{Abbott1982} for the continuum convention. It is invariant under gauge transformations, colour rotations and unsigned axis permutations. We use only its coefficient~\eqref{eq:C-alpha-definition}; the full reflection hypothesis of Lemma~\ref{lem:C-maxwell-extraction} is imposed on $\widehat Q_{\rm det}$.
+
 \begin{proof}
-The completing map is $F_{\rm gf}=d_U^*\operatorname{pr}_{\rm f}+\mathfrak m_\mu X_{\rm fr}$, where $\operatorname{pr}_{\rm f}$ selects fine links and $X_{\rm fr}$ is the negative logarithmic derivative of the rooted frame. Frame covariance gives $X_{\rm fr}R_{\rm g}=\mathrm{Id}$ and $\operatorname{pr}_{\rm f}R_{\rm g}=d_U$, hence $G_\mu=d_U^*d_U+\mathfrak m_\mu$. Stationarity gives $H_{\rm jt}R_{\rm g}=0$. The coordinates $(R_{\rm g},R_{\rm ax})$ have squared determinant one; the completed form factors as
+\emph{Step 1: The axial determinant.}
+Order sites by height in the axial forest. Tree links equal $1_G$; a gauge direction $\xi$ changes a root frame by $-\xi(x)$ and a tree link $y\to y'$ by $\pm(\xi(y)-\xi(y'))$. Thus $R_{\rm g}$ is triangular on these coordinates with diagonal $\pm1$, while $R_{\rm ax}$ is the identity on free links. Hence $(R_{\rm g},R_{\rm ax})$ is a basis with squared determinant one. Gauge invariance and axial stationarity make $\mathcal S_V$ critical in this basis. Differentiating gauge invariance at this critical point gives $H_{\rm jt}R_{\rm g}=0$. In this basis the completed form is
 \begin{equation*}
- \begin{pmatrix}G_\mu&F_{\rm gf}R_{\rm ax}\\0&\mathrm{Id}\end{pmatrix}^{\!\mathsf T}
+ \begin{pmatrix}\mathsf G^{\rm gh}_{\mu_{\rm reg}}&F_{\rm gf}R_{\rm ax}\\0&\mathrm{Id}\end{pmatrix}^{\!\mathsf T}
  \begin{pmatrix}\mathrm{Id}&0\\0&R_{\rm ax}^{\mathsf T}H_{\rm jt}R_{\rm ax}\end{pmatrix}
- \begin{pmatrix}G_\mu&F_{\rm gf}R_{\rm ax}\\0&\mathrm{Id}\end{pmatrix}\,.
+ \begin{pmatrix}\mathsf G^{\rm gh}_{\mu_{\rm reg}}&F_{\rm gf}R_{\rm ax}\\0&\mathrm{Id}\end{pmatrix}\,.
 \end{equation*}
-If $T$ is the derivative of the axial chart change to left increments, the Hessian chain rule at a stationary point gives $H_{\rm ax}=T^{\mathsf T}(R_{\rm ax}^{\mathsf T}H_{\rm jt}R_{\rm ax})T$. Haar change of variables gives $J_{\rm ax}=|\det T|$. Consequently $J_{\rm ax}^2\det P_\mu=\det H_{\rm ax}(\det G_\mu)^2$. The free Hessian and regulated ghost are positive; positivity persists near zero. Taking logarithms proves~\eqref{eq:C-faddeev-popov}.
+If $T_{\rm chart}$ is the derivative of the axial chart into left increments, stationarity and Haar change of variables give $H_{\rm ax}=T_{\rm chart}^{\mathsf T}R_{\rm ax}^{\mathsf T}H_{\rm jt}R_{\rm ax}T_{\rm chart}$ and $j_G=|\det T_{\rm chart}|$. Taking determinants and logarithms proves~\eqref{eq:C-faddeev-popov}. Positivity holds at zero and persists nearby. Any completing map with invertible $F_{\rm gf}R_{\rm g}$ gives this identity. The stated choice gives exactly $\mathsf G^{\rm gh}_{\mu_{\rm reg}}=d_U^*d_U+\mathfrak m_{\mu_{\rm reg}}$, and supplies the vector gauge-fixing term $d_Ud_U^*$.
 
-The passage to~\eqref{eq:C-fine-determinant} compares quadratic coefficients. The contact term comes from changing the coarse frame along the stationary branch. Its tested quadratic kernel has the form
-\begin{equation*}
- \frac14\sum_b\bigl(x_b(t)m_b(t)+x_b(-t)m_b(-t)\bigr)
- -\frac18\sum_{b,c}x_b(-t)x_c(t)b_{bc}(t)\,.
-\end{equation*}
-Here $x_b$ is a column of the coarse kinetic symbol, so $x_b(t)=O(t^2)$; the mixed link--frame inverse block satisfies $m_b(t)=O(t)$ by its Ward contraction, and the frame block $b_{bc}$ of the squared inverse is bounded. The contact contribution is therefore $O(t^3)$ and has zero Maxwell coefficient.
+\emph{Step 2: Linearization and the predictor Hessian.}
+The completed log-determinant difference, as a function of coarse and joint increments, is colour invariant. Since $\g$ has no invariant vector, its first derivative at zero vanishes. The Hessian chain rule therefore allows us to replace the stationary branch by its linearization $\Phi(\mathcal A)$, with coarse input $\mathcal A$, fine field $A_0\mathcal A$ and its frame.
 
-For the remaining joint determinant subtract the block-aliased fine determinant. The free interpolation kernel $A_0$ determined by~\eqref{eq:C-stationary-derivative} satisfies $\|\nabla^j A_0\|_w\le C\ell^{-1-j}$ for $0\le j\le2$, where the norm is the entrywise exponentially weighted kernel sum at width $w$. These estimates give uniform operator bounds on the vertices and trace bounds on their differences in block-scaled coordinates. The inverse bounds hold in a fixed strip of width $\rho>0$. Differentiate as
+At $\Phi(\mathcal A)$ split $\mathsf K^{\rm comp}_{\mu_{\rm reg}}=\mathsf K^{\rm core}+C_{\rm ct}$. The core is $\operatorname{pr}_{\rm f}^{\mathsf T}\mathcal H\operatorname{pr}_{\rm f}+(DQ^{\rm pred})^{\mathsf T}\mathsf B_{\rm pen}DQ^{\rm pred}+F_{\rm gf}^{\mathsf T}F_{\rm gf}$, where $\mathsf B_{\rm pen}$ is the penalty Hessian in predictor coordinates. The contact term $C_{\rm ct}$ is its first derivative contracted with $D^2Q^{\rm pred}$, all in left-logarithmic coordinates. It vanishes at zero because the penalty is critical at $V_e=Q_e^{\rm pred}$. Stationarity identifies its linear coefficient with a column $x_b$ of the coarse kinetic symbol. Expanding
 \begin{equation}\label{eq:C-logdet-variation}
- D^2\log\det A[v,w]=\tr\bigl(A^{-1}D^2A[v,w]-A^{-1}DA[v]A^{-1}DA[w]\bigr)\,.
+ D^2\log\det A[v,w]=\tr\bigl(A^{-1}D^2A[v,w]-A^{-1}DA[v]A^{-1}DA[w]\bigr)
 \end{equation}
-Subtract the two expressions using $A^{-1}-B^{-1}=A^{-1}(B-A)B^{-1}$. If the inverse bound is $F_*$, the vertex bound is $X_*$ and the trace bound on the operator and its two vertex differences is $Z_*$, the trace difference is at most $F_*Z_*(1+3F_*X_*+2(F_*X_*)^2)$. Each subtracted product contains one trace-bounded difference; this avoids a factor $\ell^4$ from the dimension of the fine block. Cauchy's estimate bounds the tested second coefficient by $C\rho^{-2}$.
+for this split gives the contact contribution, evaluated on momentum $te_1$ and polarization $(2,\nu)$,
+\begin{equation*}
+ \frac14\sum_b\bigl(x_b(t)\mathsf y_b(t)+x_b(-t)\mathsf y_b(-t)\bigr)
+ -\frac18\sum_{b,c}x_b(-t)x_c(t)\mathsf f_{bc}(t)\,.
+\end{equation*}
+Here $\mathsf y_b$ is the integrated mixed link--frame inverse contraction, and $\mathsf f_{bc}$ the integrated frame contraction of the squared inverse. The Ward identity gives $\mathsf y_b(t)=O(t)$, while $x_b(t)=O(t^2)$ and $\mathsf f_{bc}(t)=O(1)$. Thus this contribution is $O(t^3)$ and has zero coefficient~\eqref{eq:C-alpha-definition}.
 
-Aliasing preserves the fine coefficient exactly. The coarse kernel is the sum over the $\ell^4$ Fourier aliases. For a nonzero alias, the interpolant modulo a pure gauge direction is $O(t^2)$. The Ward contractions remove the pure gauge parts; the two remaining factors give $O(t^4)$. The zero alias agrees through order two with $\ell^4\ell^{-2}\widehat Y_\mu(te_1/\ell)$; the second momentum derivative supplies another $\ell^{-2}$, so the multiplier is one. These comparisons give $C_{\rm cmp}$. For fixed $\ell$, analyticity bounds the normalized torus-sum error by $C_\ell e^{-c_\ell n_{p,m}}$; this remains a finite-volume remainder. Testing on growing momentum meshes and sending this error to zero transfers the gauge, colour and full lattice symmetries of the blocked action to $\widehat Q$.
+\emph{Step 3: A comparison uniform in the block ratio.}
+On the joint space compare the core to
+$\mathsf K^{\rm aux}=(\mathcal H+d_Ud_U^*+\mathcal M_{\mu_{\rm reg}})\oplus\mathrm{Id}_{\rm frame}$ at $U=\exp(A_0\mathcal A)$. Its determinant is the vector determinant in~\eqref{eq:C-fine-determinant} composed with $A_0$. The ghost operators coincide at this same $U$, so cancel exactly. The common fine Hessian also cancels. The vector difference consists of the penalty term, the cross term $\operatorname{pr}_{\rm f}^{\mathsf T}d_U\mathfrak m_{\mu_{\rm reg}}X_{\rm fr}$ and its transpose, $X_{\rm fr}^{\mathsf T}\mathfrak m_{\mu_{\rm reg}}^2X_{\rm fr}$, and $-\mathcal M_{\mu_{\rm reg}}\oplus(-\mathrm{Id}_{\rm frame})$.
+
+The penalty term and $\mathrm{Id}_{\rm frame}$ have rank at most $C\dimG$ per coarse site. Every remaining term contains a regulator, whose Fourier decay is summable: in coordinates scaled by one block, its trace bound is controlled by
+\begin{equation*}
+ \sum_{j\in\mathcal J_\ell}(1+|\mathbf p+2\pi j|^2)^{-9}
+ \le C\sum_{j\in\Z^4}(1+|j|^2)^{-9}<\infty\,,
+\end{equation*}
+where $\mathcal J_\ell$ is the centered set of $\ell^4$ aliases and $\mathbf p\in[-\pi,\pi]^4$. Indeed $\mathfrak m_{\mu_{\rm reg}}=\mu_{\rm reg}^2(1+\mu_{\rm reg}^{-2}d^*d)^{-9}$ at zero. The factor $\mu_{\rm reg}^2$ is canceled by rescaling the quadratic form. The interpolation estimates of Section~\ref{sec:partII-B}, $\|\nabla^k A_0\|_{\rm loc}\le C\ell^{-1-k}$ for $0\le k\le2$, give the same trace bound for the first two background derivatives. Here $\nabla$ is a fine-lattice difference, and $\|\cdot\|_{\rm loc}$ is the maximum weighted row and column sum, with weight $e^{\zeta|x-y|_1/\ell}$ for a fixed $\zeta>0$. Finite rank, the displayed summability, and these interpolation bounds give a trace-norm bound $Z_*$ per coarse site, independent of $\ell$.
+
+The inverse and first two background-derivative bounds in a strip $\mathfrak S_\eta=\{|\operatorname{Im}\mathbf p^a|<\eta\}$ are $F_*$ and $X_*$. Subtract~\eqref{eq:C-logdet-variation} for the two operators using $A^{-1}-B^{-1}=A^{-1}(B-A)B^{-1}$. Every product contains one trace-bounded difference, giving
+$F_*Z_*(1+3F_*X_*+2(F_*X_*)^2)$ per coarse site. Cauchy's estimate gives a bound $C\eta^{-2}$ for~\eqref{eq:C-alpha-definition}. These strip bounds are fixed before $\ell$; $\eta_{\rm Hess}$ is used only for the branch and positivity, and does not enter $C_{\rm cmp}$.
+
+\emph{Step 4: Aliasing and volume.}
+The coarse kernel of $\Gamma^{(1)}_{\mu_{\rm reg}}\circ A_0$ sums the $\ell^4$ fine Fourier aliases. At a nonzero alias the interpolant, modulo a gauge direction, is $O(t^2)$. Ward contractions remove the gauge parts, leaving $O(t^4)$. The zero alias agrees through order two with $\ell^4\ell^{-2}\widehat Y_{\mu_{\rm reg}}(te_1/\ell)$; momentum rescaling contributes another $\ell^{-2}$. Thus its multiplier is one. This proves~\eqref{eq:C-determinant-comparison}. Analyticity gives, for fixed $\ell$, a normalized torus-sum error $C_\ell e^{-c_\ell n_{p,m}}$. The Fourier integrals define $\widehat Q_{\rm det}$; testing on growing momentum meshes transfers the gauge, colour and signed-permutation symmetries of the coarse effective action to this kernel.
 \end{proof}
 
 \begin{lemma}[The one-loop slope]\label{lem:C-one-loop}
 There is $C_{\rm loop}$, depending on the stage bounds and the fixed group and penalty, but not on $\ell,N,p$, such that
 \begin{equation}\label{eq:C-one-loop-bound}
- |\alpha_{\rm loop}+\slope\log\ell|\le C_{\rm loop}\,,
+ |\alpha^{(1)}_{N,m}+\slope\log\ell|\le C_{\rm loop}\,,
  \qquad \slope=\frac{11\casimir}{24\pi^2}>0\,.
 \end{equation}
 \end{lemma}
 
 \begin{proof}
-Use the external momentum $te_1$, polarization $e_2$ and unit colour $\nu$. Write $r=|\boldsymbol q|$ for loop momentum. The orbital vertex is $-2iq^2$; the vector spin vertex has entries $\pm2it$ in the $(1,2)$ plane. The ghost has only the orbital vertex. The colour trace is $\tr_{\g}(\operatorname{ad}(e_\nu^{\g})^2)=-\casimir$. With propagators $r^{-2}$ and $|\boldsymbol q+te_1|^{-2}$, the vector trace is $-\casimir(4(-2iq^2)^2-8t^2)$ and the ghost trace is $-\casimir(-2iq^2)^2$. Thus the bubble part of~\eqref{eq:C-logdet-variation}, with vector weight $1/2$ and ghost weight $-1$, gives the coefficient
+By simplicity, the invariant form $-\tr_{\g}(\operatorname{ad}X)^2$ is a multiple of $|X|^2$; averaging over the orthonormal basis identifies the multiple as $\casimir$. Thus $\tr_{\g}(\operatorname{ad}(e_\nu^{\g})^2)=-\casimir$ for each $\nu$.
+
+Use background $e^{itx^1}e_2\otimes e_\nu^{\g}$ and loop four-momentum $\mathbf q$, with $q_a$ its $a$th coordinate. The continuum vector operator is $-D_A^2$ with spin term in $\operatorname{ad}F_{ab}$; the ghost is $-D_A^2$. Their orbital vertex is $-2iq_2$; the vector spin vertex has entries $\pm2it$ in the $(1,2)$ plane. Momenta $\mathbf q$ and $\mathbf q+te_1$ run through the two propagators. The vector and ghost bubble traces are respectively $-\casimir(4(-2iq_2)^2-8t^2)$ and $-\casimir(-2iq_2)^2$. With weights $1/2$ and $-1$, their contribution to~\eqref{eq:C-logdet-variation} is $-4\casimir(q_2^2+t^2)/(|\mathbf q|^2|\mathbf q+te_1|^2)$. Its $[t^2]$ coefficient is
 \begin{equation}\label{eq:C-continuum-integrand}
- h(\boldsymbol q)=4\casimir\left(\frac{(q^2)^2}{r^6}-\frac{4(q^1)^2(q^2)^2}{r^8}-\frac1{r^4}\right)\,.
+ h_{\rm bub}(\mathbf q)=4\casimir\left(\frac{q_2^2}{|\mathbf q|^6}-\frac{4q_1^2q_2^2}{|\mathbf q|^8}-\frac1{|\mathbf q|^4}\right)\,.
 \end{equation}
-For example, the first two terms follow by expanding $|\boldsymbol q+te_1|^{-2}=r^{-2}-2q^1r^{-4}t+(4(q^1)^2r^{-6}-r^{-4})t^2+O(t^3)$. The last term is the spin contribution.
+The first two terms expand the shifted propagator; the last is the spin contribution.
 
-Let $k_\mu(\boldsymbol q)$ be the corresponding lattice coefficient, obtained by taking $\tfrac12\partial_t^2$ of the unintegrated second variation of~\eqref{eq:C-fine-determinant}. The factors $1/2!$ in its quadratic Taylor kernel and $2$ in~\eqref{eq:C-alpha-definition} cancel, giving
+Let $k^{\rm lat}_{\rm bub}(\mathbf q)$ denote $\tfrac12\partial_t^2$ of the unintegrated second variation of~\eqref{eq:C-fine-determinant}, including the second-vertex term. The quadratic Taylor factor $1/2!$ cancels the $2$ in~\eqref{eq:C-alpha-definition}, so
 \begin{equation}\label{eq:C-lattice-coefficient}
- \mathfrak a(\widehat Y_\mu)=(2\pi)^{-4}\int_{[-\pi,\pi]^4}\operatorname{Re}k_\mu(\boldsymbol q)\,d^4\boldsymbol q\,.
+ \alpha^{(1)}_{F^2}(\widehat Y_{\mu_{\rm reg}})=(2\pi)^{-4}\int_{[-\pi,\pi]^4}\operatorname{Re}k^{\rm lat}_{\rm bub}(\mathbf q)\,d^4\mathbf q\,.
 \end{equation}
-The lattice vertex and inverse estimates give, uniformly for $0<\mu\le1$,
-\begin{equation}\label{eq:C-shell-errors}
- |k_\mu(\boldsymbol q)|\le\frac{C_{\rm ir}}{(r+\mu)^4}\,,\qquad
- |k_\mu(\boldsymbol q)-h(\boldsymbol q)|\le C_{\rm sh}\bigl(r^{-3}+\mu^2r^{-6}\bigr)\quad(r\ge\mu)\,.
-\end{equation}
-Here the fine leading action agrees with the Wilson action in its marginal jets: its cubic and quartic differences vanish to orders two and one in momenta. The free gauge-fixed symbol is $r^2\mathrm{Id}+O(r^3)+O(\mu^2)$ and its inverse is bounded by $C(r+\mu)^{-2}$. On $r\ge\mu$ the resolvent identity bounds its difference from $r^{-2}\mathrm{Id}$ by $C(r^{-1}+\mu^2r^{-4})$. In the bubble, replacing a propagator or a vertex by its difference and taking two external derivatives therefore gives $C(r^{-3}+\mu^2r^{-6})$. The second-vertex, or tadpole, term is bounded by $C(r^{-2}+\mu^2r^{-6})$ and obeys the same shell estimate. The same differentiated products with the regulated inverse give the first bound in~\eqref{eq:C-shell-errors}.
+Uniformly for $0<\mu_{\rm reg}\le1$, the lattice estimates give
+\begin{align}\label{eq:C-shell-errors}
+ |k^{\rm lat}_{\rm bub}(\mathbf q)|&\le C_{\rm ir}(|\mathbf q|+\mu_{\rm reg})^{-4},\nonumber\\
+ |k^{\rm lat}_{\rm bub}(\mathbf q)-h_{\rm bub}(\mathbf q)|&\le C_{\rm sh}(|\mathbf q|^{-3}+\mu_{\rm reg}^2|\mathbf q|^{-6})\quad (|\mathbf q|\ge\mu_{\rm reg})\,.
+\end{align}
+Here we use the fourth-order matching estimates of Section~\ref{sec:partII-C}: the quadratic, cubic and quartic kernels of the leading action minus Wilson vanish to momentum orders three, two and one. Thus the completed free symbol is $|\mathbf q|^2\mathrm{Id}+O(|\mathbf q|^3)+O(\mu_{\rm reg}^2)$. Its inverse is bounded by $C(|\mathbf q|+\mu_{\rm reg})^{-2}$: the quadratic-form lower bound of Section~\ref{sec:partII-B} applies for $|\mathbf q|\ge\mu_{\rm reg}$, and $\mathfrak m_{\mu_{\rm reg}}\ge2^{-9}\mu_{\rm reg}^2$ for $|\mathbf q|\le\mu_{\rm reg}$. The resolvent identity then bounds the difference from $|\mathbf q|^{-2}\mathrm{Id}$ by $C(|\mathbf q|^{-1}+\mu_{\rm reg}^2|\mathbf q|^{-4})$. Replacing one propagator or vertex by its difference and taking two external derivatives gives the second estimate in~\eqref{eq:C-shell-errors}. The second-vertex term is bounded by $C(|\mathbf q|^{-2}+\mu_{\rm reg}^2|\mathbf q|^{-6})$ on the unit ball. The regulated versions of the same products give the first estimate.
 
-Spherical averages in four dimensions give $\langle(q^2)^2\rangle=r^2/4$ and $\langle(q^1)^2(q^2)^2\rangle=r^4/24$. Hence $\langle h\rangle=-11\casimir/(3r^4)$, and
+Spherical averages give $\langle q_2^2\rangle=|\mathbf q|^2/4$, $\langle q_1^2q_2^2\rangle=|\mathbf q|^4/24$, and hence $\langle h_{\rm bub}\rangle=-11\casimir/(3|\mathbf q|^4)$. Consequently
 \begin{equation}\label{eq:C-shell-integral}
- (2\pi)^{-4}\int_{\mu<r\le1}h\,d^4\boldsymbol q
- =-\frac{11\casimir}{3}\frac{2\pi^2}{(2\pi)^4}\int_\mu^1\frac{dr}{r}
- =-\slope\log\mu^{-1}\,.
+ (2\pi)^{-4}\int_{\mu_{\rm reg}<|\mathbf q|\le1}h_{\rm bub}\,d^4\mathbf q
+ =-\frac{11\casimir}{3}\frac{2\pi^2}{(2\pi)^4}\int_{\mu_{\rm reg}}^1\frac{dr}{r}
+ =-\slope\log\mu_{\rm reg}^{-1}\,.
 \end{equation}
-The orbital contribution is $\casimir/3$ and the spin contribution is $-4\casimir$. On $r\le\mu$ the integral of the first bound in~\eqref{eq:C-shell-errors} is at most $C_{\rm ir}\pi^2/2$; on $r>1$ it is at most $C_{\rm ir}(2\pi)^4$. The shell error has integral at most $2\pi^2C_{\rm sh}\int_\mu^1(1+\mu^2r^{-3})\,dr\le3\pi^2C_{\rm sh}$. These bounds, Lemma~\ref{lem:C-determinant} and $\mu=\ell^{-1}$ prove~\eqref{eq:C-one-loop-bound}. Finally, $-\tr_{\g}(\operatorname{ad}X)^2=\sum_\nu|[X,e_\nu^{\g}]|^2=\casimir|X|^2$; nonabelianness makes this positive for some $X$.
+The orbital average is $\casimir/3$ and the spin average $-4\casimir$. The unnormalized error integrals on $|\mathbf q|\le\mu_{\rm reg}$, $|\mathbf q|>1$, and the intervening shell are bounded by $C_{\rm ir}\pi^2/2$, $C_{\rm ir}(2\pi)^4$, and $3\pi^2C_{\rm sh}$ respectively. Lemma~\ref{lem:C-determinant} proves~\eqref{eq:C-one-loop-bound}. Nonabelianness makes $\sum_\nu|[X,e_\nu^{\g}]|^2$ positive for some $X$, so $\slope>0$.
 \end{proof}
 
-The remaining correction comes from the regular activities. Their first variations vanish by colour invariance. On a nonwrapping support, affine fields with the same curl differ by a gauge gradient, which the Hessian annihilates. Its bilinear form depends only on the constant curls; simplicity makes its colour factor the trace metric. Sum these forms at one anchor: reflections kill off-diagonal plaquette pairs and permutations equate the diagonal pairs. Their common coefficient is $\delta$. For the $(1,2)$ entry use $\mathcal A_2(y)=r_{n_{p,m}}(y-o)^1e_\nu^{\g}$ and $\mathcal A_a=0$ for $a\ne2$. Multiplication by $t_m$ makes this an allowed norm direction, since $\varpi_{J_m}\ge2$. The diagonal Hessian bound and the anchor sum give
-\begin{equation}\label{eq:C-delta-bound}
- t_m^2|\delta|\le H_E\le c_{\rm res}\epsilon_m^{\rm reg}/4\,.
+We now extract the correction from the regular activities. The Gaussian integration and connected-activity estimates of Section~\ref{sec:partII-D} give the following density before this extraction:
+\begin{equation}\label{eq:C-pre-reset-density}
+ \blockmap{m}_{\beta^{\rm in}}(\density\rho^{\rm in})
+ =e^{v_{\rm vac}^{\rm pre}|\Lambda|-\beta^{\rm in}\mathcal K^{\rm kin}_{N,m}-\mathcal L^{(2)}_{N,m}-E_\Sigma^{\rm pre}-\alpha\mathcal S_0}\,\mathcal G_{\rm for}^{\rm pre}\,.
 \end{equation}
-Here $H_E$ bounds the early regular activity sum at each anchor, with support exponent $\sigma_{J_m}+3$. Wrapping supports have zero projection. Subtracting each local quadratic projection and its value at the identity leaves zero affine Hessian. The mask differences are supported where a flagged site occurs and are included in the forced activities. Thus this subtraction is an identity at every configuration.
+Here $E_\Sigma^{\rm pre}=\sum_i\chi_{X_i}E_i^{\rm pre}$, with $\chi_X=\mathbf1_{X\text{ healthy}}$, and $\mathcal G_{\rm for}^{\rm pre}$ is the forced sum of Definition~\ref{def:representations}. The function $\mathcal S_0$ is the $H_4$-average of the unclipped Wilson and expanded row-square terms, masked on their path supports. The nonquadratic determinant remainder, the effect of level-$(m+1)$ quadratic atoms on the fluctuation operator, and the torus remainder $C_\ell e^{-c_\ell n_{p,m}}$ are included in $E_i^{\rm pre}$. The last is absorbed in its activity bound by choosing $n_{p,m}\ge n^{\min}_{J_m}$. These activities may have nonzero values and affine Hessians at the identity; both are removed below.
+
+On a nonwrapping support, affine fields with the same curl differ by a gauge gradient. The Hessian of $E_i^{\rm pre}$ annihilates these gradients, and its first derivative vanishes by colour invariance. Thus simplicity gives a real form $c_i(\mathfrak p,\mathfrak q)$ on the six constant curls. Set $c_i=0$ when the support enlarged by the radius-two neighbourhood of $o_i$ wraps. Let $\mathcal F_{\mathfrak p}(U,o)$ be the signed average of the four oriented plaquette curvatures in the $\mathfrak p$-plane based at $o$, so its derivative on an affine field is that field's constant curl. Define the unmasked projection and the subtracted function by
+\begin{equation}\label{eq:C-local-projection}
+ \mathsf Q_i^{\rm quad}(U)=\tfrac12\sum_{\mathfrak p,\mathfrak q}c_i(\mathfrak p,\mathfrak q)
+ \langle\mathcal F_{\mathfrak p}(U,o_i),\mathcal F_{\mathfrak q}(U,o_i)\rangle_{\g},
+ \qquad E_i^0=E_i^{\rm pre}-E_i^{\rm pre}(1)-\mathsf Q_i^{\rm quad}\,.
+\end{equation}
+We mask the projection at its anchor and $E_i^0$ on its enlarged support $\widetilde X_i$. Reflections kill off-diagonal curl pairs in the anchor sum; permutations equate the diagonal pairs. Translation invariance makes
+$\delta=\delta\beta_{N,p,m}\coloneqq\sum_{o_i=o}c_i((1,2),(1,2))$ independent of $o$. Therefore
+\begin{equation}\label{eq:C-isotropic-projection}
+ \sum_i\chi_{\{o_i\}}\mathsf Q_i^{\rm quad}
+ =\delta\sum_o\chi_{\{o\}}\tfrac12\sum_{\mathfrak p}|\mathcal F_{\mathfrak p}(U,o)|^2\,.
+\end{equation}
+For the diagonal entry use $\mathcal A_2(y)=r_{n_{p,m}}(y-o)^1e_\nu^{\g}$, all other components zero. The direction $t_m\mathcal A$ satisfies the activity norm bound since $\varpi_{J_m}\ge2$. The diagonal Hessian estimate yields
+\begin{equation}\label{eq:C-delta-bound}
+ t_m^2|\delta|\le H_{\rm reg}\coloneqq\sup_o\sum_{o_i=o}e_i^{\rm pre}
+ \le c_{\rm res}\epsilon_m^{\rm reg}/4\,.
+\end{equation}
+The majorants $e_i^{\rm pre}$ and constant $c_{\rm res}$ are supplied by Section~\ref{sec:partII-D}. Its entry bound $c_{\rm res}\epsilon_m^{\rm reg}\le4t_m^2$ gives $|\delta|\le1$.
 
 \begin{lemma}[Exact coupling reset]\label{lem:C-reset}
-For the continuous admissible input curves in Proposition~\ref{prop:U1}(b), the output coupling and density satisfy
+For each member $\rho^{\rm in}_u$ of a continuous admissible input curve in Proposition~\ref{prop:U1}(b), let $\rho^{\rm out}_u$ have path action $\pathaction_{N,m}$, coupling $\beta^{\rm in}_u+\alpha^{(1)}_{N,m}+\delta\beta_{N,p,m}(u)$, vacuum scalar $v_{\rm vac}^{\rm pre}(u)-a_{\rm vac}(u)/|\Lambda|$, and the regular activities and forced sum constructed below. Then
 \begin{equation}\label{eq:C-exact-reset}
- \beta=\beta'+\alpha_{\rm loop}+\delta\,,\qquad
- \density\rho=\blockmap{m}_{\beta'}(\density\rho')\,,\qquad |\delta|\le r_{\rm res}\le1\,.
+ \density\rho^{\rm out}_u=\blockmap{m}_{\beta^{\rm in}_u}(\density\rho^{\rm in}_u),
+ \qquad |\delta\beta_{N,p,m}(u)|\le1\,.
 \end{equation}
-Consequently $|\beta'-\beta-\slope\log\ell_m|\le\omega_{J_{m+1}}^{\rm RG}$.
+Both $\delta\beta_{N,p,m}(u)$ and $a_{\rm vac}(u)$ are continuous. Consequently $|\beta^{\rm in}_u-\beta(\rho^{\rm out}_u)-\slope\log\ell_m|\le\omega_{J_{m+1}}^{\rm RG}$.
 \end{lemma}
 
 \begin{proof}
-Write $H(U)=\blockmap{m}_{\beta'}(\density\rho')(U)$. Fix an unflagged configuration $V_*$ with $\mathcal K_{\rm path}(V_*)\ge|\Lambda|\eta_*t_m^2$. Such a configuration exists on every even torus: put a small group element on links in direction $1$ at even values of coordinate $2$, and the identity on all other links. The $(1,2)$ plaquettes alternate between that element and its inverse. Their direct quadratic contribution is proportional to $|\Lambda|t_m^2$; choosing their amplitude sufficiently small in terms of the path bound absorbs the cubic and quartic terms.
+Suppress $u$. Put $a_{\rm vac}=\sum_iE_i^{\rm pre}(1)$. Define the mask discrepancy $\mathsf D_i^{\rm mask}$ by
+\begin{equation*}
+ E_i^{\rm pre}(1)+\chi_{\{o_i\}}\mathsf Q_i^{\rm quad}
+ +\chi_{\widetilde X_i}E_i^0-\mathsf D_i^{\rm mask}=\chi_{X_i}E_i^{\rm pre}\,.
+\end{equation*}
+It is zero when $\widetilde X_i$ is healthy, by~\eqref{eq:C-local-projection}, and otherwise is supported on a set containing a flagged site.
 
-At unflagged fields the early forced sum equals one, so $H(1),H(V_*)>0$. For trial coupling $\beta'+\alpha_{\rm loop}+d$, let $\mathcal E_d$ be the prepared regular sum and set
-\begin{equation}\label{eq:C-reset-residual}
- \mathfrak f(d)=(\beta'+\alpha_{\rm loop}+d)\mathcal K_{\rm path}(V_*)+\mathcal L_{\rm loop}(V_*)+\mathcal E_d(V_*)-\log\frac{H(1)}{H(V_*)}\,.
-\end{equation}
-The local estimates give $|\mathfrak f(0)|\le|\Lambda|(c_{\rm res}+1)\epsilon_m^{\rm reg}$ and $|\mathcal E_b(V_*)-\mathcal E_a(V_*)|\le|\Lambda|c_{\rm res}\epsilon_m^{\rm reg}|b-a|$. Choose the entry bound so that $2(c_{\rm res}+1)\epsilon_m^{\rm reg}\le\eta_*t_m^2r_{\rm res}$. Then $\mathfrak f(b)-\mathfrak f(a)\ge\tfrac12\mathcal K_{\rm path}(V_*)(b-a)$ for $a\le b$ in $[-r_{\rm res},r_{\rm res}]$, and the endpoints bracket zero. The unique zero varies continuously along the input curve, by the same inverse inequality.
+To identify the other new regular terms, expand each row square into its pairs of slots. Index the resulting quadratic terms, including plaquettes and their coefficients, by $d$. Write $q_d$ for the unclipped term and $q_d^{\rm anc}$ for the expression obtained by replacing each transported curvature by the corresponding $\mathcal F_{\mathfrak p}(U,o_d)$. For plaquettes use the same replacement of the Wilson term by half the curvature norm squared. The kinetic normalization of Definition~\ref{def:representations} gives $\sum_dq_d^{\rm anc}=\sum_o\tfrac12\sum_{\mathfrak p}|\mathcal F_{\mathfrak p}(U,o)|^2$, also with the common anchor masks. Let $\chi_d$ be health on the combined path support enlarged to include these anchor plaquettes. The output regular sum $E_\Sigma^{\rm out}$ consists of
+\begin{equation*}
+ \sum_i\chi_{\widetilde X_i}E_i^0,
+ \qquad \delta\sum_d\chi_d(q_d^{\rm anc}-q_d),
+ \qquad -(\alpha+\delta)\sum_{k=3,4}\sum_i\chi_i\mathfrak a_i^{(k)}\,,
+\end{equation*}
+with the $H_4$ averages understood. On nonwrapping supports the first functions have zero affine Hessian by construction. In the second, every slot has the same linearized constant curl as its anchor analogue, so their affine Hessians agree. The last functions vanish to third order. All vanish at the identity.
 
-The full density identity follows from the local subtractions. Write the early density as $e^{\tau|\Lambda|-\beta'\mathcal K_{\rm path}-\mathcal L_{\rm loop}-\mathcal E_{\rm early}-\alpha_{\rm loop}\mathcal S_0}\mathcal G_{\rm early}$, where $\mathcal S_0$ sums the unclipped Wilson and row-square terms with their support masks. Put $a_{\rm vac}=\sum_iE_i^{\rm reg}(1)$. The prepared regular sum $\mathcal E_{\rm out}$ and the terms $B_{\rm for}$ moved into the forced sum satisfy, at every configuration,
-\begin{equation}\label{eq:C-reorganization}
- (\alpha_{\rm loop}+\delta)\mathcal K_{\rm path}+\mathcal E_{\rm out}-B_{\rm for}
- =\mathcal E_{\rm early}-a_{\rm vac}+\alpha_{\rm loop}\mathcal S_0\,,
- \qquad \mathcal G_{\rm out}=e^{B_{\rm for}}\mathcal G_{\rm early}\,.
-\end{equation}
-The first identity subtracts the local Hessians, replaces their isotropic sum by the clipped kinetic term, and retains every mask difference in $B_{\rm for}$. The second expands these local exponential factors into the forced sum. Absolute support bounds justify both rearrangements, including configurations where a forced sum vanishes. Substitution in the density proves equality with coupling $\beta'+\alpha_{\rm loop}+\delta$ and vacuum scalar $\tau-a_{\rm vac}/|\Lambda|$.
+On healthy supports, adding these three sums to $(\alpha+\delta)\mathcal K^{\rm kin}_{N,m}$ cancels the higher atoms and leaves $\alpha\mathcal S_0+\delta\sum_o\chi_{\{o\}}\tfrac12\sum_{\mathfrak p}|\mathcal F_{\mathfrak p}|^2+\sum_i\chi_{\widetilde X_i}E_i^0$. At other configurations retain the discrepancies: $B_{\rm for}$ is the sum of $\mathsf D_i^{\rm mask}$ and the clip and health discrepancies in this calculation. Each discrepancy vanishes unless its support contains a flagged site. Thus, at every configuration,
+\begin{align}\label{eq:C-reorganization}
+ (\alpha+\delta)\mathcal K^{\rm kin}_{N,m}+E_\Sigma^{\rm out}-B_{\rm for}
+ &=E_\Sigma^{\rm pre}-a_{\rm vac}+\alpha\mathcal S_0,\nonumber\\
+ \mathcal G_{\rm for}^{\rm out}&=e^{B_{\rm for}}\mathcal G_{\rm for}^{\rm pre}\,.
+\end{align}
+The forced-activity expansion of Section~\ref{sec:partII-D} groups the local factors in the second line into disjoint supports with their flag inventories. Absolute support bounds justify the rearrangements and give the output activity bounds. Substitution in~\eqref{eq:C-pre-reset-density} proves~\eqref{eq:C-exact-reset}, including configurations where the forced sum vanishes.
 
-The prepared activities are independent of $d$, so $\mathfrak f(d)=(d-\delta)\mathcal K_{\rm path}(V_*)$. Its zero is $\delta\in[-r_{\rm res},r_{\rm res}]$. Equation~\eqref{eq:C-reorganization} supplies density equality everywhere, beyond the two evaluations in~\eqref{eq:C-reset-residual}. Finally, the stage drift bound includes $C_{\rm loop}+1$.
+The sums defining $\delta$ and $a_{\rm vac}$ converge absolutely and locally uniformly along the input curve, by the activity bounds and summable tails of Section~\ref{sec:partII-D}. Their summands are continuous in the activity derivative norms, so both scalars are continuous. Finally~\eqref{eq:C-one-loop-bound} and $|\delta|\le1$ give the stated drift: row~4 of Section~\ref{sec:constants} chooses $\omega_j^{\rm RG}\ge C_{\rm loop}+1$ before $\ell$, which is possible because $C_{\rm loop}$ is independent of $\ell$.
 \end{proof}
 
-This is the marginal estimate in Proposition~\ref{prop:U1}; the output need not lie in $\mathfrak B_m$. Along the trajectories selected in Proposition~\ref{prop:U2}, summation from the fixed endpoint gives
+This is the marginal estimate in Proposition~\ref{prop:U1}; the output need not lie in $\mathfrak B_m$. Along the trajectories of Proposition~\ref{prop:U2}, summation from the fixed endpoint gives
 \begin{equation}\label{eq:C-running-sum}
  \left|\beta_{N,p,m}-\bar\beta-\slope s_m\right|
  \le\sum_{i<m}\omega_{J_{i+1}}^{\rm RG}=o(s_m)\,.
 \end{equation}
-Indeed, $\omega_{J_{i+1}}^{\rm RG}/\log\ell_i\le J_{i+1}^{-2}\to0$; split the sum at a fixed level and divide by $s_m=\sum_{i<m}\log\ell_i\to\infty$. The bound is uniform in $N\ge m$ and $p$. Reaching the endpoint and the uniqueness and holomorphic dependence of its tuning require the trajectory argument of Proposition~\ref{prop:U2}.
+Indeed, $\omega_{J_{i+1}}^{\rm RG}/\log\ell_i\le J_{i+1}^{-2}\to0$; split at a fixed level and divide by $s_m=\sum_{i<m}\log\ell_i\to\infty$. The bound is uniform in $N\ge m$ and $p$. Reaching the endpoint and the uniqueness and holomorphic dependence of its tuning require Proposition~\ref{prop:U2}.
