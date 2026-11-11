@@ -8,7 +8,7 @@ The source is about one million lines of Lean in 9,477 files. No informal proof 
 
 This repository is an attempt to make that proof readable. Using AI agents, we:
 
-1. **map** the proof: we compute its dependency graph from the main theorem down, and coarse-grain it into parts, chapters and sections;
+1. **map** the proof: we compute its dependency graph from the main theorem down, and divide it into eight parts and thirty-two units;
 2. **outline** it in natural language: plain-language statements of its key results, a glossary of its nicknames, and the interfaces between its parts;
 3. later, **write** a natural-language account of the proof on that skeleton.
 
@@ -31,12 +31,14 @@ How the proof is organised:
 - what each part hands to the next;
 - the short interface between the ultraviolet construction and the infinite-volume limit.
 
-### [The detailed map: forty chapters →](outline/chapters.md)
+### [The detailed map: the units of the proof →](outline/units.md)
 
-The 413,000 lines that the main theorem uses, grouped into forty chapters in dependency order. Every chapter has its own page with:
-- a summary, and the chapters it builds on and those that use it;
-- its sections, which are the authors' work packages in the source;
+The 413,000 lines that the main theorem uses, divided into thirty-two units: mathematically coherent pieces of the proof, grouped by the eight parts. Every unit has its own page with:
+- its Lean source (folders and chains of large results), linked;
+- the units it builds on and the units that use it;
 - its key statements in plain language, **each linked to its exact lines in the Lean source**.
+
+As the outline of each unit is written and checked, it appears on the same page.
 
 ### Also here
 
@@ -45,7 +47,7 @@ The 413,000 lines that the main theorem uses, grouped into forty chapters in dep
 | [**The work items**](outline/work-items.md) | The code's own decomposition of the limit theory into about one hundred stated obligations, each with what it proves. |
 | [**Glossary**](glossary.md) | The code's nicknames (`Treasury`, `Jewel`, `Sheet`, …) translated into mathematics. |
 | [**How the map was made**](method.md) | Method, checks against OpenAI's compiled record, and how far each product can be trusted. |
-| [**Data**](data/) | Tables of chapters, sections and the 989 key statements, with links. |
+| [**Data**](data/) | Tables of the units, the unit of every declaration, and the 989 key statements, with links. |
 
 All links to Lean point to the fixed commit [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464) of the released source.
 
@@ -53,7 +55,7 @@ All links to Lean point to the fixed commit [`3456e5e`](https://github.com/yang-
 
 This project is carried out in collaboration with Martin Hairer's [**humanise-yang-mills**](https://github.com/hairer/humanise-yang-mills), a crowd-sourced effort to turn the Lean formalization into a human-readable monograph whose statements and arguments can be traced to a fixed version of the code.
 
-The maps, chapter structure, glossary and links collected here are meant as input to that effort: a first pass at its "start at the final theorem and work backwards to a graph of mathematical results".
+The map, the units, the glossary and the links collected here are meant as input to that effort: a first pass at its "start at the final theorem and work backwards to a graph of mathematical results".
 
 ## The theorem, in brief
 
@@ -73,14 +75,14 @@ Restricted to what the main theorem actually uses, the proof is about 413,000 li
 
 | part | | what it does | share |
 |---|---|---|---|
-| I | Setting | Lattice tori, compact gauge groups, the Wilson measure and its lattice symmetries. | 1% |
-| II | Data of the construction | Field labels and their lattice representatives; polymer activities and their norms; the Wilson *family* of spacings, volumes and couplings; reflection-positive cells. | 3% |
+| I | Setting | Lattice tori, compact gauge groups, the Wilson measure and its lattice symmetries. | <1% |
+| II | Data of the construction | Field labels and their lattice representatives; polymer activities and their norms; the Wilson *family* of spacings, volumes and couplings; reflection-positive cells. | 4% |
 | III | **Ultraviolet construction** | A Balaban-type renormalization group at fixed volume: block-spin steps with a gauge fixing compatible with the lattice symmetries, Gaussian integration and determinants, cluster expansions, a background field matched to the Wilson action, the flow of the coupling, bounds on irrelevant terms, and the order in which all constants are chosen. It proves bounds uniform in the volume and convergence as the lattice spacing tends to zero. | **70%** |
 | IV | Infinite volume | Extraction of a subsequence of volumes along which all correlations converge, from the uniform bounds and reflection positivity; the Euclidean axioms of the limit. | 2% |
-| V | Phases and reconstruction | Decomposition of the limit into phases; Osterwalder–Schrader reconstruction of a Wightman theory for each phase. | 5% |
+| V | Phases and reconstruction | Decomposition of the limit into phases; Osterwalder–Schrader reconstruction of a Wightman theory for each phase. | 4% |
 | VI | Symmetry | Ward identities, a conserved stress tensor, the rotation and boost actions. | 5% |
-| VII | Identification as Yang–Mills | Comparison with free Maxwell fields at short distance; the trace anomaly and non-freeness; the running coupling; the operator product expansion and contact extensions. | 12% |
-| VIII | Assembly | The main theorem. | <1% |
+| VII | Identification as Yang–Mills | Comparison with free Maxwell fields at short distance; the trace anomaly and non-freeness; the running coupling; the operator product expansion and contact extensions. | 11% |
+| VIII | Assembly | The main theorem. | 3% |
 
 **The ultraviolet and infinite-volume parts meet in a short, clean interface.** For a fine enough lattice:
 - every renormalized observable satisfies a chessboard (reflection-positivity) bound uniform in the volume;
@@ -98,7 +100,7 @@ We checked it against the record of which declarations the main theorem uses, co
 The graph is then coarse-grained in stages:
 - lemmas used in only one proof are folded into it;
 - results are ranked by the size of their proofs, and the shared machinery is grouped;
-- the result is cut into chapters that respect the dependency order.
+- the result is divided into units: mathematically coherent pieces, cut so that the dependency order is respected wherever the mathematics allows.
 
 Two independent AI readers read every candidate statement and judged its importance (main result, key result, technical lemma, bookkeeping). They wrote a one-sentence plain-language summary of each and agreed with each other well (Cohen's κ = 0.72). Before being applied here, each step was tested on an earlier OpenAI formalization (finite-time blow-up for Navier–Stokes) whose human-written structure is known. Details and caveats are in [`method.md`](method.md).
 
@@ -107,8 +109,8 @@ Two independent AI readers read every candidate statement and judged its importa
 | | |
 |---|---|
 | Dependency structure | Reliable: checked against OpenAI's compiled record. |
-| Chapter boundaries | Computed from the dependency graph. |
-| Chapter titles, plain-language summaries and glossary | AI-written; marked *certain*, *probable* or *tentative*. |
+| Units | Computed from the dependency graph, then cut along the mathematics. |
+| Plain-language summaries and glossary | AI-written; marked *certain*, *probable* or *tentative*. |
 | Precise statement of the main theorem | In preparation. |
 
 Corrections are welcome.

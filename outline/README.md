@@ -1,6 +1,6 @@
 # Overview of the proof
 
-This page describes how OpenAI's Lean proof of the construction of four-dimensional Yang–Mills theory is organised: its eight parts, what each part hands to the next, and where to find each part among the [forty chapters](chapters.md).
+This page describes how OpenAI's Lean proof of the construction of four-dimensional Yang–Mills theory is organised: its eight parts, what each part hands to the next, and the units that make up each part ([detailed map](units.md)).
 
 It is read from the Lean statements and documentation and from the dependency graph. The mathematical framing follows the Yang–Mills group's [assessment](https://github.com/yang-mills-group/YM/blob/main/docs/assessment-1.pdf). Lean names link to the fixed source commit [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464).
 
@@ -14,18 +14,18 @@ The renormalization group is used only for the first limit. The second is obtain
 
 ## The eight parts
 
-| part | name | lines | where |
+| part | name | lines | units |
 |---|---|---|---|
-| I | Setting | 3.7k | chapters [1](chapters/01.md)–[4](chapters/04.md) |
-| II | Data of the construction | 10.8k | chapter [13](chapters/13.md), parts of [5](chapters/05.md) and [10](chapters/10.md) |
-| III | Ultraviolet construction | 291k | chapters 5–9, 12, 14–22, 24, 27, 30, 32, 33, 35–39, and part of 10 |
-| IV | Infinite volume | 7k | part of chapter [10](chapters/10.md) (folders `Extraction`, `Cells`, `Euclid`, `Slice`, `Dash`) |
-| V | Phases and reconstruction | 22k | chapters [10](chapters/10.md), [34](chapters/34.md) |
-| VI | Symmetry | 21k | chapters [10](chapters/10.md), [11](chapters/11.md) |
-| VII | Identification as Yang–Mills | 52k | chapters [23](chapters/23.md), [25](chapters/25.md), [26](chapters/26.md), [28](chapters/28.md), [29](chapters/29.md), [31](chapters/31.md) |
-| VIII | Assembly | 1.4k | chapters [34](chapters/34.md), [40](chapters/40.md) |
+| I | Setting | 3.7k | [I.1](units/I-1.md) |
+| II | Data of the construction | 14.5k | [II.1](units/II-1.md), [II.2](units/II-2.md) |
+| III | Ultraviolet construction | 290.5k | [III.1](units/III-1.md), [III.2](units/III-2.md), [III.3](units/III-3.md), [III.4](units/III-4.md), [III.5](units/III-5.md), [III.6](units/III-6.md), [III.7](units/III-7.md), [III.8](units/III-8.md), [III.9](units/III-9.md), [III.10](units/III-10.md), [III.11](units/III-11.md), [III.12](units/III-12.md), [III.13](units/III-13.md), [III.14](units/III-14.md), [III.15](units/III-15.md), [III.16](units/III-16.md) |
+| IV | Infinite volume | 7.4k | [IV.1](units/IV-1.md) |
+| V | Phases and reconstruction | 16.2k | [V.1](units/V-1.md), [V.2](units/V-2.md), [V.3](units/V-3.md) |
+| VI | Symmetry | 21.9k | [VI.1](units/VI-1.md), [VI.2](units/VI-2.md) |
+| VII | Identification as Yang–Mills | 46.8k | [VII.1](units/VII-1.md), [VII.2](units/VII-2.md), [VII.3](units/VII-3.md), [VII.4](units/VII-4.md), [VII.5](units/VII-5.md), [VII.6](units/VII-6.md) |
+| VIII | Assembly | 12.1k | [VIII.1](units/VIII-1.md) |
 
-Chapter 10 is the core of the limit theory. It contains material from five parts and is best read through the [work items](work-items.md).
+The limit theory (Parts IV–VI) is written in the code around numbered [work items](work-items.md); the units of those parts follow them.
 
 ## What each part hands to the next
 
