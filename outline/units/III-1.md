@@ -4,9 +4,9 @@
 
 Defines one block-spin step and the gauge fixing that preserves the lattice symmetries.
 
-**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
+**Status: edited.** Condensed from the unit's detailed notes, which were checked against the linked Lean in two rounds and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-[Overview](../README.md) · [All units](../units.md) · [← Previous: II.2](II-2.md) · [Next: III.2 →](III-2.md)
+[Overview](../README.md) · [All units](../units.md) · [Detailed notes](../notes/III-1.md) · [← Previous: II.2](II-2.md) · [Next: III.2 →](III-2.md)
 
 [Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
 
@@ -15,644 +15,120 @@ Defines one block-spin step and the gauge fixing that preserves the lattice symm
 
 **Part:** III, Ultraviolet construction (renormalization group). **Lean:** [`YM/RG/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG) (Block, Patch, Measurable, Push, Masks, Activities, PathActions, Bounded, History), [`YM/Branch/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch), [`YM/Pressure/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure), [`YM/PREC/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC), [`YM/PCalc/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc), [`YM/Tree/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree), [`YM/Exterior/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Exterior), and the small packages `YM/RG17/`, `YM/Push/CORRECTED_COLUMNS/`, `YM/Planned/CALIBRATED_MIXED_HISTORY/`, `YM/UVNext/ANNULUS_COMPARISON/`, `YM/FullVolume/Train/`, `YM/SectorTools/ACTUAL_SCALAR_LEDGER/`. **Size:** 4,219 lines (693 declarations) in the source allocation.
 
-**Conventions.** $N\ge1$ and $G\subset U(N)$ is a closed subgroup with probability Haar measure $dg$. Its Lie algebra $\mathfrak g\subset M_N(\mathbb C)$ carries the real inner product $\mathrm{Re\,tr}(X^{\dagger}Y)$, and $\Pi_{\mathfrak g}$ denotes the orthogonal projection onto $\mathfrak g$. Matrix norms below are Frobenius norms. In path actions, Lie-algebra fields, Hessians and the six works, the physical inner product is $N^{-1}\mathrm{Re\,tr}(X^{\dagger}Y)$; write $|X|=\|X\|/\sqrt N$ for its norm. This is the coordinate normalization of [`Gauge.inner_frob_color`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L56-L62). The curvature field is $\mathrm{curv}(u)=\Pi_{\mathfrak g}(u-u^{-1})/2$, with $|\mathrm{curv}(u)|\le\mathrm{ch}(u)$. The *chord* is $\mathrm{ch}(u)=\|u-1\|/\sqrt N$ and the *price* is $\mathrm{pr}(u)=1-\mathrm{Re\,tr}\,u/N$. They satisfy $\mathrm{ch}^2=2\,\mathrm{pr}$, both are class functions, $\mathrm{ch}(u^{-1})=\mathrm{ch}(u)\le2$, $\mathrm{ch}(uv)\le\mathrm{ch}(u)+\mathrm{ch}(v)$, and $\|u-v\|^2=2N\,\mathrm{pr}(uv^{-1})$. The Wilson energy is $\sum_p\mathrm{pr}(U_p)$.
-
-A step goes from the fine torus $\Lambda_f=(\mathbb Z/f)^4$ to the coarse torus $\Lambda_c=(\mathbb Z/c)^4$, with $c\ge1$, $f=cL$ and $L\ge3$ odd. The coarse site $x$ has root $Lx$ and block $Lx+B_{(L-1)/2}$, where $B_r=\{-r,\dots,r\}^4\subset\mathbb Z^4$. Configurations are $U\in G^{\mathrm{links}}$, and $\mu_f$ is the product of the probability Haar measures. The gauge action is $(k\cdot U)_{(y,i)}=k_yU_{(y,i)}k_{y+e_i}^{-1}$. $T_U(y;w)$ is the parallel transport along a walk $w$. $T_U(y\to z;o)$ is the transport along the coordinate route that changes the coordinates in the order given by $o\in S_4$. For a coarse site $x$, $U^{(x)}$ is the periodic lift of $U$ to $\mathbb Z^4$, translated so that $Lx$ sits at the origin. All patch constructions take place on $\mathbb Z^4$, so a patch may be larger than the torus. For finite $X\subset\mathbb Z^4$, $E_X(U)$ is the sum of the chords of the links with both ends in $X$, and $F_X(U)$ is the sum of the chords of the plaquettes with all four corners in $X$; $F_X$ is gauge invariant. $\mathfrak B_4$ is the group of signed permutations of the axes (384 elements). For $s\in\mathfrak B_4$ and a point $b$, $s_bU$ is the pullback of $U$ under $z\mapsto b+s(z)$; a link reversed by $s$ carries the inverse variable. Further, $\kappa_{\rm slope}=11C_A/(24\pi^2)$, where $C_A$ is the adjoint Casimir, and $\mathrm{temp}(x)=x^{-1/2}e^{(\log\log x)^2}$ for $x>1$.
-
-**Definition (the block kernel).** A *patch* is $P=(L,J)$ with $L\ge3$ odd and $J\ge4$. Its radius is $R=(J+3)L$ and its points are those of $B_R$, with centre $0$. The *kernel constants* are $K=(\kappa,\delta,\varepsilon,a)$, all positive: penalty, frame cutoff, predictor cutoff, axial factor. For a configuration $W$ on $\mathbb Z^4$ the following objects are defined.
-
-1. *Frame tags and axial frames.* A frame tag is $t=(r,o)\in B_R\times S_4$. The axial frame of $t$ is $a^t_y=T_W(r\to y;o)$.
-2. *Minimizing branch.* $W\in M_\delta$ if $\mathrm{ch}\big(a^{(0,o)}_y\,T_W(y\to z;o')\,(a^{(0,o)}_z)^{-1}\big)<\delta$ for all $o,o'\in S_4$ and $y,z\in B_R$. In words: in each of the 24 axial gauges from the centre, every route transport in the patch is $\delta$-close to $1$.
-3. *Score.* For $h:B_R\to G$, $S_W(h)=\mathrm{avg}_{y,z\in B_R}\mathrm{avg}_{o\in S_4}\,\mathrm{pr}\big(h_yT_W(y\to z;o)h_z^{-1}\big)$.
-4. *Eligible tags.* $\mathcal E(W)=\{t:\ E_{B_R}(a^t\cdot W)\le a(2R+1)F_{B_R}(W)\}$.
-5. *Frame and tag mass.* If $W\in M_\delta$, the frame $h^W$ is a minimizer of $S_W$ subject to $h_0=1$, and the tag mass is uniform, $1/(24|B_R|)$. Otherwise $h^{W,t}_y=(a^t_0)^{-1}a^t_y$ (the axial gauge from $r$, normalized at the centre), with mass $\mathbf 1_{\mathcal E(W)}(t)/|\mathcal E(W)|$.
-6. *Weight.* $w$ is the law on $B_R$ of $\xi_1+\dots+\xi_J$, where the $\xi_k$ are i.i.d. uniform on $B_{(L-1)/2}$. It is the $J$-fold convolution of the uniform weight on a centred block; it is $\mathfrak B_4$-invariant and supported in $B_{J(L-1)/2}$.
-7. *Connector.* For a coarse link $b=(x,i)$ and frame tags $(t_x)_{x\in\Lambda_c}$, set $Y_y=h^{(x)}_y\,T_{U^{(x)}}(y;\ L\text{ steps along }e_i)\,(h^{(x+e_i)}_y)^{-1}$ for $y\in B_R$. Here $h^{(x)}$ is the frame of $U^{(x)}$ with tag $t_x$. This is the fine transport from $Lx+y$ to $L(x+e_i)+y$, written in the frames of the two patches.
-8. *Prediction.* Let $\Phi_Y(u)=\sum_yw_y\,\mathrm{pr}(Y_yu^{-1})$. If $\min\Phi_Y<\varepsilon$, then $Q_b$ is a chosen minimizer, equivalently a nearest point of $G$ to the matrix mean $\sum_yw_yY_y$ (an extrinsic, chordal mean); the bond tag then has uniform mass $1/|B_R|$. Otherwise $Q_b=Y_{r_b}$, with the bond tag $r_b$ drawn with probability $w_{r_b}$.
-9. *Kernel.* The tag law is $\lambda(U,t)=\prod_{x}m^{\rm fr}(U^{(x)},t_x)\prod_b m^{\rm pr}(Y_b,r_b)$, and
-
-$$\rho_\beta(U,V)=\sum_t\lambda(U,t)\prod_{b}Z_\beta^{-1}e^{-\beta\kappa\,\mathrm{pr}(V_bQ_b(U,t)^{-1})},\qquad Z_\beta=\int_Ge^{-\beta\kappa\,\mathrm{pr}(g)}\,dg .$$
-
-The *branch conditions* for $(P,K,G)$ are:
-
-- (B1) for $W\in M_\delta$ the constrained minimizer in item 5 is unique;
-- (B2) whenever $\min\Phi_Y<\varepsilon$, the minimizer of $\Phi_Y$ is unique;
-- (B3) $\mathcal E(W)\ne\emptyset$ for every $W$.
-
-Compactness gives the chosen minimizers; (B1)–(B2) make the choices unique on the minimizing branches. Lean: [`Patch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L29-L34), [`KernelChoices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L37-L45), [`usesMin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L109-L110), [`score`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L114-L115), [`eligible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L143-L146), [`frameMass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L148-L151), [`frame`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L153-L155), [`weight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L87-L88), [`bondCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L159), [`predict`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L173-L175), [`predictorMass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L177-L179), [`Branches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L182-L185), [`StepData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L22-L25), [`connector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L39-L42), [`prediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L44-L45), [`likelihood`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L49-L51), [`density`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L71-L72).
-
 </details>
 
 <a id="unit-results"></a>
 
 ## 1. What this unit proves
 
-The block-spin kernel is normalized, Borel and covariant under gauge and lattice symmetries. Its branch cutoffs can be chosen independently of the patch size. The geometric estimates synchronize neighbouring frames and bound the predicted coarse curvature by $L^{-2}$ times the fine curvature in a surrounding box. Near the trivial configuration the prediction is analytic, with linearization $\mathcal M+d_0\mathcal F$. Tree gauge reduces the step integral to the free links. The unit also defines effective densities, RG histories and the requirements used in the later energy and stationary-branch estimates.
+Throughout, $N\ge1$, $G\subset U(N)$ is closed, $c\ge1$, $f=cL$, $L\ge3$ is odd, $J\ge4$, $R=(J+3)L$, and $K=(\kappa,\delta,\varepsilon,a)>0$. Branch conditions mean uniqueness of the centre-normalized minimizing frame when every route holonomy in every centre axial gauge has chord $<\delta$ (B1), uniqueness of the minimizing predictor when its minimum price is $<\varepsilon$ (B2), and nonempty eligible axial tags for every configuration (B3).
 
-**Proposition III.1.1 (the block kernel is a Markov kernel).** Assume (B1)–(B3). For every $\beta\in\mathbb R$:
+**Proposition III.1.1 (Markov kernel).** Under (B1)–(B3), for every real $\beta$, $\rho_\beta$ is nonnegative, Borel, bounded and satisfies $\int\rho_\beta(U,V)d\mu_c(V)=1$ for every $U$. For every Banach-valued $F\in L^1(\mu_f)$, $\mathcal P_\beta F(V)=\int\rho_\beta(U,V)F(U)d\mu_f(U)$ exists for every $V$, is integrable, depends linearly on $F$, and preserves its integral. Positivity and integrability in $V$ need no branch conditions. *Status:* theorem. *Lean:* [`isKernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L203-L208).
 
-- $\rho_\beta\ge0$;
-- $(U,V)\mapsto\rho_\beta(U,V)$ is Borel;
-- $\sup\rho_\beta<\infty$;
-- $\int\rho_\beta(U,V)\,d\mu_c(V)=1$ for every $U$.
+**Proposition III.1.2 (covariance).** Under (B1)–(B3), for every $\beta,U,V$, fine gauge $k$, signed axis permutation $s$ and coarse site $b$,
 
-Consequently, for every Banach-space-valued $F\in L^1(\mu_f)$ the push $(\mathcal P_\beta F)(V)=\int\rho_\beta(U,V)F(U)\,d\mu_f(U)$ is defined for every $V$. Moreover $\mathcal P_\beta F\in L^1(\mu_c)$, $\mathcal P_\beta$ is linear, and $\int\mathcal P_\beta F\,d\mu_c=\int F\,d\mu_f$. This is the operation that takes level $m+1$ to level $m$.
-*Status:* theorem. Positivity and integrability in $V$ hold without (B1)–(B3).
-*Lean:* [`IsKernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L158-L163), [`isKernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L203-L208), [`push`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79), [`push_integrable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L33-L35), [`push_integral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L37-L43), [`push_add`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L45-L50), [`push_smul`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L52-L55).
+$$\rho_\beta(k\cdot U,(k\circ\mathrm{embed})\cdot V)=\rho_\beta(U,V)=\rho_\beta(s_{Lb}U,s_bV),\qquad\mathrm{embed}(x)=Lx.$$
 
-**Proposition III.1.2 (exact covariance).** Assume (B1)–(B3). For all $\beta\in\mathbb R$, $U$, $V$:
+A calendar satisfying branch conditions on every patch has block control and Markov kernels at every step. *Status:* theorem. *Lean:* [`covary`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L56-L67); [`channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L50-L54).
 
-- (a) $\rho_\beta\big(k\cdot U,(k\circ\mathrm{embed})\cdot V\big)=\rho_\beta(U,V)$ for every $k:\Lambda_f\to G$, where $\mathrm{embed}(x)=Lx$;
-- (b) $\rho_\beta(s_{Lb}U,s_bV)=\rho_\beta(U,V)$ for every $s\in\mathfrak B_4$ and $b\in\Lambda_c$;
-- (c) if the kernel constants of a calendar satisfy (B1)–(B3) for every patch, then every step of the calendar has *block control* (branch conditions together with (a) and (b)), and is a Markov kernel by III.1.1.
+**Proposition III.1.3 (uniform branch constants).** Let $d$ be as in III.1.5 and $r_G>0$ a unique-nearest-point tubular radius of $G$. For every $\kappa>0$, $0<\delta\le d/\sqrt N$, $0<\varepsilon\le r_G^2/(2N)$ and $a\ge16$, (B1)–(B3) hold for every patch. Every configuration and axis ordering admit an eligible root. *Status:* theorem. *Lean:* [`Axial.viable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L137-L142); [`RG.frame_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Uniform.lean#L18-L56); [`RG.predictor_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Uniform.lean#L58-L63).
 
-*Status:* theorem.
-*Lean:* [`covary`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L56-L67), [`channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L50-L54), [`Calendar.blocks_go`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L70-L72), [`Calendar.BlockControl`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L120-L128), [`Levels.transition_mass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L158-L159).
+**Proposition III.1.4 (axial gauge).** For every list $l$ of distinct axes, $r\in\mathbb N$, $o\in B_r$ and configuration $U$ on $\mathbb Z^4$, put $S=\{y\in B_r:y_j=o_j\ (j\notin l)\}$. Some $x\in S$ gives an axial gauge $g_y=T_U(x\to y;l)$ with $E_S(g\cdot U)\le4|l|(2r+1)F_S(U)$. *Status:* theorem. *Lean:* [`Axial.existence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L80-L105).
 
-**Proposition III.1.3 (branch constants depending only on $G$).** Let $d=d(G)$ be the constant of III.1.5. Let $r_G>0$ be such that every $X\in M_N(\mathbb C)$ at distance $<r_G$ from $G$ has a unique nearest point in $G$. Put $\delta_0=d/\sqrt N$ and $\varepsilon_0=r_G^2/(2N)$. Then for every $\kappa>0$, $\delta\in(0,\delta_0]$, $\varepsilon\in(0,\varepsilon_0]$ and $a\ge16$, the constants $(\kappa,\delta,\varepsilon,a)$ satisfy (B1)–(B3) for every patch, that is, for every odd $L\ge3$ and every $J\ge4$. Condition (B3) holds in a stronger form: for every $W$ and every ordering $o$ there is a root $r$ with $(r,o)$ eligible.
-*Status:* theorem. The existence theorem records the case $(\delta_0,\varepsilon_0,16)$ for a given penalty $\kappa$.
-*Lean:* [`Axial.viable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L137-L142), [`RG.frame_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Uniform.lean#L18-L56), [`RG.predictor_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Uniform.lean#L58-L63), [`Axial.eligible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L119-L134).
+**Proposition III.1.5 (synchronization uniqueness).** There exists $d(G)\in(0,1/4]$ such that, for all finite nonempty $n,\Lambda$, data $W:n\times n\times\Lambda\to G$ with $W_{xxk}=1$, $W_{yx\sigma(k)}=W_{xyk}^{-1}$ for a permutation $\sigma$, and $\|W_{xyk}-1\|\le d$ have this property: any two global minimizers over $G^n$ of $\mathrm{avg}_{x,y,k}\mathrm{pr}(h_xW_{xyk}h_y^{-1})$ differ by one global left multiple. *Status:* theorem. *Lean:* [`Branch.align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L232-L272).
 
-**Proposition III.1.4 (axial gauge controlled by curvature).** Let $l$ be a list of distinct axes, $r\in\mathbb N$, $o\in B_r$, and $U$ any configuration on $\mathbb Z^4$. Let $S=\{y\in B_r:\ y_j=o_j\text{ for }j\notin l\}$ be the slab. Then there is a root $x\in S$ such that the axial gauge $g_y=T_U(x\to y;\,\text{axes in the order }l)$ satisfies
+**Proposition III.1.6 (frame comparison).** There exists $A(G)>0$ such that, for every patch, $K$, configuration $W$, positive-frame-mass tag, realized frame $h$, and gauge $H:\mathbb Z^4\to G$, some $q\in G$ satisfies
 
-$$E_S(g\cdot U)\ \le\ 4\,|l|\,(2r+1)\,F_S(U).$$
+$$\sum_{y\in B_R}\mathrm{ch}(q^{-1}h_yH_y^{-1})\le A(2R+1)[E_{B_R}(H\cdot W)+a(2R+1)F_{B_R}(W)].$$
 
-*Status:* theorem.
-*Lean:* [`Axial.existence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L80-L105).
+No branch conditions are needed. *Status:* theorem. *Lean:* [`Pressure.synchronized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L135-L162).
 
-**Proposition III.1.5 (least-squares synchronization: uniqueness up to a global left multiple).** There is $d=d(G)\in(0,1/4]$ with the following property. Let $n,\Lambda$ be finite nonempty sets. Let $W:n\times n\times\Lambda\to G$ satisfy $W_{xxk}=1$ and $W_{yx\sigma(k)}=W_{xyk}^{-1}$ for some permutation $\sigma$ of $\Lambda$, and $\|W_{xyk}-1\|\le d$ for all indices. Then any two global minimizers $h,h'$ of $\mathrm{cost}(h)=\mathrm{avg}_{x,y,k}\,\mathrm{pr}(h_xW_{xyk}h_y^{-1})$ over $G^n$ satisfy $h'=c\,h$ for a single $c\in G$. The constant $d$ does not depend on $|n|$ or $|\Lambda|$.
-*Status:* theorem.
-*Lean:* [`Branch.align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L232-L272), with [`Pairs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L27-L31).
+**Proposition III.1.7 (common gauge).** Fix $G,K$ and $j\ge4$; set $\ell=2j+15$, $D=16\ell$, $C=A\ell(D+a\ell)$ and $R'=(j+7)L$. For every step with $J=j$, fine $U$, coarse $x$, and tag usable at $x$, there exist $H:\mathbb Z^4\to G$ and $p_y\in G$ for $y\in B_2$ such that, for every such $y$,
 
-**Proposition III.1.6 (synchronization of the realized frame with any gauge).** There is $A=A(G)>0$ with the following property. Let $P$ be any patch and $K$ any kernel constants; no branch condition is needed. Let $W$ be a configuration on $\mathbb Z^4$, $t$ a frame tag with $m^{\rm fr}(W,t)>0$, $h$ the realized frame, and $H:\mathbb Z^4\to G$ any gauge. Then there is $c\in G$ with
+$$E_{B_{R'}}(H\cdot U^{(x)})\le DL\,\mathrm{port}(x,U),\qquad\sum_{i\in B_R}\mathrm{ch}(p_y^{-1}h_i^{(x+y)}H_{i+Ly}^{-1})\le CL^2\mathrm{port}(x,U).$$
 
-$$\sum_{y\in B_R}\mathrm{ch}\big(c^{-1}h_yH_y^{-1}\big)\ \le\ A\,(2R+1)\Big(E_{B_R}(H\cdot W)+a\,(2R+1)\,F_{B_R}(W)\Big).$$
+Every positive-tag-mass tag is usable everywhere. *Status:* theorem. *Lean:* [`Pressure.planting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L72-L122).
 
-*Status:* theorem.
-*Lean:* [`Pressure.synchronized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L135-L162).
+**Proposition III.1.8 (coarse curvature).** With III.1.7's constants and $C_8=8\max(1,\varepsilon^{-1})(2C+D)$, for every step with $J=j$, configurations $U,V$, coarse site $x$, tag $t$ usable at $x$, and plane $p$,
 
-**Proposition III.1.7 (one gauge for a neighbourhood of blocks).** Fix $G$, $K$ and $j\ge4$, and put $\ell_j=2j+15$. Then $D=16\,\ell_j$ and $C=A\,\ell_j(D+a\,\ell_j)$, with $A$ from III.1.6, have the following property. Let $S$ be any step with kernel constants $K$ and $J=j$ (any $L$, any $c$). Let $U$ be fine, $x$ a coarse site, and $t$ a tag that is *usable* at $x$, meaning that $m^{\rm fr}(U^{(x+y)},t_{x+y})>0$ for all $y\in B_2$. Then there are a gauge $H:\mathbb Z^4\to G$ and pads $p_y\in G$ ($y\in B_2$) with
+$$\mathrm{ch}(Q(U,t)_{(x,p)})\le C_8L^{-2}\mathrm{port}(x,U),\qquad\mathrm{ch}(V_{(x,p)})\le\mathrm{fuel}(Q,V)_{(x,p)}+C_8L^{-2}\mathrm{port}(x,U).$$
 
-$$E_{B_{R'}}(H\cdot U^{(x)})\le D\,L\,\mathrm{port}(x,U),\qquad \sum_{i\in B_R}\mathrm{ch}\big(p_y^{-1}h^{(x+y)}_i\,H_{i+Ly}^{-1}\big)\le C\,L^2\,\mathrm{port}(x,U)\quad(y\in B_2).$$
+*Status:* theorem. *Lean:* [`Pressure.qdc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L210-L252).
 
-Here $R'=R+4L=(J+7)L$ and $\mathrm{port}(x,U)=F_{B_{R'}}(U^{(x)})$ is the fine curvature in the macro-box around $x$. Every tag with $\lambda(U,t)>0$ is usable at every coarse site.
-*Status:* theorem.
-*Lean:* [`Pressure.planting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L72-L122), [`usable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L62-L63), [`wraps`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L65-L69), [`port`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L60), [`macroR`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L37).
+**Proposition III.1.9 (densities and histories).** Representations evaluate to an exponential of vacuum minus action and masked regular activities, times the gas. Flags mark sites touched by plaquettes of chord above threshold. Reading links and flags in $X$ requires only links in $X$ and corners of plaquettes meeting $X$. The gas equals $1$ without flags. Every lawful representation (path bounds and valid activities) has bounded Borel evaluation. Selected histories start at the bare Wilson density and obey exact pushes; every selected history satisfies $\int\mathrm{eval}_{N,p,m}d\mu=Z_{N,p}(\beta_{N,p,N})$ for all $m\le N$. *Status:* definitions, with four consequences proved; quantitative construction belongs to III.3–III.10. *Lean:* [`UsesFinal.allReads`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L108-L110); [`gas_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L135-L147); [`Rep.envelope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L195-L198); [`History.partition_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L242-L249).
 
-**Proposition III.1.8 (predicted versus actual coarse curvature).** For $G$, $K$, $j$ let $C_8=8\max(1,\varepsilon^{-1})(2C+D)$, with $C,D$ from III.1.7. Let $S$ be any step with constants $K$ and $J=j$. Then for all $U$ and $V$, every coarse site $x$, every tag $t$ usable at $x$ and every plane $p$:
+**Proposition III.1.10 (tube identity).** For every tube, path cutoff, real thresholds and $U,Q,V$, the six works satisfy
 
-$$\mathrm{ch}\big(Q(U,t)_{(x,p)}\big)\le \frac{C_8}{L^2}\,\mathrm{port}(x,U),\qquad \mathrm{ch}\big(V_{(x,p)}\big)\le \mathrm{fuel}(Q,V)_{(x,p)}+\frac{C_8}{L^2}\,\mathrm{port}(x,U).$$
+$$W_F+W_I+W_C+W_N+W_L+W_D=C_f+P-C_c,$$
 
-Here $Q_{(x,p)}$ denotes the plaquette holonomy, and $\mathrm{fuel}(Q,V)_{(x,p)}=\sum_{e\in\partial(x,p)}\mathrm{ch}(V_eQ_e^{-1})$ is the sum of the four *wires* of the plaquette, counted with multiplicity even when edges coincide on a short torus. The macro-box contains $6(2R^{\prime})^2(2R^{\prime}+1)^2$ internal plaquettes. Thus $L^{-4}\mathrm{port}$ differs from their average chord by a factor bounded above and below in terms of $J$ only. The bound therefore says that the coarse predicted plaquette is at most $C(G,K,J)\,L^2$ times the average fine curvature: the area scaling of the non-abelian Stokes formula, with no further loss in $L$.
-*Status:* theorem.
-*Lean:* [`Pressure.qdc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L210-L252), [`fuel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L189-L190), [`wire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L187).
+where $C_f,C_c$ are truncated crown sums and $P=\sum_b\kappa\,\mathrm{ch}(V_bQ_b^{-1})^2/2$. *Status:* theorem. *Lean:* [`Tube.locates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L145-L163).
 
-**Proposition III.1.9 (effective densities and RG histories).** The following definitions carry four elementary consequences.
+**Proposition III.1.11 (energy per seed).** Estimator data require: for every sufficiently large $L$ and then sufficiently large $W$, some $\kappa_0>0$ gives $\kappa_0t^2|A|\le\mathrm{Work}(A)$ at all sufficiently large reference couplings, uniformly over compatible tubes, forests and plots with trivial trunks and $c\ge100(1+\varrho)$. For a directed history satisfying ringing, each $J_0\le i\le j\le i+1$ admits $\mu>0$ such that $\mu t_{m+1}^2|A|\le\mathrm{Work}(A)$ for all $N,m<N,p$ with $(J_{m+1},J_m)=(j,i)$ and every plot at $(\hat\beta_m,F(j,i))$ with trivial trunks. *Status:* requirement, proved in III.10; transfer theorem here. *Lean:* [`Stores.Plot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L51-L58); [`Teller.Grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L129-L131); [`Testing.notation_ticket`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L166-L181).
 
-(a) *Budget points, flags, masks.* A budget point is a tuple (integer power $\ge2$, integer order $\ge6$, support exponent $>0$, cover size $B\ge1$, threshold $t\in(0,1]$). The flagged sites $\mathrm{flags}_t(U)$ are the sites touched by a plaquette of chord $>t$. $U$ is *healthy* on $X$ if $X\cap\mathrm{flags}_t(U)=\emptyset$, and the masked function is $\mathbf 1_{\{\text{healthy on }X\}}F$. A function is *regular* on $X$ if it depends only on links in $X$, is Borel and gauge invariant, and at each configuration healthy on $X$ is $C^q$ in exponential left increments, where $q$ is the order; its ordered left derivatives through order $q$ must exist. Its *sup bounds* control derivatives of orders $0,\ldots,q$ in directions with $|A_e|\le t(1+\mathrm{dist}(e^-,o))^{\rm power}$, where $e^-$ is the base of the positive link. *Theorem:* a function that reads the links in $X$ and the flags in $X$ depends only on the links in $\mathrm{inspected}(X)$, the union of $X$ and the corners of all plaquettes meeting $X$.
+**Proposition III.1.12 (kinetic specification).** Fix levels, a quadratic horizon, Haar-chart density and positive stage constants. Kinetic data assign shifts $\alpha$, path data and free-link maps $\psi$. Stages and factors agree with the fixed choices; rows attach to the horizon and satisfy stage bounds. At level $N$, the unmasked, unclipped action is analytic, matches Wilson derivatives through order four, and has zero loop coefficients. For every $m<N$, volume, forest and tag, let $\mathcal I_t$ be the fine unmasked, unclipped unit-coupling action without loops plus predictor penalty, on fields with trunks $1$ and free links $\exp(b_e)(\iota\exp u)_e$, where $\iota$ copies coarse links across block boundaries. Requirements, for every free field $v$, are
 
-(b) *Activities.* There are regular activities $E_i$, with an address (a site $o_i$ in a support $X_i$), and forced activities $K_i$, with a support $Y_i$, an inventory $\emptyset\ne I_i\subset Y_i$ and an extra test. *Validity* at bounds $\delta_E,w_K\ge0$ means the following:
+$$D_b^2\mathcal I_t(0,0)[v,v]\ge\eta\sum_{e\ {\rm free}}|v_e|^2,\qquad D_b\mathcal I_t(u,\psi(u))=0$$
 
-- $E_i$ is regular on $X_i$ and $E_i(1)=0$;
-- if $10\,\mathrm{dist}(y,o_i)<n$ for every $y\in X_i$, where $n$ is the torus side, the Hessian of $E_i$ at the trivial configuration vanishes on affine directions $A_{(y,\mu)}=a_\mu+\sum_\nu\widetilde{(y-o_i)}_\nu d_{\mu\nu}$, using the canonical centred lift $\widetilde{(y-o_i)}$; equivalently, $D^2[E_i(\exp A)]_{A=0}[A,B]=0$ for every two such directions $A,B$;
-- $K_i$ and its extra test are gauge invariant, Borel, and depend only on links and flags in $Y_i$; $K_i$ vanishes unless $Y_i\cap\mathrm{flags}_t=I_i$ and the test holds;
-- covariance under every element of $\mathfrak B_4$ and every base point (index permutations transporting addresses, inventories, tests and values);
-- there are nonnegative majorants $e_i,k_i$, with $e_i$ bounding the regular derivatives and $|K_i|\le k_i$, such that, for every site $x$,
+near zero: $\psi(0)=0$, both maps are analytic, $D\psi(0)$ is the prescribed background adjusted to tree gauge minus the linearized block copy, and the analytic coarse action matches $\mathcal I_t(u,\psi(u))$ through order four. Writing $H_t(u)=D_b^2\mathcal I_t(u,\psi(u))$ in physical coordinates,
 
-$$\sum_{i:o_i=x}e^{\sigma\,\mathrm{cov}_B(X_i)}e_i\le\delta_E,\qquad \sum_{i:x\in Y_i}e^{\sigma\,\mathrm{cov}_B(Y_i)}k_i\le w_K.$$
+$$T_t=\mathcal L_f^\circ(U_F(u,\psi(u)))+\tfrac12\log\det H_t-\log\prod_{e\ {\rm free}}J(\psi(u)_e),\qquad D=\alpha\mathcal Q_c^\circ(\exp u)+\mathcal L_c^\circ(\exp u).$$
 
-Here $\sigma$ is the support exponent and $\mathrm{cov}_B(X)$ is the least number of radius-$B$ balls with connected union covering $X$; both series are required to converge.
+$\mathcal L^\circ,\mathcal Q^\circ$ denote loop and quadratic actions; $J$ is the Haar-chart density. Both $T_t,D$ are analytic, $\det H_t>0$ near zero, and
 
-The *gas* is $\sum_b\prod_{i\in b}K_i(U)$, summed over finite families $b$ with pairwise disjoint supports whose inventories cover $\mathrm{flags}_t(U)$ exactly. *Theorem:* the gas equals $1$ when $\mathrm{flags}_t(U)=\emptyset$.
+$$|D^2T_t(0)[a,b]-D^2D(0)[a,b]|\le|\Lambda_c|\Theta\Lambda e^{-\gamma c}$$
 
-(c) *Leading action.* A clip has $c_{\rm dir}>16\,c_{\rm lin}>0$ and a relaxation length. Path data consist of row series $\ell_p(U)=\sum_kr_{p,k}\,\mathrm{slot}_k(U)$ (weighted parallel-transported curvatures) and loop, cubic and quartic atoms. Their bounds require exponentially weighted summability, invariance, the normalization $c_{\rm dir}\delta_{pq}+\sum_k\hat s_k(p)\hat s_k(q)=\delta_{pq}$ of the zero-momentum symbols (the sums of row coefficients at each plaquette orientation), and vanishing zeroth and first moments of the loop coefficients. The row term at a plaquette based at $x$ is kept exactly when $\mathrm{ch}(U_q)\le t\exp(\mathrm{dist}(x,q^-)/r_{\rm rel})$ for every plaquette $q$, where $r_{\rm rel}>0$ is the relaxation length and $q^-$ its base. The per-plaquette term is $\mathrm{clip}_t(\mathrm{ch}U_p)+\mathbf 1_{\rm kept}\tfrac12|\ell_p(U)|^2$, where $\mathrm{clip}_t(s)=c_{\rm dir}s^2/2$ for $s\le t$ and $c_{\rm lin}ts$ for $s>t$. The atoms are masked by health on their path and plaquette footprints. The leading action $\mathcal S$ is the $\mathfrak B_4$-average of $\beta\,[\sum_p(\cdot)+\text{cubic}+\text{quartic}]+\text{loop}$. A representation $\mathcal R=(\text{path data, clip, activities}, p,\beta,v)$ evaluates to $\mathrm{eval}_{\mathcal R}=\exp\big(v|\Lambda|-\mathcal S-\sum_i\mathbf 1_{\rm healthy}E_i\big)\cdot\mathrm{gas}$. *Theorem:* if $\mathcal R$ is lawful (path bounds and valid activities), then $\mathrm{eval}_{\mathcal R}$ is Borel and bounded on that finite torus.
+for real plane waves with direction-colour amplitudes bounded by $1$; $\Lambda$ is the fine loop bound. Also $|\alpha+\kappa_{\rm slope}\log L_m|+1\le\mathrm{drift}_{m+1}$. Directed histories require paid levels, a sufficient horizon, matching recipe and local Haar-chart formula. Moves require exact push, continuation, retention, lawful coarse data, forced-activity bound $\exp[-g_j\mathrm{monitor}_{m+1}^2]$, and $|\beta_m-\beta_{m+1}-\alpha|\le1$. *Status:* definitions; conditional constructors for simple nonabelian $\mathfrak g$ belong to III.2. *Lean:* [`Kin.Planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115); [`Directed.Move`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L49-L55).
 
-(d) *Histories.*
+**Proposition III.1.13 (tree gauge).** For odd $L$, block forests exist. Inverse tree transport gives a gauge equal to $1$ at roots, depending only on trunks, and trivializing them. Every real-Banach-valued integrable $F$ invariant under gauges trivial at roots satisfies $\int Fd\mu_f=\int F(\mathrm{drape}\,s)d\mu_{\rm free}(s)$. For a kernel satisfying III.1.2(a) and gauge-invariant integrable $F$, the same reduction applies to $\mathcal P_\beta F(V)$. *Status:* theorem. *Lean:* [`Forest.pack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L81-L111); [`Forest.pushing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L114-L120).
 
-- A *calendar* holds torus sides $n_{m,p}$ and factors $L_m$, with $n_{m+1,p}=L_m n_{m,p}$ and $\mathrm{scale}(m)=\sum_{k<m}\log L_k$, the kernel constants, the barrier $\bar\beta>0$, stage constants, orders $J_m\ge4$ and exponents $\theta$. It sets $\hat\beta_m=\bar\beta+\kappa_{\rm slope}\,\mathrm{scale}(m)$, $t_m=\mathrm{temp}(\hat\beta_m)$ and cover size $\lceil(\log\hat\beta_m)^2\rceil$.
-- Step $m$ goes from level $m+1$ to level $m$, with patch $(L_m,J_{m+1})$.
-- The *fits* conditions include: $J_m$ nondecreasing with $J_{m+1}\le J_m+1$ and $J_m\to\infty$; $\hat\beta_m>1$; $t_m\le1$; the level-$m$ torus side at least $100(\text{cover size}_m+1)$ and the fine side of step $m$ at least $100(R_m+1)$; drift and logarithmic-cost bounds.
-- *Levels* means a calendar with its fits conditions and block control at every step.
-- A history assigns a representation $\mathcal R_{N,p,m}$ to each mesh index $N$, volume $p$ and level $m\le N$. It is *selected* if: the path data do not depend on $p$; each $\mathcal R_{N,p,m}$ has the assigned level-$m$ clip and budget point and is lawful with the level-$m$ constants and $\beta_{N,p,m}\in[\hat\beta_m/2,2\hat\beta_m]$; $v_{N,p,N}=0$ and $\mathrm{eval}_{N,p,N}$ is the bare Wilson density; $\mathrm{eval}_{N,p,m}=\mathcal P_{\beta_{N,p,m+1}}\mathrm{eval}_{N,p,m+1}$ with $|\beta_{m+1}-\beta_m-\kappa_{\rm slope}\log L_m|\le\mathrm{drift}_{m+1}$; $\beta_{N,p,0}=\bar\beta$; and $|\beta_{N,p,m}-\hat\beta_m|=o(\mathrm{scale}(m))$ uniformly in $N,p$.
-
-The lawful bounds at level $m$ use the stage path width and row and higher-atom bound, the loop bound $2\,\mathrm{monitor}_m^{\theta(J_m)}$, and activity bounds $\delta_E=\hat\beta_m^{-11/10}$ and $w_K=\exp[-\mathrm{monitor}_m^{1/5}]$, where $\mathrm{monitor}_m=\exp[(\log\log\hat\beta_m)^2]$.
-
-The remaining fits conditions are: $\log L_m/\mathrm{scale}(m)\to0$; $L_m$ is the factor assigned to order $J_{m+1}$, and the assigned factors are nondecreasing; the derivative orders, powers and support exponents are nondecreasing along the levels; $\theta$ is antitone with $0<\theta(J_m)\le J_m^{-1}$; and
-
-$$\frac{\mathrm{drift}_{m+1}}{\log L_m}\le J_{m+1}^{-2},\qquad \frac{\log(1+C_{m+1}+\sigma_{m+1}^{-1}+C^{\rm col}_{m+1}+r_{m+1}+s_{m+1})}{\log L_m}\le J_{m+1}^{-2}.$$
-
-Here $C,\sigma,C^{\rm col},r,s$ are the stage path bound, path width, column bound, relaxation length and support exponent.
-
-*Theorem:* for a selected history, $\int\mathrm{eval}_{N,p,m}\,d\mu=Z_{N,p}(\beta_{N,p,N})$, the Wilson partition function, for every $m\le N$.
-
-*Status:* definitions. The four theorems are proved. The quantitative path and activity bounds needed to construct such histories belong to III.3–III.10.
-*Lean:* [`BudgetPoint`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L125-L136), [`BudgetPoint.Regular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L154-L161), [`flags`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L34-L36), [`UsesFinal.allReads`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L108-L110), [`Activities`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L62-L66), [`RegularFamily`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L70-L75), [`ForcedFamily`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L77-L84), [`Moves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L87-L96), [`Valid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L106-L111), [`admissible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L114-L116), [`gas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L129), [`gas_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L135-L147), [`Clip`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L139-L146), [`PathData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154), [`PathData.Bounds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L173-L185), [`baseTerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L221-L224), [`principal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L236-L238), [`inChannels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L241-L242), [`Rep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L165-L171), [`Rep.eval`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L179), [`Rep.envelope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L195-L198), [`Calendar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L64-L73), [`Calendar.Fits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L97-L118), [`Levels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L131-L134), [`Levels.budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L141-L156), [`History`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L204-L206), [`History.Selected`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L234-L240), [`History.partition_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L242-L249).
-
-**Proposition III.1.10 (the tube identity).** A *tube* for a step is a tower of transfer kernels together with path data and clips at the fine level (up) and at the coarse level (down). Fix a path-length cutoff, a fine threshold $t$ and a coarse threshold $s$. From $V$ one builds:
-
-- the *vision* $w$ (the thinned coarse curvature and row data);
-- linear maps $\Phi,\Phi',\mathcal N$, assembled from the adjoint action of parallel transports of $V$ along cut-off routes;
-- the fine data $X_f(U)$, the coarse data $X_n(V)$, and the noise field $Z_b=\sqrt\kappa\,\mathrm{curv}(V_bQ_b^{-1})$.
-
-Use counting inner products and norms on these finite arrays. Let $C_f$ and $C_c$ be the sums of the fine and coarse per-plaquette crowns, and let $P=\sum_b\tfrac\kappa2\,\mathrm{ch}(V_bQ_b^{-1})^2$. A crown is the clipped direct term plus half the kept row's squared physical norm, with the row truncated at the path cutoff. The totals of the six local works are
-
-$$\begin{aligned}
-W_F&=C_f+\tfrac12\|\Phi w\|^2-\langle\Phi w,X_f\rangle,&
-W_I&=P+\tfrac12\|\Phi'w\|^2-\langle\Phi'w,Z\rangle,\\
-W_C&=\langle w,X_n\rangle-\tfrac12\|w\|^2-C_c,&
-W_L&=\langle w,\Phi^\dagger X_f+\Phi'^\dagger Z-X_n\rangle,\\
-W_N&=\tfrac12\|\mathcal Nw\|^2,&
-W_D&=\tfrac12\langle w,(1-\Phi^\dagger\Phi-\Phi'^\dagger\Phi'-\mathcal N^\dagger\mathcal N)w\rangle .
-\end{aligned}$$
-
-For every path cutoff, thresholds $t,s\in\mathbb R$ and configurations $U,Q,V$,
-
-$$W_F+W_I+W_C+W_N+W_L+W_D=C_f+P-C_c.$$
-
-The fine and coarse data have two components per plaquette: $\sqrt{c_{\rm dir}}\,\mathrm{curv}(U_p)$ and the truncated row, using the respective clip and configuration. The fine transfer uses parallel transports of the blockwise copy of $V$; the other two maps use $V$ on the coarse torus. The vision caps the direct component by $\min(1,s/\mathrm{ch}(V_p))$, taking this factor to be $1$ at zero chord, and masks the row by the kept condition. For the local works, assign each square or inner-product summand to its array coordinate. The two components at each plaquette are summed together: $W_F$ is indexed by fine plaquettes, $W_I$ by coarse links, $W_C,W_L,W_D$ by coarse plaquettes, and $W_N$ by coarse gain coordinates. The crowns and penalties are charged at the same indices.
-
-*Status:* theorem (an algebraic identity).
-*Lean:* [`Tube`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L94-L99), [`Tube.locates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L145-L163), [`workF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L122-L124), [`workD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L138-L140).
-
-**Proposition III.1.11 (energy per seed: the requirement, and its transfer to a history).**
-
-*The requirement.* Write $\hat\beta$ for the coarse reference coupling, $t=\mathrm{temp}(\hat\beta+\kappa_{\rm slope}\log L)$ for the fine-level threshold and $\varrho=\lceil(\log\hat\beta)^2\rceil$ for the cluster radius.
-
-- A *store* $A$ is a finite set of fine plaquettes (costs), coarse links (aisles) and coarse sites (flags). Its size $|A|$ is the sum of the three cardinalities. Its locations are the parent coarse sites of all corners of its fine plaquettes, both endpoints of its coarse links, and its coarse sites. Write $D_r(A)$ for their radius-$r$ neighbourhood, using the maximum-norm distance on the coarse torus.
-- $(A,U,k,V)$ is a *plot* at $(\hat\beta,W)$ if the following conditions hold:
-  - every fine plaquette whose parent-corner set meets $D_{5\varrho}(A)$ has chord $\ge t/4$ if it belongs to $A$, and $\le t/2$ otherwise;
-  - every coarse link with an endpoint in $D_{5\varrho}(A)$ has wire $\mathrm{ch}(V_bQ_b(U,k)^{-1})\ge Wt$ if it belongs to $A$, and $\le2Wt$ otherwise;
-  - on $D_{5\varrho}(A)$, the coarse sites in $A$ are exactly $\mathrm{flags}_{\mathrm{temp}(\hat\beta)}(V)$;
-  - every site in $D_{5\varrho}(A)$ has positive frame mass under $k$.
-- The *estimator data* fix kernel constants, two stage records, an order $j$, a decay width $\eta>0$ and a bound $C$. A tube is *compatible* with these data if the kernel and order agree, the branch conditions hold, and its transfer kernels have decay bounds through $j-2$ forward fine-coordinate differences: the fine transfer row has bound $C/L^2$, and differences of order $q$ of the background and curvature kernels have bounds $C/L^{1+q}$ and $C/L^{2+q}$. Its other two rows have bound $C$. The clips, path widths and row and higher-atom bounds are those of the two stages, with some finite loop bounds; the path rows must also be attached to quadratic metrics satisfying the tower's transfer identities (III.3).
-- The *energy bound* at $(L,W,\kappa_0)$ holds if for all sufficiently large $\hat\beta$ the following inequality is true. The threshold for $\hat\beta$ depends on the estimator data, $L$, $W$ and $\kappa_0$, not on the torus. The inequality is required for every step with factor $L$ and coarse side $c\ge100(1+\varrho)$, every compatible tube, every forest, and every plot with $U\equiv1$ on its trunks:
-
-  $$\kappa_0\,t^2\,|A|\ \le\ \mathrm{Work}(A).$$
-
-  Here $\mathrm{Work}(A)$ sums the six local works of III.1.10 with path cutoff $\lfloor\varrho/10^5\rfloor$: a fine plaquette is included when its base's parent lies in $D_{2\varrho}(A)$, and a coarse plaquette, link or gain coordinate is included when its base lies there.
-- The estimator data satisfy the *energy-per-seed requirement* if there is $L_0$ such that for every $L\ge L_0$ and every sufficiently large $W$ there is $\kappa_0>0$ for which the energy bound holds.
-
-*The transfer (theorem).* Let $B$ be a directed history and suppose the *ringing* condition holds: for each pair of orders $j_{\min}\le i\le j\le i+1$, the inequality holds with some $\mu>0$ for every coarse reference coupling above the assigned entry threshold and wire parameter $F(j,i)>0$. Here $j_{\min}=J_0$ is the first admissible order. Then for each such pair there is $\mu>0$ with the following property. For all $N$, all $m<N$ with $J_{m+1}=j$ and $J_m=i$, all $p$, and every plot at $(\hat\beta_m,F(j,i))$ with $U$ trivial on the trunks,
-$$\mu\,t_{m+1}^2\,|A|\le\mathrm{Work}(A).$$
-This uses $\hat\beta_{m+1}=\hat\beta_m+\kappa_{\rm slope}\log L_m$, so that $t=\mathrm{temp}(\hat\beta_{m+1})=t_{m+1}$.
-
-*Status:* the requirement is a definition (a hypothesis of other units). It is proved for every choice of estimator data in III.10 ([`Next.Fluctuations.grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L24)). Its proof applies [`Integrated.pressure_grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L222-L225), which follows from the work items E01–E09 and from the coarse-row bound [`EBare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Energy.lean#L148), itself proved by [`Fluctuations.bare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Bare.lean#L64-L120). The ringing condition is derived from these grants by raising the $\beta$-entry thresholds ([`Bid.pricing_order`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Energy.lean#L173-L202), [`pressure_pricing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L32-L37), III.10). The transfer is a theorem of this unit; its constant is uniform in $N,m,p$ for the fixed pair $(j,i)$.
-*Lean:* [`Stores`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L34-L37), [`Stores.Plot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L51-L58), [`Stores.assessed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L85), [`Teller`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L89-L96), [`Teller.Funds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L101-L109), [`Teller.live`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L114-L118), [`Teller.cash`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L124-L125), [`Teller.Grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L129-L131), [`Testing.Stamp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L155-L158), [`Testing.Ringing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L161-L163), [`Testing.notation_ticket`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L166-L181).
-
-**Proposition III.1.12 (kinetic specification of a directed history).** Fix levels, a horizon of quadratic kernels, a local exponential-chart density and positive stage constants. Kinetic data assign, for each $N,m$, a shift $\alpha_{N,m}$ and path data, and, for each volume and forest $F$, a map $\psi$ from coarse Lie-algebra fields to Lie-algebra fields on the free fine links.
-
-To state the stationary requirements, let $\mathcal A_f^\circ$ be the unmasked, unclipped fine action with coupling $1$ and without loop terms, averaged over signed symmetries. Write $\mathcal L_f^\circ$ for the corresponding loop action and $\mathcal Q_c^\circ$ for the coarse quadratic part. For a coarse field $u$ and a free-link field $b$, let $V=\exp u$ and form $U_F(u,b)$ by putting $1$ on trunks and $\exp(b_e)(\iota V)_e$ on free links, where $\iota V$ is $1$ on internal links and copies $V$ on links crossing blocks. For each tag $t$, set
-
-$$\mathcal I_t(u,b)=\mathcal A_f^\circ(U_F(u,b))+\kappa\sum_e\mathrm{pr}\big(V_eQ_e(U_F(u,b),t)^{-1}\big).$$
-
-The kinetic requirements are:
-
-- (i) the stages and block factors agree with the fixed choices;
-- (ii) for every $m\le N$, the path rows are attached to the horizon's quadratic kernels and satisfy the stage bounds of III.1.9(c);
-- (iii) at level $N$, the unmasked, unclipped action is analytic and has the same derivatives of orders $0,\ldots,4$ at $0$ as the Wilson energy in exponential coordinates, and every loop coefficient vanishes;
-- (iv) for $m<N$, with the prescribed positive stage constant $\eta$, every volume and every forest satisfy
-  $$D_b^2\mathcal I_t(0,0)[v,v]\ge\eta\sum_{e\ {\rm free}}|v_e|^2$$
-  for every $t,v$. The map $\psi$ is analytic at $0$, with $\psi(0)=0$; each $\mathcal I_t$ is analytic at $(0,0)$, and $D_b\mathcal I_t(u,\psi(u))=0$ near $0$. The derivative of $\psi$ is the prescribed linear background, adjusted to tree gauge, minus the linearized copy $\iota_1u$, restricted to free links. Explicitly, if $\mathcal Bu$ is the horizon's linear background, put
-  $$\chi_u(y)=\int_{y\to{\rm root}(y)}\mathcal Bu-(\mathcal F\mathcal Bu)({\rm parent}(y)),\qquad D\psi(0)u=(\mathcal Bu+d_0\chi_u-\iota_1u)|_{\rm free},$$
-  where the integral follows the forest and $\mathcal F$ is defined in III.1.14. Finally the unmasked coarse action $\mathcal A_c^\circ(\exp u)$ is analytic at $0$ and has the same derivatives as $\mathcal I_t(u,\psi(u))$ of every order through $4$, for every $t$;
-- (v) for $m<N$,
-  $$|\alpha_{N,m}+\kappa_{\rm slope}\log L_m|+1\le\mathrm{drift}_{m+1};$$
-- (vi) for $m<N$ and every volume and forest, let $H_t(u)$ be the Hessian of $\mathcal I_t(u,\cdot)$ at $\psi(u)$, in the counting basis of the physical Lie-algebra coordinates, and define
-  $$T_t(u)=\mathcal L_f^\circ(U_F(u,\psi(u)))+\tfrac12\log\det H_t(u)-\log\prod_{e\ {\rm free}}J(\psi(u)_e),\qquad D(u)=\alpha_{N,m}\mathcal Q_c^\circ(\exp u)+\mathcal L_c^\circ(\exp u).$$
-  For every tag $t$, $\det H_t>0$ near $0$, both $T_t$ and $D$ are analytic at $0$, and
-  $$|D^2T_t(0)[a,b]-D^2D(0)[a,b]|\le|\Lambda_c|\,\Theta\Lambda e^{-\gamma c}$$
-  for any two real plane waves $a,b$. Each wave is the real part of a lattice Fourier character times a complex amplitude whose every direction and colour component has modulus at most $1$. Here $\Theta,\gamma>0$ are the assigned stage constants, $\Lambda$ is the fine loop bound, and $c$ is the coarse torus side.
-
-A *directed history* consists of paid levels (III.2), a horizon satisfying the decay, positivity and transfer identities of III.3, kinetic data satisfying (i)–(vi), and a recipe with the same path data. It also carries a local Haar-chart formula: on some ball $B_r\subset\mathfrak g$, the exponential is injective with open image, $J$ is positive and analytic, $J(0)=1$, and the pushforward of $c_JJ(X)\,dX$ is Haar measure restricted to that image, for some $c_J>0$; $J$ is Borel globally.
-
-A *move* between a fine representation $\mathcal R_{m+1}$ and a coarse representation $\mathcal R_m$ requires the exact push identity, the recipe's continuation and retention conditions, and agreement of the coarse path data, clip, norm parameters and lawful bounds with level $m$. It also requires a forced-activity bound $\exp[-g_j\,\mathrm{monitor}_{m+1}^2]$, where $g_j>0$ is prescribed and $j=J_{m+1}$, and
-$$|\beta_m-\beta_{m+1}-\alpha_{N,m}|\le1.$$
-Together with (v), this implies the drift bound of III.1.9(d).
-
-*Status:* definitions of requirements. For simple nonabelian $\mathfrak g$, the conditional construction theorems [`Roost.companyK`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Linger.lean#L23-L51) and [`FundedCompanySelection.company`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection/FundedCompanySelection.lean#L49-L106) supply directed histories with prescribed paid levels as part of the assembly in III.2. The kinetic requirements themselves do not assert a coupling reset.
-
-*Lean:* [`PriceGap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L100-L101), [`Critical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L88-L91), [`Guessed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L97-L98), [`ClassicalMatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L108-L109), [`extracted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L26-L27), [`Horizon.Suffices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139), [`Kin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77), [`Kin.Planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115), [`FiniteBound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71), [`thermal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L46-L49), [`hessian`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L42-L44), [`LocalRatio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L28-L38), [`Directed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36), [`Directed.Move`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L49-L55).
-
-**Proposition III.1.13 (tree gauge on blocks).** Functions in (c)–(d) take values in a real Banach space. A *forest* assigns to every non-root fine site $y$ (one with $y\ne L\cdot\mathrm{parent}(y)$) a unit step $\mathrm{up}(y)$ and a height $\le4L$, such that the height decreases along $\mathrm{up}$ and the parent block does not change. The *trunks* are the links used by these steps; the others are *free*.
-
-- (a) For odd $L$ a forest exists: choose an axis on which the offset from the block root is nonzero and step towards the root, with the $\ell^1$ norm of the offset as height.
-- (b) Gauging by $\mathrm{fold}_y=T_U(y\to\text{root along the tree})^{-1}$ makes every trunk link equal to $1$. Moreover $\mathrm{fold}$ is $1$ at the roots and depends only on the trunk links.
-- (c) If $F\in L^1(\mu_f)$ is invariant under gauge transformations equal to $1$ at the block roots, then $\int F\,d\mu_f=\int F(\mathrm{drape}\,s)\,d\mu_{\rm free}(s)$. Here $\mathrm{drape}\,s$ has trunk links $1$ and free links $s$, and $\mu_{\rm free}$ is product Haar measure on the free links.
-- (d) Hence, if $\rho_\beta$ is a kernel satisfying III.1.2(a) and $F$ is gauge invariant and integrable, then $(\mathcal P_\beta F)(V)=\int\rho_\beta(\mathrm{drape}\,s,V)\,F(\mathrm{drape}\,s)\,d\mu_{\rm free}(s)$.
-
-*Status:* theorem.
-*Lean:* [`Tree.Forest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L24-L29), [`Tree.select`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L33-L72), [`Forest.compress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L32-L37), [`Forest.names`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L39-L45), [`Forest.pack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L81-L111), [`Forest.pushing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L114-L120).
-
-**Proposition III.1.14 (prediction near the trivial configuration).** Assume (B1)–(B3). For a $\mathfrak g$-valued 1-form $v$ on $\Lambda_f$, let $U_v=(\exp v_e)_e$. Then for every tag $t$ and coarse link $b=(x,i)$:
-
-- (a) $Q_b(U_0,t)=1$;
-- (b) $v\mapsto Q_b(U_v,t)$ is real analytic near $v=0$; in a sufficiently small neighbourhood all patch frames and bond predictors use their minimizing branches;
-- (c) the derivatives at $v=0$ are, componentwise in $\mathfrak g$,
-
-$$\tfrac{d}{ds}h^{(x)}_y(U_{sv})\big|_{0}=\tau_x(y)-\tau_x(0),\qquad \tfrac{d}{ds}Q_b(U_{sv},t)\big|_{0}=(\mathcal Mv+d_0\mathcal Fv)(b).$$
-
-Here $d_0\varphi(x,i)=\varphi(x+e_i)-\varphi(x)$ and $\tau_x(y)=-\mathrm{avg}_{z\in B_R}\mathrm{avg}_{o}\int_{\mathrm{route}(Lx+y\to Lx+z;\,o)}v$, $(\mathcal Mv)(x,i)=\sum_yw_y\int_{Lx+y}^{Lx+y+Le_i}v$ (a straight line integral), and $(\mathcal Fv)(x)=\tau_x(0)-\sum_yw_y\tau_x(y)$.
-- (d) The linearization $\mathcal Q=\mathcal M+d_0\mathcal F$ is independent of $t$ and maps fine pure gauge to coarse pure gauge: $\mathcal Q\,d_0\varphi=d_0(\varphi\circ\mathrm{embed})$.
-
-*Status:* theorem, with the neighbourhood allowed to depend on the fixed step. Since both tag laws are locally uniform, the kernel itself is analytic in fine and coarse exponential coordinates near $(1,1)$ for each fixed $\beta$.
-*Lean:* [`Push.settled`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L113-L116), [`Push.prediction_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L118-L124), [`Push.derivative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L38-L68), [`Push.prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L147-L160), [`Precision.probe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L68), [`Precision.root_gradient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L92-L96).
+**Proposition III.1.14 (linearization).** Under (B1)–(B3), for every tag $t$ and coarse link $b$, $v\mapsto Q_b((\exp v_e)_e,t)$ on fine $\mathfrak g$-valued $1$-forms equals $1$ at $v=0$ and is real analytic nearby, using minimizing branches. Its tag-independent derivative is $\mathcal Qv=\mathcal Mv+d_0\mathcal Fv$, and $\mathcal Qd_0\varphi=d_0(\varphi\circ\mathrm{embed})$ for every fine $0$-form. Frames have derivative $h_y^{(x)\prime}=\tau_x(y)-\tau_x(0)$. The kernel is analytic near $(1,1)$ for fixed $\beta$; neighbourhoods may depend on the step. *Status:* theorem. *Lean:* [`Push.derivative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L38-L68); [`Push.prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L147-L160).
 
 <a id="unit-inputs"></a>
 
 ## 2. What it uses
 
-**From other units.**
-
-- I.1 (lattice, gauge groups). This unit uses:
-  - the torus and its cover $\mathbb Z^4$, the block subdivision (root, parent), coordinate routes, slabs and layers, parallel transport and its gauge rule, the signed symmetries, and the lattice forms with $d\circ d=0$;
-  - the gauge group data: chord, price, conjugation invariance, probability Haar measure and its two-sided invariance, the exponential map;
-  - the nearest-point map $\pi$ of $G\subset M_N(\mathbb C)$: uniqueness of the nearest point within a tubular radius $r_G$ ([`nearest_tube`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L141-L153)); analyticity of $\pi$ near $1$ with $D\pi(1)=\Pi_{\mathfrak g}$ ([`focus_deriv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L155-L170)); the strict-differentiability bound $\|\pi(X)-\pi(Y)-\Pi_{\mathfrak g}(X-Y)\|\le\eta\|X-Y\|$ for $X,Y$ near $1$ ([`nearest_approximate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L172-L181)); and the first-order condition that $1$ nearest to $X$ implies $X-1\perp\mathfrak g$ ([`nearest_normal_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L43-L63));
-  - the Wilson energy, the prior and the partition function; and $C_A$ ([`casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182)).
-- III.16 (analytic tools): the $\ell^1$ size of lattice offsets used for forest heights ([`Laurent.size`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L34)).
-- III.2 (constants and schedules): the staged choices of kernel and analytic constants, block sizes, entry thresholds, barrier and windows, with their compatibility conditions ([`Paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162)). They enter the statements of III.1.11–III.1.12.
-- III.10: the proof of the energy-per-seed requirement (see III.1.11). III.2 supplies directed histories (see III.1.12).
-
-**Standard mathematics.**
-
-- Block-spin renormalization for lattice gauge fields, in the background-field and axial-gauge setting: T. Bałaban, *Propagators and renormalization transformations for lattice gauge theories I, II*, Comm. Math. Phys. 95 (1984) 17–40, 96 (1984) 223–250; *Averaging operations for lattice gauge theories*, CMP 98 (1985) 17–51; *Spaces of regular gauge field configurations on a lattice and gauge fixing conditions*, CMP 99 (1985) 75–102; *Renormalization group approach to lattice gauge field theories I, II*, CMP 109 (1987) 249–301, 116 (1988) 1–22.
-- Axial and tree gauges, and the absence of a Faddeev–Popov factor for compact groups: E. Seiler, *Gauge theories as a problem of constructive quantum field theory and statistical mechanics*, Lecture Notes in Physics 159 (1982). Curvature controls the connection in a suitable gauge (continuum analogue): K. Uhlenbeck, CMP 83 (1982) 31–42.
-- Least-squares group synchronization: A. Singer, *Angular synchronization by eigenvectors and semidefinite programming*, Appl. Comput. Harmon. Anal. 30 (2011) 20–36. Extrinsic means on embedded manifolds: R. Bhattacharya, V. Patrangenaru, Ann. Statist. 31 (2003) 1–29.
-- The tubular neighbourhood theorem and the nearest-point projection; the real-analytic implicit function theorem (Krantz–Parks, *The Implicit Function Theorem*, Birkhäuser 2002), as in [`Push.authored`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Implicit.lean#L27-L50).
-- Continuity of a unique minimizer depending on a parameter, when the argmin relation is closed and the target compact ([`minArg_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L20-L36)). Fubini's theorem, Jensen's inequality, and invariance of Haar measure.
-
-**Imported constants and assumptions.**
-
-- The constants $d(G)$, $r_G$ and $A(G)$, and the clustering constant of Lemma 4.14, depend only on $G$, through $\pi$. The kernel and geometric theorems require no simplicity assumption. The construction of directed histories cited in III.1.12 assumes that the Lie algebra of $G$ is simple and nonabelian.
-- The kernel constants are chosen before the block factors ("pre-$L$"). $L$ odd $\ge3$ and $J\ge4$ are part of the patch; in a calendar, $J_m$ and $L_m$ come from III.2.
-- $\kappa_{\rm slope}=11C_A/(24\pi^2)$ enters only through $\hat\beta_m$ and the identity $\hat\beta_{m+1}=\hat\beta_m+\kappa_{\rm slope}\log L_m$.
-- The energy-per-seed requirement (III.1.11) and the kinetic data (III.1.12) are hypotheses here, discharged in III.10 and III.2 respectively.
+- I.1: lattice geometry, Haar invariance, Wilson energy and nearest-point projection.
+- III.16: offset lengths; III.2: schedules and directed histories; III.10: energy estimates.
+- Tubular neighbourhood theorem, analytic implicit function theorem, Fubini, Jensen, continuity of unique compact minimizers.
 
 <a id="unit-strategy"></a>
 
 ## 3. Strategy
 
-The step follows the block-spin method: fix a frame around each coarse site, transport across coarse links, average the connectors, and add independent Haar-normalized Wilson noise. Two rules define the frames on all configurations. When route holonomies in axial gauges are small, least-squares synchronization gives a unique frame normalized at the centre. Otherwise an axial frame is chosen uniformly among tags satisfying the curvature bound. The predictor likewise uses a unique nearest point to the weighted matrix mean when the minimum price is small, and a connector sampled with weight $w$ otherwise. Uniqueness and symmetric sampling make these rules covariant. The tag probabilities sum to $1$, and the noise has total mass $1$, so the full kernel is normalized.
-
-The branch cutoffs are independent of the number of patch sites. For frame uniqueness, normalize each minimizer by a nearest point to its centroid. Centroid differences then have zero tangential projection, making the feedback comparison a contraction. Predictor uniqueness follows from the tubular neighbourhood of $G$. Eligible axial frames exist by induction over coordinate slabs: choose a layer of least curvature, fix its gauge, and compare the other layers by plaquette bounds.
-
-For quantitative control, one axial gauge on the macro-box synchronizes the surrounding patch frames. Each frame defect costs $O(L^2)$ times the curvature sum; the averaging weight contributes $L^{-4}$. Fine transports cost another $L$ times a link sum of order $L$, giving the same $L^{-2}$ coarse-curvature estimate. Near the trivial configuration, the analytic implicit function theorem gives the frame and predictor derivatives. Tree gauge then reduces integration to free links. These geometric and analytic results enter the later energy estimates and stationary-branch analysis.
+Minimize the average route price to fix centre-normalized frames, transport across blocks, and average the connectors. The predictor $Q$ is the nearest group point to their weighted matrix mean on its minimizing branch. The kernel averages $\prod_b Z_\beta^{-1}e^{-\beta\kappa\mathrm{pr}(V_bQ_b^{-1})}$ over tags, with $Z_\beta=\int_Ge^{-\beta\kappa\mathrm{pr}(g)}dg$. Unique minimizers handle small fields; symmetric sampling of curvature-controlled axial frames and connectors handles the remaining configurations. A common macro-box gauge compares neighbouring frames.
 
 <a id="unit-steps"></a>
 
 ## 4. Steps
 
-### 4.1 The kernel and its normalization
-
-**Lemma 4.1 (the tag law is a probability).** Under (B3), $\sum_t\lambda(U,t)=1$.
-*Sketch:* first sum over the bond tags with the frame tags fixed. The connectors are then fixed, and each bond factor sums to $1$: the mass is uniform on the minimizing branch, and it is $w$, with $\sum w=1$, otherwise. The remaining sum factorizes over coarse sites, and each frame factor sums to $1$: the mass is uniform on all tags, or on the nonempty eligible set.
-*Lean:* [`StepData.chosen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L123-L136), [`frameMass_sum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L127-L136), [`predictorMass_sum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L138-L144).
-
-**Lemma 4.2 (Borel measurability).** Under (B1)–(B2), for each tag the frames, connectors, predictions and $\lambda(U,t)$ are Borel functions of $U$.
-*Sketch:* $M_\delta$ and $\{\min\Phi_Y<\varepsilon\}$ are open. The argmin relations are closed and the targets compact, so a unique minimizer depends continuously on the parameter. Hence the selected frame is continuous on $M_\delta$ and the minimizing predictor is continuous where $\min\Phi_Y<\varepsilon$. For a fixed tag, fallback frames are continuous in $U$. Eligibility is a closed condition. Piecewise definitions over Borel sets are Borel.
-*Lean:* [`minArg_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L20-L36), [`selected_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L50-L53), [`best_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L55-L61), [`min_open`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L63-L67).
-
-**Lemma 4.3 (Proposition III.1.1).**
-*Sketch:* for each link, right invariance of Haar measure moves $Q_b$ to $1$, so $\int Z_\beta^{-1}e^{-\beta\kappa\,\mathrm{pr}(V_bQ_b^{-1})}dV_b=1$. Fubini over the coarse links then gives $\int\rho_\beta\,dV=\sum_t\lambda=1$. The noise is continuous on a compact space, hence bounded by some $A_\beta$, and $\rho_\beta\le A_\beta\sum_t\lambda=A_\beta$. The properties of the push follow from Fubini for the bounded kernel times an integrable $F$.
-*Lean:* [`noise_mass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L146-L155), [`density_total`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L197-L201), [`density_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L184-L190), [`push_slice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L17-L24), [`push_integral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L37-L43).
-
-### 4.2 Covariance
-
-**Lemma 4.4 (gauge covariance of the patch data).** Assume (B1)–(B2). For every $k:\mathbb Z^4\to G$, $M_\delta$, the eligible sets and frame masses are unchanged under $W\mapsto k\cdot W$, and the frame becomes $h_y\mapsto k_0h_yk_y^{-1}$. For a gauge $k:\Lambda_f\to G$, the connector of $(x,i)$ becomes $k_{Lx}\,Y_y\,k_{L(x+e_i)}^{-1}$. The prediction transforms in the same way, with unchanged bond mass.
-*Sketch:* $T_{k\cdot W}(y\to z;o)=k_yT_W(y\to z;o)k_z^{-1}$, and ch, pr are class functions. Then $S_{k\cdot W}(k_0hk^{-1})=S_W(h)$, the normalization $h_0=1$ is preserved, and (B1) identifies the minimizer. The axial costs are conjugated, hence unchanged. $\Phi_{uYv}(uqv)=\Phi_Y(q)$, and (B2) identifies the minimizer.
-*Lean:* [`frame_gauged`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L111-L133), [`min_gauged`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L106-L109), [`updateGauged`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L150-L157), [`bond_gauge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L54-L62), [`predicts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L23-L35).
-
-**Lemma 4.5 (lattice-symmetry covariance of the patch data).** Assume (B1)–(B2). Let $s\in\mathfrak B_4$ act about the centre of a patch. Then:
-
-- $M_\delta$ is invariant; this is why all 24 orderings enter its definition;
-- frame tags are permuted by $(r,o)\mapsto(s r,\,\bar s\circ o)$, where $\bar s\in S_4$ is the underlying axis permutation, and eligibility and masses correspond;
-- the frame at tag $t$ for $s_0W$ equals the frame at the transformed tag for $W$, composed with $s$;
-- $w$ is invariant;
-- after reindexing site tags, the connector for the transformed field equals the original connector at the image link, composed with $s$, and inverted when $s$ reverses that link;
-- the prediction commutes with both operations.
-
-*Sketch:* routes and axial gauges are mapped to routes and axial gauges, and the score is invariant; (B1) gives the minimizer. Moreover $\mathrm{pr}(k^{-1}u)=\mathrm{pr}(ku^{-1})$, so $\Phi_{Y^{-1}}(u^{-1})=\Phi_Y(u)$, and (B2) applies.
-*Lean:* [`frames_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L77-L94), [`axial_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L30-L32), [`min_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L34-L38), [`good_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L73-L75), [`weight_invariant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L135-L141), [`bond_pull`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L37-L42), [`bond_inv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L44-L52), [`StepData.positive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L127-L134), [`StepData.negative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L136-L148). *(proof read, including [`Axial.channels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Channel.lean#L117-L127))*
-
-**Lemma 4.6 (Proposition III.1.2).**
-*Sketch:* (b) The bijection of tag configurations that relocates frame tags to image sites, maps them by $s$, and maps bond tags by $s$ gives $\lambda(s_{Lb}U,t)=\lambda(U,t')$ and $Q(s_{Lb}U,t)=s_bQ(U,t')$. The noise is invariant under the simultaneous symmetry, including inversion of both arguments. Reindex the sum over tags. (a) $\lambda$ is invariant and $Q\mapsto(k\circ\mathrm{embed})\cdot Q$; the noise is invariant because $\mathrm{pr}(kVk'^{-1}(kQk'^{-1})^{-1})=\mathrm{pr}(VQ^{-1})$. (c) is immediate.
-*Lean:* [`mass_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L22-L34), [`prediction_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L13-L20), [`noise_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L36-L48), [`withinChoice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L88), [`channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L50-L54), [`covary`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L56-L67).
-
-### 4.3 Axial gauges and the branch constants
-
-**Lemma 4.7 (comparison of parallel layers).** Fix $r,o,l$ as in III.1.4 and an axis $j\notin l$. Let $S'$ be the slab for $l+[j]$, and suppose all $j$-links inside $S'$ equal $1$. Let $S_z$ be the layer of $S'$ with $j$-th coordinate $z$. Then $|E_{S_z}-E_{S_u}|\le4F_{S'}$ for every $z,u\in\{-r,\ldots,r\}$.
-*Sketch:* with trivial $j$-links, the $(i,j)$-plaquette at $y$ has holonomy $U_{(y,i)}U_{(y+e_j,i)}^{-1}$. The inequality $|\mathrm{ch}(a)-\mathrm{ch}(b)|\le\mathrm{ch}(ab^{-1})$ is a discrete Stokes inequality. Summing it over the four axes $i$ and over $y$ in a layer bounds $|E_{S_{z+1}}-E_{S_z}|$ by $4\times$ the plaquette sum at the sites of $S_z$. Telescoping uses each layer once.
-*Lean:* [`variation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L72-L85), [`squares`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L60-L70), [`slide_le`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L87-L118), [`window_le`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L120-L152).
-
-**Lemma 4.8 (Proposition III.1.4).**
-*Sketch:* induction on $|l|$; the case $l=\emptyset$ is trivial. For $l'=l+[j]$, the slab $S'$ is the disjoint union of $2r+1$ layers $S_z$, each a slab for $l$. Choose the layer $z_0$ with the least curvature, so that $(2r+1)F_{S_{z_0}}\le F_{S'}$. By induction there is a root $x\in S_{z_0}$ with $E_{S_{z_0}}\le4|l|(2r+1)F_{S_{z_0}}\le4|l|F_{S'}$ in its axial gauge along $l$. Extend that gauge by moving along $j$ last. Then all $j$-links in $S'$ are trivial, and the gauge on $S_{z_0}$ is unchanged. By Lemma 4.7,
-$$E_{S'}=\sum_zE_{S_z}\le(2r+1)\big(4|l|+4\big)F_{S'}=4|l'|(2r+1)F_{S'}.$$
-The choice of the cheapest layer is what closes the induction.
-*Lean:* [`existence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L80-L105), [`total_slab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L43-L78), [`vertical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L22-L41), [`faces_pins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L49-L58).
-
-**Lemma 4.9 ((B3) for $a\ge16$).** For every $W$ and every ordering $o$ there is a root $r$ with $E_{B_R}(a^{(r,o)}\cdot W)\le16(2R+1)F_{B_R}(W)$.
-*Sketch:* apply III.1.4 to the whole box with the four axes in the order $o$; then $4\cdot4=16$.
-*Lean:* [`Axial.eligible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L119-L134), [`edge_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L107-L113).
-
-**Lemma 4.10 (structure of the synchronization problem).** Let $W$ be as in III.1.5, with centroid $m(h)=\mathrm{avg}_xh_x$ and *feedback* $F_x(h)=\mathrm{avg}_{y,k}h_yW_{xyk}^{-1}$, both computed in $M_N(\mathbb C)$.
-
-- (a) $u$ minimizes $\sum_iw_i\,\mathrm{pr}(f_iu^{-1})$ (with $w_i\ge0$, $\sum w_i=1$) if and only if $u$ is a nearest point of $G$ to $\sum_iw_if_i$.
-- (b) The cost is invariant under $h\mapsto ch$. For every global minimizer, $h_x$ is a nearest point of $G$ to $F_x(h)$ for every $x$; this is the self-consistency condition. Changing only $h_x$ combines the two off-diagonal contributions by reflection symmetry. The original diagonal contribution is zero; the added diagonal term for the competitor is nonnegative. Thus the comparison also holds with the self term included in $F_x(h)$.
-- (c) If $h$ is a global minimizer and $\|W-1\|\le d$, then $\mathrm{cost}(h)\le\mathrm{cost}(1)\le d^2/(2N)$, so $\mathrm{avg}_{x,y}\|h_x-h_y\|^2\le4d^2$. If moreover $1$ is a nearest point to $m(h)$, then $\|m(h)-1\|\le2d$ and $\|F_x(h)-1\|\le3d$.
-- (d) If $\max_x\|p_x-q_x\|\le u$, then $\|F_x(p)-F_x(q)\|\le u$ and $\|F_x(p)-F_x(q)-(m(p)-m(q))\|\le ud$.
-
-*Lean:* [`min_iff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Center.lean#L72-L93), [`price_diff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Center.lean#L63-L70), [`min_cov`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L64-L98), [`self_consistent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L100-L123), [`compare_energy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L127-L156), [`cluster`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L158-L170), [`closeness`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L172-L188), [`changes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L190-L201), [`weak_changes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L203-L226).
-
-**Lemma 4.11 (Proposition III.1.5).**
-*Sketch:* let $\delta_1$ be the radius for which the strict-differentiability bound of $\pi$ at $1$ holds with $\eta=1/4$, and take $d=\min(\delta_1/4,1/4)$, so that $3d<\delta_1$. Left-multiply each minimizer by the inverse of a nearest point to its centroid. Then $1$ is nearest to both centroids, and by 4.10(b) both are still minimizers. Let $p,q$ be the normalized minimizers, $u=\max_x\|p_x-q_x\|$ attained at $x$, and $B=F_x(p)-F_x(q)$. By 4.10(c) both feedbacks lie within $3d<\delta_1$ of $1$, and self-consistency makes $p_x,q_x$ nearest points to these feedbacks. Hence $\|p_x-q_x-\Pi_{\mathfrak g}B\|\le\frac14\|B\|\le\frac u4$. Since $m(p)-1$ and $m(q)-1$ are normal to $\mathfrak g$, $\Pi_{\mathfrak g}(m(p)-m(q))=0$, and 4.10(d) gives $\|\Pi_{\mathfrak g}B\|\le ud$. So $u\le ud+u/4\le u/2$, hence $u=0$ and $p=q$. Undoing the normalization gives $h'=ch$.
-*Lean:* [`align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L232-L272).
-
-**Lemma 4.12 ((B1) and (B2) on patches).** (B1) holds if $\delta\le d/\sqrt N$, and (B2) holds if $\varepsilon\le r_G^2/(2N)$, for every patch.
-*Sketch:* (B1). Take $n=B_R$, $\Lambda=S_4$ and $W_{yzo}=a_yT(y\to z;o)a_z^{-1}$, where $a$ is the axial frame from the centre with the identity ordering. The involution $\sigma$ reverses the ordering, since the reversed route is the route with the reversed ordering. On $M_\delta$, $\|W-1\|=\sqrt N\,\mathrm{ch}(W)<d$. Since $S_W(h)=\mathrm{cost}(ha^{-1})$ and the cost is left invariant, a constrained minimizer is a global minimizer. By III.1.5 two of them differ by a constant, which equals $1$ at the centre. (B2). If $\Phi_Y(u)<r_G^2/(2N)$, Jensen's inequality gives $\|\sum w_yY_y-u\|^2\le\sum w_y\|Y_y-u\|^2=2N\Phi_Y(u)<r_G^2$. So the mean has a unique nearest point, which by 4.10(a) is the unique minimizer.
-*Lean:* [`frame_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Uniform.lean#L18-L56), [`predictor_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Uniform.lean#L58-L63), [`weighted_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Center.lean#L95-L108).
-
-**Lemma 4.13 (Proposition III.1.3).** Combine 4.9 and 4.12.
-*Lean:* [`viable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L137-L142).
-
-### 4.4 Synchronization and the $L^{-2}$ estimate
-
-**Lemma 4.14 (clustering of minimizers for arbitrary data).** There is $C_G>0$ such that for all finite nonempty $n,\Lambda$ and all $W$ satisfying the diagonal and reflection conditions of III.1.5, every global minimizer $h$ admits $y\in G$ with $\mathrm{avg}_x\mathrm{ch}(h_xy^{-1})\le C_G\,\mathrm{avg}_{x,z,k}\mathrm{ch}(W_{xzk})$.
-*Sketch:* write $\mathrm{inc}_x=\mathrm{avg}_{z,k}\mathrm{ch}(W_{xzk})$ and $\bar\mu=\mathrm{avg}_x\mathrm{inc}_x$. Since $\mathrm{ch}^2\le2\,\mathrm{ch}$, $\mathrm{cost}(h)\le\mathrm{cost}(1)\le\bar\mu$, so $\mathrm{avg}\|h_x-h_z\|^2\le8N\bar\mu$. Let $\delta_1$ be the radius for which the strict-differentiability bound of $\pi$ at $1$ holds with $\eta=1$.
-
-- If $\bar\mu<\sigma=\delta_1^2/(32N)$: normalize so that $1$ is nearest to the centroid, which then lies within $\delta_1/2$ of $1$. Also $\|F_x-m\|\le\sqrt N\,\mathrm{inc}_x$. For $x$ with $\mathrm{inc}_x<\delta_1/(2\sqrt N)$, the derivative bound gives $\|h_x-1\|\le2\|F_x-m\|$, that is $\mathrm{ch}(h_x)\le2\,\mathrm{inc}_x$. For the other $x$, use $\mathrm{ch}\le2$.
-- If $\bar\mu\ge\sigma$: use $\mathrm{ch}\le2\le(2/\sigma)\bar\mu$.
-
-*Lean:* [`Pressure.cluster`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Single.lean#L77-L130), [`price_square`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Single.lean#L37-L64), [`income_bounds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Single.lean#L66-L75).
-
-**Lemma 4.15 (route counting).** For every ordering $o$: $\sum_{y,z\in B_r}\mathrm{ch}\,T_U(y\to z;o)\le4\,|B_r|\,(2r+1)\,E_{B_r}(U)$.
-*Sketch:* induction over the axes of the route. The last segment, along the axis $j$, starts at the point $\zeta(y,z)$ that has the already-processed coordinates of $z$ and the other coordinates of $y$. Its chord is at most the sum of the link chords on the whole $j$-line through $\zeta(y,z)$. The map $(y,z)\mapsto\zeta(y,z)$ is $|B_r|$-to-one onto $B_r$, and each $j$-link lies on one line containing $2r+1$ points.
-*Lean:* [`route_sum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Route.lean#L107-L130), [`marginal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Route.lean#L50-L54), [`slidings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Route.lean#L56-L60), [`Road.revenue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L55-L69).
-
-**Lemma 4.16 (Proposition III.1.6).**
-*Sketch:* *Minimizing branch.* Since $T_{H\cdot W}=H\,T_WH^{-1}$, the family $y\mapsto h_yH_y^{-1}$ is a global minimizer of the synchronization cost for the data $T_{H\cdot W}(y\to z;o)$. By 4.14 and 4.15 there is $c$ with $\sum_y\mathrm{ch}(h_yH_y^{-1}c^{-1})\le4C_G(2R+1)E_{B_R}(H\cdot W)$. The cutoff $\delta$ plays no role here. *Fallback branch.* Here $h$ is the normalized axial frame of an eligible tag, so $E_{B_R}(h\cdot W)\le a(2R+1)F_{B_R}(W)$. Put $g=hH^{-1}$; the pure-gauge configuration $g\cdot1$ satisfies $E(g\cdot1)\le E(h\cdot W)+E(H\cdot W)$ by the triangle inequality. Apply 4.15 to $g\cdot1$, whose route transports are $g_yg_z^{-1}$, and choose $v$ with $\sum_y\mathrm{ch}(g_yg_v^{-1})$ at most its average over $v$. Then $c=g_v$. In both cases $A=\max(4C_G,4)$, and $\mathrm{ch}(c^{-1}x)=\mathrm{ch}(xc^{-1})$.
-*Lean:* [`synchronized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L135-L162), [`Road.strips`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L34-L49), [`risks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L75-L88), [`fallback`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L95-L132).
-
-**Lemma 4.17 (elementary bounds on the step geometry).**
-
-- (a) If $X+v\subset Y$, then the link and plaquette sums over $X$ of the configuration translated by $v$ are at most those over $Y$.
-- (b) $w_y\,L^4\le1$ for all $y$. One summand $\xi_1$ is uniform on $L^4$ points and independent of the others; only $J\ge1$ is used.
-- (c) $\sum_{y\in B_R}\mathrm{ch}\,T_U(y+v\to y+v+\ell e_j)\le\ell\,E_X(U)$, provided all these segments lie in $X$.
-- (d) For all $\xi,\eta\in G$ and every bond tag, $\mathrm{ch}(\xi^{-1}Q_b\eta)\le2\max(1,\varepsilon^{-1})\sum_yw_y\,\mathrm{ch}(\xi^{-1}Y_y\eta)$. On the minimizing branch $Q_b$ is nearest to the mean $\bar Y=\sum w_yY_y$, so $\|Q_b-\xi\eta^{-1}\|\le2\|\bar Y-\xi\eta^{-1}\|$. On the fallback branch, $\varepsilon\le\Phi_Y(\xi\eta^{-1})\le\sum w_y\mathrm{ch}(\xi^{-1}Y_y\eta)$ because $\mathrm{pr}\le\mathrm{ch}$, while $\mathrm{ch}\le2$.
-
-*Lean:* [`spread`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L16-L43), [`light`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L48-L79), [`traverse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L81-L100), [`price_query`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L102-L129).
-
-**Lemma 4.18 (Proposition III.1.7).**
-*Sketch:* apply III.1.4 once, on $B_{R'}$ around $Lx$ with all four axes. This gives one gauge $H$ with $E_{B_{R'}}(H\cdot U^{(x)})\le16(2R'+1)\,\mathrm{port}\le16\,\ell_jL\,\mathrm{port}$. For $y\in B_2$, the patch of $x+y$ is the translate of $B_R$ by $Ly$ and lies inside $B_{R'}$. Apply III.1.6 to it, with the translated gauge $H(\cdot+Ly)$; this gives $p_y$. Bound its edge and face sums by those of $B_{R'}$ using 4.17(a), and use $2R+1\le\ell_jL$. Every tag with $\lambda>0$ is usable, because a vanishing frame mass would make $\lambda$ vanish.
-*Lean:* [`planting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L72-L122), [`wraps`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L65-L69).
-
-**Lemma 4.19 (link comparison).** In the setting of III.1.7, for $y,y+e_i\in B_2$ with pads $\xi=p_y$ and $\eta=p_{y+e_i}$:
-$$L^2\,\mathrm{ch}\big(\xi^{-1}Q_{(x+y,i)}\eta\big)\le2\max(1,\varepsilon^{-1})(2C+D)\,\mathrm{port}(x,U).$$
-*Sketch:* write $\xi^{-1}Y_k\eta=f_k\cdot T_{H\cdot U^{(x)}}(k+Ly\to k+Ly+Le_i)\cdot g_k^{-1}$, where $f_k,g_k$ are the frame defects of III.1.7. Then $\mathrm{ch}(\xi^{-1}Y_k\eta)\le\mathrm{ch}f_k+\mathrm{ch}T+\mathrm{ch}g_k$. Multiply by $w_kL^4\le1$ and sum: the defects contribute $\le2CL^2\,\mathrm{port}$, and by 4.17(c) the transports contribute $\le L\,E_{B_{R'}}\le DL^2\,\mathrm{port}$. Conclude with 4.17(d).
-*Lean:* [`indicated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L129-L179).
-
-**Lemma 4.20 (Proposition III.1.8).**
-*Sketch:* conjugate the plaquette holonomy of $Q$ at $x$ by $p_0$. It factors into four padded links $p_y^{-1}Q\,p_{y'}$, with $y,y'\in\{0,e_i,e_k,e_i+e_k\}\subset B_1$, and the intermediate pads cancel. The triangle inequality and 4.19 give $\mathrm{ch}\le4\cdot2\max(1,\varepsilon^{-1})(2C+D)L^{-2}\,\mathrm{port}$. For $V$, $\mathrm{ch}(V_{(x,p)}Q_{(x,p)}^{-1})\le\mathrm{fuel}$ by a telescoping product estimate.
-*Lean:* [`qdc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L210-L252), [`comp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L192-L207).
-
-### 4.5 Near the trivial configuration
-
-**Lemma 4.21 (Proposition III.1.14).**
-*Sketch:*
-
-1. $U_0$ lies in $M_\delta$, which is open, and at $v=0$ the frame is $h\equiv1$ by (B1).
-2. By 4.10(b) the frame solves $h_0=1$ and $h_y=\pi\big(\mathrm{avg}_{z,o}h_zT_{U_v}(y\to z;o)^{-1}\big)$ for $y\ne0$. This system is real analytic near $(0,1)$. A variation $u$ in the kernel of its partial derivative satisfies $u_0=0$ and $u_y=\Pi_{\mathfrak g}(\mathrm{avg}\,u)$ for $y\ne0$. If $n=|B_R|$ and $A=\Pi_{\mathfrak g}(\mathrm{avg}\,u)$, then $A=(n-1)A/n$, so $u=0$. Finite dimensionality makes the derivative invertible. Continuity of the selected minimizer identifies it with the analytic implicit solution.
-3. Differentiate the fixed-point equation, using $D\pi(1)=\Pi_{\mathfrak g}$ and the fact that the derivative of a transport along $w$ is the line integral of $v$ along $w$. This gives $h'_y=\Pi_{\mathfrak g}(\mathrm{avg}\,h')+\tau(y)$; with $h'_0=0$ this is $h'_y=\tau(y)-\tau(0)$.
-4. Near $0$, $\min\Phi_Y<\varepsilon$ (it is $0$ at $v=0$), so $Q_b=\pi(\sum w_yY_y)$, which is analytic. Its derivative is $\sum_yw_yY'_y=(\mathcal Mv+d_0\mathcal Fv)(b)$.
-5. For an exact form $d_0\varphi$, the line integrals telescope; this gives (d).
-
-*Lean:* [`hats_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L79-L87), [`stars`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L116-L127), [`scheme`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L129-L187), [`focused`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L44-L47), [`derivative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L38-L68), [`lips`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L95-L111), [`prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L147-L160), [`root_gradient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L92-L96), [`Exterior.curvature_linear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Exterior/Complex.lean#L99-L116).
-
-### 4.6 Tree gauge
-
-**Lemma 4.22 (Proposition III.1.13).**
-*Sketch:* (a) Because $L$ is odd, blocks are centred at their roots and the offset $q$ lies in $B_{(L-1)/2}$. A step towards $0$ along an axis with $q_a\ne0$ decreases $|q|_1\le4L$ and stays in the block. (b) $\mathrm{fold}_{y}\,U_{\mathrm{up}(y)}=\mathrm{fold}_{y+\mathrm{up}(y)}$, by induction on the height. (c) Split the links into trunks and free links; this split preserves the measure. For fixed trunk values, gauging by $\mathrm{fold}$ (trunks set to $1$) sends the trunk values to $1$. On the free links it acts as $s_e\mapsto k_{e^-}s_ek_{e^+}^{-1}$, which preserves product Haar measure, and $F$ is unchanged because $k=1$ at the roots. (d) $U\mapsto\rho_\beta(U,V)F(U)$ is invariant under gauge transformations that are trivial at the roots, by III.1.2(a).
-*Lean:* [`select`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L33-L72), [`compress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L32-L37), [`names`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L39-L45), [`pack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L81-L111), [`pushing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L114-L120).
-
-### 4.7 Formats and energy accounting
-
-**Lemma 4.23 (the theorems of III.1.9).**
-
-- Gas without flags: an admissible family must cover the empty flag set by nonempty inventories, so only the empty family occurs.
-- Locality: flags on $X$ depend only on the plaquettes meeting $X$.
-- Envelope: summing the per-site bounds on the finite torus gives summable majorants for the regular and forced activities. The gas is dominated by the convergent sum of products of the forced majorants. Row and atom series have summable majorants as well; the Borel masks preserve these bounds. The exponent and gas are therefore Borel and bounded.
-- Partition function: decreasing induction on $m$, using $\mathrm{eval}_m=\mathcal P\,\mathrm{eval}_{m+1}$, the identity $\int\mathcal PF=\int F$ (III.1.1, with the kernel property at each level), and the initial condition $\mathrm{eval}_N=e^{-\beta\sum\mathrm{pr}}$.
-
-*Lean:* [`gas_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L135-L147), [`UsesFinal.allReads`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L108-L110), [`Rep.envelope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L195-L198), [`partition_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L242-L249).
-
-**Lemma 4.24 (Proposition III.1.10).**
-*Sketch:* expand the six works. The adjointness $\langle\Phi q,p\rangle=\langle q,\Phi^{\dagger}p\rangle$ matches the cross terms of $W_F$, $W_I$ with $W_L$, and the squares $\tfrac12\|\Phi w\|^2$, $\tfrac12\|\Phi'w\|^2$, $\tfrac12\|\mathcal Nw\|^2$, $\tfrac12\|w\|^2$ cancel against $W_D$, $W_N$, $W_C$. What remains is the right-hand side. III.1.11 requires a lower bound for the corresponding local sum near the seeds; the identity alone supplies no such bound.
-*Lean:* [`Tube.locates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L145-L163), [`arity`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L86-L89).
-
-**Lemma 4.25 (transfer of the energy per seed, III.1.11).** Assume the ringing condition and $j_{\min}\le i\le j\le i+1$.
-*Sketch:* the stamp for the pair $(j,i)$ gives $\mu$ and a $\beta$-entry threshold. In a directed history:
-
-- the tube of step $m$ is compatible with the estimator data;
-- the side condition $c\ge100(1+\varrho)$ is part of the fits conditions;
-- $\hat\beta_m$ exceeds the entry threshold by the price conditions;
-- $\hat\beta_{m+1}=\hat\beta_m+\kappa_{\rm slope}\log L_m$ turns $\mathrm{temp}(\hat\beta_m+\kappa_{\rm slope}\log L)$ into $t_{m+1}$.
-
-*Lean:* [`notation_ticket`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L166-L181).
+1. **Uniform cutoffs.** Normalize minimizers by nearest centroid points; tangential cancellation makes feedback contract. Slab induction gives eligible axial roots. [`align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L232-L272); [`existence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L80-L105).
+2. **Kernel.** Tag probabilities and Haar noise each have mass one; uniqueness and tag permutations give covariance. [`density_total`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L197-L201); [`channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L50-L54).
+3. **Curvature.** Synchronization costs $L^2$, while $w\le L^{-4}$; four padded links give the plaquette bound. [`indicated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L129-L179); [`qdc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L210-L252).
+4. **Local analysis.** The implicit function theorem gives derivatives; Haar invariance removes trunks. Adjointness cancels cross terms and squares in the tube identity. [`scheme`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L129-L187); [`pack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L81-L111); [`Tube.locates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L145-L163).
 
 <a id="unit-difficulty"></a>
 
 ## 5. Where the difficulty lies
 
-The synchronization cutoff must be independent of the patch size. The feedback map alone has Lipschitz constant $1$; normalizing the centroids removes its tangential average and gives the contraction factor $d+\tfrac14\le\tfrac12$.
-
-The curvature estimate must hold on both branches. It combines clustering of arbitrary minimizers, route multiplicities and curvature-controlled axial gauges. Losing a power of $L$ in any of these comparisons would spoil the area scaling in III.1.8.
-
-Normalization and tree-gauge integration use finite sums and Haar invariance. Global regularity is more limited: the kernel is Borel, while analyticity is proved near the trivial configuration. The energy bound and stationary requirements in III.1.11–III.1.12 need the later units.
+Uniqueness must remain uniform in patch size. Both branches must preserve area scaling. Global regularity is Borel; analyticity is local.
 
 <a id="unit-notation"></a>
 
 ## 6. Notation
 
-- **Written proof:** $\rho_\beta(U,V)$, $\mathcal P_\beta$
+$B_r=\{-r,\ldots,r\}^4$; $\mathrm{ch}(u)=\|u-1\|/\sqrt N$, $\mathrm{pr}(u)=1-\mathrm{Re\,tr}(u)/N$; $\|\cdot\|$ is Frobenius, $|v|=\|v\|/\sqrt N$. $\mu$ denotes product probability Haar measure; $E_X,F_X$ sum link and plaquette chords. $U^{(x)}$ is the root-centred periodic lift; $\mathrm{port}=F_{B_{R'}}(U^{(x)})$. Usable means positive frame masses on $x+B_2$; fuel sums four link discrepancies with multiplicity. $w$ is the $J$-fold block-uniform convolution. $\tau$ averages negative route integrals, $\mathcal M$ averages straight length-$L$ integrals, $\mathcal Fv(x)=\tau_x(0)-\sum_yw_y\tau_x(y)$, and $d_0$ is forward difference. Here $\tau_x(y)=-\mathrm{avg}_{z\in B_R,o\in S_4}\int_{Lx+y\to Lx+z;o}v$.
 
-  **Lean:** [`StepData.density`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L71-L72), [`push`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79)
+$\mathrm{monitor}_m=e^{(\log\log\hat\beta_m)^2}$; $t_m=\mathrm{temp}(\hat\beta_m)$, $\mathrm{temp}(z)=z^{-1/2}e^{(\log\log z)^2}$; $t=\mathrm{temp}(\hat\beta+\kappa_{\rm slope}\log L)$, $\varrho=\lceil(\log\hat\beta)^2\rceil$, $\kappa_{\rm slope}=11C_A/(24\pi^2)$.
 
-  **Meaning:** block kernel and push
-
-- **Written proof:** $P=(L,J)$, $R=(J+3)L$
-
-  **Lean:** [`Patch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L29-L34), [`radius`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L51)
-
-  **Meaning:** block factor, order, patch radius
-
-- **Written proof:** $K=(\kappa,\delta,\varepsilon,a)$
-
-  **Lean:** [`KernelChoices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L37-L45)
-
-  **Meaning:** penalty, frame cutoff, predictor cutoff, axial factor
-
-- **Written proof:** (B1)–(B3)
-
-  **Lean:** [`Patch.Branches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L182-L185)
-
-  **Meaning:** branch conditions
-
-- **Written proof:** $M_\delta$
-
-  **Lean:** [`usesMin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L109-L110)
-
-  **Meaning:** minimizing branch
-
-- **Written proof:** $S_W(h)$
-
-  **Lean:** [`score`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L114-L115)
-
-  **Meaning:** synchronization cost on a patch
-
-- **Written proof:** frame $h$, tag $t=(r,o)$
-
-  **Lean:** [`frame`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L153-L155), `FrameTag`
-
-  **Meaning:** gauge fixing on a patch; root and axis ordering
-
-- **Written proof:** $\mathcal E(W)$
-
-  **Lean:** [`eligible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L143-L146)
-
-  **Meaning:** eligible axial tags
-
-- **Written proof:** $w$
-
-  **Lean:** [`weight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L87-L88)
-
-  **Meaning:** $J$-fold convolution of the block-uniform weight
-
-- **Written proof:** $Y$, $\Phi_Y$, $Q$
-
-  **Lean:** [`connector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L39-L42), [`bondCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L159), [`prediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L44-L45)
-
-  **Meaning:** connector, bond cost, prediction
-
-- **Written proof:** $\lambda(U,t)$
-
-  **Lean:** [`likelihood`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L49-L51)
-
-  **Meaning:** tag law
-
-- **Written proof:** ch, pr
-
-  **Lean:** [`Gauge.chord`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L115), [`Gauge.price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L112)
-
-  **Meaning:** chord distance to $1$; Wilson plaquette density
-
-- **Written proof:** $E_X$, $F_X$
-
-  **Lean:** [`Axial.edges`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L24), [`Axial.faces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L32)
-
-  **Meaning:** link and plaquette chord sums in $X$
-
-- **Written proof:** $m(h)$, $F_x(h)$
-
-  **Lean:** `Pairs.centroid`, `Pairs.feedback`
-
-  **Meaning:** centroid and feedback of the synchronization problem
-
-- **Written proof:** $\pi$
-
-  **Lean:** [`Gauge.focus`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L91)
-
-  **Meaning:** nearest point of $G$ (near $1$)
-
-- **Written proof:** port, $R'$
-
-  **Lean:** [`port`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L60), [`macroR`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L37)
-
-  **Meaning:** fine curvature in the macro-box of radius $(J+7)L$
-
-- **Written proof:** usable
-
-  **Lean:** [`usable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L62-L63)
-
-  **Meaning:** positive frame masses on the $5^4$ neighbours
-
-- **Written proof:** toll, wire, fuel
-
-  **Lean:** [`toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L55), [`wire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L187), [`fuel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L189-L190)
-
-  **Meaning:** plaquette chord; chord of $V_bQ_b^{-1}$; sum of four wires
-
-- **Written proof:** $\mathcal M+d_0\mathcal F$, $\tau$
-
-  **Lean:** [`probe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L68), [`mean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L65-L66), [`fixRoot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L63), [`tau`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L57-L59)
-
-  **Meaning:** linearized prediction (averaging operator)
-
-- **Written proof:** forest, trunks, fold
-
-  **Lean:** [`Tree.Forest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L24-L29), [`trunks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L77), [`foldAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L21)
-
-  **Meaning:** tree gauge in blocks
-
-- **Written proof:** budget point, flags
-
-  **Lean:** [`BudgetPoint`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L125-L136), [`flags`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L34-L36)
-
-  **Meaning:** norm parameters; large-field sites
-
-- **Written proof:** $\mathcal R$, eval
-
-  **Lean:** [`Rep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L165-L171), [`Rep.eval`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L179)
-
-  **Meaning:** effective density: exponential of the vacuum term minus the action and regular activities, times the gas
-
-- **Written proof:** $\hat\beta_m$, $t_m$
-
-  **Lean:** [`Calendar.hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79), [`Calendar.threshold`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L83)
-
-  **Meaning:** reference coupling; small-field threshold $\mathrm{temp}(\hat\beta_m)$
-
-- **Written proof:** tube, works
-
-  **Lean:** [`Tube`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L94-L99), [`Tube.vision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L104)
-
-  **Meaning:** transfer tower with fine and coarse path data; six local works
-
-- **Written proof:** store, plot, Work
-
-  **Lean:** [`Stores`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L34-L37), [`Stores.Plot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L51-L58), [`assessed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L85)
-
-  **Meaning:** seeds; their large-field characterization; local work
-
-- **Written proof:** estimator data, energy-per-seed requirement
-
-  **Lean:** [`Teller`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L89-L96), [`Teller.Grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L129-L131)
-
-  **Meaning:** parameters of one energy estimate; energy-per-seed requirement
-
-- **Written proof:** $t=\mathrm{temp}(\hat\beta+\kappa_{\rm slope}\log L)$
-
-  **Lean:** [`fiery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L26), [`temp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L25), [`betaF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23)
-
-  **Meaning:** fine-level threshold
-
-- **Written proof:** $\varrho$
-
-  **Lean:** [`radiusB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22)
-
-  **Meaning:** cluster radius $\lceil(\log\hat\beta)^2\rceil$
-
-- **Written proof:** kinetic data, directed history
-
-  **Lean:** [`Kin.Planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115), [`Directed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36)
-
-  **Meaning:** one-loop shift and stationary-branch requirements
-
+A store $A$ comprises fine plaquettes, coarse links and coarse sites; $|A|$ sums their cardinalities. $\mathrm{Work}(A)$ sums local works whose fine bases’ parents or coarse bases lie within distance $2\varrho$ of its locations, with cutoff $\lfloor\varrho/10^5\rfloor$. $F(j,i)>0$ is the assigned wire parameter.
 
 <a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
-1. **Energy estimates.** III.1.10 is an identity for the clipped direct term and truncated rows. The estimates converting it into III.1.11, including bounds on $W_D$ and the truncation remainders, belong to III.10. No sign is asserted here for $1-\Phi^\dagger\Phi-\Phi'^\dagger\Phi'-\mathcal N^\dagger\mathcal N$ at arbitrary $V$.
-2. **Construction of the kinetic data.** The stationary conditions and the outputs of the two cited construction theorems are identified in III.1.12. Their full construction from the estimates of III.3, III.6–III.7 and III.9 is outside this unit. The alternative constructor [`Extra.Iteration.planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/ITERATION_NO_LOSS/Planned.lean#L37-L55) has the required output but is outside the main-theorem closure.
-3. **Choice of neighbourhood and smoothing order.** The curvature proof uses pads at plaquette corners in $B_1$, whereas the stated synchronization result supplies them throughout $B_2$. The need for the larger neighbourhood in later estimates is not determined here. Likewise, $w\le L^{-4}$ needs only $J\ge1$; the later use of the stronger patch condition $J\ge4$ remains to be specified.
-4. **Additional files.** The small packages listed in the header are not described by the numbered results. Their contributions, and any further results from the exterior calculus or quadratic-kernel files beyond those cited here, remain to be incorporated into the relevant later units.
+
+Energy lower bounds and kinetic construction belong to later units. The uses of $B_2$ rather than $B_1$, and $J\ge4$ rather than $J\ge1$, remain unspecified here.
+
+Detailed notes: the full account of this unit, with proof sketches for every step, is on the [detailed notes page](../notes/III-1.md).
 
 ## Code dependencies
 
@@ -679,6 +155,185 @@ The folders and result chains below are source inventories. Their line counts co
 - work package [`YM/FullVolume/Train/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Train) — 13 lines.
 - work package [`YM/SectorTools/ACTUAL_SCALAR_LEDGER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/ACTUAL_SCALAR_LEDGER) — 8 lines.
 - work package [`YM/RG17/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17) — 2 lines.
+
+### Additional source locations
+
+Further pinned locations for the definitions and comparisons discussed in this unit.
+
+- [`EBare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Energy.lean#L148)
+- [`Bid.pricing_order`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Energy.lean#L173-L202)
+- [`price_diff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Center.lean#L63-L70)
+- [`min_iff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Center.lean#L72-L93)
+- [`weighted_unique`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Center.lean#L95-L108)
+- [`Axial.channels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Channel.lean#L117-L127)
+- [`prediction_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L13-L20)
+- [`mass_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L22-L34)
+- [`noise_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L36-L48)
+- [`Calendar.blocks_go`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Covariant.lean#L70-L72)
+- [`edge_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L107-L113)
+- [`Axial.eligible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L119-L134)
+- [`vertical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L22-L41)
+- [`total_slab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L43-L78)
+- [`StepData.positive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L127-L134)
+- [`StepData.negative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L136-L148)
+- [`updateGauged`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L150-L157)
+- [`predicts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L23-L35)
+- [`bond_pull`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L37-L42)
+- [`bond_inv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L44-L52)
+- [`bond_gauge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L54-L62)
+- [`withinChoice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Predict.lean#L88)
+- [`window_le`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L120-L152)
+- [`Axial.edges`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L24)
+- [`Axial.faces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L32)
+- [`faces_pins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L49-L58)
+- [`squares`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L60-L70)
+- [`variation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L72-L85)
+- [`slide_le`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Slide.lean#L87-L118)
+- [`self_consistent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L100-L123)
+- [`compare_energy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L127-L156)
+- [`cluster`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L158-L170)
+- [`closeness`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L172-L188)
+- [`changes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L190-L201)
+- [`weak_changes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L203-L226)
+- [`Pairs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L27-L31)
+- [`min_cov`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Synchronize.lean#L64-L98)
+- [`min_gauged`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L106-L109)
+- [`frame_gauged`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L111-L133)
+- [`weight_invariant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L135-L141)
+- [`axial_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L30-L32)
+- [`min_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L34-L38)
+- [`good_channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Transport.lean#L73-L75)
+- [`Exterior.curvature_linear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Exterior/Complex.lean#L99-L116)
+- [`Extra.Iteration.planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/ITERATION_NO_LOSS/Planned.lean#L37-L55)
+- [`Roost.companyK`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Linger.lean#L23-L51)
+- [`casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182)
+- [`Gauge.inner_frob_color`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L56-L62)
+- [`Gauge.price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L112)
+- [`Gauge.chord`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L115)
+- [`nearest_tube`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L141-L153)
+- [`focus_deriv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L155-L170)
+- [`nearest_approximate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L172-L181)
+- [`nearest_normal_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L43-L63)
+- [`Gauge.focus`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L91)
+- [`Integrated.pressure_grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L222-L225)
+- [`FundedCompanySelection.company`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection/FundedCompanySelection.lean#L49-L106)
+- [`Laurent.size`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L34)
+- [`Fluctuations.bare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Bare.lean#L64-L120)
+- [`Next.Fluctuations.grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L24)
+- [`pressure_pricing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L32-L37)
+- [`PriceGap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L100-L101)
+- [`ClassicalMatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L108-L109)
+- [`Critical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L88-L91)
+- [`Guessed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L97-L98)
+- [`hessian`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L42-L44)
+- [`thermal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L46-L49)
+- [`FiniteBound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71)
+- [`Kin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77)
+- [`Push.settled`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L113-L116)
+- [`Push.prediction_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L118-L124)
+- [`lips`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Derivative.lean#L95-L111)
+- [`tau`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L57-L59)
+- [`fixRoot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L63)
+- [`mean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L65-L66)
+- [`Precision.probe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L68)
+- [`Precision.root_gradient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L92-L96)
+- [`Push.authored`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Implicit.lean#L27-L50)
+- [`stars`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L116-L127)
+- [`focused`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L44-L47)
+- [`hats_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Pred.lean#L79-L87)
+- [`Horizon.Suffices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139)
+- [`extracted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L26-L27)
+- [`wire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L187)
+- [`fuel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L189-L190)
+- [`comp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L192-L207)
+- [`macroR`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L37)
+- [`port`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L60)
+- [`usable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L62-L63)
+- [`wraps`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L65-L69)
+- [`Road.strips`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L34-L49)
+- [`Road.revenue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L55-L69)
+- [`risks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L75-L88)
+- [`fallback`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Gauge.lean#L95-L132)
+- [`price_query`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L102-L129)
+- [`spread`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L16-L43)
+- [`light`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L48-L79)
+- [`traverse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Macro.lean#L81-L100)
+- [`route_sum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Route.lean#L107-L130)
+- [`marginal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Route.lean#L50-L54)
+- [`slidings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Route.lean#L56-L60)
+- [`Tube.vision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L104)
+- [`workF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L122-L124)
+- [`workD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L138-L140)
+- [`toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L55)
+- [`arity`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L86-L89)
+- [`Teller.live`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L114-L118)
+- [`Teller.cash`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L124-L125)
+- [`Testing.Stamp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L155-L158)
+- [`Testing.Ringing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L161-L163)
+- [`radiusB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22)
+- [`betaF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23)
+- [`temp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L25)
+- [`fiery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L26)
+- [`Stores`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L34-L37)
+- [`Stores.assessed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L85)
+- [`price_square`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Single.lean#L37-L64)
+- [`income_bounds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Single.lean#L66-L75)
+- [`Pressure.cluster`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Single.lean#L77-L130)
+- [`Paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162)
+- [`Valid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L106-L111)
+- [`admissible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L114-L116)
+- [`gas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L129)
+- [`Activities`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L62-L66)
+- [`RegularFamily`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L70-L75)
+- [`ForcedFamily`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L77-L84)
+- [`StepData.chosen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L123-L136)
+- [`noise_mass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L146-L155)
+- [`IsKernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L158-L163)
+- [`density_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L184-L190)
+- [`connector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L39-L42)
+- [`prediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L44-L45)
+- [`likelihood`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L49-L51)
+- [`density`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L71-L72)
+- [`push`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79)
+- [`Calendar.BlockControl`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L120-L128)
+- [`Levels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L131-L134)
+- [`Levels.budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L141-L156)
+- [`Levels.transition_mass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L158-L159)
+- [`Rep.eval`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L179)
+- [`Calendar.hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79)
+- [`Calendar.threshold`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L83)
+- [`flags`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L34-L36)
+- [`frameMass_sum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L127-L136)
+- [`predictorMass_sum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L138-L144)
+- [`minArg_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L20-L36)
+- [`selected_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L50-L53)
+- [`best_cont`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L55-L61)
+- [`min_open`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Measurable.lean#L63-L67)
+- [`usesMin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L109-L110)
+- [`score`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L114-L115)
+- [`eligible`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L143-L146)
+- [`frameMass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L148-L151)
+- [`frame`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L153-L155)
+- [`bondCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L159)
+- [`predict`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L173-L175)
+- [`predictorMass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L177-L179)
+- [`radius`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L51)
+- [`weight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L87-L88)
+- [`PathData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154)
+- [`baseTerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L221-L224)
+- [`principal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L236-L238)
+- [`inChannels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L241-L242)
+- [`push_slice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L17-L24)
+- [`push_integrable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L33-L35)
+- [`push_integral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L37-L43)
+- [`push_add`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L45-L50)
+- [`push_smul`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L52-L55)
+- [`foldAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L21)
+- [`Forest.compress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L32-L37)
+- [`Forest.names`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Cut.lean#L39-L45)
+- [`Tree.Forest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L24-L29)
+- [`Tree.select`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L33-L72)
+- [`trunks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L77)
 
 ## Key statements
 

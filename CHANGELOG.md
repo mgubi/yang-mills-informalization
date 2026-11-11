@@ -4,6 +4,7 @@ These notes record publications and corrections that affect readers' understandi
 
 ## 2026-11-11
 
+- **Outlines condensed.** Each unit page now shows an outline of three to ten pages, condensed from the unit's detailed notes and checked against them sentence by sentence; the full notes are on a separate page per unit and in their own [PDF](pdf/yang-mills-detailed-notes.pdf).
 - **All unit outlines edited; one PDF.** All thirty-two outlines have been through the three review rounds. The summary, the architecture and the outlines are available as one [PDF](pdf/yang-mills-outline.pdf).
 - **Where the ideas come from.** A [provenance analysis](provenance.md): which parts of the proof follow Balaban's programme, which follow OpenAI's 2026 papers on two-dimensional sigma models, which are standard, and which appear new.
 - **Reading aids.** A [FAQ](faq.md); a guide in the [statement](statement.md) from each clause of the theorem to the units that explain it; [notes on the data tables](data/README.md); a short entrance and navigation on every unit page, with code dependencies labelled as such.

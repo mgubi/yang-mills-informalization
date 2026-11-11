@@ -4,9 +4,9 @@
 
 Selects the construction run used by the main theorem and describes its additional Gaussian-limit data.
 
-**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
+**Status: edited.** Condensed from the unit's detailed notes, which were checked against the linked Lean in two rounds and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-[Overview](../README.md) · [All units](../units.md) · [← Previous: III.13](III-13.md) · [Next: III.15 →](III-15.md)
+[Overview](../README.md) · [All units](../units.md) · [Detailed notes](../notes/III-14.md) · [← Previous: III.13](III-13.md) · [Next: III.15 →](III-15.md)
 
 [Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
 
@@ -15,24 +15,7 @@ Selects the construction run used by the main theorem and describes its addition
 <details>
 <summary>Source inventory and conventions</summary>
 
-**Part:** III, Ultraviolet construction (renormalization group). **Lean:**
-
-- the endpoint [`YM/Independent/ConstructionRun.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean);
-- the native component recipe [`YM/Integration/NativeComponentRecipe.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean) and [`ActualRunNativeComponentRecipe.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean);
-- the flat-representation chain [`YM/RG08/Flat/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat), [`YM/RG08/Packets/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets) and [`YM/RG08/Rate/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate);
-- the local-estimate package of [`YM/RG12/Burst/Wardrobe.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean);
-- the packages that define the numerical floors of the recipe: [`YM/RG08/Redo/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo), `Yamen/`, `Sideshow/`, `Necks/`, `Rudder/`, `Room/`, `Weald/`, `Wisp/`, `Trill/`, `Halo/`, `Line/`, … (§4.6).
-
-**Size:** 14,290 lines in the source allocation (2,509 declarations).
-
-The unit selects the construction run and proves a quantitative limit theorem for its Gaussian quadratic part.
-
-- **The endpoint.** For a compact matrix gauge group $G$ with simple nonabelian Lie algebra and a penalty $b>0$, it selects a *run*: the Wilson family of the main theorem with its scale and extraction data. The run satisfies the *funded* condition of III.15 and carries the *native component recipe*.
-- **The Gaussian limit.** At each fixed stage, the order-zero quadratic kernel converges as the ultraviolet cutoff is removed, with a power rate in the ratio of lattice spacings (Proposition III.14.3). This is one of three components of the recipe.
-
-**Use in the main theorem.** VIII.1 ([`continuum_with_position_tests`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L28-L48)) uses the run, its penalty, the pillars and the funded property. It discards the attached-recipe conjunct.
-
-The selection theorem of III.2 accepts any nonempty family of demands. Here the demand is a recipe, with lower bounds on the block factors and numerical requests on the running coupling. The Gaussian limit is therefore an additional property of the selected run; VIII.1 does not invoke it separately. Replacing this selection by one with fewer demands is a separate question (§7).
+**Part:** III, Ultraviolet construction (renormalization group). **Lean:** [ConstructionRun](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean), [NativeComponentRecipe](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean), [Flat](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat). **Size:** 14,290 lines (2,509 declarations) in the source allocation.
 
 </details>
 
@@ -40,497 +23,106 @@ The selection theorem of III.2 accepts any nonempty family of demands. Here the 
 
 ## 1. What this unit proves
 
-**Conventions.** We use the level systems and sufficiency condition of III.1. Throughout, $G$ is a compact matrix gauge group; “simple” means that its real Lie algebra is simple and nonabelian.
+Throughout, $G$ is a compact matrix gauge group; “simple” means its real Lie algebra is simple and nonabelian. Level systems and full horizon sufficiency are those of III.1. A sheet fixes the kernel, stage profile and floors before block factors are chosen. Notation and norms are specified in §6.
 
-- **Level system.** A level system $\mathcal L$ fixes stages $i\in\mathbb N$ (finer as $i$ grows), odd block factors $L_i\ge3$ for the step $i+1\to i$, and spacings $a_0=1$, $a_{i+1}=a_i/L_i$, with log-scales $s_i=\log(1/a_i)$. Its smoothing indices satisfy $J_i\le J_{i+1}\le J_i+1$. Write $\ell_j$ for the block factor assigned to smoothing index $j$, so $L_i=\ell_{J_{i+1}}$. The level system also fixes the block-spin kernel with penalty $b>0$ and the reference inverse coupling $\hat\beta_i=\bar\beta+s_Gs_i>1$, where $s_G=11C_G/(24\pi^2)$ ([`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79), [`slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184)). The remaining compatibility conditions are those of III.1.
-- **Cutoff.** "Cutoff $N$" means the lattice of spacing $a_N$, renormalized through stages $N,N-1,\dots$.
-- **Horizon.** A horizon $H$ assigns plaquette-metric and transfer data to each cutoff and stage. Write $M^\infty_{N,i}$ for its translation-invariant metric kernel on $\mathbb Z^4$, $\widehat M_{N,i}(\xi)$ for its Fourier symbol, and $M^{\mathbb T}_{N,i}$ for its periodization. On a torus $\mathbb T$, the Gaussian quadratic form on 1-forms has matrix $\mathcal K^{\mathbb T}_{N,i}=d^\top M^{\mathbb T}_{N,i}d$.
-- **Price map and sufficiency.** A price map $P=(\alpha_j,\Omega_j,\eta_j)_j$ specifies positive strip widths $\alpha_j$, upper bounds $\Omega_j$ and positive coercivity bounds $\eta_j$. The full sufficiency condition of III.1 includes strip and derivative bounds for all metric and transfer data, inverse and factorization identities, symmetry and coercivity on every torus, the background-field and fluctuation identities between consecutive stages, and the bare terminal condition. In particular, a sufficient horizon satisfies $\widehat M_{N,i}(0)=1$ and $\mathcal K^{\mathbb T}_{N,N}=d^\top d$.
-- **Position-space kernel.** $\mathcal O^H_{N,i}=d^\top M^\infty_{N,i}d$ is the quadratic kernel on the links of $\mathbb Z^4$ ([`output`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L18)). This is the Hessian convention: no factor $1/2$ is included in $\mathcal O$.
-- **Kernel norms.** Let $x(u)$ be the base point of a link or plaquette $u$. For link kernels, put $\lVert F\rVert_\sigma=\sup_u\sup_\phi\sum_{y\in\mathbb Z^4}|F(u,(y,\phi))|e^{\sigma|x(u)-y|_1}$. For plaquette kernels, put $\lVert B\rVert^{\rm pl}_\sigma=\sup_u\sum_{v\in\mathbb Z^4\times\mathcal F}|B(u,v)|e^{\sigma|x(u)-x(v)|_1}$, where $\mathcal F$ is the set of plaquette orientations. The latter sum includes all target orientations.
-- **Age.** $\Lambda_{k,i}=5+\log\hat\beta_k+|s_i-s_k|$ is the age of stage $i$ seen from a reporting scale $k$.
+**Proposition III.14.1 (construction run).** For simple $G$ and $b>0$, there exist a run $R$, a campaign $T$ and pillars $W$ for $(R,T)$, with penalty $b$, satisfying the full thirteen-clause funded condition of III.15 relative to $\Delta_{10}$, and carrying an attached native component recipe. The selection uses $Q(i)=i+2$ and support exponent $100$ at every stage.
 
-**Proposition III.14.1 (the construction run).** Let $G$ be simple and $b>0$. There exist a run $R$, a campaign $T$ for $R$ and pillars $W$ for $(R,T)$ such that:
+Attachment means that there exist a sheet $s$, price map $q$, recipe $C$ of III.14.2 and floors $n\ge\max(n_s,E_C)$ such that $R$ uses $s$ with floors raised to $n$ and primary price map $P_{s,q}$; the recipe is realized on its own levels and horizon. Here $n_s$ is the sheet's floor, $E_C$ combines the three component floors and two numerical floors, and $B_C$ is the maximum of the two post-length bills. Set $U_C(r,j)=\rho_C(r,j)^{-1}$ for the positive recipe widths $\rho_C$, and $V_C(\ell,r,j)=B_C(\ell,j)$. For both request families $F(r,j)=U_C(r,j)$ and $F(r,j)=V_C(\ell,r,j)$, every fixed $r$ admits $m_0$ such that $|F(r,j)|\le1+\log\log\hat\beta_m$ for $m\ge m_0$, $j\le J_{m+1}$; also $B_C(\ell,J_{m+1})\le\hat\beta_m$ for every $m$. Realization includes III.14.3 with $e=0$.
 
-1. the penalty of the block-spin kernel of $R$ equals $b$;
-2. $R$ satisfies the full *funded* condition of III.15 relative to the local-estimate package $\Delta_{10}$. Its thirteen clauses (§6) include the prescribed local estimates, $Q(i)\to\infty$, support exponent $100$ at every stage, and the extraction, OPE and thermal conditions. The selection uses $Q(i)=i+2$;
-3. the native component recipe is *attached* to $R$. There are a sheet $s$, a price map $q$, a recipe $C$ for $s$ (Proposition III.14.2) and floors $n\ge\max(n_s,E_C)$, where $n_s$ is the sheet's floor and $E_C$ the combined recipe floor of Lemma 4.14, such that:
-   - $R$ is built on $s$ with floors raised to $n$, with the primary price map $P_{s,q}$ of III.12;
-   - both countable request families, before and after the block factors are chosen, satisfy the eventual bounds of Lemma 4.16; the recipe's post-length bill $B_C$ also satisfies $B_C(\ell,J_{m+1})\le\hat\beta_m$ for every $m$;
-   - the realized recipe (Lemma 4.14) holds on $R$'s own levels and horizon.
+*Status:* theorem. *Lean:* [constructionRun](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L14-L28), [Funded](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73), [Attached](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L56-L69).
 
-*Status:* theorem. A run is fixed by choice as [`fundedRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L30-L31).
+**Proposition III.14.2 (recipe).** For simple $G$ and every sheet $s$, there exist a secondary price map $X$ and floors $E^\flat,E^{\rm sw},E^{\rm du}:\mathbb N\to\mathbb N$. For every level system with the kernel and profile of $s$:
 
-*Lean:* [`YM.Independent.constructionRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L14-L28); [`R2I.Funded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73); [`garment10`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L63); [`Campaign.Pillars`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Vendee.lean#L22-L27); [`ActualRunNativeComponentRecipe.Attached`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L56-L69).
+- If $L_i\ge E^\flat(J_{i+1})$ for all $i$, every entry stage $e$ satisfying the delay condition in III.14.3 admits its conclusions with this $X$, simultaneously for every sufficient horizon.
+- If $L_i\ge E^{\rm sw}(J_{i+1})$ for all $i$, every horizon sufficient for some price map has, for every $i\le N$, every torus and all colour-valued link fields $A,B$, colour-summed bilinear form $\sum_a\langle A^a,\mathcal K^{\mathbb T}_{N,i}B^a\rangle$ invariant under simultaneous pullback by signed axis permutations fixing the origin. Reversing link orientation reverses the pullback sign.
+- If $L_i\ge E^{\rm du}(J_{i+1})$ for all $i$, then for every such horizon, every $m<N$ and every level-system torus, the canonical free background map of III.3 satisfies III.14.5 for the fine/coarse metrics $(M^{\mathbb T_f}_{N,m+1},M^{\mathbb T_c}_{N,m})$, hence minimizes the actual Gaussian variational problem.
 
-**Proposition III.14.2 (existence of the native component recipe).** Let $G$ be simple and let $s$ be a sheet (the kernel choice and stage profile, fixed before any block factor). There exist a price map $X$ (the *secondary* price map) and floors $E^{\flat},E^{\rm sw},E^{\rm du}:\mathbb N\to\mathbb N$ with the following properties, for every level system $\mathcal L$ with the kernel and stage profile of $s$.
+*Status:* theorem. *Lean:* [Choice](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L29-L51), [available](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L54-L59).
 
-- **(flat representation)** If $L_i\ge E^\flat(J_{i+1})$ for all $i$, then for every $e$ satisfying $\Omega^X_{J_i}\le\log\hat\beta_i$ for $i\ge e$, there are kernels and constants satisfying clauses (a)–(c) of Proposition III.14.3 with this $X$, simultaneously for every sufficient horizon.
-- **(point-group invariance)** If $L_i\ge E^{\rm sw}(J_{i+1})$ for all $i$, then for every horizon $H$ sufficient for some price map, every $i\le N$ and every torus, the colour-summed bilinear form $\sum_a\langle A^a,\mathcal K^{\mathbb T}_{N,i}B^a\rangle$ is invariant under simultaneous pullback of $A,B$ by signed permutations of the axes fixing the origin. Pullback reverses the sign when a link orientation is reversed.
-- **(background-field identities)** If $L_i\ge E^{\rm du}(J_{i+1})$ for all $i$, then for every such $H$, every $m<N$ and every torus in the level system, the canonical free background-field map of III.3 satisfies the relations of Proposition III.14.5 for the fine and coarse metrics $(M^{\mathbb T_f}_{N,m+1},M^{\mathbb T_c}_{N,m})$. It therefore gives a minimizer of the Gaussian variational problem for the actual quadratic forms.
+**Proposition III.14.3 (Gaussian ultraviolet rate).** For simple $G$ and every sheet $s$, there exist a price map $X$ and $E:\mathbb N\to\mathbb N$ with this property: for every level system with the kernel and profile of $s$ satisfying $L_i\ge E(J_{i+1})$ for all $i$, and every $e\in\mathbb N$ satisfying $\Omega^X_{J_i}\le\log\hat\beta_i$ for $i\ge e$, there are link kernels $F_i$ ($i\ge e$) and constants $A,B\ge0$ with the following properties. For every horizon $H$ of that system sufficient for some price map, every $k\in\mathbb N$, $i\ge e$, $N\ge i$ and links $u,v$,
+$$
+\lVert F_i\rVert_{w_{J_i}}\le B\Lambda_{k,i},\qquad
+\mathcal O^H_{n,i}(u,v)\longrightarrow F_i(u,v),\qquad
+\lVert\mathcal O^H_{N,i}-F_i\rVert_{w_{J_i}}\le A\Lambda_{k,i}(a_N/a_i)^{1/4}.
+$$
+Here $n\to\infty$, $w_j=\min(1,\alpha^X_j,\alpha^X_{j+1})$, and $A,B\ge0$ depend only on $G$ and the lattice, independently of $s$, the levels, $e$ and $H$.
 
-*Status:* theorem.
+*Status:* theorem, order zero. *Lean:* [Flat.entrance_gate](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Entrance.lean#L28-L50).
 
-*Lean:* [`NativeComponentRecipe.Choice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L29-L51), [`available`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L54-L59); the three components follow from [`Flat.entrance_gate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Entrance.lean#L28-L50), [`Cast.assured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Cast/Profile.lean#L16-L34) (with [`Bid.Sworn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L54-L55)) and [`Aura.dual_support`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aura/Publisher.lean#L28-L52) (with [`Aura.licensed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aura/Publisher.lean#L24-L26)).
+**Proposition III.14.4 (abstract flat representations).** Fix a price map $P$, $\theta>0$, positive widths $w_j$, $A_0\ge0$, $d_0\in\mathbb N$, and a family $(\mathcal L_x,H_x,r_x,N_x,n_x,k_x,Z_x)_{x\in X}$ with $r_x\le N_x\le n_x$, $k_x\in\mathbb N$, $Z_x\ge0$. Put $\Lambda_x(i)=2+Z_x+|s_i-s_{k_x}|$, using each system's scales. Assume each $H_x$ is sufficient for $P$, its plaquette transfers at cutoff $N_x$ and $r_x\le i<N_x$ are canonical free kernels, and $w_j\le\alpha_j$ for all $j$. On those stage ranges assume
+$$
+w_{J_i}\le\min(1,\alpha_{J_i},\alpha_{J_{i+1}}),\quad
+2w_{J_i}\le L_iw_{J_{i+1}},\quad
+q_i(w_{J_{i+1}})\le L_i^{-\theta},
+$$
+and assume $2|\mathcal F|\Omega_{J_{N_x}}\le A_0\Lambda_x(N_x)^{d_0}$ for every $x$. Then, simultaneously for all $x$ and $r_x\le i\le N_x$, there are flat representatives of $\mathcal K_{n_x,i}-\mathcal K_{N_x,i}$ of width $w_{J_i}$ and cost $A\Lambda_x(i)^{d_0}(a_{N_x}/a_i)^{\min(1,\theta/2)}$, where $A\ge0$ depends only on $A_0,d_0,\theta$.
 
-**Proposition III.14.3 (ultraviolet rate for the Gaussian quadratic part).** Let $G$ be simple and $s$ a sheet. There exist a price map $X$ and a floor $E:\mathbb N\to\mathbb N$ with the following property. Let $\mathcal L$ be a level system with the kernel and stage profile of $s$ and with $L_i\ge E(J_{i+1})$ for all $i\ge0$. Let $e\in\mathbb N$ satisfy $\Omega^X_{J_i}\le\log\hat\beta_i$ for $i\ge e$. Then there are kernels $F_i$ ($i\ge e$) on the links of $\mathbb Z^4$ and constants $A,B\ge0$, $c>0$, $d,l\in\mathbb N$ such that the following holds for every horizon $H$ of $\mathcal L$ sufficient for some price map, every reporting scale $k\in\mathbb N$ and every $i\ge e$. Write $w_j=\min(1,\alpha^X_j,\alpha^X_{j+1})$.
+*Status:* theorem. *Lean:* [Flat.World.overlap](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L165-L174).
 
-- (a) $\lVert F_i\rVert_{w_{J_i}}\le B\,\Lambda_{k,i}^{\,l}$;
-- (b) $\mathcal O^H_{n,i}(u,v)\to F_i(u,v)$ as $n\to\infty$, for all links $u,v$;
-- (c) $\lVert\mathcal O^H_{N,i}-F_i\rVert_{w_{J_i}}\le A\,\Lambda_{k,i}^{\,d}\,(a_N/a_i)^{c}$ for all $N\ge i$.
-
-One may take $c=1/4$, $d=l=1$, $A=34\sigma_0|\mathcal F|(1+s_G)/(1-3^{-1/8})$ and $B=\sigma_0|\mathcal F|(1+s_G)$, where $\sigma_0=|\mathcal F|^2\lambda_d^2$ and $\lambda_d$ is a width-one strip bound for the lattice exterior derivative. These constants depend only on $G$ and the lattice, independently of the sheet, level system, entry stage and horizon.
-
-*Status:* theorem. This is an order-zero estimate (see [`Mesh.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean)).
-
-*Lean:* [`Flat.Quorum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Entrance.lean#L13-L21) (the three clauses), [`Flat.entrance_gate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Entrance.lean#L28-L50) (existence), [`Flat.supplies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L107-L164), [`Flat.meshed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L75-L101), [`Flat.clock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L30), [`Flat.curve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L14), [`Flat.Delay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L19).
-
-**Proposition III.14.4 (flat representations at all stages, abstract form).** Let $P$ be a price map, $\theta>0$, and $w:\mathbb N\to(0,\infty)$. Let $(\mathcal L_x,H_x,r_x,N_x,n_x,k_x,Z_x)_{x\in X}$ be a family of level systems with horizons, integers $r_x\le N_x\le n_x$, reporting scales $k_x\in\mathbb N$ and offsets $Z_x\ge0$. Put $\Lambda_x(i)=2+Z_x+|s_i-s_{k_x}|$, with the scale data understood to belong to $\mathcal L_x$. Fix $A_0\ge0$ and $d_0\in\mathbb N$, independent of $x$. Assume:
-
-- each $H_x$ is sufficient for $P$, and its plaquette-transfer kernels at cutoff $N_x$ and stages $r_x\le i<N_x$ are the canonical free kernels of III.3;
-- $w_j\le\alpha_j$ for all $j$, and for $r_x\le i<N_x$:
-  - $w_{J_i}\le\min(1,\alpha_{J_i},\alpha_{J_{i+1}})$;
-  - $2w_{J_i}\le L_i\,w_{J_{i+1}}$;
-  - $q_i(w_{J_{i+1}})\le L_i^{-\theta}$, where $q_i$ is the one-step factor of Lemma 4.3;
-- $2|\mathcal F|\Omega_{J_{N_x}}\le A_0\Lambda_x(N_x)^{d_0}$ for every $x$.
-
-Then there are $A\ge0$, $c>0$, $d\in\mathbb N$ and kernels $K_{x,i}$ such that, for all $x$ and $r_x\le i\le N_x$, $K_{x,i}$ is a flat representation (Definition 4.1) of $\mathcal K_{n_x,i}-\mathcal K_{N_x,i}$ at stage $i$, of width $w_{J_i}$ and cost $A\,\Lambda_x(i)^d(a_{N_x}/a_i)^c$. One may take $c=\min(1,\theta/2)$ and $d=d_0$, with $A$ depending only on $A_0,d_0,\theta$.
-
-*Status:* theorem.
-
-*Lean:* [`Flat.World.overlap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L165-L174), with [`World`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L82-L91), [`World.Funding`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L101-L110), [`World.Provides`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L112-L115).
-
-**Proposition III.14.5 (Schur identity for two cutoffs, and the flat step).**
-
-*Identity.* Fix one RG step: a fine torus $\mathbb T_f$ with $L$ times the side of the coarse torus $\mathbb T_c$, the block average $Q$ and penalty $b>0$. Say that $(W;M,M')$ satisfies the background-field relations when
-$$\mathcal K(M)\,W=Q^\top\mathcal K(M'),\qquad QW=1-b^{-1}\mathcal K(M').$$
-If $M$ is symmetric and positive semidefinite, these relations make $WA'$ a minimizer of $\langle A,\mathcal K(M)A\rangle+b|A'-QA|^2$, with minimum $\langle A',\mathcal K(M')A'\rangle$. For the algebraic identity below, positivity is unnecessary: if $(W_1;M_1,M_1')$ and $(W_2;M_2,M_2')$ satisfy the relations and $M_2,M_2'$ are symmetric, then
-$$\mathcal K(M_2')-\mathcal K(M_1')=W_2^\top\big(\mathcal K(M_2)-\mathcal K(M_1)\big)W_1 .$$
-
-*Flat step.* Let $\tau>0$, $r\ge0$, and let $B$ be a neutral, translation-invariant plaquette kernel with $\lVert B\rVert^{\rm pl}_\tau\le r$, whose periodization represents $\mathcal K(M_2)-\mathcal K(M_1)$ on $\mathbb T_f$. Suppose $T,U$ are order-two strip-bounded curvature-transport kernels with constants $q,p\ge0$ in width $\omega$. Assume $T(x+Lv,y+v)=T(x,y)$ and the same identity for $U$, that their periodizations $C_2,C_1$ satisfy $dW_2=C_2d$, $dW_1=C_1d$, and that $\sum_zU((x,\varphi),(z,\psi))$ is independent of $x$ for each pair of orientations. If $0\le\sigma\le\omega$ and $2\sigma\le L\tau$, then
+**Proposition III.14.5 (Schur identity and flat step).** Fix fine/coarse tori with side ratio $L$, block average $Q$ and $b>0$. The background-field relations are
+$$\mathcal K(M)W=Q^\top\mathcal K(M'),\qquad QW=1-b^{-1}\mathcal K(M').$$
+For symmetric positive semidefinite $M$ and every coarse field $A'$, they make $WA'$ a minimizer of $\langle A,\mathcal K(M)A\rangle+b|A'-QA|^2$, with minimum $\langle A',\mathcal K(M')A'\rangle$. If two triples $(W_j;M_j,M'_j)$ satisfy these relations and $M_2,M'_2$ are symmetric, then
+$$\mathcal K(M'_2)-\mathcal K(M'_1)=W_2^\top(\mathcal K(M_2)-\mathcal K(M_1))W_1.$$
+Let $B$ be a neutral translation-invariant plaquette representative of the fine difference, with $\lVert B\rVert^{\rm pl}_\tau\le r$, $\tau>0$, $r\ge0$. Suppose $T,U$ are order-two strip-bounded curvature transports in width $\omega$, with constants $q,p\ge0$, scaled covariance $T(x+Lv,y+v)=T(x,y)$ and likewise for $U$. Require their periodizations $C_2,C_1$ to satisfy $dW_2=C_2d$, $dW_1=C_1d$, and $\sum_zU((x,\varphi),(z,\psi))$ to be independent of $x$ for each orientation pair. If $0\le\sigma\le\omega$ and $2\sigma\le L\tau$, then
 $$B'(y,z)=\sum_{x,w}T(x,y)B(x,w)U(w,z),\qquad \lVert B'\rVert^{\rm pl}_\sigma\le\frac{2|\mathcal F|^2qp}{\tau L}r.$$
-The kernel $B'$ is neutral and translation invariant, and its periodization represents $\mathcal K(M_2')-\mathcal K(M_1')$ on $\mathbb T_c$.
+It is neutral, translation invariant and represents the coarse difference.
 
-*Sketch:* transpose the second pair of background-field relations and substitute the first pair; the mixed $b^{-1}\mathcal K(M_2')\mathcal K(M_1')$ terms cancel. The intertwining identities then give the asserted curvature representative. Neutrality permits subtraction of the second transport kernel at the first base point, yielding the norm estimate in Lemma 4.3.
+*Status:* theorem. *Lean:* [Flat.poised](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L24-L38), [Flat.toward](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L50-L78).
 
-*Status:* theorem. No inverse of the curvature form is used. Preservation of neutrality requires the separate constant-row-sum condition.
+**Proposition III.14.6 (recursion rate).** For each $x\in X$, fix scales with $L_i\ge3$, stages $r_x\le i\le t_x$, reporting scale $k_x\in\mathbb N$, and $\Lambda_x(i)=2+Z_x+|s_i-s_{k_x}|$, $Z_x\ge0$. Fix uniform $\theta,c_0>0$, $A_0\ge0$, $d_0\in\mathbb N$. If $f_x,g_x\ge0$ satisfy $f_x(i)\le L_i^{-\theta}f_x(i+1)+g_x(i)$ below $t_x$, $f_x(t_x)\le g_x(t_x)$, and $g_x(i)\le A_0\Lambda_x(i)^{d_0}(a_{t_x}/a_i)^{c_0}$ throughout, then
+$$f_x(i)\le A\Lambda_x(i)^{d_0}(a_{t_x}/a_i)^\mu,\qquad \mu=\min(c_0,\theta/2).$$
+One may take $A=A_0(K+1)^{d_0}/(1-3^{-\theta'/2})$, $\theta'=\theta-\mu$, $K=2(d_0+1)/\theta'$.
 
-*Lean:* [`Flat.poised`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L24-L38) (identity), [`Flat.toward`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L50-L78) (step), [`Packets.push_null`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Lines.lean#L87-L113), [`neutralCoin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Lines.lean#L84-L85).
-
-**Proposition III.14.6 (rate lemma for fine-to-coarse recursions).** For each $x\in X$, fix a scale system with $L_i\ge3$, stages $r_x\le i\le t_x$ and age $\Lambda_x(i)=2+Z_x+|s_i-s_{k_x}|$, where $Z_x\ge0$. Fix $\theta,c_0>0$, $A_0\ge0$ and $d_0\in\mathbb N$, uniformly in $x$. Suppose $f_x(i),g_x(i)\ge0$ on these stage ranges and
-
-- $f_x(i)\le L_i^{-\theta}f_x(i+1)+g_x(i)$ for $r_x\le i<t_x$, and $f_x(t_x)\le g_x(t_x)$;
-- $g_x(i)\le A_0\Lambda_x(i)^{d_0}(a_{t_x}/a_i)^{c_0}$ for $r_x\le i\le t_x$.
-
-Then $f_x(i)\le A\Lambda_x(i)^{d_0}(a_{t_x}/a_i)^\mu$ throughout each range, where $\mu=\min(c_0,\theta/2)>0$. One may take $A=A_0(K+1)^{d_0}/(1-3^{-\theta'/2})$, with $\theta'=\theta-\mu>0$ and $K=2(d_0+1)/\theta'$.
-
-*Status:* theorem.
-
-*Lean:* [`Rate.Stair.fade_solve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L118-L134), [`poly_solve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L56-L116), [`slope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L26-L54), [`Fade.cap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Shadows.lean#L90-L97).
-
-**Further content.** The auxiliary estimates in §4.6 supply numerical requirements for the recipe. They include the one-step transit estimate [`harbor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Sideshow/Orbit.lean#L81-L190), curvature-coefficient lifts [`arc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rudder/Sym/Oaks.lean#L65-L81) and [`warehouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Spar/Overhead.lean#L39-L49), and formal Gaussian identities [`bottle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Room/Time.lean#L54-L81), [`still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Room/Glass.lean#L98-L111) and [`absorbed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Room/Alight.lean#L86-L123).
+*Status:* theorem. *Lean:* [Rate.Stair.fade_solve](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L118-L134).
 
 <a id="unit-inputs"></a>
 
 ## 2. What it uses
 
-**From other units.**
-
-- **III.1 (block-spin step and its linearization).**
-  - Level systems: stages, spacings, block factors, the smoothing indices $J$, and $\hat\beta_i$.
-  - Horizons and their sufficiency for a price map, and the metric data with kinetic normalization $\widehat M(0)=1$.
-  - The background-field relations, and the identity $\mathcal K(M')=W^\top\mathcal K(M)W+b(1-QW)^\top(1-QW)$.
-  - Links: [`Levels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L131-L134), [`Horizon`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L119-L121), [`Horizon.Suffices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139), [`MapPrices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L123-L128), [`Floor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68), [`Precision.K`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L68-L69), [`Inputs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L76-L79), [`action`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L93-L103).
-- **III.2 (choosing the constants).**
-  - Sheets: [`Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35).
-  - Selection with a preselected demand: [`selectRunWithTreasuryPeriod_preselected_quote_orders_postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114) and [`PostnumericPreselection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L31-L46). The quantified conclusion used here is Lemma 4.16.
-- **III.3 (free kernels).** [`retained_support`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L134-L145) gives, for each kernel choice, the following:
-  - a clip profile $\gamma$ and a floor $n$;
-  - for every sheet with that kernel, a price map $X$ such that every level system with clip parameters $\le\gamma$ and $L_i\ge n(J_{i+1})$ (the "credit", [`Credit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L87-L88)) carries a horizon sufficient for $X$, whose transfer data are the canonical free data ([`destination`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L74)) and whose forms are point-group invariant.
-- **III.8 (kernel norms).** Weighted row and column norms, and order-$m$ strip bounds for kernels from fine to coarse lattices: [`RowCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Atlas.lean#L28-L29), [`Atlas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Atlas.lean#L37-L42), the carrier map [`carrier`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Inherit.lean#L24).
-- **III.12.** The structures [`Run`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L30-L48) and [`Pillars`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Vendee.lean#L22-L27), and the primary price map $P_{s,q}$ ([`raging`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Fiscal.lean#L18)).
-- **III.15.**
-  - The funded property [`Funded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73).
-  - The predicate [`EventuallyPaid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Clock.lean#L36-L38): a property of level systems is eventually paid if it can be enforced by raising the entry thresholds of $\beta$. Here it is applied to the trivial property.
-- **I.1.** The group data and the one-loop slope $s_G$.
-- **Use in VIII.1.** [`continuum_with_position_tests`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L28-L48) applies [`R2IGoals.fromFunded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167) to the pillars and funded property.
-
-**Standard mathematics.**
-
-- Gaussian block-spin transformation with background field (Balaban, *Propagators and renormalization transformations for lattice gauge theories I, II*, CMP 95 (1984), CMP 96 (1984); *Averaging operations for lattice gauge theories*, CMP 98 (1985); Gawędzki–Kupiainen, *Block spin renormalization group for dipole gas and $(\nabla\varphi)^4$*, Ann. Phys. 147 (1983)). The coarse quadratic form is the Schur complement obtained by minimizing over the fine field.
-- Exponentially weighted $\ell^1$ kernel norms and their behaviour under composition and blocking, as in Balaban's propagator estimates.
-- A discrete Grönwall argument for $f_i\le\lambda_if_{i+1}+g_i$.
-- Uniqueness of a translation-invariant kernel of finite weighted row norm from its periodizations on tori of diverging size (dominated convergence).
-
-**Imported constants and assumptions.**
-
-- The endpoint assumes only simplicity of $G$ and $b>0$.
-- The local-estimate package $\Delta_{10}$ is defined in this unit, in [`Wardrobe.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L63). It is the pair of the predicate [`Attic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L30-L34) and the lemma [`annex`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L36-L61):
-  - the predicate combines one-step connected-activity bounds, tree-sum smallness and bounds through any fixed finite range of marks and degrees;
-  - for a target and expense with expense exponent at most $-7/16$, there is a block-factor threshold such that, for every larger block factor, every $W,\mu>0$, admissible order, stage profile and finite range, the predicate holds for all sufficiently large $x$. The threshold for $x$ may depend on those fixed data.
-- Inside the flat chain every hypothesis is discharged in this unit or in III.3:
-  - sufficiency, free transfer data and point-group invariance come from III.3 via the shadow (Lemma 4.11);
-  - the width conditions follow from the floors (Lemma 4.6);
-  - the delay condition follows from the post-length bill (Lemma 4.14).
+- I.1: group data and [one-loop slope](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184) $s_G$; III.1: levels, [sufficiency](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139) and background-field relations.
+- III.2: [selection](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114) with nonempty demands and countable numerical requests; III.3: [sufficient free horizons](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L134-L145), canonical transfers and point-group invariance.
+- III.8: [weighted kernel bounds](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Atlas.lean#L37-L42); III.12: [runs](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L30-L48), pillars and primary price maps; III.15: full [funded condition](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73).
+- Gaussian block-spin minimization (Balaban; Gawędzki–Kupiainen), exponentially weighted $\ell^1$ composition, discrete Grönwall, dominated and monotone convergence.
 
 <a id="unit-strategy"></a>
 
 ## 3. Strategy
 
-The endpoint applies the selection theorem of III.2 to the demand for a recipe. First choose the sheet, primary price map, recipe and combined floor $E_C$. Next choose the block factors $\ell_j$ above that floor. Finally raise the coupling thresholds to pay the bill $B_C(\ell,j)$ and the countable numerical requests. The selection retains the resulting inequalities on the run itself, so Lemma 4.15 realizes the recipe on that run's levels and horizon.
+Compare cutoffs at their common finest stage, where kinetic normalization makes the metric difference neutral. Transport this difference by the mixed Schur identity; neutrality gains $L^{-1}$, floors give contraction $L^{-1/2}$, and the recursion estimate gives exponent $1/4$. A shadow with altered clip parameters supplies free data; uniqueness transfers its Gaussian forms to every sufficient horizon.
 
-For the Gaussian estimate, compare two cutoffs $N\le n$ at a common stage $i$. At stage $N$, their metric difference $M^\infty_{n,N}-M^\infty_{N,N}$ represents the quadratic-form difference and has zero row sums in each orientation, since both Fourier symbols equal the identity at zero momentum. The mixed Schur identity transports this representative through the two background-field maps. A transport kernel has row scale $L^{-2}$, column scale $L^2$ and first-difference scale $L^{-3}$. Neutrality permits subtraction in one leg, gaining a factor $L^{-1}$; the distance introduced by subtraction is absorbed using half of the input exponential weight. The block-factor floor makes the one-step factor at most $L_i^{-1/2}$. A discrete Grönwall estimate absorbs polynomial growth in the age and gives the rate $(a_N/a_i)^{1/4}$. Passing from curvature representatives to link kernels and then taking a Cauchy limit gives Proposition III.14.3.
-
-The argument carries representatives modulo kernels annihilated by $d^\top(\cdot)d$, without inverting the degenerate curvature form. The plaquette metrics do have inverses, used in the transport kernels. The Gaussian quadratic forms are independent of the sufficient horizon, because the terminal form and the Schur recursion determine them. This permits the estimate to be proved on a shadow level system with altered clip parameters, where III.3 supplies canonical free transfer data, and then transferred to the original horizon.
+Choose recipe and floors before block factors, then raise coupling thresholds to meet the post-length bill and countable requests. III.2 retains these conditions on the selected funded run. VIII.1 uses its penalty, pillars and funded property, discarding the attached-recipe conjunct.
 
 <a id="unit-steps"></a>
 
 ## 4. Steps
 
-### 4.1 Flat representations and their propagation
-
-**Definition 4.1 (flat representation).** Let $H$ be a horizon of $\mathcal L$, $N\le n$, $i\le N$, and $\sigma,p\ge0$. A kernel $K$ on plaquettes $\mathbb Z^4\times\mathcal F$ is a *flat representation* of $\mathcal K_{n,i}-\mathcal K_{N,i}$ at stage $i$, of width $\sigma$ and cost $p$, if:
-
-- $\lVert K\rVert^{\rm pl}_\sigma\le p$;
-- $\sum_{u\in\mathbb Z^4}K(x,(u,\varphi))=0$ for every $x$ and every orientation $\varphi$ (*neutral*);
-- $K(x+u,y+u)=K(x,y)$;
-- for every torus $\mathbb T$ of the level system at stage $i$, the periodization $K^{\mathbb T}$ satisfies $d^\top K^{\mathbb T}d=\mathcal K^{\mathbb T}_{n,i}-\mathcal K^{\mathbb T}_{N,i}$.
-
-*Lean:* [`Flat.FlatRep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L36-L40), [`Sigil`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L43-L44), [`Folded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Stacks.lean#L14), [`neutral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/NullPair.lean#L9), [`town`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Torus.lean#L18).
-
-**Lemma 4.2 (the finest stage).** Let $H$ be sufficient for $P$, $N\le n$, and $0<\sigma\le\alpha_{J_N}$. Then $M^\infty_{n,N}-M^\infty_{N,N}$ is a flat representation at stage $N$ of width $\sigma$ and cost $2|\mathcal F|\Omega_{J_N}$.
-
-*Sketch:* each metric has plaquette norm $\le|\mathcal F|\Omega_{J_N}$ by its strip bound. The difference is neutral because $\widehat M(0)=1$ for both metrics. The torus identity is $\mathcal K(M_{n,N})-\mathcal K(M_{N,N})=d^\top(M_{n,N}-M_{N,N})d$.
-
-*Lean:* finest-stage lemma (private, [`World.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean)), via [`turn_class`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Present.lean#L52-L78); cost [`topTab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L24).
-
-**Lemma 4.3 (one step to a coarser stage).** Let $H$ be sufficient for $P$, with $i<N\le n$. Assume the plaquette-transfer kernel of $H$ at $(N,i)$ is the canonical free kernel. Let $K$ be a flat representation at stage $i+1$ of width $u>0$ and cost $p\ge0$, and let $0<\sigma\le\min(1,\alpha_{J_i},\alpha_{J_{i+1}})$ with $2\sigma\le L_iu$. Then
-$$K'(y,z)=\sum_{x,w}T_{n,i}(x,y)\,K(x,w)\,T_{N,i}(w,z)$$
-is a flat representation at stage $i$ of width $\sigma$ and cost $q_i(u)\,p$, where:
-
-- $T_{m,i}=(M^\infty_{m,i+1})^{-1}\mathcal T_{m,i}M^\infty_{m,i}$ is the curvature-transport kernel at cutoff $m$, with $\mathcal T_{m,i}$ the installed plaquette-transfer kernel and products denoting kernel composition;
-- $q_i(u)=2|\mathcal F|^2h_i^2/(uL_i)$;
-- $h_i=\exp(4)|\mathcal F|^2\Omega_{J_{i+1}}^2\Omega_{J_i}$.
-
-*Sketch:* the four properties come from four inputs.
-
-- *Algebra.* The torus identity follows from the Schur identity and from the intertwining $dW_m=C_md$ ([`inherited_precision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Inherit.lean#L32-L34)). These give $\mathcal K_{n,i}-\mathcal K_{N,i}=d^\top C_n^\top K^{\mathbb T}C_N d$, and $C_n^\top K^{\mathbb T}C_N$ is the periodization of $K'$ ([`town_hall`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Pushed.lean#L116-L122)).
-- *Bounds on the transport kernels.* Both are order-2 strip-bounded with constant $h_i$ ([`response`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Coin.lean#L40), [`allotment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Keys.lean#L14)).
-- *Neutrality.* The free plaquette-transfer kernel has a zero-momentum symbol independent of the fine residue class, and therefore position-independent row sums. Composition with the translation-invariant metric kernels preserves this property for $T_{N,i}$ ([`travels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Swing.lean#L75)). Thus constants of each orientation go to constants and neutrality passes to $K'$ ([`invariant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Swing.lean#L77-L104)).
-- *Norm.* Neutrality replaces $T_{N,i}(w,z)$ by $T_{N,i}(w,z)-T_{N,i}(\bar w,z)$, where $\bar w$ has the base point of $x$ and the orientation of $w$. In the weighted row estimate this costs $rh_i/L_i^3$, where $r$ is the $\ell^1$ distance between the base points of $x,w$. The inequality $re^{\sigma r/L_i}\le(2/u)e^{ur}$ for $r\ge0$ follows from $2\sigma\le L_iu$. The column estimate for $T_{n,i}$ contributes $h_iL_i^2$; summing orientations gives the factor $2|\mathcal F|^2h_i^2/(uL_i)$.
-
-*Lean:* one-step lemma (private, [`World.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean)); [`toward`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L50-L78), [`poised`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L24-L38), [`push_null`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Lines.lean#L87-L113), [`quote`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L23).
-
-**Lemma 4.4 (induction over stages).** Under the hypotheses of Proposition III.14.4 there are flat representations $K_{x,i}$ ($r_x\le i\le N_x$) of width $w_{J_i}$ and cost $c_x(i)=2|\mathcal F|\Omega_{J_{N_x}}(a_{N_x}/a_i)^\theta$.
-
-*Sketch:* the costs are defined explicitly, so that $c_x(i)=L_i^{-\theta}c_x(i+1)$. The proof is downward induction on $N_x-i$:
-
-- start with Lemma 4.2;
-- apply Lemma 4.3 with $u=w_{J_{i+1}}$, $\sigma=w_{J_i}$;
-- use $q_i(w_{J_{i+1}})\le L_i^{-\theta}$ and monotonicity of flat representations in the cost.
-
-The representatives for all $(x,i)$ are then fixed by choice.
-
-*Lean:* downward-induction lemma (private, [`World.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean)).
-
-**Lemma 4.5 (the rate; proof of Proposition III.14.4).** Write $g_x(i)=2|\mathcal F|\Omega_{J_{N_x}}\mathbf 1_{i=N_x}$. The costs of Lemma 4.4 satisfy the recursion of Proposition III.14.6 with forcing $g$. By the last hypothesis of III.14.4, $g$ has the required form with $c_0=1$ (it vanishes below the top). Proposition III.14.6 then gives cost $\le A\Lambda_x(i)^{d_0}(a_{N_x}/a_i)^{\min(1,\theta/2)}$.
-
-*Proof of III.14.6.*
-
-1. Multiply by $(a_i/a_t)^{\mu}$; the recursion keeps its form with $\theta'=\theta-\mu\ge\theta/2$.
-2. Prove $\tilde f_x(i)\le\tilde B\,(K+\Lambda_x(i))^{d_0}$ by downward induction, with $\tilde B=A_0/(1-3^{-\theta'/2})$.
-3. The step uses the polynomial estimate: since $\Lambda_x(i+1)\le\Lambda_x(i)+\log L_i$, one has $(K+\Lambda_x(i+1))^{d}L_i^{-\theta'}\le(K+\Lambda_x(i))^{d}L_i^{-\theta'/2}$ when $d\le K\theta'/2$. Then $L_i^{-\theta'/2}\le3^{-\theta'/2}$, and $\tilde B3^{-\theta'/2}+A_0=\tilde B$.
-
-Finally, $\Lambda_x(i)\ge2$ gives $(K+\Lambda_x(i))^{d_0}\le(K+1)^{d_0}\Lambda_x(i)^{d_0}$. Undoing the tilt gives the stated value of $A$.
-
-*Lean:* [`World.overlap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L165-L174), [`fade_solve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L118-L134), [`poly_solve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L56-L116), [`slope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L26-L54), [`Fade.of_top`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Shadows.lean#L83-L87), [`drop_length`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L79-L82).
-
-### 4.2 Choice of widths and passage to position space
-
-**Lemma 4.6 (choice of widths).** Let $G$ be simple, $X$ a price map and $w_j=\min(1,\alpha^X_j,\alpha^X_{j+1})$. Put
-$$\beta_{j,j'}=2|\mathcal F|^2h_{j,j'}^2/w_j,\qquad h_{j,j'}=\exp(4)|\mathcal F|^2(\Omega^X_j)^2\Omega^X_{j'},\qquad E^\flat(j)=\lceil 2/w_j+\beta_{j,j}^2+\beta_{j,j-1}^2\rceil.$$
-Here $j-1$ is truncated at zero. Suppose $L_i\ge E^\flat(J_{i+1})$ and $\Omega^X_{J_i}\le\log\hat\beta_i$ for every $i\ge e$. With $q_i$ computed from $X$, the following hold for $i\ge e$:
-
-- $w_{J_i}\le\min(1,\alpha^X_{J_i},\alpha^X_{J_{i+1}})$;
-- $2w_{J_i}\le L_iw_{J_{i+1}}$;
-- $q_i(w_{J_{i+1}})\le L_i^{-1/2}$;
-- $\Omega^X_{J_j}\le(1+s_G)\Lambda_{k,j}$ for all $k$ and all $j\ge e$.
-
-*Sketch:* since $J_i\in\{J_{i+1},J_{i+1}-1\}$, the constant $h_i$ is one of $h_{j,j},h_{j,j-1}$ with $j=J_{i+1}$. Then $q_i(w_j)=\beta/L_i\le L_i^{-1/2}$ because $\beta^2\le L_i$. Next, $2w_{J_i}\le2\le L_iw_j$. For the age cap: $\hat\beta$ is affine in $s$, so $\log\hat\beta_j\le\log\hat\beta_k+s_G|s_j-s_k|$.
-
-*Lean:* [`spacing_choice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L64-L92), [`universeClock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L38-L62), [`work items`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L29), [`entrance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L25), [`before`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L21-L23), [`Spacing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L32-L41).
-
-**Lemma 4.7 (the family estimate).** Assume the conclusions of Lemma 4.6 and let $H$ be sufficient for $X$. Index the family by $x=(k,N,n)$ with $k\in\mathbb N$ and $e\le N\le n$, and put $r_x=e$, $\theta=1/2$ and $Z_x=3+\log\hat\beta_k$. Then the numerical hypotheses of Proposition III.14.4 hold with $A_0=2|\mathcal F|(1+s_G)$ and $d_0=1$. If the plaquette-transfer data at every $(N,i)$ with $e\le i<N$ are the canonical free data, all its hypotheses hold.
-
-*Sketch:* the first three width estimates are exactly the required one-step inequalities. The age bound gives $2|\mathcal F|\Omega_{J_N}\le A_0\Lambda_{k,N}$ uniformly in $k,N,n$.
-
-*Lean:* [`berth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L45-L54), [`Spacing.funded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L56-L68).
-
-**Lemma 4.8 (from a representative to the position-space kernel).** Let $0\le\sigma,\varepsilon\le1$ and $p,C\ge0$. Suppose both metric kernels are strip-bounded in width $\sigma$ with constant $p$, and that $K$ represents $\mathcal K_{n,i}-\mathcal K_{N,i}$ on tori whose sides tend to infinity, with $\lVert K\rVert^{\rm pl}_\varepsilon\le C$. Then
-$$\mathcal O_{n,i}-\mathcal O_{N,i}=d^\top K\,d\quad\text{on the links of }\mathbb Z^4,\qquad \lVert\mathcal O_{n,i}-\mathcal O_{N,i}\rVert_\varepsilon\le\sigma_0C,\qquad \sigma_0=|\mathcal F|^2\lambda_d^2,$$
-where $\lambda_d$ is a width-one strip bound for $d$.
-
-*Sketch:* $\mathcal O_{n,i}-\mathcal O_{N,i}$ and $d^\top Kd$ have finite row norms and the same periodizations on the given tori. Dominated convergence as the torus side tends to infinity identifies the kernels. Composition with the two exterior derivatives gives the factor $\sigma_0$.
-
-*Lean:* [`resolve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L101-L115), [`output_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L89-L90), [`sumToken`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L66).
-
-**Lemma 4.9 (rate for pairs of cutoffs).** Under the conclusions of Lemma 4.6, with $H$ sufficient for $X$ and with canonical free plaquette-transfer data at all $(N,i)$, $e\le i<N$, the constant $A$ of Proposition III.14.3 satisfies
-$$\lVert\mathcal O_{n,i}-\mathcal O_{N,i}\rVert_{w_{J_i}}\le A\,\Lambda_{k,i}\,(a_N/a_i)^{1/4}\qquad\text{for all }k\text{ and }e\le i\le N\le n.$$
-
-*Sketch:* apply Proposition III.14.4 to the family of Lemma 4.7, then Lemma 4.8.
-
-*Lean:* [`meshed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L75-L101).
-
-**Lemma 4.10 (the limit kernel).** Under the same hypotheses there are kernels $F_i$ satisfying (a)–(c) of Proposition III.14.3, in the same width $w_{J_i}$.
-
-*Sketch:* for fixed $i$, Lemma 4.9 gives a Cauchy modulus $A\Lambda_{k,i}(a_n/a_i)^{1/4}\to0$ in the weighted row norm. Completeness of the scalar entries gives a pointwise limit, and finite-sum bounds followed by monotone convergence preserve the row estimates ([`solvent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Limit.lean#L51-L59)). This gives norm convergence and (c). For $n\ge i$, $\lVert\mathcal O_{n,i}\rVert_{w_{J_i}}\le\sigma_0|\mathcal F|\Omega_{J_i}\le\sigma_0|\mathcal F|(1+s_G)\Lambda_{k,i}$, which passes to the limit and gives (a). Uniqueness of pointwise limits makes $F_i$ independent of $k$.
-
-*Lean:* [`supplies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L107-L164).
-
-### 4.3 Uniqueness of the Gaussian part; the three recipe components
-
-**Lemma 4.11 (the Gaussian quadratic forms do not depend on the horizon).** Let $H,H'$ be horizons, each sufficient for some price map, on level systems $\mathcal L,\mathcal L'$ that differ at most in the clip parameters of their stages; for example $\mathcal L'$ may be the *shadow* of $\mathcal L$, with clip profile replaced by $\gamma$. Then $\mathcal K^{\mathbb T}_{N,i}(H)=\mathcal K^{\mathbb T}_{N,i}(H')$ for all $i\le N$ and all tori, and $\mathcal O^H_{N,i}=\mathcal O^{H'}_{N,i}$.
-
-*Sketch:* downward induction from $i=N$, where both forms equal $d^\top d$. If the forms agree at stage $i+1$, the Schur identity gives $\mathcal K_{N,i}(H)-\mathcal K_{N,i}(H')=W^\top\cdot0\cdot W'=0$; the clip parameters do not enter the step data. This proves equality on the tori of the level system. Lemma 4.8 then identifies the position-space kernels; periodizing that equality gives equality on every torus.
-
-*Lean:* [`same_path`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Agreement.lean#L23-L36), [`same_output`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Agreement.lean#L38-L43), [`same_terminal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Agreement.lean#L19-L21), [`shadow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Shadow.lean#L30-L50), [`same_shadow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Shadow.lean#L52-L75).
-
-**Lemma 4.12 (the flat component; proof of Proposition III.14.3).** For a simple $G$ and a sheet $s$, take the clip profile $\gamma$ and floor $E_{\rm free}$ from III.3, and obtain $X$ by applying its sufficiency construction to the sheet with clip profile $\gamma$. Set $E=\max(E^\flat,E_{\rm free})$. Given $\mathcal L$ and $e$ as in Proposition III.14.3, the shadow $\mathcal L'$ meets the assumptions of III.3, so it carries a horizon $Y$ sufficient for $X$ with canonical free transfer data. Apply Lemmas 4.6–4.10 to $(\mathcal L',Y)$; the delay condition is unchanged, since $\hat\beta$ and the scale data are unchanged. Transfer (b) and (c) to every sufficient horizon $H$ of $\mathcal L$ by Lemma 4.11. The floor $E$ is required at every stage because III.3 requires its floor everywhere.
-
-*Lean:* [`entrance_gate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Entrance.lean#L28-L50), [`rearrange`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Shadow.lean#L21-L23).
-
-**Lemma 4.13 (the other two components of the recipe).** For each sheet, the point-group and background-field conclusions of Proposition III.14.2 hold above suitable floors. Both use the shadow construction of Lemma 4.12. Their floors may be chosen to be $E_{\rm free}$; the flat component also requires $E^\flat$.
-
-- *Point-group invariance.* III.3 supplies point-group invariance for the shadow horizon, and the forms coincide by Lemma 4.11.
-- *Background-field identities.* On the shadow the free background-field map satisfies the relations of Proposition III.14.5, because its transfer data are the free data. The shadow's quadratic forms equal those of $H$ (Lemma 4.11), and the free data of $\mathcal L$ and of its shadow coincide. Hence the same relations hold for $H$.
-
-*Lean:* [`Cast.assured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Cast/Profile.lean#L16-L34), [`Aura.dual_support`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aura/Publisher.lean#L28-L52), [`available`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L54-L59).
-
-### 4.4 Realizing the recipe on a run
-
-**Lemma 4.14 (realization).** Let $s$ be a sheet, $q$ a price map, $C$ a recipe for $s$ with secondary price map $X$, and $\mathcal L$ a level system with the kernel and profile of $s$. Let $H$ be sufficient for the primary price map $P_{s,q}$. Let $E_C$ be the maximum of $E^\flat,E^{\rm sw},E^{\rm du}$ and the two numerical floors in §4.6, and let $B_C(\ell,j)$ be the maximum of the two post-length bills there. Assume
-
-- $\ell_j\ge E_C(j)$ for every smoothing index $j$;
-- $\hat\beta_m\ge B_C(\ell,J_{m+1})$ for every stage $m$.
-
-Then on $(\mathcal L,H)$:
-
-- both numerical floor and bill conditions hold;
-- the background-field identities and point-group invariance hold;
-- Proposition III.14.3 holds with $e=0$.
-
-*Sketch:* the floor bounds apply to $L_i=\ell_{J_{i+1}}$ and to all smoothing-index requirements. For the delay, the second bill is the exponential of a finite bound $S_i$ for the actual patch, with $\Omega^X_q\le S_i$ for every $q\le J_{i+1}$. Its payment gives $S_i\le\log\hat\beta_i$ ([`Yamen.hatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Yamen/Penny.lean#L56-L64)). Since $J_i\le J_{i+1}$, the delay holds with $e=0$. Apply the three components of $C$; the fixed chart of III.3 supplies the remaining local-chart condition.
-
-*Lean:* [`realize`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L132-L182), [`Realized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L117-L128), [`floor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L61-L65), [`post`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L75-L79), [`numeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L71-L72).
-
-**Lemma 4.15 (binding to the run).** Let $s,q,C$ be as in Lemma 4.14 and $n:\mathbb N\to\mathbb N$ with $n\ge E_C$. Let $R$ be a run whose sheet is $s$ with floors raised to $n$, whose price map is $P_{s,q}$, and whose levels pay $B_C$. Then the recipe is realized on $R$'s own levels and horizon.
-
-*Sketch:* the sheet and price-map identities identify the kernel, profile and sufficient horizon required in Lemma 4.14. The run's block-factor inequalities give $\ell_j\ge n(j)\ge E_C(j)$. Apply that lemma. The retained selection data of III.2 contain exactly these identities and inequalities.
-
-*Lean:* [`on_run`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L25-L54), [`of_preselection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L71-L77).
-
-### 4.5 The run
-
-**Lemma 4.16 (selection with a preselected demand; III.2).** Fix the comparison and custody data used in III.2. Let $G$ be simple, $b>0$, $\Lambda$ a property of level systems that can be enforced by raising coupling-entry thresholds, and $\Delta$ a local-estimate package. For every sheet $s$ and price map $q$, suppose a nonempty demand set $\mathcal D(s,q)$ is given. For each $C\in\mathcal D(s,q)$, prescribe an integer floor $E_C(j)$, real requests $U_C(r,j)$, and real post-length requests $V_C(\ell,r,j)$ depending on the block-factor sequence $\ell$.
-
-Then there are a run $R$, a campaign $T$, a sheet $s$, a price map $q$, a choice $C\in\mathcal D(s,q)$ and an integer floor $n\ge\max(n_s,E_C)$ such that:
-
-- the penalty is $b$, $\Lambda$ holds on the levels of $R$, pillars exist, and $R$ is funded for $\Delta$;
-- $R$ has the sheet $s$ with floor raised to $n$, and price map $P_{s,q}$;
-- $\log\log\hat\beta_m\ge0$ for every $m$;
-- for each of the request families $F=U_C$ and $F(r,j)=V_C(\ell,r,j)$, and every fixed $r$, there is $m_0$ such that $|F(r,j)|\le1+\log\log\hat\beta_m$ whenever $m\ge m_0$ and $j\le J_{m+1}$;
-- $V_C(\ell,0,J_{m+1})\le\hat\beta_m$ for every $m$.
-
-The comparison and custody data have canonical choices depending only on $G$, used in Lemma 4.17. The additional conclusions about orders, periods and extraction in III.2 are not needed here.
-
-*Lean:* [`selectRunWithTreasuryPeriod_preselected_quote_orders_postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114); the plain version is [`selectRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L75-L84). *(statement only; the construction behind it belongs to III.2)*
-
-**Lemma 4.17 (assembly of the construction run).** Proposition III.14.1 holds.
-
-*Sketch:* use the canonical comparison and custody data and apply Lemma 4.16 with $\Lambda$ identically true, $\Delta=\Delta_{10}$, and $\mathcal D(s,q)$ the set of recipes for $s$. Proposition III.14.2 makes this set nonempty. Use floor $E_C$, reciprocal-width requests $U_C(r,j)=\rho_C(r,j)^{-1}$, where $\rho_C(r,j)>0$ is the recipe width for demand $r$ at smoothing index $j$, and $V_C(\ell,r,j)=B_C(\ell,j)$, independent of $r$. Lemma 4.15 realizes the selected recipe on the run.
-
-*Lean:* [`constructionRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L14-L28), [`postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L21-L23).
-
-### 4.6 The packages behind the numerical floors
-
-The combined recipe floor includes [`rail`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo/Scaling.lean#L46), and its post-length bill uses [`receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo/Scaling.lean#L65)/[`after`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo/Scaling.lean#L67). The second numerical component uses [`Yamen.need`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Yamen/Pledge.lean#L36) and [`Yamen.stamp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Yamen/Penny.lean#L48).
-
-The supporting estimates below supply finite widths, numerical floors and post-length bounds. The widths also enter the reciprocal-width requests of Lemma 4.17. These are summaries under the hypotheses of the linked results; the complete auxiliary statements are not reproduced here.
-
-- **One-step transit and graded differences.** [`harbor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Sideshow/Orbit.lean#L81-L190): for admissible parameters there are a constant $A\ge1$ and a growth function $J$ of controlled degree bounding a one-step transit of paired marked kernel families. Supporting results: [`DocketBill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Necks/Elect.lean#L78-L140), [`slushy_uniform`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Necks/Prior.lean#L61-L95), [`conquer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Necks/Lob.lean#L32-L124), [`drive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Necks/Tides.lean#L45-L88) (graded differences of two kernel families with scale-independent constants).
-- **Curvature-coefficient lifts with linear cost.** Closed coefficients satisfying the required grading, symmetry and vanishing conditions admit curvature lifts, with reduced width and a bound linear in the input size. The bilinear case needs an additional zero-momentum condition: [`line_legs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rudder/FinalLegs.lean#L49-L74), [`doubleLift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rudder/Loop/Empty.lean#L81-L107), [`arc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rudder/Sym/Oaks.lean#L65-L81), [`warehouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Spar/Overhead.lean#L39-L49), [`arm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/QUARTIC_MATCH/Cells/LiftOne.lean#L198-L206), [`multi`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/QUARTIC_MATCH/Cells/Resolve.lean#L158-L178).
-- **Formal Gaussian change of variables.** Near-identity substitutions preserve the formal Gaussian functional after Jacobian correction. The supporting results include marked-variable vanishing and compatibility of connected logarithms: [`bottle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Room/Time.lean#L54-L81), [`still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Room/Glass.lean#L98-L111), [`absorbed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Room/Alight.lean#L86-L123), [`impress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Room/Refresh.lean#L87-L106).
-- **Formal Ward identities and gauge variations.** Change of variables with an insertion, a finite-torus Ward identity, and bounds on the response to adding gradients: [`stirred`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Wisp/Chord.lean#L48-L76), [`welcomed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Weald/Pitch.lean#L80-L98), [`spark`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flint/Hunger.lean#L77-L91).
-- **Representatives and evaluation.** Gauge-equivalent parametrizations give equal block-integral germs and rescaled coefficients under the stated regularity conditions; the block-integral comparison also assumes equality of the quadratic germs. A related formula evaluates completed coefficients by averaging over signed lattice symmetries: [`blossom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Atlas/Furnace.lean#L32-L51), [`switch_rep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aggregate/Voice.lean#L84-L94), [`hatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Carrel/Works.lean#L43-L52).
-- **Marked-kernel receipts.** Bounds on marked kernels including the exact leading term, with constants announced before the block factor: [`podium`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Trill/Swift.lean#L40-L96), [`baton`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Halo/Kumi.lean#L63-L106).
-- **Line inverse in cell coordinates.** An algebraic inverse on the constrained subspace, followed by strip bounds and the finite-torus inverse identity: [`jointProjection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Line/Solid.lean#L21-L38), [`preheat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Line/Recipe.lean#L60-L83), [`transcribe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Line/Complex.lean#L108-L138).
+1. **Initialize and propagate.** The metric difference at stage $N$ has cost $2|\mathcal F|\Omega_{J_N}$ and zero orientation-wise row sums. The Schur identity transports it without inverting the curvature form; subtracting the transport kernel at the first base point gains $L^{-1}$, using half the input exponential weight. [Flat.toward](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L50-L78).
+2. **Obtain the rate.** Floors ensure compatible widths and $q_i(w_{J_{i+1}})\le L_i^{-1/2}$; downward induction and III.14.6 absorb age growth. [spacing_choice](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L64-L92).
+3. **Take the limit.** Diverging-torus periodizations identify link kernels; composing with $d^\top,d$ gives the pairwise cutoff estimate. Its Cauchy limit preserves the weighted bounds. [supplies](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L107-L164).
+4. **Transfer from the shadow.** Downward Schur induction from the bare terminal form proves equality of Gaussian forms for sufficient horizons on systems differing only in clip parameters. This transfers the rate, symmetries and free background identities. [same_path](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Agreement.lean#L23-L36).
+5. **Realize and select.** The combined floor and bill enforce the recipe with $e=0$ on the run's own horizon. Apply III.2 with reciprocal-width requests and $V_C(\ell,r,j)=B_C(\ell,j)$. [on_run](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L25-L54).
 
 <a id="unit-difficulty"></a>
 
 ## 5. Where the difficulty lies
 
-- **Degenerate quadratic forms.** Gauge zero modes prevent inversion of $d^\top Md$. The mixed Schur identity propagates curvature representatives without this inversion.
-- **Neutrality.** Zero row sums are required separately in every target orientation. Kinetic normalization gives the initial cancellation; the constant-row-sum identity for the free transfer kernel preserves it. Scaled translation covariance alone does not suffice.
-- **The exponent.** The width floor reduces the $L^{-1}$ gain to $L^{-1/2}$, and the recursion estimate uses half of the remaining exponent to absorb age growth. The resulting exponent $1/4$ is not claimed to be optimal.
-- **Order of choices.** The flat floor is fixed from the price map before the block factors. It involves the constants at indices $j,j-1$ and widths at $j,j+1$. The post-length bill then enforces the delay condition through the coupling thresholds.
-- **Scope.** The estimate controls the Gaussian link kernel $d^\top M^\infty d$. It gives no convergence rate for the undetermined part of the plaquette metric, positive-order coefficients or source kernels. The formal recipe is not an identification with physical marked observables.
+Gauge zero modes obstruct curvature-form inversion. Orientation-wise neutrality supplies the gain, but preserving it requires constant row sums, beyond scaled covariance. Floors precede block factors; bills follow them. The rate concerns only the Gaussian link kernel: it gives no rate for the undetermined part of the plaquette metric, positive-order coefficients or source kernels. The formal recipe does not identify physical marked observables.
 
 <a id="unit-notation"></a>
 
 ## 6. Notation
 
-- **Written proof:** run $R$, campaign $T$, pillars $W$
+$L_i=\ell_{J_{i+1}}\ge3$ are odd block factors; $a_0=1$, $a_{i+1}=a_i/L_i$, $s_i=\log(1/a_i)$; $J_i\le J_{i+1}\le J_i+1$ are smoothing indices. Cutoff $N$ has spacing $a_N$. Put $\hat\beta_i=\bar\beta+s_Gs_i>1$, $\Lambda_{k,i}=5+\log\hat\beta_k+|s_i-s_k|$. A price map is $(\alpha_j,\Omega_j,\eta_j)$: positive widths, upper bounds, positive coercivity bounds. A horizon supplies metric kernels $M^\infty_{N,i}$ and transfer data; $M^{\mathbb T}_{N,i}$ is the periodization. The lattice exterior derivative is $d$; $\mathcal K(M)=d^\top Md$, $\mathcal O=d^\top M^\infty d$, without a factor $1/2$. The local-estimate package $\Delta_{10}$ is [garment10](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L63).
 
-  **Lean:** [`Run`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L30-L48), `Campaign`, [`Pillars`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Vendee.lean#L22-L27)
-
-  **Meaning:** Wilson family with its scale and extraction data; campaign comparison data; selected histories from stage $0$ for all $(N,p)$, with local step data and accounting identities
-
-- **Written proof:** funded
-
-  **Lean:** [`R2I.Funded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73)
-
-  **Meaning:** 13 clauses: `localBudget`, `attentive`, `logCopy`, `locrian`, `wild`, `silk`, `poly`, `fixed`, `tic`, `halo`, `paced`, `stoves`, `hasSky`
-
-- **Written proof:** $\Delta_{10}$
-
-  **Lean:** [`garment10`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L63), [`Decal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L18-L20)
-
-  **Meaning:** local one-step estimate package with its eventual-validity lemma
-
-- **Written proof:** sheet $s$
-
-  **Lean:** [`Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35)
-
-  **Meaning:** kernel choice, stage profile, floors; fixed before $L$
-
-- **Written proof:** price map $P=(\alpha_j,\Omega_j,\eta_j)$
-
-  **Lean:** [`MapPrices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L123-L128)
-
-  **Meaning:** strip width, upper bound and coercivity bound for each smoothing index
-
-- **Written proof:** horizon $H$, sufficient for $P$
-
-  **Lean:** [`Horizon`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L119-L121), [`Suffices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139)
-
-  **Meaning:** metrics $M_{N,i}$ and transfer data, with strip bounds and Schur relations
-
-- **Written proof:** $\mathcal K^{\mathbb T}_{N,i}=d^\top M^{\mathbb T}_{N,i}d$
-
-  **Lean:** [`Precision.K`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L68-L69), `quadratic`
-
-  **Meaning:** Gaussian quadratic form on a torus
-
-- **Written proof:** $\mathcal O_{N,i}$
-
-  **Lean:** [`output`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L18), [`writ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L15-L16)
-
-  **Meaning:** position-space kernel $d^\top M^\infty d$ on links
-
-- **Written proof:** background-field relations
-
-  **Lean:** [`Inputs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L76-L79)
-
-  **Meaning:** $\mathcal K W=Q^\top\mathcal K'$, $QW=1-b^{-1}\mathcal K'$
-
-- **Written proof:** curvature transport $T_{m,i}$
-
-  **Lean:** [`fine_share`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Keys.lean#L15), [`response`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Coin.lean#L40)
-
-  **Meaning:** $(M^\infty_{m,i+1})^{-1}\mathcal T_{m,i}M^\infty_{m,i}$
-
-- **Written proof:** $h_i$, $q_i(u)$
-
-  **Lean:** [`header`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L22), [`quote`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L23), [`neutralCoin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Lines.lean#L84-L85)
-
-  **Meaning:** $\exp(4)\lvert\mathcal F\rvert^2\Omega_{J_{i+1}}^2\Omega_{J_i}$; $2\lvert\mathcal F\rvert^2h_i^2/(uL_i)$
-
-- **Written proof:** flat representation
-
-  **Lean:** [`FlatRep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L36-L40), [`Sigil`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L43-L44)
-
-  **Meaning:** Definition 4.1
-
-- **Written proof:** weighted norms
-
-  **Lean:** [`Folded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Stacks.lean#L14), [`RowCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Atlas.lean#L28-L29), [`Atlas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Atlas.lean#L37-L42)
-
-  **Meaning:** plaquette norm $\lVert K\rVert^{\rm pl}_\sigma$; link row norm $\lVert F\rVert_\sigma$; row, column and first-difference bounds of order $m$
-
-- **Written proof:** neutral, translation invariant
-
-  **Lean:** [`neutral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/NullPair.lean#L9), [`town`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Torus.lean#L18)
-
-  **Meaning:** zero symbol at zero momentum; $K(x+u,y+u)=K(x,y)$
-
-- **Written proof:** $w_j$, $\Lambda_{k,i}$
-
-  **Lean:** [`curve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L14), [`clock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L30), [`Lambda'`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L17)
-
-  **Meaning:** $\min(1,\alpha_j,\alpha_{j+1})$; $5+\log\hat\beta_k+\lvert s_i-s_k\rvert$
-
-- **Written proof:** delay condition
-
-  **Lean:** [`Delay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L19)
-
-  **Meaning:** $\Omega_{J_i}\le\log\hat\beta_i$ for $i\ge e$
-
-- **Written proof:** flat rate (III.14.3)
-
-  **Lean:** [`Quorum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Entrance.lean#L13-L21)
-
-  **Meaning:** clauses (a)–(c)
-
-- **Written proof:** family and numerical assumptions
-
-  **Lean:** [`World`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L82-L91), [`Funding`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L101-L110), [`Spacing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L32-L41)
-
-  **Meaning:** hypotheses of III.14.4; their form on a common level system
-
-- **Written proof:** stairs, drop, weight
-
-  **Lean:** [`Stair`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L24-L30), [`drop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L66), [`Fade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L108)
-
-  **Meaning:** index family; $L_i^{-\theta}$; age polynomial times $(a_t/a_i)^c$
-
-- **Written proof:** shadow
-
-  **Lean:** [`shadow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Shadow.lean#L30-L50)
-
-  **Meaning:** same level system with clip profile replaced
-
-- **Written proof:** recipe $C$, floor $E_C$, bill $B_C$
-
-  **Lean:** [`Choice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L29-L51), [`floor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L61-L65), [`post`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L75-L79)
-
-  **Meaning:** three components with pre-length floors; combined floor $E_C$ and post-length bill $B_C$
-
-- **Written proof:** point-group invariance ("sworn")
-
-  **Lean:** [`Bid.Sworn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L54-L55)
-
-  **Meaning:** colour-summed bilinear form invariant under signed axis permutations
-
-- **Written proof:** background-field identities ("licensed")
-
-  **Lean:** [`Aura.licensed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aura/Publisher.lean#L24-L26)
-
-  **Meaning:** free background map satisfies the background-field identities for the actual forms
-
-- **Written proof:** "prices", "bill", "floor", "numeric", "post"
-
-  **Lean:** —
-
-  **Meaning:** numerical bounds on block factors and the reference coupling
-
+Write $x(u)$ for a base point. For link kernels, $\lVert F\rVert_\sigma=\sup_u\sup_\phi\sum_{y\in\mathbb Z^4}|F(u,(y,\phi))|e^{\sigma|x(u)-y|_1}$, with $\phi$ a link orientation; for plaquettes, $\lVert B\rVert^{\rm pl}_\sigma=\sup_u\sum_{v\in\mathbb Z^4\times\mathcal F}|B(u,v)|e^{\sigma|x(u)-x(v)|_1}$, summing all target orientations $\mathcal F$. A flat representative is translation invariant, has zero row sums in each target orientation, and on every level-system torus periodizes to the quadratic-form difference after applying $d^\top(\cdot)d$; cost bounds this norm. In III.14.4, $q_i(u)=2|\mathcal F|^2h_i^2/(uL_i)$, $h_i=e^4|\mathcal F|^2\Omega_{J_{i+1}}^2\Omega_{J_i}$.
 
 <a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
-1. **Selection in III.2.** Lemma 4.16 is used as an input; the underlying construction of the scale and extraction data is not audited here. Its two auxiliary inputs have canonical choices. Removing the recipe demand would give a separate existence statement, not an identification of the resulting run with the fixed run of Proposition III.14.1.
-2. **The funded condition.** Its thirteen clauses are retained in full, rather than replaced by their summary in Proposition III.14.1. The route through [`fromFunded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167) uses the clauses for extraction, comparison, OPE and asymptotic control; their detailed mathematical meanings and proofs belong to III.15 and later units. In particular, that route does not project the local-estimate clause involving $\Delta_{10}$.
-3. **Auxiliary estimates in §4.6.** Only their statements and numerical uses are summarized. Their full admissibility conditions and proofs, including the curvature-lift, marked-kernel and formal Ward estimates, remain outside this verification. The summaries are not substitutes for those hypotheses.
-4. **Inputs from III.3 and III.8.** The free-kernel existence theorem and the underlying lattice kernel estimates are used at their stated interfaces. The proofs of those upstream results are not audited here.
+
+The scale and extraction choices are constructed in III.2; the meanings and proofs of the full funded clauses belong to III.15 and later units. The free-kernel existence proof and lattice kernel estimates are used without explanation here. The auxiliary curvature-lift, marked-kernel and formal Ward estimates still require their full admissibility conditions and proofs. Removing the recipe demand would not identify the resulting run with this selected run.
+
+Detailed notes: the full account of this unit, with proof sketches for every step, is on the [detailed notes page](../notes/III-14.md).
 
 ## Code dependencies
 
@@ -575,6 +167,110 @@ The folders and result chains below are source inventories. Their line counts co
 - work package [`YM/RG08/Yurt/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Yurt) — 5 lines.
 - work package [`YM/RG08/Flint/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flint) — 4 lines.
 - work package [`YM/RG08/Fold/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Fold) — 1 lines.
+
+### Additional source locations
+
+Further pinned locations for the definitions and comparisons discussed in this unit.
+
+- [`Bid.Sworn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L54-L55)
+- [`Campaign.Pillars`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Vendee.lean#L22-L27)
+- [`raging`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Fiscal.lean#L18)
+- [`fundedRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L30-L31)
+- [`ActualRunNativeComponentRecipe.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean)
+- [`postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L21-L23)
+- [`of_preselection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ActualRunNativeComponentRecipe.lean#L71-L77)
+- [`Realized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L117-L128)
+- [`floor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L61-L65)
+- [`numeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L71-L72)
+- [`post`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeComponentRecipe.lean#L75-L79)
+- [`PostnumericPreselection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L31-L46)
+- [`destination`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L74)
+- [`Credit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L87-L88)
+- [`continuum_with_position_tests`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L28-L48)
+- [`Horizon`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L119-L121)
+- [`MapPrices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L123-L128)
+- [`Floor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68)
+- [`Precision.K`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L68-L69)
+- [`Inputs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L76-L79)
+- [`action`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L93-L103)
+- [`RowCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Atlas.lean#L28-L29)
+- [`response`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Coin.lean#L40)
+- [`carrier`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Inherit.lean#L24)
+- [`inherited_precision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Inherit.lean#L32-L34)
+- [`allotment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Keys.lean#L14)
+- [`fine_share`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Keys.lean#L15)
+- [`neutral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/NullPair.lean#L9)
+- [`Folded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Bulk/Stacks.lean#L14)
+- [`Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35)
+- [`R2IGoals.fromFunded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167)
+- [`selectRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L75-L84)
+- [`EventuallyPaid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Clock.lean#L36-L38)
+- [`Levels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L131-L134)
+- [`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79)
+- [`Aura.licensed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aura/Publisher.lean#L24-L26)
+- [`Aura.dual_support`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aura/Publisher.lean#L28-L52)
+- [`Cast.assured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Cast/Profile.lean#L16-L34)
+- [`same_terminal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Agreement.lean#L19-L21)
+- [`same_output`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Agreement.lean#L38-L43)
+- [`resolve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L101-L115)
+- [`writ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L15-L16)
+- [`output`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L18)
+- [`sumToken`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L66)
+- [`output_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Curl.lean#L89-L90)
+- [`Flat.Quorum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Entrance.lean#L13-L21)
+- [`Flat.curve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L14)
+- [`Lambda'`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L17)
+- [`Flat.Delay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L19)
+- [`before`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L21-L23)
+- [`entrance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L25)
+- [`work items`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L29)
+- [`universeClock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Length.lean#L38-L62)
+- [`Mesh.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean)
+- [`Flat.clock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L30)
+- [`Spacing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L32-L41)
+- [`berth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L45-L54)
+- [`Spacing.funded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L56-L68)
+- [`Flat.meshed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Mesh.lean#L75-L101)
+- [`rearrange`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Shadow.lean#L21-L23)
+- [`shadow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Shadow.lean#L30-L50)
+- [`same_shadow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Shadow.lean#L52-L75)
+- [`World.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean)
+- [`World.Funding`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L101-L110)
+- [`World.Provides`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L112-L115)
+- [`header`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L22)
+- [`quote`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L23)
+- [`topTab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L24)
+- [`Flat.FlatRep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L36-L40)
+- [`World`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/World.lean#L82-L91)
+- [`Sigil`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/FlatStep.lean#L43-L44)
+- [`solvent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Limit.lean#L51-L59)
+- [`neutralCoin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Lines.lean#L84-L85)
+- [`turn_class`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Present.lean#L52-L78)
+- [`town_hall`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Pushed.lean#L116-L122)
+- [`travels`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Swing.lean#L75)
+- [`invariant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Swing.lean#L77-L104)
+- [`town`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets/Torus.lean#L18)
+- [`slope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L26-L54)
+- [`poly_solve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Ascent.lean#L56-L116)
+- [`Fade.of_top`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Shadows.lean#L83-L87)
+- [`Fade.cap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Shadows.lean#L90-L97)
+- [`Fade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L108)
+- [`Stair`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L24-L30)
+- [`drop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L66)
+- [`drop_length`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate/Stair.lean#L79-L82)
+- [`rail`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo/Scaling.lean#L46)
+- [`receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo/Scaling.lean#L65)
+- [`after`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo/Scaling.lean#L67)
+- [`Yamen.stamp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Yamen/Penny.lean#L48)
+- [`Yamen.hatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Yamen/Penny.lean#L56-L64)
+- [`Yamen.need`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Yamen/Pledge.lean#L36)
+- [`YM/RG12/Burst/Wardrobe.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean)
+- [`Decal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L18-L20)
+- [`Attic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L30-L34)
+- [`annex`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Burst/Wardrobe.lean#L36-L61)
+- [`YM/RG08/Packets/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Packets)
+- [`YM/RG08/Rate/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Rate)
+- [`YM/RG08/Redo/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Redo)
 
 ## Key statements
 
