@@ -18,6 +18,13 @@
   <section|2026-11-11><label|2026-11-11>
 
   <\itemize-minus>
+    <item><strong|First draft of the manuscript.> The
+    <hlink|manuscript|manuscript/index.tm> now has a complete first draft
+    (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
+    226 pages): Part I (theorem, principal statements, deduction) and Part II
+    (all proofs, Sections 10\U19), each section through its review cycle.
+    Revisions continue.
+
     <item><strong|How the manuscript is written.> A detailed account of the
     writing process \V statements first, roles, the review cycle, the
     records, what it has caught and what it does not establish \V in

@@ -72,48 +72,50 @@
 
   <section|Status><label|status>
 
-  <em|Updated 11 November 2026, 21:20. First draft complete: the PDF has 226
-  pages.>
+  <em|Updated 11 November 2026, 22:45. First draft, revised after an
+  independent referee review of the whole manuscript: 237 pages.>
 
   <block|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|-1|1|-1|cell-hyphen|t>|<cwith|1|1|1|-1|cell-bborder|1ln>|<cwith|1|1|1|-1|cell-valign|bottom>|<table|<row|<cell|>|<cell|<strong|section>>|<cell|<strong|pages>>|<cell|<strong|status>>>|<row|<cell|Part
-  I>|<cell|1. Introduction>|<cell|7>|<cell|reviewed; revised (with the
-  abstract)>>|<row|<cell|>|<cell|2. Wilson theory>|<cell|1>|<cell|reviewed;
-  revised after an independent reading>>|<row|<cell|>|<cell|3.
-  Renormalization>|<cell|8>|<cell|reviewed; revised after an independent
-  reading>>|<row|<cell|>|<cell|4. The continuum
-  limit>|<cell|4>|<cell|reviewed; revised after an independent
-  reading>>|<row|<cell|>|<cell|5. Stress and
-  rotations>|<cell|2>|<cell|reviewed; revised after an independent
-  reading>>|<row|<cell|>|<cell|6. Phases and
+  I>|<cell|1. Introduction>|<cell|6>|<cell|reviewed; revised after an
+  independent referee review (with the abstract)>>|<row|<cell|>|<cell|2.
+  Wilson theory>|<cell|2>|<cell|reviewed; revised after an independent
+  referee review>>|<row|<cell|>|<cell|3. Renormalization>|<cell|8>|<cell|reviewed;
+  revised after an independent referee review>>|<row|<cell|>|<cell|4. The
+  continuum limit>|<cell|3>|<cell|reviewed; revised after an independent
+  referee review>>|<row|<cell|>|<cell|5. Stress and
+  rotations>|<cell|3>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|6. Phases and
   reconstruction>|<cell|3>|<cell|reviewed; revised after an independent
-  reading>>|<row|<cell|>|<cell|7. Trace and
-  products>|<cell|4>|<cell|reviewed; revised after an independent
-  reading>>|<row|<cell|>|<cell|8. Main theorems>|<cell|3>|<cell|reviewed;
-  Theorem B restated as a five-clause theorem>>|<row|<cell|>|<cell|9.
-  Constants and order of choice>|<cell|3>|<cell|reviewed>>|<row|<cell|Part
-  II>|<cell|10. Local polynomial fields>|<cell|8>|<cell|reviewed;
-  cross-section consistency checked>>|<row|<cell|>|<cell|11. Gauges and block
-  integration>|<cell|26>|<cell|reviewed; cross-section consistency
-  checked>>|<row|<cell|>|<cell|12. Path actions and the coupling
-  reset>|<cell|13>|<cell|reviewed; cross-section consistency
-  checked>>|<row|<cell|>|<cell|13. Activities and the inductive
-  step>|<cell|30>|<cell|reviewed; cross-section consistency
-  checked>>|<row|<cell|>|<cell|14. Trajectories, marked fields and
-  ultraviolet convergence>|<cell|35>|<cell|reviewed; cross-section
-  consistency checked>>|<row|<cell|>|<cell|15. Infinite volume and field
-  calculus>|<cell|8>|<cell|reviewed; cross-section consistency
-  checked>>|<row|<cell|>|<cell|16. Free fields, Ward identities and
-  rotations>|<cell|19>|<cell|reviewed; cross-section consistency
-  checked>>|<row|<cell|>|<cell|17. Slabs, phases and
-  reconstruction>|<cell|13>|<cell|reviewed; cross-section consistency
-  checked>>|<row|<cell|>|<cell|18. The trace law and non-free
-  comparisons>|<cell|14>|<cell|reviewed; cross-section consistency
-  checked>>|<row|<cell|>|<cell|19. Products and contact
-  subtractions>|<cell|23>|<cell|reviewed; cross-section consistency
-  checked>>>>>
+  referee review>>|<row|<cell|>|<cell|7. Trace and
+  products>|<cell|3>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|8. Main theorems>|<cell|4>|<cell|reviewed;
+  Theorem B restated as a five-clause theorem; revised after referee
+  review>>|<row|<cell|>|<cell|9. Constants and order of
+  choice>|<cell|4>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|Part II>|<cell|10. Local polynomial
+  fields>|<cell|8>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|11. Gauges and block
+  integration>|<cell|28>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|12. Path actions and the coupling
+  reset>|<cell|13>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|13. Activities and the inductive
+  step>|<cell|33>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|14. Trajectories, marked fields and ultraviolet
+  convergence>|<cell|37>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|15. Infinite volume and field
+  calculus>|<cell|8>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|16. Free fields, Ward identities and
+  rotations>|<cell|19>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|17. Slabs, phases and
+  reconstruction>|<cell|15>|<cell|reviewed; revised after an independent
+  referee review>>|<row|<cell|>|<cell|18. The trace law and non-free
+  comparisons>|<cell|14>|<cell|reviewed; revised after an independent referee
+  review>>|<row|<cell|>|<cell|19. Products and contact
+  subtractions>|<cell|24>|<cell|reviewed; revised after an independent
+  referee review>>>>>
 
-  <strong|Next:> an independent review of the whole manuscript, and the
-  changes it leads to; then the project lead's reading.
+  <strong|Next:> a final cross-section check; then the project lead's
+  reading.
 
   "Reviewed" means the full cycle of the <hlink|process|PROCESS.tm> has run:
   owner, fresh-reader and truth reviews, re-check and delivery review. A

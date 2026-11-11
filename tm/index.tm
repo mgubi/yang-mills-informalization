@@ -15,8 +15,10 @@
     do the ideas come from?> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
     <no-break><pageref|auto-1>>>
 
-    <with|par-left|2tab|<with|font-size|0.92|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/PROCESS.tm>>|How
-    the manuscript is being written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <with|par-left|2tab|<with|font-size|0.92|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/index.tm>>|The
+    manuscript: first draft> <with|mode|math|\<cdot\>>
+    <locus|<id|%1-3>|<link|hyperlink|<id|%1-3>|<url|manuscript/PROCESS.tm>>|how
+    it is written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
     <no-break><pageref|auto-2>>>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|The proof at
@@ -94,8 +96,10 @@
     each unit with every statement linked to the Lean;
 
     <item><strong|write> a complete natural-language account of the proof on
-    that skeleton: a <hlink|manuscript|manuscript/index.tm>, being written in
-    public (under construction).
+    that skeleton: a <hlink|manuscript|manuscript/index.tm>, written in
+    public. <strong|A first draft is now available>
+    (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
+    237 pages, draft of 11 November 2026); it is still being revised.
   </enumerate>
 
   The outline is a rough draft written by machines. Its purpose is to be
@@ -114,15 +118,19 @@
   </quotation>
 
   <\quotation>
-    <subsubsection|<hlink|How the manuscript is being
-    written|manuscript/PROCESS.tm>>
+    <subsubsection|<hlink|The manuscript: first draft|manuscript/index.tm>
+    <ym-middot> <hlink|how it is written|manuscript/PROCESS.tm>>
 
-    The full proof is being written in public by AI models under human
-    direction. Statements are fixed first and kept short. Every statement is
-    reviewed against the Lean by a separate reviewer, a fresh reader and a
-    sentence-by-sentence truth check, and every finding is recorded with its
-    decision. <strong|<hlink|The process, what it has caught so far, and what
-    it does not establish \<rightarrow\>|manuscript/PROCESS.tm>>
+    <strong|A first draft of the full proof is now available>
+    (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
+    237 pages): Part I states the theorem and the architecture of its proof,
+    Part II gives the proofs. It was written entirely by AI agents from the
+    Lean code, and is still being revised. Statements are fixed first and
+    kept short. Every statement is reviewed against the Lean by a separate
+    reviewer, a fresh reader and a sentence-by-sentence truth check, and
+    every finding is recorded with its decision. <strong|<hlink|The process,
+    what it has caught so far, and what it does not establish
+    \<rightarrow\>|manuscript/PROCESS.tm>>
   </quotation>
 
   <section|The proof at five levels of detail><label|the-proof-at-five-levels-of-detail>
@@ -154,12 +162,13 @@
   plain language, each linked to its exact lines. In all, 989 key statements
   cover the 413,000 lines of source attributed to the
   units.>>|<row|<cell|<strong|5>>|<cell|<hlink|<strong|The full
-  proof>|manuscript/index.tm> <em|(under construction)>>|<cell|A complete
-  manuscript: Part I, the theorem and the architecture of its proof (about 30
-  pages), and Part II, the proofs (about 120 pages), written for a
-  mathematician in constructive field theory or probability. Sections appear
-  as they are written and are revised as they are checked against the Lean,
-  by the process described in <hlink|how the manuscript is
+  proof>|manuscript/index.tm> <em|(first draft)>>|<cell|A complete manuscript
+  (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
+  draft of 11 November 2026): Part I, the theorem and the architecture of its
+  proof (about 35 pages), and Part II, the proofs (about 190 pages), written
+  for a mathematician in constructive field theory or probability. Every
+  section has been through its review cycle; revisions continue, by the
+  process described in <hlink|how the manuscript is
   written|manuscript/PROCESS.tm>.>>>>>
 
   <strong|All in one PDF.> Levels 2\U4 \V the proof in one reading, the
@@ -459,8 +468,10 @@
       do the ideas come from?> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-1>>>
 
-      <with|par-left|<quote|2tab>|<with|font-size|<quote|0.92>|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/PROCESS.tm>>|How
-      the manuscript is being written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|2tab>|<with|font-size|<quote|0.92>|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/index.tm>>|The
+      manuscript: first draft> <with|mode|<quote|math>|\<cdot\>>
+      <locus|<id|%1-3>|<link|hyperlink|<id|%1-3>|<url|manuscript/PROCESS.tm>>|how
+      it is written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-2>>>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
