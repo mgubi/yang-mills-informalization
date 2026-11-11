@@ -74,7 +74,7 @@ All outlines are available. The status links below explain the three review roun
 
 | Unit | Question | Outline |
 |---|---|---|
-| [**VIII.1**](units/VIII-1.md) | How do all public conclusions hold for one common construction? | [draft](../method.md#unit-outline-status) |
+| [**VIII.1**](units/VIII-1.md) | How do all public conclusions hold for one common construction? | [checked](../method.md#unit-outline-status) |
 
 ## Source statistics
 
