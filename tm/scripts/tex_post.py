@@ -291,6 +291,13 @@ def rewrite(x):
             raise SystemExit(f'tex_post: no TeXmacs bibliography style for \\bibliographystyle{{{style}}}; '
                              'add it to BIBSTYLES')
         x[2] = BIBSTYLES.get(style, style)
+    if x[0] == 'math-up' and len(x) == 2 and isinstance(x[1], str) and '<' in x[1]:
+        # {\rm it,\boldsymbol D}: a symbol inside upright text, which the
+        # MathJax export writes as \text{it,\boldsymbol{D}} (an error); keep
+        # the words upright and the symbols as mathematics
+        parts = [p for p in re.split(r'(<[^<>]+>|[A-Za-z]+)', x[1]) if p]
+        out = [['math-up', p] if re.match(r'^[A-Za-z]+$', p) else p for p in parts]
+        return out[0] if len(out) == 1 else ['concat'] + out
     if x[0] in ('verbatim', 'label', 'reference', 'eqref', 'hlink', 'slink', 'cite'):
         return x
     return [x[0]] + [rewrite(k) for k in x[1:]]

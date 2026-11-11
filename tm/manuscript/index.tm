@@ -33,10 +33,12 @@
   </table-of-contents>
 
   <\quotation>
-    \<#1F6A7\> <strong|Under construction.> This manuscript is being written.
-    Most sections do not exist yet, and those that do may change
-    substantially until they are marked <em|checked> in the <hlink|status
-    table|#status>. Do not cite it as a finished proof.
+    \<#1F6A7\> <strong|Under construction: first draft nearly complete.>
+    Every section of Parts I and II is written and has been through its
+    review cycle; the introduction is being written and a consistency pass
+    and a full independent review are under way. Sections may still change
+    until they are marked <em|checked> in the <hlink|status table|#status>.
+    Do not cite it as a finished proof.
   </quotation>
 
   A manuscript, written in public, giving a complete mathematical proof of
@@ -57,7 +59,7 @@
     the idea of its proof, and the complete deduction of the main theorem
     from them.
 
-    <item><strong|Part II. Proofs> (about 120 pages, Sections 10\U19): the
+    <item><strong|Part II. Proofs> (about 180 pages, Sections 10\U19): the
     proofs of the principal propositions, with every estimate specific to the
     construction written out and standard results cited.
   </itemize-minus>
@@ -71,26 +73,41 @@
 
   <section|Status><label|status>
 
-  <block|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|-1|1|-1|cell-hyphen|t>|<cwith|1|1|1|-1|cell-bborder|1ln>|<cwith|1|1|1|-1|cell-valign|bottom>|<table|<row|<cell|>|<cell|<strong|section>>|<cell|<strong|status>>>|<row|<cell|Part
-  I>|<cell|1. Introduction>|<cell|to be written last>>|<row|<cell|>|<cell|2.
-  Wilson theory>|<cell|reviewed; with the project lead for
-  reading>>|<row|<cell|>|<cell|3. Renormalization>|<cell|reviewed; with the
-  project lead for reading>>|<row|<cell|>|<cell|4. The continuum
-  limit>|<cell|reviewed; with the project lead for
-  reading>>|<row|<cell|>|<cell|5. Stress and rotations>|<cell|reviewed; with
-  the project lead for reading>>|<row|<cell|>|<cell|6. Phases and
-  reconstruction>|<cell|reviewed; with the project lead for
-  reading>>|<row|<cell|>|<cell|7. Trace and products>|<cell|reviewed; with
-  the project lead for reading>>|<row|<cell|>|<cell|8. Main
-  theorems>|<cell|reviewed; with the project lead for
-  reading>>|<row|<cell|>|<cell|9. Constants and order of
-  choice>|<cell|reviewed; with the project lead for reading>>|<row|<cell|Part
-  II>|<cell|12. Path actions and the coupling reset>|<cell|reviewed; with the
-  project lead for reading>>|<row|<cell|>|<cell|15. Infinite volume and field
-  calculus>|<cell|reviewed; with the project lead for
-  reading>>|<row|<cell|>|<cell|10, 11, 13, 14, 16\U19>|<cell|statements
-  listed (including the inputs that Sections 12 and 15 use), proofs not yet
-  written>>>>>
+  <em|Updated 11 November 2026, 21:00. The PDF has 212 pages.>
+
+  <block|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|-1|1|-1|cell-hyphen|t>|<cwith|1|1|1|-1|cell-bborder|1ln>|<cwith|1|1|1|-1|cell-valign|bottom>|<table|<row|<cell|>|<cell|<strong|section>>|<cell|<strong|pages>>|<cell|<strong|status>>>|<row|<cell|Part
+  I>|<cell|1. Introduction>|<cell|7>|<cell|written; under review (with the
+  abstract)>>|<row|<cell|>|<cell|2. Wilson theory>|<cell|2>|<cell|reviewed;
+  revised after an independent reading>>|<row|<cell|>|<cell|3.
+  Renormalization>|<cell|8>|<cell|reviewed; revised after an independent
+  reading>>|<row|<cell|>|<cell|4. The continuum
+  limit>|<cell|4>|<cell|reviewed; revised after an independent
+  reading>>|<row|<cell|>|<cell|5. Stress and
+  rotations>|<cell|2>|<cell|reviewed; revised after an independent
+  reading>>|<row|<cell|>|<cell|6. Phases and
+  reconstruction>|<cell|3>|<cell|reviewed; revised after an independent
+  reading>>|<row|<cell|>|<cell|7. Trace and
+  products>|<cell|4>|<cell|reviewed; revised after an independent
+  reading>>|<row|<cell|>|<cell|8. Main theorems>|<cell|3>|<cell|reviewed;
+  Theorem B restated as a five-clause theorem>>|<row|<cell|>|<cell|9.
+  Constants and order of choice>|<cell|3>|<cell|reviewed>>|<row|<cell|Part
+  II>|<cell|10. Local polynomial fields>|<cell|8>|<cell|reviewed>>|<row|<cell|>|<cell|11.
+  Gauges and block integration>|<cell|25>|<cell|reviewed>>|<row|<cell|>|<cell|12.
+  Path actions and the coupling reset>|<cell|11>|<cell|reviewed; final fixes
+  applied>>|<row|<cell|>|<cell|13. Activities and the inductive
+  step>|<cell|30>|<cell|reviewed>>|<row|<cell|>|<cell|14. Trajectories,
+  marked fields and ultraviolet convergence>|<cell|34>|<cell|reviewed>>|<row|<cell|>|<cell|15.
+  Infinite volume and field calculus>|<cell|7>|<cell|reviewed; final fixes
+  applied>>|<row|<cell|>|<cell|16. Free fields, Ward identities and
+  rotations>|<cell|18>|<cell|reviewed>>|<row|<cell|>|<cell|17. Slabs, phases
+  and reconstruction>|<cell|14>|<cell|reviewed>>|<row|<cell|>|<cell|18. The
+  trace law and non-free comparisons>|<cell|13>|<cell|reviewed>>|<row|<cell|>|<cell|19.
+  Products and contact subtractions>|<cell|21>|<cell|reviewed>>>>>
+
+  <strong|Next:> the introduction; a consistency pass across sections
+  (cross-references between Part I and Part II, and every result one section
+  takes from another); then an independent review of the whole manuscript,
+  and the changes it leads to.
 
   "Reviewed" means the full cycle of the <hlink|process|PROCESS.tm> has run:
   owner, fresh-reader and truth reviews, re-check and delivery review. A
@@ -132,14 +149,14 @@
 
 <\references>
   <\collection>
-    <associate|auto-1|<tuple|1|2>>
+    <associate|auto-1|<tuple|1|1>>
     <associate|auto-2|<tuple|2|2>>
-    <associate|auto-3|<tuple|3|2>>
-    <associate|auto-4|<tuple|4|2>>
-    <associate|building|<tuple|3|2>>
+    <associate|auto-3|<tuple|3|3>>
+    <associate|auto-4|<tuple|4|3>>
+    <associate|building|<tuple|3|3>>
     <associate|how-it-is-written|<tuple|2|2>>
-    <associate|license|<tuple|4|2>>
-    <associate|status|<tuple|1|2>>
+    <associate|license|<tuple|4|3>>
+    <associate|status|<tuple|1|1>>
     <associate|the-construction-of-four-dimensional-quantum-yangmills-theory|<tuple|?|1>>
   </collection>
 </references>

@@ -185,6 +185,11 @@ if (( ${#convert[@]} )); then
   prims='arg|around|around\*|assign|big|cell|concat|cwith|datoms|document|frac|htab|long-arrow|macro|mid|next-line|no-break|repeat|row|rprime|rsub|rsup|space|sqrt|table|tformat|twith|vspace|vspace\*|with|wide|wide\*|left|right|tabular|lsub|lsup|rsup|neg|tree|op|line-break|new-line|image|tuple|value|if|equal|unequal|or|and|not|merge|quote|compound|hlink|label|reference|move|resize|hspace|surround|new-page|page-break|no-page-break'
   undef=$(grep -a '^YM-UNDEF' "$B/check.log" | grep -avE " ($prims)\$" || true)
   if [[ -n "$undef" ]]; then echo "warning: undefined tags:"; printf '%s\n' "$undef" | sed "s|$stage/||"; fi
+  # in the manuscript an undefined tag is a conversion error: the HTML export
+  # drops the whole content of an undefined block (e.g. samepage)
+  if [[ -n $manuscript ]] && printf '%s\n' "$undef" | grep -q " $stage/$manuscript "; then
+    echo "error: undefined tags in the manuscript (see above)" >&2; exit 1
+  fi
 fi
 
 # --- 5. typeset (table of contents) and export to HTML ----------------------
@@ -263,6 +268,10 @@ print("\n".join(sorted(set(json.load(open(sys.argv[2]))) - old)))' "$state" "$br
     fi
   elif [[ $(python3 -c 'import json,sys; print(len(json.load(open(sys.argv[1]))))' "$broken") != 0 ]]; then
     echo "WARNING: the site has broken links (listed above); they come from the Markdown"
+  fi
+  # every \label of the LaTeX source has its anchor in the HTML
+  if [[ -n $manuscript && -f "$B/md/tex/meta.json" && -f "$here/html/${manuscript%.tm}.html" ]]; then
+    python3 "$scripts/labelcheck.py" "$B/md/tex/meta.json" "$here/html/${manuscript%.tm}.html" || exit 1
   fi
   # broken links inside the manuscript (labels, citations, its table of
   # contents) are conversion errors, never source errors: stop, without

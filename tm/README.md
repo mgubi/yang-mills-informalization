@@ -93,6 +93,7 @@ succeeds.
 | `scripts/normalize_ids.py` | step 6: reproducible link ids in the saved documents |
 | `scripts/plan.py` | incremental builds: what to rebuild, and the record `.build-state.json` |
 | `scripts/linkcheck.py` | step 7: links and anchors of the whole site |
+| `scripts/labelcheck.py` | step 7: every `\label` of the manuscript has its anchor in the HTML |
 | `.build-state.json` | generated: the record of the last build (git-ignored) |
 | `index.tm`, `statement.tm`, `faq.tm`, `provenance.tm`, `CHANGELOG.tm`, …, `data/index.tm`, `outline/units/*.tm`, `outline/notes/*.tm`, `manuscript/index.tm` | generated documents (every `README.md` becomes `index.tm`) |
 | `manuscript/main.tm` | generated: the LaTeX manuscript |
@@ -142,7 +143,7 @@ part in the table of units, and a link to the companion page (Detailed notes
 `manuscript/main.tm` (HTML: `html/manuscript/main.html`). One document keeps
 the numbering, every `\ref`/`\eqref`, the table of contents (the side panel
 of the HTML page) and a bibliography native and correct; the manuscript is
-about 60 pages, and its HTML page about 0.5 MB (1,500 formulas), which loads
+about 220 pages, and its HTML page about 1.3 MB, which loads
 and renders without trouble. If it grows much larger it can be split per
 part with `hlink`s between the parts.
 
@@ -156,7 +157,12 @@ part with `hlink`s between the parts.
   `\operatorname*` simplified, user macros whose name begins with `\path`
   (`\pathaction`) renamed for the import and back afterwards, and
   `\today` replaced by the date of the last commit touching `manuscript/`
-  (so the output does not change with the day of the build). An unknown
+  (so the output does not change with the day of the build).
+  Pagination-only commands are dropped (`samepage`, `\pagebreak`,
+  `\nopagebreak`, `\clearpage`, `\newpage`, `\needspace`,
+  `\displaybreak`, …): the importer keeps `\begin{samepage}` as an
+  undefined block, and the HTML export drops the whole content of an
+  undefined block, statements and labels included. An unknown
   `\makeatletter` block stops the build.
 - TeXmacs Upsilon imports it (`ym-import-latex-all` in `tmio.scm`).
 - `tex_post.py` makes it native: the macros of `macros.tex` stay **macros**
@@ -167,7 +173,9 @@ part with `hlink`s between the parts.
   title (lost by the importer) is restored and the empty abstract dropped;
   `align`/`multline` rows are numbered as in LaTeX (the importer numbers
   `\notag` rows and every row of a `multline`); `p{…}` column widths are
-  set; a thin space follows operator names as in LaTeX
+  set; a symbol inside upright text (`{\rm it,\boldsymbol D}`, which the
+  MathJax export writes as an invalid `\text{it,\boldsymbol{D}}`) is taken
+  out of the upright text; a thin space follows operator names as in LaTeX
   (`\operatorname{Re}\tr u`); a `\bibliography` gets a TeXmacs style
   (`plain` → `tm-plain`, …), so no BibTeX program is needed; `<le>`,
   `<ge>` become `<leqslant>`, `<geqslant>`.
@@ -178,9 +186,9 @@ part with `hlink`s between the parts.
   section numbers of Part I (10–19); its theorems are numbered within
   subsections (14.2.3), or within the section before its first numbered
   subsection (12.4); `\section*`/`\subsection*` reset nothing, as in LaTeX.
-  Checked against `main.pdf`: the 155 numbered statements cited or stated
-  (in the same order), the 50 equation numbers, the section numbers and
-  Theorem A/B agree.
+  Checked against `main.pdf` (222 pages, 11 November): the 206 statement
+  headings and the 244 displayed equation numbers agree, in order, and so
+  do the section numbers and Theorem A/B.
 - Numbering changes in `main.tex` that the style does not implement stop
   the build (`check_numbering` in `tex_prep.py`): a `\newtheorem` other
   than the declared ones, `\appendix`, `\setcounter` (other than
@@ -201,6 +209,11 @@ part with `hlink`s between the parts.
   stops the build. No BibTeX program is needed. `\cite[Theorem~4.1]{key}`
   keeps its note (`<cite-detail>`: "[1, Theorem 4.1]"). A bibliography that
   cannot be generated ("Could not load BibTeX file") stops the build.
+- Every `\label` of the LaTeX source must have its anchor in the HTML
+  page (`scripts/labelcheck.py`), whether or not anything refers to it; a
+  missing one stops the build and is named. A label defined twice stops
+  `tex_prep.py`. An undefined tag in the manuscript (the tag check) stops
+  the build too.
 - Broken links inside the manuscript (its labels, citations, table of
   contents) are conversion errors: the build stops with an error and does
   not record itself, so CI neither commits nor publishes. Other broken links

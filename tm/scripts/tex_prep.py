@@ -20,7 +20,9 @@ Patches:
     subsection): markers \\tmsectionsAlph and \\tmtheoremsbysubsection;
   * longtable: a table float with a tabular (repeated headers dropped);
     displayed formulas in its cells become inline displays, one per line;
-    \\begingroup, \\endgroup, \\setlength, \\raggedright, \\nopagebreak dropped;
+    \\begingroup, \\endgroup, \\setlength, \\raggedright dropped;
+  * pagination-only commands (samepage, \\pagebreak, \\nopagebreak,
+    \\clearpage, \\newpage, \\needspace, \\displaybreak, ...): dropped;
   * list options ([label=...], [leftmargin=...]): dropped (the importer
     drops the whole list otherwise); \\item[x.] keeps its label;
   * optional titles of theorem-like environments and proofs: markers
@@ -140,6 +142,31 @@ def check_numbering(s):
                          'and tex_prep.py):\n  ' + '\n  '.join(errors))
 
 
+# Pagination only (an HTML page has no page breaks). The importer keeps
+# \begin{samepage} as an undefined block, whose whole content (statements,
+# labels) the HTML export then drops.
+PAGINATION = [r'\\begin\{samepage\}', r'\\end\{samepage\}',
+              r'\\(?:no)?pagebreak(?:\[[0-4]\])?', r'\\(?:no)?linebreak(?:\[[0-4]\])?',
+              r'\\clearpage\b', r'\\cleardoublepage\b', r'\\newpage\b',
+              r'\\needspace\{[^{}]*\}', r'\\enlargethispage\*?\{[^{}]*\}',
+              r'\\allowdisplaybreaks(?:\[[0-4]\])?', r'\\displaybreak(?:\[[0-4]\])?',
+              r'\\(?:small|med|big)break\b', r'\\filbreak\b', r'\\goodbreak\b']
+
+
+def pagination(s):
+    body_start = s.find(r'\begin{document}')
+    pre, body = (s[:body_start], s[body_start:]) if body_start >= 0 else ('', s)
+    for p in PAGINATION:
+        body = re.sub(p, '', body)
+    return pre + body
+
+
+def labels(s):
+    """every \\label of the document body, in order"""
+    body = s[s.find(r'\begin{document}'):]
+    return re.findall(r'\\label\{([^{}]*)\}', body)
+
+
 def longtables(s):
     def table(m):
         spec, body = m.group(1), m.group(2)
@@ -170,7 +197,7 @@ def longtables(s):
                 '\\end{tabular}\n\\end{table}')
     s = re.sub(r'\\begin\{longtable\}\{((?:[^{}]|\{[^{}]*\{[^{}]*\}[^{}]*\}|\{[^{}]*\})*)\}(.*?)\\end\{longtable\}',
                table, s, flags=re.S)
-    for cmd in (r'\begingroup', r'\endgroup', r'\raggedright', r'\nopagebreak'):
+    for cmd in (r'\begingroup', r'\endgroup', r'\raggedright'):
         s = s.replace(cmd, '')
     s = re.sub(r'\\setlength\{\\tabcolsep\}\{[^}]*\}', '', s)
     return s
@@ -270,6 +297,7 @@ def main():
     s = s.replace(r'\today', commit_date())
     s = numbering(s)
     s = longtables(s)
+    s = pagination(s)
     s = re.sub(r'(\\begin\{(?:enumerate|itemize|description)\})\[[^\]]*\]', r'\1', s)
     s = titles(s)
     s = strip_command(s, 'textup')
@@ -278,6 +306,10 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     open(os.path.join(OUT, 'main.tex'), 'w', encoding='utf-8').write(s)
     meta['displays'] = display_rows(s)
+    meta['labels'] = labels(s)
+    dup = sorted({l for l in meta['labels'] if meta['labels'].count(l) > 1})
+    if dup:
+        raise SystemExit('tex_prep: labels defined twice: ' + ', '.join(dup))
     json.dump(meta, open(os.path.join(OUT, 'meta.json'), 'w', encoding='utf-8'), ensure_ascii=False)
     bib = os.path.join(MS, 'references.bib')
     if os.path.exists(bib):
