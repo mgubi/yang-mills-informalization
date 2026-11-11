@@ -52,7 +52,7 @@ A finite Wick profile is a function
 \begin{equation*}
 W_{\rm Wick}(r)=\sum_{i=1}^{N}c_i\prod_{j=1}^{n_i}K_{m_{ij},k_{ij},h_{ij}}(r)\quad(r>0),\qquad c_i\in\C\,,
 \end{equation*}
-with finitely many terms and factors of the preceding kind; empty products are one. A zero denominator at zero momentum gives integrand zero.
+with finitely many terms and factors of the preceding kind; empty products are one.
 \end{definition}
 
 The momentum integrals converge absolutely for $r>0$. For a free scalar field of mass $m_{\rm sh}$, the time-axis two-point function is $(2\pi)^{-3}K_{m_{\rm sh},0,1}(r)$. Derivatives give momentum factors, and Wick contractions give finite sums of products at the same radius.
@@ -66,9 +66,9 @@ For every finite Wick profile $W_{\rm Wick}$ and every $\delta>0$, there is $0<r
 \end{equation*}
 \end{proposition}
 
-The proof is in Section~\ref{sec:partII-I}, \ref{lem:I2.1}. The mass-shell kernels have expansions to every finite order in integer powers of $r$ and nonnegative powers of $\log r$. Finite products and sums therefore give, to bounded error, a finite sum of monomials $r^a(\log r)^k$ with $a\in\Z$ and $k\in\N$. Multiplication by $r^8\log^2(1/r)$ makes the terms with $a>-8$ vanish. The remaining nonzero leading term diverges, so any finite limit is zero. The positive limit in Theorem~\ref{prop:TR} therefore excludes equality on every interval $(0,\delta)$. Only that limit and its positivity enter this exclusion. \ref{lem:I2.2} identifies polynomial mass-shell comparisons with their Laplace profiles and applies \ref{lem:I2.1}; \ref{lem:I2.3}--\ref{lem:I2.4} give the Fock countertests. Their comparison classes are defined there.
+The proof is in Lemma~\ref{lem:I2.1}. The mass-shell kernels have expansions to every finite order in integer powers of $r$ and nonnegative powers of $\log r$. Finite products and sums therefore give, to bounded error, a finite sum of monomials $r^a(\log r)^k$ with $a\in\Z$ and $k\in\N$. Multiplication by $r^8\log^2(1/r)$ makes the terms with $a>-8$ vanish. The remaining nonzero leading term diverges, so any finite limit is zero. The positive limit in Theorem~\ref{prop:TR} therefore excludes equality on every interval $(0,\delta)$. Only that limit and its positivity enter this exclusion. Lemma~\ref{lem:I2.2} identifies polynomial mass-shell comparisons with their Laplace profiles and applies Lemma~\ref{lem:I2.1}; Lemmas~\ref{lem:I2.3}--\ref{lem:I2.4} give the Fock countertests. Their comparison classes are defined there.
 
-The product expansion is stated for the Euclidean tables on their common quotient fields. Write $\zeta\in\phases\sqcup\{\mathrm{mix}\}$ for a state index (a phase or the mixture), with $S^{\rm mix}=S$, and retain degree tags by $\mathbb F=\bigsqcup_dF_d$, $\deg(d,A)=d$. The underlying prescription consists of the original fields and their correlation table. From it, Section~\ref{sec:partII-J}, \ref{lem:J1.1} constructs finite channel sets $\channels{j}$, real fields $O_{j,\lambda}\in F_j$ and, for every finite $I$, functions
+The product expansion is stated for the Euclidean tables on their common quotient fields. Write $\zeta\in\phases\sqcup\{\mathrm{mix}\}$ for a state index (a phase or the mixture), with $S^{\rm mix}=S$, and retain degree tags by $\mathbb F=\bigsqcup_dF_d$, $\deg(d,A)=d$. The underlying prescription consists of the original fields, their correlation table, and the finitely many probe correlations and biorthogonal coordinate functionals fixed before Lemma~\ref{lem:J1.1}. From it, Lemma~\ref{lem:J1.1} constructs finite channel sets $\channels{j}$, real fields $O_{j,\lambda}\in F_j$ and, for every finite $I$, functions
 \begin{equation*}
 c_{j,\lambda}:\mathbb F^I\times(\R^4)^I\times\R^4\longrightarrow\C\,.
 \end{equation*}
@@ -97,19 +97,21 @@ For every pair of finite lists $\boldsymbol A,\boldsymbol B$, $M_{\rm geo}\ge0$,
 \end{equation*}
 \end{theorem}
 
-The proof is in Section~\ref{sec:partII-J}, Lemmas~\ref{lem:J1.1}--\ref{lem:J1.2}. The finite correlation decoder is chosen biorthogonally before averaging under rotations and conjugation and removing lower degrees. Lemma~\ref{lem:J-signed-local} gives the local continuation used in the lattice replacement of Lemma~\ref{lem:J-lattice}; Lemma~\ref{lem:J-graded-quotient} gives the physical quotient estimate used in Lemma~\ref{lem:J-power-separated}, which implies Lemma~\ref{lem:J1.2}. The discarded part is bounded in the compression algebra, so the bound holds in every phase and in the mixture. The lattice bounds have the required powers up to factors $e^{o(\log(1/r))}$. Multiplication by $r^{\varepsilon/2}$ makes these factors tend to zero, giving coefficient one for smaller radii. The coefficient and remainder thresholds have the separate dependencies in the statement.
+The proof is in Lemmas~\ref{lem:J1.1}--\ref{lem:J1.2}. The coefficient $c_{j,\lambda}(\boldsymbol A;x,o)$ reads the degree-$j$ coordinate~$\lambda$ of the cluster through finitely many correlations with fixed probe words, after lower degrees are removed. The discarded part is bounded in the compression algebra; evaluation at a character or at the vacuum state does not increase this bound, so it holds in every phase and in the mixture. Lattice estimates give the required powers of~$r$ up to factors $e^{o(\log(1/r))}$, which $r^{-\varepsilon}$ absorbs for small~$r$. The two thresholds have the separate dependencies in the statement.
 
 Lemmas~\ref{lem:J1.3}--\ref{lem:J1.6} give integrated and nested estimates; the nested error is a sum of gains from proper clusters.
 
-Contact subtractions use the original fields and correlations underlying \ref{lem:J1.1}, with separate projections extracting fields through finite correlation probes. Their clearance is a radius keeping the collapsed cluster separated from these probes, independent of spectator clearance $\delta_{\rm sp}$.
+Contact subtractions use the original fields and correlations underlying Lemma~\ref{lem:J1.1}, with separate projections extracting fields through finite correlation probes. Their clearance is a radius keeping the collapsed cluster separated from these probes, independent of spectator clearance $\delta_{\rm sp}$.
 
-A collision forest is a family of subsets of slots, any two disjoint or nested. The contact construction subtracts normal Taylor jets along their collision diagonals. The next result concerns this fixed subtraction; its local order bounds are stated in \ref{lem:J2.3}.
+A collision forest is a family of subsets of slots, any two disjoint or nested. The contact construction subtracts normal Taylor jets along their collision diagonals. The next result concerns this fixed subtraction; its local order bounds are stated in Lemma~\ref{lem:J2.3}.
 
 \begin{theorem}[CT. Contact extension]\label{prop:CT}
-For every state index $\zeta$, arity $n$ and list $\boldsymbol A\in\mathbb F^n$, the contact construction of Section~\ref{sec:partII-J}, \ref{sec:partII-J.2}, fixed on the underlying prescription of \ref{lem:J1.1}, gives a distribution $\mathfrak D_{\boldsymbol A}^\zeta$ on $\R^{4n}$ such that, for every separated test $f$,
+For every state index $\zeta$, arity $n$ and list $\boldsymbol A\in\mathbb F^n$, the contact construction of Section~\ref{sec:partII-J}, \ref{sec:partII-J.2}, fixed on the underlying prescription of Lemma~\ref{lem:J1.1}, gives a distribution $\mathfrak D_{\boldsymbol A}^\zeta$ on $\R^{4n}$ such that, for every separated test $f$,
 \begin{equation*}
 \mathfrak D_{\boldsymbol A}^\zeta(f)=\int f(x)S_n^\zeta(\boldsymbol A;x)\,dx\,.
 \end{equation*}
 \end{theorem}
 
-The proof is in Section~\ref{sec:partII-J}, Lemmas~\ref{lem:J2.1}--\ref{lem:J2.3}. A separated test is an $f\in C_c^\infty(\Conf{n})$, extended by zero to~$\R^{4n}$. Every normal jet on a collision diagonal then vanishes, leaving the correlation integral. For a general test, Lemma~\ref{lem:J-signed-layer} controls the contact rows and signed residuals after child subtractions. The shell induction of Lemma~\ref{lem:J2.2} gives a continuous functional. Lemma~\ref{lem:J2.1} supplies the positive subtraction scales for these contact extensions; the pairing uses the single contact length specified in Section~\ref{sec:partII-J.2}. CT enters Theorem~\ref{thm:B}; reconstruction and Theorem~\ref{thm:A} use separated correlations.
+Since $S_n^\zeta$ satisfies E7, some extension exists by the standard extension theorem for kernels of polynomial growth at the diagonals; the content of Theorem~\ref{prop:CT} is that the explicit subtraction of normal Taylor jets produces one, with the local order bounds of Lemma~\ref{lem:J2.3}. Neither uniqueness, positivity of the extension nor contact Ward identities are asserted.
+
+The proof is in Lemmas~\ref{lem:J2.1}--\ref{lem:J2.3}. A separated test is an $f\in C_c^\infty(\Conf{n})$, extended by zero to~$\R^{4n}$. Every normal jet on a collision diagonal then vanishes, leaving the correlation integral. For a general test, Lemma~\ref{lem:J-signed-layer} controls the contact rows and signed residuals after child subtractions. The shell induction of Lemma~\ref{lem:J2.2} gives a continuous functional. Lemma~\ref{lem:J2.1} supplies the positive subtraction scales for these contact extensions; the pairing uses the single contact length specified in Section~\ref{sec:partII-J.2}. CT enters Theorem~\ref{thm:B}; reconstruction and Theorem~\ref{thm:A} use separated correlations.
