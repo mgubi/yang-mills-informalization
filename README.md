@@ -137,8 +137,6 @@ The archive is 2.2 GB, in two parts, and unpacks to 8.8 GB. The [release notes](
 
 Use the metadata in [CITATION.cff](CITATION.cff). Include the revision of this repository you consulted, the unit and result identifiers when relevant, and the fixed Lean source commit [`3456e5e75cf8d4cd558955a5c7638fba2d68f464`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464). The citation describes this map and outline; cite the Lean source separately when referring to the formal proof.
 
-Scott Armstrong is supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme, grant agreement No. 101200828.
-
 ## License
 
 This repository is licensed under the [Apache License 2.0](LICENSE). The Lean source it describes is © OpenAI, also released under the Apache License 2.0; see the [source repository](https://github.com/yang-mills-group/OpenAI-YM-20261028).
