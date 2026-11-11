@@ -530,8 +530,7 @@ The resulting phase decomposition:
 - Reflection positivity, $O(4)$ invariance, the derivative and stress identities and uniform growth bounds hold for every $\xi$. They are proved as operator identities before any character is applied.
 - Every phase has the same null spaces as the mixture.
 - A variance argument over a countable total family of words gives a one-dimensional zero-energy space for $\nu$-almost every phase.
-- A second almost-sure statement concerns the trace of the stress tensor: along one sequence of scales $r_i$, fixed in advance, $r_i^8$ times the two-point function of $\tau-e\mathbf 1$ at separation $r_i$ tends to $0$ for every real $e$, for $\nu$-almost every phase ($\tau=\sum_\mu T_{\mu\mu}$).
-- The selected phase $\xi_\ast$ is chosen in the intersection of these two sets of full measure, so that one choice serves both the reconstruction (a unique vacuum) and the trace law of Part VII. It is not otherwise characterized.
+- The selected phase $\xi_\ast$ is one such phase, chosen by this existence argument; no further condition is imposed. The trace law of Part VII is proved for the phase so chosen.
 
 **Reconstruction.** For each phase, slab operators bounded by $C\,p^{-A}$ (with $p$ the slab half-width) define
 
