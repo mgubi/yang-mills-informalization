@@ -57,7 +57,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
 | **V.1** | [Decomposition of the limit into phases](units/V-1.md) | 5,713 | 18 | edited |
-| **V.2** | [Osterwalder-Schrader reconstruction of a Wightman theory](units/V-2.md) | 6,456 | 19 | checked |
+| **V.2** | [Osterwalder-Schrader reconstruction of a Wightman theory](units/V-2.md) | 6,456 | 19 | edited |
 | **V.3** | [Reconstruction for every phase and the reconstructed theory](units/V-3.md) | 4,056 | 14 | edited |
 
 ## Part VI. Symmetry: stress tensor and Ward identities
@@ -66,7 +66,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **VI.1** | [Ward identities, the rotation action and the conserved stress tensor](units/VI-1.md) | 7,704 | 23 | checked |
+| **VI.1** | [Ward identities, the rotation action and the conserved stress tensor](units/VI-1.md) | 7,704 | 23 | edited |
 | **VI.2** | [The free Maxwell stress tensor and the local Ward charge](units/VI-2.md) | 14,179 | 38 | checked |
 
 ## Part VII. Identification as Yang–Mills
@@ -75,11 +75,11 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **VII.1** | [Short distances: convergence to free Maxwell fields](units/VII-1.md) | 8,117 | 16 | checked |
+| **VII.1** | [Short distances: convergence to free Maxwell fields](units/VII-1.md) | 8,117 | 16 | edited |
 | **VII.2** | [The trace of the stress tensor and the trace anomaly](units/VII-2.md) | 20,681 | 42 | draft |
 | **VII.3** | [The theory is not free: Gram positivity and exclusion of free-field profiles](units/VII-3.md) | 3,325 | 8 | draft |
 | **VII.4** | [Operator product expansion and contact extensions](units/VII-4.md) | 10,243 | 18 | draft |
-| **VII.5** | [Asymptotic freedom of the running coupling](units/VII-5.md) | 232 | 1 | draft |
+| **VII.5** | [Asymptotic freedom of the running coupling](units/VII-5.md) | 232 | 1 | checked |
 | **VII.6** | [Scaling variants and fixed-field estimates](units/VII-6.md) | 4,205 | 9 | draft |
 
 ## Part VIII. Assembly of the main theorem

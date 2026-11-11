@@ -2,146 +2,375 @@
 
 *Part VII — Identification as Yang–Mills.* 232 lines of Lean in 43 declarations used by the main theorem.
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is a **first draft**, written from the Lean by one model; it has not yet been checked. It is updated as it improves.
+> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and rewritten by a second model; a final editing round is in progress. It is updated as it improves.
 
 
-**Part:** VII, identification as Yang–Mills. **Lean:** [`YM/Pert/Asymptotics`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics) (the mathematical content of the unit), together with two work packages whose declarations the unit page assigns here but which are not about the coupling: [`YM/Extra/WEAK_SCALING_ACTLAW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW) and [`YM/TraceExtension/Foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation) (plus one definition in [`YM/TraceExtension/Soot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot)). **Size:** 232 lines in 43 declarations (162 + 37 + 18 + 1, plus 14 for the proof of the main statement). The assigned part of `YM/Pert/Asymptotics` is under 50 lines.
+**Part:** VII, identification as Yang–Mills. **Lean:** [`YM/Pert/Asymptotics`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics) (the running coupling). The unit also contains auxiliary declarations from [`YM/Extra/WEAK_SCALING_ACTLAW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW) (files `Orientation`, `Criteria`, `Adjust`, `Analysis`, `Station`), from [`YM/TraceExtension/Foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation) (files `Caps`, `Dilate`), and one definition from [`YM/TraceExtension/Soot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot). **Size:** 232 lines in 43 declarations: 32 lines in `Pert/Asymptotics` (5 declarations, 14 lines of them the proof of the asymptotic-freedom law), 162 in `WEAK_SCALING_ACTLAW` (24), 37 in `TraceExtension/Foundation` (13), 1 in `TraceExtension/Soot` (1).
 
 ## 1. What this unit proves
 
-The unit is small. One result is about asymptotic freedom (Proposition VII.5.1). The other declarations assigned to the unit are auxiliary linear-algebra and limit lemmas from two work packages (VII.5.2–VII.5.3 below). I say so in §5.
+The unit has two parts.
 
-Throughout, $G$ is a simple compact gauge group with Casimir constant $c_G$ (the code's `Gauge.casimir`). $C$ is a Wilson family that satisfies its construction conditions (II.2). It has spacings $a_i\downarrow0$ and bare couplings $\beta_{N,p,m}$ at lattice level $N$, volume index $p$ and RG stage $m$. Write
-$$b_0:=\frac{11\,c_G}{48\pi^2},\qquad \text{so } 2b_0=\kappa_G ,$$
-where $\kappa_G$ is the slope constant that appears in the RG schedule (III.2, III.9). The *regulator coupling* at stage $m$ is $g_{N,p}(m):=\beta_{N,p,m}^{-1/2}$.
+**(A) The running coupling (5 declarations).** The running coupling of the constructed renormalization-group trajectory grows logarithmically, uniformly in the lattice level and the volume (VII.5.1). This gives the regularity clause (Reg1) of the main theorem with slope $b_*=2b_0$ (VII.5.2). It also gives the law $g^2\log(1/a)\to1/(2b_0)$ (VII.5.3).
 
-**Proposition VII.5.1 (leading-log asymptotics of the running coupling).** Assume $C$ satisfies its construction conditions and $G$ is simple. Let $N_i,k_i$ be sequences of lattice and volume indices with $i\le N_i$ eventually. Then
-$$\lim_{i\to\infty}\; g_{N_i,k_i}(i)\,\sqrt{\log (1/a_i)}\;=\;\frac1{\sqrt{2b_0}} .$$
-Equivalently, $g^2\sim\bigl(2b_0\log(1/a)\bigr)^{-1}$: the coupling tends to $0$ logarithmically as the cutoff is removed, with the one-loop coefficient $b_0=\frac{11}{3}\cdot\frac{c_G}{16\pi^2}$ (for $SU(N)$, $c_G=N$, this is the usual $\frac{11N}{48\pi^2}$).
-*Status:* theorem. The hypothesis is the "running" clause of the construction conditions, which is proved in the RG units (III.9, III.14) and enters here as an input.
-*Lean:* [`Pert.Asymptotics.comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48), with the definitions [`regulatorRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L35) and [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13).
+**(B) Auxiliary results filed here but used elsewhere (38 declarations).**
+- VII.5.4: the normalisation of the stress tensor along free-field scaling sequences (used by VI.2).
+- VII.5.5: exactly compatible frames, built from approximately compatible ones (used by VII.1).
+- VII.5.6: two elementary convergence lemmas (used by III.12).
+- VII.5.7–VII.5.8: the definitions of the classical stress-tensor algebra and a read-out predicate (used by VI.1, VII.2, VIII.1).
 
-**Proposition VII.5.1′ (uniform linear growth of the bare coupling).** Under the same hypotheses, for every $\varepsilon>0$ and all sufficiently large $m$, for all $N\ge m$ and all $p$,
-$$\Bigl|\frac{\beta_{N,p,m}}{\mathrm{scale}(m)}-2b_0\Bigr|<\varepsilon ,$$
-where $\mathrm{scale}(m)\to\infty$ is the schedule's logarithmic scale of stage $m$. Also $2b_0=\kappa_G$ exactly.
-*Status:* theorem (an intermediate step; it is also what the downstream code uses).
-*Lean:* [`zeroUp_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30), [`b0_normalizes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L14).
+**Setting for (A).**
+- *Gauge group.* $G\subset U(m)$ is a compact matrix group with Lie algebra $\mathfrak g$ and inner product $\langle X,Y\rangle_{\mathfrak g}=-\frac1m\mathrm{Re}\,\mathrm{tr}(XY)$. The Casimir constant $C_{\mathfrak g}$ is defined by: the Killing form equals $-C_{\mathfrak g}\langle\cdot,\cdot\rangle_{\mathfrak g}$. For $SU(N)\subset U(N)$ this gives $C_{\mathfrak g}=2N^2$. Put
+$$\kappa_G:=\frac{11\,C_{\mathfrak g}}{24\pi^2},\qquad b_0:=\frac{11\,C_{\mathfrak g}}{48\pi^2}=\tfrac12\kappa_G .$$
+- *Schedule.* The block factors $b_k\ge3$ are odd. Set $D_m=\prod_{k<m}b_k$, $a_m=1/D_m$ and
+$$s_m:=\log(1/a_m)=\sum_{k<m}\log b_k .$$
+Then $s_m\to\infty$.
+- *Trajectory.* For a lattice level $N$, a volume index $p$ and a stage $m\le N$, $\beta_{N,p,m}$ is the coupling of the effective action at spacing $a_m$. It is obtained from the Wilson measure $\mu_{N,p}$ by $N-m$ block-spin steps.
+  - $\beta_{N,p}:=\beta_{N,p,N}$ is the bare coupling of the main theorem.
+  - $\beta_{N,p,0}=\bar\beta>0$ for every $N,p$. This is the renormalization condition at unit scale.
+  - The reference line is $\widehat\beta_m:=\bar\beta+\kappa_G s_m$. One has $\beta_{N,p,m}\in[\widehat\beta_m/2,\,2\widehat\beta_m]$.
+  - The running coupling is $g_{N,p,m}:=\beta_{N,p,m}^{-1/2}$.
 
-**Proposition VII.5.2 (weak-scaling orientation: sign and size of the stress-tensor normalisation).** Let $S$ be a limit table (IV.1), $V$ a differential plan, $J$ a non-zero centered conserved stress tensor on $S$ with the flux data $(p,Y)$ of the weak-scaling criterion, and suppose the degree-4 part of $p$ equals $c$ times the degree-4 part of the derivative map of $V$. Let $(W.T,\kappa)$ be the free Maxwell comparison data with normalisation $\kappa\ne0$. Then along every weak-scaling sequence with scales $\xi_i$ the ratios $c/\xi_i$ converge to $\kappa$, and $c\,\kappa>0$.
-*Status:* theorem, conditional on the "Pre" (flux-presentation) hypothesis and on the weak-curve existence statements of the work items A04, A05 (§2).
-*Lean:* [`tracks_ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L43-L54), [`kappa_sign`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L56-L70) (the latter is not assigned to this unit by the declaration table; I cite it because it is the consequence), [`scale_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L28-L39).
+The **running clause** (R) of the construction conditions reads: for every $\varepsilon>0$ there is $m_0$ such that
+$$|\beta_{N,p,m}-\widehat\beta_m|\le\varepsilon\,s_m\quad\text{for all } m\ge m_0,\ N\ge m,\ p\in\mathbb N .$$
 
-**Proposition VII.5.3 (exact comparison maps by fixed finite-dimensional adjustment).** Given a free Maxwell label space and the Wilson table $S$ with differential plans $W,V$, real-spin hierarchies, and a "near-identity" family of comparison maps $A'_k$ up to degree $D$: there are fixed (point-independent) retractions $P_d$ of the free rise maps, equivariant under signed permutations and conjugation. Adjusting by them gives maps $X_d$ that commute *exactly* with the rise maps, mirrors, conjugation and units, and are bijective for $k$ large.
-*Status:* theorem (algebraic lemma).
-*Lean:* [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55), [`adjusted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66), [`Exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L72-L76), [`adjusted_exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L80-L102), [`Near`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L110-L111), [`perturb_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L113-L129), [`eventually_unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L131-L135), [`relative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L144-L148), [`Graded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L171-L172).
+**Proposition VII.5.1 (uniform logarithmic growth of the running coupling).** Let the family satisfy its construction conditions (II.2). For every $\varepsilon>0$ there is $m_0$ such that
+$$\Bigl|\frac{\beta_{N,p,m}}{s_m}-2b_0\Bigr|<\varepsilon\qquad\text{for all } m\ge m_0,\ N\ge m,\ p\in\mathbb N .$$
+*Status:* theorem. Of the construction conditions only (R) is used. Simplicity of $\mathfrak g$ is not needed.
+*Lean:* [`YM.Pert.Asymptotics.zeroUp_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30), with [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13) and [`b0_normalizes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L14).
 
-**Proposition VII.5.4 (algebra of the raw stress tensor and its trace).** For the free Maxwell label algebra:
-(a) the "raw" stress tensor built from the Weyl weights $(1,-\tfrac14,1)$ is traceless, $\sum_a \mathrm{raw}_{aa}=0$, because for weights $(0,w)$ one has $\sum_a T_{aa}=4(w_0+4w_1)\,\mathrm{square}_4$ with $\mathrm{square}_4=\tfrac14\sum_{i,j}F_{ij}F_{ij}$;
-(b) the three divergence letters are coordinates of the space of "raw one-forms" (the map `bareVector` is bijective for simple $G$);
-(c) a scalar functional $\rho$ vanishes on the equation-of-motion ideal and reads $-4(w_0+4w_1)$, i.e. minus the trace up to the square unit.
-*Status:* theorem (finite algebra).
-*Lean:* [`bareVector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33), [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66), [`raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70) (with `mechanical_trace`, `conformal`, `bareCoordinates`, `rho` in the same file), [`momentum1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L16), [`momentum2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L14), [`basisV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L63-L66), [`shell_affine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L43-L50).
+**Corollary VII.5.2 ((Reg1) for the constructed family).** Let $\mathfrak g$ be simple and let the family satisfy its construction conditions. Then its Wilson family satisfies (Reg1) with slope $b_*=2b_0=11C_{\mathfrak g}/(24\pi^2)>0$: for every $\varepsilon>0$ there is $N_0$ with
+$$\Bigl|\frac{\beta_{N,p}}{\log(1/a_N)}-b_*\Bigr|<\varepsilon\quad\text{for all } N\ge N_0 \text{ and all } p.$$
+*Status:* theorem, proved in VIII.1 as the first clause of the regularity of the constructed family. It is VII.5.1 at $m=N$, together with $C_{\mathfrak g}>0$ (I.1). This is how the main theorem uses part (A). The main theorem itself asserts only that some positive slope exists. The value $2b_0$ is not one of its conclusions.
+*Lean:* [`YangMills.regular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L16-L25) (running clause of [`YangMills.WilsonRegularity`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L12-L22)), via [`zeroUp_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30).
+
+**Proposition VII.5.3 (asymptotic freedom of the running coupling).** Let $\mathfrak g$ be simple and let the family satisfy its construction conditions. Let $(N_i)$ and $(k_i)$ be sequences of lattice levels and volume indices with $i\le N_i$ for all large $i$. Then
+$$\lim_{i\to\infty}g_{N_i,k_i,i}\,\sqrt{\log(1/a_i)}=\frac1{\sqrt{2b_0}},\qquad\text{equivalently}\qquad g_{N_i,k_i,i}^2\,\log(1/a_i)\longrightarrow\frac1{2b_0}.$$
+- For $N_i=i$ this is the law of the bare coupling, $g_0(a)^2\sim\bigl(2b_0\log(1/a)\bigr)^{-1}$.
+- For $N_i\ge i$ it is the law of the effective coupling at spacing $a_i$ of any finer lattice. No condition is placed on the volumes $k_i$.
+
+*Status:* theorem. No other declaration cites it.
+*Lean:* [`YM.Pert.Asymptotics.comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48), [`regulatorRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L35).
+
+**Setting for (B).**
+- *Spaces and maps.*
+  - $\mathcal F_d$ is the label space of degree $d$ of the limit table $S$, which carries a Euclidean hierarchy (IV.1).
+  - $\mathcal F^\circ_d$ is the corresponding space of the free Maxwell comparison table built on the same labels (VI.1).
+  - A *derivative plan* (IV.1) on either table consists of inclusions $\iota_{d\to e}$ ($d\le e$) and partial derivatives $\partial_{d,a}:\mathcal F_d\to\mathcal F_{d+1}$, $a=1,\dots,4$.
+  - The inclusion axioms say that the $\iota$ are injective, $\iota_{d\to d}=1$, $\iota_{d\to e}$ composes transitively, and $\iota$ fixes the unit.
+  - The orientation axiom says that $\iota$ commutes with the action of the hyperoctahedral group $\Gamma_4$ of signed permutations of the axes ($2^4\cdot4!=384$ elements) and with complex conjugation of labels.
+- *Stress data.* A *stress tensor* is a symmetric family $J=(J_{ab})$ in $\mathcal F_4$. Its *local Ward identities* (IV.1, VI.1) involve a translation part $p=(p_{d,a}:\mathcal F_d\to\mathcal F_{d+1})$ and a rotation part $Y$.
+- *Free Maxwell data* (VI.2, VIII.1): a derivative plan $W$ on the free table, a free stress tensor $J^\circ$ and a constant $\kappa\ne0$, such that $J^\circ$ satisfies the Ward identities with translation part $\kappa\,\partial^W$, and $\partial^W_4\neq0$.
+- *Scaling sequences.* A *scaling sequence* (VI.1) consists of frames $U_k(d):\mathcal F^\circ_d\to\mathcal F_d$ (linear isomorphisms), scales $r_k\downarrow0$ and stress normalisations $\xi_k>0$.
+- *Tracking.* A scaling sequence *tracks* $(V,W,J)$ at level $(n,d,j,R)$ (VI.1) if three conditions hold:
+  - the frames are exactly compatible with inclusions, signed permutations, conjugation and units up to degree $\max(d,4)$;
+  - the correlations of at most $n$ fields of degree at most $d$, rescaled by $r_k$, converge with $j$ derivatives to the free ones on windows of size $R$;
+  - $\xi_k^{-1}r_k^4\,U_k(4)^{-1}J_{ab}\to J^\circ_{ab}$.
+
+**Proposition VII.5.4 (normalisation of the stress tensor along free-field scaling sequences).** Let $V$ be a derivative plan on $S$ satisfying the inclusion and derivative axioms. Let $J$ be conserved and symmetric, real, and covariant under $\Gamma_4$, and let $(J,p,Y)$ satisfy the local Ward identities.
+(a) Suppose $p_{4,a}=c\,\partial^V_{4,a}$ for $a=1,\dots,4$ and some $c\in\mathbb R$. Then there are $D,N,M\in\mathbb N$ and $R_0\ge1$ such that $c/\xi_k\to\kappa$ for every scaling sequence that tracks $(V,W,J)$ at a level $(n,d,j,R)$ with $n\ge N$, $d\ge D$, $j\ge M$ and $R\ge R_0$.
+(b) If $p\neq0$, then $J\neq0$.
+*Status:* theorems. Part (a) uses the work items A04 and A05 (VI.1, proved).
+*Lean:* [`YM.Extra.WeakScaling.tracks_ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L43-L54), [`scale_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L28-L39), [`flux_nontrivial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Criteria.lean#L64-L70). Used in VI.2 by [`YM.Pert.ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L62-L66) and [`YM.Pert.centered_line`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L82-L116).
+
+**Proposition VII.5.5 (exactly compatible frames).** Let $V$ on $S$ and $W$ on the free table satisfy the inclusion and orientation axioms.
+(a) For every $d$ there is a $\mathbb C$-linear map $P_d:\mathcal F^\circ_{d+1}\to\mathcal F^\circ_d$ with $P_d\,\iota^W_{d\to d+1}=1$ that commutes with $\Gamma_4$ and with conjugation.
+(b) Let the $P_d$ be as in (a) and let $A_d:\mathcal F^\circ_d\to\mathcal F_d$ be linear. Define recursively
+$$X_0:=A_0,\qquad X_{d+1}:=\iota^V_{d\to d+1}\,X_d\,P_d+A_{d+1}\bigl(1-\iota^W_{d\to d+1}P_d\bigr).$$
+Suppose that for every $d\le D$ the map $A_d$ commutes with $\Gamma_4$ and conjugation and maps unit to unit. Then:
+- $X_e\,\iota^W_{d\to e}=\iota^V_{d\to e}\,X_d$ for all $d\le e\le D$;
+- for $d\le D$, each $X_d$ commutes with $\Gamma_4$ and conjugation and maps unit to unit.
+
+(c) Let $A^{(k)}_d$ be linear isomorphisms such that, for every $d<D$ and every $v$,
+$$(A^{(k)}_{d+1})^{-1}\,\iota^V_{d\to d+1}\,A^{(k)}_d\,v\longrightarrow\iota^W_{d\to d+1}v\qquad(k\to\infty).$$
+Let $X^{(k)}$ be built from $A^{(k)}$ as in (b). Then for every $d\le D$:
+- $(A^{(k)}_d)^{-1}X^{(k)}_d\to1$;
+- $X^{(k)}_d$ is bijective for all large $k$;
+- the isomorphisms $\widetilde X^{(k)}_d$ (equal to $X^{(k)}_d$ when it is bijective and to $A^{(k)}_d$ otherwise) satisfy $(A^{(k)}_d)^{-1}\widetilde X^{(k)}_dv\to v$.
+
+*Status:* theorem (finite-dimensional algebra and analysis).
+*Lean:* [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55), [`adjusted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66), [`Exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L72-L76), [`adjusted_exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L80-L102), [`Near`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L110-L111), [`perturb_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L113-L129), [`eventually_unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L131-L135), [`rotateChart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L137-L140), [`relative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L144-L148), [`Graded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L171-L172). Used in VII.1 by [`YM.SharpGram.Weak.Portfolio.tune_grades`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Compatible.lean#L140-L159). The notion of exact compatibility is also used in III.13 and VIII.1.
+
+**Proposition VII.5.6 (finite-dimensional convergence).**
+(a) Let $f:E\to X$ be an injective linear map between finite-dimensional real normed spaces. If $f(a_y)\to f(e)$ along a filter, then $a_y\to e$.
+(b) A family of continuous $\mathbb R$-linear functionals on $(\mathbb R^4)^n$ converges in norm as soon as it converges on the $4n$ coordinate vectors.
+*Status:* theorem.
+*Lean:* [`norm_fit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L44-L51), [`norm_fit_deriv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L63-L70), [`components`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L55-L60). Used in III.12 by [`YM.FullVolume.stretching`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Region.lean#L28-L30).
+
+**Definition VII.5.7 (the classical stress-tensor algebra).** Labels of weight $d$ are gauge-invariant polynomials in the curvature $F$ and its derivatives at the base point. The curvature has weight 2 and each derivative adds 1 (II.1). $\langle\cdot,\cdot\rangle$ denotes the invariant inner product on $\mathfrak g$.
+- *Weight 4.* The square is $\mathfrak s:=\frac14\sum_{i,j}\langle F_{ij},F_{ij}\rangle$, summed over ordered pairs. The candidate stress tensors of VI.1 form the family
+$$T^{(t)}_{ab}=\delta_{ab}\Bigl(t_0\mathbf 1+t_1\sum_i\langle F_{ai},F_{ai}\rangle+t_2\sum_{i,j}\langle F_{ij},F_{ij}\rangle\Bigr)+(1-\delta_{ab})\,t_3\sum_i\langle F_{ai},F_{bi}\rangle .$$
+The *canonical* tensor is $T^{\mathrm{can}}:=T^{(0,1,-1/4,1)}$, that is, $T^{\mathrm{can}}_{ab}=\sum_i\langle F_{ai},F_{bi}\rangle-\delta_{ab}\,\mathfrak s$.
+- *Weight 5.* Define the vectors
+$$\mu^1_b:=\sum_i\langle F_{bi},\partial_bF_{bi}\rangle=\tfrac12\partial_b\sum_i|F_{bi}|^2,\qquad \mu^2_b:=\sum_{i,j}\langle F_{ij},\partial_bF_{ij}\rangle=\tfrac12\partial_b\sum_{i,j}|F_{ij}|^2,$$
+and the equation-of-motion vector $E_b:=\sum_{a,i}\langle F_{bi},\partial_aF_{ai}\rangle$ (VI.1). Let $\mathcal R_1$ be the real space of real, $\Gamma_4$-covariant vectors of weight 5 (VI.1). Define $\beta,\delta:\mathbb R^3\to\mathcal R_1$ by
+$$\beta(w):=w_0\mu^1+w_1\mu^2+w_2E,\qquad \delta(w):=\beta\bigl(2(w_0-w_2),\ 2w_1+\tfrac12w_2,\ w_2\bigr).$$
+
+Proved in this unit:
+- $\mu^1,\mu^2\in\mathcal R_1$;
+- every affine (degree-0) jet is the jet of a solution of the free Maxwell equations.
+
+*Status:* definitions and two lemmas.
+*Lean:* [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66), [`raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70), [`momentum1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L16), [`momentum2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L14), [`momentum1_mem`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L28-L34), [`momentum2_mem`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L25-L27), [`momentum2_turn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L21-L24), [`basisV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L63-L66), [`bareVector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33) (with [`mat3`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L32), [`proj3`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L31)), [`shell_affine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L43-L50), [`sumPerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L17-L20). The facts proved about these objects in VI.1 and VII.2 are listed in §4.5.
+
+**Definition VII.5.8 (sharp read-out bound).** Fix a label degree $d$, stages $\ell_d\le k\le N$, a volume index $p$ and $u\in\mathbb R$. The predicate holds when the following is true (tentative). Take any sequence of stage-wise label coefficients from the reference stage $\ell_d$ to stage $k$ that:
+- vanishes at $\ell_d$;
+- is transported exactly by the renormalization-group push maps, with factor $b_m^{d}$ per step;
+- satisfies the remainder bounds of the effective actions with cost weight $w\ge0$;
+- has all insertion points at the origin.
+
+Then $u\,\|c_k\|\le4(1+n_k)\,w$, where $c_k$ is the coefficient at stage $k$ and $n_k$ the column number of stage $k$.
+*Status:* definition. It is a field of a structure of the trace analysis (VII.2), supplied by the preconstruction of III.2 (probable).
+*Lean:* [`YM.MergeProof.Accent.SharpRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot/Skein.lean#L26). Consumers: [`YM.Trace.Terrace.Sceptre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Knell.lean#L62-L66) and the cost lemmas of VII.2.
 
 ## 2. What it uses
 
 **Inputs from other units.**
-- *Construction conditions of the family* (II.2; proved in III.9, III.12–III.14): the field "running", i.e. for every $\varepsilon>0$ and $m$ large, $|\beta_{N,p,m}-\widehat\beta_m|\le\varepsilon\,\mathrm{scale}(m)$ for all $N\ge m$ and all $p$, where $\widehat\beta_m=\bar\beta+\kappa_G\,\mathrm{scale}(m)$ is the reference linear coupling of the RG schedule (III.2). Lean: `Family.Makes` ([`Source/Construction.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62)); the `Running` predicate is in [`YM/RG/History.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230).
-- *Positivity of the slope constant* $\kappa_G>0$ for simple $G$ (`Gauge.slopeConstant_pos`, used but not re-proved here; the group-theoretic facts about the Casimir are in I.1).
-- *The divergence of the schedule's scale* ($\mathrm{scale}(m)\to\infty$) and the identification of the scale with $\log(1/a_m)$ (III.2).
-- For VII.5.2: the weak-scaling statements A04, A05 (existence of weak curves with degree-4 tests; Lean `Work.A04.answer`, `Work.A05.answer`), the limit table and its differential plan (IV.1, VI.1), and the free Maxwell comparison data (VI.2, VII.1).
-- For VII.5.4: the free Maxwell label algebra (VI.2, `StressFlux`, `Labels`, `Maxwell`).
+- *I.1 (gauge group, schedule).*
+  - $C_{\mathfrak g}$ ([`YM.Gauge.casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182)) and $\kappa_G$, which is *defined* as $11C_{\mathfrak g}/(24\pi^2)$ ([`slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184)).
+  - Positivity $C_{\mathfrak g}>0$ and $\kappa_G>0$ for simple $\mathfrak g$ ([`casimir_pos`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L160-L172), [`slopeConstant_pos`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176)).
+  - $a_m=1/D_m$ ([`Schedule.a`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99)); $s_m$ is *defined* as $\log(1/a_m)$ ([`Schedule.scale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115)); and $s_m\to\infty$ ([`Schedule.divergent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L117-L120)).
+- *II.2 (construction conditions)* [`YM.Family.Makes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62). Its first field says that the trajectory is a selected history (III.1). The bare coupling is [`Family.beta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L38), that is, $\beta_{N,p,N}$.
+- *III.1 (selected history)* [`YM.RG.History.Selected`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L234-L240). It contains:
+  - $\beta_{N,p,0}=\bar\beta$;
+  - the per-step relation $|\beta_{N,p,m+1}-\beta_{N,p,m}-\kappa_G\log b_m|\le\delta_{m+1}$ ([`Transfer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L223-L227));
+  - the band $[\widehat\beta_m/2,2\widehat\beta_m]$ ([`Conv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L213-L218));
+  - the running clause (R) ([`Running`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230)), with $\widehat\beta_m$ given by [`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79).
+- *III.2 (choice of constants, shooting).*
+  - (R) is derived in [`YM.RG.Shoot.trajectory`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L23-L53). The inputs are $\beta_{N,p,0}=\bar\beta$, the per-step relation, and $\delta_{m+1}/\log b_m\le J(m+1)^{-2}$, where $J(m)\to\infty$ is the stage index of the schedule (Lemma VII.5.b).
+  - The history with $\beta_{N,p,0}=\bar\beta$ is produced by shooting ([`Recipe.races`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L67-L82), [`successful`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L156-L159)).
+  - The per-step relation, with the coefficient $\kappa_G$, is the marginal-flow estimate of one renormalization step (III.9) (probable).
+- *VIII.1:* the consumer of VII.5.2.
+- *For VII.5.4.*
+  - The work items A04 ([`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A04.lean#L163-L183)) and A05 ([`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05.lean#L95-L121)), both proved in VI.1. Along tracking scaling sequences, they give: $r_k\,\partial^V_d$ conjugated by the frames converges to $\partial^W_d$; and $(r_k/\xi_k)\,p_d$ conjugated by the frames converges to $\kappa\,\partial^W_d$.
+  - The tracking notion ([`Track`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48)) and the hypotheses on $J$ ([`Pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69)), from VI.1.
+  - The Ward identities ([`StressLaws`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L90-L97)) and derivative plans ([`DiffPlan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22)), from IV.1.
+  - The free Maxwell data ([`MaxwellData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170), [`Lighthouse.Goes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42)).
+- *For VII.5.5:* the inclusion and orientation axioms of derivative plans (IV.1), and the free comparison table ([`Spin.comparator`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L38), VI.1).
+- *For VII.5.7:*
+  - the label polynomials $\langle F_{ab},F_{cd}\rangle$ ([`pair`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L50-L51)) and $\langle F_{ab},\partial_iF_{cd}\rangle$ ([`pairDeriv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L57-L58));
+  - $E$ ([`eom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L105)), the family $T^{(t)}$ ([`stress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L177-L181), [`weyl`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L187)) and $\mathcal R_1$ ([`RawOne`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L53)), all from VI.1;
+  - the ideal of labels vanishing on free Maxwell solutions ([`Maxwell.equationIdeal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72)), from III.16.
 
-**Standard mathematics.** One-loop asymptotic freedom, Gross–Wilczek and Politzer (1973); the one-loop coefficient $b_0=\frac{11 N}{48\pi^2}$ for $SU(N)$ in the convention $\beta=1/g^2$. For the bare lattice coupling see Creutz, *Quarks, gluons and lattices*. Elementary real analysis (limits of ratios and square roots).
+**Standard mathematics.**
+- *Asymptotic freedom.* Gross–Wilczek and Politzer (Phys. Rev. Lett. 30, 1973). In the conventional normalisation for $SU(N)$, with $\beta=2N/g^2$, the one-loop law is $1/g^2\sim2b_0^{\mathrm{conv}}\log(1/a)$ with $b_0^{\mathrm{conv}}=11N/(48\pi^2)$.
+  - Here $\beta=1/g_0^2$ in the normalisation $\langle X,Y\rangle_{\mathfrak g}=-\frac1m\mathrm{Re}\,\mathrm{tr}(XY)$, and $C_{\mathfrak g}=2N^2$. So $b_*=2b_0=11N^2/(12\pi^2)=2N\cdot2b_0^{\mathrm{conv}}$, which agrees with the conventional law.
+  - For $SU(2)$, $b_*=11/(3\pi^2)$.
+  - For the relation between the bare coupling and the lattice spacing see Creutz, *Quarks, Gluons and Lattices* (1983).
+- *Block-spin RG for lattice gauge fields.* In Balaban's renormalization group (Comm. Math. Phys. 109 (1987), 116 (1988), and related papers) the effective couplings obey $g_{k+1}^{-2}=g_k^{-2}+\beta_0\log L+O(g_k^2)$. The per-step relation of III.9 is the analogue, and (R) is its summed form.
+- *Exactly compatible frames.* Averaging over a finite group gives equivariant projections (Maschke). In finite dimension, injective linear maps form an open set, and linear maps are continuous.
+- *Classical stress tensor.* The symmetric gauge-field stress tensor $T^{\mathrm{can}}$ is conserved on the equations of motion and is traceless in four dimensions (classical scale invariance; Callan–Coleman–Jackiw, Ann. Phys. 59, 1970). The breaking of tracelessness in the quantum theory is the trace anomaly (Adler–Collins–Duncan 1977; Collins–Duncan–Joglekar 1977), treated in VII.2.
 
-**Imported constants and assumptions.** The value $\kappa_G=\frac{11c_G}{24\pi^2}$ enters from the RG schedule (III.2, III.7, III.9). It is the coefficient of the one-loop beta function of the effective coupling. Its derivation is not in this unit, and the code defines $b_0$ so that $2b_0=\kappa_G$ is a definitional unfolding. The lattice reference coupling $\widehat\beta_m$ and the running estimate are proved in III.9 and III.14.
+**Imported constants and assumptions.**
+- The value $\kappa_G=11C_{\mathfrak g}/(24\pi^2)$ is a definition (I.1), and $b_0:=\kappa_G/2$, so $\kappa_G=2b_0$ holds by unfolding. That $\kappa_G$ is the actual slope of the trajectory is the content of the per-step relation, proved in Part III.
+- $\bar\beta>0$ is a constant of the schedule (III.2); the results do not depend on it.
+- No assumption enters (A) beyond the construction conditions. The hypotheses of (B) are stated in VII.5.4–VII.5.5.
 
 ## 3. Strategy
 
-The Lean in `Pert/Asymptotics` extracts the leading-log behaviour of the *same* running bare coupling that the construction produced, "including the finite-cutoff bare coupling endpoint". It does not reconstruct the coupling from perturbation theory. The RG part of the proof (III) shows that, at every stage $m$, the tuned bare coupling $\beta_{N,p,m}$ stays within $\varepsilon\,\mathrm{scale}(m)$ of the straight line $\bar\beta+\kappa_G\,\mathrm{scale}(m)$ with $\mathrm{scale}(m)\to\infty$ (the logarithm of inverse lattice spacing, in the units of the block schedule). Dividing by the scale and taking square roots gives the leading-log law of the coupling, with no new analytic input.
+**Part (A).** Part (A) is the last step of a three-step argument; the first two steps are in Part III.
+1. *Marginal flow (III.9, probable).* One block-spin step with factor $b_m$ changes the effective coupling by $\kappa_G\log b_m$, up to an error $\delta_{m+1}$ with $\delta_{m+1}/\log b_m\le J(m+1)^{-2}\to0$. This is the one-loop relation of Balaban's renormalization group.
+2. *Shooting and summation.* For each $N,p$ the bare coupling $\beta_{N,p,N}$ is chosen so that the flow reaches $\beta_{N,p,0}=\bar\beta$; this is the renormalization condition at unit scale. Summing the per-step relation from scale 0 to scale $m$ gives
+$$|\beta_{N,p,m}-\widehat\beta_m|\le\sum_{i<m}\delta_{i+1}.$$
+Since $\delta_{i+1}=o(\log b_i)$ and $s_m=\sum_{i<m}\log b_i\to\infty$, the right side is $o(s_m)$ by a Cesàro argument. The bound is uniform in $N\ge m$ and in $p$, because the per-step bounds are.
+3. *Division by $s_m$ (this unit).* Since $\bar\beta/s_m\to0$, one gets $\beta_{N,p,m}/s_m\to\kappa_G=2b_0$, uniformly. Taking $m=N$ gives (Reg1); taking square roots gives the coupling law.
 
-Hence VII.5.1 is a corollary of the construction. The docstring warns that the extracted proxy is not claimed to equal the physical coupling in any scheme ("no statement that this proxy equals the physical X-scheme coupling beyond the extracted comparison"), and that its existence does not implement the tangent-one test of the trace-anomaly part. The result is used downstream (VII.2) to calibrate the regulator in the comparison of the continuum stress tensor trace with the Wilson one.
+No perturbation theory is done in this unit. The file documentation states this explicitly: the leading logarithm is extracted "of the same running inverse action coefficient (including the finite-cutoff bare coupling endpoint)", not of the reference line. It also states that no statement identifies this coupling with a coupling defined in a physical scheme.
 
-VII.5.2–VII.5.4 belong mathematically to the stress-tensor identification of Part VI–VII (VI.1, VI.2, VII.2). They compare the limit table with the free Maxwell table at the common weak scale and give the algebra of the trace.
+**Part (B).** The results of part (B) are finite-dimensional.
+- *VII.5.4* compares two convergent sequences in a finite-dimensional space. Along a free-field scaling sequence, the rescaled derivative $r_k\partial^V_4$ tends to $\partial^W_4\neq0$. The rescaled flux $(r_k/\xi_k)p_4=(c/\xi_k)\,r_k\partial^V_4$ tends to $\kappa\,\partial^W_4$. Hence the scalar $c/\xi_k$ tends to $\kappa$.
+- *VII.5.5* is an "average and correct" construction in three steps:
+  1. an equivariant retraction of each inclusion, obtained by averaging over $\Gamma_4$ and conjugation;
+  2. a recursive correction, degree by degree, that turns approximately compatible frames into exactly compatible ones;
+  3. a perturbation argument showing the correction stays invertible and asymptotically equal to the original frames.
+- *VII.5.7* is the algebra of stress tensors quadratic in $F$ under the hyperoctahedral group. On the lattice only $\Gamma_4$ acts, so there are four candidate tensors and three candidate divergences. Their algebra singles out the canonical tensor and shows that it is traceless.
 
 ## 4. Steps
 
-### 4.1 Asymptotic freedom
+### 4.1 The running coupling
 
-**Lemma VII.5.a (normalisation).** $2b_0=\kappa_G$, with $b_0=11c_G/(48\pi^2)$.
-*Proof.* Unfold the two definitions; ring identity. *Lean:* [`b0_normalizes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L14).
+**Lemma VII.5.a (normalisation).** $2b_0=\kappa_G$.
+*Proof.* Unfold both definitions. *Lean:* [`b0_normalizes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L14).
 
-**Lemma VII.5.b (uniform linear growth, VII.5.1′).** For $\varepsilon>0$, eventually in $m$ and uniformly in $N\ge m$ and $p$: $|\beta_{N,p,m}/\mathrm{scale}(m)-2b_0|<\varepsilon$.
-*Proof sketch.* The "running" hypothesis with $\varepsilon/4$ gives $|\beta-(\bar\beta+\kappa_G\,\mathrm{scale}(m))|\le\frac\varepsilon4\mathrm{scale}(m)$, where $\bar\beta$ is the constant offset $a$ of the clock. Since $\mathrm{scale}(m)\to\infty$, for $m$ large $|a|<\frac\varepsilon4\mathrm{scale}(m)$ (using $\mathrm{scale}(m)\ge(|a|+1)/(\varepsilon/4)$). The triangle inequality gives $|\beta-\kappa_G\,\mathrm{scale}(m)|<\varepsilon\,\mathrm{scale}(m)$, and dividing by $\mathrm{scale}(m)>0$ gives the claim. *Lean:* [`zeroUp_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30).
+**Lemma VII.5.b (the running clause; input from III.2).** Suppose:
+- $\beta_{N,p,0}=\bar\beta$ for all $N,p$;
+- $|\beta_{N,p,m+1}-\beta_{N,p,m}-\kappa_G\log b_m|\le\delta_{m+1}$ for $m<N$;
+- $\delta_{m+1}/\log b_m\le J(m+1)^{-2}$ with $J\to\infty$.
 
-**Lemma VII.5.c (leading log of the coupling, VII.5.1).** Along $i\le N_i$, $\beta_{N_i,k_i,i}/\mathrm{scale}(i)\to2b_0$, hence $\sqrt{\beta/\mathrm{scale}}\to\sqrt{2b_0}>0$ and its inverse converges to $1/\sqrt{2b_0}$. For $\mathrm{scale}(i)>0$ one has $\bigl(\beta^{-1/2}\bigr)\sqrt{\mathrm{scale}(i)}=\bigl(\sqrt{\beta/\mathrm{scale}(i)}\bigr)^{-1}$.
-*Proof sketch.* Compose the convergence of VII.5.b with the continuity of $\sqrt{\cdot}$ at $2b_0>0$ (positivity from $\kappa_G>0$, which needs $G$ simple), take inverses, and rewrite $\beta^{-1/2}\sqrt{\mathrm{scale}}$ as the inverse square root of the ratio. The last line of the Lean proof closes the goal by `rfl` after this rewriting, so the factor $\sqrt{\log(1/a_i)}$ in the statement is *definitionally* $\sqrt{\mathrm{scale}(i)}$, i.e. the schedule's scale is $\log(1/a_i)$ by definition (probable; the definition of `scale` in the schedule has not been checked). *Lean:* [`comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48).
+Then (R) holds.
+*Proof sketch.*
+1. Since $s_{m+1}=s_m+\log b_m$, induction on $m$ gives $|\beta_{N,p,m}-\widehat\beta_m|\le\Delta_m:=\sum_{i<m}\delta_{i+1}$ for $m\le N$.
+2. Given $\varepsilon$, choose $j$ with $J(i+1)^{-2}\le\varepsilon/2$ for $i\ge j$. Then $\Delta_m\le\Delta_j+\frac\varepsilon2(s_m-s_j)$ for $m\ge j$.
+3. For $m$ large, $\Delta_j\le\frac\varepsilon2 s_m$, hence $\Delta_m\le\varepsilon s_m$.
 
-### 4.2 Weak-scaling orientation (VII.5.2)
+The bounds do not involve $N$ or $p$. *Lean:* [`YM.RG.Shoot.trajectory`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L23-L53) (III.2).
 
-**Lemma VII.5.d (a ratio of scales converges).** If $X_i\to x\ne0$ in a finite-dimensional real space and $f_iX_i\to cx$, then $f_i\to c$.
-*Proof sketch.* Choose a linear functional $Y$ with $Y(x)\ne0$ and divide $Y(f_iX_i)$ by $Y(X_i)$. *Lean:* [`scale_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L28-L39).
+**Lemma VII.5.c (= Proposition VII.5.1).**
+*Proof sketch.*
+1. Apply (R) with $\varepsilon/4$. Because $s_m\to\infty$, one may also require $s_m\ge4(|\bar\beta|+1)/\varepsilon$.
+2. Then $s_m>0$ and $|\bar\beta|<\frac\varepsilon4s_m$.
+3. With $\kappa_G=2b_0$, the triangle inequality gives
+$$|\beta_{N,p,m}-2b_0s_m|\le|\beta_{N,p,m}-\widehat\beta_m|+|\bar\beta|<\varepsilon s_m .$$
+4. Divide by $s_m$.
 
-**Lemma VII.5.e (the stress flux tracks the derivative normalisation).** Under the hypotheses of VII.5.2, $c/\xi_i\to\kappa$ along every weak curve.
-*Proof sketch.* The work items A04 and A05 give, at the common weak scale, one convergence for the derivative tests of degree 4 and one for the flux tests of degree 4. Take the second, substitute $\mathrm{leaves}\,p=c\,\mathrm{leaves}\,V.\mathrm{deriv}$ and $\mathrm{leaves}(\kappa W.\mathrm{deriv})=\kappa\,\mathrm{leaves}\,W.\mathrm{deriv}$, and apply VII.5.d to the non-zero limit of the first. *Lean:* [`tracks_ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L43-L54).
+*Lean:* [`zeroUp_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30).
 
-**Lemma VII.5.f (sign).** If, in addition, the stress law holds (so weak curves exist), then $c\kappa>0$. *Proof sketch.* $c\ne0$ since the limit $\kappa\ne0$; the sign of $c/\xi_i$ is that of $c$ (the $\xi_i$ have a sign $X.\mathrm{sign}$) and passes to the limit. *Lean:* [`kappa_sign`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L56-L70).
+**Lemma VII.5.d (= Corollary VII.5.2).**
+*Proof sketch.* The slope is $2b_0$, which is positive because $C_{\mathfrak g}>0$ for simple $\mathfrak g$. Given $\varepsilon$, take $N_0:=m_0$ from VII.5.1 and specialise to $m=N$. The bare coupling of the public family is $\beta_{N,p,N}$, and its $\log(1/a_N)$ is $s_N$ by definition. *Lean:* [`YangMills.regular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L16-L25) (VIII.1).
 
-### 4.3 Exact comparison maps (VII.5.3)
+**Lemma VII.5.e (= Proposition VII.5.3).**
+*Proof sketch.*
+1. For each $\varepsilon$, eventually both $i\ge m_0(\varepsilon)$ and $i\le N_i$. So VII.5.1 gives $\beta_{N_i,k_i,i}/s_i\to2b_0$.
+2. Since $\kappa_G>0$ for simple $\mathfrak g$, $2b_0>0$. Then $x\mapsto\sqrt x$ is continuous at $2b_0$ and $y\mapsto y^{-1}$ is continuous at $\sqrt{2b_0}\ne0$. Hence $(\beta_{N_i,k_i,i}/s_i)^{-1/2}\to(2b_0)^{-1/2}$.
+3. For $s_i>0$ one has $\beta^{-1/2}s_i^{1/2}=(\beta/s_i)^{-1/2}$, and $s_i=\log(1/a_i)$ by definition.
 
-**Lemma VII.5.g (equivariant retraction).** Each free rise map $W.\mathrm{rise}:\mathcal F_d\to\mathcal F_{d+1}$ has a left inverse $P$ that commutes with signed permutations and with conjugation.
-*Proof sketch.* Take any linear left inverse (rise is injective), average over the finite group of signed permutations, then average with its conjugate. *Lean:* [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55).
+*Lean:* [`comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48).
 
-**Lemma VII.5.h (adjustment).** Given comparison maps $A_d$, define $X_0=A_0$ and $X_{d+1}=V.\mathrm{rise}\circ X_d\circ P_d+A_{d+1}\circ(1-W.\mathrm{rise}\circ P_d)$. If the $A_d$ are equivariant and the inclusions and orientations hold, then the $X_d$ satisfy $X_e\circ W.\mathrm{rise}=V.\mathrm{rise}\circ X_d$ exactly, and are equivariant and unit-preserving.
-*Proof sketch.* Induction on $d$, using $P_d\circ W.\mathrm{rise}=1$. *Lean:* [`adjusted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66), [`adjusted_exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L80-L102). *(statement and first lines of the proof read; rest tentative)*
+### 4.2 Normalisation of the stress tensor (VII.5.4)
 
-**Lemma VII.5.i (near-identity gives bijectivity).** If the adjustments $A'_k$ tend to the identity in the weak coordinates up to degree $D$, then $\mathrm{adjusted}(A'_k)\to\mathrm{id}$ degree by degree, and is bijective for $k$ large (a finite-dimensional perturbation of the identity). *Lean:* [`perturb_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L113-L129), [`eventually_unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L131-L135), [`relative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L144-L148).
+**Lemma VII.5.f (ratio lemma).** Let $Z$ be a finite-dimensional real normed space. If $X_k\to x\neq0$ in $Z$ and $f_kX_k\to c\,x$ with $f_k\in\mathbb R$, then $f_k\to c$.
+*Proof sketch.* Choose a linear functional $\ell$ with $\ell(x)\neq0$. Then $\ell(X_k)\ne0$ eventually, and $f_k=\ell(f_kX_k)/\ell(X_k)\to c$. *Lean:* [`scale_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L28-L39).
 
-### 4.4 Algebra of the trace (VII.5.4)
+**Lemma VII.5.g (= VII.5.4(a)).**
+*Proof sketch.*
+1. A04 at degree 4 gives thresholds beyond which $X_k:=r_k\,U_k(5)^{-1}\partial^V_4U_k(4)\to x:=\partial^W_4$.
+2. A05 at degree 4, applied to $(J,p,Y)$, gives thresholds beyond which $(r_k/\xi_k)\,U_k(5)^{-1}p_4U_k(4)\to\kappa\,\partial^W_4$.
+3. Take the larger of the two sets of thresholds.
+4. Substituting $p_4=c\,\partial^V_4$ in step 2 gives $(c/\xi_k)X_k\to\kappa x$, where $x\ne0$ is part of the free data. Lemma VII.5.f gives $c/\xi_k\to\kappa$.
 
-**Lemma VII.5.j (the Weyl-weighted stress is traceless).** $\sum_a T^{(w)}_{aa}=4(w_0+4w_1)\,\mathrm{square}_4$, so $T^{(1,-1/4,1)}$ has zero trace; $\mathrm{square}_4=\frac14\sum_{i,j}F_{ij}F_{ij}$ (ordered axes, adjoint colour contraction).
-*Proof sketch.* Expand the stress letters and sum over the diagonal; linear algebra in the module of labels. *Lean:* `mechanical_trace`, `conformal` in [`Dilate.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean) ([`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66), [`raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70)).
+*Lean:* [`tracks_ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L43-L54).
 
-**Lemma VII.5.k (coordinates for the divergences).** The three divergence letters ("diagonal-mountain", "diagonal-total", "shear") give a bijection $\mathbb R^3\to\text{raw one-forms}$ for simple $G$, with $\mathrm{bareVector}(w)_b=w_0(\text{two copies of }\partial_b\sum F_{bi}^2/2)+w_1(\ldots)+w_2(\ldots)$ (the "Euler" identity), and the $\rho$ functional kills the equation-of-motion ideal. The proof uses the Bianchi identity for the derivative pairings. *Lean:* [`bareVector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33) (`euler`, `bareCoordinates`, `rho_eom`).
+**Lemma VII.5.h (= VII.5.4(b)).**
+*Proof sketch.* Suppose $J=0$. The translation Ward identity writes every correlation with an insertion of $p_{d,a}v$ as a flux of $J$ through a shell, which is then $0$. Correlations separate the elements of $\mathcal F_{d+1}$, so $p=0$. *Lean:* [`flux_nontrivial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Criteria.lean#L64-L70).
 
-**Lemma VII.5.l (affine shells and signed-permutation covariance).** Every affine Taylor jet is the gauge jet of a Maxwell shell; the momenta $\mathrm{momentum}_1,\mathrm{momentum}_2$ transform under signed permutations $t$ by $\mathrm{sign}_t(a)\,\mathrm{momentum}_2(t\cdot a)$. *Lean:* [`shell_affine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L43-L50), [`momentum2_turn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L21-L24).
+*Remark (sign of $c\kappa$).* Suppose in addition that tracking sequences exist at every level. Then $c\kappa>0$: since $\xi_k>0$, $c/\xi_k$ has the sign of $c$, and its limit is $\kappa\ne0$. This is [`kappa_sign`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L56-L70). It is not assigned to this unit and is not used by the main theorem. VI.2 uses only (a), and obtains $c\neq0$ from $\kappa\ne0$.
+
+### 4.3 Exactly compatible frames (VII.5.5)
+
+**Lemma VII.5.i (equivariant retraction, = VII.5.5(a)).**
+*Proof sketch.*
+1. $\iota^W$ is injective, so it has a linear left inverse $R$.
+2. Average over $\Gamma_4$: $Q:=|\Gamma_4|^{-1}\sum_{s\in\Gamma_4}s^{-1}Rs$. Since $\iota^W$ commutes with $\Gamma_4$, $Q$ is again a left inverse, and $Q$ is $\Gamma_4$-equivariant.
+3. Let $\theta$ be the conjugation, an antilinear involution. Put $P:=\frac12(Q+\theta Q\theta)$. Then $P$ is $\mathbb C$-linear. It is a left inverse, since $\iota^W$ commutes with $\theta$. It commutes with $\theta$. It stays $\Gamma_4$-equivariant, since $\theta$ commutes with $\Gamma_4$.
+
+*Lean:* [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55), [`averaged_cov`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L27-L32).
+
+**Lemma VII.5.j (exactness of the correction, = VII.5.5(b)).**
+*Proof sketch.*
+1. *One step.* $X_{d+1}\iota^Wv=\iota^VX_dP_d\iota^Wv+A_{d+1}(\iota^Wv-\iota^WP_d\iota^Wv)=\iota^VX_dv$.
+2. *Intertwining for $d\le e$.* Induction on $e$, using $\iota_{d\to e+1}=\iota_{e\to e+1}\iota_{d\to e}$ and $\iota_{d\to d}=1$.
+3. *Symmetries.* Induction on $d$. Let $g$ be a signed permutation or the conjugation. Then $g$ commutes with $P_d$, $\iota^W$, $\iota^V$, $A_{d+1}$ and, by induction, with $X_d$. Hence it commutes with both terms of $X_{d+1}$.
+4. *Units.* $\mathbf 1_{d+1}=\iota^W\mathbf 1_d$, so $X_{d+1}\mathbf 1_{d+1}=\iota^VX_d\mathbf 1_d=\iota^V\mathbf 1_d=\mathbf 1_{d+1}$.
+
+*Lean:* [`adjusted_succ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L78-L79), [`adjusted_exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L80-L102).
+
+**Lemma VII.5.k (asymptotic identity).** For $d\le D$, $\Pi^{(k)}_d:=(A^{(k)}_d)^{-1}X^{(k)}_d\to1$.
+*Proof sketch.*
+1. Put $\Phi^{(k)}_d:=(A^{(k)}_{d+1})^{-1}\iota^VA^{(k)}_d$. Then
+$$\Pi^{(k)}_{d+1}v=\Phi^{(k)}_d\,\Pi^{(k)}_d P_dv+(v-\iota^WP_dv),\qquad \Pi^{(k)}_0=1 .$$
+2. $\Phi^{(k)}_d\to\iota^W$ pointwise by hypothesis, hence in norm (finite dimension).
+3. By induction, $\Pi^{(k)}_dP_dv\to P_dv$.
+4. Therefore $\Pi^{(k)}_{d+1}v\to\iota^WP_dv+v-\iota^WP_dv=v$.
+
+*Lean:* [`perturb`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L106-L108), [`perturb_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L113-L129).
+
+**Lemma VII.5.l (bijectivity and the new frames).**
+*Proof sketch.*
+1. $\Pi^{(k)}_d\to1$ in norm, and injective operators form an open set. So $\Pi^{(k)}_d$, and hence $X^{(k)}_d$, is injective for large $k$.
+2. $\dim\mathcal F^\circ_d=\dim\mathcal F_d$ (by $A^{(k)}_d$), so $X^{(k)}_d$ is bijective.
+3. Hence $\widetilde X^{(k)}_d=X^{(k)}_d$ eventually, and $(A^{(k)}_d)^{-1}\widetilde X^{(k)}_dv\to v$.
+
+*Lean:* [`eventually_unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L131-L135), [`rotate_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L142-L143), [`relative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L144-L148).
+
+*Use.* In VII.1 the frames of the free-field scaling sequence intertwine the inclusions only asymptotically. VII.5.5 replaces them by frames that are exactly graded for all large $k$ and asymptotically equal to the original ones, as tracking requires ([`tune_grades`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Compatible.lean#L140-L159)).
+
+### 4.4 Finite-dimensional convergence (VII.5.6)
+
+**Lemma VII.5.m.**
+*Proof sketch.*
+- (a) A linear left inverse $g$ of $f$ is continuous in finite dimension, so $a_y=gf(a_y)\to gf(e)=e$.
+- (b) Every point of $(\mathbb R^4)^n$ is $\sum_{i,a}v_{i,a}e_{i,a}$. Hence evaluation at the $4n$ coordinate vectors is injective on functionals, and (a) applies.
+
+*Lean:* [`norm_fit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L44-L51), [`components`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L55-L60), [`norm_fit_deriv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L63-L70).
+
+### 4.5 The classical stress-tensor algebra (VII.5.7)
+
+**Lemma VII.5.n (covariance of $\mu^1,\mu^2$).** For a signed permutation $t$ with signs $\varepsilon_t(\cdot)$:
+$$t\cdot\mu^2_a=\varepsilon_t(a)\,\mu^2_{t(a)},\qquad t\cdot\mu^1_a=\varepsilon_t(a)\,\mu^1_{t(a)} .$$
+Both are real.
+*Proof sketch.* $t$ multiplies $\langle F_{ij},\partial_bF_{ij}\rangle$ by $\varepsilon(i)\varepsilon(j)\,\varepsilon(b)\varepsilon(i)\varepsilon(j)=\varepsilon(b)$ and relabels the indices. The double sum over $(i,j)$ is invariant under reindexing by $t$. *Lean:* [`momentum2_turn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L21-L24), [`momentum1_mem`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L28-L34), [`momentum2_mem`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L25-L27), [`sumPerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L17-L20).
+
+**Lemma VII.5.o (affine shells).** Every degree-0 jet is the jet of a degree-0 solution of the free Maxwell equations.
+*Proof sketch.* The associated potential has constant curvature, so $\sum_a\partial_aF_{ab}=0$. *Lean:* [`shell_affine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L43-L50). VII.2 uses this, with its degree-1 analogue [`shell_quadratic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L52-L61), to build test jets on Maxwell solutions.
+
+**What VI.1 and VII.2 prove about these objects.** These facts explain why the definitions are made; the proofs are not in this unit.
+1. *Trace (VI.1).* $\sum_aT^{(0,w)}_{aa}=4(w_0+4w_1)\,\mathfrak s$. In particular $T^{\mathrm{can}}$ is traceless ([`mechanical_trace`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L67-L69), [`conformal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L71-L72)).
+2. *Divergence (VII.2).* $\delta(w)_b=\sum_a\partial_aT^{(0,w)}_{ab}$ ([`euler`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L38-L52)). The key identity is the Bianchi consequence
+$$\sum_{a,i}\langle F_{ai},\partial_aF_{bi}\rangle=\tfrac12\mu^2_b .$$
+With it, the shear part $\sum_{a\ne b}\partial_a\sum_i\langle F_{ai},F_{bi}\rangle$ equals $E_b+\frac12\mu^2_b-2\mu^1_b$.
+3. *Coordinates (VII.2).* For simple $\mathfrak g$, $\beta$ and $\delta$ are bijections $\mathbb R^3\to\mathcal R_1$ ([`coordinates1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L112-L124), [`bareCoordinates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L54-L63)). Moreover, $\beta(w)$ vanishes on free Maxwell solutions iff $w_0=w_1=0$ ([`through_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L96-L110)).
+4. *Conservation of the canonical tensor (VII.2).* $\delta(1,-\tfrac14,1)=E$: $T^{\mathrm{can}}$ is conserved on the equations of motion ([`eom_vector_raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L73-L74)).
+5. *The functional $\rho$ (VII.2).* $\rho:=-4(w_0+4w_1)\circ\delta^{-1}:\mathcal R_1\to\mathbb R$ satisfies $\sum_aT^{(0,w)}_{aa}=-\rho(\delta(w))\,\mathfrak s$. It vanishes on divergences that vanish on Maxwell solutions ([`rho`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L78-L80), [`rho_eom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L85-L88)).
+
+Together these say: among the $\Gamma_4$-covariant tensors quadratic in $F$, the tensor conserved on Maxwell solutions is, up to scale, the canonical one, and it is traceless. VII.2 reads the trace of a candidate stress tensor off its divergence through $\rho$ (probable).
 
 ## 5. Where the difficulty lies
 
-*Routine.* VII.5.1 is a short real-analysis argument (about 35 lines). Its content is entirely in the hypothesis "running", which comes from the RG (III.9). Everything else in the unit is finite-dimensional algebra or limits of scalar ratios.
+*Routine.* Everything in the unit is routine:
+- Part (A) is about 35 lines of real analysis.
+- Part (B) is finite-dimensional linear algebra and limits of scalar ratios.
 
-*What is stronger or weaker than one might expect.*
-1. The theorem is about the *bare regulator coupling* $\beta_{N,p,m}^{-1/2}$ at the cutoff stage, not about a physical (scheme-defined) running coupling. The leading-log coefficient $1/\sqrt{2b_0}$ is the *one-loop* value only. Nothing is said about two-loop terms, the $\log\log/\log$ correction, or $\Lambda_{\mathrm{lattice}}$. The statement is therefore "asymptotic freedom" only in the weak sense $g^2\sim(2b_0\log(1/a))^{-1}$. The docstring says explicitly that no identification with the physical coupling is made.
-2. The result is uniform in $N\ge m$ and $p$ (VII.5.1′), but the final statement is along sequences $N_i,k_i$ with $i\le N_i$, with no assumption on the volume index $k_i$.
-3. The clean statement $2b_0=\kappa_G$ hides where the number $11/3$ comes from: $\kappa_G$ is part of the construction's schedule and its identification with the one-loop coefficient is done in the RG units (III.7, III.9).
-4. The unit is the odd one out in the list: of its 43 declarations only 5 concern the coupling. The other 38 (from `WEAK_SCALING_ACTLAW` and `TraceExtension`) are helper lemmas that were assigned here by the line-count attribution of the declaration table (shared helpers whose only user is the Part VII chain ending in VII.2). A written proof should give them to VII.2 or VI.1.
+The substance of asymptotic freedom lies upstream: the per-step marginal-flow estimate with coefficient $\kappa_G$ (III.9, probable), and the shooting and summation (III.2).
+
+*Weaker than one might expect.*
+1. *Only the leading logarithm, and only for the lattice couplings.* VII.5.1–VII.5.3 concern the coefficients $\beta_{N,p,m}$ of the lattice effective actions of the constructed trajectory. They contain no two-loop term, no $\log\log(1/a)/\log(1/a)$ correction and no $\Lambda$-parameter. The file documentation disclaims any identification with a coupling defined in a physical scheme.
+2. *What the main theorem keeps.* The main theorem keeps only (Reg1), with an unspecified positive slope (statement, Definition 1.6 and §4 item 9).
+3. *The value of the slope.* That the value $11C_{\mathfrak g}/(24\pi^2)$ is the one-loop coefficient is not established here. $\kappa_G$ is defined with that value in I.1, and the per-step estimate of Part III shows that the trajectory follows it.
+
+*Stronger than one might expect.* VII.5.1 is uniform in the volume index $p$ and also in $N\ge m$: the coupling at stage $m$ of every finer lattice obeys the same law. This uniformity is what VII.5.3 uses (no condition on $k_i$). Any coupling defined from the $\beta_{N,p,m}$ by limits in $N$ and $p$ at fixed $m$ inherits the bound $|\beta/s_m-2b_0|\le\varepsilon$ for $m\ge m_0(\varepsilon)$. This is the mechanism behind the effective-coupling law of the group's assessment (§7.4, Theorem 7.2); the passage to the limit is not in this unit (probable).
+
+*Unusual.*
+- **Most of the unit belongs elsewhere.** 38 of the 43 declarations have nothing to do with the coupling. The declaration table assigns them here; their consumers are in other units:
+  - the frame-correction lemmas (VII.5.5): VII.1, also III.13 and VIII.1;
+  - the ratio lemma and the flux-nontriviality lemma (VII.5.4): VI.2;
+  - the convergence lemmas (VII.5.6): III.12;
+  - the stress-tensor definitions (VII.5.7): VII.2 and VI.1, where all the lemmas about them are;
+  - the read-out predicate (VII.5.8): VII.2.
+  
+  A written proof should place them there.
+- **The asymptotic-freedom statement has no downstream use.** Proposition VII.5.3 is not cited by any other declaration. The coupling enters the main theorem only through VII.5.1, via (Reg1).
 
 ## 6. Notation
 
 | object | code name | proposed notation |
 |---|---|---|
-| one-loop coefficient | [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13) | $b_0=\frac{11c_G}{48\pi^2}$ |
-| slope constant of the RG | `Gauge.slopeConstant` | $\kappa_G=2b_0$ |
-| bare coupling at stage $m$ | `C.path.β N p m` | $\beta_{N,p,m}$ |
-| logarithmic scale of stage $m$ | `C.S.scale m` | $\mathrm{scale}(m)=\log(1/a_m)$ (probable) |
-| reference linear coupling | `hatBeta` | $\widehat\beta_m=\bar\beta+\kappa_G\,\mathrm{scale}(m)$ |
-| regulator coupling | [`regulatorRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L35) | $g_{N,p}(m)=\beta_{N,p,m}^{-1/2}$ |
-| the "running" clause | `Running` | (R) $\beta_{N,p,m}=\widehat\beta_m+o(\mathrm{scale}(m))$ uniformly in $N\ge m$, $p$ |
-| free Maxwell family | [`Free C`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Station.lean#L28) | $\mathrm{Max}$ |
-| fixed retraction of the free rise | [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55) | $P_d$ |
-| adjusted comparison map | [`adjusted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66) | $X_d$ |
-| Weyl-weighted stress tensor | [`raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70) | $T^{\mathrm{raw}}_{ab}$ |
-| square of the field strength | [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66) | $\tfrac14\sum_{ij}F_{ij}F_{ij}$ |
-| divergence-letter coordinates | [`bareVector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33) | $w\mapsto\partial\!\cdot\!T(w)$ |
-| a read-out inequality in the cost accounting | [`SharpRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot/Skein.lean#L26) | see §7 |
+| Casimir constant | [`YM.Gauge.casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182) | $C_{\mathfrak g}$ ($=2N^2$ for $SU(N)$) |
+| slope constant | [`YM.Gauge.slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184) | $\kappa_G=11C_{\mathfrak g}/(24\pi^2)$ |
+| one-loop coefficient | [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13) | $b_0=\kappa_G/2$; slope $b_*=2b_0$ |
+| lattice spacing at stage $m$ | [`Schedule.a`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99) | $a_m=1/D_m$ |
+| logarithmic scale | [`Schedule.scale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115) | $s_m=\log(1/a_m)$ |
+| coupling at stage $m$ | `C.path.β N p m` | $\beta_{N,p,m}$; bare coupling $\beta_{N,p}=\beta_{N,p,N}$ |
+| reference line | [`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79) | $\widehat\beta_m=\bar\beta+\kappa_Gs_m$ |
+| running clause | [`Running`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230) | (R) |
+| running coupling | [`regulatorRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L35) | $g_{N,p,m}=\beta_{N,p,m}^{-1/2}$ |
+| free comparison table | [`Free`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Station.lean#L28) | $\mathcal F^\circ_d$ |
+| equivariant retraction | [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55) | $P_d$ |
+| corrected frames | [`adjusted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66), [`rotateChart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L137-L140) | $X_d$, $\widetilde X^{(k)}_d$ |
+| exact compatibility up to degree $D$ | [`Exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L72-L76), [`Graded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L171-L172) | "exactly graded" |
+| asymptotic intertwining | [`Near`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L110-L111) | hypothesis of VII.5.5(c) |
+| square of the curvature | [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66) | $\mathfrak s=\frac14\sum_{i,j}\langle F_{ij},F_{ij}\rangle$ |
+| canonical stress tensor | [`raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70) | $T^{\mathrm{can}}$ |
+| weight-5 vectors | [`momentum1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L16), [`momentum2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L14) | $\mu^1$, $\mu^2$ |
+| coordinates on $\mathcal R_1$ | [`basisV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L63-L66) | $\beta(w)$ |
+| divergence of $T^{(0,w)}$ | [`bareVector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33) | $\delta(w)$ |
+| sharp read-out bound | [`SharpRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot/Skein.lean#L26) | Definition VII.5.8 |
 
 ## 7. What remains unexplained
-1. **Scope of the unit.** The Lean code alone does not explain why the `WEAK_SCALING_ACTLAW` and `TraceExtension/Foundation` declarations sit in this unit. Their mathematical home is VI.1/VI.2/VII.2 (weak scaling of the stress tensor, trace). The declaration table should be checked to decide where they belong. (probable)
-2. **Meaning of "scale".** The conclusion of `comparison` is phrased with $\sqrt{\log(1/a_i)}$ while the hypothesis uses the schedule's `scale i`; the proof closes by `rfl`, so they agree by definition. The definitions of `C.S.scale` and `C.S.a` (III.2) have not been checked. (probable)
-3. **Where the one-loop coefficient is proved.** The value $\kappa_G=11c_G/(24\pi^2)$ must be established in the matching/flow units (III.7, III.9). The declaration that fixes it has not been identified, and the definition of `Gauge.casimir` has not been checked (it appears as a normalised sum of squares of adjoint generators, so $c_G=N$ for $SU(N)$ is the expected value, but the normalisation of the inner product on the colour algebra must be checked). (tentative)
-4. **The reference coupling.** The statement assumes the "running" field of `Family.Makes`. The predicate (`Running`) has been read, but its proof has not been checked. III.9 or III.14 should record that it holds uniformly in $N\ge m$ and in $p$. This uniformity is what makes VII.5.1 independent of the volume sequence $k_i$.
-5. **Use downstream.** `regulatorRun` appears in `RemainderComparison` (Beacon, Hymnal, Musicology) as the variable `gStep u.beta`. How `comparison` is consumed there, and in `HierarchyBridge` (which uses `zeroUp_bound`), has not been traced. The statement that VII.2 calibrates the trace anomaly by this result is taken from the unit page ("Used by VII.2") and has not been independently checked. (tentative)
-6. **Proofs not checked.** `adjusted_exact`, `perturb_limit`, `eventually_unit`, `relative`, `retraction`'s companions, `flux_nontrivial`, `momentum2_turn`, `shell_affine`, and `SharpRead`. For `SharpRead` only the definition (a bound $u\cdot\mathrm{coeffSize}\le4(1+\text{columns})\,w$ on the "voice" of a duet with zero atoms and non-negative weight $w$) and the lemma it is used in have been examined; it belongs to the cost accounting of III.15, not to this unit's mathematics.
-7. **Possible extension.** If the written proof is meant to state asymptotic freedom in the usual sense (with two-loop terms or in a physical scheme), this unit does not contain it; the docstring says so explicitly.
+1. **Where the one-loop coefficient is verified.** The per-step relation $|\beta_{N,p,m+1}-\beta_{N,p,m}-\kappa_G\log b_m|\le\delta_{m+1}$ comes from the one-step output of the shooting recipe (III.2). The analytic proof of that step bound, where $11C_{\mathfrak g}/(24\pi^2)$ actually arises, is attributed to the marginal flow (III.9) but has not been traced to a declaration. (probable)
+2. **The effective coupling after the limits.** The assessment's Theorem 7.2 concerns a coupling $g_W(r)$ defined after $N\to\infty$ and the infinite-volume limit. The comparison with a coupling read from continuum correlations is also not traced. Files that use the running coupling at stage $m+1$ (`YM/RemainderComparison`: Beacon, Hymnal, Musicology) lie outside the dependency closure of the main theorem. Whether, and where, Theorem 7.2 is proved has not been settled. (tentative)
+3. **Definition VII.5.8.** The reading of the read-out predicate is (tentative). Its role belongs in VII.2's cost accounting.
+4. **The functional $\rho$.** How VII.2 uses $\rho$ to read the trace of a stress tensor off its divergence is stated here as (probable) and should be checked in VII.2.
+5. **Placement.** §5 gives the target units for the 38 auxiliary declarations. Moving them would leave this unit with VII.5.1–VII.5.3 only.
 
 **Builds on:** [IV.1](IV-1.md), [I.1](I-1.md), [III.16](III-16.md), [VI.1](VI-1.md), [II.1](II-1.md).
 
