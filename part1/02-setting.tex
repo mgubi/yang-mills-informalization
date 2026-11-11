@@ -133,7 +133,7 @@ For each $d$ choose a reference level $\reflevel{d}$ with $J_{\reflevel{d}}\ge d
 H^{\rm ins}_{N,p,N;d}(\mathbf v;U)&=\density\rho_{N,p,N}(U)\,\localsection{d}[\factorscale_{t_N^{-1}}\mathbf v](0;U),\\
 H^{\rm ins}_{N,p,m;d}(\mathbf v;\cdot)&=\ell_m^d\blockmap{m}_{\beta_{N,p,m+1}}H^{\rm ins}_{N,p,m+1;d}(\mathbf v;\cdot)\,.
 \end{align}
-The terminal factors $a_N^d$ and $a_N^{-d}$ cancel. The coefficient at level $\reflevel{d}$ is $\mathsf Z_{N,p,d}\mathbf v$, defining an invertible map $\mathsf Z_{N,p,d}:V_d\to V_d$. At $N<\reflevel{d}$ choose any invertible map. For every cutoff and site $y$ set
+The coefficient at level $\reflevel{d}$ is $\mathsf Z_{N,p,d}\mathbf v$, defining an invertible map $\mathsf Z_{N,p,d}:V_d\to V_d$. At $N<\reflevel{d}$ choose any invertible map. For every cutoff and site $y$ set
 \begin{equation}\label{eq:renormalized-insertion}
 O^{(d)}_{N,p}(\mathbf c,y;U)=a_N^{-d}\localsection{d}[\factorscale_{t_N^{-1}}\mathsf Z_{N,p,d}^{-1}\mathbf c](y;U)\,.
 \end{equation}
@@ -334,11 +334,11 @@ Let a finite rooted tree have leaves carrying fields $A_i$ and an internal root 
 \begin{equation}\label{eq:nested-rates}
 \mathcal Q_{\varepsilon,q}(\varrho)=r^{q-W_{o_{\rm root}}-\varepsilon}\prod_{\substack{v\ne o_{\rm root}\\v\text{ internal}}}q_v^{-W_v-\varepsilon},\qquad \mathsf e_{\boldsymbol D}(\varrho)=\sum_{\substack{v\ne o_{\rm root}\\v\text{ internal}}}q_v^{D_v+1}\,.
 \end{equation}
-The direct coefficient $C^{\rm dir}_{q,\lambda}$ is $c_{q,\lambda}$ of all original leaves at $z_{o_{\rm root}}$. Define $C^{\rm it,\boldsymbol D}_{q,\lambda}$ recursively. A leaf $i$ carries $(A_i,1)$. A proper internal vertex $v$ with children $c_1,\ldots,c_s$ carries $(O_{q',\lambda'},\kappa_v(q',\lambda'))$ for $q'\le D_v$, $\lambda'\in\channels{q'}$, where
+The direct coefficient $C^{\rm dir}_{q,\lambda}$ is $c_{q,\lambda}$ of all original leaves at $z_{o_{\rm root}}$. Define $C^{\rm it,\boldsymbol D}_{q,\lambda}$ recursively. A leaf $i$ carries $(A_i,1)$. A proper internal vertex $v$ with children $u_1,\ldots,u_s$ carries $(O_{q',\lambda'},\gamma_v(q',\lambda'))$ for $q'\le D_v$, $\lambda'\in\channels{q'}$, where
 \begin{equation}\label{eq:iterated-coefficient}
-\kappa_v(q',\lambda')=\sum_{(B_j,\kappa_j)_j}\Bigl(\prod_{j=1}^s\kappa_j\Bigr)c_{q',\lambda'}(B_1,\ldots,B_s;z_{c_1},\ldots,z_{c_s},z_v)\,.
+\gamma_v(q',\lambda')=\sum_{(B_j,\gamma_j)_j}\Bigl(\prod_{j=1}^s\gamma_j\Bigr)c_{q',\lambda'}(B_1,\ldots,B_s;z_{u_1},\ldots,z_{u_s},z_v)\,.
 \end{equation}
-The sum chooses one pair $(B_j,\kappa_j)$ from each child. The same formula at the root gives $C^{\rm it,\boldsymbol D}_{q,\lambda}=\kappa_{o_{\rm root}}(q,\lambda)$, without using the root truncation. A tested root remainder in state $\zeta$ is $\mathcal R_q^\zeta$ for the original leaves at $z_{o_{\rm root}}$.
+The sum chooses one pair $(B_j,\gamma_j)$ from each child. The same formula at the root gives $C^{\rm it,\boldsymbol D}_{q,\lambda}=\gamma_{o_{\rm root}}(q,\lambda)$, without using the root truncation. A tested root remainder in state $\zeta$ is $\mathcal R_q^\zeta$ for the original leaves at $z_{o_{\rm root}}$.
 \end{definition}
 
 \begin{definition}[Contact distributions]\label{def:contacts}
@@ -346,7 +346,9 @@ A distribution on $\R^{4n}$ is a complex linear continuous functional on $C_c^\i
 \begin{equation}\label{eq:contact-order}
 |\mathfrak D(f)|\le C_K\max_{|\alpha|\le q_K}\|\partial^\alpha f\|_\infty
 \end{equation}
-for tests supported in $K$. A contact extension $\mathfrak D_{\boldsymbol A}^\zeta$ of $S^\zeta(\boldsymbol A;\cdot)$ is such a distribution equal to $\int fS^\zeta(\boldsymbol A;\cdot)$ on separated tests. The subtraction prescription is defined in Section~\ref{sec:partII-J}, using the field projections of the OPE.
+for tests supported in $K$. A contact extension $\mathfrak D_{\boldsymbol A}^\zeta$ of $S^\zeta(\boldsymbol A;\cdot)$ is such a distribution equal to $\int fS^\zeta(\boldsymbol A;\cdot)$ on separated tests. The subtraction prescription is defined in Section~\ref{sec:partII-J}, using the contact projections below.
+
+The contact construction fixes, for every degree~$q$ and point~$o$, linear maps~$P^{\rm ct}_{\le q}(o)$ from finite combinations of separated words to~$F_q$, built on the channel basis of the prescription of Proposition~\ref{prop:P12}. They fix each single field of~$F_q$ placed at~$o$, are covariant under translations, $O(4)$ and conjugation, and are read by finitely many separating correlation functionals, with their $O(4)$ averages and real symmetrization, chosen for the contact construction. The graded part~$P^{\rm ct}_{=q}$ has range the complement of~$F_{q-1}$ in~$F_q$ fixed by these maps. The degree-$d$ aperture is positive and its double is at most the distance from~$o$ of every spectator in the degree-$d$ functionals. The contact clearance~$\delta_q^{\rm pres}$ is the minimum of these apertures over~$d\le q$. No identification with the projections defining the OPE coefficients is asserted.
 \end{definition}
 
 Continuity gives locally finite order for every distribution; Proposition~\ref{prop:P13} records the dependence of $q_K,C_K$.
