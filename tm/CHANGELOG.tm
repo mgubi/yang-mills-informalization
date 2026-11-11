@@ -18,6 +18,14 @@
   <section|2026-11-11><label|2026-11-11>
 
   <\itemize-minus>
+    <item><strong|How the manuscript is written.> A detailed account of the
+    writing process \V statements first, roles, the review cycle, the
+    records, what it has caught and what it does not establish \V in
+    <hlink|manuscript/PROCESS.md|manuscript/PROCESS.tm>, linked from this
+    page and the manuscript page. Part I of the manuscript has completed its
+    review cycle; the first two Part II sections (C and F) are drafted and
+    under re-check.
+
     <item><strong|The manuscript joins this repository.> It is now in
     <hlink|manuscript/|manuscript/index.tm>, as level 5, the full proof
     (under construction); the separate repository is archived.

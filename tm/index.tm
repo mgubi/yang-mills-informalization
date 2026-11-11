@@ -15,47 +15,60 @@
     do the ideas come from?> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
     <no-break><pageref|auto-1>>>
 
+    <with|par-left|2tab|<with|font-size|0.92|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/PROCESS.tm>>|How
+    the manuscript is being written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-2>>>
+
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|The proof at
     five levels of detail> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-2><vspace|0.5fn>
+    <no-break><pageref|auto-3><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|In
     collaboration with <with|font-shape|italic|Humanise Yang\UMills>>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-3><vspace|0.5fn>
+    <no-break><pageref|auto-4><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|The theorem, in
     brief> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-4><vspace|0.5fn>
+    <no-break><pageref|auto-5><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|The proof at a
     glance> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-5><vspace|0.5fn>
+    <no-break><pageref|auto-6><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|How the map was
     made> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-6><vspace|0.5fn>
+    <no-break><pageref|auto-7><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|Status>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-7><vspace|0.5fn>
+    <no-break><pageref|auto-8><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|Compiled Lean
     files> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-8><vspace|0.5fn>
+    <no-break><pageref|auto-9><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|How to cite>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-9><vspace|0.5fn>
+    <no-break><pageref|auto-10><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|License>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-10><vspace|0.5fn>
+    <no-break><pageref|auto-11><vspace|0.5fn>
   </table-of-contents>
 
   <strong|A map of OpenAI's Lean proof of the construction of
   four-dimensional Yang\UMills theory, and a natural-language outline built
   from it.>
+
+  This repository is maintained by Scott Armstrong (CNRS and Sorbonne
+  Université; Courant Institute, New York University), in collaboration with
+  Martin Hairer's <hlink|<strong|humanise-yang-mills>|https://github.com/hairer/humanise-yang-mills>
+  project (<hlink|details below|#in-collaboration-with-humanise-yangmills>).
+  Source: <hlink|github.com/scottnarmstrong/yang-mills-informalization|https://github.com/scottnarmstrong/yang-mills-informalization>.
+  For reading on screen, an HTML version generated automatically from this
+  repository by Massimiliano Gubinelli is at
+  <hlink|mgubi.github.io/yang-mills-informalization|https://mgubi.github.io/yang-mills-informalization/>.
 
   In October 2026 OpenAI announced a proof, formalized in Lean 4, that
   four-dimensional quantum Yang\UMills theory can be constructed as a scaling
@@ -100,6 +113,18 @@
     \<rightarrow\>|provenance.tm>>
   </quotation>
 
+  <\quotation>
+    <subsubsection|<hlink|How the manuscript is being
+    written|manuscript/PROCESS.tm>>
+
+    The full proof is being written in public by AI models under human
+    direction. Statements are fixed first and kept short. Every statement is
+    reviewed against the Lean by a separate reviewer, a fresh reader and a
+    sentence-by-sentence truth check, and every finding is recorded with its
+    decision. <strong|<hlink|The process, what it has caught so far, and what
+    it does not establish \<rightarrow\>|manuscript/PROCESS.tm>>
+  </quotation>
+
   <section|The proof at five levels of detail><label|the-proof-at-five-levels-of-detail>
 
   The repository presents the same proof at five levels of detail. Each level
@@ -130,11 +155,12 @@
   cover the 413,000 lines of source attributed to the
   units.>>|<row|<cell|<strong|5>>|<cell|<hlink|<strong|The full
   proof>|manuscript/index.tm> <em|(under construction)>>|<cell|A complete
-  manuscript: Part I, the theorem and the architecture of its proof (about 35
-  pages), and Part II, the proofs (about 150 pages), written for a
+  manuscript: Part I, the theorem and the architecture of its proof (about 30
+  pages), and Part II, the proofs (about 120 pages), written for a
   mathematician in constructive field theory or probability. Sections appear
-  as they are written and are revised as they are checked against the
-  Lean.>>>>>
+  as they are written and are revised as they are checked against the Lean,
+  by the process described in <hlink|how the manuscript is
+  written|manuscript/PROCESS.tm>.>>>>>
 
   <strong|All in one PDF.> Levels 2\U4 \V the proof in one reading, the
   architecture and the thirty-two unit outlines \V as a single
@@ -402,25 +428,26 @@
 
 <\references>
   <\collection>
-    <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|9|7>>
-    <associate|auto-2|<tuple|1|2>>
-    <associate|auto-3|<tuple|2|3>>
-    <associate|auto-4|<tuple|3|3>>
-    <associate|auto-5|<tuple|4|4>>
-    <associate|auto-6|<tuple|5|5>>
-    <associate|auto-7|<tuple|6|6>>
-    <associate|auto-8|<tuple|7|6>>
-    <associate|auto-9|<tuple|8|6>>
-    <associate|compiled-lean-files|<tuple|7|6>>
-    <associate|how-the-map-was-made|<tuple|5|5>>
-    <associate|how-to-cite|<tuple|8|6>>
-    <associate|in-collaboration-with-humanise-yangmills|<tuple|2|3>>
-    <associate|license|<tuple|9|7>>
-    <associate|status|<tuple|6|6>>
-    <associate|the-proof-at-a-glance|<tuple|4|4>>
-    <associate|the-proof-at-five-levels-of-detail|<tuple|1|2>>
-    <associate|the-theorem-in-brief|<tuple|3|3>>
+    <associate|auto-1|<tuple|1|2>>
+    <associate|auto-10|<tuple|8|8>>
+    <associate|auto-11|<tuple|9|8>>
+    <associate|auto-2|<tuple|2|2>>
+    <associate|auto-3|<tuple|1|3>>
+    <associate|auto-4|<tuple|2|4>>
+    <associate|auto-5|<tuple|3|5>>
+    <associate|auto-6|<tuple|4|5>>
+    <associate|auto-7|<tuple|5|6>>
+    <associate|auto-8|<tuple|6|7>>
+    <associate|auto-9|<tuple|7|7>>
+    <associate|compiled-lean-files|<tuple|7|7>>
+    <associate|how-the-map-was-made|<tuple|5|6>>
+    <associate|how-to-cite|<tuple|8|8>>
+    <associate|in-collaboration-with-humanise-yangmills|<tuple|2|4>>
+    <associate|license|<tuple|9|8>>
+    <associate|status|<tuple|6|7>>
+    <associate|the-proof-at-a-glance|<tuple|4|5>>
+    <associate|the-proof-at-five-levels-of-detail|<tuple|1|3>>
+    <associate|the-theorem-in-brief|<tuple|3|5>>
     <associate|yangmills-informalization|<tuple|?|1>>
   </collection>
 </references>
@@ -432,42 +459,46 @@
       do the ideas come from?> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-1>>>
 
+      <with|par-left|<quote|2tab>|<with|font-size|<quote|0.92>|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/PROCESS.tm>>|How
+      the manuscript is being written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-2>>>
+
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
       proof at five levels of detail> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-2><vspace|0.5fn>
+      <no-break><pageref|auto-3><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|In
       collaboration with <with|font-shape|<quote|italic>|Humanise
       Yang\UMills>> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-3><vspace|0.5fn>
-
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
-      theorem, in brief> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-4><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
-      proof at a glance> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      theorem, in brief> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-5><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
+      proof at a glance> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-6><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|How
       the map was made> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-6><vspace|0.5fn>
+      <no-break><pageref|auto-7><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|Status>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-7><vspace|0.5fn>
+      <no-break><pageref|auto-8><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|Compiled
       Lean files> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-8><vspace|0.5fn>
+      <no-break><pageref|auto-9><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|How
       to cite> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-9><vspace|0.5fn>
+      <no-break><pageref|auto-10><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|License>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-10><vspace|0.5fn>
+      <no-break><pageref|auto-11><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>

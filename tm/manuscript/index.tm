@@ -33,10 +33,10 @@
   </table-of-contents>
 
   <\quotation>
-    \<#1F6A7\> <strong|Under construction.> This manuscript is being written.
-    Most sections do not exist yet, and those that do may change
-    substantially until they are marked <em|checked> in the <hlink|status
-    table|#status>. Do not cite it as a finished proof.
+    \<emoji-construction\> <strong|Under construction.> This manuscript is
+    being written. Most sections do not exist yet, and those that do may
+    change substantially until they are marked <em|checked> in the
+    <hlink|status table|#status>. Do not cite it as a finished proof.
   </quotation>
 
   A manuscript, written in public, giving a complete mathematical proof of
@@ -45,47 +45,67 @@
   (<hlink|source|https://github.com/yang-mills-group/OpenAI-YM-20261028>,
   commit <hlink|<verbatim|3456e5e>|https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464>).
   The reader we write for is a mathematician working in constructive field
-  theory or probability.
+  theory or probability. It is written in collaboration with Martin Hairer's
+  <hlink|humanise-yang-mills|https://github.com/hairer/humanise-yang-mills>
+  project, a crowd-sourced effort to turn the Lean formalization into a
+  human-readable monograph.
 
   <\itemize-minus>
     <item><strong|Part I. The theorem and the architecture of its proof>
-    (about 40 pages): the setting and notation, the main theorem, the
+    (about 30 pages): the setting and notation, the main theorem, the
     principal statements on which the proof rests, each stated exactly with
     the idea of its proof, and the complete deduction of the main theorem
     from them.
 
-    <item><strong|Part II. Proofs> (about 150 pages): the proofs of the
-    principal propositions, with every estimate specific to the construction
-    written out and standard results cited.
+    <item><strong|Part II. Proofs> (about 120 pages, Sections 10\U19): the
+    proofs of the principal propositions, with every estimate specific to the
+    construction written out and standard results cited.
   </itemize-minus>
 
   The PDF is <hlink|<verbatim|main.pdf>|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>.
   It is updated as sections are written; until a section is marked
   <em|checked> below, it is a draft.
 
+  The process by which it is written and checked is described in <hlink|How
+  this manuscript is written|PROCESS.tm>.
+
   <section|Status><label|status>
 
   <block|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|-1|1|-1|cell-hyphen|t>|<cwith|1|1|1|-1|cell-bborder|1ln>|<cwith|1|1|1|-1|cell-valign|bottom>|<table|<row|<cell|>|<cell|<strong|section>>|<cell|<strong|status>>>|<row|<cell|Part
-  I>|<cell|1. Introduction>|<cell|not yet written>>|<row|<cell|>|<cell|2.
-  Wilson theory>|<cell|rewritten; under review>>|<row|<cell|>|<cell|3.
-  Renormalization>|<cell|rewritten; under review>>|<row|<cell|>|<cell|4. The
-  continuum limit>|<cell|rewritten; under review>>|<row|<cell|>|<cell|5.
-  Stress and rotations>|<cell|rewritten; under review>>|<row|<cell|>|<cell|6.
-  Phases and reconstruction>|<cell|rewritten; under
-  review>>|<row|<cell|>|<cell|7. Trace and products>|<cell|rewritten; under
-  review>>|<row|<cell|>|<cell|8. Main theorems>|<cell|rewritten; under
-  review>>|<row|<cell|Part II>|<cell|A\UJ>|<cell|not yet written (being
-  rewritten for the new Part I)>>|<row|<cell|Appendix>|<cell|Constants and
-  the order of their choice>|<cell|rewritten; under review>>>>>
+  I>|<cell|1. Introduction>|<cell|to be written last>>|<row|<cell|>|<cell|2.
+  Wilson theory>|<cell|reviewed; with the project lead for
+  reading>>|<row|<cell|>|<cell|3. Renormalization>|<cell|reviewed; with the
+  project lead for reading>>|<row|<cell|>|<cell|4. The continuum
+  limit>|<cell|reviewed; with the project lead for
+  reading>>|<row|<cell|>|<cell|5. Stress and rotations>|<cell|reviewed; with
+  the project lead for reading>>|<row|<cell|>|<cell|6. Phases and
+  reconstruction>|<cell|reviewed; with the project lead for
+  reading>>|<row|<cell|>|<cell|7. Trace and products>|<cell|reviewed; with
+  the project lead for reading>>|<row|<cell|>|<cell|8. Main
+  theorems>|<cell|reviewed; with the project lead for
+  reading>>|<row|<cell|>|<cell|9. Constants and order of
+  choice>|<cell|reviewed; with the project lead for reading>>|<row|<cell|Part
+  II>|<cell|12. Path actions and the coupling reset>|<cell|reviewed; with the
+  project lead for reading>>|<row|<cell|>|<cell|15. Infinite volume and field
+  calculus>|<cell|reviewed; with the project lead for
+  reading>>|<row|<cell|>|<cell|10, 11, 13, 14, 16\U19>|<cell|statements
+  listed (including the inputs that Sections 12 and 15 use), proofs not yet
+  written>>>>>
+
+  "Reviewed" means the full cycle of the <hlink|process|PROCESS.tm> has run:
+  owner, fresh-reader and truth reviews, re-check and delivery review. A
+  section is marked <em|checked> only after the project lead's reading and
+  any changes it leads to.
 
   <section|How it is written><label|how-it-is-written>
 
-  The manuscript is written with AI models under human direction. Every
-  statement is checked against the formal proof: the paper claims nothing the
-  Lean does not prove. Each section is drafted by one model, checked against
-  the Lean by another, and edited before it is marked <em|checked>. The
-  correspondence between the numbered statements and the Lean declarations
-  will be published with the manuscript.
+  The manuscript is written with AI models under human direction, by the
+  process described in <strong|<hlink|How this manuscript is
+  written|PROCESS.tm>>. In short: the paper claims nothing the Lean does not
+  prove; statements are fixed first and kept short; writers propose, one
+  editor integrates; and every statement is reviewed against the Lean by a
+  separate reviewer. The correspondence between the numbered statements and
+  the Lean declarations will be published with the manuscript.
 
   For shorter routes into the proof, see the <hlink|rest of this
   repository|../index.tm>, which presents it at several levels of detail,
@@ -112,14 +132,14 @@
 
 <\references>
   <\collection>
-    <associate|auto-1|<tuple|1|1>>
+    <associate|auto-1|<tuple|1|2>>
     <associate|auto-2|<tuple|2|2>>
     <associate|auto-3|<tuple|3|2>>
     <associate|auto-4|<tuple|4|2>>
     <associate|building|<tuple|3|2>>
     <associate|how-it-is-written|<tuple|2|2>>
     <associate|license|<tuple|4|2>>
-    <associate|status|<tuple|1|1>>
+    <associate|status|<tuple|1|2>>
     <associate|the-construction-of-four-dimensional-quantum-yangmills-theory|<tuple|?|1>>
   </collection>
 </references>
