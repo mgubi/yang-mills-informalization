@@ -966,7 +966,7 @@
   follow its link for the exact hypotheses and conclusion. The outline status
   does not certify these summaries. <em|Main result> and <em|key result>
   describe importance, not correctness. Full names are in the
-  <hlink|statement table|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv>.
+  <hlink|statement table|https://github.com/mgubi/yang-mills-informalization/blob/main/data/key-statements.tsv>.
 
   <label|k-ii-2-1>
 

@@ -174,7 +174,7 @@
     <item><strong|Units.> Groups are cut and merged into thirty-two
     mathematically coherent units. A unit's declaration allocation and its
     explanatory subject can differ. The <hlink|assignment
-    table|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/declaration-units.tsv>
+    table|https://github.com/mgubi/yang-mills-informalization/blob/main/data/declaration-units.tsv>
     records allocation; the <hlink|unit index|outline/units.tm> describes the
     questions the outlines address. References between units can occur in
     both directions because each unit contains several declarations; this
@@ -254,7 +254,7 @@
   Claude Opus. It is revised as the outlines improve. Human mathematical
   judgment remains needed to assess whether these explanations give a
   satisfactory account of the construction; the manuscript being written in
-  public is <hlink|under construction|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>.
+  public is <hlink|under construction|https://github.com/mgubi/yang-mills-informalization/tree/main/manuscript>.
 
   <section|Published evidence and tools><label|published-evidence-and-tools>
 

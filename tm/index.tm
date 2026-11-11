@@ -81,7 +81,7 @@
     each unit with every statement linked to the Lean;
 
     <item><strong|write> a complete natural-language account of the proof on
-    that skeleton: a <hlink|manuscript|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>,
+    that skeleton: a <hlink|manuscript|https://github.com/mgubi/yang-mills-informalization/tree/main/manuscript>,
     being written in public (under construction).
   </enumerate>
 
@@ -129,7 +129,7 @@
   plain language, each linked to its exact lines. In all, 989 key statements
   cover the 413,000 lines of source attributed to the
   units.>>|<row|<cell|<strong|5>>|<cell|<hlink|<strong|The full
-  proof>|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>
+  proof>|https://github.com/mgubi/yang-mills-informalization/tree/main/manuscript>
   <em|(under construction)>>|<cell|A complete manuscript: Part I, the theorem
   and the architecture of its proof (about 35 pages), and Part II, the proofs
   (about 150 pages), written for a mathematician in constructive field theory
@@ -138,10 +138,10 @@
 
   <strong|All in one PDF.> Levels 2\U4 \V the proof in one reading, the
   architecture and the thirty-two unit outlines \V as a single
-  <hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/pdf/yang-mills-outline.pdf>
-  (164 pages; <hlink|LaTeX source|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/pdf/yang-mills-outline.tex>).
+  <hlink|PDF|https://github.com/mgubi/yang-mills-informalization/blob/main/pdf/yang-mills-outline.pdf>
+  (164 pages; <hlink|LaTeX source|https://github.com/mgubi/yang-mills-informalization/blob/main/pdf/yang-mills-outline.tex>).
   The detailed notes of all units are a separate
-  <hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/pdf/yang-mills-detailed-notes.pdf>
+  <hlink|PDF|https://github.com/mgubi/yang-mills-informalization/blob/main/pdf/yang-mills-detailed-notes.pdf>
   (595 pages). Links to the Lean point to the exact lines, as on the web
   pages.
 
@@ -377,7 +377,7 @@
 
   <section|How to cite><label|how-to-cite>
 
-  Use the metadata in <hlink|CITATION.cff|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/CITATION.cff>.
+  Use the metadata in <hlink|CITATION.cff|https://github.com/mgubi/yang-mills-informalization/blob/main/CITATION.cff>.
   Include the revision of this repository you consulted, the unit and result
   identifiers when relevant, and the fixed Lean source commit
   <hlink|<verbatim|3456e5e75cf8d4cd558955a5c7638fba2d68f464>|https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464>.
@@ -387,7 +387,7 @@
   <section|License><label|license>
 
   This repository is licensed under the <hlink|Apache License
-  2.0|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/LICENSE>.
+  2.0|https://github.com/mgubi/yang-mills-informalization/blob/main/LICENSE>.
   The Lean source it describes is \<copyright\> OpenAI, also released under
   the Apache License 2.0; see the <hlink|source
   repository|https://github.com/yang-mills-group/OpenAI-YM-20261028>.
