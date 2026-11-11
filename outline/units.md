@@ -17,7 +17,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
 | **II.1** | [Field labels and their lattice representatives](units/II-1.md) | 10,805 | 35 | edited |
-| **II.2** | [Polymer activities, norms, the Wilson family, the construction record, reflection-positive cells](units/II-2.md) | 3,691 | 1 | checked |
+| **II.2** | [Polymer activities, norms, the Wilson family, the construction record, reflection-positive cells](units/II-2.md) | 3,691 | 1 | edited |
 
 ## Part III. Ultraviolet construction (renormalization group)
 
