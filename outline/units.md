@@ -38,7 +38,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | **III.11** | [Comparison with the free Gaussian measure: interacting rank and determinant budgets](units/III-11.md) | 42,556 | 67 | edited |
 | **III.12** | [Bounds uniform in the volume and convergence as the spacing tends to zero](units/III-12.md) | 18,973 | 34 | edited |
 | **III.13** | [Extension to all labels: one common Wilson family](units/III-13.md) | 22,100 | 31 | edited |
-| **III.14** | [The construction run: flat representations and the ultraviolet rate](units/III-14.md) | 14,290 | 49 | checked |
+| **III.14** | [The construction run: flat representations and the ultraviolet rate](units/III-14.md) | 14,290 | 49 | edited |
 | **III.15** | [Cost accounting for observables and the remainder comparison](units/III-15.md) | 7,382 | 13 | checked |
 | **III.16** | [Analytic toolkit](units/III-16.md) | 4,013 | 4 | checked |
 
@@ -56,9 +56,9 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **V.1** | [Decomposition of the limit into phases](units/V-1.md) | 5,713 | 18 | draft |
+| **V.1** | [Decomposition of the limit into phases](units/V-1.md) | 5,713 | 18 | checked |
 | **V.2** | [Osterwalder-Schrader reconstruction of a Wightman theory](units/V-2.md) | 6,456 | 19 | draft |
-| **V.3** | [Reconstruction for every phase and the reconstructed theory](units/V-3.md) | 4,056 | 14 | draft |
+| **V.3** | [Reconstruction for every phase and the reconstructed theory](units/V-3.md) | 4,056 | 14 | checked |
 
 ## Part VI. Symmetry: stress tensor and Ward identities
 
