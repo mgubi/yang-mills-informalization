@@ -2,9 +2,6 @@
 
 > 🚧 **Under construction.** This manuscript is being written. Most sections do not exist yet, and those that do may change substantially until they are marked *checked* in the [status table](#status). Do not cite it as a finished proof.
 
-> ### [How this manuscript is written →](PROCESS.md)
-> Statements fixed first in natural form; AI writers propose, one editor integrates; every statement reviewed against the Lean by a separate reviewer, plus a fresh reader and a sentence-by-sentence truth check; every finding recorded with its decision; the project lead reads each part. **[The full process, what it has caught, and what it does not establish →](PROCESS.md)**
-
 A manuscript, written in public, giving a complete mathematical proof of the result formalized in OpenAI's Lean proof
 of the construction of four-dimensional quantum Yang–Mills theory
 ([source](https://github.com/yang-mills-group/OpenAI-YM-20261028), commit
@@ -19,6 +16,8 @@ The reader we write for is a mathematician working in constructive field theory 
 
 The PDF is [`main.pdf`](main.pdf). It is updated as sections are written; until a section is marked *checked* below, it
 is a draft.
+
+The process by which it is written and checked is described in [How this manuscript is written](PROCESS.md).
 
 ## Status
 
