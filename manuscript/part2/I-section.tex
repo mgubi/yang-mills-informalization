@@ -1,47 +1,476 @@
 \section{The trace law and non-free comparisons}\label{sec:partII-I}
 
-\emph{This section is under construction.}
+The stress tensor constructed in Section~\ref{sec:partII-G} has a trace whose leading free comparison vanishes. To determine its first nonzero term one must retain the next coefficient. We center the trace in the phase fixed in Section~\ref{sec:phases}, identify its positive spectral measure, and prove Theorem~\ref{prop:TR} by a fourth-order comparison with the free field. The coefficient combines the one-loop trace coefficient and the free curvature-square correlation. The spectral law distinguishes this field from the finite comparisons of Proposition~\ref{prop:NF} and the polynomial and photon comparisons in Theorem~\ref{thm:B}.
+
+Conservation determines the scalar curvature-square coefficient from the divergence of a lattice stress insertion. A two-dimensional linear equation removes the other tensor components; the Ward identity fixes the remaining normalization. An estimate on the divergence must be more accurate than the slowly growing coefficients of this equation. Adjustable stopping levels give a subsequence of every prescribed null sequence; positivity then removes lattice rounding and gives the full-radius limit.
+
+Finite mass-shell products have expansions with no negative logarithmic powers, which contradict the trace law. In photon Fock space, relative locality forces polynomial identities under momentum doubling. The trace law permits only sectors with at most three particles; their spectral growth is then too small.
+
+Throughout, retain the fields, inclusions and units of Definition~\ref{def:D10} and Proposition~\ref{prop:FC}, the tensor of Theorem~\ref{prop:ST}, and the selected reconstruction of Theorem~\ref{prop:RC}. The symbols $\tau,e_{\rm tr},\Theta,\tracetwopoint$ and $\traceamplitude$ have the meanings of Definition~\ref{def:D16}. Write $\Phi_\Theta(f)=\Phi(\iota_4\Theta,f)$, and use the word domain of Definition~\ref{def:W1}.
 
 \subsection{Trace and spectrum}\label{sec:partII-I.1}
 
+Centering must hold on the common operator domain, as well as in separated correlations. The proof below identifies the subtraction after continuation.
 \begin{lemma}[Centering as an operator identity]\label{lem:I1.1}
-To be stated here.
+For every $f\in\mathcal S$, on the word domain,
+\begin{equation*}
+\Phi_\Theta(f)=\Phi(\iota_4\tau,f)-e_{\rm tr}\left(\int f\right)\mathrm{Id}_{\mathcal H},
+\qquad \langle\Omega,\Phi_\Theta(f)\Omega\rangle=0\,.
+\end{equation*}
 \end{lemma}
+\begin{proof}
+Use unit deletion in Definition~\ref{def:E1-E3}, the quotient calculus of Lemma~\ref{lem:F2}, and the continuation and field realization of Lemma~\ref{lem:H2.1}. Deleting the unit insertion leaves a Euclidean correlation independent of its position. On each ordered-time region its continuation is therefore constant in that variable. Uniqueness in Lemma~\ref{lem:H2.1} identifies it with the correlation containing the unit. Boundary values and smearing give $\langle u,\Phi(\iota_4\unitfield{4},f)v\rangle=(\int f)\langle u,v\rangle$ for word vectors $u,v$. Density and linearity give the identity. The zero Euclidean one-point function continues to zero and has zero boundary distribution, proving the centering assertion.
+\end{proof}
 
+We use the Fourier convention of Section~\ref{sec:trace-products}:
+\begin{equation*}
+\fourierplus{f}(\mathbf p)=\int e^{i\mathbf p\cdot x}f(x)\,dx,
+\qquad (\wavetransform\psi)(\mathbf p)=\int e^{i\mathbf p\cdot(y-x)}\psi(x,y)\,dx\,dy\,.
+\end{equation*}
+In particular, $\wavetransform(\bar f\otimes h)=\overline{\fourierplus{f}}\fourierplus{h}$. Write $W_2^{\xi_*}(\Theta,\Theta;\bar f\otimes h)=\langle\Phi_\Theta(f)\Omega,\Phi_\Theta(h)\Omega\rangle$ for the joint tempered boundary distribution of Lemma~\ref{lem:H2.1}. The next lemma constructs its positive measure.
 \begin{lemma}[Unique trace spectral measure]\label{lem:I1.2}
-To be stated here.
+There is a unique positive tempered-growth Borel measure $\tracespectrum$, supported in $\forwardcone$, such that
+\begin{equation*}
+d\mu_{\Phi_\Theta(f)\Omega}=|\fourierplus{f}|^2\,d\tracespectrum
+\qquad(f\in\mathcal S)\,.
+\end{equation*}
+It is Lorentz invariant in momentum variables, and
+\begin{align*}
+W_2^{\xi_*}(\Theta,\Theta;\psi)&=\int\wavetransform\psi\,d\tracespectrum&& (\psi\in\mathcal S_2),\\
+\tracetwopoint(r)&=\int e^{-r\mathbf p^4}\,d\tracespectrum&& (r>0)\,.
+\end{align*}
 \end{lemma}
+\begin{proof}
+Use the positive boundary distributions of Lemma~\ref{lem:H2.1}. For $v_f=\Phi_\Theta(f)\Omega$, translation covariance gives $\widehat h_+(P)v_f=\widehat f_+(P)v_h$.
+Here $\widehat h_+(P)=\int\widehat h_+(\mathbf p)\,d\mathsf E(\mathbf p)$, with $\mathsf E$ the joint translation spectral resolution of Theorem~\ref{prop:RC}. Both sides smear the field with $f*h$. Choose tests whose transforms do not vanish on successively larger balls. On such a ball define $d\tracespectrum=|\widehat f_+|^{-2}d\mu_{v_f}$. The displayed identity makes these definitions agree on overlaps. Polarization gives $\langle v_f,v_h\rangle=\int\overline{\widehat f_+}\widehat h_+\,d\tracespectrum$. Product tests determine the joint distribution.
 
-\begin{lemma}[High-energy trace limit]\label{lem:I1.3}
-To be stated here.
+The spectrum condition gives cone support. Schwartz continuity, applied to inverse transforms of cutoffs equal to one on $\{|\mathbf p|\le R\}$, gives $\tracespectrum(\{|\mathbf p|\le R\})\le C(1+R)^k$. Lemma~\ref{lem:H2.4} continues $T$ to a symmetric Hermitian Lorentz tensor. Contraction and invariance of the unit (Lemma~\ref{lem:G3.1}) make $\iota_4\Theta$ a Hermitian Lorentz scalar. Covariance of $W_2$ and uniqueness of the measure give Lorentz invariance.
+
+Tempered growth and $|\mathbf p|\le\sqrt2\mathbf p^4$ on the cone make the Fourier--Laplace integral holomorphic at positive imaginary time, with boundary $W_2$. To identify it with the Euclidean continuation of Lemma~\ref{lem:H2.1}, take enough primitives to obtain continuous boundary values, using its polynomial boundary bound. Their zero difference extends by Schwarz reflection~\cite[Theorem~11.14]{Rudin1987}; holomorphic uniqueness and differentiation give equality and the Laplace formula. In particular $\tracetwopoint$ is real, nonnegative and nonincreasing.
+\end{proof}
+
+\paragraph{Comparison at prescribed radii.}
+Use the scaling frames of Definition~\ref{def:D12}: $U_i(d):\maxwellspace{d}\to F_d$. Insert $U_i(d)A$ at $r_ix$, and read tensors by $r_i^4U_i(4)^{-1}$. Write $x^{(i)}$ for nearest points to $x$ in $r_i^{-1}a_{n_i}\Z^4$. Jets use positional derivatives of smooth interpolants and their normalized lattice differences, including derivatives of the inserted fields. A shell flux is the integral against $-\partial_a\chi$ in Definition~\ref{def:D13}. Define $\beta_i=\lim_{(N,p)}\beta_{N,p,k_i}$ along the fixed coefficient refinement; the radius level $n_i$ precedes the insertion level $k_i$.
+
+The next lemma extends Lemma~\ref{lem:G2.1} to prescribed radii. Its proof also transfers the derivative argument of Lemma~\ref{lem:G3.3} to these frames.
+\begin{lemma}[Prescribed radii]\label{lem:I-radii}
+Every positive null sequence has a subsequence $r_i$ with frames preserving reality, units, inclusions and $H_4$, and $n_i,k_i\to\infty$, such that
+\begin{equation}\label{eq:I-adjustable}
+\beta_i\to\infty,\qquad \frac{\log(1/r_i)}{\beta_i}\to\slope^{-1}\,.
+\end{equation}
+For degrees $d_j\le D$, $A_j^{(i)}\to A_j$ and compact $K\subset\Gen{n}$,
+\begin{equation*}
+\sup_{x\in K}\left|S_n(U_i(\boldsymbol d)\boldsymbol A^{(i)};r_ix^{(i)})-\maxwellcorr_n(\boldsymbol A;x)\right|\to0\,.
+\end{equation*}
+The same holds for each fixed jet and translation-shell flux. For $n=2$ without derivatives it holds uniformly over the phases.
 \end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D08}, Lemmas~\ref{lem:E2.2}--\ref{lem:E2.4} and the finite-dimensional construction of Lemma~\ref{lem:G2.1}. Put $M_n=\cutoffsize_n$. At radius level $n$ allow
+\begin{equation}\label{eq:I-reading}
+r(n,u)=a_nM_n^u,\qquad u\in[\alpha_0,\alpha_0+1],\qquad
+k(n)=\min\{m>n:\log(a_n/a_m)\ge(\log\refbeta_n)^{48}\}\,.
+\end{equation}
+The separation in $k(n)$ leaves room for all fixed-degree marked transports; its logarithmic size is negligible compared with $\refbeta_n$. For degree $D$ and arity $n_{\rm ar}$ choose
+\begin{equation*}
+ c<0,\quad \alpha_1+6<\alpha_0,\quad \alpha_2+5<\alpha_0+c,\quad
+ (\alpha_0-\alpha_1)Dn_{\rm ar}+c<0,\quad
+ (\alpha_0-\alpha_2)Dn_{\rm ar}-\alpha_0-c<0\,.
+\end{equation*}
+Choose the differences $\alpha_0-\alpha_1>6$, then $-c>(\alpha_0-\alpha_1)Dn_{\rm ar}$, then $\alpha_0-\alpha_2>5-c$, and finally increase all three $\alpha_j$ together.
+At scaled mesh $h_n=M_n^{-u}$, choose an intermediate displacement $\delta_n=M_n^c$. The marked moment bounds of Lemma~\ref{lem:E2.2}, transported from exponent $\alpha_1+u-\alpha_0$, cost at most $CM_n^{(\alpha_0-\alpha_1)D}$ per insertion. Lemmas~\ref{lem:E2.3}--\ref{lem:E2.4} give the same bound on reflected products. Transport from exponent $\alpha_2+u-\alpha_0$ bounds one positional difference, with cost $CM_n^{(\alpha_0-\alpha_2)D}$. Telescoping the $n_{\rm ar}$ insertions therefore bounds the two comparison errors by
+\begin{equation*}
+ C M_n^{(\alpha_0-\alpha_1)Dn_{\rm ar}}\delta_n,
+ \qquad C M_n^{(\alpha_0-\alpha_2)Dn_{\rm ar}}h_n/\delta_n\,.
+\end{equation*}
+These are moment transport across $\delta_n$ and lattice interpolation across one mesh cell; both vanish uniformly in $u\in[\alpha_0,\alpha_0+1]$. The remaining reflected-product errors have bound $\varepsilon_n\to0$ from Lemma~\ref{lem:E2.3}. Applied to every repeated reflected product, these bounds control the norm of the corresponding zero-energy multiplication operator. Evaluation at any character of the phase algebra of Theorem~\ref{prop:PH} is bounded by that norm. This proves phase-uniformity for the two-point errors, including moving coefficients by finite-dimensional multilinearity.
+
+We impose on the entry bounds of row~6 in Section~\ref{sec:constants} that both adjacent stage ratios obey $\ell_m\le\log\refbeta_m$. Thus $\ell_n\le M_{n+1}$ eventually. Monotonicity of $M_n$ gives $r(n,\alpha_0)\le r(n+1,\alpha_0+1)$, while $r(n,\alpha_0)\to0$. First crossing of any prescribed small radius, followed by continuity in $u$, puts that radius in one of these intervals. Diagonal extraction over degrees, arities, compact sets and jet orders gives $n_i,k_i=k(n_i)$ and frames, using Lemma~\ref{lem:E2.1a} for symmetries and inclusions. Fix the exponents before each extraction, and require $(\alpha_0+1)\log M_{n_i}\le(\log\refbeta_{n_i})^{48}$.
+
+For jets apply the corrected differences of Lemma~\ref{lem:E2.9} and the same estimates at the higher degree. The difference quotient converges to the positional derivative by smoothness and the integral formula for a difference; this is the argument of Lemma~\ref{lem:G3.3} on the present frames. Integration on the fixed compact shell gives the flux limit. Minimality of $k(n)$ gives $\log(a_n/a_{k(n)})=O((\log\refbeta_n)^{48})=o(\refbeta_n)$. The running law of Theorem~\ref{prop:MT}, in~\eqref{eq:I12-drift-sum}, gives $\beta_i/\refbeta_{k_i}\to1$. Since $\refbeta_n=\bar\beta+\slope\log(1/a_n)$, the imposed bound on $u\log M_n$ proves~\eqref{eq:I-adjustable}.
+\end{proof}
+
+\paragraph{The fourth-order Ward coefficient.}
+Set $L=T^{\rm Max}$, $D_{ab}=\delta_{ab}\curvaturesquare$, and $\Xi_{aa}=0$, $\Xi_{ab}=\sum_{c,\alpha}:F_{ac}^\alpha F_{bc}^\alpha:$ for $a\ne b$. Simplicity excludes invariant linear terms and fixes the colour bilinear form. Reflections and permutations then leave exactly these three centered real symmetric $H_4$-tensorial tensors. Recall $\curvaturesquare=\frac14\sum_{a,b,\alpha}:F_{ab}^\alpha F_{ab}^\alpha:$.
+
+Before imposing the Maxwell equation, divergence has three coordinates, represented in component $b$ by
+\begin{equation*}
+\sum_c\langle F_{bc},\partial_bF_{bc}\rangle,\quad
+\sum_{a,c}\langle F_{ac},\partial_bF_{ac}\rangle,\quad
+\sum_{a,c}\langle F_{bc},\partial_aF_{ac}\rangle\,.
+\end{equation*}
+For diagonal entries $z_0\sum_c\langle F_{ac},F_{ac}\rangle+z_1\sum_{b,c}\langle F_{bc},F_{bc}\rangle$ and off-diagonal entries $z_2\sum_c\langle F_{ac},F_{bc}\rangle$, the divergence coordinates are $(2(z_0-z_2),2z_1+z_2/2,z_2)$. Indeed Bianchi gives $\sum_{a,c}\langle F_{ac},\partial_aF_{bc}\rangle=\frac12\sum_{a,c}\langle F_{ac},\partial_bF_{ac}\rangle$. Thus the functional $\rho_{\rm tr}(x,y,z)=-2x-8y$ satisfies
+\begin{equation}\label{eq:I-rho}
+\rho_{\rm tr}(\operatorname{div}_{\rm raw}B)\curvaturesquare=-\operatorname{tr}B,
+\qquad \rho_{\rm tr}(\operatorname{div}L)=\rho_{\rm tr}(\operatorname{div}\Xi)=0,
+\qquad \rho_{\rm tr}(\operatorname{div}D)=-4\,.
+\end{equation}
+It annihilates the third coordinate, the Maxwell equation direction. The Maxwell quotient of this raw space is two dimensional.
+
+We construct the lattice insertions from plaquette curvatures. At a site $x$ put $f_{ab}(x)=\operatorname{proj}_{\g}(U_{\square(x;a,b)}-U_{\square(x;a,b)}^{-1})/2$ and
+\begin{equation*}
+J_{ab}=\frac{\delta_{ab}}4\sum_{c,d}\langle f_{cd},f_{cd}\rangle-\sum_c\langle f_{ac},f_{bc}\rangle,
+\qquad (Y_b^x)_e=\mathbf1_{e^-=x}f_{b,e^{\rm dir}}(x)\,.
+\end{equation*}
+These are the initial stress current and left displacement. Let $\mathsf S=\mathsf S_{N,m}$ be the leading analytic path action without its coupling, defined in Section~\ref{subsec:C-matching}. Set $\mathcal E_b=\sum_a\nabla_aJ_{ab}-D\mathsf S[Y_b]$, where $\nabla_a=\sum_{j=1}^4c_j(T_a^j-T_a^{-j})$, $(c_1,c_2,c_3,c_4)=(4/5,-1/5,4/105,-1/280)$ and $T_aq(x)=q(x+e_a)$. Initially $\operatorname{tr}J=0$ and $J_{ab}-J_{ba}=0$.
+
+The averaging kernels must respect this particular difference. For odd block ratio $\ell$, define commuting finite sums
+\begin{equation*}
+P_a=\ell^{-1}\sum_{j=0}^{\ell-1}T_a^j,\qquad
+B_a=\sum_{j=1}^4c_j\sum_{v=-j}^{j-1}T_a^v,\qquad
+N_a=B_a(T_a^\ell)P_a,\qquad Q_0=\prod_a P_aN_a\,.
+\end{equation*}
+Here $B_a(T_a^\ell)$ replaces every shift by its $\ell$th power; $B_a(T_a-1)=\nabla_a$. Write $F_a=\prod_{c\ne a}P_cN_c$ and put $Q_a=B_aP_aF_a$, $Q_a^{\rm edge}=N_aF_a$. Since $P_a(T_a-1)=\ell^{-1}(T_a^\ell-1)$,
+\begin{equation*}
+Q_0\nabla_a=\ell^{-1}\nabla_a^{\rm coarse}Q_a,\qquad
+Q_0(T_a-1)=\ell^{-1}(T_a^\ell-1)Q_a^{\rm edge},\qquad
+Q_a-Q_0=(T_a^\ell-1)Q_a^{\rm tr}\,.
+\end{equation*}
+The last quotient is a finite Laurent polynomial: $B_a-B_a(T_a^\ell)P_a$ vanishes modulo $T_a^\ell-1$ after multiplication by $P_a$, because $P_a$ averages all residue classes and both $B_a$ factors have mass one. Polynomial division defines $Q_a^{\rm tr}$. The support radius of $Q_0$ is at most $56\ell$, its mass is one and its absolute coefficient sum is at most $32^4$.
+
+For Lemma~\ref{lem:B3}'s stationary background $U_{\rm stat}(V)$, stationary substitution is $\mathcal IF(V)=F(U_{\rm stat}(V))$. The stationary equation is $D_U(\mathsf S+\mathsf S_{\rm block})=0$ on the gauge-fixed fine variations. Let $R_f$ and $R_0$ be the fine-coordinate and root-frame differentials in Lemma~\ref{lem:B4}. The induced coarse displacement is $\mathcal I_*Y=(R_f+d_VR_0)Y(U_{\rm stat}(V))$. With $\delta_a=T_a-1$, transfer by
+\begin{equation*}
+J'_{ab}=\ell^4Q_a\mathcal IJ_{ab},\quad Y'_b=\ell^5Q_0\mathcal I_*Y_b,\quad
+\mathcal E'_b=\ell^5Q_0\mathcal I\mathcal E_b,\quad
+q'_a=\ell^3Q_a^{\rm edge}\mathcal Iq_a+\ell^4Q_a^{\rm tr}\mathcal IJ_{aa}\,.
+\end{equation*}
+Starting with $q_a=0$, this preserves $\operatorname{tr}J=\sum_a\delta_aq_a$. The antisymmetric part, which need not remain zero, is likewise a sum of forward differences: its new correction in direction $a$ is $\ell^4Q_a^{\rm tr}\mathcal IJ_{ab}$ and in direction $b$ is $-\ell^4Q_b^{\rm tr}\mathcal IJ_{ba}$, in addition to the transferred old differences.
+
+For an analytic local function $F$, denote its degree-$d$ polynomial read-out by $\mathcal P_dF$: on a radial jet $\mathsf j$ it is $\sum_{v=0}^d[\varepsilon^v]F(U(\operatorname{sc}_\varepsilon\mathsf j))$, in the basis of Definition~\ref{def:D03}. The weighted read-out is $\mathsf D_{t_m}^{\rm fac}\mathcal P_dF$, using Definition~\ref{def:D08}. Symmetrize $J$, average over $H_4$ and conjugation, apply the degree-four read-out and marked transport, and subtract the mixture mean. Call the resulting field $B_i^L$. The same operations on the local contractions defining $\Xi,D$ give $B_i^\Xi,B_i^D$.
+
+\paragraph{The regulated Ward coefficient.}
+We first calculate the scalar coefficient before marked transport. For a chart function $F$ define its Hessian Fourier kernel by
+\begin{equation*}
+\widehat F_{c\alpha,c\alpha}(p,q)=\sum_{x,y}e^{i(p\cdot x+q\cdot y)}D^2F(0)[e_{x,c,\alpha},e_{y,c,\alpha}]\,.
+\end{equation*}
+Fix a colour $\alpha$. For a family $F_b$ write
+\begin{equation*}
+\begin{aligned}
+\mathcal L(F)&=\operatorname{Re}\sum_{a\ne c,b}i[z^2t]\widehat{F_b}_{c\alpha,c\alpha}(ze_a,-ze_a+te_b),\\
+\mathcal Q(F)&=|\Lambda|^{-1}\operatorname{Re}\sum_{a\ne c}[z^2]\widehat F_{c\alpha,c\alpha}(ze_a,-ze_a)\,.
+\end{aligned}
+\end{equation*}
+Coefficients use $[z^rt^s]F=(r!s!)^{-1}\partial_z^r\partial_t^sF(0)$. Put $\mathcal H(F)=\mathcal L(F)-\frac12\operatorname{Re}\sum_{a\ne c}[z^2]\widehat{F_c}_{c\alpha,c\alpha}(ze_a,-ze_a)$. The Haar coefficient is $\mathfrak h(Y)=\mathcal H(\operatorname{div}_{\rm Haar}Y)$; the subtraction corrects the lattice derivative. Define
+\begin{equation*}
+\Gamma_\mu=\tfrac12\log\det(H+dd^*+\mu^2I)-\log\det(d^*d+\mu^2I),\quad
+R_\Lambda(\mu)=\mathcal Q(\Gamma_\mu),\quad \mathcal D_\Lambda(\mu)=-\mu R_\Lambda'(\mu),
+\end{equation*}
+where $H$ is the left Hessian of $\mathsf S$ and $d$ is the infinitesimal gauge insertion. The next lemma computes this coefficient; its proof follows.
+\begin{lemma}[Regulated Ward coefficient]\label{lem:I-regulator}
+At a fixed level, for the transferred currents above with uniformly bounded exponentially weighted derivatives, as their fourth-order current defects tend to zero and the period tends to infinity,
+\begin{equation*}
+\mathfrak h(Y)\longrightarrow-12\slope\,.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D01} and Lemmas~\ref{lem:B3}, \ref{lem:B6}, \ref{lem:C2}, \ref{lem:C4}, \ref{lem:C7}. We keep the contacts in the determinant identity. Write $\mathcal R_\mu=(H+dd^*+\mu^2I)^{-1}$, $\mathcal G_\mu=(d^*d+\mu^2I)^{-1}$. For $\Psi_s(U)=e^{sY(U)}U$ let $\mathcal Y_U(z)=\partial_s|_0\log(\Psi_s(e^zU)\Psi_s(U)^{-1})$ and $\mathcal V=D\mathcal Y_U(0)$. If $\mathcal J_U$ is the mixed derivative of $\log(\operatorname{gauge}_{e^v}(e^zU)U^{-1})$ in $v,z$ at zero, gauge invariance gives $Hd=-\mathcal T$, $\mathcal T=D\mathsf S[\mathcal J_U]$, hence
+\begin{equation*}
+\mathcal R_\mu d=d\mathcal G_\mu+\mathcal R_\mu\mathcal T\mathcal G_\mu\,.
+\end{equation*}
+The product rule for $D^2(D\mathsf S[Y])$ and cyclicity of trace now give
+\begin{equation}\label{eq:I-contact}
+\tfrac12\operatorname{tr}(\mathcal R_\mu D^2(D\mathsf S[Y]))-\operatorname{div}_{\rm Haar}Y
+=D\Gamma_\mu[Y]-\mu^2\operatorname{tr}(\mathcal R_\mu\mathcal V)+D\mathsf S[Z],
+\end{equation}
+with $Z=\frac12\operatorname{contr}(\mathcal R_\mu,D^2\mathcal Y_U(0))-\operatorname{contr}(\mathcal G_\mu d^*(\mathcal V+\mathcal V^*)\mathcal R_\mu,\mathcal J_U)$. Contractions sum the indicated matrix indices. Thus the off-shell contact is retained.
+
+Here is the cancellation under $\mathcal L$. The leading quadratic kernel of an invariant scalar action at the required momentum order is a colour multiple of $|p|^2I-p\otimes p$. Write $X_{acb}$ for the coefficient of momentum $e_a$ in the diagonal polarization-$c$ entry of $DY_b$, with its colour indices contracted against the action kernel. Gauge covariance makes the mixed polarization term $-X_{cac}$ and gives $X_{aaa}=0$. In the tested variation the three terms, after summing the intermediate polarization, are
+\begin{equation*}
+-2X_{aca}-X_{cac}+\sum_bX_{bcb}\qquad(a\ne c).
+\end{equation*}
+Summing over $a\ne c$ makes the first and second sums $-3\sum_{b,c}X_{bcb}$, cancelling the third sum. Higher momentum orders do not contribute. This applies to $D\Gamma_\mu[Y]$, $D\mathsf S[Z]$ and the further action variation below, uniformly on each fixed $\mu\in[\delta,1]$. For the first term on the left of~\eqref{eq:I-contact}, substitute $D\mathsf S[Y_b]\equiv_4\sum_a\nabla_aJ_{ab}-\mathcal E_b$. The coefficient linear in the total momentum $te_b$ selects $a=b$; summing $b$ gives $\operatorname{tr}J=\sum_a\delta_aq_a$. Its additional total-momentum factor has zero coefficient linear in $t$. The defect $\mathcal E_b$ tends to zero in the weighted seminorms, so its contracted coefficient does too. Here $\equiv_4$ denotes equality of field derivatives through order four. The correction in $\mathfrak h$ tends to zero by the same identity.
+
+We compute the surviving regulator term explicitly. For $\chi(x)=\mathbf1_{x=0}$ define $M_bh(x)=\chi(x)h_b(x)$, $(D_bh)_a(x)=\delta_a\chi(x)h_b(x)$ and $(T_b^{(r)}h)(x)=\delta_b\chi(x)h(x)$ on $r$-forms, $r=0,1$. Set
+\begin{equation*}
+W_b^{(1)}=\operatorname{sym}(\mathcal V_b-dM_b-D_b)+\tfrac12T_b^{(1)},\qquad
+W_b^{(0)}=\operatorname{sym}(M_bd)-\tfrac12T_b^{(0)},
+\end{equation*}
+where $\operatorname{sym}A=(A+A^*)/2$. The inverse identity above yields
+\begin{align*}
+\operatorname{tr}(\mathcal R_\mu\mathcal V_b)
+={}&\operatorname{tr}\bigl(\mathcal R_\mu(D_b-\tfrac12T_b^{(1)})\bigr)
++\tfrac12\operatorname{tr}(\mathcal G_\mu T_b^{(0)})+D\mathsf S[Z_b']+\mathcal W_b,\\
+\mathcal W_b={}&\operatorname{tr}(\mathcal R_\mu W_b^{(1)})+\operatorname{tr}(\mathcal G_\mu W_b^{(0)}),\qquad
+Z_b'=\operatorname{contr}(\mathcal G_\mu M_b\mathcal R_\mu,\mathcal J_U).
+\end{align*}
+The tested $D_b$ term tends to $\mathcal Q(\operatorname{tr}\mathcal R_\mu)$; each of the four $T_b^{(r)}$ terms tends to $\mathcal Q(\operatorname{tr}\mathcal R_\mu)$ or $\mathcal Q(\operatorname{tr}\mathcal G_\mu)$ respectively. This follows by summing $\delta_b\chi$ against the two Fourier waves: its symbol is $e^{-it}-1=-it+O(t^2)$, paired with the factor $i$ in $\mathcal L$. Translation invariance identifies the local anchor sum with the volume-normalized trace in $\mathcal Q$. Consequently their sum is $-\mathcal Q(\operatorname{tr}\mathcal R_\mu)+2\mathcal Q(\operatorname{tr}\mathcal G_\mu)$. Differentiation of $\Gamma_\mu$ in $\mu$ gives the same expression multiplied by $\mu^2$, namely $\mathcal D_\Lambda(\mu)$. We have proved
+\begin{equation}\label{eq:I-regulated-ward}
+\mathfrak h(Y)=\mathcal D_\Lambda(\mu)+\mu^2\mathcal L(\mathcal W)+o(1),
+\end{equation}
+with error uniform on every fixed $[\delta,1]$.
+
+For the remainder use the inverse bounds in the proof of Lemma~\ref{lem:C7}: $\|\partial^rR_\mu(q)\|\le C(|q|+\mu)^{-2-r}$. Differentiating $R_\mu A_\mu=I$ once more gives the same bound for $r=3$. The stationary displacement bounds of Lemmas~\ref{lem:B3}, \ref{lem:B6}, give bounded weighted derivatives of $W^{(r)}$. Their zero-background symbols and first momentum derivatives tend to zero, as does the zero-momentum first field insertion: the free curvature displacement cancels $dM_b+D_b-\frac12T_b^{(1)}$ in the displayed formula. Put $z=|q|+\mu$. Taylor expansion gives factors $z^2,z,1$ for the zero-, one- and two-field insertions of these symbols. In the product rule they pair with inverse bounds $Cz^{-4},Cz^{-3},Cz^{-2}$, respectively. Thus the scaled derivative bound through order three is $C(z^2z^{-4}+2zz^{-3}+z^{-2})\le C'z^{-2}$. Unscaling the quadratic coefficient gives $Cz^{-4}\le C'z^{-5}$. In four dimensions the integral of this bound is at most $C/\mu$: the ball $|q|\le\mu$ costs $C/\mu$, and the annulus $2^j\mu<|q|\le2^{j+1}\mu$ costs $C\mu^{-1}2^{-j}$. At fixed $\mu>0$ the finite sums converge; hence $|\mu^2\mathcal L(\mathcal W)|\le C\mu+o(1)$ with $C$ independent of $\mu\le1$.
+
+The bound following~\eqref{eq:C-integrand} in Lemma~\ref{lem:C7}'s proof gives $|R(\mu)-12\slope\log\mu|\le C$ for $0<\mu\le1$. Indeed $R/12=\alpha_\alpha(Y_\mu)$: the Hessian is twice the quadratic-action kernel, exactly the factor $2$ in that coefficient. At fixed positive $\mu$, Riemann sums give $R_\Lambda(\mu)\to R(\mu)$. Choose $u<0$, then a length $L_*>0$. Once the period controls the endpoints, the mean value theorem on $[u-L_*,u]$ selects $\mu_\Lambda\in[e^{u-L_*},e^u]$ with $|\mathcal D_\Lambda(\mu_\Lambda)+12\slope|\le(2C+o(1))/L_*$. Apply~\eqref{eq:I-regulated-ward} on this fixed interval, then let $u\to-\infty$ and $L_*\to\infty$. This proves the limit without differentiating an asymptotic error.
+\end{proof}
+
+\paragraph{Transfer to the continuum.}
+Put $b_i=\refbeta_{k_i}$, $E_i=\exp((\log\log b_i)^2/5)$, $R_i=\exp((\log\log b_i)^2/6)$, and $\mathsf A_i=\beta_ir_i^4U_i(4)^{-1}$, $K_i=\beta_ir_i^5U_i(5)^{-1}\operatorname{div}$. The image of divergence on centered real symmetric $H_4$ tensors is an $i$-dependent plane $W_i\subset(\maxwellspace{5})^4$: its kernel is the conserved line of Lemma~\ref{lem:G2.2}. Functionals below act on the ambient real tensorial vector space, with any fixed norm.
+
+This estimate transfers the scalar coefficient to that plane. Its proof follows.
+\begin{lemma}[Fourth-order Ward transfer]\label{lem:I-transfer}
+There are uniformly bounded real functionals $\lambda_i$ and $C<\infty$, depending only on the chosen construction, such that
+\begin{align}
+\|\beta_iK_iB_i^L\|&\le CR_i,&\lambda_i(\beta_iK_iB_i^L)&\to-\slope,\label{eq:I-divergence}\\
+K_iB_i^B&\to\operatorname{div}^{\rm Max}B,&E_i[\lambda_i(K_iB_i^B)-\rho_{\rm tr}(\operatorname{div}_{\rm raw}B)]&\to0\quad(B=\Xi,D).\nonumber
+\end{align}
+Moreover
+\begin{equation}\label{eq:I-tensor}
+\mathsf A_iB_i^B\to B\ (B=L,\Xi,D),\qquad
+b_i^p\operatorname{tr}(\mathsf A_iB_i^B)\to0\ (B=L,\Xi;\ p\in\N),\qquad\beta_i/b_i\to1\,.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D08}, Lemmas~\ref{lem:B3}--\ref{lem:B7}, \ref{lem:C2}, \ref{lem:C4}--\ref{lem:C7}, \ref{lem:E2.2}, \ref{lem:E2.2a}, \ref{lem:E2.6}--\ref{lem:E2.9}, and Lemmas~\ref{lem:I-radii}, \ref{lem:I-regulator}.
+
+\emph{Current estimates.} Differentiating the stationary equation eliminates its fine variation. Fourth-order matching in Lemma~\ref{lem:C4} preserves $\sum_a\nabla_aJ_{ab}-\mathcal E_b\equiv_4D\mathsf S[Y_b]$. The kernel identities above preserve the trace and antisymmetric parts as differences.
+For a chart function define the weighted order-$r$ seminorm by the sum of absolute coefficients of $D^rF(0)$, with the exponential distance and polynomial weights of Lemma~\ref{lem:B3}; for a displacement use its link components. Divide the order-$r$ current defect by $(\log\refbeta_m)^r$. At orders $r=3,4$, the linearized stationary fields contribute $\ell^{-2}$ each, so transfer costs $C_j\ell^{5-2r}$. At order two the matched low-momentum terms must first be removed. The affine and quadratic parts of a stationary test field have weighted sizes $C_j(1+|x|)/\ell^2$ and $C_j(1+|x|)^2/\ell^3$; the remainder is at most $C_j(1+|x|)^3/\ell^4$, by Lemmas~\ref{lem:B3}, \ref{lem:B5}. Subtracting the affine--affine and affine--quadratic products leaves quadratic--quadratic and affine--remainder products, each with factor $\ell^{-6}$. Multiplication by $\ell^5$ gives $C_j/\ell$. A bounded matched contribution gives the additional $C_j/(\log\refbeta_m)^2$. More precisely the order-two factor is bounded by
+\begin{equation*}
+C_j\left\{\frac{1}{(\log\refbeta_m)^2}
++\frac{(\log\refbeta_{m+1})^2+1}{\ell_m(\log\refbeta_m)^2}\right\}.
+\end{equation*}
+Nonlinear chain-rule partitions involve fewer than $r$ derivatives and gain inverse logarithmic powers. Choose each ratio large, then its entry coupling large; the resulting triangular map contracts by $1/2$. After $n_{\rm step}$ transfers the normalized defects are $O(2^{-n_{\rm step}})$.
+
+\emph{The finite coefficient.} At level $k$ set $h_k=(\log\log\refbeta_k)^2$ and use $M_k=\cutoffsize_k$. Define $\mathcal P_{5,k}=t_k^{-2}\mathsf D_{t_k}^{\rm fac}\mathcal P_5$, followed by real $H_4$ averaging. Haar integration by parts in the density gives the degree-five coefficient in the form
+\begin{equation}\label{eq:I-five-pieces}
+\Sigma_k=\mathcal P_{5,k}(\operatorname{div}_{\rm Haar}Y-D\mathcal L_{N,k}[Y])
++\varepsilon_{\rm stat}+\varepsilon_{\rm tail}+\varepsilon_{\rm cl}+\varepsilon_{\rm mark}\,.
+\end{equation}
+Here $\mathcal L_{N,k}$ is the full quadratic loop action of Definition~\ref{def:D23}. The errors are stationary substitution, omitted loop paths, the classical defect and the marked remainder. Each has norm at most $e^{-h_k}$: truncate stationary kernels and loop paths at $C_j(\log\refbeta_k)^2$ using Lemmas~\ref{lem:B3}, \ref{lem:C1}; the tails then decay exponentially. Lemmas~\ref{lem:E2.2}, \ref{lem:E2.2a} bound the other terms by
+$C_j\refbeta_k^{-\eta_j}M_k^{C_j}+C_j\refbeta_k^{C_j}e^{-M_k^{1/5}}$, with $\eta_j>0$, after paying the finite projection losses. Both are $o(e^{-h_k})$; delayed entry makes the stated bounds simultaneous.
+
+The loop term in~\eqref{eq:I-five-pieces} has zero $\rho_{\rm tr}$ coefficient. If $H_{\rm loop}$ is its quadratic link kernel, differentiation of $D\mathcal L[Y]$ pairs $H_{\rm loop}$ with $DY$. The cubic momentum test is a sum of pairings of constant and quadratic polynomial links and of two affine polynomial links. Constant links are pure gauge; $H_{\rm loop}$ also kills affine links by both moment cancellations of Lemma~\ref{lem:C2}. Thus every pairing vanishes. The lattice correction in $\mathfrak h$ is the corresponding correction to this coefficient read-out.
+Choose the transfer depth and period at this fixed $k$ so that $\mathfrak h(Y)$ differs from $-12\slope$ by at most $\refbeta_k^{-100}$, using Lemma~\ref{lem:I-regulator}. Choose the momentum-Taylor approximation to its finite local read-out within $\refbeta_k^{-30}$. The exact read-out identity gives the factor $1/12$ for the twelve ordered transverse planes. Delayed entry bounds the retained loops $2M_k^{\theta_{J_k}}$ and stage losses by $M_k^{1/6}$. Therefore
+\begin{equation*}
+\|\Sigma_k\|\le CM_k^{1/6},\qquad
+|\rho_{\rm tr}(\Sigma_k)-\mathfrak h(Y)/12|\le4\|\rho_{\rm tr}\|e^{-h_k}+\refbeta_k^{-30}/12\,.
+\end{equation*}
+Passing marked coefficients to the fixed refinement adds $O(e^{-h_k/4})$ by Lemma~\ref{lem:E2.2a}. Denote the limiting real averaged coefficient again by $\Sigma_k$. Thus $\rho_{\rm tr}(\Sigma_k)\to-\slope$ and $\|\Sigma_{k_i}\|\le CR_i$.
+
+\emph{The equation direction.} Let $s_i$ be degree-five marked transport, followed by $\beta_ir_i^5U_i(5)^{-1}$, on the three-dimensional raw vector space. Let $s$ be the free Maxwell quotient map; $v_{\rm eom}=(0,0,1)$, $\ker s=\R v_{\rm eom}$ and $\rho_{\rm tr}(v_{\rm eom})=0$. Let $j_i$ be the raw coefficient of the transferred current's divergence after the same threshold normalization. Taylor matching and marked comparison give
+\begin{equation*}
+j_i\to-v_{\rm eom},\quad |\rho_{\rm tr}(j_i)|\le C e^{-h_{k_i}/4},\quad
+v_i^{\rm eq}=\beta_i^{-1}\Sigma_{k_i}-j_i\to v_{\rm eom}\,.
+\end{equation*}
+In particular $E_i\rho_{\rm tr}(v_i^{\rm eq})\to0$, since $E_i/\beta_i\to0$ and $\rho_{\rm tr}(\Sigma_{k_i})$ is bounded. For the other rate, localize $\Sigma_{k_i}-\beta_i j_i$ before transport, with a fixed degree-four spectator. Its exterior moment is zero by Haar integration by parts, since the varied link is outside the spectator stencil. The marked errors of Lemmas~\ref{lem:E2.2}, \ref{lem:E2.2a} decay across the separating interval. Write $H_n=(\log\refbeta_n)^{48}$. Their two-point bound at radius level $n_i$, before the degree-five scaling, is $e^{-H_{n_i}/100}$. We may require $u_i\le\log\log\refbeta_{n_i}$ in the diagonal extraction. The extra scaling factor is then at most $\exp(5(\log\log\refbeta_{n_i})^3)$, while $b_i/\refbeta_{n_i}\to1$. Thus each rescaled evaluation after multiplication by $b_i^p$ is bounded by
+\begin{equation*}
+ C b_i^p\exp\{5(\log\log\refbeta_{n_i})^3-H_{n_i}/100\}\longrightarrow0\,.
+\end{equation*}
+Finite separating free two-point tests give $b_i^ps_i(v_i^{\rm eq})\to0$. 
+
+Construct right inverses $t_i$ of $s_i$ from the frames and corrected degree-five projections: lift a free vector by the common frame, undo its threshold normalization and marked transport, and use the frame inverse to check $s_it_i=I$. Their coefficient lifts converge on a finite basis by Lemma~\ref{lem:I-radii}, so $t_i\to t$ with $st=I$. These identities give rank two; hence $\ker s_i$ is a line. Its generator is $v_i^{\rm eq}-t_is_iv_i^{\rm eq}$. The bases formed by $t_i$ and this kernel generator converge to the free basis, giving $s_i\to s$. Define $\lambda_i=\rho_{\rm tr}t_i$. Decomposing along this line and $\operatorname{im}t_i$ gives
+\begin{equation*}
+\|\lambda_is_i-\rho_{\rm tr}\|\le C\bigl(|\rho_{\rm tr}(v_i^{\rm eq})|+\|s_iv_i^{\rm eq}\|\bigr)=o(E_i^{-1}).
+\end{equation*}
+The actual divergence satisfies $\beta_iK_iB_i^L-s_i\Sigma_{k_i}\to0$ by the same equation estimate; for $B=\Xi,D$, $K_iB_i^B-s_i\operatorname{div}_{\rm raw}B=o(b_i^{-p})$. Since $R_i/E_i\to0$, these estimates prove~\eqref{eq:I-divergence}.
+
+\emph{Tensor traces.} Taylor matching gives $\mathsf A_iB_i^B\to B$. The trace of $\Xi$ is zero; the transferred trace of $L$ is a forward difference. Its degree-three projection is a unit, since simplicity leaves no nonconstant invariant below degree four. Average the degree-four difference over $m$ sites: it telescopes to two endpoint errors divided by $ma_k$. Choose $m\to\infty$ with $ma_k\to0$ and endpoint errors $o(ma_k)$ using Lemma~\ref{lem:E2.2a}; smoothness gives the same separating correlation in the limit. A small inverse power of $a_k$ for $m$ gives $O(a_k^\eta)$ for some $\eta>0$. Finite separating tests and subexponential inverse transport preserve $o(b_i^{-p})$ for every $p$. This proves the trace assertion in~\eqref{eq:I-tensor}; its coupling assertion is Lemma~\ref{lem:I-radii}.
+\end{proof}
+
+Conservation converts these divergence estimates into the scalar coefficient. Lemmas~\ref{lem:I-radii} and~\ref{lem:I-transfer} give
+\begin{equation}\label{eq:I-coefficient}
+\beta_ir_i^4U_i(4)^{-1}\Theta\longrightarrow-\slope\curvaturesquare\,.
+\end{equation}
+\begin{proof}[Derivation of~\eqref{eq:I-coefficient}]
+Use the field calculus of Lemma~\ref{lem:F2}, the free tensor calculation of Lemma~\ref{lem:G1.1}, the conserved line of Lemma~\ref{lem:G2.2}, and the normalized shell laws of Lemma~\ref{lem:G3.2}. The free divergences of $\Xi,D$ are independent: a kernel combination would be a multiple of $L$, impossible in these two tensor coordinates. Thus $f_i:\R^2\to W_i$, $f_i(c)=c_0K_iB_i^\Xi+c_1K_iB_i^D$, are eventually invertible with bounded inverses by~\eqref{eq:I-divergence}. Set $c_i=-f_i^{-1}(\beta_iK_iB_i^L)$. Then $|c_i|\le CR_i$ and
+\begin{equation*}
+X_i=\beta_iB_i^L+c_{i,0}B_i^\Xi+c_{i,1}B_i^D
+\end{equation*}
+is conserved. Applying $\lambda_i$ to its zero divergence gives the exact identity
+\begin{equation*}
+4c_{i,1}=\lambda_i(\beta_iK_iB_i^L)+c_{i,0}\lambda_i(K_iB_i^\Xi)
++c_{i,1}\big[\lambda_i(K_iB_i^D)+4\big]\,.
+\end{equation*}
+Since $R_i/E_i\to0$, the last two terms vanish and $c_{i,1}\to-\slope/4=d_2$.
+
+Equation~\eqref{eq:I-tensor} and $R_i/\beta_i\to0$ give $r_i^4U_i^{-1}X_i\to L$. Its weighted trace $\beta_i\operatorname{tr}(r_i^4U_i(4)^{-1}X_i)$ tends to $4d_2\curvaturesquare$, since the other traces vanish faster than every inverse power. Lemma~\ref{lem:G2.2} now gives $X_i=\nu_iT$ with $\nu_i\in\R$, since these tensors and the fixed $T$ are centered in the mixture. By Lemma~\ref{lem:G1.1}, choose $A\in\maxwellspace{4}$, a separating spectator functional $o$, and an axis $b$ with $y=o(\partial_b^{\rm Max}A)\ne0$. For these fixed tests the flux of $r_i^4U_i^{-1}X_i$ tends to the flux of $L$, namely $y$, by Lemma~\ref{lem:I-radii}. The flux of $T$, multiplied by $r_i$, tends to $y$ by the normalized Ward identity of Lemma~\ref{lem:G3.2} and the jet limit of Lemma~\ref{lem:I-radii}. The first flux is $\nu_i$ times the second. Dividing by the latter proves $\nu_i\to1$. This gives the weighted trace limit for $T$.
+
+Finally $\Theta=\sum_aT_{aa}-e_{\rm tr}\unitfield{4}$ and $U_i^{-1}\unitfield{4}=\unitfield{4}$. The extra term has size $|e_{\rm tr}|\beta_ir_i^4\to0$ by~\eqref{eq:I-adjustable}. 
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{prop:TR}]
+The phase reflection identity of Lemma~\ref{lem:H1.3} makes $e_{\rm tr}$ real. Lemmas~\ref{lem:G3.1}, \ref{lem:G3.2} and~\ref{lem:H2.4} show that $\Theta$ is real and $O(4)$ invariant and that its continued label is Hermitian and Lorentz scalar. Lemma~\ref{lem:I1.1} gives vacuum centering. For the asymptotic, take any prescribed positive null sequence and the subsequence in~\eqref{eq:I-adjustable}. By~\eqref{eq:I-coefficient}, the phase comparison, and the free normalization in Lemma~\ref{lem:G1.1}, every generic pair $x=(x_0,x_1)$ with $|x|<100$ and $\operatorname{sep}_\infty(x)>1/100$, with $x^{(i)}\in r_i^{-1}a_{n_i}\Z^4$ nearest to $x$, satisfies
+\begin{equation*}
+r_i^8\log^2(1/r_i)\tracetwopoint(r_i|x_0^{(i)}-x_1^{(i)}|)
+\longrightarrow\frac{\traceamplitude}{|x_0-x_1|^8}\,.
+\end{equation*}
+Translation and $O(4)$ invariance (Lemma~\ref{lem:G3.2}) give $S_2^{\xi_*}(\Theta,\Theta;rx_0,rx_1)=\tracetwopoint(r|x_0-x_1|)$. Here $\slope^{-2}(4d_2)^2=1$.
+
+Take $x_0=0$ and $x_1=(t/2,t/2,t/2,t/2)$, with $1/2<t<2$. This pair is generic and has distance $t$. Monotonicity from Lemma~\ref{lem:I1.2} bounds the lower limit at radius $r_i$ by $\traceamplitude/t^8$ for $t>1$, and the upper limit by that expression for $t<1$. Let $t\to1$. The limit along this subsequence is $\traceamplitude$. The subsequence criterion gives the full-radius limit. Here $\traceamplitude=3\dimG/\pi^4>0$ since $\dimG\ge1$; identifying it uses $d_2=-\slope/4\ne0$. Thus $\Theta\ne0$. 
+\end{proof}
+
+The following high-energy law follows from TR and Lemma~\ref{lem:I1.2}, as proved below.
+\begin{lemma}[High-energy trace limit]\label{lem:I1.3}
+For every $\varphi\in C_c(\R^4;\C)$ and every $\varphi\in\mathcal S$,
+\begin{equation*}
+\lim_{R_{\rm E}\to\infty}R_{\rm E}^{-8}(\log R_{\rm E})^2\int\varphi(\mathbf p/R_{\rm E})\,d\tracespectrum(\mathbf p)
+=\frac{\traceamplitude}{1536\pi}\int_{\forwardcone}\minksquare(\mathbf p)^2\varphi(\mathbf p)\,d^4\mathbf p\,.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D16}, Lemma~\ref{lem:I1.2} and the full-radius conclusion of TR. Put $\nu_{R_{\rm E}}=R_{\rm E}^{-8}\log^2R_{\rm E}\,\tracespectrum(R_{\rm E}\,\cdot)$. For every future timelike Laplace covector $u$, Lorentz invariance reduces its transform to the time-axis transform at $s=\sqrt{\minksquare(u)}$. Hence
+\begin{equation*}
+\int e^{-u\cdot\mathbf p}\,d\nu_{R_{\rm E}}
+=R_{\rm E}^{-8}\log^2R_{\rm E}\,\tracetwopoint(s/R_{\rm E})
+\longrightarrow \traceamplitude s^{-8}\,.
+\end{equation*}
+To identify the constant, write $t=\mathbf p^4$ and integrate the spatial radius $q$:
+\begin{equation*}
+\int_{\forwardcone}e^{-st}\minksquare(\mathbf p)^2\,d^4\mathbf p
+=4\pi\int_0^\infty e^{-st}\int_0^t q^2(t^2-q^2)^2\,dq\,dt
+=1536\pi s^{-8}\,.
+\end{equation*}
+
+ The $s=1$ transform bounds compact masses. Diagonal extraction and Riesz representation give vague subsequential limits~\cite[Theorem~2.14]{Rudin1987}, applied to positive functionals on $C_c(\R^4)$. The $u/2$ transform controls the $u$-damped tail, giving the displayed transform for every limit. Uniqueness follows by holomorphic uniqueness in each coordinate for timelike real part, then Fourier inversion on product Schwartz tests against the finite damped measures~\cite[Theorems~10.18 and~9.11]{Rudin1987}; finiteness justifies Fubini. Thus every extracted limit is the cone density in the statement. 
+
+For Schwartz tests positivity gives
+\begin{equation*}
+\nu_{R_{\rm E}}\{\mathbf p^4\le R\}\le e\,R_{\rm E}^{-8}\log^2R_{\rm E}\,\tracetwopoint((R_{\rm E} R)^{-1})\le CR^8
+\qquad(R\ge1,\ R_{\rm E}\ge R_{{\rm E},0})\,.
+\end{equation*}
+Use the trace law at $1/(R_{\rm E}R)$ and $\log R_{\rm E}\le\log(R_{\rm E}R)$. A Schwartz bound of order greater than eight sums the dyadic energy tails uniformly, since $|\mathbf p|\le\sqrt2\mathbf p^4$ on the cone. The $C_c$ limit then gives the Schwartz limit.
+\end{proof}
+
+For $\psi_{R_{\rm E}}(x,y)=R_{\rm E}^8\psi(R_{\rm E}x,R_{\rm E}y)$, $\wavetransform\psi_{R_{\rm E}}(\mathbf p)=\wavetransform\psi(\mathbf p/R_{\rm E})$. For $\psi\in\mathcal S_2$, $\wavetransform\psi\in\mathcal S$. Substitution in Lemma~\ref{lem:I1.3} gives the position-space consequence
+\begin{equation*}
+R_{\rm E}^{-8}\log^2R_{\rm E}\,W_2^{\xi_*}(\Theta,\Theta;\psi_{R_{\rm E}})
+\longrightarrow\frac{\traceamplitude}{1536\pi}\int_{\forwardcone}\minksquare(\mathbf p)^2\wavetransform\psi(\mathbf p)\,d^4\mathbf p\,.
+\end{equation*} 
 
 \subsection{Precise non-free comparisons}\label{sec:partII-I.2}
 
+The radial integrals of Definition~\ref{def:D17} imply the following exclusion; its proof follows.
 \begin{lemma}[Finite Wick obstruction]\label{lem:I2.1}
-To be stated here.
+For every finite Wick profile $W_{\rm Wick}$ and every $\delta>0$, there is $r\in(0,\delta)$ such that
+\begin{equation*}
+\tracetwopoint(r)\ne W_{\rm Wick}(r)\,.
+\end{equation*}
 \end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D17} and the positive limit in TR. For one factor, polar coordinates and $\omega_{m_{\rm sh}}=\sqrt{m_{\rm sh}^2+q^2}$ give
+\begin{equation*}
+K_{m_{\rm sh},k_E,h_{\rm mom}}(r)
+=\frac12\left(\int_{S^2}h_{\rm mom}\right)
+\int_{m_{\rm sh}}^\infty \omega_{m_{\rm sh}}^{k_E}(\omega_{m_{\rm sh}}^2-m_{\rm sh}^2)^{(j_h+1)/2}e^{-r\omega_{m_{\rm sh}}}\,d\omega_{m_{\rm sh}}\,.
+\end{equation*}
+For $m_{\rm sh}=0$ this is proportional to $r^{-j_h-k_E-2}$. Otherwise split at $2m_{\rm sh}$; the bounded interval is analytic. On the tail expand $(1-m_{\rm sh}^2/\omega_{m_{\rm sh}}^2)^{(j_h+1)/2}$. Taking enough terms makes the remainder integrable with any prescribed number of energy moments, hence gives a Taylor remainder of the required order. The retained terms are $I_a(r)=\int_{2m_{\rm sh}}^\infty v^ae^{-rv}\,dv$, $a\in\Z$. Integrate explicitly for $a\ge0$; $I_{-1}'=-e^{-2m_{\rm sh}r}/r$ gives the logarithm, and $I_a'=-I_{a+1}$ gives all lower powers. Only nonnegative logarithmic powers occur. For products, choose each remainder order above the other factors' pole orders.
 
+Thus $\operatorname{Re}W_{\rm Wick}=\sum_{a,k}c_{a,k}r^a\log^kr+O(1)$ with finitely many terms. After multiplying by $r^8\log^2(1/r)$, the terms with $a>-8$ vanish. Among the others, the least $a$, then largest $k$, gives a nonzero divergent leading term. A finite limit is therefore zero. Lemma~\ref{lem:I1.2} makes $\tracetwopoint$ real, so equality with $W_{\rm Wick}$ implies equality with its real part. The positive trace limit contradicts equality on $(0,\delta)$, proving also Proposition~\ref{prop:NF}.
+\end{proof}
+
+To describe polynomial mass-shell Wick contractions, put $q_m(\mathbf k)=(\mathbf k,\sqrt{m^2+|\mathbf k|^2})$, $m\ge0$. Fix a finite set of elementary field indices $\mathsf x,\mathsf y$; words $u,u'$ list its elements. For words of length $k$, $\sigma$ ranges over permutations of $\{1,\ldots,k\}$. Comparison data specify finite mass--polynomial lists $\mathcal M_{\rm pair}(\mathsf x,\mathsf y)$, with $P\in\C[\mathbf p^1,\ldots,\mathbf p^4]$, and complex contraction coefficients $c(u,u',\sigma)$.
 \begin{definition}[Polynomial mass-shell pairings]\label{def:D28}
-To be stated here.
+Set
+\begin{equation*}
+v_{m,P}(\mathbf k)=\frac{P(q_m(\mathbf k))}{2\omega_m(\mathbf k)},\qquad
+L_{m,P}(\varphi)=\int v_{m,P}(\mathbf k)\varphi(q_m(\mathbf k))\,d^3\mathbf k\,.
+\end{equation*}
+For words $u=(\mathsf x_i)_{i=1}^k$, $u'=(\mathsf y_i)_{i=1}^k$, define the convolutions of the functionals $L_{m,P}$ by
+\begin{equation*}
+\Pi(u,u';\varphi)=\sum_\sigma c(u,u',\sigma)
+\sum_{(m_i,P_i)\in\prod_i\mathcal M_{\rm pair}(\mathsf x_i,\mathsf y_{\sigma(i)})}
+\int\prod_i v_{m_i,P_i}(\mathbf k_i)\,
+\varphi\left(\sum_iq_{m_i}(\mathbf k_i)\right)\prod_i d^3\mathbf k_i\,.
+\end{equation*}
+For unequal lengths put $\Pi=0$. A zero denominator at zero momentum gives value zero.
 \end{definition}
+For finite polynomial fields $Q=\sum_i\alpha_i u_i$, including empty words, the bilinear pairing is $W^{\rm pol}(Q,Q';\varphi)=\sum_{i,j}\alpha_i\alpha'_j\Pi(u_i,u'_j;\varphi)$. Empty contractions evaluate $\varphi$ at zero. The shell measure has no $(2\pi)^{-3}$ factor.
 
+The next lemma separates each comparison by one product test; its proof follows.
 \begin{lemma}[Polynomial countertest]\label{lem:I2.2}
-To be stated here.
+For every comparison data and every $Q,Q'$, there are $f,h\in\mathcal S$ with compactly supported $\wavetransform(\bar f\otimes h)$ such that
+\begin{equation*}
+\langle\Phi_\Theta(f)\Omega,\Phi_\Theta(h)\Omega\rangle
+\ne W^{\rm pol}(Q,Q';\wavetransform(\bar f\otimes h))\,.
+\end{equation*}
 \end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D17}, \ref{def:D28} and Lemmas~\ref{lem:I1.2}, \ref{lem:I2.1}. Equality for all product tests implies equality for every $\varphi\in C_c^\infty$: choose $\widehat h_+=\varphi$ and real $\widehat f_+=1$ on its support. Approximate $e^{-r\mathbf p^4}$ by compact cutoffs. Dominated convergence applies: Lemma~\ref{lem:I1.2} controls $\tracespectrum$; exponential damping controls comparison polynomials at infinity, and $d^3\mathbf k/|\mathbf k|$ is integrable at zero. Expanding the numerators into monomials factors the integrals into the kernels of Definition~\ref{def:D17}, with the empty words giving constants. Hence $\tracetwopoint(r)=W_{\rm Wick}(r)$ for all $r>0$, contrary to Lemma~\ref{lem:I2.1}.
+\end{proof}
 
+For the photon comparison use Hilbert tensor products.
 \begin{definition}[Maxwell Fock space]\label{def:D29}
-To be stated here.
+For $n\in\N$ colours put
+\begin{gather*}
+d\sigma(\mathbf k)=\frac{d^3\mathbf k}{2|\mathbf k|},\qquad
+\Pi_{ab}(\mathbf k)=\delta_{ab}-\frac{\mathbf k_a\mathbf k_b}{|\mathbf k|^2},\\
+\mathcal K_n=L^2(d\sigma;\C^n\otimes\C^3),\qquad
+\mathcal F_n=\bigoplus_{k\ge0}\mathcal K_n^{\otimes k}\,.
+\end{gather*}
+The density and projector are zero at zero momentum. Physical vectors are symmetric and transverse in each slot. Translations multiply sector $k$ by $\exp\{iz\cdot\sum_j(\mathbf k_j,|\mathbf k_j|)\}$. The sector-zero unit is $\Omega_0$.
 \end{definition}
-
 \begin{definition}[Coherent comparison vectors]\label{def:D30}
-To be stated here.
+For Schwartz tests $h=(h_{\alpha,a})$, put
+\begin{equation*}
+v_h(\alpha,a;\mathbf k)=|\mathbf k|\sum_b\Pi_{ab}(\mathbf k)\widehat h_{\alpha,b,+}(\mathbf k,|\mathbf k|),\qquad
+\mathcal E(h)=e^{-\|v_h\|^2/2}\bigoplus_{k\ge0}\frac{v_h^{\otimes k}}{\sqrt{k!}}\,.
+\end{equation*}
+A comparison $U:\mathcal H\to\mathcal F_n$ is a complex linear isometry with physical image, $U\Omega=\Omega_0$, intertwining translations. Set $\psi_U(f)=U\Phi_\Theta(f)\Omega$.
 \end{definition}
+Real tests have real components. Causal separation means $\minksquare(x-y)<0$ for every pair of points in their closed supports, where $\minksquare(x)=(x^4)^2-\sum_{a=1}^3(x^a)^2$.
 
+Relative locality would impose the equality excluded below. The proof uses spectral growth without restricting particle amplitudes.
 \begin{lemma}[Fock countertest]\label{lem:I2.3}
-To be stated here.
+For every $n\ge0$ and every comparison $U$, for every ball about zero there are Schwartz $f$ compactly supported in that ball and real compactly supported Schwartz $h_{\alpha,a}$, each causally separated from $f$, such that
+\begin{equation*}
+\langle\mathcal E(-h),\psi_U(f)\rangle
+\ne\langle\psi_U(\bar f),\mathcal E(h)\rangle\,.
+\end{equation*}
 \end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D29}--\ref{def:D30}, Lemmas~\ref{lem:I1.1}--\ref{lem:I1.3} and the translation covariance of Lemma~\ref{lem:H2.1}. Fix a ball and suppose equality always holds.
 
+\emph{Sector amplitudes.} Set $p_j=(\mathbf k_j,|\mathbf k_j|)$ and $p_{\rm tot}=\sum_jp_j$. The convolution argument of Lemma~\ref{lem:I1.2} gives sector amplitudes $Y_{k,s}$, with $s$ listing colour and spatial indices:
+\begin{equation}\label{eq:I-sector}
+\psi_U(f)_{k,s}=\widehat f_+(p_{\rm tot})Y_{k,s},\qquad
+\tracespectrum=(p_{\rm tot})_*\sum_{k,s}|Y_{k,s}|^2d\sigma^{\otimes k}\,.
+\end{equation}
+Box masses are finite. Cauchy--Schwarz and polynomial spectral growth give integrability against sufficiently high inverse polynomials in each momentum. 
+
+The common sector unitary $i^k$ preserves the equality, physical vectors and translations. Write $\mathsf y=i^kY_{k,s}$.
+
+\emph{Locality and doubling.} Expand the coherent equality in a real parameter multiplying $h$, justified by Cauchy--Schwarz and the exponential series. Polarization and complexification give independent complex slot tests. Transversality removes the projector in contractions with physical waves. Shrink nonnegative unit-integral $f$ to zero. Then $|\widehat f_+|\le1$ and $\widehat f_+\to1$; dominated convergence gives, for $g_j$ supported spacelike to zero,
+\begin{equation}\label{eq:I-remote}
+\int \mathsf y(\boldsymbol k)\prod_j\big[|\mathbf k_j|\widehat g_{j,-}(p_j)\big]\,d\sigma^{\otimes k}
+=\int\overline{\mathsf y(\boldsymbol k)}\prod_j\big[|\mathbf k_j|\widehat g_{j,+}(p_j)\big]\,d\sigma^{\otimes k}\,.
+\end{equation}
+Here $\widehat g_-(p)=\widehat g_+(-p)$; the sector factors $i^k$ give exactly these signs.
+
+Fix other slots and use $g(x,t)=a(x)\eta_\epsilon^{(b)}(t)$, with $\eta_\epsilon$ approximating unit mass and $b=0,1$. If $0\notin\operatorname{supp}a$, these are spacelike for small $\epsilon$. Thus both Cauchy data of~\eqref{eq:I-remote} are supported at zero. Weighted integrability bounds their order by $J$, independently of the other tests.
+
+Each datum depends only on the $J$-jet: multiplication by a cutoff in $B(0,\epsilon)$ leaves the distribution unchanged. For a zero-$J$-jet test, Taylor's formula bounds derivatives through order $J$ by $O(\epsilon)$; let $\epsilon\downarrow0$.
+
+The massless wave equation separates the frequency branches from these two Cauchy data away from zero momentum. After smearing other slots, each branch is integrable, bounded and holomorphic in its timelike tube, with continuous real boundary. Vanishing persists under small translations of the other spacelike tests. Schwarz reflection and holomorphic uniqueness~\cite[Theorems~11.14 and~10.18]{Rudin1987} make the zero set invariant under adding $\R u$ for every future timelike $u$. These vectors span $\R^4$, giving vanishing at every real translation. Successive Fourier inversion~\cite[Theorem~9.11]{Rudin1987} of the smeared integrable amplitudes gives zero almost everywhere. Countably many shrinking bumps remove the other tests: their transforms are eventually nonzero at each momentum.
+
+Let $D_j\mathsf y(\boldsymbol k)=\mathsf y(\mathbf k_1,\ldots,2\mathbf k_j,\ldots,\mathbf k_k)$. In the time-order-$b$ Cauchy datum ($b=0,1$), this substitution gives $2^{-3-b}$ times the datum at $a(x)\mapsto8a(2x)$, from $d\sigma(2\mathbf k)=4d\sigma(\mathbf k)$ and $|\mathbf k|^{1+b}$. Spatial jets of order $l$ scale by $2^{3+l}$, giving eigenvalues $2^{l-b}$. The finite jets and branch argument therefore give, for some $J'$,
+\begin{equation}\label{eq:I-doubling}
+\prod_{a=0}^{J'-1}(D_j-2^{a-1})\mathsf y=0\qquad\text{in every slot }j\,.
+\end{equation}
+
+\emph{Growth.} For $R=2^l$ let $M_{\mathsf y}(R)=\int_{|\mathbf k_j|\le R}|\mathsf y|^2d\sigma^{\otimes k}$. By~\eqref{eq:I-sector} and the trace law,
+\begin{equation}\label{eq:I-small-mass}
+M_{\mathsf y}(2^l)\le\tracespectrum\{\mathbf p^4\le(k+1)2^l\},\qquad 2^{-8l}M_{\mathsf y}(2^l)\longrightarrow0\,.
+\end{equation}
+For the limit, bound the energy mass by $e\,\tracetwopoint(((k+1)2^l)^{-1})$.
+
+Lagrange interpolation in the commuting $D_j$ splits $\mathsf y$ into joint eigencomponents $D_j\mathsf y_{\boldsymbol a}=2^{a_j-1}\mathsf y_{\boldsymbol a}$. Each is a finite combination of doubled copies, so retains~\eqref{eq:I-small-mass}. Moreover $M_{\mathsf y_{\boldsymbol a}}(2^l)=2^{2l\sum_j a_j}M_{\mathsf y_{\boldsymbol a}}(1)$, since $d\sigma(2\mathbf k)=4d\sigma(\mathbf k)$.
+If $a_j=0$, contraction preserves box mass, contradicting local square integrability and absence of an atom at zero unless the component vanishes. Equation~\eqref{eq:I-small-mass} excludes $\sum_ja_j\ge4$. Thus $a_j\ge1$, $\sum_ja_j\le3$, and $k\le3$, with box mass $\le CR^6$ for dyadic $R\ge1$. The vacuum sector vanishes by Lemma~\ref{lem:I1.1} and $U\Omega=\Omega_0$.
+
+Summing~\eqref{eq:I-sector} gives $\tracespectrum\{\mathbf p^4\le R\}\le CR^6$ at dyadic $R\ge1$. Multiplication by $R^{-8}\log^2R$ gives zero in the limit, contradicting Lemma~\ref{lem:I1.3} on a nonnegative compact test in $\{0<\mathbf p^4<1,\ \minksquare(\mathbf p)>0\}$.
+\end{proof}
+
+For a probability space $(Z,\lambda)$, let each $P_z:\mathcal F_n\to\mathcal F_n$ preserve physical inner products and fix $U\mathcal H$ pointwise, without assuming linearity. Nonintegrable scalar functions have integral zero (Definition~\ref{def:D14f}).
 \begin{lemma}[Localized averaged countertest]\label{lem:I2.4}
-To be stated here.
+For every such $n,U,(Z,\lambda),(P_z)$ and $r>0$, there are open $A,B$, with $\overline A\subset B(0,r)$ and $\minksquare(x-y)<0$ on $\overline A\times\overline B$, and tests $f,h$ as in Lemma~\ref{lem:I2.3}, supported respectively in $A,B$, such that
+\begin{equation*}
+\int_Z\langle P_z\mathcal E(-h),\psi_U(f)\rangle\,d\lambda(z)
+\ne\int_Z\langle\psi_U(\bar f),P_z\mathcal E(h)\rangle\,d\lambda(z)\,.
+\end{equation*}
 \end{lemma}
+\begin{proof}
+For physical $v$ and $w\in U\mathcal H$ (Definition~\ref{def:D30}), $\langle P_zv,w\rangle=\langle P_zv,P_zw\rangle=\langle v,w\rangle$.
+Thus averaging preserves both integrands.
+
+Apply Lemma~\ref{lem:I2.3} in $B(0,r/2)$. Compactness and strict spacelike separation give support neighbourhoods $A,B$ with spacelike separated closures and $\overline A\subset B(0,r)$.
+\end{proof}
+
+

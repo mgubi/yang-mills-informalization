@@ -1,11 +1,264 @@
 \section{Local polynomial fields}\label{sec:partII-A}
 
-\emph{This section is under construction.}
+The polynomial labels of Definition~\ref{def:D07} specify continuum Taylor coefficients, whereas the Wilson measure averages functions of group-valued links. We relate them by local sections: polynomials in the real and imaginary parts of finitely many link entries that reproduce each label on radial test holonomies through its engineering degree. They initialize the renormalized insertions in Definition~\ref{def:D08}, hence the Wilson family of Theorem~\ref{thm:B}, independently of the lattice volume and later block ratios.
+
+We must recover the connection coefficients visible to a label from finitely many measurements. Transported plaquette curvatures have linearizations given by ordinary square circulations. Vanishing of all these circulations forces the highest homogeneous curvature to vanish; radial gauge then forces the corresponding potential to vanish. Descending in degree proves injectivity. Finite dimensionality reduces this to finitely many plaquettes. A local inverse of their joint map, followed by Taylor expansion, gives the required polynomials. Averaging over signed permutations imposes covariance without changing the Taylor coefficients.
+
+Each curvature factor also contributes one small-field threshold factor to the bounds in Lemma~\ref{lem:A-bounds}. For the equation projections in Section~\ref{sec:partII-E}, Lemma~\ref{lem:A-R4} constructs auxiliary sections with exact exterior zero moments. Their labels undergo a fixed invertible triangular change. We use Definitions~\ref{def:D01}, \ref{def:D02}, \ref{def:D05a} and~\ref{def:D07}, the chord~\eqref{eq:I12-price-chord}, and the order of choices in Section~\ref{sec:constants}; no earlier Part~II result is used.
+
+\subsection*{Labels and test holonomies}
+
+Write $\mathcal J_j$ for the real space of homogeneous radial potentials of degree~$j+1$ in Definition~\ref{def:D07}. Every label in~$V_d$ is a polynomial on the finite-dimensional space
+\begin{equation*}
+\mathcal J_{\le d}=\bigoplus_{j+2\le d}\mathcal J_j\,.
+\end{equation*} A coordinate of~$\mathcal A_j$ has weight~$j+2$, so only finitely many monomials have weight at most~$d$. Adjoint action and conjugation preserve both gradings. Real and imaginary parts span each invariant component over~$\C$, giving bihomogeneous bases as in Definition~\ref{def:D07}. Conjugation in this real basis is coefficientwise and agrees with conjugation of polynomial values on real jets. Write $k_i$ for the number of jet-coordinate factors in~$b_{d,i}$. We identify a coefficient vector with its polynomial:
+\begin{equation*}
+\mathbf c(\mathsf j)=\sum_i c_i b_{d,i}(\mathsf j),\qquad b_{d,0}=\mathbf1\,.
+\end{equation*}
+
+We use the test holonomies~\eqref{eq:I12-test-holonomy}, on the lattice~$\Z^4$ covering the torus. With $\mathcal A^{\le d}=\sum_{j+2\le d}\mathcal A_j$, their integral equation is
+\begin{equation}\label{eq:A-holonomy}
+U(h_{\rm lat},\mathsf j)(x,a)=u(1),\qquad
+u(\tau)=1+\int_0^\tau u(\eta)h_{\rm lat}\mathcal A_a^{\le d}(h_{\rm lat}(x+\eta e_a))\,d\eta\,.
+\end{equation}
+The defining linear matrix equation has a unique global solution for continuous coefficients~\cite[Theorem~3.9]{Teschl2012}. Piecewise constant Lie-algebra coefficients give products of exponentials in~$G$; uniform convergence on compact intervals, by Gronwall's inequality~\cite[Lemma~2.7]{Teschl2012}, and closedness of~$G$ put the solution in~$G$. Homogeneity and uniqueness give
+\begin{equation}\label{eq:A-dilation}
+U(h_{\rm lat},\mathsf j)=U(1,\operatorname{sc}_{h_{\rm lat}}\mathsf j),\qquad
+\operatorname{sc}_{h_{\rm lat}}\mathsf j=(h_{\rm lat}^{j+2}\mathcal A_j)_j,\qquad U(0,\mathsf j)=1\,.
+\end{equation}
+
+For a cover plaquette~$\square$ based at~$z$ and a path~$\gamma$ from~$0$ to~$z$, write $U_\gamma$ for the ordered product of successive oriented links, read from the initial point to the endpoint. Define its transported curvature by
+\begin{equation*}
+\sigma_{\gamma,\square}(U)=\operatorname{Ad}(U_\gamma)F_\square(U),\qquad
+F_\square(U)=\operatorname{proj}_{\g}\frac{U_\square-U_\square^{-1}}2\,.
+\end{equation*}
+The projection is orthogonal for the normalized Frobenius metric of Definition~\ref{def:D01}. These measurements transform by the adjoint action at~$0$. They are real polynomial functions of the real and imaginary parts of link entries, since $U_e^{-1}=U_e^*$.
 
 \begin{definition}[Local sections]\label{def:D19}
-To be stated here.
+For a finite site stencil $\Sigma_d\subset\Z^4$, a local section has the form
+\begin{equation*}
+\localsection{d}[\mathbf c](U)=
+\sum_{\nu,\mu}p_{\nu\mu}^{(d)}(\mathbf c)
+\prod_{e,\alpha,\delta}U_e(\alpha,\delta)^{\nu_{e\alpha\delta}}\overline{U_e(\alpha,\delta)}^{\mu_{e\alpha\delta}}\,.
+\end{equation*}
+The product uses positive links with both endpoints in~$\Sigma_d$ and matrix indices $1\le\alpha,\delta\le n_G$. The sum is finite over nonnegative multi-indices; each coefficient is complex linear in~$\mathbf c$. The construction below chooses such a map to represent each continuum label.
 \end{definition}
 
+For a torus of side~$n_{\rm tor}$ (the side~$s$ of Definition~\ref{def:D02}), write $[x]$ for reduction of $x\in\Z^4$ modulo~$n_{\rm tor}$. Placement at a torus site~$y$ means evaluation on the periodic extension $U^{[y]}(x,a)=U(y+[x],a)$; denote it by $\localsection{d}[\mathbf c](y;U)$. On the cover, $\localsection{d}[\mathbf c](0;U)=\localsection{d}[\mathbf c](U)$. For $\rho\in\hypercubic$, define the configuration and jet actions by
+\begin{align*}
+(\rho^*U)(x,a)&=
+\begin{cases}U(\rho x,b),&\rho e_a=e_b,\\ U(\rho x-e_b,b)^{-1},&\rho e_a=-e_b,\end{cases}\\
+(\rho\mathsf j)_{j,a}(z)&=\sum_b\rho_{ab}\mathcal A_{j,b}(\rho^{-1}z),\qquad
+(\rho\mathbf c)(\mathsf j)=\mathbf c(\rho^{-1}\mathsf j)\,.
+\end{align*}
+This action preserves homogeneity and radial gauge. Reality and covariance mean
+\begin{equation*}
+\localsection{d}[\overline{\mathbf c}](U)=\overline{\localsection{d}[\mathbf c](U)},\qquad
+\localsection{d}[\mathbf c](\rho^*U)=\localsection{d}[\rho\mathbf c](U)\quad(\rho\in\hypercubic),
+\end{equation*}
+with conjugation as fixed above.
+
+The following result supplies the sections specified in Section~\ref{sec:renormalization}. The unit normalization is exact at every configuration; the Taylor assertion concerns the test configurations near zero spacing.
 \begin{lemma}[Taylor-normalized sections]\label{lem:A1}
-To be stated here.
+For every~$d$, a box stencil $\Sigma_d=[-\varrho_d,\varrho_d]^4\cap\Z^4$ and sections can be chosen gauge invariant, real and $\hypercubic$ covariant, with $\localsection{d}[\mathbf1]=1$, so that, for every $\mathbf c\in V_d$, radial jet~$\mathsf j$ and $0\le q\le d$,
+\begin{equation}\label{eq:A-Taylor}
+\left.\frac{d^q}{dh_{\rm lat}^q}\localsection{d}[\mathbf c](U(h_{\rm lat},\mathsf j))\right|_{h_{\rm lat}=0}
+=\left.\frac{d^q}{dh_{\rm lat}^q}\mathbf c(\operatorname{sc}_{h_{\rm lat}}\mathsf j)\right|_{h_{\rm lat}=0}\,.
+\end{equation}
 \end{lemma}
+Fix the sections constructed in the following proof.
+
+\begin{proof}
+We use the metric and lattice transports of Definitions~\ref{def:D01}--\ref{def:D02} and the labels of Definition~\ref{def:D07}. If $d<2$, the labels are constant and their constant sections suffice. Fix $d\ge2$.
+
+\emph{Step 1: Curvatures determine the truncated jet.} 
+
+Use the $\operatorname{Ad}(G)$-invariant coefficient norm on~$\mathcal J_{\le d}$ obtained from the metric of Definition~\ref{def:D01}. The Volterra term of order~$l$ is bounded by $(C_{x,a,d}|\mathsf j|)^l/l!$, giving locally uniform convergence with all parameter derivatives and smooth measurements. The first variation of a link solution is its edge integral; that of a plaquette measurement is their circulation. Transport along~$\gamma$ contributes nothing at first order, because $F_\square(1)=0$.
+
+Suppose all these linearized measurements vanish on $\mathcal A=\sum_{j=0}^{m}\mathcal A_j$. For $a<b$ set
+\begin{equation*}
+N_{j;ab}(x,\tau)=\int_0^1\!\int_0^1
+(\partial_a\mathcal A_{j,b}-\partial_b\mathcal A_{j,a})(x+\tau(\xi e_a+\eta e_b))\,d\xi\,d\eta\,.
+\end{equation*}
+The fundamental theorem of calculus on each edge identifies the unit-square circulation with $\sum_{j\le m}N_{j;ab}(x,1)$. It is zero for every $x\in\Z^4$. Homogeneity gives $N_{j;ab}(\tau x,\tau)=\tau^jN_{j;ab}(x,1)$ and hence
+\begin{equation*}
+\sum_{j=0}^{m}\tau^{m-j}N_{j;ab}(\tau x,\tau)=0\qquad(x\in\Z^4,\ \tau>0)\,.
+\end{equation*}
+For $z\in\R^4$, set $x_\tau=(\lfloor z^a/\tau\rfloor)_a$, so $|\tau x_\tau-z|_\infty\le\tau$. Continuity as $\tau\downarrow0$ leaves only the term $j=m$, giving $(\partial_a\mathcal A_{m,b}-\partial_b\mathcal A_{m,a})(z)=0$. Antisymmetry covers the other ordered pairs. Differentiating the radial condition and using Euler's identity gives
+\begin{equation*}
+(m+2)\mathcal A_{m,b}(z)=\sum_a z^a(\partial_a\mathcal A_{m,b}-\partial_b\mathcal A_{m,a})(z)=0\,.
+\end{equation*}
+Remove this component and descend in~$m$. The common kernel is zero. Adding a measurement whenever the kernel is nonzero decreases its dimension, so finitely many measurements $\sigma_1,\ldots,\sigma_{M_{\rm meas}}$ give a joint map
+\begin{equation*}
+\mathsf S:\mathcal J_{\le d}\longrightarrow\g^{M_{\rm meas}},\qquad
+\mathsf S(\mathsf j)=(\sigma_l(U(1,\mathsf j)))_{l=1}^{M_{\rm meas}}
+\end{equation*}
+with injective derivative~$D\mathsf S(0)$.
+
+\emph{Step 2: A polynomial inverse to the required order.} Uniqueness of the link equation shows that a constant gauge transformation takes the test links of~$\mathsf j$ to those of~$\operatorname{Ad}(v)\mathsf j$. Thus~$\mathsf S$ and its derivative at zero are adjoint equivariant. The range of $D\mathsf S(0)$ and its orthogonal complement in~$\g^{M_{\rm meas}}$ are adjoint invariant. Compose its inverse on the range with orthogonal projection to obtain $C:\g^{M_{\rm meas}}\to\mathcal J_{\le d}$. Then
+\begin{equation*}
+CD\mathsf S(0)=I,\qquad C\operatorname{Ad}(v)=\operatorname{Ad}(v)C\quad(v\in G)\,.
+\end{equation*}
+Apply the inverse function theorem~\cite[Theorem~9.24]{Rudin1976} to~$C\mathsf S$ on this finite-dimensional real space: it is smooth near zero, sends zero to zero and has derivative~$I$. Its local inverse~$\varphi$ is smooth, by differentiating $D\varphi=(D(C\mathsf S)\circ\varphi)^{-1}$. Choose an invariant source ball on which $C\mathsf S$ is injective, and then an invariant target ball whose inverse image lies in that source ball. Both exist because the adjoint actions are isometric. Put $f=\varphi\circ C$. Equivariance of $C\mathsf S$ and injectivity on the source ball give, near zero,
+\begin{equation*}
+f\mathsf S(\mathsf j)=\mathsf j,\qquad f(0)=0,\qquad
+f(\operatorname{Ad}(v)z)=\operatorname{Ad}(v)f(z)\quad(v\in G)\,.
+\end{equation*}
+Consequently the Taylor polynomial
+\begin{equation*}
+T_df(z)=\sum_{k=1}^{d}\frac1{k!}D^kf(0)[z,\ldots,z]
+\end{equation*}
+is adjoint equivariant and has no constant term. Define
+\begin{equation*}
+Q_i(z)=b_{d,i}(T_df(z)),\qquad
+\Psi_{\mathbf c}(U)=\sum_i c_iQ_i(\sigma_1(U),\ldots,\sigma_{M_{\rm meas}}(U))\,.
+\end{equation*}
+The polynomials~$Q_i$ are invariant and real on real arguments, and $Q_0=1$. If $b_{d,i}$ has factor count~$k_i$, every monomial of~$Q_i$ has at least~$k_i$ factors.
+
+Taylor's formula gives $T_df(\mathsf S(X))=X+O(|X|^{d+1})$ near~$0$. Substitute $X=\operatorname{sc}_{h_{\rm lat}}\mathsf j$ truncated to~$\mathcal J_{\le d}$, and use~\eqref{eq:A-dilation}. Both sides are smooth in~$h_{\rm lat}$, and
+\begin{equation*}
+\Psi_{\mathbf c}(U(h_{\rm lat},\mathsf j))
+=\mathbf c(\operatorname{sc}_{h_{\rm lat}}\mathsf j)+O_{\mathbf c,\mathsf j}(|h_{\rm lat}|^{d+1})\,.
+\end{equation*}
+Their derivatives through order~$d$ at zero agree. The polynomial~$Q_i$ itself need not have degree at most~$d$ in the curvature measurements.
+
+\emph{Step 3: Covariance and a common stencil.} Average the section by
+\begin{equation}\label{eq:A-average}
+\localsection{d}[\mathbf c](U)=\frac1{|\hypercubic|}
+\sum_{\rho\in\hypercubic}\Psi_{\rho^{-1}\mathbf c}(\rho^*U)\,.
+\end{equation}
+Changing the summation variable to $\omega\rho$ proves $\localsection{d}[\mathbf c](\omega^*U)=\localsection{d}[\omega\mathbf c](U)$. Simultaneous adjoint covariance of the measurements gives gauge invariance. The real basis and signed-permutation action give reality; the constant column remains one. The action preserves factor count, so averaging retains the lower bound on the number of curvature factors.
+
+For a positive image direction, the pulled-back link equation has coefficient
+\begin{equation*}
+h_{\rm lat}\sum_b\rho_{ba}\mathcal A_b^{\le d}(h_{\rm lat}\rho(x+\tau e_a)),
+\end{equation*}
+the coefficient for~$\rho^{-1}\mathsf j$. Reversing the parameter and inverting the transport covers a negative image direction. Uniqueness gives $\rho^*U(h_{\rm lat},\mathsf j)=U(h_{\rm lat},\rho^{-1}\mathsf j)$. Each term of~\eqref{eq:A-average} therefore has Taylor polynomial~$\mathbf c(\operatorname{sc}_{h_{\rm lat}}\mathsf j)$ through order~$d$. A signed image of a transported curvature is again a transported curvature, up to sign: reversal changes $F_\square$ to $-F_\square$, and a change of base point gives conjugation by the intervening boundary transport. Enclose the finitely many resulting paths and plaquettes in a box $\Sigma_d=[-\varrho_d,\varrho_d]^4\cap\Z^4$. This stencil contains zero and is signed-permutation invariant. Expanding the finite polynomial in matrix entries gives Definition~\ref{def:D19}. This proves~\eqref{eq:I12-section-Taylor}.
+\end{proof}
+
+\subsection*{Bounds and lattice symmetries}
+
+We bound normalized initial insertions using the ordered left derivatives of Definition~\ref{def:D05a}. At a placement~$y$, set $Y=y+[\Sigma_d]$; being healthy on~$Y$ means that every plaquette meeting~$Y$ has chord at most~$t$. A direction is permitted when
+\begin{equation*}
+|\dot{\mathcal A}_e|\le t(1+\operatorname{dist}(e^-,y))^P\,.
+\end{equation*}
+Here $[\Sigma_d]$ is the torus image of the stencil, and $\operatorname{dist}(x,y)=\min_{z\in n_{\rm tor}\Z^4}|\tilde x-\tilde y+z|_\infty$ is the periodic maximum-coordinate distance, for any lifts $\tilde x,\tilde y$.
+\begin{lemma}[Section bounds]\label{lem:A-bounds}
+Each basis column is a polynomial in transported curvatures with at least~$k_i$ factors per monomial. For all $d,k,P\in\N$ there are finite constants $C_{d,k,P}$ and $C_d$ such that, on every torus, for every placement~$y$, $0<t\le1$, configuration healthy on~$Y$, and permitted direction list of length $q\le k$,
+\begin{equation}\label{eq:A-section-bound}
+\bigl|D^L_{\dot{\mathcal A}_1}\cdots D^L_{\dot{\mathcal A}_q}
+\localsection{d}[b_{d,i}](y;U)\bigr|\le C_{d,k,P}t^{k_i}\,.
+\end{equation}
+For arbitrary configurations,
+\begin{equation}\label{eq:A-global-bound}
+\sup_{i,y,U}|\localsection{d}[b_{d,i}](y;U)|\le C_d\,.
+\end{equation}
+\end{lemma}
+The proof uses the curvature polynomials constructed in Lemma~\ref{lem:A1}.
+\begin{proof}
+First note that $|F_\square(U)|\le\chord(U_\square)$: orthogonal projection is contractive and $\|U_\square-U_\square^*\|_{\rm F}\le2\|U_\square-1\|_{\rm F}$. Adjoint transport is isometric, so an undifferentiated curvature measurement is bounded by~$t$. An order-$q$ left derivative of a fixed path product is a finite sum of products of unitary matrices and exactly~$q$ direction matrices. On the fixed stencil their norms are at most a constant times~$t$, since periodic distance is bounded by cover distance. Thus each differentiated measurement is $O(t^q)$, and hence $O(t)$ when $q\ge1$. This argument also applies when cover links coincide after placement: one first differentiates the cover expression and then assigns the same direction to coincident links.
+
+Apply the product rule to the curvature polynomials of~\eqref{eq:A-average}. Every differentiated monomial still has at least~$k_i$ factors, each bounded by a constant times~$t$. There are finitely many terms; since $t\le1$, their sum gives~\eqref{eq:A-section-bound}, including order zero. Each entry of a unitary matrix has absolute value at most one, so the finite matrix-entry polynomial gives~\eqref{eq:A-global-bound}. The formula also gives smoothness, measurability and locality. The constants depend on the sections, $G,d,k,P$ as applicable, and finite maxima make them nondecreasing in the integer parameters. They are fixed before the stage block ratios in Section~\ref{sec:constants}.
+\end{proof}
+
+By linearity, Lemma~\ref{lem:A-bounds} bounds permitted derivatives of $\localsection{d}[\factorscale_{t^{-1}}\mathbf c]$ by $C_{d,k,P}\sum_i|c_i|$ on the healthy set: the factor $t^{-k_i}$ cancels $t^{k_i}$. Taking $t=t_N$, $k=\mathfrak q_{J_N}$ and $P=\varpi_{J_N}$ bounds the initial marked density of~\eqref{eq:I12-marked-evolution} on the healthy set, in the sense of Definition~\ref{def:D05a}. On unhealthy configurations the global bound gives $C_d\sum_i|c_i|t^{-k_i}$; Lemmas~\ref{lem:E2.2}--\ref{lem:E2.2a} place this contribution in the forced remainders of~\eqref{eq:I12-marked-representation}.
+
+\paragraph{Finite-lattice invariance.} For the identities deferred from Definition~\ref{def:D02}, telescoping the path products shows that gauge transformations act on plaquette holonomies by conjugation. An affine isometry $h_{\rm iso}(x)=\rho x+b$, with $\rho\in\hypercubic$, changes an image plaquette holonomy by conjugation, possibly composed with inversion. Both operations preserve~$\wilsonterm$, hence the Wilson energy. Fixed left and right multiplication, inversion and permutation preserve product probability Haar measure~\cite[Corollary~2.28 and Proposition~2.31]{Folland2015}. Consequently, for every integer side $n_{\rm tor}\ge1$, real~$\beta$, site gauge transformation~$\gamma_{\rm g}$ and bounded measurable~$F$,
+\begin{equation}\label{eq:A-Wilson-invariance}
+\int F(U^{\gamma_{\rm g}})\,d\mu_{n_{\rm tor},\beta}(U)
+=\int F(h_{\rm iso}^*U)\,d\mu_{n_{\rm tor},\beta}(U)
+=\int F(U)\,d\mu_{n_{\rm tor},\beta}(U)\,.
+\end{equation}
+All integrals exist: $0\le\wilsonterm\le2$ gives $0\le E_{n_{\rm tor}}^{\rm W}\le12n_{\rm tor}^4$ and $0<Z_{n_{\rm tor},\beta}<\infty$. The terminal transfer normalization in Definition~\ref{def:D08} is proved in Lemmas~\ref{lem:E2.1}--\ref{lem:E2.1a}.
+
+\subsection*{Auxiliary equation sections}
+
+Exact lattice equation identities require different sections, still polynomial and local with the same small-field bounds. On~$\mathcal J_j$ define the Maxwell subspace and its polynomial ideal by
+\begin{equation*}
+K_j=\left\{\mathcal A_j:\ \sum_a\partial_a(\partial_a\mathcal A_{j,b}-\partial_b\mathcal A_{j,a})=0\ \text{for every }b\right\},\qquad
+\mathcal I_d=\{p\in V_d:p|_{\prod_jK_j}=0\}\,.
+\end{equation*}
+Here restriction uses only $j+2\le d$. Substitution into $\prod_jK_j$ preserves bidegree, so $\mathcal I_d$ is the direct sum of its bihomogeneous parts. Order bidegrees~$(w,k)$ by the lexicographic order of~$(k,w)$. A regrading is a complex-linear map whose difference from the identity sends each bihomogeneous polynomial into strictly later bidegrees. Such a map preserves the filtration by minimum factor count. For a torus site~$y$, put
+\begin{equation*}
+\Omega_r(y)=\{x:\operatorname{dist}(x,y)>r\}\,.
+\end{equation*}
+An exterior spectator is a bounded measurable function of the positive links having both endpoints in~$\Omega_r(y)$; it need not be gauge invariant.
+
+The following identity supplies the auxiliary equation observables used in Section~\ref{sec:partII-E}. Its proof constructs them from derivatives of the Wilson energy with multipliers independent of the varied link.
+\begin{lemma}[Auxiliary equation sections]\label{lem:A-R4}
+For every~$d$ there are a local section~$V_d^{\rm aux}$ satisfying Lemmas~\ref{lem:A1} and~\ref{lem:A-bounds} with its own stencil and constants, an invertible regrading~$\mathsf R_d$ fixing~$\mathbf1$ and commuting with conjugation and~$\hypercubic$, and integers $r_d,M_d$ such that every $n_{\rm tor}\ge M_d$, $\beta\ne0$, placement~$y$, $p\in\mathcal I_d$ and exterior spectator~$S$ on~$\Omega_{r_d}(y)$ satisfy
+\begin{equation}\label{eq:A-aux-zero}
+\int V_d^{\rm aux}[\mathsf R_dp](y;U)S(U)\,d\mu_{n_{\rm tor},\beta}(U)=0\,.
+\end{equation}
+\end{lemma}
+The exact-equation subspace for these sections is $\mathsf R_d(\mathcal I_d)$. Its comparison with the selected primary family is deferred to Section~\ref{sec:partII-D}. All choices in the following proof depend only on~$G,d$ and the label basis.
+
+\begin{proof}
+We use Definitions~\ref{def:D01}, \ref{def:D02}, \ref{def:D07} and Lemmas~\ref{lem:A1}--\ref{lem:A-bounds}.
+
+\emph{Step 1: One-link equations.} Extend the curvature $F_\square$ defined above to $F_{ab}(U;x)$ for ordered axes by antisymmetry, with $F_{aa}=0$. For a positive link $e=(x,a)$ set
+\begin{equation*}
+\mathcal E_e(U)=\sum_{b\ne a}\left(F_{ab}(U;x)-\operatorname{Ad}(U(x-e_b,b)^{-1})F_{ab}(U;x-e_b)\right)\,.
+\end{equation*}
+On a torus of side at least two, direct differentiation gives
+\begin{equation}\label{eq:A-link-equation}
+D^L_{e,A}E^{\rm W}(U)=\langle A,\mathcal E_e(U)\rangle_{\g}\,.
+\end{equation}
+Indeed, the forward plaquette contributes $-n_G^{-1}\operatorname{Re}\tr(AU_\square)=\langle A,F_\square\rangle_{\g}$. The backward plaquette, rebased at~$x$, contributes the negative of the transported curvature in the display. These are the two incidences for each transverse axis; antisymmetry gives the signs for the opposite ordering.
+
+If a continuous multiplier~$g$ is independent of~$U_e$, and a bounded measurable~$S$ is also independent of~$U_e$, left invariance of Haar measure gives
+\begin{equation*}
+0=\left.\frac{d}{d\epsilon}\int g(U)S(U)e^{-\beta E^{\rm W}(U^{e,A,\epsilon})}\,dU\right|_{\epsilon=0}
+=-\beta Z_{n_{\rm tor},\beta}\int\langle A,\mathcal E_e\rangle_{\g}gS\,d\mu_{n_{\rm tor},\beta}\,.
+\end{equation*}
+Here $U^{e,A,\epsilon}_e=e^{\epsilon A}U_e$ and all other links are fixed. Compactness bounds the derivative of the smooth density uniformly, justifying differentiation even for measurable~$S$.
+
+Choose a path~$\gamma_e$ from~$0$ to~$e^-$ avoiding~$e$. If~$g$ also avoids~$e$, then
+\begin{equation*}
+\Theta(U)=\langle \xi,\operatorname{Ad}(U_{\gamma_e})\mathcal E_e(U)\rangle_{\g}g(U)
+\end{equation*}
+has zero moment for every $\xi\in\g$ against every exterior spectator. To see this, expand $\operatorname{Ad}(U_{\gamma_e}^{-1})\xi$ in a fixed orthonormal basis of~$\g$ and apply the preceding identity to each coefficient times~$gS$. These multipliers are independent of~$U_e$. There is one radius and one minimum torus side for any finite collection of such expressions: enlarge the radius to contain both endpoints of every varied link, and the side until distinct links in their finite cover supports remain distinct after wrapping. The same choices work at every placement.
+
+\emph{Step 2: Enough measurements with avoidance.} Any path can avoid one specified link: replace a traversal of that link by three sides of a square in a transverse direction. For each plaquette orientation only finitely many base points give a plaquette containing that link. Removing these points does not affect the shrinking-square argument in Lemma~\ref{lem:A1}: for $z\ne0$, the integer points $x_\tau=\lfloor z/\tau\rfloor$ eventually avoid any finite set, and continuity gives the conclusion at~$z=0$. Thus curvature measurements whose paths and plaquettes avoid~$e$ still have injective joint linearization. Finite-dimensional duality therefore realizes every linear functional on~$\mathcal J_{\le d}$ by finitely many components.
+
+For every linear functional~$\ell$ on~$\mathcal J_j$ vanishing on~$K_j$, a finite combination of force linearizations equals $\ell\circ\operatorname{pr}_j$ on $\mathcal J_{\le j+2}=\bigoplus_{i\le j}\mathcal J_i$. Write $N_{j;ab}$ for the square averages in the proof of Lemma~\ref{lem:A1}, extended antisymmetrically. The force linearization at~$e=(x,a)$ is
+\begin{equation*}
+L_a(\mathsf j;x)=\sum_{i,b}\bigl(N_{i;ab}(x,1)-N_{i;ab}(x-e_b,1)\bigr)\,.
+\end{equation*}
+For a homogeneous component define
+\begin{equation*}
+H_{j;ab}(z,\tau)=\int_{[0,1]^3}\partial_b(\partial_a\mathcal A_{j,b}-\partial_b\mathcal A_{j,a})
+\bigl(z+\tau(\xi e_a+(\eta+\zeta-1)e_b)\bigr)\,d\xi\,d\eta\,d\zeta\,.
+\end{equation*}
+The fundamental theorem of calculus in the backward direction gives
+\begin{equation*}
+N_{j;ab}(z,\tau)-N_{j;ab}(z-\tau e_b,\tau)=\tau H_{j;ab}(z,\tau)\,.
+\end{equation*}
+If all $L_a(\mathsf j;x)$ vanish for jets through degree~$j=m$, homogeneity gives $\sum_{j\le m,b}\tau^{m-j}H_{j;ab}(\tau x,\tau)=0$ for $\tau>0$. Taking $x=x_\tau$ and $\tau\downarrow0$ shows $\sum_b\partial_b(\partial_a\mathcal A_{m,b}-\partial_b\mathcal A_{m,a})=0$, hence $\mathcal A_m\in K_m$. A functional of this top component annihilating~$K_m$ therefore annihilates the common kernel of the force measurements. Finite-dimensional duality puts it in their linear span. Transport paths do not enter the linearization and can be chosen to avoid their varied links. On~$\mathcal J_{\le d}$ the same combination can have additional linear terms only at engineering weights above~$m+2$.
+
+\emph{Step 3: Polynomial lifts and the triangular map.} Choose linear projections $\pi_j:\mathcal J_j\to K_j$ and put $\pi=\prod_j\pi_j$. A polynomial belongs to~$\mathcal I_d$ precisely when $p\circ\pi=0$. For a product of linear coordinates,
+\begin{equation*}
+\prod_{i=1}^{k_{\rm tot}}\ell_i-\prod_{i=1}^{k_{\rm tot}}(\ell_i\circ\pi)
+=\sum_{i=1}^{k_{\rm tot}}\left[\prod_{l<i}(\ell_l\circ\pi)\right]
+(\ell_i-\ell_i\circ\pi)\prod_{l>i}\ell_l\,.
+\end{equation*}
+Consequently every bihomogeneous equation label is a finite sum of products with one linear factor vanishing on some~$K_j$, with the same engineering weight and factor count. The individual factors need not be invariant. For an observable~$O$, its Taylor polynomial through engineering weight~$d$ means the degree-$d$ Taylor polynomial at zero of $\mathsf j\mapsto O(U(1,\mathsf j))$ on~$\mathcal J_{\le d}$, with monomials of weight above~$d$ discarded. Every coordinate has weight at least two. By~\eqref{eq:A-dilation}, matching this polynomial is equivalent to matching the spacing derivatives through order~$d$ in~\eqref{eq:A-Taylor}.
+
+Lift that distinguished factor by a finite combination of transported forces from Step~2. For each summand, lift the other factors by curvature measurements avoiding its varied link, matching their full linear parts through engineering weight~$d$. The resulting expression has the zero-moment property of Step~1 and at least~$k_{\rm tot}$ curvature factors. Indeed, every force is a difference of two transported curvatures per transverse axis. Its Taylor polynomial through engineering weight~$d$ equals the prescribed product plus terms later in~$(k,w)$: the additional linear terms of the force have greater engineering weight, and every nonlinear correction increases factor count. The square-measurement lifts have their prescribed full linear parts, so introduce only the latter kind of correction. Taylor polynomials exist by the smooth Volterra dependence used in Lemma~\ref{lem:A1}.
+
+Average over constant gauge transformations. All factors depend on a gauge transformation only at the origin, where they transform by adjoint matrices. Their orbit therefore lies in the finite-dimensional span of finitely many fixed-degree colour-coordinate monomials on the same measurements. Each orbit function retains zero moments, with colour vectors rotated by $\operatorname{Ad}(v^{-1})$. The Haar average is a finite linear combination of orbit functions, so preserves zero moments, minimum factor count and triangular Taylor identity, and is gauge invariant. The test-holonomy identity makes its Taylor polynomial invariant too.
+
+In each bidegree extend a basis of~$\mathcal I_d$ to a basis of the invariant label space in that bidegree, lifting the complementary vectors by Lemma~\ref{lem:A1}. Lift~$\mathbf1$ to~$1$, since $\mathcal I_d$ contains no nonzero constant. Summing gives a linear lift~$p\mapsto\mathcal Y_p$. Replace this lift by the two successive averages
+\begin{align*}
+\mathcal Y'_p(U)&=\frac1{|\hypercubic|}\sum_{\rho\in\hypercubic}\mathcal Y_{\rho^{-1}p}(\rho^*U),\\
+\mathcal Y''_p&=\frac12\left(\mathcal Y'_p+\overline{\mathcal Y'_{\bar p}}\right)\,.
+\end{align*}
+The Taylor map commutes with both operations; write~$\mathcal Y_p$ for the final lift. The real Maxwell equations and the chain rule make $K_j$, and hence~$\mathcal I_d$, stable under signed permutations, adjoint transformations and conjugation. The zero-moment property survives the signed average by~\eqref{eq:A-Wilson-invariance}, changing the spectator by the inverse isometry; the exterior set is preserved. Conjugation uses~$\bar S$. A reversed varied link uses a right derivative of the Wilson energy, whose Haar identity is identical. Thus the averaged equation representatives remain finite sums of one-link action derivatives with link-independent multipliers and avoiding transport paths.
+
+Let~$\mathsf R_dp$ be the Taylor polynomial of the resulting~$\mathcal Y_p$ through engineering weight~$d$. Then $\mathsf R_d-I$ strictly raises~$(k,w)$. There are finitely many bidegrees of weight at most~$d$, so $(\mathsf R_d-I)^{h_0}=0$ for some integer~$h_0$, and
+\begin{equation*}
+\mathsf R_d^{-1}=\sum_{l=0}^{h_0-1}(-1)^l(\mathsf R_d-I)^l,\qquad
+V_d^{\rm aux}[c]=\mathcal Y_{\mathsf R_d^{-1}c}\,.
+\end{equation*}
+This gives invertibility and Taylor normalization; the averages give the symmetry and unit identities. The inverse preserves minimum factor count, so Lemma~\ref{lem:A-bounds} applies to these sections with their own constants. A signed-invariant box enclosing all paths and plaquettes gives a common stencil. Take $r_d,M_d$ as maxima for an ideal basis; linearity gives~\eqref{eq:A-aux-zero}.
+\end{proof}

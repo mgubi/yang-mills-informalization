@@ -1,8 +1,16 @@
 \section{Gauges and block integration}\label{sec:partII-B}
 
-\emph{This section is under construction.}
+The block map of Definition~\ref{def:D04} averages fine parallel transports in local frames. A fixed axial frame would distinguish an ordering of the axes. We instead minimize a symmetric average of transport energies when the field is sufficiently small, and average over curvature-controlled axial frames elsewhere. Lemma~\ref{lem:B1} and the paragraph following its proof show that these choices give a measurable, covariant probability kernel. The normalization preserves the partition function under the block integration in Theorem~\ref{prop:RG}.
 
-For $R=(j+3)\ell$, put $\mathbb B_R=\{-R,\ldots,R\}^4$. Let $T_U(y\to z;o)$ be the ordered link product along the route changing coordinates in the order $o\in S_4$.
+The remaining lemmas prepare the local integration used in Sections~\ref{sec:partII-C} and~\ref{sec:partII-D}. The free block problem determines the quadratic action and the linear interpolation. An axial coercivity estimate then gives the nonlinear stationary branch. Its Gaussian integral contributes a determinant and the Haar-coordinate density; together with the inherited loop action they give the one-loop action. The third and fourth derivatives have bounds that improve the input-dependent part by one power of the block ratio. A stationary gauge identity removes the predictor contact term from the tested quadratic coupling coefficient. Lemmas~\ref{lem:B-D1} and~\ref{lem:B-D2} give the local large-field energy and the simultaneous differentiated integral used in Section~\ref{sec:partII-D}.
+
+Three uniformities require care. The frame cutoffs must work for arbitrarily many sites, and the free kernels must remain controlled after arbitrarily many integrations. The first follows from a contraction after centering the frame minimizers. For the second we separate the principal Fourier pole before inversion. In the determinant comparison, the fine cell contains~$\ell^4$ sites. Weighted inverses and the summable cube of a regulator prevent this number from entering the comparison constant.
+
+Throughout, use the group and metric of Definition~\ref{def:D01}, the Wilson term of Definition~\ref{def:D01}, and the level choices~\eqref{eq:I12-levels}. At a step~$m+1\to m$, put $j=J_{m+1}$, $\ell=\ell_m$, and $R=(j+3)\ell$. Periods satisfy the minimum-period requirement in Section~\ref{sec:constants}. All finite operators use counting inner products and are periodizations of the kernels described below. An adjoint at complex momentum means the analytic continuation of the real-momentum adjoint. Bounds for an input path action refer to Definition~\ref{def:D23} and Lemmas~\ref{lem:C1}--\ref{lem:C2} at the finer level. They are used in descending induction, starting with Wilson at the top level.
+
+\subsection*{Frames and predictors}
+
+Put $\mathbb B_R=\{-R,\ldots,R\}^4$. For $o\in S_4$, let $T_U(y\to z;o)$ be the ordered product along the path that changes the four coordinates in the order~$o$, using inverse links for negative steps.
 \begin{definition}[Axial frames]\label{def:D20a}
 The frame tagged by $(z,o)$, its normalization and its link coordinates are
 \begin{equation*}
@@ -12,28 +20,35 @@ U_{(y,a)}^{z,o}=g_y^{z,o}U(y,a)(g_{y+e_a}^{z,o})^{-1}\,.
 These frames provide the finite alternatives for the symmetric gauge choice.
 \end{definition}
 
+For an origin-based axial tag $o_0$, the route matrix tested below is
+\begin{equation*}
+\mathcal T_{xy;o}^{o_0}=g_x^{0,o_0}T_U(x\to y;o)(g_y^{0,o_0})^{-1}.
+\end{equation*}
+The common tag set on both branches is $\mathbb B_R\times S_4$; on the minimizing branch the frame is independent of its tag. For the patch centred at $\ell y$, the notation of~\eqref{eq:I12-framed-connector} is $h_{y,r}=h_r$. Choose $\delta_{\rm fr}>0$ small enough as in the proof of Lemma~\ref{lem:B1}, and $a_{\rm ax}\ge16$. Patch sums below count internal positive links and plaquettes.
 \begin{definition}[Symmetric frame choice]\label{def:D20b}
-When every route transport in every origin-based axial gauge has chord below $\delta_{\rm fr}$, use the minimizer, with $h_0=1$, of
+When $\chord(\mathcal T_{xy;o}^{o_0})<\delta_{\rm fr}$ for every $x,y,o,o_0$, use the minimizer, with $h_0=1$, of
 \begin{equation*}
 \frac1{24|\mathbb B_R|^2}\sum_{y,z\in\mathbb B_R}\sum_{o\in S_4}
 \wilsonterm(h_yT_U(y\to z;o)h_z^{-1})\,.
 \end{equation*}
-Otherwise use normalized axial frames whose tags satisfy
+Otherwise use normalized axial frames with
 \begin{equation*}
 \sum_{e\ {\rm patch}}\chord(U_e^{z,o})\le a_{\rm ax}(2R+1)\sum_{\square\ {\rm patch}}\chord(U_\square)\,.
 \end{equation*}
 Tags have equal mass over all tags on the first branch and eligible tags on the second. This makes the choice symmetric.
 \end{definition}
 
+For a coarse edge use the framed connector~$Y_{e,z}$ of~\eqref{eq:I12-framed-connector}. The offset weight is supported in~$\mathbb B_{j(\ell-1)/2}\subset\mathbb B_R$.
 \begin{definition}[Coarse predictors]\label{def:D21}
-Let $w^{\rm av}=(\operatorname{Unif}(\mathbb B_{(\ell-1)/2}))^{*j}$ and let $Y_z$ be the framed straight connector of~\eqref{eq:I12-framed-connector}. Define
+Let $w^{\rm av}=(\operatorname{Unif}(\mathbb B_{(\ell-1)/2}))^{*j}$. Define
 \begin{equation*}
-Q^{\rm pred}=\operatorname*{argmin}_{u\in G}\sum_z w_z^{\rm av}\wilsonterm(Y_zu^{-1})
+Q_e^{\rm pred}=\operatorname*{argmin}_{u\in G}\sum_z w_z^{\rm av}\wilsonterm(Y_{e,z}u^{-1})
 \quad\text{if the minimum is below }\varepsilon_{\rm pred}\,.
 \end{equation*}
-Give predictor tags uniform mass on this branch. Otherwise set $Q^{\rm pred}=Y_z$ with tag mass $w_z^{\rm av}$. The product of frame and predictor masses is $\lambda^{\rm tag}(U,\alpha_{\rm tag})$. These choices define every summand of Definition~\ref{def:D04}.
+Give predictor tags uniform mass on $\mathbb B_R$ on this branch. Otherwise choose $Q_e^{\rm pred}=Y_{e,z}$ with tag mass $w_z^{\rm av}$. The product of frame and predictor masses is $\lambda^{\rm tag}(U,\alpha_{\rm tag})$. These choices define every summand of Definition~\ref{def:D04}.
 \end{definition}
 
+The branch choices require constants independent of the patch radius. Their normalization then follows from finite probability sums and Haar invariance.
 \begin{lemma}[Branches and normalization]\label{lem:B1}
 For the chosen frame and predictor cutoffs and axial factor $a_{\rm ax}\ge16$, every stated minimizer is unique on its branch, eligible axial tags are nonempty, and
 \begin{equation*}
@@ -41,99 +56,849 @@ For the chosen frame and predictor cutoffs and axial factor $a_{\rm ax}\ge16$, e
 \qquad\int\blockkernel{m}_\beta(U,V)\,dV=1\,.
 \end{equation*}
 \end{lemma}
-The proof of Lemma~\ref{lem:B1} is deferred to this section's branch estimates.
+The proof below establishes the cutoffs first, then the two normalizations.
+\begin{proof}
+We use~\eqref{eq:I12-price-chord} and Definitions~\ref{def:D20a}--\ref{def:D21}. Work in the real Euclidean space of complex matrices with Frobenius norm. The tubular projection lemma of~\cite[p.~153, Lemma]{Foote1984}, applied to the compact smooth embedded submanifold $G$, gives a neighbourhood with unique smooth nearest-point projection~$\pi$. At the identity its derivative is the orthogonal projection~$P_\g$ onto~$\g$. Consequently, for any $\epsilon>0$, shrinking this neighbourhood gives
+\begin{equation}\label{eq:B-projection}
+\|\pi(A)-\pi(B)-P_\g(A-B)\|_{\rm F}\le\epsilon\|A-B\|_{\rm F}
+\end{equation}
+when $A,B$ lie in a sufficiently small ball about~$1$. Integrate $D\pi-P_\g$ along their joining segment.
 
-The following free forms fix the quadratic normalization used in Section~\ref{sec:partII-C}. For a link field $a$, write $d_1a$ for its lattice curl and $\mathcal Q_m a$ for the linearization of the predictor in~\eqref{eq:I12-predictor}. Set
+For the predictor put $\bar Y=\sum_z w_z^{\rm av}Y_{e,z}$. Expansion of the square gives
 \begin{equation*}
-\mathsf S^{\rm free}_{N,m}(a)=\tfrac12\langle d_1a,\mathsf H_{N,m}d_1a\rangle\,.
+2n_G\sum_z w_z^{\rm av}\wilsonterm(Y_{e,z}u^{-1})
+=\sum_z w_z^{\rm av}\|Y_{e,z}-\bar Y\|_{\rm F}^2+\|\bar Y-u\|_{\rm F}^2\,.
 \end{equation*}
-Let $W_0$ be the free stationary interpolation and put $\mathsf K_{N,m}=d_1^*\mathsf H_{N,m}d_1$.
+Thus the minimizers are precisely the nearest group points to~$\bar Y$. If the minimum is below~$\varepsilon_{\rm pred}$, then $\operatorname{dist}(\bar Y,G)<\sqrt{2n_G\varepsilon_{\rm pred}}$. Choose this smaller than a tubular radius. This choice uses neither the weights nor their number.
 
-\begin{lemma}[Free quadratic forms]\label{lem:B2}
-For the chosen histories, the free forms satisfy
+For the frame, first make an origin-based axial change of gauge. Its route matrices, denoted $\mathcal T_{xy,o}$, satisfy $\mathcal T_{xx,o}=1$ and $\mathcal T_{yx,o'}=\mathcal T_{xy,o}^{-1}$ for the reversed order~$o'$. On the minimizing branch choose $\delta_{\rm fr}$ so that $\|\mathcal T_{xy,o}-1\|_{\rm F}\le d$, where $d\le1/4$ will be fixed below. Write $\operatorname{av}$ for the uniform averages over the indicated indices. A global minimizer~$h$ exists by compactness. Varying its coordinate~$h_x$ and pairing the two orientations shows that $h_x$ is a nearest group point to
+\begin{equation*}
+F_x(h)=\operatorname{av}_{y,o}h_y\mathcal T_{xy,o}^{-1}\,.
+\end{equation*}
+The self term is harmless: replacing it by its value at a proposed competitor adds a nonnegative square. Comparison with the constant frame and the triangle inequality give
+\begin{equation*}
+\operatorname{av}_{x,y}\|h_x-h_y\|_{\rm F}^2\le4d^2\,.
+\end{equation*}
+Left-multiply~$h$ so that $1$ is a nearest point to its centroid $\bar h=\operatorname{av}_yh_y$. Jensen's inequality then gives $\|\bar h-1\|_{\rm F}\le2d$ and $\|F_x(h)-1\|_{\rm F}\le3d$.
+
+Center two minimizers~$h,k$ in this way, and put $u=\max_y\|h_y-k_y\|_{\rm F}$. Their centroids are normal to~$G$ at~$1$, so $P_\g(\bar h-\bar k)=0$. Moreover,
+\begin{equation*}
+\|F_x(h)-F_x(k)\|_{\rm F}\le u,\qquad
+\|F_x(h)-F_x(k)-(\bar h-\bar k)\|_{\rm F}\le du\,.
+\end{equation*}
+Apply~\eqref{eq:B-projection} with $\epsilon=1/4$, choosing $3d$ inside its ball. At a coordinate attaining~$u$ it yields $u\le(d+1/4)u\le u/2$. Hence the centered minimizers coincide. All minimizers differ by a common left multiple, which $h_0=1$ fixes uniquely.
+
+For the axial alternatives let $E(X,U)$ and $F(X,U)$ be the sums of link and plaquette chords internal to a rectangular slice~$X$. Induct on the number~$r$ of varying axes in that slice. Choose a layer perpendicular to the last axis whose plaquette sum is at most the slice average, and apply the induction hypothesis there. Extend its frame along the last axis, making those links equal to~$1$. A link in another layer differs from its transported link in the chosen layer by a product of intervening plaquettes. The chord triangle inequality, summed over the links, gives
+\begin{equation*}
+E(X,U^{\rm ax})\le(2R+1)\{E(X_0,U^{\rm ax})+4F(X,U)\}
+\le4r(2R+1)F(X,U)\,.
+\end{equation*}
+For the second inequality use $(2R+1)F(X_0,U)\le F(X,U)$ in the induction bound. At $r=4$ this proves eligibility, for each axis ordering, with factor~$16$.
+
+Each frame mass therefore sums to one; each predictor mass sums to one since $w^{\rm av}\ge0$ and $\sum_z w_z^{\rm av}=1$. Successively summing the finite tag choices proves the first identity. For fixed tags, every coarse-link factor in Definition~\ref{def:D04} integrates to one by right invariance of Haar measure. Their product and the tag sum prove the second identity.
+\end{proof}
+
+\paragraph{The kernel assertions in Part~I.}
+The branch tests are Borel; unique compact minimizers depend continuously on their data. Axial eligibility is a closed inequality. Thus the finite tag sum is Borel, and it is bounded for fixed~$\beta$ since $0\le\wilsonterm\le2$ and the Haar denominator is positive. Gauge transformations act by conjugation on the rooted transports and transform both ends of a connector; lattice isometries permute the roots, orders and offsets, including inversion of reversed transports. The objective functions, eligibility inequalities and tag masses are preserved. Uniqueness on the minimizing branches and reindexing on the other branches therefore give
+\begin{equation*}
+\blockkernel{m}_\beta(U^\gamma,V^{\gamma\circ\iota})=\blockkernel{m}_\beta(U,V),\qquad
+\blockkernel{m}_\beta(s_{\ell b}U,s_bV)=\blockkernel{m}_\beta(U,V),\qquad \iota(y)=\ell y\,.
+\end{equation*}
+Here $s_b$ is the pullback by $x\mapsto Ox+b$, with $O\in H_4$; $s_{\ell b}$ uses the same $O$ on fine sites. Fubini's theorem and Lemma~\ref{lem:B1} give~\eqref{eq:I12-partition-preservation}. Thus the block kernel is measurable, covariant and normalized.
+
+\subsection*{The free action}
+
+Write $d_r$ for the forward lattice exterior derivative on $r$-forms. Thus $(d_1a)_{ab}(x)=a_b(x+e_a)-a_b(x)-a_a(x+e_b)+a_a(x)$. A history at level $m$ is the finite sequence $(\ell_i,J_{i+1})_{m\le i<N}$, read from fine to coarse. Its stages decrease by at most one. Let $\mathcal Q_m$ be the derivative of the predictor at the flat field. To specify its free metric, set
 \begin{gather*}
-W_0^*\mathsf K_{N,m+1}W_0+\blockpenalty(\mathcal Q_mW_0-I)^*(\mathcal Q_mW_0-I)
-=\mathsf K_{N,m},\qquad \widehat{\mathsf H}_{N,m}(0)=I,\\
-\mathsf H_{N,m}\ge2\gamma_{J_m}I,\qquad
+q_a(\theta)=\mathrm e^{i\theta_a}-1,\quad \lambda(\theta)=\sum_aq_a(\theta)q_a(-\theta),\\
+r_L(t)=L^{-1}\sum_{s=0}^{L-1}\mathrm e^{ist},\quad
+b_L(\theta)=\prod_a L^{-1}\sum_{|s|\le(L-1)/2}\mathrm e^{is\theta_a}.
+\end{gather*}
+Starting from $c_a=\lambda^{-1}$, update these auxiliary diagonal covariances by
+\begin{equation}\label{eq:B-cov-recursion}
+c'_a(p)=\blockpenalty^{-1}+L^{-2}\sum_{z\bmod L}b_L(\theta_z)^{2j}r_L((\theta_z)_a)r_L(-(\theta_z)_a)c_a(\theta_z),\qquad \theta_z=(p+2\pi z)/L.
+\end{equation}
+For $p\ne0$, define the unmodified two-form metric and the chosen metric by
+\begin{gather*}
+\widehat{\mathsf H}^{\,0}_{ab,cd}(p)=
+\frac{\mathbf1_{(a,b)=(c,d)}}{c_a(p)c_b(p)\sum_hq_h(p)q_h(-p)/c_h(p)},\qquad
+\widehat{\mathsf H}^{\,0}(0)=I,\\
+\mathsf H^{-1}=(\mathsf H^0)^{-1}
+ +\zeta_{J_m}\bigl(d_2(\mathsf H^0)^{-1}\bigr)^*d_2(\mathsf H^0)^{-1}.
+\end{gather*}
+This modification permits positive square completion on all two-form coordinates, including those outside the curl range. Fix $\zeta_k=\max(\zeta^0_{k,k},\zeta^0_{k+1,k})$, where the positive thresholds for the two incoming stage pairs are chosen in the proof below. These constants are fixed before $\gamma_k$ and the clipping coefficients. The ratio threshold also depends on the incoming $\zeta$. The free action is
+\begin{equation*}
+\mathsf S^{\rm free}_{N,m}(a)=\tfrac12\langle d_1a,\mathsf H_{N,m}d_1a\rangle,\qquad
+\mathsf K_{N,m}=d_1^*\mathsf H_{N,m}d_1.
+\end{equation*}
+Let $\mathcal M_ma(e)=\sum_z w_z^{\rm av}\sum_{r=0}^{\ell-1}a(\ell e^-+z+re_{\operatorname{dir}(e)},\operatorname{dir}(e))$ be straight-link averaging. The smooth interpolation $W_0$ minimizes the fine free action plus $\blockpenalty\|\mathcal Q_ma-v\|^2/2$, with the remaining gradient fixed to match the predictor; the tree representative is obtained afterwards.
+
+Let $T$ be the free two-form transfer (the lift of the straight-link block average), fixed on curls by
+\begin{equation*}
+T^*d_1=d_1\mathcal M_m,\qquad T\mathsf H_c^0d_1=\mathsf H_f^0d_1W_0.
+\end{equation*}
+Its extension to all forms is obtained by the same alias formula, with a straight geometric-sum factor for each of the two indices. Define the adjacent three-form defect by
+\begin{equation}\label{eq:B-free-defect}
+\mathsf H_c(\mathsf H_c^{-1}-T^*\mathsf H_f^{-1}T
+ -\blockpenalty^{-1}d_1d_1^*)\mathsf H_c=d_2^*\mathcal W_3d_2.
+\end{equation}
+
+Write $k=J_m$, and let $C^{\rm tr}_{j,k}$ be the stage-pair transfer bound obtained below; row~5 of Section~\ref{sec:constants} imposes $\ell^2\ge C^{\rm tr}_{j,k}\zeta_j$. At $m=N$ the free form is the identity on curls. This free integration fixes the normalization of the kinetic coefficient in Section~\ref{sec:partII-C}.
+\begin{lemma}[Free quadratic forms]\label{lem:B2}
+For the chosen histories with $\ell^2\ge C^{\rm tr}_{j,k}\zeta_j$,
+\begin{gather*}
+W_0^*\mathsf K_{N,m+1}W_0+\blockpenalty(\mathcal Q_mW_0-I)^*(\mathcal Q_mW_0-I)=\mathsf K_{N,m},\\
+\widehat{\mathsf H}_{N,m}(0)=I,\qquad \mathsf H_{N,m}\ge2\gamma_{J_m}I,\qquad
 \mathsf H_{N,m}-c_{{\rm dir},J_m}I=\rho_{N,m}^*\rho_{N,m}\,.
 \end{gather*}
-Here $\gamma_k>0$ is uniform over histories at stage~$k$, including the top and both incoming stages. For $c_{{\rm dir},k}\le\gamma_k$, the row factor is analytic on a fixed strip and has exponentially decaying coefficients, uniformly in $N,m,p$. At $m=N$ the free form is the identity on curls.
+Here $\gamma_k>0$ is uniform over histories. The adjacent defect~\eqref{eq:B-free-defect} has $\mathcal W_3\ge c_kI$, $c_k>0$. For $c_{{\rm dir},k}\le\gamma_k$, the row factor is analytic on a fixed strip with exponentially decaying coefficients, uniformly in $N,m,p$.
 \end{lemma}
-The proof of Lemma~\ref{lem:B2} is deferred to this section's free block integration.
-
-For the analytic stationary problem, $v$ is the coarse chart variable, $z$ the fine axial variable, and $S(v,z)$ the fine leading action plus the block penalty, with the common coupling factor removed. Put $\mathsf Q=D_z^2S(0,0)$ and $Wv=(v,Dz(0)v)$. For the inverse estimates, use weighted operator norms on a Bloch cell. Put $\mu=\ell^{-1}$ and $k_z(\xi)=(\xi+2\pi z)/\ell$, with $x,z\in\{0,\ldots,\ell-1\}^4$, and define
-\begin{gather*}
-q_a(k)=e^{ik_a}-1,\qquad
-h_z(\xi)=\bigl(\mu^2+\sum_a|q_a(\operatorname{Re}k_z(\xi))|^2\bigr)^{1/2},\\
-\mathcal U_\ell(\xi)_{xz}=\ell^{-2}e^{ik_z(\xi)\cdot x},\qquad
-T_\ell(\xi)=\mathcal U_\ell(\xi)\operatorname{diag}(h_z(\xi)^{-1})\mathcal U_\ell(0)^{-1}\,.
-\end{gather*}
-These weights measure one fine derivative. Use $T_\ell$ on fine link or site fields, the identity on coarse coordinates, direct sums on their products, and $T_\ell(-\xi)^{-T}$ on dual fields. Axial variables inherit the norm of their slice embedding. For an operator kernel set
+We prove the history bounds before the energy identity, so that inversion at zero momentum is justified.
+\begin{proof}
+Use the averaging weights of Definition~\ref{def:D21}. The straight-link multiplier is $L b_L(\theta)^j r_L(\theta_a)$. The frame adds a gradient and $\mathcal Q_md_0\phi=d_0(\phi\circ\iota)$. Gauge reduction therefore commutes with the block step. Before reduction the Gaussian marginal is
 \begin{equation*}
-\|K\|_{\eta}^{\rm bl}=\sup\|T_{\rm out}(\xi_{\rm out})^{-1}K(\xi_{\rm out},\xi_{\rm in})T_{\rm in}(\xi_{\rm in})\|_{\rm op}\,.
+v=\mathcal M_ma+\blockpenalty^{-1/2}\xi,\qquad
+\operatorname{Cov}(v)=\mathcal M_m\operatorname{diag}(c_a)\mathcal M_m^*+\blockpenalty^{-1}I,
 \end{equation*}
-The supremum ranges over momenta in $\mathcal S_\eta=\{\xi\in\C^4:|\operatorname{Im}\xi_a|<\eta\}$, with all shifted momenta also in that strip. For multilinear kernels use the corresponding tensor products. Field insertions are in normalized coarse directions. The entry norms in Lemma~\ref{lem:C4} are taken after these rescalings. The weights themselves need not be analytic.
+where $\xi$ is a standard Gaussian and $\mathcal M_m$ is straight-link averaging. Taking aliases gives~\eqref{eq:B-cov-recursion}; $L^{-2}=L^{-4}L^2$ combines counting adjoints with the two straight connectors. For $w_a=1/c_a$, minimization of the diagonal precision over gradients gives
+\begin{equation*}
+\min_\phi\sum_aw_a|a_a+q_a\phi|^2
+=\frac{\sum_{a<b}w_aw_b|q_aa_b-q_ba_a|^2}{\sum_dw_d|q_d|^2}.
+\end{equation*}
+Indeed the minimizer is $\phi=-\sum_aw_a\bar q_aa_a/\sum_aw_a|q_a|^2$; expanding its square proves the identity. This is precisely the two-form metric defined above.
+For total history dilation~$M$ at stage~$j$, the cumulative averaging filter is
+\begin{equation*}
+f(\theta)=b_M(\theta)^j\prod_{\text{stage increases at dilation }M'}b_{M'}(\theta)\,.
+\end{equation*}
+Successive dilations~$M'$ have ratio at least~$3$. On the enlarged coarse cube $|\operatorname{Re}p_a|<5\pi/4$, $|\operatorname{Im}p_a|<\eta$, the geometric-sum formula gives
+\begin{equation}\label{eq:B-filter}
+|f((p+2\pi z)/M)|\le C_j\prod_a(1+|z_a|)^{-j},\qquad
+|f(p/M)|\ge c_j>0\quad(p\text{ real})\,.
+\end{equation}
+For the extra product, use $|b_{M'}(p/M)|\le \mathrm e^{4\eta M'/M}$ and the corresponding real lower bound $\mathrm e^{-C M'/M}$. The sum of~$M'/M$ is bounded by a geometric series. The identities $b_L(\theta)b_{L'}(L\theta)=b_{LL'}(\theta)$ and $r_L(t)r_{L'}(Lt)=r_{LL'}(t)$ follow by writing each integer in its quotient and residue classes. They give the cumulative filter. The basic $b_M^j$ factor supplies the displayed alias decay. It also bounds $r_M((p+2\pi z)_a/M)$ by $C/(1+|z_a|)$, with a positive principal lower bound.
 
+Separate the principal alias in the iterated~\eqref{eq:B-cov-recursion}. With $\lambda_M(p)=M^2\lambda(p/M)$ this reads
+\begin{equation*}
+c_a(p)=\frac{A_a(p)}{\lambda_M(p)}+r_a(p),\qquad
+A_a(p)=f(p/M)f(-p/M)r_M(p_a/M)r_M(-p_a/M)\,.
+\end{equation*}
+The remainder~$r_a$ contains nonprincipal aliases, bounded by~\eqref{eq:B-filter} and $|M^2\lambda((p+2\pi z)/M)|\ge c|z|^2$ for $z\ne0$ on a smaller strip. Each earlier noise contributes $C_j(M')^{-2}$ by the squared filter bound. Summing these geometric contributions makes $r_a$ analytic and uniformly bounded; it is nonnegative on real momenta.
+
+Put $B_a=A_a+\lambda_M r_a$ and $F=f(p/M)f(-p/M)$, so $c_a=B_a/\lambda_M$. The identity for a straight geometric sum implies
+\begin{equation*}
+q_a(p)q_a(-p)F=M^2q_a(p/M)q_a(-p/M)A_a\,.
+\end{equation*}
+It removes the apparent singularity in
+\begin{equation*}
+\mathfrak h(p)=F^{-1}-\sum_a\frac{q_a(p)q_a(-p)r_a}{A_aB_a},\qquad
+\lambda_M\mathfrak h=\sum_a\frac{q_a(p)q_a(-p)}{B_a}\,.
+\end{equation*}
+On the real enlarged cube $B_a$ is bounded above and below by positive constants. Since $\lambda(p)$ and $\lambda_M(p)$ are uniformly comparable there, the last identity bounds~$\mathfrak h$ above and below, including $\mathfrak h(0)=1$. Thin the strip using the uniform analytic bounds. The unmodified plaquette metric is then
+\begin{equation*}
+\widehat{\mathsf H}^{\,0}_{ab,cd}(p)=\frac{\mathbf1_{(a,b)=(c,d)}}{\mathfrak h(p)B_a(p)B_b(p)}\qquad(a<b,\ c<d)\,.
+\end{equation*}
+Substitution of $w_a=\lambda_M/B_a$ in the preceding minimization gives exactly $1/(\mathfrak h B_aB_b)$. Thus this formula extends the defined metric analytically to zero. It and its inverse are uniformly positive on real momenta, with $\widehat{\mathsf H}^{\,0}(0)=I$.
+
+The inverse modification defining $\mathsf H$ has fixed stage coefficient $\zeta_j$. This positive addition has uniform analytic bounds. Since $d_2d_1=0$, it gives $\mathsf H d_1=\mathsf H^0d_1$; it also leaves $\widehat{\mathsf H}(0)=I$.
+
+For the unmodified metrics, divide the closed two-form defect by the two exterior derivatives, coordinate by coordinate, using
+$(f(p)-f(p|_{p_a=0}))/q_a(p)=\sum_x f_x \mathrm e^{ip\cdot x}(1-\mathrm e^{-ip_ax_a})/q_a(p)$.
+The quotient is a finite geometric sum for each Fourier coefficient. The two divisions lose two powers of path length; the exponential bounds leave a smaller strip. Symmetrize the resulting three-form kernel and call it $F_0$. Thus $F_0$ factors the defect formed with $\mathsf H_c^0,\mathsf H_f^0$. If $S_0$ is the corresponding lift of $d_2(\mathsf H_f^0)^{-1}T\mathsf H_c^0$, Woodbury inversion gives $d_2(\mathsf H_c^0)^{-1}\mathsf H_c=D_cd_2$. Substituting the two inverse modifications into the defect, the outgoing addition is $\zeta_kD_c^*D_c$ and the incoming subtraction is $-\zeta_jD_c^*S_0^*S_0D_c$. Hence
+\begin{equation*}
+\mathcal W_3=D_c^*(F_0+\zeta_{J_m}I-\zeta_jS_0^*S_0)D_c,\qquad
+D_c=(I+\zeta_{J_m}d_2(\mathsf H_c^0)^{-1}d_2^*)^{-1}.
+\end{equation*}
+The pole-free alias estimates give $\|F_0\|\le C$ and $\|S_0\|^2\le C^{\rm tr}_{j,k}/\ell^2$ on real momenta: the lift has per-residue order $\ell^{-3}$, whose square is summed over $\ell^4$ residues. Choose $\zeta^0_{j,k}=C+2$ and then $\ell^2\ge\zeta_jC^{\rm tr}_{j,k}$ for the stage pair $(j,k)$. The parenthesis is at least $I$. Both $D_c$ and its inverse have uniform analytic bounds at the fixed stages. Consequently $cI\le\mathcal W_3\le CI$ on real momenta, uniformly in the history. This proves the required positive defect; it is the input for the square rows in Lemma~\ref{lem:B-D1}.
+
+Choose $2\gamma_k$ below the lower bounds for the top and the two incoming possibilities at stage~$k$. Then $\mathsf H-c_{{\rm dir},k}I\ge\gamma_kI$. Its positive square root~$\rho$ is analytic on a smaller common strip: expand the square root about a scalar exceeding the common upper bound. The resulting convergent matrix power series agrees with the positive root on the real torus. Contour displacement in Fourier inversion gives exponential coefficient decay and the same bound for all periodizations.
+
+Finally, the normal equations for~\eqref{eq:B-cov-recursion}, with the gradient chosen to match the rooted predictor, give
+\begin{equation*}
+\mathsf K_fW_0=\mathcal Q_m^*\mathsf K_c,\qquad
+\mathcal Q_mW_0=I-\blockpenalty^{-1}\mathsf K_c\,.
+\end{equation*}
+At nonzero momentum write $\mathsf C_f=\operatorname{diag}(c_a)$ and $\mathsf C_c=\mathcal M_m\mathsf C_f\mathcal M_m^*+\blockpenalty^{-1}I$. Gaussian conditioning gives $W_0=\mathsf C_f\mathcal M_m^*\mathsf C_c^{-1}$ modulo gradients and $\mathcal M_mW_0=I-\blockpenalty^{-1}\mathsf C_c^{-1}$. Reduce these identities over gradients and select the gradient matching $\mathcal Q_m$. This gives the two normal equations. The pole-free formulas above extend them to zero; the constant fine potential is the coarse potential divided by~$\ell$. Expanding the square gives
+\begin{equation*}
+\langle a,\mathsf K_fa\rangle+\blockpenalty\|\mathcal Q_ma-v\|^2
+=\langle v,\mathsf K_cv\rangle+\langle a-W_0v,(\mathsf K_f+\blockpenalty\mathcal Q_m^*\mathcal Q_m)(a-W_0v)\rangle\,.
+\end{equation*}
+Set $a=W_0v$ and polarize. This is the asserted adjacent relation. The empty history gives $\mathsf H^0=I$ and hence the Wilson form on curls, also after the inverse modification.
+\end{proof}
+
+\subsection*{The stationary configuration}
+
+Root the axial tree in the block $\ell y+\mathbb B_{(\ell-1)/2}$ at $\ell y$, and set its tree links to~$1$. The remaining logarithmic link coordinates are~$z$. For a fine edge $e=(x,a)$ put
+\begin{gather*}
+(\operatorname{rep}V)_e=\begin{cases}
+V_{(y,a)},&y=\operatorname{parent}(x),\ \operatorname{parent}(x+e_a)=y+e_a,\\
+1,&\operatorname{parent}(x+e_a)=\operatorname{parent}(x),
+\end{cases}\\
+U(v,z)_e=\exp((\iota_{\rm ax}z)_e)(\operatorname{rep}\exp v)_e.
+\end{gather*}
+Here $\operatorname{dir}(e)=a$ for $e=(x,a)$, $\operatorname{parent}(e)=\operatorname{parent}(x)$, and $\operatorname{parent}$ takes the centred block containing a site, and $\iota_{\rm ax}$ extends by zero on tree edges. The copied field is one on every tree edge. The fine leading action is the hypercubic average of
+\begin{equation*}
+\mathcal A_f(U)=c_{{\rm dir},j}\sum_\square\wilsonterm(U_\square)
+ +\tfrac12\sum_{x,\mathfrak p}|\mathcal L_{\mathfrak p}^{\rm path}(U,x)|^2
+ +\sum_{x,i}(\mathfrak a_i^{(3)}+\mathfrak a_i^{(4)})(U,x).
+\end{equation*}
+The slots and coefficients are those of Definition~\ref{def:D23}, with masks and clipping removed. It excludes the inherited quadratic loop action and the common inverse coupling. Let $S(v,z)$ be this action at $U(v,z)$ plus
+\begin{equation*}
+\blockpenalty\sum_{e\ {\rm coarse}}\wilsonterm\bigl((\exp v)_eQ_e^{\rm pred}(U(v,z))^{-1}\bigr)\,.
+\end{equation*}
+Omit the common inverse coupling and put $\mathsf Q=D_z^2S(0,0)$. The path bounds make these unclipped sums analytic near zero.
+
+We specify the norms used for Fourier estimates. Put $\mu=\ell^{-1}$, $\theta_z(\xi)=(\xi+2\pi z)/\ell$, with $x,z\in\{0,\ldots,\ell-1\}^4$, and
+\begin{gather*}
+\omega_z(\xi)=\bigl(\mu^2+\sum_a|q_a(\operatorname{Re}\theta_z(\xi))|^2\bigr)^{1/2},\\
+\mathcal U_\ell(\xi)_{xz}=\ell^{-2}\mathrm e^{i\theta_z(\xi)\cdot x},\quad
+T_\ell(\xi)=\mathcal U_\ell(\xi)\operatorname{diag}(\omega_z(\xi)^{-1})\mathcal U_\ell(0)^{-1}\,.
+\end{gather*}
+Use $T_\ell$ on fine links or sites, the identity on coarse coordinates, direct sums on products, and $T_\ell(-\xi)^{-T}$ on dual fields. Axial variables inherit the norm of their slice embedding. For kernels set
+\begin{equation*}
+\|K\|_\eta^{\rm bl}=\sup\|T_{\rm out}(\xi_{\rm out})^{-1}K(\xi_{\rm out},\xi_{\rm in})T_{\rm in}(\xi_{\rm in})\|_{\rm op}\,.
+\end{equation*}
+The momenta and all their indicated shifts lie in $\mathcal S_\eta=\{\xi\in\C^4:|\operatorname{Im}\xi_a|<\eta\}$. Use tensor products for several inputs; field insertions are normalized coarse directions. The weights themselves need not be analytic. A fine Bloch field obeys $u(x+\ell n)=\mathrm e^{i\xi\cdot n}u(x)$; $\mathcal U_\ell$ identifies its aliases with the fixed cell at $\xi=0$. The last factor in $T_\ell$ fixes that reference cell. Write $W_{\rm ax}v=(v,Dz(0)v)$ for the axial tangent, and retain $W_0$ for the smooth free interpolation before axial gauge. They are distinct coordinate representatives.
+
+The next lemma supplies the stationary configuration and identifies its first derivative with the free solution.
 \begin{lemma}[Stationary interpolation]\label{lem:B3}
 Near zero there is an analytic stationary branch with
 \begin{equation*}
-D_zS(v,z(v))=0,\qquad z(0)=0,\qquad
-\mathsf Q\ge\nu_j I,\qquad
-\|\mathsf Q^{-1}\|_{\eta_j}^{\rm bl}+\|W\|_{\eta_j}^{\rm bl}\le E_j\,.
+D_zS(v,z(v))=0,\quad z(0)=0,\quad \mathsf Q\ge\nu_{j,\ell} I\,.
 \end{equation*}
-Here $\nu_j,\eta_j>0$ and $E_j<\infty$ are uniform in the volume; the coercivity constant $\nu_j$ is chosen after the ratio. The free interpolation is $Dz(0)$. The averaging symbol in~\eqref{eq:I12-predictor} vanishes to second order at every nonzero alias. The zero alias has the curvature normalization of Lemma~\ref{lem:B2}.
-\end{lemma}
-The proof of Lemma~\ref{lem:B3} is deferred to this section's stationary equation and inverse estimates.
-
-The Gaussian coordinates also determine the chart factor in the one-loop action. Let $U_v$ be the stationary configuration, $M(v)$ its axial Hessian, $s$ the map from axial increments to left increments, and $J_{\rm ax}$ the corresponding Haar-density ratio. Write $\Psi(U,h_{\rm fr})$ for the rooted minimizing frame, $R$ for infinitesimal gauge insertion and $Q$ for the axial slice. Define
+Here $\nu_{j,\ell}>0$ depends on the stage and ratio but not the volume. The axial representative of the free interpolation is $Dz(0)$. The averaging symbol in~\eqref{eq:I12-predictor} vanishes to second order at every nonzero alias. At the zero alias, $\widehat w^{\rm av}(0)=1$. For normalized coarse plane waves on a fixed strip,
 \begin{equation*}
-X=D_{w=0}[-\log(\Psi(U,h_{\rm fr})^{-1}\Psi(e^w(U,h_{\rm fr})))],
-\qquad \mathcal L_{m+1}=\sum_{x,i}\mathfrak a_i^{(2)}(\,\cdot\,,x)\,.
+\|\nabla_f^rW_0v\|_\infty\le C_j\ell^{-1-r}|v|\qquad(0\le r\le2).
 \end{equation*}
-These coordinates permit comparison with a gauge-completed Hessian.
+\end{lemma}
+The proof uses a local axial estimate for coercivity and a finite-dimensional implicit equation for the branch.
+\begin{proof}
+Use Definitions~\ref{def:D20a}--\ref{def:D21} and Lemmas~\ref{lem:B1}--\ref{lem:B2}. At the flat field the frame objective has quadratic part $\operatorname{av}_{x,y}|h_x-h_y|^2/2$. On $h_0=0$ this is positive definite. The predictor objective has Hessian~$I$ in its group variable. Their chart equations are real analytic. Their local complexifications and the analytic implicit function theorem make both minimizing choices real analytic near zero. Apply~\cite[Theorem~1.3.8]{Lebl2026} to the complexified chart equations, which vanish at zero and have the displayed invertible Hessians. The neighbourhoods may depend on the period.
 
+For a fine infinitesimal field~$a$, let $I_a(x\to y;o)$ be its signed sum along the route. Differentiating the frame equation gives
+\begin{equation*}
+\tau_x(y)=-\operatorname{av}_{z,o}I_a(\ell x+y\to\ell x+z;o),\quad
+h_x'(y)=\tau_x(y)-\tau_x(0),\quad
+\mathcal Q_ma=\mathcal M_ma+d_0\mathcal F_ma\,.
+\end{equation*}
+Here $\mathcal M_ma$ is the $w^{\rm av}$-average of straight length-$\ell$ sums, and $\mathcal F_ma(x)=\tau_x(0)-\sum_yw_y^{\rm av}\tau_x(y)$. In particular $\mathcal Q_md_0\phi=d_0(\phi\circ\iota)$.
+
+We next bound a field on the axial slice. Telescoping the boundary of each coordinate rectangle expresses a free link as a copied coarse-link value plus curls in its enlarged block. Averaging the straight connectors replaces the copied value by~$\mathcal Q_ma$; the frame differences are route sums of the same curls. For example, interchanging two positive steps gives
+\begin{equation*}
+a_a(x)+a_b(x+e_a)-a_b(x)-a_a(x+e_b)=(d_1a)_{ab}(x).
+\end{equation*}
+Reverse steps change the sign and translate this identity. Repeated interchanges compare the tree route, a straight connector and its averaged translates. Thus, at each free edge~$e$,
+\begin{equation*}
+|a_e|\le C_{j,\ell}\sum_{\square\in\ell\,\operatorname{parent}(e)+\mathbb B_{(j+7)\ell}}|(d_1a)_\square|
++|(\mathcal Q_ma)_{\operatorname{parent}(e),\operatorname{dir}(e)}|\,.
+\end{equation*}
+This is an identity followed by a triangle inequality: tree-edge coordinates are zero, and every interchange of two successive route steps contributes exactly one signed curl. Cauchy--Schwarz and the bounded number of enlarged blocks containing a given plaquette give constants $A_{j,\ell},B_{j,\ell}<\infty$, independent of the period, with
+\begin{equation*}
+\|a\|_2^2\le A_{j,\ell}\|d_1a\|_2^2+B_{j,\ell}\|\mathcal Q_ma\|_2^2\,.
+\end{equation*}
+The kinetic cancellation of Lemma~\ref{lem:C2}, at the finer input level, identifies the leading Hessian with $\mathsf K_f$; cubic and quartic curvature atoms have zero quadratic derivative. Consequently, for the slice embedding~$\iota_{\rm ax}$,
+\begin{equation*}
+\langle z,\mathsf Qz\rangle
+=\langle d_1\iota_{\rm ax}z,\mathsf H_f d_1\iota_{\rm ax}z\rangle
++\blockpenalty\|\mathcal Q_m\iota_{\rm ax}z\|^2\ge\nu_{j,\ell}\|z\|^2\,.
+\end{equation*}
+One can take $\nu_{j,\ell}=\min(2\gamma_j,\blockpenalty)/(1+A_{j,\ell}+B_{j,\ell})$. 
+
+The map $\mathcal E(v,z)=D_zS(v,z)$ is analytic, $\mathcal E(0,0)=0$, and $D_z\mathcal E(0,0)=\mathsf Q$. The same implicit function theorem gives $z(v)$. Differentiation yields
+\begin{equation*}
+Dz(0)=-\mathsf Q^{-1}D_vD_zS(0,0)\,.
+\end{equation*}
+The normal equations in Lemma~\ref{lem:B2} identify this with the free interpolation expressed relative to the copied field and the tree slice. The implicit neighbourhood may depend on the volume; the preceding coercivity constant does not.
+
+Finally $\widehat w^{\rm av}(\theta)=b_\ell(\theta)^j$. At a nonzero alias $2\pi z/\ell$, at least one centered geometric sum has a simple zero, so the product has a zero of order at least~$j\ge4$. At zero it equals one. The fine-difference bound follows from~\eqref{eq:B-filter}: a difference multiplies alias $z$ by $q_a(\theta_z)$, of size at most $C\ell^{-1}(1+|z|)$. The remaining covariance denominators and the $j$ averaging factors make these sums absolutely convergent through order two, including the pole-free principal term.
+\end{proof}
+
+\subsection*{Gaussian coordinates}
+
+Write $U_v=U(v,z(v))$ and $\mathsf Q(v)=D_z^2S(v,z(v))$. Let $s$ change axial logarithmic increments to left increments at~$U_v$, and let $J_{\rm ax}$ be the product Haar density in these coordinates divided by its value at zero. For $x=\ell y+r$ in its centered block, set $\Psi(U,h_{\rm fr})(x)=h_{\rm fr}(y)h_{y,r}(U)$, using the patch frame of Definition~\ref{def:D20b}. This extends a coarse frame~$h_{\rm fr}$ over each fine block. The joint variable is $(U,h_{\rm fr})$, with gauge action
+$(U,h_{\rm fr})\mapsto(U^\gamma,h_{\rm fr}(\gamma\circ\iota)^{-1})$.
+Let $\mathcal R$ insert fine site gauge parameters, and let $\mathcal I$ embed free-edge increments, with zero coarse-frame component. Thus
+$(\mathcal R,\mathcal I):\g^{\rm fine\ sites}\oplus\g^{\rm free\ edges}\to\g^{\rm fine\ edges}\oplus\g^{\rm coarse\ sites}$ is square: the number of tree edges is the number of fine sites minus the number of block roots. Write $\mathsf J(U,h_{\rm fr})$ for the joint left Hessian of the leading action plus block penalty, with the coarse field fixed. We evaluate it along the stationary background; its value at the flat field has fine kinetic part $\mathsf K_f$. Put
+\begin{equation*}
+X=D_{w=0}[-\log(\Psi(U,h_{\rm fr})^{-1}\Psi(\mathrm e^w(U,h_{\rm fr})))],\qquad
+\mathcal L_{m+1}=\sum_{x,i}\mathfrak a_i^{(2)}(\,\cdot\,,x)\,.
+\end{equation*}
+The last sum is the inherited quadratic loop action of Definition~\ref{def:D23}. Define its stationary Gaussian correction by
+\begin{equation*}
+\mathsf T(v)=\mathcal L_{m+1}(U_v)+\tfrac12\log\det\mathsf Q(v)-\log J_{\rm ax}(v).
+\end{equation*}
+It is the negative logarithm of the field-dependent Gaussian factor.
+
+The determinant and coordinate density must be compared in the same counting coordinates.
 \begin{lemma}[Gaussian coordinates]\label{lem:B4}
-Near zero, the one-loop action is
+The stationary Gaussian integral, including the inherited loop action and Haar density, has field-dependent factor $\mathrm e^{-\mathsf T(v)}$. Moreover,
 \begin{equation*}
-\mathsf T(v)=\mathcal L_{m+1}(U_v)+\tfrac12\log\det M(v)-\log J_{\rm ax}(v),
-\qquad J_{\rm ax}=|\det Ds|>0\,.
+J_{\rm ax}=|\det Ds|>0,\qquad J_{\rm ax}(0)=1,\qquad
+X\mathcal R=I,\qquad \det(\mathcal R,\mathcal I)^2=1.
 \end{equation*}
-The rooted-frame coordinates satisfy $XR=I$ and $\det(R,Q)^2=1$. The Hessian $M$ is positive, and $J_{\rm ax}(0)=1$.
+The Hessian $\mathsf Q(v)$ is positive near zero.
 \end{lemma}
-The proof of Lemma~\ref{lem:B4} is deferred to this section's Gaussian change of coordinates.
+The proof identifies the determinant in the coordinates used in Lemma~\ref{lem:C5}. The sector version is given in Lemma~\ref{lem:B-D2}.
+\begin{proof}
+Use Definitions~\ref{def:D01}, \ref{def:D04} and Lemma~\ref{lem:B3}. Tree gauge is an exact Haar change of variables. In tree order, each tree link is a Haar translate of its child gauge variable, whose integral is one. For fixed $V$, gauge transformations fixing every block root leave the kernel invariant. Integration of these gauge variables reduces its integral to product Haar measure on free links; root transformations are not integrated here. In exponential coordinates write this measure as $J_*^{n_e}\prod_eJ(z_e)\,dz$, with $J(0)=1$ and $n_e$ the number of free links.
 
-The bounds for the third and fourth vertices separate the Wilson part from the input-dependent correction. Let $V_r$ be the degree-$r$ Taylor kernel of the leading fine action minus the Wilson action, $r=2,3,4$. Let $C_3,C_4$ be the bounds after insertion of $W$ used in Lemma~\ref{lem:C4}.
+At a fixed stationary axial point~$y=z(v)$ the coordinate change on each free link is
+\begin{equation*}
+s_y(z)_e=\log(\exp z_e\exp(-y_e)),\qquad s_y(y)=0\,.
+\end{equation*}
+Right invariance of Haar measure gives $\prod_eJ(z_e)=|\det Ds_y(z)|\prod_eJ(s_y(z)_e)$. Evaluate at~$z=y$ to obtain $J_{\rm ax}(v)=|\det Ds_y(y)|$. Since $Ds_0(0)=I$, its value at zero is one, and it stays positive nearby. Stationarity removes the second-derivative term in the Hessian chain rule, giving $\mathsf Q(v)=(Ds)^*(\mathcal I^*\mathsf J\mathcal I)Ds$ for the joint left Hessian~$\mathsf J$.
 
+Gauge covariance of~$\Psi$ gives $X\mathcal R=I$. In tree-height order, each tree-edge row of~$(\mathcal R,\mathcal I)$ has its child gauge coordinate~$\pm I$ and earlier gauge coordinates; each coarse-frame row has its root gauge coordinate $-I$, and every free-edge slice column has its identity entry. Thus $\det(\mathcal R,\mathcal I)^2=1$. Positivity of $\mathsf Q(0)$ from Lemma~\ref{lem:B3} persists near zero.
+
+Integrate the positive stationary quadratic form with covariance~$\mathsf Q(v)^{-1}$. Its field-dependent factor is $\mathrm e^{-\mathcal L_{m+1}(U_v)}J_{\rm ax}(\det\mathsf Q(v))^{-1/2}$. Its negative logarithm proves the asserted action; the other factors enter the vacuum scalar.
+\end{proof}
+
+\subsection*{Weighted inverses and insertions}
+
+For a fine site field put
+\begin{equation*}
+(d_U\phi)_e=\phi(e^-)-\operatorname{Ad}(U_e)\phi(e^+),\quad
+\Delta_U=d_U^*d_U,\quad P_\mu=\mu^2(\Delta_U+\mu^2I)^{-1},\quad
+\mathfrak m_\mu=\mu^2P_\mu^9\,.
+\end{equation*}
+The joint gauge completion is $\mathsf J+F_\mu^*F_\mu$, where $F_\mu=d_U^*P_f+\mathfrak m_\mu X$ and $P_f$ projects to fine links. Remove its predictor contact term to obtain one choice of~$A_\mu$. The other is the folded fine operator $\mathsf A+d_Ud_U^*+\mathsf M_\mu$, where $\mathsf A(U)$ is the fine leading Hessian and $\mathsf M_\mu$ applies $\mathfrak m_\mu$ to each link component. For weighted bounds use the nearest projection~$\pi$ from Lemma~\ref{lem:B1} and centered coarse frames: $c_y(U)=\pi(\sum_r w_r^{\rm av}h_{y,r}(U))$, $\widetilde h_{\rm fr}=h_{\rm fr}c(U)$. Pull back the joint quadratic forms by this change. Its tangent is triangular with identity diagonal, so it preserves determinants. These are the operators compared in Lemma~\ref{lem:C6}; derivatives are at zero in free interpolated coarse directions. The constants in the following lemma depend on the free metric, frame and penalty bounds. After that lemma fix $E=\max(1,C_j^{\rm ins})$ for Lemma~\ref{lem:B5}.
+
+For inserted inverse bounds, let $M_r$ be the supremum of $\|D^rA_\mu\|$ from the primal block space to its dual, in normalized smooth coarse directions, for $r=1,2$. Use any common smaller strip for these inserted kernels. Define
+\begin{equation*}
+Q_0(C)=C,\qquad Q_1(C)=C^2M_1,\qquad
+Q_2(C)=2C^3M_1^2+C^2M_2.
+\end{equation*}
+The norms $M_1,M_2$ retain the actual cubic and quartic path contributions. On a smaller common strip, the bounds for the joint Hessians through two insertions give
+\begin{equation*}
+\sup_\ell M_r\le\mathcal P_{j,r}(A_j^{\rm path}),\qquad r=1,2.
+\end{equation*}
+Here $A_j^{\rm path}$ is the stage path bound fixed in row~4 of Section~\ref{sec:constants}; the fixed polynomials also depend on the interpolation, free metric, frame and penalty bounds. The derivation is included below.
+
+These estimates control the determinant comparison without a factor equal to the number of fine sites.
+\begin{lemma}[Scaled inverse insertions]\label{lem:B7}
+There are $\eta_j^{\rm inv}>0$ and $C_j^{\rm ins}<\infty$, fixed before the ratio and path bounds, such that, for $0\le r\le2$ and every admitted odd $\ell$,
+\begin{gather*}
+\sup_{\xi\in\mathcal S_{\eta_j^{\rm inv}}}\|P_\mu(\xi)^3\|_1\le C_j^{\rm ins},\qquad
+\|D^rP_\mu\|_{\eta_j^{\rm inv}}^{\rm bl}\le C_j^{\rm ins},\\
+\|\mu^2D^r(A_\mu^{-1})\|^{\rm bl}\le Q_r(C_j^{\rm ins})\qquad(0\le r\le2).
+\end{gather*}
+The inverse insertion bounds use the common smaller strip. The $r$th block-penalty and frame insertions have norms at most $C_j^{\rm ins}$.
+\end{lemma}
+We first prove real coercivity in block units, then extend it to a strip and differentiate the inverse.
+\begin{proof}
+Use Definition~\ref{def:D01}, Lemmas~\ref{lem:B1}--\ref{lem:B3}. Constants depend on the free bounds, stage and~$\blockpenalty$.
+
+At zero background, $\Delta_0$ has symbol~$\lambda(\theta)$. With $x=\lambda(\theta)\ge0$,
+\begin{equation}\label{eq:B-mass-floor}
+2^{-10}(x+\mu^2)\le x+\mu^2\left(\frac{\mu^2}{x+\mu^2}\right)^9\le x+\mu^2\,.
+\end{equation}
+For $x\ge\mu^2$ the first term supplies the lower bound; for $x<\mu^2$ the parenthesis is at least~$1/2$. On links, the exterior identity $\|d_1u\|^2+\|d_0^*u\|^2=\lambda(\theta)\|u\|^2$ and Lemma~\ref{lem:B2} give the same lower bound, with a fixed positive factor, for the auxiliary fine operator. Changing its quadratic form by~$T_\ell$ therefore gives a positive lower bound independent of~$\ell$.
+
+In centered coordinates fine gauge insertion has coarse component $-\sum_r w_r^{\rm av}\phi(\ell y+r)$: differentiate $h_{y,r}(U^\gamma)=\gamma(\ell y)h_{y,r}(U)\gamma(\ell y+r)^{-1}$ and the centroid. The uncompleted joint form is
+\begin{equation*}
+\langle d_1u,\mathsf H_fd_1u\rangle+\blockpenalty\|\mathcal M_mu-d_0\vartheta\|^2\,.
+\end{equation*}
+Modulo a joint gauge transformation choose $\vartheta=0$ and make every nonprincipal fine alias transverse. This is possible by dividing its longitudinal part by~$\lambda(\theta_z)$; the remaining principal gauge parameter fixes~$\vartheta$, since the principal averaging multiplier is bounded below by~\eqref{eq:B-filter}. Write $u_z$ for the resulting normalized alias coordinates and $H_>=\sum_{z\ne0}\omega_z^2|u_z|^2$. The fine curvature energy bounds $cH_>$. The averaging multiplier on the principal alias is at least $c_j\mu$ in unitary cell coordinates; the weighted norm of all other alias columns is at most~$C_j$. Therefore
+\begin{equation*}
+(c_j\mu|u_0|)^2\le2\|\mathcal M_mu\|^2+2C_j^2H_>,\qquad \omega_0\le C\mu\,.
+\end{equation*}
+Combining these inequalities gives a uniform positive bound on the distance, in the weighted norm, to the joint gauge subspace.
+
+Let $\mathcal R\phi$ be joint gauge insertion. Frame covariance gives $F_\mu\mathcal R=\Delta_0+\mathfrak m_\mu$. By~\eqref{eq:B-mass-floor},
+\begin{equation*}
+\|\mathcal R\phi\|_{\rm bl}\le C\|(\Delta_0+\mathfrak m_\mu)\phi\|_2,\qquad
+\|F_\mu w\|_2\le C\|w\|_{\rm bl}\,.
+\end{equation*}
+For the second bound one must also estimate $\mathfrak m_\mu X$ on arbitrary fine increments. In the centred frame, $X$ is a sum of normalized averages of routes of length at most $C_j\ell$. Its row and column sums are at most $C_j\ell$, so
+\begin{equation*}
+\|Xu\|_2\le C_j\ell\|u\|_2\le C_j\mu^{-2}\|u\|_{\rm bl},\qquad
+\|\mathfrak m_\mu X u\|_2\le C_j\|u\|_{\rm bl}.
+\end{equation*}
+The coarse-frame part satisfies the same inequality since its embedding has $\ell^2$ as counting-norm factor and $\|\mathfrak m_\mu\|\le\mu^2$. Also $\|d_0^*u\|_2\le C\|u\|_{\rm bl}$. For the first bound a fine gauge component contributes $\omega_z|q(\theta_z)\phi_z|\le \omega_z^2|\phi_z|$, and its averaged coarse component is bounded by the summable alias filter times~$\omega_z^2|\phi_z|$. For $w=w_\perp+\mathcal R\phi$, the completed energy bounds $c\|w_\perp\|_{\rm bl}^2+\|F_\mu w\|_2^2$. The last two inequalities give
+\begin{equation*}
+\|w\|_{\rm bl}\le\|w_\perp\|_{\rm bl}+C\bigl(\|F_\mu w\|_2+C\|w_\perp\|_{\rm bl}\bigr)\,.
+\end{equation*}
+Squaring proves real coercivity of the completed form with a constant independent of~$\ell$.
+
+The uninserted quadratic symbols and the geometric frame and penalty kernels have bounded weighted norms on a fixed coarse strip. To verify this, each fine derivative is bounded by~$C\omega_z$, a free interpolated field by~$C\mu$, and normalized frame or predictor averages by the summable filter~\eqref{eq:B-filter}. At the flat field these operators depend only on the free quadratic action, the interpolation, the frame and the penalty. Their defining inserted kernels use the smooth interpolation; its fine differences of order $s\le2$ are $O(\ell^{-1-s})$ by the alias estimate~\eqref{eq:B-filter}.  For complex momenta, freeze the weights at a real momentum: if the coarse displacement has norm at most one, the geometric-sum formula and $|q(\theta_z(\xi))-q(\theta_z(\xi'))|\le C\mu|\xi-\xi'|$ make the two weights comparable by a fixed factor. Cauchy's estimate~\cite[Proposition~1.2.2]{Lebl2026} on a smaller disc bounds the change of the conjugated symbol by~$C\eta$. Choose~$\eta_j^{\rm inv}$ so this is less than half the real lower bound. A Neumann series gives the weighted inverse on that strip.
+
+For inserted directions $v,w$, write $A_v=DA[v]$ and $\mathsf G=A^{-1}$. Direct differentiation gives
+\begin{equation*}
+D\mathsf G[v]=-\mathsf GA_v\mathsf G,\qquad D^2\mathsf G[v,w]=\mathsf GA_v\mathsf GA_w\mathsf G+\mathsf GA_w\mathsf GA_v\mathsf G-\mathsf GD^2A[v,w]\mathsf G\,.
+\end{equation*}
+The geometric insertions have norm at most $C$: each smooth field is $O(\mu)$, each derivative on it is $O(\mu^2)$, and $\mu\le\omega_z$. With two arbitrary fine legs, Cauchy--Schwarz accounts for their two factors $\omega_z^{-1}$; a difference on either leg supplies its corresponding $\omega_z$. This bounds the block penalty, frame and $\Delta_U$ insertions independently of the nonlinear path coefficients. For the path contribution, expand each transported curvature through total degree four. Its third derivative has one curl and its fourth has zero or more differences after two smooth insertions. In either case two arbitrary fine legs contribute at most $\mu^{-2}$, while the two smooth insertions in the fourth derivative contribute $\mu^2$. For the third derivative a smooth insertion and the remaining curl give the same bound. Summation by parts moves a difference off a smooth leg when necessary; its path-length loss is summable against the exponential path bound. Each coefficient is a product of at most two path-row coefficients, or one atom coefficient. The row and atom sums therefore give a fixed polynomial $\mathcal P_{j,r}(A_j^{\rm path})$, uniformly in $\ell$. Adding the geometric insertions proves the displayed bounds for $M_1,M_2$. The inverse identities therefore give dual-to-primal norms $C^2M_1$ and $2C^3M_1^2+C^2M_2$. The inclusion of a primal source in the dual space has norm at most $C\mu^{-2}$; include its fixed factor in $C_j^{\rm ins}$. Multiplication by $\mu^2$ gives precisely $Q_1,Q_2$. Applying the same identities to $\Delta_U+\mu^2I$, with the geometric insertion bounds, gives the stated bounds for $D^rP_\mu$. No derivative of a weight is taken.
+
+Finally, in centered alias representatives,
+\begin{equation*}
+\left|\frac{\mu^2}{\lambda(\theta_z(\xi))+\mu^2}\right|\le C(1+|z|^2)^{-1}\,.
+\end{equation*}
+The complex denominator differs from its real value by a small multiple of~$\omega_z^2$, and the Bloch Fourier matrices have bounded norms. Hence
+\begin{equation*}
+\|P_\mu^3\|_1\le C\dimG\sum_{z\in\Z^4}(1+|z|^2)^{-3}<\infty\,.
+\end{equation*}
+In $P_\mu^9=(P_\mu^3)^3$, two insertions leave one undifferentiated cube, whose trace norm bounds the regulator products; the remaining factors have bounded operator norms.
+\end{proof}
+
+\subsection*{Vertices and the stationary gauge identity}
+
+For a translation-invariant Taylor kernel, momentum order at least~$s$ means that every coefficient of total momentum degree less than~$s$ vanishes at zero. Let $V_r$ be the degree-$r$ Taylor kernel of the fine leading action minus Wilson, for $r=2,3,4$. Use smooth free directions $\mathcal Wv=(v,W_0v,0)$ in the coarse-link, fine-link and centred coarse-frame variables. The joint action in these variables is
+\begin{equation*}
+\mathcal S(v,u,\vartheta)=\mathcal A_f(\mathrm e^u)+\blockpenalty\sum_e\wilsonterm\left((\exp v)_e\left[Q^{\rm pred}(\mathrm e^u)^{h_{\rm fr}}\right]_e^{-1}\right),\qquad
+h_{\rm fr}=\exp\vartheta\,c(\mathrm e^u)^{-1}.
+\end{equation*}
+Here the superscript is the coarse gauge action; $c$ is the centring map defined before Lemma~\ref{lem:B7}. Denote its third and fourth derivatives at zero by $\mathcal V_3,\mathcal V_4$. On a smaller strip $\mathcal S_\eta$, define $C_r$ as the supremum of their absolute scalar Fourier entries on momentum-conserving tuples, with either all legs $\mathcal Wv_i$, $|v_i|\le1$, or one fine leg of block norm at most one. The remaining coarse legs are normalized. This definition includes the predictor and frame derivatives. Put $S_{\rm stat}(v)=S(v,z(v))$.
+
+The extra momentum order of the difference makes the classical matching bounds independent of the input amplitude after enlarging~$\ell$.
 \begin{lemma}[Vertex bounds]\label{lem:B5}
 The kernels $V_2,V_3,V_4$ have momentum orders at least $3,2,1$. For $\ell$ above a threshold depending on the input path data,
 \begin{equation*}
-C_3\le a_3+\ell^{-1}a_3^\prime,\qquad
-C_4\le c_4+\ell^{-1}c_4^\prime\,.
+C_3\le a_3+\ell^{-1}a_3',\qquad C_4\le c_4+\ell^{-1}c_4'\,.
 \end{equation*}
-The constants $a_3,c_4$ depend only on the preceding stage data; $a_3^\prime,c_4^\prime$ may depend on the input path bound. The mixed insertions in the stationary fourth derivative obey the same block-scaled bounds with the inverse constant~$E$ of Lemma~\ref{lem:C4}.
-\end{lemma}
-The proof of Lemma~\ref{lem:B5} is deferred to this section's block-scaled vertex estimates.
-
-Let $Y^{\rm con}$ be the difference between the quadratic one-loop kernel and the kernel with the predictor contact term removed. This term is the second derivative of the predictor multiplied by the first derivative of the penalty. The following orders explain why it does not alter the coupling coefficient.
-
-\begin{lemma}[Stationary Ward estimates]\label{lem:B6}
-Along the free interpolation, the first penalty derivative vanishes to momentum order two, and the mixed fine/frame trace in the contact correction vanishes to order one. The trace with two frame insertions is analytic. Consequently, near zero,
+Here $a_3,c_4$ depend only on preceding stage data; $a_3',c_4'$ may depend on the input path bound. Moreover, in normalized coarse directions,
 \begin{equation*}
-Y^{\rm con}(\xi)=O(|\xi|^3)\,.
+|D^4S_{\rm stat}|\le C_4+3C_3^2E,\qquad E=\max(1,C_j^{\rm ins}).
 \end{equation*}
 \end{lemma}
-The proof of Lemma~\ref{lem:B6} is deferred to this section's stationary gauge identities.
+We first prove the low-momentum cancellations, then count powers under interpolation.
+\begin{proof}
+Use Definition~\ref{def:D23}, its input bounds in Lemmas~\ref{lem:C1}--\ref{lem:C2}, and Lemmas~\ref{lem:B2}--\ref{lem:B3}. The quadratic difference is
+\begin{equation*}
+\widehat V_2(p)=\tfrac12\widehat d_1(-p)^T(\widehat{\mathsf H}_f(p)-I)\widehat d_1(p)\,.
+\end{equation*}
+Its middle factor vanishes at zero and its two curls each supply one momentum, proving order three.
 
-Finally put $\mu=\ell^{-1}$, $\Delta_U=d_U^*d_U$ and $P_\mu=\mu^2(\Delta_U+\mu^2I)^{-1}$, with $d_U$ as in Section~\ref{sec:partII-C}. The inverse and insertions below are evaluated at zero background. Field differentiation inserts the free interpolated coarse field. Write $A_\mu$ for either the completed Hessian without its contact term or the folded auxiliary fine Hessian in that section.
+To include the nonlinear transport terms, expand a connection with connection components of weight one and coordinate derivatives of weight one. A plaquette curvature starts at weight two, with leading term $\partial_a A_b-\partial_b A_a+[A_a,A_b]$. Changing its transport path changes this term only at higher weight. The row part at weight four is therefore its curvature square with coefficient~$c_{\rm dir}\delta_{\gamma\delta}+\sum_\alpha s_{\alpha\gamma}s_{\alpha\delta}=\delta_{\gamma\delta}$ by Lemma~\ref{lem:C2} at the finer input level; $s_{\alpha\gamma}$ are the path-row coefficients of Definition~\ref{def:D22}. Cubic and quartic curvature atoms start at weights six and eight. The Wilson action has the same weight-four term. All contributions of weight at most four consequently cancel in their difference. Polynomial connection jets vary independently. Expand their finite parallel transports through weight four and sum using the exponential path bound. A degree-$r$ field term of weight at least five has at least $5-r$ coordinate derivatives, equivalently that many momentum powers. This proves the three claimed orders, including cubic and quartic terms arising inside a quadratic curvature row.
 
-\begin{lemma}[Scaled inverse insertions]\label{lem:B7}
-There are $u_j\ge1$, $\eta_j>0$ and $C_j^{\rm ins}<\infty$, depending only on the fixed stage bounds, such that, for every odd $\ell\ge u_j$,
-\begin{gather*}
-\sup_{\xi\in\mathcal S_{\eta_j}}\|P_\mu(\xi)^3\|_1\le C_j^{\rm ins},\\
-\|D^rP_\mu\|_{\eta_j}^{\rm bl}
-+\|\mu^2D^r(A_\mu^{-1})\|_{\eta_j}^{\rm bl}\le C_j^{\rm ins}
-\qquad(0\le r\le2)\,.
-\end{gather*}
-Here $\|\cdot\|_1$ is trace norm on a Bloch cell. The block-penalty and frame insertion products in the resolvent difference satisfy the same uniform operator bounds in block units.
+For the quantitative bound, an analytic coefficient $f$ vanishing at zero factors as
+\begin{equation*}
+f(p)=\sum_ap_a\int_0^1\partial_af(tp)\,dt\,.
+\end{equation*}
+Apply this to the vanishing Taylor coefficients, successively, on a smaller strip. Equivalently in position space, write $\mathrm e^{ip\cdot x}-1$ as a sum of coordinate differences; the losses are fixed powers of the true path length. The exponential path norm bounds their sums. Wilson's degrees $r=2,3,4$ have orders $4-r$; the differences have orders $5-r$.
+
+Use the fine-difference bound for $W_0$ of Lemma~\ref{lem:B3}. For one arbitrary fine leg use Cauchy--Schwarz over the block. If it carries $s=0$ or $1$ differences, its $\ell^1$ norm on the block is at most $C\ell^{3-s}\|u\|_{\rm bl}$: there are $\ell^4$ sites, $\|u\|_2\le\mu^{-1}\|u\|_{\rm bl}$, and $\|\nabla_fu\|_2\le C\|u\|_{\rm bl}$. Pair this with the other bounded legs. Summation by parts places at most one difference on the arbitrary leg. This gives the same bound in the dual weighted norm for a mixed vertex.
+
+There are $\ell^4$ sites per block. A term with $r$ fields and $s$ fine differences thus has scale $\ell^{4-r-s}$. Wilson gives scale~$1$ at its leading orders, and the differences give~$\ell^{-1}$. The penalty has a fixed bound: normalized route and offset averages have mass one, straight sums cancel the factor~$\ell^{-1}$ in a smooth input, and implicit differentiation of the centered frame and predictor equations bounds their derivatives through order four. In centroid-normalized frame variables the linear equation is identity minus the constant projection; every remaining term is a normalized average, so these bounds have no factor counting patch sites. These contributions define $a_3,c_4$; the path-dependent sums define $a_3',c_4'$. Choose the stated ratio threshold so that $\ell^{-1}\max(a_3',c_4')\le1$, giving $C_3\le a_3+1$ and $C_4\le c_4+1$ independently of the input path bound.
+
+For the mixed pair in the fourth stationary derivative, use the joint vertices just defined. In the joint coordinates, the exact nonlinear tree gauge change and the stationary chain rule give
+\begin{equation*}
+D^4S_{\rm stat}=\mathcal V_4[\mathcal W^4]
+ -\sum_{\text{three pairings}}\mathcal V_3[\mathcal W,\mathcal W,\cdot]\,
+ \mathsf G\,\mathcal V_3[\cdot,\mathcal W,\mathcal W].
+\end{equation*}
+Here $\mathsf G$ is the inverse after gauge completion. Lemma~\ref{lem:B3} identifies the axial tangent with the tree representative of $W_0$: their difference is an infinitesimal joint gauge direction, including its coarse-frame component. A joint gauge transformation of the axial stationary curve remains stationary and can be chosen with tangent $\mathcal Wv$. Differentiating this curve gives the displayed minimum formula. Each paired functional annihilates the infinitesimal gauge directions by differentiated stationarity and gauge invariance. It may therefore be paired through the completed inverse of Lemma~\ref{lem:B7}. If $b\mathcal R=0$, the shift $x\mapsto x-\mathcal R(F_\mu\mathcal R)^{-1}F_\mu x$ sets $F_\mu x$ to zero and preserves both the uncompleted energy and $b(x)$. Thus its pairing through the completed inverse equals its pairing through the slice inverse. That lemma gives a constant~$E$ independent of~$\ell$ and the input path bound. Duality then bounds the pairing by $C_3^2E$. The three pairings in a symmetric fourth derivative have identical bounds. This proves both estimates and the mixed-insertion assertion.
+\end{proof}
+
+Denote the contact-removed completed Hessian by $A^{\rm rem}(v)$ and its inverse by $\mathsf G_\mu(v)$ on the smooth interpolated field. In joint left coordinates let $p_\lambda(w)$ be the $\lambda$ component of the logarithm of the framed predictor. The index $\lambda$ comprises a coarse link and a colour index; let $C_\lambda(v)$ be its second derivative at that field. Thus the full Hessian differs by $\sum_\lambda d^\lambda(v)C_\lambda(v)$, where $d(v)$ is the penalty discrepancy and
+\begin{equation*}
+d(0)=0,\qquad Dd(0)=-\mathsf K_c.
+\end{equation*}
+To keep the derivatives of the contact insertion as well as those of the inverse, introduce an independent coarse link source $u$ and put
+\begin{equation*}
+\mathsf R(v,u)=\mathsf G_\mu(v)\sum_\lambda u^\lambda C_\lambda(v),\qquad
+\mathsf F(v,u)=\tr\mathsf R(v,u),\qquad
+\mathsf F_2(v,u)=\tr\mathsf R(v,u)^2.
+\end{equation*}
+The traces sum colour and cell coordinates. Their translation-invariant kernels, with internal momentum integrated using $d\theta/(2\pi)^4$, are
+\begin{equation*}
+\mathsf b_{i\lambda}=\partial_{v_i}\partial_{u_\lambda}\mathsf F(0,0),\qquad
+\mathsf c_{\lambda\rho}=\partial_{u_\lambda}\partial_{u_\rho}\mathsf F_2(0,0).
+\end{equation*}
+In particular $\mathsf c_{\lambda\rho}$ includes the two product-rule terms. Put $\mathsf a_i(\xi)=-\mathsf K_c(\xi)e_i$. The contact difference $Y^{\rm con}$ is the Hessian kernel of one half of the full minus contact-removed logarithmic determinant, evaluated on the stationary branch. Use the simple Lie algebra of Definition~\ref{def:D01} and the same stationary and analytic data as above.
+
+The cancellation below is exactly the coefficient needed in Lemma~\ref{lem:C6}.
+\begin{lemma}[Stationary Ward estimates]\label{lem:B6}
+The first penalty derivative has momentum order two; $\mathsf b$ vanishes at zero and $\mathsf c$ is analytic there. For a fixed colour and transverse link index $i=(2,\alpha)$, the tested diagonal entry satisfies
+\begin{equation*}
+Y^{\rm con}_{ii}(te_1)=O(t^3),\qquad \alpha_b(Y^{\rm con})=0.
+\end{equation*}
+Here $\alpha_b$ takes twice the real coefficient of $t^2$ in this entry.
 \end{lemma}
-The proof of Lemma~\ref{lem:B7} is deferred to this section's free inverse and insertion estimates.
+The proof derives the trace contraction before extracting this coefficient.
+\begin{proof}
+Use Definitions~\ref{def:D04}, \ref{def:D23} and Lemmas~\ref{lem:B2}--\ref{lem:B4}, \ref{lem:B7}. The free normal equation gives $\blockpenalty(I-\mathcal Q_mW_0)=\mathsf K_c$. With the chosen discrepancy sign its first derivative is $\mathsf a=-\mathsf K_c$, of order two because $\mathsf K_c=d_1^*\mathsf H_cd_1$.
+
+The determinant difference along the stationary curve is
+\begin{equation*}
+\tfrac12\log\det(I+\mathsf R(v,d(v)))
+=\tfrac12\mathsf F(v,d(v))-\tfrac14\mathsf F_2(v,d(v))+O(|v|^3).
+\end{equation*}
+The first derivatives of each invariant scalar determinant vanish at the flat field: each is an adjoint-invariant linear functional on $\g$, hence zero because $\g=[\g,\g]$. Therefore its Hessian is unchanged on replacing the stationary curve by its tangent, by the second-derivative chain rule. Also $\partial_u\mathsf F(0,0)=0$ by the same argument. The potentially remaining chain-rule term consequently vanishes exactly:
+\begin{equation*}
+\partial_u\mathsf F(0,0)\,D^2d(0)[v,w]=0.
+\end{equation*}
+Since $\mathsf F$ is linear in $u$, its pure $v$ and pure $u$ Hessians vanish at $(0,0)$. The mixed derivative retains both contributions
+\begin{equation*}
+\partial_{v_i}\tr(\mathsf G_\mu C_\lambda)
+=\tr(-\mathsf G_\mu(\partial_{v_i}A^{\rm rem})\mathsf G_\mu C_\lambda
+       +\mathsf G_\mu\partial_{v_i}C_\lambda).
+\end{equation*}
+The two mixed chain-rule terms of $\mathsf F$ and the pure $u$ Hessian of $\mathsf F_2$ now give
+\begin{gather*}
+Y^{\rm con}_{ii}(\xi)=\tfrac12\{W_i(\xi)+W_i(-\xi)-\tfrac12 V_i(\xi)\},\\
+W_i(\xi)=\sum_\lambda\mathsf a_i^\lambda(\xi)\mathsf b_{i\lambda}(\xi),\qquad
+V_i(\xi)=\sum_{\lambda,\rho}\mathsf a_i^\lambda(-\xi)
+\mathsf c_{\lambda\rho}(\xi)\mathsf a_i^\rho(\xi).
+\end{gather*}
+These identities hold first for finite momentum sums. Lemma~\ref{lem:B7} bounds their traces on a common strip, so period limits give the indicated integrals and their derivatives.
+
+Write $y_\lambda(v)=\tr(\mathsf G_\mu(v)C_\lambda(v))$. The stationary gauge identity is $Dy(0)d_0\phi=0$: gauge covariance of the stationary field gives $y((\exp0)^\gamma)=\operatorname{Ad}(\gamma)y(0)=0$, and differentiation gives this identity since $y(0)=0$. Lemma~\ref{lem:B3} identifies the stationary tangent with the smooth one, so it applies to the kernels just defined. In Fourier coordinates it gives
+\begin{equation*}
+\sum_a q_a(-\xi)\mathsf b_{(a,\alpha),\lambda}(\xi)=0
+\end{equation*}
+for each colour $\alpha$ and source index $\lambda$. Restrict to $\xi=te_a$. Only $q_a(-te_a)$ remains, hence the corresponding component is zero for $t\ne0$. Continuity gives $\mathsf b(0)=0$ for every component. Analyticity implies $\mathsf b=O(|\xi|)$ and $\mathsf c=O(1)$. On the tested ray $W_i=O(t^3)$ and $V_i=O(t^4)$. The displayed diagonal identity therefore has zero second Taylor coefficient, proving the assertion.
+\end{proof}
+
+\subsection*{Local quadratic energy}
+
+The Gaussian integral is performed only on part of each field configuration. Its complement must retain a positive energy per selected large-field test. We define this energy as the local sum of the completed squares and their signed error rows, on a consistent selection of tests.
+
+Fix one hypercubic orientation. Set $x=\widehat\beta_m$, $s=t_m$, $t=t_{m+1}$, $B=\lceil(\log x)^2\rceil$, $R_*=\lfloor B/100000\rfloor$, and
+\begin{equation*}
+t_{\rm hi}=\bigl(x+\slope\log\ell\bigr)^{-49/100}.
+\end{equation*}
+The threshold $t_{\rm hi}$ distinguishes very large tests from tests at scale $t$. Here $\widehat\beta_{m+1}=x+\slope\log\ell$. By the formula for $t_m$ in Section~\ref{sec:renormalization} and $\cutoffsize_m=\exp((\log\log\widehat\beta_m)^2)$ in Section~\ref{sec:constants}, $t/s\to1$ and $B^nt/t_{\rm hi}\to0$ as $x\to\infty$, with $\ell$ fixed, for every fixed $n$. The input and output row maps on two-forms are $\mathcal B_f=(\sqrt{c_{{\rm dir},j}}I,\rho_f)^T$ and $\mathcal B_c=(\sqrt{c_{{\rm dir},J_m}}I,\rho_c)^T$. They satisfy $\mathcal B_f^*\mathcal B_f=\mathsf H_f$ and $\mathcal B_c^*\mathcal B_c=\mathsf H_c$. The free square-completion maps are
+\begin{gather*}
+M_f=\mathcal B_f\mathsf H_f^{-1}T\mathcal B_c^*,\qquad
+M_n=\blockpenalty^{-1/2}d_1^*\mathcal B_c^*,\\
+N=\begin{pmatrix}I-\mathcal B_c\mathsf H_c^{-1}\mathcal B_c^*\\
+\mathcal W_3^{1/2}d_2\mathsf H_c^{-1}\mathcal B_c^*\end{pmatrix}.
+\end{gather*}
+Equation~\eqref{eq:B-free-defect} gives $M_f^*M_f+M_n^*M_n+N^*N=I$. For an infinitesimal pair of fine and coarse fields, let $X_f^{\rm lin},X_c^{\rm lin}$ be their curls followed by $\mathcal B_f,\mathcal B_c$, and let $Z^{\rm lin}$ be $\sqrt{\blockpenalty}$ times their linear predictor discrepancy. The free interpolation identities give
+\begin{equation}\label{eq:B-flat-rows}
+M_f^*X_f^{\rm lin}+M_n^*Z^{\rm lin}=X_c^{\rm lin}.
+\end{equation}
+These identities apply to the untruncated flat kernels. We retain them when estimating the errors below.
+
+For the actual rows, transport every kernel coefficient along the fixed coordinate route joining its endpoints, using the replicated coarse configuration $V$. Retain a coefficient only when that route, measured in fine units, has length at most $R_*$. For a fine-to-coarse coefficient also retain its residue and all the endpoints of that route. Denote the resulting maps, respectively truncating $M_f,M_n,N$, by $\Phi,\Phi_n,\mathcal N$. Write $L_{f,R_*}$ and $L_{c,R_*}$ for the path rows of Definition~\ref{def:D23} truncated by their true lengths in fine units. At a plaquette $p$ put
+\begin{gather*}
+X_f(p)=\bigl(\sqrt{c_{{\rm dir},j}}F_p(U),L_{f,R_*}(U,p)\bigr),\quad
+X_c(p)=\bigl(\sqrt{c_{{\rm dir},J_m}}F_p(V),L_{c,R_*}(V,p)\bigr),\\
+v_c(p)=\left(\min(1,s/\chord(V_p))\sqrt{c_{{\rm dir},J_m}}F_p(V),
+\chi_p(V)L_{c,R_*}(V,p)\right),\\
+Z(e)=\sqrt{\blockpenalty}\,F(V_eQ_e^{-1}),\qquad Q=Q^{\rm pred}(U).
+\end{gather*}
+Here $F(g)=P_\g(g-g^{-1})/2$, the ratio in $v_c$ is one at zero chord, and $\chi_p$ is the output health test at the plaquette base. These thinned coordinates are bounded by $Ct$ everywhere. Put
+\begin{equation*}
+K_f(p)=\operatorname{clip}_t(\chord(U_p))+\tfrac12\chi_p(U)|L_{f,R_*}(U,p)|^2,
+\quad K_c(p)=\operatorname{clip}_s(\chord(V_p))+\tfrac12\chi_p(V)|L_{c,R_*}(V,p)|^2.
+\end{equation*}
+The clips use the respective input and output coefficients. The six local rows are
+\begin{align*}
+E_f(p)&=K_f(p)+\tfrac12|\Phi v_c(p)|^2-\langle\Phi v_c(p),X_f(p)\rangle,\\
+E_n(e)&=\tfrac{\blockpenalty}2\chord(V_eQ_e^{-1})^2
+ +\tfrac12|\Phi_nv_c(e)|^2-\langle\Phi_nv_c(e),Z(e)\rangle,\\
+E_c(p)&=\langle v_c(p),X_c(p)\rangle-\tfrac12|v_c(p)|^2-K_c(p),\\
+E_N(q)&=\tfrac12|\mathcal Nv_c(q)|^2,\\
+E_L(p)&=\langle v_c(p),\Phi^*X_f(p)+\Phi_n^*Z(p)-X_c(p)\rangle,\\
+E_D(p)&=\tfrac12\langle v_c(p),(I-\Phi^*\Phi-\Phi_n^*\Phi_n-\mathcal N^*\mathcal N)v_c(p)\rangle.
+\end{align*}
+A doubled plaquette row is summed over its two components. The index $q$ runs over the two-form complement and three-form components of $N$. Summing over every anchor cancels all cross terms and squares, exactly:
+\begin{equation}\label{eq:B-global-rows}
+\sum E_f+\sum E_n+\sum E_c+\sum E_N+\sum(E_L+E_D)
+=\sum K_f+\tfrac{\blockpenalty}2\sum_e\chord(V_eQ_e^{-1})^2-\sum K_c.
+\end{equation}
+The adjoints in this identity are those of the truncated transported matrices, not the flat matrices. The right side is the truncated clipped kinetic energy difference; the higher atoms and omitted tails are separate factors in Section~\ref{sec:partII-D}.
+
+Fix a mismatch multiplier $W>0$, chosen after $\ell$ below. In this subsection $c_{{\rm dir},f}=c_{{\rm dir},j}$ and $c_{{\rm dir},c}=c_{{\rm dir},J_m}$, with the same convention for $c_{\rm lin}$. A selection $A=(A_f,A_n,A_c)$ consists of fine plaquettes, coarse mismatch edges and coarse flagged sites; set $|A|=|A_f|+|A_n|+|A_c|$. Its location includes every projected plaquette corner and both mismatch endpoints. Write $A^{[r]}$ for its radius-$r$ coarse neighbourhood. Consistency means that all tests meeting $A^{[5B]}$ obey
+\begin{align*}
+p\in A_f&\ \Longrightarrow\ \chord(U_p)\ge t/4,&
+ p\notin A_f&\ \Longrightarrow\ \chord(U_p)\le t/2,\\
+e\in A_n&\ \Longrightarrow\ \chord(V_eQ_e^{-1})\ge Wt,&
+ e\notin A_n&\ \Longrightarrow\ \chord(V_eQ_e^{-1})\le2Wt.
+\end{align*}
+In this neighbourhood $A_c$ is the set of coarse sites touched by an output plaquette with $\chord(V_p)>s$, and every chosen frame tag has positive mass. The fine field is in the actual tree slice. An allocation sector fixes these selected tests, their assignment to connected components of their neighbourhoods, a block tree and the frame and predictor tags. Its consistency conditions are exactly the inequalities just displayed and the coarse flag and positive-mass requirements. Define $\mathcal E_A$ by summing the six rows above over anchors in $A^{[2B]}$, projecting fine anchors to coarse sites. This fixes the energy whose lower bound is needed.
+
+Let $D$ select the fine or mismatch tests exceeding $t_{\rm hi}$, and let $H$ be the output anchors within $4B/5$ of $D$. Put $r_p=\chord(U_p)$ or $\chord(V_p)$ according to the lattice and $n_e=\chord(V_eQ_e^{-1})$. All sums below are restricted to the local anchors defining $\mathcal E_A$.
+
+The positive fine and mismatch rows absorb the signed-row losses estimated below. The order of choices in the next lemma leaves its energy constant independent of the later coupling threshold.
+\begin{lemma}[Local large-field energy]\label{lem:B-D1}
+Fix the stage path bounds, free interpolation and penalty. For sufficiently large odd $\ell$, and then sufficiently large $W$, there is $\kappa>0$ such that, for all sufficiently large reference couplings and every period $L_pD_m$ admitted by Section~\ref{sec:constants},
+\begin{equation*}
+\mathcal E_A(U,V)\ge\kappa t_{m+1}^2|A|
+\end{equation*}
+for every rooted block-tree gauge, allocation sector and consistent selection $A$. The coupling threshold and $\kappa$ are uniform in the period and local sector.
+\end{lemma}
+We first bound the fine, mismatch and coarse rows, then the affected and unaffected signed rows, and finally combine their contributions.
+\begin{proof}
+Use the path and cancellation bounds of Definition~\ref{def:D23}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, and the free kernels of Lemma~\ref{lem:B2}, all at the input and output levels already fixed in the descending construction. Exponential row bounds, together with unitary parallel transport, give row and column sums for $\Phi$ bounded by $C\ell^{-2}$ and $C\ell^2$ respectively. Both sums for $\Phi_n,\mathcal N$ are at most $C$. Truncation restricts every coarse displacement to $B/50$. The thinned coordinates give $\|\Phi v_c\|_\infty\le C\ell^{-2}t$ and $\|\Phi_nv_c\|_\infty\le Ct$.
+
+Write $R_f=\sum_{A_f:r_p>t}r_p$ and $R_n=\sum_{A_n}n_e$. For the direct component, $|F(g)|\le\chord(g)$ gives
+\begin{equation*}
+E_f^{\rm dir}(p)\ge\tfrac12(\sqrt{c_{{\rm dir},f}}r_p-|\Phi v_c(p,0)|)^2\quad(r_p\le t).
+\end{equation*}
+Choose $\ell$ so $|\Phi v_c|\le\epsilon_\ell t$, with $\epsilon_\ell\le\sqrt{c_{{\rm dir},f}}/8$. Each selected $t/4\le r_p\le t$ contributes $c_{{\rm dir},f}t^2/128$. For $r_p>t$, the linear clip and $\epsilon_\ell\sqrt{c_{{\rm dir},f}}\le c_{{\rm lin},f}/4$ leave $3c_{{\rm lin},f}tr_p/4$.
+
+The second component is a square when its health test holds. When it fails it has a cross term of either sign, which must be summed. If a row based at $p$ is dropped, some plaquette $q$ obeys $r_q>t\exp(\operatorname{dist}(p,q)/R_j^{\rm rel})$. For a fixed $q$, the number of possible $p$ is at most $C_{R_j^{\rm rel}}(r_q/t)$: its radius is $R_j^{\rm rel}\log(r_q/t)$, and $(1+R_j^{\rm rel}\log y)^4\le C_{R_j^{\rm rel}}y$ for $y\ge1$. Since $r_q\le2$, each witness is within $R_j^{\rm rel}\log(2/t)\le B/50$ for large $x$. It therefore lies in the neighbourhood where consistency applies and belongs to $A_f$. Split a path row into endpoints with chord at most $t$ and those above $t$. The row bound controls the first part by $Ct$ times the number of dropped rows; the column bound controls the second by $CR_f$. Hence
+\begin{equation*}
+\sum_{\text{dropped }p}|L_{f,R_*}(U,p)|\le C(C_{R_j^{\rm rel}}+1)R_f.
+\end{equation*}
+Multiplication by $|\Phi v_c|\le\epsilon_\ell t$ loses at most $c_{{\rm lin},f}tR_f/4$ after increasing $\ell$. Therefore, for $d=c_{{\rm dir},f}/128$,
+\begin{equation*}
+\sum E_f\ge\tfrac12c_{{\rm lin},f}tR_f+d t^2|A_f\setminus\{r_p>t\}|.
+\end{equation*}
+
+For a selected mismatch $n_e\ge Wt$, $|\Phi_nv_c|\le Ct$. Choose $W$ so this is at most $\sqrt{\blockpenalty}\,n_e/2$. The same square inequality gives
+\begin{equation*}
+\sum E_n\ge\tfrac{\blockpenalty}{8}\sum_{A_n}n_e^2.
+\end{equation*}
+For $E_c$ the path-row component cancels exactly, including its health test. Put $\alpha_p=\min(1,s/r_p)$. Its direct component is
+\begin{equation*}
+E_c(p)=c_{{\rm dir},c}(\alpha_p-\alpha_p^2/2)|F(V_p)|^2-\operatorname{clip}_s(r_p).
+\end{equation*}
+The nearest-point Taylor expansion gives $|F(g)|^2\ge\chord(g)^2-C\chord(g)^4$ for small chord: the deficit is the squared normal displacement of $g-1$, whose normal part is $O(\chord(g)^2)$. Fix $\delta$ small enough that also $|F(g)|^2\ge3\chord(g)^2/4$ below $\delta$. Since $c_{{\rm dir},c}>16c_{{\rm lin},c}$, the three ranges yield
+\begin{equation*}
+E_c(p)\ge\begin{cases}-C s^4,&r_p\le s,\\
+c_{{\rm dir},c}sr_p/4,&s<r_p\le\delta,\\
+-c_{{\rm lin},c}sr_p,&r_p>\delta.
+\end{cases}
+\end{equation*}
+The last range uses only nonnegativity of the first term.
+
+Fix
+\begin{equation*}
+0<a\le\min(c_{{\rm lin},f}/8,d,\blockpenalty/32,c_{{\rm dir},c}/64).
+\end{equation*}
+Set $\epsilon=a/4$. 
+
+Here is the comparison for large output plaquettes. Let $\mathcal P_y(U)=\sum_qm_y(q)\chord(U_q)$ be the fine plaquette sum in the lifted macro-patch centred at $\ell y$, with $m_y(q)$ its actual multiplicity there. The macro radius is $(j+7)\ell$, so $\sum_y m_y(q)\le K_j$ independently of $\ell$ and the period. On its axial frame, denote a straight connector by $Y_z$ and its two root adjustments by $p_0,p_1$. The averaging weight satisfies $\ell^4w_z^{\rm av}\le1$. Telescoping each length-$\ell$ connector and the two end routes, then summing their crossings, gives
+\begin{equation*}
+\ell^4\sum_z w_z^{\rm av}\chord(p_0^{-1}Y_zp_1)
+\le C_j\ell^2\mathcal P_y(U).
+\end{equation*}
+For the straight segment, a fine edge occurs in at most $\ell$ translated segments, and the eligible axial link sum is at most $C_j\ell\mathcal P_y(U)$. The two end-frame sums obey the same $C_j\ell^2\mathcal P_y(U)$ bound: write their coordinate routes, count each link at most $C_j\ell$ times after the normalized transverse average, and use the nearest-point comparison for the minimizing frame. The axial alternatives use their defining link-sum bound instead. The predictor branch comparison bounds its adjusted chord by $C_{\rm pred}$ times this weighted chord sum, on either branch. Around the four sides of an output plaquette the root adjustments cancel. Comparing its four links with $Q$ gives
+\begin{equation*}
+\chord(V_p)\le\sum_{e\in\partial p}n_e+C_j\ell^{-2}\mathcal P_y(U).
+\end{equation*}
+This proves both the inverse-square factor and its summable multiplicity. In an eligible axial frame a fine link differs from its replicated coarse link by at most $C$ times the macro-patch plaquette sum, plus the mismatch on a boundary edge. Compare the four sides of a coarse plaquette, average the straight paths, and use the predictor equation. Each fine plaquette occurs with total coefficient at most $C\ell^{-2}$; mismatch chords enter linearly. Split each fine chord into its part at most $t$ and its selected excess, and each mismatch into its part at most $2Wt$ and its selected part. The resulting bound has the form
+\begin{equation*}
+r_p\le C_{j,\ell,W}t+H_p,\qquad
+\sum_pH_p\le C\left(\ell^{-2}\sum_{A_f:r_p>t}r_p+\sum_{A_n}n_e\right).
+\end{equation*}
+The excess constant depends on the fixed stage, predictor and penalty bounds and is fixed before $\ell,W$; only the bounded-field term may depend on them. This follows by summing the actual route multiplicities before enlarging a macro-patch. Applying the same bound to $\Phi^*X_f$ and $\Phi_n^*Z$, with the column estimates above, bounds their sums on $H$ by $C$ times that excess sum plus $C_{j,\ell,W}t|H|$. Since $|v_c|\le Ct$, these estimates give
+\begin{equation*}
+\sum_H(E_L+E_D)\ge-Ct(\ell^{-2}R_f+R_n)-C_{j,\ell,W}t^2|H|.
+\end{equation*}
+For $E_D$, expand its four operator terms. The bounds on $v_c,\Phi v_c,\Phi_nv_c,\mathcal Nv_c$, together with both row and column sums of the three maps, bound each term by $Ct^2$ per anchor. The constants also depend on the predictor and penalty bounds.
+
+Every output plaquette with $r_p>\delta$ lies in $H$ for large $x$: outside $H$ the macro-patch comparison has no fine or mismatch test above $t_{\rm hi}$, so $r_p\le C_{j,\ell,W}t_{\rm hi}<\delta$. On $H$ the same comparison and $s\le2t$ give
+\begin{equation*}
+c_{{\rm lin},c}s\sum_{r_p>\delta}r_p
+\le C_{j,\ell,W}t^2|H|+Ct(\ell^{-2}R_f+R_n).
+\end{equation*}
+Add this inequality to the previous lower bound. There is a geometric constant $K$, fixed before the coupling threshold, with $|H|\le KB^4|D|$ and at most $KB^4|A|$ local output anchors. Increasing the constants defines $Z_{\rm aff}=C_{j,\ell,W}K$ and gives
+\begin{equation*}
+\sum_H(E_L+E_D)\ge c_{{\rm lin},c}s\sum_{r_p>\delta}r_p
+-Ct(\ell^{-2}R_f+R_n)-Z_{\rm aff}t^2B^4|D|.
+\end{equation*}
+This is the positive term that cancels the third coarse-plaquette range.
+
+For an anchor outside $H$, no fine chord or mismatch above $t_{\rm hi}$ occurs in the surrounding macro-patches. The preceding plaquette comparison gives coarse plaquette chords at most $C_{j,\ell,W}t_{\rm hi}$ on this region. Choose an axial gauge in a radius-$O(B)$ coarse cube. Lemma~\ref{lem:B1} bounds its link chords by $C B$ times the sum of its $O(B^4)$ plaquette chords, hence by $C_{j,\ell,W}B^5t_{\rm hi}$. Its block-constant extension acts on the fine field. Comparing a fine link with its replicated coarse link uses the local block-tree route; its fine plaquette sum is $O_{j,\ell}(t_{\rm hi})$ and its boundary mismatch is at most $t_{\rm hi}$. Both fields are consequently small in this common gauge, with the convenient bound
+\begin{equation*}
+\delta_{\rm loc}=C_{j,\ell,W}B^{10}t_{\rm hi}
+\end{equation*}
+through distance $2B/5$. In this region compare each transported kernel with its flat uncut kernel. A path of length $n$ has transport error at most $Cn\delta_{\rm loc}$, by telescoping its product. Let $\tau_0>0$ be a common exponential decay rate of the fixed-stage kernels. Their tails are at most $Ce^{-\tau_0 R_*}$. Each curvature or predictor differs from its linearization by $C\delta_{\rm loc}^2$. With $\epsilon_{\rm loc}=(1+R_*)\delta_{\rm loc}+\mathrm e^{-\tau_0R_*}$, subtract~\eqref{eq:B-flat-rows} and $M_f^*M_f+M_n^*M_n+N^*N=I$ before applying the triangle inequality. This gives
+\begin{equation*}
+\|\Phi^*X_f+\Phi_n^*Z-X_c\|\le C\delta_{\rm loc}\epsilon_{\rm loc},\qquad
+\|(I-\Phi^*\Phi-\Phi_n^*\Phi_n-\mathcal N^*\mathcal N)v_c\|\le Ct\epsilon_{\rm loc}.
+\end{equation*}
+The assertion is local: extend the small logarithms by zero off the neighbourhood; the cut rows do not change there. Their range fits inside $2B/5$ for sufficiently large $x$. Thus each signed row is bounded below by $-C(t\delta_{\rm loc}+t^2)\epsilon_{\rm loc}$. Since $B^nt_{\rm hi}^2/t\to0$ and $B^ne^{-\tau_0 R_*}/t\to0$ for every fixed $n$, their total is at least $-\epsilon t^2|A|$. 
+
+The fine and mismatch bounds leave $at^2$ per selected fine or mismatch test, $att_{\rm hi}$ per test in $D$, and still retain the losses $Ct(\ell^{-2}R_f+R_n)$ from the signed rows. First increase $\ell$ to handle the fine loss, then $W$ to handle the mismatch loss. Coarse flags can be assigned to incident output plaquettes with chord above $s$, with at most four flags per plaquette. Plaquettes above $\delta$ number at most $K|D|$ by the macro-patch comparison; all local output anchors number at most $KB^4|A|$. Using $t\le2s$, the middle range above leaves $4at^2$ per remaining such plaquette and so covers every other coarse flag.
+
+The large output plaquette loss cancels against the positive term in the affected-row estimate; $E_N\ge0$. The residual losses are at most $(4aK+Z_{\rm aff}B^4)t^2|D|+Cs^4KB^4|A|+at^2|A|/4$. Increase the coupling threshold, with $\ell,W,a$ fixed, until
+\begin{equation*}
+(4aK+Z_{\rm aff}B^4)t^2\le att_{\rm hi},\qquad Cs^4KB^4\le at^2/4.
+\end{equation*}
+The limits stated before the row construction justify both choices. At least $at^2|A|/2$ remains. Take $\kappa=a/2$. Every multiplicity used a fixed-radius local count or a row or column sum; none counts the period. This proves the asserted uniformity and the stated order of choices.
+\end{proof}
+
+\subsection*{Sector covariances}
+
+We now specify the Gaussian law for simultaneous local integration. Fix the allocation, its actual block trees, the selected tests, all tags, and the frozen fine links $Y$. Active coordinates are the remaining free-edge logarithms in the complement of the selected radius-$10B$ neighbourhoods. The copied coarse field is the replica defined before Lemma~\ref{lem:B3}. Linearize the retained fine and mismatch square rows at this field, applying their actual cutoffs and stencils. Their stacked affine map is $a\mapsto\mathsf D a+b_Y$, so their quadratic energy is
+\begin{equation*}
+Q_Y(a)=\tfrac12|\mathsf D a+b_Y|^2,\qquad \mathsf A=\mathsf D^*\mathsf D,\qquad \mathsf b=\mathsf D^*b_Y.
+\end{equation*}
+The stack includes the hypercubic average with its square-root normalization. A stencil for a row anchored at $z$ contains every fine edge with projected distance at most $R_*+5+r_{\rm pred}$ from $z$; $r_{\rm pred}$ is the maximum coarse distance read by a patch predictor. Thus no stencil is chosen by testing whether its coefficient vanishes.
+
+For an edge-coordinate $i$ write $E_i$ for the two endpoints projected to the coarse lattice. The change of sector and the differentiated local integral use, respectively, the symmetric windows
+\begin{align*}
+\Omega_i^{\rm sec}&=\{j:\max_{u\in E_i,v\in E_j}\operatorname{dist}(u,v)\le B/20\},\\
+\Omega_i^{\rm loc}&=\{j:\min_{u\in E_i,v\in E_j}\operatorname{dist}(u,v)\le B\}.
+\end{align*}
+Each window is restricted to the coordinates of its sector; unused coordinates may be completed by identity modes. For either prescription put
+\begin{equation}\label{eq:B-window}
+P_{ji}=\mathbf1_{j\in\Omega_i}(\mathsf A|_{\Omega_i}^{-1})_{ji},\qquad
+\Gamma=\tfrac12(P+P^*),\qquad m_Y=-P^*\mathsf b.
+\end{equation}
+These are compressed inverse columns, symmetrized for the covariance. Both windows contain a radius-$B/60$ ball for large $B$, since the two projected endpoints are at distance at most one. The following argument applies to both prescriptions, with their own retained affine rows and mean. The Schur norm of a kernel is the maximum of its absolute row and column sums.
+
+Fix a coarse root $o$ for the derivative directions. Here the coarse flag tests remain the correct ones at the base field; derivatives hold their selected index sets, $Y$ and tags fixed, in coarse directions of size at most $s(1+\operatorname{dist}(o,e))^q$; $\upsilon_i=(1+\operatorname{dist}(o,i))^{qk}$. The proof gives the Schur bound needed below as well.
+
+The following auxiliary estimate is needed to justify differentiating the common Gaussian law.
+\begin{lemma}[Window covariance bounds]\label{lem:B-windows}
+For each fixed ordered derivative order $k$ and direction power $q$, the actual sector matrices satisfy
+\begin{equation*}
+\mathsf A>0,\quad \Gamma>0,\quad
+|D^r\mathsf A_{ij}|\le C_ke^{-c\operatorname{dist}(i,j)}\upsilon_i^r,\quad
+|D^r(\mathsf A\Gamma-I)_{ij}|\le C_ke^{-cB}\mathrm e^{-c\operatorname{dist}(i,j)}\upsilon_i^r,
+\end{equation*}
+for $r\le k$. Moreover $|D^rm_Y(i)|\le C_kt\upsilon_i^r$ and $|D^r[g^{-1}(\mathsf Am_Y+\mathsf b)]_i|\le C_ke^{-cB}\upsilon_i^r$, where $g=\beta^{-1/2}$. Constants are uniform in the period and sector for sufficiently large $x$, with $0<\beta\le2\widehat\beta_{m+1}$ and correct coarse flags.
+\end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D04}, \ref{def:D23}, the axial estimate in Lemma~\ref{lem:B3}, and the square rows above. The linearized square rows and an eligible predictor control a fine link by those row values in a fixed macro-patch plus $C\delta_x$ times the surrounding fine increments, where $\delta_x=C_{j,\ell}s$ tends to zero. Summing squares, using the bounded number of macro-patches meeting an edge, gives
+\begin{equation*}
+\|a\|_2^2\le C_{j,\ell}\|\mathsf Da\|_2^2+C_{j,\ell}\delta_x^2\|a\|_2^2.
+\end{equation*}
+For large $x$ the last coefficient is at most $1/2$, proving $\mathsf A\ge cI$. All-frozen sectors have zero-dimensional active space and the assertion is vacuous there. Adding identity coordinates for inactive links preserves this lower bound.
+
+Exponential path coefficients bound the weighted row and column sums of $\mathsf D$. Products give the same Schur bound for $\mathsf A$. More explicitly, for sufficiently small fixed $\theta>0$, multiply coordinates by $\mathrm e^{\theta\operatorname{dist}(i,\cdot)}$ on the left and its inverse on the right. The resulting matrix differs from $\mathsf A$ by at most $C\theta$ in operator norm: $|\mathrm e^{\theta d}-1|\le\theta d \mathrm e^{\theta d}$ is summable against the exponential coefficient bound. Choose $C\theta<c/2$. The inverse Neumann series now gives exponential row and column bounds for $\mathsf A^{-1}$ and every principal compression, with constants independent of the number of coordinates.
+
+A compressed inverse column solves $\mathsf APe_i=e_i$ inside its window. Outside that window, its residual is a sum of products whose combined length crosses the boundary. Every window contains a radius-$B/60$ ball and there are only $C_{j,\ell}$ coordinates per coarse site. The exponential Schur bounds therefore give
+\begin{equation*}
+\|P-\mathsf A^{-1}\|_{\rm Schur}\le Ce^{-cB},\qquad
+\|\Gamma-\mathsf A^{-1}\|_{\rm Schur}\le Ce^{-cB}.
+\end{equation*}
+For sufficiently large $B$ this makes $\Gamma$ positive, since $\mathsf A^{-1}\ge\|\mathsf A\|^{-1}I$. Its row and column sums are bounded by a fixed constant. The same estimate gives $\mathsf A\Gamma-I=O(\mathrm e^{-cB})$.
+
+Differentiate $\mathsf A_\Omega^{-1}$ by $D(\mathsf A_\Omega^{-1})=-\mathsf A_\Omega^{-1}(D\mathsf A_\Omega)\mathsf A_\Omega^{-1}$ and iterate through order $k$. The index sets $\Omega$ stay fixed. Each derivative of a path coefficient is bounded by a fixed power of the path length and by the direction weight; $1+\operatorname{dist}(o,j)\le(1+\operatorname{dist}(o,i))(1+\operatorname{dist}(i,j))$ moves it to $\upsilon_i^r$. A smaller exponential rate sums all remaining powers. In every differentiated residual, at least one chain still crosses the window boundary. This proves the displayed derivative bounds for $\mathsf A$ and $\mathsf A\Gamma-I$.
+
+The affine source is formed from the same retained rows and from a bounded smooth extension of the frozen logarithms. Its derivatives are $O(t)$ with the same spatial weights. Multiplication by $P^*$ proves the mean bound. Subtracting the exact inverse solution gives $\mathsf Am_Y+\mathsf b=(I-\mathsf AP^*)\mathsf b$, whose derivatives are $O(te^{-cB})$. Finally $g^{-1}\le C\widehat\beta_{m+1}^{1/2}$ and $B=\lceil(\log x)^2\rceil$; this fixed power is absorbed by decreasing $c$. The estimates refer to the actual $\mathsf A,\Gamma,m_Y$ of~\eqref{eq:B-window} throughout.
+\end{proof}
+
+\subsection*{One differentiated local integral}
+
+We state the local estimate for the finite products used in the expansion. In a fixed allocation sector, a selected large-field test is called a seed. Join seeds when their fixed enlarged neighbourhoods intersect; their connected components are denoted $A_\eta$. Write $A(M)$ for the union of the fine-plaquette, mismatch and coarse-site selections belonging to the components chosen in a product $M$. Fix the support enlargement $h_{\rm loc}$ once for the local factors. Compatibility means that the radius-$h_{\rm loc}B$ neighbourhoods of the distinct chosen components are disjoint.
+
+A factor has a complete read support $S_i$ containing the projected endpoints of every link it uses, every path and health test in its formula, every tag and frozen link, and the entire window $\Omega_a^{\rm loc}$ for each Gaussian coordinate $a$ it reads. Thus a change outside $S_i$ leaves its formula and its Gaussian marginal unchanged. A finite product $M$ is called a molecule when the intersection graph of its supports is connected. Choose $o$ in their union. Its size $s_M$ is the sum of the numbers of radius-$B$ blocks covering these supports, including retained path lengths in the same units.
+
+For an old forced activity retain its support $Y_i$ and inventory $\mathcal I_i$ from Section~\ref{sec:renormalization}. The admitted products satisfy
+\begin{gather*}
+Y_i\cap Y_{i'}=\varnothing\quad(i\ne i'),\qquad
+\mathcal I_i\subset\bigcup_{p\in A_f(M)}\operatorname{corners}(p),\\
+\flags_m(V)\cap\bigcup_{i\in M}S_i=\varnothing.
+\end{gather*}
+They also satisfy the component compatibility just specified. These conditions retain exactly the incidence and separation used in local integration.
+
+Here are the factors and their envelopes. The retained square corrections are the exponential differences between the exact fine or mismatch rows and their affine squares $|\mathsf Da+b_Y|^2/2$. The other smooth factors are inherited regular activities, chart densities, and determinant and Gaussian-density corrections. Old forced activities are bounded by their measurable supremum envelopes. For these factors let $a_i$ include their absolute coefficient bound, the selected seed or path suppression, and the Gaussian exponential bound described below.
+
+For the chart cutoffs choose a smooth $\chi:[0,\infty)\to[0,1]$ equal to one on $[0,1]$ and zero on $[2,\infty)$. On an active logarithmic coordinate put $\chi_{a_*}(u_e)=\chi(|u_e|/(a_*t))$. The fixed mean bound is $|m_Y(e)|\le c_*t$, and choose $a_*>c_*+1$. Fix a logarithm radius $r_{\log}>0$ and take $x$ large enough that $4a_*t<r_{\log}/2$. The smaller chart is $|u_e|<a_*t$; the broader cutoff equals one for $|u_e|\le2a_*t$. A protected link is an active link accompanied by the broader cutoff $\chi_{2a_*}$ whenever an old measurable factor reads it. Nonactive free links are the frozen links $Y$; their physical values are held fixed. The nesting $\chi_{a_*}\ne0\Rightarrow\chi_{2a_*}=1$ is what allows the physical-link change below on all derivative supports.
+
+Warning factors are the departures from one of the fine-plaquette and mismatch cutoffs, the frame and predictor tag likelihoods, the inventory tests, or the active chart cutoffs. The addresses are fine plaquettes for fine cutoffs, coarse edges for mismatches and predictor tags, coarse sites for frame tags, fine sites for inventory tests, and fine edges for chart cutoffs. A site's location is its coarse projection; an edge or plaquette is located at its projected initial vertex. Near a compulsory component the corresponding departure is included in its component factor. Away from those components, each remaining warning and all its derivatives are supported on
+\begin{equation*}
+E_w=\{z:\exists i,\ \operatorname{dist}(i,\operatorname{loc}(w))\le2B,
+\quad |z_i|\ge\xi t/(2g)\}.
+\end{equation*}
+Indeed, if all these coordinates are below that threshold, then $|m_Y(e)+gz_e|\le(c_*+\xi/2)t<a_*t$ after reducing $\xi$, so both chart cutoffs equal one. The local predictor bound then makes the fine chord less than $t/4$ and the mismatch less than $Wt$, and both tag likelihoods and the inventory test equal one. The strict margin persists on derivative supports. Choose the fixed $\xi>0$ small enough for these finitely many local implications. Let $\mathcal J(M)$ be the set of distinct selected warning addresses and $E_{\mathcal J(M)}=\bigcap_{w\in\mathcal J(M)}E_w$ their simultaneous event. Their amplitudes are bounded by the fixed stage-and-ratio constant
+\begin{equation*}
+M_w=2+|\mathbb B_R\times S_4|+|\mathbb B_R|.
+\end{equation*}
+This includes the likelihood relative to uniform tags. With $\varepsilon_w=\widehat\beta_{m+1}^{-\tau_w}$ for a fixed $\tau_w>0$, the weights used below are
+\begin{equation*}
+f_i=a_i\quad(i\text{ nonwarning}),\qquad
+f_w=M_w\varepsilon_w\quad(w\in\mathcal J(M)).
+\end{equation*}
+Each distinct address contributes once.
+
+Assume $\widehat\beta_{m+1}/2\le\beta\le2\widehat\beta_{m+1}$. Use the local prescription $\Omega^{\rm loc}$ in~\eqref{eq:B-window}, throughout this local integral. Conditional on the fixed sector and tags the reference law is
+\begin{equation*}
+d\nu=dH_F(Y)\,d\gamma_\Gamma(z).
+\end{equation*}
+Here $H_F$ is product Haar measure on the frozen tree-slice links and $\gamma_\Gamma$ is the centered Gaussian. Reference tags are independent uniform tags; their actual likelihoods are included among the factors. All estimates below are uniform in those tags. A finite set of Gaussian reads $I$ has marginal covariance $\Gamma_I=\Gamma[I,I]$.
+
+For a finite selection write its product as
+\begin{equation*}
+F_M(V,Y,z)=\prod_{i\in M\setminus\mathcal J(M)}F_i(V,Y,z)
+             \prod_{w\in\mathcal J(M)}W_w(V,Y,z).
+\end{equation*}
+Here $F_i$ are the nonwarning factors just specified and $W_w$ the warning factors. The transported product will use one change of Gaussian coordinates on their common set of reads.
+
+To differentiate while holding physical fine links fixed, fix a base coarse field $V_0$ and write $u=m_Y(V_0)+gz$. For a nearby $V$, set
+\begin{equation*}
+u_V(e)=\log\left(\exp(u(e))(\operatorname{rep}V_0)_e(\operatorname{rep}V)_e^{-1}\right),\qquad
+z_V=g^{-1}(u_V-m_Y(V)).
+\end{equation*}
+Use a fixed smooth extension of this formula outside $|u(e)|<r_{\log}/2$, equal to the identity plus a bounded correction there. Its derivative is invertible for $V$ sufficiently near $V_0$, uniformly over the chart argument; the extension is used only with the stated protected cutoff. On active protected links,
+\begin{equation*}
+\exp(u_V(e))(\operatorname{rep}V)_e=\exp(u(e))(\operatorname{rep}V_0)_e.
+\end{equation*}
+Every old measurable activity evaluated on those links is therefore constant under this differentiation. It is bounded by its supremum majorant and no field derivative is applied to it.
+
+The density of the changed marginal, relative to the base one on the union $I$ of all reads, is
+\begin{equation*}
+\mathcal R_I(V,z)=|\det D_z z_{V,I}|\,
+\frac{(\det\Gamma_I(V))^{-1/2}\exp[-\tfrac12z_{V,I}^T\Gamma_I(V)^{-1}z_{V,I}]}
+{(\det\Gamma_I(V_0))^{-1/2}\exp[-\tfrac12z_I^T\Gamma_I(V_0)^{-1}z_I]}.
+\end{equation*}
+Define the transported integrand by
+\begin{equation*}
+\widetilde F_M(V,Y,z)=\mathcal R_I(V,z)F_M(V,Y,z_V).
+\end{equation*}
+The next lemma bounds its ordered derivatives at $V_0$ under the same base law, including products containing old measurable forced activities. It is the second local input to Section~\ref{sec:partII-D}. Its bounds may depend on the fixed mismatch multiplier~$W$ and energy constant~$\kappa$ of Lemma~\ref{lem:B-D1}.
+\begin{samepage}
+\begin{lemma}[Simultaneous local integration]\label{lem:B-D2}
+For odd $\ell$ above a threshold depending on the stage data, every fixed derivative order $k$ and spatial direction power $q$, and every admitted molecule $M$, the transported sector integrand has one integrable majorant $g_M$ through order $k$, with
+\begin{equation*}
+\int g_M\,d\nu\le P_{j,\ell,k,q}(x)(1+s_M)^{d_{j,\ell,k,q}}\prod_{i\in M}f_i.
+\end{equation*}
+The function $P_{j,\ell,k,q}$ has scale rate zero. Simultaneous events at $r$ distinct warning addresses have probability at most $\varepsilon_w^{2r}$. Disjoint complete read supports factorize, including their Haar and tag coordinates.
+\end{lemma}
+\end{samepage}
+Scale rate zero means $P_{j,\ell,k,q}(x)\le C_\epsilon\widehat\beta_{m+1}^{\epsilon}$ for every $\epsilon>0$ once $x$ is large. Directions and sector parameters have the restrictions of Lemma~\ref{lem:B-windows}.
+\begin{proof}
+Use Definitions~\ref{def:D04}, \ref{def:D23}, Lemmas~\ref{lem:B1}, \ref{lem:B4}, \ref{lem:B-D1}, and \ref{lem:B-windows}. First retain the exact affine Gaussian substitution. For any chart-supported $F_Y$,
+\begin{align*}
+\int \mathrm e^{-\beta Q_Y(a)}F_Y(a)\,da
+={}&(2\pi g^2)^{n/2}(\det\Gamma)^{1/2}\mathrm e^{-\beta Q_Y(m_Y)}\\
+&\times\int F_Y(m_Y+gz)
+ \exp\left\{\langle\eta_Y,z\rangle+\tfrac12\langle z,(\Gamma^{-1}-\mathsf A)z\rangle\right\}\,d\gamma_\Gamma(z),\\
+\eta_Y={}&-g^{-1}(\mathsf Am_Y+\mathsf b).
+\end{align*}
+Here $n$ counts active real coordinates; the Haar density and chart cutoffs are included in $F_Y$. Expansion of $Q_Y(m_Y+gz)$ proves the identity, including its determinant and residual linear term. The identity holds for either window prescription. The local expansion in Section~\ref{sec:partII-D} uses $\Omega^{\rm loc}$.
+
+For the common change of coordinates defined above, the first logarithmic derivative of the Gaussian density is
+\begin{equation*}
+-\tfrac12\tr(\Gamma_I^{-1}\dot \Gamma_I)
++\tfrac12z_V^T\Gamma_I^{-1}\dot \Gamma_I\Gamma_I^{-1}z_V
+-z_V^T\Gamma_I^{-1}\dot z_V.
+\end{equation*}
+Add the logarithmic Jacobian derivative. Repeated differentiation bounds every score through order $k$ by a polynomial in the absolute values of the marginal Gaussian coordinates, with coefficients controlled by Lemma~\ref{lem:B-windows} and the fixed smooth chart extension. The number of placements is a fixed polynomial in $1+s_M$, since $k$ is fixed and $|I|\le C_{j,\ell}B^4s_M$. Connectivity and the chosen root bound all distances from $o$ by $C_{j,\ell}B(1+s_M)$, so the spatial direction weights give another fixed polynomial. This explicitly includes covariance changes before any factors are multiplied.
+
+The normalized coarse directions have size $O(s)$ with their stated spatial weights. On a fixed chart, derivatives of its multiplication, logarithm and bounded extension are bounded. The mean derivatives are $O(t)$, while $s/t$ stays bounded. In $z_V$ the additional normalization is $g^{-1}$. Thus the score coefficients are bounded by a fixed power of $g^{-1}s$, $B$ and $1+s_M$. Since
+\begin{equation*}
+g^{-1}s\le C\exp\{(\log\log\widehat\beta_{m+1})^2\},
+\end{equation*}
+all fixed powers have scale rate zero. The small inverse and stationarity residuals in Lemma~\ref{lem:B-windows} have the same property after this normalization. The chart-supported square corrections have deterministic envelopes: on their support all logarithms are $O(t)$, the affine remainder is $O(t^2)$, and $|\tfrac12|r+e|^2-\tfrac12|r|^2|\le |r||e|+|e|^2/2$ gives an energy correction $O(\beta t^3)$. The exponentially summable path coefficients bound the same quantities with fixed path-length powers after differentiation. These bounds are included in $a_i$.
+
+The unbounded exponentials come from the residual Gaussian density and its local covariance comparisons. Write their upper exponents as $\ell_i\cdot z+z^TK_i z/2$, with $K_i\ge0$. At the base field the Gaussian likelihood is one; its derivatives are the polynomial scores already estimated. Its exponent tends to zero with $V-V_0$, so on a sufficiently small neighbourhood its weighted row sums are at most $\delta_B=C_{j,k}B^d \mathrm e^{-cB}$. The residual Gaussian density has this bound by Lemma~\ref{lem:B-windows}. The resolvent identity for each compressed inverse gives $C\delta_B$ for its local quadratic corrections. Each factor's coefficients decay exponentially from its own address, and each address has bounded multiplicity. Thus the sum at a coordinate is bounded by $C\delta_B\sum_y\mathrm e^{-c\operatorname{dist}(y,a)}\le C'\delta_B$, uniformly in the period and number of factors. Here $y$ ranges over address locations and $a$ is the coordinate location. In the linear terms, weighted Cauchy--Schwarz at each coordinate gives
+\begin{equation*}
+\left|\Gamma^{1/2}\sum_i\ell_i\right|^2
+ \le C\sum_i\Lambda_i,\qquad
+\left\|\Gamma^{1/2}\sum_iK_i\Gamma^{1/2}\right\|\le C\delta_B.
+\end{equation*}
+To specify the linear bound, let $w_{ia}$ be the sum of the absolute path weights contributing to coordinate $a$ of $\ell_i$; bounded endpoint multiplicity gives $\sup_a\sum_i w_{ia}\le C$. Put
+\begin{equation*}
+\Lambda_i=\sum_a\frac{|\ell_i(a)|^2}{w_{ia}}+\tr(\Gamma^{1/2}K_i\Gamma^{1/2}),
+\end{equation*}
+with zero summand if both numerator and denominator vanish. This quantity assigns the common linear exponential bound to the individual factors. To see the first bound, use $|\sum_r x_r|^2\le(\sum_r w_r)\sum_r|x_r|^2/w_r$ with the absolute path weights $w_r$; their sums are the preceding bounded row sums. The Schur bound for $\Gamma$ completes the estimate. In particular, this bounds $|\Gamma^{1/2}\ell_0|^2$ with $\ell_0=\sum_i\ell_i$, including all terms $\ell_i^T\Gamma\ell_{i'}$ with $i\ne i'$. Include $\exp(C\Lambda_i)$ in $a_i$. Put $K=\sum_iK_i$. Since $0\le K_i\le K$, each $\|\Gamma^{1/2}K_i\Gamma^{1/2}\|$ is at most $\|\Gamma^{1/2}K\Gamma^{1/2}\|<1/8$ for large $B$, also after the fixed enlargement needed for two moments.
+Diagonalization and square completion, with $-\log(1-u)\le2u$ for $0\le u\le1/2$, give
+\begin{equation*}
+\mathbb E_\Gamma \mathrm e^{2\ell_0\cdot z+z^TKz}
+ \le\exp\!\left(C\sum_i\Lambda_i\right).
+\end{equation*}
+Under this tilt the covariance is at most $2\Gamma$ and its mean is $(I-2\Gamma K)^{-1}(2\Gamma\ell_0)$. Polynomial moments are bounded by the preceding linear estimate; increasing the fixed constant in $\exp(C\Lambda_i)$ includes their mean contributions.
+Thus the differentiated factors and likelihood have, after removing the warning amplitudes, one $L^2$ majorant bounded by $P_{j,\ell,k,q}(x)(1+s_M)^d\prod a_i$.
+
+We next bound the simultaneous warning event defined above, including all derivative supports. Let $p_0$ bound the number of Gaussian coordinates per coarse site and $m_0$ the number of distinct warning addresses per site. These are fixed once the stage and ratio are fixed. For $r$ distinct warnings, choose one violating coordinate for each. There are at most $(p_0|\mathbb B_{2B}|)^r$ choices. A single coordinate can serve at most $m_0|\mathbb B_{2B}|$ warning addresses. The Schur bound gives covariance operator norm at most $M_0$. For a set $J$ of chosen distinct coordinates, Gaussian exponential moments and summation over signs give
+\begin{equation*}
+\Pr\{|z_i|\ge T\ (i\in J)\}\le2^{|J|}\exp\{(M_0/2-T)|J|\}.
+\end{equation*}
+Take $T=\xi t/(2g)$ and choose $H>0$ with $M_0/2+Hm_0|\mathbb B_{2B}|\le T$. The multiplicity bound gives
+\begin{equation*}
+\Pr(E_{\mathcal J(M)})\le
+\bigl(2p_0|\mathbb B_{2B}|\mathrm e^{-H}\bigr)^r.
+\end{equation*}
+The factor $t/g$ grows faster than every fixed power of $B$ and $\log\widehat\beta_{m+1}$. Consequently $H$ can exceed $2\tau_w\log\widehat\beta_{m+1}+\log(2p_0|\mathbb B_{2B}|)$, proving the claimed bound $\varepsilon_w^{2r}$. 
+
+For the final majorant, take the finite sum of the absolute differentiated smooth expressions and scores, multiplied by the fixed old measurable envelopes, the warning amplitudes $\prod_wM_w$, and the simultaneous warning indicator. The product rule bounds every derivative through order $k$ by this same nonnegative function. Its integral is bounded by its polynomial $L^2$ bound times $\Pr(E_{\mathcal J(M)})^{1/2}$. This retains precisely $\varepsilon_w^r$ and gives the displayed estimate. The seed suppressions in $a_i$ follow from Lemma~\ref{lem:B-D1}; the determinant and covariance corrections use the exponential bounds above. Integrating the independent frozen Haar variables and summing the finite tag probabilities preserve the bound.
+
+Finally the Gaussian marginal on $I$ has covariance $\Gamma_I$. Every complete read support contains $\Omega_i^{\rm loc}$ for each coordinate $i$ it reads. The windows are symmetric. Hence if $i,j$ belong to disjoint complete read supports, $j\notin\Omega_i^{\rm loc}$ and $i\notin\Omega_j^{\rm loc}$, so $\Gamma_{ij}=0$ by~\eqref{eq:B-window}. The Gaussian characteristic function therefore factorizes over these supports. The frozen Haar and reference tag coordinates are disjoint as well, proving the asserted exact factorization.
+\end{proof}

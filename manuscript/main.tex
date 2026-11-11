@@ -21,7 +21,7 @@
 \fancyhf{}
 \fancyhead[L]{\small Four-dimensional Yang--Mills theory}
 \fancyhead[R]{\small\thepage}
-\fancyfoot[C]{\small\itshape Under construction}
+\fancyfoot[C]{}
 \setlength{\headheight}{14pt}
 \numberwithin{equation}{section}
 \setcounter{tocdepth}{2}
@@ -49,10 +49,12 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-% the abstract is written last
+We give a human-readable proof of OpenAI's construction of four-dimensional quantum Yang--Mills theory. For every closed matrix group with simple nonabelian Lie algebra~$\g$, we construct gauge-invariant local fields from Wilson measures on periodic lattices, with logarithmic bare inverse coupling uniformly in the volume. An exact probability block map, a coupling reset and terminal-coupling tuning give the full ultraviolet limit at each fixed volume. A subsequence of any prescribed increasing volume sequence then gives Euclidean correlations with a compact phase decomposition. Every phase reconstructs a faithful Wightman theory with a unique vacuum. The same fields carry a conserved stress tensor normalized by translation and rotation fluxes, an operator product expansion with spectator-independent coefficients and quantitative remainders uniform over phases, and contact extensions. In a selected phase the centered stress trace has time-axis two-point function asymptotic to $(3\dim_\R\g/\pi^4)r^{-8}\log^{-2}(1/r)$, and it agrees with no finite Wick profile on any interval $(0,\delta)$. The construction holds for each positive block penalty. No mass gap, uniqueness of the volume limit, or independence from that penalty is proved; lattice convergence is tested on separated configurations.
+% BEGIN-VERIFICATION-PARAGRAPH (source disclosure in the abstract)
+This paper was written entirely by AI agents, working from OpenAI's Lean code for the construction of four-dimensional quantum Yang--Mills theory (commit \texttt{3456e5e}) and checking every statement against it; Section~\ref{sec:intro-source} describes the source and the method.
+% END-VERIFICATION-PARAGRAPH
 \end{abstract}
 \tableofcontents
-\clearpage
 
 \part{The theorem and the architecture of its proof}
 \input{part1/01-introduction}
@@ -66,11 +68,6 @@
 \input{part1/appendix-constants}
 
 \part{Proofs}
-\makeatletter
-\@addtoreset{theorem}{subsection}
-\renewcommand{\thetheorem}{\ifnum\value{subsection}=0 \thesection\else\thesubsection\fi.\arabic{theorem}}
-\renewcommand{\theHtheorem}{II.\thetheorem}
-\makeatother
 \input{part2/A-section}
 \input{part2/B-section}
 \input{part2/C-section}

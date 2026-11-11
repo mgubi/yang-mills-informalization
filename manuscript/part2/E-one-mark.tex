@@ -1,0 +1,63 @@
+The following step retains the complete inserted density while reexpressing its remainders in the new polynomial coordinate. The inverse estimate is essential: a bound in the original bare coordinate would accumulate at every step.
+\begin{lemma}[One marked step]\label{lem:E-marked-step}
+Above $r(d)$, exact integration sends the selected fine coefficient graph to a coarse coefficient graph. Its coefficient map $L_m$ is invertible and satisfies
+\begin{gather*}
+ |L_mx|_1\le C_{J_{m+1}}\ell_m^d|x|_1,\qquad
+ |x|_1\le C_{J_{m+1}}|L_mx|_1,\\
+ \|g_m(L_mx)\|_{\rm rem}\le C_{J_m}|(L_mx)^\circ|_1.
+\end{gather*}
+The graphs are linear, vanish on the unit, and respect conjugation and signed permutations. Writing $u=L_mx$, fine graphs differing by at most $tC_{J_{m+1}}|x|_1$ give coarse graphs differing by at most $tC_{J_m}|u|_1/2$.
+\end{lemma}
+The proof gives the construction and the bounds, including the contraction between two choices of incoming remainders.
+\begin{proof}
+Use the local sections of Definition~\ref{def:D07}, the exact block map of Definition~\ref{def:D04}, and the expansion and local subtraction of Lemmas~\ref{lem:D-connected}, \ref{lem:D4} and~\ref{lem:D5}. Put $L=\ell_m$, $s=C_{J_{m+1}}$, $C=K_{J_{m+1}}$ and $\kappa_m=(\epsilon_m^{\rm for})^{1/2}$. All norms in this proof are coefficient sums or the anchored norm~\eqref{eq:E-marked-mass}.
+
+\emph{Step 1: Marked terms in the local integration.}
+Introduce $z^2=0$. Replace the regular exponential factor by its product with
+$1+z(x_0+\mathbf1_{\Sigma_d\ {\rm healthy}}P_d[\factorscale_{t_{m+1}^{-1}}x^\circ]+\sum_i\mathbf1_{Z_i\ {\rm healthy}}R_i)$ and replace a forced factor $K_i$ by $K_i+zQ_i$. The coefficient of $z$ in the eligible covering sum is exactly Definition~\ref{def:D26}. Each connected term in Lemma~\ref{lem:D-connected} now contains one distinguished factor. For a term with ordinary factors $a_1,\ldots,a_h$, its marked coefficient is
+\begin{equation*}
+ [z]\prod_{i=1}^h(a_i+zb_i)
+ =\sum_{i=1}^h b_i\prod_{j\ne i}a_j.
+\end{equation*}
+Root its connected support at this distinguished factor. The sums over all other factors are bounded by the rooted sums in Lemma~\ref{lem:D-connected}; there is no sum over possible translates of the marked anchor. Absolute convergence justifies the displayed extraction and integration term by term. A regular mark has its derivative majorant $e_i$; a forced mark has its amplitude majorant $k_i$. The latter retains its original eligibility event, so the large-field estimate used in the forced expansion still applies.
+
+The three contributions to a basis input are bounded as follows. Denote by $T_m$ the invertible leading coefficient change from the local Gaussian polynomial calculation, and by $\mathsf S_L$ the diagonal map
+\begin{equation*}
+ (\mathsf S_Lx)_i=L^{d-w_i}x_i,
+ \qquad 0\le w_i\le d,
+\end{equation*}
+where $w_i$ is the weight of the homogeneous basis polynomial. The unit has $w_0=0$. The map $T_m$ fixes the unit and preserves the nonconstant subspace. Let $C_{\rm loc}\ge1$ bound its two operator norms and the following local remainder estimates before symmetry averaging; the leading stage bound was chosen with $K_{J_{m+1}}\ge2A_d^{\rm sym}C_{\rm loc}$. Taylor subtraction of a primary mark leaves coefficient error at most $\eta|x^\circ|_1$ and remainder at most $C_{\rm loc}|\mathsf S_Lx^\circ|_1$. A regular remainder of mass $e^{\sigma\cover(Z)}e_i$ contributes at most $\eta e^{\sigma\cover(Z)}e_i$ to each of these two bounds. A forced remainder contributes at most $\eta e^{\sigma\cover(Y)}k_i/\kappa_{m+1}$.
+
+The common local error bound is $\eta=\eta_m$ from item~\ref{it:E-graph} of Lemma~\ref{lem:E1.1}. The local polynomial is subtracted through degree~$d$ before rescaling. Each term left from a nonwrapping regular mark has at least one additional scaled jet weight; the block rescaling gives the inverse block factor in its norm. The finite connected sums and the ordered derivative product rule introduce only stage constants. For a forced mark, the support sum keeps half the original forced suppression: its normalization is $\kappa_{m+1}$, not $\epsilon_{m+1}^{\rm for}$. The remaining suppression absorbs the same derivative and support factors. Wrapping terms are assigned to the forced remainder. Thus the bounds before choosing parameters have the form $C_j^{\rm loc}/L+o_{\widehat\beta_m}(1)$, with $C_j^{\rm loc}$ fixed before $L$ and the second term tending to zero at fixed stage and block factor. Choose $L^{3/5}>2C_j^{\rm loc}$ first. The first term is then less than $\tfrac12L^{-2/5}$; raise the coupling entry until the absolute value of the second term is at most $\tfrac12L^{-2/5}$. This is item~\ref{it:E-graph} in the scale choices of Lemma~\ref{lem:E1.1}. The degree-$d$ Taylor extraction is on healthy charts; the indicators themselves are never differentiated.
+
+Let $u$ be the extracted coarse polynomial coordinate, $r$ the incoming anchored remainder norm and $r'$ the resulting coarse remainder norm, including its forced normalization. Summing the contributions gives
+\begin{equation}\label{eq:E-atom-estimates}
+ |u-T_m\mathsf S_Lx|_1\le\eta(|x^\circ|_1+r),\qquad
+ r'\le C_{\rm loc}|\mathsf S_Lx^\circ|_1+\eta r,
+ \qquad r=\|g_{m+1}(x)\|_{\rm rem}.
+\end{equation}
+The same sums with the primary mark canceled give the Lipschitz bound $\eta\|g-\widetilde g\|_{\rm rem}$ for the coefficient and remainder differences. This cancellation keeps the entire forced marked family; estimating the two families separately would lose this bound.
+
+\emph{Step 2: Linear choice and inverse bound.}
+Perform the construction on each homogeneous basis vector and on all its signed and conjugated images. Take their union of supports, with zero entries where necessary, and recombine using the basis coefficients. Average over the finite signed-permutation group and over conjugation. This gives a complex-linear family with the required symmetries and exact density identity. Let $A_d^{\rm sym}\ge1$ bound the sum of absolute recombination coefficients in this finite averaging. After averaging, the error in~\eqref{eq:E-atom-estimates} is at most $\eta(1+s)A_d^{\rm sym}|x^\circ|_1$, and the remainder is at most $(C_{\rm loc}+\eta s)A_d^{\rm sym}|\mathsf S_Lx^\circ|_1$.
+
+Use~\eqref{eq:E-graph-reserve} with $s=C_{J_{m+1}}$, $C=K_{J_{m+1}}$ and $\varepsilon_L=L^{-3/8}$. The cross-stage inequality follows from item~\ref{it:E-columns}, fixed before the ratios. Since $\eta s\le1\le C_{\rm loc}$, the averaged remainder constant is at most $K_{J_{m+1}}=C$. In the notation $y=\mathsf S_Lx$, the resulting inequalities are
+\begin{equation*}
+ |u-T_my|_1\le \varepsilon_L(|x^\circ|_1+r),\qquad
+ r'\le C|y^\circ|_1+\varepsilon_L r,\qquad r\le s|x^\circ|_1.
+\end{equation*}
+Since $|x|_1\le|\mathsf S_Lx|_1\le L^d|x|_1$, the first two conditions in~\eqref{eq:E-graph-reserve} imply
+\begin{equation*}
+ |y|_1\le2C|u|_1,\qquad |u|_1\le2C|y|_1,
+ \qquad |y^\circ|_1\le2C|u^\circ|_1.
+\end{equation*}
+For example, apply $T_m^{-1}$ and use
+$2C|u-T_my|_1\le|y^\circ|_1$ to absorb the error; the same argument on the nonconstant subspace gives the last bound. Moreover $\varepsilon_L r\le C|y^\circ|_1$, so
+\begin{equation*}
+ r'\le2C|y^\circ|_1\le4C^2|u^\circ|_1
+ \le C_{J_m}|u^\circ|_1.
+\end{equation*}
+The linear map $x\mapsto u=L_mx$ is injective by $|x|_1\le s|u|_1$, hence invertible in finite dimension. This defines the new graph by $g_m(u)=g_m(L_mx)$. The two coefficient estimates now follow. In particular the inverse estimate has no factor $L^d$: $\mathsf S_L^{-1}$ has norm at most one.
+
+For the unit, the primary extraction is exact, $T_m$ fixes it and its nonconstant coordinate is zero. All the preceding remainder bounds are then zero. It is sent to $L^d\mathbf1$, with zero remainders. Finally, when two fine graphs differ by at most $tC_{J_{m+1}}|x|_1$ in the remainder norm, the Lipschitz estimate above and rebasing by the just-proved inverse map give a coarse difference at most $\tfrac12tC_{J_m}|u|_1$: the two contributions are the changed remainder at fixed input and the changed input coordinate, each bounded by $t/4$ using~\eqref{eq:E-graph-reserve}. This is the graph contraction used in Lemma~\ref{lem:E-fixed-level}.
+\end{proof}
