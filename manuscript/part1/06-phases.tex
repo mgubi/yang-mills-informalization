@@ -1,28 +1,43 @@
 \section{Phases and reconstruction}\label{sec:phases}
 
-Keep the table and quotient fields of Sections~\ref{sec:continuum}--\ref{sec:stress}. Compression to zero energy separates the mixed correlations into phases.
+Keep the table and quotient fields of Sections~\ref{sec:continuum}--\ref{sec:stress}. Compression to zero energy separates the mixed correlations into phases. The slab estimate of H.1.1 makes word insertion bounded after a positive time translation. The coordinate reflection $\mathsf s_a^{\rm refl}$ acts on labels through $\hypercubic$.
 
 \begin{definition}[OS space and compression]\label{def:D14}
-For words at distinct points in $x^a>0$, let $\mathcal H_a^{\rm OS}$ be the completion of their complex span modulo the null space of $\langle w,v\rangle_a=S(\mathsf s_a^{\rm refl}w^*v)$. Write $\Omega_a^{\rm OS}$ for the empty word and $P^0_a$ for projection onto $\mathcal H^0_a=\ker H_a^{\rm OS}$, with $e^{-tH_a^{\rm OS}}[v]=[\tau_{te_a}v]$ for $t\ge0$. For $h_{\rm sl}>0$ and a word $w$ with times in $(0,h_{\rm sl})$, set
+For words at distinct points in $x^a>0$, let $\mathcal H_a^{\rm OS}$ be the completion of their complex span modulo the null space of
 \begin{equation*}
-A_wv=w\,\tau_{h_{\rm sl} e_4}v,\qquad M^0(w)=P^0_4\mathsf B_{h_{\rm sl}}(w)|_{\ker H_4^{\rm OS}}\,,
+\langle w,v\rangle_a=S(\mathsf s_a^{\rm refl}w^*v),\qquad e^{-tH_a^{\rm OS}}[v]=[\tau_{te_a}v]\quad(t\ge0)\,.
 \end{equation*}
-where $\mathsf B_{h_{\rm sl}}(w)$ is the bounded extension proved in Section~\ref{sec:partII-H}.
+Let $\Omega_a^{\rm OS}$ be the empty-word vector and $P^0_a$ the projection onto $\ker H_a^{\rm OS}$. For $h_{\rm sl}>0$ and $w$ with times in $(0,h_{\rm sl})$, define, on positive-time words $v$,
+\begin{equation*}
+A_wv=w\,\tau_{h_{\rm sl}e_4}v,\qquad M^0(w)=P^0_4\mathsf B_{h_{\rm sl}}(w)|_{\ker H_4^{\rm OS}}\,,
+\end{equation*}
+where $\mathsf B_{h_{\rm sl}}(w)$ extends $A_w$ boundedly on OS classes, by H.1.1.
 \end{definition}
 
-Translate any separated word into a slab to define its compression; H.1.2 in Section~\ref{sec:partII-H} proves independence of width and placement.
+Translate any separated word into a slab to define its compression; H.1.2 proves independence of width and placement. The compressed operators generate the compression algebra
+\begin{equation*}
+\mathfrak A_0=C^*(M^0(w):w\text{ separated})\,.
+\end{equation*}
+Section~\ref{sec:partII-H}, H.1.2 proves that this algebra is separable, commutative and unital, and that $\Omega_4^{\rm OS}$ is cyclic and separating. Its vacuum state is
+\begin{equation*}
+a\longmapsto\langle\Omega_4^{\rm OS},a\Omega_4^{\rm OS}\rangle,\qquad
+S(w)=\langle\Omega_4^{\rm OS},M^0(w)\Omega_4^{\rm OS}\rangle\,.
+\end{equation*}
+The second identity uses translation invariance. The measure below represents this state on the character space; the separating property gives full support. A one-dimensional mixed ground space would make $M^0(w)=S(w)\mathrm{Id}$ and leave a single character.
 
-The compressed operators generate the separable commutative unital C$^*$-algebra $\mathfrak A_0=C^*(M^0(w):w\text{ separated})$. Its characters give the phase correlations.
+Characters separate the mixed correlations without changing which fields are detectable. Call a character $\xi$ a phase and $S^\xi$ its correlation table.
 
 \begin{theorem}[Phase decomposition]\label{prop:PH}
-The compression algebra has a compact metric character space $\phases$ with a full-support probability measure $\nu$ such that, for every separated word $w$,
+The algebra $\mathfrak A_0$ has a compact metric character space $\phases$ with a full-support probability measure $\nu$ such that, for every separated word $w$,
 \begin{equation*}
 S^\xi(w)=\xi(M^0(w)),\qquad S(w)=\int_{\phases}S^\xi(w)\,d\nu(\xi)\,.
 \end{equation*}
-Each phase satisfies E1--E7 on the same quotient fields, with the same field calculus, rotations and stress laws. For fixed $w$, its value is continuous in $\xi$.
+Each phase satisfies E1--E7 and has exactly the null spaces $\nullspace{d}(S^\xi)=\nullspace{d}(S)$. The identities of FC, $O(4)$ covariance and ST hold with $S^\xi$ in place of $S$, for the same maps and tensor $T$. For fixed $w$, $\xi\mapsto S^\xi(w)$ is continuous.
 \end{theorem}
 
-The proof is in Section~\ref{sec:partII-H}, H.1.1--H.1.3. Commutativity follows by separating four words and exchanging the middle two using Euclidean rotations. The empty-word vector is cyclic and separating for $\mathfrak A_0$. Fix $\xi_*$ in the full-measure set with one-dimensional time-axis OS ground space supplied by H.1.3.
+The proof is in Section~\ref{sec:partII-H}, H.1.1--H.1.3. Two positive coordinate directions give opposite orders to the middle two of four widely separated words. Rotation covariance identifies the limits, and the positive translation semigroups converge to the ground projections; the resulting identity makes the compressed operators commute.
+
+For each phase apply Definition~\ref{def:D14} to $S^\xi$, obtaining $\mathcal H_{4,\xi}^{\rm OS}$, $H_{4,\xi}^{\rm OS}$ and $\Omega_\xi^{\rm OS}$. Fix $\xi_*$ in the full-measure set with one-dimensional time-axis OS ground space supplied by H.1.3. This choice uses no trace condition. Theorem~\ref{prop:RC} will extend ground-space uniqueness to every phase.
 
 Write $\mathcal S_n=\mathcal S(\R^{4n};\C)$ and $\mathcal S=\mathcal S_1$. The following definitions specify the relativistic theory.
 
@@ -31,10 +46,10 @@ Take a complex Hilbert space $\mathcal H$, a complex label space $\mathcal L$, a
 \end{definition}
 
 \begin{definition}[Poincar\'e action]\label{def:D14b}
-Take a topological group $\mathcal P$ with group homeomorphism $\kappa_{\rm P}:\mathcal P\to SO^+(1,3)\ltimes\R^4$, writing $\kappa_{\rm P}(\gamma)=(\Lambda_\gamma,z_\gamma)$. Here $SO^+(1,3)$ preserves $\minksquare$, has determinant one and preserves $\forwardcone$. Include a strongly continuous unitary representation $\mathsf U$ with $\mathsf U(1,z)=\mathsf T(z)$ and linear bijections $\rho_{\rm lab}(\gamma)$ of $\mathcal L$. Set $(\gamma\cdot f)(x)=f(\Lambda_\gamma^{-1}(x-z_\gamma))$.
+Take a topological group $\mathcal P$ with topological group isomorphism $\kappa_{\rm P}:\mathcal P\to SO^+(1,3)\ltimes\R^4$, writing $\kappa_{\rm P}(\gamma)=(\Lambda_\gamma,z_\gamma)$. Here $SO^+(1,3)$ preserves $\minksquare$, has determinant one and preserves $\forwardcone$. Include a strongly continuous unitary representation $\mathsf U$ with $\mathsf U(\kappa_{\rm P}^{-1}(1,z))=\mathsf T(z)$ and linear bijections $\rho_{\rm lab}(\gamma)$ of $\mathcal L$. Set $(\gamma\cdot f)(x)=f(\Lambda_\gamma^{-1}(x-z_\gamma))$.
 \end{definition}
 
-The antilinear label map need not be involutive. The label action has no additional continuity, dimension or translation restriction. The spectral relation is imposed next.
+In group arguments we identify $\mathcal P$ with $SO^+(1,3)\ltimes\R^4$ through $\kappa_{\rm P}$. The antilinear label map need not be involutive. The label action has no additional continuity, dimension or translation restriction. The spectral relation is imposed next.
 
 \begin{definition}[W0. Spectrum and vacuum]\label{def:W0}
 For every $\psi\in\mathcal H$ and $z\in\R^4$, require
@@ -82,7 +97,7 @@ A label is Hermitian if $\ell^*=\ell$, and Lorentz scalar if $\rho_{\rm lab}(\La
 For reconstruction use the response space $\mathcal L$ of Definition~\ref{def:D10}. Put $\mathbb F=\bigsqcup_dF_d$ and $\iota(d,A)=\iota_dA$.
 
 \begin{definition}[Boundary condition]\label{def:D14f}
-For a phase $\xi$ and functions $\mathsf F_n^\xi$ on $\mathbb F^n\times\C^n\times(\R^3)^n$, require, for every $n\in\N$, $\boldsymbol A\in\mathbb F^n$, real $h_1<\cdots<h_n$ and $f_i\in\mathcal S$,
+For a phase $\xi$, a relativistic datum $(\mathcal H_\xi,\mathcal D_\xi,\Omega_\xi,\Phi_\xi,\ldots)$ of Definitions~\ref{def:D14a}--\ref{def:D14b}, and functions $\mathsf F_n^\xi$ on $\mathbb F^n\times\C^n\times(\R^3)^n$, require, for every $n\in\N$, $\boldsymbol A\in\mathbb F^n$, real $h_1<\cdots<h_n$ and $f_i\in\mathcal S$,
 \begin{multline*}
 \lim_{r\downarrow0}\int\mathsf F_n^\xi(\boldsymbol A;(x_i^4+irh_i)_i,(\vec x_i)_i)\prod_i f_i(x_i)\,dx\\
 =\langle\Omega_\xi,\Phi_\xi(\iota(A_1),f_1)\cdots\Phi_\xi(\iota(A_n),f_n)\Omega_\xi\rangle\,.
@@ -98,15 +113,27 @@ Put $\mathcal Z_n=\{z\in\C^n:\operatorname{Im}z_1<\cdots<\operatorname{Im}z_n\}$
 Together with Definition~\ref{def:D14f}, it connects Euclidean and real-time correlations.
 \end{definition}
 
-\begin{samepage}
-Apply Definition~\ref{def:D14} to $S^\xi$ to obtain $\mathcal H_{4,\xi}^{\rm OS}$ with empty-word vector $\Omega_\xi^{\rm OS}$. The OS comparison map is the bounded map from the reconstructed space obtained by continuing positive-time words. Write $\mathsf T_\xi(te_4)=e^{itH_\xi}$ for its energy generator. Each character yields relativistic fields on the common response labels.
+For a theory at phase $\xi$ in the next theorem, write $\mathcal H_\xi$, $\mathcal D_\xi$, $\Omega_\xi$, $\Phi_\xi$ and $\mathsf T_\xi$ for its Hilbert space, word domain, vacuum, fields and translations. Define its energy generator by $\mathsf T_\xi(te_4)=e^{itH_\xi}$. Its OS comparison map means the bounded linear map
+\begin{equation*}
+\mathsf J_\xi^{\rm OS}:\mathcal H_\xi\longrightarrow\mathcal H_{4,\xi}^{\rm OS},\qquad
+\mathsf J_\xi^{\rm OS}\Omega_\xi=\Omega_\xi^{\rm OS}\,,
+\end{equation*}
+sending each smeared field-word vector to the norm limit of its heat-regularized positive-time OS vectors as the ordered heights tend to zero. Section~\ref{sec:partII-H}, H.2.2 constructs this map and proves its uniqueness.
+
+Each character yields relativistic fields on the common response labels. The continuation and boundary condition specify their relation to the phase correlations.
 
 \begin{theorem}[Reconstruction]\label{prop:RC}
-For every $\xi\in\phases$, the phase correlations have a faithful Wightman reconstruction on $\mathcal L$, with the continuation and boundary condition of Definitions~\ref{def:D15} and~\ref{def:D14f}. Its OS comparison map is onto, and
+For every $\xi\in\phases$, there are a Wightman theory (Definition~\ref{def:Q2}) on $\mathcal L$, faithful in the sense of Definition~\ref{def:D14c}, and functions $\mathsf F_n^\xi$ satisfying Definitions~\ref{def:D15} and~\ref{def:D14f}. Its OS comparison map $\mathsf J_\xi^{\rm OS}$ is onto, and
 \begin{equation*}
-\ker H_\xi=\C\Omega_\xi,\qquad \ker H_{4,\xi}^{\rm OS}=\C\Omega_\xi^{\rm OS},\qquad \{\text{bounded weak commutant}\}=\C\mathrm{Id}_{\mathcal H_\xi}\,.
+\ker H_\xi=\C\Omega_\xi,\qquad \ker H_{4,\xi}^{\rm OS}=\C\Omega_\xi^{\rm OS}\,.
 \end{equation*}
+Every bounded operator in the weak commutant of its fields (Definition~\ref{def:D14d}) is scalar.
 \end{theorem}
 
-The proof is in Section~\ref{sec:partII-H}, H.2.1--H.2.4: slab bounds control the analytic boundary values. Those results also give joint Schwartz distributions, uniform low-energy bounds, phase averages and stress continuation. Retain the theory at $\xi_*$ and suppress its phase subscript.
-\end{samepage}
+The proof is in Section~\ref{sec:partII-H}, H.2.1--H.2.4. Slab bounds control the analytic boundary values. For these continuations, H.2.1 proves absolute integrability in Definition~\ref{def:D14f} at every $r>0$, so its zero convention is unused. A low-energy bound uniform in $\xi$, continuity of the vacuum-subtracted heat pairings and full support of $\nu$ extend almost-everywhere ground-space uniqueness to every phase. Thus the earlier choice of $\xi_*$ remains valid. H.2.1--H.2.4 also give joint Schwartz distributions, phase averages and stress continuation.
+
+The reconstructed label maps are common to all phases. In H.2.1 the adjoint is induced by time reflection followed by conjugation:
+\begin{equation*}
+(\iota_dA)^*=\iota_d\bigl(R_d(\mathsf s_4^{\rm refl})\overline A\bigr)\,.
+\end{equation*}
+The Lorentz label action is the continuation of $R_d$: spatial rotations retain their Euclidean action, and the boost generators are $-i$ times the corresponding Euclidean rotation generators. In particular, a real $O(4)$-invariant field gives a Hermitian Lorentz scalar label. Retain the theory at $\xi_*$ and suppress its phase subscript in $\mathcal H,\mathcal D,\Omega,\Phi$ and the other relativistic data.
