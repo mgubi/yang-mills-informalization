@@ -34,7 +34,7 @@ env:
 
 jobs:
   site:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # apt on the 26.04 image is broken
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -63,8 +63,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # no apt: the runner image already has rsync and the graphics and font
-          # libraries the AppImage needs, and its package mirrors are unreliable
+          # libraries the AppImage does not bundle (libEGL.so.1 and friends)
+          pkgs="libegl1 libopengl0 libgl1 libxkbcommon0 libfontconfig1"
+          opts="-o Acquire::Retries=3 -o Acquire::http::Timeout=30"
+          for i in 1 2 3; do
+            sudo apt-get $opts update -qq || true
+            timeout 600 sudo apt-get $opts install -y -qq --no-install-recommends $pkgs >/dev/null && break
+            [[ $i == 3 ]] && exit 1; sleep 20
+          done
           mkdir -p "$RUNNER_TEMP/texmacs" && cd "$RUNNER_TEMP/texmacs"
           gh release download "$TEXMACS_RELEASE" -R mgubi/texmacs -p "$TEXMACS_ASSET"
           chmod +x "$TEXMACS_ASSET"
