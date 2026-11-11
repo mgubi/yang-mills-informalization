@@ -1,0 +1,112 @@
+\section{Phases and reconstruction}\label{sec:phases}
+
+Keep the table and quotient fields of Sections~\ref{sec:continuum}--\ref{sec:stress}. Compression to zero energy separates the mixed correlations into phases.
+
+\begin{definition}[OS space and compression]\label{def:D14}
+For words at distinct points in $x^a>0$, let $\mathcal H_a^{\rm OS}$ be the completion of their complex span modulo the null space of $\langle w,v\rangle_a=S(\mathsf s_a^{\rm refl}w^*v)$. Write $\Omega_a^{\rm OS}$ for the empty word and $P^0_a$ for projection onto $\mathcal H^0_a=\ker H_a^{\rm OS}$, with $e^{-tH_a^{\rm OS}}[v]=[\tau_{te_a}v]$ for $t\ge0$. For $h_{\rm sl}>0$ and a word $w$ with times in $(0,h_{\rm sl})$, set
+\begin{equation*}
+A_wv=w\,\tau_{h_{\rm sl} e_4}v,\qquad M^0(w)=P^0_4\mathsf B_{h_{\rm sl}}(w)|_{\ker H_4^{\rm OS}}\,,
+\end{equation*}
+where $\mathsf B_{h_{\rm sl}}(w)$ is the bounded extension proved in Section~\ref{sec:partII-H}.
+\end{definition}
+
+Translate any separated word into a slab to define its compression; H.1.2 in Section~\ref{sec:partII-H} proves independence of width and placement.
+
+The compressed operators generate the separable commutative unital C$^*$-algebra $\mathfrak A_0=C^*(M^0(w):w\text{ separated})$. Its characters give the phase correlations.
+
+\begin{theorem}[Phase decomposition]\label{prop:PH}
+The compression algebra has a compact metric character space $\phases$ with a full-support probability measure $\nu$ such that, for every separated word $w$,
+\begin{equation*}
+S^\xi(w)=\xi(M^0(w)),\qquad S(w)=\int_{\phases}S^\xi(w)\,d\nu(\xi)\,.
+\end{equation*}
+Each phase satisfies E1--E7 on the same quotient fields, with the same field calculus, rotations and stress laws. For fixed $w$, its value is continuous in $\xi$.
+\end{theorem}
+
+The proof is in Section~\ref{sec:partII-H}, H.1.1--H.1.3. Commutativity follows by separating four words and exchanging the middle two using Euclidean rotations. The empty-word vector is cyclic and separating for $\mathfrak A_0$. Fix $\xi_*$ in the full-measure set with one-dimensional time-axis OS ground space supplied by H.1.3.
+
+Write $\mathcal S_n=\mathcal S(\R^{4n};\C)$ and $\mathcal S=\mathcal S_1$. The following definitions specify the relativistic theory.
+
+\begin{definition}[Relativistic fields]\label{def:D14a}
+Take a complex Hilbert space $\mathcal H$, a complex label space $\mathcal L$, a linear subspace $\mathcal D\subset\mathcal H$ and $\Omega\in\mathcal D$. Fields $\Phi(\ell,f):\mathcal D\to\mathcal D$ are linear operators, complex bilinear in $(\ell,f)\in\mathcal L\times\mathcal S$. Include an antilinear map $\ell\mapsto\ell^*$, strongly continuous unitary translations $\mathsf T(z)$, $z\in\R^4$, and a Borel projection-valued measure $\mathsf E$, with finite diagonal measures $\mu_\psi(B)=\langle\psi,\mathsf E(B)\psi\rangle$ for Borel $B\subset\R^4$.
+\end{definition}
+
+\begin{definition}[Poincar\'e action]\label{def:D14b}
+Take a topological group $\mathcal P$ with group homeomorphism $\kappa_{\rm P}:\mathcal P\to SO^+(1,3)\ltimes\R^4$, writing $\kappa_{\rm P}(\gamma)=(\Lambda_\gamma,z_\gamma)$. Here $SO^+(1,3)$ preserves $\minksquare$, has determinant one and preserves $\forwardcone$. Include a strongly continuous unitary representation $\mathsf U$ with $\mathsf U(1,z)=\mathsf T(z)$ and linear bijections $\rho_{\rm lab}(\gamma)$ of $\mathcal L$. Set $(\gamma\cdot f)(x)=f(\Lambda_\gamma^{-1}(x-z_\gamma))$.
+\end{definition}
+
+The antilinear label map need not be involutive. The label action has no additional continuity, dimension or translation restriction. The spectral relation is imposed next.
+
+\begin{definition}[W0. Spectrum and vacuum]\label{def:W0}
+For every $\psi\in\mathcal H$ and $z\in\R^4$, require
+\begin{equation*}
+\langle\psi,\mathsf T(z)\psi\rangle=\int e^{i\mathbf p\cdot z}\,d\mu_\psi(\mathbf p),\qquad \mathsf E(\R^4\setminus\forwardcone)=0\,,
+\end{equation*}
+with Euclidean pairing. Every vector fixed by all translations belongs to $\C\Omega$.
+\end{definition}
+
+\begin{definition}[W1. Word domain and adjoints]\label{def:W1}
+Require $\|\Omega\|=1$, density of $\mathcal D$, and
+\begin{equation*}
+\mathcal D=\operatorname{span}_{\C}\{\Phi(\ell_1,f_1)\cdots\Phi(\ell_k,f_k)\Omega:k\ge0\}\,.
+\end{equation*}
+For each $\ell\in\mathcal L$, $\psi\in\mathcal D$, the map $f\mapsto\Phi(\ell,f)\psi$ is continuous from $\mathcal S$ to $\mathcal H$ in norm. For $\psi,\chi\in\mathcal D$, require $\langle\Phi(\ell,f)\psi,\chi\rangle=\langle\psi,\Phi(\ell^*,\bar f)\chi\rangle$.
+\end{definition}
+
+\begin{definition}[W2. Covariance]\label{def:W2}
+Require $\rho_{\rm lab}(1)=1$ and $\rho_{\rm lab}(\gamma\gamma')=\rho_{\rm lab}(\gamma)\rho_{\rm lab}(\gamma')$. For every $\gamma\in\mathcal P$, $\ell\in\mathcal L$, $f\in\mathcal S$ and $\psi\in\mathcal D$, require $\mathsf U(\gamma)\mathcal D\subset\mathcal D$, $\mathsf U(\gamma)\Omega=\Omega$, and
+\begin{equation*}
+\mathsf U(\gamma)\Phi(\ell,f)\psi=\Phi(\rho_{\rm lab}(\gamma)\ell,\gamma\cdot f)\mathsf U(\gamma)\psi\,.
+\end{equation*}
+\end{definition}
+
+\begin{definition}[W3. Locality]\label{def:W3}
+For $f,h\in\mathcal S$ with $\minksquare(x-y)<0$ for every $x\in\operatorname{supp}f$, $y\in\operatorname{supp}h$, require $[\Phi(\ell,f),\Phi(\ell',h)]\psi=0$ for all $\ell,\ell'\in\mathcal L$ and $\psi\in\mathcal D$.
+\end{definition}
+
+\begin{definition}[Wightman axioms]\label{def:Q2}
+A relativistic datum of Definitions~\ref{def:D14a}--\ref{def:D14b} is a Wightman theory if it satisfies W0--W3.
+\end{definition}
+
+\begin{definition}[Faithful labels]\label{def:D14c}
+The labels are faithful if, for every nonzero $\ell\in\mathcal L$, some $f\in\mathcal S$ has $\Phi(\ell,f)\ne0$.
+\end{definition}
+
+\begin{definition}[Bounded weak commutant]\label{def:D14d}
+A bounded operator $B$ belongs to the weak commutant if, for every smeared field $\Phi$ and all $u,v\in\mathcal D$, one has $u\in\operatorname{Dom}\Phi^*$ and $\langle\Phi^*u,Bv\rangle=\langle u,B\Phi v\rangle$. Here $\Phi^*$ is the unbounded Hilbert-space adjoint.
+\end{definition}
+
+\begin{definition}[Hermitian scalar labels]\label{def:D14e}
+A label is Hermitian if $\ell^*=\ell$, and Lorentz scalar if $\rho_{\rm lab}(\Lambda,0)\ell=\ell$ for every $\Lambda\in SO^+(1,3)$. These conditions give the adjoint and scalar covariance identities through W1 and W2.
+\end{definition}
+
+For reconstruction use the response space $\mathcal L$ of Definition~\ref{def:D10}. Put $\mathbb F=\bigsqcup_dF_d$ and $\iota(d,A)=\iota_dA$.
+
+\begin{definition}[Boundary condition]\label{def:D14f}
+For a phase $\xi$ and functions $\mathsf F_n^\xi$ on $\mathbb F^n\times\C^n\times(\R^3)^n$, require, for every $n\in\N$, $\boldsymbol A\in\mathbb F^n$, real $h_1<\cdots<h_n$ and $f_i\in\mathcal S$,
+\begin{multline*}
+\lim_{r\downarrow0}\int\mathsf F_n^\xi(\boldsymbol A;(x_i^4+irh_i)_i,(\vec x_i)_i)\prod_i f_i(x_i)\,dx\\
+=\langle\Omega_\xi,\Phi_\xi(\iota(A_1),f_1)\cdots\Phi_\xi(\iota(A_n),f_n)\Omega_\xi\rangle\,.
+\end{multline*}
+For this formula alone a nonintegrable function has integral zero.
+\end{definition}
+
+\begin{definition}[Ordered-time continuation]\label{def:D15}
+Put $\mathcal Z_n=\{z\in\C^n:\operatorname{Im}z_1<\cdots<\operatorname{Im}z_n\}$. A continuation is holomorphic there at each fixed real spatial configuration and satisfies
+\begin{equation*}
+\mathsf F_n^\xi(\boldsymbol A;(it_i)_i,\vec x)=S_n^\xi(\boldsymbol A;(\vec x_i,t_i)_i)\qquad(t_1<\cdots<t_n)\,.
+\end{equation*}
+Together with Definition~\ref{def:D14f}, it connects Euclidean and real-time correlations.
+\end{definition}
+
+\begin{samepage}
+Apply Definition~\ref{def:D14} to $S^\xi$ to obtain $\mathcal H_{4,\xi}^{\rm OS}$ with empty-word vector $\Omega_\xi^{\rm OS}$. The OS comparison map is the bounded map from the reconstructed space obtained by continuing positive-time words. Write $\mathsf T_\xi(te_4)=e^{itH_\xi}$ for its energy generator. Each character yields relativistic fields on the common response labels.
+
+\begin{theorem}[Reconstruction]\label{prop:RC}
+For every $\xi\in\phases$, the phase correlations have a faithful Wightman reconstruction on $\mathcal L$, with the continuation and boundary condition of Definitions~\ref{def:D15} and~\ref{def:D14f}. Its OS comparison map is onto, and
+\begin{equation*}
+\ker H_\xi=\C\Omega_\xi,\qquad \ker H_{4,\xi}^{\rm OS}=\C\Omega_\xi^{\rm OS},\qquad \{\text{bounded weak commutant}\}=\C\mathrm{Id}_{\mathcal H_\xi}\,.
+\end{equation*}
+\end{theorem}
+
+The proof is in Section~\ref{sec:partII-H}, H.2.1--H.2.4: slab bounds control the analytic boundary values. Those results also give joint Schwartz distributions, uniform low-energy bounds, phase averages and stress continuation. Retain the theory at $\xi_*$ and suppress its phase subscript.
+\end{samepage}

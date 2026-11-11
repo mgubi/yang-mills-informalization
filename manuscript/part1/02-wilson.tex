@@ -1,0 +1,72 @@
+\section{Wilson theory}\label{sec:wilson}
+
+The starting measure assigns a group element to each lattice link and weights the curvature around each plaquette. We first fix the matrix normalization: it determines both the Wilson energy and the coefficient of the logarithmic coupling flow.
+
+Throughout, $\N=\{0,1,\ldots\}$, coordinate indices run from $1$ to $4$, and $e_a$ is the $a$th coordinate vector. Time is the fourth coordinate. For the later relativistic statements write
+\begin{equation*}
+\minksquare(x)=(x^4)^2-|\vec x|^2,\qquad
+\forwardcone=\{\mathbf p:|\vec{\mathbf p}|\le\mathbf p^4\}\,.
+\end{equation*}
+Inner products are antilinear in the first variable, and spacetime integrals use Lebesgue measure. Arity zero is included; empty sums are zero and empty products are one. The group $\hypercubic$ consists of the signed permutation matrices; $\mathsf s_a^{\rm refl}$ denotes reflection in coordinate~$a$.
+
+\begin{definition}[Gauge normalization]\label{def:D01}
+Fix $n_G\ge1$ and a closed subgroup $G\subset U(n_G)$ with simple nonabelian real Lie algebra
+\begin{equation*}
+\g=\{X\in M_{n_G}(\C):\exp(tX)\in G\text{ for every }t\in\R\},
+\qquad \langle X,Y\rangle_\g=-n_G^{-1}\operatorname{Re}\tr(XY)\,.
+\end{equation*}
+For an orthonormal basis $(e_\alpha^{\g})$, put
+\begin{align*}
+\dimG&=\dim_\R\g,&
+\casimir&=-\dimG^{-1}\sum_\alpha\operatorname{tr}_{\g}\bigl(\operatorname{ad}(e_\alpha^{\g})^2\bigr),\\
+b_0&=\frac{11\casimir}{48\pi^2},& \slope&=2b_0\,.
+\end{align*}
+This fixes the normalization of the running coupling.
+\end{definition}
+
+Here $\operatorname{ad}(X)Y=[X,Y]$ and $\operatorname{tr}_{\g}$ is the real operator trace on~$\g$. Simplicity means $[\g,\g]\ne0$ and no proper nonzero real ideal. Connectedness of~$G$ is not assumed. The adjoint maps are skew-adjoint for this metric; nonabelianity therefore gives $\casimir>0$ and $\slope>0$. For $u\in G$, set
+\begin{equation}\label{eq:I12-price-chord}
+\wilsonterm(u)=1-n_G^{-1}\operatorname{Re}\tr u,\qquad
+\chord(u)=n_G^{-1/2}\|u-1\|_{\rm F},\qquad
+\chord(u)^2=2\wilsonterm(u)\,.
+\end{equation}
+The first quantity is the plaquette energy; the second measures its distance from the identity. Both are invariant under conjugation and inversion.
+
+\begin{definition}[Wilson measure]\label{def:D02}
+For an integer $s\ge1$ and $\beta\in\R$, put $\Lambda_s=(\Z/s\Z)^4$. A configuration assigns $U(y,a)\in G$ to every positive link, with inverse on the reversed link. Define
+\begin{align*}
+U_{y;ab}&=U(y,a)U(y+e_a,b)U(y+e_b,a)^{-1}U(y,b)^{-1},\\
+E_s^{\rm W}(U)&=\sum_{y\in\Lambda_s}\sum_{a<b}\wilsonterm(U_{y;ab}),\\
+d\mu_{s,\beta}(U)&=Z_{s,\beta}^{-1}e^{-\beta E_s^{\rm W}(U)}\prod_{y,a}dh(U(y,a))\,.
+\end{align*}
+Here $dh$ is probability Haar measure and $Z_{s,\beta}$ normalizes the measure. This is the lattice theory to be scaled.
+\end{definition}
+
+The normalization is the positive finite integral
+\begin{equation*}
+Z_{s,\beta}=\int e^{-\beta E_s^{\rm W}(U)}\prod_{y,a}dh(U(y,a))\,.
+\end{equation*}
+Indeed, the integrand is continuous and strictly positive on the compact configuration space. A site gauge transformation $\gamma_{\rm g}:\Lambda_s\to G$ acts by
+\begin{equation*}
+U^{\gamma_{\rm g}}(y,a)=\gamma_{\rm g}(y)U(y,a)\gamma_{\rm g}(y+e_a)^{-1}\,.
+\end{equation*}
+It changes each plaquette by conjugation at its base point, so the energy and the Wilson measure are gauge invariant. Lattice isometries transport links and invert reversed ones. The measure is invariant under these transformations as well; the finite-lattice identities are proved in Section~\ref{sec:partII-A}.
+
+A general Wilson family consists of strictly increasing positive integer sequences $(L_p)$ and $(D_N)$, real couplings $\beta_{N,p}$, a label set $\mathcal T$, and complex insertions $I_{N,p}(v,y;U)$. The index $N$ controls the spacing, and $p$ controls the physical volume. Set
+\begin{equation}\label{eq:I12-physical-placement}
+a_N=D_N^{-1},\qquad
+\mu_{N,p}=\mu_{L_pD_N,\beta_{N,p}},\qquad
+\hat y=a_N\bigl(r_{L_pD_N}(y^a)\bigr)_{a=1}^4\,,
+\end{equation}
+where $r_s(j)$ is the integer representative of $j\in\Z/s\Z$ in $(-s/2,s/2]$. Thus the physical torus has side~$L_p$.
+
+\begin{definition}[Lattice moments]\label{def:D03}
+For a label list $v\in\mathcal T^n$, sites $y\in\Lambda_{L_pD_N}^n$, and a test $f:(\R^4)^n\to\C$, define
+\begin{align*}
+\latmoment_{N,p}(v;y)&=\int\prod_{i=1}^n I_{N,p}(v_i,y_i;U)\,d\mu_{N,p}(U),\\
+\latsmear_{N,p}(v;f)&=a_N^{4n}\sum_{y\in\Lambda_{L_pD_N}^n}f(\hat y)\latmoment_{N,p}(v;y)\,.
+\end{align*}
+These are the point correlations and their physical Riemann sums.
+\end{definition}
+
+The construction below chooses the spacings, couplings and local insertions together. At each fixed physical volume the ultraviolet limit will use the full sequence $N\to\infty$; only the subsequent infinite-volume limit requires a subsequence.

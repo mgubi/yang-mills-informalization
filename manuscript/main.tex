@@ -11,6 +11,7 @@
   linkcolor=paperlink,citecolor=paperlink,urlcolor=paperlink,pdfstartview=Fit,
   pdftitle={The construction of four-dimensional quantum Yang--Mills theory}}
 \usepackage{enumitem}
+\usepackage{longtable,booktabs}
 \setlist[itemize]{leftmargin=2em,itemsep=0.25em,topsep=0.35em}
 \setlist[enumerate]{leftmargin=2.25em,itemsep=0.25em,topsep=0.35em}
 \setlength{\parindent}{1.25em}
@@ -27,17 +28,18 @@
 \date{\small\itshape Under construction. Version of \today: this manuscript is incomplete. Sections are added and\\ revised as they are written and checked against the formal proof; see the status table at\\ \url{https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript}.}
 
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
-\renewcommand{\thetheorem}{\Alph{theorem}}
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{lemma}[proposition]{Lemma}
-\newtheorem{corollary}[proposition]{Corollary}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand{\themaintheorem}{\Alph{maintheorem}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 \newtheorem*{principal}{\principalname}
 \newcommand{\principalname}{}
 \theoremstyle{definition}
-\newtheorem{definition}[proposition]{Definition}
+\newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
-\newtheorem{remark}[proposition]{Remark}
+\newtheorem{remark}[theorem]{Remark}
 
 \input{macros}
 
@@ -54,11 +56,13 @@
 
 \part{The theorem and the architecture of its proof}
 \input{part1/01-introduction}
-\input{part1/02-setting}
-\input{part1/03-main-theorem}
-\input{part1/04-principal-propositions}
-\input{part1/05-deduction}
-\input{part1/06-constants}
+\input{part1/02-wilson}
+\input{part1/03-renormalization}
+\input{part1/04-continuum}
+\input{part1/05-stress}
+\input{part1/06-phases}
+\input{part1/07-trace-products}
+\input{part1/08-main-theorems}
 
 \part{Proofs}
 \input{part2/A-section}
@@ -72,6 +76,9 @@
 \input{part2/I-section}
 \input{part2/J-section}
 
+
+\appendix
+\input{part1/appendix-constants}
 
 \bibliographystyle{amsplain}
 \bibliography{references}

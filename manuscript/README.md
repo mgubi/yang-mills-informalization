@@ -9,7 +9,7 @@ of the construction of four-dimensional quantum Yang–Mills theory
 The reader we write for is a mathematician working in constructive field theory or probability.
 
 - **Part I. The theorem and the architecture of its proof** (about 40 pages): the setting and notation, the main
-  theorem, the thirteen principal propositions on which the proof rests, each stated exactly with the idea of its
+  theorem, the principal statements on which the proof rests, each stated exactly with the idea of its
   proof, and the complete deduction of the main theorem from them.
 - **Part II. Proofs** (about 150 pages): the proofs of the principal propositions, with every estimate specific to the
   construction written out and standard results cited.
@@ -22,14 +22,15 @@ is a draft.
 | | section | status |
 |---|---|---|
 | Part I | 1. Introduction | not yet written |
-| | 2. Setting | being rewritten for readability |
-| | 3. The main theorem | being rewritten for readability |
-| | 4. The principal propositions | being rewritten for readability |
-| | 5. Proof of Theorems A and B | being rewritten for readability |
-| | 6. The constants and the order of their choice | being rewritten for readability |
-| Part II | C. Effective actions: the marginal flow | being rewritten for readability |
-| | F. Infinite volume | being rewritten for readability |
-| | A, B, D, E, G–J and the appendix | not yet written |
+| | 2. Wilson theory | rewritten; under review |
+| | 3. Renormalization | rewritten; under review |
+| | 4. The continuum limit | rewritten; under review |
+| | 5. Stress and rotations | rewritten; under review |
+| | 6. Phases and reconstruction | rewritten; under review |
+| | 7. Trace and products | rewritten; under review |
+| | 8. Main theorems | rewritten; under review |
+| Part II | A–J | not yet written (being rewritten for the new Part I) |
+| Appendix | Constants and the order of their choice | rewritten; under review |
 
 ## How it is written
 
