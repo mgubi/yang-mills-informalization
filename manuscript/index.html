@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>The construction of four-dimensional quantum Yang&ndash;Mills
+    theory &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../outline/index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../outline/units.html">Units</a><font class="ym-sep">&middot;</font><font
+      class="ym-here">Manuscript</font><font class="ym-sep">&middot;</font><a href="../glossary.html">Glossary</a><font
+      class="ym-sep">&middot;</font><a href="../faq.html">FAQ</a><font class="ym-sep">&middot;</font><a
+      href="../outline/work-items.html">Work items</a><font class="ym-sep">&middot;</font><a href="../data/index.html">Data</a><font
+      class="ym-sep">&middot;</font><a href="../method.html">Method</a><font class="ym-sep">&middot;</font><a
+      href="../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a href="../CHANGELOG.html">Changes</a>
+    </div>
+    <p>
+      <h1>The construction of four-dimensional quantum Yang&ndash;Mills
+      theory</h1><a id="the-construction-of-four-dimensional-quantum-yangmills-theory"></a>
+    </p>
+    <div class="ym-callout">
+      <a href="main.html">Read the manuscript (HTML version, converted from the LaTeX
+      source)</a>
+    </div>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Status</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>How it is written</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Building</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>License</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">2</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        &#x1F6A7; <strong>Under construction.</strong> This manuscript is
+        being written. Most sections do not exist yet, and those that do may
+        change substantially until they are marked <em>checked</em> in the <a
+        href="#status">status table</a>. Do not cite it as a finished proof.
+      </p>
+    </div>
+    <p>
+      A manuscript, written in public, giving a complete mathematical proof of
+      the result formalized in OpenAI's Lean proof of the construction of
+      four-dimensional quantum Yang&ndash;Mills theory (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028">source</a>,
+      commit <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464"><tt class="verbatim">3456e5e</tt></a>). The reader we write for is
+      a mathematician working in constructive field theory or probability. It
+      is written in collaboration with Martin Hairer's <a href="https://github.com/hairer/humanise-yang-mills">humanise-yang-mills</a>
+      project, a crowd-sourced effort to turn the Lean formalization into a
+      human-readable monograph.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Part I. The theorem and the architecture of its
+          proof</strong> (about 30 pages): the setting and notation, the main
+          theorem, the principal statements on which the proof rests, each
+          stated exactly with the idea of its proof, and the complete
+          deduction of the main theorem from them.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Part II. Proofs</strong> (about 120 pages, Sections
+          10&ndash;19): the proofs of the principal propositions, with every
+          estimate specific to the construction written out and standard
+          results cited.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The PDF is <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf"><tt class="verbatim">main.pdf</tt></a>. It is updated as
+      sections are written; until a section is marked <em>checked</em> below,
+      it is a draft.
+    </p>
+    <p>
+      The process by which it is written and checked is described in <a href="PROCESS.html">How
+      this manuscript is written</a>.
+    </p>
+    <h2 id="auto-1"><a id="status"></a>Status<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>section</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>status</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Part I</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">1. Introduction</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">to be written last</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">2. Wilson theory</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">3. Renormalization</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">4. The continuum limit</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">5. Stress and rotations</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">6. Phases and reconstruction</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">7. Trace and products</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">8. Main theorems</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">9. Constants and order of choice</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Part II</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">12. Path actions and the coupling reset</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">15. Infinite volume and field calculus</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reviewed; with the project lead for reading</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">10, 11, 13, 14, 16&ndash;19</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">statements listed (including the inputs that Sections 12
+        and 15 use), proofs not yet written</td>
+      </tr></tbody>
+    </table>
+    <p>
+      &quot;Reviewed&quot; means the full cycle of the <a href="PROCESS.html">process</a>
+      has run: owner, fresh-reader and truth reviews, re-check and delivery
+      review. A section is marked <em>checked</em> only after the project
+      lead's reading and any changes it leads to.
+    </p>
+    <h2 id="auto-2"><a id="how-it-is-written"></a>How it is written<span style="margin-left: 1em"></span></h2>
+    <p>
+      The manuscript is written with AI models under human direction, by the
+      process described in <strong><a href="PROCESS.html">How this manuscript is
+      written</a></strong>. In short: the paper claims nothing the Lean does
+      not prove; statements are fixed first and kept short; writers propose,
+      one editor integrates; and every statement is reviewed against the Lean
+      by a separate reviewer. The correspondence between the numbered
+      statements and the Lean declarations will be published with the
+      manuscript.
+    </p>
+    <p>
+      For shorter routes into the proof, see the <a href="../index.html">rest of this
+      repository</a>, which presents it at several levels of detail, from the
+      theorem in one page to outlines of its thirty-two units linked to the
+      Lean; this manuscript is the most detailed level. Corrections are
+      welcome as issues.
+    </p>
+    <h2 id="auto-3"><a id="building"></a>Building<span style="margin-left: 1em"></span></h2>
+    <pre class="verbatim" xml:space="preserve">
+latexmk -pdf main.tex</pre>
+    <h2 id="auto-4"><a id="license"></a>License<span style="margin-left: 1em"></span></h2>
+    <p>
+      <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/LICENSE">Apache License 2.0</a>, as for the rest of this repository.
+    </p>
+  </body>
+</html>
