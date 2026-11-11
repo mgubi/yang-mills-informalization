@@ -2,7 +2,14 @@ The following step retains the complete inserted density while reexpressing its 
 \begin{equation*}
  T_m=\factorscale_{t_m}\mathsf R^{\rm lead}_m\mathsf D^{\rm eng}_{\ell_m}(\factorscale_{t_{m+1}})^{-1}.
 \end{equation*}
-Taylor matching gives $(\mathsf R^{\rm lead}_m)_{bi}=\delta_{bi}\ell_m^{-w_i}$ for $w_b\le w_i$ and $=0$ for $k_b<k_i$; Lemma~\ref{lem:B3} gives $|(\mathsf R^{\rm lead}_m)_{bi}|\le C\ell_m^{-w_i}$, $C$ depending only on $d$ and the stage. The threshold formula in row~9 of Section~\ref{sec:constants} and the entry choices of Lemma~\ref{lem:E1.1} give $0<t_m\le1$ and $\tfrac12\le t_m/t_{m+1}\le2$. Hence $(T_m)_{ii}=(t_m/t_{m+1})^{k_i}$, and back substitution in increasing weight bounds $T_m^{\pm1}$ uniformly in $N$, $p$ and $m$ within a stage.
+Taylor matching gives $(\mathsf R^{\rm lead}_m)_{bi}=\delta_{bi}\ell_m^{-w_i}$ for $w_b\le w_i$ and $=0$ for $k_b<k_i$. To bound the other entries, use the kernel form of Lemma~\ref{lem:B3}: at averaging order $j\ge d+3$,
+\begin{equation*}
+ |\nabla_f^rW_0(\ell_my+a,y')|
+ \le C_{j,r}\ell_m^{-1-r}e^{-c_j|y-y'|},\qquad 0\le r\le d.
+\end{equation*}
+The reference-level choice in Section~\ref{sec:constants} ensures this order. A jet potential grows polynomially, and
+$\sum_{z\in\Z^4}e^{-c_j|z|}(1+|z|)^d<\infty$.
+Thus its kernel sum and the required differences converge absolutely. Applying the displayed bound to each factor of a homogeneous jet monomial gives $|(\mathsf R^{\rm lead}_m)_{bi}|\le C\ell_m^{-w_i}$, with $C$ depending only on $d$ and the stage. Periodization gives the same bound on a torus by summing over its translates. The threshold formula in row~9 of Section~\ref{sec:constants} and the entry choices of Lemma~\ref{lem:E1.1} give $0<t_m\le1$ and $\tfrac12\le t_m/t_{m+1}\le2$. Hence $(T_m)_{ii}=(t_m/t_{m+1})^{k_i}$, and back substitution in increasing weight bounds $T_m^{\pm1}$ uniformly in $N$, $p$ and $m$ within a stage.
 \begin{lemma}[One marked step]\label{lem:E-marked-step}
 The coefficient map $L_m$ is invertible. Its leading map $T_m$ sends each basis vector to its own and higher weights, with nonzero diagonal. Moreover,
 \begin{gather*}
@@ -14,7 +21,7 @@ The graphs are linear, vanish on the unit, and respect conjugation and signed pe
 \end{lemma}
 The proof gives the construction and the bounds, including the contraction between two choices of incoming remainders.
 \begin{proof}
-Use the local sections of Definition~\ref{def:D07}, the exact block map of Definition~\ref{def:D04}, and the expansion and local subtraction of Lemmas~\ref{lem:D-connected}, \ref{lem:D4} and~\ref{lem:D5}. Put $L=\ell_m$, $s=C_{J_{m+1}}$, $C=K_{J_{m+1}}$ and $\kappa_m=(\epsilon_m^{\rm for})^{1/2}$. All norms in this proof are coefficient sums or the anchored norm~\eqref{eq:E-marked-mass}.
+Use the local sections of Definition~\ref{def:D07}, the exact block map of Definition~\ref{def:D04}, the connected expansion of Lemma~\ref{lem:D-connected}, the pre-reset estimates of Lemma~\ref{lem:D4}, the subtraction of Lemma~\ref{lem:D-local-subtraction}, and the density identity of Lemma~\ref{lem:D5}. Put $L=\ell_m$, $s=C_{J_{m+1}}$, $C=K_{J_{m+1}}$ and $\kappa_m=(\epsilon_m^{\rm for})^{1/2}$. All norms in this proof are coefficient sums or the anchored norm~\eqref{eq:E-marked-mass}.
 
 \emph{Step 1: Marked terms in the local integration.}
 Introduce $z^2=0$. Replace the regular exponential factor by its product with
