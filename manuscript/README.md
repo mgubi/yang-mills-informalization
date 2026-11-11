@@ -38,7 +38,7 @@ The process by which it is written and checked is described in [How this manuscr
 | | 9. Constants and order of choice | 3 | reviewed |
 | Part II | 10. Local polynomial fields | 8 | reviewed |
 | | 11. Gauges and block integration | 25 | reviewed |
-| | 12. Path actions and the coupling reset | 11 | reviewed; final minor fixes under way |
+| | 12. Path actions and the coupling reset | 11 | reviewed; final fixes applied |
 | | 13. Activities and the inductive step | 30 | reviewed |
 | | 14. Trajectories, marked fields and ultraviolet convergence | 34 | reviewed |
 | | 15. Infinite volume and field calculus | 7 | reviewed; final minor fixes under way |

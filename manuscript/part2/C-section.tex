@@ -7,6 +7,8 @@ The inputs are the branches, free forms, stationary interpolation, Gaussian coor
 
 Throughout, the group and metric are those of Definition~\ref{def:D01}, and the scales are those of Section~\ref{sec:renormalization}. At a step $m+1\to m$ put $\ell=\ell_m$ and $j=J_{m+1}$. Arrays depend on $N,m$ and the intervening block ratios, and are chosen on $\Z^4$ before periodic evaluation. They are independent of the volume index~$p$ and of the running coupling. Constants declared uniform in~$\ell$ are chosen before~$\ell$.
 
+The arrays are constructed by descending induction on~$m$. Write $(I_m)$ for the path bounds and cancellations of Lemmas~\ref{lem:C1}--\ref{lem:C2} at level~$m$. The top-level Wilson matching in the proof of Lemma~\ref{lem:C4} starts the induction. Under $(I_{m+1})$, Lemmas~\ref{lem:C4}, \ref{lem:C6}--\ref{lem:C7} treat the step $m+1\to m$; the joint proof after Lemma~\ref{lem:C7} constructs the output arrays and proves~$(I_m)$. Curl division and the gauge determinant identity are independent of this induction.
+
 \subsection*{Curvature coordinates}
 
 A path transports curvature to an anchor, where invariant colour contractions can be taken. Write $U_\gamma$ for the ordered link product along~$\gamma$, $\mathfrak p=(a,b)$, $a<b$, for an orientation, and $U_{x;\mathfrak p}$ for a plaquette holonomy. The footprint of a slot is the set of vertices visited by its path and plaquette boundary. The footprint of an atom is the union of its slot footprints and the origin, translated to its anchor. Health means disjointness from $\flags_m(U)$: no plaquette with a vertex in that footprint has chord exceeding~$t_m$.
@@ -28,10 +30,10 @@ Here $r_{\mathfrak p i}\in\R$ and $\mathcal F_{\mathfrak p i}$ denotes the slot 
 \end{equation*}
 The coefficients are invariant under the simultaneous adjoint action on all slots. The finite set $X_i$ is the footprint just defined.
 
-For each stage~$k$, take $\gamma_k>0$ from Lemma~\ref{lem:B2}, so the free plaquette forms for the top and both incoming stages are at least $2\gamma_k I$. Clipping therefore leaves a strictly positive remainder even at $c_{\rm dir}=\gamma_k$. Write $c_{\rm dir}=c_{{\rm dir},J_m}>16c_{\rm lin}=16c_{{\rm lin},J_m}>0$. The relaxed health test permits a larger chord farther from the anchor.
+For each stage~$k$, take $\gamma_k>0$ from Lemma~\ref{lem:B2}, so the free plaquette forms for the top and both incoming stages are at least $2\gamma_k I$. Write $c_{\rm dir}=c_{{\rm dir},J_m}$ and $c_{\rm lin}=c_{{\rm lin},J_m}$. Whenever $c_{\rm dir}\le\gamma_{J_m}$, the form $\mathsf H_{N,m}-c_{\rm dir}I$ is at least $\gamma_{J_m}I$ and has the positive row factor used below. In the relaxed health test, $\operatorname{dist}$ is the unit-lattice maximum distance on the torus. This test permits a larger chord farther from the anchor.
 
 \begin{definition}[Path action]\label{def:D23}
-Require $c_{\rm dir}\le\min(\gamma_{J_m},1)$, and put
+Require $0<16c_{\rm lin}<c_{\rm dir}\le\min(\gamma_{J_m},1)$, and put
 \begin{align*}
 \operatorname{clip}_t(u)&=\begin{cases}c_{\rm dir}u^2/2,&u\le t,\\c_{\rm lin}tu,&u>t,\end{cases}\\
 \chi^{\rm hlth}_{m,x}(U)&=\mathbf1\{\chord(U_{y;\mathfrak p})\le t_m e^{\operatorname{dist}(x,y)/R_{J_m}^{\rm rel}}\text{ for every }y,\mathfrak p\}\,.
@@ -44,10 +46,10 @@ Define
 &\quad+\beta\sum_{x,i}(\mathfrak a_i^{(3)}+\mathfrak a_i^{(4)})(U,x)+\sum_{x,i}\mathfrak a_i^{(2)}(U,x),\\
 \pathaction_{N,m}(\beta,U)&=\frac1{|\hypercubic|}\sum_{\varsigma\in\hypercubic}(\pathaction)^{\rm raw}_{N,m}(\beta,\varsigma^*U)\,.
 \end{align*}
-This separates the kinetic coefficient from the loop correction.
+This separates the kinetic coefficient from loop corrections.
 \end{definition}
 
-The sums over $x$ are over the torus at level~$m$, and $i\in\N$. The bounds below control actual path lengths on every period.
+The sums over $x$ are over the torus at level~$m$, and $i\in\N$. The clip has a downward jump immediately to the right of~$t$: its value at~$t$ is $c_{\rm dir}t^2/2$, whereas its right limit is $c_{\rm lin}t^2$. For $u>t$ its linear branch gives $\operatorname{clip}_t(u)=c_{\rm lin}tu\ge c_{\rm lin}t^2$, the large-field lower bound used in Lemma~\ref{lem:B-D1}. The bounds below control actual path lengths on every period.
 
 \begin{lemma}[Path bounds]\label{lem:C1}
 For every $N$ and $m\le N$, the construction below chooses arrays independent of $p$ and $\beta$, with
@@ -90,20 +92,24 @@ Near the flat field all health indicators equal one. By $\chord^2=2\wilsonterm$ 
 \end{equation*}
 Here $d_1$ is the lattice curl. Lemma~\ref{lem:B2} gives the exact adjacent free relation and the row factor, with $\mathsf H_{N,m}-c_{{\rm dir},J_m}I\ge\gamma_{J_m}I$. Placing its coefficients on coordinate paths gives $\mathcal L_{\mathfrak p}^{\rm path}$. The cell volume contributes $\ell^4$ and each curvature contributes $\ell^{-2}$; hence $\ell^4(\ell^{-2})^2=1$, preserving the coefficient~$\beta$.
 
-We need a division that expresses a gauge-invariant Taylor difference in curvatures. For a momentum~$\xi$ put $q_a(\xi)=e^{i\xi_a}-1$; its exterior action $d_1(\xi)a=q(\xi)\wedge a$ is the curl symbol. A kernel is transverse in one leg when contraction of that leg with~$q$ is zero. Momentum conservation makes one external momentum the negative sum of the others.
+We need a division that expresses a gauge-invariant Taylor difference in curvatures. For a momentum~$\xi$ put $q_a(\xi)=e^{i\xi_a}-1$; its exterior action $d_1(\xi)a=q(\xi)\wedge a$ is the curl symbol. Let $\xi_1,\ldots,\xi_{k-1}$ be independent momenta and $\xi_0=-\sum_{\nu=1}^{k-1}\xi_\nu$. Write $\delta_\nu=\iota_{q(\xi_\nu)}$ for bilinear contraction in leg~$\nu$. Consider periodic analytic kernels $f$ valued in $\bigotimes_{\nu=0}^{k-1}\Lambda^1\C^4$, with $\delta_\nu f=0$ in every leg. On the strip $|\operatorname{Im}\xi_\nu^a|<\sigma$, assume each coordinate of~$f$ is bounded by~$A\ge0$. Momentum order~$s$ means vanishing of all Taylor coefficients of total momentum degree less than~$s$.
 
 \begin{lemma}[Curl division]\label{lem:C3}
-For $k\ge3$ and $\sigma>0$, there are $0<\eta\le\sigma$ and $K\ge0$, depending only on $k,\sigma$, such that every transverse periodic analytic $k$-leg Taylor kernel bounded by $A\ge0$ on the $\sigma$-strip factors through curls, with plaquette kernel bounded by $KA$ on the $\eta$-strip. Its Fourier coefficients decay exponentially. For two legs, the same holds; momentum order $s+2$ gives plaquette order~$s$ for every $s\ge0$.
+For $k\ge3$ and $\sigma>0$, there are $0<\eta\le\sigma$ and $K\ge0$, depending only on $k,\sigma$, such that every such $f$ admits a periodic analytic kernel $g$ valued in $\bigotimes_{\nu=0}^{k-1}\Lambda^2\C^4$, with
+\begin{equation*}
+f=\delta_0\cdots\delta_{k-1}g,\qquad \sup_{\eta\text{-strip}}|g|\le KA\,.
+\end{equation*}
+Its Fourier coefficients decay exponentially. For $k=2$ the same conclusion holds if $f$ has momentum order $s+2$, with $g$ of order~$s$; $\eta,K$ are independent of $s\ge0$.
 \end{lemma}
 
 \begin{proof}
-We give the division for the Taylor differences of Definition~\ref{def:D23}. Scalar division requires vanishing when the divided leg has zero momentum; positive exterior degree requires only closedness. For one leg let $\delta=\iota_q$ be contraction on exterior tensors. Split a $\delta$-closed tensor as $f=e_a\wedge u+v$, with $u,v$ containing no $e_a$. Define
+We give the division for a general transverse kernel. Scalar division requires vanishing when the divided leg has zero momentum; positive exterior degree requires only closedness. For one leg let $\delta=\iota_q$ be contraction on exterior tensors. Split a $\delta$-closed tensor as $f=e_a\wedge u+v$, with $u,v$ containing no $e_a$. Define
 \begin{equation*}
 D_af(\xi)=\frac{f(\xi)-f(\xi)|_{\xi_a=0}}{q_a(\xi)},
 \qquad h_af=e_a\wedge D_av,
 \qquad R_af=v|_{\xi_a=0}\,.
 \end{equation*}
-The identity $\delta f=0$ gives $\delta'v=-q_au$, where $\delta'$ contracts the other axes. Consequently
+The identity $\delta f=0$ gives $\delta'v=-q_au$, where $\delta'$ contracts the other axes. Since $q_b$ is independent of $\xi_a$ for $b\ne a$, $D_a$ commutes with~$\delta'$, and $D_a(q_au)=u$. Consequently
 \begin{equation*}
 \delta h_af=q_aD_av-e_a\wedge D_a\delta'v
 =v-v|_{\xi_a=0}+e_a\wedge u=f-R_af\,.
@@ -122,9 +128,11 @@ The quotients are analytic even at the zeros of~$q_a$. On a Fourier monomial the
 \end{equation*}
 bounds the quotient on a smaller strip by a constant times $|n|$ times its original exponential weight. The strip loss absorbs $|n|$, so the Fourier series converges absolutely. Each division loses at most one momentum order.
 
-For independent legs, their remaining transverse subspaces do not depend on the divided momentum, so each restriction and division preserves them. For the dependent momentum $\xi_0=-\sum_{i=1}^{k-1}\xi_i$, first shear the coordinates to replace $\xi_1$ by~$\xi_0$. The other independent contractions remain unchanged. The one-leg formula gives $\delta_0X=f$, retaining the contractions in legs $2,\ldots,k-1$. Write $c_1$ for contraction in leg~$1$. Its defect obeys $\delta_0(c_1X)=c_1f=0$. Solve $\delta_0Y=c_1X$ by the same formula. After $c_1$, leg~$1$ has exterior degree zero, so restoring that leg will require only scalar division.
+For independent legs, their remaining transverse subspaces do not depend on the divided momentum, so each restriction and division preserves them. The dependent-leg induction has the following claim: with $r$ independent momenta and dependent exterior degree $d\ge1$, a tensor closed in the dependent leg and transverse in all independent legs has a dependent-leg primitive preserving those transverse conditions, provided $d+2r>4$. Analytic bounds hold after a strip reduction depending only on $r,d$ and the original strip. For $r=0$ the condition gives $d>4$, so the tensor is zero. The induction step below reduces $(r,d)$ to $(r-1,d+2)$, preserving the condition. Initially $r=k-1,d=1$, so it applies for $k\ge3$.
 
-On $\xi_1=0$, the restriction $Y_0$ is $\delta_0$-closed. Recursively solve $\delta_0Z=Y_0$ with one fewer independent momentum and extend~$Z$ independently of~$\xi_1$. Then $Y'=Y-\delta_0Z$ vanishes on $\xi_1=0$, and scalar division gives $c_1D=Y'$. Thus
+For the dependent momentum $\xi_0=-\sum_{i=1}^{k-1}\xi_i$, first shear the coordinates to replace $\xi_1$ by~$\xi_0$. The other independent contractions remain unchanged. The one-leg formula gives $\delta_0X=f$, retaining the contractions in legs $2,\ldots,k-1$. Write $c_1$ for contraction in leg~$1$. Its defect obeys $\delta_0(c_1X)=c_1f=0$. Solve $\delta_0Y=c_1X$ by the same formula. After $c_1$, leg~$1$ has exterior degree zero, so restoring that leg will require only scalar division.
+
+On $\xi_1=0$, the restriction $Y_0$ is $\delta_0$-closed, since $c_1X$ vanishes there. The induction hypothesis with one fewer independent momentum and dependent degree two higher gives $\delta_0Z=Y_0$, preserving the other transverse conditions. Extend~$Z$ independently of~$\xi_1$. Then $Y'=Y-\delta_0Z$ vanishes on $\xi_1=0$, and scalar division gives $c_1D=Y'$. Thus
 \begin{equation*}
 V=X-\delta_0D,\qquad \delta_0V=f,\qquad c_1V=c_1X-\delta_0Y'=0\,.
 \end{equation*}
@@ -140,21 +148,17 @@ At a step, let $v$ be the coarse chart variable and $z$ the fine axial variable.
 D_zS(v,z(v))=0,\qquad z(0)=0,\qquad
 \mathsf Q=D_z^2S(0,0)\ge\nu_jI,\qquad\nu_j>0\,.
 \end{equation*}
-Put $Wv=(v,Dz(0)v)$ and $\mathsf B(v,v)[u]=D^3S(0)[Wv,Wv,(0,u)]$. Let $C_3,C_4$ bound the kernels of $D^3S(0)[(W\cdot)^3]$ and $D^4S(0)[(W\cdot)^4]$ in the supremum norm of their block-scaled Fourier entries on the fixed smaller strip. The inverse and mixed-insertion bounds of Lemmas~\ref{lem:B3}, \ref{lem:B5} give $E$. The constants $a_3,c_4,E$ depend only on preceding stage data; $a_3^\prime,c_4^\prime$ may also depend on the input path bound.
+Put $Wv=(v,Dz(0)v)$ and $\mathsf B(v,v)[u]=D^3S(0)[Wv,Wv,(0,u)]$. For the bounds use the joint fine-link and centered-frame vertices of Lemma~\ref{lem:B5}, before choosing an axial representative. Let $C_3,C_4$ bound their scalar Fourier entries on the fixed smaller strip, both on normalized smooth coarse legs and with one arbitrary fine leg of block norm at most one. In particular, the mixed cubic functional has dual block norm at most~$C_3$. Take $E=\max(1,C_j^{\rm ins})$ from Lemma~\ref{lem:B7}, bounding the completed inverse from the dual block norm to the primal block norm. The mixed functionals annihilate joint gauge directions, so their pairing through this inverse equals their axial pairing through~$\mathsf Q^{-1}$, by Lemma~\ref{lem:B5}. Thus $E$ is independent of~$\ell$ and of the input path amplitude. The constants $a_3,c_4$ depend only on preceding stage data; $a_3^\prime,c_4^\prime$ may also depend on the input path bound.
 
-The next formula constructs the higher arrays while keeping their bound independent of the input amplitude after the block ratio has been enlarged.
+The next formula constructs the higher arrays while keeping their bound independent of the input amplitude after the block ratio has been enlarged. The stationary identities hold for every admitted ratio; only the uniform array bound requires a larger ratio. Lemma~\ref{lem:B5} gives $C_3\le a_3+\ell^{-1}a_3^\prime$ and $C_4\le c_4+\ell^{-1}c_4^\prime$.
 
 \begin{lemma}[Classical matching]\label{lem:C4}
-For $\ell$ above a threshold depending on the input path data, the stationary action $\mathsf S_{\rm cl}(v)=S(v,z(v))$ satisfies
+The stationary action $\mathsf S_{\rm cl}(v)=S(v,z(v))$ satisfies
 \begin{align*}
 D^3\mathsf S_{\rm cl}(0)[v^3]&=D^3S(0)[(Wv)^3],\\
 D^4\mathsf S_{\rm cl}(0)[v^4]&=D^4S(0)[(Wv)^4]-3\mathsf B(v,v)\mathsf Q^{-1}\mathsf B(v,v)\,.
 \end{align*}
-Its factorial-normalized kernels have bounds $C_3/6$ and $(C_4+3C_3^2E)/24$, where
-\begin{equation*}
-C_3\le a_3+\ell^{-1}a_3^\prime,\qquad C_4\le c_4+\ell^{-1}c_4^\prime\,.
-\end{equation*}
-The fine leading vertices of degrees $2,3,4$ differ from Wilson by momentum orders $3,2,1$.
+Its factorial-normalized kernels have bounds $C_3/6$ and $(C_4+3C_3^2E)/24$. For $\ell$ above a threshold depending on the input path data, cubic and quartic arrays satisfying the bounds of Lemma~\ref{lem:C1} make $\mathsf S_{N,m}$ agree with $\mathsf S_{\rm cl}$ through degree four. Their bound depends only on fixed stage data. The degree-$r$ fine-minus-Wilson vertex has momentum order $5-r$, for $r=2,3,4$.
 \end{lemma}
 
 \begin{proof}
@@ -163,7 +167,7 @@ Use the block map of Definition~\ref{def:D04} and Lemmas~\ref{lem:B3}, \ref{lem:
 6\mathsf B(v,v)[w]+3\langle w,\mathsf Qw\rangle
 =-3\mathsf B(v,v)\mathsf Q^{-1}\mathsf B(v,v)\,.
 \end{equation*}
-The other term is $D^4S(0)[(Wv)^4]$. The block-scaled inverse and interpolation bounds give the two displayed kernel estimates, after division by $3!$ and~$4!$.
+The other term is $D^4S(0)[(Wv)^4]$. In the joint coordinates of Lemma~\ref{lem:B5}, the cubic and quartic stationary kernels have the same identities with smooth interpolated legs. Each mixed cubic functional has dual block norm at most~$C_3$, and the completed inverse has dual-to-primal norm at most~$E$. Their pairing is therefore bounded by~$C_3^2E$. There are three pairings in the symmetric fourth derivative. This gives the kernel estimates after division by $3!$ and~$4!$.
 
 The fine-minus-Wilson vertices have orders $3,2,1$ by Lemma~\ref{lem:B5}. The quadratic order uses $\widehat{\mathsf H}(0)=I$ and two curls. Differentiated gauge invariance then gives the higher orders, including nonlinear curvature transport. Wilson has orders $2,1,0$: the extra power becomes $\ell^{-1}$ under free interpolation and rescaling. The Wilson vertices and penalty give $a_3,c_4$, independently of the input atom bound; the differences give $a_3^\prime,c_4^\prime$.
 
@@ -243,7 +247,7 @@ The constant is independent of $N,p,\ell$.
 \end{lemma}
 
 \begin{proof}
-Use Lemmas~\ref{lem:C2}, \ref{lem:C5} and Lemmas~\ref{lem:B3}, \ref{lem:B5}--\ref{lem:B7}. Here Lemma~\ref{lem:C2} is used for the input arrays, in descending induction from $m=N$. The full completed Hessian contains a contact term: the second derivative of the predictor multiplied by the first derivative of the penalty. Along the free interpolation, write $\mathsf a(\xi)$ for this penalty derivative and $\mathsf b(\xi)$ for the mixed fine/frame trace. Lemma~\ref{lem:B6} gives $\mathsf a(\xi)=O(|\xi|^2)$ and $\mathsf b(\xi)=O(|\xi|)$. The change in the tested entry on removing the contact term consists of $\mathsf a\mathsf b$, its reflected counterpart, and a term quadratic in~$\mathsf a$, with bounded analytic factors. It is $O(|\xi|^3)+O(|\xi|^4)$ and has zero~$\alpha_b$.
+Use Lemmas~\ref{lem:C2}, \ref{lem:C5} and Lemmas~\ref{lem:B3}, \ref{lem:B5}--\ref{lem:B7}. The input arrays satisfy Lemma~\ref{lem:C2} by~$(I_{m+1})$. The full completed Hessian contains a contact term: the second derivative of the predictor multiplied by the first derivative of the penalty. Along the free interpolation, write $\mathsf a(\xi)$ for this penalty derivative and $\mathsf b(\xi)$ for the mixed fine/frame trace. Lemma~\ref{lem:B6} gives $\mathsf a(\xi)=O(|\xi|^2)$ and $\mathsf b(\xi)=O(|\xi|)$. The change in the tested entry on removing the contact term consists of $\mathsf a\mathsf b$, its reflected counterpart, and a term quadratic in~$\mathsf a$, with bounded analytic factors. It is $O(|\xi|^3)+O(|\xi|^4)$ and has zero~$\alpha_b$.
 
 For the remaining comparison, let $D$ denote external field differentiation. Differentiate the logarithm and use the resolvent identity:
 \begin{equation*}
@@ -252,12 +256,12 @@ A_0^{-1}-A_1^{-1}=A_0^{-1}(A_1-A_0)A_1^{-1}\,.
 \end{equation*}
 The difference consists of the block penalty, coarse-frame terms and regulator terms. The block penalty factors through the coarse links and the frame terms through the coarse frame variables: their dimensions per block are $4\dimG$ and $\dimG$. Lemma~\ref{lem:B7} bounds the resulting products in the block-scaled operator norms. Its trace is therefore bounded by that dimension times the norm, independently of~$\ell$.
 
-For the regulator put $P_\mu=\mu^2(\Delta_U+\mu^2I)^{-1}$. At zero background the aliases $k_z=(\xi+2\pi z)/\ell$, in centered representatives, obey
+For the regulator put $P_\mu=\mu^2(\Delta_U+\mu^2I)^{-1}$. At zero background and coarse momentum $\xi\in[-\pi,\pi]^4$, its fibre is diagonal in the $\ell^4$ aliases $k_z=(\xi+2\pi z)/\ell$, where $z$ ranges over centered representatives of $(\Z/\ell\Z)^4$. These lie in the fine momentum cube. Since $|q(k)|\ge2|k|_\infty/\pi$, $|\xi+2\pi z|_\infty\ge\pi|z|_\infty$ and $\mu=\ell^{-1}$,
 \begin{equation*}
 \frac{\mu^2}{|q(k_z)|^2+\mu^2}\le\frac C{1+|z|^2},\qquad
-\tr|P_\mu^3|\le C\sum_{z\in\Z^4}(1+|z|^2)^{-3}<\infty\,.
+\tr_{\rm fibre}|P_\mu^3|\le C\sum_{z\in\Z^4}(1+|z|^2)^{-3}<\infty\,.
 \end{equation*}
-The same bounds hold on a fixed smaller complex strip in coarse momentum. In $P_\mu^9=(P_\mu^3)^3$, two derivatives leave at least one undifferentiated cube. A regulator insertion has the prefactor~$\mu^2$, paired with an inverse bounded in block units by $C\mu^{-2}$. Lemma~\ref{lem:B7} supplies these bounds through two field insertions for the inverse and $P_\mu$. Thus the two powers cancel before taking the trace. Put the undifferentiated cube in trace norm and all other factors in operator norm; $|\tr XY|\le\tr|X|\,\|Y\|$ gives a uniform bound~$C_*$ for the analytic difference kernel on a strip of width~$\zeta_*>0$.
+Here $C$ includes the component count, at most $4\dimG$; the trace is at one coarse momentum, with no sum over coarse sites. The same bounds hold on a fixed smaller complex strip in coarse momentum. In $P_\mu^9=(P_\mu^3)^3$, two derivatives leave at least one undifferentiated cube. A regulator insertion has the prefactor~$\mu^2$, paired with an inverse bounded in block units by $C\mu^{-2}$. Lemma~\ref{lem:B7} supplies these bounds through two field insertions for the inverse and $P_\mu$. Thus the two powers cancel before taking the trace. Put the undifferentiated cube in trace norm and all other factors in operator norm; $|\tr XY|\le\tr|X|\,\|Y\|$ gives a uniform bound~$C_*$ for the analytic difference kernel on a strip of width~$\zeta_*>0$.
 
 To extract the coefficient, restrict its tested entry to $\xi=te_1$. On a circle $|t|=\zeta_*/2$, the analytic bound gives $|[t^2]g|\le4C_*/\zeta_*^2$; hence $|\alpha_b(g)|\le8C_*/\zeta_*^2$. This gives $d_{\rm cmp}$. The estimate applies after the zero-coefficient contact term has been removed.
 
@@ -270,7 +274,7 @@ The factors are the cell volume and $\ell^{-1}$ per interpolated field. Extracti
 
 \subsection*{The logarithmic coefficient}\label{subsec:C-coefficient}
 
-The vertex comparison in the proof of Lemma~\ref{lem:C4} gives momentum orders $3,2,1$ for the quadratic, cubic and quartic differences from Wilson. We use it for the input arrays, in descending induction from $m=N$.
+The vertex comparison in the proof of Lemma~\ref{lem:C4} gives momentum orders $3,2,1$ for the quadratic, cubic and quartic differences from Wilson. The input arrays satisfy its hypotheses by~$(I_{m+1})$.
 The resulting logarithmic term is the part of the one-step drift which remains after the block ratio has been chosen.
 
 \begin{lemma}[One-loop coefficient]\label{lem:C7}
@@ -287,7 +291,11 @@ Choose a colour basis index $b$, external polarization~$e_2$ and external moment
 \begin{equation*}
 2it(\delta_{i2}\delta_{j1}-\delta_{i1}\delta_{j2})\operatorname{ad}(e_b^{\g})\,.
 \end{equation*}
-Simplicity and the trace metric give $\tr_{\g}(\operatorname{ad}(e_b^{\g})^2)=-\casimir$. The bubble pairs vertices at $te_1$ and $-te_1$. The orbital factor $-2ik_2$ is unchanged when $k\mapsto k+te_1$ and $te_1\mapsto-te_1$. Put $S_{\rm sp}=E_{21}-E_{12}$. Since $\tr S_{\rm sp}=0$, the orbital--spin cross terms vanish; the spin product is $(2itS_{\rm sp})(-2itS_{\rm sp})=4t^2S_{\rm sp}^2$, with trace $-8t^2$. The directional traces of the paired vertices are therefore $4(-2ik_2)^2-8t^2$ for the vector and $(-2ik_2)^2$ for the ghost. Divide both by $\varkappa^2|k+te_1|^2$ and differentiate twice at zero. In $\tfrac12\log\det\mathsf C_\mu-\log\det\mathsf G_\mu$, the bubble terms have weights $-1/4$ for the vector and $+1/2$ for the ghost. The extraction of $\alpha_b$ supplies the factor~$2$. Thus ghost minus half vector, with the external Taylor factor included, gives
+Simplicity and the trace metric give $\tr_{\g}(\operatorname{ad}(e_b^{\g})^2)=-\casimir$. The bubble pairs vertices at $te_1$ and $-te_1$. The orbital factor $-2ik_2$ is unchanged when $k\mapsto k+te_1$ and $te_1\mapsto-te_1$. Put $S_{\rm sp}=E_{21}-E_{12}$. Since $\tr S_{\rm sp}=0$, the orbital--spin cross terms vanish; the spin product is $(2itS_{\rm sp})(-2itS_{\rm sp})=4t^2S_{\rm sp}^2$, with trace $-8t^2$. The directional traces of the paired vertices are therefore $4(-2ik_2)^2-8t^2$ for the vector and $(-2ik_2)^2$ for the ghost. Include the colour trace, divide by $\varkappa^2|k+te_1|^2$ and take the coefficient of~$t^2$. In $\tfrac12\log\det\mathsf C_\mu-\log\det\mathsf G_\mu$, the bubble terms have weights $-1/4$ for the vector and $+1/2$ for the ghost. The extraction of $\alpha_b$ supplies the factor~$2$. Before taking the coefficient, ghost minus half vector is
+\begin{equation*}
+-\frac{4\casimir(k_2^2+t^2)}{\varkappa^2|k+te_1|^2}\,.
+\end{equation*}
+Its quadratic coefficient is
 \begin{equation}\label{eq:C-pole}
 h(k)=4\casimir\left(\frac{k_2^2}{\varkappa^6}-\frac{4k_2^2k_1^2}{\varkappa^8}-\frac1{\varkappa^4}\right)\,.
 \end{equation}
@@ -308,7 +316,13 @@ To obtain them, use $q_a(k)=ik_a+O(\varkappa^2)$ and the vertex orders above. Fo
 \|\partial R_\mu\|\le C(\varkappa+\mu)^{-3},\quad
 \|\partial^2R_\mu\|\le C(\varkappa+\mu)^{-4}\,.
 \end{equation*}
-Each first-order vertex has order $\varkappa$, with bounded first external derivative. In a bubble, two momentum derivatives on one inverse give $\varkappa^2(\varkappa+\mu)^{-2}(\varkappa+\mu)^{-4}\le(\varkappa+\mu)^{-4}$; moving derivatives to vertices gives the same bound. On $\varkappa\ge\mu$, a lattice-to-leading replacement gains one power of~$\varkappa$, giving $C\varkappa^{-3}$. A regulator insertion contributes at most $C\mu^2\varkappa^{-6}$. The terms with a single second-order vertex are bounded by $C(\varkappa^{-2}+\mu^2\varkappa^{-6})$ and so satisfy the same bound on the bounded momentum cube. The product rule gives the same bounds for the ninth-power regulator. Summing proves~\eqref{eq:C-integrand}.
+Each first-order vertex has order $\varkappa$, with bounded first external derivative. In a bubble, two momentum derivatives on one inverse give $\varkappa^2(\varkappa+\mu)^{-2}(\varkappa+\mu)^{-4}\le(\varkappa+\mu)^{-4}$; moving derivatives to vertices gives the same bound. On $\varkappa\ge\mu$, a lattice-to-leading replacement gains one power of~$\varkappa$, giving $C\varkappa^{-3}$. A regulator insertion contributes at most $C\mu^2\varkappa^{-6}$.
+
+The terms with one second-order vertex are absent from~$h$. Their quadratic coefficients have bounds
+\begin{equation*}
+C\left((\varkappa+\mu)^{-2}+\mu^2(\varkappa+\mu)^{-6}\right).
+\end{equation*}
+The first term comes from one inverse and a bounded second-order vertex derivative; the second retains the regulator factor~$\mu^2$ with the differentiated inverse bounds. On the cube, $\varkappa\le2\pi$ and $\mu\le1$, so this is at most $C' (\varkappa+\mu)^{-4}$. On $\varkappa\ge\mu$, it is at most $C(2\pi\varkappa^{-3}+\mu^2\varkappa^{-6})$. Thus these terms satisfy both inequalities of~\eqref{eq:C-integrand}. The product rule gives the same bounds for the ninth-power regulator. Summing proves~\eqref{eq:C-integrand}.
 
 On the spherical shell $\mu<\varkappa\le1$, rotational symmetry gives angular means $k_2^2/\varkappa^2=1/4$ and $k_2^2k_1^2/\varkappa^4=1/24$. For the latter, write the fourth moments as $a=\mathbb E\theta_1^4$ and $b=\mathbb E\theta_1^2\theta_2^2$ on the unit sphere: rotation by $\pi/4$ gives $a=3b$, and $(\sum_i\theta_i^2)^2=1$ gives $4a+12b=1$. Since the sphere has area $2\pi^2$,
 \begin{align}\label{eq:C-slope}
@@ -345,13 +359,13 @@ Exponential decay permits termwise differentiation. Put the coefficients on coor
 
 For the bounds, contour displacement and the path-length estimate after Lemma~\ref{lem:C3} give a sufficiently small width $w_k^{\rm path}>0$. Choose $A_k^{\rm path}$ to bound the top construction and the two possible incoming stages $k,k+1$. Lemma~\ref{lem:C4} permits this choice before the corresponding ratios, by making the input-dependent terms at most one. Choose the widths small enough for these same three constructions.
 
-The new loop contribution has a weighted bound $a_j\ell^4+b_j\log\ell+c_j$. Here $\ell^4$ bounds the trace dimension per coarse cell, and the logarithm comes from the subtracted coefficient. For an inherited order-four link kernel, rescaling gives
+The new loop contribution has a weighted bound $a_j^{\rm lp}\ell^4+b_j^{\rm lp}\log\ell+c_j^{\rm lp}$. Here $\ell^4$ bounds the trace dimension per coarse cell, and the logarithm comes from the subtracted coefficient. For an inherited order-four link kernel, rescaling gives
 \begin{equation*}
 \ell^4\ell^{-2}O(|\xi/\ell|^4)=O(\ell^{-2}|\xi|^4)\,.
 \end{equation*}
 Its weighted pullback is therefore bounded by $C_j^{\rm pb}\ell^{-2}\Lambda_{m+1}^{\rm loop}$. Choose $\ell$ so that $C_j^{\rm pb}\ell^{-2}\le1/4$, then raise the coupling entry threshold until
 \begin{equation*}
-2(a_j\ell^4+b_j\log\ell+c_j)\le\Lambda_m^{\rm loop},\qquad
+2(a_j^{\rm lp}\ell^4+b_j^{\rm lp}\log\ell+c_j^{\rm lp})\le\Lambda_m^{\rm loop},\qquad
 \Lambda_{m+1}^{\rm loop}\le2\Lambda_m^{\rm loop}\,.
 \end{equation*}
 The sum is at most $\tfrac12\Lambda_m^{\rm loop}+\tfrac14\cdot2\Lambda_m^{\rm loop}=\Lambda_m^{\rm loop}$. These choices are in the order of Section~\ref{sec:constants}: widths and amplitudes, ratios, then entry thresholds. The first inequality is possible because $2(\cutoffsize_m)^{\theta_{J_m}}\to\infty$ as $\refbeta_m\to\infty$ with $\ell_m,J_m$ fixed. For the second, antitonicity of~$\theta_k$, $J_m\le J_{m+1}\le J_m+1$, and $\theta_k\le1$ give, once $\cutoffsize_m>1$,
@@ -365,7 +379,7 @@ as $\refbeta_m\to\infty$ with $\ell_m$ fixed. The descent starts with zero loops
 
 \subsection*{The scalar reset}\label{subsec:C-reset}
 
-Use Definitions~\ref{def:D06}, \ref{def:D05a}--\ref{def:D05b} and Lemmas~\ref{lem:C1}--\ref{lem:C2}. Write $\pathaction_{N,m}(\beta,U)=\beta\mathsf K^{\rm kin}_m(U)+\mathcal L_m(U)$. For an input curve $\rho'_u$ of Theorem~\ref{prop:RG}, put $\mathcal H_u=\blockmap{m}_{\beta'_u}\density\rho'_u$ and $b_u=\beta'_u+\alpha_{N,m}$. Lemma~\ref{lem:D5} supplies regular and forced sums $E_u^{\rm sum},\mathcal F_u$, independent of $d$, with trial density
+Use Definitions~\ref{def:D06}, \ref{def:D05a}--\ref{def:D05b} and Lemmas~\ref{lem:C1}--\ref{lem:C2}. Write $\pathaction_{N,m}(\beta,U)=\beta\mathsf K^{\rm kin}_m(U)+\mathcal L_m(U)$. Here $\mathsf K^{\rm kin}_m$ contains the clipped term, row squares, and cubic and quartic atoms; $\mathcal L_m$ contains the quadratic atoms, with the hypercubic average in both. For an input curve $\rho'_u$ of Theorem~\ref{prop:RG}, put $\mathcal H_u=\blockmap{m}_{\beta'_u}\density\rho'_u$ and $b_u=\beta'_u+\alpha_{N,m}$. Lemma~\ref{lem:D5} supplies regular and forced sums $E_u^{\rm sum},\mathcal F_u$, independent of $d$, with trial density
 \begin{equation*}
 q_{u,d}(U)=e^{-(b_u+d)\mathsf K^{\rm kin}_m(U)-\mathcal L_m(U)-E_u^{\rm sum}(U)}\mathcal F_u(U)\,.
 \end{equation*}
@@ -376,7 +390,7 @@ Lemma~\ref{lem:D4} gives a preparatory sum $E_u^{\rm pre}$ with bound $c_{\rm pr
 The remaining scalar correction can be read from a single configuration with a definite kinetic energy. 
 
 \begin{lemma}[Coupling reset]\label{lem:C8}
-For each input curve of Theorem~\ref{prop:RG}, the coupling in the representation of Lemma~\ref{lem:D5} is continuous and satisfies
+For each input curve of Theorem~\ref{prop:RG}, take the families and real $\Delta_u$ supplied by Lemma~\ref{lem:D5}, with no bound on $\Delta_u$ assumed. Then $|\Delta_u|\le1$, and $\beta_u=\beta'_u+\alpha_{N,m}+\Delta_u$ is continuous and satisfies
 \begin{equation*}
 \beta_u=\beta'_u-\slope\log\ell_m+e_u,\qquad
 |e_u|\le d_j+1\le\omega_j^{\rm RG}\,.
@@ -390,18 +404,18 @@ Use Definitions~\ref{def:D01}, \ref{def:D06}, Lemmas~\ref{lem:C1}, \ref{lem:C7},
 0<\tau\le\min\left(\varepsilon_G,\frac14,
 \frac{c_{{\rm dir},J_m}}{512(1+A_{J_m}^{\rm path})}\right)\,.
 \end{equation*}
-Every $(1,2)$ plaquette has chord $h_{\rm pr}$ and all other plaquettes have chord zero. Thus this configuration~$V$ is everywhere healthy. All periods here are even because $4\mid L_p$. Signed permutations preserve the sum of direct plaquette charges, so the direct contribution to $\mathsf K^{\rm kin}_m(V)$ is at least $|\Lambda|c_{{\rm dir},J_m}h_{\rm pr}^2/2$. Row squares are nonnegative. Using the bound $4h_{\rm pr}\le1$ for the curvature factors, the cubic and quartic sums contribute at most
+Every $(1,2)$ plaquette has chord $h_{\rm pr}$ and all other plaquettes have chord zero. Thus this configuration~$V$ is everywhere healthy. All periods here are even because $4\mid L_p$. Signed permutations preserve the sum of direct plaquette charges, so the direct contribution to $\mathsf K^{\rm kin}_m(V)$ is at least $|\Lambda|c_{{\rm dir},J_m}h_{\rm pr}^2/2$. Row squares are nonnegative. Since $|\operatorname{proj}_{\g}(U-U^{-1})/2|\le\chord(U)$ and adjoint transport is isometric, every slot has norm at most $h_{\rm pr}\le1/4$. Lemma~\ref{lem:C1} bounds the absolute sum of cubic and quartic terms by
 \begin{equation*}
-|\Lambda|A_{J_m}^{\rm path}((4h_{\rm pr})^3+(4h_{\rm pr})^4)
+2|\Lambda|A_{J_m}^{\rm path}h_{\rm pr}^3
 \le |\Lambda|c_{{\rm dir},J_m}h_{\rm pr}^2/4\,.
 \end{equation*}
-The same estimate holds after averaging. Consequently
+Each signed image of~$V$ has the same plaquette chords with a single nonzero orientation. Hence the bounds apply to every term of the hypercubic average. Consequently
 \begin{equation*}
 K_{\rm pr}=\mathsf K^{\rm kin}_m(V)\ge|\Lambda|\chi_{\rm pr}t^2,
 \qquad\chi_{\rm pr}=c_{{\rm dir},J_m}\tau^2/4>0\,.
 \end{equation*}
 
-Lemma~\ref{lem:D4} gives $\mathcal H_u(1),\mathcal H_u(V)>0$. Put $v_u=|\Lambda|^{-1}\log \mathcal H_u(1)$ and $\varepsilon=\epsilon_m^{\rm reg}$. Its $\mathsf K^{\rm kin}_{2,m}$ is the nonlinear direct and row functional, omitting cubic and quartic atoms. Taking its logarithmic contrast gives
+Lemma~\ref{lem:D4} gives $\mathcal H_u(1),\mathcal H_u(V)>0$. Put $v_u=|\Lambda|^{-1}\log \mathcal H_u(1)$ and $\varepsilon=\epsilon_m^{\rm reg}$. Here $\mathsf K^{\rm kin}_{2,m}$ is the nonlinear direct and row functional of Lemma~\ref{lem:D4}, omitting cubic and quartic atoms. Taking the logarithmic contrast gives
 \begin{equation}\label{eq:C-prereset}
 \log\frac{\mathcal H_u(1)}{\mathcal H_u(V)}
 =\beta'_u\mathsf K^{\rm kin}_m(V)+\alpha_{N,m}\mathsf K^{\rm kin}_{2,m}(V)
@@ -430,12 +444,12 @@ f(u,d)&=(b_u+d)K_{\rm pr}+\mathcal L_m(V)+E_u^{\rm sum}(V)
 -\log\frac{\mathcal H_u(1)}{\mathcal H_u(V)}\\
 &=f(u,0)+dK_{\rm pr}\,.
 \end{align*}
-Its unique root satisfies
+Since $V$ has no flagged sites, $\mathcal F_u(V)=1$. Evaluating the exact identity of Lemma~\ref{lem:D5} at $V$ gives $f(u,\Delta_u)=0$. As $K_{\rm pr}>0$, this determines
 \begin{equation*}
-d_u=-f(u,0)/K_{\rm pr},\qquad
-|d_u|\le\frac{(c_{\rm pre}+1)\epsilon_m^{\rm reg}}{\chi_{\rm pr}t_m^2}\le1\,.
+\Delta_u=-f(u,0)/K_{\rm pr},\qquad
+|\Delta_u|\le\frac{(c_{\rm pre}+1)\epsilon_m^{\rm reg}}{\chi_{\rm pr}t_m^2}\le1\,.
 \end{equation*}
-Increase the entry threshold to obtain the final inequality, using $\epsilon_m^{\rm reg}/t_m^2=\refbeta_m^{-1/10}(\cutoffsize_m)^{-2}\to0$. The block integral and activity sums are continuous in~$u$ by Lemma~\ref{lem:D6}, so $d_u$ is continuous.
+Increase the entry threshold to obtain the final inequality, using $\epsilon_m^{\rm reg}/t_m^2=\refbeta_m^{-1/10}(\cutoffsize_m)^{-2}\to0$. The block integral and activity sums are continuous in~$u$ by Lemma~\ref{lem:D6}, so $\Delta_u$ is continuous.
 
-Since $V$ has no flagged sites, $\mathcal F_u(V)=1$. Evaluating the identity of Lemma~\ref{lem:D5} at $V$ therefore gives $f(u,\Delta_u)=0$. Uniqueness gives $\Delta_u=d_u$. Hence multiplication by $\mathcal H_u(1)=e^{v_u|\Lambda|}$ gives the density identity at~$d_u$. Its coupling is $\beta_u=\beta'_u+\alpha_{N,m}+d_u$. Lemma~\ref{lem:C7} and $|d_u|\le1$ prove the claimed drift.
+Multiplication by $\mathcal H_u(1)=e^{v_u|\Lambda|}$ gives the density identity at~$\Delta_u$. Its coupling is $\beta_u=\beta'_u+\alpha_{N,m}+\Delta_u$. Lemma~\ref{lem:C7} and $|\Delta_u|\le1$ prove the claimed drift.
 \end{proof}
