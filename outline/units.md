@@ -1,92 +1,121 @@
 # The detailed map: the units of the proof
 
-The Lean proof, restricted to the 413,000 lines that the main theorem uses, divided into units: mathematically coherent pieces, grouped by the eight parts of the proof. Each unit has its own page with its Lean source (linked), the units it builds on, and its key statements in plain language. The outline of each unit (its propositions, strategy and steps) goes through three rounds: a *draft* written from the Lean by one AI model; *checked*, after a second model has checked every statement against the Lean and rewritten it; *edited*, after a third model's editing. The column *outline* shows where each unit stands; pages are updated as the outlines improve. For the logic of the whole proof, see the [overview](README.md).
+The proof is divided into thirty-two units grouped by mathematical subject in eight parts. Each page contains its outline, pinned Lean references and selected statements. Allocation of declarations to a unit is distinct from the mathematical inputs needed to understand its argument; see the [overview](README.md) and [data](../data/).
+
+All outlines are available. The status links below explain the three review rounds: [draft](../method.md#unit-outline-status), [checked](../method.md#unit-outline-status) and [edited](../method.md#unit-outline-status). A status describes the review of the explanation; each unit's “What remains unexplained” section gives its remaining limits. Source-size figures are collected [below the index](#source-statistics).
 
 ## Part I. Setting
 
-*3,701 lines.*
-
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **I.1** | [Lattice, symmetries, gauge groups and the Wilson measure](units/I-1.md) | 3,701 | 6 | edited |
+| Unit | Question | Outline |
+|---|---|---|
+| [**I.1**](units/I-1.md) | What are the lattice, Wilson measure and gauge-group conventions? | [edited](../method.md#unit-outline-status) |
 
 ## Part II. Data of the construction
 
-*14,496 lines.*
-
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **II.1** | [Field labels and their lattice representatives](units/II-1.md) | 10,805 | 35 | edited |
-| **II.2** | [Polymer activities, norms, the Wilson family, the construction record, reflection-positive cells](units/II-2.md) | 3,691 | 1 | edited |
+| Unit | Question | Outline |
+|---|---|---|
+| [**II.1**](units/II-1.md) | How do curvature-polynomial labels acquire local lattice representatives? | [edited](../method.md#unit-outline-status) |
+| [**II.2**](units/II-2.md) | How is an effective density written with controlled polymer activities? | [edited](../method.md#unit-outline-status) |
 
 ## Part III. Ultraviolet construction (renormalization group)
 
-*290,473 lines.*
-
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **III.1** | [The block-spin step and the symmetric gauge fixing](units/III-1.md) | 4,219 | 30 | edited |
-| **III.2** | [Choosing the constants: the order of choice and the RG schedule](units/III-2.md) | 18,156 | 55 | edited |
-| **III.3** | [Free lattice kernels and covariances](units/III-3.md) | 8,998 | 11 | edited |
-| **III.4** | [Gaussian integration: change of Gaussian sector, determinants, window law](units/III-4.md) | 37,956 | 141 | edited |
-| **III.5** | [Cluster expansion of the polymer gas](units/III-5.md) | 9,746 | 41 | edited |
-| **III.6** | [The stationary branch: background field of the effective action](units/III-6.md) | 21,329 | 44 | edited |
-| **III.7** | [Matching the Wilson energy to fourth order](units/III-7.md) | 19,945 | 24 | edited |
-| **III.8** | [Connected activities and backward dependence cones](units/III-8.md) | 4,147 | 4 | edited |
-| **III.9** | [The marginal flow: the running coupling and its reset](units/III-9.md) | 7,215 | 17 | edited |
-| **III.10** | [One full nonlinear renormalization step: bounds on irrelevant terms](units/III-10.md) | 49,448 | 94 | edited |
-| **III.11** | [Comparison with the free Gaussian measure: interacting rank and determinant budgets](units/III-11.md) | 42,556 | 67 | edited |
-| **III.12** | [Bounds uniform in the volume and convergence as the spacing tends to zero](units/III-12.md) | 18,973 | 34 | edited |
-| **III.13** | [Extension to all labels: one common Wilson family](units/III-13.md) | 22,100 | 31 | edited |
-| **III.14** | [The construction run: flat representations and the ultraviolet rate](units/III-14.md) | 14,290 | 49 | edited |
-| **III.15** | [Cost accounting for observables and the remainder comparison](units/III-15.md) | 7,382 | 13 | edited |
-| **III.16** | [Analytic toolkit](units/III-16.md) | 4,013 | 4 | edited |
+| Unit | Question | Outline |
+|---|---|---|
+| [**III.1**](units/III-1.md) | How does the normalized block-spin kernel preserve gauge and lattice symmetries? | [edited](../method.md#unit-outline-status) |
+| [**III.2**](units/III-2.md) | In what order can the constants and block ratios be chosen? | [edited](../method.md#unit-outline-status) |
+| [**III.3**](units/III-3.md) | Which lattice kernels and covariance estimates control the free fluctuations? | [edited](../method.md#unit-outline-status) |
+| [**III.4**](units/III-4.md) | How are Gaussian integration, determinants and local inverse estimates controlled? | [edited](../method.md#unit-outline-status) |
+| [**III.5**](units/III-5.md) | How does a convergent cluster expansion control the polymer gas? | [edited](../method.md#unit-outline-status) |
+| [**III.6**](units/III-6.md) | How is the stationary background field constructed and bounded? | [edited](../method.md#unit-outline-status) |
+| [**III.7**](units/III-7.md) | How is the Wilson action matched and the one-loop coefficient computed? | [edited](../method.md#unit-outline-status) |
+| [**III.8**](units/III-8.md) | How are connected activities and dependence on fine links bounded? | [edited](../method.md#unit-outline-status) |
+| [**III.9**](units/III-9.md) | How are the marginal coupling and exact density reset after a step? | [edited](../method.md#unit-outline-status) |
+| [**III.10**](units/III-10.md) | How does one nonlinear step control small and large fields? | [edited](../method.md#unit-outline-status) |
+| [**III.11**](units/III-11.md) | How do determinant and rank estimates control observables and stress data? | [edited](../method.md#unit-outline-status) |
+| [**III.12**](units/III-12.md) | How are observable bounds uniform in volume and fixed-volume mesh limits proved? | [edited](../method.md#unit-outline-status) |
+| [**III.13**](units/III-13.md) | What does the alternative coordinated Wilson family provide? | [edited](../method.md#unit-outline-status) |
+| [**III.14**](units/III-14.md) | What construction data are recorded, and which quadratic convergence rate is proved? | [edited](../method.md#unit-outline-status) |
+| [**III.15**](units/III-15.md) | How are observable and remainder costs controlled? | [edited](../method.md#unit-outline-status) |
+| [**III.16**](units/III-16.md) | Which analytic estimates support traces, kernels and field labels? | [edited](../method.md#unit-outline-status) |
 
 ## Part IV. Infinite volume
 
-*7,444 lines.*
-
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **IV.1** | [Infinite volume: extraction of a subsequence and the Euclidean axioms of the limit](units/IV-1.md) | 7,444 | 26 | edited |
+| Unit | Question | Outline |
+|---|---|---|
+| [**IV.1**](units/IV-1.md) | How is a volume subsequence extracted and its Euclidean hierarchy obtained? | [edited](../method.md#unit-outline-status) |
 
 ## Part V. Phases and reconstruction
 
-*16,225 lines.*
-
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **V.1** | [Decomposition of the limit into phases](units/V-1.md) | 5,713 | 18 | edited |
-| **V.2** | [Osterwalder-Schrader reconstruction of a Wightman theory](units/V-2.md) | 6,456 | 19 | edited |
-| **V.3** | [Reconstruction for every phase and the reconstructed theory](units/V-3.md) | 4,056 | 14 | edited |
+| Unit | Question | Outline |
+|---|---|---|
+| [**V.1**](units/V-1.md) | How is the mixed limit decomposed into phases and a phase selected? | [edited](../method.md#unit-outline-status) |
+| [**V.2**](units/V-2.md) | How are analytic continuation, relativistic fields and locality reconstructed? | [edited](../method.md#unit-outline-status) |
+| [**V.3**](units/V-3.md) | How does reconstruction with unique vacuum extend to every phase? | [edited](../method.md#unit-outline-status) |
 
 ## Part VI. Symmetry: stress tensor and Ward identities
 
-*21,883 lines.*
-
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **VI.1** | [Ward identities, the rotation action and the conserved stress tensor](units/VI-1.md) | 7,704 | 23 | edited |
-| **VI.2** | [The free Maxwell stress tensor and the local Ward charge](units/VI-2.md) | 14,179 | 38 | edited |
+| Unit | Question | Outline |
+|---|---|---|
+| [**VI.1**](units/VI-1.md) | How do Ward identities produce rotations and a normalized conserved stress tensor? | [edited](../method.md#unit-outline-status) |
+| [**VI.2**](units/VI-2.md) | How does free Maxwell comparison identify the interacting stress current? | [edited](../method.md#unit-outline-status) |
 
 ## Part VII. Identification as Yang–Mills
 
-*46,803 lines.*
-
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **VII.1** | [Short distances: convergence to free Maxwell fields](units/VII-1.md) | 8,117 | 16 | edited |
-| **VII.2** | [The trace of the stress tensor and the trace anomaly](units/VII-2.md) | 20,681 | 42 | checked |
-| **VII.3** | [The theory is not free: Gram positivity and exclusion of free-field profiles](units/VII-3.md) | 3,325 | 8 | checked |
-| **VII.4** | [Operator product expansion and contact extensions](units/VII-4.md) | 10,243 | 18 | checked |
-| **VII.5** | [Asymptotic freedom of the running coupling](units/VII-5.md) | 232 | 1 | checked |
-| **VII.6** | [Scaling variants and fixed-field estimates](units/VII-6.md) | 4,205 | 9 | draft |
+| Unit | Question | Outline |
+|---|---|---|
+| [**VII.1**](units/VII-1.md) | How is the free Maxwell comparison theory built? | [edited](../method.md#unit-outline-status) |
+| [**VII.2**](units/VII-2.md) | How does the trace two-point law exclude specified free-field profiles? | [checked](../method.md#unit-outline-status) |
+| [**VII.3**](units/VII-3.md) | How are free Gram positivity and degree-four rigidity proved? | [checked](../method.md#unit-outline-status) |
+| [**VII.4**](units/VII-4.md) | What OPE remainder bounds and contact extensions are constructed? | [checked](../method.md#unit-outline-status) |
+| [**VII.5**](units/VII-5.md) | What leading logarithmic law does the running coupling satisfy? | [checked](../method.md#unit-outline-status) |
+| [**VII.6**](units/VII-6.md) | How are scaling sequences and fixed-field estimates related? | [draft](../method.md#unit-outline-status) |
 
 ## Part VIII. Assembly of the main theorem
 
-*12,060 lines.*
+| Unit | Question | Outline |
+|---|---|---|
+| [**VIII.1**](units/VIII-1.md) | How do all public conclusions hold for one common construction? | [draft](../method.md#unit-outline-status) |
 
-| unit | | lines | key statements | outline |
-|---|---|---|---|---|
-| **VIII.1** | [Assembly of the main theorem](units/VIII-1.md) | 12,060 | 56 | draft |
+## Source statistics
 
+<details>
+<summary>Line and selected-statement counts by unit</summary>
+
+These figures describe the source allocation used for this map. They are not a count of mathematical lemmas, and they do not assert that every assigned declaration is reached by the public theorem alone. The [data tables](../data/) give the underlying counts and assignments.
+
+| Unit | Lines | Key statements |
+|---|---|---|
+| [I.1](units/I-1.md) | 3,701 | 6 |
+| [II.1](units/II-1.md) | 10,805 | 35 |
+| [II.2](units/II-2.md) | 3,691 | 1 |
+| [III.1](units/III-1.md) | 4,219 | 30 |
+| [III.2](units/III-2.md) | 18,156 | 55 |
+| [III.3](units/III-3.md) | 8,998 | 11 |
+| [III.4](units/III-4.md) | 37,956 | 141 |
+| [III.5](units/III-5.md) | 9,746 | 41 |
+| [III.6](units/III-6.md) | 21,329 | 44 |
+| [III.7](units/III-7.md) | 19,945 | 24 |
+| [III.8](units/III-8.md) | 4,147 | 4 |
+| [III.9](units/III-9.md) | 7,215 | 17 |
+| [III.10](units/III-10.md) | 49,448 | 94 |
+| [III.11](units/III-11.md) | 42,556 | 67 |
+| [III.12](units/III-12.md) | 18,973 | 34 |
+| [III.13](units/III-13.md) | 22,100 | 31 |
+| [III.14](units/III-14.md) | 14,290 | 49 |
+| [III.15](units/III-15.md) | 7,382 | 13 |
+| [III.16](units/III-16.md) | 4,013 | 4 |
+| [IV.1](units/IV-1.md) | 7,444 | 26 |
+| [V.1](units/V-1.md) | 5,713 | 18 |
+| [V.2](units/V-2.md) | 6,456 | 19 |
+| [V.3](units/V-3.md) | 4,056 | 14 |
+| [VI.1](units/VI-1.md) | 7,704 | 23 |
+| [VI.2](units/VI-2.md) | 14,179 | 38 |
+| [VII.1](units/VII-1.md) | 8,117 | 16 |
+| [VII.2](units/VII-2.md) | 20,681 | 42 |
+| [VII.3](units/VII-3.md) | 3,325 | 8 |
+| [VII.4](units/VII-4.md) | 10,243 | 18 |
+| [VII.5](units/VII-5.md) | 232 | 1 |
+| [VII.6](units/VII-6.md) | 4,205 | 9 |
+| [VIII.1](units/VIII-1.md) | 12,060 | 56 |
+
+</details>

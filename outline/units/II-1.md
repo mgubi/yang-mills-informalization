@@ -1,11 +1,19 @@
 # II.1. Field labels and their lattice representatives
 
-*Part II — Data of the construction.* 10,805 lines of Lean in 1,375 declarations used by the main theorem.
+*Part II — Data of the construction.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Describes local field labels and the lattice observables that represent them.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** II, Data of the construction. **Lean:** work items G01–G07: [`YM/Labels/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels), [`YM/Source/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source), [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (G01–G07), [`YM/Next/FOUNDATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS), [`YM/Push/RELAY_MARK/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK), [`YM/Extra/SOURCE_HISTORIES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES), [`YM/Push/LOCAL_SPLITTING/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING), [`YM/Push/RELAY_DIFFERENCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE), [`YM/Planned/ATOM_GUARDED_LAYOUT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/ATOM_GUARDED_LAYOUT), [`YM/Further/LOCAL_LOG_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/LOCAL_LOG_JETS), [`YM/LocalH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/LocalH). **Size:** 10,805 lines in the main-theorem closure:
+[Overview](../README.md) · [All units](../units.md) · [← Previous: I.1](I-1.md) · [Next: II.2 →](II-2.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** II, Data of the construction. **Lean:** work items G01–G07: [`YM/Labels/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels), [`YM/Source/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source), [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (G01–G07), [`YM/Next/FOUNDATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS), [`YM/Push/RELAY_MARK/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK), [`YM/Extra/SOURCE_HISTORIES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES), [`YM/Push/LOCAL_SPLITTING/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING), [`YM/Push/RELAY_DIFFERENCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE), [`YM/Planned/ATOM_GUARDED_LAYOUT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/ATOM_GUARDED_LAYOUT), [`YM/Further/LOCAL_LOG_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/LOCAL_LOG_JETS), [`YM/LocalH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/LocalH). **Size:** 10,805 lines in the source allocation:
 
 | package | lines |
 |---|---|
@@ -34,6 +42,10 @@
 2. **Readout.** It proves the converse: every regular lattice function has a label, and the label's size is bounded by the function's budget norm uniformly in the lattice side, support and norm parameters (§4.4).
 3. **Equation sections.** From the lattice Schwinger–Dyson identity it builds a second kind of section on which every label of the free-Maxwell equation ideal becomes orthogonal to remote spectators (§4.5).
 4. **Observables.** It specifies the record carrying a label through the RG history, proves the exact birth formula at the Wilson end, and collects the numerical conditions and comparison estimates used downstream (§4.6–4.8).
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -230,6 +242,8 @@ Then for every $o$ in the inner margin of cell $0$ of $T$ (distance $\ge3\times$
 
 *Status:* theorems. *Lean:* [`center_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L134-L160), [`corner_root`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L192-L226), [`offset`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L232-L270), [`gather_close`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Combination.lean#L65-L93), [`Bid.close`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L25), [`roof_of_tabs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/CalendarPrices.lean#L84-L92) (a bookkeeping corollary). Consumers: III.12, III.13, VII.4, VIII.1.
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **From other units.**
@@ -265,6 +279,8 @@ Then for every $o$ in the inner margin of cell $0$ of $T$ (distance $\ge3\times$
 - In Prop. II.1.8 lawfulness and the fee condition are hypotheses. The fee condition at level $N$ is the latch of Prop. II.1.9(b). Coupling thresholds fixed before the block sizes ensure it (III.2), since $w_m$ decays faster than every inverse power of $\hat\beta_m$.
 - The bounds $\pi(D)$ and $c_d$ depend on $G$ and the fixed frames and sections, including the finite slot family chosen in G03. They are fixed before the block factors; the stage constants must satisfy $\pi(\max(\mathrm{order}_j,\mathrm{power}_j))\le\bar\kappa_j$.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 Labels are invariant polynomials in radial-gauge Taylor coefficients. Test holonomies $U_{J,h}$ compare them with functions of lattice links by matching derivatives in $h$ through order $d$. Finitely many transported plaquette curvatures give an analytic map of the truncated jet whose derivative is injective. An equivariant left inverse, followed by Taylor expansion, produces slot polynomials representing every label. Averaging over signed permutations gives covariance. Every slot and each of its admissible left derivatives costs one threshold factor, so a column of factor degree $f$ has norm $O(\theta^f)$. Conversely, Taylor expansion of a regular lattice function gives a unique read label. Testing on jets of amplitude $\theta$ bounds its scaled coordinates uniformly in the lattice side and support.
@@ -272,6 +288,8 @@ Labels are invariant polynomials in radial-gauge Taylor coefficients. Test holon
 The equation sections use Haar integration by parts in one link. For $\ell\ge2$, $\beta\ne0$ and a bounded measurable multiplier independent of that link, the expectation of the corresponding Wilson force is zero. Transported forces are linear combinations of slots; their leading continuum symbols are the free Maxwell divergence. Every equation polynomial is a sum of products of a linear Maxwell equation functional and other linear jet functionals. Represent the first factor by a force and the remaining factors by slot polynomials avoiding its link. Each product is orthogonal to remote spectators and reads the prescribed generator modulo higher grade. A unitriangular change of labels absorbs those higher terms. The resulting equation section describes vanishing at separated lattice sites; its transfer to null labels of the limit requires the later comparison arguments.
 
 At the Wilson end the observable is inserted to first order in a parameter $\lambda$ with $\lambda^2=0$. The density coefficient consists of the vacuum density times a masked local section and regular remainders, together with a gas in which one forced polymer is marked. Splicing the section's large-field complement into reserved forced addresses gives the exact bare-end identity. This uses no division by the vacuum density. Along the RG history the running coordinates describe mixing of local observables; their values at the reference level define $\tau$, hence the renormalization map $S_{1/\theta_N}\tau^{-1}$. This unit fixes the transfer specification and proves the birth identity; III.10–III.11 supply the per-step estimates.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -584,6 +602,8 @@ as an identity on all configurations. The *line* coefficients satisfy $\sum_i\ma
 
 *Lean:* [`center_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L134-L160), [`corner_root`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L192-L226), [`offset`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L232-L270), [`gather_close`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Combination.lean#L65-L93).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The main analytic estimate is the volume-independent readout bound. Polarization in the full lattice direction space could introduce constants depending on the volume. Pulling each tensor back to the finitely many test directions avoids this, while rescaling each link position gives the required distance weights. The analytic radii of individual links need not be uniform.
@@ -594,106 +614,367 @@ The birth identity requires reserved addresses in the same forced-polymer alphab
 
 The finite slot family is chosen nonconstructively. Consequently the stencils and constants are finite but not explicit. Their dependence on degree and derivative parameters must be included before the block factors are chosen.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| Written proof | Lean (glossary) | Meaning |
-|---|---|---|
-| $\mathrm{Tay}_j$, jet $J$ | [`Labels.Taylor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Jet.lean#L39), [`Jet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L28) | radial-gauge Taylor coefficient of weight $j+2$; sequence of them |
-| $V_d$ | [`Labels.Label`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L112) | invariant polynomials of weight $\le d$ (labels) |
-| $p(J)$ | [`read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L35) | value of a label on a jet |
-| $(w,f)$, $V_d^{(w,f)}$ | [`Grade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Grading.lean#L17-L18) | weight and number of factors |
-| frame $(b_i)$, $c\in\mathbb C^{K_d+1}$ | [`Frame`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L50-L57), [`Frame.Coeff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L18) | real graded basis starting with $1$; coordinates |
-| $S_t$, $c^\circ$, $\lVert c\rVert_1$ | [`Frame.scaled`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L58-L61), [`core`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L123-L126), [`coeffSize`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L128) | $c_i\mapsto t^{f_i}c_i$; drop the unit coordinate; $\ell^1$ norm |
-| $s\cdot c$, $\bar c$ | [`Frame.act`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L83-L84), [`realBar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Action.lean#L131-L140) | $O(4)$ action; conjugation |
-| $U^{(d)}_{J,h}$ | [`Hol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L55-L57), [`Hol.links`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L62) | test holonomies |
-| $\mathrm{sc}_hJ$ | [`scaleJet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L82) | $(h^{j+2}J_j)_j$ |
-| slot $\sigma=(\omega,P)$ | [`RG.Slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L38-L40) | $\mathrm{Ad}(U_\omega)F_P(U)$ |
-| slot map $\mathfrak S$, truncated jets | [`bring`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Drops.lean#L98), [`Snap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Drops.lean#L26) | finitely many slots as a function of $(J_j)_{j\le d-2}$ |
-| section $(S,\Phi)$; $\Phi_c(o;U)$ | [`SectionData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L103-L105), [`places`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L112) | stencil and linear map to entry polynomials; placement |
-| sound | [`Sound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L140-L147) | symmetries, unit, projection property |
-| slot structure; cost | [`Bid.pop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Source.lean#L55-L56); [`Bid.Credit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Source.lean#L63-L66) | columns are slot polynomials with $\ge f_i$ factors; $t^{f_i}$ budget bound |
-| $\pi(D)$, $c_d$ | [`price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/Primary.lean#L126), [`cameras`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Delays.lean#L20) | uniform price; value bound of the columns |
-| $p$ reads $f$ at $o$ | [`Reads`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/JetReads.lean#L186-L194) | readout (constant convention when wrapping) |
-| $\mathrm{Sh}_j$, $\mathcal E_d$ | [`Maxwell.onShell`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L18-L42), [`gaugeJet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L46-L47), [`equationIdeal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72) | free-Maxwell components; free-Maxwell ideal |
-| $\nabla_eS_W$, transported force | [`field`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Wilson.lean#L132), [`force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Avoid.lean#L149-L150) | link gradient of the Wilson energy; its transport to $0$ |
-| micro | [`Micro`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Micro.lean#L33) | orthogonal to remote bounded spectators |
-| micro lift; lifting map $F$ | [`Cone`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Rank.lean#L78-L83); [`Campaign`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Linear.lean#L69-L71) | lift agreeing modulo higher grade; all grades at once |
-| weave $R$; equation section | [`twist`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Automorphism.lean#L72-L73); [`Portfolio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Portfolio.lean#L51-L58) | unitriangular regrading; section with micro equation part |
-| record $\mathsf C$; $\mathrm{Makes}$ | [`Family`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L24-L30); [`Family.Makes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62) | Wilson family; consistency predicate |
-| $O_{N,p}(v,o)$ | [`Family.O`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L42) | renormalized observable $a_N^{-d}\Phi_{S_{1/\theta_N}\tau^{-1}v}(o;\cdot)$ |
-| $r(d)$, $a_r^de_0$ | [`Family.ref`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L24-L30), [`Family.refUnit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L37) | reference level; physical unit vector |
-| $E_m(v)$, $\mathcal D_m$ | [`Coefficient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L26-L30), [`density`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L48-L50) | source coefficient; first-order inserted density |
-| $\tau$; based | [`TransferData.terminal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L73-L75); [`Based`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L89-L114) | terminal map; transfer specification |
-| supplement; fee | [`supplement`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Birth.lean#L24-L25); [`fee`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Birth.lean#L108-L109) | large-field part of the bare observable; birth condition |
-| latch; Budget; Plans | [`Latch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Delays.lean#L120-L123); [`Budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L65-L72); [`Plans`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L57-L62) | birth condition per level; level inequalities; stage-wise numerical plan |
-| price list $(\mathsf K_j)$ | [`Bid.Worth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Loan.lean#L29-L32) | nondecreasing constants $\ge1$ |
-| close | [`Bid.close`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L25) | root-test bounds tend to $0$ in all prescribed link tilings and margins |
+- **Written proof:** $\mathrm{Tay}_j$, jet $J$
+
+  **Lean (glossary):** [`Labels.Taylor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Jet.lean#L39), [`Jet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L28)
+
+  **Meaning:** radial-gauge Taylor coefficient of weight $j+2$; sequence of them
+
+- **Written proof:** $V_d$
+
+  **Lean (glossary):** [`Labels.Label`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L112)
+
+  **Meaning:** invariant polynomials of weight $\le d$ (labels)
+
+- **Written proof:** $p(J)$
+
+  **Lean (glossary):** [`read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L35)
+
+  **Meaning:** value of a label on a jet
+
+- **Written proof:** $(w,f)$, $V_d^{(w,f)}$
+
+  **Lean (glossary):** [`Grade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Grading.lean#L17-L18)
+
+  **Meaning:** weight and number of factors
+
+- **Written proof:** frame $(b_i)$, $c\in\mathbb C^{K_d+1}$
+
+  **Lean (glossary):** [`Frame`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L50-L57), [`Frame.Coeff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L18)
+
+  **Meaning:** real graded basis starting with $1$; coordinates
+
+- **Written proof:** $S_t$, $c^\circ$, $\lVert c\rVert_1$
+
+  **Lean (glossary):** [`Frame.scaled`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L58-L61), [`core`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L123-L126), [`coeffSize`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L128)
+
+  **Meaning:** $c_i\mapsto t^{f_i}c_i$; drop the unit coordinate; $\ell^1$ norm
+
+- **Written proof:** $s\cdot c$, $\bar c$
+
+  **Lean (glossary):** [`Frame.act`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L83-L84), [`realBar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Action.lean#L131-L140)
+
+  **Meaning:** $O(4)$ action; conjugation
+
+- **Written proof:** $U^{(d)}_{J,h}$
+
+  **Lean (glossary):** [`Hol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L55-L57), [`Hol.links`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L62)
+
+  **Meaning:** test holonomies
+
+- **Written proof:** $\mathrm{sc}_hJ$
+
+  **Lean (glossary):** [`scaleJet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L82)
+
+  **Meaning:** $(h^{j+2}J_j)_j$
+
+- **Written proof:** slot $\sigma=(\omega,P)$
+
+  **Lean (glossary):** [`RG.Slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L38-L40)
+
+  **Meaning:** $\mathrm{Ad}(U_\omega)F_P(U)$
+
+- **Written proof:** slot map $\mathfrak S$, truncated jets
+
+  **Lean (glossary):** [`bring`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Drops.lean#L98), [`Snap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Drops.lean#L26)
+
+  **Meaning:** finitely many slots as a function of $(J_j)_{j\le d-2}$
+
+- **Written proof:** section $(S,\Phi)$; $\Phi_c(o;U)$
+
+  **Lean (glossary):** [`SectionData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L103-L105), [`places`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L112)
+
+  **Meaning:** stencil and linear map to entry polynomials; placement
+
+- **Written proof:** sound
+
+  **Lean (glossary):** [`Sound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L140-L147)
+
+  **Meaning:** symmetries, unit, projection property
+
+- **Written proof:** slot structure; cost
+
+  **Lean (glossary):** [`Bid.pop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Source.lean#L55-L56); [`Bid.Credit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Source.lean#L63-L66)
+
+  **Meaning:** columns are slot polynomials with $\ge f_i$ factors; $t^{f_i}$ budget bound
+
+- **Written proof:** $\pi(D)$, $c_d$
+
+  **Lean (glossary):** [`price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/Primary.lean#L126), [`cameras`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Delays.lean#L20)
+
+  **Meaning:** uniform price; value bound of the columns
+
+- **Written proof:** $p$ reads $f$ at $o$
+
+  **Lean (glossary):** [`Reads`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/JetReads.lean#L186-L194)
+
+  **Meaning:** readout (constant convention when wrapping)
+
+- **Written proof:** $\mathrm{Sh}_j$, $\mathcal E_d$
+
+  **Lean (glossary):** [`Maxwell.onShell`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L18-L42), [`gaugeJet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L46-L47), [`equationIdeal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72)
+
+  **Meaning:** free-Maxwell components; free-Maxwell ideal
+
+- **Written proof:** $\nabla_eS_W$, transported force
+
+  **Lean (glossary):** [`field`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Wilson.lean#L132), [`force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Avoid.lean#L149-L150)
+
+  **Meaning:** link gradient of the Wilson energy; its transport to $0$
+
+- **Written proof:** micro
+
+  **Lean (glossary):** [`Micro`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Micro.lean#L33)
+
+  **Meaning:** orthogonal to remote bounded spectators
+
+- **Written proof:** micro lift; lifting map $F$
+
+  **Lean (glossary):** [`Cone`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Rank.lean#L78-L83); [`Campaign`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Linear.lean#L69-L71)
+
+  **Meaning:** lift agreeing modulo higher grade; all grades at once
+
+- **Written proof:** weave $R$; equation section
+
+  **Lean (glossary):** [`twist`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Automorphism.lean#L72-L73); [`Portfolio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Portfolio.lean#L51-L58)
+
+  **Meaning:** unitriangular regrading; section with micro equation part
+
+- **Written proof:** record $\mathsf C$; $\mathrm{Makes}$
+
+  **Lean (glossary):** [`Family`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L24-L30); [`Family.Makes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62)
+
+  **Meaning:** Wilson family; consistency predicate
+
+- **Written proof:** $O_{N,p}(v,o)$
+
+  **Lean (glossary):** [`Family.O`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L42)
+
+  **Meaning:** renormalized observable $a_N^{-d}\Phi_{S_{1/\theta_N}\tau^{-1}v}(o;\cdot)$
+
+- **Written proof:** $r(d)$, $a_r^de_0$
+
+  **Lean (glossary):** [`Family.ref`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L24-L30), [`Family.refUnit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L37)
+
+  **Meaning:** reference level; physical unit vector
+
+- **Written proof:** $E_m(v)$, $\mathcal D_m$
+
+  **Lean (glossary):** [`Coefficient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L26-L30), [`density`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L48-L50)
+
+  **Meaning:** source coefficient; first-order inserted density
+
+- **Written proof:** $\tau$; based
+
+  **Lean (glossary):** [`TransferData.terminal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L73-L75); [`Based`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L89-L114)
+
+  **Meaning:** terminal map; transfer specification
+
+- **Written proof:** supplement; fee
+
+  **Lean (glossary):** [`supplement`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Birth.lean#L24-L25); [`fee`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Birth.lean#L108-L109)
+
+  **Meaning:** large-field part of the bare observable; birth condition
+
+- **Written proof:** latch; Budget; Plans
+
+  **Lean (glossary):** [`Latch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Delays.lean#L120-L123); [`Budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L65-L72); [`Plans`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L57-L62)
+
+  **Meaning:** birth condition per level; level inequalities; stage-wise numerical plan
+
+- **Written proof:** price list $(\mathsf K_j)$
+
+  **Lean (glossary):** [`Bid.Worth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Loan.lean#L29-L32)
+
+  **Meaning:** nondecreasing constants $\ge1$
+
+- **Written proof:** close
+
+  **Lean (glossary):** [`Bid.close`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L25)
+
+  **Meaning:** root-test bounds tend to $0$ in all prescribed link tilings and margins
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Identification in the limit (tentative).** The auxiliary equation sections enter the volume-uniform comparison through [`Run.Ties`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L65-L71) and [`Hearthside`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fire.lean#L17-L20). This unit does not trace their regrading and transfer normalizations into the null-label quotient, or prove the converse identification with the free-Maxwell quotient. A literal equality $N_d=\mathcal E_d$ in the original primary coordinates has not been verified.
 2. **Later applications.** The section constants and reference-level conditions are explicit here. Their simultaneous compatibility with every later per-step estimate, and the full use of the local-merger identities, belong to III.2 and III.10–III.15 and are not verified by these local results.
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [III.1](III-1.md), [IV.1](IV-1.md), [III.10](III-10.md), [III.2](III-2.md).
+## Code dependencies
 
-**Used by:** [III.11](III-11.md), [III.12](III-12.md), [III.13](III-13.md), [VII.2](VII-2.md), [VIII.1](VIII-1.md), [III.2](III-2.md), [VII.4](VII-4.md), [VII.6](VII-6.md), [III.10](III-10.md), [III.6](III-6.md), [IV.1](IV-1.md), [VII.1](VII-1.md), [VI.2](VI-2.md), [V.1](V-1.md), [III.3](III-3.md), [III.9](III-9.md), [III.14](III-14.md), [III.4](III-4.md), [III.15](III-15.md), [V.3](V-3.md), [III.8](III-8.md), [VII.3](VII-3.md), [VII.5](VII-5.md), [V.2](V-2.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.16](III-16.md), [III.1](III-1.md), [IV.1](IV-1.md), [III.10](III-10.md), [III.2](III-2.md).
+
+**Referenced by:** [III.11](III-11.md), [III.12](III-12.md), [III.13](III-13.md), [VII.2](VII-2.md), [VIII.1](VIII-1.md), [III.2](III-2.md), [VII.4](VII-4.md), [VII.6](VII-6.md), [III.10](III-10.md), [III.6](III-6.md), [IV.1](IV-1.md), [VII.1](VII-1.md), [VI.2](VI-2.md), [V.1](V-1.md), [III.3](III-3.md), [III.9](III-9.md), [III.14](III-14.md), [III.4](III-4.md), [III.15](III-15.md), [V.3](V-3.md), [III.8](III-8.md), [VII.3](VII-3.md), [VII.5](VII-5.md), [V.2](V-2.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 10,805 attributed lines; 1,375 line-counted declarations; 1,893 assigned declaration names. Of the assigned names, 1,808 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/Push/RELAY_MARK/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK) | 2,336 |
-| work package [`YM/Extra/SOURCE_HISTORIES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES) | 1,801 |
-| work package [`YM/Push/LOCAL_SPLITTING/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING) | 1,485 |
-| work package [`YM/Next/FOUNDATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS) | 1,196 |
-| work package [`YM/Push/RELAY_DIFFERENCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE) | 858 |
-| work package [`YM/Source/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source) | 594 |
-| work package [`YM/Work/G06/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G06) | 385 |
-| work package [`YM/Planned/ATOM_GUARDED_LAYOUT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/ATOM_GUARDED_LAYOUT) | 365 |
-| work package [`YM/Work/G07/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07) | 359 |
-| work package [`YM/LocalH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/LocalH) | 218 |
-| work package [`YM/Work/G05/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G05) | 190 |
-| work package [`YM/Further/LOCAL_LOG_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/LOCAL_LOG_JETS) | 166 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/Push/RELAY_MARK/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK) — 2,336 lines.
+- work package [`YM/Extra/SOURCE_HISTORIES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES) — 1,801 lines.
+- work package [`YM/Push/LOCAL_SPLITTING/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING) — 1,485 lines.
+- work package [`YM/Next/FOUNDATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS) — 1,196 lines.
+- work package [`YM/Push/RELAY_DIFFERENCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE) — 858 lines.
+- work package [`YM/Source/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source) — 594 lines.
+- work package [`YM/Work/G06/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G06) — 385 lines.
+- work package [`YM/Planned/ATOM_GUARDED_LAYOUT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/ATOM_GUARDED_LAYOUT) — 365 lines.
+- work package [`YM/Work/G07/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07) — 359 lines.
+- work package [`YM/LocalH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/LocalH) — 218 lines.
+- work package [`YM/Work/G05/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G05) — 190 lines.
+- work package [`YM/Further/LOCAL_LOG_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/LOCAL_LOG_JETS) — 166 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **II.1.1** [`endpointGerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G02.lean#L89-L130) *(key result)* — For a right-multiplication ODE with coefficients linear in finite-dimensional parameters, the endpoint solution is analytic in the parameters with derivative given by the integral of the coefficient.
-- **II.1.2** [`blockTaylor_jets`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G05/Taylor.lean#L84-L102) *(key result)* — The block Taylor polynomial of a C^d function at 0 has the same Fréchet derivatives as the function at 0 up to order d.
-- **II.1.3** [`entryPoly_slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G06/Formula.lean#L137-L155) *(numbered result)* — The slot readout on cover links is a polynomial in the entry variables of the links in its stencil.
-- **II.1.4** [`slotGerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G02.lean#L230-L273) *(key result)* — The slot readout along a holonomy family is analytic at zero and its initial germ equals the explicit linear form, with no symmetry hypothesis.
-- **II.1.5** [`Sound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L140-L147) *(numbered result)* — A soundness predicate bundling normalization properties of a physical lattice section.
-- **II.1.6** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G05.lean#L113-L139) *(key result)* — Real invariant slot polynomials with lower-degree Taylor terms retained, built from real Fréchet jets of block maps.
-- **II.1.7** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G06.lean#L43-L60) *(key result)* — The jet data are turned into an equivariant polynomial section over the labels.
-- **II.1.8** [`paid_slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07/Stencil.lean#L180-L199) *(numbered result)* — Evaluating a single link slot on a stencil within S satisfies the rate bound at order zero with a single threshold.
-- **II.1.9** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07.lean#L79-L102) *(key result)* — The G07 requirement holds: finite source sections have derivative-cost bounds on stencils of link variables, invariant and local.
-- **II.1.10** [`line_budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Stock.lean#L120-L160) *(numbered result)* — The spliced line terms admit explicit coefficient majorants whose total weighted budget is bounded by C times a mass-exponential quantity.
-- **II.1.11** [`routes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Clusters.lean#L198-L211) *(numbered result)* — A bijection between old cluster terms and issued terms is constructed before summation.
-- **II.1.12** [`paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Purchase.lean#L42-L78) *(key result)* — Splicing a bad-field multiplier at a marker gives exactly f times the old polymer gas, summed over labels, for every configuration.
-- **II.1.13** [`center_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L134-L160) *(numbered result)* — The root test of a translated, oriented observable at a centered cell equals the root test of the original at the origin cell.
-- **II.1.14** [`offset`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L232-L270) *(key result)* — A single finer centered comparison bound for an observable implies the interior property and root-test bound at all offsets of a coarser tiling.
-- **II.1.15** [`smooth_exchange`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/LOCAL_LOG_JETS/Series.lean#L232-L255) *(key result)* — If summands have jets dominated by absolutely summable bounds on an open window, the sum is C^k and ordered left derivatives can be taken termwise.
-- **II.1.16** [`mix_convert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING/Mixed.lean#L179-L201) *(key result)* — Mixed left/right derivatives on disjoint sets of links equal a sum of ordinary ordered left jets at the base point after reordering.
-- **II.1.17** [`launched`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Birth.lean#L116-L161) *(key result)* — Birth of a single-source transfer: under a lawful gas and bounds, the born history has a ledger, format, remainder bound and the exact density formula.
-- **II.1.18** [`exists_read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/Readout.lean#L238-L247) *(key result)* — For regular coefficients of sufficient order, there exists a unique curvature-jet label read off from the function at the given site.
-- **II.1.19** [`delay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING/Delay.lean#L56-L68) *(key result)* — For any support-exponent ceiling, there is a stage threshold beyond which the budget width times the square root of the forced allowance is at most 1 and the bare delay condition holds at every level below the ceiling.
-- **II.1.20** [`recover`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING/Recovery.lean#L184-L191) *(key result)* — Packing attaching terms into indicator slots and summing the gas marks recovers exactly the sum of the terms times the vacuum gas.
-- **II.1.21** [`Heard`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Replay.lean#L32-L43) *(numbered result)* — A proposition bundling several line/read claims that all refer to the same history witness.
-- **II.1.22** [`roof_of_tabs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/CalendarPrices.lean#L84-L92) *(numbered result)* — The roof estimate follows from the tabs hypothesis on the path levels.
-- **II.1.23** [`gather_close`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Combination.lean#L65-L93) *(numbered result)* — Combining families of trials with slow multipliers and centered rent bounds yields a combined closeness estimate with exponential decay restored.
-- **II.1.24** [`testLog_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/LinkBounds.lean#L229-L273) *(numbered result)* — Derivatives of the logarithmic link readout are bounded by a constant times theta times a power of torus distance, uniformly in side and anchor.
-- **II.1.25** [`price_of_readout`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/TestBounds.lean#L271-L290) *(key result)* — There is one constant such that the scaled coefficient size of any read-out label is bounded by that constant times the sup bound of the function, uniformly in side and support.
-- **II.1.26** [`alone`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L108-L133) *(numbered result)* — Any sheet can be grown in columns to another with the same kernel and floor for which numeric plans exist.
-- **II.1.27** [`entrances`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Delays.lean#L162-L177) *(numbered result)* — There is an entrance cost function such that all levels with the matching profile satisfy the latch condition for all degrees up to the stage index.
-- **II.1.28** [`afford`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L76-L102) *(key result)* — Given plans for a sheet, there are floors and beta thresholds beyond which every level system on the sheet satisfies the budget.
-- **II.1.29** [`build`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Portfolio.lean#L101-L105) *(key result)* — For any holonomy datum and frame, a section datum and weave exist satisfying the portfolio conditions unconditionally.
-- **II.1.30** [`commissioned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Assembly.lean#L30-L33) *(major result)* — Portfolio build holds simultaneously for all degrees d along a fixed frame list.
-- **II.1.31** [`mounted_read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Rank.lean#L157-L166) *(key result)* — Every element of the equation ideal at pure grade admits a raw lift satisfying the cone relation.
-- **II.1.32** [`positioned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Gauge.lean#L147-L163) *(key result)* — Every pure-grade equation-ideal element has a gauge-invariant lift satisfying the cone relation.
-- **II.1.33** [`force_kernel_last`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Current.lean#L286-L297) *(key result)* — If all transported linearized forces vanish on the cut, the top Taylor coefficient lies in the range of the gauge jet map, i.e. is on-shell pure gauge.
-- **II.1.34** [`unsym`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Linear.lean#L155-L168) *(numbered result)* — For any holonomy datum and degree there is a switch realizing a campaign.
-- **II.1.35** [`force_span`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Span.lean#L32-L41) *(key result)* — Any linear functional vanishing on pure-gauge jets, composed with last-coordinate projection, lies in the span of mounted force functionals.
+<a id="k-ii-1-1"></a>
+
+- **K-II.1.1** [`endpointGerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G02.lean#L89-L130) *(key result)* — For a right-multiplication ODE with coefficients linear in finite-dimensional parameters, the endpoint solution is analytic in the parameters with derivative given by the integral of the coefficient.
+
+<a id="k-ii-1-2"></a>
+
+- **K-II.1.2** [`blockTaylor_jets`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G05/Taylor.lean#L84-L102) *(key result)* — The block Taylor polynomial of a C^d function at 0 has the same Fréchet derivatives as the function at 0 up to order d.
+
+<a id="k-ii-1-3"></a>
+
+- **K-II.1.3** [`entryPoly_slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G06/Formula.lean#L137-L155) *(numbered result)* — The slot readout on cover links is a polynomial in the entry variables of the links in its stencil.
+
+<a id="k-ii-1-4"></a>
+
+- **K-II.1.4** [`slotGerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G02.lean#L230-L273) *(key result)* — The slot readout along a holonomy family is analytic at zero and its initial germ equals the explicit linear form, with no symmetry hypothesis.
+
+<a id="k-ii-1-5"></a>
+
+- **K-II.1.5** [`Sound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L140-L147) *(numbered result)* — A soundness predicate bundling normalization properties of a physical lattice section.
+
+<a id="k-ii-1-6"></a>
+
+- **K-II.1.6** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G05.lean#L113-L139) *(key result)* — Real invariant slot polynomials with lower-degree Taylor terms retained, built from real Fréchet jets of block maps.
+
+<a id="k-ii-1-7"></a>
+
+- **K-II.1.7** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G06.lean#L43-L60) *(key result)* — The jet data are turned into an equivariant polynomial section over the labels.
+
+<a id="k-ii-1-8"></a>
+
+- **K-II.1.8** [`paid_slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07/Stencil.lean#L180-L199) *(numbered result)* — Evaluating a single link slot on a stencil within S satisfies the rate bound at order zero with a single threshold.
+
+<a id="k-ii-1-9"></a>
+
+- **K-II.1.9** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07.lean#L79-L102) *(key result)* — The G07 requirement holds: finite source sections have derivative-cost bounds on stencils of link variables, invariant and local.
+
+<a id="k-ii-1-10"></a>
+
+- **K-II.1.10** [`line_budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Stock.lean#L120-L160) *(numbered result)* — The spliced line terms admit explicit coefficient majorants whose total weighted budget is bounded by C times a mass-exponential quantity.
+
+<a id="k-ii-1-11"></a>
+
+- **K-II.1.11** [`routes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Clusters.lean#L198-L211) *(numbered result)* — A bijection between old cluster terms and issued terms is constructed before summation.
+
+<a id="k-ii-1-12"></a>
+
+- **K-II.1.12** [`paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Purchase.lean#L42-L78) *(key result)* — Splicing a bad-field multiplier at a marker gives exactly f times the old polymer gas, summed over labels, for every configuration.
+
+<a id="k-ii-1-13"></a>
+
+- **K-II.1.13** [`center_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L134-L160) *(numbered result)* — The root test of a translated, oriented observable at a centered cell equals the root test of the original at the origin cell.
+
+<a id="k-ii-1-14"></a>
+
+- **K-II.1.14** [`offset`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L232-L270) *(key result)* — A single finer centered comparison bound for an observable implies the interior property and root-test bound at all offsets of a coarser tiling.
+
+<a id="k-ii-1-15"></a>
+
+- **K-II.1.15** [`smooth_exchange`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/LOCAL_LOG_JETS/Series.lean#L232-L255) *(key result)* — If summands have jets dominated by absolutely summable bounds on an open window, the sum is C^k and ordered left derivatives can be taken termwise.
+
+<a id="k-ii-1-16"></a>
+
+- **K-II.1.16** [`mix_convert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING/Mixed.lean#L179-L201) *(key result)* — Mixed left/right derivatives on disjoint sets of links equal a sum of ordinary ordered left jets at the base point after reordering.
+
+<a id="k-ii-1-17"></a>
+
+- **K-II.1.17** [`launched`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Birth.lean#L116-L161) *(key result)* — Birth of a single-source transfer: under a lawful gas and bounds, the born history has a ledger, format, remainder bound and the exact density formula.
+
+<a id="k-ii-1-18"></a>
+
+- **K-II.1.18** [`exists_read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/Readout.lean#L238-L247) *(key result)* — For regular coefficients of sufficient order, there exists a unique curvature-jet label read off from the function at the given site.
+
+<a id="k-ii-1-19"></a>
+
+- **K-II.1.19** [`delay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING/Delay.lean#L56-L68) *(key result)* — For any support-exponent ceiling, there is a stage threshold beyond which the budget width times the square root of the forced allowance is at most 1 and the bare delay condition holds at every level below the ceiling.
+
+<a id="k-ii-1-20"></a>
+
+- **K-II.1.20** [`recover`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOCAL_SPLITTING/Recovery.lean#L184-L191) *(key result)* — Packing attaching terms into indicator slots and summing the gas marks recovers exactly the sum of the terms times the vacuum gas.
+
+<a id="k-ii-1-21"></a>
+
+- **K-II.1.21** [`Heard`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Replay.lean#L32-L43) *(numbered result)* — A proposition bundling several line/read claims that all refer to the same history witness.
+
+<a id="k-ii-1-22"></a>
+
+- **K-II.1.22** [`roof_of_tabs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/CalendarPrices.lean#L84-L92) *(numbered result)* — The roof estimate follows from the tabs hypothesis on the path levels.
+
+<a id="k-ii-1-23"></a>
+
+- **K-II.1.23** [`gather_close`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Combination.lean#L65-L93) *(numbered result)* — Combining families of trials with slow multipliers and centered rent bounds yields a combined closeness estimate with exponential decay restored.
+
+<a id="k-ii-1-24"></a>
+
+- **K-II.1.24** [`testLog_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/LinkBounds.lean#L229-L273) *(numbered result)* — Derivatives of the logarithmic link readout are bounded by a constant times theta times a power of torus distance, uniformly in side and anchor.
+
+<a id="k-ii-1-25"></a>
+
+- **K-II.1.25** [`price_of_readout`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/TestBounds.lean#L271-L290) *(key result)* — There is one constant such that the scaled coefficient size of any read-out label is bounded by that constant times the sup bound of the function, uniformly in side and support.
+
+<a id="k-ii-1-26"></a>
+
+- **K-II.1.26** [`alone`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L108-L133) *(numbered result)* — Any sheet can be grown in columns to another with the same kernel and floor for which numeric plans exist.
+
+<a id="k-ii-1-27"></a>
+
+- **K-II.1.27** [`entrances`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Delays.lean#L162-L177) *(numbered result)* — There is an entrance cost function such that all levels with the matching profile satisfy the latch condition for all degrees up to the stage index.
+
+<a id="k-ii-1-28"></a>
+
+- **K-II.1.28** [`afford`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/SOURCE_HISTORIES/Reserve.lean#L76-L102) *(key result)* — Given plans for a sheet, there are floors and beta thresholds beyond which every level system on the sheet satisfies the budget.
+
+<a id="k-ii-1-29"></a>
+
+- **K-II.1.29** [`build`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Portfolio.lean#L101-L105) *(key result)* — For any holonomy datum and frame, a section datum and weave exist satisfying the portfolio conditions unconditionally.
+
+<a id="k-ii-1-30"></a>
+
+- **K-II.1.30** [`commissioned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Assembly.lean#L30-L33) *(major result)* — Portfolio build holds simultaneously for all degrees d along a fixed frame list.
+
+<a id="k-ii-1-31"></a>
+
+- **K-II.1.31** [`mounted_read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Rank.lean#L157-L166) *(key result)* — Every element of the equation ideal at pure grade admits a raw lift satisfying the cone relation.
+
+<a id="k-ii-1-32"></a>
+
+- **K-II.1.32** [`positioned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Gauge.lean#L147-L163) *(key result)* — Every pure-grade equation-ideal element has a gauge-invariant lift satisfying the cone relation.
+
+<a id="k-ii-1-33"></a>
+
+- **K-II.1.33** [`force_kernel_last`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Current.lean#L286-L297) *(key result)* — If all transported linearized forces vanish on the cut, the top Taylor coefficient lies in the range of the gauge jet map, i.e. is on-shell pure gauge.
+
+<a id="k-ii-1-34"></a>
+
+- **K-II.1.34** [`unsym`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Linear.lean#L155-L168) *(numbered result)* — For any holonomy datum and degree there is a switch realizing a campaign.
+
+<a id="k-ii-1-35"></a>
+
+- **K-II.1.35** [`force_span`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Span.lean#L32-L41) *(key result)* — Any linear functional vanishing on pure-gauge jets, composed with last-coordinate projection, lies in the span of mounted force functionals.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

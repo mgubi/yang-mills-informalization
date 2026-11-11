@@ -1,9 +1,17 @@
 # VII.6. Scaling variants and fixed-field estimates
 
-*Part VII — Identification as Yang–Mills.* 4,205 lines of Lean in 374 declarations used by the main theorem.
+*Part VII — Identification as Yang–Mills.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is a **first draft**, written from the Lean by one model; it has not yet been checked. It is updated as it improves.
+Adapts observable estimates to prescribed scale sequences and gives a separate low-degree field estimate.
 
+**Status: draft.** Written from the Lean; the outline has not yet been checked against it. [Status meanings](../../data/README.md#outline-status).
+
+[Overview](../README.md) · [All units](../units.md) · [← Previous: VII.5](VII-5.md) · [Next: VIII.1 →](VIII-1.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
 
 **Part:** VII, identification as Yang–Mills. **Lean:** [`YM/TraceExtension/Prom/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom) (the "Sky" variants, 133 files), plus the single lemma [`SharpGram.inletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L126-L129) in [`YM/SharpGram/Clauses.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean). **Size:** 4,205 lines in 374 declarations. Most of this is the Sky family, about 3,600 lines chained from `pays_sky`. `Prom/` itself is about 560 lines. The `inletFirst` chain is 43 lines.
 
@@ -13,6 +21,10 @@ The unit has two unrelated parts.
 - **(B)** One short lemma: observables of grade at most 3 satisfy the fixed-field supply condition.
 
 The code uses arbitrary words for mathematical objects. Throughout I give the likely meaning and mark it (probable) or (tentative) where I inferred it from types and proofs.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -46,6 +58,8 @@ Then there are a strictly increasing $f:\mathbb N\to\mathbb N$ and a scaling $X$
 *Status:* theorem.
 *Lean:* [`inletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L126-L129), with [`Supplies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L18-L21).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **From other units.**
@@ -62,6 +76,8 @@ Then there are a strictly increasing $f:\mathbb N\to\mathbb N$ and a scaling $X$
 - `DimAbove` is supplied by [`cap_given`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L110) from the rank widths (`Cells.RankWidths`), which is part of the `corrected` field of the seed.
 - The exponents are the constants of the budgets (e.g. `-3` in `LegacyCostSky`, $x^{-1/32}$ in `laminateSky`). They are not new.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 The ultraviolet estimates (III.10–III.14) are stated for a lattice theory at a fixed schedule: the effective action is built from the Wilson action at spacing $a_N$ and the RG is stopped at a stage determined by the spacing and a fixed real number, the arc $b$ (the code's `band`, `arc`; see §6). The scaling-limit argument of VII.1–VII.2 needs more than a subsequence of the schedule's natural stages. It needs, for an arbitrary sequence of target scales $s_i\to0$, a lattice theory at some stage $k_i$ whose RG gap (`Station.gap A b k`, the physical length at which the observables are read) is *exactly* $s_i$. This is achieved by letting $b$ vary in a unit interval: $b_i=a+e_i$, $e_i\in[0,1]$. The map $b\mapsto\mathrm{gap}(b,k)$ sweeps scales and can be tuned to hit $s_i$.
@@ -73,6 +89,8 @@ The Sky family therefore contains:
 - (iv) a diagonal extraction (`wakesSky`) of one vane per grade and a repackaging (`dockedSky`, `pays_sky`) as a scaling-limit path.
 
 The second part (§1.4) is separate and elementary. In grades $\le3$ every physical field is a multiple of the unit, and the unit is supplied by a constant label whose coefficient size is $\le a_k^d\le1$. This is the "fixed-field estimate" that grade $\le3$ trivially satisfies. The sharper statement for grade $\ge4$ (`coreRead`, `physicalRelease`) is in the same file.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -138,6 +156,8 @@ The second part (§1.4) is separate and elementary. In grades $\le3$ every physi
 
 *(Read: the proofs of `coreRead` and `physicalRelease`. Both are short chains of operator-norm bounds.)* These two are the "output" counterparts of `inletFirst`, so the three are probably used together in VII.2 (trace comparison). (tentative)
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 *Routine but long.* The Sky variants are copies of the fixed-parameter estimates with an extra real parameter, so there is no new analytic idea. The 3,600-line chain is the cost of carrying the parameter through the budgets and stage definitions. Many names carry the suffix `Sky`, and docstrings say "Variant of `YM.MergeProof.West.Tael` for dynamic stops". The structural content that matters is VII.6.b (tuning the arc to hit the target scale exactly) and VII.6.e (turning the lattice rescalings into a genuine isomorphism using the dimension bound).
@@ -148,65 +168,193 @@ The second part (§1.4) is separate and elementary. In grades $\le3$ every physi
 - `StarPath` in `Running.lean` is the Sky version. The same name in `YM.TraceExtension.Slate` and `Atlas` is used with a different parameter list (`StarPath X H J F.room.kernel 𝓛`, with the second kernel argument); the two should be identified before writing. (tentative)
 - `inletFirst` is very short because the physics is in `first_grade`: grades $<4$ are all multiples of the unit (VII.1 or VII.3).
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | proposed notation |
-|---|---|---|
-| scaling (radii and rescaling maps) | [`Climb.Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31) (`U`, `xi`, `r`), [`Zoom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Rates.lean#L15-L19) (radii only) | $(r_k,U_k)$ |
-| scaling-limit path | [`StarPath`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Running.lean#L19-L23) | "scaling path along $\mathcal L$" |
-| approach to the free values | [`Approaches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Rates.lean#L52-L53) | $\mathrm{tested}(r_k,U_k;v)-\mathrm{disc}(v)\to0$ |
-| vane (stage, arc, constant, tables) | [`Vane`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Boats.lean#L65-L69) (`k`, `b`, `c`, `R`) | a "scale datum" $(k,b,c,R)$ |
-| checked vane | [`TimberSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Boats.lean#L42-L47) | "admissible scale datum" |
-| firing property (uniform in the arc) | [`FiresSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Order/State.lean#L29-L32) | $\mathrm{Fire}_d(z)$ |
-| poised stage-$k$ data | [`PoisedSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Orion/Plume.lean#L23-L28) | "stage-$k$ input at arc $b$" |
-| stage-$k$ cost record | [`LegacyCostSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Lys.lean#L38-L45) | $\mathrm{Cost}_k$ |
-| arc / band parameter | `Panel.arc`, `band` | $b$ (the real parameter that fixes the stopping stage) |
-| RG gap (physical scale of stage $k$ at arc $b$) | `Station.gap A b k` | $\ell(b,k)$ |
-| dimension cap by the free reference | [`DimAbove`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L108) | $\dim S.\mathrm{Field}(d)\le\dim F_0.\mathrm{Field}(d)$ |
-| schedule cost hypothesis | [`Scrim`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Biscuit.lean#L29-L34) | (S) |
-| Gallery (existence of scaling paths) | [`Trace.Over.Gallery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L41-L44) | (not part of this unit) |
-| supply condition | [`SharpGram.Supplies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L18-L21) | $x\in\mathrm{Supp}_p(\varphi)$ |
-| release condition | [`SharpGram.Releases`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L23-L26) | $L$ released at weight $w$ |
-| derivative-killing condition | [`SharpGram.Kills`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L28-L29) | $L\circ\partial^{(e)}=0$, $e<w$ |
-| quota | `quota C d k N p x` | $\|x\|_{k}$, the level-$k$ coefficient size of the label $x$, normalized by $a_k^{-d}$ (tentative) |
+- **object:** scaling (radii and rescaling maps)
+
+  **code name:** [`Climb.Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31) (`U`, `xi`, `r`), [`Zoom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Rates.lean#L15-L19) (radii only)
+
+  **proposed notation:** $(r_k,U_k)$
+
+- **object:** scaling-limit path
+
+  **code name:** [`StarPath`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Running.lean#L19-L23)
+
+  **proposed notation:** "scaling path along $\mathcal L$"
+
+- **object:** approach to the free values
+
+  **code name:** [`Approaches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Rates.lean#L52-L53)
+
+  **proposed notation:** $\mathrm{tested}(r_k,U_k;v)-\mathrm{disc}(v)\to0$
+
+- **object:** vane (stage, arc, constant, tables)
+
+  **code name:** [`Vane`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Boats.lean#L65-L69) (`k`, `b`, `c`, `R`)
+
+  **proposed notation:** a "scale datum" $(k,b,c,R)$
+
+- **object:** checked vane
+
+  **code name:** [`TimberSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Boats.lean#L42-L47)
+
+  **proposed notation:** "admissible scale datum"
+
+- **object:** firing property (uniform in the arc)
+
+  **code name:** [`FiresSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Order/State.lean#L29-L32)
+
+  **proposed notation:** $\mathrm{Fire}_d(z)$
+
+- **object:** poised stage-$k$ data
+
+  **code name:** [`PoisedSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Orion/Plume.lean#L23-L28)
+
+  **proposed notation:** "stage-$k$ input at arc $b$"
+
+- **object:** stage-$k$ cost record
+
+  **code name:** [`LegacyCostSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Lys.lean#L38-L45)
+
+  **proposed notation:** $\mathrm{Cost}_k$
+
+- **object:** arc / band parameter
+
+  **code name:** `Panel.arc`, `band`
+
+  **proposed notation:** $b$ (the real parameter that fixes the stopping stage)
+
+- **object:** RG gap (physical scale of stage $k$ at arc $b$)
+
+  **code name:** `Station.gap A b k`
+
+  **proposed notation:** $\ell(b,k)$
+
+- **object:** dimension cap by the free reference
+
+  **code name:** [`DimAbove`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L108)
+
+  **proposed notation:** $\dim S.\mathrm{Field}(d)\le\dim F_0.\mathrm{Field}(d)$
+
+- **object:** schedule cost hypothesis
+
+  **code name:** [`Scrim`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Biscuit.lean#L29-L34)
+
+  **proposed notation:** (S)
+
+- **object:** Gallery (existence of scaling paths)
+
+  **code name:** [`Trace.Over.Gallery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L41-L44)
+
+  **proposed notation:** (not part of this unit)
+
+- **object:** supply condition
+
+  **code name:** [`SharpGram.Supplies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L18-L21)
+
+  **proposed notation:** $x\in\mathrm{Supp}_p(\varphi)$
+
+- **object:** release condition
+
+  **code name:** [`SharpGram.Releases`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L23-L26)
+
+  **proposed notation:** $L$ released at weight $w$
+
+- **object:** derivative-killing condition
+
+  **code name:** [`SharpGram.Kills`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L28-L29)
+
+  **proposed notation:** $L\circ\partial^{(e)}=0$, $e<w$
+
+- **object:** quota
+
+  **code name:** `quota C d k N p x`
+
+  **proposed notation:** $\|x\|_{k}$, the level-$k$ coefficient size of the label $x$, normalized by $a_k^{-d}$ (tentative)
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
-**Meaning of the parameter $b$ ("arc", "band", "currency", $\theta$).** The parameter $b$ is read as a real parameter of the RG schedule that fixes the stopping stage, because the gap function is monotone in it. The definitions of `Tapes.Panel`, `Station.gap` and `gap_orders` have not been checked. The definition of the arc, and the reason it ranges over a unit interval, should be checked. (tentative)
-**Meaning of `Vane` and `wheel`.** A vane is read as a datum (stage, arc, constant, tables) from which the family of lattice rescalings $\mathrm{wok}(C,d,k,b,c,R)$ is built, with `wheel.atCut` its dependence on the cutoff pair $(N,p)$. The definitions of `wok` and `Granular` have not been checked. (tentative)
-**How the Sky lemmas relate to the originals.** The files say "Variant of `YM.MergeProof.West.*` for dynamic stops". I compared hypotheses only: the Sky versions add the arc parameter and the dynamic stage `widthSky`/`middleSky`. A writer who proves the fixed-parameter versions in III.10–III.14 should check whether the Sky versions are generalizations (in which case the originals are corollaries) or independent copies. (probable)
-**Use of `inletFirst`.** A search by name alone found no other Lean source mentioning `inletFirst` or `outletFirst`. The unit page says the lemma is used by the main theorem. The dependency may be through a different name or through a macro, so the consumer should be located in VII.2. (tentative)
-**`FiresSky` as an assumption.** It is discharged by `embalms` for every simple $G$ under `Paid W C.path.levels` and `ParadeX C`. The places where those are established (III.14 or the integration files) have not been traced. The two hypotheses of `pays_sky` that mention the schedule (`Scrim`, `hZ`) come from the same place.
-**Role of $z_d$.** `hZ` says $z_d\ge\mathrm{generator}(G,i)$ for $i\le d$ and nondecreasing in $d$. The declaration `Accent.generator` has not been identified (probably the largest generator norm of the gauge group, entering the exponent of the cost bounds).
-**`laminateSky`.** Only the statement and docstring are covered here. The $x^{-1/32}$ exponent, the use of $L=w\cdot\mathrm{walls}(y)$ and the notions `Healthy`, `Steady`, `Pose`, `Guards` are not explained here.
-**`DimAbove` and the reference.** It is read as the cap by the free Maxwell reference table `Bel C.book`. Confirm that the reference is the free Maxwell theory of VII.1 and VI.2.
-9. **Two `StarPath` definitions.** See §5.
 
-**Builds on:** [III.11](III-11.md), [I.1](I-1.md), [III.1](III-1.md), [II.2](II-2.md), [II.1](II-1.md), [IV.1](IV-1.md), [III.4](III-4.md), [VI.2](VI-2.md), [III.16](III-16.md), [V.2](V-2.md), [III.10](III-10.md), [VI.1](VI-1.md).
+- **Meaning of the parameter $b$ ("arc", "band", "currency", $\theta$).** The parameter $b$ is read as a real parameter of the RG schedule that fixes the stopping stage, because the gap function is monotone in it. The definitions of `Tapes.Panel`, `Station.gap` and `gap_orders` have not been checked. The definition of the arc, and the reason it ranges over a unit interval, should be checked. (tentative)
 
-**Used by:** [III.2](III-2.md), [VII.2](VII-2.md), [VIII.1](VIII-1.md).
+- **Meaning of `Vane` and `wheel`.** A vane is read as a datum (stage, arc, constant, tables) from which the family of lattice rescalings $\mathrm{wok}(C,d,k,b,c,R)$ is built, with `wheel.atCut` its dependence on the cutoff pair $(N,p)$. The definitions of `wok` and `Granular` have not been checked. (tentative)
+
+- **How the Sky lemmas relate to the originals.** The files say "Variant of `YM.MergeProof.West.*` for dynamic stops". I compared hypotheses only: the Sky versions add the arc parameter and the dynamic stage `widthSky`/`middleSky`. Whether these generalize the fixed-parameter versions in III.10–III.14 (making the originals corollaries) or are independent copies remains unchecked. (probable)
+
+- **Use of `inletFirst`.** A search by name alone found no other Lean source mentioning `inletFirst` or `outletFirst`. The unit page says the lemma is used by the main theorem. The dependency may be through a different name or through a macro, so the consumer should be located in VII.2. (tentative)
+
+- **`FiresSky` as an assumption.** It is discharged by `embalms` for every simple $G$ under `Paid W C.path.levels` and `ParadeX C`. The places where those are established (III.14 or the integration files) have not been traced. The two hypotheses of `pays_sky` that mention the schedule (`Scrim`, `hZ`) come from the same place.
+
+- **Role of $z_d$.** `hZ` says $z_d\ge\mathrm{generator}(G,i)$ for $i\le d$ and nondecreasing in $d$. The declaration `Accent.generator` has not been identified (probably the largest generator norm of the gauge group, entering the exponent of the cost bounds).
+
+- **`laminateSky`.** Only the statement and docstring are covered here. The $x^{-1/32}$ exponent, the use of $L=w\cdot\mathrm{walls}(y)$ and the notions `Healthy`, `Steady`, `Pose`, `Guards` are not explained here.
+
+- **`DimAbove` and the reference.** It is read as the cap by the free Maxwell reference table `Bel C.book`. Confirm that the reference is the free Maxwell theory of VII.1 and VI.2.
+
+- **Two `StarPath` definitions.** See §5.
+
+
+## Code dependencies
+
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [III.11](III-11.md), [I.1](I-1.md), [III.1](III-1.md), [II.2](II-2.md), [II.1](II-1.md), [IV.1](IV-1.md), [III.4](III-4.md), [VI.2](VI-2.md), [III.16](III-16.md), [V.2](V-2.md), [III.10](III-10.md), [VI.1](VI-1.md).
+
+**Referenced by:** [III.2](III-2.md), [VII.2](VII-2.md), [VIII.1](VIII-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 4,205 attributed lines; 374 line-counted declarations; 616 assigned declaration names. Of the assigned names, 598 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| proof of [`pays_sky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Running.lean#L25-L31) and the results it chains to | 3,601 |
-| work package [`YM/TraceExtension/Prom/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom) | 561 |
-| proof of [`inletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L126-L129) | 43 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- proof of [`pays_sky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Running.lean#L25-L31) and the results it chains to — 3,601 lines.
+- work package [`YM/TraceExtension/Prom/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom) — 561 lines.
+- proof of [`inletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L126-L129) — 43 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VII.6.1** [`laminateSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Port/Rail.lean#L95-L127) *(key result)* — A nonlinear observable bound on the actual stencil: given sufficient pose and payments, the observable is valid on the fine patch and close to the critical bias on the coarse field.
-- **VII.6.2** [`pays_sky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Running.lean#L25-L31) *(main result)* — If the firing property holds in all dimensions under simple group, scrim, and dimension-above hypotheses, then for any sequence of scales tending to zero there is a subsequence along which a scaling limit star-path exists.
-- **VII.6.3** [`wakesSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Boats.lean#L75-L87) *(key result)* — From the firing property one extracts a subsequence of scales and vanes with checked properties and radii equal to the prescribed decreasing scales.
-- **VII.6.4** [`earningsSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Tael.lean#L56-L91) *(key result)* — Variant of the earnings estimate allowing parameters that vary with the sequence index within bounds.
-- **VII.6.5** [`y_readySky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Lys.lean#L51-L71) *(numbered result)* — A dynamic-stop variant of the readiness estimate bounding a root-test quantity by a budget.
-- **VII.6.6** [`lava_vSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Orion/Reach.lean#L34-L50) *(key result)* — The uniform endpoint estimate on compact sets holds for the dynamic-stops poised notion.
-- **VII.6.7** [`attireSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Delft.lean#L30-L38) *(numbered result)* — Under spacing, fit and stake hypotheses, a surviving-configuration property (Chast) holds for the dynamic-stops variant.
-- **VII.6.8** [`sweepSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Karin.lean#L34-L57) *(key result)* — Under support conditions, the tray functions are integrable and the assembled functional differs from the reference platter by at most the summed budget grantS.
-- **VII.6.9** [`inletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L126-L129) *(major result)* — For inputs of grade at most three, the projected input supplies the required fixed-field estimate.
+<a id="k-vii-6-1"></a>
+
+- **K-VII.6.1** [`laminateSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Port/Rail.lean#L95-L127) *(key result)* — A nonlinear observable bound on the actual stencil: given sufficient pose and payments, the observable is valid on the fine patch and close to the critical bias on the coarse field.
+
+<a id="k-vii-6-2"></a>
+
+- **K-VII.6.2** [`pays_sky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Running.lean#L25-L31) *(main result)* — If the firing property holds in all dimensions under simple group, scrim, and dimension-above hypotheses, then for any sequence of scales tending to zero there is a subsequence along which a scaling limit star-path exists.
+
+<a id="k-vii-6-3"></a>
+
+- **K-VII.6.3** [`wakesSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Zoom/Boats.lean#L75-L87) *(key result)* — From the firing property one extracts a subsequence of scales and vanes with checked properties and radii equal to the prescribed decreasing scales.
+
+<a id="k-vii-6-4"></a>
+
+- **K-VII.6.4** [`earningsSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Tael.lean#L56-L91) *(key result)* — Variant of the earnings estimate allowing parameters that vary with the sequence index within bounds.
+
+<a id="k-vii-6-5"></a>
+
+- **K-VII.6.5** [`y_readySky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Lys.lean#L51-L71) *(numbered result)* — A dynamic-stop variant of the readiness estimate bounding a root-test quantity by a budget.
+
+<a id="k-vii-6-6"></a>
+
+- **K-VII.6.6** [`lava_vSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Orion/Reach.lean#L34-L50) *(key result)* — The uniform endpoint estimate on compact sets holds for the dynamic-stops poised notion.
+
+<a id="k-vii-6-7"></a>
+
+- **K-VII.6.7** [`attireSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Delft.lean#L30-L38) *(numbered result)* — Under spacing, fit and stake hypotheses, a surviving-configuration property (Chast) holds for the dynamic-stops variant.
+
+<a id="k-vii-6-8"></a>
+
+- **K-VII.6.8** [`sweepSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Front/West/Karin.lean#L34-L57) *(key result)* — Under support conditions, the tray functions are integrable and the assembled functional differs from the reference platter by at most the summed budget grantS.
+
+<a id="k-vii-6-9"></a>
+
+- **K-VII.6.9** [`inletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L126-L129) *(major result)* — For inputs of grade at most three, the projected input supplies the required fixed-field estimate.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

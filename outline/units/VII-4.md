@@ -1,9 +1,17 @@
 # VII.4. Operator product expansion and contact extensions
 
-*Part VII — Identification as Yang–Mills.* 10,243 lines of Lean in 2,035 declarations used by the main theorem.
+*Part VII — Identification as Yang–Mills.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and rewritten by a second model; a final editing round is in progress. It is updated as it improves.
+Describes the finite-order operator product expansion and extensions of correlations across coincident points.
 
+**Status: checked.** Checked against the linked Lean and rewritten; final editing remains. [Status meanings](../../data/README.md#outline-status).
+
+[Overview](../README.md) · [All units](../units.md) · [← Previous: VII.3](VII-3.md) · [Next: VII.5 →](VII-5.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
 
 **Part:** VII, identification as Yang–Mills. **Lean:** [`YM/OPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE). Its folders, by role:
 - prescription and Reader: `Splitting`, `Orbits`;
@@ -35,6 +43,10 @@ The declaration map assigns two groups to VIII.1 because they lie inside the pro
   - $y\in(\mathbb R^4)^J$ is *$c$-clear of $o$* if $|o-y_j|\ge c$ and $|y_j-y_{j'}|\ge c$ for $j\ne j'$.
   - $S^s(a,x;b,y)$ and $M(a,x;b,y)$ denote the concatenated word.
 - "For all sufficiently small $r$" means: there is $r_0>0$, depending only on the data quantified before the phrase, such that the assertion holds for all $r\in(0,r_0)$ and all configurations and states quantified after it.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -196,6 +208,8 @@ It is not an assumption on the model. For the table of the construction it is pr
 
 *What is not claimed.* The coefficients depend on the prescription and the Reader. Independence of the extraction subsequence is not claimed (Assessment §7.5).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **Inputs from other units**
@@ -251,6 +265,8 @@ It is not an assumption on the model. For the table of the construction it is pr
   - subpower factors (`stakes`, `license`, `carpet`, `fly`), which are absorbed by $\varepsilon$.
 - The constant $P=4(D+1)$ of VII.4.5 comes from degree-$d$ budgets of the form $a_k^{-(d+1)}$ and $a_k\ge c\,(r/|w|)^4$.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 **Coefficients by tomography.**
@@ -284,6 +300,8 @@ $$\|u\|^{2n}_{\mathcal A}=\sup_\xi|\chi_\xi(u)|^{2n},\qquad \int|\chi_\xi(u)|^{2
 - *The slab bound.* Separately, PHASE proves the bench of V.1 by a train argument. A main word is repeated $4n$ times in a reflection-positive train; the chessboard estimate costs $A^{4n|w|}$ for the main word and a fixed $B^{2|v|}$ for an exterior word $v$, and $n\to\infty$ removes the exterior cost.
 
 *What differs from the literature.* The expansion is not perturbative. It gives finite-order bounds with $\varepsilon$-loss, holds in every state with one coefficient system, and is proved from RG cluster estimates and reflection positivity. Nothing is claimed about convergence in $D$, uniqueness of the coefficients, or agreement with perturbation theory.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -603,6 +621,8 @@ $$g_n=\min\big(f_n,\ 2^{-n},\ \mathrm{cl}(n)/(2(n+1))\big),\qquad t_0=g_0,\qquad
 
 *Lean:* [`real_basis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L52-L61), [`installs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L30-L36).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 *Routine but long.*
@@ -625,35 +645,162 @@ $$g_n=\min\big(f_n,\ 2^{-n},\ \mathrm{cl}(n)/(2(n+1))\big),\qquad t_0=g_0,\qquad
 - *Interface to Part III.* It goes through records with many hypotheses (`joins`, `Ballet`), not through a few named theorems.
 - *Side results.* `SharpGram` (with `outletFirst`) and `AllShapes` are proved inside `fromFunded`, but their conclusions are not kept by the main theorem.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | proposed notation |
-|---|---|---|
-| upper exponential rate | [`RateLE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rate.lean#L23-L24), `RateIs` | $f\preceq e^{\kappa T}$ |
-| height of a level sequence | [`Height`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L18-L20) | $a_{m}\approx e^{-cT}$ |
-| cluster, clearance | [`WithinRoom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L24-L26), [`ClearOf`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L28-L30) | $(r,M,\eta)$-cluster; $c$-clear |
-| total degree | `weight`, `sigma` | $w(a)$ |
-| needles, sheets, tests | [`Prescription`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46) | $u_i$, $\lambda_i$, $\lambda_i^{(n)}$ |
-| raw coefficient | [`Prescription.ope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Detector.lean#L80) | $\lambda_i(a;x,o)$ |
-| Reader | [`Orbits.Reader`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23) | $\mathcal R$ |
-| lower-degree removal, cut test, stratum | `knife`, `cutTest`, `stratum` | $\pi_n$, $\tau_{n,q}$, $E_n$ |
-| channels, actors, coefficients | `channels`, `actor`, `coef` | $\mathrm{Ch}_j$, $O_{j,\kappa}$, $c_{j,\kappa}(a;x,o)$ |
-| ground algebra, states | `unselected.algebra`, `glance`, `Viewers` | $\mathcal A$; $s\in X\sqcup\{\mathrm{mix}\}$ |
-| error element | [`algebraError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L61-L63), [`groundError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27) | $\mathcal E_D(a,x;b,y)$ |
-| chessboard root with interior condition | [`Cards.PaidAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Literal.lean#L28-L31) | $\|F\|_{\mathcal T_k}\le A$ |
-| deck of translates | `deck`, `Episode` | $\prod_{l<2n}U^{(*)}\circ\tau_{2tl}$ |
-| limit label of a cluster | [`Survival`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L42-L44) | $Q$ |
-| coefficient size of a label | `quota` | $\|z\|_m$ |
-| RG package | [`Services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60) | (RG) |
-| tree plot, admissibility | [`Accept`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L15-L18), `Plot` | $(s,z)$ admissible |
-| tree costs | [`Tree.toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Actual.lean#L18-L19), [`nestPrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Weights.lean#L102-L103) | $\mathrm{toll}_m$, $\mathrm{nest}_D$ |
-| one-field budget, gap | [`Next.Phase.Single`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L25-L26), [`Gapped`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L84-L87) | $\|I(v,\cdot)\|_{\mathcal T_k}\le A$ |
-| train, quantum read | `ride`, [`QRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L70-L71) | $v_n$; bench bound $\rho$ |
-| contact devices, clearance | [`Contacts.Devices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26), `clearance` | $\mathcal M$, $\mathrm{cl}(n)$ |
-| cumulant, punctured, full | `cumulant`, `punctured`, `full` | $C_h$, $\Pi_h$, $\mathrm{full}_h$ |
-| normal Taylor operator | [`Normal.taylor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/Subtractions.lean#L68) | $T^h_m$ |
-| distribution of finite order | [`Charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31), `totalTestOrder` | $\mathcal D^s_a$, order $(2+w)k$ |
-| contact thresholds | [`Thresholds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28) | $t_n$ |
+- **object:** upper exponential rate
+
+  **code name:** [`RateLE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rate.lean#L23-L24), `RateIs`
+
+  **proposed notation:** $f\preceq e^{\kappa T}$
+
+- **object:** height of a level sequence
+
+  **code name:** [`Height`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L18-L20)
+
+  **proposed notation:** $a_{m}\approx e^{-cT}$
+
+- **object:** cluster, clearance
+
+  **code name:** [`WithinRoom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L24-L26), [`ClearOf`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L28-L30)
+
+  **proposed notation:** $(r,M,\eta)$-cluster; $c$-clear
+
+- **object:** total degree
+
+  **code name:** `weight`, `sigma`
+
+  **proposed notation:** $w(a)$
+
+- **object:** needles, sheets, tests
+
+  **code name:** [`Prescription`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46)
+
+  **proposed notation:** $u_i$, $\lambda_i$, $\lambda_i^{(n)}$
+
+- **object:** raw coefficient
+
+  **code name:** [`Prescription.ope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Detector.lean#L80)
+
+  **proposed notation:** $\lambda_i(a;x,o)$
+
+- **object:** Reader
+
+  **code name:** [`Orbits.Reader`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23)
+
+  **proposed notation:** $\mathcal R$
+
+- **object:** lower-degree removal, cut test, stratum
+
+  **code name:** `knife`, `cutTest`, `stratum`
+
+  **proposed notation:** $\pi_n$, $\tau_{n,q}$, $E_n$
+
+- **object:** channels, actors, coefficients
+
+  **code name:** `channels`, `actor`, `coef`
+
+  **proposed notation:** $\mathrm{Ch}_j$, $O_{j,\kappa}$, $c_{j,\kappa}(a;x,o)$
+
+- **object:** ground algebra, states
+
+  **code name:** `unselected.algebra`, `glance`, `Viewers`
+
+  **proposed notation:** $\mathcal A$; $s\in X\sqcup\{\mathrm{mix}\}$
+
+- **object:** error element
+
+  **code name:** [`algebraError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L61-L63), [`groundError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27)
+
+  **proposed notation:** $\mathcal E_D(a,x;b,y)$
+
+- **object:** chessboard root with interior condition
+
+  **code name:** [`Cards.PaidAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Literal.lean#L28-L31)
+
+  **proposed notation:** $\|F\|_{\mathcal T_k}\le A$
+
+- **object:** deck of translates
+
+  **code name:** `deck`, `Episode`
+
+  **proposed notation:** $\prod_{l<2n}U^{(*)}\circ\tau_{2tl}$
+
+- **object:** limit label of a cluster
+
+  **code name:** [`Survival`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L42-L44)
+
+  **proposed notation:** $Q$
+
+- **object:** coefficient size of a label
+
+  **code name:** `quota`
+
+  **proposed notation:** $\|z\|_m$
+
+- **object:** RG package
+
+  **code name:** [`Services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60)
+
+  **proposed notation:** (RG)
+
+- **object:** tree plot, admissibility
+
+  **code name:** [`Accept`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L15-L18), `Plot`
+
+  **proposed notation:** $(s,z)$ admissible
+
+- **object:** tree costs
+
+  **code name:** [`Tree.toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Actual.lean#L18-L19), [`nestPrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Weights.lean#L102-L103)
+
+  **proposed notation:** $\mathrm{toll}_m$, $\mathrm{nest}_D$
+
+- **object:** one-field budget, gap
+
+  **code name:** [`Next.Phase.Single`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L25-L26), [`Gapped`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L84-L87)
+
+  **proposed notation:** $\|I(v,\cdot)\|_{\mathcal T_k}\le A$
+
+- **object:** train, quantum read
+
+  **code name:** `ride`, [`QRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L70-L71)
+
+  **proposed notation:** $v_n$; bench bound $\rho$
+
+- **object:** contact devices, clearance
+
+  **code name:** [`Contacts.Devices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26), `clearance`
+
+  **proposed notation:** $\mathcal M$, $\mathrm{cl}(n)$
+
+- **object:** cumulant, punctured, full
+
+  **code name:** `cumulant`, `punctured`, `full`
+
+  **proposed notation:** $C_h$, $\Pi_h$, $\mathrm{full}_h$
+
+- **object:** normal Taylor operator
+
+  **code name:** [`Normal.taylor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/Subtractions.lean#L68)
+
+  **proposed notation:** $T^h_m$
+
+- **object:** distribution of finite order
+
+  **code name:** [`Charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31), `totalTestOrder`
+
+  **proposed notation:** $\mathcal D^s_a$, order $(2+w)k$
+
+- **object:** contact thresholds
+
+  **code name:** [`Thresholds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28)
+
+  **proposed notation:** $t_n$
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **The RG cluster estimate as a Part III statement.** `joins` consumes:
@@ -674,54 +821,112 @@ $$g_n=\min\big(f_n,\ 2^{-n},\ \mathrm{cl}(n)/(2(n+1))\big),\qquad t_0=g_0,\qquad
    - Reflection positivity and Ward identities of the extensions.
    - Relation to perturbation theory.
 
-**Builds on:** [I.1](I-1.md), [IV.1](IV-1.md), [III.11](III-11.md), [III.1](III-1.md), [II.1](II-1.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.16](III-16.md), [III.10](III-10.md), [V.1](V-1.md), [V.2](V-2.md), [III.9](III-9.md), [III.2](III-2.md).
+## Code dependencies
 
-**Used by:** [VIII.1](VIII-1.md), [III.2](III-2.md), [III.13](III-13.md), [VII.1](VII-1.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [IV.1](IV-1.md), [III.11](III-11.md), [III.1](III-1.md), [II.1](II-1.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.16](III-16.md), [III.10](III-10.md), [V.1](V-1.md), [V.2](V-2.md), [III.9](III-9.md), [III.2](III-2.md).
+
+**Referenced by:** [VIII.1](VIII-1.md), [III.2](III-2.md), [III.13](III-13.md), [VII.1](VII-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 10,243 attributed lines; 2,035 line-counted declarations; 2,808 assigned declaration names. Of the assigned names, 2,686 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/OPE/Grouping/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Grouping), with [`YM/OPE/Replicas/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas), [`YM/OPE/Columns/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Columns), [`YM/OPE/Trees/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Trees), [`YM/OPE/Sweep/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep) … | 4,584 |
-| work package [`YM/Next/PHASE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE) | 838 |
-| work package [`YM/Contacts/Harvest/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Harvest) | 687 |
-| work package [`YM/Contacts/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts) | 676 |
-| work package [`YM/Contacts/Normal/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal) | 658 |
-| work package [`YM/OPE/Orbits/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits) | 579 |
-| work package [`YM/Contacts/Score/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Score) | 568 |
-| work package [`YM/Contacts/Layers/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Layers) | 459 |
-| work package [`YM/Contacts/Solstice/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice) | 356 |
-| work package [`YM/OPE/Cards/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards) | 274 |
-| proof of [`outletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L120-L124) | 145 |
-| work package [`YM/MultipleContact/Panel/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact/Panel) | 138 |
-| work package [`YM/MultipleContact/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact) | 109 |
-| work package [`YM/SharpGram/Prices/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Prices) | 103 |
-| work package [`YM/MultipleContact/Multi/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact/Multi) | 38 |
-| work package [`YM/Contacts/Transport/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport) | 31 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/OPE/Grouping/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Grouping), with [`YM/OPE/Replicas/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas), [`YM/OPE/Columns/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Columns), [`YM/OPE/Trees/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Trees), [`YM/OPE/Sweep/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep), [`YM/OPE/Eye/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye), [`YM/OPE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE), [`YM/OPE/Splitting/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting), [`YM/OPE/Prices/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices), [`YM/OPE/Schemes/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes), [`YM/OPE/Interpolate/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Interpolate), [`YM/OPE/Exchange/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange), [`YM/OPE/Rough/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rough), [`YM/OPE/Log/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Log) — 4,584 lines.
+- work package [`YM/Next/PHASE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE) — 838 lines.
+- work package [`YM/Contacts/Harvest/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Harvest) — 687 lines.
+- work package [`YM/Contacts/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts) — 676 lines.
+- work package [`YM/Contacts/Normal/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal) — 658 lines.
+- work package [`YM/OPE/Orbits/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits) — 579 lines.
+- work package [`YM/Contacts/Score/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Score) — 568 lines.
+- work package [`YM/Contacts/Layers/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Layers) — 459 lines.
+- work package [`YM/Contacts/Solstice/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice) — 356 lines.
+- work package [`YM/OPE/Cards/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards) — 274 lines.
+- proof of [`outletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L120-L124) — 145 lines.
+- work package [`YM/MultipleContact/Panel/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact/Panel) — 138 lines.
+- work package [`YM/MultipleContact/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact) — 109 lines.
+- work package [`YM/SharpGram/Prices/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Prices) — 103 lines.
+- work package [`YM/MultipleContact/Multi/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact/Multi) — 38 lines.
+- work package [`YM/Contacts/Transport/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport) — 31 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VII.4.1** [`compact_deviation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/ShellTest.lean#L43-L72) *(numbered result)* — Uniform jet bound for the projection deviation of a rescaled test function on a compact set in terms of the original jet budget.
-- **VII.4.2** [`nextRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L57-L92) *(numbered result)* — Any prescription signed off at level n extends to one signed off at level n+1 by adding a ring of tests.
-- **VII.4.3** [`cutoff_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L125-L179) *(key result)* — On coextensive coarse and fine link tilings, the lattice moment of products of main and exterior factors in separated cells is bounded by A^{#main} B^{#exterior}.
-- **VII.4.4** [`point_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L187-L229) *(key result)* — For gapped configurations, the continuum correlation of a point word is bounded by A to the number of main insertions times B to the number of exterior insertions.
-- **VII.4.5** [`travel_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Trains.lean#L273-L304) *(key result)* — The Gram pairing of a reflected train of a main word repeated 4q times with an exterior word is bounded by B^{2|v|} A^{4q|w|}, independent of q in exterior cost.
-- **VII.4.6** [`hitB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Grouping/Shift.lean#L54-L93) *(numbered result)* — Hit-budget bounds persist under replacing contents by enlarged sets, at a multiplied cost factor.
-- **VII.4.7** [`outletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L120-L124) *(major result)* — A functional killing the sector derivatives to the given order releases estimates for outputs of weight at most three.
-- **VII.4.8** [`seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160) *(key result)* — The quantum read estimate holds on covered positive sub-widths chosen before the exterior, establishing the Seats property.
-- **VII.4.9** [`funding`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices/Circuit.lean#L64-L87) *(numbered result)* — At ordered heights there exist rate functions such that the subpower price estimate holds eventually.
-- **VII.4.10** [`joins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Camp.lean#L54-L94) *(numbered result)* — Under suitable smallness and spacing hypotheses, a product of several observables at scales on a multiscale path has a label at which the combined configuration function lies in the interior of the chamber.
-- **VII.4.11** [`Ballet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Ballet.lean#L35-L76) *(key result)* — Across a compact window of scales, there is a coefficient with format and remainder bounds serving the product of replicated pieces, giving the main estimate.
-- **VII.4.12** [`for_plot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Extract.lean#L25-L32) *(numbered result)* — At suitable heights and separated grid points, there exist rates and labels such that survival of a configuration holds eventually with controlled exponential decay.
-- **VII.4.13** [`early_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L68-L74) *(numbered result)* — The difference between the actual observable and its truncated expansion to order N has a rate bound given by a linear exponent in N.
-- **VII.4.14** [`provided`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L65-L69) *(key result)* — If the rotation matches the sector turns and services hold, the multiple-collision light (distributional) property holds.
-- **VII.4.15** [`carrying`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L98-L104) *(numbered result)* — If the deck norms are bounded by c^{2m} for all m eventually, then the cluster norm is at most c.
-- **VII.4.16** [`everything`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L47-L48) *(key result)* — Services together with a coherent prescription imply all fixed-horizon shape demands.
-- **VII.4.17** [`ranch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas/Antique.lean#L33-L46) *(key result)* — Under many hypotheses on slots and cells, an arc structure holds for the pushed-forward system with replicated slots.
-- **VII.4.18** [`inductionLive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Induct.lean#L93-L117) *(key result)* — Across intermediate scales one can regroup indices so a live structure persists with compensated progress bounded by the product of weights.
+<a id="k-vii-4-1"></a>
+
+- **K-VII.4.1** [`compact_deviation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/ShellTest.lean#L43-L72) *(numbered result)* — Uniform jet bound for the projection deviation of a rescaled test function on a compact set in terms of the original jet budget.
+
+<a id="k-vii-4-2"></a>
+
+- **K-VII.4.2** [`nextRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L57-L92) *(numbered result)* — Any prescription signed off at level n extends to one signed off at level n+1 by adding a ring of tests.
+
+<a id="k-vii-4-3"></a>
+
+- **K-VII.4.3** [`cutoff_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L125-L179) *(key result)* — On coextensive coarse and fine link tilings, the lattice moment of products of main and exterior factors in separated cells is bounded by A^{#main} B^{#exterior}.
+
+<a id="k-vii-4-4"></a>
+
+- **K-VII.4.4** [`point_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L187-L229) *(key result)* — For gapped configurations, the continuum correlation of a point word is bounded by A to the number of main insertions times B to the number of exterior insertions.
+
+<a id="k-vii-4-5"></a>
+
+- **K-VII.4.5** [`travel_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Trains.lean#L273-L304) *(key result)* — The Gram pairing of a reflected train of a main word repeated 4q times with an exterior word is bounded by B^{2|v|} A^{4q|w|}, independent of q in exterior cost.
+
+<a id="k-vii-4-6"></a>
+
+- **K-VII.4.6** [`hitB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Grouping/Shift.lean#L54-L93) *(numbered result)* — Hit-budget bounds persist under replacing contents by enlarged sets, at a multiplied cost factor.
+
+<a id="k-vii-4-7"></a>
+
+- **K-VII.4.7** [`outletFirst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Clauses.lean#L120-L124) *(major result)* — A functional killing the sector derivatives to the given order releases estimates for outputs of weight at most three.
+
+<a id="k-vii-4-8"></a>
+
+- **K-VII.4.8** [`seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160) *(key result)* — The quantum read estimate holds on covered positive sub-widths chosen before the exterior, establishing the Seats property.
+
+<a id="k-vii-4-9"></a>
+
+- **K-VII.4.9** [`funding`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices/Circuit.lean#L64-L87) *(numbered result)* — At ordered heights there exist rate functions such that the subpower price estimate holds eventually.
+
+<a id="k-vii-4-10"></a>
+
+- **K-VII.4.10** [`joins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Camp.lean#L54-L94) *(numbered result)* — Under suitable smallness and spacing hypotheses, a product of several observables at scales on a multiscale path has a label at which the combined configuration function lies in the interior of the chamber.
+
+<a id="k-vii-4-11"></a>
+
+- **K-VII.4.11** [`Ballet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Ballet.lean#L35-L76) *(key result)* — Across a compact window of scales, there is a coefficient with format and remainder bounds serving the product of replicated pieces, giving the main estimate.
+
+<a id="k-vii-4-12"></a>
+
+- **K-VII.4.12** [`for_plot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Extract.lean#L25-L32) *(numbered result)* — At suitable heights and separated grid points, there exist rates and labels such that survival of a configuration holds eventually with controlled exponential decay.
+
+<a id="k-vii-4-13"></a>
+
+- **K-VII.4.13** [`early_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L68-L74) *(numbered result)* — The difference between the actual observable and its truncated expansion to order N has a rate bound given by a linear exponent in N.
+
+<a id="k-vii-4-14"></a>
+
+- **K-VII.4.14** [`provided`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L65-L69) *(key result)* — If the rotation matches the sector turns and services hold, the multiple-collision light (distributional) property holds.
+
+<a id="k-vii-4-15"></a>
+
+- **K-VII.4.15** [`carrying`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L98-L104) *(numbered result)* — If the deck norms are bounded by c^{2m} for all m eventually, then the cluster norm is at most c.
+
+<a id="k-vii-4-16"></a>
+
+- **K-VII.4.16** [`everything`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L47-L48) *(key result)* — Services together with a coherent prescription imply all fixed-horizon shape demands.
+
+<a id="k-vii-4-17"></a>
+
+- **K-VII.4.17** [`ranch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas/Antique.lean#L33-L46) *(key result)* — Under many hypotheses on slots and cells, an arc structure holds for the pushed-forward system with replicated slots.
+
+<a id="k-vii-4-18"></a>
+
+- **K-VII.4.18** [`inductionLive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Induct.lean#L93-L117) *(key result)* — Across intermediate scales one can regroup indices so a live structure persists with compensated progress bounded by the product of weights.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

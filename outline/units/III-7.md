@@ -1,13 +1,25 @@
 # III.7. Matching the Wilson energy to fourth order
 
-*Part III — Ultraviolet construction (renormalization group).* 19,945 lines of Lean in 3,533 declarations used by the main theorem.
+*Part III — Ultraviolet construction (renormalization group).*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Matches the effective action to the Wilson energy through fourth order.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** III, Ultraviolet construction (renormalization group). **Lean:** [`YM/Next/STATIONARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY), [`YM/WilsonBulk/Spectral/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral), [`YM/UVExtension/Projection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection), and a few lines of [`YM/UVExtension/Reward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward). **Size:** 19,945 lines in the main-theorem closure: 19,391 in `Next/STATIONARY`, 286 in `UVExtension/Projection`, 215 in `WilsonBulk/Spectral`, and about 50 elsewhere.
+[Overview](../README.md) · [All units](../units.md) · [← Previous: III.6](III-6.md) · [Next: III.8 →](III-8.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** III, Ultraviolet construction (renormalization group). **Lean:** [`YM/Next/STATIONARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY), [`YM/WilsonBulk/Spectral/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral), [`YM/UVExtension/Projection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection), and a few lines of [`YM/UVExtension/Reward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward). **Size:** 19,945 lines in the source allocation: 19,391 in `Next/STATIONARY`, 286 in `UVExtension/Projection`, 215 in `WilsonBulk/Spectral`, and about 50 elsewhere.
 
 *Conventions.* Levels $m=0,\dots,N$ run from the coarsest level ($m=0$) to the Wilson lattice ($m=N$). Blocking from fine level $m+1$ to coarse level $m$ uses an odd factor $L_m$. The stage $J_m$ is the index of the constants used at level $m$; it satisfies $J_{m+1}\in\{J_m,J_m+1\}$. In one step the fine torus $\Lambda_f$ has side $f=Lc$ and the coarse torus $\Lambda_c$ has side $c$; in general $|\Lambda_n|=n^4$. Fields are Lie-algebra link variables $x$, and configurations are $U=e^x$. $E_W(U)=\sum_p\big(1-d_{\rm rep}^{-1}\mathrm{Re}\,\mathrm{tr}\,U_p\big)$ is the Wilson energy in the fixed matrix representation of dimension $d_{\rm rep}$, $C_G$ is the adjoint Casimir constant of I.1, and $\kappa=11C_G/(24\pi^2)$.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -194,6 +206,8 @@ with $M$ the axial Hessian and $T$ the Haar Jacobian of the chart.
 *Status:* theorem; used in the renormalization and remainder comparisons of III.4, III.2 and VII.2.
 *Lean:* [`tribute`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L177-L202), [`bounty`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L166-L167), [`medals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Completion.lean#L59-L60).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 - **I.1 (gauge groups, Wilson action).** $E_W$, the exponential chart, $\mathrm{Ad}$, the Casimir $C_G$, and $\kappa$ with $\kappa>0$ ([`slopeConstant_pos`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176), [`casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182)). Simplicity enters as $\mathrm{tr}(\mathrm{ad}_b\mathrm{ad}_b)=-C_G$ for every unit vector $b$, and through Schur's lemma.
@@ -225,6 +239,8 @@ with $M$ the axial Hessian and $T$ the Haar Jacobian of the chart.
   - Rotation-invariant integrals over shells in $\mathbb R^4$.
 - **Imported constants and assumptions.** No one-loop coefficient is assumed. $\kappa$ is defined in I.1, and III.7.3 proves that it is the one-loop slope. The hypotheses carried are those displayed in the propositions; the free-field and history assumptions are supplied by III.4.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 **Classical part.** At every level the quadratic part of the leading action is fixed by the free-field bed of that level. The cubic and quartic parts are curvature atoms, determined by Taylor agreement through order four with a given gauge-invariant function $E$. At the top, $E$ is the Wilson energy. At each step, $E$ is the tree-level coarse action $x\mapsto S_t(x,g(x))$. The atom-emission lemma (§4.3, Lemma 4.4) serves both cases. Its mechanism has four parts:
@@ -247,6 +263,8 @@ with $M$ the axial Hessian and $T$ the Haar Jacobian of the chart.
 
 - the effective action is carried by explicit, exponentially weighted path data;
 - the $F^2$-coefficient is obtained by comparison with a regulated covariant determinant plus a Fourier computation, with $O(1)$ error, for an arbitrary simple compact gauge group.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -496,6 +514,8 @@ $$M=1+\tfrac{a+1}6+\tfrac{(c+1)+3(a+1)^2E}{24}.$$
 
 *Lean:* [`clocks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L51-L74), [`geared`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L59-L66).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 - **The coefficient and its identification.** The continuum bubble yields the factor $11/3$ from the orbital and spin vertices and $\mathrm{tr}(\mathrm{ad}_b^2)=-C_G$. Relating this calculation to the blocked determinant also requires the exact Faddeev–Popov identity, cancellation of the contact contribution to $\alpha$, a comparison uniform in $L$, and control of every Fourier alias.
@@ -505,43 +525,200 @@ $$M=1+\tfrac{a+1}6+\tfrac{(c+1)+3(a+1)^2E}{24}.$$
 - **Strength of the conclusion.** The slope estimate has an $O(1)$ error uniform in $L$. This suffices for III.9 when $\log L$ dominates that error. Polymer activities are absent from the argument.
 - **The regulator.** The scalar regulator is $\mu^{20}(\Delta_U+\mu^2)^{-9}$. Its componentwise extension to link fields respects gauge transformations and unsigned axis permutations; full signed-permutation symmetry is not asserted for this auxiliary determinant. The blocked action has the full lattice symmetry.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
 A determinant film records the second derivative before loop-momentum integration. Its quadratic Taylor kernel is one half of its normalized loop-momentum integral.
 
-| Written proof | Lean | Meaning |
-|---|---|---|
-| $R=(\ell,\mathcal A^{(2)},\mathcal A^{(3)},\mathcal A^{(4)})$ | [`RG.PathData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154) | path datum (rows, loop/cubic/quartic atoms) |
-| leg, atom | [`RG.Slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L38-L40), [`RG.Atom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L84-L86) | transported curvature; curvature monomial |
-| $\mathrm{Bounds}(\mathbf c;\sigma,C,\Lambda)$ | [`PathData.Bounds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L173-L185) | exponential summability, invariance and moment clauses |
-| $\mathrm{main}_{\mathbf c,R}$, $\mathrm{loop}_R$ | [`mainTerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L27-L28), `loop` | leading part; loop functional |
-| clip $\mathbf c$, $c_{\rm dir}$ | [`RG.Clip`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L139-L146) | clipping parameters; `direct` |
-| bed $B$, Floor, attached | [`Bed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L35-L40), [`Floor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68), [`Attached`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L44-L46) | free quadratic-form data of a level |
-| straight-route rows of $\rho$ | [`rowPath`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L169-L171), [`emitBase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L173-L174) | rows realizing the bed roots on straight lattice routes |
-| strip-analytic $(\sigma,K)$ | [`Firm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L199) | bounded holomorphic periodic kernel |
-| vanishing to order $s$ along rays | [`Rays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L28-L29) | raywise $O(t^s)$ at $t=0$ |
-| $(t{+}1)$-leg kernel; records | `Picture`, [`Recorded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Pathways.lean#L491-L492) | Fourier kernel of a Taylor coefficient |
-| $\alpha_b(\hat K)$ | [`alphaPay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L699) | $F^2$-coefficient, normalized by the bed |
-| $\Pi_\mu$ | [`PoleTest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L138), [`fineMag`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L46) | regulated background-field one-loop action |
-| $\mathcal G_\mu$, $\mathcal P_\mu$ | [`grenade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Regulator.lean#L338), [`medals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Completion.lean#L59-L60) | ghost operator; completed Hessian |
-| $\mu=1/L$ | [`inch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/Slabs.lean#L189) | regulator mass |
-| $h(k)$; $k_b(k)$ | [`poleVec`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L125); [`keelRay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L155) | continuum bubble integrand; lattice integrand |
-| bounds of Lemma 4.15 | [`Waves1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L276), [`Waves2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L277) | global infrared bound and shell comparison bound |
-| $(2\pi)^{-4}$ | [`cartWeight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L28) | normalization of the momentum integral |
-| $S_t(x,z)$; $\mathrm{th}$ | [`tested`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L81-L84); [`thermal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L46-L49) | fine action plus penalty; one-loop function |
-| classical match; finite bound | [`ClassicalMatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L108-L109); [`FiniteBound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71) | items 4 and 5 of III.7.4 |
-| slope statement | [`HorizCalc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L20-L23), [`Fluent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L115) | III.7.3 for given / all parameters |
-| step property; step record | [`Transition`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L86-L90); [`Bubble`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L170-L177) | III.7.4 |
-| top datum | [`BranchRow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L166) | III.7.2 at level $N$ |
-| kinetic data, planned conditions | [`Kin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77), [`Kin.Planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115), [`FullPaths`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L301-L305) | output to III.9 |
-| invertibility bounds | [`GrantF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L15-L22), [`Freezer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/UniformMatrix.lean#L270-L272) | strip invertibility with inverse bound |
-| medal, core, auxiliary films | [`medalCue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L84), [`coreCue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L86), [`rankCue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L85) | §4.8 |
-| $\hat\beta_m$, $\mathrm{loopCap}_m$ | [`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79), [`loopCap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L86) | reference coupling; loop-amplitude cap |
-| $\kappa$ | [`Gauge.slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184) | $11C_G/(24\pi^2)$ |
-| $D^rF(0)/r!$ | [`noteAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L341) | complexified Taylor coefficient |
-| analytic gauge and lattice symmetry | [`Pointwise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L373-L377) | hypotheses of atom emission |
-| $\pi_d(\sigma)$ | [`priceDivision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Koszul.lean#L84) | one-coordinate division constant in $d$ momentum coordinates |
-| joint free form; gauge completion | [`frontR`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Block/Static.lean#L20), [`postroom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/FourPoint.lean#L221), [`cannonade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Regulator.lean#L499) | fine-link and coarse-frame operators |
+- **Written proof:** $R=(\ell,\mathcal A^{(2)},\mathcal A^{(3)},\mathcal A^{(4)})$
+
+  **Lean:** [`RG.PathData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154)
+
+  **Meaning:** path datum (rows, loop/cubic/quartic atoms)
+
+- **Written proof:** leg, atom
+
+  **Lean:** [`RG.Slot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L38-L40), [`RG.Atom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L84-L86)
+
+  **Meaning:** transported curvature; curvature monomial
+
+- **Written proof:** $\mathrm{Bounds}(\mathbf c;\sigma,C,\Lambda)$
+
+  **Lean:** [`PathData.Bounds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L173-L185)
+
+  **Meaning:** exponential summability, invariance and moment clauses
+
+- **Written proof:** $\mathrm{main}_{\mathbf c,R}$, $\mathrm{loop}_R$
+
+  **Lean:** [`mainTerm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L27-L28), `loop`
+
+  **Meaning:** leading part; loop functional
+
+- **Written proof:** clip $\mathbf c$, $c_{\rm dir}$
+
+  **Lean:** [`RG.Clip`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L139-L146)
+
+  **Meaning:** clipping parameters; `direct`
+
+- **Written proof:** bed $B$, Floor, attached
+
+  **Lean:** [`Bed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L35-L40), [`Floor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68), [`Attached`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L44-L46)
+
+  **Meaning:** free quadratic-form data of a level
+
+- **Written proof:** straight-route rows of $\rho$
+
+  **Lean:** [`rowPath`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L169-L171), [`emitBase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L173-L174)
+
+  **Meaning:** rows realizing the bed roots on straight lattice routes
+
+- **Written proof:** strip-analytic $(\sigma,K)$
+
+  **Lean:** [`Firm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L199)
+
+  **Meaning:** bounded holomorphic periodic kernel
+
+- **Written proof:** vanishing to order $s$ along rays
+
+  **Lean:** [`Rays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L28-L29)
+
+  **Meaning:** raywise $O(t^s)$ at $t=0$
+
+- **Written proof:** $(t{+}1)$-leg kernel; records
+
+  **Lean:** `Picture`, [`Recorded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Pathways.lean#L491-L492)
+
+  **Meaning:** Fourier kernel of a Taylor coefficient
+
+- **Written proof:** $\alpha_b(\hat K)$
+
+  **Lean:** [`alphaPay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L699)
+
+  **Meaning:** $F^2$-coefficient, normalized by the bed
+
+- **Written proof:** $\Pi_\mu$
+
+  **Lean:** [`PoleTest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L138), [`fineMag`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L46)
+
+  **Meaning:** regulated background-field one-loop action
+
+- **Written proof:** $\mathcal G_\mu$, $\mathcal P_\mu$
+
+  **Lean:** [`grenade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Regulator.lean#L338), [`medals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Completion.lean#L59-L60)
+
+  **Meaning:** ghost operator; completed Hessian
+
+- **Written proof:** $\mu=1/L$
+
+  **Lean:** [`inch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/Slabs.lean#L189)
+
+  **Meaning:** regulator mass
+
+- **Written proof:** $h(k)$; $k_b(k)$
+
+  **Lean:** [`poleVec`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L125); [`keelRay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L155)
+
+  **Meaning:** continuum bubble integrand; lattice integrand
+
+- **Written proof:** bounds of Lemma 4.15
+
+  **Lean:** [`Waves1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L276), [`Waves2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L277)
+
+  **Meaning:** global infrared bound and shell comparison bound
+
+- **Written proof:** $(2\pi)^{-4}$
+
+  **Lean:** [`cartWeight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L28)
+
+  **Meaning:** normalization of the momentum integral
+
+- **Written proof:** $S_t(x,z)$; $\mathrm{th}$
+
+  **Lean:** [`tested`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L81-L84); [`thermal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L46-L49)
+
+  **Meaning:** fine action plus penalty; one-loop function
+
+- **Written proof:** classical match; finite bound
+
+  **Lean:** [`ClassicalMatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L108-L109); [`FiniteBound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71)
+
+  **Meaning:** items 4 and 5 of III.7.4
+
+- **Written proof:** slope statement
+
+  **Lean:** [`HorizCalc`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L20-L23), [`Fluent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L115)
+
+  **Meaning:** III.7.3 for given / all parameters
+
+- **Written proof:** step property; step record
+
+  **Lean:** [`Transition`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L86-L90); [`Bubble`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L170-L177)
+
+  **Meaning:** III.7.4
+
+- **Written proof:** top datum
+
+  **Lean:** [`BranchRow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L166)
+
+  **Meaning:** III.7.2 at level $N$
+
+- **Written proof:** kinetic data, planned conditions
+
+  **Lean:** [`Kin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77), [`Kin.Planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115), [`FullPaths`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L301-L305)
+
+  **Meaning:** output to III.9
+
+- **Written proof:** invertibility bounds
+
+  **Lean:** [`GrantF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L15-L22), [`Freezer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/UniformMatrix.lean#L270-L272)
+
+  **Meaning:** strip invertibility with inverse bound
+
+- **Written proof:** medal, core, auxiliary films
+
+  **Lean:** [`medalCue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L84), [`coreCue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L86), [`rankCue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L85)
+
+  **Meaning:** §4.8
+
+- **Written proof:** $\hat\beta_m$, $\mathrm{loopCap}_m$
+
+  **Lean:** [`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79), [`loopCap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L86)
+
+  **Meaning:** reference coupling; loop-amplitude cap
+
+- **Written proof:** $\kappa$
+
+  **Lean:** [`Gauge.slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184)
+
+  **Meaning:** $11C_G/(24\pi^2)$
+
+- **Written proof:** $D^rF(0)/r!$
+
+  **Lean:** [`noteAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L341)
+
+  **Meaning:** complexified Taylor coefficient
+
+- **Written proof:** analytic gauge and lattice symmetry
+
+  **Lean:** [`Pointwise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L373-L377)
+
+  **Meaning:** hypotheses of atom emission
+
+- **Written proof:** $\pi_d(\sigma)$
+
+  **Lean:** [`priceDivision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Koszul.lean#L84)
+
+  **Meaning:** one-coordinate division constant in $d$ momentum coordinates
+
+- **Written proof:** joint free form; gauge completion
+
+  **Lean:** [`frontR`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Block/Static.lean#L20), [`postroom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/FourPoint.lean#L221), [`cannonade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Regulator.lean#L499)
+
+  **Meaning:** fine-link and coarse-frame operators
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Analytic estimates below the stated lemmas.** The real quotient estimate and complex-strip perturbation estimate used in Lemma 4.10, and the analytic tadpole and bubble bounds used in Lemma 4.15, have not been checked through every subsidiary proof. Their statements support the estimates given here. The determinant-factorization and Haar-density lemmas of Lemma 4.9 remain inputs at statement level. The contact identities used in Lemma 4.18 and the high-alias and zero-alias estimates used in Lemma 4.19 likewise remain inputs at statement level.
@@ -549,49 +726,125 @@ A determinant film records the second derivative before loop-momentum integratio
 3. **Supply of the global hypotheses.** III.4 supplies the free-field horizons and history conditions. The [`free/stationary connection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/B70FreeStationaryConnection.lean#L17-L56) explicitly constructs the two horizons with identical beds and interpolation kernels before applying the iteration. The discharge of these conditions in every downstream application has not been checked.
 4. **Limits of path data.** The projection results support the compactness argument in III.13: exponential weights give Hilbert-space parameters for curvature coefficients ([`fitting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Ink.lean#L79-L99)); coefficientwise convergence with uniform row bounds gives convergence of row-action jets ([`insideLine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Lines.lean#L89-L109)); compatible source jets and a common positive Hessian lower bound give continuity of stationary, tree-level and one-loop jets ([`interview`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Fumes.lean#L56-L87)). The complete compactness construction and passage through all its quantifiers belong to III.13 and remain outside this unit.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.16](III-16.md), [III.6](III-6.md), [III.10](III-10.md), [III.2](III-2.md).
+## Code dependencies
 
-**Used by:** [VII.2](VII-2.md), [III.2](III-2.md), [III.13](III-13.md), [III.4](III-4.md), [III.14](III-14.md), [VII.1](VII-1.md), [III.12](III-12.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.1](III-1.md), [III.16](III-16.md), [III.6](III-6.md), [III.10](III-10.md), [III.2](III-2.md).
+
+**Referenced by:** [VII.2](VII-2.md), [III.2](III-2.md), [III.13](III-13.md), [III.4](III-4.md), [III.14](III-14.md), [VII.1](VII-1.md), [III.12](III-12.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 19,945 attributed lines; 3,533 line-counted declarations; 4,156 assigned declaration names. Of the assigned names, 4,108 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/Next/STATIONARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY) | 19,391 |
-| work package [`YM/UVExtension/Projection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection) | 286 |
-| work package [`YM/WilsonBulk/Spectral/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral) | 215 |
-| work package [`YM/UVExtension/Reward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward) | 30 |
-| work package [`YM/UVExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension) | 23 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/Next/STATIONARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY) — 19,391 lines.
+- work package [`YM/UVExtension/Projection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection) — 286 lines.
+- work package [`YM/WilsonBulk/Spectral/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral) — 215 lines.
+- work package [`YM/UVExtension/Reward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward) — 30 lines.
+- work package [`YM/UVExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension) — 23 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **III.7.1** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/LocalOracle.lean#L312-L348) *(key result)* — A summable family of local analytic functionals with weighted bounds sums to an analytic function with uniformly controlled jet bounds, dimension-free.
-- **III.7.2** [`vanish`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L611-L625) *(key result)* — For simple gauge group and distinct axes with vanishing leap-tip coefficient, the relevant data function vanishes to order four along the axes.
-- **III.7.3** [`withdrew`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Ward.lean#L647-L697) *(key result)* — Uniform lift conditions transfer along a sequence of analytic forces tending to zero, except for ray vanishing orders.
-- **III.7.4** [`frame`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Chart.lean#L421-L435) *(numbered result)* — The Army property is preserved on composing with frame evaluation components.
-- **III.7.5** [`wedlock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Vertex.lean#L371-L379) *(key result)* — There exists a family of kernels with exponentially decaying bounds and analytic rays that realizes the prescribed generating data.
-- **III.7.6** [`wall_lift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Koszul.lean#L571-L587) *(key result)* — A cycle-valued leg with cost and jet bounds is a coboundary of a leg one degree higher with controlled cost, preserving vanishing on the wall.
-- **III.7.7** [`carry_plan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L255-L278) *(key result)* — Under convergence hypotheses, the limiting row-scape of a sequence of kernels coincides with the carried row from the limit object at real momenta.
-- **III.7.8** [`allleg`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/ManyLegs.lean#L533-L549) *(key result)* — For arity at least three, a contractible family of cost-bounded functions is the curl of a family of cost-bounded potentials, with cost loss by a constant factor.
-- **III.7.9** [`strokes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Pathways.lean#L193-L201) *(numbered result)* — A cost-bounded picture admits a real, color-invariant Laurent representation with controlled cost at fixed arity.
-- **III.7.10** [`colors_align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Ward.lean#L192-L216) *(key result)* — For an analytic function with controlled recorded data and a shaded picture and skin, the series expansion matches the function to the stated aperture order.
-- **III.7.11** [`scene_gate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L58-L61) *(key result)* — For a given roll and price data there exists a budget gap parameter, from the stationary scene.
-- **III.7.12** [`tribute`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L177-L202) *(key result)* — Near zero, the completed Hessian determinant is positive and the Haar-to-counting Jacobian ratio is controlled inside the exponential patches.
-- **III.7.13** [`stadium`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/RealGap.lean#L647-L664) *(key result)* — For self-adjoint-symmetric tactics with bounded serial norms, the carried matrix of the force operator is stable with a uniform constant on real momenta.
-- **III.7.14** [`filing_ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L231-L234) *(numbered result)* — The filing data are firm with controlled bounds and vanish to order four along axes, and are recorded against the loop series at order zero.
-- **III.7.15** [`launch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L270-L305) *(key result)* — Given input bed data, there is a path datum whose main term agrees to fourth jet order with the Wilson energy and satisfies bounds, uniformly for large volumes.
-- **III.7.16** [`assembly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L561-L595) *(key result)* — Real-analytic extensions with jet control can be matched, up to order-five error, by classical emitted data built from atoms with wall bounds, uniformly along large volumes.
-- **III.7.17** [`extra_curves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/SoftTransfers.lean#L59-L103) *(key result)* — For atom families with wall bounds, classical curvature terms from cubic and quartic vertices are realized by pictures with uniform bounds enabling the induction.
-- **III.7.18** [`quoting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L67-L96) *(key result)* — A grant bound yields footprint bounds for bounded plane-density performances, used for flux, transition and ceiling caps.
-- **III.7.19** [`drift_tip`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L789-L818) *(key result)* — For a simple gauge group and screened data, the alpha payment of the profitable cue vanishes for each color index.
-- **III.7.20** [`post_cert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/ComplexGap.lean#L330-L353) *(key result)* — Under weighted two-end budget conditions, the force-kernel operator built from the tactics satisfies a freezing (coercivity) certificate with constants independent of the patch.
-- **III.7.21** [`uniform_backing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral/Backing.lean#L54-L66) *(key result)* — For beds with strip metric and floors, the joint inverse is uniformly bounded in the strip norm with constants depending only on the level, and inverts the completed matrix.
-- **III.7.22** [`pouring`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L17-L52) *(key result)* — For every simple gauge group, the fluent (annulus) certificate holds.
-- **III.7.23** [`honored`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L25-L68) *(key result)* — Given inputs, one can choose convergence widths and constants independent of later kinetic data so that the grant-type bounds hold for all patches and path data along sequences of sides tending to infinity.
-- **III.7.24** [`setWest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/VertexWeights.lean#L357-L382) *(key result)* — For bounded loop data, there are constants such that for all small patches and admissible families, one can construct order-3 and order-4 weighted texts bounding the stationary expansion with explicit constants.
+<a id="k-iii-7-1"></a>
+
+- **K-III.7.1** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/LocalOracle.lean#L312-L348) *(key result)* — A summable family of local analytic functionals with weighted bounds sums to an analytic function with uniformly controlled jet bounds, dimension-free.
+
+<a id="k-iii-7-2"></a>
+
+- **K-III.7.2** [`vanish`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L611-L625) *(key result)* — For simple gauge group and distinct axes with vanishing leap-tip coefficient, the relevant data function vanishes to order four along the axes.
+
+<a id="k-iii-7-3"></a>
+
+- **K-III.7.3** [`withdrew`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Ward.lean#L647-L697) *(key result)* — Uniform lift conditions transfer along a sequence of analytic forces tending to zero, except for ray vanishing orders.
+
+<a id="k-iii-7-4"></a>
+
+- **K-III.7.4** [`frame`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Chart.lean#L421-L435) *(numbered result)* — The Army property is preserved on composing with frame evaluation components.
+
+<a id="k-iii-7-5"></a>
+
+- **K-III.7.5** [`wedlock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Vertex.lean#L371-L379) *(key result)* — There exists a family of kernels with exponentially decaying bounds and analytic rays that realizes the prescribed generating data.
+
+<a id="k-iii-7-6"></a>
+
+- **K-III.7.6** [`wall_lift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Koszul.lean#L571-L587) *(key result)* — A cycle-valued leg with cost and jet bounds is a coboundary of a leg one degree higher with controlled cost, preserving vanishing on the wall.
+
+<a id="k-iii-7-7"></a>
+
+- **K-III.7.7** [`carry_plan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L255-L278) *(key result)* — Under convergence hypotheses, the limiting row-scape of a sequence of kernels coincides with the carried row from the limit object at real momenta.
+
+<a id="k-iii-7-8"></a>
+
+- **K-III.7.8** [`allleg`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/ManyLegs.lean#L533-L549) *(key result)* — For arity at least three, a contractible family of cost-bounded functions is the curl of a family of cost-bounded potentials, with cost loss by a constant factor.
+
+<a id="k-iii-7-9"></a>
+
+- **K-III.7.9** [`strokes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Pathways.lean#L193-L201) *(numbered result)* — A cost-bounded picture admits a real, color-invariant Laurent representation with controlled cost at fixed arity.
+
+<a id="k-iii-7-10"></a>
+
+- **K-III.7.10** [`colors_align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Ward.lean#L192-L216) *(key result)* — For an analytic function with controlled recorded data and a shaded picture and skin, the series expansion matches the function to the stated aperture order.
+
+<a id="k-iii-7-11"></a>
+
+- **K-III.7.11** [`scene_gate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L58-L61) *(key result)* — For a given roll and price data there exists a budget gap parameter, from the stationary scene.
+
+<a id="k-iii-7-12"></a>
+
+- **K-III.7.12** [`tribute`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L177-L202) *(key result)* — Near zero, the completed Hessian determinant is positive and the Haar-to-counting Jacobian ratio is controlled inside the exponential patches.
+
+<a id="k-iii-7-13"></a>
+
+- **K-III.7.13** [`stadium`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/RealGap.lean#L647-L664) *(key result)* — For self-adjoint-symmetric tactics with bounded serial norms, the carried matrix of the force operator is stable with a uniform constant on real momenta.
+
+<a id="k-iii-7-14"></a>
+
+- **K-III.7.14** [`filing_ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L231-L234) *(numbered result)* — The filing data are firm with controlled bounds and vanish to order four along axes, and are recorded against the loop series at order zero.
+
+<a id="k-iii-7-15"></a>
+
+- **K-III.7.15** [`launch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L270-L305) *(key result)* — Given input bed data, there is a path datum whose main term agrees to fourth jet order with the Wilson energy and satisfies bounds, uniformly for large volumes.
+
+<a id="k-iii-7-16"></a>
+
+- **K-III.7.16** [`assembly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L561-L595) *(key result)* — Real-analytic extensions with jet control can be matched, up to order-five error, by classical emitted data built from atoms with wall bounds, uniformly along large volumes.
+
+<a id="k-iii-7-17"></a>
+
+- **K-III.7.17** [`extra_curves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/SoftTransfers.lean#L59-L103) *(key result)* — For atom families with wall bounds, classical curvature terms from cubic and quartic vertices are realized by pictures with uniform bounds enabling the induction.
+
+<a id="k-iii-7-18"></a>
+
+- **K-III.7.18** [`quoting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L67-L96) *(key result)* — A grant bound yields footprint bounds for bounded plane-density performances, used for flux, transition and ceiling caps.
+
+<a id="k-iii-7-19"></a>
+
+- **K-III.7.19** [`drift_tip`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L789-L818) *(key result)* — For a simple gauge group and screened data, the alpha payment of the profitable cue vanishes for each color index.
+
+<a id="k-iii-7-20"></a>
+
+- **K-III.7.20** [`post_cert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/ComplexGap.lean#L330-L353) *(key result)* — Under weighted two-end budget conditions, the force-kernel operator built from the tactics satisfies a freezing (coercivity) certificate with constants independent of the patch.
+
+<a id="k-iii-7-21"></a>
+
+- **K-III.7.21** [`uniform_backing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral/Backing.lean#L54-L66) *(key result)* — For beds with strip metric and floors, the joint inverse is uniformly bounded in the strip norm with constants depending only on the level, and inverts the completed matrix.
+
+<a id="k-iii-7-22"></a>
+
+- **K-III.7.22** [`pouring`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L17-L52) *(key result)* — For every simple gauge group, the fluent (annulus) certificate holds.
+
+<a id="k-iii-7-23"></a>
+
+- **K-III.7.23** [`honored`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L25-L68) *(key result)* — Given inputs, one can choose convergence widths and constants independent of later kinetic data so that the grant-type bounds hold for all patches and path data along sequences of sides tending to infinity.
+
+<a id="k-iii-7-24"></a>
+
+- **K-III.7.24** [`setWest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/VertexWeights.lean#L357-L382) *(key result)* — For bounded loop data, there are constants such that for all small patches and admissible families, one can construct order-3 and order-4 weighted texts bounding the stationary expansion with explicit constants.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

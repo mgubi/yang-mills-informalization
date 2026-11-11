@@ -1,9 +1,19 @@
-# VII.3. The theory is not free: Gram positivity and exclusion of free-field profiles
+# VII.3. Free Wick polynomials and reflected Gram positivity
 
-*Part VII — Identification as Yang–Mills.* 3,325 lines of Lean in 678 declarations used by the main theorem.
+*Part VII — Identification as Yang–Mills.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and rewritten by a second model; a final editing round is in progress. It is updated as it improves.
+Establishes positivity and detection for free Wick polynomials and explains their role in the finite-profile comparison.
 
+**Status: checked.** Checked against the linked Lean and rewritten; final editing remains. [Status meanings](../../data/README.md#outline-status).
+
+[Overview](../README.md) · [All units](../units.md) · [← Previous: VII.2](VII-2.md) · [Next: VII.4 →](VII-4.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+**Reading scope.** The declaration allocation here covers the free algebra and Gram form. The finite-profile exclusion is also explained below, using the trace law of [VII.2](VII-2.md); its concluding declarations are allocated to VII.2 and the public bridge to [VIII.1](VIII-1.md).
+
+<details>
+<summary>Source inventory and conventions</summary>
 
 **Part:** VII, identification as Yang–Mills. **Lean:** [`YM/Extra/FREE_DETECTOR_ALGEBRA`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA), [`YM/Pert/Position`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position), [`YM/Pert/Rigid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rigid), [`YM/Pert/Lattice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice), and a few declarations of [`YM/Push/LOOP_COEFFICIENT`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOOP_COEFFICIENT). Proposition VII.3.7 is in [`YM/TraceExtension/Wick`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick) and [`TraceBridge.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/TraceBridge.lean). **Size:** about 3,300 lines: `FREE_DETECTOR_ALGEBRA` 2.1k, `Pert/Lattice` 0.6k, `Pert/Position` with `Pert/Rigid` 0.5k, `Push/LOOP_COEFFICIENT` 0.05k.
 
@@ -14,6 +24,10 @@
 - **(iii) A formal lattice perturbation theory** (§4.7). Its order-zero coefficients enter (ii).
 
 The unit's title refers to a third result, the exclusion of Wick profiles for the trace of the stress tensor (VII.3.7). That result uses none of (i)–(iii). The declaration table assigns its declarations to VII.2 (`Wick.no_powerlog`, `Wick.euclidean_excludes`, `Headline.TraceExclusions`) and VIII.1 (`Wick.polynomial_excludes`, `publicTrace`). It is stated here so that the title refers to a precise statement.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -174,6 +188,8 @@ With $A=3\dim\mathfrak g/\pi^4$ from VII.2, (a) is clause (T4) of the main theor
 
 The excluded class is narrow: finite Wick profiles, for the single function $G_\Theta$, along one axis. Generalized free fields with continuous mass spectrum, infinite sums and general composites of Gaussian fields are not excluded (statement.md, Remark 10).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **Inputs from other units.**
@@ -221,6 +237,8 @@ The excluded class is narrow: finite Wick profiles, for the single function $G_\
 - Hypotheses: `FirstExtension` (VI.2) and `BoardAttains` (VIII.1) for VII.3.6(c); the short-distance law with $A>0$ for VII.3.7 (VII.2).
 - Simplicity of $G$ enters only VII.3.6, through VI.2's description of $E_d$ for $d\le4$ and through $\dim\mathfrak g>0$.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 *(A) Strict positivity.* $\langle P,P\rangle_{x,y}\ge0$ is reflection positivity of the free field. The content of VII.3.1 is strictness on the whole polynomial algebra: no nonzero Wick polynomial at a point is a null vector for the Osterwalder–Schrader form. The proof diagonalizes the form explicitly, in two layers, and never mentions a Gaussian measure.
@@ -254,6 +272,8 @@ The excluded class is narrow: finite Wick profiles, for the single function $G_\
 - A function with $r^8\log^2(1/r)G(r)\to A\ne0$ has no such expansion: its leading term would be $r^{-8}(\log r)^{-2}$, with a negative power of the logarithm.
 - In the Lean, this is a lexicographic comparison of exponents along $r=2^{-n}$.
 - This is the familiar fact that a logarithmic anomalous scaling cannot come from a finite composite of free fields with finitely many masses.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -534,6 +554,8 @@ These are consumed by:
 [`Orb.finite_agreement`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Together.lean#L58-L61) says that coefficients through order $k$ use only vertices through order $k$. It is not used by the main theorem.
 *(Series.lean, Blank.lean and the `profile` definition read; the rest, statements only.)*
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 *Where the mathematics is.*
@@ -559,39 +581,186 @@ These are consumed by:
    - `reflected_symm`, `reflected_pd`, `first_frozen` and `finite_agreement` are unused as well.
 7. **A second faithfulness proof.** VI.2 contains another proof of the statement of VII.3.4(a): `Maxwell.Free.no_residual` in `Next/MAXWELL/Caps.lean`. It feeds `CorrectedLift` and appears to rest on a different, heat-flow nonnegativity argument (probable).
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | notation |
-|---|---|---|
-| on-shell $j$-jets (homogeneous Maxwell solutions) | [`Sol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Solutions.lean#L115) | $\mathrm{Sol}_j$ |
-| towers of multipoles | [`ProbeTower`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L69) | $\mathrm{Tow}_n$ |
-| Wick polynomials | [`WickPol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L24), `Slot` | $\mathcal W=\mathbb C[X_s]$ |
-| linear polynomial of a tower | [`code`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L16-L23), `digit` | $\ell_p$ |
-| encoding in a basis of a tower | [`encode`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L25) | $\Phi_b$ |
-| free moment | [`Wick.moment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127), `join` | $\langle P_1(x_1)\cdots\rangle_0$ |
-| reflection in $z^\perp$ | [`face`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Forms.lean#L103), `pullSol`, `solO` | $\mathcal R_z$ |
-| reflected pairing | [`duplex`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Duplex.lean#L54), `aligned` | $\langle P,Q\rangle_{x,y}$ |
-| tower Gram form | [`towerB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L71-L77), `scan` | $B_z$ |
-| inversion; inverted point | `inversePoint`, `rr` | $I(z)=\check z=z/\lvert z\rvert^{2}$ |
-| field of a multipole | `reply` | $R_P=s_jI^{\ast}P$ |
-| Kelvin constant; pivot | [`strength`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Kelvin.lean#L46), [`price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L24) | $s_j$, $\pi_j(z)$ |
-| shifted tower | `shifts`, `newLeg`, `shiftAll` | $\sigma_z$ |
-| two-point annihilator | [`crash`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L81), `extractVar` | $D^{x,y}_p$, $\partial^{y,y'}_s$ |
-| Fock weight | [`tally`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PowerGram.lean#L41) | $\alpha!\,d^\alpha$ |
-| free-field map of labels; shell sector | [`observable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L66-L67), [`shellSector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L64) | $\omega_d$, $\mathrm{sh}_d$ |
-| field space of the free table; embedding | `(freeTable F).Field d`, `Position.E`, [`writes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Rank.lean#L70-L71) | $E_d$, $\varpi_d$ |
-| buffers; corrected frame | [`buffers`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Board.lean#L31-L40), `motor`, `adjusted` | $\mathrm{Buf}_d$, $U_k(1+B)$ |
-| stationary buffers vanish | [`Frozen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Detect.lean#L102), `stationery` | rigidity |
-| basis and dual basis of $E_4$ | `stand`, `star`, `portLine`, `coeff` | $\star_c$, $\lambda_c$, $\mathrm{coeff}(c,c')$ |
-| rate | [`rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rigid/Camera.lean#L37) | $\rho(c)$ |
-| test system; free readings; chart | [`Conditions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Board.lean#L54-L59), `white`, `chart`, `square` | $Q$, $w_Q$, $\mathrm{chart}_Q$ |
-| measured tested readings | [`measured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Actual.lean#L15), `exactMean`, `testedMean` | $m_Q(k)$ |
-| leading position comparison | [`FourMeters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Four.lean#L45-L47), `Resident`, `Crest`, `BoardAttains` | (D15) |
-| mode, track, Wick profile | [`Mode`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L152-L158), `Track`, `wickProfile`, `atPoint` | $K_{\mathsf m,q,h}$, $W$ |
-| span of $r^a(\log r)^k$; full expansion | [`board`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Expansion.lean#L23), `Expands`, `AtOrder` | $\mathcal B$ |
-| trace two-point function | [`traceTwo`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L149), `euclidean` | $G_\Theta(r)$ |
-| perturbative weight, expectation, normalization | [`Orb.weight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Series.lean#L61), `expect`, `normalize` | $w$, $\mathbb E_0$, $\langle\cdot\rangle_{\rm pert}$ |
-| lattice perturbative profile | [`Full.profile`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L55-L56), `Position.finite` | $\pi^{(n)}_Q(L,m)$ |
+- **object:** on-shell $j$-jets (homogeneous Maxwell solutions)
+
+  **code name:** [`Sol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Solutions.lean#L115)
+
+  **notation:** $\mathrm{Sol}_j$
+
+- **object:** towers of multipoles
+
+  **code name:** [`ProbeTower`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L69)
+
+  **notation:** $\mathrm{Tow}_n$
+
+- **object:** Wick polynomials
+
+  **code name:** [`WickPol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L24), `Slot`
+
+  **notation:** $\mathcal W=\mathbb C[X_s]$
+
+- **object:** linear polynomial of a tower
+
+  **code name:** [`code`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L16-L23), `digit`
+
+  **notation:** $\ell_p$
+
+- **object:** encoding in a basis of a tower
+
+  **code name:** [`encode`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L25)
+
+  **notation:** $\Phi_b$
+
+- **object:** free moment
+
+  **code name:** [`Wick.moment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127), `join`
+
+  **notation:** $\langle P_1(x_1)\cdots\rangle_0$
+
+- **object:** reflection in $z^\perp$
+
+  **code name:** [`face`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Forms.lean#L103), `pullSol`, `solO`
+
+  **notation:** $\mathcal R_z$
+
+- **object:** reflected pairing
+
+  **code name:** [`duplex`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Duplex.lean#L54), `aligned`
+
+  **notation:** $\langle P,Q\rangle_{x,y}$
+
+- **object:** tower Gram form
+
+  **code name:** [`towerB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L71-L77), `scan`
+
+  **notation:** $B_z$
+
+- **object:** inversion; inverted point
+
+  **code name:** `inversePoint`, `rr`
+
+  **notation:** $I(z)=\check z=z/\lvert z\rvert^{2}$
+
+- **object:** field of a multipole
+
+  **code name:** `reply`
+
+  **notation:** $R_P=s_jI^{\ast}P$
+
+- **object:** Kelvin constant; pivot
+
+  **code name:** [`strength`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Kelvin.lean#L46), [`price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L24)
+
+  **notation:** $s_j$, $\pi_j(z)$
+
+- **object:** shifted tower
+
+  **code name:** `shifts`, `newLeg`, `shiftAll`
+
+  **notation:** $\sigma_z$
+
+- **object:** two-point annihilator
+
+  **code name:** [`crash`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L81), `extractVar`
+
+  **notation:** $D^{x,y}_p$, $\partial^{y,y'}_s$
+
+- **object:** Fock weight
+
+  **code name:** [`tally`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PowerGram.lean#L41)
+
+  **notation:** $\alpha!\,d^\alpha$
+
+- **object:** free-field map of labels; shell sector
+
+  **code name:** [`observable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L66-L67), [`shellSector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L64)
+
+  **notation:** $\omega_d$, $\mathrm{sh}_d$
+
+- **object:** field space of the free table; embedding
+
+  **code name:** `(freeTable F).Field d`, `Position.E`, [`writes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Rank.lean#L70-L71)
+
+  **notation:** $E_d$, $\varpi_d$
+
+- **object:** buffers; corrected frame
+
+  **code name:** [`buffers`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Board.lean#L31-L40), `motor`, `adjusted`
+
+  **notation:** $\mathrm{Buf}_d$, $U_k(1+B)$
+
+- **object:** stationary buffers vanish
+
+  **code name:** [`Frozen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Detect.lean#L102), `stationery`
+
+  **notation:** rigidity
+
+- **object:** basis and dual basis of $E_4$
+
+  **code name:** `stand`, `star`, `portLine`, `coeff`
+
+  **notation:** $\star_c$, $\lambda_c$, $\mathrm{coeff}(c,c')$
+
+- **object:** rate
+
+  **code name:** [`rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rigid/Camera.lean#L37)
+
+  **notation:** $\rho(c)$
+
+- **object:** test system; free readings; chart
+
+  **code name:** [`Conditions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Board.lean#L54-L59), `white`, `chart`, `square`
+
+  **notation:** $Q$, $w_Q$, $\mathrm{chart}_Q$
+
+- **object:** measured tested readings
+
+  **code name:** [`measured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Actual.lean#L15), `exactMean`, `testedMean`
+
+  **notation:** $m_Q(k)$
+
+- **object:** leading position comparison
+
+  **code name:** [`FourMeters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Four.lean#L45-L47), `Resident`, `Crest`, `BoardAttains`
+
+  **notation:** (D15)
+
+- **object:** mode, track, Wick profile
+
+  **code name:** [`Mode`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L152-L158), `Track`, `wickProfile`, `atPoint`
+
+  **notation:** $K_{\mathsf m,q,h}$, $W$
+
+- **object:** span of $r^a(\log r)^k$; full expansion
+
+  **code name:** [`board`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Expansion.lean#L23), `Expands`, `AtOrder`
+
+  **notation:** $\mathcal B$
+
+- **object:** trace two-point function
+
+  **code name:** [`traceTwo`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L149), `euclidean`
+
+  **notation:** $G_\Theta(r)$
+
+- **object:** perturbative weight, expectation, normalization
+
+  **code name:** [`Orb.weight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Series.lean#L61), `expect`, `normalize`
+
+  **notation:** $w$, $\mathbb E_0$, $\langle\cdot\rangle_{\rm pert}$
+
+- **object:** lattice perturbative profile
+
+  **code name:** [`Full.profile`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L55-L56), `Position.finite`
+
+  **notation:** $\pi^{(n)}_Q(L,m)$
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **$\mathrm{Label}_d$ and $\omega_d$.** These are defined in II.1 and III.16, and their definitions were not read. The description of $\mathrm{sh}_d$ as the gauge-invariant polynomials in on-shell jets of weighted degree $\le d$ (an order-$j$ jet has weight $j+2$) follows the docstring of `Filtrate.lean`; it is not stated there as a theorem (probable).
@@ -603,32 +772,60 @@ These are consumed by:
 7. **Placement of VII.3.7.** The declaration table puts VII.3.7 in VII.2 and VIII.1. §4.6 can move to VII.2 unchanged; VII.3 would then be the free Wick algebra and the degree-four position data, and its title would no longer describe its content.
 8. **The other clauses of `Headline.TraceExclusions`.** The clauses `wick`, `maxwell` and `invariant` were not traced. `wick` appears to be derived from `polynomial_excludes` through `Wick.wick_excludes` (VIII.1) (probable).
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.2](VI-2.md), [VI.1](VI-1.md), [II.1](II-1.md).
+## Code dependencies
 
-**Used by:** [VII.1](VII-1.md), [VIII.1](VIII-1.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.2](VI-2.md), [VI.1](VI-1.md), [II.1](II-1.md).
+
+**Referenced by:** [VII.1](VII-1.md), [VIII.1](VIII-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 3,325 attributed lines; 678 line-counted declarations; 798 assigned declaration names. Of the assigned names, 769 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/Extra/FREE_DETECTOR_ALGEBRA/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA) | 2,135 |
-| work package [`YM/Pert/Lattice/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice) | 599 |
-| work package [`YM/Pert/Position/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position), with [`YM/Pert/Rigid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rigid) | 541 |
-| work package [`YM/Push/LOOP_COEFFICIENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOOP_COEFFICIENT) | 50 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/Extra/FREE_DETECTOR_ALGEBRA/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA) — 2,135 lines.
+- work package [`YM/Pert/Lattice/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice) — 599 lines.
+- work package [`YM/Pert/Position/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position), with [`YM/Pert/Rigid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rigid) — 541 lines.
+- work package [`YM/Push/LOOP_COEFFICIENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/LOOP_COEFFICIENT) — 50 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VII.3.1** [`shell_green`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Harmonic.lean#L122-L152) *(numbered result)* — Away from the origin, a harmonic directional tensor applied to the 4D Green function equals a scalar multiple of the field with radial power factor (Kelvin contraction).
-- **VII.3.2** [`from_large`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L51-L68) *(numbered result)* — Every Wick polynomial is encoded by a polynomial in any basis of probe towers of sufficiently high order.
-- **VII.3.3** [`towerB_pos`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L150-L154) *(key result)* — The simultaneous reflected Gram form on jet towers at separation x is positive definite: positive exactly on nonzero towers.
-- **VII.3.4** [`reflected_positive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/WickPositive.lean#L47-L53) *(main result)* — For distinct points x,y, the reflected two-point pairing of any Wick polynomial with itself is positive iff the polynomial is nonzero.
-- **VII.3.5** [`remove`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Removal.lean#L91-L108) *(key result)* — Wick removal/annihilator recurrence: replacing a polynomial times a variable at one point equals a sum over other points of replacements with extracted variable.
-- **VII.3.6** [`duplex_script`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PowerGram.lean#L100-L116) *(key result)* — On an orthogonal script, the two-point pairing of encoded polynomials is a sum of coefficient products times factorial weights.
-- **VII.3.7** [`table_spin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/LabelTurn.lean#L80-L91) *(key result)* — The free detector table carries a real spin (rotation covariance) derived from actual O-covariance of the Wick-polynomial data.
-- **VII.3.8** [`frozen_four`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rigid/Camera.lean#L107-L113) *(key result)* — For simple gauge group, the four-horizon perturbative data are frozen (rigid).
+<a id="k-vii-3-1"></a>
+
+- **K-VII.3.1** [`shell_green`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Harmonic.lean#L122-L152) *(numbered result)* — Away from the origin, a harmonic directional tensor applied to the 4D Green function equals a scalar multiple of the field with radial power factor (Kelvin contraction).
+
+<a id="k-vii-3-2"></a>
+
+- **K-VII.3.2** [`from_large`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Script.lean#L51-L68) *(numbered result)* — Every Wick polynomial is encoded by a polynomial in any basis of probe towers of sufficiently high order.
+
+<a id="k-vii-3-3"></a>
+
+- **K-VII.3.3** [`towerB_pos`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PositiveLeg.lean#L150-L154) *(key result)* — The simultaneous reflected Gram form on jet towers at separation x is positive definite: positive exactly on nonzero towers.
+
+<a id="k-vii-3-4"></a>
+
+- **K-VII.3.4** [`reflected_positive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/WickPositive.lean#L47-L53) *(main result)* — For distinct points x,y, the reflected two-point pairing of any Wick polynomial with itself is positive iff the polynomial is nonzero.
+
+<a id="k-vii-3-5"></a>
+
+- **K-VII.3.5** [`remove`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Removal.lean#L91-L108) *(key result)* — Wick removal/annihilator recurrence: replacing a polynomial times a variable at one point equals a sum over other points of replacements with extracted variable.
+
+<a id="k-vii-3-6"></a>
+
+- **K-VII.3.6** [`duplex_script`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/PowerGram.lean#L100-L116) *(key result)* — On an orthogonal script, the two-point pairing of encoded polynomials is a sum of coefficient products times factorial weights.
+
+<a id="k-vii-3-7"></a>
+
+- **K-VII.3.7** [`table_spin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/LabelTurn.lean#L80-L91) *(key result)* — The free detector table carries a real spin (rotation covariance) derived from actual O-covariance of the Wick-polynomial data.
+
+<a id="k-vii-3-8"></a>
+
+- **K-VII.3.8** [`frozen_four`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rigid/Camera.lean#L107-L113) *(key result)* — For simple gauge group, the four-horizon perturbative data are frozen (rigid).
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

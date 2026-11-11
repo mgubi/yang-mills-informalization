@@ -1,9 +1,19 @@
-# VII.1. Short distances: convergence to free Maxwell fields
+# VII.1. Free Maxwell fields for the short-distance comparison
 
-*Part VII — Identification as Yang–Mills.* 8,117 lines of Lean in 1,626 declarations used by the main theorem.
+*Part VII — Identification as Yang–Mills.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Builds the free Maxwell correlation functions and detection estimates needed for the short-distance comparison.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
+
+[Overview](../README.md) · [All units](../units.md) · [← Previous: VI.2](VI-2.md) · [Next: VII.2 →](VII-2.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+**Reading scope.** This unit supplies the free side of the comparison. The interacting comparison is explained in [VI.2](VI-2.md) and assembled in [VIII.1](VIII-1.md).
+
+<details>
+<summary>Source inventory and conventions</summary>
 
 **Part:** VII, identification as Yang–Mills. **Lean:** the chain of [`YM/Pert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert) (folders `Fourier`, `Align`, `Warp`, `Rig`, the jet stencils of `Lattice`, the statement `Position/Crest.finite_leading`, and `Dense`), [`YM/Push/FINITE_DETECTION`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION), [`YM/SharpGram/Weak`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak), [`YM/SharpGram/Dense`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense), [`YM/RG08`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08) (about thirty small sub-folders), [`YM/PertExtension`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PertExtension), [`YM/OPE/Levy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Levy). **Size:** 8,117 lines. They divide as follows:
 
@@ -20,6 +30,10 @@ The main result identifies the order-zero lattice correlations with the free Max
 - the free hierarchy detects every label outside the Maxwell equation ideal through a single two-point function at a fixed pair of points (VII.1.4–VII.1.5);
 - using this detection, the measuring charts of the construction can be corrected to charts that are exactly compatible with the filtration, the symmetries and the unit (VII.1.6);
 - estimates on backward windows and local expansions used in the rank comparison (VII.1.7).
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -139,6 +153,8 @@ where $k\mathbin{\dot-}q=\max(k-q,0)$. Each expression depends only on $T$, reta
 *Status:* theorems.
 *Lean:* [`Dense.slim_wait_for`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense/Slender.lean#L127-L143), [`Dense.nearby`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense/Cover.lean#L155-L165), [`Dart.coin_pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Dart/Seams.lean#L34-L45).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **From other units.**
@@ -171,6 +187,8 @@ where $k\mathbin{\dot-}q=\max(k-q,0)$. Each expression depends only on $T$, reta
 - VII.1.6 imports the construction record, the portfolio estimates at step $g(k)$, the error bound of III.11, which tends to $0$, and the OPE work items.
 - VII.1.7 imports the RG scale sequence (stage lengths $L_j$, the scale and $\hat\beta_k$) from III.2.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 At order zero, the normalized perturbative expectation is Gaussian. Wick ordering introduces an independent imaginary Gaussian for each insertion, so the pair contraction is the torus stencil covariance minus the infinite-lattice self-covariance at a common insertion. Fourier analysis identifies the contractions at separated points with the Maxwell kernel. At one insertion, the remaining finite-volume error tends to zero because the period grows faster than every inverse power of the spacing. The lattice moments and the continuum Wick moments satisfy the same deletion recursion; induction on the number of distinguishable legs gives VII.1.2. Compactness and dominated convergence then give the tested limit VII.1.1.
@@ -178,6 +196,8 @@ At order zero, the normalized perturbative expectation is Gaussian. Wick orderin
 For detection, inversion and translation turn a homogeneous Maxwell solution of degree $j$ into a field whose Taylor expansion at the detector begins at order $j$. Adding the corresponding lower-rank probes gives a triangular change of variables. In an orthogonal shell basis, the reflected one-leg pairing becomes diagonal with positive entries. Wick's rule then makes distinct monomials orthogonal and gives every monomial a positive squared norm, proving VII.1.4.
 
 The interacting comparison uses the rank estimates of III.11. They imply convergence of all mixed two-point readings in one portfolio. Free detection makes the raw charts eventually invertible and forces their filtration defects to tend to zero. Fixed equivariant retractions of the free inclusions remove these defects recursively, giving the exactly compatible charts of VII.1.6. Proposition VII.1.7 supplies the backward-window and local-expansion estimates used in this construction.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -372,6 +392,8 @@ Parts (a) and (b) supply the common portfolio used in VII.1.6; the assembly is i
 
 *(proof read through the stated station and curvature-lifting inputs)*
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The main analytic work is the control of finite differences of the torus Green function, uniformly as the spacing shrinks and the volume grows. The Fourier argument must retain oscillatory cancellation; an absolute bound on the full momentum integral would not give the required derivative limits.
@@ -380,24 +402,96 @@ Wick ordering uses the infinite-lattice covariance. Consequently the same-insert
 
 The reflection-odd field space removes constant zero modes but introduces an image term. Reporting around the quarter period sends that image to infinite physical distance. Detection requires a separate algebraic argument: the translated inversion formula and the triangular probe substitution establish strict positivity on every nonzero on-shell polynomial, including constants. The chart correction then uses finite-dimensional perturbation theory and the interacting estimates of III.11.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | proposed notation |
-|---|---|---|
-| reflection-odd link fields, Feynman-gauge form, Gaussian | [`LinkP`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Geometry.lean#L107-L111), [`form`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Precision.lean#L76-L78), [`data`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Measure.lean#L31) | $\mathcal A_N$, $\mathsf Q_N$, $\mu_N$ |
-| torus Green function (mean zero) | [`toroid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Fourier/Inversion.lean#L19) | $g_N$ |
-| linear lattice curvature jet | [`slope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/TopLinear.lean#L38) | $\ell^h_x$ |
-| $\mathbb Z^4$ self-covariance of the jets (Wick subtraction) | [`link`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Symbol.lean#L50), [`shellCov`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Symbol.lean#L58-L59) | $S_h$ |
-| Wick-ordered representative | [`column`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Blank.lean#L41) | $R_h(p,o)$ |
-| corrected and limit two-leg covariances | [`corrected`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Drivers.lean#L34-L35), [`indirect`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Drivers.lean#L36) | $\kappa_h$, $K_{ab}$ |
-| itinerary; homing sites | [`Itinerary`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Burst.lean#L50-L59), [`Home`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Schedule.lean#L53) | $(N_i,h_i)$; $h_i(o_i-c_{N_i})\to z$ |
-| regulator sequence, centre, profile | [`topSpacing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L46), [`period`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L49), [`center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L52), [`profile`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L55-L56) | $h_m$, $N_m$, $c_m$, $\Pi_m(f;p)$ |
-| shell, on-shell reduction, equation ideal | `Shell`, [`reduceEq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L47-L50), [`equationIdeal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72) | $\mathrm{Sh}_j$, $\rho$, $\mathcal I_d$ |
-| Green function, curvature jet kernel | [`Green`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/PotentialKernel.lean#L22), [`legKernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L161-L162) | $\Gamma$, $K(P,Q)$ |
-| Wick moment | [`Wick.moment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127) | $\mathcal W_x$ |
-| detector pair, time reflection | [`detectors`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/TwoPoint.lean#L26), `Kelvin.σ` | $(e_{\mathrm t},0)$, $\sigma$ |
-| inversion pullback, gain | [`inverted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Response.lean#L64-L65), [`gain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Response.lean#L92) | $\iota^*$, $\gamma_j$ |
-| weak measuring portfolio, raw chart, corrected chart | [`Portfolio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Reading.lean#L35-L49), [`chart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Compatible.lean#L76-L79), `tune_grades` | $X$, $\chi_k(d)$, $p_k(d)$ |
+- **object:** reflection-odd link fields, Feynman-gauge form, Gaussian
+
+  **code name:** [`LinkP`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Geometry.lean#L107-L111), [`form`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Precision.lean#L76-L78), [`data`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Measure.lean#L31)
+
+  **proposed notation:** $\mathcal A_N$, $\mathsf Q_N$, $\mu_N$
+
+- **object:** torus Green function (mean zero)
+
+  **code name:** [`toroid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Fourier/Inversion.lean#L19)
+
+  **proposed notation:** $g_N$
+
+- **object:** linear lattice curvature jet
+
+  **code name:** [`slope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/TopLinear.lean#L38)
+
+  **proposed notation:** $\ell^h_x$
+
+- **object:** $\mathbb Z^4$ self-covariance of the jets (Wick subtraction)
+
+  **code name:** [`link`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Symbol.lean#L50), [`shellCov`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Symbol.lean#L58-L59)
+
+  **proposed notation:** $S_h$
+
+- **object:** Wick-ordered representative
+
+  **code name:** [`column`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Blank.lean#L41)
+
+  **proposed notation:** $R_h(p,o)$
+
+- **object:** corrected and limit two-leg covariances
+
+  **code name:** [`corrected`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Drivers.lean#L34-L35), [`indirect`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Drivers.lean#L36)
+
+  **proposed notation:** $\kappa_h$, $K_{ab}$
+
+- **object:** itinerary; homing sites
+
+  **code name:** [`Itinerary`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Burst.lean#L50-L59), [`Home`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Schedule.lean#L53)
+
+  **proposed notation:** $(N_i,h_i)$; $h_i(o_i-c_{N_i})\to z$
+
+- **object:** regulator sequence, centre, profile
+
+  **code name:** [`topSpacing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L46), [`period`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L49), [`center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L52), [`profile`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lattice/Bundles.lean#L55-L56)
+
+  **proposed notation:** $h_m$, $N_m$, $c_m$, $\Pi_m(f;p)$
+
+- **object:** shell, on-shell reduction, equation ideal
+
+  **code name:** `Shell`, [`reduceEq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L47-L50), [`equationIdeal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72)
+
+  **proposed notation:** $\mathrm{Sh}_j$, $\rho$, $\mathcal I_d$
+
+- **object:** Green function, curvature jet kernel
+
+  **code name:** [`Green`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/PotentialKernel.lean#L22), [`legKernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L161-L162)
+
+  **proposed notation:** $\Gamma$, $K(P,Q)$
+
+- **object:** Wick moment
+
+  **code name:** [`Wick.moment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127)
+
+  **proposed notation:** $\mathcal W_x$
+
+- **object:** detector pair, time reflection
+
+  **code name:** [`detectors`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/TwoPoint.lean#L26), `Kelvin.σ`
+
+  **proposed notation:** $(e_{\mathrm t},0)$, $\sigma$
+
+- **object:** inversion pullback, gain
+
+  **code name:** [`inverted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Response.lean#L64-L65), [`gain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Response.lean#L92)
+
+  **proposed notation:** $\iota^*$, $\gamma_j$
+
+- **object:** weak measuring portfolio, raw chart, corrected chart
+
+  **code name:** [`Portfolio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Reading.lean#L35-L49), [`chart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Compatible.lean#L76-L79), `tune_grades`
+
+  **proposed notation:** $X$, $\chi_k(d)$, $p_k(d)$
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Analytic inputs below the Fourier limits.** The symbol smoothness, higher-difference estimate, continuum annular decay, tail estimate and fixed-offset quadrature estimate support Lemmas VII.1.b–c. The remaining lower-level estimates for periodic annular sums, the low-momentum bound and the annular Riemann-sum comparison have not been checked line by line. Their uniformity in the period and spacing remains an input to the sketches. (probable)
@@ -407,73 +501,125 @@ The reflection-odd field space removes constant zero modes but introduces an ima
 
 5. **References and size estimates.** The literature citations and attributed source-line counts have not been independently verified. (tentative)
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [VII.3](VII-3.md), [III.7](III-7.md), [IV.1](IV-1.md), [III.1](III-1.md), [III.11](III-11.md), [II.1](II-1.md), [III.2](III-2.md), [II.2](II-2.md), [III.6](III-6.md), [VIII.1](VIII-1.md), [III.5](III-5.md), [VI.2](VI-2.md), [III.4](III-4.md), [III.3](III-3.md), [III.10](III-10.md), [VII.4](VII-4.md), [VI.1](VI-1.md).
+## Code dependencies
 
-**Used by:** [III.2](III-2.md), [VIII.1](VIII-1.md), [VII.2](VII-2.md), [III.13](III-13.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.16](III-16.md), [VII.3](VII-3.md), [III.7](III-7.md), [IV.1](IV-1.md), [III.1](III-1.md), [III.11](III-11.md), [II.1](II-1.md), [III.2](III-2.md), [II.2](II-2.md), [III.6](III-6.md), [VIII.1](VIII-1.md), [III.5](III-5.md), [VI.2](VI-2.md), [III.4](III-4.md), [III.3](III-3.md), [III.10](III-10.md), [VII.4](VII-4.md), [VI.1](VI-1.md).
+
+**Referenced by:** [III.2](III-2.md), [VIII.1](VIII-1.md), [VII.2](VII-2.md), [III.13](III-13.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 8,117 attributed lines; 1,626 line-counted declarations; 2,077 assigned declaration names. Of the assigned names, 1,917 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| proof of [`finite_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Crest.lean#L13-L16) and the results it chains to | 3,275 |
-| work package [`YM/Push/FINITE_DETECTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION) | 1,006 |
-| work package [`YM/SharpGram/Weak/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak) | 616 |
-| work package [`YM/RG08/Dart/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Dart) | 538 |
-| work package [`YM/RG08/Ballast/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ballast) | 338 |
-| work package [`YM/SharpGram/Dense/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense) | 316 |
-| work package [`YM/RG08/Vale/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Vale) | 315 |
-| work package [`YM/PertExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PertExtension) | 310 |
-| work package [`YM/RG08/Quire/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Quire) | 160 |
-| work package [`YM/RG08/Scores/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Scores) | 119 |
-| work package [`YM/RG08/Loom/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Loom) | 118 |
-| work package [`YM/SharpGram/Matrix/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Matrix) | 108 |
-| work package [`YM/RG08/Curl/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Curl) | 97 |
-| work package [`YM/Pert/Fourier/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Fourier) | 95 |
-| work package [`YM/RG08/Arc/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Arc) | 71 |
-| work package [`YM/RG08/Extra/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Extra) | 71 |
-| work package [`YM/RG08/Germ/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Germ) | 67 |
-| work package [`YM/RG08/Action/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Action) | 66 |
-| work package [`YM/OPE/Levy/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Levy) | 63 |
-| work package [`YM/RG08/Ward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ward) | 49 |
-| work package [`YM/RG08/Wax/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Wax) | 45 |
-| work package [`YM/SharpGram/Lenses/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Lenses) | 39 |
-| work package [`YM/RG08/Fields/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Fields) | 38 |
-| work package [`YM/Pert/Dense/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Dense) | 30 |
-| work package [`YM/RG08/Pace/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Pace) | 30 |
-| work package [`YM/RG08/Town/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Town) | 29 |
-| work package [`YM/RG08/Shade/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Shade) | 26 |
-| work package [`YM/RG08/Door/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Door) | 16 |
-| work package [`YM/RG08/Creek/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Creek) | 15 |
-| work package [`YM/RG08/Peals/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Peals) | 11 |
-| work package [`YM/RG08/Wallet/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Wallet) | 9 |
-| work package [`YM/RG08/Needle/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Needle) | 9 |
-| work package [`YM/RG08/Run/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Run) | 8 |
-| work package [`YM/RG08/Canon/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Canon) | 7 |
-| work package [`YM/UVExt/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExt) | 5 |
-| work package [`YM/RG08/Ratio/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ratio) | 1 |
-| work package [`YM/RG08/Origin/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Origin) | 1 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- proof of [`finite_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Crest.lean#L13-L16) and the results it chains to — 3,275 lines.
+- work package [`YM/Push/FINITE_DETECTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION) — 1,006 lines.
+- work package [`YM/SharpGram/Weak/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak) — 616 lines.
+- work package [`YM/RG08/Dart/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Dart) — 538 lines.
+- work package [`YM/RG08/Ballast/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ballast) — 338 lines.
+- work package [`YM/SharpGram/Dense/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense) — 316 lines.
+- work package [`YM/RG08/Vale/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Vale) — 315 lines.
+- work package [`YM/PertExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PertExtension) — 310 lines.
+- work package [`YM/RG08/Quire/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Quire) — 160 lines.
+- work package [`YM/RG08/Scores/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Scores) — 119 lines.
+- work package [`YM/RG08/Loom/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Loom) — 118 lines.
+- work package [`YM/SharpGram/Matrix/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Matrix) — 108 lines.
+- work package [`YM/RG08/Curl/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Curl) — 97 lines.
+- work package [`YM/Pert/Fourier/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Fourier) — 95 lines.
+- work package [`YM/RG08/Arc/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Arc) — 71 lines.
+- work package [`YM/RG08/Extra/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Extra) — 71 lines.
+- work package [`YM/RG08/Germ/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Germ) — 67 lines.
+- work package [`YM/RG08/Action/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Action) — 66 lines.
+- work package [`YM/OPE/Levy/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Levy) — 63 lines.
+- work package [`YM/RG08/Ward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ward) — 49 lines.
+- work package [`YM/RG08/Wax/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Wax) — 45 lines.
+- work package [`YM/SharpGram/Lenses/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Lenses) — 39 lines.
+- work package [`YM/RG08/Fields/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Fields) — 38 lines.
+- work package [`YM/Pert/Dense/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Dense) — 30 lines.
+- work package [`YM/RG08/Pace/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Pace) — 30 lines.
+- work package [`YM/RG08/Town/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Town) — 29 lines.
+- work package [`YM/RG08/Shade/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Shade) — 26 lines.
+- work package [`YM/RG08/Door/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Door) — 16 lines.
+- work package [`YM/RG08/Creek/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Creek) — 15 lines.
+- work package [`YM/RG08/Peals/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Peals) — 11 lines.
+- work package [`YM/RG08/Wallet/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Wallet) — 9 lines.
+- work package [`YM/RG08/Needle/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Needle) — 9 lines.
+- work package [`YM/RG08/Run/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Run) — 8 lines.
+- work package [`YM/RG08/Canon/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Canon) — 7 lines.
+- work package [`YM/UVExt/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExt) — 5 lines.
+- work package [`YM/RG08/Ratio/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ratio) — 1 lines.
+- work package [`YM/RG08/Origin/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Origin) — 1 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VII.1.1** [`covar_link`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Fourier/Source.lean#L55-L59) *(key result)* — The free orbital covariance of two link form elements is the color inner product times a difference of toroidal kernel values if the directions agree, else zero.
-- **VII.1.2** [`harmonic_Green`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Harmonic.lean#L157-L180) *(key result)* — Differentiating the 4D Green kernel j times against a symmetric harmonic tensor gives a constant times R^{-(j+1)}... times the diagonal harmonic polynomial, a Kelvin-type formula.
-- **VII.1.3** [`response_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Response.lean#L172-L176) *(key result)* — The colored response of a shell element equals gain times the inverted actual field, extending the scalar computation to Lie-algebra colors.
-- **VII.1.4** [`pairing_var`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Variables.lean#L114-L118) *(key result)* — The bilinear pairing between eigen variables and reflected variables is diagonal with squared-length entries.
-- **VII.1.5** [`nearby`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense/Cover.lean#L155-L165) *(numbered result)* — There is an unbounded predecessor-marking map g with g(k)≤k, g(k) interior, and S(k)≤S(g(k))+log P(k) eventually.
-- **VII.1.6** [`orbit_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Cancel.lean#L80-L88) *(key result)* — For separated endpoints, the averaged orbital pairing of dual Taylor test slots converges to the Taylor-form continuum pairing.
-- **VII.1.7** [`finite_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Crest.lean#L13-L16) *(key result)* — For clean profiles, the finite-regulator Wilson reading at order zero converges to the continuum white-noise reading as the lattice is refined.
-- **VII.1.8** [`tune_grades`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Compatible.lean#L140-L159) *(key result)* — There exist corrections of the measuring charts that are eventually graded-exact through level D and converge to the identity on every field.
-- **VII.1.9** [`row_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Warp/Horizons.lean#L65-L68) *(key result)* — The order-zero lattice rows of any tuple of fields converge to the Gaussian moment of their reduced sections.
-- **VII.1.10** [`earth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Warp/Approach.lean#L19-L32) *(key result)* — After deleting bare-linear legs, the equation price converges to the cut value at a separated configuration.
-- **VII.1.11** [`zerothProfile`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rig/Linked.lean#L59-L69) *(main result)* — For compactly supported continuous test functions away from coincident points, the order-zero coefficient of the lattice profile converges to the integral against the free discrete correlation.
-- **VII.1.12** [`linear_substitution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Polarize.lean#L108-L119) *(numbered result)* — The Wick moment of products of linear combinations of variables equals the sum over matchings of products of pairwise Wick tensor entries.
-- **VII.1.13** [`corrected_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Drivers.lean#L39-L44) *(key result)* — The corrected (subtracted) covariance of lattice sites at separated points converges to the indirect continuum covariance for all key labels.
-- **VII.1.14** [`coin_pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Dart/Seams.lean#L34-L45) *(numbered result)* — Finite demands on layouts admit an exact tally with constants such that suitable bounds on inputs yield an ample armor bound for a given order.
-- **VII.1.15** [`two_detect`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/TwoPoint.lean#L151-L155) *(main result)* — For a label outside the equation ideal, the two-point moment of the observable with its reflected conjugate has strictly positive real part.
-- **VII.1.16** [`slim_wait_for`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense/Slender.lean#L127-L143) *(key result)* — For a simple gauge group and a relay with a slim window, there is a thicker wait with the same window admitting a certified station port.
+<a id="k-vii-1-1"></a>
+
+- **K-VII.1.1** [`covar_link`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Fourier/Source.lean#L55-L59) *(key result)* — The free orbital covariance of two link form elements is the color inner product times a difference of toroidal kernel values if the directions agree, else zero.
+
+<a id="k-vii-1-2"></a>
+
+- **K-VII.1.2** [`harmonic_Green`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Harmonic.lean#L157-L180) *(key result)* — Differentiating the 4D Green kernel j times against a symmetric harmonic tensor gives a constant times R^{-(j+1)}... times the diagonal harmonic polynomial, a Kelvin-type formula.
+
+<a id="k-vii-1-3"></a>
+
+- **K-VII.1.3** [`response_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Response.lean#L172-L176) *(key result)* — The colored response of a shell element equals gain times the inverted actual field, extending the scalar computation to Lie-algebra colors.
+
+<a id="k-vii-1-4"></a>
+
+- **K-VII.1.4** [`pairing_var`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Variables.lean#L114-L118) *(key result)* — The bilinear pairing between eigen variables and reflected variables is diagonal with squared-length entries.
+
+<a id="k-vii-1-5"></a>
+
+- **K-VII.1.5** [`nearby`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense/Cover.lean#L155-L165) *(numbered result)* — There is an unbounded predecessor-marking map g with g(k)≤k, g(k) interior, and S(k)≤S(g(k))+log P(k) eventually.
+
+<a id="k-vii-1-6"></a>
+
+- **K-VII.1.6** [`orbit_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Cancel.lean#L80-L88) *(key result)* — For separated endpoints, the averaged orbital pairing of dual Taylor test slots converges to the Taylor-form continuum pairing.
+
+<a id="k-vii-1-7"></a>
+
+- **K-VII.1.7** [`finite_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Crest.lean#L13-L16) *(key result)* — For clean profiles, the finite-regulator Wilson reading at order zero converges to the continuum white-noise reading as the lattice is refined.
+
+<a id="k-vii-1-8"></a>
+
+- **K-VII.1.8** [`tune_grades`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Compatible.lean#L140-L159) *(key result)* — There exist corrections of the measuring charts that are eventually graded-exact through level D and converge to the identity on every field.
+
+<a id="k-vii-1-9"></a>
+
+- **K-VII.1.9** [`row_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Warp/Horizons.lean#L65-L68) *(key result)* — The order-zero lattice rows of any tuple of fields converge to the Gaussian moment of their reduced sections.
+
+<a id="k-vii-1-10"></a>
+
+- **K-VII.1.10** [`earth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Warp/Approach.lean#L19-L32) *(key result)* — After deleting bare-linear legs, the equation price converges to the cut value at a separated configuration.
+
+<a id="k-vii-1-11"></a>
+
+- **K-VII.1.11** [`zerothProfile`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Rig/Linked.lean#L59-L69) *(main result)* — For compactly supported continuous test functions away from coincident points, the order-zero coefficient of the lattice profile converges to the integral against the free discrete correlation.
+
+<a id="k-vii-1-12"></a>
+
+- **K-VII.1.12** [`linear_substitution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/Polarize.lean#L108-L119) *(numbered result)* — The Wick moment of products of linear combinations of variables equals the sum over matchings of products of pairwise Wick tensor entries.
+
+<a id="k-vii-1-13"></a>
+
+- **K-VII.1.13** [`corrected_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Align/Drivers.lean#L39-L44) *(key result)* — The corrected (subtracted) covariance of lattice sites at separated points converges to the indirect continuum covariance for all key labels.
+
+<a id="k-vii-1-14"></a>
+
+- **K-VII.1.14** [`coin_pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Dart/Seams.lean#L34-L45) *(numbered result)* — Finite demands on layouts admit an exact tally with constants such that suitable bounds on inputs yield an ample armor bound for a given order.
+
+<a id="k-vii-1-15"></a>
+
+- **K-VII.1.15** [`two_detect`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FINITE_DETECTION/TwoPoint.lean#L151-L155) *(main result)* — For a label outside the equation ideal, the two-point moment of the observable with its reflected conjugate has strictly positive real part.
+
+<a id="k-vii-1-16"></a>
+
+- **K-VII.1.16** [`slim_wait_for`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Dense/Slender.lean#L127-L143) *(key result)* — For a simple gauge group and a relay with a slim window, there is a thicker wait with the same window admitting a certified station port.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

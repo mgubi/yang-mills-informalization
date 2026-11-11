@@ -1,11 +1,25 @@
 # VII.5. Asymptotic freedom of the running coupling
 
-*Part VII — Identification as Yang–Mills.* 232 lines of Lean in 43 declarations used by the main theorem.
+*Part VII — Identification as Yang–Mills.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and rewritten by a second model; a final editing round is in progress. It is updated as it improves.
+Relates the running coupling to its leading logarithmic asymptotic under the construction hypotheses.
 
+**Status: checked.** Checked against the linked Lean and rewritten; final editing remains. [Status meanings](../../data/README.md#outline-status).
+
+[Overview](../README.md) · [All units](../units.md) · [← Previous: VII.4](VII-4.md) · [Next: VII.6 →](VII-6.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+**Reading scope.** The coupling result is in `YM/Pert/Asymptotics`; the allocation also includes auxiliary algebra and limit lemmas from other folders, as explained below.
+
+<details>
+<summary>Source inventory and conventions</summary>
 
 **Part:** VII, identification as Yang–Mills. **Lean:** [`YM/Pert/Asymptotics`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics) (the running coupling). The unit also contains auxiliary declarations from [`YM/Extra/WEAK_SCALING_ACTLAW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW) (files `Orientation`, `Criteria`, `Adjust`, `Analysis`, `Station`), from [`YM/TraceExtension/Foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation) (files `Caps`, `Dilate`), and one definition from [`YM/TraceExtension/Soot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot). **Size:** 232 lines in 43 declarations: 32 lines in `Pert/Asymptotics` (5 declarations, 14 lines of them the proof of the asymptotic-freedom law), 162 in `WEAK_SCALING_ACTLAW` (24), 37 in `TraceExtension/Foundation` (13), 1 in `TraceExtension/Soot` (1).
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -123,6 +137,8 @@ Then $u\,\|c_k\|\le4(1+n_k)\,w$, where $c_k$ is the coefficient at stage $k$ and
 *Status:* definition. It is a field of a structure of the trace analysis (VII.2), supplied by the preconstruction of III.2 (probable).
 *Lean:* [`YM.MergeProof.Accent.SharpRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot/Skein.lean#L26). Consumers: [`YM.Trace.Terrace.Sceptre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Knell.lean#L62-L66) and the cost lemmas of VII.2.
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **Inputs from other units.**
@@ -166,6 +182,8 @@ Then $u\,\|c_k\|\le4(1+n_k)\,w$, where $c_k$ is the coefficient at stage $k$ and
 - $\bar\beta>0$ is a constant of the schedule (III.2); the results do not depend on it.
 - No assumption enters (A) beyond the construction conditions. The hypotheses of (B) are stated in VII.5.4–VII.5.5.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 **Part (A).** Part (A) is the last step of a three-step argument; the first two steps are in Part III.
@@ -184,6 +202,8 @@ No perturbation theory is done in this unit. The file documentation states this 
   2. a recursive correction, degree by degree, that turns approximately compatible frames into exactly compatible ones;
   3. a perturbation argument showing the correction stays invertible and asymptotically equal to the original frames.
 - *VII.5.7* is the algebra of stress tensors quadratic in $F$ under the hyperoctahedral group. On the lattice only $\Gamma_4$ acts, so there are four candidate tensors and three candidate divergences. Their algebra singles out the canonical tensor and shows that it is traceless.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -314,6 +334,8 @@ With it, the shear part $\sum_{a\ne b}\partial_a\sum_i\langle F_{ai},F_{bi}\rang
 
 Together these say: among the $\Gamma_4$-covariant tensors quadratic in $F$, the tensor conserved on Maxwell solutions is, up to scale, the canonical one, and it is traceless. VII.2 reads the trace of a candidate stress tensor off its divergence through $\rho$ (probable).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 *Routine.* Everything in the unit is routine:
@@ -336,34 +358,136 @@ The substance of asymptotic freedom lies upstream: the per-step marginal-flow es
   - the convergence lemmas (VII.5.6): III.12;
   - the stress-tensor definitions (VII.5.7): VII.2 and VI.1, where all the lemmas about them are;
   - the read-out predicate (VII.5.8): VII.2.
-  
+
   A written proof should place them there.
 - **The asymptotic-freedom statement has no downstream use.** Proposition VII.5.3 is not cited by any other declaration. The coupling enters the main theorem only through VII.5.1, via (Reg1).
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | proposed notation |
-|---|---|---|
-| Casimir constant | [`YM.Gauge.casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182) | $C_{\mathfrak g}$ ($=2N^2$ for $SU(N)$) |
-| slope constant | [`YM.Gauge.slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184) | $\kappa_G=11C_{\mathfrak g}/(24\pi^2)$ |
-| one-loop coefficient | [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13) | $b_0=\kappa_G/2$; slope $b_*=2b_0$ |
-| lattice spacing at stage $m$ | [`Schedule.a`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99) | $a_m=1/D_m$ |
-| logarithmic scale | [`Schedule.scale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115) | $s_m=\log(1/a_m)$ |
-| coupling at stage $m$ | `C.path.β N p m` | $\beta_{N,p,m}$; bare coupling $\beta_{N,p}=\beta_{N,p,N}$ |
-| reference line | [`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79) | $\widehat\beta_m=\bar\beta+\kappa_Gs_m$ |
-| running clause | [`Running`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230) | (R) |
-| running coupling | [`regulatorRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L35) | $g_{N,p,m}=\beta_{N,p,m}^{-1/2}$ |
-| free comparison table | [`Free`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Station.lean#L28) | $\mathcal F^\circ_d$ |
-| equivariant retraction | [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55) | $P_d$ |
-| corrected frames | [`adjusted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66), [`rotateChart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L137-L140) | $X_d$, $\widetilde X^{(k)}_d$ |
-| exact compatibility up to degree $D$ | [`Exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L72-L76), [`Graded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L171-L172) | "exactly graded" |
-| asymptotic intertwining | [`Near`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L110-L111) | hypothesis of VII.5.5(c) |
-| square of the curvature | [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66) | $\mathfrak s=\frac14\sum_{i,j}\langle F_{ij},F_{ij}\rangle$ |
-| canonical stress tensor | [`raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70) | $T^{\mathrm{can}}$ |
-| weight-5 vectors | [`momentum1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L16), [`momentum2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L14) | $\mu^1$, $\mu^2$ |
-| coordinates on $\mathcal R_1$ | [`basisV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L63-L66) | $\beta(w)$ |
-| divergence of $T^{(0,w)}$ | [`bareVector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33) | $\delta(w)$ |
-| sharp read-out bound | [`SharpRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot/Skein.lean#L26) | Definition VII.5.8 |
+- **object:** Casimir constant
+
+  **code name:** [`YM.Gauge.casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182)
+
+  **proposed notation:** $C_{\mathfrak g}$ ($=2N^2$ for $SU(N)$)
+
+- **object:** slope constant
+
+  **code name:** [`YM.Gauge.slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184)
+
+  **proposed notation:** $\kappa_G=11C_{\mathfrak g}/(24\pi^2)$
+
+- **object:** one-loop coefficient
+
+  **code name:** [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13)
+
+  **proposed notation:** $b_0=\kappa_G/2$; slope $b_*=2b_0$
+
+- **object:** lattice spacing at stage $m$
+
+  **code name:** [`Schedule.a`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99)
+
+  **proposed notation:** $a_m=1/D_m$
+
+- **object:** logarithmic scale
+
+  **code name:** [`Schedule.scale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115)
+
+  **proposed notation:** $s_m=\log(1/a_m)$
+
+- **object:** coupling at stage $m$
+
+  **code name:** `C.path.β N p m`
+
+  **proposed notation:** $\beta_{N,p,m}$; bare coupling $\beta_{N,p}=\beta_{N,p,N}$
+
+- **object:** reference line
+
+  **code name:** [`hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79)
+
+  **proposed notation:** $\widehat\beta_m=\bar\beta+\kappa_Gs_m$
+
+- **object:** running clause
+
+  **code name:** [`Running`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230)
+
+  **proposed notation:** (R)
+
+- **object:** running coupling
+
+  **code name:** [`regulatorRun`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L35)
+
+  **proposed notation:** $g_{N,p,m}=\beta_{N,p,m}^{-1/2}$
+
+- **object:** free comparison table
+
+  **code name:** [`Free`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Station.lean#L28)
+
+  **proposed notation:** $\mathcal F^\circ_d$
+
+- **object:** equivariant retraction
+
+  **code name:** [`retraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55)
+
+  **proposed notation:** $P_d$
+
+- **object:** corrected frames
+
+  **code name:** [`adjusted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66), [`rotateChart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L137-L140)
+
+  **proposed notation:** $X_d$, $\widetilde X^{(k)}_d$
+
+- **object:** exact compatibility up to degree $D$
+
+  **code name:** [`Exact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L72-L76), [`Graded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L171-L172)
+
+  **proposed notation:** "exactly graded"
+
+- **object:** asymptotic intertwining
+
+  **code name:** [`Near`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L110-L111)
+
+  **proposed notation:** hypothesis of VII.5.5(c)
+
+- **object:** square of the curvature
+
+  **code name:** [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66)
+
+  **proposed notation:** $\mathfrak s=\frac14\sum_{i,j}\langle F_{ij},F_{ij}\rangle$
+
+- **object:** canonical stress tensor
+
+  **code name:** [`raw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70)
+
+  **proposed notation:** $T^{\mathrm{can}}$
+
+- **object:** weight-5 vectors
+
+  **code name:** [`momentum1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L16), [`momentum2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L14)
+
+  **proposed notation:** $\mu^1$, $\mu^2$
+
+- **object:** coordinates on $\mathcal R_1$
+
+  **code name:** [`basisV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L63-L66)
+
+  **proposed notation:** $\beta(w)$
+
+- **object:** divergence of $T^{(0,w)}$
+
+  **code name:** [`bareVector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33)
+
+  **proposed notation:** $\delta(w)$
+
+- **object:** sharp read-out bound
+
+  **code name:** [`SharpRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot/Skein.lean#L26)
+
+  **proposed notation:** Definition VII.5.8
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Where the one-loop coefficient is verified.** The per-step relation $|\beta_{N,p,m+1}-\beta_{N,p,m}-\kappa_G\log b_m|\le\delta_{m+1}$ comes from the one-step output of the shooting recipe (III.2). The analytic proof of that step bound, where $11C_{\mathfrak g}/(24\pi^2)$ actually arises, is attributed to the marginal flow (III.9) but has not been traced to a declaration. (probable)
@@ -372,26 +496,33 @@ The substance of asymptotic freedom lies upstream: the per-step marginal-flow es
 4. **The functional $\rho$.** How VII.2 uses $\rho$ to read the trace of a stress tensor off its divergence is stated here as (probable) and should be checked in VII.2.
 5. **Placement.** §5 gives the target units for the 38 auxiliary declarations. Moving them would leave this unit with VII.5.1–VII.5.3 only.
 
-**Builds on:** [IV.1](IV-1.md), [I.1](I-1.md), [III.16](III-16.md), [VI.1](VI-1.md), [II.1](II-1.md).
+## Code dependencies
 
-**Used by:** [VII.2](VII-2.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [IV.1](IV-1.md), [I.1](I-1.md), [III.16](III-16.md), [VI.1](VI-1.md), [II.1](II-1.md).
+
+**Referenced by:** [VII.2](VII-2.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 232 attributed lines; 43 line-counted declarations; 43 assigned declaration names. Of the assigned names, 43 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/Extra/WEAK_SCALING_ACTLAW/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW) | 162 |
-| work package [`YM/TraceExtension/Foundation/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation) | 37 |
-| work package [`YM/Pert/Asymptotics/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics) | 18 |
-| proof of [`comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48) | 14 |
-| work package [`YM/TraceExtension/Soot/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot) | 1 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/Extra/WEAK_SCALING_ACTLAW/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW) — 162 lines.
+- work package [`YM/TraceExtension/Foundation/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation) — 37 lines.
+- work package [`YM/Pert/Asymptotics/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics) — 18 lines.
+- proof of [`comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48) — 14 lines.
+- work package [`YM/TraceExtension/Soot/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot) — 1 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VII.5.1** [`comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48) *(key result)* — The running regulator coefficient times the square root of log inverse lattice spacing tends to 1/sqrt(2 b0), giving the leading-log asymptotics of the running coupling.
+<a id="k-vii-5-1"></a>
+
+- **K-VII.5.1** [`comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48) *(key result)* — The running regulator coefficient times the square root of log inverse lattice spacing tends to 1/sqrt(2 b0), giving the leading-log asymptotics of the running coupling.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

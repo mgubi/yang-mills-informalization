@@ -1,9 +1,17 @@
 # VI.1. Ward identities, the rotation action and the conserved stress tensor
 
-*Part VI — Symmetry: stress tensor and Ward identities.* 7,704 lines of Lean in 1,014 declarations used by the main theorem.
+*Part VI — Symmetry: stress tensor and Ward identities.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Turns Ward identities into symmetry actions and a conserved stress tensor on the limit theory.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
+
+[Overview](../README.md) · [All units](../units.md) · [← Previous: V.3](V-3.md) · [Next: VI.2 →](VI-2.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
 
 **Part:** VI, symmetry: stress tensor and Ward identities. **Lean:**
 
@@ -17,7 +25,7 @@
 
 **Size (approximate):**
 
-- 7,704 lines are assigned to this unit and used by the main theorem. Of these, about 900 (`Shift` and most of `Next/BOUNDARY`) are reconstruction material for V.2, and about 1,000 (`STRESS_FLUX`) are free-field algebra used in VII.2 (Remark in §4.10).
+- 7,704 lines are in this unit’s source allocation. Of these, about 900 (`Shift` and most of `Next/BOUNDARY`) are reconstruction material for V.2, and about 1,000 (`STRESS_FLUX`) are free-field algebra used in VII.2 (Remark in §4.10).
 - About 6,100 further lines of `Next/ROTATIONS` carry the collinear flux estimate. The declaration table files them under III.6, but they belong here, and the III.6 note says so too.
 
 **Conventions.**
@@ -42,6 +50,10 @@ $$\mathcal W_K[T,P](q;x)=\sum_{i=1}^n\Big[S(\dots,T_Kq_i,\dots;x)+\sum_b(Kx_i)_b
   By the derivative law, $\mathcal W_K[T]=0$ says $\frac{d}{dt}\big|_{0}S(q;e^{tK}x)=-\sum_iS(\dots,T_Kq_i,\dots;x)$. This is infinitesimal rotation covariance with spin part $T$.
 - *Lorentz group.* Axes are numbered $0,1,2,3$; axis $3$ is time and $0,1,2$ are spatial. Write $e_t=e_3$. The axis $0$ used for the continuation in §4.4 has no distinguished physical role.
 - All identities hold at separated points. No contact term is evaluated.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -237,6 +249,8 @@ There is also a Lorentz action descending from $R$ (VI.1.8(c)).
 
 *Lean:* [`Outer.commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS.lean#L126-L131), [`Bid.station`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168), [`Org.Commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L29-L43), [`Commission.picks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L45-L53), [`Org.Tab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24), [`Spec.Locals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **Inputs from other units.**
@@ -295,6 +309,8 @@ There is also a Lorentz action descending from $R$ (VI.1.8(c)).
 - The flux estimate uses $\lambda_k=e^k$ and the exponents $100,150,300,3000$. These are internal choices.
 - Inputs 3–4 are hypotheses of the assembly theorem; their existence is supplied by the units cited above.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 Conservation and the raw shell laws make the maps $p$ and $Y$ compatible with inclusions, conjugation and signed permutations. Moving the center inside a fixed window gives their commutators with derivatives. To obtain a global rotation identity on a coordinate line, test the stress against a compact vector field that equals the rotation field near the insertions. Its cutoff has widths $\lambda^{100}$ in the rotation plane, $\lambda^{150}$ in the line direction if that direction is transverse to the plane, and $\lambda^{300}$ in the remaining directions. Two derivative terms cancel by symmetry of the stress. Reflection positivity and spectral estimates make the remaining exterior flux $O(\lambda^{-1})$, so the collinear angular sum vanishes. Translation along the line then gives the transverse translation sums.
@@ -302,6 +318,8 @@ Conservation and the raw shell laws make the maps $p$ and $Y$ compatible with in
 The free comparison identifies $p=c\partial$: finitely many collinear tests have a one-dimensional kernel in the free vector-map space, and this rank condition persists along a sufficiently accurate scaling system. Dividing by $c$ gives the collinear Ward identity for $D=c^{-1}Y$. Its derivatives determine the transverse Taylor series of each two-point function from an explicit analytic comparison function built from radial correlations. Positivity turns the resulting bounds on Gram-kernel jets into factorial bounds for derivatives of the corresponding OS vectors. Correlations are therefore analytic when one insertion moves while remaining extreme in some coordinate. The Ward identity propagates along finite chains of these moves; density gives it at every separated configuration.
 
 Differentiating the global Ward identity twice gives the $\mathfrak{so}(4)$ brackets, after row erasure is transported from the free theory. A relative-Casimir polynomial and McWeeny iteration produce exact intertwiners with the free rotation generators. Transporting the free action through them gives $O(4)$ actions on each degree. The Ward identity implies covariance, which in turn gives compatibility with inclusions, the unit and derivatives. Haar averaging of $c^{-1}J$ gives the tensorial stress $J'$ without changing its Ward laws. The free Lorentz action is transported through the same intertwiners; uniqueness for the boost ODEs makes it compatible across degrees.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -708,6 +726,8 @@ These facts feed VII.2's statement that, in the free table, the divergence map f
 
 *Lean:* [`bilinear_invariant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Color.lean#L79-L91), [`finrank_two`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L129-L167), [`finrank_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L190-L231), [`stress_tensor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L202-L214), [`div_kernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeTests.lean#L177-L184), [`stress_bijective`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeTests.lean#L227-L235). *(proof of the divergence test read; polynomial classification and dimension bounds: statement only)*
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The exterior flux estimate (VI.1.e) bears most of the analytic burden. Reflection positivity along axes of opposite parity gives the subpower estimate without a gap. Diagonal stress components require a separate conservation argument, since they have no odd reflection parity. The widths $\lambda^{100},\lambda^{150},\lambda^{300}$ and the split at $\lambda^{-3000}$ make the powers in these estimates compatible.
@@ -718,32 +738,144 @@ The descent (VI.1.s–u) constructs exact intertwiners from the free comparison.
 
 The remaining steps use compactly supported integration by parts, finite-dimensional tests, group generation, Haar averaging and uniqueness for linear ODEs.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | proposed notation |
-|---|---|---|
-| label spaces, tags, inclusions, unit | [`Field d`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L74), [`Tag`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Lift.lean#L66), [`rise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22), [`unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L100) | $F_d$, $(d,v)$, $\iota$, $\mathbf 1$ |
-| signed permutations, conjugation | [`Signed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L23-L26), [`mirror`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L138-L140), [`conj`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L142-L144) | $B_4$, $M_\sigma$, $\Gamma$ |
-| differential plan and its laws | [`DiffPlan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22), [`Derivatives`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L61-L64), [`Inclusions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L58-L60), [`Orientation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L66-L72) | $\partial_a$; derivative, inclusion, orientation laws |
-| stress, window, shells | [`Table.Stress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L57), [`Window`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73), [`shellGrad`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L79-L81), [`shellSpin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L84-L86) | $J_{ab}\in F_4$, $\chi$, $\Phi^{\rm tr}_\chi$, $\Phi^{\rm rot}_\chi$ |
-| raw shell maps; raw hypotheses | [`Climb.Parts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L58) ($p$), [`Ward.SpinRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L17) ($Y$); [`Climb.Pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69) | $p_a$, $Y_K$; (R) |
-| angular sum; its vanishing | [`localTurn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L72-L74), [`Ward.angular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L25-L27); [`Still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L45), [`Collinear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L34-L35), [`commutes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L29-L30) | $\mathcal W_K[Y,p]$, $\mathcal W_K[T]$; (L), (C) |
-| line sums, transversality | [`LineSum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L35-L36), [`Climb.transverse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Peaks.lean#L57) | line sums, transverse |
-| colour space and law | [`Colors`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L66-L87), [`ColorLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L89-L91) | colour space |
-| normalised data | [`Climb.Crystal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L83-L87) | $p=c\,\partial$, $D=c^{-1}Y$ |
-| free data | [`MaxwellData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170), [`Climb.Bel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L20), [`Lighthouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29), [`Goes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42) | $F^{\rm free}_d,\partial^{\rm free},R^{\rm free},\mathcal L^{\rm free},J^{\rm free},\kappa$ |
-| scaling system, track, weak law | [`Climb.Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31), [`Track`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48), [`ActLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L50-L51), [`aisle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L49-L57) | $(r_k,\xi_k,U_{k,d})$, $\mathrm{aisle}_{k,d}$ |
-| cutoff field | [`petal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Patch.lean#L72), [`vane`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L14), [`fuel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Budget.lean#L15) | $\mathrm{petal}_{ab}$, $\lambda=e^k$ |
-| OS vector of one insertion | [`spot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L55), [`OS.Chamber`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57-L61) | $\mathrm{spot}(A,x)\in\mathcal H_a$ |
-| row erasure | [`erases`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L149-L152), [`Winds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L141-L146) | erasure |
-| compatibility of spin rows | [`Bid.Hyper`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20) | compatible |
-| perfect relations, Casimir projection | [`Spin.rel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L35), [`wave`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L57), [`Works`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L68-L71), [`effect`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L21) | perfect relations, $z(\Omega(B,C))$, $\mathrm{ad}_{B,C}$ |
-| tilt, intertwiners | [`Spin.Tilt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L116-L122), [`realH`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L50-L52), [`change`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L44) | $U_n$, $V_d$ |
-| port, transported action | [`Spin.Port`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L13-L19), [`Spin.morph`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L22-L24), [`Org.mill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L17) | $R_d(k)=V_dR^{\rm free}_d(k)V_d^{-1}$ |
-| rotation laws, covariance | [`Rotation.Laws`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L31-L42), [`Rotation.Oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L46-L48) | rotation laws; $S(R(k)v;kx)=S(v;x)$ |
-| conserved, tensorial; average | [`Conserved`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L59-L62), [`Tensorial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L64-L66), [`averageStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L86) | $J'=\int k\cdot c^{-1}J\,d\mu$ |
-| Lorentz action on labels | [`Spin.run`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L21-L22), [`wand`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L24-L25), [`Boundary.Spins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L22-L24), [`Descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L26-L35) | $B_d(\Lambda)$ |
-| record | [`Org.Commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L29-L43), [`Org.Tab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24), [`Spec.Locals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43) | $(c,V,J')$; local laws |
+- **object:** label spaces, tags, inclusions, unit
+
+  **code name:** [`Field d`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L74), [`Tag`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Lift.lean#L66), [`rise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22), [`unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L100)
+
+  **proposed notation:** $F_d$, $(d,v)$, $\iota$, $\mathbf 1$
+
+- **object:** signed permutations, conjugation
+
+  **code name:** [`Signed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L23-L26), [`mirror`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L138-L140), [`conj`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L142-L144)
+
+  **proposed notation:** $B_4$, $M_\sigma$, $\Gamma$
+
+- **object:** differential plan and its laws
+
+  **code name:** [`DiffPlan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22), [`Derivatives`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L61-L64), [`Inclusions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L58-L60), [`Orientation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L66-L72)
+
+  **proposed notation:** $\partial_a$; derivative, inclusion, orientation laws
+
+- **object:** stress, window, shells
+
+  **code name:** [`Table.Stress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L57), [`Window`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73), [`shellGrad`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L79-L81), [`shellSpin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L84-L86)
+
+  **proposed notation:** $J_{ab}\in F_4$, $\chi$, $\Phi^{\rm tr}_\chi$, $\Phi^{\rm rot}_\chi$
+
+- **object:** raw shell maps; raw hypotheses
+
+  **code name:** [`Climb.Parts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L58) ($p$), [`Ward.SpinRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L17) ($Y$); [`Climb.Pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69)
+
+  **proposed notation:** $p_a$, $Y_K$; (R)
+
+- **object:** angular sum; its vanishing
+
+  **code name:** [`localTurn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L72-L74), [`Ward.angular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L25-L27); [`Still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L45), [`Collinear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L34-L35), [`commutes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L29-L30)
+
+  **proposed notation:** $\mathcal W_K[Y,p]$, $\mathcal W_K[T]$; (L), (C)
+
+- **object:** line sums, transversality
+
+  **code name:** [`LineSum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L35-L36), [`Climb.transverse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Peaks.lean#L57)
+
+  **proposed notation:** line sums, transverse
+
+- **object:** colour space and law
+
+  **code name:** [`Colors`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L66-L87), [`ColorLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L89-L91)
+
+  **proposed notation:** colour space
+
+- **object:** normalised data
+
+  **code name:** [`Climb.Crystal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L83-L87)
+
+  **proposed notation:** $p=c\,\partial$, $D=c^{-1}Y$
+
+- **object:** free data
+
+  **code name:** [`MaxwellData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170), [`Climb.Bel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L20), [`Lighthouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29), [`Goes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42)
+
+  **proposed notation:** $F^{\rm free}_d,\partial^{\rm free},R^{\rm free},\mathcal L^{\rm free},J^{\rm free},\kappa$
+
+- **object:** scaling system, track, weak law
+
+  **code name:** [`Climb.Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31), [`Track`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48), [`ActLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L50-L51), [`aisle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L49-L57)
+
+  **proposed notation:** $(r_k,\xi_k,U_{k,d})$, $\mathrm{aisle}_{k,d}$
+
+- **object:** cutoff field
+
+  **code name:** [`petal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Patch.lean#L72), [`vane`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L14), [`fuel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Budget.lean#L15)
+
+  **proposed notation:** $\mathrm{petal}_{ab}$, $\lambda=e^k$
+
+- **object:** OS vector of one insertion
+
+  **code name:** [`spot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L55), [`OS.Chamber`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57-L61)
+
+  **proposed notation:** $\mathrm{spot}(A,x)\in\mathcal H_a$
+
+- **object:** row erasure
+
+  **code name:** [`erases`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L149-L152), [`Winds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L141-L146)
+
+  **proposed notation:** erasure
+
+- **object:** compatibility of spin rows
+
+  **code name:** [`Bid.Hyper`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20)
+
+  **proposed notation:** compatible
+
+- **object:** perfect relations, Casimir projection
+
+  **code name:** [`Spin.rel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L35), [`wave`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L57), [`Works`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L68-L71), [`effect`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L21)
+
+  **proposed notation:** perfect relations, $z(\Omega(B,C))$, $\mathrm{ad}_{B,C}$
+
+- **object:** tilt, intertwiners
+
+  **code name:** [`Spin.Tilt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L116-L122), [`realH`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L50-L52), [`change`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L44)
+
+  **proposed notation:** $U_n$, $V_d$
+
+- **object:** port, transported action
+
+  **code name:** [`Spin.Port`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L13-L19), [`Spin.morph`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L22-L24), [`Org.mill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L17)
+
+  **proposed notation:** $R_d(k)=V_dR^{\rm free}_d(k)V_d^{-1}$
+
+- **object:** rotation laws, covariance
+
+  **code name:** [`Rotation.Laws`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L31-L42), [`Rotation.Oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L46-L48)
+
+  **proposed notation:** rotation laws; $S(R(k)v;kx)=S(v;x)$
+
+- **object:** conserved, tensorial; average
+
+  **code name:** [`Conserved`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L59-L62), [`Tensorial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L64-L66), [`averageStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L86)
+
+  **proposed notation:** $J'=\int k\cdot c^{-1}J\,d\mu$
+
+- **object:** Lorentz action on labels
+
+  **code name:** [`Spin.run`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L21-L22), [`wand`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L24-L25), [`Boundary.Spins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L22-L24), [`Descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L26-L35)
+
+  **proposed notation:** $B_d(\Lambda)$
+
+- **object:** record
+
+  **code name:** [`Org.Commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L29-L43), [`Org.Tab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24), [`Spec.Locals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43)
+
+  **proposed notation:** $(c,V,J')$; local laws
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Supporting analysis in the exterior flux estimate (probable).** The reductions to spectral integrals, the point and line estimates, the diagonal mass estimate and their combination in VI.1.e were checked against the cited proofs. The proofs of the remote-gap profiles, the odd temporal variant, the contact extension on product tests, and the finite-difference and interpolation estimates were not checked in full. These are the files `GapTest`, `Nodal`/`Mode`/`Odd`, `Collision`/`Fold`/`Journal`, `MomentFD` and `Nodes`. In particular, the construction and normalisation of the contact extension remain inputs to the mass-estimate sketch.
@@ -752,53 +884,126 @@ The remaining steps use compactly supported integration by parts, finite-dimensi
 4. **Normalisation and centring.** The Ward coefficient of $J'$ is exactly $1$. Centring is not part of the conclusion of VI.1.7; the centred trace is formed in VII.2. The stress replacement used before the weak comparison supplies $\kappa\ne0$ without the numerical identity $\kappa=-\tau$. Along the scaling systems used in VI.1.u, positivity of $\xi_k$ and $c/\xi_k\to\kappa\ne0$ imply that $c$ and $\kappa$ have the same sign. Neither sign is specified by this unit's hypotheses.
 5. **Scope.** The folder ownership and line counts in the header have not been independently recounted. The assignment of `Shift` and most of `Next/BOUNDARY` to V.2 is tentative. The statements above are source comparisons; Lean elaboration and the transitive axiom dependencies were not checked.
 
-**Builds on:** [I.1](I-1.md), [IV.1](IV-1.md), [III.16](III-16.md), [V.2](V-2.md), [V.1](V-1.md), [VIII.1](VIII-1.md), [III.10](III-10.md).
+## Code dependencies
 
-**Used by:** [VIII.1](VIII-1.md), [VII.2](VII-2.md), [VI.2](VI-2.md), [V.2](V-2.md), [V.3](V-3.md), [III.6](III-6.md), [III.10](III-10.md), [III.11](III-11.md), [VII.5](VII-5.md), [V.1](V-1.md), [VII.3](VII-3.md), [III.9](III-9.md), [VII.6](VII-6.md), [VII.1](VII-1.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [IV.1](IV-1.md), [III.16](III-16.md), [V.2](V-2.md), [V.1](V-1.md), [VIII.1](VIII-1.md), [III.10](III-10.md).
+
+**Referenced by:** [VIII.1](VIII-1.md), [VII.2](VII-2.md), [VI.2](VI-2.md), [V.2](V-2.md), [V.3](V-3.md), [III.6](III-6.md), [III.10](III-10.md), [III.11](III-11.md), [VII.5](VII-5.md), [V.1](V-1.md), [VII.3](VII-3.md), [III.9](III-9.md), [VII.6](VII-6.md), [VII.1](VII-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 7,704 attributed lines; 1,014 line-counted declarations; 1,306 assigned declaration names. Of the assigned names, 1,261 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (in part, 24%) | 11,420 |
-| work package [`YM/Ward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward) | 1,127 |
-| work package [`YM/Push/STRESS_FLUX/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX) | 1,063 |
-| work package [`YM/Spin/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin), with [`YM/Climb/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb) | 667 |
-| work package [`YM/Shift/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift) | 618 |
-| work package [`YM/Work/A01/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01) | 436 |
-| work package [`YM/Work/A05/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05) | 384 |
-| work package [`YM/Work/A15/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15) | 317 |
-| work package [`YM/Next/BOUNDARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY) | 272 |
-| work package [`YM/Axis/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Axis) | 93 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (in part, 24%) — 11,420 lines.
+- work package [`YM/Ward/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward) — 1,127 lines.
+- work package [`YM/Push/STRESS_FLUX/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX) — 1,063 lines.
+- work package [`YM/Spin/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin), with [`YM/Climb/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb) — 667 lines.
+- work package [`YM/Shift/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift) — 618 lines.
+- work package [`YM/Work/A01/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01) — 436 lines.
+- work package [`YM/Work/A05/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05) — 384 lines.
+- work package [`YM/Work/A15/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15) — 317 lines.
+- work package [`YM/Next/BOUNDARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY) — 272 lines.
+- work package [`YM/Axis/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Axis) — 93 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VI.1.1** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200) *(key result)* — The orthogonal group's action is generated algebraically by the relevant elementary motions, giving the actual orthogonal-group structure.
-- **VI.1.2** [`blossoms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L76-L96) *(key result)* — A smooth Hilbert-valued function whose inner-product kernel is a function of the difference with analytic Taylor series at 0 is real-analytic everywhere.
-- **VI.1.3** [`onto`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Close.lean#L42-L70) *(numbered result)* — An idempotent limit lying in a closed subring can be approximated by idempotents in the subring commuting with the given sequences and annihilated by them.
-- **VI.1.4** [`laws_of_oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L403-L415) *(numbered result)* — An oriented rotation satisfying the spin port compatibility obeys the rotation laws for the hierarchy.
-- **VI.1.5** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L272-L307) *(key result)* — The bid A02 holds: the center can be moved inside a fixed cutoff.
-- **VI.1.6** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L417-L420) *(key result)* — The rotation laws are derived from the configuration-space Ward identity.
-- **VI.1.7** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247) *(key result)* — Actual Lie brackets are recovered after Ward propagation.
-- **VI.1.8** [`rotate_flux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15/Transfer.lean#L124-L168) *(numbered result)* — Rotating a stress by an orthogonal element preserves the D and Lie flux laws.
-- **VI.1.9** [`fires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L72-L81) *(key result)* — If a two-point function's Taylor series at zero matches an analytic germ, the singleton-singleton row is real-analytic in the offset along a transverse direction.
-- **VI.1.10** [`pure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L179-L209) *(key result)* — Along transverse axes, the spot function of a point moved in direction b is real-analytic.
-- **VI.1.11** [`along`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L79-L84) *(key result)* — If the Ward value condition holds at the endpoint of a walk, it holds at the starting point.
-- **VI.1.12** [`global`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139) *(main result)* — Under the hierarchy, differential-plan, derivative, commutation and collinearity hypotheses, the full Ward values hold at every configuration of distinct points.
-- **VI.1.13** [`cutoff_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L154-L181) *(numbered result)* — For a conserved current and a Killing vector, integrating the current against the gradient of a compactly supported cutoff away from the word's points gives zero.
-- **VI.1.14** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L115-L117) *(key result)* — The compatibility properties of both raw shell maps hold.
-- **VI.1.15** [`stressLaws_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L156-L183) *(key result)* — Averaging a stress tensor over rotations preserves the flux laws.
-- **VI.1.16** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192) *(key result)* — The unnormalized stress can be averaged and renormalized to a conserved, tensorial stress satisfying the flux laws.
-- **VI.1.17** [`descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L90-L98) *(numbered result)* — Given weak comparator matrices satisfying the crystal condition, a descent consumer produces rotation-compatible data from the hypothesised tilt.
-- **VI.1.18** [`Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31) *(numbered result)* — A bundled data structure packaging scaling maps compatible with a table of data.
-- **VI.1.19** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A12.lean#L323-L336) *(key result)* — The A12 statement: existence of the limiting Casimir selection polynomial for the relevant family.
-- **VI.1.20** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A07.lean#L287-L289) *(key result)* — The bid A07 statement, obtained by applying the transfer lemma.
-- **VI.1.21** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A06.lean#L236-L256) *(key result)* — The finite collinear Ward test matrix transport statement (bid A06) holds.
-- **VI.1.22** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L197-L202) *(key result)* — All positional jets of transverse-component vector Ward tests are as required.
-- **VI.1.23** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A11.lean#L199-L206) *(key result)* — The reality and signed-subgroup properties of the wave polynomial (bid A11) hold.
+<a id="k-vi-1-1"></a>
+
+- **K-VI.1.1** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200) *(key result)* — The orthogonal group's action is generated algebraically by the relevant elementary motions, giving the actual orthogonal-group structure.
+
+<a id="k-vi-1-2"></a>
+
+- **K-VI.1.2** [`blossoms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L76-L96) *(key result)* — A smooth Hilbert-valued function whose inner-product kernel is a function of the difference with analytic Taylor series at 0 is real-analytic everywhere.
+
+<a id="k-vi-1-3"></a>
+
+- **K-VI.1.3** [`onto`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Close.lean#L42-L70) *(numbered result)* — An idempotent limit lying in a closed subring can be approximated by idempotents in the subring commuting with the given sequences and annihilated by them.
+
+<a id="k-vi-1-4"></a>
+
+- **K-VI.1.4** [`laws_of_oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L403-L415) *(numbered result)* — An oriented rotation satisfying the spin port compatibility obeys the rotation laws for the hierarchy.
+
+<a id="k-vi-1-5"></a>
+
+- **K-VI.1.5** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L272-L307) *(key result)* — The bid A02 holds: the center can be moved inside a fixed cutoff.
+
+<a id="k-vi-1-6"></a>
+
+- **K-VI.1.6** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L417-L420) *(key result)* — The rotation laws are derived from the configuration-space Ward identity.
+
+<a id="k-vi-1-7"></a>
+
+- **K-VI.1.7** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247) *(key result)* — Actual Lie brackets are recovered after Ward propagation.
+
+<a id="k-vi-1-8"></a>
+
+- **K-VI.1.8** [`rotate_flux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15/Transfer.lean#L124-L168) *(numbered result)* — Rotating a stress by an orthogonal element preserves the D and Lie flux laws.
+
+<a id="k-vi-1-9"></a>
+
+- **K-VI.1.9** [`fires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L72-L81) *(key result)* — If a two-point function's Taylor series at zero matches an analytic germ, the singleton-singleton row is real-analytic in the offset along a transverse direction.
+
+<a id="k-vi-1-10"></a>
+
+- **K-VI.1.10** [`pure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L179-L209) *(key result)* — Along transverse axes, the spot function of a point moved in direction b is real-analytic.
+
+<a id="k-vi-1-11"></a>
+
+- **K-VI.1.11** [`along`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L79-L84) *(key result)* — If the Ward value condition holds at the endpoint of a walk, it holds at the starting point.
+
+<a id="k-vi-1-12"></a>
+
+- **K-VI.1.12** [`global`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139) *(main result)* — Under the hierarchy, differential-plan, derivative, commutation and collinearity hypotheses, the full Ward values hold at every configuration of distinct points.
+
+<a id="k-vi-1-13"></a>
+
+- **K-VI.1.13** [`cutoff_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L154-L181) *(numbered result)* — For a conserved current and a Killing vector, integrating the current against the gradient of a compactly supported cutoff away from the word's points gives zero.
+
+<a id="k-vi-1-14"></a>
+
+- **K-VI.1.14** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L115-L117) *(key result)* — The compatibility properties of both raw shell maps hold.
+
+<a id="k-vi-1-15"></a>
+
+- **K-VI.1.15** [`stressLaws_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L156-L183) *(key result)* — Averaging a stress tensor over rotations preserves the flux laws.
+
+<a id="k-vi-1-16"></a>
+
+- **K-VI.1.16** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192) *(key result)* — The unnormalized stress can be averaged and renormalized to a conserved, tensorial stress satisfying the flux laws.
+
+<a id="k-vi-1-17"></a>
+
+- **K-VI.1.17** [`descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L90-L98) *(numbered result)* — Given weak comparator matrices satisfying the crystal condition, a descent consumer produces rotation-compatible data from the hypothesised tilt.
+
+<a id="k-vi-1-18"></a>
+
+- **K-VI.1.18** [`Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31) *(numbered result)* — A bundled data structure packaging scaling maps compatible with a table of data.
+
+<a id="k-vi-1-19"></a>
+
+- **K-VI.1.19** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A12.lean#L323-L336) *(key result)* — The A12 statement: existence of the limiting Casimir selection polynomial for the relevant family.
+
+<a id="k-vi-1-20"></a>
+
+- **K-VI.1.20** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A07.lean#L287-L289) *(key result)* — The bid A07 statement, obtained by applying the transfer lemma.
+
+<a id="k-vi-1-21"></a>
+
+- **K-VI.1.21** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A06.lean#L236-L256) *(key result)* — The finite collinear Ward test matrix transport statement (bid A06) holds.
+
+<a id="k-vi-1-22"></a>
+
+- **K-VI.1.22** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L197-L202) *(key result)* — All positional jets of transverse-component vector Ward tests are as required.
+
+<a id="k-vi-1-23"></a>
+
+- **K-VI.1.23** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A11.lean#L199-L206) *(key result)* — The reality and signed-subgroup properties of the wave polynomial (bid A11) hold.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

@@ -2,6 +2,8 @@
 
 > **Level 2 of the [five levels](README.md#the-proof-at-five-levels-of-detail): the proof in one reading.** Written by an AI model from the [unit outlines](outline/units.md), then checked against the outlines and the Lean and edited by a second model. It will be revised as the unit outlines are completed.
 
+This is a substantial overview, about 10,000 words. The contents links locate individual topics; the [exact statement](statement.md) fixes the scope of every claim.
+
 <!-- toc -->
 **Contents**
 
@@ -74,13 +76,13 @@ Moreover, $G_\Theta$ agrees on no interval $(0,\delta)$ with a finite Wick profi
 
 The lattice data are fixed before the volume sequence. The refinement and all continuum objects may depend on that sequence.
 
-**The stronger statement.** The theorem is a projection of a longer statement, `YangMills.constructed`. That statement holds for every value $b>0$ of the penalty parameter of the block-spin kernel; the public theorem takes $b=1$. It adds the following:
+**The stronger statement.** The theorem is a projection of a longer statement, `YangMills.constructed`. That statement holds for every value $b>0$ of the penalty parameter of the block-spin kernel; the public theorem takes $b=1$. The construction supplies the following facts; the slope value is established in the proof of regularity, rather than stated as a separate conjunct of `YangMills.constructed`:
 - The slope is $b_\ast=\kappa_G=11C_{\mathfrak g}/(24\pi^2)$.
 - A token is a pair $(d,c)$, with $c$ in the space $V_d$ of gauge-invariant polynomials of weight at most $d$ in the curvature and its covariant derivatives (curvature has weight 2, and each derivative adds 1).
 - The field spaces are $F_d=V_d/N_d$, where $N_d$ consists of the labels whose mixed correlations with all separated spectators vanish. The label space of the relativistic theory is the directed union of the $F_d$, so there is no finite field multiplet.
 - $\Theta$ is the centred trace of a constructed conserved stress tensor.
 - Every phase carries an irreducible Wightman theory, with low-energy bounds that are uniform in the phase.
-- The correlations extend, though not uniquely, to distributions across coincident points.
+- The correlations extend to distributions across coincident points; uniqueness is not asserted.
 - After finite-dimensional changes of frame, the rescaled correlations converge at short distance to those of $\dim\mathfrak g$ free Maxwell fields.
 - Nested and integrated forms of the OPE hold, as do further nonfreeness tests.
 
@@ -126,7 +128,7 @@ One block-spin step integrates the fine links against an exactly normalized, gau
 
 The same steps transport inserted observables. This second layer produces what later parts use:
 - chessboard bounds on renormalized insertions and on their difference quotients, uniform in the volume;
-- convergence at fixed volume, proved through analytic dependence on a tuning parameter.
+- convergence at fixed volume, obtained from fixed-level convergence and uniform observable tails. The construction also supplies analytic estimates in a tuning parameter.
 
 **Euclidean limit (Part IV).**
 - Chessboard bounds make the correlations locally bounded, uniformly in the volume.
@@ -146,7 +148,7 @@ The same steps transport inserted observables. This second layer produces what l
 
 **Identification (Part VII).**
 - Along sequences of scales tending to zero, the theory converges, after changes of frame, to free Maxwell theory.
-- The one-loop coefficient produces an inverse-logarithmic law for the trace of the stress tensor, and that law excludes finite Wick profiles.
+- The one-loop coefficient produces an inverse-logarithmic law for the centered stress-tensor trace two-point function, and that law excludes the specified finite Wick profiles.
 - The RG also yields the OPE.
 
 The logical order is not the order of the parts. Part VI uses the OS spaces of the mixed state from Part V and the free comparison from Part VII. Part V uses the $O(4)$ action from Part VI. Part VIII assembles everything for one family and one limit table.
@@ -242,7 +244,7 @@ $$
 Z_\beta^{-1}\exp\Big(-\beta\kappa\big(1-\tfrac1m\mathrm{Re}\,\mathrm{tr}\,V_bQ_b(U,t)^{-1}\big)\Big),
 $$
 
-where $\kappa>0$ is the penalty. The predictor $Q_b$ is built in two stages:
+where $\kappa>0$ is the penalty. The predictor $Q_b$ is built in two steps:
 1. On a patch of radius $(J+3)L$ around each coarse site, a gauge frame is chosen.
    - If all route holonomies on the patch are close to $1$, the frame is the unique minimizer of an averaged holonomy discrepancy.
    - Otherwise it is a uniformly drawn eligible axial gauge; such gauges exist for every configuration.
@@ -325,7 +327,7 @@ The decomposition into large-field sectors is exact: large-field sectors are int
 
 **One step.** The step takes inputs at level $m+1$: regular norms at most $\hat\beta^{-11/10}$, forced norms at most $e^{-P^{1/5}}$, and the coupling in the band $[\hat\beta/2,2\hat\beta]$. For $L$ large, and then $\hat\beta$ large, it produces:
 - site-summable budgets for the new regular activities;
-- the bound $\exp\big((C\,\mathrm{bill}^5-\beta\mu t^2)\sharp A\big)$ for each large-field packet, where $\mathrm{bill}=1+B+(\log\hat\beta)^2$;
+- the bound $\exp\big((C\,\mathrm{bill}^5-\beta\mu t^2)\sharp A\big)$ for each large-field sector, where $\mathrm{bill}=1+B+(\log\hat\beta)^2$;
 - bounds on the probabilities of the remaining catastrophic events.
 
 The marginal and vacuum terms are extracted, and the level-$m$ bounds restored, by the reset below.
@@ -356,7 +358,7 @@ The correction $\delta$ is the isotropic Hessian coefficient of the regular acti
 - By simplicity and hyperoctahedral symmetry, their quadratic part at a point is $\delta$ times the identity on plaquette orientations.
 - $|\delta|\le1$, and $\delta$ is fixed by a scalar equation with a unique root.
 
-Altogether, with $\omega_j$ a drift allowance attached to stage $j$,
+Altogether, with $\omega_j$ a drift allowance attached to regularity index $j$,
 
 $$
 \big|\beta_{N,p,m+1}-\beta_{N,p,m}-\kappa_G\log L_m\big|\le\omega_{J_{m+1}} .
@@ -376,17 +378,17 @@ At $m=N$ this is the slope law with $b_\ast=\kappa_G$. Since $\bar\beta$ is chos
 - $\omega_{J_{m+1}}\le J_{m+1}^{-2}\log L_m$, which forces $\log L_m\to\infty$;
 - $\log L_m/s_m\to0$, which keeps each step small compared with the total scale.
 
-The ratios are constant on stages, $L_m=\ell_{J_{m+1}}$. The stage index $J$ is nondecreasing, rises by at most one per level, tends to infinity toward the fine end, and stays constant on long windows of levels. One sequence $(L_m)$ serves every cutoff $N$.
+The ratios are constant while the regularity index is fixed, $L_m=\ell_{J_{m+1}}$. The regularity index $J$ is nondecreasing, rises by at most one per level, tends to infinity toward the fine end, and stays constant on long windows of levels. One sequence $(L_m)$ serves every cutoff $N$.
 
 **Order of choices.** The constants are chosen in a fixed order:
-1. the kernel with its penalty, and for every stage $j$ its regularity profile (derivative order, spatial power, support exponent, widths, path counts, drift allowance), together with the one-loop error constant $D$;
+1. the kernel with its penalty, and for every index $j$ its regularity profile (derivative order, spatial power, support exponent, widths, path counts, drift allowance), together with the one-loop error constant $D$;
 2. all block ratios $\ell_j$, so that the allowances and the logarithms of the combinatorial costs are at most $j^{-2}\log\ell_j$;
 3. the smallness exponents;
 4. the entry couplings and the volume conditions;
 5. $\bar\beta$;
-6. the assignment of stages to levels.
+6. the assignment of regularity profiles to levels.
 
-Each degree $d$ has a reference level $r(d)$ at stage at least $d+3$. Beyond $r(d)$ the derivative order exceeds $d$ and the spatial power is at least $d$. All choices precede any observable or extraction order, so every degree is served by the same family.
+Each degree $d$ has a reference level $r(d)$ with regularity index at least $d+3$. Beyond $r(d)$ the derivative order exceeds $d$ and the spatial power is at least $d$. All choices precede any observable or extraction order, so every degree is served by the same family.
 
 ### Renormalized observables, uniformly in the volume
 
@@ -424,7 +426,7 @@ These bounds are propagated through the RG; they do not come from differentiatin
 
 **A rank-free trace bound.** Let $X\ge0$ be a matrix and let the insertions $b_a$ be separated by gaps of more than $2r$ factors of $X$. Moving $m\le r$ factors from one gap to another changes $\mathrm{tr}\prod_ab_aX^{Y_a}$ by at most $(\mathrm{cost}/r)\,m$. The cost is a product of trace norms with no dimension factor. The proof is a Hölder inequality for complex exponents, obtained from Hadamard's three-lines theorem, followed by a Cauchy estimate. By quadrature it extends to continuous positive kernels. Part IV uses it for equicontinuity.
 
-**Bookkeeping.** The numerical conditions of all steps can be met in one fixed order: constants before $L$, then $L$, then the later constants, then $\beta$ large. This holds uniformly across stages.
+**Bookkeeping.** The numerical conditions of all steps can be met in one fixed order: constants before $L$, then $L$, then the later constants, then $\beta$ large. This holds uniformly across regularity profiles.
 
 ### Convergence at fixed volume and the construction run
 
@@ -432,26 +434,21 @@ These bounds are propagated through the RG; they do not come from differentiatin
 
 **The obstacle.** At fixed volume, two cutoffs $N$ and $N'$ have different bare couplings, each fixed by the condition $\beta_{N,p,0}=\bar\beta$. Continuity in a fixed bare coupling therefore compares nothing.
 
-**The fan.** The proof embeds the family in a one-parameter family:
+**Fixed-level convergence and tails.** The construction has a one-parameter family of trajectories:
 - The level-$0$ coupling is $\bar\beta+ws$, with a real tuning parameter $s\in[-1,1]$. For each $s$ the bare coupling is unique within the recursion.
-- The bare coupling and the effective data at each fixed level extend holomorphically to the complex unit disc in $s$, with bounds uniform in $N$ and $p$.
-- As $N\to\infty$, the data at a fixed level $j$ converge uniformly on compact subsets of the disc. Observables read at level $j$ are therefore Cauchy in $N$.
-- The part of an observable not captured at level $j$ is bounded by a quantity that tends to zero as $j\to\infty$, because $\hat\beta_j\to\infty$.
-- A triangle inequality then gives the Cauchy property of the lattice correlations, at the lattice points nearest to a configuration whose points are distinct modulo the period.
+- The bare coupling and effective data have analytic dependence on the tuning parameter. The estimates on that dependence are separate from the Cauchy argument below.
+- For fixed $j$, convergence of the trajectory and stability of the observable transfers give convergence of the effective insertions and their polymer parts. Uniform convergence passes through the Haar integrals, and a positive lower bound on the normalized partition function gives convergent correlation approximations.
+- The omitted part is bounded, uniformly in the cutoff, by $2F_0e^{-B_j/64}$, where $B_j=\lceil(\log\hat\beta_j)^2\rceil\to\infty$.
+- Choose $j$ to make this tail small, then take the cutoffs large enough that their level-$j$ approximations are close. This proves the Cauchy property first at lattice-fitted configurations; equicontinuity extends it to all configurations distinct modulo the period. See [III.12, §§4.5–4.6](outline/units/III-12.md#45-convergence-in-the-mesh).
 
 Combined with the difference bounds, this gives at each fixed volume:
 - limit kernels smooth away from periodic coincidences;
 - convergence of difference quotients to derivatives;
 - convergence of smeared moments along the whole sequence of spacings.
 
-**One family (III.13).** Given only that $\mathfrak g$ is simple and $b>0$, III.13 produces:
-- the coupling trajectory;
-- the volume-uniform root bounds for every degree;
-- the analytic fan;
-- the Maxwell rank comparison;
-- the hypotheses of the infinite-volume and reconstruction arguments, for every extraction order.
+**The family used by the public theorem.** [VIII.1](outline/units/VIII-1.md) assembles the construction for one family, using the bounds and convergence results described in III.9–III.12. [III.13](outline/units/III-13.md) describes an alternative coordinated family with root bounds, an analytic shooting family and Maxwell rank comparisons. Its existence statements do not identify that family with the one used by `YangMills.constructed`; properties from the two constructions should not be combined without such an identification.
 
-**The construction run (III.14).** III.14 packages the construction run. It also proves quantitative convergence of the order-zero quadratic part of the effective action (its position-space Hessian kernel) at each fixed stage $i$, at rate $(a_N/a_i)^c$.
+**The construction run (III.14).** III.14 packages the construction run. It also proves quantitative convergence of the order-zero quadratic part of the effective action (its position-space Hessian kernel) at each fixed level $i$, at rate $(a_N/a_i)^c$.
 - The difference between two cutoffs is written in curvature variables as $d^{\mathsf T}Ad$, with $A$ defined modulo kernels annihilated by this map.
 - So the curvature precision, which has zero modes, is never inverted.
 - This rate concerns the quadratic germ only, not the full effective action or the final limits.
@@ -557,7 +554,7 @@ The constant $M_A$ is independent of $\xi$, by compactness of $X$.
 
 Vacuum uniqueness then extends from almost every phase to every phase:
 - The function $\xi\mapsto\langle A\Omega_\xi,e^{-sH_\xi}A\Omega_\xi\rangle-|\langle\Omega_\xi,A\Omega_\xi\rangle|^2$ is continuous.
-- It lies in $[0,M_As^{-2}]$ on the full-measure set where the vacuum is unique. That set is closed, and $\nu$ has full support, so it is all of $X$.
+- For fixed $A$ and $s$, the set of phases where this function lies in $[0,M_As^{-2}]$ is closed by continuity. It contains the full-measure set of phases with unique vacuum; full support of $\nu$ makes this closed set all of $X$.
 - Letting $s\to\infty$ gives a unique vacuum in every phase.
 
 The comparison map from the Wightman space to the OS space is surjective, proved independently by pushing time-ordered vectors apart. This transfers vacuum uniqueness to the OS space. Each phase theory is irreducible. Its Wightman distributions are continuous in $\xi$, and their $\nu$-average is the boundary value of the continuation of $S^{\mathrm{mix}}$. The bounds allow spectrum down to zero and give only polynomial decay $s^{-2}$ in Euclidean time, not exponential clustering.
@@ -613,7 +610,7 @@ in the mixed state. By the operator identities of Part V, it holds in every phas
 
 ### Free Maxwell fields at short distance
 
-*Units: [VII.1 — Short distances: convergence to free Maxwell fields](outline/units/VII-1.md); [VII.6 — Scaling variants and fixed-field estimates](outline/units/VII-6.md).*
+*Units: [VII.1 — Free Maxwell comparison theory](outline/units/VII-1.md); [VI.2 — Interacting stress comparison](outline/units/VI-2.md); [VII.6 — Scaling variants and fixed-field estimates](outline/units/VII-6.md). The comparison is assembled in [VIII.1](outline/units/VIII-1.md).*
 
 **The reference theory.** It consists of $\dim\mathfrak g$ free Maxwell fields built from $\Gamma(x)=1/(4\pi^2|x|^2)$.
 - On the lattice, corrected covariances of finite-difference jets converge to $\partial_a\partial_b\Gamma$ away from coincidences.
@@ -726,7 +723,7 @@ To these it adds the reconstructions of all phases, the OPE prescription, the ne
 
 The public theorem is the case $b=1$, with the full spacing sequence and the given volume sequence; its $q$ is the volume part of the refinement.
 
-No new estimate enters, but identifying all objects with one table is a real constraint. Separate existence results for a lattice limit, a Wightman theory, an OPE and a trace law would not show that they concern the same correlation functions. The hypothesis bundles under which the limit theory is first proved are all discharged within the proof of the main theorem.
+No new estimate enters, but identifying all objects with one table is a real constraint. Separate existence results for a lattice limit, a Wightman theory, an OPE and a trace law would not show that they concern the same correlation functions. The formal construction supplies the hypotheses under which the limit theory is first proved. The outlines have not explained every supplier in full; the [assembly unit](outline/units/VIII-1.md#7-what-remains-unexplained) records the limits of its source reading.
 
 ## Relation to earlier work, and where the difficulty lies
 
@@ -742,7 +739,7 @@ No new estimate enters, but identifying all objects with one table is a real con
 - Integration uses a spanning-forest gauge.
 - The block ratios grow along the levels.
 - The threshold carries the factor $e^{(\log\log\hat\beta)^2}$.
-- The analytic fan in the tuning parameter, used for convergence at fixed volume, has no counterpart in Balaban's papers as far as the unit outlines determine.
+- The construction includes an analytic family in a tuning parameter. The unit outlines do not establish a comprehensive comparison with Balaban's papers.
 
 **Beyond the ultraviolet analysis**, the proof does the following:
 - One schedule and one family serve composite fields of every degree. Each field has a fixed normalization, root bounds uniform in the volume, and derivatives controlled by rank detection, with no coupling-dependent loss per site.
@@ -760,19 +757,19 @@ No new estimate enters, but identifying all objects with one table is a real con
 2. **Effective-action estimates must become estimates for observables**: for every composite field, its derivatives and its fixed-volume limit, inside one family.
 3. **The passage from a lattice mixture to relativistic phases** has no continuous symmetry and no clustering to start from. It is handled by Ward identities with free comparison, the commutative zero-energy algebra, and spectral bounds based on locality.
 
-Much of the length of the formal proof is bookkeeping (the order of choice of constants and the transport of estimates through the run) rather than new analysis.
+The order of choice of constants and the transport of estimates through the construction account for a substantial part of the formal development. Its length alone does not measure mathematical novelty.
 
 ## Steps whose informal account is incomplete
 
 The theorem is proved in Lean, and the conditional statements of the limit theory are discharged within its proof. The unit outlines, however, describe the following steps only at the level of statements, or with readings marked tentative. A written proof will have to supply them.
 
-- **One-loop identification (III.7, VII.2).** The slope bound is first proved for an auxiliary functional and then transferred to the completed Hessian of the actual step. Whether this identification with the gauge-fixed determinant is derived, or built into the definitions, is not settled. The trace amplitude does not test this value.
+- **One-loop identification (III.7, VII.2).** The slope bound is first proved for an auxiliary functional and then transferred to the completed Hessian of the actual step. The revised [III.7](outline/units/III-7.md#7-what-remains-unexplained) explains the determinant factorization and the transfer of the coefficient; several subsidiary real-quotient, complex-strip, tadpole, bubble and alias estimates remain inputs at statement level. The trace amplitude does not test this value.
 - **Covariance and Hessian (III.4).** The Gaussian covariance is the inverse of the gauge-fixed Gram form on the active links. Whether it equals the inverse Hessian of the effective action at the background is left open.
 - **Nonlinear step.**
   - The correspondence between the outputs of the one-step bounds (III.10) and the norms restored by the reset (III.9) is not written out.
   - Several hypotheses of the step were read only as statements.
   - The cluster expansion is proved for real weights (III.5), while the fixed-volume argument uses complex tuning.
-- **Fixed-volume convergence (III.12, III.13).** Two points are not fully traced: whether holomorphy in the tuning parameter is used beyond uniform bounds and continuity, and the step from subsequential to full-mesh convergence.
+- **Fixed-volume convergence (III.12, IV.1).** [III.12](outline/units/III-12.md#7-what-remains-unexplained) now explains fixed-level convergence, the uniform tail bound and the Cauchy argument; the underlying trajectory-convergence and multiscale estimates remain imported inputs. [IV.1](outline/units/IV-1.md) locates the upgrade to the full spacing sequence, while leaving the upstream construction of its fixed-volume kernels outside that unit's review.
 - **Shell identities and the flux at infinity (VI.1, VI.2).** The lattice derivation of the shell identities is given only at statement level. The exterior-flux estimate was not read. The descent of the rotation action to exact intertwiners is marked tentative.
 - **Reconstruction (V.2).** The boundary values, the spectrum condition and the locality argument are described from statements; their mechanisms were confirmed in the Lean but not written out in the unit outlines.
 - **Contact extensions and nested OPE (VII.4).** The shell estimates and the nested rates are described from docstrings.
@@ -787,7 +784,7 @@ The [exact statement](statement.md) separates the public theorem from the strong
 | What are the fields, and how are their normalizations fixed? | [II.1](outline/units/II-1.md), [III.12](outline/units/III-12.md), [IV.1](outline/units/IV-1.md), [VII.1](outline/units/VII-1.md) |
 | How does the ultraviolet analysis relate to Balaban's? | [III.1](outline/units/III-1.md), [III.3](outline/units/III-3.md), [III.4](outline/units/III-4.md), [III.6](outline/units/III-6.md), [III.5](outline/units/III-5.md), [III.10](outline/units/III-10.md) |
 | Where does the one-loop coefficient enter? | [III.7](outline/units/III-7.md), [III.9](outline/units/III-9.md), [VII.5](outline/units/VII-5.md), [VII.2](outline/units/VII-2.md) |
-| Why does one family serve every observable and every limit? | [III.2](outline/units/III-2.md), [III.13](outline/units/III-13.md), [III.14](outline/units/III-14.md), [VIII.1](outline/units/VIII-1.md) |
+| Why does one family serve every observable and every limit? | [III.2](outline/units/III-2.md), [II.1](outline/units/II-1.md), [III.12](outline/units/III-12.md), [VIII.1](outline/units/VIII-1.md); [III.13](outline/units/III-13.md) treats an alternative family |
 | How are bounds made uniform in the volume? | [III.11](outline/units/III-11.md), [III.12](outline/units/III-12.md), [III.16](outline/units/III-16.md) |
 | How is infinite volume reached without an infrared RG? | [III.16](outline/units/III-16.md), [IV.1](outline/units/IV-1.md) |
 | Why are there phases, and why does every phase reconstruct? | [V.1](outline/units/V-1.md), [V.2](outline/units/V-2.md), [V.3](outline/units/V-3.md); [VII.4](outline/units/VII-4.md) for the train bounds |

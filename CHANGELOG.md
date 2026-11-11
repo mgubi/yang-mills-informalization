@@ -1,0 +1,17 @@
+# Changes
+
+These notes record publications and corrections that affect readers' understanding of the result. The [unit index](outline/units.md) records current outline statuses. All Lean references concern source commit [`3456e5e75cf8d4cd558955a5c7638fba2d68f464`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464).
+
+## 2026-11-11
+
+- **Where the ideas come from.** A [provenance analysis](provenance.md): which parts of the proof follow Balaban's programme, which follow OpenAI's 2026 papers on two-dimensional sigma models, which are standard, and which appear new.
+- **Reading aids.** A [FAQ](faq.md); a guide in the [statement](statement.md) from each clause of the theorem to the units that explain it; [notes on the data tables](data/README.md); a short entrance and navigation on every unit page, with code dependencies labelled as such.
+- **Statement published.** The [statement page](statement.md) gives the formal public theorem, its mathematical transcription, additional conclusions of the construction and explicit nonclaims. It distinguishes the assessment document's date, 10 November, from publication with the source on 11 November.
+- **Summary published and corrected.** The [overview](summary.md) explains the whole argument. The selected phase is chosen only for a one-dimensional ground-state space; no additional trace condition is used in that choice. No mass gap is proved, and no gaplessness result is asserted.
+- **Unit outlines published.** All thirty-two [unit pages](outline/units.md) are available. Their review has three rounds: draft, comparison and rewriting against the Lean, then further mathematical checking and editing. The index shows the round reached by each unit; the local limitations remain part of the account.
+- **Dependency graph rebuilt from compiled Lean.** The graph now includes references in elaborated types and proofs, including implicit references missed by the earlier source-text graph. [Method and comparison scope](method.md#1-the-dependency-graph) distinguish the seventeen verification roots, unit allocation and mathematical prerequisites.
+- **Compiled build released.** The [compiled Lean release](https://github.com/scottnarmstrong/yang-mills-informalization/releases/tag/lean-build-3456e5e) provides project files for exploring the fixed source. [Build guidance](method.md#source-compilation-and-kernel-checking) separates loading these files from rebuilding and replaying the formal proof.
+- **Manuscript started in public.** A complete account is being written at [yang-mills-manuscript](https://github.com/scottnarmstrong/yang-mills-manuscript). It is under construction.
+- **Reader-review corrections.** Added a [clause-to-explanation guide](statement.md#clause-to-explanation-guide), an [FAQ and evidence guide](faq.md), and [citation guidance](README.md#how-to-cite). Clarified that the trace asymptotic concerns a selected-phase two-point function on the time axis, and preserved the unique vacuum of the selected relativistic theory. Distinguished the main Wilson family from the alternative construction in III.13, updated the fixed-volume convergence explanation, and corrected the reference-coupling formula in the [glossary](glossary.md#ym-rg-calendar-hatbeta).
+
+[Repository](README.md) · [Citation metadata](CITATION.cff) · [Report a correction](https://github.com/scottnarmstrong/yang-mills-informalization/issues)

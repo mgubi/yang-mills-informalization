@@ -1,11 +1,23 @@
 # VI.2. The free Maxwell stress tensor and the local Ward charge
 
-*Part VI — Symmetry: stress tensor and Ward identities.* 14,179 lines of Lean in 1,690 declarations used by the main theorem.
+*Part VI — Symmetry: stress tensor and Ward identities.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Builds the free Maxwell stress tensor and uses comparison data to normalize the interacting Ward identities.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** VI, symmetry: stress tensor and Ward identities. **Lean:** [`YM/Next/MAXWELL`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL), [`YM/UVNext/FREE_STRESS_CERTIFICATE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE), [`YM/Next/UV_STRESS`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS), [`YM/Pert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert). **Size:** 14,179 lines used by the main theorem (Maxwell 8.2k, free-stress classification 3.1k, UV stress 2.6k, Pert 0.2k).
+[Overview](../README.md) · [All units](../units.md) · [← Previous: VI.1](VI-1.md) · [Next: VII.1 →](VII-1.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** VI, symmetry: stress tensor and Ward identities. **Lean:** [`YM/Next/MAXWELL`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL), [`YM/UVNext/FREE_STRESS_CERTIFICATE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE), [`YM/Next/UV_STRESS`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS), [`YM/Pert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert). **Size:** 14,179 lines in the source allocation (Maxwell 8.2k, free-stress classification 3.1k, UV stress 2.6k, Pert 0.2k).
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -170,6 +182,8 @@ Let $J\in(\mathcal F^S_4)^{4\times4}$ be symmetric, real, conserved and covarian
 *Status:* theorem. VI.1 supplies a stress $J$ satisfying these Ward laws. The mixed-correlation conclusion follows from (a) and VI.2.u; the linked mixed-correlation theorem states its specialization to that stress.
 *Lean:* [`Pert.meter_physical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L118-L144), [`Pert.mixed_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lifted.lean#L85-L124), [`kappa_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lifted.lean#L65-L74), [`common_stress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lifted.lean#L38-L49), [`Pert.Supplier`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L22-L32), [`Org.Tab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **From other units.**
@@ -187,6 +201,8 @@ Let $J\in(\mathcal F^S_4)^{4\times4}$ be symmetric, real, conserved and covarian
 
 **Imported constants and assumptions.** Simplicity of $G$ enters the stress classification and the rigidity arguments for the Maxwell data. It is essential for the one-dimensional stress line: for $\mathfrak g=\mathfrak g_1\oplus\mathfrak g_2$, the two factors have separately invariant conserved Maxwell stresses. The propagator normalization is $c_0=(4\pi^2)^{-1}$. The explicit correlation tests give the integers $-256,-512,128,-128$ in VI.2.l and the factor $256\dim\mathfrak g\,c_0^2$ in VI.2.n. The station estimates and dimension bound enter as hypotheses of the transfer argument, with their discharge stated in VI.2.7–8.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 The free table is realized by invariant polynomials in on-shell curvature coefficients with Wick correlations. Translation and rotation covariance, analyticity and polynomial bounds follow from the propagator. Reflection positivity uses a Fock-space factorization. For two polynomials at mirror points, the reflected Gram matrix of their finitely many coordinate probes is positive definite. Factoring it as $L^*L$ identifies their correlation with a Fock inner product after an invertible linear substitution. Strict positivity eliminates further null fields and identifies the free quotient with $\mathcal P_d$.
@@ -200,6 +216,8 @@ Stations give comparison maps at scales tending to zero. Correct them recursivel
 Transport the interacting divergence to the free spaces, recentering tensors after transport. It converges to free divergence, so surjectivity and rank–nullity transfer the one-dimensional kernel to $S$. Normalize a nonzero vector in this kernel to a sphere in the free stress space and pass to a subsequence. Its limit is a nonzero centred conserved free tensor, hence a multiple of $T^{\rm free}$; a single sign choice fixes the limit on the entire comparison sequence.
 
 Finally, a Ward-normalized stress $J$ on $S$ has centred part proportional to the constructed stress: $c(J-\langle J\rangle\mathbf1)=J_0$. Comparing the derivative and stress Ward identities along tracks gives $c/\xi_k\to\kappa$. Thus $U_k^{-1}(r_k^4J)\to\kappa^{-1}T_0=-T^{\rm free}$ in the canonical normalization. This obtains the interacting stress from the finite-dimensional conservation law, then fixes its scale by the Ward identity.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -381,6 +399,8 @@ $$U_{k,4}^{-1}(r_k^4J_c)=\frac{\xi_k}{c}\bigl[\xi_k^{-1}U_{k,4}^{-1}(r_k^4J_0)\b
 The unit part tends to zero because $r_k^4\to0$ and the maps eventually preserve the unit. VI.2.u applies to these convergent preimages in every combination of slots, giving the mixed-correlation limit. VI.2.n and the equality of the two displayed free-stress constructions give the canonical limit $-T^{\rm free}$.
 *Lean:* [`centered_line`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L82-L116), [`ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L62-L66), [`meter_physical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L118-L144), [`mixed_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lifted.lean#L85-L124), [`tracks_ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L43-L54).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The transfer to $S$ depends on exact field-space isomorphisms, not merely comparison maps. Finite separating tests and the upper dimension bound provide them. The derivative law then turns the uniform test estimates into convergence of transported derivatives and smooth correlations. Recentring is necessary before transferring divergence: a field-space isomorphism need not preserve the expectation functional.
@@ -389,27 +409,114 @@ The normalization is a separate assertion. Conservation determines a line, while
 
 Two algebraic rigidity results support VI.1: detection of arbitrary-weight fields by bounded-degree spectators, and vanishing of alternating internal Ward rows. They require more than reflection positivity alone. The three-dimensional tensor space also reflects the chosen symmetry group: signed coordinate permutations permit three coefficients, and conservation reduces them to one. The local current calculation admits conformal Killing fields, although the polynomial Ward argument uses only translations, rotations and dilation.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | proposed notation |
-|---|---|---|
-| free Maxwell table | [`Maxwell.freeTable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L23-L24), [`Climb.Bel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L20), `Maxwell.Free.Model` | $\mathcal M$, fields $\mathcal F^{\rm free}_d$ |
-| homogeneous on-shell Taylor coefficients, polynomial algebra | [`Shell`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L44), [`WickPol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L24) | $\mathrm{Sh}_j$, $\mathcal W$ |
-| shell sector | [`shellSector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L64) | $\mathcal P_d$ |
-| field ↔ polynomial | [`fields`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L33-L35), [`address`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L39) | $\iota_d$ |
-| Wick moment | [`Wick.moment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127) | $\langle p_1(x_1)\cdots p_n(x_n)\rangle_0$ |
-| probe evaluation, generated field, leg kernel | [`sample`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Kernel.lean#L22-L23), [`pulse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Kernel.lean#L101-L102), [`K`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Kernel.lean#L123) | $p(f)(x)$, $f^{p,x}$, $\langle p(x)q(y)\rangle_0$ |
-| derivative plan, rotations | [`scheme`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L80-L83), [`gear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L153-L170), [`rewired`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Derives.lean#L27-L28) (`glide`, `wheel`, `metric`) | $\partial^{\rm free}_a$; $R_g$, $\rho(\omega)$; $\varepsilon$ |
-| free Maxwell stress | [`polStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Stress.lean#L24-L25), [`original`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L172), [`canonicalStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Certificate.lean#L82), [`torch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Certificate.lean#L111) | $T^{\rm free}$, $\tau T^{\rm free}$ |
-| polarized stress, current, flux | [`cross`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L31-L33), [`current`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L145), [`exportFlux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L184-L185) | $\Theta_{ab}$, $j^v$, $\Phi_\chi$ |
-| conformal Killing field, Lie derivative | [`Killing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L140-L143), [`variation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Regulator.lean#L49) | $v$, $\mathcal L_vf=d\iota_vf$ |
-| centred stresses, vectors, divergence | [`KernelSpace`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Tensor.lean#L75-L80), [`Vectors`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Tensor.lean#L87-L97), [`currentDiv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Tensor.lean#L117-L119) | $\mathcal Z$, $\mathcal V$, $\mathrm{div}$ |
-| free divergence property | [`FreeDiv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Dimension.lean#L153-L158) | (FD) |
-| lighthouse, Maxwell data | [`Climb.Lighthouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29), [`herald`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L29-L34), [`Org.MaxwellData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170) | $\mathcal T=(\partial^0,R^0,T_0,\kappa)$, $M$ |
-| null-test space, Ward vanishing | [`ghost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Statistic.lean#L65-L76), [`silence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Statistic.lean#L40-L42) | $\mathcal N_d$; $\sum_i\langle\cdots T p_i\cdots\rangle=0$ |
-| station, admissibility, estimates | [`Station`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L68-L71), [`Stations`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L112-L114), [`Granular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Granular.lean#L30-L34), [`Balances`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Glide.lean#L24-L31) | $(r,A_{N,p})$ |
-| panel, scaling, rescaled derivative | [`Panel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L118), [`Climb.Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31), [`tiltScale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Focus.lean#L19-L20) | $U$; $(r_k,\xi_k,U_k)$; $\mathrm{tilt}_k$ |
-| uniform test convergence, stability, stress limit | [`Approaches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Rates.lean#L52-L53), [`Fades`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Weak.lean#L24-L27), [`Stable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L121-L125), [`Scaling.meter`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L54-L55) | — |
+- **object:** free Maxwell table
+
+  **code name:** [`Maxwell.freeTable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L23-L24), [`Climb.Bel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L20), `Maxwell.Free.Model`
+
+  **proposed notation:** $\mathcal M$, fields $\mathcal F^{\rm free}_d$
+
+- **object:** homogeneous on-shell Taylor coefficients, polynomial algebra
+
+  **code name:** [`Shell`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L44), [`WickPol`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L24)
+
+  **proposed notation:** $\mathrm{Sh}_j$, $\mathcal W$
+
+- **object:** shell sector
+
+  **code name:** [`shellSector`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L64)
+
+  **proposed notation:** $\mathcal P_d$
+
+- **object:** field ↔ polynomial
+
+  **code name:** [`fields`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L33-L35), [`address`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L39)
+
+  **proposed notation:** $\iota_d$
+
+- **object:** Wick moment
+
+  **code name:** [`Wick.moment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127)
+
+  **proposed notation:** $\langle p_1(x_1)\cdots p_n(x_n)\rangle_0$
+
+- **object:** probe evaluation, generated field, leg kernel
+
+  **code name:** [`sample`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Kernel.lean#L22-L23), [`pulse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Kernel.lean#L101-L102), [`K`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Kernel.lean#L123)
+
+  **proposed notation:** $p(f)(x)$, $f^{p,x}$, $\langle p(x)q(y)\rangle_0$
+
+- **object:** derivative plan, rotations
+
+  **code name:** [`scheme`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L80-L83), [`gear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L153-L170), [`rewired`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Derives.lean#L27-L28) (`glide`, `wheel`, `metric`)
+
+  **proposed notation:** $\partial^{\rm free}_a$; $R_g$, $\rho(\omega)$; $\varepsilon$
+
+- **object:** free Maxwell stress
+
+  **code name:** [`polStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Stress.lean#L24-L25), [`original`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L172), [`canonicalStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Certificate.lean#L82), [`torch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Certificate.lean#L111)
+
+  **proposed notation:** $T^{\rm free}$, $\tau T^{\rm free}$
+
+- **object:** polarized stress, current, flux
+
+  **code name:** [`cross`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L31-L33), [`current`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L145), [`exportFlux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L184-L185)
+
+  **proposed notation:** $\Theta_{ab}$, $j^v$, $\Phi_\chi$
+
+- **object:** conformal Killing field, Lie derivative
+
+  **code name:** [`Killing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Current.lean#L140-L143), [`variation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Regulator.lean#L49)
+
+  **proposed notation:** $v$, $\mathcal L_vf=d\iota_vf$
+
+- **object:** centred stresses, vectors, divergence
+
+  **code name:** [`KernelSpace`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Tensor.lean#L75-L80), [`Vectors`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Tensor.lean#L87-L97), [`currentDiv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Tensor.lean#L117-L119)
+
+  **proposed notation:** $\mathcal Z$, $\mathcal V$, $\mathrm{div}$
+
+- **object:** free divergence property
+
+  **code name:** [`FreeDiv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Dimension.lean#L153-L158)
+
+  **proposed notation:** (FD)
+
+- **object:** lighthouse, Maxwell data
+
+  **code name:** [`Climb.Lighthouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29), [`herald`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L29-L34), [`Org.MaxwellData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170)
+
+  **proposed notation:** $\mathcal T=(\partial^0,R^0,T_0,\kappa)$, $M$
+
+- **object:** null-test space, Ward vanishing
+
+  **code name:** [`ghost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Statistic.lean#L65-L76), [`silence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Statistic.lean#L40-L42)
+
+  **proposed notation:** $\mathcal N_d$; $\sum_i\langle\cdots T p_i\cdots\rangle=0$
+
+- **object:** station, admissibility, estimates
+
+  **code name:** [`Station`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L68-L71), [`Stations`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L112-L114), [`Granular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Granular.lean#L30-L34), [`Balances`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Glide.lean#L24-L31)
+
+  **proposed notation:** $(r,A_{N,p})$
+
+- **object:** panel, scaling, rescaled derivative
+
+  **code name:** [`Panel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L118), [`Climb.Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31), [`tiltScale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Focus.lean#L19-L20)
+
+  **proposed notation:** $U$; $(r_k,\xi_k,U_k)$; $\mathrm{tilt}_k$
+
+- **object:** uniform test convergence, stability, stress limit
+
+  **code name:** [`Approaches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Rates.lean#L52-L53), [`Fades`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Weak.lean#L24-L27), [`Stable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L121-L125), [`Scaling.meter`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L54-L55)
+
+  **proposed notation:** —
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Inputs not checked through all subsidiary proofs.** The reflected Gram positivity and Fock pairing factorization in VI.2.b were checked at statement level. The Haar-averaging and Ward-implied conservation and symmetry results used in VI.2.m were also checked at statement level. The invariant spanning results behind VI.2.k, the differentiated propagator table behind VI.2.l, and the low-degree vector-map classification and bounded-order detection behind VI.2.o remain inputs to the sketches. Their direct applications and hypotheses were checked, but their full derivations were not independently reconstructed.
@@ -417,62 +524,180 @@ Two algebraic rigidity results support VI.1: detection of arbitrary-weight field
 3. **Renormalization-group estimates.** The conversion of balanced grid, bulk and finite-difference estimates into stations was checked here. Their production in III.11, including all parameter choices in the complete weak-comparison result and the shell estimates needed for the interacting Ward rows, remains to be verified in that unit. The excluded region here is precisely a band around coordinate-projection ties; it is not a neighbourhood of the full collision diagonal.
 4. **Short-distance normalization.** The comparison of derivative and stress rows uses the track estimates of VI.1. The scalar-ratio argument and its application here were checked; the underlying track Ward estimates A04–A05 remain inputs. The mixed-correlation theorem is stated in Lean for the stress assembled in VI.1; VI.2.9(b) gives the general consequence of the same convergent-preimage argument.
 
-**Builds on:** [I.1](I-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.1](VI-1.md), [II.1](II-1.md), [VIII.1](VIII-1.md).
+## Code dependencies
 
-**Used by:** [VIII.1](VIII-1.md), [VII.2](VII-2.md), [III.11](III-11.md), [VII.3](VII-3.md), [VII.6](VII-6.md), [VII.1](VII-1.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.16](III-16.md), [IV.1](IV-1.md), [VI.1](VI-1.md), [II.1](II-1.md), [VIII.1](VIII-1.md).
+
+**Referenced by:** [VIII.1](VIII-1.md), [VII.2](VII-2.md), [III.11](III-11.md), [VII.3](VII-3.md), [VII.6](VII-6.md), [VII.1](VII-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 14,179 attributed lines; 1,690 line-counted declarations; 1,944 assigned declaration names. Of the assigned names, 1,922 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/Next/MAXWELL/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL) | 8,208 |
-| work package [`YM/UVNext/FREE_STRESS_CERTIFICATE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE) | 3,148 |
-| work package [`YM/Next/UV_STRESS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS) | 2,602 |
-| work package [`YM/Pert/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert) | 221 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/Next/MAXWELL/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL) — 8,208 lines.
+- work package [`YM/UVNext/FREE_STRESS_CERTIFICATE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE) — 3,148 lines.
+- work package [`YM/Next/UV_STRESS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS) — 2,602 lines.
+- work package [`YM/Pert/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert) — 221 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VI.2.1** [`variation_center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Affine.lean#L180-L218) *(numbered result)* — Centered field weights for a Killing generator pick out a single jet order and act by the transformation on the homogeneous solution.
-- **VI.2.2** [`kernel_pole`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Pole.lean#L238-L260) *(key result)* — The leg kernel between two jet probes is a harmonic multipole of order 4+j+l.
-- **VI.2.3** [`two_flux_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Repeat.lean#L63-L128) *(key result)* — For a Killing drive with homogeneity at most one and a cutoff equal to one near x, the double flux of two pulses at x vanishes.
-- **VI.2.4** [`halves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Fock.lean#L188-L206) *(numbered result)* — A pairing cost over a concatenated reflected and original list factors as a bilinear form between two packets under weight compatibility.
-- **VI.2.5** [`classification`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Stabilizer.lean#L145-L179) *(key result)* — Linear maps satisfying the symmetric propagator pairing are all scalar multiples of the canonical feed map.
-- **VI.2.6** [`local_force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Contact.lean#L137-L156) *(key result)* — The flux of the pulse source at the marked leg against a test function equals minus the variation of the action, i.e. the local Ward charge identity.
-- **VI.2.7** [`jet_force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Force.lean#L131-L186) *(main result)* — For a wave-type variation, the single flux of a jet probe pulse equals minus the sample of the variation at the point.
-- **VI.2.8** [`level_detects`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Strict.lean#L122-L142) *(key result)* — If a polynomial in jets vanishes at the heat level at a point off the reflection plane, it annihilates every Taylor tower.
-- **VI.2.9** [`coordGram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Gram.lean#L82-L105) *(key result)* — For any finite alphabet of one-point coordinate probes, the reflected Gram matrix at a point off the reflection plane is positive definite.
-- **VI.2.10** [`spot_high`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Grain.lean#L81-L113) *(numbered result)* — A test function pairing with a bounded function is bounded by M times (α·volume plus A·band cost·σ) given a smaller bound near the singular film.
-- **VI.2.11** [`cost_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Annulus.lean#L195-L226) *(numbered result)* — The signed comparison cost passes to the limit along a filter, with coefficients allowed to vary with cutoffs.
-- **VI.2.12** [`single_cross`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Contact.lean#L106-L124) *(key result)* — The single-contraction cross stress flux through a cutoff equal to one near the origin equals minus the derivative of the field component at the origin.
-- **VI.2.13** [`names`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Pressure.lean#L167-L171) *(key result)* — For simple gauge group and nonzero τ, any Maxwell data can be replaced by canonical Maxwell data with current torch, κ=-τ, same vacuum, window and kernel, and free divergence property.
-- **VI.2.14** [`exposed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Hidden.lean#L113-L137) *(key result)* — For a simple gauge group there is a single weight bound d such that any polynomial in the shell sector that lies in the ghost (weight ≤ d) space must vanish.
-- **VI.2.15** [`maxwell_supplies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L45-L48) *(key result)* — For a simple gauge group there exists Maxwell data realizing the free-field time evolution and vacuum.
-- **VI.2.16** [`equivalences`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L132-L181) *(key result)* — The weak estimates at stations produce a scaling whose path gives the exact isomorphisms between the two hierarchies.
-- **VI.2.17** [`cutoff_balance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Glide.lean#L102-L129) *(key result)* — The actual cutoff smears differ from the target smears by at most Mε in the upper-limit sense along the ordered filter.
-- **VI.2.18** [`battery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/TripleMeter.lean#L63-L80) *(numbered result)* — The three-point function with a torch insertion equals an explicit product of charge and crossing of bare curls, the only sector needed for the flux coefficient.
-- **VI.2.19** [`moment_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Recurse.lean#L123-L145) *(numbered result)* — Multiplying a site's polynomial by a probe symbol equals a sum over contractions of the probe with the other sites.
-- **VI.2.20** [`supply_wheel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Granular.lean#L121-L128) *(key result)* — For large scale, the station is admissible: the quantitative payment estimates hold uniformly over all caps and words.
-- **VI.2.21** [`moment_force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Taxes.lean#L177-L200) *(key result)* — For arbitrary Wick polynomials, the shell flux of the composite stress insertion equals minus the moment with the first polynomial rewired by the generator.
-- **VI.2.22** [`triangle_test`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Triangle.lean#L365-L371) *(key result)* — For probes tested at three distinct points with repeated letters at two sites, the triplet Wick moment equals four times a product of leg kernels in a triangle pattern.
-- **VI.2.23** [`produce_current`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Limit.lean#L129-L167) *(key result)* — One can construct a nonzero divergence-free current in the kernel, with a coherent scaling along one curve, from the weak comparison.
-- **VI.2.24** [`precise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Layout.lean#L118-L154) *(key result)* — For grid layouts of mixed arrays, there are constants controlling the correlation estimates eventually along the filter, using that cells are distinct on the torus.
-- **VI.2.25** [`scanner`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Scenes.lean#L125-L132) *(key result)* — For a simple gauge group, for all sufficiently large d there is a selection at level d that ensembles the scheme against the hierarchy's spin.
-- **VI.2.26** [`shines`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L36-L42) *(key result)* — For a simple gauge group and nonzero parameter τ, the herald for a register realizes the free hierarchy's spin.
-- **VI.2.27** [`harvested`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L132-L180) *(numbered result)* — An admissible station yields a panel that is straight and approximates the continuum kernels on tests up to the stated error.
-- **VI.2.28** [`commute_ghost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Statistic.lean#L104-L150) *(key result)* — Under a Ward-type vanishing hypothesis, the commutator of the rewiring operator with a stress-annihilating map lies in the ghost ideal at the given degree.
-- **VI.2.29** [`align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Parity.lean#L88-L103) *(numbered result)* — A vector with a given binary parity character lies in a subspace if it holds on spanning generators of matching aligned parity.
-- **VI.2.30** [`differential_rank`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Dimension.lean#L165-L195) *(key result)* — Under stable scaling approximation, the current-divergence map is onto and its kernel is one-dimensional (a single stress line).
-- **VI.2.31** [`charges_quiet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Magnitude.lean#L142-L181) *(key result)* — For vectors of models in the specified color class, the quiet condition holds iff the vector is a real multiple of the leaves vector.
-- **VI.2.32** [`erasing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/AwayTeam.lean#L48-L118) *(key result)* — For a simple gauge group, the free hierarchy's spin structure satisfies the internal finite Ward (erasing) test for the scheme.
-- **VI.2.33** [`capped_v`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/VRank.lean#L102-L116) *(key result)* — The space of vectors in the Bianchi/Maxwell quotient has dimension at most two.
-- **VI.2.34** [`detects`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Core.lean#L94-L110) *(key result)* — For a nonzero Wick polynomial and a point at positive distance from the reflection plane, the reflected score is strictly positive.
-- **VI.2.35** [`exhaust`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/StressSpace.lean#L115-L122) *(key result)* — Every element of the kernel space of the stress certificate equals a three-parameter painted stress form.
-- **VI.2.36** [`positive_table`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Caps.lean#L137-L155) *(key result)* — The free table of the Maxwell field is reflection positive.
-- **VI.2.37** [`mixed_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lifted.lean#L85-L124) *(key result)* — On compact separated sets, scaled physical mixed correlators converge in all derivatives to the free mixed-tag correlators built from the Maxwell data.
-- **VI.2.38** [`hierarchy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L106-L114) *(key result)* — The free Maxwell model satisfies the hierarchy axioms of ranks, derivatives and multipole bounds.
+<a id="k-vi-2-1"></a>
+
+- **K-VI.2.1** [`variation_center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Affine.lean#L180-L218) *(numbered result)* — Centered field weights for a Killing generator pick out a single jet order and act by the transformation on the homogeneous solution.
+
+<a id="k-vi-2-2"></a>
+
+- **K-VI.2.2** [`kernel_pole`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Pole.lean#L238-L260) *(key result)* — The leg kernel between two jet probes is a harmonic multipole of order 4+j+l.
+
+<a id="k-vi-2-3"></a>
+
+- **K-VI.2.3** [`two_flux_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Repeat.lean#L63-L128) *(key result)* — For a Killing drive with homogeneity at most one and a cutoff equal to one near x, the double flux of two pulses at x vanishes.
+
+<a id="k-vi-2-4"></a>
+
+- **K-VI.2.4** [`halves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Fock.lean#L188-L206) *(numbered result)* — A pairing cost over a concatenated reflected and original list factors as a bilinear form between two packets under weight compatibility.
+
+<a id="k-vi-2-5"></a>
+
+- **K-VI.2.5** [`classification`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Stabilizer.lean#L145-L179) *(key result)* — Linear maps satisfying the symmetric propagator pairing are all scalar multiples of the canonical feed map.
+
+<a id="k-vi-2-6"></a>
+
+- **K-VI.2.6** [`local_force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Contact.lean#L137-L156) *(key result)* — The flux of the pulse source at the marked leg against a test function equals minus the variation of the action, i.e. the local Ward charge identity.
+
+<a id="k-vi-2-7"></a>
+
+- **K-VI.2.7** [`jet_force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Force.lean#L131-L186) *(main result)* — For a wave-type variation, the single flux of a jet probe pulse equals minus the sample of the variation at the point.
+
+<a id="k-vi-2-8"></a>
+
+- **K-VI.2.8** [`level_detects`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Strict.lean#L122-L142) *(key result)* — If a polynomial in jets vanishes at the heat level at a point off the reflection plane, it annihilates every Taylor tower.
+
+<a id="k-vi-2-9"></a>
+
+- **K-VI.2.9** [`coordGram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Gram.lean#L82-L105) *(key result)* — For any finite alphabet of one-point coordinate probes, the reflected Gram matrix at a point off the reflection plane is positive definite.
+
+<a id="k-vi-2-10"></a>
+
+- **K-VI.2.10** [`spot_high`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Grain.lean#L81-L113) *(numbered result)* — A test function pairing with a bounded function is bounded by M times (α·volume plus A·band cost·σ) given a smaller bound near the singular film.
+
+<a id="k-vi-2-11"></a>
+
+- **K-VI.2.11** [`cost_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Annulus.lean#L195-L226) *(numbered result)* — The signed comparison cost passes to the limit along a filter, with coefficients allowed to vary with cutoffs.
+
+<a id="k-vi-2-12"></a>
+
+- **K-VI.2.12** [`single_cross`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Contact.lean#L106-L124) *(key result)* — The single-contraction cross stress flux through a cutoff equal to one near the origin equals minus the derivative of the field component at the origin.
+
+<a id="k-vi-2-13"></a>
+
+- **K-VI.2.13** [`names`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Pressure.lean#L167-L171) *(key result)* — For simple gauge group and nonzero τ, any Maxwell data can be replaced by canonical Maxwell data with current torch, κ=-τ, same vacuum, window and kernel, and free divergence property.
+
+<a id="k-vi-2-14"></a>
+
+- **K-VI.2.14** [`exposed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Hidden.lean#L113-L137) *(key result)* — For a simple gauge group there is a single weight bound d such that any polynomial in the shell sector that lies in the ghost (weight ≤ d) space must vanish.
+
+<a id="k-vi-2-15"></a>
+
+- **K-VI.2.15** [`maxwell_supplies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L45-L48) *(key result)* — For a simple gauge group there exists Maxwell data realizing the free-field time evolution and vacuum.
+
+<a id="k-vi-2-16"></a>
+
+- **K-VI.2.16** [`equivalences`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L132-L181) *(key result)* — The weak estimates at stations produce a scaling whose path gives the exact isomorphisms between the two hierarchies.
+
+<a id="k-vi-2-17"></a>
+
+- **K-VI.2.17** [`cutoff_balance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Glide.lean#L102-L129) *(key result)* — The actual cutoff smears differ from the target smears by at most Mε in the upper-limit sense along the ordered filter.
+
+<a id="k-vi-2-18"></a>
+
+- **K-VI.2.18** [`battery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/TripleMeter.lean#L63-L80) *(numbered result)* — The three-point function with a torch insertion equals an explicit product of charge and crossing of bare curls, the only sector needed for the flux coefficient.
+
+<a id="k-vi-2-19"></a>
+
+- **K-VI.2.19** [`moment_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Recurse.lean#L123-L145) *(numbered result)* — Multiplying a site's polynomial by a probe symbol equals a sum over contractions of the probe with the other sites.
+
+<a id="k-vi-2-20"></a>
+
+- **K-VI.2.20** [`supply_wheel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Granular.lean#L121-L128) *(key result)* — For large scale, the station is admissible: the quantitative payment estimates hold uniformly over all caps and words.
+
+<a id="k-vi-2-21"></a>
+
+- **K-VI.2.21** [`moment_force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Taxes.lean#L177-L200) *(key result)* — For arbitrary Wick polynomials, the shell flux of the composite stress insertion equals minus the moment with the first polynomial rewired by the generator.
+
+<a id="k-vi-2-22"></a>
+
+- **K-VI.2.22** [`triangle_test`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Triangle.lean#L365-L371) *(key result)* — For probes tested at three distinct points with repeated letters at two sites, the triplet Wick moment equals four times a product of leg kernels in a triangle pattern.
+
+<a id="k-vi-2-23"></a>
+
+- **K-VI.2.23** [`produce_current`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Limit.lean#L129-L167) *(key result)* — One can construct a nonzero divergence-free current in the kernel, with a coherent scaling along one curve, from the weak comparison.
+
+<a id="k-vi-2-24"></a>
+
+- **K-VI.2.24** [`precise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Layout.lean#L118-L154) *(key result)* — For grid layouts of mixed arrays, there are constants controlling the correlation estimates eventually along the filter, using that cells are distinct on the torus.
+
+<a id="k-vi-2-25"></a>
+
+- **K-VI.2.25** [`scanner`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Scenes.lean#L125-L132) *(key result)* — For a simple gauge group, for all sufficiently large d there is a selection at level d that ensembles the scheme against the hierarchy's spin.
+
+<a id="k-vi-2-26"></a>
+
+- **K-VI.2.26** [`shines`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L36-L42) *(key result)* — For a simple gauge group and nonzero parameter τ, the herald for a register realizes the free hierarchy's spin.
+
+<a id="k-vi-2-27"></a>
+
+- **K-VI.2.27** [`harvested`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L132-L180) *(numbered result)* — An admissible station yields a panel that is straight and approximates the continuum kernels on tests up to the stated error.
+
+<a id="k-vi-2-28"></a>
+
+- **K-VI.2.28** [`commute_ghost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Statistic.lean#L104-L150) *(key result)* — Under a Ward-type vanishing hypothesis, the commutator of the rewiring operator with a stress-annihilating map lies in the ghost ideal at the given degree.
+
+<a id="k-vi-2-29"></a>
+
+- **K-VI.2.29** [`align`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Parity.lean#L88-L103) *(numbered result)* — A vector with a given binary parity character lies in a subspace if it holds on spanning generators of matching aligned parity.
+
+<a id="k-vi-2-30"></a>
+
+- **K-VI.2.30** [`differential_rank`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Dimension.lean#L165-L195) *(key result)* — Under stable scaling approximation, the current-divergence map is onto and its kernel is one-dimensional (a single stress line).
+
+<a id="k-vi-2-31"></a>
+
+- **K-VI.2.31** [`charges_quiet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Magnitude.lean#L142-L181) *(key result)* — For vectors of models in the specified color class, the quiet condition holds iff the vector is a real multiple of the leaves vector.
+
+<a id="k-vi-2-32"></a>
+
+- **K-VI.2.32** [`erasing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/AwayTeam.lean#L48-L118) *(key result)* — For a simple gauge group, the free hierarchy's spin structure satisfies the internal finite Ward (erasing) test for the scheme.
+
+<a id="k-vi-2-33"></a>
+
+- **K-VI.2.33** [`capped_v`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/VRank.lean#L102-L116) *(key result)* — The space of vectors in the Bianchi/Maxwell quotient has dimension at most two.
+
+<a id="k-vi-2-34"></a>
+
+- **K-VI.2.34** [`detects`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Core.lean#L94-L110) *(key result)* — For a nonzero Wick polynomial and a point at positive distance from the reflection plane, the reflected score is strictly positive.
+
+<a id="k-vi-2-35"></a>
+
+- **K-VI.2.35** [`exhaust`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/StressSpace.lean#L115-L122) *(key result)* — Every element of the kernel space of the stress certificate equals a three-parameter painted stress form.
+
+<a id="k-vi-2-36"></a>
+
+- **K-VI.2.36** [`positive_table`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Caps.lean#L137-L155) *(key result)* — The free table of the Maxwell field is reflection positive.
+
+<a id="k-vi-2-37"></a>
+
+- **K-VI.2.37** [`mixed_leading`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Lifted.lean#L85-L124) *(key result)* — On compact separated sets, scaled physical mixed correlators converge in all derivatives to the free mixed-tag correlators built from the Maxwell data.
+
+<a id="k-vi-2-38"></a>
+
+- **K-VI.2.38** [`hierarchy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L106-L114) *(key result)* — The free Maxwell model satisfies the hierarchy axioms of ranks, derivatives and multipole bounds.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

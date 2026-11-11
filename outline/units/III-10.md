@@ -1,11 +1,19 @@
 # III.10. One full nonlinear renormalization step: bounds on irrelevant terms
 
-*Part III — Ultraviolet construction (renormalization group).* 49,448 lines of Lean in 5,929 declarations used by the main theorem.
+*Part III — Ultraviolet construction (renormalization group).*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Bounds the large-field and fluctuation contributions produced by one nonlinear renormalization step.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** III, Ultraviolet construction (renormalization group). **Lean:** [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (items E01–E09, H01–H04, I01–I04), [`YM/Bid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid), [`YM/Next/FLUCTUATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS), [`YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6), [`YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP), [`YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD), [`YM/Pressure/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure) (definitions). **Size:** 49,448 lines in the main-theorem closure.
+[Overview](../README.md) · [All units](../units.md) · [← Previous: III.9](III-9.md) · [Next: III.11 →](III-11.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** III, Ultraviolet construction (renormalization group). **Lean:** [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (items E01–E09, H01–H04, I01–I04), [`YM/Bid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid), [`YM/Next/FLUCTUATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS), [`YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6), [`YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP), [`YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD), [`YM/Pressure/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure) (definitions). **Size:** 49,448 lines in the source allocation.
 
 **Conventions.** Levels are indexed from coarse to fine, as in III.9.
 - *Step and couplings.* One step $S$ goes from a fine torus of side $f=cL$ to a coarse torus of side $c$, with odd block factor $L\ge3$. Write $x$ for the coarse reference coupling $\hat\beta_m$. The fine coupling is $\beta_F=x+b_G\log L=\hat\beta_{m+1}$ ([`clock_next`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Intake.lean#L67-L70)), where $b_G\ge0$ is the one-loop slope of III.9; $b_G>0$ when the Lie algebra of $G$ is simple.
@@ -15,6 +23,10 @@ $$t_c(x)=x^{-1/2}e^{(\log\log x)^2}\ \text{(coarse field)},\qquad t=t_c(\beta_F)
 - *Sizes.* Since $e^{(\log\log\beta)^2}=\beta^{o(1)}$, we have $t=\beta_F^{-1/2+o(1)}\ll T$. On the other hand $\beta_Ft^2=e^{2(\log\log\beta_F)^2}$ grows faster than every power of $\log\beta_F$.
 - *Field sizes.* $\chi(g)$ is the chordal distance from $g\in G$ to $1$. For a plaquette $p$, $|U_p|=\chi(U_{\partial p})$. For a coarse bond $b$, $w_b=\chi(V_bQ_b^{-1})$ measures how far the coarse field $V$ is from the block-spin predictor $Q=Q(U,k)$ of the fine field $U$ with gauge-fixing tags $k$ (III.1).
 - "For all large $x$" means $x\ge x_0$, with $x_0$ independent of the period and volume. Other dependencies are specified in each statement.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -181,6 +193,8 @@ $$w_i=\frac{\hat\beta_i^{-r/2}}{p\,{\rm columns}_i\prod_{m<i}{\rm columns}_{m+1}
 - Statements: [`H01`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L15-L16), [`H02`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L20-L21), [`H03`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L23-L24), [`H04`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L33-L35), [`I01`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Fuels.lean#L124-L126)–[`I04`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Fuels.lean#L140-L142).
 - Proofs: [`H01.gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/H01.lean#L245-L251), [`H02.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/H02.lean#L17-L80), [`H03.fused_forcedFamily`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/H03.lean#L138-L209), [`H04.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/H04.lean#L155-L161), [`I01.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/I01.lean#L19-L82), [`I02.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/I02.lean#L159-L180), [`I03.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/I03.lean#L43-L63), [`I04.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/I04.lean#L76-L129).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **From other units.**
@@ -207,6 +221,8 @@ $$w_i=\frac{\hat\beta_i^{-r/2}}{p\,{\rm columns}_i\prod_{m<i}{\rm columns}_{m+1}
 - The following are internal choices of the proof: the exponent $49/100$ in $T$; the factor $10^{-5}$ in $R$; the hysteresis thresholds $t/4$, $t/2$, $Wt$, $2Wt$; and the radii $5B$, $2B$, $4B/5$, $2B/5$, $30B$.
 - The incoming bounds on the fine activities ($\beta_F^{-11/10}$, $e^{-M^{1/5}}$, $2M$) are hypotheses supplied by III.9.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 The method combines large-field suppression with Gaussian integration in the small-field region. Seeds record the fine plaquettes, mismatches and coarse flags that exceed their thresholds. The deterministic estimate gives an action cost $\kappa t^2$ per seed. Since $\beta\ge\beta_F/2$, its Boltzmann factor is at most $e^{-(\kappa/2)e^{2(\log\log\beta_F)^2}}$. This pays every fixed polylogarithmic entropy loss and is smaller than every inverse power of $\beta_F$, while $t=\beta_F^{-1/2+o(1)}$ remains perturbatively small.
@@ -214,6 +230,8 @@ The method combines large-field suppression with Gaussian integration in the sma
 An exact completed-square decomposition separates the fine, interior, coarse and gauge contributions from two kernel defects. Large $L$ makes the fine prediction small; large $W$ separates mismatch seeds from the interior prediction. Coarse plaquettes above a fixed threshold lie near spent seeds, whose larger cost $tT$ pays the affected-cell losses. Away from those seeds, local gauge fixing and the flat tower identities reduce the defects to chart errors and exponentially small kernel tails. Summation over a radius-$B$ neighbourhood still leaves an error $o(t^2)$ per seed.
 
 The resulting gas has packet, old forced, logarithmic and warning letters. The energy bound and annulus estimate control packets; Gaussian tails control warnings. Rooted support bounds and tree-graph estimates sum connected molecules. Derivatives are taken with sector data fixed and fluctuation coordinates transported compatibly. The Leibniz rule controls products, and Cauchy–Schwarz retains the square root of the simultaneous-warning probability when integrating their jets.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -523,6 +541,8 @@ The checks:
 
 *Lean:* [`Wait.engine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Divisors.lean#L26-L135).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The energy estimate must preserve $L$-independent coefficients on the large fine inputs and $W$-independent coefficients on the mismatches. The fine prediction is $O(t/L^2)$, so increasing $L$ absorbs its cross terms. The interior prediction is $O(t)$, so increasing $W$ absorbs the mismatch cross terms. Losses depending on both $L,W$ are charged to spent seeds and absorbed only by increasing $x$.
@@ -531,29 +551,126 @@ On unaffected cells, the transported, truncated kernels have no exact completene
 
 The activity and derivative estimates additionally require compatible quadratic forms, controlled fluctuation transport and probability bounds for simultaneous warnings. Their product estimates retain one gain for each distinct warning address before the connected-molecule sum. The schedule is numerical; start-up fusion and marker estimates serve separate parts of the construction.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| Written proof | Lean (glossary) | Meaning |
-|---|---|---|
-| $x=\hat\beta_m$, $\beta_F=x+b_G\log L$ | [`betaF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23) | coarse and fine reference couplings |
-| $t_c(x)$, $t=t_c(\beta_F)$ | [`temp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L25), [`fiery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L26) | small-field thresholds; `fiery` is at the **fine** coupling |
-| $T=\beta_F^{-49/100}$ | [`largeT`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L27) | spent-seed threshold |
-| $B$, $R$ | [`radiusB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22), [`till`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L77) | cluster radius $\lceil(\log x)^2\rceil$, path cutoff $\lfloor B/10^5\rfloor$ |
-| $\lvert U_p\rvert$, $w_b$ | [`toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L55), [`wire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L187) | plaquette size; mismatch $\chi(V_bQ_b^{-1})$ |
-| request $P$; admissible | `Teller`, `Teller.Funds` | data of one call of the step estimator |
-| $A=(A_F,A_I,A_\flat)$, consistent | `Stores`, `Stores.Plot` | seeds; two-sided thresholds on $D_{5B}$ |
-| $A^{\rm sp}$, tides, hit | `spend`, `tides`, `hit` | seeds above $T$; coarse plaquettes above $\delta$; cells near $A^{\rm sp}$ |
-| $\mathcal E_A$ | `Stores.assessed` | localized action gap |
-| $v$, $\Phi,\Phi',N$ | `vision`, `Φ`, `Φ'`, `N` | coarse coordinates; transported kernels cut at $R$ |
-| $\Phi_0,\Phi_0',N_0$ | `flatF`, `flatI`, `flatN` | flat, uncut scalar tower operators |
-| $\omega(R,h,\tau)$ | `widen` | $(1+R)h+e^{-\tau R}$ |
-| rate $a$ | `Rate` | $\le\beta_F^{a+o(1)}$ |
-| target data $\mathcal T$ | `Target` | $\varepsilon,\delta,e$, rate $r$, halo, chart |
-| letter weights, KP condition | `Sales`, `Buy` | rooted Kotecký–Preiss and tree-graph tests |
-| new-gas bounds | `Cash`, `Utopia`, `Herd`, `Captain` | III.10.2 bundle; letter jets; molecule integrals |
-| $N_B(H)$ | `coverNumber` | minimum connected ball-cover size |
-| $\rho(x)$, $\mathrm{rad}$ | `Utopia.active`, `Utopia.rad` | jet scale of rate zero; square root of a warning-probability bound |
-| Gaussian sector | `Value`, `Charges` | precision, approximate inverse, mean, residual |
+- **Written proof:** $x=\hat\beta_m$, $\beta_F=x+b_G\log L$
+
+  **Lean (glossary):** [`betaF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23)
+
+  **Meaning:** coarse and fine reference couplings
+
+- **Written proof:** $t_c(x)$, $t=t_c(\beta_F)$
+
+  **Lean (glossary):** [`temp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L25), [`fiery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L26)
+
+  **Meaning:** small-field thresholds; `fiery` is at the **fine** coupling
+
+- **Written proof:** $T=\beta_F^{-49/100}$
+
+  **Lean (glossary):** [`largeT`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L27)
+
+  **Meaning:** spent-seed threshold
+
+- **Written proof:** $B$, $R$
+
+  **Lean (glossary):** [`radiusB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22), [`till`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L77)
+
+  **Meaning:** cluster radius $\lceil(\log x)^2\rceil$, path cutoff $\lfloor B/10^5\rfloor$
+
+- **Written proof:** $\lvert U_p\rvert$, $w_b$
+
+  **Lean (glossary):** [`toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Rows.lean#L55), [`wire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Cost.lean#L187)
+
+  **Meaning:** plaquette size; mismatch $\chi(V_bQ_b^{-1})$
+
+- **Written proof:** request $P$; admissible
+
+  **Lean (glossary):** `Teller`, `Teller.Funds`
+
+  **Meaning:** data of one call of the step estimator
+
+- **Written proof:** $A=(A_F,A_I,A_\flat)$, consistent
+
+  **Lean (glossary):** `Stores`, `Stores.Plot`
+
+  **Meaning:** seeds; two-sided thresholds on $D_{5B}$
+
+- **Written proof:** $A^{\rm sp}$, tides, hit
+
+  **Lean (glossary):** `spend`, `tides`, `hit`
+
+  **Meaning:** seeds above $T$; coarse plaquettes above $\delta$; cells near $A^{\rm sp}$
+
+- **Written proof:** $\mathcal E_A$
+
+  **Lean (glossary):** `Stores.assessed`
+
+  **Meaning:** localized action gap
+
+- **Written proof:** $v$, $\Phi,\Phi',N$
+
+  **Lean (glossary):** `vision`, `Φ`, `Φ'`, `N`
+
+  **Meaning:** coarse coordinates; transported kernels cut at $R$
+
+- **Written proof:** $\Phi_0,\Phi_0',N_0$
+
+  **Lean (glossary):** `flatF`, `flatI`, `flatN`
+
+  **Meaning:** flat, uncut scalar tower operators
+
+- **Written proof:** $\omega(R,h,\tau)$
+
+  **Lean (glossary):** `widen`
+
+  **Meaning:** $(1+R)h+e^{-\tau R}$
+
+- **Written proof:** rate $a$
+
+  **Lean (glossary):** `Rate`
+
+  **Meaning:** $\le\beta_F^{a+o(1)}$
+
+- **Written proof:** target data $\mathcal T$
+
+  **Lean (glossary):** `Target`
+
+  **Meaning:** $\varepsilon,\delta,e$, rate $r$, halo, chart
+
+- **Written proof:** letter weights, KP condition
+
+  **Lean (glossary):** `Sales`, `Buy`
+
+  **Meaning:** rooted Kotecký–Preiss and tree-graph tests
+
+- **Written proof:** new-gas bounds
+
+  **Lean (glossary):** `Cash`, `Utopia`, `Herd`, `Captain`
+
+  **Meaning:** III.10.2 bundle; letter jets; molecule integrals
+
+- **Written proof:** $N_B(H)$
+
+  **Lean (glossary):** `coverNumber`
+
+  **Meaning:** minimum connected ball-cover size
+
+- **Written proof:** $\rho(x)$, $\mathrm{rad}$
+
+  **Lean (glossary):** `Utopia.active`, `Utopia.rad`
+
+  **Meaning:** jet scale of rate zero; square root of a warning-probability bound
+
+- **Written proof:** Gaussian sector
+
+  **Lean (glossary):** `Value`, `Charges`
+
+  **Meaning:** precision, approximate inverse, mean, residual
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Conversion to the norms of III.9.** The rooted optional-letter bound and the packet/tree test are explicit here. Their complete conversion to the outgoing $E$- and $K$-norms of II.2 and III.5, including the reset, remains to be written out. The relevant per-step assemblies are the activity-bound bundle, its jet version, and the molecule-integral bounds.
@@ -563,125 +680,411 @@ The activity and derivative estimates additionally require compatible quadratic 
 5. **Gaussian trigger scales.** In [`JointLoad.stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Supply.lean#L72-L98), the scales are $b(x)=1+B(x)$ and $p(x)=e^{(\log\log\beta_F)^2}$; the trigger estimate absorbs fixed powers of $b$ into $e^{-c p^2}$ per distinct endpoint. Its full use in the preconstruction has not been traced here.
 6. **Comparison with Balaban.** The cited papers describe the corresponding small-field, cluster and large-field operations. A lemma-by-lemma identification, including threshold and normalization choices, remains open. The bibliographic dates and volumes above do not establish such an identification.
 
-**Builds on:** [III.1](III-1.md), [I.1](I-1.md), [III.5](III-5.md), [III.4](III-4.md), [III.6](III-6.md), [III.9](III-9.md), [VIII.1](VIII-1.md), [III.2](III-2.md), [II.2](II-2.md), [IV.1](IV-1.md), [III.16](III-16.md), [II.1](II-1.md), [III.15](III-15.md), [VI.1](VI-1.md), [III.3](III-3.md), [V.1](V-1.md), [V.2](V-2.md).
+## Code dependencies
 
-**Used by:** [III.13](III-13.md), [III.12](III-12.md), [III.11](III-11.md), [III.2](III-2.md), [III.15](III-15.md), [III.4](III-4.md), [VIII.1](VIII-1.md), [VII.4](VII-4.md), [III.6](III-6.md), [III.5](III-5.md), [VII.2](VII-2.md), [III.14](III-14.md), [V.1](V-1.md), [II.1](II-1.md), [V.2](V-2.md), [III.7](III-7.md), [III.3](III-3.md), [VI.1](VI-1.md), [IV.1](IV-1.md), [III.9](III-9.md), [V.3](V-3.md), [VII.6](VII-6.md), [VII.1](VII-1.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [III.1](III-1.md), [I.1](I-1.md), [III.5](III-5.md), [III.4](III-4.md), [III.6](III-6.md), [III.9](III-9.md), [VIII.1](VIII-1.md), [III.2](III-2.md), [II.2](II-2.md), [IV.1](IV-1.md), [III.16](III-16.md), [II.1](II-1.md), [III.15](III-15.md), [VI.1](VI-1.md), [III.3](III-3.md), [V.1](V-1.md), [V.2](V-2.md).
+
+**Referenced by:** [III.13](III-13.md), [III.12](III-12.md), [III.11](III-11.md), [III.2](III-2.md), [III.15](III-15.md), [III.4](III-4.md), [VIII.1](VIII-1.md), [VII.4](VII-4.md), [III.6](III-6.md), [III.5](III-5.md), [VII.2](VII-2.md), [III.14](III-14.md), [V.1](V-1.md), [II.1](II-1.md), [V.2](V-2.md), [III.7](III-7.md), [III.3](III-3.md), [VI.1](VI-1.md), [IV.1](IV-1.md), [III.9](III-9.md), [V.3](V-3.md), [VII.6](VII-6.md), [VII.1](VII-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 49,448 attributed lines; 5,929 line-counted declarations; 7,823 assigned declaration names. Of the assigned names, 7,561 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6), with [`YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP) | 38,787 |
-| work package [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (in part, 30%) | 11,420 |
-| work package [`YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD) | 3,666 |
-| work package [`YM/Next/FLUCTUATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS) | 1,723 |
-| work package [`YM/Bid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid) | 1,052 |
-| work package [`YM/Work/E07/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E07) | 425 |
-| work package [`YM/Work/E09/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E09) | 252 |
-| work package [`YM/AnalyticBridge/COUPLING_SHAPE_ESTIMATE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/COUPLING_SHAPE_ESTIMATE) | 59 |
-| work package [`YM/R2I/Vale/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Vale) | 38 |
-| work package [`YM/Planned/ATOM_FORCED_ESTIMATE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/ATOM_FORCED_ESTIMATE) | 6 |
-| work package [`YM/UVNext/UV_STATION_TRANSFER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/UV_STATION_TRANSFER) | 5 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6), with [`YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP) — 38,787 lines.
+- work package [`YM/Work/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work) (in part, 30%) — 11,420 lines.
+- work package [`YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD) — 3,666 lines.
+- work package [`YM/Next/FLUCTUATIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS) — 1,723 lines.
+- work package [`YM/Bid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid) — 1,052 lines.
+- work package [`YM/Work/E07/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E07) — 425 lines.
+- work package [`YM/Work/E09/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E09) — 252 lines.
+- work package [`YM/AnalyticBridge/COUPLING_SHAPE_ESTIMATE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/COUPLING_SHAPE_ESTIMATE) — 59 lines.
+- work package [`YM/R2I/Vale/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Vale) — 38 lines.
+- work package [`YM/Planned/ATOM_FORCED_ESTIMATE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/ATOM_FORCED_ESTIMATE) — 6 lines.
+- work package [`YM/UVNext/UV_STATION_TRANSFER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/UV_STATION_TRANSFER) — 5 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **III.10.1** [`anchored_of_terms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E03.lean#L39-L90) *(numbered result)* — Torus sums of kernel terms satisfying a cover envelope and separation bound give anchored row and column estimates with cardinality-weighted constants.
-- **III.10.2** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/H01.lean#L245-L251) *(key result)* — The fused gas occurrence series sums to the poured gas times the exponential of the sum of logarithms.
-- **III.10.3** [`kernel_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Kernel.lean#L264-L298) *(key result)* — At a fixed patch, kernel factors of the defects are near their flat matrices with constants independent of period, store and cut.
-- **III.10.4** [`columns_receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/I04.lean#L24-L62) *(numbered result)* — The accumulated log of column counts across levels is little-o of the schedule scale.
-- **III.10.5** [`Rack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L63-L73) *(numbered result)* — A packaging predicate collecting uniformity properties of raw cumulative kernels for a horizon at given levels and prices.
-- **III.10.6** [`x_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Slots.lean#L83-L158) *(key result)* — On the chart, the linear map is bounded by C h and the plotted-minus-linear error is bounded by C h times a widening factor, for small h.
-- **III.10.7** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E02.lean#L132-L244) *(key result)* — A fine-link shell comparison estimate holds, bounding fine-link quantities against parent shell data.
-- **III.10.8** [`pricing_order`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Energy.lean#L173-L202) *(key result)* — Given grants for all test queries, there is a floor such that any sheet with larger floor admits raised delay records satisfying a ringing condition with arbitrarily large values.
-- **III.10.9** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E01.lean#L289-L324) *(key result)* — Macro charges and packing estimates hold on a single oriented sector (price E01 in the chain).
-- **III.10.10** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E07.lean#L115-L158) *(key result)* — A bound on all affected departures (E07 item in the price chain), using macro multiplicity and stencil clipping.
-- **III.10.11** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E06.lean#L413-L440) *(key result)* — Lower bounds on the F+I rows hold, with column and witness costs of order 1/L² times the swell currency at fixed pre-L data.
-- **III.10.12** [`z_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Prediction.lean#L243-L267) *(key result)* — At a fixed patch, the linearization of the Z prediction is bounded linearly and approximates the test with quadratic error uniformly, independent of the torus.
-- **III.10.13** [`global_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Global.lean#L76-L148) *(numbered result)* — Post-L, uniform small-log estimates on the full torus bound both defects in terms of a log-field size h.
-- **III.10.14** [`local_gaps`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Locality.lean#L151-L174) *(numbered result)* — Gap quantities depend only on configurations within distance D of the site, so agreeing near the site gives equal values.
-- **III.10.15** [`interior_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Interior.lean#L22-L63) *(key result)* — Within a halo, the two cut defects (linear gap and derivative gap) are bounded by a constant times h times a widening factor, uniformly over step data.
-- **III.10.16** [`bare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Bare.lean#L64-L120) *(main result)* — The bare defect-producer statement EBare holds unconditionally.
-- **III.10.17** [`grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L24) *(key result)* — For every teller, the pre- and post-pressure grants hold unconditionally, without a separate bare-estimate input.
-- **III.10.18** [`pressure_pricing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L32-L37) *(numbered result)* — For any price map there is a threshold on the parameters beyond which the delay data can be enlarged in the beta entry so that a ringing function bounded below by any given constant exists.
-- **III.10.19** [`healthy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L91-L97) *(main result)* — For a cleaner sequence of tables, there exists a hierarchy among the limit table that has the required orientation.
-- **III.10.20** [`rectangle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Many.lean#L89-L101) *(numbered result)* — For a Gaussian with covariance bounded above by M, the probability that all coordinates in a set exceed t in absolute value is at most 2^|X| exp((-st+Ms²/2)|X|).
-- **III.10.21** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Mallow/Passage.lean#L264-L270) *(numbered result)* — The fused gas occurrence series sums to the product of the gas and the exponential of the summed logarithms.
-- **III.10.22** [`Coat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Coat.lean#L49-L56) *(numbered result)* — A structure packaging the input data of a sector as a view without new variables.
-- **III.10.23** [`Intake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Intake.lean#L42-L49) *(numbered result)* — A packaged structure of hypotheses serving as input to the connected-activity jet service.
-- **III.10.24** [`Target`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/OptionCost.lean#L62-L76) *(numbered result)* — A bundled record of hypotheses and parameters (ordering of epsilon before L, allowed marks) for the connected-activity jet estimate.
-- **III.10.25** [`Room`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Room.lean#L39-L48) *(numbered result)* — A structure collecting stencil and delay hypotheses (enough room) for core and annulus analytic estimates.
-- **III.10.26** [`tail_bills`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/PathPrices.lean#L127-L142) *(numbered result)* — Tail sums of path prices with exponential length weights are negligible for large x.
-- **III.10.27** [`required`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Coat.lean#L133-L142) *(numbered result)* — Under shell access and interior hypotheses with bounded hot directions, the signal is grafted at the base point with the stated radius and bound.
-- **III.10.28** [`tickets_le`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Mask.lean#L125-L145) — The product of local ticket weights is bounded by an exponential in the number of shares with a rate depending on the patch.
-- **III.10.29** [`engine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Divisors.lean#L26-L135) *(main result)* — There exists a level schedule satisfying the payment requirements whose scales are divisibly spaced.
-- **III.10.30** [`dressed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Harmonic.lean#L46-L101) *(key result)* — For a fixed patch there are radii such that all sufficiently small displacements within the same chart keep the dressed quantities controlled uniformly over step data.
-- **III.10.31** [`approves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/MinBranches.lean#L134-L173) *(numbered result)* — If the configuration is close to trivial within distance d of a site, the predictors are within delta of the identity and tag masses equal one.
-- **III.10.32** [`marks_here`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/PatchCap.lean#L115-L151) *(numbered result)* — Actual tags are read correctly under weak local conditions, uniformly for large x.
-- **III.10.33** [`atoms_meet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Receiving.lean#L82-L111) *(numbered result)* — Atoms with summed budget are translated with bounds certified by a Sales capacity at power r of beta.
-- **III.10.34** [`letters_LD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Outer.lean#L85-L131) *(numbered result)* — Both mismatch rows after the short cut in the unaffected chart are bounded by a rate-order -3/2 function.
-- **III.10.35** [`input_decays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Compression.lean#L137-L181) *(numbered result)* — A weighted exponential-decay bound on the response of the extracted rows to a single impulse at a bond, in terms of distance to the focus.
-- **III.10.36** [`f0_agrees`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Folio/Base.lean#L107-L123) *(numbered result)* — The extension function on F0 depends only on configurations near the relevant region, so two locally agreeing configurations give equal values.
-- **III.10.37** [`within`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Accuracy.lean#L64-L163) *(numbered result)* — Within protected stencils, the jet remainder is bounded by explicit rate functions of orders −1/2 and −1.
-- **III.10.38** [`soft_bills`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Remainder.lean#L110-L179) *(numbered result)* — The soft term differs from half the squared reply norm by at most a rate −3/2 error on weak annulus cells.
-- **III.10.39** [`survey`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Survey.lean#L92-L109) *(key result)* — For a patch with branching predictor, eventually in x, the forecast of the bare predictor model satisfies a uniform bound on directions of bounded norm for all steps and tubes.
-- **III.10.40** [`certified`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Supply.lean#L110-L120) *(numbered result)* — Under the stated hypotheses, a day datum is valid and satisfies clearing and admission conditions.
-- **III.10.41** [`allocation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Intake.lean#L57-L59) *(numbered result)* — An intake with point charge yields a charged allocation and portion-cost data without altering weights.
-- **III.10.42** [`issue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Issue.lean#L94-L185) *(key result)* — For large side length L and large width W, there exist order, constants and a rate so that the required bounds hold simultaneously for all admissible tubes and steps, yielding the needed invoices.
-- **III.10.43** [`retreat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Resolve.lean#L59-L131) *(numbered result)* — Remote affine paths are small at the local stationary mean, with an error of rate −1.
-- **III.10.44** [`quoted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Export.lean#L48-L74) *(numbered result)* — A single uniform beta cost per vertex handles the log/determinant correction, with rate-b error functions.
-- **III.10.45** [`ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Peak.lean#L92-L188) *(key result)* — For rare-event configurations away from seeds, a Gaussian-scale excursion lower bound holds uniformly for large x, with a fixed small constant.
-- **III.10.46** [`earns`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/AssignedPrice.lean#L54-L86) *(key result)* — The quoted cost near the point charge is at least (κ t² − E(x)) times the number of shares, with E decaying at rate −3/2.
-- **III.10.47** [`dividend`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/AffOrd.lean#L93-L136) *(numbered result)* — Mean and residual of the affine-ordered cost are bounded by a constant times t, with a rate-controlled error for the fixed-L exponent.
-- **III.10.48** [`rear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Via.lean#L95-L108) *(numbered result)* — A linear identity holds for a response and turns in a unified function near a remote row.
-- **III.10.49** [`light_costs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Annulus.lean#L103-L160) *(numbered result)* — Weak unmasked estimates on the light remainder at each stencil: bounded below by a rate −E and above on selected packets.
-- **III.10.50** [`recommends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Quotation.lean#L47-L92) *(main result)* — For large sides and all admissible stamped tubes, the offer of non-packet gas letters holds with prescribed power-of-beta bounds, using only actual inputs.
-- **III.10.51** [`annulus`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Annulus.lean#L164-L185) *(key result)* — On the annulus between radii 2B and 200B, the remainders of a sector packet's debit are bounded below by an O(x^{-3/2})-rate error, before determinant or Gaussian corrections.
-- **III.10.52** [`condenses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Rewards.lean#L44-L87) *(key result)* — Local log differences of the condensation are bounded away from seeds by a rate −1/2 error.
-- **III.10.53** [`unified_exp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/UnifiedValue.lean#L40-L73) *(key result)* — The assembled dictionary gives a unified exponential value formula for the coat at the manifest width, used by the consolidated and selection-run results.
-- **III.10.54** [`seat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Buoy.lean#L46-L78) *(numbered result)* — The integral over shifted stages equals an integral over the full coordinate split with the actual reference density.
-- **III.10.55** [`timing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Daisy/Charm.lean#L58-L179) *(key result)* — For large lattice size and uniform parameters, given a rate-controlled V, there exist rate-controlled q, p and a Utopia structure on every admissible step whose Herd bound holds with the stated pressure bound.
-- **III.10.56** [`patch_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Diags.lean#L92-L107) *(numbered result)* — The difference of the joint window quantities for two admissible fields is bounded by the number of colors times a pulse cost in the uniform gauge difference.
-- **III.10.57** [`fountain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Boulevard/Clasp.lean#L83-L101) *(numbered result)* — Eventually in k, derivatives of a truncated auxiliary analytic charge are bounded by a ticket bound plus a site-count term.
-- **III.10.58** [`burst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Thrills.lean#L47-L69) *(key result)* — For the auxiliary lattice step, a positivity bound holds and a brush-type estimate holds at admissible positions.
-- **III.10.59** [`read_guides`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Guide.lean#L115-L163) *(numbered result)* — The linear response of costs to the target field on a clean patch is bounded by a rate-controlled function of order -1.
-- **III.10.60** [`ligatures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Laud.lean#L27-L60) *(key result)* — At critical station parameters with c at least 2, the comparisons on auxiliary lattices hold (statement truncated).
-- **III.10.61** [`capital`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Costs.lean#L92-L157) *(main result)* — There are uniform per-jump receipt constants for the endpoint windows, valid for all large x and all admissible tubes, stores, and configurations.
-- **III.10.62** [`abides`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Rain/Room.lean#L88-L92) *(key result)* — For large n, all derivatives up to the given order of the actual weight function in the allowed directions are bounded by an explicit ticket-cost estimate.
-- **III.10.63** [`GrantBodies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Issue.lean#L51-L71) *(numbered result)* — A structure bundling the conclusions of a one-step vacuum production of normalized bounds for all words.
-- **III.10.64** [`Order`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Issue.lean#L33-L46) *(numbered result)* — A record of posted parameters and retained covariance bounds for all sectors in one step.
-- **III.10.65** [`Rotator`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Shutter.lean#L110-L117) *(numbered result)* — A structure of real-sector window hypotheses at one torus coat.
-- **III.10.66** [`stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Supply.lean#L72-L98) *(main result)* — For a branching patch and local ratio, there is a kiosk of constants such that every matching desk satisfies the quantitative stage procurement bound for all large x.
-- **III.10.67** [`erudite`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Shellac/Sables.lean#L26-L65) *(key result)* — For large scale t, the full residual is positive and has derivative bounds of order beta^(-23/20) uniformly over admissible step data.
-- **III.10.68** [`school`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Calls.lean#L46-L49) *(key result)* — Given delays, one can enlarge them so that all further enlargements satisfy the planks (schedule) conditions.
-- **III.10.69** [`rimfire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Basin.lean#L23-L49) *(key result)* — There exist constants such that for an equalized representation with small perturbation t, a summable budget function controls the change of the contribution on healthy molecules.
-- **III.10.70** [`meritBar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Molt.lean#L25-L77) *(main result)* — There exist constants K and s such that for equalized representations with t≤s, the orbit is consumed uniformly at unforced molecules with summable budget K.
-- **III.10.71** [`spectra`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Satin.lean#L70-L109) *(key result)* — For small t there is a summable budget with constant K controlling the pointed application certificate on varying configurations, with order V.order+2j.
-- **III.10.72** [`pressure_mean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Mean.lean#L100-L145) *(key result)* — Away from the seeds, the real path at the stationary mean is uniformly bounded by an error of rate −1.
-- **III.10.73** [`cooler`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Sienna/Crone.lean#L60-L90) *(key result)* — Under an exponential-weight and budget inequality, a good configuration slice exists in the staying set with all tolls at most half the threshold.
-- **III.10.74** [`treasure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Malachite/Grain.lean#L42-L79) *(key result)* — There exist rate functions bounding, for large scale x, the first-order jet quantities of the step for all admissible data.
-- **III.10.75** [`coaches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Coach.lean#L122-L158) *(key result)* — For any base b≥2 and M>0 there is a uniform constant C≥1 such that, for all steps and tubes with funds, every forest satisfies the linear tree and principal-route licensing bound.
-- **III.10.76** [`lookingGlass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Lantern/Lens.lean#L41-L89) *(key result)* — Given rate-controlled data and a Bolt bound with a negative decay rate, there exists a rate-0 function B bounding the quantity eventually.
-- **III.10.77** [`royaltyB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Brim/Lode.lean#L32-L100) *(key result)* — There is a rate of order -1/2 giving a uniform remainder bound for every singleton after tuning, for large s.
-- **III.10.78** [`sterling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Yearling/Garter.lean#L34-L53) *(key result)* — If the target has positive exponent, there is a threshold side length such that for large parameter x every admissible data admits a nonempty year-structure certificate.
-- **III.10.79** [`spicules`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Brim/Heights.lean#L44-L82) *(key result)* — There exist rate functions of given polynomial orders such that a tentacle-type bound holds uniformly over all steps, tubes, supports and configurations.
-- **III.10.80** [`rocketsC`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Daisy/Sparks.lean#L36-L61) *(key result)* — For large lattice size, uniformly in parameters, there exist rate-controlled constants and functions such that every admissible step datum has a Captain whose conduit satisfies the Herd bound.
-- **III.10.81** [`saleD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Malachite/Searchlight.lean#L38-L70) *(key result)* — Compact-stencil derivative bounds with decay rates -1 and -1/2 for the dislocation and gap quantities.
-- **III.10.82** [`batten`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Yearling/Headwind.lean#L32) *(key result)* — For targets with expenses, there exists M such that the Yearling hood property holds.
-- **III.10.83** [`trove`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Mercury/Radio.lean#L31-L101) *(key result)* — A uniform remainder bound with rate -1/2 holds for every singleton contribution after broadcast, for all large scales.
-- **III.10.84** [`ired`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Grotto.lean#L25-L98) *(key result)* — For all large x, every step datum with given patch and cash structure has its tube covered, uniformly.
-- **III.10.85** [`feather`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Merry.lean#L33-L75) *(key result)* — All log-head and catalog costs at a given point are bounded by a uniform constant for equalized data, uniformly along smooth families.
-- **III.10.86** [`masterP`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Courage.lean#L66-L75) *(key result)* — For equalized representations with small t, the emerging quantity changes by at most t times a summable-budget function.
-- **III.10.87** [`takeover`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Census/Mettle.lean#L129-L152) *(key result)* — For sufficiently large lattice size, uniformly over patches and parameters, there exist rate-controlled constants and functions such that every admissible step datum admits a 'Captain' structure with a heavy conduit.
-- **III.10.88** [`logos`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Cub/Chant.lean#L50-L88) *(key result)* — For large enough x, under mild index and smallness conditions, a nonempty structure 'Eve' (bundle of step data at stages) exists.
-- **III.10.89** [`twinkles`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Census/Horns.lean#L24-L86) *(key result)* — There is a threshold on L such that for all patches and targets, a heavy Utopia structure exists with constant and rate bounds for all large x.
-- **III.10.90** [`sweaters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Brim/Sun.lean#L39-L98) *(key result)* — There exist rates N, δ, V of given orders such that a score bound holds uniformly for all sectors and tickets within budget.
-- **III.10.91** [`songs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Entrance.lean#L61-L82) *(key result)* — Withdrawing epoch receipts at fixed adjacent-stage prices, there exists a record with small error that is tight and gives the plays bounds for all large x.
-- **III.10.92** [`dissent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Dissent.lean#L111-L170) *(key result)* — For large x, the deviation of the Lie predictor vanishes at the origin and its derivative there is bounded by a small temperature-dependent quantity.
-- **III.10.93** [`shoots`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Shutter.lean#L119-L144) *(key result)* — For a fixed patch, window parameters exist such that for large x every manifest coat is a rotator, i.e. windows apply in real sectors.
-- **III.10.94** [`whittle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Das.lean#L49-L102) *(key result)* — For all large sides, uniformly over patches and cash data, a Utopia structure with controlled constants exists.
+<a id="k-iii-10-1"></a>
+
+- **K-III.10.1** [`anchored_of_terms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E03.lean#L39-L90) *(numbered result)* — Torus sums of kernel terms satisfying a cover envelope and separation bound give anchored row and column estimates with cardinality-weighted constants.
+
+<a id="k-iii-10-2"></a>
+
+- **K-III.10.2** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/H01.lean#L245-L251) *(key result)* — The fused gas occurrence series sums to the poured gas times the exponential of the sum of logarithms.
+
+<a id="k-iii-10-3"></a>
+
+- **K-III.10.3** [`kernel_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Kernel.lean#L264-L298) *(key result)* — At a fixed patch, kernel factors of the defects are near their flat matrices with constants independent of period, store and cut.
+
+<a id="k-iii-10-4"></a>
+
+- **K-III.10.4** [`columns_receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/I04.lean#L24-L62) *(numbered result)* — The accumulated log of column counts across levels is little-o of the schedule scale.
+
+<a id="k-iii-10-5"></a>
+
+- **K-III.10.5** [`Rack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L63-L73) *(numbered result)* — A packaging predicate collecting uniformity properties of raw cumulative kernels for a horizon at given levels and prices.
+
+<a id="k-iii-10-6"></a>
+
+- **K-III.10.6** [`x_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Slots.lean#L83-L158) *(key result)* — On the chart, the linear map is bounded by C h and the plotted-minus-linear error is bounded by C h times a widening factor, for small h.
+
+<a id="k-iii-10-7"></a>
+
+- **K-III.10.7** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E02.lean#L132-L244) *(key result)* — A fine-link shell comparison estimate holds, bounding fine-link quantities against parent shell data.
+
+<a id="k-iii-10-8"></a>
+
+- **K-III.10.8** [`pricing_order`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Energy.lean#L173-L202) *(key result)* — Given grants for all test queries, there is a floor such that any sheet with larger floor admits raised delay records satisfying a ringing condition with arbitrarily large values.
+
+<a id="k-iii-10-9"></a>
+
+- **K-III.10.9** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E01.lean#L289-L324) *(key result)* — Macro charges and packing estimates hold on a single oriented sector (price E01 in the chain).
+
+<a id="k-iii-10-10"></a>
+
+- **K-III.10.10** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E07.lean#L115-L158) *(key result)* — A bound on all affected departures (E07 item in the price chain), using macro multiplicity and stencil clipping.
+
+<a id="k-iii-10-11"></a>
+
+- **K-III.10.11** [`answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E06.lean#L413-L440) *(key result)* — Lower bounds on the F+I rows hold, with column and witness costs of order 1/L² times the swell currency at fixed pre-L data.
+
+<a id="k-iii-10-12"></a>
+
+- **K-III.10.12** [`z_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Prediction.lean#L243-L267) *(key result)* — At a fixed patch, the linearization of the Z prediction is bounded linearly and approximates the test with quadratic error uniformly, independent of the torus.
+
+<a id="k-iii-10-13"></a>
+
+- **K-III.10.13** [`global_chart_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Global.lean#L76-L148) *(numbered result)* — Post-L, uniform small-log estimates on the full torus bound both defects in terms of a log-field size h.
+
+<a id="k-iii-10-14"></a>
+
+- **K-III.10.14** [`local_gaps`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Locality.lean#L151-L174) *(numbered result)* — Gap quantities depend only on configurations within distance D of the site, so agreeing near the site gives equal values.
+
+<a id="k-iii-10-15"></a>
+
+- **K-III.10.15** [`interior_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Interior.lean#L22-L63) *(key result)* — Within a halo, the two cut defects (linear gap and derivative gap) are bounded by a constant times h times a widening factor, uniformly over step data.
+
+<a id="k-iii-10-16"></a>
+
+- **K-III.10.16** [`bare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Bare.lean#L64-L120) *(main result)* — The bare defect-producer statement EBare holds unconditionally.
+
+<a id="k-iii-10-17"></a>
+
+- **K-III.10.17** [`grants`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L24) *(key result)* — For every teller, the pre- and post-pressure grants hold unconditionally, without a separate bare-estimate input.
+
+<a id="k-iii-10-18"></a>
+
+- **K-III.10.18** [`pressure_pricing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L32-L37) *(numbered result)* — For any price map there is a threshold on the parameters beyond which the delay data can be enlarged in the beta entry so that a ringing function bounded below by any given constant exists.
+
+<a id="k-iii-10-19"></a>
+
+- **K-III.10.19** [`healthy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L91-L97) *(main result)* — For a cleaner sequence of tables, there exists a hierarchy among the limit table that has the required orientation.
+
+<a id="k-iii-10-20"></a>
+
+- **K-III.10.20** [`rectangle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Many.lean#L89-L101) *(numbered result)* — For a Gaussian with covariance bounded above by M, the probability that all coordinates in a set exceed t in absolute value is at most 2^|X| exp((-st+Ms²/2)|X|).
+
+<a id="k-iii-10-21"></a>
+
+- **K-III.10.21** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Mallow/Passage.lean#L264-L270) *(numbered result)* — The fused gas occurrence series sums to the product of the gas and the exponential of the summed logarithms.
+
+<a id="k-iii-10-22"></a>
+
+- **K-III.10.22** [`Coat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Coat.lean#L49-L56) *(numbered result)* — A structure packaging the input data of a sector as a view without new variables.
+
+<a id="k-iii-10-23"></a>
+
+- **K-III.10.23** [`Intake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Intake.lean#L42-L49) *(numbered result)* — A packaged structure of hypotheses serving as input to the connected-activity jet service.
+
+<a id="k-iii-10-24"></a>
+
+- **K-III.10.24** [`Target`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/OptionCost.lean#L62-L76) *(numbered result)* — A bundled record of hypotheses and parameters (ordering of epsilon before L, allowed marks) for the connected-activity jet estimate.
+
+<a id="k-iii-10-25"></a>
+
+- **K-III.10.25** [`Room`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Room.lean#L39-L48) *(numbered result)* — A structure collecting stencil and delay hypotheses (enough room) for core and annulus analytic estimates.
+
+<a id="k-iii-10-26"></a>
+
+- **K-III.10.26** [`tail_bills`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/PathPrices.lean#L127-L142) *(numbered result)* — Tail sums of path prices with exponential length weights are negligible for large x.
+
+<a id="k-iii-10-27"></a>
+
+- **K-III.10.27** [`required`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Coat.lean#L133-L142) *(numbered result)* — Under shell access and interior hypotheses with bounded hot directions, the signal is grafted at the base point with the stated radius and bound.
+
+<a id="k-iii-10-28"></a>
+
+- **K-III.10.28** [`tickets_le`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Mask.lean#L125-L145) — The product of local estimate weights is bounded by an exponential in the number of shares with a rate depending on the patch.
+
+<a id="k-iii-10-29"></a>
+
+- **K-III.10.29** [`engine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Divisors.lean#L26-L135) *(main result)* — There exists a level schedule satisfying the payment requirements whose scales are divisibly spaced.
+
+<a id="k-iii-10-30"></a>
+
+- **K-III.10.30** [`dressed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Harmonic.lean#L46-L101) *(key result)* — For a fixed patch there are radii such that all sufficiently small displacements within the same chart keep the dressed quantities controlled uniformly over step data.
+
+<a id="k-iii-10-31"></a>
+
+- **K-III.10.31** [`approves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/MinBranches.lean#L134-L173) *(numbered result)* — If the configuration is close to trivial within distance d of a site, the predictors are within delta of the identity and tag masses equal one.
+
+<a id="k-iii-10-32"></a>
+
+- **K-III.10.32** [`marks_here`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/PatchCap.lean#L115-L151) *(numbered result)* — Actual tags are read correctly under weak local conditions, uniformly for large x.
+
+<a id="k-iii-10-33"></a>
+
+- **K-III.10.33** [`atoms_meet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Receiving.lean#L82-L111) *(numbered result)* — Atoms with summed budget are translated with bounds certified by a Sales capacity at power r of beta.
+
+<a id="k-iii-10-34"></a>
+
+- **K-III.10.34** [`letters_LD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Outer.lean#L85-L131) *(numbered result)* — Both mismatch rows after the short cut in the unaffected chart are bounded by a rate-order -3/2 function.
+
+<a id="k-iii-10-35"></a>
+
+- **K-III.10.35** [`input_decays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Compression.lean#L137-L181) *(numbered result)* — A weighted exponential-decay bound on the response of the extracted rows to a single impulse at a bond, in terms of distance to the focus.
+
+<a id="k-iii-10-36"></a>
+
+- **K-III.10.36** [`f0_agrees`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Folio/Base.lean#L107-L123) *(numbered result)* — The extension function on F0 depends only on configurations near the relevant region, so two locally agreeing configurations give equal values.
+
+<a id="k-iii-10-37"></a>
+
+- **K-III.10.37** [`within`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Accuracy.lean#L64-L163) *(numbered result)* — Within protected stencils, the jet remainder is bounded by explicit rate functions of orders −1/2 and −1.
+
+<a id="k-iii-10-38"></a>
+
+- **K-III.10.38** [`soft_bills`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Remainder.lean#L110-L179) *(numbered result)* — The soft term differs from half the squared reply norm by at most a rate −3/2 error on weak annulus cells.
+
+<a id="k-iii-10-39"></a>
+
+- **K-III.10.39** [`survey`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Survey.lean#L92-L109) *(key result)* — For a patch with branching predictor, eventually in x, the forecast of the bare predictor model satisfies a uniform bound on directions of bounded norm for all steps and tubes.
+
+<a id="k-iii-10-40"></a>
+
+- **K-III.10.40** [`certified`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Supply.lean#L110-L120) *(numbered result)* — Under the stated hypotheses, a day datum is valid and satisfies clearing and admission conditions.
+
+<a id="k-iii-10-41"></a>
+
+- **K-III.10.41** [`allocation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Intake.lean#L57-L59) *(numbered result)* — An intake with point charge yields a charged allocation and portion-cost data without altering weights.
+
+<a id="k-iii-10-42"></a>
+
+- **K-III.10.42** [`issue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Issue.lean#L94-L185) *(key result)* — For large side length L and large width W, there exist order, constants and a rate so that the required bounds hold simultaneously for all admissible tubes and steps, yielding the needed invoices.
+
+<a id="k-iii-10-43"></a>
+
+- **K-III.10.43** [`retreat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Resolve.lean#L59-L131) *(numbered result)* — Remote affine paths are small at the local stationary mean, with an error of rate −1.
+
+<a id="k-iii-10-44"></a>
+
+- **K-III.10.44** [`quoted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Export.lean#L48-L74) *(numbered result)* — A single uniform beta cost per vertex handles the log/determinant correction, with rate-b error functions.
+
+<a id="k-iii-10-45"></a>
+
+- **K-III.10.45** [`ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Peak.lean#L92-L188) *(key result)* — For rare-event configurations away from seeds, a Gaussian-scale excursion lower bound holds uniformly for large x, with a fixed small constant.
+
+<a id="k-iii-10-46"></a>
+
+- **K-III.10.46** [`earns`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/AssignedPrice.lean#L54-L86) *(key result)* — The quoted cost near the point charge is at least (κ t² − E(x)) times the number of shares, with E decaying at rate −3/2.
+
+<a id="k-iii-10-47"></a>
+
+- **K-III.10.47** [`dividend`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/AffOrd.lean#L93-L136) *(numbered result)* — Mean and residual of the affine-ordered cost are bounded by a constant times t, with a rate-controlled error for the fixed-L exponent.
+
+<a id="k-iii-10-48"></a>
+
+- **K-III.10.48** [`rear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Via.lean#L95-L108) *(numbered result)* — A linear identity holds for a response and turns in a unified function near a remote row.
+
+<a id="k-iii-10-49"></a>
+
+- **K-III.10.49** [`light_costs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Annulus.lean#L103-L160) *(numbered result)* — Weak unmasked estimates on the light remainder at each stencil: bounded below by a rate −E and above on selected packets.
+
+<a id="k-iii-10-50"></a>
+
+- **K-III.10.50** [`recommends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Quotation.lean#L47-L92) *(main result)* — For large sides and all admissible stamped tubes, the offer of non-packet gas letters holds with prescribed power-of-beta bounds, using only actual inputs.
+
+<a id="k-iii-10-51"></a>
+
+- **K-III.10.51** [`annulus`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Annulus.lean#L164-L185) *(key result)* — On the annulus between radii 2B and 200B, the remainders of a sector packet's debit are bounded below by an O(x^{-3/2})-rate error, before determinant or Gaussian corrections.
+
+<a id="k-iii-10-52"></a>
+
+- **K-III.10.52** [`condenses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Rewards.lean#L44-L87) *(key result)* — Local log differences of the condensation are bounded away from seeds by a rate −1/2 error.
+
+<a id="k-iii-10-53"></a>
+
+- **K-III.10.53** [`unified_exp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/UnifiedValue.lean#L40-L73) *(key result)* — The assembled dictionary gives a unified exponential value formula for the coat at the manifest width, used by the consolidated and selection-run results.
+
+<a id="k-iii-10-54"></a>
+
+- **K-III.10.54** [`seat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Buoy.lean#L46-L78) *(numbered result)* — The integral over shifted stages equals an integral over the full coordinate split with the actual reference density.
+
+<a id="k-iii-10-55"></a>
+
+- **K-III.10.55** [`timing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Daisy/Charm.lean#L58-L179) *(key result)* — For large lattice size and uniform parameters, given a rate-controlled V, there exist rate-controlled q, p and a Utopia structure on every admissible step whose Herd bound holds with the stated pressure bound.
+
+<a id="k-iii-10-56"></a>
+
+- **K-III.10.56** [`patch_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Diags.lean#L92-L107) *(numbered result)* — The difference of the joint window quantities for two admissible fields is bounded by the number of colors times a pulse cost in the uniform gauge difference.
+
+<a id="k-iii-10-57"></a>
+
+- **K-III.10.57** [`fountain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Boulevard/Clasp.lean#L83-L101) *(numbered result)* — Eventually in k, derivatives of a truncated auxiliary analytic charge are bounded by a estimate bound plus a site-count term.
+
+<a id="k-iii-10-58"></a>
+
+- **K-III.10.58** [`burst`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Thrills.lean#L47-L69) *(key result)* — For the auxiliary lattice step, a positivity bound holds and a brush-type estimate holds at admissible positions.
+
+<a id="k-iii-10-59"></a>
+
+- **K-III.10.59** [`read_guides`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Guide.lean#L115-L163) *(numbered result)* — The linear response of costs to the target field on a clean patch is bounded by a rate-controlled function of order -1.
+
+<a id="k-iii-10-60"></a>
+
+- **K-III.10.60** [`ligatures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Laud.lean#L27-L60) *(key result)* — At critical station parameters with c at least 2, the comparisons on auxiliary lattices hold (statement truncated).
+
+<a id="k-iii-10-61"></a>
+
+- **K-III.10.61** [`capital`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Costs.lean#L92-L157) *(main result)* — There are uniform per-jump receipt constants for the endpoint windows, valid for all large x and all admissible tubes, stores, and configurations.
+
+<a id="k-iii-10-62"></a>
+
+- **K-III.10.62** [`abides`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Rain/Room.lean#L88-L92) *(key result)* — For large n, all derivatives up to the given order of the actual weight function in the allowed directions are bounded by an explicit estimate-cost estimate.
+
+<a id="k-iii-10-63"></a>
+
+- **K-III.10.63** [`GrantBodies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Issue.lean#L51-L71) *(numbered result)* — A structure bundling the conclusions of a one-step vacuum production of normalized bounds for all words.
+
+<a id="k-iii-10-64"></a>
+
+- **K-III.10.64** [`Order`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Issue.lean#L33-L46) *(numbered result)* — A record of posted parameters and retained covariance bounds for all sectors in one step.
+
+<a id="k-iii-10-65"></a>
+
+- **K-III.10.65** [`Rotator`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Shutter.lean#L110-L117) *(numbered result)* — A structure of real-sector window hypotheses at one torus coat.
+
+<a id="k-iii-10-66"></a>
+
+- **K-III.10.66** [`stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Supply.lean#L72-L98) *(main result)* — For a branching patch and local ratio, there is a kiosk of constants such that every matching desk satisfies the quantitative stage procurement bound for all large x.
+
+<a id="k-iii-10-67"></a>
+
+- **K-III.10.67** [`erudite`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Shellac/Sables.lean#L26-L65) *(key result)* — For large scale t, the full residual is positive and has derivative bounds of order beta^(-23/20) uniformly over admissible step data.
+
+<a id="k-iii-10-68"></a>
+
+- **K-III.10.68** [`school`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Calls.lean#L46-L49) *(key result)* — Given delays, one can enlarge them so that all further enlargements satisfy the planks (schedule) conditions.
+
+<a id="k-iii-10-69"></a>
+
+- **K-III.10.69** [`rimfire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Basin.lean#L23-L49) *(key result)* — There exist constants such that for an equalized representation with small perturbation t, a summable budget function controls the change of the contribution on healthy molecules.
+
+<a id="k-iii-10-70"></a>
+
+- **K-III.10.70** [`meritBar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Molt.lean#L25-L77) *(main result)* — There exist constants K and s such that for equalized representations with t≤s, the orbit is consumed uniformly at unforced molecules with summable budget K.
+
+<a id="k-iii-10-71"></a>
+
+- **K-III.10.71** [`spectra`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Satin.lean#L70-L109) *(key result)* — For small t there is a summable budget with constant K controlling the pointed application certificate on varying configurations, with order V.order+2j.
+
+<a id="k-iii-10-72"></a>
+
+- **K-III.10.72** [`pressure_mean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Mean.lean#L100-L145) *(key result)* — Away from the seeds, the real path at the stationary mean is uniformly bounded by an error of rate −1.
+
+<a id="k-iii-10-73"></a>
+
+- **K-III.10.73** [`cooler`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Sienna/Crone.lean#L60-L90) *(key result)* — Under an exponential-weight and budget inequality, a good configuration slice exists in the staying set with all tolls at most half the threshold.
+
+<a id="k-iii-10-74"></a>
+
+- **K-III.10.74** [`treasure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Malachite/Grain.lean#L42-L79) *(key result)* — There exist rate functions bounding, for large scale x, the first-order jet quantities of the step for all admissible data.
+
+<a id="k-iii-10-75"></a>
+
+- **K-III.10.75** [`coaches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Coach.lean#L122-L158) *(key result)* — For any base b≥2 and M>0 there is a uniform constant C≥1 such that, for all steps and tubes with funds, every forest satisfies the linear tree and principal-route licensing bound.
+
+<a id="k-iii-10-76"></a>
+
+- **K-III.10.76** [`lookingGlass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Lantern/Lens.lean#L41-L89) *(key result)* — Given rate-controlled data and a Bolt bound with a negative decay rate, there exists a rate-0 function B bounding the quantity eventually.
+
+<a id="k-iii-10-77"></a>
+
+- **K-III.10.77** [`royaltyB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Brim/Lode.lean#L32-L100) *(key result)* — There is a rate of order -1/2 giving a uniform remainder bound for every singleton after tuning, for large s.
+
+<a id="k-iii-10-78"></a>
+
+- **K-III.10.78** [`sterling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Yearling/Garter.lean#L34-L53) *(key result)* — If the target has positive exponent, there is a threshold side length such that for large parameter x every admissible data admits a nonempty year-structure certificate.
+
+<a id="k-iii-10-79"></a>
+
+- **K-III.10.79** [`spicules`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Brim/Heights.lean#L44-L82) *(key result)* — There exist rate functions of given polynomial orders such that a tentacle-type bound holds uniformly over all steps, tubes, supports and configurations.
+
+<a id="k-iii-10-80"></a>
+
+- **K-III.10.80** [`rocketsC`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Daisy/Sparks.lean#L36-L61) *(key result)* — For large lattice size, uniformly in parameters, there exist rate-controlled constants and functions such that every admissible step datum has a Captain whose conduit satisfies the Herd bound.
+
+<a id="k-iii-10-81"></a>
+
+- **K-III.10.81** [`saleD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Malachite/Searchlight.lean#L38-L70) *(key result)* — Compact-stencil derivative bounds with decay rates -1 and -1/2 for the dislocation and gap quantities.
+
+<a id="k-iii-10-82"></a>
+
+- **K-III.10.82** [`batten`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Yearling/Headwind.lean#L32) *(key result)* — For targets with expenses, there exists M such that the Yearling hood property holds.
+
+<a id="k-iii-10-83"></a>
+
+- **K-III.10.83** [`trove`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Mercury/Radio.lean#L31-L101) *(key result)* — A uniform remainder bound with rate -1/2 holds for every singleton contribution after broadcast, for all large scales.
+
+<a id="k-iii-10-84"></a>
+
+- **K-III.10.84** [`ired`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Grotto.lean#L25-L98) *(key result)* — For all large x, every step datum with given patch and cash structure has its tube covered, uniformly.
+
+<a id="k-iii-10-85"></a>
+
+- **K-III.10.85** [`feather`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Merry.lean#L33-L75) *(key result)* — All log-head and catalog costs at a given point are bounded by a uniform constant for equalized data, uniformly along smooth families.
+
+<a id="k-iii-10-86"></a>
+
+- **K-III.10.86** [`masterP`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Alabaster/Courage.lean#L66-L75) *(key result)* — For equalized representations with small t, the emerging quantity changes by at most t times a summable-budget function.
+
+<a id="k-iii-10-87"></a>
+
+- **K-III.10.87** [`takeover`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Census/Mettle.lean#L129-L152) *(key result)* — For sufficiently large lattice size, uniformly over patches and parameters, there exist rate-controlled constants and functions such that every admissible step datum admits a 'Captain' structure with a heavy conduit.
+
+<a id="k-iii-10-88"></a>
+
+- **K-III.10.88** [`logos`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Cub/Chant.lean#L50-L88) *(key result)* — For large enough x, under mild index and smallness conditions, a nonempty structure 'Eve' (bundle of step data at stages) exists.
+
+<a id="k-iii-10-89"></a>
+
+- **K-III.10.89** [`twinkles`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Census/Horns.lean#L24-L86) *(key result)* — There is a threshold on L such that for all patches and targets, a heavy Utopia structure exists with constant and rate bounds for all large x.
+
+<a id="k-iii-10-90"></a>
+
+- **K-III.10.90** [`sweaters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Brim/Sun.lean#L39-L98) *(key result)* — There exist rates N, δ, V of given orders such that a score bound holds uniformly for all sectors and estimates within budget.
+
+<a id="k-iii-10-91"></a>
+
+- **K-III.10.91** [`songs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Entrance.lean#L61-L82) *(key result)* — Withdrawing epoch receipts at fixed adjacent-stage prices, there exists a record with small error that is tight and gives the plays bounds for all large x.
+
+<a id="k-iii-10-92"></a>
+
+- **K-III.10.92** [`dissent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Dissent.lean#L111-L170) *(key result)* — For large x, the deviation of the Lie predictor vanishes at the origin and its derivative there is bounded by a small temperature-dependent quantity.
+
+<a id="k-iii-10-93"></a>
+
+- **K-III.10.93** [`shoots`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Shutter.lean#L119-L144) *(key result)* — For a fixed patch, window parameters exist such that for large x every manifest coat is a rotator, i.e. windows apply in real sectors.
+
+<a id="k-iii-10-94"></a>
+
+- **K-III.10.94** [`whittle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Das.lean#L49-L102) *(key result)* — For all large sides, uniformly over patches and cash data, a Utopia structure with controlled constants exists.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

@@ -1,11 +1,19 @@
 # III.9. The marginal flow: the running coupling and its reset
 
-*Part III — Ultraviolet construction (renormalization group).* 7,215 lines of Lean in 1,261 declarations used by the main theorem.
+*Part III — Ultraviolet construction (renormalization group).*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Tracks the running coupling and resets the effective density after each renormalization step.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** III, Ultraviolet construction (renormalization group). **Lean:** chapter 21: [`YM/UVNext/COUPLING_RESET/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET), [`YM/AnalyticBridge/VERIFIED_RESET_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP), [`YM/Extra/WILSON_STARTUP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP), [`YM/Push/BETA_TRANSPORT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT), [`YM/Further/STRONG_STARTUP_CREDIT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT), [`YM/Push/PRICE_COMPILER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER), [`YM/Extra/MULTISOURCE_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS). It also includes five small packages: [`PhysicalNext/UNMASKED_THROUGH_LAUNCH`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH), [`Planned/RECIPE_STARTUP_PORT`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT), [`R2I/Wind`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Wind), [`Further/THRESHOLD_SOURCE_RESTART`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/THRESHOLD_SOURCE_RESTART) and [`PhysicalNext/SERVICE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/SERVICE). The interfaces this unit fills are in [`YM/RG/History.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean) and [`YM/PCalc/Band.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean), both in unit III.1. **Size:** 7,215 lines in the main-theorem closure:
+[Overview](../README.md) · [All units](../units.md) · [← Previous: III.8](III-8.md) · [Next: III.10 →](III-10.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** III, Ultraviolet construction (renormalization group). **Lean:** unit III.9: [`YM/UVNext/COUPLING_RESET/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET), [`YM/AnalyticBridge/VERIFIED_RESET_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP), [`YM/Extra/WILSON_STARTUP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP), [`YM/Push/BETA_TRANSPORT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT), [`YM/Further/STRONG_STARTUP_CREDIT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT), [`YM/Push/PRICE_COMPILER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER), [`YM/Extra/MULTISOURCE_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS). It also includes five small packages: [`PhysicalNext/UNMASKED_THROUGH_LAUNCH`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH), [`Planned/RECIPE_STARTUP_PORT`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT), [`R2I/Wind`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Wind), [`Further/THRESHOLD_SOURCE_RESTART`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/THRESHOLD_SOURCE_RESTART) and [`PhysicalNext/SERVICE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/SERVICE). The interfaces this unit fills are in [`YM/RG/History.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean) and [`YM/PCalc/Band.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean), both in unit III.1. **Size:** 7,215 lines in the source allocation:
 
 | package | lines |
 |---|---|
@@ -40,6 +48,10 @@ $$\rho(U)=\exp\big(v|\Lambda_m|-\beta\,\mathcal K_P(U)-\mathcal L_P(U)-\mathcal 
 **The block-spin step.** $T^{(m)}_{\beta'}$ denotes one step from level $m+1$ to level $m$ at inverse coupling $\beta'$:
 $$(T^{(m)}_{\beta'}\rho')(V)=\int k_{\beta'}(V,U)\,\rho'(U)\,dU.$$
 The kernel $k_{\beta'}$ is a probability kernel (unit III.1). Densities are taken relative to product Haar probability measure and are not normalized.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -227,6 +239,8 @@ uniformly in the size of the torus.
 - The finer accuracy $|\beta_{N,p,m}-\beta_{N,p,m+1}-\alpha_{N,m}|\le r_m$.
 - III.9.8.
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 - **III.1 (block-spin step and interfaces).** This unit uses:
@@ -280,6 +294,8 @@ References:
 - **The exponents.** The exponents $-1/2$, $-11/10$, $(\log\log)^2$ and $1/5$ in III.9.2 are part of the definitions.
 - **The hypotheses of III.9.5(a).** These are carried here as assumptions and discharged in III.10.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 The nonlinear step gives an early presentation of the blocked density. Its marginal coefficient has three contributions: the input coupling $\beta'$, the one-loop shift $\alpha_{N,m}$, and the isotropic Hessian coefficient $\delta$ of the early regular functions. The reset sets $\beta=\beta'+\alpha_{N,m}+\delta$. Subtracting flat values and quadratic projections, adding compensating path terms, and absorbing mask discrepancies into the forced gas preserves the full density. The output activity bounds and $|\delta|\le r_m\le1$, together with $|\alpha_{N,m}+\kappa\log L_m|+1\le\omega$, give the transfer inequality.
@@ -287,6 +303,8 @@ The nonlinear step gives an early presentation of the blocked density. Its margi
 Two configurations identify the reset: the flat field and a small-field stripe $V$ with $\mathcal K(V)\ge|\Lambda|\eta t^2$. Matching at the flat field fixes $v=|\Lambda|^{-1}\log H(1)$. Matching the log-ratio at $V$ gives a scalar equation $f(x,d)=0$. The pricing and activity-motion bounds make $f$ increasing with slope at least $\mathcal K(V)/2$, and give $|f(x,0)|\le\mathcal K(V)r/2$. Its unique root lies in $[-r,r]$ and depends continuously on $x$. Shape control gives equality at every configuration. For the reorganized activities, $f(x,d)=(d-\delta_x)\mathcal K(V)$, so the correction is explicit.
 
 The interval shooting chains these steps from the Wilson lattice down to level $0$. At each level, the transfer inequality forces the two endpoint couplings to lie on opposite sides of $[\bar\beta+\kappa s_m/2,\bar\beta+2\kappa s_m]$. Continuity selects a subinterval whose couplings stay within that window and attain its endpoints. At level $0$, a surviving bare parameter gives $\beta_0=\bar\beta$. Summing the transfer errors gives the running law, uniformly in cutoff and volume. III.13 uses compatible finite-cutoff fixed points to obtain the centered history and its analytic continuations.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -550,6 +568,8 @@ Here $P_n,S_n$ are periodizations. Thus $S_n=(rI+P_n^{\mathsf T}P_n)^{-1}$, unif
 
 *Lean:* [`Polar.deliver`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L86-L91), [`Polar.invert_tori`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L48-L84), [`Polar.writes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Polar.lean#L142-L163).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The early presentation with local bounds comes from III.10, the one-loop coefficient from III.7, and the compatible kinetic data from III.13. Given those inputs, the reset must preserve the full masked density, including failed-mask discrepancies and the forced gas. Two-point matching alone does not prove that identity. Lemma 4.13 supplies it and proves the output activity bounds.
@@ -562,36 +582,168 @@ The constants $c_m$ depend on the stage pair, so this is a fixed-stage estimate.
 
 The coarsest coupling is prescribed exactly. Shooting chooses the bare coupling separately for each cutoff and volume and restricts the surviving parameter intervals to keep every level in its band. The uniqueness theorem in III.13 applies to its specified continuation class.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| Written proof | Lean (glossary) | Meaning |
-|---|---|---|
-| $\kappa=\frac{11C_G}{24\pi^2}=2b_0$ | [`Gauge.slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184), [`Gauge.casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182) | slope of $\beta$ against $\log(1/a)$ |
-| $s_m$, $a_m$, $L_m$ | [`Schedule.scale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115), [`Schedule.a`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99), `block` | scale $\log(1/a_m)$, spacing, block factor (odd, $\ge3$) |
-| $\bar\beta$ | `Calendar.bar` ("barrier") | coupling at the coarsest level |
-| $\hat\beta_m$, $\mathfrak B_m$ | [`Calendar.hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79), [`band`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L63) | reference coupling, band $[\hat\beta/2,2\hat\beta]$ |
-| $t_m$, $M_m$, $B_m$ | [`threshold`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L83), [`monitor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L81), [`coverSize`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L82) | small-field threshold, its multiplier, cover size |
-| $\varepsilon_m$, $\tilde\varepsilon_m$ | [`allowance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L84), [`forcedAllowance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L85) | sizes of regular and forced activities |
-| $J_m$, $\omega_j$, $\theta_j$ | `Calendar.J`, [`Stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L45-L61) (`drift`), `theta` | stage index, drift allowance, smallness exponent |
-| $\rho=(P,c,E,K,b,\beta,v)$ | [`Rep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L165-L171) | effective action ("representation") |
-| $\mathcal K_P$ | [`BetaTransport.kinetic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L22-L25) | $\beta$-coefficient of the leading terms |
-| $T^{(m)}_\beta$ | [`StepData.push`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79) | one block-spin step |
-| $\beta_{N,p,m}$, $\rho_{N,p,m}$ | `History.β`, `History.rep` | selected history |
-| $\alpha_{N,m}$, $P_{N,m}$ | [`Kin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77) (`alpha`, `path`) | one-loop shift of the step, path data |
-| $\mathfrak D$ | [`Directed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36) | scale sequence, kinetic data and recipe |
-| reset step | [`Directed.Move`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L49-L55) | one step with exact transfer and $\lvert\beta-\beta'-\alpha\rvert\le1$ |
-| step program | [`Directed.Program`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L65-L72) | start-up curves and reset along all admissible curves |
-| $(c_m,r_m)$ | [`ResetPrices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L38-L43) (`cost`, `radius`) | income multiplier, reset window ($\le1$) |
-| $\eta_j$, probe $V$ | [`Sensor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L92-L94), [`Usable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L55-L58) | lower bound $\mathcal K(V)\ge\lvert\Lambda\rvert\eta t^2$ |
-| $f(x,d)$, $d$ | [`Template.residual`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L64-L65) | scalar residual, coupling correction |
-| $\chi_X$, $Q_i$, $E_i^0$, $D_i$ | [`Residual.splits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Residual.lean#L114-L120) | small-field indicator, local quadratic projection, subtracted regular function, mask discrepancy |
-| $\delta(A)$ | [`Averaging.delta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L75) | isotropic curvature-squared coefficient of activities |
-| early presentation | [`Collection.earlyValue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L26-L27), [`Return.atlas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L70-L71) | blocked density before the reset |
-| $P^{\rm top}$, $R_p$, $Q_4$ | [`Design.top`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Design.lean#L34-L38), [`residual`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L58), [`fourth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L154) | Wilson top path data, one-plaquette residual, quartic coefficient |
-| $\rho^{\rm start}_\beta$ | [`Bid.Cake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L27-L28) with `payload`, `dictionary` | Wilson start-up representation |
-| compatible $(c,b)$ | `WilsonStartup.Decent` | $c_{\rm dir}\le1$, $B\ge2$, $te^{(B-2)/c_{\rm rel}}\ge2$ |
-| $\phi_m,\psi_m$ | [`floorBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L57), [`ceilBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L58) | shooting window |
-| numerical bounds and entry thresholds | glossary item 1 | constants in the polymer norm estimates and lower bounds on $\hat\beta$ |
+- **Written proof:** $\kappa=\frac{11C_G}{24\pi^2}=2b_0$
+
+  **Lean (glossary):** [`Gauge.slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184), [`Gauge.casimir`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182)
+
+  **Meaning:** slope of $\beta$ against $\log(1/a)$
+
+- **Written proof:** $s_m$, $a_m$, $L_m$
+
+  **Lean (glossary):** [`Schedule.scale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115), [`Schedule.a`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99), `block`
+
+  **Meaning:** scale $\log(1/a_m)$, spacing, block factor (odd, $\ge3$)
+
+- **Written proof:** $\bar\beta$
+
+  **Lean (glossary):** `Calendar.bar` ("barrier")
+
+  **Meaning:** coupling at the coarsest level
+
+- **Written proof:** $\hat\beta_m$, $\mathfrak B_m$
+
+  **Lean (glossary):** [`Calendar.hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79), [`band`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L63)
+
+  **Meaning:** reference coupling, band $[\hat\beta/2,2\hat\beta]$
+
+- **Written proof:** $t_m$, $M_m$, $B_m$
+
+  **Lean (glossary):** [`threshold`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L83), [`monitor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L81), [`coverSize`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L82)
+
+  **Meaning:** small-field threshold, its multiplier, cover size
+
+- **Written proof:** $\varepsilon_m$, $\tilde\varepsilon_m$
+
+  **Lean (glossary):** [`allowance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L84), [`forcedAllowance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L85)
+
+  **Meaning:** sizes of regular and forced activities
+
+- **Written proof:** $J_m$, $\omega_j$, $\theta_j$
+
+  **Lean (glossary):** `Calendar.J`, [`Stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L45-L61) (`drift`), `theta`
+
+  **Meaning:** stage index, drift allowance, smallness exponent
+
+- **Written proof:** $\rho=(P,c,E,K,b,\beta,v)$
+
+  **Lean (glossary):** [`Rep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L165-L171)
+
+  **Meaning:** effective action ("representation")
+
+- **Written proof:** $\mathcal K_P$
+
+  **Lean (glossary):** [`BetaTransport.kinetic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L22-L25)
+
+  **Meaning:** $\beta$-coefficient of the leading terms
+
+- **Written proof:** $T^{(m)}_\beta$
+
+  **Lean (glossary):** [`StepData.push`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79)
+
+  **Meaning:** one block-spin step
+
+- **Written proof:** $\beta_{N,p,m}$, $\rho_{N,p,m}$
+
+  **Lean (glossary):** `History.β`, `History.rep`
+
+  **Meaning:** selected history
+
+- **Written proof:** $\alpha_{N,m}$, $P_{N,m}$
+
+  **Lean (glossary):** [`Kin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77) (`alpha`, `path`)
+
+  **Meaning:** one-loop shift of the step, path data
+
+- **Written proof:** $\mathfrak D$
+
+  **Lean (glossary):** [`Directed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36)
+
+  **Meaning:** scale sequence, kinetic data and recipe
+
+- **Written proof:** reset step
+
+  **Lean (glossary):** [`Directed.Move`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L49-L55)
+
+  **Meaning:** one step with exact transfer and $\lvert\beta-\beta'-\alpha\rvert\le1$
+
+- **Written proof:** step program
+
+  **Lean (glossary):** [`Directed.Program`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L65-L72)
+
+  **Meaning:** start-up curves and reset along all admissible curves
+
+- **Written proof:** $(c_m,r_m)$
+
+  **Lean (glossary):** [`ResetPrices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L38-L43) (`cost`, `radius`)
+
+  **Meaning:** income multiplier, reset window ($\le1$)
+
+- **Written proof:** $\eta_j$, probe $V$
+
+  **Lean (glossary):** [`Sensor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L92-L94), [`Usable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L55-L58)
+
+  **Meaning:** lower bound $\mathcal K(V)\ge\lvert\Lambda\rvert\eta t^2$
+
+- **Written proof:** $f(x,d)$, $d$
+
+  **Lean (glossary):** [`Template.residual`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L64-L65)
+
+  **Meaning:** scalar residual, coupling correction
+
+- **Written proof:** $\chi_X$, $Q_i$, $E_i^0$, $D_i$
+
+  **Lean (glossary):** [`Residual.splits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Residual.lean#L114-L120)
+
+  **Meaning:** small-field indicator, local quadratic projection, subtracted regular function, mask discrepancy
+
+- **Written proof:** $\delta(A)$
+
+  **Lean (glossary):** [`Averaging.delta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L75)
+
+  **Meaning:** isotropic curvature-squared coefficient of activities
+
+- **Written proof:** early presentation
+
+  **Lean (glossary):** [`Collection.earlyValue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L26-L27), [`Return.atlas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L70-L71)
+
+  **Meaning:** blocked density before the reset
+
+- **Written proof:** $P^{\rm top}$, $R_p$, $Q_4$
+
+  **Lean (glossary):** [`Design.top`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Design.lean#L34-L38), [`residual`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L58), [`fourth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L154)
+
+  **Meaning:** Wilson top path data, one-plaquette residual, quartic coefficient
+
+- **Written proof:** $\rho^{\rm start}_\beta$
+
+  **Lean (glossary):** [`Bid.Cake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L27-L28) with `payload`, `dictionary`
+
+  **Meaning:** Wilson start-up representation
+
+- **Written proof:** compatible $(c,b)$
+
+  **Lean (glossary):** `WilsonStartup.Decent`
+
+  **Meaning:** $c_{\rm dir}\le1$, $B\ge2$, $te^{(B-2)/c_{\rm rel}}\ge2$
+
+- **Written proof:** $\phi_m,\psi_m$
+
+  **Lean (glossary):** [`floorBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L57), [`ceilBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L58)
+
+  **Meaning:** shooting window
+
+- **Written proof:** numerical bounds and entry thresholds
+
+  **Lean (glossary):** glossary item 1
+
+  **Meaning:** constants in the polymer norm estimates and lower bounds on $\hat\beta$
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Nonlinear inputs.** The reset is conditional on the early presentation, stronger local activity bounds and continuity. Their supply is the conclusion of [Rain.glazing](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Rain/Glazing.lean#L97-L104) and [Roost.Factor.offering](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L56). Their assembly proofs identify the required inputs; the underlying nonlinear and Gaussian-sector estimates belong to III.10 and III.4 and are not independently verified here.
@@ -601,49 +753,104 @@ The coarsest coupling is prescribed exactly. Shooting chooses the bare coupling 
 5. **Numerical and bibliographic scope.** Lemma 4.18 gives the start-up numerical bounds; their use for source polynomials and first-step observations requires the norm definitions in III.12 and III.15. The cited numerical preparation does not itself construct those observables or their nonlinear continuations. The literature citations in §2 are background references; their exact bibliographic details and comparison with this construction remain unchecked here.
 6. **Verification scope.** The correspondence checks use the supplied Lean source and link table. No Lean build or independent axiom-closure check was performed. The package sizes and main-theorem dependency counts are retained from the unit map (tentative).
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.2](III-2.md), [III.15](III-15.md), [III.16](III-16.md), [II.2](II-2.md), [III.6](III-6.md), [II.1](II-1.md), [III.10](III-10.md), [III.3](III-3.md), [III.5](III-5.md), [III.4](III-4.md), [VI.1](VI-1.md).
+## Code dependencies
 
-**Used by:** [III.13](III-13.md), [III.10](III-10.md), [III.12](III-12.md), [III.2](III-2.md), [III.11](III-11.md), [VII.2](VII-2.md), [III.4](III-4.md), [VIII.1](VIII-1.md), [III.15](III-15.md), [III.14](III-14.md), [VII.4](VII-4.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.1](III-1.md), [III.2](III-2.md), [III.15](III-15.md), [III.16](III-16.md), [II.2](II-2.md), [III.6](III-6.md), [II.1](II-1.md), [III.10](III-10.md), [III.3](III-3.md), [III.5](III-5.md), [III.4](III-4.md), [VI.1](VI-1.md).
+
+**Referenced by:** [III.13](III-13.md), [III.10](III-10.md), [III.12](III-12.md), [III.2](III-2.md), [III.11](III-11.md), [VII.2](VII-2.md), [III.4](III-4.md), [VIII.1](VIII-1.md), [III.15](III-15.md), [III.14](III-14.md), [VII.4](VII-4.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 7,215 attributed lines; 1,261 line-counted declarations; 1,678 assigned declaration names. Of the assigned names, 1,582 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/AnalyticBridge/VERIFIED_RESET_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP) | 2,659 |
-| work package [`YM/Extra/WILSON_STARTUP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP) | 2,422 |
-| work package [`YM/Push/BETA_TRANSPORT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT) | 652 |
-| work package [`YM/UVNext/COUPLING_RESET/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET) | 592 |
-| work package [`YM/Extra/MULTISOURCE_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS) | 344 |
-| work package [`YM/Further/STRONG_STARTUP_CREDIT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT) | 213 |
-| work package [`YM/Push/PRICE_COMPILER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER) | 139 |
-| work package [`YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH) | 65 |
-| work package [`YM/Planned/RECIPE_STARTUP_PORT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT) | 60 |
-| work package [`YM/R2I/Wind/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Wind) | 34 |
-| work package [`YM/Further/THRESHOLD_SOURCE_RESTART/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/THRESHOLD_SOURCE_RESTART) | 24 |
-| work package [`YM/PhysicalNext/SERVICE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/SERVICE) | 11 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/AnalyticBridge/VERIFIED_RESET_STEP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP) — 2,659 lines.
+- work package [`YM/Extra/WILSON_STARTUP/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP) — 2,422 lines.
+- work package [`YM/Push/BETA_TRANSPORT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT) — 652 lines.
+- work package [`YM/UVNext/COUPLING_RESET/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET) — 592 lines.
+- work package [`YM/Extra/MULTISOURCE_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS) — 344 lines.
+- work package [`YM/Further/STRONG_STARTUP_CREDIT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT) — 213 lines.
+- work package [`YM/Push/PRICE_COMPILER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER) — 139 lines.
+- work package [`YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH) — 65 lines.
+- work package [`YM/Planned/RECIPE_STARTUP_PORT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT) — 60 lines.
+- work package [`YM/R2I/Wind/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Wind) — 34 lines.
+- work package [`YM/Further/THRESHOLD_SOURCE_RESTART/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/THRESHOLD_SOURCE_RESTART) — 24 lines.
+- work package [`YM/PhysicalNext/SERVICE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/SERVICE) — 11 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **III.9.1** [`root_hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L161-L199) *(key result)* — If each positive source has an anchored name in its support and rooted costs are bounded, the multi-marker connected-cover budget holds with an explicit site-factor constant.
-- **III.9.2** [`DelayLe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Post.lean#L34-L38) *(numbered result)* — A componentwise order relation on delay data.
-- **III.9.3** [`sensor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L96-L142) *(key result)* — For a nontrivial gauge group and a clipped action there is a uniform η making two tests separate with the true clipped action.
-- **III.9.4** [`cash`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Currency.lean#L75-L126) *(numbered result)* — For a forecast and nonnegative shifts, a family of numerical inequalities holds eventually as x tends to infinity.
-- **III.9.5** [`open_shop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L62-L65) *(numbered result)* — A delay assignment can be boosted so that all further boosts are opened for the given costs and scouts.
-- **III.9.6** [`pricing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Schedule.lean#L98-L111) *(key result)* — For a simple gauge, there is a floor beyond which delay records can be raised to satisfy ringing with large values and make every paid level prepared for the given scope.
-- **III.9.7** [`continuous_push`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L122-L131) *(key result)* — For a continuous curve of representations, the push is jointly continuous in the parameter and the fine configuration.
-- **III.9.8** [`advance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L175-L189) *(key result)* — Under additional remainder hypotheses, a priced reset step can be advanced to the next stage with continuous representatives.
-- **III.9.9** [`deliver`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L86-L91) *(key result)* — For rows with exponential-decay strip bounds, the inverse of r plus the transpose-product exists as a row with uniform strip bounds, with constants depending only on r, eta, A.
-- **III.9.10** [`evaluates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L96-L103) *(key result)* — At startup, the cake built from the payload and dictionary evaluates exactly to the bare Wilson weight at coupling β.
-- **III.9.11** [`residual_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L76-L101) *(key result)* — The one-face Wilson matching residual is bounded by C times threshold to the fifth power in the budgeted sup norms, for small threshold.
-- **III.9.12** [`card`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT/Layout.lean#L52-L71) *(numbered result)* — If the allowance conditions hold and the level is at top, the stamped recipe satisfies the required menu of estimates with the actual pot and kettle.
-- **III.9.13** [`prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Pricing.lean#L87-L107) *(key result)* — After enlarging the floor sequence, startup price conditions hold monotonically and any supplied delays can be raised to ones ensuring the prepared hypotheses for the scope.
-- **III.9.14** [`developer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L105-L138) *(key result)* — One can modify a schedule sheet to satisfy stationary purchase, order, and suitability conditions while preserving the kernel and floor.
-- **III.9.15** [`beforeWait`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L75-L89) *(key result)* — There exist thresholds beyond which the raw prices, openings, inherited conditions and cubic gates all hold, so that reset prices are paid.
-- **III.9.16** [`engine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Engine.lean#L62-L82) *(key result)* — A planned kin can be modified in its boundary condition, giving a new planned kin with revised path and unchanged stationary data away from the end.
-- **III.9.17** [`top_step`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/TopStep.lean#L160-L180) *(key result)* — Replacing top input paths in a Wilson-loop step preserves the critical, guessed, price-gap, classical-match and finite-bound properties.
+<a id="k-iii-9-1"></a>
+
+- **K-III.9.1** [`root_hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L161-L199) *(key result)* — If each positive source has an anchored name in its support and rooted costs are bounded, the multi-marker connected-cover budget holds with an explicit site-factor constant.
+
+<a id="k-iii-9-2"></a>
+
+- **K-III.9.2** [`DelayLe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Post.lean#L34-L38) *(numbered result)* — A componentwise order relation on delay data.
+
+<a id="k-iii-9-3"></a>
+
+- **K-III.9.3** [`sensor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L96-L142) *(key result)* — For a nontrivial gauge group and a clipped action there is a uniform η making two tests separate with the true clipped action.
+
+<a id="k-iii-9-4"></a>
+
+- **K-III.9.4** [`cash`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Currency.lean#L75-L126) *(numbered result)* — For a forecast and nonnegative shifts, a family of numerical inequalities holds eventually as x tends to infinity.
+
+<a id="k-iii-9-5"></a>
+
+- **K-III.9.5** [`open_shop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L62-L65) *(numbered result)* — A delay assignment can be boosted so that all further boosts are opened for the given costs and scouts.
+
+<a id="k-iii-9-6"></a>
+
+- **K-III.9.6** [`pricing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Schedule.lean#L98-L111) *(key result)* — For a simple gauge, there is a floor beyond which delay records can be raised to satisfy ringing with large values and make every paid level prepared for the given scope.
+
+<a id="k-iii-9-7"></a>
+
+- **K-III.9.7** [`continuous_push`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L122-L131) *(key result)* — For a continuous curve of representations, the push is jointly continuous in the parameter and the fine configuration.
+
+<a id="k-iii-9-8"></a>
+
+- **K-III.9.8** [`advance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L175-L189) *(key result)* — Under additional remainder hypotheses, a priced reset step can be advanced to the next stage with continuous representatives.
+
+<a id="k-iii-9-9"></a>
+
+- **K-III.9.9** [`deliver`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L86-L91) *(key result)* — For rows with exponential-decay strip bounds, the inverse of r plus the transpose-product exists as a row with uniform strip bounds, with constants depending only on r, eta, A.
+
+<a id="k-iii-9-10"></a>
+
+- **K-III.9.10** [`evaluates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L96-L103) *(key result)* — At startup, the cake built from the payload and dictionary evaluates exactly to the bare Wilson weight at coupling β.
+
+<a id="k-iii-9-11"></a>
+
+- **K-III.9.11** [`residual_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L76-L101) *(key result)* — The one-face Wilson matching residual is bounded by C times threshold to the fifth power in the budgeted sup norms, for small threshold.
+
+<a id="k-iii-9-12"></a>
+
+- **K-III.9.12** [`card`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT/Layout.lean#L52-L71) *(numbered result)* — If the allowance conditions hold and the level is at top, the stamped recipe satisfies the required menu of estimates with the actual pot and kettle.
+
+<a id="k-iii-9-13"></a>
+
+- **K-III.9.13** [`prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Pricing.lean#L87-L107) *(key result)* — After enlarging the floor sequence, startup price conditions hold monotonically and any supplied delays can be raised to ones ensuring the prepared hypotheses for the scope.
+
+<a id="k-iii-9-14"></a>
+
+- **K-III.9.14** [`developer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L105-L138) *(key result)* — One can modify a schedule sheet to satisfy stationary purchase, order, and suitability conditions while preserving the kernel and floor.
+
+<a id="k-iii-9-15"></a>
+
+- **K-III.9.15** [`beforeWait`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L75-L89) *(key result)* — There exist thresholds beyond which the raw prices, openings, inherited conditions and cubic gates all hold, so that reset prices are paid.
+
+<a id="k-iii-9-16"></a>
+
+- **K-III.9.16** [`engine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Engine.lean#L62-L82) *(key result)* — A planned kin can be modified in its boundary condition, giving a new planned kin with revised path and unchanged stationary data away from the end.
+
+<a id="k-iii-9-17"></a>
+
+- **K-III.9.17** [`top_step`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/TopStep.lean#L160-L180) *(key result)* — Replacing top input paths in a Wilson-loop step preserves the critical, guessed, price-gap, classical-match and finite-bound properties.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

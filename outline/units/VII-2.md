@@ -1,9 +1,17 @@
 # VII.2. The trace of the stress tensor and the trace anomaly
 
-*Part VII — Identification as Yang–Mills.* 20,681 lines of Lean in 3,833 declarations used by the main theorem.
+*Part VII — Identification as Yang–Mills.*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and rewritten by a second model; a final editing round is in progress. It is updated as it improves.
+Explains the centered trace two-point asymptotic and the resulting exclusions under the stated comparison hypotheses.
 
+**Status: checked.** Checked against the linked Lean and rewritten; final editing remains. [Status meanings](../../data/README.md#outline-status).
+
+[Overview](../README.md) · [All units](../units.md) · [← Previous: VII.1](VII-1.md) · [Next: VII.3 →](VII-3.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
 
 **Part:** VII, identification as Yang–Mills. **Lean:** [`YM/TraceExtension`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension) (namespaces `YM.TraceExtension` and `YM.Trace`). The folder splits as follows:
 - the centered trace and its spectral measure: the top-level files `Centered`, `WilsonTrace`, `LogScaling`, `ConeLaplace`, `Dyadic`, `Belfry`, `Agora`, `Endpoint`;
@@ -33,6 +41,10 @@ $\kappa_G$ is the slope of the coupling schedule $\hat\beta_k=\bar\beta+\kappa_G
 - $\mathsf F$ is the free Maxwell table: $\dim\mathfrak g$ independent free Maxwell fields, with propagator $\langle A A\rangle=1/(4\pi^2|x|^2)$.
 - $\mathcal O\in\mathsf F_4$ is the Wick-ordered label $\tfrac14\sum_{\mu,\nu}F^a_{\mu\nu}F^a_{\mu\nu}$, and $T^{\rm free}$ is the traceless free Maxwell stress tensor.
 - $G_\Theta(r)=S^{\xi_*}\big(\Theta(-\tfrac r2e_0)\,\Theta(\tfrac r2e_0)\big)$ is the time-axis two-point function of the selected phase.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -169,6 +181,8 @@ This is a continuous-scale version of VII.2.4; it is not used by the public stat
 *Status:* theorem; statement read only (probable on the meaning of the frame).
 *Lean:* field `stress` of [`Result`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Endpoint.lean#L99-L120), [`FieldComparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Endpoint.lean#L37-L64), [`odd_limit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Atlas/Crash.lean#L33-L36), [`Measures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Pith/Wall.lean#L13-L14).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **Inputs from other units.**
@@ -206,6 +220,8 @@ This is a continuous-scale version of VII.2.4; it is not used by the public stat
 
 The amplitude $3\dim\mathfrak g/\pi^4$ depends on these two being equal (§5). The gallery property is a hypothesis of VII.2.5; it is discharged for the constructed family in III.2, so the trace data must be carried by the family chosen in the ultraviolet construction.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 *Physical picture and the approach taken.* Classically the Yang–Mills stress tensor is traceless. After renormalization, dilations are broken by the running coupling and $\Theta=\frac{\beta(g)}{2g^3}F^2$. The proof does not use a regularized operator identity. It characterizes $T$ by two properties: uniqueness (the conserved admissible tensors form a line, VII.2.6) and the Ward normalization. At each scale $r_i$ of a scaling sequence it then builds an explicit conserved tensor out of three lattice-built tensors:
@@ -222,6 +238,8 @@ Its $F^2$ coefficient has the pole $-\kappa_G\log(1/\mu)$ per plane, $12$ ordere
 *From fields to the law, and the exclusions.* By free-field convergence (VII.1), the two-point function of $w_ir_i^4U_i^{-1}\Theta$ converges to $(4d_2)^2\cdot3\dim\mathfrak g/(\pi^4|x|^8)$, and $\log(1/r_i)/w_i\to1/\kappa_G$. Rotation and translation invariance move the points to the time axis. Monotonicity of $G_\Theta$ in the separation removes the lattice rounding of points. Finally, every null sequence has a good subsequence, which upgrades the subsequential limit to $r\downarrow0$. A Tauberian argument transfers the law to the spectral measure. The exclusions use only the law and $\mu_\Theta$:
 - every Wick profile expands in integer powers and logarithms, which are incompatible with $r^{-8}\log^{-2}(1/r)$;
 - a relatively local Fock realization forces each $n$-photon component of $\Theta$ to be dilation-polynomial of total degree at most $3$; this bounds $\mu_\Theta\{p_0\le R\}$ by $R^7$, against $R^8/\log^2R$.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -389,6 +407,8 @@ $$r_i^8\log^2(1/r_i)\;G_\Theta\big(r_i|x_0^{(i)}-x_1^{(i)}|\big)\to\frac{A_G}{|x
 
 *Lean:* [`form_exists`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Form.lean#L27-L39), [`parts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Weight.lean#L76-L78), [`burn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Conclude.lean#L15-L20), [`consumes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Conclude.lean#L22-L27), [`finite_particles`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Conclude.lean#L29-L32), [`saturate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Conclude.lean#L33-L44), [`local_eigen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/SpectrumGap.lean#L108-L112); [`local_position`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/VacuumLocal.lean#L95-L139), [`cauchy_point`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/TimeData.lean#L86-L115), [`binds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Branches.lean#L133-L136), [`splitParts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Eigen.lean#L44-L83), [`log_high`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Dyadic.lean#L23-L38), [`does_not_fit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Dyadic.lean#L65-L82).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 *Hard.* Three pieces carry the mathematics, and all three are needed for the exact constant.
@@ -417,35 +437,162 @@ The Fock exclusion is a standard type of argument (dilation spectral decompositi
 4. *Precision.* The payoff certificate is accurate to $\hat\beta_k^{-100}$, much more than the argument needs.
 5. *Scope of the exclusions.* The Wick class is exactly the public class. A generalized free field with spectral density $\frac{A_G}{1536\pi}(p^2)^2/\log^2|p|$ matches the leading behaviour in VII.2.5(b) and is not excluded. The Fock exclusion concerns only vacuum matrix elements with coherent states, that is, relative locality of $\Phi_\Theta$ with respect to free photons.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| object | code name | notation |
-|---|---|---|
-| trace of the stress tensor | [`stressTrace`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Centered.lean#L17) | $\sum_\mu T_{\mu\mu}$ |
-| one-point function in a table | [`euclideanVEV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Centered.lean#L34) | $\langle v\rangle_{\xi}$ |
-| centered trace, its pinned vector | [`theta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Centered.lean#L64), [`center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L48), [`pinned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L49) | $\Theta$, $\Theta_{T'}$, $\iota(\Theta)$ |
-| time-axis two-point function | [`euclidean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L53) | $G_\Theta(r)$ |
-| spectral measure | [`TraceSpectrum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L83-L94) | $\mu_\Theta$ |
-| cone measure | [`coneMeasure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/ConeLaplace.lean#L57) | $\frac{A}{1536\pi}(p^2)^2\mathbf 1_{V_+}d^4p$ |
-| scale factor | [`Zlog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/LogScaling.lean#L20), [`clue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Day.lean#L39) | $\rho^{-8}\log^2\rho$; $r^8\log^2(1/r)$ |
-| slope, one-loop coefficient, force | [`slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184), [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Nectar.lean#L60), [`d2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Nectar.lean#L62) | $\kappa_G$, $b_0$, $d_2$ |
-| amplitude; payoff constant | [`award`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Day.lean#L41); [`landPay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Awake.lean#L9) | $A_G$; $-12\kappa_G$ |
-| free table; $\frac14F^2$ label | `Climb.Bel`, `Cells.standard`; [`OScale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Stage.lean#L50), [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66) | $\mathsf F$; $\mathcal O$ |
-| free tensors, divergence functional | [`materialB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shelves/Pear.lean#L50), [`BornZ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/April.lean#L27), [`rho`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L78-L80), [`Lease`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Lease.lean#L22) | $T^{\rm free}=L$, $\Delta$, $\Omega$; $\rho$ |
-| scaling sequence; coupling limits | `Climb.Scaling` ($r_i$, $U_i$); [`Arch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Dusk.lean#L65-L67), [`BQ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Dray.lean#L42) | $(r_i,U_i)$; $Z.\beta(k)$, $w_i$ |
-| rescaled fields | [`ZoomValue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Nectar.lean#L64), [`Year`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Stage.lean#L55), `Phase4`, [`Optics`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shelves/Lore.lean#L40-L44) | $U_i^{-1}(w_ir_i^4\,\cdot)$, $r_i^4U_i^{-1}$, $\mathrm{Ph}_i$, $K_i$ |
-| lattice-built tensors; candidate | [`tub`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Token.lean#L59), [`pollen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Laurel.lean#L48); [`Cloak`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Stage.lean#L61) | $\mathrm{tub}_i(B)$; $X_i$ |
-| divergence vector of the dart | [`Shine5`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Spite.lean#L49) | $\Sigma_k$ |
-| lattice Ward dart; precision | [`Dart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Badge.lean#L22-L27), [`Dart.Sound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Badge.lean#L82-L90); [`Viz`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Pallas.lean#L15-L23) | dart $(J,Y,E,Q,\mathrm{tw})$ |
-| regulated one-loop action and coefficient | [`marke`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Det/Port.lean#L62), [`ridge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Fluent.lean#L9), [`seaD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Awake.lean#L10) | $\Gamma_\mu$, $R_\mu$, $\mathrm{seaD}_\mu$ |
-| payoff of a dart | [`midPay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Leaf.lean#L38), [`Holt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Leaf.lean#L37) | $\mathrm{midPay}_q$ |
-| work items and certificate | [`Work items`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L15), [`Grant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L16), [`WorthB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Ansel.lean#L30-L40) | certificates along $\mathcal L$ |
-| slowly varying rates | [`Wave`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn/Have.lean#L10), [`AgeK`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Look.lean#L10) | $e^{a(\log\log\hat\beta_k)^2}$ |
-| field-level anomaly; its bundle | [`Scribe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Time.lean#L52-L59), [`Gallery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L41-L44) | Scribe property; gallery property |
-| short-distance law | [`EuclideanAsymptotic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/LogScaling.lean#L74-L75) | $r^8\log^2(1/r)G_\Theta(r)\to A$ |
-| Wick modes and tracks | [`Mode`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/PolynomialField.lean#L23-L29), [`Track`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/PolynomialField.lean#L90-L92) | $K_{m,q,h}$, $\prod_\beta K$ |
-| Fock comparison; relative locality | [`Comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Identify.lean#L23-L27), [`Nfl`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Identify.lean#L32-L35), [`Ambient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Space.lean#L111), [`coherent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Weyl.lean#L119) | $U:\mathcal H\to\mathcal F_m$; $W(h)\Omega_{\mathcal F}$ |
-| output bundles | [`TraceExclusions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L84-L120), [`Crest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Belfry.lean#L16-L30), [`Result`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Endpoint.lean#L99-L120), [`Tests`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ManuscriptTraceTests.lean#L62-L75) | (T1)–(T4) and internal variants |
+- **object:** trace of the stress tensor
+
+  **code name:** [`stressTrace`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Centered.lean#L17)
+
+  **notation:** $\sum_\mu T_{\mu\mu}$
+
+- **object:** one-point function in a table
+
+  **code name:** [`euclideanVEV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Centered.lean#L34)
+
+  **notation:** $\langle v\rangle_{\xi}$
+
+- **object:** centered trace, its pinned vector
+
+  **code name:** [`theta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Centered.lean#L64), [`center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L48), [`pinned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L49)
+
+  **notation:** $\Theta$, $\Theta_{T'}$, $\iota(\Theta)$
+
+- **object:** time-axis two-point function
+
+  **code name:** [`euclidean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L53)
+
+  **notation:** $G_\Theta(r)$
+
+- **object:** spectral measure
+
+  **code name:** [`TraceSpectrum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L83-L94)
+
+  **notation:** $\mu_\Theta$
+
+- **object:** cone measure
+
+  **code name:** [`coneMeasure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/ConeLaplace.lean#L57)
+
+  **notation:** $\frac{A}{1536\pi}(p^2)^2\mathbf 1_{V_+}d^4p$
+
+- **object:** scale factor
+
+  **code name:** [`Zlog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/LogScaling.lean#L20), [`clue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Day.lean#L39)
+
+  **notation:** $\rho^{-8}\log^2\rho$; $r^8\log^2(1/r)$
+
+- **object:** slope, one-loop coefficient, force
+
+  **code name:** [`slopeConstant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184), [`b0`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Nectar.lean#L60), [`d2`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Nectar.lean#L62)
+
+  **notation:** $\kappa_G$, $b_0$, $d_2$
+
+- **object:** amplitude; payoff constant
+
+  **code name:** [`award`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Day.lean#L41); [`landPay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Awake.lean#L9)
+
+  **notation:** $A_G$; $-12\kappa_G$
+
+- **object:** free table; $\frac14F^2$ label
+
+  **code name:** `Climb.Bel`, `Cells.standard`; [`OScale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Stage.lean#L50), [`square4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66)
+
+  **notation:** $\mathsf F$; $\mathcal O$
+
+- **object:** free tensors, divergence functional
+
+  **code name:** [`materialB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shelves/Pear.lean#L50), [`BornZ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/April.lean#L27), [`rho`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L78-L80), [`Lease`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Lease.lean#L22)
+
+  **notation:** $T^{\rm free}=L$, $\Delta$, $\Omega$; $\rho$
+
+- **object:** scaling sequence; coupling limits
+
+  **code name:** `Climb.Scaling` ($r_i$, $U_i$); [`Arch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Dusk.lean#L65-L67), [`BQ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Dray.lean#L42)
+
+  **notation:** $(r_i,U_i)$; $Z.\beta(k)$, $w_i$
+
+- **object:** rescaled fields
+
+  **code name:** [`ZoomValue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Nectar.lean#L64), [`Year`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Stage.lean#L55), `Phase4`, [`Optics`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shelves/Lore.lean#L40-L44)
+
+  **notation:** $U_i^{-1}(w_ir_i^4\,\cdot)$, $r_i^4U_i^{-1}$, $\mathrm{Ph}_i$, $K_i$
+
+- **object:** lattice-built tensors; candidate
+
+  **code name:** [`tub`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Token.lean#L59), [`pollen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Laurel.lean#L48); [`Cloak`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Stage.lean#L61)
+
+  **notation:** $\mathrm{tub}_i(B)$; $X_i$
+
+- **object:** divergence vector of the dart
+
+  **code name:** [`Shine5`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Spite.lean#L49)
+
+  **notation:** $\Sigma_k$
+
+- **object:** lattice Ward dart; precision
+
+  **code name:** [`Dart`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Badge.lean#L22-L27), [`Dart.Sound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Badge.lean#L82-L90); [`Viz`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Pallas.lean#L15-L23)
+
+  **notation:** dart $(J,Y,E,Q,\mathrm{tw})$
+
+- **object:** regulated one-loop action and coefficient
+
+  **code name:** [`marke`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Det/Port.lean#L62), [`ridge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Fluent.lean#L9), [`seaD`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Awake.lean#L10)
+
+  **notation:** $\Gamma_\mu$, $R_\mu$, $\mathrm{seaD}_\mu$
+
+- **object:** payoff of a dart
+
+  **code name:** [`midPay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Leaf.lean#L38), [`Holt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Leaf.lean#L37)
+
+  **notation:** $\mathrm{midPay}_q$
+
+- **object:** work items and certificate
+
+  **code name:** [`Work items`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L15), [`Grant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L16), [`WorthB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Ansel.lean#L30-L40)
+
+  **notation:** certificates along $\mathcal L$
+
+- **object:** slowly varying rates
+
+  **code name:** [`Wave`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn/Have.lean#L10), [`AgeK`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Look.lean#L10)
+
+  **notation:** $e^{a(\log\log\hat\beta_k)^2}$
+
+- **object:** field-level anomaly; its bundle
+
+  **code name:** [`Scribe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Time.lean#L52-L59), [`Gallery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L41-L44)
+
+  **notation:** Scribe property; gallery property
+
+- **object:** short-distance law
+
+  **code name:** [`EuclideanAsymptotic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/LogScaling.lean#L74-L75)
+
+  **notation:** $r^8\log^2(1/r)G_\Theta(r)\to A$
+
+- **object:** Wick modes and tracks
+
+  **code name:** [`Mode`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/PolynomialField.lean#L23-L29), [`Track`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/PolynomialField.lean#L90-L92)
+
+  **notation:** $K_{m,q,h}$, $\prod_\beta K$
+
+- **object:** Fock comparison; relative locality
+
+  **code name:** [`Comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Identify.lean#L23-L27), [`Nfl`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Identify.lean#L32-L35), [`Ambient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Space.lean#L111), [`coherent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Weyl.lean#L119)
+
+  **notation:** $U:\mathcal H\to\mathcal F_m$; $W(h)\Omega_{\mathcal F}$
+
+- **object:** output bundles
+
+  **code name:** [`TraceExclusions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L84-L120), [`Crest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Belfry.lean#L16-L30), [`Result`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Endpoint.lean#L99-L120), [`Tests`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ManuscriptTraceTests.lean#L62-L75)
+
+  **notation:** (T1)–(T4) and internal variants
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Content of the darts and of the payoff.** The objects in a dart are jets of functions on link space (`Peat`, `Gal`). The payoff is assembled from `lush`, `tidal`, `crest`, `floft` and `Holt`. They were read only far enough to say that $\mathrm{midPay}_q$ is a normalized second-order color-$q$ coefficient of the trace of the displacement field, corrected by a lattice total derivative (probable). The writer should extract the exact formula, and the exact meaning of $y_{di}$ in Lemma VII.2.f.
@@ -456,92 +603,222 @@ The Fock exclusion is a standard type of argument (dilation spectral decompositi
 6. **Position-space variant (VII.2.9).** The folders `Atlas`, `Pith`, `Sundial` and `Link` were read only at the level of the bundle `Result`. The frames `XScheme` and `ShellNorm`, and the relation of `stepField` to $\mathcal O$, remain to be described.
 7. **Unit boundaries.** Lemmas VII.2.c and VII.2.p–r and VII.2.u are filed in VIII.1 by the declaration table, `StarPath` and `pays_sky` in VII.6, and `absoluteGeode` in III.7. The pieces of `YM/Integration` and `YM/RG08/Calendar` assigned here are the trace-test specification and RG bookkeeping records; they were not opened beyond `ManuscriptTraceTests`.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.7](III-7.md), [III.16](III-16.md), [IV.1](IV-1.md), [II.1](II-1.md), [VI.1](VI-1.md), [III.6](III-6.md), [III.11](III-11.md), [V.2](V-2.md), [VI.2](VI-2.md), [VIII.1](VIII-1.md), [II.2](II-2.md), [III.9](III-9.md), [III.10](III-10.md), [III.8](III-8.md), [VII.6](VII-6.md), [VII.1](VII-1.md), [VII.5](VII-5.md), [III.3](III-3.md), [V.1](V-1.md), [III.2](III-2.md), [III.4](III-4.md).
+## Code dependencies
 
-**Used by:** [III.2](III-2.md), [VIII.1](VIII-1.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.1](III-1.md), [III.7](III-7.md), [III.16](III-16.md), [IV.1](IV-1.md), [II.1](II-1.md), [VI.1](VI-1.md), [III.6](III-6.md), [III.11](III-11.md), [V.2](V-2.md), [VI.2](VI-2.md), [VIII.1](VIII-1.md), [II.2](II-2.md), [III.9](III-9.md), [III.10](III-10.md), [III.8](III-8.md), [VII.6](VII-6.md), [VII.1](VII-1.md), [VII.5](VII-5.md), [III.3](III-3.md), [V.1](V-1.md), [III.2](III-2.md), [III.4](III-4.md).
+
+**Referenced by:** [III.2](III-2.md), [VIII.1](VIII-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 20,681 attributed lines; 3,833 line-counted declarations; 5,055 assigned declaration names. Of the assigned names, 4,879 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| proof of [`Store_l`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Time.lean#L63-L68) and the results it chains to | 6,437 |
-| proof of [`agenda`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L23-L35) and the results it chains to | 6,036 |
-| work package [`YM/TraceExtension/Fock/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock), with [`YM/TraceExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension), [`YM/TraceExtension/Wick/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick), [`YM/TraceExtension/Atlas/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Atlas), [`YM/TraceExtension/Chart/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart) … | 3,581 |
-| work package [`YM/TraceExtension/Perfect/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect) | 1,298 |
-| work package [`YM/TraceExtension/Filch/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Filch) | 536 |
-| work package [`YM/TraceExtension/Det/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Det) | 438 |
-| work package [`YM/TraceExtension/Shepherd/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shepherd) | 366 |
-| work package [`YM/TraceExtension/Lamp/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Lamp) | 284 |
-| work package [`YM/TraceExtension/Pi/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Pi) | 216 |
-| work package [`YM/TraceExtension/Terrace/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace) | 196 |
-| work package [`YM/TraceExtension/Turret/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Turret) | 162 |
-| work package [`YM/TraceExtension/Zn/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn) | 155 |
-| work package [`YM/TraceExtension/Weir/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Weir) | 100 |
-| work package [`YM/TraceExtension/Fen/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fen) | 98 |
-| work package [`YM/TraceExtension/Quince/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Quince) | 93 |
-| work package [`YM/Integration/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration) | 80 |
-| work package [`YM/TraceExtension/Xo/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Xo) | 79 |
-| work package [`YM/RG08/Calendar/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar) | 74 |
-| work package [`YM/TraceExtension/Cask/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Cask) | 73 |
-| work package [`YM/TraceExtension/Wicket/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wicket) | 69 |
-| work package [`YM/TraceExtension/Swift/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Swift) | 65 |
-| work package [`YM/Nonperturbative/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative) | 64 |
-| work package [`YM/TraceExtension/Margin/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin) | 51 |
-| proof of [`gang`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L49-L56) | 40 |
-| work package [`YM/TraceExtension/Shunt/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shunt) | 32 |
-| work package [`YM/TraceExtension/Pills/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Pills) | 29 |
-| work package [`YM/TraceExtension/Loft/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft) | 21 |
-| work package [`YM/TraceExtension/Anchor/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor) | 4 |
-| work package [`YM/TraceExtension/Slate/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate) | 3 |
-| work package [`YM/TraceExtension/Shelves/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shelves) | 1 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- proof of [`Store_l`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Time.lean#L63-L68) and the results it chains to — 6,437 lines.
+- proof of [`agenda`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L23-L35) and the results it chains to — 6,036 lines.
+- work package [`YM/TraceExtension/Fock/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock), with [`YM/TraceExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension), [`YM/TraceExtension/Wick/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick), [`YM/TraceExtension/Atlas/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Atlas), [`YM/TraceExtension/Chart/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart), [`YM/TraceExtension/Pith/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Pith), [`YM/TraceExtension/Sundial/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Sundial), [`YM/TraceExtension/Verse/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse), [`YM/TraceExtension/Link/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Link) — 3,581 lines.
+- work package [`YM/TraceExtension/Perfect/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect) — 1,298 lines.
+- work package [`YM/TraceExtension/Filch/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Filch) — 536 lines.
+- work package [`YM/TraceExtension/Det/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Det) — 438 lines.
+- work package [`YM/TraceExtension/Shepherd/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shepherd) — 366 lines.
+- work package [`YM/TraceExtension/Lamp/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Lamp) — 284 lines.
+- work package [`YM/TraceExtension/Pi/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Pi) — 216 lines.
+- work package [`YM/TraceExtension/Terrace/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace) — 196 lines.
+- work package [`YM/TraceExtension/Turret/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Turret) — 162 lines.
+- work package [`YM/TraceExtension/Zn/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn) — 155 lines.
+- work package [`YM/TraceExtension/Weir/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Weir) — 100 lines.
+- work package [`YM/TraceExtension/Fen/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fen) — 98 lines.
+- work package [`YM/TraceExtension/Quince/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Quince) — 93 lines.
+- work package [`YM/Integration/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration) — 80 lines.
+- work package [`YM/TraceExtension/Xo/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Xo) — 79 lines.
+- work package [`YM/RG08/Calendar/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar) — 74 lines.
+- work package [`YM/TraceExtension/Cask/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Cask) — 73 lines.
+- work package [`YM/TraceExtension/Wicket/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wicket) — 69 lines.
+- work package [`YM/TraceExtension/Swift/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Swift) — 65 lines.
+- work package [`YM/Nonperturbative/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative) — 64 lines.
+- work package [`YM/TraceExtension/Margin/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin) — 51 lines.
+- proof of [`gang`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L49-L56) — 40 lines.
+- work package [`YM/TraceExtension/Shunt/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shunt) — 32 lines.
+- work package [`YM/TraceExtension/Pills/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Pills) — 29 lines.
+- work package [`YM/TraceExtension/Loft/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft) — 21 lines.
+- work package [`YM/TraceExtension/Anchor/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor) — 4 lines.
+- work package [`YM/TraceExtension/Slate/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate) — 3 lines.
+- work package [`YM/TraceExtension/Shelves/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shelves) — 1 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **VII.2.1** [`cauchy_point`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/TimeData.lean#L86-L115) *(numbered result)* — Under the paired-adjoint identity on remote tests, the Cauchy data vanish on test functions compactly supported away from the origin.
-- **VII.2.2** [`splitParts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Eigen.lean#L44-L83) *(numbered result)* — An element of a submodule stable under dilations that is killed by the relevant polynomials lies in the span of the joint generalized eigen-components.
-- **VII.2.3** [`from_center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor/Book.lean#L33-L76) *(key result)* — Coarse observables pulled back along centered chambers with funding certificates produce late physical equivalence.
-- **VII.2.4** [`axis_advance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor/Derivative.lean#L80-L115) *(numbered result)* — For a fixed stencil width, the finite-difference approximation of the derivative along an axis has error at most C'‖v‖x^8, uniformly over labels.
-- **VII.2.5** [`differentiation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor/Bleed.lean#L81-L144) *(key result)* — If lattice observables converge to fields and their finite-difference stencils match, then the continuum derivative of the limit equals the limit of the next-order fields, up to a fast-decaying error.
-- **VII.2.6** [`recoup`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Relay.lean#L143-L160) *(key result)* — The directional Ward lift is price-matched: derivatives of the fine relay and coarse maps agree to fourth order along analytic perturbations vanishing at the origin.
-- **VII.2.7** [`aroma_transfer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Wicker.lean#L37-L46) *(key result)* — Under criticality, bounds and classical matching, the inherited aroma jets of the two descriptions agree to fourth order at zero.
-- **VII.2.8** [`binds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Branches.lean#L133-L136) *(key result)* — A tempered wave with equal paired and adjoint values on remote tests is annihilated by a power of the dilation operator in every momentum slot.
-- **VII.2.9** [`gang`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L49-L56) *(key result)* — The gallery property holds for the cell hypothesis data.
-- **VII.2.10** [`free_rank`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/PHYSICAL_PERIOD_LIMIT_F933/FreeRanks.lean#L159-L165) *(key result)* — The current divergence map is surjective with one-dimensional kernel for a simple gauge group under the derivative tests.
-- **VII.2.11** [`Store_l`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Time.lean#L63-L68) *(numbered result)* — Given a transport datum for the cell hypothesis, a certain scribe property is obtained.
-- **VII.2.12** [`agenda`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L23-L35) *(numbered result)* — Along a filter on pairs of naturals tending to infinity in both coordinates, a certain package of limits holds.
-- **VII.2.13** [`dewWt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Prise.lean#L31-L44) *(key result)* — For large k, along any pair of sequences tending to infinity, an eventual estimate holds for the Wilson-type specialization of the weighted quantity.
-- **VII.2.14** [`reveals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Masts.lean#L58-L65) *(key result)* — The choice property for the data holds.
-- **VII.2.15** [`midAwake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Leaf.lean#L40-L52) *(key result)* — Under the scene, flare and credibility hypotheses, the intermediate-scale payoff converges to the limiting payoff constant for simple gauge groups.
-- **VII.2.16** [`legacy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Garnet.lean#L59-L61) *(key result)* — For every power p, the scaled sequence H^p times s_i of the medium tends to zero.
-- **VII.2.17** [`hullage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Phantom.lean#L37-L50) *(key result)* — There exists a mission (limit object) realizing the origin-coordinate sequence of core fields along the sequence of sides.
-- **VII.2.18** [`crestship`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Ell.lean#L59-L82) *(numbered result)* — For large stage index, a crest estimate holds uniformly in parameters p and N.
-- **VII.2.19** [`treasury`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Pallas.lean#L46-L64) *(main result)* — For all large levels k, along any filter where path lengths and sides tend to infinity, eventually there exist darts at level k satisfying an ε-quantitative property.
-- **VII.2.20** [`through`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Flo.lean#L41-L46) *(key result)* — If nonempty embers exist from level m onward and the path lengths exceed m+n+1, there exist sound darts at level m with the saving property over n+1 levels.
-- **VII.2.21** [`pay_step`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Native.lean#L81-L88) *(key result)* — There exists a family of sound darts at the given level achieving a prescribed saving at each step of the construction.
-- **VII.2.22** [`touring`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Toil.lean#L29-L56) *(numbered result)* — Under an aura hypothesis on the terrace levels, a stage estimate holds for all large i uniformly.
-- **VII.2.23** [`trod`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Heli.lean#L39-L51) *(numbered result)* — Under the aura condition at level l, eventually in i a statement about the associated index holds.
-- **VII.2.24** [`saturate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Conclude.lean#L33-L44) *(main result)* — Contradiction: the assumed fixed vacuum situation is impossible (False is derived).
-- **VII.2.25** [`garnet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shepherd/Folly.lean#L38-L61) *(key result)* — Under expense, separation and weight hypotheses, the root test of the back-transported lens function is bounded by an exponential over w_m squared.
-- **VII.2.26** [`local_eigen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/SpectrumGap.lean#L108-L112) *(key result)* — A tempered wave satisfying evaporation and a pairing–adjoint identity on remote probes vanishes for n≥4 and has a width property, a spectral-gap-type conclusion.
-- **VII.2.27** [`awake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Awake.lean#L32-L53) *(key result)* — Along the limiting sequence, a regularized trace quantity built from the field converges to the limiting land payoff constant of the gauge group.
-- **VII.2.28** [`quaff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Cask/Votive.lean#L42-L67) *(key result)* — Given a decked bound at scale k and matching tile data, the root test of the pulled-back function at level J is bounded by an exponential in the ratio-powered treasury over w_m squared.
-- **VII.2.29** [`saga`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Lamp/Pious.lean#L97-L127) *(key result)* — Under scene and flare hypotheses, the trace functional has an asymptotic expansion given by the leading mu-squared term plus corrections.
-- **VII.2.30** [`formulate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Laurel.lean#L53-L78) *(key result)* — There exist coefficient sequences with bounded norm, bijective composite and a balance relation, whose first component converges to the force constant of G.
-- **VII.2.31** [`small_means`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Terrain.lean#L26-L51) *(key result)* — For rescaled vectors approximating the swale, the polynomially weighted sequence tends to zero.
-- **VII.2.32** [`local_position`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/VacuumLocal.lean#L95-L139) *(key result)* — Vacuum locality: for remote probes, the paired and adjoint evaluations of the vacuum wave functions agree in relative position variables.
-- **VII.2.33** [`article`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Spite.lean#L32-L46) *(key result)* — For each index and epsilon, eventually most parameter pairs admit a nearby vector whose orbits at both levels coincide with prescribed ones and which preserve the rho-value.
-- **VII.2.34** [`euclidean_excludes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L75-L80) *(key result)* — A Euclidean field with the asymptotic behavior cannot agree eventually in the past with any finite polynomial field description.
-- **VII.2.35** [`welfare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shepherd/Spindle.lean#L46-L51) *(key result)* — Separated clusters with bounded cover number and bounded functions satisfying an expense hypothesis yield the decked estimate for the associated configuration.
-- **VII.2.36** [`lay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Cask/Common.lean#L17-L54) *(key result)* — Under separation, cover-number, decay and hit hypotheses on a cluster family, the associated expansion satisfies a decked (bounded-activity) estimate.
-- **VII.2.37** [`slopeL`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Samen.lean#L23-L42) *(key result)* — For a simple gauge group, the regulated quantity has a logarithmic pole whose coefficient is 12 times the slope constant, up to a bounded error uniform in the cutoff scale.
-- **VII.2.38** [`penumbra`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Pony.lean#L30-L65) *(key result)* — The shine sequence is bounded by a constant times a controlling rate and its linear functional converges to minus the slope constant.
-- **VII.2.39** [`fawn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Lamp/Pine.lean#L11-L39) *(key result)* — Along a filter, the coboundary-type observable built from the lush field of the scene converges (in the Rose sense) to a scaled lens observable.
-- **VII.2.40** [`rungs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Garnet.lean#L62-L68) *(key result)* — The sequence s satisfies the Prosper property relative to the given data.
-- **VII.2.41** [`expire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Mortal.lean#L37-L43) *(key result)* — For large i, the Wilson moment of a backward-transported function is bounded by U plus V times support size times exp(-2 prism(hatBeta)).
-- **VII.2.42** [`pages`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/April.lean#L65-L71) *(key result)* — For large scale and large side length, any admissible configuration satisfying the matching conditions has its limiting vector within epsilon of a fixed target vector.
+<a id="k-vii-2-1"></a>
+
+- **K-VII.2.1** [`cauchy_point`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/TimeData.lean#L86-L115) *(numbered result)* — Under the paired-adjoint identity on remote tests, the Cauchy data vanish on test functions compactly supported away from the origin.
+
+<a id="k-vii-2-2"></a>
+
+- **K-VII.2.2** [`splitParts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Eigen.lean#L44-L83) *(numbered result)* — An element of a submodule stable under dilations that is killed by the relevant polynomials lies in the span of the joint generalized eigen-components.
+
+<a id="k-vii-2-3"></a>
+
+- **K-VII.2.3** [`from_center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor/Book.lean#L33-L76) *(key result)* — Coarse observables pulled back along centered chambers with funding certificates produce late physical equivalence.
+
+<a id="k-vii-2-4"></a>
+
+- **K-VII.2.4** [`axis_advance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor/Derivative.lean#L80-L115) *(numbered result)* — For a fixed stencil width, the finite-difference approximation of the derivative along an axis has error at most C'‖v‖x^8, uniformly over labels.
+
+<a id="k-vii-2-5"></a>
+
+- **K-VII.2.5** [`differentiation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Anchor/Bleed.lean#L81-L144) *(key result)* — If lattice observables converge to fields and their finite-difference stencils match, then the continuum derivative of the limit equals the limit of the next-order fields, up to a fast-decaying error.
+
+<a id="k-vii-2-6"></a>
+
+- **K-VII.2.6** [`recoup`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Relay.lean#L143-L160) *(key result)* — The directional Ward lift is price-matched: derivatives of the fine relay and coarse maps agree to fourth order along analytic perturbations vanishing at the origin.
+
+<a id="k-vii-2-7"></a>
+
+- **K-VII.2.7** [`aroma_transfer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Wicker.lean#L37-L46) *(key result)* — Under criticality, bounds and classical matching, the inherited aroma jets of the two descriptions agree to fourth order at zero.
+
+<a id="k-vii-2-8"></a>
+
+- **K-VII.2.8** [`binds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Branches.lean#L133-L136) *(key result)* — A tempered wave with equal paired and adjoint values on remote tests is annihilated by a power of the dilation operator in every momentum slot.
+
+<a id="k-vii-2-9"></a>
+
+- **K-VII.2.9** [`gang`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L49-L56) *(key result)* — The gallery property holds for the cell hypothesis data.
+
+<a id="k-vii-2-10"></a>
+
+- **K-VII.2.10** [`free_rank`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/PHYSICAL_PERIOD_LIMIT_F933/FreeRanks.lean#L159-L165) *(key result)* — The current divergence map is surjective with one-dimensional kernel for a simple gauge group under the derivative tests.
+
+<a id="k-vii-2-11"></a>
+
+- **K-VII.2.11** [`Store_l`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Time.lean#L63-L68) *(numbered result)* — Given a transport datum for the cell hypothesis, a certain scribe property is obtained.
+
+<a id="k-vii-2-12"></a>
+
+- **K-VII.2.12** [`agenda`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Stand.lean#L23-L35) *(numbered result)* — Along a filter on pairs of naturals tending to infinity in both coordinates, a certain package of limits holds.
+
+<a id="k-vii-2-13"></a>
+
+- **K-VII.2.13** [`dewWt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Prise.lean#L31-L44) *(key result)* — For large k, along any pair of sequences tending to infinity, an eventual estimate holds for the Wilson-type specialization of the weighted quantity.
+
+<a id="k-vii-2-14"></a>
+
+- **K-VII.2.14** [`reveals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Masts.lean#L58-L65) *(key result)* — The choice property for the data holds.
+
+<a id="k-vii-2-15"></a>
+
+- **K-VII.2.15** [`midAwake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Leaf.lean#L40-L52) *(key result)* — Under the scene, flare and credibility hypotheses, the intermediate-scale payoff converges to the limiting payoff constant for simple gauge groups.
+
+<a id="k-vii-2-16"></a>
+
+- **K-VII.2.16** [`legacy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Garnet.lean#L59-L61) *(key result)* — For every power p, the scaled sequence H^p times s_i of the medium tends to zero.
+
+<a id="k-vii-2-17"></a>
+
+- **K-VII.2.17** [`hullage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Phantom.lean#L37-L50) *(key result)* — There exists a mission (limit object) realizing the origin-coordinate sequence of core fields along the sequence of sides.
+
+<a id="k-vii-2-18"></a>
+
+- **K-VII.2.18** [`crestship`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Ell.lean#L59-L82) *(numbered result)* — For large stage index, a crest estimate holds uniformly in parameters p and N.
+
+<a id="k-vii-2-19"></a>
+
+- **K-VII.2.19** [`treasury`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Pallas.lean#L46-L64) *(main result)* — For all large levels k, along any filter where path lengths and sides tend to infinity, eventually there exist darts at level k satisfying an ε-quantitative property.
+
+<a id="k-vii-2-20"></a>
+
+- **K-VII.2.20** [`through`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Flo.lean#L41-L46) *(key result)* — If nonempty embers exist from level m onward and the path lengths exceed m+n+1, there exist sound darts at level m with the saving property over n+1 levels.
+
+<a id="k-vii-2-21"></a>
+
+- **K-VII.2.21** [`pay_step`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Native.lean#L81-L88) *(key result)* — There exists a family of sound darts at the given level achieving a prescribed saving at each step of the construction.
+
+<a id="k-vii-2-22"></a>
+
+- **K-VII.2.22** [`touring`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Toil.lean#L29-L56) *(numbered result)* — Under an aura hypothesis on the terrace levels, a stage estimate holds for all large i uniformly.
+
+<a id="k-vii-2-23"></a>
+
+- **K-VII.2.23** [`trod`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Heli.lean#L39-L51) *(numbered result)* — Under the aura condition at level l, eventually in i a statement about the associated index holds.
+
+<a id="k-vii-2-24"></a>
+
+- **K-VII.2.24** [`saturate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/Conclude.lean#L33-L44) *(main result)* — Contradiction: the assumed fixed vacuum situation is impossible (False is derived).
+
+<a id="k-vii-2-25"></a>
+
+- **K-VII.2.25** [`garnet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shepherd/Folly.lean#L38-L61) *(key result)* — Under expense, separation and weight hypotheses, the root test of the back-transported lens function is bounded by an exponential over w_m squared.
+
+<a id="k-vii-2-26"></a>
+
+- **K-VII.2.26** [`local_eigen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/SpectrumGap.lean#L108-L112) *(key result)* — A tempered wave satisfying evaporation and a pairing–adjoint identity on remote probes vanishes for n≥4 and has a width property, a spectral-gap-type conclusion.
+
+<a id="k-vii-2-27"></a>
+
+- **K-VII.2.27** [`awake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Awake.lean#L32-L53) *(key result)* — Along the limiting sequence, a regularized trace quantity built from the field converges to the limiting land payoff constant of the gauge group.
+
+<a id="k-vii-2-28"></a>
+
+- **K-VII.2.28** [`quaff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Cask/Votive.lean#L42-L67) *(key result)* — Given a decked bound at scale k and matching tile data, the root test of the pulled-back function at level J is bounded by an exponential in the ratio-powered treasury over w_m squared.
+
+<a id="k-vii-2-29"></a>
+
+- **K-VII.2.29** [`saga`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Lamp/Pious.lean#L97-L127) *(key result)* — Under scene and flare hypotheses, the trace functional has an asymptotic expansion given by the leading mu-squared term plus corrections.
+
+<a id="k-vii-2-30"></a>
+
+- **K-VII.2.30** [`formulate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Laurel.lean#L53-L78) *(key result)* — There exist coefficient sequences with bounded norm, bijective composite and a balance relation, whose first component converges to the force constant of G.
+
+<a id="k-vii-2-31"></a>
+
+- **K-VII.2.31** [`small_means`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Terrain.lean#L26-L51) *(key result)* — For rescaled vectors approximating the swale, the polynomially weighted sequence tends to zero.
+
+<a id="k-vii-2-32"></a>
+
+- **K-VII.2.32** [`local_position`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Fock/VacuumLocal.lean#L95-L139) *(key result)* — Vacuum locality: for remote probes, the paired and adjoint evaluations of the vacuum wave functions agree in relative position variables.
+
+<a id="k-vii-2-33"></a>
+
+- **K-VII.2.33** [`article`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Spite.lean#L32-L46) *(key result)* — For each index and epsilon, eventually most parameter pairs admit a nearby vector whose orbits at both levels coincide with prescribed ones and which preserve the rho-value.
+
+<a id="k-vii-2-34"></a>
+
+- **K-VII.2.34** [`euclidean_excludes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L75-L80) *(key result)* — A Euclidean field with the asymptotic behavior cannot agree eventually in the past with any finite polynomial field description.
+
+<a id="k-vii-2-35"></a>
+
+- **K-VII.2.35** [`welfare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shepherd/Spindle.lean#L46-L51) *(key result)* — Separated clusters with bounded cover number and bounded functions satisfying an expense hypothesis yield the decked estimate for the associated configuration.
+
+<a id="k-vii-2-36"></a>
+
+- **K-VII.2.36** [`lay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Cask/Common.lean#L17-L54) *(key result)* — Under separation, cover-number, decay and hit hypotheses on a cluster family, the associated expansion satisfies a decked (bounded-activity) estimate.
+
+<a id="k-vii-2-37"></a>
+
+- **K-VII.2.37** [`slopeL`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Loft/Samen.lean#L23-L42) *(key result)* — For a simple gauge group, the regulated quantity has a logarithmic pole whose coefficient is 12 times the slope constant, up to a bounded error uniform in the cutoff scale.
+
+<a id="k-vii-2-38"></a>
+
+- **K-VII.2.38** [`penumbra`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Pony.lean#L30-L65) *(key result)* — The shine sequence is bounded by a constant times a controlling rate and its linear functional converges to minus the slope constant.
+
+<a id="k-vii-2-39"></a>
+
+- **K-VII.2.39** [`fawn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Lamp/Pine.lean#L11-L39) *(key result)* — Along a filter, the coboundary-type observable built from the lush field of the scene converges (in the Rose sense) to a scaled lens observable.
+
+<a id="k-vii-2-40"></a>
+
+- **K-VII.2.40** [`rungs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/Garnet.lean#L62-L68) *(key result)* — The sequence s satisfies the Prosper property relative to the given data.
+
+<a id="k-vii-2-41"></a>
+
+- **K-VII.2.41** [`expire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Mortal.lean#L37-L43) *(key result)* — For large i, the Wilson moment of a backward-transported function is bounded by U plus V times support size times exp(-2 prism(hatBeta)).
+
+<a id="k-vii-2-42"></a>
+
+- **K-VII.2.42** [`pages`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Slate/April.lean#L65-L71) *(key result)* — For large scale and large side length, any admissible configuration satisfying the matching conditions has its limiting vector within epsilon of a fixed target vector.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

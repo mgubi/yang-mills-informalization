@@ -1,11 +1,19 @@
 # III.4. Gaussian integration: change of Gaussian sector, determinants, window law
 
-*Part III — Ultraviolet construction (renormalization group).* 37,956 lines of Lean in 4,737 declarations used by the main theorem.
+*Part III — Ultraviolet construction (renormalization group).*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Explains the Gaussian changes of variables, determinant bounds and local window estimates used in one renormalization step.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** III, Ultraviolet construction (renormalization group). **Lean:** about 40 work packages. The main ones are [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE) (exact change of variables, gap, windows), [`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE) and [`YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON) (determinants and the polymer form of a sector), [`YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS), [`YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION) and [`YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS) (Gaussian moments), [`SECTOR_AFFINE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS), [`SECTOR_COVARIANCE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS) and [`SELECTED_ORDERED_KERNELS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS) (jets), [`LOCAL_GAUSSIAN_LAWS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS), [`GAUSSIAN_FIELD_ALIGNMENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT), [`YM/Push/FREE_RESOLVENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT) and [`YM/RG08/Gaussian/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian) (locality, infinite-volume kernels), [`YM/SectorNext/LARGE_FIELD_REMAINDERS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS), and the constant-producing statements in `Next/STATIONARY`, `MergeProof` and `PhysicalNext/V9_JOINT_ENDPOINT_LOAD`. **Size:** 37,956 lines in 4,737 declarations of the main-theorem closure.
+[Overview](../README.md) · [All units](../units.md) · [← Previous: III.3](III-3.md) · [Next: III.5 →](III-5.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** III, Ultraviolet construction (renormalization group). **Lean:** about 40 work packages. The main ones are [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE) (exact change of variables, gap, windows), [`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE) and [`YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON) (determinants and the polymer form of a sector), [`YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS), [`YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION) and [`YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS) (Gaussian moments), [`SECTOR_AFFINE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS), [`SECTOR_COVARIANCE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS) and [`SELECTED_ORDERED_KERNELS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS) (jets), [`LOCAL_GAUSSIAN_LAWS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS), [`GAUSSIAN_FIELD_ALIGNMENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT), [`YM/Push/FREE_RESOLVENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT) and [`YM/RG08/Gaussian/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian) (locality, infinite-volume kernels), [`YM/SectorNext/LARGE_FIELD_REMAINDERS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS), and the constant-producing statements in `Next/STATIONARY`, `MergeProof` and `PhysicalNext/V9_JOINT_ENDPOINT_LOAD`. **Size:** 37,956 lines in 4,737 declarations in the source allocation.
 
 **Conventions.** The parameter $x$ is the coarse inverse-coupling parameter: in applications $x=\hat\beta_m$. Throughout:
 
@@ -16,6 +24,10 @@
 - $g=\beta^{-1/2}$.
 - "For large $x$" means: there is $x_0$, depending only on the constants fixed before it, such that the statement holds for $x\ge x_0$.
 - Write $\|A\|_s$ for the maximum of the row and column sums $\sum_j e^{s\,\mathrm{dist}(i,j)}|A_{ij}|$. Positions lie on the coarse torus; several coordinates may have the same position. Matrix inequalities refer to quadratic forms. Put $r_x=\lfloor R(x)/60\rfloor$.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -306,6 +318,8 @@ Then there are pre-$L$ data with kernel $K$ and the prescribed orders, two famil
 
 *Lean:* [`sailsV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Seaside.lean#L96-L154), using [`geared`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L59-L66).
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 - **III.1 (block-spin step and gauge fixing):** fine and coarse tori with $f=Lc$, tree-gauge slices, gauge tags, predictor and push-forward ([`StepData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L22-L25)). The branch condition requires unique frame and predictor minimisers on the selected supports and existence of an eligible axial gauge ([`Branches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L182-L185)).
@@ -319,6 +333,8 @@ The analytic tools are Gaussian affine changes of variables, the Haar Jacobian i
 
 The order of constants is pre-$L$ data, block sizes, post-$L$ bounds, then thresholds in $x$. Statements with additional parameters retain those dependencies. The precision and path-counting certificates come from [`late_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Year.lean#L113-L197), and the determinant-jet fund from Lemma 4.21. The packet-energy, chart, noise and representation hypotheses in III.4.7 are separate assumptions. The branch and order assumptions of III.4.12, and the rate assumptions of the scheduling statements in Lemma 4.33, remain explicit.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 Keep links within $10R(x)$ of the large-field store as Haar variables. Write the others in exponential coordinates about the coarse-field copy $\iota V$, and separate the affine squares $Q_Y(a)=\tfrac12|Ma+s(Y)|^2$ from the remaining energy. The substitution $a=m(Y)+gz$ and division by an arbitrary Gaussian density give the exact identity of III.4.1. Choose the symmetrised windowed inverse for $C$ and the windowed mean for $m$. The endpoint windows give finite range, at most $\lfloor R(x)/20\rfloor$; the linear correction and $C^{-1}-W$ remain in the integrand.
@@ -326,6 +342,8 @@ Keep links within $10R(x)$ of the large-field store as Haar variables. Write the
 A local Poincaré inequality in tree gauge gives the gap of $W$. Predictor-derivative comparison permits absorption of the gauge errors at small threshold. Path decay gives a uniform weighted Schur bound; Combes–Thomas and the window law then give $C=W^{-1}+O(e^{-cR(x)})$ and positivity. The resolvent integral for $\log$, followed by a Neumann expansion, expresses the relative Gaussian normalisation as single-window and path terms. Regroup these near the large-field cores. Their logarithmic cost is absorbed by the packet energy $\beta s^2\gtrsim\mathrm{hot}(z)^2$, leaving exponentially suppressed core factors and a small polymer remainder on the cutoff support.
 
 Gaussian moment bounds control the exponential corrections, marked jets control background derivatives, and the annulus estimates recover affine squares away from the store. The construction follows the fluctuation-integral method, with window errors retained explicitly. III.4.12 chooses the constants in the order needed along the run.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -611,44 +629,188 @@ Related constant-producing statements:
 
 *Lean:* [`sailsV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Seaside.lean#L96-L154), [`geared`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L59-L66), [`book`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Calendar.lean#L133-L138), [`endures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Instruments.lean#L69-L86), [`post`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Reverse.lean#L64-L88), [`takings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Folio/Takings.lean#L99-L116).
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The gap is a gauge-theoretic local Poincaré estimate: the predictor derivative must be compared with its flat-field value after a different gauge choice for each active link. Its smallness radius comes from continuity rather than an explicit formula. Inverse estimates then spend decay rate, while every bound must remain uniform in the volume, store, forest, tags and field.
 
 The determinant comparison must accommodate different active dimensions, hence identity completion and the frozen-link normalisation. The resulting core costs grow polynomially in $\log x$; the retimed large-field threshold supplies the stronger suppression $e^{-\alpha\mathrm{hot}(z)^2|o|}$. The final powers $x^{-1/8}$, $x^{-1/24}$ and $y^{-1/48}$ allow the separate polymer budgets to be added. Gaussian transport and the affine-square identity are finite-dimensional; their application still requires the chart support and integrability conditions.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| Written proof | Lean (glossary) | Meaning |
-|---|---|---|
-| $\gamma_C$ | [`Gaussian.cloud`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Gaussian.lean#L31) | centred Gaussian with covariance $C$ |
-| $z\cdot C^{-1}z$ | [`force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Gaussian.lean#L79) | precision quadratic form |
-| $(2\pi g^2)^{n_a/2}(\det C)^{1/2}$ | [`chartCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Counting.lean#L103-L104) | Gaussian normalisation |
-| $g=\beta^{-1/2}$ | [`coupling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L35) | coupling of the representation |
-| $J$, $J_{\rm sc}$, $\rho_J$ | [`ChartRatio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L23-L26), [`LocalRatio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L28-L38) | normalised Haar Jacobian of exp, scale, radius |
-| $\mathcal F_A$, $\mathcal A_A$ | [`chill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Shell.lean#L38-L40) (`Frozen`, `Active`) | free links within $10R(x)$ of $A$ / the others |
-| $\iota V$ | [`replica`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L35-L36) | coarse field copied to the fine lattice |
-| $Q_Y(a)$, $W$ | [`Rows.guide`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Remainder.lean#L37), [`Rows.gram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Remainder.lean#L27) | affine squares; precision $M^{\top}M$ |
-| $C=W_{\mathcal W}$, $m(Y)$ | [`fog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Chosen.lean#L69-L70), [`meanLog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Chosen.lean#L72-L74) | windowed covariance; windowed mean |
-| $L$, $A_{\mathcal W}$ | [`Schur.per`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L67-L68), [`Schur.clouded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L70) | column-wise window inverse; its symmetrisation |
-| Schur decay, gap | [`Pours`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Schur.lean#L25-L28), [`Gapped`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Schur.lean#L110) | weighted row and column sums; $a\cdot Aa\ge\eta\lVert a\rVert^2$ |
-| $\Psi$ | [`dyed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L63-L71) | sector integrand in Gaussian coordinates |
-| permitted, licence | [`Permitted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L95-L103), [`Licenses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L127-L135) | hypotheses and conclusions of III.4.1 |
-| $\ell_i$, path letters, $S$ | [`letterBase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Series.lean#L45-L46), `page`, `errata`, [`excess`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Walls.lean#L35) | window log letter; path terms; $AA_{\mathcal W}-1$ |
-| $\kappa(p)$, $\Lambda(p)$ | [`keptEarly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Prism.lean#L50-L54), [`spoolLift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Prism.lean#L56-L63) | relative log-normalisation; full log-integrand |
-| $\mathrm{spare}(\beta)$ | [`spare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ledger.lean#L34) | $(2\pi g^2)^{\dim\mathfrak g/2}J_{\rm sc}$ |
-| $\mathrm{rent}_o$, far term, $I$, $\mathrm{Sh}$ | [`rents`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Enigma.lean#L32), [`nightly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Enigma.lean#L35), [`introTax`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Shards.lean#L31), [`showTax`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Shards.lean#L32) | pieces of $\kappa$ |
-| $\varepsilon$-small | [`Petty`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Petty.lean#L28-L29) | sum of local terms with polymer norm $\le\varepsilon$ |
-| $y^{-1/48}$ | [`garlic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Stocks.lean#L21) | final polymer budget |
-| $R(x)$, $t(x)$, $t_L(x)$ | `radiusB`, `temp`, `fiery` | cluster radius, small-field threshold, fine-level threshold |
-| $M$, $s(Y)$ | `move`, `source` | linear row map and frozen-link source |
-| $\mathcal E$, $\mathrm{center}_o$ | `Milk.levy`, `Coffer.center` | row energy remainder; its $-\beta$-weighted core sum |
-| sector support | `Dyed.Playing` | nonzero product of field, block, tag and chart cutoffs |
-| matching flags | `Matched` | $\mathrm{flags}(A)=\mathrm{flags}_{t(x)}(V)$ |
-| branch condition | `Patch.Branches` | uniqueness of selected minimisers and eligible axial gauge |
-| sector regularity, noise bounds | `Chips`, `noises` | assumptions in III.4.6–III.4.7 |
-| $c_G$ | `Gauge.colorScale` | matrix norm factor in the path estimate |
-| price, bill, tax, rent, teller | numerical bounds; `Teller` | the step-estimator interface |
+- **Written proof:** $\gamma_C$
+
+  **Lean (glossary):** [`Gaussian.cloud`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Gaussian.lean#L31)
+
+  **Meaning:** centred Gaussian with covariance $C$
+
+- **Written proof:** $z\cdot C^{-1}z$
+
+  **Lean (glossary):** [`force`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Gaussian.lean#L79)
+
+  **Meaning:** precision quadratic form
+
+- **Written proof:** $(2\pi g^2)^{n_a/2}(\det C)^{1/2}$
+
+  **Lean (glossary):** [`chartCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Counting.lean#L103-L104)
+
+  **Meaning:** Gaussian normalisation
+
+- **Written proof:** $g=\beta^{-1/2}$
+
+  **Lean (glossary):** [`coupling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L35)
+
+  **Meaning:** coupling of the representation
+
+- **Written proof:** $J$, $J_{\rm sc}$, $\rho_J$
+
+  **Lean (glossary):** [`ChartRatio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L23-L26), [`LocalRatio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L28-L38)
+
+  **Meaning:** normalised Haar Jacobian of exp, scale, radius
+
+- **Written proof:** $\mathcal F_A$, $\mathcal A_A$
+
+  **Lean (glossary):** [`chill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Shell.lean#L38-L40) (`Frozen`, `Active`)
+
+  **Meaning:** free links within $10R(x)$ of $A$ / the others
+
+- **Written proof:** $\iota V$
+
+  **Lean (glossary):** [`replica`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L35-L36)
+
+  **Meaning:** coarse field copied to the fine lattice
+
+- **Written proof:** $Q_Y(a)$, $W$
+
+  **Lean (glossary):** [`Rows.guide`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Remainder.lean#L37), [`Rows.gram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Remainder.lean#L27)
+
+  **Meaning:** affine squares; precision $M^{\top}M$
+
+- **Written proof:** $C=W_{\mathcal W}$, $m(Y)$
+
+  **Lean (glossary):** [`fog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Chosen.lean#L69-L70), [`meanLog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Chosen.lean#L72-L74)
+
+  **Meaning:** windowed covariance; windowed mean
+
+- **Written proof:** $L$, $A_{\mathcal W}$
+
+  **Lean (glossary):** [`Schur.per`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L67-L68), [`Schur.clouded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L70)
+
+  **Meaning:** column-wise window inverse; its symmetrisation
+
+- **Written proof:** Schur decay, gap
+
+  **Lean (glossary):** [`Pours`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Schur.lean#L25-L28), [`Gapped`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Schur.lean#L110)
+
+  **Meaning:** weighted row and column sums; $a\cdot Aa\ge\eta\lVert a\rVert^2$
+
+- **Written proof:** $\Psi$
+
+  **Lean (glossary):** [`dyed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L63-L71)
+
+  **Meaning:** sector integrand in Gaussian coordinates
+
+- **Written proof:** permitted, licence
+
+  **Lean (glossary):** [`Permitted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L95-L103), [`Licenses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L127-L135)
+
+  **Meaning:** hypotheses and conclusions of III.4.1
+
+- **Written proof:** $\ell_i$, path letters, $S$
+
+  **Lean (glossary):** [`letterBase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Series.lean#L45-L46), `page`, `errata`, [`excess`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Walls.lean#L35)
+
+  **Meaning:** window log letter; path terms; $AA_{\mathcal W}-1$
+
+- **Written proof:** $\kappa(p)$, $\Lambda(p)$
+
+  **Lean (glossary):** [`keptEarly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Prism.lean#L50-L54), [`spoolLift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Prism.lean#L56-L63)
+
+  **Meaning:** relative log-normalisation; full log-integrand
+
+- **Written proof:** $\mathrm{spare}(\beta)$
+
+  **Lean (glossary):** [`spare`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ledger.lean#L34)
+
+  **Meaning:** $(2\pi g^2)^{\dim\mathfrak g/2}J_{\rm sc}$
+
+- **Written proof:** $\mathrm{rent}_o$, far term, $I$, $\mathrm{Sh}$
+
+  **Lean (glossary):** [`rents`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Enigma.lean#L32), [`nightly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Enigma.lean#L35), [`introTax`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Shards.lean#L31), [`showTax`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Shards.lean#L32)
+
+  **Meaning:** pieces of $\kappa$
+
+- **Written proof:** $\varepsilon$-small
+
+  **Lean (glossary):** [`Petty`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Petty.lean#L28-L29)
+
+  **Meaning:** sum of local terms with polymer norm $\le\varepsilon$
+
+- **Written proof:** $y^{-1/48}$
+
+  **Lean (glossary):** [`garlic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Stocks.lean#L21)
+
+  **Meaning:** final polymer budget
+
+- **Written proof:** $R(x)$, $t(x)$, $t_L(x)$
+
+  **Lean (glossary):** `radiusB`, `temp`, `fiery`
+
+  **Meaning:** cluster radius, small-field threshold, fine-level threshold
+
+- **Written proof:** $M$, $s(Y)$
+
+  **Lean (glossary):** `move`, `source`
+
+  **Meaning:** linear row map and frozen-link source
+
+- **Written proof:** $\mathcal E$, $\mathrm{center}_o$
+
+  **Lean (glossary):** `Milk.levy`, `Coffer.center`
+
+  **Meaning:** row energy remainder; its $-\beta$-weighted core sum
+
+- **Written proof:** sector support
+
+  **Lean (glossary):** `Dyed.Playing`
+
+  **Meaning:** nonzero product of field, block, tag and chart cutoffs
+
+- **Written proof:** matching flags
+
+  **Lean (glossary):** `Matched`
+
+  **Meaning:** $\mathrm{flags}(A)=\mathrm{flags}_{t(x)}(V)$
+
+- **Written proof:** branch condition
+
+  **Lean (glossary):** `Patch.Branches`
+
+  **Meaning:** uniqueness of selected minimisers and eligible axial gauge
+
+- **Written proof:** sector regularity, noise bounds
+
+  **Lean (glossary):** `Chips`, `noises`
+
+  **Meaning:** assumptions in III.4.6–III.4.7
+
+- **Written proof:** $c_G$
+
+  **Lean (glossary):** `Gauge.colorScale`
+
+  **Meaning:** matrix norm factor in the path estimate
+
+- **Written proof:** price, bill, tax, rent, teller
+
+  **Lean (glossary):** numerical bounds; `Teller`
+
+  **Meaning:** the step-estimator interface
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Proof depth.** The supporting proofs marked “statement only” remain incomplete readings: the strip-resolvent and Fourier-inverse results in Lemma 4.14; the flat comparison in 4.15; 4.16; the path-counting and interaction estimates in 4.19(c),(e); 4.21; parts of 4.25; the entry bound in 4.27; 4.28–4.29; the clean-field construction in 4.30; 4.31; and the ancillary scheduling statements in 4.33. Their statements and the stated mechanisms have been compared with the cited source; these labels do not certify their dependency proofs.
@@ -657,209 +819,636 @@ The determinant comparison must accommodate different active dimensions, hence i
 4. **Consumers and coverage.** The downstream reset and repeatable-step statements have not been checked here. The additional assigned packages for Wilson bulk terms, vacuum stability, proof interfaces, multisource terms and flat RG data are not covered by these steps. The closure-size figures in the opening metadata were retained without recounting.
 5. **References.** The precise results and bibliographic locations in Helgason, Glimm–Jaffe, Katznelson, Balaban and Dimock remain to be selected and verified. The cited Lean declarations are the evidence for the statements above.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.11](III-11.md), [III.10](III-10.md), [III.7](III-7.md), [III.5](III-5.md), [III.16](III-16.md), [III.6](III-6.md), [II.2](II-2.md), [III.2](III-2.md), [III.9](III-9.md), [II.1](II-1.md), [III.8](III-8.md), [III.3](III-3.md), [III.15](III-15.md), [VIII.1](VIII-1.md).
+## Code dependencies
 
-**Used by:** [III.10](III-10.md), [III.11](III-11.md), [III.2](III-2.md), [VII.6](VII-6.md), [III.13](III-13.md), [III.9](III-9.md), [III.12](III-12.md), [VII.2](VII-2.md), [VII.1](VII-1.md), [III.15](III-15.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.1](III-1.md), [III.11](III-11.md), [III.10](III-10.md), [III.7](III-7.md), [III.5](III-5.md), [III.16](III-16.md), [III.6](III-6.md), [II.2](II-2.md), [III.2](III-2.md), [III.9](III-9.md), [II.1](II-1.md), [III.8](III-8.md), [III.3](III-3.md), [III.15](III-15.md), [VIII.1](VIII-1.md).
+
+**Referenced by:** [III.10](III-10.md), [III.11](III-11.md), [III.2](III-2.md), [VII.6](VII-6.md), [III.13](III-13.md), [III.9](III-9.md), [III.12](III-12.md), [VII.2](VII-2.md), [VII.1](VII-1.md), [III.15](III-15.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 37,956 attributed lines; 4,737 line-counted declarations; 5,885 assigned declaration names. Of the assigned names, 5,618 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| proof of [`foreshadows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Gush.lean#L96-L134) | 4,885 |
-| work package [`YM/Push/FREE_RESOLVENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT) | 3,930 |
-| work package [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE) | 3,807 |
-| proof of [`endures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Instruments.lean#L69-L86) | 3,712 |
-| work package [`YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS) | 3,574 |
-| work package [`YM/AnalyticBridge/SECTOR_AFFINE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS) | 2,712 |
-| work package [`YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS) | 1,903 |
-| work package [`YM/SectorNext/LARGE_FIELD_REMAINDERS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS) | 1,657 |
-| work package [`YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS) | 1,639 |
-| work package [`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE) | 979 |
-| work package [`YM/RG08/Gaussian/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian) | 957 |
-| work package [`YM/AnalyticBridge/MARGINAL_MULTIPLIER_3B1D/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/MARGINAL_MULTIPLIER_3B1D) | 688 |
-| work package [`YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT) | 659 |
-| shared machinery (corollaries of endures) | 641 |
-| work package [`YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS) | 636 |
-| shared machinery (corollaries of foreshadows) | 602 |
-| work package [`YM/AnalyticBridge/LOCAL_GAUSSIAN_MULTIPLIER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_MULTIPLIER) | 601 |
-| work package [`YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY) | 593 |
-| work package [`YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C) | 497 |
-| work package [`YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE_1AD/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE_1AD) | 465 |
-| work package [`YM/PhysicalNext/ACTUAL_SECTOR_FACTOR_DICTIONARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/ACTUAL_SECTOR_FACTOR_DICTIONARY) | 462 |
-| work package [`YM/WilsonBulk/Trees/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Trees), with [`YM/WilsonBulk/Grid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Grid), [`YM/WilsonBulk/Vacuum/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Vacuum) | 454 |
-| work package [`YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS) | 391 |
-| work package [`YM/AnalyticBridge/SHARP_NORMALIZED_TAIL/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SHARP_NORMALIZED_TAIL) | 220 |
-| work package [`YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION) | 174 |
-| work package [`YM/MultiNext/VACUUM_STABILITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/VACUUM_STABILITY) | 156 |
-| work package [`YM/ProofPorts/COMMON_COMPLEX_PRODUCTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/ProofPorts/COMMON_COMPLEX_PRODUCTION) | 153 |
-| work package [`YM/Next/MULTISOURCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MULTISOURCE) | 105 |
-| work package [`YM/RG08/Flat/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat) | 101 |
-| work package [`YM/WilsonBulk/Agenda/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Agenda) | 90 |
-| work package [`YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE) | 78 |
-| work package [`YM/ProjectorNext/PROJECTOR_EQUIVARIANCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/ProjectorNext/PROJECTOR_EQUIVARIANCE) | 77 |
-| work package [`YM/SectorNext/RECONNECTED_LOCALITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/RECONNECTED_LOCALITY) | 70 |
-| work package [`YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16) | 58 |
-| work package [`YM/WilsonBulk/Broadcast/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Broadcast) | 56 |
-| work package [`YM/SectorTools/PHYSICAL_GAUSSIAN_SWITCH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_SWITCH) | 45 |
-| work package [`YM/WilsonBulk/Transit/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Transit) | 34 |
-| work package [`YM/PhysicalNext/ORDERED_AFFINE_2B/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/ORDERED_AFFINE_2B) | 26 |
-| work package [`YM/WilsonBulk/Cash/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Cash) | 26 |
-| work package [`YM/WilsonBulk/Heat/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Heat) | 17 |
-| work package [`YM/PhysicalNext/RECURSIVE_SECANTS_079/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RECURSIVE_SECANTS_079) | 11 |
-| work package [`YM/WilsonBulk/Tuning/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Tuning) | 6 |
-| work package [`YM/WilsonBulk/Series/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Series) | 3 |
-| work package [`YM/Progress/CLASSICAL_KIN_RECURSION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/CLASSICAL_KIN_RECURSION) | 2 |
-| work package [`YM/Primitives/TWO_WAVE_TRACE_DENSITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/TWO_WAVE_TRACE_DENSITY) | 1 |
-| work package [`YM/RG08/Invert/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Invert) | 1 |
-| work package [`YM/WilsonBulk/Staves/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Staves) | 1 |
-| work package [`YM/WilsonBulk/Tickets/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Tickets) | 1 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- proof of [`foreshadows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Gush.lean#L96-L134) — 4,885 lines.
+- work package [`YM/Push/FREE_RESOLVENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT) — 3,930 lines.
+- work package [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE) — 3,807 lines.
+- proof of [`endures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Instruments.lean#L69-L86) — 3,712 lines.
+- work package [`YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS) — 3,574 lines.
+- work package [`YM/AnalyticBridge/SECTOR_AFFINE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS) — 2,712 lines.
+- work package [`YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS) — 1,903 lines.
+- work package [`YM/SectorNext/LARGE_FIELD_REMAINDERS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS) — 1,657 lines.
+- work package [`YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS) — 1,639 lines.
+- work package [`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE) — 979 lines.
+- work package [`YM/RG08/Gaussian/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian) — 957 lines.
+- work package [`YM/AnalyticBridge/MARGINAL_MULTIPLIER_3B1D/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/MARGINAL_MULTIPLIER_3B1D) — 688 lines.
+- work package [`YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT) — 659 lines.
+- shared machinery (corollaries of endures) — 641 lines.
+- work package [`YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS) — 636 lines.
+- shared machinery (corollaries of foreshadows) — 602 lines.
+- work package [`YM/AnalyticBridge/LOCAL_GAUSSIAN_MULTIPLIER/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_MULTIPLIER) — 601 lines.
+- work package [`YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY) — 593 lines.
+- work package [`YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C) — 497 lines.
+- work package [`YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE_1AD/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE_1AD) — 465 lines.
+- work package [`YM/PhysicalNext/ACTUAL_SECTOR_FACTOR_DICTIONARY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/ACTUAL_SECTOR_FACTOR_DICTIONARY) — 462 lines.
+- work package [`YM/WilsonBulk/Trees/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Trees), with [`YM/WilsonBulk/Grid/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Grid), [`YM/WilsonBulk/Vacuum/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Vacuum) — 454 lines.
+- work package [`YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS) — 391 lines.
+- work package [`YM/AnalyticBridge/SHARP_NORMALIZED_TAIL/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SHARP_NORMALIZED_TAIL) — 220 lines.
+- work package [`YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION) — 174 lines.
+- work package [`YM/MultiNext/VACUUM_STABILITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/VACUUM_STABILITY) — 156 lines.
+- work package [`YM/ProofPorts/COMMON_COMPLEX_PRODUCTION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/ProofPorts/COMMON_COMPLEX_PRODUCTION) — 153 lines.
+- work package [`YM/Next/MULTISOURCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MULTISOURCE) — 105 lines.
+- work package [`YM/RG08/Flat/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat) — 101 lines.
+- work package [`YM/WilsonBulk/Agenda/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Agenda) — 90 lines.
+- work package [`YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_GAUSSIAN_INTERFACE) — 78 lines.
+- work package [`YM/ProjectorNext/PROJECTOR_EQUIVARIANCE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/ProjectorNext/PROJECTOR_EQUIVARIANCE) — 77 lines.
+- work package [`YM/SectorNext/RECONNECTED_LOCALITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/RECONNECTED_LOCALITY) — 70 lines.
+- work package [`YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16) — 58 lines.
+- work package [`YM/WilsonBulk/Broadcast/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Broadcast) — 56 lines.
+- work package [`YM/SectorTools/PHYSICAL_GAUSSIAN_SWITCH/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_SWITCH) — 45 lines.
+- work package [`YM/WilsonBulk/Transit/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Transit) — 34 lines.
+- work package [`YM/PhysicalNext/ORDERED_AFFINE_2B/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/ORDERED_AFFINE_2B) — 26 lines.
+- work package [`YM/WilsonBulk/Cash/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Cash) — 26 lines.
+- work package [`YM/WilsonBulk/Heat/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Heat) — 17 lines.
+- work package [`YM/PhysicalNext/RECURSIVE_SECANTS_079/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RECURSIVE_SECANTS_079) — 11 lines.
+- work package [`YM/WilsonBulk/Tuning/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Tuning) — 6 lines.
+- work package [`YM/WilsonBulk/Series/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Series) — 3 lines.
+- work package [`YM/Progress/CLASSICAL_KIN_RECURSION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/CLASSICAL_KIN_RECURSION) — 2 lines.
+- work package [`YM/Primitives/TWO_WAVE_TRACE_DENSITY/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/TWO_WAVE_TRACE_DENSITY) — 1 lines.
+- work package [`YM/RG08/Invert/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Invert) — 1 lines.
+- work package [`YM/WilsonBulk/Staves/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Staves) — 1 lines.
+- work package [`YM/WilsonBulk/Tickets/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Tickets) — 1 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **III.4.1** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Margins.lean#L51-L75) *(numbered result)* — A linear map of a Gaussian vector with PSD covariance is Gaussian with the transformed covariance, measure-preservingly.
-- **III.4.2** [`still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_MULTIPLIER/TicketsChart.lean#L63-L107) *(numbered result)* — For a smooth function vanishing to first order at 0, rescaling by d in (0,1] gives Taylor-type jet bounds of size W·d² uniformly on a ball.
-- **III.4.3** [`passports`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Currencies.lean#L127-L150) *(key result)* — Under volume-growth hypotheses and a smallness condition, a counting inventory of clusters satisfies a summable total-cost bound.
-- **III.4.4** [`publish`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/Fold.lean#L139-L180) *(key result)* — A family of finite-volume operators with uniform exponential off-diagonal decay is realized by a single infinite-volume kernel with a slightly weaker decay rate restricting to each of them.
-- **III.4.5** [`strip_resolvent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/Metric.lean#L30-L37) *(key result)* — A strip-decaying kernel with a uniform spectral gap has an inverse of the resolvent type that is again strip-decaying with explicit degraded rate and constant.
-- **III.4.6** [`carried`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Visits.lean#L81-L120) *(numbered result)* — A jet budget at a walk endpoint transfers to the start with factor exponential in walk length via adjoint transport.
-- **III.4.7** [`follows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Tracks.lean#L36-L89) *(numbered result)* — A pointwise jet-budget bound on target endpoints transfers to a bound on a sum over covered walks with exponential-in-length control.
-- **III.4.8** [`fires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Parade.lean#L56-L90) *(numbered result)* — A tail-weighted polynomial bill is dominated by an exponentially decaying quantity in the trigger count for large x.
-- **III.4.9** [`charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Due.lean#L70-L87) *(numbered result)* — A function with finite-range locality around a site, vanishing when far from it, has pointwise jet dues with exponential weight in the radius.
-- **III.4.10** [`local_prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/SmallArc.lean#L28-L60) *(key result)* — Under local volume growth and derivative bounds, the free resolvent jets satisfy a polarized row/column budget bound with explicit altitude.
-- **III.4.11** [`coordinates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Coordinates.lean#L126-L179) *(key result)* — For small coordinate perturbations, the field entries and scene fields admit uniform derivative bounds with constants depending only on the gauge and order.
-- **III.4.12** [`transport_rows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/TrueTransport.lean#L257-L299) *(key result)* — Transport rows built from path data decaying at rate σ are priced bundles with exponentially small bounds in the minimal path length.
-- **III.4.13** [`bound_plotted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Visits.lean#L135-L195) *(numbered result)* — Jet budgets for the plotted path data follow from toll bounds on nearby cells with geometric collapse over cut labels.
-- **III.4.14** [`slots`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Prices.lean#L151-L182) *(numbered result)* — The negative log of the spare ratio is bounded by a constant times one plus the log of the scale.
-- **III.4.15** [`release_integral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Haar.lean#L167-L184) *(key result)* — Integrals over link arrays can be rewritten as integrals over log coordinates by exponential substitution, with a Jacobian and indicator of the chart domain.
-- **III.4.16** [`authentic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/Trace.lean#L228-L253) *(key result)* — For a Gaussian measure, the exponential of a quadratic-plus-linear exponent with small weights is integrable with integral at most exp(2 trace), with trace counted over actual uses.
-- **III.4.17** [`amount`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/Moment.lean#L67-L71) *(key result)* — Under a base condition, the exponential of a sum of charges is Gaussian-integrable with integral at most exp(2 times the due quantity).
-- **III.4.18** [`natural`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/ColourBooks.lean#L163-L192) *(numbered result)* — Windowed compressed covariance of ordered columns commutes with complete-block reindexing, for all u, even in singular cases and without symmetry.
-- **III.4.19** [`moves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Binding.lean#L116-L134) *(numbered result)* — Under a change of site set and color-block projection, the windowed Gaussian covariance and mean transform naturally with the induced windows.
-- **III.4.20** [`windows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L184-L239) *(key result)* — For symmetric gapped covariances with decay, the window-compressed covariance approximates the inverse with exponentially small error in radius, and is gapped and positive definite for large radius.
-- **III.4.21** [`side`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY/Frozen.lean#L83-L106) *(numbered result)* — The active-column block of the windowed matrix of an enlarged system equals the windowed matrix of the original system.
-- **III.4.22** [`fluctuate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Packets.lean#L85-L113) *(numbered result)* — Uniform finite bound on the fluctuation (log-ratio) cost in a real logarithm neighborhood of the parameter.
-- **III.4.23** [`thaw_integral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Haar.lean#L225-L253) *(numbered result)* — Iterated integration formula after exponential substitution on relative links for bounded functions supported where the chart condition holds, with integrability.
-- **III.4.24** [`produce`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/LocalPolynomial.lean#L58-L67) *(key result)* — A complex local polynomial of bounded degree, supported on a marked set with weights and magnitudes controlled, compiles to the ordered probe class with the stated read-set and cost bound.
-- **III.4.25** [`poly_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/Polynomial.lean#L82-L85) — Any complex polynomial of bounded total degree is moderate on the committed marginals with bound coefficient norm times a normal price.
-- **III.4.26** [`impression`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Press.lean#L123-L155) *(numbered result)* — There is a common finite reference frame so actual block predictors exist for all sufficiently large coarse sides.
-- **III.4.27** [`uses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SHARP_NORMALIZED_TAIL/Tags.lean#L97-L112) *(numbered result)* — The uniform average of a product of functions depending on pairwise disjoint tag sets factorizes into the product of averages.
-- **III.4.28** [`aperture`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Pan.lean#L57-L122) *(key result)* — For a gapped, finite-range, symmetric covariance family with rate bounds, the localized installed estimate holds uniformly with exponential decay at large scale.
-- **III.4.29** [`charts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/AffineCharts.lean#L51-L121) *(numbered result)* — An analytic function vanishing at zero and matching a tangent map on one slice differs from the affine response by O(u²) on small balls.
-- **III.4.30** [`linear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/NearJet.lean#L159-L187) *(numbered result)* — For a real-analytic map near zero, the first-derivative remainder is bounded by a constant times the parameter size in a small ball.
-- **III.4.31** [`stocked`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Completion.lean#L181-L212) *(numbered result)* — On inactive positions the identity completion gives the identity completion of the integral's covariance, omitting no zero modes.
-- **III.4.32** [`regularized_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Shell.lean#L142-L199) *(key result)* — At fixed volume the iterated sector integral equals an exact formula, with absolute integrability, for a chart ratio and enveloped observable.
-- **III.4.33** [`wide`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Tracks.lean#L134-L161) *(numbered result)* — Pointwise jet budgets at all sites within distance R transfer to a budget for the finite-range kernel applied to the data.
-- **III.4.34** [`cleans_at`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Clean.lean#L110-L208) *(key result)* — Under wide-field and funding hypotheses, there is a uniform constant and a direction vanishing on trunks such that all swept sites are clean for large x.
-- **III.4.35** [`freshQ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Duplicated.lean#L52-L101) *(numbered result)* — The copied Q table's prediction map is, up to gauge endpoint factors, a contraction-bounded linear paste of the coarse and fine directions.
-- **III.4.36** [`block_comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Block.lean#L316-L361) *(key result)* — For small fields in a local stencil, the branch derivative on a block is comparable to the left-trivialized group differential with uniform constants over all steps.
-- **III.4.37** [`near_collective`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/AffineRows.lean#L184-L192) *(numbered result)* — Near zero, the affine collective kernel equals the individual kernel for all choices and orientations.
-- **III.4.38** [`plotted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Ink.lean#L93-L120) *(numbered result)* — Block predictor chart maps are real-analytic with jet bounds uniform near zero on each fixed torus.
-- **III.4.39** [`sounds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Sounds.lean#L69-L101) *(key result)* — All mixed derivatives up to order k of the block coefficients on the selected row are bounded uniformly, and analytic, in a neighborhood of radius r.
-- **III.4.40** [`reacts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/CollarData.lean#L131-L189) *(key result)* — For large scale x, large-field remainder estimates hold uniformly over all admissible steps and tubes, with constants and a weak radius decaying faster than any power.
-- **III.4.41** [`bump_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY/Either.lean#L27-L58) *(numbered result)* — If two data agree within a radius, the corresponding bump rows agree at entries whose separation plus patch span is within the radius.
-- **III.4.42** [`sub_gram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/AffineMatch.lean#L162-L175) *(numbered result)* — The Gram matrix of the cut selected precision equals a submatrix of the repaired matrix.
-- **III.4.43** [`notarized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/CutGerm.lean#L110-L129) *(key result)* — Near zero, the active and raw matrices of the no-hole cut comparison agree in a flat neighborhood.
-- **III.4.44** [`not_flat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Gap.lean#L242-L264) *(key result)* — There is a uniform positive lower bound on the precision (Gram) form of active prices at flag-correct volumes, valid for all large temperatures and admissible steps.
-- **III.4.45** [`shared`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Bore.lean#L303-L305) *(numbered result)* — The determinant of the flat kinetic precision matrix is the same for two admissible chart choices, so normalized Jacobians drop out.
-- **III.4.46** [`late_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Year.lean#L113-L197) *(key result)* — For large scale x, uniformly over admissible step data, the actual transforms satisfy certified fixed-L price bounds with uniform constants.
-- **III.4.47** [`open_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SHARP_NORMALIZED_TAIL/Apertures.lean#L43-L55) *(key result)* — The relevant Gaussian covariance is positive definite with a uniform cap for all keys and placements with correct flags.
-- **III.4.48** [`ground_supply`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/SectorData.lean#L88-L110) *(key result)* — For a patch and teller, uniform constants exist such that all non-higher-order ground estimates hold on every large-scale step, tube and configuration.
-- **III.4.49** [`laplace_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Laplace.lean#L70-L85) *(numbered result)* — An exponential of an observable bounded by a quadratic-type penalty is integrable under a Gaussian with covariance ceiling, with an explicit bound.
-- **III.4.50** [`shifted_heat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/Hot.lean#L84-L107) *(numbered result)* — A shifted Gaussian covariance with a billed exponential budget and bounded shift satisfies the joint exponential test.
-- **III.4.51** [`chosen_branch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Branch.lean#L140-L219) *(key result)* — Predictor rows of the selected block have uniformly bounded mixed derivatives in a uniform ball of field parameters, with a single local gauge branch.
-- **III.4.52** [`selected_priced`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/EntryBounds.lean#L186-L243) *(numbered result)* — Kernel entries of the selected rows satisfy uniform two-sided derivative/price bounds in the price coordinates of a small ball.
-- **III.4.53** [`precision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Neighborhood.lean#L122-L159) *(key result)* — Marked precision jets yield a period-uniform neighborhood in which the flat-comparison gap persists under perturbation of the base field with flags fixed.
-- **III.4.54** [`assembly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Covariance.lean#L146-L210) *(key result)* — For a branch-certified patch, the selected-sector source object admits kernel jets of every finite order with uniform positive constants on a price-coordinate ball.
-- **III.4.55** [`estimates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Residual.lean#L153-L187) *(key result)* — On the actual selected Gaussian's inverse, there are uniform constants giving the cost and multiplier-defect estimates for small price coordinates.
-- **III.4.56** [`projecting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/TreeInverse.lean#L64-L115) *(key result)* — The tree inverse of the quadratic slice Hessian is obtained by projecting the inverse of the joint completion, rather than estimated by kernel closeness.
-- **III.4.57** [`cutHead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/TellerFold.lean#L118-L146) *(key result)* — The plane-tree-inverse covariance of the ideal free head equals the Gaussian conditional covariance tensor for any tag-consistent tree.
-- **III.4.58** [`authorized_change`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L137-L192) *(key result)* — Under permitted Gaussian data, the actual sector integral admits an exact Gaussian change-of-variables formula with controlled price, licensing the downstream application.
-- **III.4.59** [`committed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Handoff.lean#L132-L182) *(key result)* — Under the stated hypotheses, the committed renormalization-group integral is licensed: all displayed integrals are valid and the sector-change identity holds at each scale step.
-- **III.4.60** [`prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Center.lean#L115-L151) *(key result)* — Uniform constants exist so that, for all large x, the affine pricing data satisfy estimates on a ball of coordinates and a shift bound.
-- **III.4.61** [`openings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Desk.lean#L42-L107) *(numbered result)* — For a local ratio chart there exist constants such that aperture and sponsored conditions hold for all large x.
-- **III.4.62** [`fromTeller`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Sky.lean#L62-L77) *(main result)* — For a fixed patch and gauge and teller data, there exist positive constants such that for all large x the sector covariance jet estimate holds with exact Gaussian endpoint metric.
-- **III.4.63** [`authorized_loans`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/AuthorizedLoans.lean#L44-L61) *(key result)* — Ground, higher-derivative and query bounds for selected ordered kernels hold uniformly without extra jet input hypotheses.
-- **III.4.64** [`trusting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Deposit.lean#L68-L93) *(key result)* — Uniformly for large x, gap and integrable-calculus (TestD) hypotheses hold on a germ neighborhood for the actual data.
-- **III.4.65** [`headComparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Ideal.lean#L120-L144) *(key result)* — The physical free horizon-linked inverse is compared with the ideal one with a positive exponential rate chosen post-L.
-- **III.4.66** [`commissioned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/SectorLie.lean#L126-L134) *(key result)* — Ground bounds exist with constants, and any higher-derivative request yields a query bound with combined constants.
-- **III.4.67** [`freeHead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/HeadSwitch.lean#L104-L143) *(key result)* — For large volume, zeroth-order Gaussian exchange holds: the actual free covariance is exponentially close to the ideal horizon-linked covariance with uniform constants.
-- **III.4.68** [`total`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Taylor.lean#L73-L108) *(key result)* — The full affine inverse germ's jet discrepancy against spatial marks is bounded by an exponential window loss plus a path-cut loss on the same tree and data.
-- **III.4.69** [`earned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Covers.lean#L67-L103) *(key result)* — Given a strip-bounded metric with gap, there is a strip-decaying operator whose restriction to each period equals the plane-tree-inverse conditional covariance form.
-- **III.4.70** [`bought`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Stead.lean#L94-L117) *(numbered result)* — A uniform bundle price bound, with constants chosen before the orbit, trees and volume, holds for large x.
-- **III.4.71** [`entries`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Quote.lean#L99-L127) *(numbered result)* — For large parameter, the move-matrix entries satisfy derivative bounds up to order k on a uniform real neighborhood.
-- **III.4.72** [`face_payment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/RowStack.lean#L117-L130) *(numbered result)* — Face kicks satisfy derivative bounds with a uniform face cost across all channels and geometries.
-- **III.4.73** [`fine_squares`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/AffineRows.lean#L157-L209) *(numbered result)* — Affine approximation of curvature squares along actual paths is controlled by the local deviation bounds in a tube.
-- **III.4.74** [`joint_universal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/Completion.lean#L62-L110) *(key result)* — For each j≥4 there is a uniform σ such that every branching patch with J=j admits a row inverse with strip bound for the flat Gaussian completion, uniform over scales.
-- **III.4.75** [`before_local`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/CorePacket.lean#L151-L160) *(key result)* — Beyond some scale, the before-L ledger and point-charge bounds hold for all large x and admissible steps.
-- **III.4.76** [`quote`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/SameQuote.lean#L216-L232) *(key result)* — The actual ordered kernels and their probability covariances are compared to Gaussian ones at the same Gram matrix with uniform constants, eventually in the parameter.
-- **III.4.77** [`freezer_row`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/PeriodicInverse.lean#L104-L139) *(key result)* — A frozen periodic inverse yields a row inverse with strip bound whose constants depend only on the slab, uniformly in period.
-- **III.4.78** [`patch_agreed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Collar.lean#L52-L107) *(numbered result)* — Squares and charges on a coarse site's patch depend only on inputs agreeing on that patch, regardless of other choices.
-- **III.4.79** [`coverall`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Roof.lean#L39-L62) *(key result)* — For each finite order there exist uniform constants such that, for large scale, the sector-change covariance presentation (Sky and Deck bounds) holds.
-- **III.4.80** [`onePlateau`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Covers.lean#L114-L136) *(main result)* — There is a single exponentially localized operator that simultaneously represents the conditional covariance for all admissible steps and has exponentially small differences under shortening.
-- **III.4.81** [`shortening`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/AffineResolvent.lean#L81-L100) *(key result)* — After cutting at radius R, the k-jet of the affine inverse germ differs from the original by an exponentially small error including position and energy cost.
-- **III.4.82** [`residual`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/SectorWindows.lean#L139-L165) *(numbered result)* — The residual window term is small in chart bundle, exponentially in radius, at all derivative orders.
-- **III.4.83** [`knows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/AffineResolvent.lean#L65-L74) *(numbered result)* — Affine inverse jet outputs are controlled in the actual unselected no-hole geometry without assuming a gap.
-- **III.4.84** [`haar_operators`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/HaarOperators.lean#L71-L83) *(key result)* — Marginal input estimates for Haar operator ordered kernels hold eventually with uniform constants for all admissible steps.
-- **III.4.85** [`annulus_pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Annulus.lean#L36-L127) *(key result)* — For large fields, annulus contributions admit chart bounds and super-polynomially small error with affine direction selection uniformly over steps.
-- **III.4.86** [`preflight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Trees/Pressure.lean#L69-L82) *(key result)* — There exists a sequence of scales, one for each level, such that covariance models serve with constants for all patches and horizons.
-- **III.4.87** [`coat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Recovery.lean#L68-L219) *(key result)* — Local annulus analytic estimate: rows in the sweep with wide data return with error decaying faster than any power.
-- **III.4.88** [`packing_bill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Trees/Transfer.lean#L55-L66) *(key result)* — For a patch, there is a positive rate and constant such that any bed with strip metric and floors is served by the model.
-- **III.4.89** [`focused`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Subtotal.lean#L123-L165) *(key result)* — Uniform estimates for the lifted step: under small perturbations along tube configurations, the step's kernel comparison holds with explicit constants for large parameter.
-- **III.4.90** [`aperture`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/Venue/Chips.lean#L31-L68) *(key result)* — For large x, on every collection of link colors and sector-admissible configurations, a Gaussian marginal comparison estimate holds uniformly.
-- **III.4.91** [`contracted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Contraction.lean#L159-L215) *(numbered result)* — Under local ratio hypothesis, the committed J at every point in the ball equals the absolute value of the spin function.
-- **III.4.92** [`same_row`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Reading.lean#L194-L212) *(numbered result)* — A full-precision matrix entry is unchanged between two configurations agreeing on the relevant neighborhood.
-- **III.4.93** [`chain_receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/ACTUAL_SECTOR_FACTOR_DICTIONARY/Chains.lean#L68-L94) *(numbered result)* — Under a relative decay condition with ratio below one, the path sum over chains converges absolutely to the difference of inverses C⁻¹−A.
-- **III.4.94** [`publish`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16/DLog/Color.lean#L38-L63) *(numbered result)* — Smoothness of a function together with weighted jet bounds yields a bound ticket (norm-type estimate) on a ball.
-- **III.4.95** [`labeled`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Alphabet.lean#L196-L208) *(numbered result)* — Log determinant and log of one plus excess are sums over labeled tuple series with summable pieces.
-- **III.4.96** [`gilded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Alabaster.lean#L141-L155) *(numbered result)* — Three letter data types obey the shared hit budget at gauge-invariant value level.
-- **III.4.97** [`foreshadows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Gush.lean#L96-L134) *(numbered result)* — Under positivity hypotheses, a payment bound for the unmarked assembly holds for all large parameter and compatible step data.
-- **III.4.98** [`panel_report`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Ink.lean#L162-L182) *(numbered result)* — Smoothness and integrability of differentiated label arcs holds at a point given a local scaling form.
-- **III.4.99** [`growth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Planning.lean#L39-L54) *(numbered result)* — Given entries per family and growth of order, one can choose panels, index sets and sizes with compatibility and size-book conditions.
-- **III.4.100** [`abound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Regale.lean#L65-L88) *(key result)* — For large x, under tree-exponent and lane-count hypotheses, the terra exponent function is petty with error x^(-1/24) uniformly over sectors.
-- **III.4.101** [`issue_invoice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Petty.lean#L72-L90) *(key result)* — A decomposition of the spool lift into local pieces plus a petty remainder yields a plate with bounded base and an exponential-minus-one bound by a Hit-type budget.
-- **III.4.102** [`rate_pass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Enigma.lean#L36-L48) *(key result)* — The kept-early log-determinant decomposes as a sum of site rents, a nightly term, and intro and show taxes.
-- **III.4.103** [`book_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Shards.lean#L34-L39) *(key result)* — The kept-early log-determinant equals minus the number of frozen sites times log of spare, plus sector sums and intro and show taxes.
-- **III.4.104** [`bolsters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Sage.lean#L82-L114) *(key result)* — For large x, the quadratic auxiliary and relative log-price terms are both petty with error x^(-1/8) uniformly over sectors.
-- **III.4.105** [`chains`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Series.lean#L203-L227) *(key result)* — The log determinant chain identities hold: the log determinant of a positive definite covariance expands as a convergent series of trace terms.
-- **III.4.106** [`stores`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16/DLog/Fund.lean#L120-L127) *(key result)* — For a gauge, patch and predictor with branching property, there is a fund object so that the post-L stock for determinant labels holds eventually in x.
-- **III.4.107** [`posDef_of_integrable_quadratic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Escape.lean#L52-L94) *(numbered result)* — If exp(-quadratic/2 - linear + constant) is integrable on Euclidean space, then the symmetric matrix is positive definite.
-- **III.4.108** [`inverse_perturb`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_SWITCH/TableCosts.lean#L63-L83) *(numbered result)* — If D⁻¹ has decay bound K and A−D is small with decay, then A⁻¹ has the same decay with constant 2K.
-- **III.4.109** [`likelihood_local`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Support.lean#L178-L207) *(numbered result)* — For a locally confined perturbation, the likelihood ratio equals that of the marginal Gaussians on the local support.
-- **III.4.110** [`priceShift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Relative.lean#L245-L266) *(numbered result)* — The log of the Gaussian density ratio under a shift is bounded by explicit quadratic expressions in the difference and inverse-decay constants.
-- **III.4.111** [`takings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Folio/Takings.lean#L99-L116) *(key result)* — For any fixed polynomial degree and support exponent, the joint endpoint load is eventually exponentially small in the radius parameter.
-- **III.4.112** [`power_iff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Moment.lean#L183-L185) *(numbered result)* — The p-th power of a Gaussian likelihood ratio is integrable exactly when the mixed precision matrix is positive definite.
-- **III.4.113** [`root_pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Origin.lean#L208-L218) *(numbered result)* — The blame term is uniformly bounded by a constant per key over admissible data.
-- **III.4.114** [`paid_kernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/ResidualPrice.lean#L159-L221) *(key result)* — The residual quadratic and one log term of the sector change are controlled with exponentially small cost using the true covariance and window.
-- **III.4.115** [`visions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/CovBound.lean#L118-L146) *(numbered result)* — A fixed-L covariance is bounded above and below uniformly in flags, positions, forest and placement for large x.
-- **III.4.116** [`holds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Chord.lean#L133-L158) *(key result)* — Uniform Schur-type size and decay bounds hold for the quantities in the Gaussian bills across all admissible steps, forests and placements for large x.
-- **III.4.117** [`oasis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Echo.lean#L191-L223) *(key result)* — Uniform signed exponent bounds hold on the genuine law including the blame term for all admissible data and large x.
-- **III.4.118** [`weighted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Weighted.lean#L104-L138) *(key result)* — A trace-priced weighted local Gaussian change has positive-definite mixed precision and an explicit exponential bound on its p-th moment.
-- **III.4.119** [`insert_letter`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Insertion.lean#L120-L172) *(key result)* — A small signed local quadratic-affine insertion into a Gaussian density has finite p-th likelihood moment under an explicit smallness condition.
-- **III.4.120** [`pockets`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Brume.lean#L144-L152) *(numbered result)* — For an injective family of enrolled keys, the tilt cost on a finite set of distinct keys is bounded, allowing untouched keys to be dropped.
-- **III.4.121** [`many`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Buoy.lean#L104-L152) *(numbered result)* — Trigger and detector cost on an enrollment of n real coordinates is bounded by an explicit polynomial in n with constant depending on L and k.
-- **III.4.122** [`same_law`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Arc.lean#L189-L253) *(key result)* — Terms with polynomial score bounds supported on a trigger set have expectation under the true sector law controlled uniformly by Gaussian-table data with a constant depending only on L and k.
-- **III.4.123** [`r4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Ember.lean#L69-L111) *(numbered result)* — A fourth-moment style L1 bound for products of ratio insertions on a common marginal under a Gaussian table with bounded hit counts.
-- **III.4.124** [`painting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Rain.lean#L55-L68) *(key result)* — For any gauge, patch and teller with branches, there exists a paint such that the medium condition holds eventually for large x.
-- **III.4.125** [`same_purchase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Relative.lean#L72-L118) *(key result)* — For symmetric gapped covariance matrices with exponentially decaying inverse, localized to windows of large radius, the windowed matrix has uniform decay with constants independent of volume.
-- **III.4.126** [`before_paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L108-L124) *(key result)* — For any kernel choices there are constants such that cheap-stage budgets yield a horizon structure with the required suffices and sworn properties for all paid inputs.
-- **III.4.127** [`book`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Calendar.lean#L133-L138) *(key result)* — Under local ratio and outlet hypotheses, one can choose booths and a sufficiently late ordered delay schedule such that funding, ringing and annulus conditions hold for all later schedules.
-- **III.4.128** [`blocks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Consumer.lean#L167-L199) *(key result)* — Physical Gaussian Lp insertion estimates hold eventually with explicit positive constants for the actual correction pieces.
-- **III.4.129** [`purchase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Charges.lean#L151-L204) *(key result)* — For fixed patch, there exist constants such that for large x all admissible steps and flag-cell configurations satisfy the Ready bundle of Gram/resolvent window estimates, with constants independent of fields and volume.
-- **III.4.130** [`geared`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L59-L66) *(main result)* — For simple G, kernel choices and budgets, one can choose widths, amplitudes and rates so that for all sheets and levels satisfying the purchases, full paths with prescribed costs exist (B70 production without external Rack premise).
-- **III.4.131** [`sailsV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Seaside.lean#L96-L154) *(main result)* — For a simple graph and kernel choices with branching, there exists a sheet with prescribed kernel and stage, with prices such that for all tariffs and scopes the paid view holds from some index on.
-- **III.4.132** [`advanced`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Bias.lean#L193-L217) *(key result)* — At eligible cells, the translated Gaussian prices of the actual affine source are controlled by uniform constants depending only on the data, giving a readiness estimate.
-- **III.4.133** [`sources_read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Bias.lean#L104-L133) *(key result)* — The actual affine source/bias cost in physical coordinates is bounded by C(temp x + l), uniformly in the step data for large x.
-- **III.4.134** [`color_pipe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L394-L435) *(key result)* — For simple G, all-period assembly yields constants and a path datum for the next scale with bounds, classical matching and records, from inherited data.
-- **III.4.135** [`endures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Instruments.lean#L69-L86) *(key result)* — Given a concert and early choices, one can choose records with small epsilon so that for any menu and delays, later schedules satisfy the cadence and sustained conditions.
-- **III.4.136** [`boats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Ride.lean#L62-L74) *(key result)* — For a patch with branching teller, there is a uniform constant such that for all large x every matching desk with calling and day hypotheses satisfies the joint trip bound.
-- **III.4.137** [`bands`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Band.lean#L141-L145) *(key result)* — For a branching patch and teller, in-band Gaussian insertion prices hold eventually with positive constants for each Lp exponent.
-- **III.4.138** [`ruese`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Expound.lean#L68-L77) *(key result)* — For any budget function, there exists a sheet with kernel K and stage, and nested thresholds producing delays and directed structures.
-- **III.4.139** [`post`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Reverse.lean#L64-L88) *(key result)* — For a given gauge, patch and teller, there exist constants such that for large x the comparison returns into the paid endpoint law uniformly over steps, tubes and fields.
-- **III.4.140** [`transition_cap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L92-L182) *(key result)* — For simple G, there exist constants so that whenever the horizon calculation holds, suitable parameters yield a coherent transition bound.
-- **III.4.141** [`timberT`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Retreat.lean#L44-L63) *(key result)* — There exist parameter sequences, programs and registers so that for all large indices the full sheltered package holds.
+<a id="k-iii-4-1"></a>
+
+- **K-III.4.1** [`gathered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Margins.lean#L51-L75) *(numbered result)* — A linear map of a Gaussian vector with PSD covariance is Gaussian with the transformed covariance, measure-preservingly.
+
+<a id="k-iii-4-2"></a>
+
+- **K-III.4.2** [`still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_MULTIPLIER/TicketsChart.lean#L63-L107) *(numbered result)* — For a smooth function vanishing to first order at 0, rescaling by d in (0,1] gives Taylor-type jet bounds of size W·d² uniformly on a ball.
+
+<a id="k-iii-4-3"></a>
+
+- **K-III.4.3** [`passports`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Currencies.lean#L127-L150) *(key result)* — Under volume-growth hypotheses and a smallness condition, a counting inventory of clusters satisfies a summable total-cost bound.
+
+<a id="k-iii-4-4"></a>
+
+- **K-III.4.4** [`publish`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/Fold.lean#L139-L180) *(key result)* — A family of finite-volume operators with uniform exponential off-diagonal decay is realized by a single infinite-volume kernel with a slightly weaker decay rate restricting to each of them.
+
+<a id="k-iii-4-5"></a>
+
+- **K-III.4.5** [`strip_resolvent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/Metric.lean#L30-L37) *(key result)* — A strip-decaying kernel with a uniform spectral gap has an inverse of the resolvent type that is again strip-decaying with explicit degraded rate and constant.
+
+<a id="k-iii-4-6"></a>
+
+- **K-III.4.6** [`carried`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Visits.lean#L81-L120) *(numbered result)* — A jet budget at a walk endpoint transfers to the start with factor exponential in walk length via adjoint transport.
+
+<a id="k-iii-4-7"></a>
+
+- **K-III.4.7** [`follows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Tracks.lean#L36-L89) *(numbered result)* — A pointwise jet-budget bound on target endpoints transfers to a bound on a sum over covered walks with exponential-in-length control.
+
+<a id="k-iii-4-8"></a>
+
+- **K-III.4.8** [`fires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Parade.lean#L56-L90) *(numbered result)* — A tail-weighted polynomial bill is dominated by an exponentially decaying quantity in the trigger count for large x.
+
+<a id="k-iii-4-9"></a>
+
+- **K-III.4.9** [`charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Due.lean#L70-L87) *(numbered result)* — A function with finite-range locality around a site, vanishing when far from it, has pointwise jet dues with exponential weight in the radius.
+
+<a id="k-iii-4-10"></a>
+
+- **K-III.4.10** [`local_prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/SmallArc.lean#L28-L60) *(key result)* — Under local volume growth and derivative bounds, the free resolvent jets satisfy a polarized row/column budget bound with explicit altitude.
+
+<a id="k-iii-4-11"></a>
+
+- **K-III.4.11** [`coordinates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Coordinates.lean#L126-L179) *(key result)* — For small coordinate perturbations, the field entries and scene fields admit uniform derivative bounds with constants depending only on the gauge and order.
+
+<a id="k-iii-4-12"></a>
+
+- **K-III.4.12** [`transport_rows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/TrueTransport.lean#L257-L299) *(key result)* — Transport rows built from path data decaying at rate σ are priced bundles with exponentially small bounds in the minimal path length.
+
+<a id="k-iii-4-13"></a>
+
+- **K-III.4.13** [`bound_plotted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Visits.lean#L135-L195) *(numbered result)* — Jet budgets for the plotted path data follow from toll bounds on nearby cells with geometric collapse over cut labels.
+
+<a id="k-iii-4-14"></a>
+
+- **K-III.4.14** [`slots`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Prices.lean#L151-L182) *(numbered result)* — The negative log of the spare ratio is bounded by a constant times one plus the log of the scale.
+
+<a id="k-iii-4-15"></a>
+
+- **K-III.4.15** [`release_integral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Haar.lean#L167-L184) *(key result)* — Integrals over link arrays can be rewritten as integrals over log coordinates by exponential substitution, with a Jacobian and indicator of the chart domain.
+
+<a id="k-iii-4-16"></a>
+
+- **K-III.4.16** [`authentic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/Trace.lean#L228-L253) *(key result)* — For a Gaussian measure, the exponential of a quadratic-plus-linear exponent with small weights is integrable with integral at most exp(2 trace), with trace counted over actual uses.
+
+<a id="k-iii-4-17"></a>
+
+- **K-III.4.17** [`amount`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/Moment.lean#L67-L71) *(key result)* — Under a base condition, the exponential of a sum of charges is Gaussian-integrable with integral at most exp(2 times the due quantity).
+
+<a id="k-iii-4-18"></a>
+
+- **K-III.4.18** [`natural`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/ColourBooks.lean#L163-L192) *(numbered result)* — Windowed compressed covariance of ordered columns commutes with complete-block reindexing, for all u, even in singular cases and without symmetry.
+
+<a id="k-iii-4-19"></a>
+
+- **K-III.4.19** [`moves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Binding.lean#L116-L134) *(numbered result)* — Under a change of site set and color-block projection, the windowed Gaussian covariance and mean transform naturally with the induced windows.
+
+<a id="k-iii-4-20"></a>
+
+- **K-III.4.20** [`windows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L184-L239) *(key result)* — For symmetric gapped covariances with decay, the window-compressed covariance approximates the inverse with exponentially small error in radius, and is gapped and positive definite for large radius.
+
+<a id="k-iii-4-21"></a>
+
+- **K-III.4.21** [`side`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY/Frozen.lean#L83-L106) *(numbered result)* — The active-column block of the windowed matrix of an enlarged system equals the windowed matrix of the original system.
+
+<a id="k-iii-4-22"></a>
+
+- **K-III.4.22** [`fluctuate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Packets.lean#L85-L113) *(numbered result)* — Uniform finite bound on the fluctuation (log-ratio) cost in a real logarithm neighborhood of the parameter.
+
+<a id="k-iii-4-23"></a>
+
+- **K-III.4.23** [`thaw_integral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Haar.lean#L225-L253) *(numbered result)* — Iterated integration formula after exponential substitution on relative links for bounded functions supported where the chart condition holds, with integrability.
+
+<a id="k-iii-4-24"></a>
+
+- **K-III.4.24** [`produce`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Primitives/CONNECTED_GAUSSIAN_CUMULANTS/LocalPolynomial.lean#L58-L67) *(key result)* — A complex local polynomial of bounded degree, supported on a marked set with weights and magnitudes controlled, compiles to the ordered probe class with the stated read-set and cost bound.
+
+<a id="k-iii-4-25"></a>
+
+- **K-III.4.25** [`poly_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/Polynomial.lean#L82-L85) — Any complex polynomial of bounded total degree is moderate on the committed marginals with bound coefficient norm times a normal price.
+
+<a id="k-iii-4-26"></a>
+
+- **K-III.4.26** [`impression`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Press.lean#L123-L155) *(numbered result)* — There is a common finite reference frame so actual block predictors exist for all sufficiently large coarse sides.
+
+<a id="k-iii-4-27"></a>
+
+- **K-III.4.27** [`uses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SHARP_NORMALIZED_TAIL/Tags.lean#L97-L112) *(numbered result)* — The uniform average of a product of functions depending on pairwise disjoint tag sets factorizes into the product of averages.
+
+<a id="k-iii-4-28"></a>
+
+- **K-III.4.28** [`aperture`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Pan.lean#L57-L122) *(key result)* — For a gapped, finite-range, symmetric covariance family with rate bounds, the localized installed estimate holds uniformly with exponential decay at large scale.
+
+<a id="k-iii-4-29"></a>
+
+- **K-III.4.29** [`charts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/AffineCharts.lean#L51-L121) *(numbered result)* — An analytic function vanishing at zero and matching a tangent map on one slice differs from the affine response by O(u²) on small balls.
+
+<a id="k-iii-4-30"></a>
+
+- **K-III.4.30** [`linear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/NearJet.lean#L159-L187) *(numbered result)* — For a real-analytic map near zero, the first-derivative remainder is bounded by a constant times the parameter size in a small ball.
+
+<a id="k-iii-4-31"></a>
+
+- **K-III.4.31** [`stocked`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Completion.lean#L181-L212) *(numbered result)* — On inactive positions the identity completion gives the identity completion of the integral's covariance, omitting no zero modes.
+
+<a id="k-iii-4-32"></a>
+
+- **K-III.4.32** [`regularized_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Shell.lean#L142-L199) *(key result)* — At fixed volume the iterated sector integral equals an exact formula, with absolute integrability, for a chart ratio and enveloped observable.
+
+<a id="k-iii-4-33"></a>
+
+- **K-III.4.33** [`wide`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Tracks.lean#L134-L161) *(numbered result)* — Pointwise jet budgets at all sites within distance R transfer to a budget for the finite-range kernel applied to the data.
+
+<a id="k-iii-4-34"></a>
+
+- **K-III.4.34** [`cleans_at`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Clean.lean#L110-L208) *(key result)* — Under wide-field and funding hypotheses, there is a uniform constant and a direction vanishing on trunks such that all swept sites are clean for large x.
+
+<a id="k-iii-4-35"></a>
+
+- **K-III.4.35** [`freshQ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Duplicated.lean#L52-L101) *(numbered result)* — The copied Q table's prediction map is, up to gauge endpoint factors, a contraction-bounded linear paste of the coarse and fine directions.
+
+<a id="k-iii-4-36"></a>
+
+- **K-III.4.36** [`block_comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Block.lean#L316-L361) *(key result)* — For small fields in a local stencil, the branch derivative on a block is comparable to the left-trivialized group differential with uniform constants over all steps.
+
+<a id="k-iii-4-37"></a>
+
+- **K-III.4.37** [`near_collective`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/AffineRows.lean#L184-L192) *(numbered result)* — Near zero, the affine collective kernel equals the individual kernel for all choices and orientations.
+
+<a id="k-iii-4-38"></a>
+
+- **K-III.4.38** [`plotted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Ink.lean#L93-L120) *(numbered result)* — Block predictor chart maps are real-analytic with jet bounds uniform near zero on each fixed torus.
+
+<a id="k-iii-4-39"></a>
+
+- **K-III.4.39** [`sounds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Sounds.lean#L69-L101) *(key result)* — All mixed derivatives up to order k of the block coefficients on the selected row are bounded uniformly, and analytic, in a neighborhood of radius r.
+
+<a id="k-iii-4-40"></a>
+
+- **K-III.4.40** [`reacts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/CollarData.lean#L131-L189) *(key result)* — For large scale x, large-field remainder estimates hold uniformly over all admissible steps and tubes, with constants and a weak radius decaying faster than any power.
+
+<a id="k-iii-4-41"></a>
+
+- **K-III.4.41** [`bump_eq`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/NONFLAT_COVARIANCE_LOCALITY/Either.lean#L27-L58) *(numbered result)* — If two data agree within a radius, the corresponding bump rows agree at entries whose separation plus patch span is within the radius.
+
+<a id="k-iii-4-42"></a>
+
+- **K-III.4.42** [`sub_gram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/AffineMatch.lean#L162-L175) *(numbered result)* — The Gram matrix of the cut selected precision equals a submatrix of the repaired matrix.
+
+<a id="k-iii-4-43"></a>
+
+- **K-III.4.43** [`notarized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/CutGerm.lean#L110-L129) *(key result)* — Near zero, the active and raw matrices of the no-hole cut comparison agree in a flat neighborhood.
+
+<a id="k-iii-4-44"></a>
+
+- **K-III.4.44** [`not_flat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Gap.lean#L242-L264) *(key result)* — There is a uniform positive lower bound on the precision (Gram) form of active prices at flag-correct volumes, valid for all large temperatures and admissible steps.
+
+<a id="k-iii-4-45"></a>
+
+- **K-III.4.45** [`shared`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Bore.lean#L303-L305) *(numbered result)* — The determinant of the flat kinetic precision matrix is the same for two admissible chart choices, so normalized Jacobians drop out.
+
+<a id="k-iii-4-46"></a>
+
+- **K-III.4.46** [`late_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Year.lean#L113-L197) *(key result)* — For large scale x, uniformly over admissible step data, the actual transforms satisfy certified fixed-L price bounds with uniform constants.
+
+<a id="k-iii-4-47"></a>
+
+- **K-III.4.47** [`open_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SHARP_NORMALIZED_TAIL/Apertures.lean#L43-L55) *(key result)* — The relevant Gaussian covariance is positive definite with a uniform cap for all keys and placements with correct flags.
+
+<a id="k-iii-4-48"></a>
+
+- **K-III.4.48** [`ground_supply`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/SectorData.lean#L88-L110) *(key result)* — For a patch and teller, uniform constants exist such that all non-higher-order ground estimates hold on every large-scale step, tube and configuration.
+
+<a id="k-iii-4-49"></a>
+
+- **K-III.4.49** [`laplace_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Laplace.lean#L70-L85) *(numbered result)* — An exponential of an observable bounded by a quadratic-type penalty is integrable under a Gaussian with covariance ceiling, with an explicit bound.
+
+<a id="k-iii-4-50"></a>
+
+- **K-III.4.50** [`shifted_heat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/Hot.lean#L84-L107) *(numbered result)* — A shifted Gaussian covariance with a billed exponential budget and bounded shift satisfies the joint exponential test.
+
+<a id="k-iii-4-51"></a>
+
+- **K-III.4.51** [`chosen_branch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Branch.lean#L140-L219) *(key result)* — Predictor rows of the selected block have uniformly bounded mixed derivatives in a uniform ball of field parameters, with a single local gauge branch.
+
+<a id="k-iii-4-52"></a>
+
+- **K-III.4.52** [`selected_priced`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/EntryBounds.lean#L186-L243) *(numbered result)* — Kernel entries of the selected rows satisfy uniform two-sided derivative/price bounds in the price coordinates of a small ball.
+
+<a id="k-iii-4-53"></a>
+
+- **K-III.4.53** [`precision`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Neighborhood.lean#L122-L159) *(key result)* — Marked precision jets yield a period-uniform neighborhood in which the flat-comparison gap persists under perturbation of the base field with flags fixed.
+
+<a id="k-iii-4-54"></a>
+
+- **K-III.4.54** [`assembly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Covariance.lean#L146-L210) *(key result)* — For a branch-certified patch, the selected-sector source object admits kernel jets of every finite order with uniform positive constants on a price-coordinate ball.
+
+<a id="k-iii-4-55"></a>
+
+- **K-III.4.55** [`estimates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Residual.lean#L153-L187) *(key result)* — On the actual selected Gaussian's inverse, there are uniform constants giving the cost and multiplier-defect estimates for small price coordinates.
+
+<a id="k-iii-4-56"></a>
+
+- **K-III.4.56** [`projecting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/TreeInverse.lean#L64-L115) *(key result)* — The tree inverse of the quadratic slice Hessian is obtained by projecting the inverse of the joint completion, rather than estimated by kernel closeness.
+
+<a id="k-iii-4-57"></a>
+
+- **K-III.4.57** [`cutHead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/TellerFold.lean#L118-L146) *(key result)* — The plane-tree-inverse covariance of the ideal free head equals the Gaussian conditional covariance tensor for any tag-consistent tree.
+
+<a id="k-iii-4-58"></a>
+
+- **K-III.4.58** [`authorized_change`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Change.lean#L137-L192) *(key result)* — Under permitted Gaussian data, the actual sector integral admits an exact Gaussian change-of-variables formula with controlled price, licensing the downstream application.
+
+<a id="k-iii-4-59"></a>
+
+- **K-III.4.59** [`committed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Handoff.lean#L132-L182) *(key result)* — Under the stated hypotheses, the committed renormalization-group integral is licensed: all displayed integrals are valid and the sector-change identity holds at each scale step.
+
+<a id="k-iii-4-60"></a>
+
+- **K-III.4.60** [`prices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_AFFINE_JETS/Center.lean#L115-L151) *(key result)* — Uniform constants exist so that, for all large x, the affine pricing data satisfy estimates on a ball of coordinates and a shift bound.
+
+<a id="k-iii-4-61"></a>
+
+- **K-III.4.61** [`openings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Desk.lean#L42-L107) *(numbered result)* — For a local ratio chart there exist constants such that aperture and sponsored conditions hold for all large x.
+
+<a id="k-iii-4-62"></a>
+
+- **K-III.4.62** [`fromTeller`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Sky.lean#L62-L77) *(main result)* — For a fixed patch and gauge and teller data, there exist positive constants such that for all large x the sector covariance jet estimate holds with exact Gaussian endpoint metric.
+
+<a id="k-iii-4-63"></a>
+
+- **K-III.4.63** [`authorized_loans`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/AuthorizedLoans.lean#L44-L61) *(key result)* — Ground, higher-derivative and query bounds for selected ordered kernels hold uniformly without extra jet input hypotheses.
+
+<a id="k-iii-4-64"></a>
+
+- **K-III.4.64** [`trusting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Deposit.lean#L68-L93) *(key result)* — Uniformly for large x, gap and integrable-calculus (TestD) hypotheses hold on a germ neighborhood for the actual data.
+
+<a id="k-iii-4-65"></a>
+
+- **K-III.4.65** [`headComparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Ideal.lean#L120-L144) *(key result)* — The physical free horizon-linked inverse is compared with the ideal one with a positive exponential rate chosen post-L.
+
+<a id="k-iii-4-66"></a>
+
+- **K-III.4.66** [`commissioned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/SectorLie.lean#L126-L134) *(key result)* — Ground bounds exist with constants, and any higher-derivative request yields a query bound with combined constants.
+
+<a id="k-iii-4-67"></a>
+
+- **K-III.4.67** [`freeHead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/HeadSwitch.lean#L104-L143) *(key result)* — For large volume, zeroth-order Gaussian exchange holds: the actual free covariance is exponentially close to the ideal horizon-linked covariance with uniform constants.
+
+<a id="k-iii-4-68"></a>
+
+- **K-III.4.68** [`total`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Taylor.lean#L73-L108) *(key result)* — The full affine inverse germ's jet discrepancy against spatial marks is bounded by an exponential window loss plus a path-cut loss on the same tree and data.
+
+<a id="k-iii-4-69"></a>
+
+- **K-III.4.69** [`earned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Covers.lean#L67-L103) *(key result)* — Given a strip-bounded metric with gap, there is a strip-decaying operator whose restriction to each period equals the plane-tree-inverse conditional covariance form.
+
+<a id="k-iii-4-70"></a>
+
+- **K-III.4.70** [`bought`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Stead.lean#L94-L117) *(numbered result)* — A uniform bundle price bound, with constants chosen before the orbit, trees and volume, holds for large x.
+
+<a id="k-iii-4-71"></a>
+
+- **K-III.4.71** [`entries`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Quote.lean#L99-L127) *(numbered result)* — For large parameter, the move-matrix entries satisfy derivative bounds up to order k on a uniform real neighborhood.
+
+<a id="k-iii-4-72"></a>
+
+- **K-III.4.72** [`face_payment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/RowStack.lean#L117-L130) *(numbered result)* — Face kicks satisfy derivative bounds with a uniform face cost across all channels and geometries.
+
+<a id="k-iii-4-73"></a>
+
+- **K-III.4.73** [`fine_squares`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/AffineRows.lean#L157-L209) *(numbered result)* — Affine approximation of curvature squares along actual paths is controlled by the local deviation bounds in a tube.
+
+<a id="k-iii-4-74"></a>
+
+- **K-III.4.74** [`joint_universal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/Completion.lean#L62-L110) *(key result)* — For each j≥4 there is a uniform σ such that every branching patch with J=j admits a row inverse with strip bound for the flat Gaussian completion, uniform over scales.
+
+<a id="k-iii-4-75"></a>
+
+- **K-III.4.75** [`before_local`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/CorePacket.lean#L151-L160) *(key result)* — Beyond some scale, the before-L ledger and point-charge bounds hold for all large x and admissible steps.
+
+<a id="k-iii-4-76"></a>
+
+- **K-III.4.76** [`quote`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/SameQuote.lean#L216-L232) *(key result)* — The actual ordered kernels and their probability covariances are compared to Gaussian ones at the same Gram matrix with uniform constants, eventually in the parameter.
+
+<a id="k-iii-4-77"></a>
+
+- **K-III.4.77** [`freezer_row`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/PeriodicInverse.lean#L104-L139) *(key result)* — A frozen periodic inverse yields a row inverse with strip bound whose constants depend only on the slab, uniformly in period.
+
+<a id="k-iii-4-78"></a>
+
+- **K-III.4.78** [`patch_agreed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Collar.lean#L52-L107) *(numbered result)* — Squares and charges on a coarse site's patch depend only on inputs agreeing on that patch, regardless of other choices.
+
+<a id="k-iii-4-79"></a>
+
+- **K-III.4.79** [`coverall`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SECTOR_COVARIANCE_JETS/Roof.lean#L39-L62) *(key result)* — For each finite order there exist uniform constants such that, for large scale, the sector-change covariance presentation (Sky and Deck bounds) holds.
+
+<a id="k-iii-4-80"></a>
+
+- **K-III.4.80** [`onePlateau`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Covers.lean#L114-L136) *(main result)* — There is a single exponentially localized operator that simultaneously represents the conditional covariance for all admissible steps and has exponentially small differences under shortening.
+
+<a id="k-iii-4-81"></a>
+
+- **K-III.4.81** [`shortening`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/AffineResolvent.lean#L81-L100) *(key result)* — After cutting at radius R, the k-jet of the affine inverse germ differs from the original by an exponentially small error including position and energy cost.
+
+<a id="k-iii-4-82"></a>
+
+- **K-III.4.82** [`residual`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/SectorWindows.lean#L139-L165) *(numbered result)* — The residual window term is small in chart bundle, exponentially in radius, at all derivative orders.
+
+<a id="k-iii-4-83"></a>
+
+- **K-III.4.83** [`knows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/FREE_RESOLVENT/AffineResolvent.lean#L65-L74) *(numbered result)* — Affine inverse jet outputs are controlled in the actual unselected no-hole geometry without assuming a gap.
+
+<a id="k-iii-4-84"></a>
+
+- **K-III.4.84** [`haar_operators`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/SELECTED_ORDERED_KERNELS/HaarOperators.lean#L71-L83) *(key result)* — Marginal input estimates for Haar operator ordered kernels hold eventually with uniform constants for all admissible steps.
+
+<a id="k-iii-4-85"></a>
+
+- **K-III.4.85** [`annulus_pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Annulus.lean#L36-L127) *(key result)* — For large fields, annulus contributions admit chart bounds and super-polynomially small error with affine direction selection uniformly over steps.
+
+<a id="k-iii-4-86"></a>
+
+- **K-III.4.86** [`preflight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Trees/Pressure.lean#L69-L82) *(key result)* — There exists a sequence of scales, one for each level, such that covariance models serve with constants for all patches and horizons.
+
+<a id="k-iii-4-87"></a>
+
+- **K-III.4.87** [`coat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/LARGE_FIELD_REMAINDERS/Recovery.lean#L68-L219) *(key result)* — Local annulus analytic estimate: rows in the sweep with wide data return with error decaying faster than any power.
+
+<a id="k-iii-4-88"></a>
+
+- **K-III.4.88** [`packing_bill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Trees/Transfer.lean#L55-L66) *(key result)* — For a patch, there is a positive rate and constant such that any bed with strip metric and floors is served by the model.
+
+<a id="k-iii-4-89"></a>
+
+- **K-III.4.89** [`focused`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/LOCAL_GAUSSIAN_LAWS/Subtotal.lean#L123-L165) *(key result)* — Uniform estimates for the lifted step: under small perturbations along tube configurations, the step's kernel comparison holds with explicit constants for large parameter.
+
+<a id="k-iii-4-90"></a>
+
+- **K-III.4.90** [`aperture`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/WEIGHTED_GAUSSIAN_MARGINAL_LIMIT_45C/Venue/Chips.lean#L31-L68) *(key result)* — For large x, on every collection of link colors and sector-admissible configurations, a Gaussian marginal comparison estimate holds uniformly.
+
+<a id="k-iii-4-91"></a>
+
+- **K-III.4.91** [`contracted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Contraction.lean#L159-L215) *(numbered result)* — Under local ratio hypothesis, the committed J at every point in the ball equals the absolute value of the spin function.
+
+<a id="k-iii-4-92"></a>
+
+- **K-III.4.92** [`same_row`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Reading.lean#L194-L212) *(numbered result)* — A full-precision matrix entry is unchanged between two configurations agreeing on the relevant neighborhood.
+
+<a id="k-iii-4-93"></a>
+
+- **K-III.4.93** [`chain_receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/ACTUAL_SECTOR_FACTOR_DICTIONARY/Chains.lean#L68-L94) *(numbered result)* — Under a relative decay condition with ratio below one, the path sum over chains converges absolutely to the difference of inverses C⁻¹−A.
+
+<a id="k-iii-4-94"></a>
+
+- **K-III.4.94** [`publish`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16/DLog/Color.lean#L38-L63) *(numbered result)* — Smoothness of a function together with weighted jet bounds yields a bound estimate (norm-type estimate) on a ball.
+
+<a id="k-iii-4-95"></a>
+
+- **K-III.4.95** [`labeled`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Alphabet.lean#L196-L208) *(numbered result)* — Log determinant and log of one plus excess are sums over labeled tuple series with summable pieces.
+
+<a id="k-iii-4-96"></a>
+
+- **K-III.4.96** [`gilded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Alabaster.lean#L141-L155) *(numbered result)* — Three letter data types obey the shared hit budget at gauge-invariant value level.
+
+<a id="k-iii-4-97"></a>
+
+- **K-III.4.97** [`foreshadows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Gush.lean#L96-L134) *(numbered result)* — Under positivity hypotheses, a payment bound for the unmarked assembly holds for all large parameter and compatible step data.
+
+<a id="k-iii-4-98"></a>
+
+- **K-III.4.98** [`panel_report`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Ink.lean#L162-L182) *(numbered result)* — Smoothness and integrability of differentiated label arcs holds at a point given a local scaling form.
+
+<a id="k-iii-4-99"></a>
+
+- **K-III.4.99** [`growth`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Planning.lean#L39-L54) *(numbered result)* — Given entries per family and growth of order, one can choose panels, index sets and sizes with compatibility and size-book conditions.
+
+<a id="k-iii-4-100"></a>
+
+- **K-III.4.100** [`abound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Regale.lean#L65-L88) *(key result)* — For large x, under tree-exponent and lane-count hypotheses, the terra exponent function is petty with error x^(-1/24) uniformly over sectors.
+
+<a id="k-iii-4-101"></a>
+
+- **K-III.4.101** [`issue_invoice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Petty.lean#L72-L90) *(key result)* — A decomposition of the spool lift into local pieces plus a petty remainder yields a plate with bounded base and an exponential-minus-one bound by a Hit-type budget.
+
+<a id="k-iii-4-102"></a>
+
+- **K-III.4.102** [`rate_pass`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Enigma.lean#L36-L48) *(key result)* — The kept-early log-determinant decomposes as a sum of site rents, a nightly term, and intro and show taxes.
+
+<a id="k-iii-4-103"></a>
+
+- **K-III.4.103** [`book_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Shards.lean#L34-L39) *(key result)* — The kept-early log-determinant equals minus the number of frozen sites times log of spare, plus sector sums and intro and show taxes.
+
+<a id="k-iii-4-104"></a>
+
+- **K-III.4.104** [`bolsters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Sage.lean#L82-L114) *(key result)* — For large x, the quadratic auxiliary and relative log-price terms are both petty with error x^(-1/8) uniformly over sectors.
+
+<a id="k-iii-4-105"></a>
+
+- **K-III.4.105** [`chains`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Series.lean#L203-L227) *(key result)* — The log determinant chain identities hold: the log determinant of a positive definite covariance expands as a convergent series of trace terms.
+
+<a id="k-iii-4-106"></a>
+
+- **K-III.4.106** [`stores`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_JOINT_ENDPOINT_LOAD_F16/DLog/Fund.lean#L120-L127) *(key result)* — For a gauge, patch and predictor with branching property, there is a fund object so that the post-L stock for determinant labels holds eventually in x.
+
+<a id="k-iii-4-107"></a>
+
+- **K-III.4.107** [`posDef_of_integrable_quadratic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Escape.lean#L52-L94) *(numbered result)* — If exp(-quadratic/2 - linear + constant) is integrable on Euclidean space, then the symmetric matrix is positive definite.
+
+<a id="k-iii-4-108"></a>
+
+- **K-III.4.108** [`inverse_perturb`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_SWITCH/TableCosts.lean#L63-L83) *(numbered result)* — If D⁻¹ has decay bound K and A−D is small with decay, then A⁻¹ has the same decay with constant 2K.
+
+<a id="k-iii-4-109"></a>
+
+- **K-III.4.109** [`likelihood_local`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Support.lean#L178-L207) *(numbered result)* — For a locally confined perturbation, the likelihood ratio equals that of the marginal Gaussians on the local support.
+
+<a id="k-iii-4-110"></a>
+
+- **K-III.4.110** [`priceShift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Relative.lean#L245-L266) *(numbered result)* — The log of the Gaussian density ratio under a shift is bounded by explicit quadratic expressions in the difference and inverse-decay constants.
+
+<a id="k-iii-4-111"></a>
+
+- **K-III.4.111** [`takings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Folio/Takings.lean#L99-L116) *(key result)* — For any fixed polynomial degree and support exponent, the joint endpoint load is eventually exponentially small in the radius parameter.
+
+<a id="k-iii-4-112"></a>
+
+- **K-III.4.112** [`power_iff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Moment.lean#L183-L185) *(numbered result)* — The p-th power of a Gaussian likelihood ratio is integrable exactly when the mixed precision matrix is positive definite.
+
+<a id="k-iii-4-113"></a>
+
+- **K-III.4.113** [`root_pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Origin.lean#L208-L218) *(numbered result)* — The blame term is uniformly bounded by a constant per key over admissible data.
+
+<a id="k-iii-4-114"></a>
+
+- **K-III.4.114** [`paid_kernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/ResidualPrice.lean#L159-L221) *(key result)* — The residual quadratic and one log term of the sector change are controlled with exponentially small cost using the true covariance and window.
+
+<a id="k-iii-4-115"></a>
+
+- **K-III.4.115** [`visions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/CovBound.lean#L118-L146) *(numbered result)* — A fixed-L covariance is bounded above and below uniformly in flags, positions, forest and placement for large x.
+
+<a id="k-iii-4-116"></a>
+
+- **K-III.4.116** [`holds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Chord.lean#L133-L158) *(key result)* — Uniform Schur-type size and decay bounds hold for the quantities in the Gaussian bills across all admissible steps, forests and placements for large x.
+
+<a id="k-iii-4-117"></a>
+
+- **K-III.4.117** [`oasis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Echo.lean#L191-L223) *(key result)* — Uniform signed exponent bounds hold on the genuine law including the blame term for all admissible data and large x.
+
+<a id="k-iii-4-118"></a>
+
+- **K-III.4.118** [`weighted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Weighted.lean#L104-L138) *(key result)* — A trace-priced weighted local Gaussian change has positive-definite mixed precision and an explicit exponential bound on its p-th moment.
+
+<a id="k-iii-4-119"></a>
+
+- **K-III.4.119** [`insert_letter`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Insertion.lean#L120-L172) *(key result)* — A small signed local quadratic-affine insertion into a Gaussian density has finite p-th likelihood moment under an explicit smallness condition.
+
+<a id="k-iii-4-120"></a>
+
+- **K-III.4.120** [`pockets`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Brume.lean#L144-L152) *(numbered result)* — For an injective family of enrolled keys, the tilt cost on a finite set of distinct keys is bounded, allowing untouched keys to be dropped.
+
+<a id="k-iii-4-121"></a>
+
+- **K-III.4.121** [`many`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Buoy.lean#L104-L152) *(numbered result)* — Trigger and detector cost on an enrollment of n real coordinates is bounded by an explicit polynomial in n with constant depending on L and k.
+
+<a id="k-iii-4-122"></a>
+
+- **K-III.4.122** [`same_law`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Arc.lean#L189-L253) *(key result)* — Terms with polynomial score bounds supported on a trigger set have expectation under the true sector law controlled uniformly by Gaussian-table data with a constant depending only on L and k.
+
+<a id="k-iii-4-123"></a>
+
+- **K-III.4.123** [`r4`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Ember.lean#L69-L111) *(numbered result)* — A fourth-moment style L1 bound for products of ratio insertions on a common marginal under a Gaussian table with bounded hit counts.
+
+<a id="k-iii-4-124"></a>
+
+- **K-III.4.124** [`painting`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Rain.lean#L55-L68) *(key result)* — For any gauge, patch and teller with branches, there exists a paint such that the medium condition holds eventually for large x.
+
+<a id="k-iii-4-125"></a>
+
+- **K-III.4.125** [`same_purchase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Relative.lean#L72-L118) *(key result)* — For symmetric gapped covariance matrices with exponentially decaying inverse, localized to windows of large radius, the windowed matrix has uniform decay with constants independent of volume.
+
+<a id="k-iii-4-126"></a>
+
+- **K-III.4.126** [`before_paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L108-L124) *(key result)* — For any kernel choices there are constants such that cheap-stage budgets yield a horizon structure with the required suffices and sworn properties for all paid inputs.
+
+<a id="k-iii-4-127"></a>
+
+- **K-III.4.127** [`book`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Calendar.lean#L133-L138) *(key result)* — Under local ratio and outlet hypotheses, one can choose booths and a sufficiently late ordered delay schedule such that funding, ringing and annulus conditions hold for all later schedules.
+
+<a id="k-iii-4-128"></a>
+
+- **K-III.4.128** [`blocks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Consumer.lean#L167-L199) *(key result)* — Physical Gaussian Lp insertion estimates hold eventually with explicit positive constants for the actual correction pieces.
+
+<a id="k-iii-4-129"></a>
+
+- **K-III.4.129** [`purchase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Charges.lean#L151-L204) *(key result)* — For fixed patch, there exist constants such that for large x all admissible steps and flag-cell configurations satisfy the Ready bundle of Gram/resolvent window estimates, with constants independent of fields and volume.
+
+<a id="k-iii-4-130"></a>
+
+- **K-III.4.130** [`geared`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L59-L66) *(main result)* — For simple G, kernel choices and budgets, one can choose widths, amplitudes and rates so that for all sheets and levels satisfying the purchases, full paths with prescribed costs exist (B70 production without external Rack premise).
+
+<a id="k-iii-4-131"></a>
+
+- **K-III.4.131** [`sailsV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Seaside.lean#L96-L154) *(main result)* — For a simple graph and kernel choices with branching, there exists a sheet with prescribed kernel and stage, with prices such that for all tariffs and scopes the paid view holds from some index on.
+
+<a id="k-iii-4-132"></a>
+
+- **K-III.4.132** [`advanced`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Bias.lean#L193-L217) *(key result)* — At eligible cells, the translated Gaussian prices of the actual affine source are controlled by uniform constants depending only on the data, giving a readiness estimate.
+
+<a id="k-iii-4-133"></a>
+
+- **K-III.4.133** [`sources_read`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/GAUSSIAN_FIELD_ALIGNMENT/Bias.lean#L104-L133) *(key result)* — The actual affine source/bias cost in physical coordinates is bounded by C(temp x + l), uniformly in the step data for large x.
+
+<a id="k-iii-4-134"></a>
+
+- **K-III.4.134** [`color_pipe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L394-L435) *(key result)* — For simple G, all-period assembly yields constants and a path datum for the next scale with bounds, classical matching and records, from inherited data.
+
+<a id="k-iii-4-135"></a>
+
+- **K-III.4.135** [`endures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Instruments.lean#L69-L86) *(key result)* — Given a concert and early choices, one can choose records with small epsilon so that for any menu and delays, later schedules satisfy the cadence and sustained conditions.
+
+<a id="k-iii-4-136"></a>
+
+- **K-III.4.136** [`boats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Ride.lean#L62-L74) *(key result)* — For a patch with branching teller, there is a uniform constant such that for all large x every matching desk with calling and day hypotheses satisfies the joint trip bound.
+
+<a id="k-iii-4-137"></a>
+
+- **K-III.4.137** [`bands`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorTools/PHYSICAL_GAUSSIAN_INSERTION/Band.lean#L141-L145) *(key result)* — For a branching patch and teller, in-band Gaussian insertion prices hold eventually with positive constants for each Lp exponent.
+
+<a id="k-iii-4-138"></a>
+
+- **K-III.4.138** [`ruese`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Expound.lean#L68-L77) *(key result)* — For any budget function, there exists a sheet with kernel K and stage, and nested thresholds producing delays and directed structures.
+
+<a id="k-iii-4-139"></a>
+
+- **K-III.4.139** [`post`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Reverse.lean#L64-L88) *(key result)* — For a given gauge, patch and teller, there exist constants such that for large x the comparison returns into the paid endpoint law uniformly over steps, tubes and fields.
+
+<a id="k-iii-4-140"></a>
+
+- **K-III.4.140** [`transition_cap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L92-L182) *(key result)* — For simple G, there exist constants so that whenever the horizon calculation holds, suitable parameters yield a coherent transition bound.
+
+<a id="k-iii-4-141"></a>
+
+- **K-III.4.141** [`timberT`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Retreat.lean#L44-L63) *(key result)* — There exist parameter sequences, programs and registers so that for all large indices the full sheltered package holds.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

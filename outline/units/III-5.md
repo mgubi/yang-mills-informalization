@@ -1,11 +1,19 @@
 # III.5. Cluster expansion of the polymer gas
 
-*Part III — Ultraviolet construction (renormalization group).* 9,746 lines of Lean in 1,097 declarations used by the main theorem.
+*Part III — Ultraviolet construction (renormalization group).*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Controls sums of interacting polymer activities by a convergent cluster expansion.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** III, Ultraviolet construction (renormalization group). **Lean:** work packages [`YM/Push/ABSOLUTE_SUMS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS) (3,624 lines), [`YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS) (3,589), [`YM/Push/SECTOR_MEASURE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE) (1,153), [`YM/SectorNext/VACUUM_NORMALIZATION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION) (935), [`YM/Progress/STATIONARY_SCENES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES) (445). **Size:** 9,746 lines in 1,097 declarations used by the main theorem.
+[Overview](../README.md) · [All units](../units.md) · [← Previous: III.4](III-4.md) · [Next: III.6 →](III-6.md)
+
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** III, Ultraviolet construction (renormalization group). **Lean:** work packages [`YM/Push/ABSOLUTE_SUMS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS) (3,624 lines), [`YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS) (3,589), [`YM/Push/SECTOR_MEASURE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE) (1,153), [`YM/SectorNext/VACUUM_NORMALIZATION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION) (935), [`YM/Progress/STATIONARY_SCENES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES) (445). **Size:** 9,746 lines in 1,097 line-counted declarations in the source allocation.
 
 **Conventions.**
 
@@ -18,6 +26,10 @@
 - For polymers $(X_i,w_i)_{i\in\iota}$ with $w\ge0$, the *site-sum condition* $\mathrm{Hit}_B(w;a,\gamma)$ means $\mathrm{SB}\big(i\mapsto \mathbf 1[x\in X_i]\,w_i\,e^{a\,\mathrm{cov}_B(X_i)};\gamma\big)$ for every site $x$ ([`Ac.Hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L12-L13), II.2).
 - All weights are real. An upper bound on an infinite sum of nonnegative terms includes summability, as in $\mathrm{SB}$.
 - For a relation $R$ that is not symmetric, the graph used below has an edge between distinct occurrences $a,b$ exactly when both $R(z_a,z_b)$ and $R(z_b,z_a)$ hold. The coefficient of a one-vertex tuple is $1$.
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -310,6 +322,8 @@ Consequently, for large $x$, III.5.13(b) applies to the following windows: a fin
 - A weighted row bound for the tree-gauge response kernel ([`Response.response_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Response.lean#L242-L259)).
 - Auxiliary Gaussian estimates, listed in Lemma 4.36.
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **From other units.**
@@ -352,6 +366,8 @@ Consequently, for large $x$, III.5.13(b) applies to the following windows: a fin
   - the point charge (discharged as in III.5.11);
   - in the auxiliary Gaussian estimates, the coarse-side bound and flag equality, together with the compatible quadratic forms specified in Lemma 4.36.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 For a finite gas, inclusion–exclusion writes the partition function as a sum over tuples. Splitting off the connected component of a distinguished occurrence gives the coefficient recurrence $(m+1)g_{m+1}=\sum_{k=0}^m(k+1)\ell_k g_{m-k}$. For the gas polynomial $P(t)=\sum_ng_nt^n$ and cluster series $L(t)=\sum_m\ell_mt^{m+1}$, this becomes $P'=L'P$. A geometric bound on the cluster coefficients justifies differentiation on an interval containing $[0,1]$; then $Pe^{-L}=1$. Absolute bounds allow passage to arbitrary label sets through the directed family of finite subsets.
@@ -361,6 +377,8 @@ The bounds combine the tree-graph inequality with a sum over trees. A parent sup
 For seed packets, a spanning-walk count gives an entropy factor $K_{\rm step}^2$ per seed. The point charge supplies an energy gain $\beta\kappa t^2$ per seed. Since $t=\beta_F^{-1/2}P(\beta_F)$ and $\beta\ge u\beta_F$, the guaranteed gain is $\kappa uP(\beta_F)^2$. At fixed $L$, this dominates every cost $\mathrm{bill}^dP(\beta_F)^z$ with $z<2$. Half the gain can be retained as a mark for later estimates. The partition of unity over global seed records then splits the block-spin pushforward while preserving a common field, tag array and tree-gauge slice.
 
 The deletion construction obtains another logarithm from the region recurrence. Its negative-logarithm pieces form a union-convolution series pinned at a chosen site. A weighted $\ell^1$ bound closes induction on the region and compares signed activities with the gas of negative envelope activities. The final matrix estimates use a transported flat linearization: a gauge-fixed Poincaré inequality and a small-background comparison give a uniform spectral gap, while path bounds give weighted row and column estimates. Exponential conjugation yields inverse decay, and principal window inverses approximate the full inverse with error $O(e^{-cB})$.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -718,6 +736,8 @@ For the field estimates below, assume a funded step with this patch, coarse side
 
 
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 The tree-graph argument is standard. The estimates must also retain arbitrary label sets, repeated occurrences, site pins and covering weights at the growing scale $B=\lceil(\log x)^2\rceil$. The entropy factor $4(2B+1)^4$ is sufficient because it grows only polynomially in $\log x$.
@@ -726,38 +746,180 @@ The gain scale is $P(\beta_F)^2=e^{2(\log\log\beta_F)^2}$. It absorbs $\mathrm{b
 
 The sector estimate needs global seed records to preserve the local point-charge prerequisites under lattice orientations. Its remainder $\ell_A$ has no volume-uniform bound here. For the Gaussian estimates, the substantive inputs are the gauge-fixed Poincaré inequality and control of the transported flat rows away from the flagged region. Finite range grows with $B$; uniform exponential row bounds provide the useful control.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| Written proof | Lean | Meaning |
-|---|---|---|
-| $\mathrm{SB}(f;C)$ | [`SumBudget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L59-L60) | $f\ge0$ summable, $\sum f\le C$ |
-| $\mathrm{Hit}_B(w;a,\gamma)$ | [`Ac.Hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L12-L13) | site-sum condition |
-| $\mathrm{cov}_B$, $\mathrm{ball}_B$ | [`coverNumber`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L69-L71), [`ballCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Animals.lean#L148) | connected covering number; $(2B+1)^4$ |
-| $\mathrm{Ready}(w;a,\gamma,\delta,q)$ | [`Trees.Ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Forest.lean#L31-L32), [`degreePrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Weigh.lean#L52) | smallness of the cluster expansion |
-| $R\subseteq$ overlap | [`Ursell.Tests`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L59), [`blocked`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L22) | incompatibility implies overlap; the overlap relation |
-| $G_R(z)$, $\phi^T_R(z)$ | [`Ursell.pot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L32-L33), [`Ursell.coefficient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L35) | incompatibility graph of a tuple; Ursell coefficient |
-| $\Xi(w)$; cluster term; log series | [`Gas.total`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L22), [`Gas.term`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L24), [`Gas.logSum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L26) | gas, its cluster terms and their sum |
-| $g_n$, $\ell_m$ | [`Coef.gasRow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L19), [`Coef.logRow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L20) | coefficients of $\Xi$ and of the log series |
-| $w^Y$, $p$ | [`Gas.cut`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L24), [`Gas.missing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L25) | weights off $Y$; clusters meeting $Y$ |
-| multisets, $\prod w^{n}/n!$ | [`Multiple.Reps`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L26), [`manyW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L28-L29) | labels with multiplicities |
-| packet $A$, number of seeds, $D_r(A)$ | [`Stores`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L34-L37), [`shares`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L46), [`dome`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L44) | finite set of typed seeds; radius-$r$ neighbourhood of their locations |
-| connected packet, $K_{\rm hit}$, $K_{\rm step}$, $\tau_L$ | [`Packets.connected`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L77), [`hitCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L215), [`stepCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L216), [`typesAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L181) | animal-counting constants |
-| $\rho$, packet tail | [`ratioCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L28-L29), [`fit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L34-L35), [`totalCharge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L37-L38) | per-seed ratio; tail of packet sums |
-| hypotheses of III.5.7(b) | [`Mixed.Costs.Buy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L47-L58), [`Mixed.Accounts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L84-L89) | numerical list; weight bounds |
-| $B$, $\beta_F$, $t$, $P$ | [`radiusB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22), [`betaF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23), [`fiery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L26), [`Vac.Numbers.P`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Vac/Treasury.lean#L72) | $\lceil(\log x)^2\rceil$; $x+b\log L$; $\beta_F^{-1/2}P(\beta_F)$; $e^{(\log\log s)^2}$ |
-| $M$, gain $\beta\mu t^2$ | `hatWin`, [`Grant.credit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Grants.lean#L48) | guaranteed and actual gain per seed |
-| $Z(B)$, $\lambda(A)$ | [`fumes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L122), [`locker`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L46), [`pieces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Sprig.lean#L23-L28) | disjoint-family gas; Möbius pieces of $-\log Z$ |
-| $f*g$, $\hat f$, $\Vert f\Vert_w$, $\lambda(f)$ | [`glue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L36), [`shed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L38), [`crop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L40), [`lamp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L161) | union convolution, cumulative sum, weighted norm, log series |
-| hypotheses of III.5.9 | [`Rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L45-L47), [`Deletion`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L31-L34), [`Receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L39-L43), [`Sufficient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L168-L173), [`Fund`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L43-L49), [`Tags`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L72-L77) | weight, deletion identity, site conditions, coefficient properties |
-| allocation $D$; point charge | [`Allocation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L30-L36), [`PointCharge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L29-L32) | partition of unity over packets; $\mathcal E_A\ge\kappa t^2$ per seed |
-| $\mathcal E_A$; $c_A$; $\ell_A$; $\pi_\beta e^{-\beta\kappa t^2 k}$ | [`assessed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L85), [`cutEntry`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L145-L148), [`leftOver`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L140-L143), [`earn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Grant.lean#L28-L29) | sector energy; sector output; remainder; gain |
-| weighted Schur classes; $M\ge r$ | [`Green.Rows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L26-L27), [`Green.Both`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L29-L30), [`Green.Bottom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L32-L33) | row/column sums at rate $\eta$; lower bound |
-| windows, $\mathrm{within}$, $E$, $\mathrm{cov}$, $\Pi_U$ | [`Win.Windows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L28-L30), [`within`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L36-L37), [`error`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L39), [`cov`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L73), [`planePrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Schur.lean#L69-L70) | localized inverse and covariance |
-| uniform matrix data; window constants | [`Win.Promise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L22-L30), [`Turns`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L71-L83), [`Turns.Takes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L91-L101) | (mass, bottom, rate, counting); bounds of III.5.13(b) |
-| $D$, $\mathrm{gram}$ | [`Aff.Dmat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L125-L127), [`Aff.gram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L145-L147) | transported flat row matrix; completed precision matrix |
-| transported flat derivative | [`Aff.derivative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L116-L118) | row operator used to define $D$ |
-| auxiliary Gaussian assumptions | [`Aff.Reserve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Veil.lean#L34-L39), [`Aff.Alongside`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Station.lean#L71-L78), [`Aff.cert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Odometer.lean#L23-L24) | reserve bounds; compatible quadratic forms; volume and flag tests |
-| $H_{n,p}$; comparison field $v$ | [`Rates.allowance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Rate.lean#L27), [`Aff.unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Through.lean#L29-L30) | $B^pt^n$; active stationary extension minus replica extension, transported back by the local gauge |
+- **Written proof:** $\mathrm{SB}(f;C)$
+
+  **Lean:** [`SumBudget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L59-L60)
+
+  **Meaning:** $f\ge0$ summable, $\sum f\le C$
+
+- **Written proof:** $\mathrm{Hit}_B(w;a,\gamma)$
+
+  **Lean:** [`Ac.Hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L12-L13)
+
+  **Meaning:** site-sum condition
+
+- **Written proof:** $\mathrm{cov}_B$, $\mathrm{ball}_B$
+
+  **Lean:** [`coverNumber`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L69-L71), [`ballCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Animals.lean#L148)
+
+  **Meaning:** connected covering number; $(2B+1)^4$
+
+- **Written proof:** $\mathrm{Ready}(w;a,\gamma,\delta,q)$
+
+  **Lean:** [`Trees.Ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Forest.lean#L31-L32), [`degreePrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Weigh.lean#L52)
+
+  **Meaning:** smallness of the cluster expansion
+
+- **Written proof:** $R\subseteq$ overlap
+
+  **Lean:** [`Ursell.Tests`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L59), [`blocked`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L22)
+
+  **Meaning:** incompatibility implies overlap; the overlap relation
+
+- **Written proof:** $G_R(z)$, $\phi^T_R(z)$
+
+  **Lean:** [`Ursell.pot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L32-L33), [`Ursell.coefficient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L35)
+
+  **Meaning:** incompatibility graph of a tuple; Ursell coefficient
+
+- **Written proof:** $\Xi(w)$; cluster term; log series
+
+  **Lean:** [`Gas.total`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L22), [`Gas.term`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L24), [`Gas.logSum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L26)
+
+  **Meaning:** gas, its cluster terms and their sum
+
+- **Written proof:** $g_n$, $\ell_m$
+
+  **Lean:** [`Coef.gasRow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L19), [`Coef.logRow`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L20)
+
+  **Meaning:** coefficients of $\Xi$ and of the log series
+
+- **Written proof:** $w^Y$, $p$
+
+  **Lean:** [`Gas.cut`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L24), [`Gas.missing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L25)
+
+  **Meaning:** weights off $Y$; clusters meeting $Y$
+
+- **Written proof:** multisets, $\prod w^{n}/n!$
+
+  **Lean:** [`Multiple.Reps`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L26), [`manyW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L28-L29)
+
+  **Meaning:** labels with multiplicities
+
+- **Written proof:** packet $A$, number of seeds, $D_r(A)$
+
+  **Lean:** [`Stores`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L34-L37), [`shares`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L46), [`dome`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L44)
+
+  **Meaning:** finite set of typed seeds; radius-$r$ neighbourhood of their locations
+
+- **Written proof:** connected packet, $K_{\rm hit}$, $K_{\rm step}$, $\tau_L$
+
+  **Lean:** [`Packets.connected`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L77), [`hitCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L215), [`stepCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L216), [`typesAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L181)
+
+  **Meaning:** animal-counting constants
+
+- **Written proof:** $\rho$, packet tail
+
+  **Lean:** [`ratioCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L28-L29), [`fit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L34-L35), [`totalCharge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L37-L38)
+
+  **Meaning:** per-seed ratio; tail of packet sums
+
+- **Written proof:** hypotheses of III.5.7(b)
+
+  **Lean:** [`Mixed.Costs.Buy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L47-L58), [`Mixed.Accounts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L84-L89)
+
+  **Meaning:** numerical list; weight bounds
+
+- **Written proof:** $B$, $\beta_F$, $t$, $P$
+
+  **Lean:** [`radiusB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22), [`betaF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23), [`fiery`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L26), [`Vac.Numbers.P`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Vac/Treasury.lean#L72)
+
+  **Meaning:** $\lceil(\log x)^2\rceil$; $x+b\log L$; $\beta_F^{-1/2}P(\beta_F)$; $e^{(\log\log s)^2}$
+
+- **Written proof:** $M$, gain $\beta\mu t^2$
+
+  **Lean:** `hatWin`, [`Grant.credit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Grants.lean#L48)
+
+  **Meaning:** guaranteed and actual gain per seed
+
+- **Written proof:** $Z(B)$, $\lambda(A)$
+
+  **Lean:** [`fumes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L122), [`locker`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L46), [`pieces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Sprig.lean#L23-L28)
+
+  **Meaning:** disjoint-family gas; Möbius pieces of $-\log Z$
+
+- **Written proof:** $f*g$, $\hat f$, $\Vert f\Vert_w$, $\lambda(f)$
+
+  **Lean:** [`glue`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L36), [`shed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L38), [`crop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L40), [`lamp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L161)
+
+  **Meaning:** union convolution, cumulative sum, weighted norm, log series
+
+- **Written proof:** hypotheses of III.5.9
+
+  **Lean:** [`Rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L45-L47), [`Deletion`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L31-L34), [`Receipt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L39-L43), [`Sufficient`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L168-L173), [`Fund`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L43-L49), [`Tags`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L72-L77)
+
+  **Meaning:** weight, deletion identity, site conditions, coefficient properties
+
+- **Written proof:** allocation $D$; point charge
+
+  **Lean:** [`Allocation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L30-L36), [`PointCharge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L29-L32)
+
+  **Meaning:** partition of unity over packets; $\mathcal E_A\ge\kappa t^2$ per seed
+
+- **Written proof:** $\mathcal E_A$; $c_A$; $\ell_A$; $\pi_\beta e^{-\beta\kappa t^2 k}$
+
+  **Lean:** [`assessed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L85), [`cutEntry`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L145-L148), [`leftOver`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L140-L143), [`earn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Grant.lean#L28-L29)
+
+  **Meaning:** sector energy; sector output; remainder; gain
+
+- **Written proof:** weighted Schur classes; $M\ge r$
+
+  **Lean:** [`Green.Rows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L26-L27), [`Green.Both`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L29-L30), [`Green.Bottom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L32-L33)
+
+  **Meaning:** row/column sums at rate $\eta$; lower bound
+
+- **Written proof:** windows, $\mathrm{within}$, $E$, $\mathrm{cov}$, $\Pi_U$
+
+  **Lean:** [`Win.Windows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L28-L30), [`within`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L36-L37), [`error`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L39), [`cov`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L73), [`planePrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Schur.lean#L69-L70)
+
+  **Meaning:** localized inverse and covariance
+
+- **Written proof:** uniform matrix data; window constants
+
+  **Lean:** [`Win.Promise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L22-L30), [`Turns`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L71-L83), [`Turns.Takes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L91-L101)
+
+  **Meaning:** (mass, bottom, rate, counting); bounds of III.5.13(b)
+
+- **Written proof:** $D$, $\mathrm{gram}$
+
+  **Lean:** [`Aff.Dmat`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L125-L127), [`Aff.gram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L145-L147)
+
+  **Meaning:** transported flat row matrix; completed precision matrix
+
+- **Written proof:** transported flat derivative
+
+  **Lean:** [`Aff.derivative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L116-L118)
+
+  **Meaning:** row operator used to define $D$
+
+- **Written proof:** auxiliary Gaussian assumptions
+
+  **Lean:** [`Aff.Reserve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Veil.lean#L34-L39), [`Aff.Alongside`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Station.lean#L71-L78), [`Aff.cert`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Odometer.lean#L23-L24)
+
+  **Meaning:** reserve bounds; compatible quadratic forms; volume and flag tests
+
+- **Written proof:** $H_{n,p}$; comparison field $v$
+
+  **Lean:** [`Rates.allowance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Rate.lean#L27), [`Aff.unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Through.lean#L29-L30)
+
+  **Meaning:** $B^pt^n$; active stationary extension minus replica extension, transported back by the local gauge
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Imported analytic inputs.** The step-estimator’s energy grant in III.10 and the Poincaré inequality in III.6 are used as stated. Their proofs, the full per-bond spectral comparison and the origin of the run’s committed-scale energy hypothesis have not been audited here.
@@ -766,66 +928,193 @@ The sector estimate needs global seed records to preserve the local point-charge
 4. **Flag locality.** In III.5.9(b), locality on $P$ applies to the raw coefficients. Their masked versions also inspect flags on $P$; those flags can depend on plaquettes extending outside $P$. A written proof must retain this flag dependence or enlarge the physical support before claiming ordinary link locality for the masked coefficients.
 5. **Verification scope.** This is a source correspondence check. No Lean build, axiom computation or rendered-page check was run.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.10](III-10.md), [II.2](II-2.md), [III.16](III-16.md), [III.6](III-6.md).
+## Code dependencies
 
-**Used by:** [III.10](III-10.md), [III.13](III-13.md), [III.4](III-4.md), [III.11](III-11.md), [III.12](III-12.md), [III.2](III-2.md), [III.15](III-15.md), [VII.1](VII-1.md), [III.14](III-14.md), [III.9](III-9.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.1](III-1.md), [III.10](III-10.md), [II.2](II-2.md), [III.16](III-16.md), [III.6](III-6.md).
+
+**Referenced by:** [III.10](III-10.md), [III.13](III-13.md), [III.4](III-4.md), [III.11](III-11.md), [III.12](III-12.md), [III.2](III-2.md), [III.15](III-15.md), [VII.1](VII-1.md), [III.14](III-14.md), [III.9](III-9.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 9,746 attributed lines; 1,097 line-counted declarations; 1,408 assigned declaration names. Of the assigned names, 1,340 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| work package [`YM/Push/ABSOLUTE_SUMS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS) | 3,624 |
-| work package [`YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS) | 3,589 |
-| work package [`YM/Push/SECTOR_MEASURE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE) | 1,153 |
-| work package [`YM/SectorNext/VACUUM_NORMALIZATION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION) | 935 |
-| work package [`YM/Progress/STATIONARY_SCENES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES) | 445 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- work package [`YM/Push/ABSOLUTE_SUMS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS) — 3,624 lines.
+- work package [`YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS) — 3,589 lines.
+- work package [`YM/Push/SECTOR_MEASURE/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE) — 1,153 lines.
+- work package [`YM/SectorNext/VACUUM_NORMALIZATION/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION) — 935 lines.
+- work package [`YM/Progress/STATIONARY_SCENES/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES) — 445 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **III.5.1** [`canonical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L95-L101) *(numbered result)* — A canonical choice of sector-cost allocation profile.
-- **III.5.2** [`budget_count_tail`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Basic.lean#L143-L163) *(numbered result)* — If the number of live labels of degree k grows like A B^k and weights decay like C r^k with B r<1, then tails of the sum are geometrically bounded.
-- **III.5.3** [`inverse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L188-L251) *(key result)* — A Hermitian matrix with a spectral gap and off-diagonal exponential decay has an inverse with pointwise exponential decay, uniformly in a spectral parameter.
-- **III.5.4** [`window_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L146-L169) *(numbered result)* — For a Hermitian matrix with a bottom eigenvalue bound and off-diagonal decay, the layered price estimates hold within one window system with small error.
-- **III.5.5** [`Buy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L47-L58) *(numbered result)* — A named sufficient condition on a cost function for charging a connected result pointwise.
-- **III.5.6** [`partition`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Partition.lean#L219-L237) *(key result)* — The total mass of a hard-core potential decomposes by splitting off the connected component of a chosen position, as the component coefficient times the mass of the complement.
-- **III.5.7** [`recurrence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L129-L138) *(numbered result)* — The gas coefficients and log coefficients satisfy the standard recurrence (m+1)g_{m+1}=Σ(k+1)l_k g_{m-k}.
-- **III.5.8** [`exact_polynomial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L66-L145) *(key result)* — If the log series coefficients decay geometrically, the exponential of the full log series equals the finite polynomial sum of values over subsets.
-- **III.5.9** [`pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Graph.lean#L113-L148) *(key result)* — The absolute value of the Ursell (overlap graph) mass is bounded by the number of tree-compatible assignments.
-- **III.5.10** [`substochastic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Parent.lean#L44-L126) *(numbered result)* — For a ranked parent function and a substochastic kernel, the sum over all label assignments of the product of kernel entries along the forest is at most 1.
-- **III.5.11** [`trees_afford`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Weigh.lean#L192-L228) *(numbered result)* — The sum over forests of size m and label choices in a finite set is bounded by a currency factor times a degree price to the power m.
-- **III.5.12** [`estimates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L135-L169) *(key result)* — Sums over unordered repeated-label multisets with connected footprint have an exponential-tail budget bounded by a geometric factor.
-- **III.5.13** [`cluster_at`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L148-L183) *(key result)* — Ursell cluster sums over tuples containing a marked occurrence satisfy an absolute summability bound geometric in the tuple length.
-- **III.5.14** [`restore`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Omissions.lean#L48-L100) *(key result)* — After merging, a weighted hit bound with geometric tail holds for every required copy-cut, combining exponential recovery with seed and degree costs.
-- **III.5.15** [`price_log`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Log.lean#L114-L149) *(key result)* — On hard overlap graphs, absolute-bound hypotheses give absolute convergence of both the value and term series, with exp(log-sum) equal to the positive total and its log equal to the log-sum.
-- **III.5.16** [`restores_log`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L69-L95) *(key result)* — Ratio estimate for a polymer gas with a deleted set of labels, expressed via the logarithm with sign retained and an upper bound with absorption cost.
-- **III.5.17** [`fits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L165-L214) *(numbered result)* — For large parameter x, tree-vertex price constants fit the required inequalities for all per-packet combinatorial tests uniformly.
-- **III.5.18** [`quoted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Buy.lean#L67-L103) *(numbered result)* — For large parameter values, explicit numeric conditions on constants suffice to satisfy the hypotheses for the packet estimates.
-- **III.5.19** [`packet_income`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L66-L105) *(numbered result)* — Weights bounded by a per-seed income yield a summability budget for packet sums with an explicit total charge.
-- **III.5.20** [`bundle_hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Path.lean#L182-L201) *(numbered result)* — Winding path bundles with complete path coefficients satisfy a hit bound at common anchors with a tail decaying in true length.
-- **III.5.21** [`Allocation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L30-L36) *(numbered result)* — A partition of unity subordinate to seed prerequisites, as a data structure.
-- **III.5.22** [`plots_column`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Decompose.lean#L120-L126) *(numbered result)* — The sum over sectors of integrals restricted to each sector's own plots equals the column integral.
-- **III.5.23** [`tap_open`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Draught.lean#L92-L114) *(numbered result)* — For large x, the minimizing choice on a patch satisfies uniform opening bounds.
-- **III.5.24** [`escape`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Station.lean#L222-L241) *(numbered result)* — The tree tangent hits every orientation channel on the one field simultaneously.
-- **III.5.25** [`shelf`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L144-L163) — For disjoint-family sums with summable weights, the negative-log piece satisfies the deletion property.
-- **III.5.26** [`swept`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L224-L233) *(key result)* — Under a receipt condition, the re-log of any signed activity dominated by the envelope satisfies an absolute budget applied against the envelope's ceiling.
-- **III.5.27** [`catalog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L217-L228) *(key result)* — For countably addressed signed integrated coefficients, the log is exactly defined and obeys an absolute budget with a common envelope.
-- **III.5.28** [`omitted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L235-L271) *(numbered result)* — Deleting arbitrary sites after re-log gives a common ratio multiplying a forced family, with controlled sign of the omitted log contribution.
-- **III.5.29** [`intake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L157-L183) *(key result)* — Integrated gas coefficients admit absolute support price bounds with a common envelope for all configurations, without global small l¹ hypothesis.
-- **III.5.30** [`turn_charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L267-L297) *(numbered result)* — Sector payment inequality extends to the orientation-averaged cut rows with a multiplicative earn constant.
-- **III.5.31** [`portionCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L157-L210) *(key result)* — For a lawful representation with a point charge and funds, every forest and allocation satisfies the portion cost estimate.
-- **III.5.32** [`bought`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Consumer.lean#L42-L65) *(key result)* — At any committed height pair, a single positive constant κ works uniformly across inputs for the sector-measure consumer estimate.
-- **III.5.33** [`charged_at`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Grant.lean#L61-L66) *(numbered result)* — A pointwise inequality on sector points implies the sector charge condition.
-- **III.5.34** [`pre_center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Through.lean#L70-L122) *(numbered result)* — A framed patch over the actual field predicts remote no-hole behaviour from curved precision before derivative tests.
-- **III.5.35** [`unfrozen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Odometer.lean#L130-L163) *(numbered result)* — The predicted affine energy bounds the local row estimate even for arbitrary formal fields away from frozen regions.
-- **III.5.36** [`perturb`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/DCompare.lean#L190-L207) *(key result)* — The affine matrix D changes by a controlled amount under local perturbations satisfying a stencil bound, with cost polynomial in the stencil.
-- **III.5.37** [`arc_bill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Ground.lean#L51-L130) *(numbered result)* — On a real weak patch, the affine approximation error of the local rows is bounded uniformly pointwise in sector.
-- **III.5.38** [`guard_δ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Breath.lean#L83-L132) *(numbered result)* — Given a displacement size δ along the central chart, one can choose ε so that trigger disappearance is guaranteed on the same read.
-- **III.5.39** [`bedrock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Bedrock.lean#L142-L158) *(key result)* — For large x, the Gram matrix of the step is served by a fixed window promise uniformly over all admissible step data.
-- **III.5.40** [`night`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Hour.lean#L55-L116) *(key result)* — For a funded patch with a reserve and wedge conditions, there is ε>0 such that for large scale the plateau tests (Keys) hold.
-- **III.5.41** [`gram_budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/IndexCost.lean#L165-L181) *(key result)* — There is a uniform constant such that the Gram cost of the counted array is bounded across all admissible step data.
+<a id="k-iii-5-1"></a>
+
+- **K-III.5.1** [`canonical`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L95-L101) *(numbered result)* — A canonical choice of sector-cost allocation profile.
+
+<a id="k-iii-5-2"></a>
+
+- **K-III.5.2** [`budget_count_tail`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Basic.lean#L143-L163) *(numbered result)* — If the number of live labels of degree k grows like A B^k and weights decay like C r^k with B r<1, then tails of the sum are geometrically bounded.
+
+<a id="k-iii-5-3"></a>
+
+- **K-III.5.3** [`inverse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L188-L251) *(key result)* — A Hermitian matrix with a spectral gap and off-diagonal exponential decay has an inverse with pointwise exponential decay, uniformly in a spectral parameter.
+
+<a id="k-iii-5-4"></a>
+
+- **K-III.5.4** [`window_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L146-L169) *(numbered result)* — For a Hermitian matrix with a bottom eigenvalue bound and off-diagonal decay, the layered price estimates hold within one window system with small error.
+
+<a id="k-iii-5-5"></a>
+
+- **K-III.5.5** [`Buy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L47-L58) *(numbered result)* — A named sufficient condition on a cost function for charging a connected result pointwise.
+
+<a id="k-iii-5-6"></a>
+
+- **K-III.5.6** [`partition`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Partition.lean#L219-L237) *(key result)* — The total mass of a hard-core potential decomposes by splitting off the connected component of a chosen position, as the component coefficient times the mass of the complement.
+
+<a id="k-iii-5-7"></a>
+
+- **K-III.5.7** [`recurrence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L129-L138) *(numbered result)* — The gas coefficients and log coefficients satisfy the standard recurrence (m+1)g_{m+1}=Σ(k+1)l_k g_{m-k}.
+
+<a id="k-iii-5-8"></a>
+
+- **K-III.5.8** [`exact_polynomial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L66-L145) *(key result)* — If the log series coefficients decay geometrically, the exponential of the full log series equals the finite polynomial sum of values over subsets.
+
+<a id="k-iii-5-9"></a>
+
+- **K-III.5.9** [`pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Graph.lean#L113-L148) *(key result)* — The absolute value of the Ursell (overlap graph) mass is bounded by the number of tree-compatible assignments.
+
+<a id="k-iii-5-10"></a>
+
+- **K-III.5.10** [`substochastic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Parent.lean#L44-L126) *(numbered result)* — For a ranked parent function and a substochastic kernel, the sum over all label assignments of the product of kernel entries along the forest is at most 1.
+
+<a id="k-iii-5-11"></a>
+
+- **K-III.5.11** [`trees_afford`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Weigh.lean#L192-L228) *(numbered result)* — The sum over forests of size m and label choices in a finite set is bounded by a currency factor times a degree price to the power m.
+
+<a id="k-iii-5-12"></a>
+
+- **K-III.5.12** [`estimates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L135-L169) *(key result)* — Sums over unordered repeated-label multisets with connected footprint have an exponential-tail budget bounded by a geometric factor.
+
+<a id="k-iii-5-13"></a>
+
+- **K-III.5.13** [`cluster_at`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L148-L183) *(key result)* — Ursell cluster sums over tuples containing a marked occurrence satisfy an absolute summability bound geometric in the tuple length.
+
+<a id="k-iii-5-14"></a>
+
+- **K-III.5.14** [`restore`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Omissions.lean#L48-L100) *(key result)* — After merging, a weighted hit bound with geometric tail holds for every required copy-cut, combining exponential recovery with seed and degree costs.
+
+<a id="k-iii-5-15"></a>
+
+- **K-III.5.15** [`price_log`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Log.lean#L114-L149) *(key result)* — On hard overlap graphs, absolute-bound hypotheses give absolute convergence of both the value and term series, with exp(log-sum) equal to the positive total and its log equal to the log-sum.
+
+<a id="k-iii-5-16"></a>
+
+- **K-III.5.16** [`restores_log`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L69-L95) *(key result)* — Ratio estimate for a polymer gas with a deleted set of labels, expressed via the logarithm with sign retained and an upper bound with absorption cost.
+
+<a id="k-iii-5-17"></a>
+
+- **K-III.5.17** [`fits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L165-L214) *(numbered result)* — For large parameter x, tree-vertex price constants fit the required inequalities for all per-packet combinatorial tests uniformly.
+
+<a id="k-iii-5-18"></a>
+
+- **K-III.5.18** [`quoted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Buy.lean#L67-L103) *(numbered result)* — For large parameter values, explicit numeric conditions on constants suffice to satisfy the hypotheses for the packet estimates.
+
+<a id="k-iii-5-19"></a>
+
+- **K-III.5.19** [`packet_income`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L66-L105) *(numbered result)* — Weights bounded by a per-seed income yield a summability budget for packet sums with an explicit total charge.
+
+<a id="k-iii-5-20"></a>
+
+- **K-III.5.20** [`bundle_hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Path.lean#L182-L201) *(numbered result)* — Winding path bundles with complete path coefficients satisfy a hit bound at common anchors with a tail decaying in true length.
+
+<a id="k-iii-5-21"></a>
+
+- **K-III.5.21** [`Allocation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L30-L36) *(numbered result)* — A partition of unity subordinate to seed prerequisites, as a data structure.
+
+<a id="k-iii-5-22"></a>
+
+- **K-III.5.22** [`plots_column`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Decompose.lean#L120-L126) *(numbered result)* — The sum over sectors of integrals restricted to each sector's own plots equals the column integral.
+
+<a id="k-iii-5-23"></a>
+
+- **K-III.5.23** [`tap_open`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Draught.lean#L92-L114) *(numbered result)* — For large x, the minimizing choice on a patch satisfies uniform opening bounds.
+
+<a id="k-iii-5-24"></a>
+
+- **K-III.5.24** [`escape`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Station.lean#L222-L241) *(numbered result)* — The tree tangent hits every orientation channel on the one field simultaneously.
+
+<a id="k-iii-5-25"></a>
+
+- **K-III.5.25** [`shelf`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L144-L163) — For disjoint-family sums with summable weights, the negative-log piece satisfies the deletion property.
+
+<a id="k-iii-5-26"></a>
+
+- **K-III.5.26** [`swept`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L224-L233) *(key result)* — Under a receipt condition, the re-log of any signed activity dominated by the envelope satisfies an absolute budget applied against the envelope's ceiling.
+
+<a id="k-iii-5-27"></a>
+
+- **K-III.5.27** [`catalog`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L217-L228) *(key result)* — For countably addressed signed integrated coefficients, the log is exactly defined and obeys an absolute budget with a common envelope.
+
+<a id="k-iii-5-28"></a>
+
+- **K-III.5.28** [`omitted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L235-L271) *(numbered result)* — Deleting arbitrary sites after re-log gives a common ratio multiplying a forced family, with controlled sign of the omitted log contribution.
+
+<a id="k-iii-5-29"></a>
+
+- **K-III.5.29** [`intake`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L157-L183) *(key result)* — Integrated gas coefficients admit absolute support price bounds with a common envelope for all configurations, without global small l¹ hypothesis.
+
+<a id="k-iii-5-30"></a>
+
+- **K-III.5.30** [`turn_charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L267-L297) *(numbered result)* — Sector payment inequality extends to the orientation-averaged cut rows with a multiplicative earn constant.
+
+<a id="k-iii-5-31"></a>
+
+- **K-III.5.31** [`portionCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L157-L210) *(key result)* — For a lawful representation with a point charge and funds, every forest and allocation satisfies the portion cost estimate.
+
+<a id="k-iii-5-32"></a>
+
+- **K-III.5.32** [`bought`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Consumer.lean#L42-L65) *(key result)* — At any committed height pair, a single positive constant κ works uniformly across inputs for the sector-measure consumer estimate.
+
+<a id="k-iii-5-33"></a>
+
+- **K-III.5.33** [`charged_at`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Grant.lean#L61-L66) *(numbered result)* — A pointwise inequality on sector points implies the sector charge condition.
+
+<a id="k-iii-5-34"></a>
+
+- **K-III.5.34** [`pre_center`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Through.lean#L70-L122) *(numbered result)* — A framed patch over the actual field predicts remote no-hole behaviour from curved precision before derivative tests.
+
+<a id="k-iii-5-35"></a>
+
+- **K-III.5.35** [`unfrozen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Odometer.lean#L130-L163) *(numbered result)* — The predicted affine energy bounds the local row estimate even for arbitrary formal fields away from frozen regions.
+
+<a id="k-iii-5-36"></a>
+
+- **K-III.5.36** [`perturb`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/DCompare.lean#L190-L207) *(key result)* — The affine matrix D changes by a controlled amount under local perturbations satisfying a stencil bound, with cost polynomial in the stencil.
+
+<a id="k-iii-5-37"></a>
+
+- **K-III.5.37** [`arc_bill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Ground.lean#L51-L130) *(numbered result)* — On a real weak patch, the affine approximation error of the local rows is bounded uniformly pointwise in sector.
+
+<a id="k-iii-5-38"></a>
+
+- **K-III.5.38** [`guard_δ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Breath.lean#L83-L132) *(numbered result)* — Given a displacement size δ along the central chart, one can choose ε so that trigger disappearance is guaranteed on the same read.
+
+<a id="k-iii-5-39"></a>
+
+- **K-III.5.39** [`bedrock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Bedrock.lean#L142-L158) *(key result)* — For large x, the Gram matrix of the step is served by a fixed window promise uniformly over all admissible step data.
+
+<a id="k-iii-5-40"></a>
+
+- **K-III.5.40** [`night`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Hour.lean#L55-L116) *(key result)* — For a funded patch with a reserve and wedge conditions, there is ε>0 such that for large scale the plateau tests (Keys) hold.
+
+<a id="k-iii-5-41"></a>
+
+- **K-III.5.41** [`gram_budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/IndexCost.lean#L165-L181) *(key result)* — There is a uniform constant such that the Gram cost of the counted array is bounded across all admissible step data.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)

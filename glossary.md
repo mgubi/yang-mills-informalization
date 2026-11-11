@@ -4,9 +4,25 @@ This page translates the nicknames used in OpenAI's Lean 4 formalization of the 
 
 Every Lean name is a link to its definition at a fixed commit of [`yang-mills-group/OpenAI-YM-20261028`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464).
 
-**Reading.** *certain* = read from the definition and its uses; *probable* = inferred from the fields and the documentation; *tentative* = partly guessed (where the role is unknown, the entry says "unclear"). An entry marked **main statement** occurs in the statement of the main theorem or in the public files.
+**Reading.** *certain* = read from the definition and its uses; *probable* = inferred from the fields and the documentation; *tentative* = partly guessed (where the role is unknown, the entry says "unclear"). These labels describe how an entry was interpreted; even *certain* does not mean an independent proof audit. They are separate from the [unit outline statuses](method.md#unit-outline-status). An entry marked **main statement** occurs in a public definition or in the detailed construction statement; it need not be a conclusion of the public theorem.
 
-**Contents.** [Why a glossary](#why-a-glossary) · [The main theorem](#the-main-theorem) · [Nickname families](#nickname-families) · Parts: [I](#part-i) · [II](#part-ii) · [III](#part-iii) · [IV](#part-iv) · [V](#part-v) · [VI](#part-vi) · [VII](#part-vii) · [Index](#index)
+**Contents.** [Mathematical terms](#mathematical-terms) · [Why a glossary](#why-a-glossary) · [The main theorem](#the-main-theorem) · [Nickname families](#nickname-families) · Parts: [I](#part-i) · [II](#part-ii) · [III](#part-iii) · [IV](#part-iv) · [V](#part-v) · [VI](#part-vi) · [VII](#part-vii) · [Index](#index)
+
+## Mathematical terms
+
+This index goes from mathematical objects to entries; the [alphabetical index](#index) goes from Lean names to entries.
+
+| Mathematical object | Glossary entries |
+|---|---|
+| Gauge group, Lie algebra and normalization | [Gauge group](#yangmills-gaugegroup), [simplicity](#yangmills-gaugegroup-issimple), [Casimir](#ym-gauge-casimir) |
+| Wilson measure and local lattice observables | [Wilson law](#yangmills-wilsonlaw), [family](#yangmills-wilsonfamily-2), [insertions](#ym-family-o) |
+| Curvature-polynomial labels and continuum fields | [Labels](#ym-labels-label), [quotient fields](#ym-table-field), [common label space](#ym-table-union) |
+| Full mesh limit and volume extraction | [Public convergence](#yangmills-wilsonfamily-converges), [extraction order](#ym-extraction-order), [fixed-volume kernels](#ym-fullvolume-positionsuv) |
+| Phases, vacuum and reconstruction | [Phase decomposition](#ym-os-spread-resolution), [OS space](#ym-os-chamber), [Wightman theory](#yangmills-wightmantheory), [every phase](#ym-everyphase-completed) |
+| Rotations, stress tensor and Ward identities | [Rotation action](#ym-table-rotation), [stress tensor](#ym-table-stress), [Ward identities](#ym-table-stresslaws) |
+| Running coupling | [Reference coupling](#ym-rg-calendar-hatbeta), [slope](#ym-gauge-slopeconstant) |
+| Short-distance comparison and trace test | [Maxwell comparison](#ym-pert-firstextension), [centered trace](#ym-traceextension-center), [two-point function](#yangmills-hierarchy-tracetwo), [finite Wick profiles](#yangmills-hierarchy-wickprofile) |
+| Operator product expansion and coincident points | [OPE](#yangmills-hierarchy-operatorproductexpansion), [coefficient prescription](#ym-ope-prescription), [contact extensions](#yangmills-hierarchy-contacts) |
 
 ## Why a glossary
 
@@ -29,7 +45,7 @@ Part VIII has no entries of its own; it is the main theorem below. Entries which
 
 ## The main theorem
 
-The statement is `YangMills.constructed` in [`Construction.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean). In plain mathematics, with the Lean names in brackets:
+The public theorem is [`YangMills.jointExistence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Solution.lean#L4-L10); see the [exact statement and its limits](statement.md). It fixes one regular Wilson family before a requested volume sequence, then supplies a refinement of that volume sequence and a hierarchy with four properties. The following account describes the **detailed construction theorem**, `YangMills.constructed` in [`Construction.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean). In plain mathematics, with the Lean names in brackets:
 
 - Fix a simple compact matrix gauge group G and a number b > 0, a numerical parameter of the block-spin kernel (`KernelChoices.penalty`).
 - There is a Wilson family `C`: the whole renormalization-group construction, consisting of lattice spacings a_N, torus periods L_p, couplings β_{N,p}, and the renormalized lattice observables for every label. It is internally consistent (`C.Makes`) and satisfies [`YangMills.WilsonRegularity`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L12): β_{N,p}/log(1/a_N) tends to a positive slope, the observables are continuous and gauge invariant, and each depends on a fixed finite stencil of links.
@@ -43,6 +59,8 @@ The statement is `YangMills.constructed` in [`Construction.lean`](https://github
 
 **Public dictionary** (from [`HierarchyBridge.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean) and [`WilsonBridge.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean)). The Hilbert space `Hierarchy.H` is the Hilbert space of the reconstructed theory of the selected phase. `Field d` is the quotient label space F_d = Label_d / null. `toLabel` is `Table.pin`. `Character` is the compact space of phases `F.alpha.space.X`, with its measure `mu`. `correlation s` is `Table.useAt (spectator F s)`; for s = none it is the mixed theory S^mix, for s = some ξ the phase S^ξ. `continuation` is the analytic continuation `F.A.waves.F`. `centeredTrace` is `TraceExtension.center F`. For the Wilson family, `period`, `denominator`, `beta` and `insertion` are `C.S.period`, `C.S.denominator`, `C.beta` and `C.seen`.
 
+In the construction the quotient spaces have compatible injective maps $F_d\to F_e$ for $d\le e$, and their images in the response-function space give the common label space. This is a filtration by bounded degree, not a direct sum of separate degree spaces. The public hierarchy does not require these inclusions; see [Definition 1.11](statement.md#continuum-hierarchy).
+
 ## Nickname families
 
 The words are arbitrary, but several families of them are systematic. Where a family is described as a pattern, it is a pattern in the code and its docstrings, not a documented convention.
@@ -51,10 +69,10 @@ The words are arbitrary, but several families of them are systematic. Where a fa
 2. **Weather and seasons: contact terms.** The namespace `Contacts.Solstice` (`Lights`, `Sunshine`, `MultipleLight`, `Thresholds`, `Backdrop`, `Annulus`, `Run`) is the extension of correlations across coincident points using the operator product expansion. `Devices`, `Detector`, `Prescription` and `Reader` are the fixed coefficient-extraction functionals (the "tomography" of the docstrings).
 3. **Rooms and halls: from Euclidean to Hilbert space.** `Chamber` is the Osterwalder–Schrader (GNS) Hilbert space for a time axis; `Spread` and `Slab` are time-slab word operators; `Heat` is the semigroup e^{-sH}; `Contour`, `Waves` and `Surface` are the analytic continuation and the Wightman distributions; `Almanac` (in `EveryPhase`) is the reconstruction data for all phases; `Pantry`, `Pack`, `Docks` and `Stress.*` (in `EveryPhase.Stress`) are the machinery for continuing the Ward identities and the stress tensor.
 4. **Tables and labels.** These names are used consistently. A `Register` is a label system with a scale for each degree; a `Token` is a homogeneous reference label; a `Table` is the family of all correlation functions; `Field d` is F_d; a `Tag` is a pair (d, element of F_d); `Union` is the union of all F_d. `Table.Hierarchy` is the Euclidean axioms of the limit theory; it is not the public `YangMills.Hierarchy`, which is the whole package.
-5. **Extraction.** `Extraction.Order` is a pair of a mesh subsequence N_j and a volume subsequence p_k; `late` means "for k large, then j large"; `refine` passes to further subsequences; `Ordered` states that the ordered limit holds. This is the subsequential structure of the main theorem.
-6. **Mathematics behind plain English words.** `Tree`, `Forest`, `Pines`, `Slice`: tree gauge fixing. `Cells`, `Tiling`, `Interior`, `rootTest`: reflection-positivity cells and chessboard estimates (`rootTest` is |E ∏ᵢ copyᵢ F|^{1/#cells}, the chessboard root). `Marker`: a nilpotent bookkeeping algebra for products of polymers. `Bloch`, `Laurent`, `Circulant`, `Row`, `Momentum`: Fourier analysis of translation-invariant kernels on the periodic lattice. `Exterior`, `TypeFace`, `Body`: lattice differential forms. `Precision`, `PCalc`, `Horizon`, `Bed`, `Floor`: linearization of the renormalization-group step and quadratic-form (Hessian) estimates. `Stationary`: saddle-point analysis. `Pressure`: estimates for one renormalization-group step. `ConnectedActivityE6`: connected-activity (cluster expansion) bounds. `Ac`: bookkeeping of connected words and clusters. `Ward`: sums in the Ward identity. `Climb.Scaling`: the scaling sequence for the free-Maxwell comparison. `Trace*`: the centered trace and the anomaly. `Pert`: the perturbative (one-loop) and free-Maxwell comparison. `Maxwell`, `Wick`: free-field models.
-7. **Directory names without meaning.** `Next/`, `Push/`, `Further/`, `Extra/`, `Work/A01`, `RG05` to `RG17`, `UVNext`, `SectorNext`, `MultiNext`, `PhysicalNext`, `AnalyticNext`, `AnalyticBridge`, and the capitalized subfolders are internal task names and carry no mathematical meaning.
-8. **Short names which are not nicknames.** `c`, `f` are the coarse and fine torus sides; `N`, `p` are the mesh and volume indices; `m` is the renormalization-group level; `J` is the entry stage or smoothness index of a level; `L` is the block size; `d` is the degree (weight) of a label; β̂ is the renormalized coupling at level m. "Denotational" means a representation as data, not as a quotient. "Junk at coincident points" means that functions are made total by arbitrary values where they are undefined.
+5. **Extraction.** `Extraction.Order` is a pair of a mesh subsequence N_j and a volume subsequence p_k; `late` means "for k large, then j large"; `refine` passes to further subsequences; `Ordered` states that the ordered limit holds. This is the subsequential structure of the detailed theorem. The public theorem requests only a volume subsequence and retains the full spacing sequence.
+6. **Mathematics behind plain English words.** `Tree`, `Forest`, `Pines`, `Slice`: tree gauge fixing. `Cells`, `Tiling`, `Interior`, `rootTest`: reflection-positivity cells and chessboard estimates (`rootTest` is $|\mathbb E\prod_i\mathrm{copy}_i F|^{1/\sharp\mathrm{cells}}$, the chessboard root). `Marker`: a nilpotent bookkeeping algebra for products of polymers. `Bloch`, `Laurent`, `Circulant`, `Row`, `Momentum`: Fourier analysis of translation-invariant kernels on the periodic lattice. `Exterior`, `TypeFace`, `Body`: lattice differential forms. `Precision`, `PCalc`, `Horizon`, `Bed`, `Floor`: linearization of the renormalization-group step and quadratic-form (Hessian) estimates. `Stationary`: saddle-point analysis. `Pressure`: estimates for one renormalization-group step. `ConnectedActivityE6`: connected-activity (cluster expansion) bounds. `Ac`: bookkeeping of connected words and clusters. `Ward`: sums in the Ward identity. `Climb.Scaling`: the scaling sequence for the free-Maxwell comparison. `Trace*`: the centered trace and the anomaly. `Pert`: the perturbative (one-loop) and free-Maxwell comparison. `Maxwell`, `Wick`: free-field models.
+7. **Directory names without meaning.** `Next/`, `Push/`, `Further/`, `Extra/`, `Work/A01`, `RG05` to `RG17`, `UVNext`, `SectorNext`, `MultiNext`, `PhysicalNext`, `AnalyticNext`, `AnalyticBridge`, and the capitalized subfolders are folder names that carry no mathematical meaning.
+8. **Short names which are not nicknames.** `c`, `f` are the coarse and fine torus sides; `N`, `p` are the mesh and volume indices; `m` is the renormalization-group level; `J` is the regularity index of a level; `L` is the block size; `d` is the degree (weight) of a label; β̂ is the renormalized coupling at level m. "Denotational" means a representation as data, not as a quotient. "Junk at coincident points" means that functions are made total by arbitrary values where they are undefined.
 
 About a third of the entries have reading *probable* or *tentative*, mostly in Part III, where the code is a very large set of technical estimate packages (polymer norms, cluster bounds).
 
@@ -260,7 +278,7 @@ The constructed Wilson family: RG history, holonomy/ODE data, label frames, loca
 
 <a id="ym-family-makes"></a>
 **[`YM.Family.Makes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44)** · Reading: certain · **main statement**  
-Consistency of a Family: the selected Wilson trajectory exists, sections are sound, stages cover all degrees, stencils fit in the torus, 'priced' sup bounds hold, and the recipe for the trajectory is consistent with the family.
+Consistency of a Family: the selected Wilson trajectory exists, sections are sound, the regularity profiles cover all degrees, stencils fit in the torus, 'priced' sup bounds hold, and the recipe for the trajectory is consistent with the family.
 
 <a id="yangmills-hierarchy-tag"></a>
 **[`YangMills.Hierarchy.Tag`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L55)** · Reading: certain · **main statement**  
@@ -386,7 +404,7 @@ Ordered-limit claim: the smeared lattice correlations tend to the integral of th
 
 <a id="ym-fullvolume-positionsuv"></a>
 **[`YM.FullVolume.PositionsUV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L25)** · Reading: probable · **main statement**  
-Pointwise UV limit in positions: kernels smooth on non-collision set, smeared lattice sums converge along the mesh sequence and cluster for all derivative words.
+Pointwise UV limit in positions: at each fixed volume, kernels are smooth away from periodic coincidences, smeared lattice sums converge along the mesh sequence, and difference quotients converge locally uniformly to the corresponding derivatives. Here “cluster” in the Lean type concerns limits of differenced kernels, not a clustering property of the state.
 
 <a id="yangmills-wilsonfamily"></a>
 **[`YangMills.wilsonFamily`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L20)** · Reading: certain · **main statement**  
@@ -530,7 +548,7 @@ Local coordinate: blade type with color index.
 
 <a id="ym-rg-calendar-hatbeta"></a>
 **[`YM.RG.Calendar.hatBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79)** · Reading: certain  
-The renormalized coupling at level m: hat-beta_m = bar + slope * log(scale_m).
+The reference inverse coupling at level $m$: $\hat\beta_m=\bar\beta+\kappa_Gs_m$, where $s_m=\mathrm{scale}(m)=\log(1/a_m)$ is already logarithmic. See the [running-coupling convention](summary.md#the-marginal-coupling-and-the-schedule).
 
 <a id="ym-rg-pathdata"></a>
 **[`YM.RG.PathData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150)** · Reading: probable  
@@ -574,7 +592,7 @@ A kernel R(alpha,beta,x) over lattice displacements x; a translation-invariant b
 
 <a id="ym-pressure-teller"></a>
 **[`YM.Pressure.Teller`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L89)** · Reading: probable  
-Interface of one request to the step estimator: kernel choice, two adjacent stages, step index, width and constant ('One call, prices & inputs').
+Interface of one request to the step estimator: kernel choice, two adjacent regularity profiles, step index, width and constant ('One call, prices & inputs').
 
 <a id="ym-pressure-betaf"></a>
 **[`YM.Pressure.betaF`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23)** · Reading: probable  
@@ -666,7 +684,7 @@ Non-tree links: the free variables after tree-gauge fixing.
 
 <a id="ym-rg-supply-delays"></a>
 **[`YM.RG.Supply.Delays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L115)** · Reading: certain  
-Entry thresholds chosen after protection: minimal beta and scale for each stage, plus volume shell counts and growth.
+Entry thresholds chosen after protection: minimal beta and scale for each regularity profile, plus volume shell counts and growth.
 
 <a id="ym-ac-hit"></a>
 **[`YM.Ac.Hit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L12)** · Reading: tentative  
@@ -730,7 +748,7 @@ The sequence of odd block sizes L_j chosen large enough to absorb all pre-L cons
 
 <a id="ym-rg-supply-sheet"></a>
 **[`YM.RG.Supply.Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26)** · Reading: certain  
-Numerical constants and kernel data fixed in advance of any block ratio: the sequence of stage parameters (monotone orders, powers, support exponents), the first active level and volume floors.
+Numerical constants and kernel data fixed in advance of any block ratio: the sequence of regularity parameters (monotone orders, powers, support exponents), the first active level and volume floors.
 
 <a id="ym-lattice-ratio"></a>
 **[`YM.Lattice.Ratio`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L22)** · Reading: certain  
@@ -742,7 +760,7 @@ Pushforward of a fine-lattice function F to the coarse lattice by integrating ag
 
 <a id="ym-rg-stage"></a>
 **[`YM.RG.Stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L45)** · Reading: certain  
-Numerical bounds used at one smoothing stage: clip parameters, regularity order, power, support exponent, width, path number, drift, column bound.
+Numerical bounds used for one regularity profile: clip parameters, regularity order, power, support exponent, width, path number, drift, column bound.
 
 <a id="ym-connectedactivitye6-cash"></a>
 **[`YM.ConnectedActivityE6.Cash`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Batch.lean#L82)** · Reading: tentative  
@@ -762,7 +780,7 @@ Permanent record that a Levels trajectory actually meets all issued requirements
 
 <a id="ym-rg-supply-wait"></a>
 **[`YM.RG.Supply.Wait`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L134)** · Reading: probable  
-Window lengths, sublinear in the scale, during which a stage stays in force; and the minimal physical length.
+Window lengths, sublinear in the scale, during which a regularity profile stays in force; and the minimal physical length.
 
 <a id="ym-precision-horizon"></a>
 **[`YM.Precision.Horizon`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L119)** · Reading: tentative  
@@ -774,7 +792,7 @@ A nonempty connected set of letters (a connected cluster).
 
 <a id="ym-next-free-flight"></a>
 **[`YM.Next.Free.Flight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Signal.lean#L22)** · Reading: tentative  
-One hop between stages j and t of a block of size L (orientation data).
+One hop between regularity indices $j$ and $t$ of a block of size L (orientation data).
 
 <a id="ym-rg-rep-lawful"></a>
 **[`YM.RG.Rep.Lawful`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L181)** · Reading: certain  
@@ -826,7 +844,7 @@ Exponent v*|sites| - (quadratic and path terms in beta) - additive activities.
 
 <a id="ym-precision-postcost"></a>
 **[`YM.Precision.PostCost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L81)** · Reading: probable  
-Post-L cost constants eta, Gamma, c, g per stage, chosen after the block sizes.
+Post-L cost constants eta, Gamma, c, g per regularity profile, chosen after the block sizes.
 
 <a id="ym-input-directed"></a>
 **[`YM.Input.Directed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26)** · Reading: probable  
@@ -854,7 +872,7 @@ One RG step of the explicit recursion is realized (coupling reset beta_m - beta_
 
 <a id="ym-rg-calendar"></a>
 **[`YM.RG.Calendar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L64)** · Reading: certain  
-The full RG schedule: spacing schedule, kernel, barrier, stage parameters per level, block factors, theta, entry stages J(m).
+The full RG schedule: spacing schedule, kernel, barrier, regularity parameters per level, block factors, theta, regularity indices $J(m)$.
 
 <a id="ym-extraction-order-ordered-reads"></a>
 **[`YM.Extraction.Order.Ordered.reads`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L32)** · Reading: probable  
@@ -866,11 +884,11 @@ Per-step requirements: branches well-posed, kernel symmetric under lattice symme
 
 <a id="ym-rg-calendar-fits"></a>
 **[`YM.RG.Calendar.Fits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L97)** · Reading: probable  
-Compatibility conditions of the schedule (monotone stages, size and patch fits, hat-beta>1, logarithmic cost bounds).
+Compatibility conditions of the schedule (monotone regularity indices, size and patch fits, hat-beta>1, logarithmic cost bounds).
 
 <a id="ym-rg-supply-large"></a>
 **[`YM.RG.Supply.Large`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L39)** · Reading: probable  
-Largeness conditions of a block size L at stage j (drift/log L small, polylog costs / log L <= j^{-2}).
+Largeness conditions of a block size L at regularity index $j$ (drift/log L small, polylog costs / log L <= j^{-2}).
 
 
 <a id="part-iv"></a>
@@ -966,7 +984,7 @@ Projection-valued joint spectral measure of the translation group.
 
 <a id="yangmills-hierarchy-2"></a>
 **[`YangMills.Hierarchy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L24)** · Reading: certain · **main statement**  
-The whole package of limiting correlation functions: Hilbert space with Wightman theory, quotient label spaces F_d (graded by weight d), the compact space of phases (characters) with measure nu and a selected phase, per-phase and mixed Euclidean correlations, analytic continuation, OPE coefficient data and the centered trace field.
+The whole package of limiting correlation functions: Hilbert space with Wightman theory, finite-dimensional field spaces $F_d$ indexed by degree $d$, the compact space of phases (characters) with measure nu and a selected phase, per-phase and mixed Euclidean correlations, analytic continuation, OPE coefficient data and the centered trace field.
 
 <a id="yangmills-hierarchy-reconstructed"></a>
 **[`YangMills.Hierarchy.Reconstructed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L117)** · Reading: certain · **main statement**  
@@ -990,7 +1008,7 @@ The headline statement: for each simple G there is one Wilson family such that f
 
 <a id="yangmills-constructed"></a>
 **[`YangMills.constructed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15)** · Reading: certain · **main statement**  
-Construction.lean main theorem: for simple G and any penalty b>0 there is an internal Family C with the stated properties, then for each volume order p a refinement q with Table, Final, Almanac, Reader, Devices and Scaling, giving all public Properties plus the detailed clauses.
+Construction.lean main theorem: for simple G and any penalty b>0 there is an internal Family C with the stated properties, then for each pair p of mesh and volume subsequences a refinement q of both with Table, Final, Almanac, Reader, Devices and Scaling, giving all public Properties plus the detailed clauses.
 
 <a id="ym-os-chamber"></a>
 **[`YM.OS.Chamber`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57)** · Reading: certain  

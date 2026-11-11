@@ -1,19 +1,40 @@
 # III.2. Choosing the constants: the order of choice and the RG schedule
 
-*Part III — Ultraviolet construction (renormalization group).* 18,156 lines of Lean in 2,085 declarations used by the main theorem.
+*Part III — Ultraviolet construction (renormalization group).*
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and **edited** in three rounds by three models. It is updated as it improves.
+Explains the order in which constants and scales are chosen so that the renormalization estimates hold together.
 
+**Status: edited.** Checked against the linked Lean and edited; the local limitations still apply. [Status meanings](../../data/README.md#outline-status).
 
-**Part:** III, Ultraviolet construction (renormalization group). **Lean:** [`YM/Price/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price) (the constants and the level schedule, 406 lines), [`YM/Shoot/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot) (shooting, 228 lines), [`YM/Integration/RG05Preconstruction/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction), [`YM/Integration/NativeSelection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection) and other files of [`YM/Integration/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration), [`YM/RG08/Calendar/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar), and parts of [`YM/RG08/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08), [`YM/RG12/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12), [`YM/FullVolume/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume) (in particular `Roll/`) and [`YM/TraceExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension). **Size:** 18,156 lines in the main-theorem closure:
+[Overview](../README.md) · [All units](../units.md) · [← Previous: III.1](III-1.md) · [Next: III.3 →](III-3.md)
 
-| part | lines |
-|---|---|
-| proof of the plentiful construction (III.2.5) | about 6,250 |
-| proof of the joint same-factor purchase (III.2.4) | about 4,700 |
-| proof of the final run (III.2.7) | about 4,000 |
-| proof of the sheet and radar purchase | about 2,400 |
-| the two directories that carry the mathematics of the schedule (`YM/Price/`, `YM/Shoot/`) | 634 |
+[Results](#unit-results) · [Inputs](#unit-inputs) · [Strategy](#unit-strategy) · [Proof steps](#unit-steps) · [Notation](#unit-notation) · [What remains unexplained](#unit-limitations) · [Code dependencies](#code-dependencies) · [Lean source](#lean-source) · [Key statements](#key-statements)
+
+<details>
+<summary>Source inventory and conventions</summary>
+
+**Part:** III, Ultraviolet construction (renormalization group). **Lean:** [`YM/Price/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price) (the constants and the level schedule, 406 lines), [`YM/Shoot/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot) (shooting, 228 lines), [`YM/Integration/RG05Preconstruction/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction), [`YM/Integration/NativeSelection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection) and other files of [`YM/Integration/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration), [`YM/RG08/Calendar/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar), and parts of [`YM/RG08/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08), [`YM/RG12/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12), [`YM/FullVolume/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume) (in particular `Roll/`) and [`YM/TraceExtension/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension). **Size:** 18,156 lines in the source allocation:
+
+- **part:** proof of the plentiful construction (III.2.5)
+
+  **lines:** about 6,250
+
+- **part:** proof of the joint same-factor purchase (III.2.4)
+
+  **lines:** about 4,700
+
+- **part:** proof of the final run (III.2.7)
+
+  **lines:** about 4,000
+
+- **part:** proof of the sheet and radar purchase
+
+  **lines:** about 2,400
+
+- **part:** the two directories that carry the mathematics of the schedule (`YM/Price/`, `YM/Shoot/`)
+
+  **lines:** 634
+
 
 **Conventions.** These are those of III.9.
 
@@ -30,6 +51,10 @@ The main results concern numerical choices and a conditional shooting constructi
 3. Given the one-step construction as a hypothesis, there is a trajectory of effective actions with $\beta_{N,p,0}=\bar\beta$ (shooting).
 
 The terminology of sheets, prices and purchases records numerical bounds and their order of choice (glossary, family 1). The unit also contains a group of analytic lemmas of the Gaussian step, filed here by the dependency assignment (III.2.9).
+
+</details>
+
+<a id="unit-results"></a>
 
 ## 1. What this unit proves
 
@@ -188,16 +213,38 @@ These are followed by the alternation below:
 
 The requirements (with the unit that defines each predicate) are:
 
-| requirement | owner |
-|---|---|
-| wages, exchanges, menus and auxiliary records equal the prescribed data; postage rates do not exceed the prescribed rates | III.10 ([`Factor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L26-L50)) |
-| [`Degree`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sym/Prices.lean#L84), [`Savvy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sym/Shorn.lean#L32-L35), [`Roofing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/C/Ribbon.lean#L29), [`PaysW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Florid/Ready.lean#L56), [`Spire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Luna/Hours.lean#L43), [`Wild`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Auvi/Entries.lean#L31), tower bound [`Tower.Sav`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Rent.lean#L25-L27) with [`Canyon`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fares/Query.lean#L45), [`Cadre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Artes/Events.lean#L34-L39) | III.12 |
-| [`AccordV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Tibetan.lean#L60) (with the sequence $Q$) | III.11 |
-| kinetic data at the top level ([`AtTop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT/Layout.lean#L43)) | III.9 |
-| amplification ([`Amplify`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Train/Miracles.lean#L21-L26)) | III.1 |
-| support exponents $\ge100$ at every level | this unit |
-| $\exp((a_j+2)(2\,\mathrm{span}_{ij}+13)^4)\le\ell_i$ for all $i,j\in\mathbb N$ with $j\le i\le j+1$ | this unit |
-| a bandage $b$ ([`Bandage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Stage/Iris.lean#L21-L35), III.10) with the extras $(\Omega,\Delta,b)$ ([`Extras`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Resources.lean#L45-L48)) | III.15 |
+- **requirement:** wages, exchanges, menus and auxiliary records equal the prescribed data; postage rates do not exceed the prescribed rates
+
+  **owner:** III.10 ([`Factor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L26-L50))
+
+- **requirement:** [`Degree`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sym/Prices.lean#L84), [`Savvy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sym/Shorn.lean#L32-L35), [`Roofing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/C/Ribbon.lean#L29), [`PaysW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Florid/Ready.lean#L56), [`Spire`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Luna/Hours.lean#L43), [`Wild`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Auvi/Entries.lean#L31), tower bound [`Tower.Sav`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Rent.lean#L25-L27) with [`Canyon`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fares/Query.lean#L45), [`Cadre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Artes/Events.lean#L34-L39)
+
+  **owner:** III.12
+
+- **requirement:** [`AccordV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Tibetan.lean#L60) (with the sequence $Q$)
+
+  **owner:** III.11
+
+- **requirement:** kinetic data at the top level ([`AtTop`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT/Layout.lean#L43))
+
+  **owner:** III.9
+
+- **requirement:** amplification ([`Amplify`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Train/Miracles.lean#L21-L26))
+
+  **owner:** III.1
+
+- **requirement:** support exponents $\ge100$ at every level
+
+  **owner:** this unit
+
+- **requirement:** $\exp((a_j+2)(2\,\mathrm{span}_{ij}+13)^4)\le\ell_i$ for all $i,j\in\mathbb N$ with $j\le i\le j+1$
+
+  **owner:** this unit
+
+- **requirement:** a bandage $b$ ([`Bandage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Stage/Iris.lean#L21-L35), III.10) with the extras $(\Omega,\Delta,b)$ ([`Extras`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Resources.lean#L45-L48))
+
+  **owner:** III.15
+
 
 Here $\mathrm{span}_{ij}\in\mathbb N$ is the factor's transition support parameter; the exponent is given by [`base`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Fusion.lean#L58) and [`toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/ATOM_REGULAR_ESTIMATE/Geometry.lean#L50).
 
@@ -290,6 +337,8 @@ Likewise, for every $F:\mathbb N\to\mathbb R$, the property "$F(J_{m+1})\le\hat\
 Further linked estimates concern a post-block Hessian bound ([`design`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Spins/Muse.lean#L35-L59)), extraction of cubic and quartic local coefficients ([`tanker`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Reservoir.lean#L84-L118)), and asymptotic bounds for the trace insertion ([`cloche`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn/Arc.lean#L16-L33)).
 *Status:* theorems, with the hypotheses above. The detailed scene, coefficient-format and norm interfaces are listed among the open points in section 7.
 
+<a id="unit-inputs"></a>
+
 ## 2. What it uses
 
 **From other units.**
@@ -327,6 +376,8 @@ Further linked estimates concern a post-block Hessian bound ([`design`](https://
 - The hypotheses (start) and (advance) of III.2.3.
 - In III.2.7, the records $\Omega$, $\mathcal H$, $\Delta$ and the demand come from III.14. Inside the assembly, the kernel with penalty $b$ comes from III.1 ([`Axial.viable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Branch/Pick.lean#L137-L142)). The tableau and sphere data are constructed in the assembly.
 
+<a id="unit-strategy"></a>
+
 ## 3. Strategy
 
 Choose the stage records and floors first, then the block factors $\ell_j$, post-$L$ costs and smallness exponents, delays, the barrier $\bar\beta$, and finally the wait. Increasing the appropriate threshold meets each requirement: the block factors dominate the stage constants, entry couplings pay later costs, and the wait provides comparison windows and large tori. Persistent requirements combine by taking maxima of floors and chaining delay and wait increases. This gives common constants for III.2.4–III.2.7.
@@ -334,6 +385,8 @@ Choose the stage records and floors first, then the block factors $\ell_j$, post
 The stage index $J_m$ advances by at most one per level. It enters a stage only after its entry thresholds are met and stays there long enough for one prescribed comparison window. At each fixed stage the volume bill is bounded by a polynomial in $\log s$, hence eventually by $e^s$. Since $s_m\ge m\log3$, this pays every later volume demand. One period offset pays the finitely many steps of the first plateau.
 
 For fixed $N,p$, start with the Wilson family over $[\bar\beta+(\kappa/2)s_N,\bar\beta+2\kappa s_N]\subset\mathfrak B_N$. At each step the drift bound sends the endpoint couplings strictly beyond the endpoints of the next window. A refined intermediate value argument selects a smaller parameter interval on which the new family stays in that window, so the next step applies. At level $0$ the window is $\{\bar\beta\}$. Summing the drifts upward from there and using $\omega_{J_{m+1}}\le\log L_m/J_{m+1}^2$ gives the running law uniformly in depth and volume.
+
+<a id="unit-steps"></a>
 
 ## 4. Steps
 
@@ -541,6 +594,8 @@ Finally [`engageWithCustodyFactor`](https://github.com/yang-mills-group/OpenAI-Y
 
 *(proofs read at the level of the displayed declarations; the analytic division, transfer and local-projection inputs are not independently audited)*
 
+<a id="unit-difficulty"></a>
+
 ## 5. Where the difficulty lies
 
 - **Order and persistence.** Each floor must be fixed before the block factors that pay it. Costs depending on the chosen factors can be paid by later entry thresholds. Delay and wait suppliers must remain valid under all subsequent increases; otherwise chaining them does not give a common set of constants.
@@ -549,32 +604,144 @@ Finally [`engageWithCustodyFactor`](https://github.com/yang-mills-group/OpenAI-Y
 - **Two drift bounds.** The bound $\omega_j\le(\kappa/4)\log\ell_j$ gives the shooting gates. The bound $\omega_j\le\log\ell_j/j^2$ gives the running law. Both are paid after the stage constants are fixed.
 - **Eventual payment.** The entry thresholds can absorb any fixed real array, including one evaluated after the block factors are chosen. Each fixed row is paid eventually; a single level need not pay every row. The stronger all-stage condition for the zeroth post-$L$ row is purchased separately.
 
+<a id="unit-notation"></a>
+
 ## 6. Notation
 
-| Written proof | Lean | Meaning |
-|---|---|---|
-| sheet; stage record $X_j$; first stage $j_0$; floors $f_j$ | [`Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35), [`Stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L45-L61) | data fixed before the block factors |
-| $k_j,q_j,a_j,w_j,\varpi_j,\omega_j,\gamma_j,r_j$ | `order`, `power`, `supportExponent`, `width`, `paths`, `drift`, `columns`, `clip.relaxation` | fields of the stage record |
-| $\mathcal C_j$ | (in [`Large`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L39-L48)) | $1+\varpi_j+w_j^{-1}+\gamma_j+r_j+a_j$ |
-| $\ell_j$; $L_m=\ell_{J_{m+1}}$ | [`Rolls`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L50-L53); `Schedule.block` | stage and step block factors |
-| $\theta_j$ | [`Protection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L88-L92) | smallness exponent of the loop cap |
-| $\beta^{\rm ent}_j,\sigma^{\rm ent}_j(\bar\beta),S_j,g_j$ | [`Delays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L115-L120) | entry thresholds, shells, growth |
-| $\bar\beta$ | [`Bar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L123-L127) | barrier: coupling at level 0 |
-| $\sigma^{\rm rdy}_j,h_j,n_{\min}$ | [`Wait`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L134-L139) | readiness, windows, minimal period |
-| meets the entrance conditions | [`Paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162) | III.2.2(a)–(d) |
-| $\mathrm{bill}_j(s)$ | [`Bar.bill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Length.lean#L43-L47) | required sites per unit length |
-| $J'$, $J_m=j_0+J'_m$ | [`Program`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Waits.lean#L22-L28) | stage index |
-| $n_p=4(M+p+1)$ | `Program.page` | level-0 side, with $M\in\mathbb N$ |
-| recipe $\mathcal R$ | [`Recipe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L67-L71) | path data and three tests |
-| admissible; relays; start | [`Lives`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L74-L79), [`Relays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L88-L91), [`Starter`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L93-L96) | |
-| continuous family | [`Curve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L51-L57), [`deviation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L44-L49) | |
-| (start)+(advance) | [`Recipe.Issues`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L99-L106) | shooting hypotheses |
-| $\mathfrak B_m$; $[\beta^-_m,\beta^+_m]$ | [`band`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L63); [`floorBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L57), [`ceilBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L58) | band; shooting window |
-| eventually paid | [`EventuallyPaid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Clock.lean#L36-L38) | III.2.8(a) |
-| plan; treasury funded | [`Plan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L18-L20), [`TreasuryFunded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L35-L38) | III.2.8(d) |
-| emitted factor; prediction | [`Factor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L26-L50), [`Prediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection/FundedCompanySelection.lean#L23-L24) | record of all choices; predicate on it |
-| sheet with floors $n$ | [`raise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Merchant.lean#L36), [`bountyV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Fiscal.lean#L22-L23) | |
-| order data $v$ | [`Orders`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L64-L68), [`Draft`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L70-L77), [`WithStage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L81-L85) | |
+- **Written proof:** sheet; stage record $X_j$; first stage $j_0$; floors $f_j$
+
+  **Lean:** [`Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35), [`Stage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L45-L61)
+
+  **Meaning:** data fixed before the block factors
+
+- **Written proof:** $k_j,q_j,a_j,w_j,\varpi_j,\omega_j,\gamma_j,r_j$
+
+  **Lean:** `order`, `power`, `supportExponent`, `width`, `paths`, `drift`, `columns`, `clip.relaxation`
+
+  **Meaning:** fields of the stage record
+
+- **Written proof:** $\mathcal C_j$
+
+  **Lean:** (in [`Large`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L39-L48))
+
+  **Meaning:** $1+\varpi_j+w_j^{-1}+\gamma_j+r_j+a_j$
+
+- **Written proof:** $\ell_j$; $L_m=\ell_{J_{m+1}}$
+
+  **Lean:** [`Rolls`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L50-L53); `Schedule.block`
+
+  **Meaning:** stage and step block factors
+
+- **Written proof:** $\theta_j$
+
+  **Lean:** [`Protection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L88-L92)
+
+  **Meaning:** smallness exponent of the loop cap
+
+- **Written proof:** $\beta^{\rm ent}_j,\sigma^{\rm ent}_j(\bar\beta),S_j,g_j$
+
+  **Lean:** [`Delays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L115-L120)
+
+  **Meaning:** entry thresholds, shells, growth
+
+- **Written proof:** $\bar\beta$
+
+  **Lean:** [`Bar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L123-L127)
+
+  **Meaning:** barrier: coupling at level 0
+
+- **Written proof:** $\sigma^{\rm rdy}_j,h_j,n_{\min}$
+
+  **Lean:** [`Wait`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L134-L139)
+
+  **Meaning:** readiness, windows, minimal period
+
+- **Written proof:** meets the entrance conditions
+
+  **Lean:** [`Paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162)
+
+  **Meaning:** III.2.2(a)–(d)
+
+- **Written proof:** $\mathrm{bill}_j(s)$
+
+  **Lean:** [`Bar.bill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Length.lean#L43-L47)
+
+  **Meaning:** required sites per unit length
+
+- **Written proof:** $J'$, $J_m=j_0+J'_m$
+
+  **Lean:** [`Program`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Waits.lean#L22-L28)
+
+  **Meaning:** stage index
+
+- **Written proof:** $n_p=4(M+p+1)$
+
+  **Lean:** `Program.page`
+
+  **Meaning:** level-0 side, with $M\in\mathbb N$
+
+- **Written proof:** recipe $\mathcal R$
+
+  **Lean:** [`Recipe`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L67-L71)
+
+  **Meaning:** path data and three tests
+
+- **Written proof:** admissible; relays; start
+
+  **Lean:** [`Lives`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L74-L79), [`Relays`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L88-L91), [`Starter`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L93-L96)
+
+  **Meaning:**
+
+- **Written proof:** continuous family
+
+  **Lean:** [`Curve`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L51-L57), [`deviation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L44-L49)
+
+  **Meaning:**
+
+- **Written proof:** (start)+(advance)
+
+  **Lean:** [`Recipe.Issues`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L99-L106)
+
+  **Meaning:** shooting hypotheses
+
+- **Written proof:** $\mathfrak B_m$; $[\beta^-_m,\beta^+_m]$
+
+  **Lean:** [`band`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L63); [`floorBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L57), [`ceilBeta`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L58)
+
+  **Meaning:** band; shooting window
+
+- **Written proof:** eventually paid
+
+  **Lean:** [`EventuallyPaid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Clock.lean#L36-L38)
+
+  **Meaning:** III.2.8(a)
+
+- **Written proof:** plan; treasury funded
+
+  **Lean:** [`Plan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L18-L20), [`TreasuryFunded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L35-L38)
+
+  **Meaning:** III.2.8(d)
+
+- **Written proof:** emitted factor; prediction
+
+  **Lean:** [`Factor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L26-L50), [`Prediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection/FundedCompanySelection.lean#L23-L24)
+
+  **Meaning:** record of all choices; predicate on it
+
+- **Written proof:** sheet with floors $n$
+
+  **Lean:** [`raise`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Merchant.lean#L36), [`bountyV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Fiscal.lean#L22-L23)
+
+  **Meaning:**
+
+- **Written proof:** order data $v$
+
+  **Lean:** [`Orders`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L64-L68), [`Draft`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L70-L77), [`WithStage`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L81-L85)
+
+  **Meaning:**
+
+
+<a id="unit-limitations"></a>
 
 ## 7. What remains unexplained
 1. **Analytic content of the purchased conditions.** The common-choice statements III.2.4–III.2.7 and their quantifier order are verified against the displayed Lean interfaces. The predicates in the requirement table, the conditional family package, and the campaign's pillars, funding, news, custody and sky conditions are not fully expanded into mathematical estimates here. Their equivalence to the requirements stated in the owning units remains to be checked.
@@ -584,84 +751,253 @@ Finally [`engageWithCustodyFactor`](https://github.com/yang-mills-group/OpenAI-Y
 5. **Analytic interfaces.** The weighted summability and vanishing-order definitions, the first-site support condition in multilinear transfer, and the rate interpretation of odd-part cancellation have been checked. The full step-scene hypotheses of odd-part cancellation and the coefficient-format and readability conditions of local read-out still need an independent mathematical account. Only the statements of the supplementary Hessian, cubic/quartic extraction and trace-insertion estimates linked after III.2.9 were checked; their proofs remain outside this review.
 6. **Scope of the source review.** The arithmetic construction, the divisibility argument, and the shooting proof are verified against the source. Other uses of the non-divisible period construction, the allocation of the supplementary analytic estimates to outline units, and the line-count breakdown given at the outset have not been independently checked.
 
-**Builds on:** [I.1](I-1.md), [III.1](III-1.md), [III.10](III-10.md), [VII.2](VII-2.md), [III.12](III-12.md), [III.7](III-7.md), [VII.1](VII-1.md), [III.16](III-16.md), [III.6](III-6.md), [II.1](II-1.md), [III.3](III-3.md), [III.9](III-9.md), [III.11](III-11.md), [III.4](III-4.md), [III.15](III-15.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.5](III-5.md), [VII.6](VII-6.md), [VII.4](VII-4.md), [IV.1](IV-1.md).
+## Code dependencies
 
-**Used by:** [III.12](III-12.md), [III.13](III-13.md), [III.10](III-10.md), [III.9](III-9.md), [III.11](III-11.md), [VIII.1](VIII-1.md), [III.4](III-4.md), [VII.1](VII-1.md), [III.15](III-15.md), [III.6](III-6.md), [III.14](III-14.md), [III.1](III-1.md), [VII.4](VII-4.md), [III.7](III-7.md), [V.2](V-2.md), [VII.2](VII-2.md), [II.1](II-1.md).
+**Code dependencies (from the compiled Lean).** These lists follow references between declarations allocated to units; they can include shared definitions, record fields and alternative constructions. They are not a mathematical reading order. Only unit pairs with at least 25 references are shown; see the [counting rules](../../data/README.md#code-dependencies).
+
+**References to:** [I.1](I-1.md), [III.1](III-1.md), [III.10](III-10.md), [VII.2](VII-2.md), [III.12](III-12.md), [III.7](III-7.md), [VII.1](VII-1.md), [III.16](III-16.md), [III.6](III-6.md), [II.1](II-1.md), [III.3](III-3.md), [III.9](III-9.md), [III.11](III-11.md), [III.4](III-4.md), [III.15](III-15.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.5](III-5.md), [VII.6](VII-6.md), [VII.4](VII-4.md), [IV.1](IV-1.md).
+
+**Referenced by:** [III.12](III-12.md), [III.13](III-13.md), [III.10](III-10.md), [III.9](III-9.md), [III.11](III-11.md), [VIII.1](VIII-1.md), [III.4](III-4.md), [VII.1](VII-1.md), [III.15](III-15.md), [III.6](III-6.md), [III.14](III-14.md), [III.1](III-1.md), [VII.4](VII-4.md), [III.7](III-7.md), [V.2](V-2.md), [VII.2](VII-2.md), [II.1](II-1.md).
 
 ## Lean source
 
-The work packages (folders of the Lean source) and the chains of large results that make up this unit.
+**Source allocation:** 18,156 attributed lines; 2,085 line-counted declarations; 2,536 assigned declaration names. Of the assigned names, 2,491 are in the compiled closure of the seventeen headline results. These quantities have [different scopes](../../data/README.md#counting-scopes).
 
-| content | lines |
-|---|---|
-| proof of [`plentifulWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Bardo.lean#L26-L81) | 6,253 |
-| proof of [`joinExpensesShipWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L28-L119) | 4,674 |
-| proof of [`selectRunWithTreasuryPeriod_preselected_quote_orders_postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114) and the results it chains to | 4,010 |
-| proof of [`joinRadarsShipWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L133-L144) | 2,398 |
-| work package [`YM/Price/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price) | 406 |
-| work package [`YM/Shoot/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot) | 228 |
-| proof of [`richFaresWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Fares.lean#L26-L85) | 164 |
-| work package [`YM/Integration/NativeSelection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection) | 17 |
-| work package [`YM/RG17/Clearance/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Clearance) | 6 |
+The folders and result chains below are source inventories. Their line counts cover each whole group, including any share allocated to another unit; percentages use attributed lines plus one per assigned name. They need not sum to the unit total.
+
+- proof of [`plentifulWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Bardo.lean#L26-L81) — 6,253 lines.
+- proof of [`joinExpensesShipWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L28-L119) — 4,674 lines.
+- proof of [`selectRunWithTreasuryPeriod_preselected_quote_orders_postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114) and the results it chains to — 4,010 lines.
+- proof of [`joinRadarsShipWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L133-L144) — 2,398 lines.
+- work package [`YM/Price/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price) — 406 lines.
+- work package [`YM/Shoot/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot) — 228 lines.
+- proof of [`richFaresWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Fares.lean#L26-L85) — 164 lines.
+- work package [`YM/Integration/NativeSelection/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection) — 17 lines.
+- work package [`YM/RG17/Clearance/`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Clearance) — 6 lines.
 
 ## Key statements
 
-In dependency order. Each sentence is a plain-language summary of the Lean statement written by an AI reader; follow the link for the exact statement. *Main result* and *key result* are the readers' judgement of importance.
+In the selected statement order. **K-** identifiers name this generated list; proposition and lemma numbers in the outline are separate. Each sentence is an automatically drafted summary of a Lean statement; follow its link for the exact hypotheses and conclusion. The outline status does not certify these summaries. *Main result* and *key result* describe importance, not correctness. Full names are in the [statement table](../../data/key-statements.tsv).
 
-- **III.2.1** [`Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35) *(numbered result)* — A record of numerical and kernel data fixed before any block ratios are chosen.
-- **III.2.2** [`Large`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L39-L48) *(numbered result)* — A predicate stating that numeric largeness conditions hold at a given smoothing stage for a threshold L.
-- **III.2.3** [`Protection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L88-L92) *(numbered result)* — A record freezing a parameter theta that accommodates all contributing requests after L is chosen.
-- **III.2.4** [`Bar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L123-L127) *(numbered result)* — A record giving a smallness barrier independent of the first spacing.
-- **III.2.5** [`enters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Length.lean#L90-L106) *(numbered result)* — For a simple group and stage past the first, waiting long enough in the coarser scale ensures beta, scale, length, and volume-bill conditions hold uniformly.
-- **III.2.6** [`Paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162) *(numbered result)* — A record stating that a bundle of entrance-gate and level-0 conditions holds for a schedule of levels.
-- **III.2.7** [`ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Waits.lean#L137-L239) *(key result)* — There exists a level schedule for which all requested estimates (the whole calendar) are paid.
-- **III.2.8** [`races`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L67-L82) *(key result)* — For a simple gauge group, if the recipe issues data at every scale and the coupling drifts, there is a trajectory that stays and produces a selected object.
-- **III.2.9** [`sailsW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Fiscal.lean#L97-L169) *(main result)* — For a simple gauge with kernel choices, there exists a sheet with prices and parameters such that for all tariffs and scopes a perceived-estimate package holds along suitable scale sequences.
-- **III.2.10** [`design`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Spins/Muse.lean#L35-L59) *(numbered result)* — A sharp post-block Hessian bound for the isolated step under unscaled derivative bounds.
-- **III.2.11** [`richFaresWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Fares.lean#L26-L85) *(key result)* — Under a prediction and pricing hypothesis, there is a sheet, price map and eventual threshold giving the joint RG/UV purchase with prediction retained.
-- **III.2.12** [`joinRadarsShipWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L133-L144) *(key result)* — There exist a sheet and prices such that the joint same-factor procurement with prediction holds for all later choices of parameters and payments.
-- **III.2.13** [`company`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection/FundedCompanySelection.lean#L49-L106) *(key result)* — The complete native purchase can be performed with an additional prediction holding on the same emitted factor.
-- **III.2.14** [`tanker`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Reservoir.lean#L84-L118) *(key result)* — Given a gauge and bounds, one can choose atoms and widths such that sequences of lattice observables with jet-bounded records are approximated by an emitted base up to fifth-order remainders.
-- **III.2.15** [`tunes9`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Pads.lean#L25-L32) *(numbered result)* — Given small epsilon on steps, there is a later delay schedule beyond which Pads9 holds for all further delays.
-- **III.2.16** [`purchasing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Medal.lean#L24-L45) *(key result)* — For r>-1, the Medal property holds eventually in x with the power beta^r as the parameter.
-- **III.2.17** [`wallet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Money.lean#L31-L43) *(key result)* — For large s, every admissible horn function with bounded weight gives a gale function that is smooth to order n at 0 and whose order-2 norm is at most a power of beta.
-- **III.2.18** [`yields`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Artes/Events.lean#L44-L55) *(numbered result)* — Counter and inspected hypotheses with an amplification condition give the cadre property.
-- **III.2.19** [`handbook'`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Roads.lean#L25-L68) *(numbered result)* — For a family of admissible horn functions, the order-2 norm of the associated gale function at 0 is controlled in temperature.
-- **III.2.20** [`mirror_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Shape.lean#L54-L70) *(key result)* — The sum of the paved expansions at z and -z is of order η^2 in the order-2 norm, i.e. the odd parts cancel to the right order.
-- **III.2.21** [`mastering`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Weather.lean#L18-L38) *(key result)* — For simple gauge and kernel choices, there exist scales and constants with fine bases such that, for any tolerances, performance data exist.
-- **III.2.22** [`flux_cap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Flux.lean#L24-L114) *(key result)* — For a simple gauge group there exist a price function and constants such that flux-capped bounds hold under horizontal calculation hypotheses, with explicit parameter dependence.
-- **III.2.23** [`pierce`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Return.lean#L82-L123) *(key result)* — For simple gauge, there is a price function and constants such that along sequences of steps the limiting path data satisfy uniform bounds and records.
-- **III.2.24** [`companyK`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Linger.lean#L23-L51) *(key result)* — A complete purchase of targets, expenses, and delays exists producing, after all later delays and payments, directed budgets and a sheltered alloy with the required rate and bounds.
-- **III.2.25** [`evening`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Spins/Sundial.lean#L24-L36) *(key result)* — For large x, the derivative at 0 of the display map differs from the main stroke by at most x^{-p} for every p, uniformly over admissible tubes.
-- **III.2.26** [`dissent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Spins/Meteor.lean#L64-L123) *(key result)* — For large x, the difference of the tube's display map vanishes at 0 with derivative at 0 bounded by x^{-p} for every power p.
-- **III.2.27** [`unique_part`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Quince/Unum.lean#L11-L42) *(key result)* — Two coefficient expansions with the same density and remainder bounds have difference in coefficient size exponentially small in the number of steps m.
-- **III.2.28** [`trendH`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shunt/Ready.lean#L24-L37) *(key result)* — For large x, any representative with the tool, merchant and depot properties admits a combat witness at every admissible level and axis.
-- **III.2.29** [`plentifulWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Bardo.lean#L26-L81) *(key result)* — For a fixed calendar and funded prediction there exist a sheet, prices and thresholds yielding the full plentiful construction retaining the prediction.
-- **III.2.30** [`flows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Vote.lean#L18-L24) *(key result)* — For a simple gauge group, any delay data can be enlarged so that any paid-up level system over further delays is acclaimed.
-- **III.2.31** [`taxes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Ansel.lean#L43-L52) *(key result)* — For a simple gauge, the stored quantitative property holds for all sufficiently large scale x.
-- **III.2.32** [`Inspires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Weir/Dolio.lean#L36-L64) *(main result)* — For simple gauge groups, a large-scale representation with sight and age properties is wholesome, with uniform constants, at all heights in range.
-- **III.2.33** [`rocket`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Swift/Troop.lean#L14-L34) *(key result)* — For a simple gauge group, there exist constants D, C such that for large x, any representation and dart satisfying the hypotheses obey a quantitative bound.
-- **III.2.34** [`attain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Earn.lean#L22-L52) *(key result)* — Under nest, skill and ordeal hypotheses on a simple graph, the sceptre property holds for the given data.
-- **III.2.35** [`vroom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Liturgy.lean#L23-L48) *(numbered result)* — For any sheet there is a threshold function beyond which a derived sheet satisfies a stated property.
-- **III.2.36** [`creation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn/Onus.lean#L43-L51) *(key result)* — For large x, any made representation with sight at a dart satisfies the craft property with given parameters.
-- **III.2.37** [`embalms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Order/State.lean#L33-L50) *(key result)* — Given a relay condition, any waiting condition can be strengthened so that every family paid for it satisfies the firing property in every dimension.
-- **III.2.38** [`post_phase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Eon.lean#L39-L59) *(key result)* — For sufficiently large patch size, a phase configuration exists for all large scales over any window length, at levels j≥5 and i≥4.
-- **III.2.39** [`post_to`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Tael.lean#L17-L19) *(key result)* — For any gauge, patch, kernel choices and parameters with positive alpha, there exist positive eta and nonnegative D such that the summit property holds.
-- **III.2.40** [`forwardSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Order/Road.lean#L35-L80) *(key result)* — Given an ask structure and budget/chart data, one can extend a waiting condition so that, along families paid for it, panels with common arc and angle give the required eventual estimates.
-- **III.2.41** [`pack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Weir/Cement.lean#L19-L59) *(key result)* — For large scale x, a configuration with climate and splendor bounds and no drift satisfies the depot property over all tower heights in range.
-- **III.2.42** [`cloche`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn/Arc.lean#L16-L33) *(key result)* — For large x, uniformly in lattice size and configuration, a core observable approximates its midpoint pay value and is smooth with controlled derivative bounds.
-- **III.2.43** [`eventuallyPaid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeDiagonalClockRequest.lean#L52-L79) *(numbered result)* — For any countable family, one admissible numerical delay request satisfies every fixed member eventually.
-- **III.2.44** [`panning`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Vale/Sculpt.lean#L42-L54) *(key result)* — The starting section built from a sound hologram abates at the fee weight, i.e. has polynomial vanishing below its weight at every rank.
-- **III.2.45** [`real_difference_division`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Differences.lean#L46-L92) *(key result)* — A real coefficient packet whose n-th differences vanish can be divided by n difference factors, with a representation having smaller width and controlled norm.
-- **III.2.46** [`flow_soft`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ballast/Slide.lean#L44-L90) *(key result)* — Pre-block transfer maps a kernel of width σ and bound B to flow with reduced width w and bound K·B·L^4/L^(r+1+d), uniformly in block size.
-- **III.2.47** [`selectRunWithTreasuryPeriod_preselected_quote_orders_postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114) *(main result)* — For any gauge data there exists a run with campaign satisfying the penalty value, preselection, order bounds, funded treasury/period purchase and a sky structure.
-- **III.2.48** [`allFactorWithTreasuryPeriod_preselected_quote_orders_postnumeric_of_prediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodClock.lean#L44-L179) *(main result)* — There exist a sheet, prices, choices, and a fully paid factor satisfying a prediction together with numerical, post-numerical, order and clock requirements simultaneously.
-- **III.2.49** [`pullback_gain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Pullback.lean#L56-L110) *(key result)* — Pulling back a zero-order-d row along two crosses gains a factor L^(2-d) in strip norm, giving an L^-1 contraction at d=3.
-- **III.2.50** [`large_contraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/KStep.lean#L130-L146) *(key result)* — For large odd block length the Hessian difference is a contraction uniformly in gate, giving L^(-1/2) decay after block choice.
-- **III.2.51** [`plan_exists`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L28-L31) *(key result)* — For a simple gauge group and any kernel choices, a complete plan (calendar treasury of scales and costs) exists.
-- **III.2.52** [`covariance_moves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/Stability.lean#L54-L93) *(numbered result)* — If conditional covariances are strip-bounded and the Hessians differ by a strip-bounded amount, the tree covariance and mean vary in a controlled way.
-- **III.2.53** [`buy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L42-L64) *(key result)* — Given a plan with floors met, any delay can be enlarged so that all further delays and payments yield a fully treasury-funded level.
-- **III.2.54** [`names`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar/Basis.lean#L40-L43) *(numbered result)* — For simple gauge group and kernel choices, a naming (charges) data package exists.
-- **III.2.55** [`wishes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar/Vocals.lean#L66-L76) *(numbered result)* — Given sound admissible data, a dialect (finite-word and spectrum data) for the requested operation exists.
+<a id="k-iii-2-1"></a>
+
+- **K-III.2.1** [`Sheet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35) *(numbered result)* — A record of numerical and kernel data fixed before any block ratios are chosen.
+
+<a id="k-iii-2-2"></a>
+
+- **K-III.2.2** [`Large`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L39-L48) *(numbered result)* — A predicate stating that numeric largeness conditions hold at a given smoothing stage for a threshold L.
+
+<a id="k-iii-2-3"></a>
+
+- **K-III.2.3** [`Protection`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L88-L92) *(numbered result)* — A record freezing a parameter theta that accommodates all contributing requests after L is chosen.
+
+<a id="k-iii-2-4"></a>
+
+- **K-III.2.4** [`Bar`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L123-L127) *(numbered result)* — A record giving a smallness barrier independent of the first spacing.
+
+<a id="k-iii-2-5"></a>
+
+- **K-III.2.5** [`enters`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Length.lean#L90-L106) *(numbered result)* — For a simple group and stage past the first, waiting long enough in the coarser scale ensures beta, scale, length, and volume-bill conditions hold uniformly.
+
+<a id="k-iii-2-6"></a>
+
+- **K-III.2.6** [`Paid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162) *(numbered result)* — A record stating that a bundle of entrance-gate and level-0 conditions holds for a schedule of levels.
+
+<a id="k-iii-2-7"></a>
+
+- **K-III.2.7** [`ready`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Waits.lean#L137-L239) *(key result)* — There exists a level schedule for which all requested estimates (the whole calendar) are paid.
+
+<a id="k-iii-2-8"></a>
+
+- **K-III.2.8** [`races`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L67-L82) *(key result)* — For a simple gauge group, if the recipe issues data at every scale and the coupling drifts, there is a trajectory that stays and produces a selected object.
+
+<a id="k-iii-2-9"></a>
+
+- **K-III.2.9** [`sailsW`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Fiscal.lean#L97-L169) *(main result)* — For a simple gauge with kernel choices, there exists a sheet with prices and parameters such that for all tariffs and scopes a perceived-estimate package holds along suitable scale sequences.
+
+<a id="k-iii-2-10"></a>
+
+- **K-III.2.10** [`design`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Spins/Muse.lean#L35-L59) *(numbered result)* — A sharp post-block Hessian bound for the isolated step under unscaled derivative bounds.
+
+<a id="k-iii-2-11"></a>
+
+- **K-III.2.11** [`richFaresWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Fares.lean#L26-L85) *(key result)* — Under a prediction and pricing hypothesis, there is a sheet, price map and eventual threshold giving the joint RG/UV purchase with prediction retained.
+
+<a id="k-iii-2-12"></a>
+
+- **K-III.2.12** [`joinRadarsShipWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L133-L144) *(key result)* — There exist a sheet and prices such that the joint same-factor procurement with prediction holds for all later choices of parameters and payments.
+
+<a id="k-iii-2-13"></a>
+
+- **K-III.2.13** [`company`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeSelection/FundedCompanySelection.lean#L49-L106) *(key result)* — The complete native purchase can be performed with an additional prediction holding on the same emitted factor.
+
+<a id="k-iii-2-14"></a>
+
+- **K-III.2.14** [`tanker`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Reservoir.lean#L84-L118) *(key result)* — Given a gauge and bounds, one can choose atoms and widths such that sequences of lattice observables with jet-bounded records are approximated by an emitted base up to fifth-order remainders.
+
+<a id="k-iii-2-15"></a>
+
+- **K-III.2.15** [`tunes9`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Pads.lean#L25-L32) *(numbered result)* — Given small epsilon on steps, there is a later delay schedule beyond which Pads9 holds for all further delays.
+
+<a id="k-iii-2-16"></a>
+
+- **K-III.2.16** [`purchasing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Medal.lean#L24-L45) *(key result)* — For r>-1, the Medal property holds eventually in x with the power beta^r as the parameter.
+
+<a id="k-iii-2-17"></a>
+
+- **K-III.2.17** [`wallet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Money.lean#L31-L43) *(key result)* — For large s, every admissible horn function with bounded weight gives a gale function that is smooth to order n at 0 and whose order-2 norm is at most a power of beta.
+
+<a id="k-iii-2-18"></a>
+
+- **K-III.2.18** [`yields`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Artes/Events.lean#L44-L55) *(numbered result)* — Counter and inspected hypotheses with an amplification condition give the cadre property.
+
+<a id="k-iii-2-19"></a>
+
+- **K-III.2.19** [`handbook'`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Roads.lean#L25-L68) *(numbered result)* — For a family of admissible horn functions, the order-2 norm of the associated gale function at 0 is controlled in temperature.
+
+<a id="k-iii-2-20"></a>
+
+- **K-III.2.20** [`mirror_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Shadows/Shape.lean#L54-L70) *(key result)* — The sum of the paved expansions at z and -z is of order η^2 in the order-2 norm, i.e. the odd parts cancel to the right order.
+
+<a id="k-iii-2-21"></a>
+
+- **K-III.2.21** [`mastering`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Weather.lean#L18-L38) *(key result)* — For simple gauge and kernel choices, there exist scales and constants with fine bases such that, for any tolerances, performance data exist.
+
+<a id="k-iii-2-22"></a>
+
+- **K-III.2.22** [`flux_cap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Flux.lean#L24-L114) *(key result)* — For a simple gauge group there exist a price function and constants such that flux-capped bounds hold under horizontal calculation hypotheses, with explicit parameter dependence.
+
+<a id="k-iii-2-23"></a>
+
+- **K-III.2.23** [`pierce`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Canvas/Return.lean#L82-L123) *(key result)* — For simple gauge, there is a price function and constants such that along sequences of steps the limiting path data satisfy uniform bounds and records.
+
+<a id="k-iii-2-24"></a>
+
+- **K-III.2.24** [`companyK`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Roll/Linger.lean#L23-L51) *(key result)* — A complete purchase of targets, expenses, and delays exists producing, after all later delays and payments, directed budgets and a sheltered alloy with the required rate and bounds.
+
+<a id="k-iii-2-25"></a>
+
+- **K-III.2.25** [`evening`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Spins/Sundial.lean#L24-L36) *(key result)* — For large x, the derivative at 0 of the display map differs from the main stroke by at most x^{-p} for every p, uniformly over admissible tubes.
+
+<a id="k-iii-2-26"></a>
+
+- **K-III.2.26** [`dissent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG12/Spins/Meteor.lean#L64-L123) *(key result)* — For large x, the difference of the tube's display map vanishes at 0 with derivative at 0 bounded by x^{-p} for every power p.
+
+<a id="k-iii-2-27"></a>
+
+- **K-III.2.27** [`unique_part`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Quince/Unum.lean#L11-L42) *(key result)* — Two coefficient expansions with the same density and remainder bounds have difference in coefficient size exponentially small in the number of steps m.
+
+<a id="k-iii-2-28"></a>
+
+- **K-III.2.28** [`trendH`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Shunt/Ready.lean#L24-L37) *(key result)* — For large x, any representative with the tool, merchant and depot properties admits a combat witness at every admissible level and axis.
+
+<a id="k-iii-2-29"></a>
+
+- **K-III.2.29** [`plentifulWithPrediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Bardo.lean#L26-L81) *(key result)* — For a fixed calendar and funded prediction there exist a sheet, prices and thresholds yielding the full plentiful construction retaining the prediction.
+
+<a id="k-iii-2-30"></a>
+
+- **K-III.2.30** [`flows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Vote.lean#L18-L24) *(key result)* — For a simple gauge group, any delay data can be enlarged so that any paid-up level system over further delays is acclaimed.
+
+<a id="k-iii-2-31"></a>
+
+- **K-III.2.31** [`taxes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Margin/Ansel.lean#L43-L52) *(key result)* — For a simple gauge, the stored quantitative property holds for all sufficiently large scale x.
+
+<a id="k-iii-2-32"></a>
+
+- **K-III.2.32** [`Inspires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Weir/Dolio.lean#L36-L64) *(main result)* — For simple gauge groups, a large-scale representation with sight and age properties is wholesome, with uniform constants, at all heights in range.
+
+<a id="k-iii-2-33"></a>
+
+- **K-III.2.33** [`rocket`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Swift/Troop.lean#L14-L34) *(key result)* — For a simple gauge group, there exist constants D, C such that for large x, any representation and dart satisfying the hypotheses obey a quantitative bound.
+
+<a id="k-iii-2-34"></a>
+
+- **K-III.2.34** [`attain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Earn.lean#L22-L52) *(key result)* — Under nest, skill and ordeal hypotheses on a simple graph, the sceptre property holds for the given data.
+
+<a id="k-iii-2-35"></a>
+
+- **K-III.2.35** [`vroom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Liturgy.lean#L23-L48) *(numbered result)* — For any sheet there is a threshold function beyond which a derived sheet satisfies a stated property.
+
+<a id="k-iii-2-36"></a>
+
+- **K-III.2.36** [`creation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn/Onus.lean#L43-L51) *(key result)* — For large x, any made representation with sight at a dart satisfies the craft property with given parameters.
+
+<a id="k-iii-2-37"></a>
+
+- **K-III.2.37** [`embalms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Order/State.lean#L33-L50) *(key result)* — Given a relay condition, any waiting condition can be strengthened so that every family paid for it satisfies the firing property in every dimension.
+
+<a id="k-iii-2-38"></a>
+
+- **K-III.2.38** [`post_phase`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Eon.lean#L39-L59) *(key result)* — For sufficiently large patch size, a phase configuration exists for all large scales over any window length, at levels j≥5 and i≥4.
+
+<a id="k-iii-2-39"></a>
+
+- **K-III.2.39** [`post_to`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Perfect/Tael.lean#L17-L19) *(key result)* — For any gauge, patch, kernel choices and parameters with positive alpha, there exist positive eta and nonnegative D such that the summit property holds.
+
+<a id="k-iii-2-40"></a>
+
+- **K-III.2.40** [`forwardSky`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Prom/Order/Road.lean#L35-L80) *(key result)* — Given an ask structure and budget/chart data, one can extend a waiting condition so that, along families paid for it, panels with common arc and angle give the required eventual estimates.
+
+<a id="k-iii-2-41"></a>
+
+- **K-III.2.41** [`pack`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Weir/Cement.lean#L19-L59) *(key result)* — For large scale x, a configuration with climate and splendor bounds and no drift satisfies the depot property over all tower heights in range.
+
+<a id="k-iii-2-42"></a>
+
+- **K-III.2.42** [`cloche`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Zn/Arc.lean#L16-L33) *(key result)* — For large x, uniformly in lattice size and configuration, a core observable approximates its midpoint pay value and is smooth with controlled derivative bounds.
+
+<a id="k-iii-2-43"></a>
+
+- **K-III.2.43** [`eventuallyPaid`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativeDiagonalClockRequest.lean#L52-L79) *(numbered result)* — For any countable family, one admissible numerical delay request satisfies every fixed member eventually.
+
+<a id="k-iii-2-44"></a>
+
+- **K-III.2.44** [`panning`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Vale/Sculpt.lean#L42-L54) *(key result)* — The starting section built from a sound hologram abates at the fee weight, i.e. has polynomial vanishing below its weight at every rank.
+
+<a id="k-iii-2-45"></a>
+
+- **K-III.2.45** [`real_difference_division`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Differences.lean#L46-L92) *(key result)* — A real coefficient packet whose n-th differences vanish can be divided by n difference factors, with a representation having smaller width and controlled norm.
+
+<a id="k-iii-2-46"></a>
+
+- **K-III.2.46** [`flow_soft`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Ballast/Slide.lean#L44-L90) *(key result)* — Pre-block transfer maps a kernel of width σ and bound B to flow with reduced width w and bound K·B·L^4/L^(r+1+d), uniformly in block size.
+
+<a id="k-iii-2-47"></a>
+
+- **K-III.2.47** [`selectRunWithTreasuryPeriod_preselected_quote_orders_postnumeric`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114) *(main result)* — For any gauge data there exists a run with campaign satisfying the penalty value, preselection, order bounds, funded treasury/period purchase and a sky structure.
+
+<a id="k-iii-2-48"></a>
+
+- **K-III.2.48** [`allFactorWithTreasuryPeriod_preselected_quote_orders_postnumeric_of_prediction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodClock.lean#L44-L179) *(main result)* — There exist a sheet, prices, choices, and a fully paid factor satisfying a prediction together with numerical, post-numerical, order and clock requirements simultaneously.
+
+<a id="k-iii-2-49"></a>
+
+- **K-III.2.49** [`pullback_gain`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/Pullback.lean#L56-L110) *(key result)* — Pulling back a zero-order-d row along two crosses gains a factor L^(2-d) in strip norm, giving an L^-1 contraction at d=3.
+
+<a id="k-iii-2-50"></a>
+
+- **K-III.2.50** [`large_contraction`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Flat/KStep.lean#L130-L146) *(key result)* — For large odd block length the Hessian difference is a contraction uniformly in gate, giving L^(-1/2) decay after block choice.
+
+<a id="k-iii-2-51"></a>
+
+- **K-III.2.51** [`plan_exists`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L28-L31) *(key result)* — For a simple gauge group and any kernel choices, a complete plan (calendar treasury of scales and costs) exists.
+
+<a id="k-iii-2-52"></a>
+
+- **K-III.2.52** [`covariance_moves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Gaussian/Stability.lean#L54-L93) *(numbered result)* — If conditional covariances are strip-bounded and the Hessians differ by a strip-bounded amount, the tree covariance and mean vary in a controlled way.
+
+<a id="k-iii-2-53"></a>
+
+- **K-III.2.53** [`buy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/CalendarTreasuryPurchase.lean#L42-L64) *(key result)* — Given a plan with floors met, any delay can be enlarged so that all further delays and payments yield a fully treasury-funded level.
+
+<a id="k-iii-2-54"></a>
+
+- **K-III.2.54** [`names`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar/Basis.lean#L40-L43) *(numbered result)* — For simple gauge group and kernel choices, a naming (charges) data package exists.
+
+<a id="k-iii-2-55"></a>
+
+- **K-III.2.55** [`wishes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Calendar/Vocals.lean#L66-L76) *(numbered result)* — Given sound admissible data, a dialect (finite-word and spectrum data) for the requested operation exists.
+
 
 [All units](../units.md) · [Overview of the proof](../README.md) · [Repository](../../README.md)
