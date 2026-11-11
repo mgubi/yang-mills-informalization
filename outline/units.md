@@ -40,7 +40,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | **III.13** | [Extension to all labels: one common Wilson family](units/III-13.md) | 22,100 | 31 | checked |
 | **III.14** | [The construction run: flat representations and the ultraviolet rate](units/III-14.md) | 14,290 | 49 | checked |
 | **III.15** | [Cost accounting for observables and the remainder comparison](units/III-15.md) | 7,382 | 13 | checked |
-| **III.16** | [Analytic toolkit](units/III-16.md) | 4,013 | 4 | draft |
+| **III.16** | [Analytic toolkit](units/III-16.md) | 4,013 | 4 | checked |
 
 ## Part IV. Infinite volume
 
