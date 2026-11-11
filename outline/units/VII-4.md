@@ -2,220 +2,677 @@
 
 *Part VII — Identification as Yang–Mills.* 10,243 lines of Lean in 2,035 declarations used by the main theorem.
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is a **first draft**, written from the Lean by one model; it has not yet been checked. It is updated as it improves.
+> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and rewritten by a second model; a final editing round is in progress. It is updated as it improves.
 
 
-**Part:** VII, identification as Yang–Mills. **Lean:** [`YM/OPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE) (`Splitting`, `Exchange`, `Orbits`, `Sweep`, `Prices`, `Schemes`, `Replicas`, `Grouping`, `Columns`, `Cards`, `Trees`, `Eye`, `Subpower`, `Single`), [`YM/Next/PHASE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE), [`YM/Contacts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts) (`Normal`, `Score`, `Layers`, `Harvest`, `Solstice`, `Transport`), [`YM/MultipleContact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact), [`YM/SharpGram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram). The public bridges are in [`HierarchyBridge.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean) and [`ContactBridge.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean). **Size:** about 10,200 lines (OPE about 4,600 in the five folders `Grouping`, `Replicas`, `Columns`, `Trees`, `Sweep`; `Next/PHASE` 840; `Contacts` about 3,400; `MultipleContact` about 290; `SharpGram` about 250).
+**Part:** VII, identification as Yang–Mills. **Lean:** [`YM/OPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE). Its folders, by role:
+- prescription and Reader: `Splitting`, `Orbits`;
+- bounds in the ground algebra: `Eye`, `Cards`, `Exchange`;
+- lattice cluster estimate: `Sweep`, `Replicas`, `Grouping`, `Columns`, `Prices`;
+- passage to arbitrary configurations: `Schemes`, `Interpolate`, `Height`, `Rate`;
+- trees: `Nesting`, `Trees`, `Single`, `Subpower`.
 
-Throughout, $G$ is a compact simple gauge group, $\mathcal W$ is the Wilson family of the construction, and $S$ is the limit correlation table of IV.1 and V.1. A *token* $v$ is a lattice label with continuum image $\pi(v)\in F_d$ of degree $d$, and $S^s(a;x)$ is the correlation of fields $a$ at points $x$ in the state $s$ (the mixed state or a phase). A *cluster* $(x,o)$ is an $(r,M,\eta)$-cluster in the sense of the statement (Definition 1.13): $|x_i-o|\le Mr$ and $|x_i-x_{i'}|\ge\eta r$. The weight is $w(a)=\sum_i\deg a_i$.
+Also [`YM/Next/PHASE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE), [`YM/Contacts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts) (`Normal`, `Score`, `Layers`, `Harvest`, `Solstice`, `Transport`), [`YM/MultipleContact`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact) and [`YM/SharpGram`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram). The public bridges are [`publicOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L68-L77) and [`contactDistribution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49).
+
+**Size:** about 10,200 lines in 2,035 declarations assigned to this unit:
+- `OPE` about 4,600, mostly in `Grouping`, `Replicas`, `Columns`, `Trees`, `Sweep`;
+- `Next/PHASE` 840;
+- `Contacts` about 3,400;
+- `MultipleContact` about 290;
+- `SharpGram` about 250.
+
+The declaration map assigns two groups to VIII.1 because they lie inside the proof of `fromFunded`: the closing OPE lemmas (`Orbits.produce`, `coefficient_separated`, `quantitative_separated`, `estimates_weighted`) and almost all of `OPE/Nesting`. They are described here.
+
+**Conventions.**
+- $G$ is compact and simple, and $\mathcal W$ is the Wilson family of the construction. Its RG schedule has lattice levels $k=0,1,2,\dots$ with spacings $a_k\downarrow0$. Larger $k$ means finer, and the schedule is *gentle*: consecutive ratios are subexponential in $\log(1/a_k)$.
+- $I_{N,p}(v,x)$ is the renormalized lattice observable of a lattice label (token) $v$ at the site $x$. $\|F\|_{\mathcal T_k}$ is the chessboard root of a lattice function $F$ in the centred tiling of scale $a_k$. Both follow IV.1.
+- $S$ is the limit table along the refined extraction order. It has field spaces $F_d$ and the inclusions $\iota_{m,n}\colon F_m\to F_n$ ($m\le n$) of the field algebra. A label list is $a=(a_i)_{i\in I}$ with $a_i\in F_{d_i}$, and its total degree is $w(a)=\sum_i d_i$.
+- $\mathcal A$ is the ground algebra of V.1: the commutative C\*-algebra generated by the compressed slab operators $M(u)$ of separated words $u$. Its vacuum is $\Omega$, its Gelfand spectrum is the phase space $X$ with measure $\nu$ of full support, and its characters are $\chi_\xi$.
+  - $S^\xi(u)=\chi_\xi(M(u))$ and $S^{\mathrm{mix}}(u)=\langle\Omega,M(u)\Omega\rangle$.
+  - Hence, for $A\in\mathcal A$ and $c\ge0$: $\|A\|\le c$ if and only if $|s(A)|\le c$ for every state $s\in X\sqcup\{\mathrm{mix}\}$ ([`glance_contract`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Views.lean#L67-L68), [`Cards.pressure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L89-L92)).
+- Clusters and clearance follow Definition 1.13 of the statement.
+  - $(x,o)$ is an *$(r,M,\eta)$-cluster* if $|x_i-o|\le Mr$ and $|x_i-x_{i'}|\ge\eta r$ for $i\ne i'$.
+  - $y\in(\mathbb R^4)^J$ is *$c$-clear of $o$* if $|o-y_j|\ge c$ and $|y_j-y_{j'}|\ge c$ for $j\ne j'$.
+  - $S^s(a,x;b,y)$ and $M(a,x;b,y)$ denote the concatenated word.
+- "For all sufficiently small $r$" means: there is $r_0>0$, depending only on the data quantified before the phrase, such that the assertion holds for all $r\in(0,r_0)$ and all configurations and states quantified after it.
 
 ## 1. What this unit proves
 
-**Proposition VII.4.1 (separated OPE; the properties O1, O2 of the main theorem).** For the table $S$ of the construction there are, for each degree $j$, finitely many channels $\kappa$ with fields $O_{j,\kappa}\in F_j$, and coefficient functions $c_{j,\kappa}(a;x,o)$, such that:
+**Proposition VII.4.1 (separated OPE; properties (O1)–(O2) of the main theorem).**
 
-(O1) for every finite index set $I$, labels $a$, $M\ge0$, $\eta>0$, $\varepsilon>0$, $j$ and $\kappa$, for all sufficiently small $r>0$ and every $(r,M,\eta)$-cluster, $|c_{j,\kappa}(a;x,o)|\le r^{\,j-w(a)-\varepsilon}$;
+*Setting.*
+- $(\mathcal W,S,F)$ is a family, limit table and final record for which the RG package `Services` holds (Remark VII.4.7).
+- $\mathcal P$ is any coherent prescription (VII.4.6).
+- $\mathcal R$ is the Reader built from $\mathcal P$ and the rotation and reality structures of $F$ (Lemma VII.4.c). It provides strata $E_j\subset F_j$, conjugation-invariant bases $(O_{j,\kappa})_{\kappa\in\mathrm{Ch}_j}$ of $E_j$, and coefficients $c_{j,\kappa}(a;x,o)$.
 
-(O2) for finite sets $I,J$, labels $a,b$, $M\ge0$, $\eta,c,\varepsilon>0$ and $D\in\mathbb N$, for all small $r>0$, every $(r,M,\eta)$-cluster $(x,o)$, every spectator configuration $y$ that is $c$-clear of $o$, and every state $s$ (the mixed state and every phase),
-$$\Bigl|S^s(a,x;b,y)-\sum_{j\le D}\sum_\kappa c_{j,\kappa}(a;x,o)\,S^s\bigl((j,O_{j,\kappa}),o;b,y\bigr)\Bigr|\le r^{\,D+1-w(a)-\varepsilon}.$$
+*Conclusions.*
+- **(O1)** Fix a finite $I$, labels $a$, $M\ge0$, $\eta>0$, $\varepsilon>0$, $j$ and $\kappa\in\mathrm{Ch}_j$. For all sufficiently small $r$ and every $(r,M,\eta)$-cluster $(x,o)$: $|c_{j,\kappa}(a;x,o)|\le r^{\,j-w(a)-\varepsilon}$.
+- **(O2)** Fix finite $I,J$, labels $a,b$, $M\ge0$, $\eta,c,\varepsilon>0$ and $D\in\mathbb N$. For all sufficiently small $r$, every $(r,M,\eta)$-cluster $(x,o)$ and every $y$ that is $c$-clear of $o$:
+  - the points of $(x,y)$ are pairwise distinct, and so are those of $(o,y)$;
+  - the remainder satisfies
+$$\Big\|M(a,x;b,y)-\sum_{j\le D}\sum_{\kappa\in\mathrm{Ch}_j}c_{j,\kappa}(a;x,o)\,M\big((j,O_{j,\kappa}),o;\,b,y\big)\Big\|_{\mathcal A}\le r^{\,D+1-w(a)-\varepsilon};$$
+  - hence $\big|S^s(a,x;b,y)-\sum_{j\le D}\sum_\kappa c_{j,\kappa}(a;x,o)\,S^s((j,O_{j,\kappa}),o;b,y)\big|\le r^{D+1-w(a)-\varepsilon}$ for every $s\in X\sqcup\{\mathrm{mix}\}$.
 
-The coefficients do not depend on $b$, $y$, $s$ or $D$. "Sufficiently small" depends on all data except $x,o,y,s$.
+The coefficients do not depend on $b$, $y$, $s$ or $D$. The thresholds do not depend on $x$, $o$, $y$ or $s$.
 
-*Status:* theorem. It is proved for one Reader (a fixed coherent system of coefficient extractors, §6) built after the table, and it is produced together with the table in a single existence statement.
-*Lean:* [`SeparatedOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L24-L48) (clauses `coefficient`, `remainder`, and a third clause `profiles`, see VII.4.2). The core estimate is [`Orbits.Foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L62-L64), produced by [`Orbits.foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L70-L77). The translation to the public statement is [`publicOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L68-L77), into [`OperatorProductExpansion`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L70-L80).
+*Status:* theorem, for every Reader on the given final record, given `Services`. The lemma `produce` has the Reader as a free variable. In the main theorem, $\mathcal P$ comes from `Prescription.chosen`, `Services` from `Run.extractible17` (VIII.1), and the whole is assembled in `R2IGoals.fromFunded`.
 
-**Proposition VII.4.2 (integrated forms of the remainder; item D8 of the detailed theorem).** The remainder bound of VII.4.1 also holds for averages of cluster–spectator configurations against complex measures of total variation at most $B$, uniformly over measurable choices of the phase. The threshold in $r$ depends on $B$ only through the factor $B$ in the bound $B\,r^{D+1-w(a)-\varepsilon}$.
+*Lean:*
+- [`Orbits.Foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L62-L64): clause `coefficients` is (O1); clause `discrepancy` gives injectivity, the bound in $\mathcal A$ and the bound in every state.
+- [`Orbits.produce`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L67-L68), [`coefficient_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L64-L69), [`quantitative_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L71-L85).
+- The error element is [`algebraError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L61-L63).
+- Headline: [`SeparatedOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L24-L48), clauses `coefficient` and `remainder`, the latter via [`Independent.Core.point`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L49-L63).
+- Public form: [`publicOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L68-L77) into [`Hierarchy.OperatorProductExpansion`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L70-L80).
+
+**Proposition VII.4.2 (integrated remainder; item (D8)).** Fix the data of (O2), a measurable space $K$ and $B\ge0$. For all sufficiently small $r$ the following holds.
+
+*Hypotheses.* Let $\mu$ be a measure on $K$, $w\in L^1(\mu)$ with $\int|w|\,d\mu\le B$, and $k\mapsto(x(k),o(k),y(k))$ an a.e.-measurable configuration map. Assume that $\mu$-a.e. on $\{w\ne0\}$, $(x,o)$ is an $(r,M,\eta)$-cluster and $y$ is $c$-clear of $o$.
+
+*Conclusion.* Take for $s(k)$ either the mixed state, or $\xi(k)$ for an arbitrary measurable phase map $\xi\colon K\to X$. Then:
+- $w\,S^{s}(a,x;b,y)$, $w$ times the truncated sum, and $w$ times their difference are integrable;
+- the integrals satisfy
+$$\Big|\int_K w(k)\Big[S^{s(k)}(a,x;b,y)-\sum_{j\le D}\sum_\kappa c_{j,\kappa}(a;x,o)\,S^{s(k)}((j,O_{j,\kappa}),o;b,y)\Big]d\mu(k)\Big|\le B\,r^{D+1-w(a)-\varepsilon}.$$
+
+In particular, for every probability measure $\nu'$ on $X$, the $\nu'$-mixture of the phases satisfies the bound of (O2) ([`probability_mixtures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L58)). The statement allows the threshold to depend on $K$ and $B$. The proof gives the threshold of the pointwise bound, which is independent of both.
+
 *Status:* theorem.
-*Lean:* the clause `profiles` of [`SeparatedOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L24-L48); the mixture estimate [`Orbits.probability_mixtures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L58) and `estimates_weighted` in [`Orbits/Profile.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L98-L108).
 
-**Proposition VII.4.3 (nested OPE; item D10).** The same expansion holds over finite trees of clusters (clusters inside clusters, each node with its own truncation degree and its own scale, the scales decreasing towards the leaves), with the rate at each node obtained from the product of the node costs. It holds in the mixed state and in every phase, in a direct form, in a form with exterior spectators, and in integrated forms.
-*Status:* theorem (statement only; hypotheses as in the structure).
-*Lean:* [`NestedOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L128-L138) (clauses `direct`, `tested`, `joint`, `jointLaw`); the fixed-horizon version for all trees at once is [`AllShapes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L39-L45) with existence [`OPE.subpower`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L52-L54).
+*Lean:* [`estimates_weighted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L98-L108), [`JointEstimate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L53-L57), [`FitsOn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L17); clause `profiles` of `SeparatedOPE`, through `Core.joint`.
 
-**Proposition VII.4.4 (contact extension; item D2 of the detailed theorem, and the multiple-collision resolution D11–D13).** For every state $s$, $k$ and $a\in\mathbb F^k$ there is a distribution $\mathcal D$ on $(\mathbb R^4)^k$, a continuous linear functional on $C_c^\infty$, with $\mathcal D(f)=\int f\,S^s(a;\cdot)$ for every $f$ supported in the set of pairwise distinct configurations. It is constructed from the OPE by Taylor subtractions over forests of collapsing clusters. In addition: (a) the resolution agrees with the punctured correlation on annuli away from total collapse; (b) the Taylor pairings are summable and agree with the readings on proper subclusters; (c) the distribution has finite order (the order is $\mathrm{totalTestOrder}(d,g)$ of the labels); (d) the scaling bounds hold on normalized tests; (e) the extraction uses the same OPE prescription as the Reader; (f) there is a real basis of the grade strata containing the unit field; (g) there is a sequence of thresholds $t_n\downarrow0$, $4t_{n+1}<t_n$, $2(n+1)t_n\le$ the clearance at degree $n$. Uniqueness is **not** claimed. Reflection positivity on overlapping supports, contact Ward identities for arbitrary subtractions and real-time products are **not** established (stated in the module docstring of `Result.lean`).
-*Status:* theorem, in the form of existence of a Wilson family and device data satisfying a package of clauses.
-*Lean:* [`MultipleLight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L52-L63) (clauses `slope`, `moment`, `distribution`), [`Resolution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L23-L31), [`Sunshine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L33-L40), [`provided`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L65-L69), [`celestial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L78-L79) (existence), [`Thresholds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28), [`SystemBasis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L47-L51); public form [`contactDistribution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49) for [`Hierarchy.Contacts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactSpec.lean#L12-L14).
+**Proposition VII.4.3 (nested OPE, i.e. composition of coefficients over trees; item (D10)).**
 
-**Proposition VII.4.5 (main/exterior bound and the Seats property; an intermediate result used in V.1 and III.13, important in itself).** Let a main word $w$ and an exterior word $v$ of lattice labels be placed in a reflection-positive time slab. Suppose each main insertion has a one-field centered chessboard budget $A$ at a scale $a_k$ and each exterior insertion has a budget $B$ at a finer scale $a_b$. Then
-(a) *(point bound)* for gapped configurations (main points $a_m$-separated from each other and from the exterior points, exterior points $a_l$-separated) the continuum correlation satisfies $|S(x;v)|\le A^{\sharp \text{main}}B^{\sharp \text{exterior}}$;
-(b) *(train bound)* the Gram pairing of the reflected train of $4q$ copies of $w$ with the exterior word $v$ is at most $B^{2|v|}A^{4q|w|}$, for every $q$, so the exterior cost is independent of $q$;
-(c) *(Seats)* for every degree bound $D$ and norm bound $R$ there are constants such that, for every word $w$ of tokens of degree $\le D$ and norm $\le R$ in a slab with buffer $r\le1$, there are a covered sub-width, chosen before any exterior, and a "quantum read" estimate with cost $C_0\,r^{-4P\cdot|w|}$-type growth (the radius $C_0^{|w|}r^{-P'|w|}$ in the code's `Spread.radius`).
+*Trees and plots.*
+- $t$ is a finite rooted tree whose root is an inner node, and $v$ labels its leaves.
+- $w_p$ is the total degree of the leaves below the inner node $p$.
+- A *plot* $z$ assigns points to the leaves and an anchor $z_p$ to each inner node.
+- Radii $s_p>0$ are attached to the inner nodes, with $\rho_p=s_p/s_{\mathrm{parent}(p)}$ for non-root $p$.
+
+*Admissibility.* $(s,z)$ is *$(r,M,\eta)$-admissible* if:
+- $s_{\mathrm{root}}=r$ and $s_p\le s_{\mathrm{parent}(p)}$;
+- at every inner node $p$, all positions of the subtree lie within $Ms_p$ of $z_p$;
+- positions in different children of $p$ are at distance $\ge\eta s_p$.
+
+*Costs.* Put
+$$\mathrm{toll}_{m}(s)=r^{\,m-w(v)-\varepsilon}\prod_{p\ne\mathrm{root}}\rho_p^{-w_p-\varepsilon},\qquad \mathrm{nest}_D(s)=\sum_{p\ne\mathrm{root}}\rho_p^{\,D_p+1}.$$
+
+*Conclusions.* Fix $m$, $\kappa\in\mathrm{Ch}_m$, truncation degrees $D_p$ at the inner nodes, $M\ge0$ and $\eta,\varepsilon>0$. For all sufficiently small $r$ and every admissible $(s,z)$:
+- (a) $|c_{m,\kappa}(v;z_{\mathrm{leaves}},z_{\mathrm{root}})|\le\mathrm{toll}_m(s)$.
+- (b) $|c_{m,\kappa}(v;\cdot)-c^{(D)}_{m,\kappa}(v;z)|\le\mathrm{toll}_m(s)\,\mathrm{nest}_D(s)$. Here $c^{(D)}$ is the composed coefficient: the sum, over channels $(j_q,\kappa_q)$ with $j_q\le D_q$ at the children $q$ of the root (expanded recursively), of the product of the children's composed coefficients and the root coefficient $c_{m,\kappa}\big((j_q,O_{j_q,\kappa_q})_q;(z_q)_q,z_{\mathrm{root}}\big)$.
+- (c) (with spectators) Let $y$ be at distance $\ge\delta$ from every point of the plot, with mutual distances $\ge\delta$. Then the degree-$m$ remainder of VII.4.1 for the leaves at $z_{\mathrm{root}}$ has $\mathcal A$-norm, and value in every state, at most $\mathrm{toll}_{m+1}(s)$.
+- (d) Versions of (a)–(c) integrated against complex densities of mass $\le B$, with measurable plots, spectators and phases, hold with the bounds multiplied by $B$.
+
+*Status:* theorem, for every Reader on the final record given `Services` (`Nesting.uniform`).
+
+*Lean:*
+- [`NestedOPE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L128-L138) (clauses `direct`, `tested`, `joint`, `jointLaw`).
+- [`Nesting.Uniform`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Endpoint.lean#L17-L27), [`Nesting.uniform`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Endpoint.lean#L31-L36).
+- [`Accept`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L15-L18), [`Tree.toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Actual.lean#L18-L19), [`Tree.nestPrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Weights.lean#L102-L103), [`Composite.stacked`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Composite.lean#L115), [`CoefIntegral`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Integration.lean#L66-L71).
+
+**Proposition VII.4.4 (contact extensions; items (D2), (D11)–(D13)).**
+
+*Setting.*
+- $\mathcal M$ is a system of contact devices on the final record. Its prescription is the Reader's ($\mathcal M.\mathrm{basis}=\mathcal P$; this is (D11)) and its rotation action is that of $F$.
+- `Services` holds.
+- For labels $a_1,\dots,a_k$ of degrees $d_i$ and a state $s$:
+  - let $\mathrm{cl}(n)>0$ be the clearance of the devices up to degree $n$;
+  - put $B_0=\min(1,\mathrm{cl}(w(a)))$ and fix a subtraction length $s_0\in(0,B_0/2]$; the public form uses $s_0=B_0/4$;
+  - let $\mathcal D^s_a(f)=\int\langle\mathrm{full}\rangle_s(f;x)\,dx$, the kernel being given by the forest formula of Lemma VII.4.r.
+
+*Conclusions.*
+- (a) $\mathcal D^s_a$ is a distribution of order at most $(2+w(a))\,k$. For every compact $K$ there is $C_K$ with $\int|\langle\mathrm{full}\rangle_s(f;x)|\,dx\le C_K\max_{|\alpha|\le(2+w(a))k}\|\partial^\alpha f\|_\infty$ for all $f$ supported in $K$.
+- (b) **(D2)** $\mathcal D^s_a(f)=\int f(x)\,S^s(a;x)\,dx$ for every $f\in C_c^\infty$ supported in $\mathrm{Conf}_k$.
+- (c) The same construction gives distributions on affine slices $o+P(E)$, where $P$ is a linear isometry whose range contains the normal space of the diagonal of a group $g\subset\{1,\dots,k\}$, and $o$ lies on that diagonal.
+- (d) **(D12)** For admissible forests, the resolution satisfies summation formulas: the pairing equals the sum over subtraction "ways" and dyadic shells, all terms are integrable and the sums converge absolutely.
+- (e) **(D12)** On tests rescaled to normal size $R$ and normalized to unit mass, the pairing is $O(R^{\,u-w(a_g)-\varepsilon})$. Here $u=0$ for the full resolution, $u=n$ for the weight-$n$ OPE coefficient and $u=n+1$ for the remainder. On annuli away from total collapse, the resolution agrees with the punctured correlation.
+- (f) **(D13)** The device strata have conjugation-invariant bases, and the basis in degree 0 contains the unit field.
+- (g) **(D13)** For every positive sequence $(f_n)$ there are thresholds $0<t_n\le f_n$ with $4t_{n+1}<t_n$, $t_n\to0$ and $2(n+1)t_n\le\mathrm{cl}(n)$.
+
+Uniqueness is not claimed. The docstring of `Result.lean` states that reflection positivity on overlapping supports, contact Ward identities for arbitrary subtractions and real-time products are not established.
+
+*Status:* theorem ([`provided`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L65-L69)). In the main theorem the devices are assembled in [`contacts_on`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L14-L24) (VIII.1), with detectors from [`detector_exists`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact/Detector.lean#L28-L35). (D2) appears in the detailed theorem [`constructed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L40), not in the public `JointExistence`.
+
+*Lean:*
+- [`MultipleLight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L52-L63), with clauses `slope` = [`Sunshine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L33-L40), `moment` = [`Resolution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L23-L31), and `distribution` = [`Charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31) of order [`totalTestOrder`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Skies.lean#L48).
+- [`SystemBasis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L47-L51), [`Thresholds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28).
+- Public form: [`contactDistribution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49) for [`Hierarchy.Contacts`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactSpec.lean#L12-L14).
+
+**Proposition VII.4.5 (slab-operator bound; the bench V.1.7).**
+
+*Hypotheses.* $(\mathcal W,f,S)$ is a seed:
+- $\mathcal W$ has the construction properties;
+- the extraction is ordered and has generic point limits;
+- $S$ satisfies the Euclidean hierarchy;
+- the cell hypothesis holds: reflection positivity and the chessboard inequality at every cutoff, and centred budgets $\|I_{N,p}(v,x)\|_{\mathcal T_m}\le A\,a_m^{-d-\varepsilon}+\eta$ late in the extraction.
+
+*Conclusion.* For every $D\in\mathbb N$ and $R>0$ there are $C_0>0$ and $P\in\mathbb N$ with the following property. Let $d>0$, $r\in(0,1]$, and let $w\neq\emptyset$ be a word with these properties:
+- its tokens have degree $\le D$ and coefficient norm $\le R$;
+- it lies in the time slab $(0,d)$ and is $r$-buffered there.
+
+Then there are a level $b$ and a width $s\le d$ with $s\in a_b\mathbb N$ and $w$ in the slab $(0,s)$, such that every positive word $v$ has a constant $B_v$ with
+$$|S(\Theta v_n\cdot v_n)|\le B_v\,\rho^{4n}\quad(n\in\mathbb N),\qquad \rho=C_0^{|w|}\,(|w|/r)^{P|w|}.$$
+Here $v_n$ is $v$ preceded by $2n$ consecutive slabs of width $s$ that hold alternately $w$ and its reflection. In V.1 an iterated Schwarz inequality turns this into $\|T_s(w)\|\le\rho$ (`Drive.against`, `producer`). One may take $P=4(D+1)$.
+
+*Status:* theorem: [`Next.Phase.seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160) proves [`Bid.Seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L27).
+- It is consumed by the construction of the phases: V.1 through `Bid.Looms` and [`Next.Phase.vacuum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Assembly.lean#L69-L73).
+- It is also consumed in the assembly (`Acme.glistens`, `Pert.withFinal`).
+- The OPE proofs of this unit do not use it directly; they use the algebra $\mathcal A$ it helps to build.
+
+*Lean:* [`Bid.Bench`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L21-L24), [`OS.QRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L70-L71), [`Spread.radius`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Slabs.lean#L109); steps in Lemmas VII.4.o–p.
+
+**Proposition VII.4.6 (coherent prescription).**
+
+*Setting.*
+- A *probe* is a finite separated configuration of tokens; its first point is the anchor, and the other points are taken relative to it.
+- $\mathrm{sp}_n\colon F_n\to\mathbb C^{\{\text{probes}\}}$ sends $\phi$ to the correlations of $\phi$ at the anchor with the probe tokens. This map is injective, by the definition of $F_n$ as a quotient by null fields, and compatible with the inclusions.
+- A *mode* is a pair $i=(n,\alpha)$, where $\alpha$ indexes a basis of $F_n/\iota(F_{n-1})$.
+
+*Conclusion.* There are, for every mode, a vector $u_i\in F_n$ (needle) and a finitely supported family $\lambda_i$ of complex weights on probes (sheet), with the following property. Write $\lambda_i^{(m)}=\sum_p\lambda_i(p)\,\mathrm{sp}_m(\cdot)(p)$ for the induced functional (test) on $F_m$. Then for every $n$:
+- $\lambda_i^{(n)}(\iota u_j)=\delta_{ij}$ for all modes $i,j$ of degree $\le n$;
+- $\phi=\sum_{\deg i\le n}\lambda_i^{(n)}(\phi)\,\iota u_i$ for all $\phi\in F_n$.
+
+Tests of degree $>n$ vanish on $F_n$. One prescription serves every truncation degree.
+
 *Status:* theorem.
-*Lean:* (a) [`Next.Phase.point_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L187-L229) from [`cutoff_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L125-L179); (b) [`travel_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Trains.lean#L273-L304); (c) [`replicas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L119-L151) and [`seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160), the proof of the proposition [`Bid.Seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L27).
 
-**Proposition VII.4.6 (existence of a coherent prescription).** On every graded space of fields $F_n$ (filtered by inclusions $F_{n-1}\to F_n$), there is a *prescription*: a family of vectors ("needles") $u_i\in F_{|i|}$ and finitely supported linear combinations ("sheets") $\lambda_i$ of the spectra of the lattice insertions, indexed by a basis of the quotient $F_n/F_{n-1}$, which are biorthogonal ($\lambda_i(u_j)=\delta_{ij}$) and reconstruct each element of $F_n$ at every level $n$ at once. It can be extended one level at a time, so one choice serves every truncation horizon.
-*Status:* theorem (definition of `Coherent`, existence proved).
-*Lean:* [`Prescription`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46), [`SignedOff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L59-L61), [`Coherent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L63), existence [`Prescription.chosen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31), induction step [`nextRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L57-L92).
+*Lean:* [`Prescription`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46), [`SignedOff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L59-L61), [`Coherent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L63), [`Prescription.chosen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31), [`highVan`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L32-L35).
 
-**Remark on the hypotheses.** Every statement above is proved for the Wilson family $\mathcal C$ produced by the existence theorem [`through_final`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Single.lean#L28-L37) (in `Single.lean`; the lines shown are its docstring and statement) for a simple gauge group and every penalty parameter $b>0$. The hypothesis `Services` ([`Services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60)) is not an assumption on the model. It records the renormalization-group outputs (a selected schedule, a package of cluster estimates, and a base of cell budgets) that `through_final` supplies together with the table. The OPE is therefore proved for the table constructed in IV.1 and V.1, and for no other table. The coefficients depend on the choice of prescription and of extraction order; independence from the subsequence is not claimed (the assessment says so too).
+**Remark VII.4.7 (hypotheses and order of choices).**
+
+*The order of choices.* In the main theorem ([`WilsonExistence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L143-L155)), the family is chosen first, for a simple $G$ and any penalty $b>0$. Then, for every extraction order, a refinement, the table, the final record, the Reader and the devices are chosen together.
+
+*The hypothesis `Services`* ([`Services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60)) bundles four items:
+- the grid-approximant property `Grill`;
+- simplicity of $G$;
+- an RG package `Package`;
+- an extraction base `Base`.
+
+It is not an assumption on the model. For the table of the construction it is proved by [`Run.extractible17`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Joint.lean#L60-L90) (VIII.1, from Part III outputs; §2 input 6).
+
+*Side existence theorems.* Each of these builds its own family with $b=1$ and is not on the path of the main theorem: [`through_final`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Single.lean#L32-L37), [`Orbits.foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L70-L77), `single`, `subpower`, `Nesting.rooted` and [`celestial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L78-L79).
+
+*Results proved but not kept.* `fromFunded` also proves two further results, which the main theorem's statement does not keep:
+- the OPE in the raw (complex, non-covariant) needle basis ([`SingleSubpower`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Single.lean#L40-L51));
+- tree versions for every coherent prescription ([`AllShapes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L39-L45), via [`Services.everything`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L47-L48)).
+
+*What is not claimed.* The coefficients depend on the prescription and the Reader. Independence of the extraction subsequence is not claimed (Assessment §7.5).
 
 ## 2. What it uses
 
 **Inputs from other units**
 
-1. *The construction with its RG outputs* (III.2, III.9, III.10, III.11, III.13; `Services`). The Wilson family with the selected path, the cluster-product estimate and the cell budgets. The unit consumes them through the bundled hypothesis `Services` and through the family record [`Family.Makes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62) (II.2, III.13). The single-field budgets `Single` (an "interior" lattice field has chessboard root at most $A$ at a given cell scale, in its whole oriented multiplet) are the centered budgets of IV.1 (input 2 there).
-2. *The chessboard estimate, the transfer matrix and reflection positivity* (IV.1, I.1): the seam inequality $|\mathbb E\prod\tau_iF_i|\le\prod\|F_i\|$ on tilings, as in IV.1 Lemma b. Used here with link tilings of two scales (coarse and fine).
-3. *The limit table and its hierarchy properties* (IV.1: smoothness on pairwise distinct configurations, point limits, `PointLimits`; V.1: phases, the Gelfand space $X$, the mixed state; V.2, V.3: the reconstructed theories and the Hilbert space of words). The OPE statements are about the table `Final` constructed there.
-4. *The stress tensor and rotations* (VI.1): the rotation action `Rotation` and its laws; the Reader averages over $O(4)$ to make the coefficients rotation-covariant and real.
-5. *Gaussian/free-field control of labels* (III.3, III.4, III.6, III.7): the lattice labels are renormalized observables matched to classical labels at Taylor order $d$ (the "local sections" of D3). This unit uses only the output: the gradation of $F_d$ and the lattice product estimate.
+1. *The final record and its seed* (IV.1, V.1–V.3, VI.1; assembled in VIII.1). This comprises:
+   - the cutoff family with `Makes` (II.2, III.13);
+   - the hierarchy (Euclidean axioms) of $S$, and generic point limits on grid configurations;
+   - the field algebra: inclusions $\iota$, derivative identities, rotation action and its laws, reality structure.
+
+   Lean: [`Seed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L26), `Locals`, `Final`.
+2. *Reflection positivity and centred budgets* (IV.1, interface item 2; I.1). Two parts:
+   - the chessboard inequality at every cutoff (`Seam`);
+   - for every degree $d$, $\varepsilon,R>0$, there are $m_0$ and $A$ such that, late in the extraction, every $I_{N,p}(v,x)$ with $\|v\|\le R$ is interior to its centred cell at scale $a_m$, with root $\le A\,a_m^{-d-\varepsilon}+\eta$.
+
+   Lean: [`CellHyp`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L68-L79).
+3. *The ground algebra and phases* (V.1). This comprises:
+   - $\mathcal A$ commutative, with $X$ its Gelfand spectrum and $\nu$ of full support;
+   - [`B17.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B17.lean#L71-L90): $\langle\Omega,(u^*u)^n\Omega\rangle$ is the limit, as the spacing $\to\infty$, of the continuum correlation of $2n$ time-translates of $u$, alternately conjugated;
+   - [`Retain.bit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Detect.lean#L22-L58): if $\langle\Omega,(u^*u)^n\Omega\rangle\le c^{2n}$ for all $n$, then $|\chi_\xi(u)|\le c$ for all $\xi$;
+   - the selection, the every-phase tables, and their smoothness.
+4. *The derivative identity* (VI.1, IV.1): the derivative in one point of a correlation is the correlation with the derivative label, of degree one higher. It is used in Lemma VII.4.i.
+5. *Haar measure on $O(4)$ and the rotation laws* (VI.1). They are used for the covariant Reader.
+6. *The RG package `Services`.* Its producers belong to Part III and are collected in VIII.1:
+   - [`Org.Grill`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L121-L123): for every degree bound $d$ and level $m$ there is $k\ge m$ such that token tuples of degree $\le d$ on generic level-$k$ grid configurations admit coverings that work along the extraction. It is produced by `grilled` (III.11) and used in the a priori bounds (Lemma VII.4.e).
+   - [`Package`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas/Budget.lean#L13-L16) = [`TableTickets`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rough/Factory.lean#L18-L27) plus `productCuts`. Its fields are:
+     - `system`: per-step RG costs;
+     - `accounting`;
+     - `columns`;
+     - `reissue`;
+     - `halos`: halo summability;
+     - `path`;
+     - `literal`;
+     - `tabs`: choice of budget levels;
+     - `productCuts`: cluster cuts at every arity.
+
+     The cluster estimate uses `tabs`, `halos`, `productCuts`, `accounting`, `system` and `literal`. Producer: `opePackage17` (VIII.1), through `Funded.logPackage`. Ingredients come from III.10, III.11 (`Chateau.reception`), III.12 (`Run.bought`), III.2, III.15 (`Funded.halo`), and `exodusN` (this unit).
+   - `Base` (structure of IV.1, [`Next/EXTRACTION/Base.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean)): the extraction to the smooth continuum table. It is produced in `Chateau.reception` (III.11) and used in the grid estimates (Lemma VII.4.h).
 
 **Standard mathematics**
-
-- Wilson–Zimmermann operator product expansion and its Euclidean formulation (Zimmermann, *Local operator products and renormalization*; Brandt; Hollands–Wald for the axiomatic form); here replaced by a non-perturbative statement with $\varepsilon$-loss.
-- Reflection positivity and chessboard estimates (Fröhlich–Israel–Lieb–Simon; Glimm–Jaffe ch. 18–19; Osterwalder–Seiler).
-- Spectral theorem for self-adjoint operators, used for the $q\to\infty$ extraction of an operator norm from the growth $A^{4q|w|}$ of a Gram pairing: $\langle\xi,T^{2q}\xi\rangle\le c\,A^{4q}$ for all $q$ implies $\|T\xi\|\le A^2\|\xi\|$-type bounds (probable).
-- Taylor subtraction over forests (Zimmermann's forest formula; Bogoliubov–Parasiuk–Hepp), dyadic shell decomposition, and extension of distributions across the diagonal à la Epstein–Glaser (Epstein–Glaser, *The role of locality in perturbation theory*, 1973; Brunetti–Fredenhagen, *Microlocal analysis and interacting quantum field theories*, 2000; Hörmander I, Thm 3.1.1 and ch. 3) (the identification is mine and is only a reading of docstrings and statements: tentative).
-- Distribution theory for finite-order distributions (Hörmander I).
+- Commutative C\*-algebras: the Gelfand isometry and norm $=\sup$ over characters (Bratteli–Robinson I, §2.3.5).
+- Reflection positivity and chessboard estimates (Fröhlich–Israel–Lieb–Simon 1978; Fröhlich–Simon 1977; Glimm–Jaffe, Ch. 6 and 18).
+- The iterated Schwarz inequality for transfer operators. If $\|(A^*A)^n v\|\le C_vD^{2n}$ for all $n$, then $\|Av\|\le D\|v\|$. This is used in V.1, Glimm–Jaffe Ch. 6.
+- Block-spin renormalization and polymer representations (Bałaban; Brydges, *Lectures on the renormalisation group*; Gawędzki–Kupiainen).
+- The Wilson–Zimmermann OPE (Wilson 1969; Zimmermann 1973) and its axiomatic form (Hollands–Wald 2008). Here it is replaced by finite-order bounds with $\varepsilon$-loss.
+- Extension of distributions across diagonals with Taylor subtraction of order given by the scaling degree (Epstein–Glaser 1973; Brunetti–Fredenhagen 2000; Hörmander I, Thm 3.2.3–3.2.4). Forest formulas (Zimmermann 1969).
+- Haar measure on $O(4)$, Taylor's formula with remainder, and the mean value theorem.
 
 **Imported constants and assumptions**
-
-- $\varepsilon>0$ is an arbitrary loss in all exponents. There are no logarithmic corrections ("They **do NOT have logarithmic powers**", docstring of `Subpower.lean`).
-- The threshold in "sufficiently small $r$" depends on all fixed data, and not on states or positions. The proof gets this uniformity from a compactness argument over sequences, see §4.1.
-- The ingredients of `Services` (the RG estimates that enter in §4.3) are proved in Part III; I have not traced which of III.9–III.11 supplies which field of `Package` and `Base` (see §7).
+- $\varepsilon>0$ is an arbitrary loss in every exponent. No logarithmic corrections are claimed (docstring of `Subpower.lean`).
+- Constants of the cluster estimate (Lemma VII.4.f):
+  - the gain margin $1/16$, which comes from the transport gain $(a_k/a_m)^{1/8}$ of the RG (`gainChart`);
+  - the loss $(a_m/a_j)^{4|I|}$, where the exponent $4$ is bookkeeping slack ($L_i^4\ge6L_i$);
+  - subpower factors (`stakes`, `license`, `carpet`, `fly`), which are absorbed by $\varepsilon$.
+- The constant $P=4(D+1)$ of VII.4.5 comes from degree-$d$ budgets of the form $a_k^{-(d+1)}$ and $a_k\ge c\,(r/|w|)^4$.
 
 ## 3. Strategy
 
-**OPE.** The lattice mechanism is a block-spin statement. At the RG scale $a_m$ a product of renormalized observables $\prod_i O(v_i,x_i)$ localized in a cluster of size $\ll a_m$ equals, up to an irrelevant remainder, a single renormalized observable $O(z,o)$ of some label $z$ of degree at most the total degree (the coarse-graining of a cluster; `joins`, `Ballet`). The cost is measured by the chessboard root, and the remainder has small root, with a gain that grows with the number of RG steps between the cluster scale $a_j$ and the scale $a_m$ of the observation. After coarse graining to the continuum, this gives the OPE with remainder $r^{D+1-w-\varepsilon}$ in "exponential rate" form: with $r=e^{-xT}$ and a family of scale parameters $T\to\infty$ along which lattice scales $a_k=e^{-bT},a_m=e^{-aT},a_j=e^{-cT}$ are chosen, errors are bounded by $e^{T\cdot\text{exponent}}$ with an exponent that is linear in $x,a,b,c$ (`RateLE`, `RateIs`, `Height`). The coefficients themselves are not given by a formula but are *read off* by a fixed coherent system of finitely many test functionals (the prescription, VII.4.6) applied to the product at fixed finite probe configurations, averaged over $O(4)$, symmetrized under conjugation, and with the lower-degree part removed (`Reader`, `knife`, `cutTest`). This choice is what makes one system of coefficients serve every truncation degree: the degree-$n$ coefficient is the component of the cluster in the $n$-th stratum, and a truncation at $D$ just uses the first $D+1$ strata.
+**Coefficients by tomography.**
+- *The raw coefficient.* The OPE coefficients are not given by a formula. They are read off by a fixed system of probes. For a mode $i$, the raw coefficient of a cluster $a$ at $x$ around $o$ is
+$$\lambda_i(a;x,o)=\sum_p\lambda_i(p)\,S\big(a,\,x-o;\ \text{probe }p\big),$$
+the sheet $\lambda_i$ applied to the cluster moved to the origin, as if the cluster were a single field there ([`Prescription.ope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Detector.lean#L80)).
+- *Exactness on single fields.* Biorthogonality makes this exact on single fields. Inside a correlation, a single field of degree $n$ reconstructs as $\sum_{\deg i\le n}\lambda_i(\phi)u_i$ ([`sumAll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Observe.lean#L27-L31)).
+- *The Reader.* The public coefficients average the raw vector $\sum_i\lambda_i u_i$ over $O(4)$, symmetrize it under conjugation, and remove the components already accounted for in lower degree. The result is a grading by strata that is exact for all truncation degrees at once.
 
-**Exterior spectators.** The remainder has to be bounded in a correlation with arbitrary spectators $b$ at distance $\ge c$, in every state, with a bound independent of the spectators' size. Here the unit uses the reflection-positive structure in a different way than IV.1. The main word is repeated $4q$ times in a time-reflected train, which makes the pairing with the exterior a Gram form $\langle\Psi,\Psi\rangle\ge0$ and costs $A^{4q|w|}$ for the main part but only $B^{2|v|}$ for the exterior part (VII.4.5(b)). Letting $q\to\infty$ and using the spectral theorem converts this into an operator-norm bound for the main word on the cyclic subspace generated by the exterior, with the exterior cost entering once (probable). The ground algebra norm bound (the norm of `groundError` in the algebra of the vacuum representation, which dominates the value in all phases) then gives the uniformity in $s$.
+**Uniformity in states and spectators: norms in $\mathcal A$.** All remainder estimates are bounds on the norm in $\mathcal A$ of the error element. Such a norm bounds the error in the mixed state and in every phase.
+- *Computing the norm.* The norm is computed by a chessboard argument on decks:
+$$\|u\|^{2n}_{\mathcal A}=\sup_\xi|\chi_\xi(u)|^{2n},\qquad \int|\chi_\xi(u)|^{2n}d\nu=\langle\Omega,(u^*u)^n\Omega\rangle=\lim S(\text{$2n$ far translates of $u$, alternately conjugated}).$$
+  The last limit is a limit of lattice moments, which the two-scale chessboard inequality bounds by the $2n$-th power of a product of single-cell roots. Main factors sit in distinct cells of a coarse tiling, and spectator factors are grouped in a finer tiling.
+- *How spectators enter.* Each spectator contributes only its own one-field budget, at a scale finer than its distance to the other points. This gives (O2) for every state at once, with a threshold uniform in the spectators. There is no Cauchy–Schwarz doubling of exponents.
 
-**Contacts.** The contact distributions are obtained from the OPE by recursion over forests: inside each shell of a dyadic decomposition of the cluster geometry, one subtracts the OPE with Taylor-expanded test functions and sums the shells; the OPE remainder is what makes the shell sums converge. A requirement is that the subtractions use the same prescription (same readout functionals) as the OPE, which is imposed by the structure `Devices`.
+**The lattice mechanism: an RG cluster estimate** (`joins`). Consider $|I|$ renormalized observables at sites of a fine level $j$, inside one cell of the level-$(m+1)$ tiling, where $m<j$. Their product equals one observable $I_N(Q,0)$ of a chosen degree $t$ at the origin, plus a remainder.
+- *The label.* The coefficient size of $Q$ at level $m$ is $\lesssim a_j^{-w}(a_m/a_j)^{4|I|}a_m^{t}$.
+- *The remainder.* Its chessboard root at the coarser level $k<m$ is $\lesssim a_j^{-w}(a_m/a_j)^{4|I|}(a_m/a_k)^{t+1/16}$, up to subpower factors.
+- *The proof.* It propagates the polymer representation of the product through the block-spin steps from $j$ down to $m+1$, fusing points that come close. At level $m$ the relevant (degree $\le t$) part becomes the label $Q$; the irrelevant part contracts with the scale ratio.
+- *Continuum and grid.* Passing to the limit along the extraction gives a continuum statement for clusters on a grid of spacing $a_j$. Combined with the exact reconstruction $\sum_{\deg i\le q}\lambda_i(Q)u_i=Q$, it yields the OPE at grid configurations, for coefficients and for remainders.
 
-*What differs from the literature.* There is no perturbative input: the whole expansion is non-perturbative, with $\varepsilon$-losses and no claim about convergence in $D$, uniqueness of the coefficients, or relation to perturbation theory.
+**From grid points to all configurations, and from rates to powers.**
+- *Exponential rates.* With $T=-\log r$, every quantity is controlled in exponential rate. The levels $k,m,j$ are placed at heights $b<a<x<d$, meaning $a_k\approx e^{-bT}$, and so on.
+- *Off-grid configurations.* These are reached by a derivative bootstrap: induction downward in the total degree. A derivative raises the degree by one and costs one power of the fine grid spacing, which the mean value theorem recovers. At high degree the crude a priori bound already suffices.
+- *Removing the auxiliary heights.* Letting $a,d\to x$ removes the auxiliary heights at the cost of an arbitrarily small loss.
+- *From sequences to all configurations.* An argument by contradiction along sequences of configurations turns rate statements into bounds for all small $r$, uniformly in the configurations.
+
+**Trees, contacts and the slab bound.**
+- *Trees.* The nested OPE follows by induction over the tree. Children whose scale is comparable on the logarithmic scale are merged with the parent cluster. The others are replaced by their own OPE at an auxiliary degree so high that the error is negligible.
+- *Contacts.* Contact distributions are built from the OPE projections by a BPHZ/Epstein–Glaser-type recursion over subclusters. Each weight-$w$ OPE term is paired with the test function minus its normal Taylor polynomial of order $\sum d-4(|h|-1)-w$. The OPE remainder is integrable as it stands.
+- *The slab bound.* Separately, PHASE proves the bench of V.1 by a train argument. A main word is repeated $4n$ times in a reflection-positive train; the chessboard estimate costs $A^{4n|w|}$ for the main word and a fixed $B^{2|v|}$ for an exterior word $v$, and $n\to\infty$ removes the exterior cost.
+
+*What differs from the literature.* The expansion is not perturbative. It gives finite-order bounds with $\varepsilon$-loss, holds in every state with one coefficient system, and is proved from RG cluster estimates and reflection positivity. Nothing is claimed about convergence in $D$, uniqueness of the coefficients, or agreement with perturbation theory.
 
 ## 4. Steps
 
-### 4.1 Rate formalism
+### 4.1 Rates and sequences
 
-**Lemma VII.4.a (from rates to uniform small-$r$ bounds).** Suppose a bound holds along every sequence of scale parameters $T_k\to\infty$ and configurations satisfying the regime hypotheses (`Kept`, `enveloped`, `Intervals`), in the exponential form $|f_k|\le e^{sT_k}$ eventually for every $s$ above the exponent. Then for every $\varepsilon>0$ it holds, uniformly in the configurations, for all small $r$ in the form $|f|\le r^{-\text{exponent}-\varepsilon}$.
-*Proof sketch.* Compactness of the parameter set and an argument by contradiction over sequences (`refine_geometry`); the logarithmic losses coming from the relation between $r$ and $T$ are absorbed by the $\varepsilon$ (`loglife`, `outweigh`).
-*Lean:* used in [`coefficient_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L64-L69) and [`quantitative_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L71-L85). *(Proof read, the use of `refine_geometry`; the lemma itself and `loglife` not read.)*
+**Lemma VII.4.a (from sequences and rates to uniform small-$r$ bounds).**
+- (i) Let $P(r,z)$ and $Q(r,z)$ be predicates. Suppose that for every choice $r\mapsto z_r$ and every non-trivial refinement of $r\to0^+$ along which $P(r,z_r)$ holds eventually, a further refinement makes $Q(r,z_r)$ hold eventually. Then, for all sufficiently small $r$, $P(r,z)$ implies $Q(r,z)$ for every $z$.
+- (ii) *Rates.* A quantity has upper rate $\kappa$ along $T\to\infty$ if $|f|\le e^{\kappa'T}$ eventually, for every $\kappa'>\kappa$. With $T=-\log r$ this means $|f|\le r^{-\kappa-\varepsilon}$ eventually, for every $\varepsilon>0$.
+- (iii) *Clusters and spectators.* Under $T=-\log r$, an $(r,M,\eta)$-cluster has extent rate $-1$ and separation rate $1$. Spectators that are $c$-clear have both rates $0$.
+- (iv) *Heights.* A sequence of levels $m$ has height $c$ if $\log(1/a_m)/T\to c$. Every height $c\ge0$ is attained, since the schedule is gentle.
 
-### 4.2 The prescription and the Reader
+*Proof sketch.* For (i), argue by contradiction: if the conclusion failed, the set of bad radii would carry a non-trivial filter, and the hypothesis applied to it would give a contradiction. Parts (ii)–(iv) follow directly from the definitions.
 
-**Lemma VII.4.b (coherent prescription, one level at a time).** If a prescription is signed off at level $n$ (biorthogonal and reconstructing on $F_n$), it extends to one signed off at level $n+1$ by adding the needles and sheets for the new quotient $F_{n+1}/F_n$, without changing the lower rows. A union over $n$ then gives a prescription coherent at all levels.
-*Proof sketch.* Linear algebra: choose a complement of the image of $F_n$ in $F_{n+1}$, a dual basis, and sheets reaching these functionals using that the lattice spectra separate fields (`reachReads`, `faithfully`).
-*Lean:* [`nextRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L57-L92), [`Prescription.chosen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31). *(Statement only; the consequence `Extends`/`SignedOff.of_extends` in `Basis.lean` read.)*
+*Lean:* [`refine_geometry`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L17-L22), [`RateLE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rate.lean#L23-L24), [`loglife`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L35-L37), [`room_regime`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L38-L42), [`free_clear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L43-L47), [`Height`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L18-L20), [`found`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L58-L64).
 
-**Lemma VII.4.c (the Reader).** From a coherent prescription with the rotation action and a hierarchy, define for each $m$ the projection $\mathrm{knife}_m=\mathrm{id}-\sum_{i<m}\iota\circ\mathrm{cutTest}_i\circ\mathrm{lift}$ on $F_m$, which annihilates the lower strata, the stratum $\mathrm{stratum}_m=\bigcap_{i<m}\ker\mathrm{cutTest}_i$, and a real basis of it; the channels $\mathrm{Ch}_m$ index this basis, the fields $O_{m,\kappa}$ are its elements, and $c_{m,\kappa}(a;x,o)$ is the coordinate of the stratum projection of the "fresh" vector (the $O(4)$-averaged reading of the cluster) in this basis. The cut tests of degree $i<m$ vanish on elements of level $q<m$, and $\sum_{i\le m}\iota(\mathrm{cutTest}_i z)=z$.
-*Proof sketch.* Induction on $m$ using the biorthogonality of the prescription (`test_formula`, `reconstruct`, `kills_lower`).
-*Lean:* [`Orbits.Reader`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23), [`knife`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L49), [`cutTest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L51), [`stratum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L83). *(Proof read.)*
+### 4.2 Prescription and Reader
 
-### 4.3 The lattice cluster estimate
+**Lemma VII.4.b (extension one level at a time).** A prescription that is biorthogonal and reconstructing on $F_n$ extends to one with the same property on $F_{n+1}$, without changing the needles and sheets of degree $\le n$.
 
-**Lemma VII.4.d (product of a cluster is one observable plus a small remainder; `joins`).** Let $f_i=O_N(s_i,\text{site}_i)$, $i\in I$, be lattice observables at sites that are spaced at the coarse RG scale, interior to a cell, and let $d$ be the target degree. Under size conditions on the parameters (the budget $A$, the cost $b$, the compensation $\alpha$, "license" and "spindle" conditions from the RG), there is a label $z$ of degree $d$ with
-(i) the coefficient size ("quota") of $z$ at most $2e$;
-(ii) the difference $\prod_if_i-O_N(z,0)$ is interior to the cell;
-(iii) its chessboard root is at most $2\,\mathrm{stakes}/b$.
-*Proof sketch.* Induct over the RG levels $m+1,\dots,j$ (`inductionLive`): at each level the cluster is regrouped, one keeps the degree-$\le d$ part as a coefficient and pays the rest to the remainder, with a compensation factor that is a bounded product of weights (the progress). The base of the induction is the single-scale estimate `Ballet` (below). The two inputs are the RG contraction of irrelevant terms (III.10) and the stock of cell budgets (`Base`, `Package`).
-*Lean:* [`joins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Camp.lean#L54-L94), [`inductionLive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Induct.lean#L93-L117). *(Statement and the beginning of the proof of `joins` read; the induction not read.)*
+*Proof sketch.*
+- Let $B=\sum_{\deg i\le n}\lambda^{(n+1)}_i(\cdot)\,u_i$, a left inverse of $\iota_{n,n+1}$.
+- Take any linear section of $F_{n+1}\to F_{n+1}/\iota F_n$, and subtract from it its projection $\iota\circ B$. This gives a lift $\Phi$ whose image lies in the kernel of all old tests.
+- The new needles are $\Phi$ applied to a basis of the quotient.
+- The new sheets realize the dual coordinates composed with the quotient map. Such sheets exist because the probe functionals span the dual of $F_{n+1}$ ([`reachReads`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L37-L42), by faithfulness).
+- A recursive choice, collected along $n$, gives a coherent prescription.
 
-**Lemma VII.4.e (one window of scales; `Ballet`).** Across a compact window of scales $m+1\le k\le j$ there is a coefficient $Q_0$ (with the format and remainder bounds of the RG) that serves the product of replicated pieces, giving the main estimate of the window. It is the step in which the replicas (the cluster copied $|I|$ times along a regrouping $L:\text{bunch}$, `ranch`, `hitB`, `carrying`) are bundled into arcs, and the compensated bounds multiply.
-*Lean:* [`Ballet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Ballet.lean#L35-L76) (a lemma of about 40 hypotheses), [`ranch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas/Antique.lean#L33-L46), [`hitB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Grouping/Shift.lean#L54-L93) (hit-budget bounds survive replacing contents by enlarged sets at a multiplied cost), [`carrying`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L98-L104) (if deck norms are at most $c^{2m}$ for all large $m$, the cluster norm is at most $c$). *(Statement only; the hypotheses of `Ballet` and the first lines of its proof, which apply `inductionLive` and then `Live.winter`, have been checked against the Lean source.)*
+*Lean:* [`startRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L44-L53), [`nextRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L57-L92), [`Prescription.chosen`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31).
 
-**Lemma VII.4.f (pricing in rates; `funding`).** At ordered heights $b<a<c$ (the exponents of $a_k,a_m,a_j$) there are rate functions $g,o$ with $g=e^{T(Z-ta)+\text{o}(T)}$, $o\le e^{-X'T}$ for explicit linear $Z,X'$ in $a,b,c$, the degrees and the number of points, such that the price statement `PriceAt` holds eventually: every cluster of $|I|$ spaced lattice observables is, within quota $g$, a single observable of degree $t$, with remainder of chessboard root at most $o$. Proof: instantiate `joins` with parameters expressed as exponentials of $T$ and check the size conditions as inequalities between exponents (`terminalAfford`, `key_cost`, `Height.gathered`).
-*Lean:* [`funding`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices/Circuit.lean#L64-L87). *(Proof read.)*
+**Lemma VII.4.c (the Reader).** Fix a coherent prescription.
 
-### 4.4 From the lattice to the continuum correlation with spectators
+*Construction.*
+- The *raw vector* of degree $n$ is $\sigma_n(a;x,o)=\sum_{\deg i\le n}\lambda_i(a;x,o)\,\iota u_i\in F_n$.
+- Let $\bar\sigma_n$ be its $O(4)$-average, with rotated output, followed by the real part $\tfrac12(\cdot+\overline{(\cdot)})$. It is set to $0$ outside the domain where all rotated probes stay clear of the cluster.
+- Define recursively $\pi_n=\mathrm{id}-\sum_{i<n}\iota\circ\pi_i\circ\ell_{i,n}$ on $F_n$, where $\ell_{i,n}(\phi)=\bar\sigma_i(\phi;0,0)$.
+- The *cut tests* are $\tau_{n,q}=\pi_n\circ\ell_{n,q}$, and the *stratum* is $E_n=\bigcap_{i<n}\ker\tau_{i,n}$.
+- The *fresh vector* is $\pi_n\bar\sigma_n(a;x,o)\in E_n$.
+- $(O_{n,\kappa})$ is a conjugation-invariant basis of $E_n$, and $c_{n,\kappa}(a;x,o)$ are the coordinates of the fresh vector in it.
 
-**Lemma VII.4.g (point bound).** See VII.4.5(a). *Proof.* For $y$ near the given configuration $x\in\mathrm{Conf}_n$ on the generic set, choose the cell scales $a_m\ll a_k\ll a_l\ll a_b$ so that the main points fit into cells at $a_m$ and the exterior points into cells at $a_b$, with the margins from the points arranged by choosing a translation of the tiling (`margins`: a translation of less than one exterior cell fits all main points at the given residues and all exterior margins simultaneously). The chessboard estimate in the form `cutoff_bound` (main factors in separated coarse cells, exterior factors counted in a fine tiling, with no assumption on how many exterior factors lie in a coarse cell, `exterior_group`) gives $A^{\sharp \text{main}}B^{\sharp \text{ext}}$ for the lattice moments. This passes to the limit $N\to\infty$ at fixed volume and then $p\to\infty$ using the point limits of IV.1 on generic points, and extends by continuity to every point of $\mathrm{Conf}_n$ (the generic points are dense in $\mathrm{Conf}_n$; `Dash.full`).
-*Lean:* [`point_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L187-L229), [`cutoff_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L125-L179). *(Proof of `point_bound` read; `cutoff_bound` statement only.)*
+*Properties.*
+- $\tau_{n,q}=0$ for $q<n$.
+- $\sum_{i\le n}\iota\tau_{i,q}=\iota_{q,n}$ for $q\le n$.
+- Rotations, conjugation, translations and permutations act covariantly.
+- The coefficients are smooth where the probes are clear.
 
-**Lemma VII.4.h (train bound).** See VII.4.5(b). *Proof.* The word $\mathrm{ride}(w,v,q)$ is the train of $4q$ time-shifted and reflected copies of $w$ (in `twins` form, a word with its reflection) followed by the exterior word $v$, raised in time by the length of the train. The Gram pairing equals the correlation of the doubled word, which is a correlation of $4q|w|$ main insertions and $2|v|$ exterior insertions at gapped points. Apply `words_bound`, which is VII.4.g for words, to get $A^{4q|w|}B^{2|v|}$. The separation and "suit" (orientation) bookkeeping occupies most of the file.
-*Lean:* [`travel_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Trains.lean#L273-L304). *(Proof of `travel_price` read; the supporting lemmas only by their names.)*
+*Proof sketch.*
+- On a single field at the origin, the averaged reading is the inclusion ([`checkReal_fixed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Real.lean#L81-L84)); this uses coherence and the rotation laws.
+- The identities for $\tau$ then follow by strong induction on $n$.
+- A complex finite-dimensional space with an antilinear involution has a basis of fixed vectors.
 
-**Lemma VII.4.i (uniform constants and Seats).** The constants $A,B$ of the two previous lemmas are chosen as $A=J\,(a_k)^{-P}$ with $J,P$ depending only on the degree bound $D$ and the norm bound $R$ (`rates`: one-grade centered budgets for all signed and reflected variants, `mirror_ball`), the scale $a_k$ is chosen with $c\,(r/n)^4\le a_k$ ($n$ the length of the word) so that $A^{|w|}\le(J c^{-P}(n/r)^{4P})^{|w|}$ (`room_for`), and the exterior constant is taken from the exterior probe only. Taking $q$-dependence out, this gives the Seats property.
-*Lean:* [`rates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L55-L77), [`replicas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L119-L151), [`seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160). *(Proof read.)*
+*Lean:* [`Reader`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23), [`averageV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Average.lean#L22), [`checkReal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Real.lean#L37-L39), [`knife`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L49), [`cutTest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L51), [`reconstruct`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L66-L68), [`kills_lower`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L70-L79), [`stratum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L83), [`fresh`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Fresh.lean#L15), [`Reader.basis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Stars.lean#L81), [`coef`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L18-L19). *(proof read for `Cuts`, `Real`; statements for `Fresh`, `Stars`)*
 
-### 4.5 The OPE
+### 4.3 Norms in the ground algebra
 
-**Lemma VII.4.j (coefficients).** For channel $(m,\kappa)$, along rates, $|c_{m,\kappa}(a;x,o)|\le e^{T(\mathrm{wt}(a)-m)x}$ for a cluster at scale $r=e^{-xT}$. Proof: the fresh vector is bounded by `fresh_price` (the coefficient size after the RG cluster estimate, VII.4.f applied at each degree), and the coordinate is a fixed linear functional on a finite-dimensional real space (`pay_fixed`). Then VII.4.a gives (O1).
-*Lean:* [`coefficient_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L17-L22), [`coefficient_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L64-L69), `coefficient_rough` in [`Schemes/Corridor.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L22). *(Proof of `coefficient_separated` read.)*
+**Lemma VII.4.d (norm from decks).** Let $u\in\mathcal A$ come from a finite combination of separated grid words. It has lattice versions $U_{N,p}$ at the cutoffs.
 
-**Lemma VII.4.k (remainder, in rate form).** For every truncation $N$, with exterior clearance exponent $y<x$,
-$$\bigl|\mathrm{observe}(a,x;b,y)-\mathrm{truncated}_N\bigr|\le e^{T[\sigma(a)x-(N+1)(x-y)+\sigma(b)u]},$$
-where $\sigma$ is the total degree, $u$ the exponent of the clearance of the exterior, and the truncated sum is the one with the prescription coefficients. Proof: interpolate between the exponents available from the lattice (VII.4.f at grid heights $k,m,j$) by continuity of the exponent in the heights, which is why the statement is proved for all real exponents (`interpolated`, `found`); the exterior enters through the Seats-type estimate of 4.4 via the field `Base`.
-*Lean:* [`early_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L68-L74), [`all_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L26-L28), [`algebra_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L30-L35). *(Statement and the proof of `early_rate` read at the level of its reduction to `commonT`; `commonT`/`interpolated` not read.)*
+*Hypothesis.* For every $n$ and all large spacings $t$: eventually along the extraction, the lattice moment of the deck $\prod_{l<2n}U^{(\ast)}_{N,p}\circ\tau_{2tl}$ (time translates, even ones conjugated) has modulus $\le c^{2n}$.
 
-**Lemma VII.4.l (uniform in all states; integrated forms).** The error is first bounded in the ground algebra (the vacuum representation containing all phases, `groundError`), and a bound on the algebra element gives the bound for every viewer (every phase and the mixed state) by contractivity of the viewing map (`ground_cost`, `glance_contract`). Integrating against a measure on phases of total mass $\le1$ gives the mixtures, and against complex measures on configurations the integrated forms.
-*Lean:* [`groundError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27), [`Tested`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L35-L37), [`probability_mixtures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L58), [`quantitative_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L71-L85). *(Proof read for `quantitative_separated`, `ground_cost`, `probability_mixtures`.)*
+*Conclusion.* $\|u\|_{\mathcal A}\le c$.
 
-**Lemma VII.4.m (all shapes at once).** Services together with a coherent prescription imply the single-scale OPE for all labels and horizons (`SingleSubpower`) and the nested and tested versions over all trees at once (`AllShapes`): for every cluster tree (`Arboreal`, with its regime `Convoy`) and every exterior word, all thresholds are chosen after the data; the only size conditions are that scales are positive and child scales do not exceed parent scales.
-*Lean:* [`SingleSubpower`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Single.lean#L40-L51), [`Services.everything`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L47-L48), [`subpower`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L52-L54). *(Statement only; the proofs of `sample`, `session` in `OPE/Trees` were not read.)*
+*Proof sketch.*
+- The deck moments converge to the continuum deck correlation.
+- As $t\to\infty$, that correlation tends to $\langle\Omega,(u^*u)^n\Omega\rangle=\int|\chi_\xi(u)|^{2n}d\nu$ (B17, V.1).
+- Since $\nu$ has full support, the bound for all $n$ gives $|\chi_\xi(u)|\le c$ for every $\xi$ (`bit`).
+- By Gelfand, $\|u\|=\sup_\xi|\chi_\xi(u)|$.
 
-**Lemma VII.4.n (assembly).** The existence theorem [`Orbits.foundation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L70-L77) takes `through_final` (table, `Final`, `Services`), selects the prescription by `Prescription.chosen`, builds the Reader from the transport data of `Final`, and applies VII.4.j and VII.4.l. *(Proof read.)*
+*Lean:* [`Cards.carrying`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L98-L104), [`Cards.pressure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L89-L92). *(proof read; `B17.answer` statement only)*
 
-### 4.6 Contact extension
+**Lemma VII.4.e (a priori and replacement bounds in $\mathcal A$).**
 
-**Lemma VII.4.o (shell tests).** Let $K$ be a subspace of the configuration space (the directions of collapse), $f$ a smooth test function of jet size $c$ and $f_a=f\circ\mathrm{slide}_a$ its dilation in $K$. The deviation of $f_a$ from its Taylor polynomial of order $m$ in $K$, cut off at distance $s$, has $C^n$ jet norm on a compact shell at most $X\,c\,\max(a,a^{m+1}\text{-type factor})$, with a constant $X$ independent of $a,r,s$ (the factor `vanishFactor` is $a^{m+1}$ for $a\le1$ and $a^m$ for $a\ge1$).
-*Proof sketch.* Taylor's formula with remainder, estimated on compact sets, together with the jet bounds for the smooth cutoff; cases $a\le1$ and $3u\le1$ use the vanishing of the cutoff near $0$.
-*Lean:* [`compact_deviation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/ShellTest.lean#L43-L72). *(Proof read in outline.)*
+*Setting.* Main points are at mutual distance $>2a_b$. Exterior points are at mutual distance $>2a_l$, and at distance $>2a_b$ from the main points. The levels satisfy $b\le f\le l\le n$ and $f\le q$, with
+$$|I|\cdot10a_f<a_b,\qquad |J|\cdot6a_n<a_l.$$
+Main tokens have centred budgets $B_i$ at level $q$, and exterior tokens have budgets $D_j$ at level $n$.
 
-**Lemma VII.4.p (forest formula and its estimates).** For an admissible forest of clusters, the contact pairing is the sum over shells and over "ways" (Taylor subtractions on nested groups) of readings of the field polynomial; its terms are the Taylor instructions (`Score`: `Tag`, `Formula`, `Order`, `Subdivide`; the algebra is non-commutative because an inner subtraction cannot be moved), and the layer estimates (`Layers`: signed-residue tree estimates, with single logarithmic-layer cost, closing the proof that repeated signed projections do not change the label) and harvest estimates (`Harvest`: `Achieves`, absolute-value estimates, aperture, totals) show that each shell term is bounded by a power of the shell scale times the norm of the test, with a gain through order $h+1$ and an $\varepsilon$ power loss. The OPE is used inside each shell with the detector readings of the Reader, and with arbitrarily large output horizon (`Layers/Overrides`).
-*Lean:* [`Resolution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L23-L31) and the lemma `commissions` in the same file. *(Statement only; `Score`, `Layers`, `Harvest`, `Normal/Rays`, `Normal/Fans` and `Transport` have not been checked beyond their docstrings. The description above is based on the docstrings and is tentative.)*
+*Conclusions.*
+- (i) $\|M(\text{main}\cup\text{exterior})\|_{\mathcal A}\le\prod_iB_i\prod_jD_j$.
+- (ii) Suppose a lattice function $R=\prod_iI_N(v_i,x_i)-I_N(Q,0)$ is interior to its cell with root $\le\alpha$, late in the extraction. Then
+$$\big\|M(v,x;\text{ext})-M((t,Q),0;\text{ext})\big\|_{\mathcal A}\le\alpha\prod_jD_j.$$
+- (iii) In rate form: if main points are separated at rate $\alpha$ and exterior points at rate $\beta\ge\alpha$, then $M$ has upper rate $w(\text{main})\,\alpha+w(\text{ext})\,\beta$. That is, $|S^s|\le\rho_1^{-w(\text{main})-\varepsilon}\rho_2^{-w(\text{ext})-\varepsilon}$ for all states, where $\rho_1,\rho_2$ are the separations.
 
-**Lemma VII.4.q (the distribution and its order).** For each patch the kernel $x\mapsto P_x(f)$ defines a continuous linear map on test functions supported in the patch, provided the pairing is integrable with jet-norm-linear bound (`Charge`: for every compact $K$ in the patch there is $C$ such that for all $f$ supported in $K$ with order-$n$ jet bound $m$ the pairing has size at most $Cm$). With the full collapse (the top group), one subtraction scale $B\le\min(1,\text{clearance})$ and a smoothing scale $s\le B/2$, the whole space is one patch, with $n=\mathrm{totalTestOrder}$. For $f$ supported on separated configurations the subtractions vanish (jets of the cutoff are trivial there) and the value is $\int fS$.
-*Lean:* [`Charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31), [`global_charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L62-L63), [`provided`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L65-L69), [`contactDistribution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49). *(Proof read for `contactDistribution` and `provided`; `global_charge` reduces to `glues_total`, not read.)*
+*Proof sketch.*
+- (i)–(ii): the two-scale chessboard inequality is applied to decks of $2n$ translates. Main factors occupy distinct cells of the coarse tiling. Exterior factors, possibly several per coarse cell, are grouped and bounded in a finer aligned tiling. This gives the deck bound $(\prod B\prod D)^{2n}$ or $(\alpha\prod D)^{2n}$.
+- Lemma VII.4.d then gives the norm bound at grid configurations. Smoothness of correlations extends it to the limit configuration.
+- (iii): take budgets $a_k^{-d-\delta}$ at heights slightly above the separation rates (`admitted`).
 
-**Lemma VII.4.r (thresholds and the real basis).** For every sequence of positive numbers $f_n$ there are thresholds $t_n\le f_n$ with $4t_{n+1}<t_n$, $t_n\to0$ and $2(n+1)t_n\le$ clearance at degree $n$ (take $t_n=\min$ of $f_n$, a dyadic number, and $\mathrm{clearance}_n/(2(n+1))$, then divide successively by 8). The strata have real bases (invariant under the conjugation) containing the unit.
-*Lean:* [`Thresholds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28), [`installs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L30-L36), [`real_basis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L52-L61). *(Proof read.)*
+*Lean:* [`Cards.plant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Literal.lean#L107-L127), [`Cards.mixed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Mix.lean#L57-L94), [`Cards.Hall`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Mix.lean#L45-L51), [`civic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Civic.lean#L32-L46), [`viewing_admits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Civic.lean#L63-L87), [`mirrorMatch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Admire.lean#L47-L62), [`admitted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Fast.lean#L22-L31), [`phase_budget`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Fast.lean#L49-L54), [`viewer_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Fast.lean#L55-L57). *(proof read; `TileDoc.global` statement only)*
+
+### 4.4 The lattice cluster estimate
+
+**Lemma VII.4.f (product of a cluster = one observable + irrelevant remainder).** Levels $J\le k\le m<m+1\le j<N$ are ordered from coarse to fine.
+
+*Hypotheses.*
+- *Geometry.* Lattice observables $f_i=I_N(s_i,o_i)$, $i\in I$, of degrees $d_i$ sit at level-$j$ sites whose level-$(m+1)$ ancestor is the centre cell. They are pairwise at least $B_j^2$ level-$j$ units apart, where $B_j$ is the polymer scale. All $f_i$ and all $I_N(z,0)$ are interior to the centre chamber.
+- *Weights.* $\alpha_i\cdot\mathrm{paid}_j(s_i)\le\zeta(t_i,j)$, so that $\alpha_i$ is about the inverse size of $f_i$ at level $j$. A merge toll $\alpha\in(0,1]$ is at most the halo license at each intermediate level. And $0<A\le\mathrm{initial}$.
+- *Output weight $b$.* Three inequalities link $b$, the coefficient size $e$, the RG cost per step, and the transport gain $(a_k/a_m)^{1/8}$.
+
+*Conclusion.* There is a lattice label $z$ of degree $t$ with these properties:
+- its coefficient size at level $m$ is at most $2e$;
+- $R=\prod_if_i-I_N(z,0)$ is interior to the centre chamber;
+- $\|R\|_{\mathcal T_J}\le2\,\mathrm{stakes}(J,k)/b$.
+
+Here $\mathrm{stakes}(J,k)=\exp\big((a_J/a_k)^4\mathrm{treasury}_k+5\big)$ is a per-cell chessboard cost. It is subpower in the scales.
+
+*Proof sketch.*
+- *Transport.* From $N$ down to $j$, each insertion is transported separately, since the points are separated.
+- *Induction from $j$ down to $m+1$* (`inductionLive`). The carried state is a polymer representation of the RG-pushed generating function, with the points grouped and the representatives spaced. At each step one of two things happens:
+  - if the representatives stay spaced, one block-spin step is taken, and the weights lose at most a factor $L_i^4$ per point;
+  - otherwise a maximal spaced set is kept and the remaining representatives are fused into it. Enlarging polymer supports to reach a representative costs a bounded factor in halo summability (`hitB`). Each fusion pays a subpower toll.
+- *The weight loss.* The accumulated loss is $(a_j/a_{m+1})^{4|I|}(\alpha/8)^{O(|I|^2)}$.
+- *Final step* (`Ballet`, `Live.winter`). At level $m$ all groups are fused into one variable per cell copy. One more RG step splits the result into a coefficient $Q_0$ of degree $\le t$, with format and remainder bounds, and an irrelevant remainder. The remainder weight contracts like $(a_m/a_k)^{t+1}$ up to the coarse level.
+- The constant $2$ comes from two halves, each $\le\mathrm{stakes}/b$, joined by the triangle inequality for roots.
+
+*Lean:* [`joins`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Camp.lean#L54-L94), [`inductionLive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Induct.lean#L93-L117), [`Ballet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Ballet.lean#L35-L76), [`ranch`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas/Antique.lean#L33-L46), [`hitB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Grouping/Shift.lean#L54-L93). *(statement read; proof read in outline, at the level of the calls in `Ballet`, `inductionLive`, `Live.gathers`, `bequeathed`)*
+
+**Lemma VII.4.g (prices in rate form; the limit label).** Take heights $b<a<c$ for the levels $k,m,j$, a target degree $t$, and put $Z'=w\,c+4|I|(c-a)$.
+
+*Conclusion.* There are rate functions $g$ and $o$ with these properties:
+- $g$ has exact rate $Z'-ta$;
+- $o$ has upper rate $Z'-(t+\tfrac1{16})(a-b)$;
+- eventually, Lemma VII.4.f applies with coefficient size $\le g$ and remainder root $\le o$.
+
+In scales this reads: coefficient size $\lesssim a_j^{-w}(a_m/a_j)^{4|I|}a_m^{t}$, and remainder root $\lesssim a_j^{-w}(a_m/a_j)^{4|I|}(a_m/a_k)^{t+1/16}$. For a fixed grid configuration, the labels converge along a sub-filter of the extraction (their sizes are bounded). This gives a continuum label $Q$ of degree $t$ with the same bounds ("survival").
+
+*Proof sketch.*
+- Instantiate `joins` with all parameters exponential in $T$, and check its size conditions as inequalities between exponents.
+- The loss $4|I|(c-a)$ is the rate of $(a_j/a_{m+1})^{4|I|}$.
+- The binding condition is the transport condition, which needs exponent $<(t+\tfrac18)(a-b)-Z'$. The value $\tfrac1{16}$ leaves strict slack.
+- Subpower factors have rate $0$.
+
+*Lean:* [`funding`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices/Circuit.lean#L64-L87), [`PriceAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices/Circuit.lean#L52-L59), [`price_plot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L47-L65), [`Survival`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L42-L44), [`for_plot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Extract.lean#L25-L32).
+
+### 4.5 The OPE at grid configurations
+
+**Lemma VII.4.h (grid estimates).**
+
+*Setting.* Heights satisfy $0<\beta<a<x<d$, for levels $k,m,j$ at heights $\beta,a,d$. The cluster consists of level-$j$ grid points within $e^{-xT}$ of the origin, separated at rate $x$. Spectators are at distance rate $c<\beta$ from the origin and have mutual separation rate $u\ge c$. Put $\mathrm{tax}=w(a)\,d+4|I|(d-a)$.
+
+*Conclusions.* For every truncation degree $N$:
+- the raw coefficient $\lambda_i(a;\text{cluster},0)$ has upper rate $\mathrm{tax}-(\deg i)\,a$;
+- the remainder of the truncation at degree $N$, i.e. the correlation with the spectators minus $\sum_{\deg i\le N}\lambda_i\,S(u_i,0;\text{spect.})$, has upper rate $\mathrm{tax}-(N+1)(a-c)+w(b)\,u$, in every state.
+
+*Proof sketch.* Choose $q\ge N$ with $(N+1)a\le(q+\tfrac1{16})(a-\beta)$, and let $Q$ be the degree-$q$ label of Lemma VII.4.g. Then:
+- (1) by Lemma VII.4.e(ii), replacing the cluster by $Q$ at $0$ costs rate $\mathrm{tax}-(q+\tfrac1{16})(a-\beta)+w(b)u$ in $\mathcal A$;
+- (2) the same with the probes in the role of spectators: $|\lambda_i(\text{cluster})-\lambda_i(Q)|$ has the rate of the remainder root;
+- (3) $|\lambda_i(Q)|\lesssim$ coefficient size $\times a_m^{-(q-\deg i)}$, of rate $\mathrm{tax}-(\deg i)a$;
+- (4) exact reconstruction: $S(Q,0;\cdot)=\sum_{\deg i\le q}\lambda_i(Q)\,S(u_i,0;\cdot)$;
+- (5) the modes of degree in $(N,q]$ contribute at most rate $\mathrm{tax}-(N+1)(a-c)+w(b)u$, using $|S(u_i,0;\text{spect.})|\lesssim$ rate $(\deg i)c+w(b)u$ from Lemma VII.4.e(iii).
+
+*Lean:* [`grid_coeff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Ladder.lean#L34-L42), [`grid_remainder`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Ladder.lean#L53-L73), [`see_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Extract.lean#L64-L66), [`det_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Read.lean#L68-L80), [`at_grade`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Read.lean#L37-L52), [`sumAll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Observe.lean#L27-L31). *(proof read for `grid_coeff`, `grid_remainder`, `see_cost`; statements for `det_cost`, `at_grade`)*
+
+### 4.6 Arbitrary configurations and exponents
+
+**Lemma VII.4.i (derivative bootstrap).** Let $h(v;x)$ be a function of token lists $v$ and configurations $x$ with three properties along $T\to\infty$:
+- (rough) on configurations in the corridor at height $x_0$, $h$ has rate $x_0\,w(v)+c_0$;
+- (grid) on level-$j$ grid configurations, at height $d>x_0$, in that corridor, $h$ has rate $d\,w(v)+d_0$;
+- (derivative) $h$ is differentiable, and the derivative in one point equals $h$ with that token replaced by its derivative token, whose degree is higher by one.
+
+Then $h$ has rate $d\,w(v)+d_0$ on the whole corridor.
+
+*Proof sketch.*
+- Use induction downward on $w(v)$.
+- For $w(v)$ large, $(d-x_0)w(v)\ge c_0-d_0$, so the rough bound suffices.
+- Otherwise move to a grid point at distance $\le e^{-dT}$. By the mean value theorem the change is at most $e^{-dT}$ times the derivative bound, which has rate $d(w(v)+1)+d_0$ by the induction hypothesis.
+
+*Lean:* [`interpolated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Interpolate/Corridor.lean#L34-L47), [`cloud_jump`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Interpolate/Leap.lean#L39-L49), [`leap_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Interpolate/Leap.lean#L20-L27). *(proof read for `interpolated`)*
+
+**Lemma VII.4.j (raw coefficient and remainder rates).**
+
+*Setting.* The cluster is at height $x>0$ around $o$: extent $e^{-xT}$ and separation rate $x$. Spectators are at distance rate $y<x$ from $o$ and have mutual separation rate $u\ge y$.
+
+*Conclusions.*
+- $\lambda_i(a;x,o)$ has rate $(w(a)-\deg i)\,x$.
+- For every $N$, the remainder of the raw truncation has rate $w(a)\,x-(N+1)(x-y)+w(b)\,u$, in every state and in $\mathcal A$.
+- In powers, with $r=e^{-xT}$, spectator distance $\rho$ and spectator separation $\rho'$: the remainder is $\lesssim r^{-w(a)}(r/\rho)^{N+1}\rho'^{-w(b)}$ up to $\varepsilon$-losses.
+
+*Proof sketch.*
+- Apply Lemma VII.4.i to Lemma VII.4.h, with grid height $d$ and auxiliary height $a$. The rough bound is Lemma VII.4.e(iii).
+- This gives rate $\mathrm{tax}-\ldots$ with $\mathrm{tax}=w\,d+4|I|(d-a)$. Let $a,d\to x$ (by continuity of the exponents, and since every height is attainable).
+- Translation invariance moves the centre to $o$.
+- The bound in $\mathcal A$ follows from the bounds in every state (Convention, `ground_cost`).
+
+*Lean:* [`coefficient_rough`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L22-L25), [`common_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L37-L41), [`early_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L68-L74), [`group_coeff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Travel.lean#L24-L30), [`group_remainder`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Travel.lean#L31-L41), [`ground_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L49-L52), [`groundError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27), [`arrangement_cost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L68-L71).
+
+### 4.7 The Reader and the separated OPE
+
+**Lemma VII.4.k (transfer to the Reader).** In the regime of Lemma VII.4.j:
+- the fresh vector of degree $n$ has rate $(w(a)-n)x$, and hence so does each $c_{n,\kappa}$;
+- the error element of VII.4.1 has rate $w(a)x-(D+1)(x-y)+w(b)u$ in $\mathcal A$.
+
+*Proof sketch.*
+- Compare the cluster with its raw truncation at a horizon $H$, placed at $o$. Inside every rotated probe correlation, the difference has rate $(w-H-1)x$ by Lemma VII.4.j.
+- Averaging, real part and $\pi_n$ are linear maps on fixed finite-dimensional spaces. So the fresh vector differs from $\tau_{n,H}$ of the raw vector by rate $(w-H-1)x$.
+- In $\tau_{n,n}$ of the raw vector, only modes of degree $n$ survive, with rate $(w-n)x$.
+- For the remainder, write the error as the raw error plus $\sum_{j\le D}$ (the correlation of $\tau_{j,D}(\text{raw})-\text{fresh}_j$), and bound each term.
+
+*Lean:* [`fresh_bridge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Fee.lean#L45-L50), [`fresh_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Gain.lean#L21-L30), [`balance_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Gain.lean#L57-L72), [`coefficient_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L17-L22), [`algebra_rate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L30-L35). *(proof read; `fit_old`, `discrepancy_rate_old` statement only)*
+
+**Lemma VII.4.l (proof of VII.4.1).** For (O1) and (O2), apply Lemma VII.4.a with $T=-\log r$.
+- An $(r,M,\eta)$-cluster sits at height $x=1$.
+- Fixed clearance $c$ gives $y=u=0$.
+- So Lemma VII.4.k gives rates $w-n$ and $w-(D+1)$. These are the powers $r^{n-w-\varepsilon}$ and $r^{D+1-w-\varepsilon}$, uniformly in configurations and states.
+
+*Lean:* [`coefficient_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L64-L69), [`quantitative_separated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L71-L85), [`produce`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L67-L68); assembly in [`R2IGoals.fromFunded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167).
+
+### 4.8 Integrated and nested forms
+
+**Lemma VII.4.m (integrated forms; VII.4.2).**
+
+*Proof sketch.*
+- For small $r$, every admissible configuration lies in an open set on which the correlations and the coefficients are continuous. There, the raw correlation is bounded by $r^{-w-\varepsilon}$ and the remainder by $r^{D+1-w-\varepsilon}$, in every state.
+- So the integrands are measurable and dominated by $|w|$ times a constant, and the integrals are bounded by $B$ times the pointwise bound.
+- Phase mixtures follow from the phase decomposition and continuity in $\xi$.
+
+*Lean:* [`estimates_weighted`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L98-L108), [`probability_mixtures`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L58).
+
+**Lemma VII.4.n (nested OPE; VII.4.3).**
+
+*Proof sketch.*
+- Along a sequence, choose a sub-filter on which every internal scale has a rate.
+- Then induct over the tree.
+- At a fork, children whose rate equals the parent's are merged into the parent cluster.
+- Each other child is replaced by its own expansion at an auxiliary horizon high enough that its remainder is below any prescribed rate.
+- The replacements are telescoped in a fixed triangular order, so that each switch sees only outputs already fixed.
+- The rate of $\mathrm{toll}$ is the sum of the node costs, which gives (a). The composition error is controlled by the smallest of the gaps $(D_p+1)\times$(rate of $\rho_p$), which gives (b).
+- (c) and (d) follow as in Lemmas VII.4.k–m.
+
+*Lean:* [`Fusion.tariff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Fusion.lean#L97-L104), [`Limits.coe_power`, `Limits.tested_power`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean), [`Tree.Tapered`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Geometry.lean#L21-L23), [`Tree.Relative`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Grove.lean#L99-L103). *(proof read for `coe_power`, `tested_power`, `tariff`; the lemmas `supplies`, `sequential` and `high` statement only)*
+
+### 4.9 The bench of V.1 (`Next/PHASE`)
+
+**Lemma VII.4.o (point and train bounds).** Take levels $m\le k\le l\le b$.
+- (a) *Point bound.* Assume:
+  - main points are $a_m$-separated from each other and from the exterior points, and exterior points are $a_l$-separated, all in sup-distance;
+  - main points are congruent mod $a_m$ to one of $P$ fixed points;
+  - $P\cdot10a_k<a_m$ and $\sharp(\text{ext})\cdot6a_b<a_l$;
+  - main tokens have one-field budgets $A$ at level $k$ (for their whole oriented multiplet), and exterior tokens budgets $B$ at level $b$.
+
+  Then $|S(x;v)|\le A^{\sharp\mathrm{main}}B^{\sharp\mathrm{ext}}$.
+- (b) *Train bound.* For a word $w$ that is $r$-buffered in a slab of width $d$ (covered at level $m$, $a_m<r$), and an exterior future word $v$ that is buffered (with $a_l$ below its buffer), the Gram pairing of the train $v_q$ with itself satisfies
+$$|S(\Theta v_q\cdot v_q)|\le B^{2|v|}A^{4q|w|}.$$
+
+*Proof sketch.*
+- (a) The two-scale chessboard estimate at the cutoff: main factors are in separated coarse cells, and exterior groups in a finer tiling, with no restriction on how many exterior factors share a coarse cell. A translation of less than one exterior cell fits all the margins. Point limits at generic configurations and continuity give the continuum bound.
+- (b) The Gram pairing is the correlation of $4q|w|$ main and $2|v|$ exterior insertions at gapped points. Apply (a).
+
+*Lean:* [`cutoff_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L125-L179), [`point_bound`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L187-L229), [`Gapped`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L84-L87), [`travel_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Trains.lean#L273-L304). *(statements read; the proof outline is taken from the file docstrings)*
+
+**Lemma VII.4.p (uniform constants; proof of VII.4.5).**
+
+*Proof sketch.*
+- *Budgets* (`rates`). For degrees $\le D$ and norms $\le R$ there are $F$ and $J>0$ such that, for $k\ge F$, every such token, together with all its signed and reflected variants, has one-field budget $J\,a_k^{-(D+1)}$.
+- *Choice of level.* For $r\in(0,1]$, take $m$ with $a_m\approx r/32$. The gentle schedule gives $k\ge m$ with $2|w|\cdot10a_k<a_m$ and $a_k\ge c\,(r/|w|)^4$. Hence $A^{|w|}\le\rho=C_0^{|w|}(|w|/r)^{4(D+1)|w|}$ with $C_0=Jc^{-(D+1)}$.
+- *Exterior.* For each exterior word $v$, choose its own levels and budget $X_v$. Lemma VII.4.o(b) then gives the bound of VII.4.5 with $B_v=X_v^{2|v|}$.
+- *Width.* A sub-width $s\le d$ covered at level $m$ is chosen before the exterior.
+
+*Lean:* [`rates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L55-L77), [`replicas`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L119-L151), [`seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160). In V.1: [`Drive.against`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L20-L60), [`producer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L116-L123).
+
+### 4.10 Contact extensions
+
+**Lemma VII.4.q (Taylor deviation on shells).** Let $K$ be a subspace (the normal directions), and let $T^K_{m,s}$ be the cut-off Taylor operator of order $m$ in $K$, at subtraction length $s$. On a compact subset of the unit shell $\{\tfrac12\le|x_K|\le2\}$, rescaled by $a$ in the $K$-directions, the following bound holds:
+$$\big\|(f-T^K_{m,s}f)\circ(\text{rescaling})\big\|_{C^n}\le X\,\|f\|_{C^{n+m+1}}\cdot\begin{cases}a^{m+1}&a\le1\\a^m&a>1.\end{cases}$$
+This holds under $ra/s\le B$ and $r\le Bs$, where $r$ is the parent scale and $B$ a fixed constant. $X$ does not depend on $a$, $r$ or $s$.
+
+*Proof sketch.* Taylor's formula with remainder, together with jet bounds for the smooth cut-off.
+
+*Lean:* [`compact_deviation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/ShellTest.lean#L43-L72). *(statement read)*
+
+**Lemma VII.4.r (the subtraction formula).**
+
+*Notation.*
+- $\varphi_i$ is the field $a_i$ at $x_i$.
+- For a group $h\subset\{1,\dots,k\}$, $|h|\ge2$: $x^\perp_h$ is the component of $x$ normal to the $h$-diagonal, $\bar x_h$ the centroid, and $L_h=\max\big(0,\ \sum_{i\in h}d_i+1-4(|h|-1)\big)$.
+- $T^h_m f(x)=\chi(|x_h^\perp|^2/s_0^2)\sum_{l\le m}\frac1{l!}D^lf(x-x^\perp_h)[x^\perp_h,\dots,x^\perp_h]$, with $\chi=1$ near $0$ and $\chi(|x^\perp_h|^2/s_0^2)=0$ for $|x^\perp_h|\ge2s_0$.
+- $R^h_w$ replaces a field polynomial by the weight-$w$ component of its OPE projection, placed at $\bar x_h$. The projection is computed by the device detectors: finite probe sets with a linear decoder, an $O(4)$-average, and a real part, graded by the device strata.
+
+*Definition.* Set $C_{\{i\}}=\varphi_i\otimes1$ and, for $|h|\ge2$,
+$$C_h=-\sum_{w<L_h}R^h_w(\Pi_h)\cdot T^h_{L_h-1-w},\qquad \Pi_h=\sum_{\pi}\prod_{\beta\in\pi}C_\beta,\qquad \mathrm{full}_h=\Pi_h+C_h,$$
+where $\pi$ runs over partitions of $h$ into at least two blocks. The kernel of $\mathcal D^s_a$ at $x$ is the $s$-expectation of $\mathrm{full}_{\{1..k\}}$ applied to $f$. Expanding the recursion gives a Zimmermann-type forest sum. Inner subtractions act first, and the operators do not commute.
+
+*Per-group form.* $\big[\Pi_h-\sum_{w<L_h}R^h_w\Pi_h\big]f+\sum_{w<L_h}R^h_w(\Pi_h)\,(1-T^h_{L_h-1-w})f$.
+- The OPE remainder of order $L_h$ is $O(|x^\perp_h|^{1-4(|h|-1)-\varepsilon})$.
+- The weight-$w$ term is $O(|x^\perp_h|^{w-\sum d})\cdot O(|x^\perp_h|^{L_h-w})$.
+- Both are integrable over the $4(|h|-1)$-dimensional normal space.
+- Each OPE term is thus extended by the Epstein–Glaser prescription with its own scaling degree $\sum_{i\in h}d_i-w$.
+- If $\sum_{i\in h}d_i+1\le4(|h|-1)$, nothing is subtracted.
+
+*Lean:* [`Score/Formula.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Score/Formula.lean), [`Normal.taylor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/Subtractions.lean#L68), [`majorKernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L59), [`Devices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26), [`Devices.clearance`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Coherent.lean#L137-L139). *(definitions read)*
+
+**Lemma VII.4.s (absolute bound; summation and scaling).** For every compact $U$ there is $C$ such that
+$$\int|\langle\mathrm{full}\rangle_s(f;x)|\,dx\le C\,\|f\|_{C^{(2+w(a))k}}\quad\text{whenever }\mathrm{supp}f\subset U.$$
+The summation formulas and the scaling bounds of VII.4.4(d)–(e) also hold.
+
+*Proof sketch.*
+- *Patching.* Cover $U$ by finitely many patches. On each patch the relevant partition is the set of coincidence classes of its centre. A smooth partition of unity and the Leibniz rule combine the patch bounds.
+- *Induction.* On a patch, use strong induction on $|h|$ minus the number of blocks.
+  - Base case: the separated correlation times $f$, bounded pointwise.
+  - Inductive step: split into the remainder arm and the weight-$w$ arms. Cut into dyadic normal shells $|x^\perp_h|\sim2^{-n}$ and angular fans. Rescale each sector to a finer partition, and apply the induction hypothesis.
+- *OPE input.* The raw coefficient rate and the remainder rate in $\mathcal A$ (Lemma VII.4.j: `available_cost`, `arrangement_cost`).
+- *Shell exponent.* The effective exponent per shell is $4(|h|-1)+\mathrm{gain}-\sum d\ge1$:
+  - the remainder gains $L_h$;
+  - a weight-$w$ arm gains $w$ from the coefficient and $L_h-w$ from Lemma VII.4.q.
+- *Summing.* The power $a^1$ is spent as $a^{\gamma+\varepsilon}$. The geometric sum $\sum_n2^{-n\gamma}$ converges, with the $\varepsilon$-budget $3^{|g|-\sharp Q}\gamma+\gamma\le1$.
+
+*Lean:* [`glues_total`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Skies.lean#L59-L79), [`global_charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L62-L63), [`commissions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L44-L45), [`Claim`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Scaling.lean#L61), [`Annulus`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Puncture.lean#L53). *(proof read in outline)*
+
+**Lemma VII.4.t (distribution and restriction).**
+- A kernel with the bound of Lemma VII.4.s defines a continuous linear functional on $C_c^\infty$, of order $\le(2+w(a))k$.
+- With the full group, $P=\mathrm{id}$, $o=0$, $B_0=\min(1,\mathrm{cl}(w(a)))$ and $s_0=B_0/4$, the hypotheses of Lemma VII.4.s hold on all of $(\mathbb R^4)^k$.
+- If $\mathrm{supp}f\subset\mathrm{Conf}_k$, the Taylor terms evaluate jets of $f$ on diagonals, where $f$ vanishes with all its derivatives. So the kernel equals $f(x)S^s(a;x)$.
+
+*Lean:* [`Charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31), [`Transport.harmonic`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Blend.lean#L70-L71), [`contactDistribution`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49). *(proof read; `harmonic` statement only)*
+
+**Lemma VII.4.u (real bases and thresholds).**
+- The device strata have bases fixed by the conjugation, and the basis in degree 0 contains the unit. Proof: real and imaginary parts span, and a real independent set extends to a basis.
+- Given $f_n>0$, a valid choice of thresholds is
+$$g_n=\min\big(f_n,\ 2^{-n},\ \mathrm{cl}(n)/(2(n+1))\big),\qquad t_0=g_0,\qquad t_{n+1}=\min(t_n/8,\ g_{n+1}).$$
+  The thresholds define smooth gates. Gated projections agree exactly with the ungated ones below the active horizon. They are not used in $\mathcal D^s_a$.
+
+*Lean:* [`real_basis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L52-L61), [`installs`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L30-L36).
 
 ## 5. Where the difficulty lies
 
-*Routine but long.* The contact extension (about 3,400 lines in `Contacts`, 290 in `MultipleContact`) is bookkeeping around Taylor subtraction over nested clusters, with dyadic shells, angular fans, and transport of all objects under isometries, translations, relabelings and changes of ambient dimension. Most files carry only a docstring that says which invariance they prove. The mathematics is the standard forest-formula/Epstein–Glaser extension; the novelty is that every estimate is taken from the non-perturbative OPE.
+*Routine but long.*
+- The rate bookkeeping (Lemmas VII.4.a, j).
+- The $O(4)$-covariant Reader (Lemmas VII.4.c, k).
+- The tree combinatorics (Lemma VII.4.n).
+- The geometry of shells, fans and patches in `Contacts`.
 
-*Features of this argument that need explanation.*
-1. The OPE is produced from the **renormalization group** (the cluster estimate `joins` in VII.4.d), not from perturbation theory. This is the place where Part III enters: the lattice observables are RG-renormalized, and the product of a cluster of them is controlled with a gain from the irrelevant directions.
-2. Uniformity in the **spectators** and in the **state** (VII.4.5, VII.4.l). The exterior cost must enter once and not with the number of copies of the main word. The train/Gram device (4$q$ copies, $q\to\infty$) is the unusual step; it avoids a Cauchy–Schwarz inequality that would double the exponents. I have not seen this argument elsewhere (tentative).
-3. **One system of coefficients** for all truncation orders, spectators, and states, through the coherent prescription (VII.4.6) and the strata (`knife`). The coefficients are not canonical (they depend on the prescription). The assessment does not claim uniqueness either.
+*New, and central to the argument.*
+1. **The OPE comes from the RG.** The basic estimate (Lemmas VII.4.f–g) is a lattice statement: a cluster of renormalized observables equals one observable of degree $t$ plus a remainder that gains $(a_m/a_k)^{t+1/16}$, at a cost $(a_m/a_j)^{4|I|}$. The margin $\tfrac1{16}$ is set by the transport gain $(a_k/a_m)^{1/8}$ of Part III's RG, not by the contraction $(a_m/a_k)^{t+1}$ of the irrelevant part. This is where Part III enters.
+2. **Uniformity in states and spectators comes from the C\*-norm.** The norm of $\mathcal A$ is computed by chessboard bounds on decks of translated copies, together with Gelfand and the full support of $\nu$ (Lemmas VII.4.d–e). The spectators then cost only their own one-field budgets, at their own scale, and the bound holds in every phase at once.
+3. **The derivative bootstrap** (Lemma VII.4.i). Each derivative costs one power of the fine spacing, so a first-order comparison with the grid gains nothing. The induction therefore starts from high degree, where the crude bound is already strong enough.
+4. **One coefficient system for every truncation degree.** It comes from a coherent prescription (VII.4.6) and the strata of the Reader.
 
-*What looks unusual or weaker/stronger than expected.*
-- The statements have an $\varepsilon$ loss in every exponent, and the docstring says explicitly that logarithmic corrections are not obtained. So the OPE is weaker than the perturbative one ($\log$-corrected). Nothing in the unit relates the coefficients to perturbation theory (that is VII.5, VII.6).
-- The loss for exterior spectators is $c$-clearance fixed, not growing. In the rate form, the exponent contains a term $(N+1)\,y$ coming from the exterior clearance scale; it is made harmless only by letting the clearance exponent $y\to0$ and absorbing it in $\varepsilon$ at the end (VII.4.k, probable).
-- The contact extension is only an **existence** statement: the distribution depends on the subtraction scheme (the thresholds and the prescription), and no property such as reflection positivity or Ward identity is proved (docstring of `Result.lean`).
-- The unit carries a large number of hypotheses in `Ballet` and `joins` (RG "license", "spindle", "carpet", "stakes", "compensation"); the unit's inputs are not stated in terms of a few named RG theorems but through these records, so reading the Lean for the exact interface to Part III is hard (§7).
+*Unusual, weaker or stronger than expected.*
+- *Exponents.* Every exponent has an $\varepsilon$-loss, and no logarithms are claimed, so the OPE is weaker than the perturbative one. The degree $w$ counts the label degrees, not scaling dimensions.
+- *Coefficients.* They depend on the prescription and the Reader, and nothing relates them to perturbation theory (VII.5, VII.6).
+- *Spectator distance.* The remainder bound holds with power-separated spectators, $(r/\rho)^{N+1}$. The main theorem uses only a fixed clearance.
+- *Contacts.* The contact extension is an existence statement. Its order $(2+w(a))k$ is crude. Its OPE projection uses the device detectors, with the same prescription as the Reader but separate probe sets.
+- *Interface to Part III.* It goes through records with many hypotheses (`joins`, `Ballet`), not through a few named theorems.
+- *Side results.* `SharpGram` (with `outletFirst`) and `AllShapes` are proved inside `fromFunded`, but their conclusions are not kept by the main theorem.
 
 ## 6. Notation
 
 | object | code name | proposed notation |
 |---|---|---|
-| $\varepsilon$-power condition "for all small $r$" | `∀ᶠ r in 𝓝[>] 0` | $\forall r\in(0,r_0)$ |
-| cluster of radius $r$ around $o$ | [`WithinRoom r M η x o`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L24-L26) | $(r,M,\eta)$-cluster |
-| exterior clear of $o$ | `ClearOf o y c` | $y$ is $c$-clear of $o$ |
-| total degree | `weight d`, `sigma p` | $w(a)$ |
-| prescription (needles, sheets) | [`Prescription`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46) (`needle`, `sheet`) | $(u_i,\lambda_i)$: biorthogonal fields and readout functionals |
-| level-$n$ condition | [`SignedOff`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L59-L61) | "reads $F_n$ correctly" |
-| coherent prescription | [`Coherent`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L63) | reads every level |
-| OPE data (prescription, stratum projections, rotation data, hierarchy) | [`Orbits.Reader`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23) | Reader $\mathcal R$ |
-| lower-degree projection | `Reader.knife` | $\Pi_m$ |
-| stratum | `Reader.stratum` | $E_m=F_m/F_{m-1}$ realized as a subspace |
-| channel, actor, coefficient | `R.channels`, `R.actor`, `R.coef` | $\kappa$, $O_{m,\kappa}$, $c_{m,\kappa}(a;x,o)$ |
-| ground algebra error, tested error | [`groundError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27), [`Tested`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L35-L37) | $\mathcal E_D(a,x;b,y)$ (norm in the algebra of the vacuum representation, which bounds every state) |
-| RG outputs consumed here | [`Services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60) | (RG) |
-| phase | `Viewers U`, `spectator U r` | state $s\in X\sqcup\{\mathrm{mix}\}$ |
-| exponential rate | `RateLE φ T f κ`, `RateIs` | $f=O(e^{(\kappa+0)T})$ |
-| main/exterior single-field budget | [`Single`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L25-L26) | $\|O\|_{\mathcal T_k}\le A$ |
-| main/exterior gap condition | [`Gapped`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L84-L87) | $(a_m,a_l)$-separated |
-| reflected train of a word | `train d w q`, `twins`, `ride` | $\Theta$-train $w^{(4q)}$ |
-| Seats property | [`Bid.Seats`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L27) | (Seats) |
-| tree of clusters | [`Arboreal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Trees), `Convoy` | $\mathcal T$, admissible tree |
-| contact devices | [`Contacts.Devices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26) | $\mathcal M$ (prescription, rotation, hierarchy, detectors) |
-| collision group | `Normal.Group k` | $g\subset\{1,\dots,k\}$ |
-| Taylor instruction, forest | `Score`, `Pieces`, `Route` | Taylor subtraction over a forest |
-| full contact resolution | [`MultipleLight`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L52-L63) | (CE) |
-| contact distribution of finite order | [`Charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31) | $\mathcal D\in\mathcal D'$ of order $\le n$ |
+| upper exponential rate | [`RateLE`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rate.lean#L23-L24), `RateIs` | $f\preceq e^{\kappa T}$ |
+| height of a level sequence | [`Height`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L18-L20) | $a_{m}\approx e^{-cT}$ |
+| cluster, clearance | [`WithinRoom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L24-L26), [`ClearOf`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L28-L30) | $(r,M,\eta)$-cluster; $c$-clear |
+| total degree | `weight`, `sigma` | $w(a)$ |
+| needles, sheets, tests | [`Prescription`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46) | $u_i$, $\lambda_i$, $\lambda_i^{(n)}$ |
+| raw coefficient | [`Prescription.ope`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Detector.lean#L80) | $\lambda_i(a;x,o)$ |
+| Reader | [`Orbits.Reader`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23) | $\mathcal R$ |
+| lower-degree removal, cut test, stratum | `knife`, `cutTest`, `stratum` | $\pi_n$, $\tau_{n,q}$, $E_n$ |
+| channels, actors, coefficients | `channels`, `actor`, `coef` | $\mathrm{Ch}_j$, $O_{j,\kappa}$, $c_{j,\kappa}(a;x,o)$ |
+| ground algebra, states | `unselected.algebra`, `glance`, `Viewers` | $\mathcal A$; $s\in X\sqcup\{\mathrm{mix}\}$ |
+| error element | [`algebraError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L61-L63), [`groundError`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27) | $\mathcal E_D(a,x;b,y)$ |
+| chessboard root with interior condition | [`Cards.PaidAt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Literal.lean#L28-L31) | $\|F\|_{\mathcal T_k}\le A$ |
+| deck of translates | `deck`, `Episode` | $\prod_{l<2n}U^{(*)}\circ\tau_{2tl}$ |
+| limit label of a cluster | [`Survival`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L42-L44) | $Q$ |
+| coefficient size of a label | `quota` | $\|z\|_m$ |
+| RG package | [`Services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60) | (RG) |
+| tree plot, admissibility | [`Accept`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L15-L18), `Plot` | $(s,z)$ admissible |
+| tree costs | [`Tree.toll`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Actual.lean#L18-L19), [`nestPrice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Weights.lean#L102-L103) | $\mathrm{toll}_m$, $\mathrm{nest}_D$ |
+| one-field budget, gap | [`Next.Phase.Single`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L25-L26), [`Gapped`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L84-L87) | $\|I(v,\cdot)\|_{\mathcal T_k}\le A$ |
+| train, quantum read | `ride`, [`QRead`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L70-L71) | $v_n$; bench bound $\rho$ |
+| contact devices, clearance | [`Contacts.Devices`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26), `clearance` | $\mathcal M$, $\mathrm{cl}(n)$ |
+| cumulant, punctured, full | `cumulant`, `punctured`, `full` | $C_h$, $\Pi_h$, $\mathrm{full}_h$ |
+| normal Taylor operator | [`Normal.taylor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/Subtractions.lean#L68) | $T^h_m$ |
+| distribution of finite order | [`Charge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31), `totalTestOrder` | $\mathcal D^s_a$, order $(2+w)k$ |
 | contact thresholds | [`Thresholds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28) | $t_n$ |
 
 ## 7. What remains unexplained
-1. **Interface to Part III.** `Services` bundles `Org.Grill`, `Package` and `Base`. It remains to trace which of III.9–III.11, III.13 proves each of them and what each says in plain terms. The RG cluster estimate that `joins`/`Ballet` consume (the "irrelevant remainder after $j-m$ RG steps") should be stated as one explicit proposition of Part III and checked against the statement proved there. (open)
-2. **Mechanism of the $q$-independence.** The reading of VII.4.5(b) and of Seats (a Gram pairing of a $4q$-fold train, then $q\to\infty$, gives an operator-norm bound with the exterior cost entering once) is based on the statements, the docstrings, and the proof of `travel_price`, `replicas`, `seats`. The step from `QRead` (what is read) to the OPE remainder uniform in all phases (`Base`, `Spread`, `Ground.future_reach`) has not been checked. (probable)
-3. **Rate formalism.** The correspondence between rates $e^{sT}$ and powers $r^{\dots-\varepsilon}$ (`loglife`, `outweigh`, `refine_geometry`, `room_regime`, `run_towards`) has been checked only in its uses. The exponent bookkeeping in VII.4.k is from `early_rate` and `commonT`, whose proofs interpolate between exponents (`interpolated`, `found`) that have not been checked. (probable)
-4. **Unread folders.** `OPE/Columns` (column costs and `ExtensionCost`), `OPE/Replicas`, `OPE/Grouping`, `OPE/Cards`, `OPE/Eye` (`for_plot`), `OPE/Trees`, `OPE/Nesting`, `SharpGram` (`outletFirst`) and all of `Contacts/Score`, `Layers`, `Harvest`, `Normal/{Rays,Fans,Pieces}`, `MultipleContact`. The descriptions of their roles come from docstrings and statements. In particular I do not know the role of `SharpGram.outletFirst`, which the unit page lists as a "major result" (a functional killing the sector derivatives to a given order releases estimates for outputs of weight at most three). It is probably an auxiliary result of the free-field comparison used by VII.6; check which unit uses it. (open)
-5. **Membership of `OPE/Nesting`.** `NestedOPE` is proved from `OPE/Nesting` and `OPE/Trees`; the unit page lists `Trees` but not `Nesting` in the work packages. Confirm that these modules belong to VII.4. (open)
-6. **Nested and integrated forms.** VII.4.2 and VII.4.3 are given as the statements of the Lean structures; the mechanism by which the node-wise rates multiply (`toll`, `bothToll`, `wages`) was not read. (tentative)
-7. **Contact extension.** The identification with Epstein–Glaser/BPHZ is mine. The roles of `Normal` (shells, fans), `Score` (Taylor instructions), `Layers` (signed-residue trees), `Harvest` (absolute estimates), `Solstice` (results) are inferred from docstrings. The writer should decide whether to present the contact extension as the standard extension theorem for distributions homogeneous up to $\varepsilon$ (Epstein–Glaser, Hörmander 3.2) with the OPE as the only input, if the Lean proof supports that. (tentative)
-8. **Independence from the Reader.** Each statement is proved for one Reader chosen after the table. `AllShapes` and `Services.everything` apply to every coherent prescription on the same `Final`, which suggests that the estimates hold for any coherent prescription, but the public theorem only needs existence. (probable)
-9. **Contacts and the main theorem.** The detailed theorem (D2, D11–D13) is a projection; the public statement of the main theorem has only the OPE (P3) and no contact clause. Check in VIII.1 which of D2, D8, D10–D13 are quoted in the final statement (the assessment mentions nested OPE, contact extensions and the non-claims on uniqueness, OS axioms and lattice convergence for the extensions).
-10. **Sizes.** The line count is from the unit page. Which files outside the listed folders (for example `OPE/Exchange`, `OPE/Schemes`, `OPE/Prices`, `OPE/Splitting`, `OPE/Interpolate`, `OPE/Rough`, `OPE/Single`, `OPE/Subpower`) are counted in the 4,584 has not been verified.
+1. **The RG cluster estimate as a Part III statement.** `joins` consumes:
+   - the polymer representation and the block-spin step (`Served`, `Under.pass_L`, `ranch`);
+   - halo summability (`hitB`, `HaloGate`);
+   - the per-step costs (`Scrim`, `fly`, `gainChart`).
+
+   These arrive through `Package` (III.10–III.12, III.15, assembled in VIII.1). The writer should state one proposition of Part III, "contraction of the irrelevant part of a product over $j-m$ steps with transport gain $(a_k/a_m)^{1/8}$", and check that Part III proves it in that form. The proofs of `inductionLive`, `Ballet` and `Live.winter` were read only in outline.
+2. **Inputs from V.1.** Two inputs are used through their statements: B17 (vacuum moments of $(u^*u)^n$ as limits of deck correlations) and `TileDoc.global`. The V.1 note covers B17.
+3. **Statements read but not proofs.** `det_cost`, `at_grade` (Lemma VII.4.h), `fit_old`/`discrepancy_rate_old` (Lemma VII.4.k), the tree lemmas `supplies`/`sequential`/`high` (Lemma VII.4.n), and the proofs of `point_bound`/`travel_price` (Lemma VII.4.o).
+4. **Contact projection versus Reader coefficients.** The contact devices share the Reader's prescription ((D11)) but use their own detectors and their own graded splitting. Whether their weight-$w$ rows coincide with $\sum_\kappa c_{w,\kappa}O_{w,\kappa}$ is not stated. Likewise, the arrangement of shells and fans in `Normal/Rays`, `Normal/Fans`, `Harvest/Outer` was read only in outline.
+5. **Unit assignment.** Almost all of `OPE/Nesting`, and the closing lemmas `produce`, `coefficient_separated`, `quantitative_separated`, `estimates_weighted`, are assigned to VIII.1 by the declaration map; mathematically they belong here. `OPE/Trees` feeds only `AllShapes`. `SharpGram` (`outletFirst`, `Mantle`) feeds only a conclusion of `Broad` that the main theorem drops. Its log-sharp estimates probably belong with the free-field comparison (VII.5–VII.6). (probable)
+6. **Side existence theorems.** `through_final`, `Orbits.foundation`, `single`, `subpower`, `Nesting.rooted` and `celestial` use their own family with $b=1$. They are not on the path of the main theorem. `celestial` is reached through `signed_placements`, which no declaration of the main theorem uses.
+7. **What is not proved.**
+   - Uniqueness of the coefficients and of the contact extensions.
+   - Independence of the subsequence.
+   - Convergence as $D\to\infty$.
+   - Reflection positivity and Ward identities of the extensions.
+   - Relation to perturbation theory.
 
 **Builds on:** [I.1](I-1.md), [IV.1](IV-1.md), [III.11](III-11.md), [III.1](III-1.md), [II.1](II-1.md), [II.2](II-2.md), [VIII.1](VIII-1.md), [III.16](III-16.md), [III.10](III-10.md), [V.1](V-1.md), [V.2](V-2.md), [III.9](III-9.md), [III.2](III-2.md).
 
