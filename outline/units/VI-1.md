@@ -2,238 +2,757 @@
 
 *Part VI — Symmetry: stress tensor and Ward identities.* 7,704 lines of Lean in 1,014 declarations used by the main theorem.
 
-> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is a **first draft**, written from the Lean by one model; it has not yet been checked. It is updated as it improves.
+> **This page** gives the outline of the unit (statements, strategy and steps), followed by its map: the Lean source and the key statements, each linked to the exact lines. The outline below is **checked** against the Lean and rewritten by a second model; a final editing round is in progress. It is updated as it improves.
 
 
-**Part:** VI, symmetry: stress tensor and Ward identities. **Lean:** [`YM/Ward`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward), [`YM/Spin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin), [`YM/Climb`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb), [`YM/Axis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Axis), [`YM/Shift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift) (in part), [`YM/Push/STRESS_FLUX`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX), [`YM/Next/BOUNDARY`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY) (in part), [`YM/Next/ROTATIONS`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS) and the work items A01–A17 in [`YM/Work`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work), with the definitions of the work items in [`YM/Bid/Angular.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean) and their assembly in [`YM/Bid/Town.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean). **Size:** about 7,700 lines used by the main theorem (the unit page counts 1,127 in `Ward`, 1,063 in `STRESS_FLUX`, 667 in `Spin`/`Climb`, 618 in `Shift`, and about 5,000 in A01–A17).
+**Part:** VI, symmetry: stress tensor and Ward identities. **Lean:**
+- the work items A01–A17, stated in [`YM/Bid/Angular.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean), combined in [`YM/Bid/Town.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean) and proved in [`YM/Work/A01`–`A17`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work);
+- the collinear flux estimate, in [`YM/Next/ROTATIONS`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS) with [`YM/Axis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Axis);
+- the analytic continuation, in [`YM/Ward`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward);
+- the scaling comparison, in [`YM/Climb`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb);
+- the descent of the rotation action, in [`YM/Spin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin);
+- the assembled record, in [`YM/Org/Twist.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean);
+- in part, [`YM/Push/STRESS_FLUX`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX), [`YM/Shift`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift) and [`YM/Next/BOUNDARY`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY).
 
-Conventions used throughout. $S$ is the limit table of Euclidean correlation kernels produced by IV.1, with its Euclidean hierarchy; $F_d=S.\mathrm{Field}\,d$ is the quotient space of local-field labels of degree $d$ modulo labels with vanishing correlations (finite-dimensional, with inclusions $F_d\to F_e$ for $d\le e$ and a unit label $1_d$). A *tag* is a pair $(d,v)$ with $v\in F_d$. For tags $v_0,\dots,v_n$ and points $x\in\mathrm{Conf}_{n+1}$ (pairwise distinct points of $\mathbb R^4$) the kernel is written $S(v;x)$. The differential plan $\partial_a:F_d\to F_{d+1}$ is the label of the derivative of a field in direction $a$ (produced in IV.1 from lattice difference quotients). The word *Ward* below always refers to the configuration-space identities at separated points. No contact terms are ever evaluated.
+**Size:**
+- 7,704 lines are assigned to this unit and used by the main theorem. Of these, about 900 (`Shift` and most of `Next/BOUNDARY`) are reconstruction material for V.2, and about 1,000 (`STRESS_FLUX`) are free-field algebra used in VII.2 (Remark in §4.10).
+- About 6,100 further lines of `Next/ROTATIONS` carry the collinear flux estimate. The declaration table files them under III.6, but they belong here, and the III.6 note says so too.
+
+**Conventions.**
+- *Table.* $S$ is the limit table of IV.1. For labels $v_i\in F_{d_i}$ and $x\in\mathrm{Conf}_n$ (pairwise distinct points of $\mathbb R^4$), $S(v_1,\dots,v_n;x_1,\dots,x_n)$ is a correlation kernel, smooth on $\mathrm{Conf}_n$.
+- *Label spaces.* $F_d$ is the finite-dimensional complex space of labels of degree $\le d$ modulo null labels. It has inclusions $\iota=\iota_{d\to e}$, a unit $\mathbf 1_d$, the action $M_\sigma$ of the signed permutation matrices $\sigma\in B_4\subset O(4)$, and an antilinear conjugation $\Gamma$.
+- *Euclidean axioms* (`Table.Hierarchy`):
+  - permutation symmetry and translation invariance;
+  - covariance under $B_4$ and $\Gamma$;
+  - reflection positivity in the coordinate hyperplanes, for point words and for smeared tests;
+  - smoothness on configuration space;
+  - polynomial bounds $|\partial^jS|\le C r^{-A}$ at separation $r\le1$.
+- *Differential plan.* Maps $\partial_a:F_d\to F_{d+1}$ satisfying three laws:
+  - the *derivative law* $S(\dots,\partial_av_k,\dots;x)=\partial_{x_k^a}S(\dots,v_k,\dots;x)$;
+  - the *inclusion law* $S(\dots,\iota v_k,\dots)=S(\dots,v_k,\dots)$;
+  - *orientation*: $\partial$ commutes with $\Gamma$ and $\iota$, and $M_\sigma\partial_b=\sum_a\sigma_{ab}\,\partial_aM_\sigma$.
+- *Rotations.* $\mathfrak{so}(4)$ is the space of real skew $4\times4$ matrices with $[K,K']=KK'-K'K$. $K^{(ba)}=E_{ba}-E_{ab}$ generates the rotation field $x_ae_b-x_be_a$.
+- *Spin rows.* A system of spin rows is a family of $\mathbb R$-linear maps $T:\mathfrak{so}(4)\to\mathrm{End}_{\mathbb C}F_d$.
+- *Angular sum.* For spin rows $T$ and maps $P_b:F_d\to F_{d+1}$,
+$$\mathcal W_K[T,P](q;x)=\sum_{i=1}^n\Big[S(\dots,T_Kq_i,\dots;x)+\sum_b(Kx_i)_b\,S(\dots,P_bq_i,\dots;x)\Big],\qquad \mathcal W_K[T]:=\mathcal W_K[T,\partial].$$
+  By the derivative law, $\mathcal W_K[T]=0$ says $\frac{d}{dt}\big|_{0}S(q;e^{tK}x)=-\sum_iS(\dots,T_Kq_i,\dots;x)$. This is infinitesimal rotation covariance with spin part $T$.
+- *Lorentz group.* Axis $0$ is the time axis in §4.9.
+- All identities hold at separated points. No contact term is evaluated.
 
 ## 1. What this unit proves
 
-The unit takes as input a stress tensor $J$ and two *raw shell maps* $p$, $Y$ on the limit table that satisfy shell identities. It produces the structure of the public Ward identity (eq. (13) of the assessment): a normalized, conserved, $O(4)$-tensorial stress tensor, a genuine action of $O(4)$ on the labels whose generators are the spin rows, and a boost-invariant vacuum label space. Everything is conditional on the inputs listed in §2; the unit never touches the lattice, apart from the finite lattice Ward identities in `STRESS_FLUX` (see §7).
+**Inputs.**
+- The table and its differential plan.
+- An unnormalised stress $J=(J_{ab})$, $J_{ab}\in F_4$, with two *raw shell maps* $p_a:F_d\to F_{d+1}$ and $Y:\mathfrak{so}(4)\to\mathrm{End}\,F_d$. These satisfy the shell identities below with unknown right-hand sides.
+- Free-Maxwell comparison data: a free table with its differential plan $\partial^{\rm free}$, rotation action $R^{\rm free}$ with generators $\mathcal L^{\rm free}_K$, stress $J^{\rm free}$ and Ward constant $\kappa\ne0$.
+- A weak scaling comparison of $S$ with the free table.
 
-Raw shell maps. For a window function $\chi$ that equals 1 near $x_0$ and vanishes near the other points, put
+All of these are produced in VI.2.
 
-$$\mathrm{shellGrad}_\chi(b;x,q,B)=-\sum_a\int d^4y\,\partial_a\chi(y)\,S\bigl(T_{ab}(y),B(x_0),q;\,\ldots\bigr),$$
+**Outputs.** The unit produces the field algebra of the final record (`Spec.Locals`):
+- an action of $O(4)$ on every $F_d$ whose generators are $c^{-1}Y$;
+- $O(4)$-covariance of $S$;
+- a conserved, symmetric, real, $O(4)$-tensorial stress $J'$ satisfying the Ward identity (13) of the assessment and its rotation analogue;
+- a Lorentz action on the labels, compatible with the rotation action.
 
-and the same with the weight $\partial_a\chi(y)\,(K(y-x_0))_b$ for an antisymmetric $K\in\mathfrak{so}(4)$, written $\mathrm{shellSpin}_\chi(K;x,q,B)$. The *translation* shell identity says $\mathrm{shellGrad}=S(p_b B,q;x)$ and the *rotation* shell identity says $\mathrm{shellSpin}=S(Y_K B,q;x)$, for linear maps $p:F_d\to F_{d+1}$ (one for each axis) and $Y_K:F_d\to F_d$. These are the statements [`Table.StressLaws`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L90-L97) with the shells [`shellGrad`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L79-L81) and [`shellSpin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L84-L86).
+**Shells and stress laws.** A *window* for $x=(x_0,\dots,x_n)\in\mathrm{Conf}_{n+1}$ is a function $\chi\in C^\infty_c(\mathbb R^4)$ that equals $1$ near $x_0$ and vanishes near $x_1,\dots,x_n$. For $B\in F_d$ and tags $q$ at $x_1,\dots,x_n$, the two shells are
+$$\Phi^{\rm tr}_\chi(b)=-\sum_a\int\partial_a\chi(y)\,S\big(J_{ab}(y),B(x_0),q\big)\,dy,\qquad \Phi^{\rm rot}_\chi(K)=-\sum_{a,b}\int\partial_a\chi(y)\,\big(K(y-x_0)\big)_b\,S\big(J_{ab}(y),B(x_0),q\big)\,dy .$$
+The integrands vanish near all insertions. Given maps $P_b:F_d\to F_{d+1}$ and $A:\mathfrak{so}(4)\to\mathrm{End}\,F_d$, the triple $(J;P,A)$ satisfies the *stress laws* if
+$$\Phi^{\rm tr}_\chi(b)=S(P_bB(x_0),q)\qquad\text{and}\qquad\Phi^{\rm rot}_\chi(K)=S(A_KB(x_0),q)$$
+for all windows, all $B$ and all $q$ ([`Table.StressLaws`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L90-L97), [`shellGrad`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L79-L81), [`shellSpin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L84-L86), [`Window`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73)).
 
-**Proposition VI.1.1 (collinear Ward identity from the raw shell laws).** Let $S$ satisfy its hierarchy, let the differential plan satisfy inclusion and derivative laws and be oriented, and let $(J,p,Y)$ satisfy the *raw hypotheses*: $J$ symmetric, real, divergence-free (as a label of $F_4$, with $\partial^a J_{ab}=0$ in $F_5$), tensorial under signed permutations, and the two raw shell identities hold. Then for every skew $K$, every $n$, every tags $q$ and every configuration $x\in\mathrm{Conf}_n$ whose points all lie on one coordinate line,
-$$\mathrm{localTurn}(K;q,x):=\sum_i\Bigl[S(\ldots,Y_Kq_i,\ldots;x)+\sum_b (Kx_i)_b\,S(\ldots,p_bq_i,\ldots;x)\Bigr]=0,$$
-and moreover the *line-sum identity* $\sum_{i}S(\ldots,p_j v_i,\ldots;x)=0$ holds for $j$ transverse to the line.
-*Status:* theorem (`Miles`, discharged by `Outer.miles`).
-*Lean:* [`Outer.outer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L114-L121), [`Outer.miles`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L123), requested as [`Bid.Miles`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L13-L15).
+**Raw hypotheses (R)** ([`Climb.Pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69)):
+- $J$ is *conserved*: symmetric, $\Gamma$-real, and $\sum_a\partial_aJ_{ab}=0$ in $F_5$ ([`Conserved`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L59-L62));
+- $J$ is *raw-tensorial*: $M_\sigma J_{ab}=\sum_{ij}\sigma_{ia}\sigma_{jb}J_{ij}$ for $\sigma\in B_4$ ([`RawTensor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L68-L70));
+- $(J;p,Y)$ satisfies the stress laws.
 
-**Proposition VI.1.2 (the Ward identity at all separated configurations).** Let $Y'=c^{-1}Y$ with $c\ne0$ be a family of spin rows with $p=c\,\partial$, satisfying the commutation relation $\partial_b Y'_K+\sum_i K_{ib}\partial_i=Y'_K\partial_b$ and vanishing of the angular sum on collinear configurations. Then for all $n$, all $x\in\mathrm{Conf}_n$, all tags $q$ and all skew $K$,
-$$\sum_i\Bigl[S(\ldots,Y'_Kq_i,\ldots;x)+\sum_b (Kx_i)_b\,S(\ldots,\partial_bq_i,\ldots;x)\Bigr]=0 .$$
-This is the infinitesimal rotation Ward identity: the orbital derivative of $S$ equals minus the spin substitution.
+**Proposition VI.1.1 (collinear rotation Ward identity and line sums).**
+
+*Hypotheses.*
+- $S$ satisfies the Euclidean axioms.
+- $\partial$ satisfies the derivative law and orientation.
+- $(J,p,Y)$ satisfies (R).
+
+*Conclusions.*
+- (i) Let $x\in\mathrm{Conf}_n$ have all its points on a coordinate axis $\mathbb Re_l$. Then for every $K\in\mathfrak{so}(4)$ and all tags $q$: $\mathcal W_K[Y,p](q;x)=0$.
+- (ii) (Line sums.) Let $x\in\mathrm{Conf}_n$ lie on $\mathbb Re_l$, let $j\neq l$, and let $v_1,\dots,v_n\in F_d$. Then $\sum_iS(v_1,\dots,p_jv_i,\dots,v_n;x)=0$.
+
 *Status:* theorem.
-*Lean:* [`Ward.global`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139); the statement is [`Ward.Still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L45), the operator is [`Ward.angular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L25-L27), the hypotheses are [`Ward.commutes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L29-L30) and [`Ward.Collinear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L34-L35).
+- It answers the request [`Bid.Miles`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L13-L15) through [`Outer.miles`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L123).
+- The analytic input is the exterior flux estimate (Lemma VI.1.e). It uses reflection positivity and the polynomial bounds, but no mass gap or clustering.
 
-**Proposition VI.1.3 (so(4) brackets).** If $Y'$ satisfies the Ward identity at all separated configurations, is real, compatible with inclusions, kills the unit and is covariant under signed permutations, and the internal Ward kernel detection `erases` holds, then $[Y'_u,Y'_v]=Y'_{[u,v]}$ on every $F_d$.
-*Status:* theorem (A08).
-*Lean:* [`Work.A08.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247), stated as [`Bid.A08`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L76-L78); the conclusion is [`Bid.Brackets`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L74).
+*Lean:* [`Outer.outer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L114-L121), [`Bid.LineSum`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L35-L36), [`Climb.localTurn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L72-L74).
 
-**Proposition VI.1.4 (the rotation action).** Under the hypotheses of VI.1.2 and VI.1.3, together with the comparison with free Maxwell fields (inputs of §2), there are linear isomorphisms $U_d:F^{\rm Max}_d\to F_d$ from the free-Maxwell label spaces, compatible with signed permutations and conjugation, such that the transported Maxwell rotation action $R_d(k)=U_d\,R^{\rm Max}_d(k)\,U_d^{-1}$, $k\in O(4)$, is a continuous representation with infinitesimal generators $Y'_K$. If in addition the Ward identity holds at all separated points, this action satisfies the *rotation laws*: it fixes the unit, commutes with inclusions, acts on derivative labels as a vector, $R_{d+1}(k)\partial_d{}_a v=\sum_i k_{ia}\,\partial_i R_d(k)v$, and is *oriented*: $S(R(k)v;kx)=S(v;x)$ for every $k\in O(4)$, $x\in\mathrm{Conf}$.
-*Status:* theorem (A14 given A13; descent from the Maxwell comparison through `Spin.produces`).
-*Lean:* [`Spin.produces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L26-L47), [`Spin.meet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L134-L157), [`Work.A14.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L417-L420), [`Work.A14.laws_of_oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L403-L415), [`Work.A13.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200); the data are [`Table.Rotation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L22-L24), [`Rotation.Laws`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L31-L42), [`Rotation.Oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L46-L48), [`Spin.Port`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L13-L19).
+**Proposition VI.1.2 (normalisation of the shell maps: $p=c\,\partial$).**
 
-**Proposition VI.1.5 (averaged conserved stress tensor).** Under VI.1.4 there is a stress tensor $J'$ (a symmetric array of labels $J'_{ab}\in F_4$) that is real, conserved ($\sum_a\partial_aJ'_{ab}=0$), tensorial under all of $O(4)$ ($R(k)J'_{ab}=\sum_{ij}k_{ia}k_{jb}J'_{ij}$), and satisfies both shell identities with the *derivative* in the translation law and the Lie action $c^{-1}Y$ in the rotation law:
-$$-\sum_a\int \partial_a\chi\,S(T'_{ab}(y),B(x_0),q;\,y,x)\,d^4y=S(\partial_b B(x_0),q;x),$$
-the Ward identity (13) of the assessment, and the analogous rotation identity.
-*Status:* theorem (A15). Hypotheses: the rotation laws and orientation of VI.1.4, the crystal condition $p=c\,\partial$, $\mathrm{Lie}=c^{-1}Y$, $c\neq 0$.
-*Lean:* [`Work.A15.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192), stated as [`Bid.A15`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L109-L112); the pieces are [`normalize_flux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L22-L41), [`tensorial_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L117-L118), [`conserved_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L134-L154), [`stressLaws_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L156-L183). The output notions are [`Table.Conserved`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L59-L62) and [`Table.Tensorial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L64-L66).
+*Hypotheses.*
+- $\partial$ satisfies all three laws.
+- The ultraviolet record holds, in particular (R) and the weak comparison law against the free data (input 4 of §2).
+- The free-Maxwell data hold (input 3 of §2).
 
-**Proposition VI.1.6 (generation of the Lorentz group and boost invariance of the label spaces).** (a) The proper orthochronous Lorentz group is generated by spatial rotations and coordinate boosts; (b) given the Ward data above, the Lorentz action transported to $F_d$ through the free Maxwell vacuum commutes with the inclusions $F_d\to F_e$ for every element of the group.
-*Status:* theorem (A16, A17; A17 assumes A16).
-*Lean:* [`Work.A16.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L91-L101) (`beamGens = ⊤`), [`Work.A17.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L88-L101); the property is [`Spin.wand`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L24-L25).
+*Conclusion.* There is a real $c\neq0$ such that:
+- $p_a=c\,\partial_a$ on every $F_d$, for every $a$;
+- the rescaled rows $D:=c^{-1}Y$ satisfy
+  - (C) $\partial_bD_K+\sum_iK_{ib}\,\partial_i=D_K\,\partial_b$ on every $F_d$;
+  - (L) $\mathcal W_K[D](q;x)=0$ for every configuration $x$ on a coordinate axis.
 
-**Proposition VI.1.7 (the assembled record).** Under the inputs of §2 (a `UV` record, an `IR` record and `MaxwellData`) and the inclusion and derivative laws of the differential plan, there exist $c\neq0$, spin changes $U$ and a stress tensor $J$ such that the record `Tab` holds: the crystal condition for $c$; reality of $U$; the transported rotation action is a port; and the local laws of the limit hold for the plan, the transported action and $J$ (rotation laws, orientation, conservation, tensoriality, shell identities). This record, together with the Lorentz extension, is what the reconstruction (V.2, V.3) and the identification parts (VII.1–VII.5) use.
-*Status:* theorem, conditional on the inputs of §2 (a "commission" in the code's vocabulary).
-*Lean:* [`Org.Commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L29-L43) (the six clauses `shape, scales, lens, group, retune, generate`), proved by [`Bid.station`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168) from `Work.A01`–`A17` and `Outer.miles`; instantiated by [`Outer.commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS.lean#L126-L131); the extraction of $(c,U,J)$ is [`Commission.picks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L45-L53); the record is [`Org.Tab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24).
+*Status:* theorem. It is the clause `scales` of `Commission`, proved by private lemmas of `Bid.station`.
 
-**Proposition VI.1.8 (lattice-side shell identities; statement-level reading).** The folder `STRESS_FLUX` proves finite-volume, finite-spacing Ward identities for the Wilson stress with explicit anomaly and contact terms, shows that the shell integrals are independent of the cutoff $\chi$, and passes to the limit (first spacing, then volume) at generic points. The outputs are the raw hypotheses (`Climb.Pre`) of VI.1.1 for a stress label built from the lattice, under a hypothesis `ShellGate` on the matching estimates.
-*Status:* theorem conditional on `ShellGate` and on a `Bridge` to free Maxwell data (hypotheses carried as assumptions; see §2 and §7).
-*Lean:* [`StressFlux.complete_pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Consumer.lean#L27-L35), [`StressFlux.at_seed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Consumer.lean#L45-L52), [`StressFlux.ShellGate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Consumer.lean#L24-L25), [`StressFlux.Bridge`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Consumer.lean#L42-L43), [`FreeBridge.through`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeBridge.lean#L86-L100).
+*Lean:* [`Bid.pressured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L49-L59), [`Bid.formed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L61-L78); the record is [`Climb.Crystal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L83-L87).
+
+**Proposition VI.1.3 (rotation Ward identity at all separated configurations).**
+
+*Hypotheses.*
+- $S$ satisfies the Euclidean axioms.
+- $\partial$ satisfies the derivative law.
+- The spin rows $T$ satisfy (C) and (L).
+
+*Conclusion.* $\mathcal W_K[T](q;x)=0$ for all $n$, all $x\in\mathrm{Conf}_n$, all tags $q$ and all $K$.
+
+*Status:* theorem.
+
+*Lean:* [`Ward.global`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139); the vanishing is [`Ward.Still`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L45); the hypotheses are [`Ward.commutes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L29-L30) and [`Ward.Collinear`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L34-L35); the sum is [`Ward.angular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L25-L27).
+
+**Proposition VI.1.4 ($\mathfrak{so}(4)$ brackets; A08).**
+
+*Hypotheses.*
+- $\partial$ satisfies the inclusion and derivative laws.
+- $T$ satisfies the conclusion of VI.1.3.
+- $T$ is *compatible* ([`Bid.Hyper`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20)): it commutes with $\Gamma$ and with $\iota$, kills $\mathbf 1$, and $M_\sigma T_K=T_{\sigma K\sigma^{-1}}M_\sigma$.
+- *Internal row erasure* holds ([`Org.erases`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L149-L152)). That is, for some $N$ and all $d\ge N$, let $\Delta:\mathfrak{so}(4)\times\mathfrak{so}(4)\to\mathrm{End}\,F_d$ be a real bilinear family with these properties ([`Org.Winds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L141-L146)):
+  - it is covariant under signed permutations of determinant $1$;
+  - it is $\Gamma$-real;
+  - it kills $\mathbf 1$;
+  - it is alternating;
+  - it preserves the images of the inclusions.
+
+  If moreover $\sum_iS(w_1,\dots,\Delta(u,v)w_i,\dots,w_m;x)=0$ for all $m$, all $x\in\mathrm{Conf}_m$ and all $w\in F_d^m$, then $\Delta=0$.
+
+*Conclusion.* $[T_u,T_v]=T_{[u,v]}$ on every $F_d$.
+
+*Status:* theorem. Erasure for $S$ is itself proved (A07, Lemma VI.1.q).
+
+*Lean:* [`Work.A08.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247) for [`Bid.A08`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L76-L78); the conclusion is [`Bid.Brackets`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L74).
+
+**Proposition VI.1.5 (the rotation action, by descent of the free action).** Let $c$ and $D=c^{-1}Y$ be as in VI.1.2.
+
+*Conclusion.* There are linear isomorphisms $V_d:F^{\rm free}_d\to F_d$ with these properties:
+- $V_dM^{\rm free}_\sigma=M_\sigma V_d$ and $V_d\Gamma^{\rm free}=\Gamma V_d$;
+- $D_KV_d=V_d\,\mathcal L^{\rm free}_K$ for all $K\in\mathfrak{so}(4)$.
+
+Hence $R_d(k):=V_d\,R^{\rm free}_d(k)\,V_d^{-1}$, $k\in O(4)$, is a continuous representation of $O(4)$ on $F_d$. It equals $M_\sigma$ on $B_4$, commutes with $\Gamma$, and has infinitesimal generator $D$. In Lean, $R$ together with the generator map $D$ is a *port*. The Ward identity of VI.1.3 holds for $D$.
+
+*Status:* theorem. The $V_d$ are chosen independently for each $d$. Compatibility with the inclusions comes later (VI.1.6).
+
+*Lean:* [`Climb.descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L90-L98), [`Spin.produces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L26-L47), [`Spin.meet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L134-L157), [`Bid.services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L124-L157) (the clause `lens`); the transported action is [`Spin.morph`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L22-L24) and a port is [`Spin.Port`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L13-L19).
+
+**Proposition VI.1.6 (covariance and the rotation laws; A14).**
+
+*Hypotheses.*
+- $\partial$ satisfies the inclusion and derivative laws.
+- $R$ is a port with generators $T$.
+- $\mathcal W_K[T]=0$ on all of $\mathrm{Conf}$.
+
+*Conclusions.*
+- $R$ is *oriented*: $S(R(k)v_1,\dots,R(k)v_n;kx_1,\dots,kx_n)=S(v;x)$ for all $k\in O(4)$ and all $x\in\mathrm{Conf}_n$.
+- $R$ satisfies the *rotation laws*: it fixes $\mathbf 1$; it commutes with $\iota$; it acts on derivatives as a vector, $R_{d+1}(k)\,\partial_av=\sum_ik_{ia}\,\partial_iR_d(k)v$; and it keeps the port properties.
+
+*Status:* theorem. It uses A13: $O(4)$ is generated by $B_4$ and the one-parameter groups $e^{tK}$.
+
+*Lean:* [`Work.A14.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L417-L420) for [`Bid.A14`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L105-L107); [`Rotation.Laws`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L31-L42), [`Rotation.Oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L46-L48); [`Work.A13.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200).
+
+**Proposition VI.1.7 (the averaged stress tensor and the Ward identity (13); A15).**
+
+*Hypotheses.*
+- $R$ is a rotation action satisfying the rotation laws, and $R$ is oriented.
+- $p=c\,\partial$ with $c\neq0$, and $(J,p,Y)$ satisfies (R).
+- The generators of $R$ are $c^{-1}Y$.
+
+*Conclusion.* There is a stress $J'$ with these properties:
+- it is conserved, i.e. symmetric, real and divergence-free;
+- it is *tensorial*: $R_4(k)J'_{ab}=\sum_{ij}k_{ia}k_{jb}J'_{ij}$ for all $k\in O(4)$;
+- $(J';\partial,c^{-1}Y)$ satisfies the stress laws.
+
+The translation law is the Ward identity (13):
+$$-\sum_a\int\partial_a\chi(y)\,S\big(J'_{ab}(y),B(x_0),q\big)\,dy=\frac{\partial}{\partial x_0^b}S\big(B(x_0),q\big).$$
+
+*Status:* theorem. It uses A10.
+
+*Lean:* [`Work.A15.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192) for [`Bid.A15`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L109-L112); [`Table.Tensorial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L64-L66).
+
+**Proposition VI.1.8 (Lorentz action on the labels).**
+
+*(a)* $SO^+(1,3)$ is generated by the spatial rotations and the coordinate boosts (A16).
+
+*(b)* Let $B^{\rm free}$ be the Lorentz action on the free labels, which is part of the free data. Let $B_d(\Lambda)=V_dB^{\rm free}_d(\Lambda)V_d^{-1}$. Then $B_e(\Lambda)\,\iota=\iota\,B_d(\Lambda)$ for all $d\le e$ and $\Lambda\in SO^+(1,3)$ (A17).
+
+*(c)* $B$ lifts to a representation on the union of all label spaces that *descends* from $R$. That is:
+- it is continuous;
+- $\frac{d}{dt}\big|_0B(\mathrm{boost}_i(t))=-i\,D_{K^{(0i)}}$;
+- it equals $R$ on spatial rotations;
+- it commutes with the time-reflection adjoint.
+
+*Status:* theorems. (c) is obtained inside `Commission.picks`.
+
+*Lean:* [`Work.A16.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L91-L101) for [`Bid.A16`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L116); [`Work.A17.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L88-L101) for [`Bid.A17`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L118-L119); [`Spin.wand`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L24-L25), [`Spin.reach`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L39-L74), [`Boundary.Spins.Descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L26-L35).
+
+**Proposition VI.1.9 (the assembled record).** Let the free data, the infrared triple $(J,p,Y)$ and the ultraviolet record be as in §2 (inputs 3–4). Then the six clauses of `Commission` hold: `shape`, `scales`, `lens`, `group`, `retune`, `generate`.
+
+Hence, if $\partial$ satisfies the inclusion and derivative laws, there exist $c$, $(V_d)$ and $J'$ such that the record `Tab` holds:
+- the normalisation of VI.1.2 for $c$;
+- $V_d$ intertwines $M$ and $\Gamma$;
+- $R=V R^{\rm free}V^{-1}$ with generators $c^{-1}Y$ is a port;
+- the *local laws*: the three plan laws; the rotation laws and orientation of $R$; each $F_d$ is isomorphic to $F^{\rm free}_d$ compatibly with $M$ and $\Gamma$; and $J'$ is conserved, tensorial and satisfies the stress laws with $(\partial,c^{-1}Y)$.
+
+There is also a Lorentz action descending from $R$ (VI.1.8(c)).
+
+*Status:* theorem for all records. The records are discharged in VI.2 and assembled in VIII.1. The record `Tab` and `Spec.Locals` are what V.1–V.3 and VII.1–VII.5 use.
+
+*Lean:* [`Outer.commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS.lean#L126-L131), [`Bid.station`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168), [`Org.Commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L29-L43), [`Commission.picks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L45-L53), [`Org.Tab`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24), [`Spec.Locals`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43).
 
 ## 2. What it uses
 
 **Inputs from other units.**
 
-1. *The limit table and its hierarchy* (IV.1): permutation symmetry, translation invariance, real spin (signed permutations and conjugation), smoothness off coincidences, polynomial caps. [`Table.Hierarchy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L141-L148).
-2. *The differential plan* $\partial_a:F_d\to F_{d+1}$, with inclusion and derivative laws and orientation under signed permutations (IV.1, work items D01–D06): $\partial_a$ is the distributional derivative of the kernel in the slot, and commutes with inclusions. Used as `V.Inclusions`, `V.Derivatives`, `V.Orientation` in every item.
-3. *Raw shell data* (`Climb.Pre`): $J$ conserved, symmetric, real, tensorial under signed permutations, and the two raw shell identities with some maps $p,Y$. Packaged in [`Climb.Pre`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69) as the field `planet` of the record [`Org.UV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L177-L186), with $(J,p,Y)$ in [`Org.IR`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L172-L175). Supplied from the lattice side by `STRESS_FLUX` (VI.1.8) under `ShellGate`; the records are built for the actual family in the final assembly (VIII.1; per the seams notes, `Acme.readyA`/`Acme.emanate` and `Next.UVStress.produce_current`, not read here).
-4. *The weak action law* `ActLaw` (field `weak` of `UV`): for every demand $(N,d,m,R)$ there is a scaling system $X$ (a sequence of scales $r_k\to0$ with normalizations $\xi_k$) along which the rescaled table, its derivatives up to a given order and the stress readout converge to the corresponding objects of free Maxwell theory. [`Climb.ActLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L50-L51), [`Climb.Track`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48). Produced in the ultraviolet comparison with free Maxwell fields (VII.1, VII.6); this unit only consumes it.
-5. *Free Maxwell data* [`Org.MaxwellData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170): a free-Maxwell comparison table with its hierarchy, its own differential plan, rotation action, stress tensor and constant $\kappa\ne0$ (the `Lighthouse`, [`Climb.Lighthouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29) with laws [`Goes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42)), a Lorentz vacuum action, a Casimir selection polynomial, and an internal row kernel `erases` ([`Org.erases`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L149-L152)). The docstring says "Not proven". Per the seams analysis it comes from `Maxwell.Free.maxwell_supplies` (using A09, A10, A12) and `UVNext.FreeStress.fire` in the free-Maxwell part (VII.1, VII.6) (probable; not read here).
-6. *Analytic toolkit* (III.16): real-analytic functions, factorial bounds, identity theorem, ODE uniqueness (Picard–Lindelöf), and Haar measure on compact groups are Mathlib; the problem-specific lemma `Analysis.GermD` and the polynomial PDE lemmas in `YM.PDE` are in `Ward/PDE.lean`.
-7. *Positivity of the limit* (V.1, V.2): Ward/PDE.lean and `Ward/Plants.lean` use the reflection-positive Hilbert space ("OS Hilbert space" with chambers and plants, [`Ward.spot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean) etc.) to turn a half-space of correlators into vectors $\mathrm{spot}(p,x)$ in a Hilbert space. This is the only use of reflection positivity in the unit.
+1. **IV.1 (limit table and differential plan).**
+   - The Euclidean axioms [`Table.Hierarchy`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L141-L148).
+   - The plan laws [`DiffPlan.Derivatives`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L61-L64), [`Inclusions`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L58-L60) and [`Orientation`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L66-L72).
+   - Also: $\partial_a\partial_b=\partial_b\partial_a$; injectivity of $\iota$; the unique lift of compatible maps to the union of label spaces.
+2. **V.1 (OS chambers).**
+   - For each coordinate axis there is the Osterwalder–Schrader Hilbert space of reflection in $\{x_a=0\}$ ([`OS.Chamber`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57-L61)). It carries a self-adjoint contraction semigroup $e^{-tH}$, the unitary translations parallel to the hyperplane, and their joint spectral measure.
+   - It is built from the axioms by [`OS.realization`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L106-L107), so it is not an assumption.
+3. **VI.2 (free-Maxwell data)** [`Org.MaxwellData`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170):
+   - a free table with its axioms;
+   - a *lighthouse* ([`Climb.Lighthouse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29)), i.e. $(\partial^{\rm free},R^{\rm free},J^{\rm free},\kappa\ne0)$, with laws [`Goes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42):
+     - plan laws;
+     - rotation laws and orientation;
+     - stress laws for $(J^{\rm free};\kappa\partial^{\rm free},\kappa\mathcal L^{\rm free})$;
+     - $\partial^{\rm free}\ne0$;
+     - finite collinear readouts that identify $\partial^{\rm free}$ (`cuts`);
+   - a free Lorentz action $B^{\rm free}$ descending from $R^{\rm free}$;
+   - the relations `optic` among the free generators;
+   - Casimir polynomials (`marks`);
+   - free row erasure (`frames`).
+
+   It is produced by `Maxwell.Free.maxwell_supplies` and `UVNext.FreeStress.fire` (VI.2). `marks` and `optic` are discharged by A12 and A10+A09 through `Bid.masts`. `frames` requires $G$ simple (VI.2, Lemma VI.2.k). The docstring "Not proven" is stale: the seams analysis finds the record produced in the used closure.
+4. **VI.2, with `MergeProof.Acme.readyA` (filed under III.11) (infrared triple and ultraviolet record).**
+   - [`Org.IR`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L172-L175) is the triple $(J,p,Y)$.
+   - [`Org.UV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L177-L186) contains: the seed (axioms of $S$); orientation of $\partial$; (R) (field `planet`); the *weak action law* (field `weak`); grid data.
+   - The weak action law [`Climb.ActLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L50-L51) says: for all orders there is a *scaling system* $X=(r_k\downarrow0,\ \xi_k>0,\ U_{k,d}:F^{\rm free}_d\to F_d)$ ([`Climb.Scaling`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31)) with a *track* ([`Climb.Track`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48)):
+     - $U_{k,d}$ intertwines $M,\Gamma,\mathbf 1,\iota$;
+     - $D^j_y\,S(U_kv;r_ky)\to D^jS^{\rm free}(v;y)$ uniformly on separated compacta;
+     - $\xi_k^{-1}r_k^4\,U_{k,4}^{-1}J_{ab}\to J^{\rm free}_{ab}$.
+   - Raw shell laws: $J$ is chosen by `produce_current`, and the raw shell laws come from `shells_law`/`shells_operate`. These records are assembled in `Acme.emanate`; the seams analysis confirms this, and see VI.2.
+5. **VIII.1.** Instantiates `Outer.commission` and passes `Tab.locality` to `Spec.Locals` via `Pert.withFinal`.
 
 **Standard mathematics.**
-- Noether's theorem and the Ward–Takahashi identity for the stress tensor (flux of a conserved current through a shell generates the symmetry); the lattice version with anomaly is Osterwalder–Seiler-type finite integration by parts for Wilson's measure.
-- Real-analytic vectors of a positive-definite kernel: if $\langle f(x),f(t)\rangle=A(t-x)$ with $A$ real-analytic at 0 then $f$ is real-analytic (Nelson/Goodman-type analytic vectors; here a direct Taylor estimate). Reed–Simon vol. I–II.
-- Identity theorem for real-analytic functions on connected sets; analytic continuation along paths.
-- Lie theory of $SO(4)$: exponentiation of $\mathfrak{so}(4)$ representations, Casimir element, generation of $O(n)$ by reflections (Cartan–Dieudonné, in Mathlib), generation of the Lorentz group by rotations and boosts.
-- Haar averaging over a compact group; Picard–Lindelöf uniqueness for linear ODEs.
+- Ward identities for a conserved symmetric stress tensor: the flux of $J_{ab}V_b$ through a closed shell, for a Killing field $V$ (Noether; e.g. Itzykson–Zuber §2-4).
+- Osterwalder–Schrader reconstruction and the transfer operator along a coordinate axis (Osterwalder–Schrader 1973/1975; Glimm–Jaffe, *Quantum Physics*, ch. 6 and 19). Spectral theorem and Laplace representations.
+- Analytic vectors (Nelson, Ann. of Math. 1959). Holomorphic contraction semigroups (Reed–Simon II). Formal uniqueness at a noncharacteristic line (as in Cauchy–Kovalevskaya). Identity theorem for real-analytic functions.
+- Representation theory:
+  - Haar measure and Weyl's unitarian trick;
+  - the Casimir element;
+  - McWeeny purification $x\mapsto3x^2-2x^3$ of approximate idempotents (Rev. Mod. Phys. 1960);
+  - in the background, rigidity of finite-dimensional representations of semisimple Lie algebras (Whitehead's lemma).
+- Groups and ODEs:
+  - Cartan–Dieudonné ($O(n)$ is generated by reflections; Mathlib);
+  - Givens rotations;
+  - generation of $SO^+(1,3)$ by rotations and boosts;
+  - Picard–Lindelöf uniqueness.
 
-**Imported constants and assumptions.** The scale constant $c$ of the crystal ($p=c\,\partial$) is not an input: it is derived in `Bid.pressured` from the weak action law and the Maxwell constant $\kappa$. Everything in items 3–5 enters as hypothesis records; the unit proves nothing about their existence. They are discharged in the ultraviolet parts and in VIII.1 (see §7).
+**Imported constants and assumptions.**
+- $\kappa\neq0$ comes from the free data. VI.2 fixes $\kappa=-\tau$.
+- $c$ is not imported. It is determined by $p=c\,\partial$, and $c/\xi_k\to\kappa$ along every scaling system (Lemma VI.1.u).
+- The flux estimate uses $\lambda_n=e^n$ and the exponents $100,150,300,3000$. These are internal choices.
+- Inputs 3–4 enter as hypotheses of `Commission`. The unit proves nothing about their existence.
 
 ## 3. Strategy
 
-The proof does not integrate the Lie algebra by general theory. It splits into four layers.
+*Local Ward identities and their global form on a line.*
+- The raw shell laws say that the flux of $J$ through a small shell around $x_0$ reproduces two unknown label maps: a translation part $p$ and a rotation part $Y$.
+- Conservation and symmetry of $J$ give the local consequences (A01–A03). The maps are compatible with the label structure. Moving the centre inside a fixed window gives $[\partial_b,Y_K]$-relations. Collinear "transverse" sums vanish.
+- To pass from local identities to a global rotation identity, one tests $J$ against a compactly supported vector field. This field equals the Killing field of the plane $(b,a)$ on a box of size $\lambda^{100}\times\lambda^{100}\times\lambda^{150}\times\lambda^{300}$ and is cut off outside.
+- The flux identity then reads: (sum of local rotation charges at the insertions) $=$ (flux through the exterior shells of the box).
+- For configurations on a coordinate axis, the exterior flux is $O(\lambda^{-1})$ (Lemma VI.1.e). This is the "fall-off of the flux of stress-energy at infinity, by an argument using reflection positivity in several orthogonal planes" of the assessment (§6.3). Reflection positivity in up to all four coordinate hyperplanes is used, through the spectral measures of the transfer operators and an alternation of signs between axes. No mass gap and no clustering is used.
+- Hence the global rotation charge vanishes on lines, and the translation charge in the transverse directions vanishes (line sums).
 
-*Layer 1 (algebra of the raw shell maps).* From the shell identities, the symmetries of $S$ and conservation of $J$ one reads off that the translation-type map $p$ and the spin rows $Y$ are compatible with the structure of the labels: inclusions, the unit, mirrors, conjugation (A01); that moving the center of the angular weight inside a fixed cutoff gives $\partial_b Y_K+\sum_c K_{cb}\,p_c=Y_K\partial_b$ and $\partial p=p\,\partial$ (A02); and that $p$ and $\partial$ are transverse to a line (A03). Comparison with free Maxwell fields along scaling sequences (A04–A06) identifies $p=c\,\partial$ and $Y\approx c\cdot\mathrm{Lie}$, with the same constant $\kappa$ as in the free theory.
+*Normalisation and continuation off the line.*
+- Along the scaling systems supplied by the weak comparison, the rescaled $p$ and $\partial$ become elements of a finite-dimensional "colour space" of free vector maps. There a finite set of collinear readouts characterises $\partial^{\rm free}$ up to scale.
+- Hence $p=c\,\partial$ (Climb, A04–A06), and the Ward identity becomes the standard one, $\mathcal W_K[c^{-1}Y]=0$ on lines.
+- It is continued to all separated configurations by real analyticity: move one point at a time in a coordinate direction while it stays strictly extreme in some other coordinate.
+- Analyticity of the kernel along such a move comes from the OS Hilbert space of the extreme coordinate.
+  - In the normal direction it comes from the semigroup $e^{-zH}$.
+  - In a transverse direction it is the statement that $s\mapsto(\text{OS vector of the moving insertion translated by } se_b)$ is real-analytic. This follows from a Nelson-type bound once the Gram function $\langle f(s),f(s')\rangle$, a function of $s'-s$, has the Taylor series of an analytic germ at $0$.
+  - That germ is produced by the collinear Ward identity itself. The transverse jets of the two-point function satisfy a first-order transport system along the rotation field. The explicit "rotation-invariant prediction" built from the radial (normal) analytic two-point function solves the system exactly. Formal uniqueness at the noncharacteristic line identifies the two Taylor series.
+- Then all derivatives of the angular sum vanish at the end of a segment, since they are angular sums with differentiated labels, so it vanishes along the segment. A finite chain of segments connects any generic configuration to the first axis, and density finishes.
 
-*Layer 2 (from the line to everywhere).* A cutoff argument with a displaced "petal" field (`Outer.outer`) shows that the angular Ward sum vanishes when all points are collinear. The remaining configurations are reached by analytic continuation. The map $s\mapsto S(\ldots;x+s\,e_b)$ for a point that is extreme along an axis $a$ is real-analytic (because the kernel is the Gram matrix of vectors in the reflection-positive Hilbert space and the Gram function has an analytic Taylor series at 0, by the transverse Ward identity); the "angular" function is analytic in the moving point and its derivative is again an angular sum with a raised label (`Ward.traverses`); so vanishing of all jets at a point propagates along segments (`Ward.stood`), and a generic configuration is joined to a collinear one by finitely many such segments (`Ward.global`). This is the point where the unit uses positivity: the Ward identity is a statement about derivatives of kernels, but analyticity comes from the Hilbert space.
+*From the Lie algebra to $O(4)$, and the stress tensor.*
+- Differentiating the Ward identity twice gives exact $\mathfrak{so}(4)$ brackets for $c^{-1}Y$ (A08), using a rigidity statement (row erasure) transported from the free theory (A07).
+- The group action is not obtained by integrating this Lie algebra representation. It is transported from the known free action.
+  - Along the scaling, $c^{-1}U_k^{-1}YU_k\to\mathcal L^{\rm free}$.
+  - The projection onto intertwiners, a polynomial in the relative Casimir on $\mathrm{Hom}(F^{\rm free}_d,F_d)$, is purified by Newton–McWeeny iteration.
+  - A norm-gap lemma for perfect Lie relations turns approximate intertwiners into exact ones, which also respect $M$ and $\Gamma$. This is a hands-on proof of rigidity.
+- The Ward identity then integrates along one-parameter subgroups to covariance $S(R(k)v;kx)=S(v;x)$. Together with $B_4$-covariance this covers $O(4)$ by A13. The remaining rotation laws follow.
+- Haar averaging of $c^{-1}J$ over $O(4)$ produces a tensorial $J'$. Conservation and the stress laws survive because both sides transform covariantly.
+- The Lorentz action is transported from the free vacuum. Its compatibility with inclusions follows by uniqueness for the linear ODE of the boost generators.
 
-*Layer 3 (integration to a group action and the stress tensor).* The brackets follow from differentiating the Ward identity once more and using `erases` (A08). To obtain an *action* of $O(4)$, the code does not integrate the representation of $\mathfrak{so}(4)$ on the labels directly (the representation need not be unitary or completely reducible). Instead it compares with the free Maxwell action, whose integrated action is known: the spin rows $Y/c$ converge, up to a change of basis, to the free Lie action (A05); a perturbation argument for almost-idempotents (the Casimir selection polynomial of A12, `Spin/Isolates`, `Spin/Close`) gives exact changes of basis $U_d$ that intertwine the Lie actions on the finite-dimensional spaces $F_d$ (`Spin.meet`). Transport gives the action. The infinitesimal Ward identity then integrates to the covariance of the kernels, using that $O(4)$ is generated by coordinate mirrors and one-parameter rotations (A13, A14). Averaging the stress tensor over $O(4)$ with Haar measure makes it tensorial and preserves conservation and the shell laws (A15). The Lorentz action on the vacuum label space is obtained from the same data, extended from rotations to boosts using the ODE for the boost generator (A16, A17).
-
-*What is different from the literature.* The usual route to a Ward identity for rotations in a lattice-regularized limit is: construct the stress tensor of the continuum theory, prove rotation covariance of the limit state from its conservation (often using exponential decay or a mass gap), and appeal to Lie theory. Here no decay is used. The identity is proved in configuration space at separated points, extended by analyticity, and the group action is built by comparison with free Maxwell theory in finite dimension. (It is claimed that absence of spontaneous breaking follows from fall-off of the flux at infinity via reflection positivity in several planes; this is part of the identification of the stress tensor, not of this unit, and it is not established here. See §7.)
+*Comparison with the literature.*
+- The usual constructive route to Euclidean invariance of a lattice limit is an operator-level Ward identity for the stress tensor together with control of the symmetry-breaking terms by decay. That decay typically comes from a mass gap or a cluster expansion; for the three-dimensional case see the constructive literature surveyed in Glimm–Jaffe.
+- Here everything is at separated points. Decay is replaced by the spectral/positivity estimate of the exterior flux on lines. Rotations act on finite-dimensional label spaces whose isomorphism type is fixed by comparison with free Maxwell theory at short distances.
 
 ## 4. Steps
 
-### 4.1 Compatibility of the raw shell maps (A01–A03)
+### 4.1 Local structure of the raw shell maps (A01–A03)
 
-**Lemma VI.1.a (A01: compatibility).** Under the raw hypotheses, $p_i$ commutes with inclusions ($p\,(\iota_{d\to e}v)=\iota_{d+1\to e+1}\,p\,v$), kills the unit label, is covariant under signed axis permutations ($\mathrm{mirror}(k)\,p_i=\sum_j k_{ji}\,p_j\,\mathrm{mirror}(k)$) and commutes with conjugation; $Y_K$ is real, inclusion-compatible, kills the unit and is mirror-covariant: $\mathrm{mirror}(k)\,Y_K=Y_{kKk^{-1}}\,\mathrm{mirror}(k)$.
-*Proof sketch.* Each statement is proved by testing against all kernels: two labels are equal if all their kernels at all separated configurations are equal ($S$ is a quotient by null labels). The shell integral is rewritten in terms of the flux of a conserved current against a compact window; the label identity is then the corresponding identity of kernels. For the unit, the flux of the conserved current $J$ against the gradient of a window vanishes when the word is empty or a unit (the window gradient has compact support away from the points: `cutoff_zero`, using that the vector field $x\mapsto Kx$ is Killing); for mirrors one moves the window by the signed permutation (`flux_mirror`).
-*Lean:* [`Work.A01.translation_color`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L27-L76), [`Work.A01.angular_hyper`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L78-L112), [`Work.A01.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L115-L117); supporting [`cutoff_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L154-L181), [`flux_unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L183-L203), [`flux_mirror`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Mirror.lean#L161-L194). The structures are [`Climb.ColorLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L89) and [`Bid.Hyper`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20).
+**Lemma VI.1.a (A01: compatibility).** Assume (R), the derivative law and the inclusion law. Then:
+- $p$ lies in the *colour space* ([`Climb.ColorLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L89-L91)): $p_i\mathbf 1=0$; $p$ commutes with $\iota$ and $\Gamma$; $M_\sigma p_i=\sum_j\sigma_{ji}\,p_jM_\sigma$.
+- $Y$ is compatible ([`Bid.Hyper`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20)).
 
-**Lemma VI.1.b (A02: shell commutation).** $\partial_b Y_K u+\sum_c K_{cb}\,p_c u=Y_K\,\partial_b u$ on $F_d$ and $\partial_b p_i=p_i\partial_b$.
-*Proof sketch.* Differentiate the angular shell $\int\partial_a\chi(y)\,(K(y-x_0))_b\,S(T_{ab}(y),\ldots)$ in the center $x_0$ with $\chi$ held fixed. The weight $K(y-x_0)$ gives $-K$ times the translation shell, and the dependence of the kernel on $x_0$ is the derivative label. Work on $\mathrm{Conf}$ only: $\nabla\chi$ has compact support missing all the insertions, so no near-diagonal behaviour of the kernels is needed.
-*Lean:* [`Work.A02.deriv_shellSpin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L213-L259), [`Work.A02.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L272-L307); statement [`Bid.ShellCom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L27-L29). *(statement and docstring read; proof not read)*
+*Proof sketch.* Each identity is tested against all words in a fixed window. The shells are fluxes of $J$ against $\partial\chi\otimes V$, with $V\equiv e_i$ for $p$ and $V(y)=K(y-x_0)$ for $Y$.
+- *Unit.* If the label at the centre is $\mathbf 1$, the unit axiom deletes that insertion. Integrating by parts against $\chi$ gives $\int\chi\,\mathrm{div}\big(\sum_bV_bS(J_{ab}(y),\dots)\big)$, and this vanishes. Conservation handles one term. The Killing property ($\partial_aV_b$ antisymmetric) together with $J_{ab}=J_{ba}$ handles the other.
+- *Mirrors.* Substitute $y\mapsto\sigma y$ and use the window $\chi\circ\sigma^{-1}$ at $\sigma x$. Then use $B_4$-covariance of $S$, raw tensoriality of $J$, and $\sigma K(\sigma^{-1}\cdot)=(\sigma K\sigma^{-1})\cdot$.
+- *Reality.* Reality of $S$ and $J$, and the weights are real.
+- *Inclusions.* The inclusion law inside the integrand.
+- The orientation hypothesis is not used.
 
-**Lemma VI.1.c (A03: transversality).** Given the colour law, the shell commutation and the line-sum identity, $p_j$ and $\partial_j$ annihilate the longitudinal direction in the sense that for configurations on a line $b$ and $j\neq b$, $\sum_i S(\ldots,\partial_j v_i,\ldots;x)=0$ and the same for $p_j$, with all positional jets.
-*Proof sketch.* The order-zero identity (line sum) is differentiated in transverse directions using the derivative law.
-*Lean:* [`Work.A03.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L197-L202), statement [`Bid.A03`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L38-L40).
+*Lean:* [`Work.A01.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L115-L117), [`translation_color`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L27-L76), [`angular_hyper`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L78-L112), [`cutoff_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L154-L181), [`flux_unit`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L183-L203), [`flux_mirror`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Mirror.lean#L161-L194).
 
-### 4.2 The Ward identity on a line and its normalization
+**Lemma VI.1.b (A02: moving the centre).** Assume (R) and the derivative law. Then
+$$\partial_bY_Ku+\sum_cK_{cb}\,p_cu=Y_K\,\partial_bu\qquad\text{and}\qquad\partial_b\,p_i=p_i\,\partial_b$$
+on every $F_d$ ([`Bid.ShellCom`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L27-L29)).
 
-**Lemma VI.1.d (collinear Ward identity; `Outer.outer`).** Proposition VI.1.1.
-*Proof sketch.* For an ordered pair of distinct axes $(a,b)$ and a line direction $l$, put the vector field $v_n=(\ldots,\ -\text{petal}_{ba},\ \text{petal}_{ab},\ldots)$, where the petals are compactly supported smooth functions that agree near the insertion points with the rotation field $x\mapsto (K_{ba}x)$ (`vane_home`), with amplitude $\lambda_n^{100}$ and widths shrinking super-polynomially (these choices are in the long docstring of `ROTATIONS.lean`). By the identities $\sum_{a}\partial_aJ_{ab}=0$ and symmetry of $J$, the cross gradients cancel identically, so the flux of $J$ against $v_n$ equals the angular sum $\mathrm{localTurn}$ at the insertions plus integrals supported only at the "exterior gaps". Those integrals are estimated by the outer spectral estimates in `Next/ROTATIONS/*` and `YM/Axis` (spectral measures $\nu$ of the transfer operator in the direction of the line; Young-type weighted Cauchy–Schwarz inequalities, transverse moment bounds $\int e^{-tE}|p_j|^{2k}d\nu\le Ct^{-D}$, a sign alternation trick on two axes) and are $O(\lambda_n^{-1})$. Hence $\mathrm{localTurn}$ is a constant that is $O(\lambda_n^{-1})$, so it vanishes. The $\mathfrak{so}(4)$-linearity in $K$ then gives all skew $K$ from the planes $(b,a)$ (`fullTurn`, `swirlLinear`). The line-sum identity for transverse $p_j$ follows by shifting the whole configuration by one step along the line (`stagger`, `shiftedLine`).
-*Lean:* [`Outer.outer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L114-L121), [`Outer.fullTurn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L83-L96), [`Outer.axisTurn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L57-L67), [`Outer.drained`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L49-L56), [`Outer.draught_river`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L31-L48), [`Outer.stagger`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L98-L108). *(proof of `Route.lean` read: reduction to the budget estimate `Outer.drained`; the estimate itself (`blows`, files `ROTATIONS/*`, `Axis/*`) not read)*
+*Proof sketch.* Keep $\chi$ fixed and move the centre to $x_0+te_b$; for small $t$, $\chi$ is still a window. Differentiate both shell laws at $t=0$.
+- The right-hand sides give $S(\partial_bY_KB)$ and $S(\partial_bp_iB)$, by the derivative law.
+- On the left, the kernel's $t$-derivative replaces $B$ by $\partial_bB$. The weight $K(y-x_0-te_b)$ contributes $-\sum_cK_{cb}$ times the translation shell.
+- Differentiation under the integral is dominated on $\mathrm{supp}\,\nabla\chi\times[-r,r]$, so no near-diagonal behaviour is needed.
 
-**Lemma VI.1.e (normalization of the shell maps; the crystal).** There is a real $c\ne0$ with $p_i=c\,\partial_i$ on every $F_d$, and the rescaled spin rows $c^{-1}Y$ satisfy the commutation relation and the collinear identity of VI.1.2 (the record `Climb.Crystal`). Moreover for each $d$ there are changes of basis $U_n:F^{\rm Max}_d\to F_d$ preserving mirrors and conjugation with $U_n^{-1}(c^{-1}Y_K)U_n\to \mathrm{Lie}^{\rm Max}_K$ (the record `Spin.Tilt`).
-*Proof sketch.* Along a scaling system $X$ supplied by the weak action law, the rescaled $p$ converges to $\kappa$ times the Maxwell label derivative, and the rescaled spin rows converge to $\kappa$ times the Maxwell Lie action (A05); the Ward test written with the derivative of the label holds along every system (A04, "ConLap") and the collinear test matrix is transported (A06). If a sequence of vectors $X_k\to x\neq0$ and $f_k X_k\to \kappa x$ in a finite-dimensional space, then $f_k\to\kappa$; applied to the readout of $p$ and $\partial$ this identifies the ratio $c/\xi_k\to\kappa$ and shows $p=c\,\partial$ for a single $c$ (`currencies`, `pressured`). The collinear identity is divided by $c$ (`formed`). The change of basis uses A07 (the internal kernel `erases` of the free side: the limiting rows separate points of the internal finite-dimensional space) and A09–A11 (the Maxwell wave polynomial lies in the preserved heat-rank space; reality; signed subgroup).
-*Lean:* [`Bid.pressured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L49-L59), [`Bid.formed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L61-L78), [`Bid.services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L124-L157); items [`A04`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A04.lean#L163-L183), [`A05`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05.lean#L95-L121), [`A06`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A06.lean#L236-L256), [`A07`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A07.lean#L287-L289), [`A09`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A09.lean#L85-L90), [`A10`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A10.lean#L113-L115), [`A11`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A11.lean#L199-L206). The structures are [`Climb.Crystal`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L83-L87) and [`Spin.Tilt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L116-L122). *(`Town.lean` read; A04–A07, A09–A11 statement only)*
+*Lean:* [`Work.A02.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L272-L307), [`deriv_shellSpin`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L213-L259), [`stable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L37-L48).
 
-### 4.3 Analytic continuation of the Ward identity
+**Lemma VI.1.c (A03: transversality).** Assume the plan laws, the colour law for $p$, the second identity of VI.1.b, and the line sums of VI.1.1(ii). Then $p$ and $\partial$ are *transverse* ([`Climb.transverse`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Peaks.lean#L57)). That is: for $x\in\mathrm{Conf}_n$ on $\mathbb Re_a$, $b\neq a$ and $v\in F_d^n$, the function $y\mapsto\sum_kS(v_1,\dots,P_bv_k,\dots,v_n;y)$ has vanishing jet of every order at $x$, for $P=p$ and for $P=\partial$.
 
-**Lemma VI.1.f (analytic vectors of an analytic Gram kernel).** Let $f:\mathbb R\to\mathcal H$ be $C^\infty$ and suppose $\langle f(x),f(t)\rangle=A(t-x)$ where $A$ has the same Taylor series at 0 as a real-analytic germ $a$. Then $f$ is real-analytic on all of $\mathbb R$.
-*Proof sketch.* The germ gives Cauchy-type bounds $|A^{(2m)}(0)|\le C\rho^{-2m}(2m)!$. Since $\|f^{(m)}(x)\|^2=(-1)^m A^{(2m)}(0)$ (the Gram identity differentiated $m$ times in each variable, `bud`), one gets $\|f^{(m)}(x)\|\le\sqrt C\,(\rho/2)^{-m}m!$ uniformly in $x$ using $(2m)!\le 4^m (m!)^2$. This is the analytic-vector criterion for Taylor remainders.
-*Lean:* [`Analysis.blossoms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L76-L96).
+*Proof sketch.*
+- The inclusion law extends the line sums to labels of mixed degree.
+- By $\partial p=p\,\partial$ and the derivative law, a derivative of such a row sum in a direction $e_{k,c}$ is the same kind of row sum with $\partial_c$ inserted at slot $k$. Induction on the order, quantified over all words, reduces every jet to a line sum at $x$.
+- For $\partial$, the line sum is translation invariance, and the colour law is [`Climb.native`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L93-L96), which uses orientation.
 
-**Lemma VI.1.g (transverse analyticity of the single-point vector).** For a plant $p$ at a point $x$ with $x_a>0$ and a transverse axis $b\ne a$, the map $s\mapsto \mathrm{spot}(p,x+s\,e_b)$ into the Hilbert space of the half-space $\{x_a>0\}$ is real-analytic, provided the Ward values (line-sum and the commutation relation) hold.
-*Proof sketch.* Radial analyticity: the function $t\mapsto \langle \mathrm{spot}(A,\cdot),\mathrm{spot}(B,\cdot)\rangle$ in the normal variable is analytic for $t>0$ (reflect the first factor; `radial`, `swing`). In the transverse variable the Gram kernel is a function of the difference, as a consequence of translation invariance, and satisfies a hyperbolic–elliptic PDE in the pair (normal, transverse) obtained from the Ward identity ("polar jets", `Ward/PDE`, `Ward/Rows`, `Ward/Rate`); a formal power series that solves a regular PDE with analytic data on a line and vanishes there is zero, which identifies the Taylor series of the Gram function at $0$ with that of an analytic germ. Then VI.1.f applies.
-*Lean:* [`Ward.radial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L54-L68), [`Ward.fires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L72-L81), [`Ward.pure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L179-L209). *(`Genuine.lean` and the final step of `Circles.lean` read; the polar-PDE lemmas of `PDE.lean`, `Rows.lean`, `Rate.lean` not read; probable)*
+*Lean:* [`Work.A03.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L197-L202), [`all_line`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L51-L80), [`row_D`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L83-L103), [`full_jet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L152-L186).
 
-**Lemma VI.1.h (differentiating the angular sum).** For $x\in\mathrm{Conf}$, $D_{x_k^a}\,\mathrm{angular}(q,K)(x)=\mathrm{angular}(q',K)(x)$, where $q'$ is $q$ with the label at slot $k$ replaced by its derivative $\partial_a q_k$. In particular $\mathrm{angular}$ is $C^\infty$ near $\mathrm{Conf}$.
-*Proof sketch.* Product rule; the derivative of $(Kx_i)_b$ in direction $e_a$ at slot $i=k$ equals $K_{ba}$, and this term cancels against the commutation relation $\partial_aY_K+\sum_b K_{ba}\,\partial_b=Y_K\partial_a$ of VI.1.b.
-*Lean:* [`Ward.traverses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L92-L136), [`Ward.ac`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L138-L143).
+### 4.2 The collinear Ward identity (`Next/ROTATIONS`)
 
-**Lemma VI.1.i (propagation along a walk).** Let a *walk* be a finite concatenation of straight segments, each moving one point $x_k$ in a coordinate direction $b$ while $x_k$ stays the strictly earliest or strictly latest point in some coordinate $a$. If all angular sums vanish at the endpoint $y$ of the walk, they vanish at its start $x$.
-*Proof sketch.* On such a segment, every function $s\mapsto \mathrm{angular}(q,K)(x(s))$ is real-analytic (VI.1.g, since the point is extreme, one can use half-space vectors for the moved point and for the rest). All its derivatives at the endpoint vanish, because they are angular sums with raised labels (VI.1.h) at the endpoint; by the identity theorem it vanishes on the whole segment (`Ward.stood`). Induct on the walk.
-*Lean:* [`Ward.channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L15-L26), [`Ward.stood`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L60-L71), [`Ward.Walk`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L75-L78), [`Ward.along`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L79-L84).
+**Lemma VI.1.d (flux identity).** Assume (R) and the derivative law. Let $x\in\mathrm{Conf}_n$ and $K\in\mathfrak{so}(4)$. Let $F$ be a smooth compactly supported vector field that equals $y\mapsto Ky$ near every $x_i$. Then
+$$\mathcal W_K[Y,p](q;x)=-\int\sum_{a,b}\partial_aF_b(y)\,S\big(J_{ab}(y),q;x\big)\,dy .$$
 
-**Lemma VI.1.j (geometry of walks).** Every configuration whose coordinates along the first axis are pairwise distinct is joined by a walk to a configuration of points on the first axis; the set of such configurations is dense in $\mathrm{Conf}_n$.
-*Proof sketch.* Move the earliest point to the latest position along the second axis, then slide it to the axis, repeating for each point (`park1`, `pushes`, `line`). Density: add a small multiple of $(0,1,2,\ldots)$ in the first coordinate (`fills`).
-*Lean:* [`Ward.park1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L36-L53), [`Ward.pushes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L57-L74), [`Ward.line`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L86-L108).
+*Proof sketch.*
+- Choose disjoint windows $\chi_i$ around the $x_i$, and split $F=(F-u)+u$ with $u=\sum_i\chi_i\,K(\cdot)$.
+- The flux of $F-u$ vanishes: it is a sum of constant-field fluxes against a cutoff supported away from all points, which are zero by conservation (as in VI.1.a).
+- For $u$, write $\partial_a(\chi_iKy)_b=\partial_a\chi_i\,(Ky)_b+\chi_iK_{ba}$. The second term pairs to zero with the symmetric $J$.
+- In the first term, write $Ky=K(y-x_i)+Kx_i$. These produce, at $x_i$, the rotation shell and $(Kx_i)_b$ times the translation shell. Use permutation symmetry to place $x_i$ in the first slot.
+- The shell laws turn these into the two terms of $\mathcal W$.
 
-**Lemma VI.1.k (global Ward values).** Proposition VI.1.2.
-*Proof sketch.* VI.1.d gives vanishing on a line (hypothesis `Collinear` after normalization); VI.1.i and VI.1.j extend it to all configurations that are distinct in the first coordinate; angular sums are continuous on $\mathrm{Conf}$ (VI.1.h), so the general case follows by density.
-*Lean:* [`Ward.global`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139).
+*Lean:* [`Outer.flux_value`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/River.lean#L84-L113), [`sands`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/River.lean#L40-L64), [`paid_zero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/River.lean#L66-L82).
 
-### 4.4 Brackets, descent and the rotation action
+**Lemma VI.1.e (exterior flux estimate).** Fix data and cutoff field as follows.
+- Fix axes $a\neq b$ and a line direction $l$. Put $\lambda=\lambda_n=e^n$.
+- Let $\ell(s)=s\,\eta(s)$, with $\eta$ a bump equal to $1$ on $|s|\le1$ and supported in $|s|<2$. Then $\ell$ is odd, equals $s$ on $|s|<1$, and its derivative $\ell'$ is an even bump.
+- Put $\mathrm{petal}_{ab}(y)=\lambda^{100}\,\ell(\lambda^{-100}y_a)\prod_{j\ne a}\ell'(\lambda^{c_j}y_j)$, with $c_j=-100$ for $j\in\{a,b\}$, $c_l=-150$ if $l\notin\{a,b\}$, and $c_j=-300$ otherwise.
 
-**Lemma VI.1.l (A08: brackets).** Proposition VI.1.3.
-*Proof sketch.* Write VI.1.2 as: the orbital derivative $\mathcal L_v$ of $\mathrm{disc}(q)(x)$ in direction of the vector field $x\mapsto Kx$ equals minus the spin substitution $\sum_i S(\ldots,Y_vq_i,\ldots;x)$. Apply twice, using that the spin substitutions do not depend on positions. The commutator of the two orbital derivatives is the orbital derivative of the Lie bracket (minus sign), while the substitution operators have the opposite order; hence the defect $\Delta(u,v)=[Y_u,Y_v]-Y_{[u,v]}$ satisfies $\sum_i S(\ldots,\Delta(u,v)q_i,\ldots;x)=0$ for all $x\in\mathrm{Conf}$. The defect lies in the family `Winds` (real, mirror-covariant, kills the unit, alternating, preserves the inclusion filtration), so `erases` forces $\Delta=0$.
-*Lean:* [`Work.A08.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247), [`defect_ward`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L209-L230), [`orbit_twice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L91-L107), [`defect_winds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L192-L205). *(docstring and statements read; proofs not read)*
+*Hypotheses.*
+- $J$ is conserved and raw-tensorial.
+- $\partial$ satisfies the derivative law and orientation.
+- $x\in\mathrm{Conf}_n$ lies on $\mathbb Re_l$.
+- $d\neq a$.
 
-**Lemma VI.1.m (descent of the free Maxwell action).** Let $\mathrm{Lie}^{\rm Max}$ be the generator of a continuous rotation action on the free Maxwell label spaces (a port) and let $D=c^{-1}Y$ be spin rows on $F_d$ with the brackets of VI.1.l and a tilt $(U_n)$ as in VI.1.e. Then there are isomorphisms $V_d:F^{\rm Max}_d\to F_d$, compatible with mirrors and conjugation, with $D_K V_d=V_d\,\mathrm{Lie}^{\rm Max}_K$. Consequently $k\mapsto V_d R^{\rm Max}(k)V_d^{-1}$ is a continuous action of $O(4)$ on $F_d$ with generators $D_K$, and it agrees with the signed permutations on the signed subgroup.
-*Proof sketch.* The matrices $U_n^{-1}D_KU_n$ converge to $\mathrm{Lie}^{\rm Max}_K$, satisfy the same $\mathfrak{so}(4)$ relations, and are close to a representation on a finite-dimensional space; a perturbation theorem for almost-idempotents (`Spin/Isolates`: a non-normal almost-idempotent is perturbed to a nearby idempotent commuting with the given operators, by a holomorphic functional calculus argument) shows that the spectral projections of the Casimir (a polynomial in the generators, $\mathrm{Works}\ p$, provided by A12) move to the exact ones. This gives an exact intertwiner for large $n$ (`Spin.realize`, `Spin.meet`), without any appeal to complete reducibility or to the integration of the representation of $\mathfrak{so}(4)$ on $F_d$. Compatibility with mirrors and conjugation is kept in the closed subgroup `fine` of admissible matrices.
-*Lean:* [`Spin.meet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L134-L157), [`Spin.produces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L26-L47), [`Spin.realize`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L77-L93), [`Climb.descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L90-L98) (the assembly: from `Crystal` and the global Ward values to $U$ with a port); A12 [`Work.A12.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A12.lean#L323-L336), `Spin.Close` [`onto`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Close.lean#L42-L70). *(`Spin/Lands`, `Spin/Sheets` and `Climb/Beams` read; `Shape`, `Isolates`, `Close` and A12 statement only; the account of the almost-idempotent step is from the docstrings; probable)*
+*Conclusion.* $\int\partial_d\,\mathrm{petal}_{ab}(y)\,S\big(J_{db}(y),q;x\big)\,dy=O(\lambda^{-1})$. The integrand is supported in the exterior shell $\lambda^{-c_d}\le|y_d|\le2\lambda^{-c_d}$.
 
-**Lemma VI.1.n (A13: generation of $O(4)$).** $O(4)$ is generated by the coordinate-axis mirrors together with the one-parameter rotation subgroups $\exp(tK)$, $K\in\mathfrak{so}(4)$.
-*Proof sketch.* $O(n)$ is generated by hyperplane reflections; every reflection is conjugate to a coordinate mirror by a product of elementary rotations obtained by aligning the normal vector with a coordinate axis plane by plane (Givens elimination, `plane_givens`, `plane_eliminates`, `align`).
-*Lean:* [`Work.A13.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200), [`reflection_conjugate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L151-L174). *(docstring and statements read)*
+*Proof sketch.*
+- *Cluster form.* Off the insertions, $S(J_{db}(y),q;x)=\langle\bar B;J_{db}(y)\rangle$. Here $B$ is the reflected word of the collinear insertions. It is a single cluster at transverse coordinates $0$ ([`collimated`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L84-L103)).
+- *Parity.* Decompose $B$ into components of definite reflection parity in each axis. Only the component odd in $a$ and $b$ survives integration against the test ([`Yard.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean): `fan_out`, `off_label`, [`pick_price`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L49-L77)).
+- *Laplace representation.* Represent the correlation through the OS space of axis $d$. Because the test vanishes for $|y_d|<\lambda^{-c_d}$, the $y_d$-integral becomes a Laplace transform. Its time factor satisfies $|{\rm Lap}(E)|\le C\lambda^{c_d}/(E+\lambda^{c_d})$, paired with the polarised spectral measure $\nu_d(B,J_{db})$ of the transfer operator ([`YM/Axis`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Axis); [`exterior_size`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Vanishing.lean#L68-L120)).
+- *Outside the low box.* Where $E>1$ or some $|p_j|>\lambda^{1+c_j}$, the contribution is $O(\lambda^{-\infty})$. This uses only Schwartz decay of the profiles and the zeroth moment.
+- *Inside the box.* A weighted Cauchy–Schwarz (Young) inequality splits the bound between $\nu_d(B)$ and $\nu_d(J_{db})$.
+- *Shear case $d\notin\{a,b\}$.*
+  - The line cost of the cluster is $\int_{E\le1}(E+\lambda^{-3000})^{-1}\prod_jh_j\,d\nu_d(B)=O(\lambda^{1})$ for $d=l$, and $O(\lambda^{150})$ otherwise.
+  - The point cost $\int(E+\lambda^{c_d})^{-1}\prod_jh_j\,d\nu_d(J)=O(\lambda^{\delta})$ holds for every $\delta>0$.
+  - Here $h_j$ are $L^1$-normalised bumps at scale $\lambda^{1+c_j}$.
+  - The total exponent is $\le-146$.
+- *Diagonal case $d=b$.*
+  - $J_{bb}$ is even in every axis, so the point cost is unavailable. Split at $E=\lambda^{-3000}$.
+  - Above the split, the cluster's line cost is paired with the *mass estimate* $\int_{E\le1}EW^4(E+W)^{-4}\prod h_j\,d\nu_b(J_{bb})=O(W^{4+\delta})$ at $W=\lambda^{-99}$.
+  - Below the split, the line estimate gains $\lambda^{-1500}$.
+- *Point cost.* Proved by a *sign alternation*. The same Euclidean integral is a positive spectral pairing along one axis and minus a positive pairing along an axis of opposite parity. Moment-subtracted profiles have Laplace responses bounded below by $c/(E+w)$ down to $E=0$. Walking through the axes, with orders chosen backwards, moves every profile to scale $\ge1$ at subpower cost. Spectral atoms near $0$ are thereby excluded without a gap.
+- *Moment bounds.* $\int e^{-tE}|p_j|^{2k}d\nu\le Ct^{-D}$, from the polynomial bounds by finite differences.
+- *Mass estimate.* Uses conservation in tested form. The tested symbols $A,B,C$ of the contact-normalised two-point function of $J$ satisfy $B=p_i^2A+O(W^4)$ and $C=p_i^2B+O(W^6)$. Positivity of $\nu_b(J_{bb})$ then fixes the signs of band differences, and comparison of the bands $W$ and $2W$ closes the estimate.
+- Conservation, the derivative law and orientation enter only in the mass estimate. Raw tensoriality supplies the parities.
 
-**Lemma VI.1.o (A14: the laws of the rotation action).** If the action $U$ is a port and the Ward identity holds at all separated points with the generators of $U$, then $U$ is oriented ($S(U(k)v;kx)=S(v;x)$), and satisfies the rotation laws of VI.1.4.
-*Proof sketch.* Orientation for the one-parameter subgroups: the function $t\mapsto S(U(e^{tK})v;e^{tK}x)$ has derivative zero by the Ward identity, so it is constant; orientation for mirrors holds because on signed permutations $U$ agrees with the mirror action and $S$ has real spin; orientation passes to products and so to all of $O(4)$ by A13. The unit is fixed because $S(U(k)1;kx)$ reduces to the kernels of the other points and the unit label is removed from the word. The vector law follows from orientation and the chain rule for $x\mapsto kx$ (`vectorLaw`, `pullGrad`); inclusions are preserved by the same argument applied to kernels (`Spin.team`). The remaining clauses are copied from the port.
-*Lean:* [`Work.A14.laws_of_oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L403-L415), [`Work.A14.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L417-L420), [`Spin.team`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L50-L69). *(`laws_of_oriented`, `vectorLaw`, `unit_fixed`, `Spin.team` read; the proof of orientation (`oriented`) not read)*
+*Lean:* [`Outer.blows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L105-L114), [`point_moment`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Moments.lean#L228-L243), [`alternate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Switch.lean#L145-L160), [`budget_lock`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Pivot.lean#L59-L72); the profile is `petal` in [`Patch.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Patch.lean); the line cost, point cost and mass estimate are `line_cost`, `point_cost` in [`Tunnel.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Tunnel.lean) and `mass` in [`Mass.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Mass.lean). *(proof read in outline; `GapTest`, `Nodal`/`Mode`/`Odd`, the contact extension `Collision`/`Fold`/`Journal`, `MomentFD`, `Nodes` statement only; probable)*
 
-### 4.5 The averaged stress tensor
+**Lemma VI.1.f (collinear identity and line sums).** This is Proposition VI.1.1.
 
-**Lemma VI.1.p (A15: Haar averaging).** With $R$ the rotation action and $J_0=c^{-1}J$ (so that $J_0$ satisfies the shell laws with $\partial$ and $\mathrm{Lie}$), the average $J'=\int_{O(4)}R(K)\cdot J_0\,dK$, where $(K\cdot J)_{ab}=\sum_{ij}K_{ia}K_{jb}R(K)J_{ij}$ and $dK$ is the Haar probability measure, is conserved, real, symmetric, $O(4)$-tensorial and satisfies the two shell laws.
-*Proof sketch.* $O(4)$ is compact (a closed bounded subset of $M_4(\mathbb R)$), so Haar probability measure exists and the orbit map is continuous into the finite-dimensional space of stresses; every linear map (a component, the divergence, a shell flux) commutes with the integral. Invariance of Haar measure gives $K\cdot J'=J'$, which is tensoriality. Conservation, symmetry and reality hold for each $K\cdot J_0$ by A15's `rotate_conserved` and pass to the integral. The shell laws for $K\cdot J_0$ follow from those for $J_0$ by transporting the window (`rotate_flux`, using the rotation laws and orientation: the shell flux of $K\cdot J$ at the configuration $x$ equals the shell flux of $J$ at $K^{-1}x$), and the right-hand sides are $K$-independent (the derivative label and the Lie action satisfy the equivariance of A10), so averaging does not change them.
-*Lean:* [`Work.A15.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192), [`averageStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L86), [`tensorial_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L117-L118), [`conserved_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L134-L154), [`stressLaws_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L156-L183), [`rotate_flux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15/Transfer.lean#L124-L168), [`normalize_flux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L22-L41). *(`A15.lean` proof read; `Transfer.lean` and `Tensor.lean` statements only)*
+*Proof sketch.*
+- Take $F=\mathrm{vane}_{ab}$, with $F_b=\mathrm{petal}_{ab}$, $F_a=-\mathrm{petal}_{ba}$ and $F_d=0$ otherwise. For large $n$ it equals the Killing field of $K^{(ba)}$ near every $x_i$.
+- In the flux of VI.1.d, the diagonal terms $\partial_a\mathrm{petal}_{ab}\,J_{ab}$ and $\partial_b\mathrm{petal}_{ba}\,J_{ba}$ cancel identically, since $\partial_a\mathrm{petal}_{ab}=\partial_b\mathrm{petal}_{ba}$ and $J$ is symmetric. What remains is a finite sum of integrals of VI.1.e.
+- Hence $\mathcal W_{K^{(ba)}}[Y,p](q;x)$, which does not depend on $n$, is $O(e^{-n})$, so it is $0$.
+- $\mathcal W_K[Y,p]$ is $\mathbb R$-linear in $K$, so it vanishes for all $K$.
+- Translating the configuration by $e_l$ along its line changes $\mathcal W_{K^{(jl)}}[Y,p]$ by exactly $\sum_iS(\dots,p_jq_i,\dots)$. Both values vanish, which gives the line sums.
 
-### 4.6 Lorentz boosts
+*Lean:* [`draught_river`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L31-L48), [`drained`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L49-L56), [`axisTurn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L57-L67), [`fullTurn`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L83-L96), [`stagger`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L98-L108), [`vane_home`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L21-L27).
 
-**Lemma VI.1.q (A16: generation of the Lorentz group).** $SO^+(1,3)$ is generated by spatial rotations and coordinate boosts; every future unit timelike vector can be brought to rest by successive coordinate boosts.
-*Lean:* [`Work.A16.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L91-L101). *(docstring and statement read)*
+### 4.3 Normalisation $p=c\,\partial$ (A04–A06, `Climb`)
 
-**Lemma VI.1.r (A17: inclusions are boost-invariant).** For all $d\le e$ and every Lorentz element $g$, $\mathrm{run}_e(g)\circ\iota_{d\to e}=\iota_{d\to e}\circ\mathrm{run}_d(g)$, where $\mathrm{run}_d(g)=U_d^{-1}\,\mathrm{shell}_d(g)\,U_d$ is the Lorentz action of the free Maxwell vacuum transported to $F_d$.
-*Proof sketch.* The generator of the boost in axis $i$ is $-i$ times the Lie generator of the plane (time, $i$) (`run_deriv_zero`); by the rotation laws of the transported action it commutes with the inclusions. Two curves $t\mapsto \mathrm{run}_e(\mathrm{boost}_i(t))\iota v$ and $t\mapsto \iota\,\mathrm{run}_d(\mathrm{boost}_i(t))v$ solve the same linear ODE $\dot f=M f$ on the finite-dimensional space $F_e$ and agree at $t=0$, hence coincide (Picard–Lindelöf, `run_boost`). Spatial rotations are covered by the rotation laws, and by A16 these two families generate the whole group; the property is preserved under products and inverses (`closure_induction`).
-*Lean:* [`Work.A17.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L88-L101), [`run_boost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L70-L84), [`Spin.reach`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L39-L74) (builds the Lorentz action $B(g)$ on the union of all label spaces from the invariance `wand`). *(`A17.lean` proof read)*
+**Lemma VI.1.g (scaling limits; A04, A05).** Let $X$ be a scaling system with a track of sufficiently high order. Define the transport $\mathrm{aisle}_k(P)_a=U_{k,d+1}^{-1}P_aU_{k,d}$. Then:
+- $r_k\,\mathrm{aisle}_k(\partial)\to\partial^{\rm free}$;
+- $(r_k/\xi_k)\,\mathrm{aisle}_k(p)\to\kappa\,\partial^{\rm free}$;
+- $\xi_k^{-1}U_k^{-1}Y_KU_k\to\kappa\,\mathcal L^{\rm free}_K$.
 
-### 4.7 Assembly
+*Proof sketch.*
+- *First limit.* Test against a finite family of free correlations that is faithful on $F^{\rm free}_{d+1}$. The chain rule gives the factor $r_k$. Then use first-order jet convergence, and invert by finite-dimensional linear algebra.
+- *Second and third limits.* Write the shell law at $r_kx$ with the window $\chi(\cdot/r_k)$. Substituting $y=r_kz$ produces $r_k^4\cdot r_k^{-1}$. Multiplying by $r_k/\xi_k$ gives exactly $\xi_k^{-1}r_k^4J$, which converges to $J^{\rm free}$ by the third track condition. The free shell laws then give $\kappa\partial^{\rm free}$ and $\kappa\mathcal L^{\rm free}$. For the angular weight, $K(y-r_kx_0)=r_kK(z-x_0)$.
 
-**Lemma VI.1.s (`Bid.station`: the commission).** Proposition VI.1.7.
-*Proof sketch.* The six clauses of `Commission` are discharged as follows. `shape`: A01 and `Outer.miles` give the record `Shapes` (colour law, hyper-compatibility, ShellCom from A02, transversality from A03). `scales`: from `Shapes`, `pressured` produces $c$ and `formed` the `Crystal`. `lens`: `services` (A04–A07, A08, A09–A11) produces the tilt for each cap $d$, using VI.1.2 for $c^{-1}Y$ (this is the only place where `Ward.global` enters the assembly: through the hypothesis `hv` and through `Climb.descends`). `group`: A14 (given A13). `retune`: A15 (given A10). `generate`: A17 (given A16). In `Commission.picks` these are composed to give $(c,U,J)$ and the Lorentz action.
-*Lean:* [`Bid.station`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168), [`Bid.witnessing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L33-L39), [`Commission.picks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L45-L53), [`Outer.commission`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS.lean#L126-L131).
+*Lean:* [`Work.A04.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A04.lean#L163-L183), [`Work.A05.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05.lean#L95-L121), [`integrate_sheet_scale`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05/Window.lean#L158-L172), [`recover_on`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05/Read.lean#L70-L81); the requests are [`Bid.Watches`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L43-L46) and [`Bid.ConLap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L48-L49).
 
-### 4.8 The lattice side (`STRESS_FLUX`)
+**Lemma VI.1.h (A06 and the identification $p=c\,\partial$).**
 
-**Lemma VI.1.t (finite Ward identities and passage to the limit; statement-level).** For the Wilson action, the infinitesimal change of link variables generated by a Killing field of the continuum acts as a vector field on link space; integration by parts with respect to the Haar measure gives a finite Ward identity whose residual terms (the Haar Jacobian, the breaking of rotation invariance by the lattice action, contact terms) are kept explicitly (`Discrete`, `Ward`, `Jacobian`, `Rebate`, `Restore`). The shell integrals of the normalized lattice stress are independent of the cutoff $\chi$ (`Annular`), and converge in the ordered limit (mesh then period) to the shell integrals of the limit table at generic points (`Pass`, `Solve`); the matching estimates (`Matching`, `Quotes`) bound the anomaly by the chessboard budget. The limit stress label is conserved, symmetric and real (`Conserved`).
-*Lean:* module docstrings of [`Discrete.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Discrete.lean), [`Ward.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Ward.lean), [`Annular.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Annular.lean), [`Pass.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Pass.lean), [`Conserved.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Conserved.lean); consumers read: [`Consumer.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Consumer.lean) and [`FreeBridge.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeBridge.lean). *(statement only; tentative as a description of the whole folder)*
+*Setting.*
+- Fix $d$ large. By the free data there is a finite *selection* of collinear transverse readouts on $F^{\rm free}$: $m$-th jets of row sums at configurations on a coordinate axis.
+- These readouts vanish, within the colour space of the free table, exactly on $\mathbb R\,\partial^{\rm free}$ ([`Climb.Ens`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L101-L104), [`Select`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L95-L99)).
+
+*Claims.*
+- (A06) Along a scaling system, the actual rescaled readouts converge to the free ones. They annihilate $\mathrm{aisle}_k(p)$ and $\mathrm{aisle}_k(\partial)$ exactly at every $k$. The reason is that a readout of $\mathrm{aisle}_k(P)$ equals $r_k^m$ times an actual collinear jet of $P$, which vanishes by VI.1.c.
+- Consequently there is a real $c\neq0$ with $p_a=c\,\partial_a$ on all $F_d$.
+
+*Proof sketch.*
+- *Persistence lemma.* If readouts $Z_k\to Z$ and $\ker Z$ meets the colour space in a line, then eventually any two nonzero elements of the colour space killed by $Z_k$ are proportional. This gives $\mathrm{aisle}_k(p)=c_d\,\mathrm{aisle}_k(\partial)$, hence $p=c_d\partial$ on $F_d$ for large $d$.
+- The constants agree across $d$, and lower degrees follow, by injectivity of $\iota$ and the colour law.
+- $p\neq0$ and $\partial\ne0$ by VI.1.g and $\kappa\partial^{\rm free}\neq0$.
+
+*Lean:* [`Work.A06.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A06.lean#L236-L256), [`Climb.extends_form`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Peaks.lean#L98-L111), [`Bid.pressured`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L49-L59). *(proof read; the persistence lemma `survive` statement only)*
+
+**Lemma VI.1.i (the normalised Ward data).** With $c$ as in VI.1.h, $D=c^{-1}Y$ satisfies (C) and (L). This proves Proposition VI.1.2.
+
+*Proof sketch.* Divide the first identity of VI.1.b, and the identity of VI.1.1(i), by $c$, using $p=c\,\partial$.
+
+*Lean:* [`Bid.formed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L61-L78), [`Bid.witnessing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L33-L39).
+
+### 4.4 Continuation off the line (`YM/Ward`)
+
+Throughout this subsection $T$ satisfies (C) and (L), and $\partial$ the derivative law.
+
+**Lemma VI.1.j (derivatives of angular sums).**
+- $\partial_{x_k^a}\mathcal W_K[T](q;x)=\mathcal W_K[T](q';x)$, where $q'$ is $q$ with $q_k$ replaced by $\partial_aq_k$. In particular $\mathcal W_K[T](q;\cdot)$ is $C^\infty$ on $\mathrm{Conf}$.
+- Hence, if $\mathcal W_K[T](\cdot\,;y)=0$ for all tags at one point $y$, then every derivative of $\mathcal W_K[T](q;\cdot)$ at $y$ vanishes, for every $q$.
+
+*Proof sketch.* Product rule. The derivative of $(Kx_k)_b$ in $x_k^a$ is $K_{ba}$. Use $\partial_a\partial_b=\partial_b\partial_a$, and (C) absorbs the extra term. The second statement is induction on the order, with $q$ generalised.
+
+*Lean:* [`Ward.traverses`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L92-L136), [`Ward.ac`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L138-L143), [`Ward.jet_line`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Motion.lean#L31-L42).
+
+**Lemma VI.1.k (OS vectors of one insertion).** Let $\mathcal H_a$ be the OS space of the reflection $\Theta_a$ in $\{x_a=0\}$. For $x_a>0$ let $\mathrm{spot}(A,x)\in\mathcal H_a$ be the vector of the one-point word $A(x)$.
+- (i) $\langle\Theta\text{-word},\mathrm{spot}(A,x)\rangle$ is a correlation of $S$.
+- (ii) $\mathrm{spot}(A,x+se_a)=e^{-sH}\mathrm{spot}(A,x)$ for $s\ge0$, and $\mathrm{spot}(A,x+v)=U(v)\,\mathrm{spot}(A,x)$ for $v\perp e_a$.
+- (iii) For $b\neq a$, $s\mapsto\mathrm{spot}(A,x+se_b)$ is $C^\infty$ with derivative $\mathrm{spot}(\partial_bA,\cdot)$. The weak derivative comes from the derivative law and is upgraded to a strong one.
+- (iv) $t\mapsto\mathrm{spot}(A,x+te_a)$ is real-analytic for $x_a+t>0$, because $e^{-zH}$ is holomorphic on $\mathrm{Re}\,z>0$.
+- (v) $t\mapsto S(A(te_a),B(0))$ is real-analytic for $t>0$.
+
+*Lean:* [`Ward.spot`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L55), [`link`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L64-L73), [`responds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L102-L118), [`blooms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L120-L133), [`advancing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L137-L158), [`Analysis.represents`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L19-L41), [`Ward.radial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L54-L68).
+
+**Lemma VI.1.l (transverse jets of the two-point function).** Fix $a\neq b$ and $K=K^{(ba)}$. For a pair of labels $\pi=(\pi_1,\pi_2)$ put $\Phi_\pi(x_1,x_2)=S\big(\pi_1(x_1e_a+x_2e_b),\pi_2(0)\big)$ on $\{x_1>0\}$. Define
+$$(\mathcal L\Phi)_\pi=(x_1\partial_2-x_2\partial_1)\Phi_\pi+\Phi_{(T_K\pi_1,\pi_2)}+\Phi_{(\pi_1,T_K\pi_2)} .$$
+Then:
+- $(\mathcal L\Phi)_\pi(x)=\mathcal W_K[T]\big(\pi;(x_1e_a+x_2e_b,0)\big)$;
+- $\partial_2^n(\mathcal L\Phi)_\pi(t,0)=0$ for all $n$, all $t>0$ and all $\pi$.
+
+*Proof sketch.* The first identity is the definition of $\mathcal W$, by the derivative law. At $x_2=0$ both points lie on $\mathbb Re_a$, so (L) gives $\mathcal W=0$ for all labels. VI.1.j then gives all $x_2$-derivatives. This is the only place where (L) and (C) enter the continuation.
+
+*Lean:* [`Ward.sigma`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Rows.lean#L73-L97), [`Ward.realized`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Rows.lean#L99-L116).
+
+**Lemma VI.1.m (comparison function and formal uniqueness).** Let $(r,\theta)$ be polar coordinates of $(x_1,x_2)$ with $x_1>0$. Put
+$$Q_\pi(x)=S\big((e^{-\theta T_K}\pi_1)(re_a),\,(e^{-\theta T_K}\pi_2)(0)\big).$$
+- $Q$ is real-analytic on $\{x_1>0\}$, by VI.1.k(v), finite-dimensionality of the label spaces, and the matrix exponential.
+- $\mathcal LQ=0$ identically, since $\theta$ has derivative $1$ and $r$ has derivative $0$ along the rotation field.
+- $Q=\Phi$ on $\{x_2=0\}$.
+- (Formal uniqueness.) Let $L$ be smooth on the half-plane with $L_\pi(t,0)=0$ and $\partial_2^n(\mathcal LL)_\pi(t,0)=0$ for all $n,\pi$ and $t>0$. Then $\partial_2^nL_\pi(t,0)=0$ for all $n$.
+
+  Applied to $L=\Phi-Q$: the $x_2$-Taylor series of $\Phi$ at $(t,0)$ is that of the analytic function $Q$.
+
+*Proof sketch.* Strong induction on $n$, for all $\pi$ at once. At $(t,0)$,
+$$t\,\partial_2^{n+1}L_\pi=-\partial_2^n\big(L_{(T_K\pi_1,\pi_2)}+L_{(\pi_1,T_K\pi_2)}\big)+n\,\partial_1\partial_2^{n-1}L_\pi .$$
+The right side vanishes: the first term by induction, the second because $\partial_2^{n-1}L_\pi$ vanishes on the whole half-line. Since $t\neq0$, the line is noncharacteristic.
+
+*Lean:* [`Ward.Q`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L89-L90), [`htQ`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L115-L128), [`solves`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L130-L174), [`PDE.sure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/PDE.lean#L121-L141).
+
+**Lemma VI.1.n (analytic Gram kernel).**
+- (Abstract.) Let $f:\mathbb R\to\mathcal H$ be $C^\infty$ with $\langle f(s),f(s')\rangle=A(s'-s)$, where $A$ has at $0$ the Taylor series of a real-analytic germ. Then $f$ is real-analytic on $\mathbb R$.
+- (Application.) Hence, for $x_a>0$ and $b\neq a$, $s\mapsto\mathrm{spot}(A,x+se_b)$ is real-analytic on $\mathbb R$.
+
+*Proof sketch.*
+- $\|f^{(m)}(s)\|^2=|A^{(2m)}(0)|\le C\rho^{-2m}(2m)!$ uniformly in $s$. With $(2m)!\le4^m(m!)^2$ this gives $\|f^{(m)}\|\le\sqrt C(\rho/2)^{-m}m!$ everywhere, and the Taylor remainder finishes.
+- For the application: by reflection and translation invariance, $\langle f(s),f(s')\rangle=\Phi_{(A,\Theta A)}(2x_a,s'-s)$. VI.1.m identifies its Taylor series at $0$ with that of $s\mapsto Q_{(A,\Theta A)}(2x_a,s)$.
+- Uniformity in $s$, which comes from positivity and translation invariance, is why a jet at a single point suffices.
+
+*Lean:* [`Analysis.blossoms`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L76-L96), [`bud`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L46-L74), [`builds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Rate.lean#L93-L102), [`Ward.fires`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L72-L81), [`swing`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L33-L43), [`Ward.pure`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L179-L209).
+
+**Lemma VI.1.o (analyticity at an extreme point).** Suppose that after moving $x_k$ to $x_k+se_b$, the point $k$ is strictly latest, or strictly earliest, in coordinate $a$. Then $u\mapsto S(q;x\text{ with }x_k+ue_b)$ is real-analytic at $s$, for every $b$ (including $b=a$). Hence $\mathcal W_K[T]$ is real-analytic along such a move.
+
+*Proof sketch.*
+- Translate in $e_a$ so that the other points lie in $\{y_a<0\}$ and $x_k+se_b$ in $\{y_a>0\}$.
+- Then $S=\langle\Theta(\text{word of the others}),\mathrm{spot}(q_k,\cdot)\rangle$, a bounded functional of one vector. This is analytic by VI.1.n for $b\neq a$, and by VI.1.k(iv) for $b=a$.
+- The "earliest" case reduces to the "latest" case by the reflection $\Theta_a$ with mirrored labels.
+
+*Lean:* [`Ward.higher`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Extreme.lean#L23-L69), [`last_adv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Extreme.lean#L102-L121), [`first_adv`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Extreme.lean#L131-L153), [`Ward.channel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L15-L26).
+
+**Lemma VI.1.p (walks; proof of VI.1.3).** A *walk* is a finite chain of segments. Each segment moves one point $x_k$ along $e_b$, and on the whole segment $x_k$ is strictly earliest or latest in some coordinate $a$.
+- If $\mathcal W_K[T](\cdot\,;y)=0$ (all tags) at the end $y$ of a walk, then the same holds at its start.
+- Every configuration with pairwise distinct $0$-coordinates is joined by a walk to a configuration on $\mathbb Re_0$.
+- Such configurations are dense in $\mathrm{Conf}_n$.
+
+*Proof sketch.*
+- *Propagation.* On a segment, $\mathcal W$ is analytic (VI.1.o), and all its derivatives vanish at the endpoint (VI.1.j). By the identity theorem it vanishes on the segment.
+- *Geometry.* Take the earliest point in coordinate $0$. Move it beyond all others in coordinate $1$, then beyond all others in coordinate $0$, then set its coordinates $1,2,3$ to $0$, keeping it latest in coordinate $0$. Induct on the remaining points.
+- *Density.* Add $t(0,1,\dots,n-1)$ to the $0$-coordinates.
+- *Conclusion.* (L) holds on $\mathbb Re_0$, so $\mathcal W=0$ on a dense set. $\mathcal W$ is continuous on $\mathrm{Conf}$ (VI.1.j).
+
+*Lean:* [`Ward.stood`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L60-L71), [`Walk`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L75-L78), [`along`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L79-L84), [`park1`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L36-L53), [`pushes`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L57-L74), [`line`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L86-L108), [`global`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139).
+
+### 4.5 Brackets (A07, A08)
+
+**Lemma VI.1.q (A07: erasure for the limit table).** The weak action law, together with free row erasure (`MaxwellData.frames`), implies row erasure for $S$ and $\partial$.
+
+*Proof sketch.*
+- For $d\ge N$, the free bilinear families of the kind in VI.1.4 form a finite-dimensional real space $\mathcal M$. Free erasure means that the free row tests separate $\mathcal M$, so finitely many of them do.
+- Along a scaling system, the transported actual rows converge to these, so they are injective on $\mathcal M$ at some scale $k$.
+- An actual family $\Delta$ with vanishing row sums, pulled back by $U_k$, lies in $\mathcal M$, because $U_k$ respects $M$, $\Gamma$, $\mathbf 1$ and $\iota$. Its rows are actual row sums at $r_kx$, which vanish. So $\Delta=0$.
+
+*Lean:* [`Work.A07.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A07.lean#L287-L289), [`transfer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A07.lean#L243-L285).
+
+**Lemma VI.1.r (A08: brackets).** This is Proposition VI.1.4.
+
+*Proof sketch.*
+- Let $\mathcal O_u$ be the orbital derivative along $x_i\mapsto ux_i$ for all points at once. VI.1.3 says $\mathcal O_uS(q)=-\sum_iS(\dots,T_uq_i,\dots)$ on the open set $\mathrm{Conf}$.
+- Apply it twice: $\mathcal O_u\mathcal O_vS=\sum_{i,j}S(\dots T_uq_j\dots T_vq_i\dots)$. Linear vector fields satisfy $[\mathcal O_u,\mathcal O_v]=-\mathcal O_{[u,v]}$.
+- Subtracting, the off-diagonal terms cancel. So the defect $\Delta(u,v)=[T_u,T_v]-T_{[u,v]}$ has vanishing row sums.
+- By compatibility of $T$ and $\sigma[u,v]\sigma^{-1}=[\sigma u\sigma^{-1},\sigma v\sigma^{-1}]$, $\Delta$ is a family of the kind in VI.1.4. Erasure gives $\Delta=0$ for $d\ge N$.
+- Lower degrees follow by injecting into degree $\max(d,N)$.
+
+*Lean:* [`Work.A08.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247), [`orbital_comm`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L62-L68), [`orbit_twice`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L91-L107), [`defect_winds`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L192-L205), [`defect_ward`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L209-L230).
+
+### 4.6 Descent of the free rotation action (`YM/Spin`, A09–A12)
+
+Fix $d$. Index the generators by ordered pairs $\pi=(i,j)$, with $K_\pi=E_{ij}-E_{ji}$ and $C_\pi=\mathcal L^{\rm free}(K_\pi)$ on $F^{\rm free}_d$. For tuples $B,C$ of operators on $F^{\rm free}_d$ define
+- $\mathrm{ad}_{B,C}(X)=BX-XC$ on $\mathrm{End}\,F^{\rm free}_d$;
+- $\Omega(B,C)=\sum_\pi\mathrm{ad}_{B_\pi,C_\pi}^2$, the relative Casimir.
+
+A tuple satisfies the *perfect relations* `rel` if $X_{ij}=[X_{ik},X_{kj}]$ for a fixed $k\notin\{i,j\}$. Any $\mathfrak{so}(4)$ representation does (A09).
+
+**Lemma VI.1.s (A12: the intertwiner projection).** There is a real polynomial $z$ such that $P=z(\Omega(C,C))$ satisfies:
+- $P^2=P$;
+- $P(\mathrm{id})=\mathrm{id}$;
+- $\mathrm{ad}_{C_\pi,C_\pi}P=0$ for all $\pi$.
+
+So $P$ projects onto the commutant of the $C_\pi$, along $\mathrm{range}\,\Omega$.
+
+*Proof sketch.*
+- Haar averaging over $O(4)$ gives an inner product on $\mathrm{End}\,F^{\rm free}_d$ in which every $\mathrm{ad}\,C_\pi$ is skew (unitarian trick). So $\Omega$ is self-adjoint, $\ker\Omega=\bigcap_\pi\ker\mathrm{ad}\,C_\pi$, and $\ker\Omega^2=\ker\Omega$.
+- Cayley–Hamilton, with the powers of $X$ removed, gives a real $z$ with $z(0)=1$ and $\Omega z(\Omega)=0$.
+
+*Lean:* [`Work.A12.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A12.lean#L323-L336), [`Spin.Works`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L68-L71), [`wave`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L57). It enters as `MaxwellData.marks`.
+
+**Lemma VI.1.t (approximate to exact intertwiners).**
+- (i) *Purification.* In a Banach algebra, let $Z_n\to z$ with $z^2=z$. For large $n$, the iterates of $\varphi(x)=3x^2-2x^3$ starting at $Z_n$ converge to idempotents $P_n\to z$, with $\|P_n-Z_n\|\le2C\|Z_n^2-Z_n\|$. This uses $\varphi(x)-x=(1-2x)(x^2-x)$ and $\mathrm{def}(\varphi x)=(4\,\mathrm{def}\,x-3)(\mathrm{def}\,x)^2$, where $\mathrm{def}\,x=x^2-x$.
+- (ii) *Norm gap.* If operators $D_\pi$ satisfy the perfect relations and all $\|D_\pi\|<\tfrac12$, then all $D_\pi=0$, since $\max\|D\|\le2\max\|D\|^2$.
+- (iii) *Exact intertwiners.* Assume:
+  - tuples $B_n\to C$, with $B_n$ (eventually) and $C$ satisfying the perfect relations;
+  - $P=z(\Omega(C,C))$ is as in VI.1.s;
+  - there is a closed subring $\mathcal S\ni\mathrm{id}$ of $\mathrm{End}\,F^{\rm free}_d$ such that, eventually, $z(\Omega(B_n,C))$ maps $\mathcal S$ into itself and commutes with every $\mathrm{ad}_{B_{n,\pi},C_\pi}$.
+
+  Then for large $n$ there is an invertible $f\in\mathcal S$ with $B_{n,\pi}f=fC_\pi$ for all $\pi$.
+
+*Proof sketch of (iii).*
+- Work in $\mathrm{End}(\mathrm{End}\,F^{\rm free}_d)$ with $D_\pi(n)=\mathrm{ad}_{B_{n,\pi},C_\pi}$. These satisfy the perfect relations and converge to $\mathrm{ad}_{C_\pi,C_\pi}$.
+- $z(\Omega(B_n,C))\to P$. Purify it to idempotents $Q_n$. Since $\varphi$ is a polynomial, $Q_n$ still preserves $\mathcal S$ and commutes with $D_\pi(n)$.
+- The compressions $D_\pi(n)Q_n$ satisfy the perfect relations and tend in norm to $\mathrm{ad}_{C_\pi,C_\pi}P=0$. By (ii) they vanish for large $n$.
+- Then $f_n=Q_n(\mathrm{id})\to P(\mathrm{id})=\mathrm{id}$, so $f_n$ is invertible. It lies in $\mathcal S$, and $\mathrm{ad}_{B_{n,\pi},C_\pi}f_n=0$.
+- No complete reducibility of the representation $D=c^{-1}Y$ on $F_d$, and no Lie integration for it, is used.
+
+*Lean:* [`Spin.rectify`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Isolates.lean#L25-L69), [`stable`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Isolates.lean#L72-L98), [`enough`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Close.lean#L27-L38), [`onto`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Close.lean#L42-L70), [`realize`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L77-L93), [`Tracks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L74-L75).
+
+**Lemma VI.1.u (the tilt and the descent; proof of VI.1.5).** Let $D=c^{-1}Y$ satisfy the Ward identity on $\mathrm{Conf}$.
+- **Choice of $U_n$.** Choose a scaling system along which VI.1.g holds at degrees $d$ and $4$, and put $U_n=U_{k_n,d}$.
+- **Convergence.** At degree $4$, $p=c\,\partial$ and VI.1.g give $c/\xi_k\to\kappa$. Hence $U_n^{-1}DU_n\to\mathcal L^{\rm free}$.
+- **Inputs of VI.1.t(iii).** These are the *tilt* ([`Spin.Tilt`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L116-L122)):
+  - $U_n$ intertwines $M$ and $\Gamma$ (track);
+  - $D$ satisfies the perfect relations, by A08 (with erasure from A07) and A09;
+  - $\mathcal L^{\rm free}$ satisfies them by `optic`, and VI.1.s holds for it by `marks`;
+  - for $\mathcal S=\{X:X$ preserves the closed subspace $\mathcal F$ of maps commuting with the free $M$ and $\Gamma\}$, the polynomials $z(\Omega(U_n^{-1}DU_n,C))$ lie in $\mathcal S$ (A11: real coefficients, and the sign of $\sigma$ appears twice in each square) and commute with the relative generators (A09).
+- **Exact intertwiner.** VI.1.t gives $f_n$. Put $V_d=U_nf_n$. Then $V_d$ intertwines $M$ and $\Gamma$, and $D_{K_\pi}V_d=V_dC_\pi$. By linearity this holds for all $K$.
+- **Port.** $R_d=V_dR^{\rm free}_dV_d^{-1}$ inherits continuity, the group law, $R(\sigma)=M_\sigma$, reality, and the generator $D$.
+
+*Lean:* [`Bid.services`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L124-L157), [`Bid.currencies`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L80-L90), [`Bid.imaginary`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L102-L122), [`Work.A09.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A09.lean#L85-L90), [`Work.A11.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A11.lean#L199-L206), [`Spin.fine`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L55-L64), [`Spin.meet`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L134-L157), [`Spin.produces`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L26-L47), [`Climb.descends`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L90-L98). *(proof read; A04, A05 inputs as in VI.1.g)*
+
+### 4.7 Integration to $O(4)$ (A13, A14)
+
+**Lemma VI.1.v (A13).** $O(4)$ is generated by $B_4$ and the one-parameter groups $e^{tK}$, $K\in\mathfrak{so}(4)$.
+
+*Proof sketch.* $O(4)$ is generated by hyperplane reflections (Cartan–Dieudonné). The reflection in $v^\perp$ equals $g^{-1}R_0g$, where $R_0$ is a coordinate mirror and $g$ is a product of plane rotations $e^{t(E_{ij}-E_{ji})}$ that turn $v$ onto $e_0$ (Givens rotations).
+
+*Lean:* [`Work.A13.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200), [`reflection_conjugate`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L151-L174).
+
+**Lemma VI.1.w (A14: covariance and laws).** This is Proposition VI.1.6.
+
+*Proof sketch.*
+- The set of $k$ with $S(R(k)v;kx)=S(v;x)$ for all $v,x$ is a subgroup of $O(4)$.
+- It contains $B_4$, since $R(\sigma)=M_\sigma$ and $S$ is $B_4$-covariant.
+- It contains each $e^{tK}$. The function $f(t)=S(R(e^{tK})v;e^{tK}x)$ is differentiable, and by the group law $f'(t)$ is $\mathcal W_K[T]$ at the moved data, which is $0$. So $f$ is constant.
+- By A13 the subgroup is all of $O(4)$.
+- The rotation laws:
+  - $R(k)\mathbf 1=\mathbf 1$: apply covariance, delete the unit insertion, apply covariance again;
+  - commutation with $\iota$: covariance plus the inclusion law ([`Spin.team`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L50-L69));
+  - the vector law: differentiate the covariance identity and use the chain rule for $x\mapsto kx$;
+  - the remaining fields are those of the port.
+
+*Lean:* [`Work.A14.oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L277-L292), [`cov_parameter`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L245-L261), [`unit_fixed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L310-L325), [`vectorLaw`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L364-L398), [`laws_of_oriented`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L403-L415).
+
+### 4.8 The averaged stress tensor (A15)
+
+**Lemma VI.1.x (A15: Haar averaging).** Put $J_0=c^{-1}J$, so that $(J_0;\partial,c^{-1}Y)$ satisfies the stress laws. Define
+$$J'=\int_{O(4)}k\cdot J_0\,d\mu(k),\qquad (k\cdot J)_{ab}=\sum_{ij}k_{ai}k_{bj}\,R_4(k)J_{ij},$$
+with $\mu$ normalised Haar measure on $O(4)$. Then $J'$ satisfies Proposition VI.1.7.
+
+*Proof sketch.*
+- $k\cdot$ is a linear group action on the finite-dimensional space of stresses. Fixed points are exactly the tensorial stresses, and invariance of $\mu$ makes $J'$ fixed.
+- Each $k\cdot J_0$ is conserved: symmetry by the index structure, reality by the reality law, divergence by the vector law.
+- Each $k\cdot J_0$ satisfies the same stress laws. Substitute $y\mapsto ky$ and use the window $\chi\circ k$ at $k^{-1}x$; pull the labels back by $R(k^{-1})$; use covariance of $S$.
+  - The translation weight $e_b$ becomes $k^{-1}e_b$. The right side is independent of $k$ by the vector law.
+  - The weight $K(y-x_0)$ becomes $k^{-1}Kk$ centred at $k^{-1}x_0$. The right side is independent of $k$ by A10: $R(k)\,\mathcal L_K=\mathcal L_{kKk^{-1}}\,R(k)$.
+- All the conditions are linear, so they pass to the integral.
+
+*Lean:* [`Work.A15.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192), [`normalize_flux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L22-L41), [`averageStress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L86), [`tensorial_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L117-L118), [`conserved_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L134-L154), [`stressLaws_average`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L156-L183), [`rotate_flux`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15/Transfer.lean#L124-L168), [`Work.A10.answer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A10.lean#L113-L115).
+
+### 4.9 Lorentz group, and assembly
+
+**Lemma VI.1.y (A16, A17 and the descended Lorentz action).** This is Proposition VI.1.8.
+
+*Proof sketch.*
+- *(a) Generation.* Let $\Lambda\in SO^+(1,3)$. Then $\Lambda e_0$ is future timelike. Three coordinate boosts, with rapidities $-\mathrm{artanh}(y_i/y_0)$ where $y=\Lambda e_0$, bring it to $e_0$. The resulting element fixes $e_0$, so it is a spatial rotation.
+- *(b) Compatibility with inclusions.* Induct over the generators.
+  - Spatial rotations: here $B$ is the transported rotation action, which commutes with $\iota$ by VI.1.6.
+  - Boosts: $t\mapsto B_e(\mathrm{boost}_i(t))\iota v$ and $t\mapsto\iota B_d(\mathrm{boost}_i(t))v$ both solve $f'=G f$ with $G=-i\,D_{K^{(0i)}}$, and they agree at $t=0$. Here $G$ commutes with $\iota$, which follows by differentiating the inclusion law of $R$. Uniqueness for the linear ODE finishes.
+- *(c) Descent.* `wand` and the unique lift to the union of label spaces give the representation. Its descent properties transfer from the free action through $V$ ([`Spin.transmits`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L30-L37)).
+
+*Lean:* [`exists_rest`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L82-L89), [`run_boost`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L70-L84), [`rise_generator`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L57-L68), [`Spin.run`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L21-L22), [`Spin.reach`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L39-L74).
+
+**Lemma VI.1.z (assembly).** This is Proposition VI.1.9. The clauses of `Commission` are discharged as follows:
+- `shape`: A01, A02, the collinear identity (VI.1.1) and A03;
+- `scales`: VI.1.h and VI.1.i;
+- `lens`: VI.1.u;
+- `group`: A14 with A13;
+- `retune`: A15 with A10;
+- `generate`: A17 with A16.
+
+`Commission.picks` then composes these:
+- `scales` gives $c$;
+- `Climb.descends` combines VI.1.3 for $c^{-1}Y$ with `lens` and `Spin.produces` to give $V$, the port and the Ward identity;
+- `group` and `retune` give the local laws;
+- the comparison of each $F_d$ with $F^{\rm free}_d$ is read off the weak action law;
+- `Spin.reach` gives the Lorentz action.
+
+*Lean:* [`Bid.station`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168), [`Commission.picks`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L45-L53), [`Climb.comparison`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L53-L63).
+
+### 4.10 Remark: free-field stress algebra (`STRESS_FLUX`, used part)
+
+The parts of `STRESS_FLUX` used by the main theorem are finite-dimensional algebra about the free stress. In the free table:
+- For simple $G$, adjoint-invariant linear forms vanish, and invariant bilinear forms are multiples of the inner product.
+- Gauge-invariant composites of weight $\le5$ have explicit normal forms.
+- The real symmetric $B_4$-covariant $2$-tensors of weight $4$ form a space of dimension $\le4$, spanned by the four-parameter family
+$$T_{ab}=\delta_{ab}\Big(w_0+w_1\sum_i\langle F_{ai},F_{ai}\rangle+w_2\sum_{ij}\langle F_{ij},F_{ij}\rangle\Big)+(1-\delta_{ab})\,w_3\sum_i\langle F_{ai},F_{bi}\rangle .$$
+  The Maxwell stress is $w=(0,1,-\tfrac14,1)$.
+- Wick's theorem computes the free one- and two-point tests. Centring and conservation force $w=w_3\cdot(0,1,-\tfrac14,1)$.
+
+These facts feed VII.2's statement that, in the free table, the divergence is onto with one-dimensional kernel ([`free_rank`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/PHYSICAL_PERIOD_LIMIT_F933/FreeRanks.lean#L159-L165)). They are not used in the Ward chain above.
+
+*Lean:* [`bilinear_invariant`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Color.lean#L79-L91), [`finrank_two`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L129-L167), [`finrank_one`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L190-L231), [`stress_tensor`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L202-L214), [`div_kernel`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeTests.lean#L177-L184), [`stress_bijective`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeTests.lean#L227-L235).
 
 ## 5. Where the difficulty lies
 
-*Hard and new.* (1) The passage from the collinear Ward identity (VI.1.d) to all separated configurations (VI.1.f–k). The usual argument for Euclidean covariance in a continuum limit of a lattice theory would prove a Ward identity for the stress tensor as an operator identity; here it is proved at the level of kernels at separated points, and the extension from a line uses a reflection-positive Hilbert space and analyticity of the kernel in the transverse direction. This is the least standard step and I would expect the writer to need a proof in the language of analytic vectors (Nelson/Goodman). (2) The outer spectral estimate behind `Outer.drained` (the `blows` estimate in `ROTATIONS/*`, `Axis/*`), which shows that the exterior part of the angular flux vanishes in the limit; it uses the spectral measure of the transfer operator along a line, and its length (several thousand lines in the folders filed with the "outer" estimate) comes from the choice of scales $\lambda^{-100},\lambda^{-150},\lambda^{-300},\lambda^{-3000}$ and from tracking contact terms on test functions (not read). (3) The descent from the free Maxwell action to the table (VI.1.m): the code constructs the changes of basis from the free side, instead of integrating the $\mathfrak{so}(4)$ representation on the quotient label spaces.
+*Hard and new.*
+1. **The exterior flux estimate (VI.1.e), about 6,000 lines.** This is where Euclidean invariance is not spontaneously broken. Its two genuinely hard parts are:
+   - the infrared sub-power bound, which has no gap: the sign alternation between axes of opposite parity, with moment orders chosen backwards;
+   - the diagonal (mass) estimate, which pins the two-point function of $J$ at small frequencies by combining tested conservation with spectral positivity.
 
-*Routine but long.* A01–A03 (diagram chases on the label structure against all kernels), A15 (Haar averaging), A13 (Givens elimination), A16, and the bookkeeping of `Town.lean`.
+   The exponent hierarchy $100/150/300/3000$ is forced: with equal widths the shear case misses the needed power.
+2. **The continuation off the line (VI.1.j–p).** The idea is that the collinear Ward identity determines the full transverse Taylor series of the two-point function, through an explicit analytic comparison function. Positivity then converts a jet bound at one point into analyticity on the whole line.
+3. **The descent (VI.1.s–u).** It replaces the integration of an $\mathfrak{so}(4)$ action by a perturbative construction of exact intertwiners with the free action.
 
-*Unusual.* (a) The unit proves *conditional* statements about a bundle of hypotheses (`UV`, `IR`, `MaxwellData`), and the first two fields of `MaxwellData` documentation say "Not proven"; whether they hold for the constructed theory is decided elsewhere. (b) Orthogonal invariance of the limit is not obtained from a decay assumption or from an a priori continuous action; the whole $O(4)$ action is manufactured from the free theory. This is stronger than what the Ward identity alone would give, and it works because $F_d$ is finite-dimensional and the free action is explicitly known; it is not established whether the written proof can avoid the almost-idempotent perturbation. (c) The constant $c$ in $p=c\,\partial$ is determined only through the free comparison (the limit of the scale factors $c/\xi_k$ equals $\kappa$), so the physical normalization of the stress tensor ultimately rests on the `ActLaw` produced in the ultraviolet part. (d) Some modules of `Shift` belong mathematically to the reconstruction (boundary values on tubes, V.2): the declaration table assigns `Boundary.Waves.Along`, `Bounds`, `Breathes`, `Lines` to VI.1 but `Opens`, `Region`, `NonTangentialFree` to V.2 (probable misfiling).
+*Routine but long.* A01–A06 (testing identities against windows and scaling limits), A07, A08, A13–A17, and the assembly.
+
+*Unusual.*
+- (a) Rotation invariance of the limit is obtained with no mass gap and no clustering. It uses only reflection positivity, the polynomial bounds and conservation.
+- (b) The rotation part $Y$ of the shell law is not assumed to be a Lie action. Brackets, normalisation and integrability all come out of the Ward identity and the free comparison.
+- (c) The $O(4)$ action is constructed separately on each $F_d$. Compatibility across degrees comes only afterwards, from covariance of $S$. The isomorphism type of $F_d$ as an $O(4)$-module is fixed by the free theory.
+- (d) $c$, and with it the normalisation of $J'$ in (13), is determined only through the free comparison ($c/\xi_k\to\kappa$).
+- (e) Several hypotheses of the work items are unused:
+  - A01 and A08: orientation;
+  - A02: inclusions and conservation;
+  - A04: the meter;
+  - A15: inclusions, derivatives and orientation.
 
 ## 6. Notation
 
 | object | code name | proposed notation |
 |---|---|---|
-| limit table, label spaces, tags | `Table`, `Field d`, `Tag` ([`Table.Stress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L57) etc.) | $S$, $F_d$, $(d,v)$ |
-| separated configurations | `conf n` | $\mathrm{Conf}_n$ |
-| label derivative | `DiffPlan.deriv d a` | $\partial_a:F_d\to F_{d+1}$ |
-| unnormalized stress | `Stress S` = $a,b\mapsto F_4$ | $J_{ab}\in F_4$ |
-| raw translation shell map | `Climb.Parts`, `p` | $p_a:F_d\to F_{d+1}$ |
-| raw rotation shell map ("spin rows") | [`Ward.SpinRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L17), `Y` | $Y_K$, $K\in\mathfrak{so}(4)$ |
-| shell integrals | `shellGrad`, `shellSpin` | $\Phi^{\rm tr}_\chi$, $\Phi^{\rm rot}_\chi$ |
-| window | [`Table.Window`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73) | $\chi$ |
-| raw hypotheses | `Climb.Pre` | (R) |
-| angular Ward sum; its vanishing | [`Ward.angular`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L25-L27), `Still` | $\mathcal W_K(q;x)$, $\mathcal W\equiv0$ |
-| collinear Ward identity; line sum | `localTurn`, `LineSum`, `Miles` | $\mathcal W^{\rm line}$ |
-| crystal (normalized shell maps) | `Climb.Crystal` | $p=c\,\partial$, $Y'=c^{-1}Y$ |
-| free Maxwell comparison | `MaxwellData`, `Climb.Bel`, `Lighthouse` | $(F^{\rm Max}_d,\partial^{\rm Max},R^{\rm Max},J^{\rm Max},\kappa)$ |
-| scaling system | `Climb.Scaling` | $(r_k,\xi_k)$ |
-| weak action law | `Climb.ActLaw`, `Track` | (W) |
-| tilt; descent | `Spin.Tilt`, `Spin.produces` | $U_n$, $V_d$ |
-| rotation action | `Table.Rotation` (`act`, `lie`) | $R_d(k)$, $\mathrm{Lie}_d(K)$ |
-| laws of the rotation action; orientation | `Rotation.Laws`, `Oriented` | (R1)–(R9), (O) |
-| averaged stress | `averageStress` | $J'=\int R(K)J_0\,dK$ |
-| conserved; tensorial | `Table.Conserved`, `Tensorial` | $\partial^aJ'_{ab}=0$, (T) |
-| Lorentz action on labels; boost invariance of inclusions | `Spin.run`, `Spin.wand` | $B_d(g)$ |
-| assembled record | `Org.Commission`, `Org.Tab` | $(c,U,J')$ |
+| label spaces, tags, inclusions, unit | `Field d`, `Tag`, `rise`, `unit` | $F_d$, $(d,v)$, $\iota$, $\mathbf 1$ |
+| signed permutations, conjugation | `Signed`, `mirror`, `conj` | $B_4$, $M_\sigma$, $\Gamma$ |
+| differential plan and its laws | `DiffPlan`, `Derivatives`, `Inclusions`, `Orientation` | $\partial_a$; derivative, inclusion, orientation laws |
+| stress, window, shells | [`Table.Stress`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L57), `Window`, `shellGrad`, `shellSpin` | $J_{ab}\in F_4$, $\chi$, $\Phi^{\rm tr}_\chi$, $\Phi^{\rm rot}_\chi$ |
+| raw shell maps; raw hypotheses | `Climb.Parts` ($p$), [`Ward.SpinRows`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L17) ($Y$); `Climb.Pre` | $p_a$, $Y_K$; (R) |
+| angular sum; its vanishing | `localTurn`, `Ward.angular`; `Still`, `Collinear`, `commutes` | $\mathcal W_K[Y,p]$, $\mathcal W_K[T]$; (L), (C) |
+| line sums, transversality | `LineSum`, `Climb.transverse` | line sums, transverse |
+| colour space and law | `Colors`, `ColorLaw` | colour space |
+| normalised data | `Climb.Crystal` | $p=c\,\partial$, $D=c^{-1}Y$ |
+| free data | `MaxwellData`, `Climb.Bel`, `Lighthouse`, `Goes` | $F^{\rm free}_d,\partial^{\rm free},R^{\rm free},\mathcal L^{\rm free},J^{\rm free},\kappa$ |
+| scaling system, track, weak law | `Climb.Scaling`, `Track`, `ActLaw`, `aisle` | $(r_k,\xi_k,U_{k,d})$, $\mathrm{aisle}_k$ |
+| cutoff field | `petal`, `vane`, `fuel` | $\mathrm{petal}_{ab}$, $\lambda=e^n$ |
+| OS vector of one insertion | `spot`, `OS.Chamber` | $\mathrm{spot}(A,x)\in\mathcal H_a$ |
+| row erasure | `erases`, `Winds` | erasure |
+| compatibility of spin rows | `Bid.Hyper` | compatible |
+| perfect relations, Casimir projection | `Spin.rel`, `wave`, `Works`, `effect` | `rel`, $z(\Omega(B,C))$, $\mathrm{ad}_{B,C}$ |
+| tilt, intertwiners | `Spin.Tilt`, `realH`, `change` | $U_n$, $V_d$ |
+| port, transported action | `Spin.Port`, `Spin.morph`, `Org.mill` | $R_d(k)=V_dR^{\rm free}_d(k)V_d^{-1}$ |
+| rotation laws, covariance | `Rotation.Laws`, `Rotation.Oriented` | rotation laws; $S(R(k)v;kx)=S(v;x)$ |
+| conserved, tensorial; average | `Conserved`, `Tensorial`, `averageStress` | $J'=\int k\cdot c^{-1}J\,d\mu$ |
+| Lorentz action on labels | `Spin.run`, `wand`, `Boundary.Spins`, `Descends` | $B_d(\Lambda)$ |
+| record | `Org.Commission`, `Org.Tab`, `Spec.Locals` | $(c,V,J')$; local laws |
 
-Glossary translations used: *Treasury/Jewel/prices/tariffs* do not occur in this unit. The code words for this unit are *bid* (a numbered proof request A01–A17), *answer* (its proof), *Port* (a continuous rotation action with the right infinitesimal generators), *Hyper* (compatibility of the spin rows with the label structure), *Crystal* (normalized shell maps), *Lighthouse* (free Maxwell comparison with the stress tensor and constant $\kappa$), *Tilt* (approximate intertwiners converging to the free Lie action), *Miles* (the outer spectral estimate in the form needed), *Commission/station* (the assembly), *wand* (boost invariance of the inclusions) and *Still* (vanishing of the angular sum).
+Glossary words used in this unit:
+- *bid*: a numbered proof request A01–A17; *answer*: its proof;
+- *Port*: a continuous action of $O(4)$ with given generators;
+- *Hyper*: compatibility of spin rows;
+- *Crystal*: the normalised data;
+- *Lighthouse*: free Maxwell data with Ward constant $\kappa$;
+- *Tilt*: approximate intertwiners;
+- *Miles*: the collinear identity;
+- *Budget*: an eventual bound $C\lambda^a$;
+- *Commission*/*station*: the assembly;
+- *wand*: compatibility of the Lorentz action with inclusions;
+- *Still*: vanishing of the angular sum.
 
-## 7. Open points for the writer
+## 7. What remains unexplained
+1. **Unread parts of the flux estimate.** The overall mechanism of VI.1.e was read. The following were read only in statement or outline (probable):
+   - the remote-gap profiles (`GapTest`);
+   - the odd "tail" variant (`Nodal`, `Mode`, `Odd`);
+   - the contact extension of the two-point function of $J$ to product tests, and its vanishing on low-degree monomials (`Collision`, `Fold`, `Journal`);
+   - `MomentFD`, `Nodes`.
 
-1. **What the unit proves versus assumes.** The six clauses of `Commission` are proved as consequences of the hypotheses `UV`, `IR`, `MaxwellData` plus inclusion and derivative laws. None of these hypotheses is established in this unit. Check, in the final assembly (VIII.1), that the records are produced for the same table, differential plan and family (per the seams analysis: `Acme.emanate`, `Run.extractible17`, `Pert.fromBaseline`), and that `MaxwellData.frames` (`erases`) holds in the free theory (the code needs `G.Simple` for it).
-2. **Where the raw shell laws come from.** `Climb.Pre` is a field of `UV`; it is produced from the lattice by `STRESS_FLUX` under `ShellGate`, which (per its docstring) is an outstanding gate, not a proof. The consumer modules (`Consumer`, `FreeBridge`) have been checked, but only the docstrings of the lattice modules have been. It is open whether this unit or the ultraviolet/comparison unit (VII.1, VII.6) should own VI.1.8 and the Wilson-side proof of conservation, and what `ShellGate` means in terms of the chessboard budgets (III.15, IV.1).
-3. **Ownership of the outer spectral estimate.** `Outer.outer` and `Outer.miles` are listed under III.6 and `Bid.station` under III.10 in the declaration table, though they belong to this assembly and are used only by it. The mathematics is the vanishing of the angular flux on a line and sits at the start of the Ward argument. The reduction in the `Route` module has been checked, but not the estimate `Outer.blows` (in the rotation and axis modules); the strategy in §4.2 is taken from the docstring and the reduction in `Route` (tentative).
-4. **Analytic continuation.** The modules `Ket`, `Genuine`, the end of `Circles`, `Sum`, `Walk` and `Axis` have been checked, but not `PDE`, `Rows`, `Rate`, `Plants`, `Extreme`, `Motion`. The account of how the Taylor series of the Gram function is matched with an analytic germ (VI.1.g) is taken from the docstrings and the structure of `Circles.pure` (probable). The reflection-positive Hilbert space that is used (`Chamber`, `spot`, `realization`) comes from V.1/V.2, and its exact hypotheses remain to be checked.
-5. **Descent of the rotation action.** The `Shape`, `Isolates` and `Close` modules of the spin part and A12 have not been checked; the almost-idempotent argument in VI.1.m is taken from docstrings (tentative). The mathematical statement to be proved is: if finite-dimensional representations $\rho_n$ of $\mathfrak{so}(4)$ converge to a representation $\rho$ of $\mathfrak{so}(4)$ which integrates to a representation of $O(4)$, then for large $n$ the $\rho_n$ are conjugate to $\rho$ by an isomorphism close to a given one and compatible with the structure maps (mirrors, conjugation). This is true by standard Lie theory (semisimplicity and Weyl's theorem on complete reducibility) for any finite-dimensional representation of the compact Lie algebra $\mathfrak{so}(4)$, but the code explicitly avoids "assuming complete reducibility" (docstrings of `Shape`, `Close`), because the $\rho_n$ are not known to be unitary. This step may admit a simplification: the $Y'_K$ satisfy the $\mathfrak{so}(4)$ brackets exactly on each finite-dimensional $F_d$ (VI.1.l), so $F_d$ is a finite-dimensional representation of the *Lie algebra* $\mathfrak{so}(4)$, which is semisimple; then the Weyl theorem gives complete reducibility, and the representation of the simply connected cover $\mathrm{Spin}(4)$ exists. What is not automatic is that it factors through $SO(4)$ (integer spin) and extends to $O(4)$ compatibly with the mirrors. Whether the comparison with the free action is needed for that (it fixes the isomorphism type of each $F_d$ as a representation) remains to be checked (tentative).
-6. **Absence of spontaneous breaking.** The claim that Euclidean invariance of the limiting state is obtained from fall-off of the flux of stress-energy at infinity, by an "intricate argument using reflection positivity in multiple orthogonal planes", does not appear in the unit. The orientation $S(R(k)v;kx)=S(v;x)$ in VI.1.o is proved from the local Ward identity at separated points alone, without any decay. This is believed correct because the Ward identity at separated points is already a statement about all the kernels of the (mixed) table, and the issue of spontaneous breaking appears for phases (V.1), not for the mixed table. It remains to identify where this phrase corresponds to a Lean statement (probably in V.1/V.3, where the statement is made for each phase; A-items are used by `Phase.Loom`, B06 and B09).
-7. **The translation Ward identity of the public statement.** Equation (13) is the translation law of `StressLaws` for $J'$ with $Y=\partial$. The remaining normalization of $J'$ (the one-dimensional real space of conserved tensorial centered stresses, and the sign and size fixed by (13)) is handled in the identification units (VII.2) and in `Tune`/`FreeBridge`; it has not been checked that the $J'$ of VI.1.5 agrees with the stress tensor of the public statement up to the centering (subtraction of the one-point function).
-8. **Lorentz covariance.** A17 gives boost invariance of the *inclusions* in the transported free Maxwell action, not covariance of the Wightman functions; the latter is C09 (V.2, V.3), which uses A16 and the `Shift` modules (tube germs and boosts). The role of the boundary-descent modules (descent of the boost action on the boundary values: `Descends`, `Decomposition`, `Parallel`) in this unit should be settled together with V.2; only the docstrings have been checked.
-9. **Sizes.** The 7,704 lines include `STRESS_FLUX` (1,063), `Shift` (618, partly V.2) and `Next/BOUNDARY` (272, partly V.2); the Ward proper is about 1,100 lines, the A-items and `Spin`/`Climb` about 5,700.
+   Which fields of the axioms the OS construction uses (in particular smeared reflection positivity) was not traced. A written proof should probably present VI.1.e as a self-contained theorem about a reflection-positive table with polynomial bounds and a conserved symmetric stress.
+2. **Ownership.** Assignments in the declaration table:
+   - The flux chain (`Outer.*`, about 6,000 lines) is filed under III.6, and `Bid.station`/`masts` under III.10. Both belong here; the III.6 note agrees.
+   - `Org.Tab`, `Commission`, `MaxwellData`, `IR`, `UV` are filed under VIII.1.
+   - `Shift` and most of `Next/BOUNDARY` (boundary values, tube holomorphy, Wightman cores), assigned to this unit, belong to V.2. Here only `Spin.reach` constructs the Lorentz action. `BOUNDARY.spins_eq` (uniqueness of descended Lorentz actions) is filed under VIII.1. (`Shift`/`BOUNDARY` placement from a reader's report: tentative.)
+3. **Inputs.**
+   - (R), the weak action law and the free data are hypotheses here. Per the seams analysis and VI.2 they are produced without residual assumptions: `current_ready`, `produce_current` and `shells_law`/`shells_operate` in VI.2 and `Acme.readyA`; free erasure needs $G$ simple.
+   - VI.2 itself carries the comparison hypothesis `Stations`/`Granular`, so the chain is unconditional only once VI.2's inputs are discharged in the ultraviolet units.
+   - The lattice Ward identities in `STRESS_FLUX` (`Discrete`, `Ward`, `Annular`, `Pass`, `Consumer.ShellGate`, `FreeBridge`) are **not** used by the main theorem. An earlier draft treated them as the source of (R).
+4. **Normalisation and centring of $J'$.** $J'$ is fixed by (13) with coefficient exactly $1$ for $\partial$. It is not centred. The centred trace is formed in VII.2 (`TraceExtension.center`). Whether conserved tensorial stresses on $S$ form a one-dimensional space is decided in VI.2 (`differential_rank`). The sign of $c$ is not fixed here: the field named `positive` only says $c\neq0$. Confirm consistency with the sign convention $\kappa=-\tau$ of VI.2.
+5. **Possible simplification of the descent.** The $D_K$ satisfy the $\mathfrak{so}(4)$ brackets exactly. Finite-dimensional representations of a semisimple Lie algebra are rigid (Whitehead's lemma), so the closeness $U_n^{-1}DU_n\to\mathcal L^{\rm free}$ already implies conjugacy. Compatibility with $M$ and $\Gamma$ could then be restored by averaging over the finite group they generate. VI.1.s–u is a hands-on version of this, and a written proof may cite rigidity instead (tentative).
+6. **Library facts not re-read.** Assumed from IV.1: the slot-derivative rule, the deletion of a unit insertion, $\partial_a\partial_b=\partial_b\partial_a$, and injectivity of $\iota$. Also not re-read: the Mathlib lemmas on generation of $O(4)$ and the bracket of linear vector fields.
 
 **Builds on:** [I.1](I-1.md), [IV.1](IV-1.md), [III.16](III-16.md), [V.2](V-2.md), [V.1](V-1.md), [VIII.1](VIII-1.md), [III.10](III-10.md).
 

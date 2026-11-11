@@ -214,7 +214,7 @@ The maximum of an empty degree list is taken to be $0$. The displayed exponent f
 
 2. **Centered chessboard budgets** (interface item 2). A sufficient volume-uniform input is the following: for every degree $d$, every $R>0$ and every $\varepsilon>0$ there is $A\ge0$ such that for every $m\ge\mathrm{ref}(d)$ there is $N_0\ge m$ with the following property. For all $N\ge N_0$, all $p$, all $v\in\mathrm{Label}_d$ with $\|v\|\le R$, and all sites $x$:
 
-   - $I_{N,p}(v,x)$ is an interior function of the base cell of the centered tiling $\mathcal T_m(x)$ (bond seams, cells of side $a_m$, $x$ at the centre of the base cell);
+   - $I_{N,p}(v,x)$ is an interior function of the base cell of the centered tiling $\mathcal T_m(x)$;
 
    - $\|I_{N,p}(v,x)\|_{\mathcal T_m(x)}\le A\,a_m^{-d-\varepsilon}$.
 
@@ -640,8 +640,7 @@ Three distinctions matter:
 | zeroth-order polynomial bound | [`Bid.OneCap`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L97-L98) | IV.1.5 |
 | bundle handed downstream | [`Next.Extract.Base`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L42-L51) | — |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Ultraviolet relay and rank estimates.** The interfaces in [`MergeProof.Scotia`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Eureka.lean#L16-L20) and [`savings`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L47) were checked, together with their use in the dimension argument. The upstream proofs of the matching estimates and interacting rank comparison in III.10–III.11 were not audited here. In particular, the dimension inequality is a separate input; it does not follow from the centered root budgets.
 
 2. **Volume-uniform budget.** The supplier is [`gardena`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Gardens.lean#L19-L40) (III.11). Its proof reduces to earlier estimates on the same family, but their relation to the volume-uniform bounds assigned to III.12 was not traced in full.

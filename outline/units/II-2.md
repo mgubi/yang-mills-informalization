@@ -722,8 +722,7 @@ The source contains duplicate exponential and component constructions. Its secon
 | iteration conditions at height $H$ | [`Racer`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Ratios.lean#L64-L69) | five inequalities in II.2.13(d) |
 | moment and fusion conditions | [`Faring`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Ratios.lean#L92-L110) | inequalities in II.2.13(e) |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Restarted thresholds.** The original threshold is $s^{-1/2}\Pi(s)$; the restarted Gaussian comparison uses $s^{-1/2}h(s)$ and cover size $W(s)$ ([`Perch.Candle`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Stepped.lean#L93-L96), III.11). Their ratio $h(s)/\Pi(s)$ tends to zero. The numerical estimates here do not establish the existence of restarted representations satisfying the required density and trajectory identities. That construction must be explained in III.11.
 2. **Analytic inputs to the numerical conditions.** The shelf, tally and moment conditions are explicit in II.2.13. Their use still requires the one-step estimates with the stated supports, covariances and constants. The verification of those analytic hypotheses along the actual RG trajectories, including every later application of the digest and fusion bounds, is outside this unit.
 3. **Auxiliary declarations.** The additional regrouping results in `EventBale` and the cost estimates in `MergeProof/West`, `North` and `East` are not formulated above, apart from the cited permutation result. Their full role in III.11 remains to be traced.

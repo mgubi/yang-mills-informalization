@@ -401,8 +401,7 @@ for sufficiently large $x$. Hence $x^{-c/2}s\le x^{-w(G,d)}$. The one-step estim
 | weak completeness | [`CompleteWeak`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/East/Gran.lean#L35) | comparison systems for every fixed arity, degree and positive size bound |
 | free lighthouse | `Lighthouse`, `MaxwellData` | free Maxwell comparison model |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Analytic inputs to the annulus estimate.** The reduction in [`zone`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Ozone.lean#L21-L45) and the flux argument are checked. The discrete stencil bound, interpolation estimate and shell estimates invoked there have not been independently checked through their analytic dependencies.
 2. **Detailed one-step interfaces.** The principal-data construction and the proof assembling the aggregate comparison were checked at their application points. The underlying nonlinear integration and remainder estimates were not checked in full. The relation between the older conditional interfaces in [`LedgerGate.lean`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/LedgerGate.lean) and every restarted replacement remains to be documented; their shared names do not identify their hypotheses.
 3. **Record definitions.** The stage, launch, hours, vents, relay, station and shell hypotheses in the numbered statements refer to the linked records. Their complete translation into ordinary mathematical estimates remains to be written. Lemmas 4.11, 4.13(iv)–(vi), 4.14 and 4.17 retain these structural hypotheses; the displayed inequalities alone are not their full assumptions.

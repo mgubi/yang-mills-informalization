@@ -568,8 +568,7 @@ The family in III.13.2 is chosen before the extraction order. III.13.3 and III.1
 | $\mathrm{fly}_{d,m}$ | [`Bandage.fly`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Stove.lean#L37) | positive allowance in the label-transfer estimate |
 | $\mathrm{soft}$, $\mathrm{rad}$, gain | `Camp.soft`, `Camp.rad`, `Bid.gainChart` | $\mathrm{rim}/8$, $\mathrm{rim}/4$, $e^{(\sigma_k-\sigma_m)/8}$ |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Quantitative packages.** The shell estimates in the OPE entrance condition, the full transfer, remainder, sup and weak comparison bounds, and the one-step comparison assumptions in Lemma 4.3 retain their contracts from III.7, III.11 and VII.4. Their complete expansion into conventional notation remains to be written there. The summaries here do not replace those contracts.
 2. **Proofs not fully checked.** The detailed constant issuers underlying Lemmas 4.1–4.4, the fitted recursion behind Lemma 4.6, the contraction and far-level decay estimates in Lemma 4.8, the one-step label estimates behind Lemma 4.10, and the auxiliary estimates in Lemma 4.21 are used as stated. Their internal proofs have not all been checked. The difference estimate in Lemma 4.16 is traced through slicing and the transfer bounds; its preceding one-step estimates remain inputs.
 3. **Two construction routes.** No identification of the families from III.13 and III.14, or transfer of III.13.5 to the III.14 family, is established here. A common witness satisfying both lists would require a separate argument.

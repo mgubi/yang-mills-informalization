@@ -650,8 +650,7 @@ The determinant comparison must accommodate different active dimensions, hence i
 | $c_G$ | `Gauge.colorScale` | matrix norm factor in the path estimate |
 | price, bill, tax, rent, teller | numerical bounds; `Teller` | the step-estimator interface |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Proof depth.** The supporting proofs marked “statement only” remain incomplete readings: the strip-resolvent and Fourier-inverse results in Lemma 4.14; the flat comparison in 4.15; 4.16; the path-counting and interaction estimates in 4.19(c),(e); 4.21; parts of 4.25; the entry bound in 4.27; 4.28–4.29; the clean-field construction in 4.30; 4.31; and the ancillary scheduling statements in 4.33. Their statements and the stated mechanisms have been compared with the cited source; these labels do not certify their dependency proofs.
 2. **Run-level hypotheses.** The packet-energy and support-exponent assumptions of III.4.7 are substantive inputs. Their simultaneous supply on the selected run, and the transfer from stationary path families to the tube's work rows, still need a complete account. The precision, determinant-jet and noise bounds have local suppliers, but their use does not establish these other premises.
 3. **Free-kernel comparison.** Lemma 4.15 compares the flat sector under the no-frozen-link and free-metric compatibility conditions. A direct statement comparing an arbitrary interacting sector covariance with the infinite-volume free operator was not located. The full expansion of the free-metric compatibility conditions and the nested marked inverse bounds in Lemma 4.29 remains to be written.

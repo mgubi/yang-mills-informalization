@@ -402,8 +402,7 @@ Sub-power factors are absorbed by the positive error exponents. Fixed-level conv
 | point-Cauchy property | [`Purchased`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L56-L58) | Cauchy correlations at ceiling addresses when no coordinate projections tie |
 | positional limit | [`PositionsUV`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L25-L36) | III.12.8; (D5) of the main statement |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Local matching and equation sections.** Lemma 4.14 imports the local-to-primary estimate of III.11; only its reduction to a coin and an $a_N^{1/16}$ root bound is checked here. The construction of the auxiliary sections from the Maxwell equation ideal, and its relation to a lattice Schwinger–Dyson identity, remain unverified. Lemma 4.10 uses their exact distant-spectator identity, without identifying it with the Wilson action's naive equation of motion.
 2. **One-step observable transfer.** The capacity estimate used by Lemma 4.16 remains at statement level. Its coefficient and remainder constants require the one-step analysis.
 3. **Analytic estimates.** The intermediate weighted estimates in Lemma 4.17 and the identification of spatial derivatives of the analytic limit in Lemma 4.18 remain at statement level. The outer series-convergence argument is checked.

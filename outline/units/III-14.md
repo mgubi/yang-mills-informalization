@@ -382,8 +382,7 @@ The supporting estimates below supply finite widths, numerical floors and post-l
 | background-field identities ("licensed") | [`Aura.licensed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Aura/Publisher.lean#L24-L26) | free background map satisfies the background-field identities for the actual forms |
 | "prices", "bill", "floor", "numeric", "post" | — | numerical bounds on block factors and the reference coupling |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Selection in III.2.** Lemma 4.16 is used as an input; the underlying construction of the scale and extraction data is not audited here. Its two auxiliary inputs have canonical choices. Removing the recipe demand would give a separate existence statement, not an identification of the resulting run with the fixed run of Proposition III.14.1.
 2. **The funded condition.** Its thirteen clauses are retained in full, rather than replaced by their summary in Proposition III.14.1. The route through [`fromFunded`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167) uses the clauses for extraction, comparison, OPE and asymptotic control; their detailed mathematical meanings and proofs belong to III.15 and later units. In particular, that route does not project the local-estimate clause involving $\Delta_{10}$.
 3. **Auxiliary estimates in §4.6.** Only their statements and numerical uses are summarized. Their full admissibility conditions and proofs, including the curvature-lift, marked-kernel and formal Ward estimates, remain outside this verification. The summaries are not substitutes for those hypotheses.

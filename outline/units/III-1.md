@@ -481,8 +481,7 @@ Normalization and tree-gauge integration use finite sums and Haar invariance. Gl
 | $\varrho$ | [`radiusB`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22) | cluster radius $\lceil(\log\hat\beta)^2\rceil$ |
 | kinetic data, directed history | [`Kin.Planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115), [`Directed`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36) | one-loop shift and stationary-branch requirements |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Energy estimates.** III.1.10 is an identity for the clipped direct term and truncated rows. The estimates converting it into III.1.11, including bounds on $W_D$ and the truncation remainders, belong to III.10. No sign is asserted here for $1-\Phi^\dagger\Phi-\Phi'^\dagger\Phi'-\mathcal N^\dagger\mathcal N$ at arbitrary $V$.
 2. **Construction of the kinetic data.** The stationary conditions and the outputs of the two cited construction theorems are identified in III.1.12. Their full construction from the estimates of III.3, III.6–III.7 and III.9 is outside this unit. The alternative constructor [`Extra.Iteration.planned`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/ITERATION_NO_LOSS/Planned.lean#L37-L55) has the required output but is outside the main-theorem closure.
 3. **Choice of neighbourhood and smoothing order.** The curvature proof uses pads at plaquette corners in $B_1$, whereas the stated synchronization result supplies them throughout $B_2$. The need for the larger neighbourhood in later estimates is not determined here. Likewise, $w\le L^{-4}$ needs only $J\ge1$; the later use of the stronger patch condition $J\ge4$ remains to be specified.

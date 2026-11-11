@@ -39,7 +39,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | **III.12** | [Bounds uniform in the volume and convergence as the spacing tends to zero](units/III-12.md) | 18,973 | 34 | edited |
 | **III.13** | [Extension to all labels: one common Wilson family](units/III-13.md) | 22,100 | 31 | edited |
 | **III.14** | [The construction run: flat representations and the ultraviolet rate](units/III-14.md) | 14,290 | 49 | edited |
-| **III.15** | [Cost accounting for observables and the remainder comparison](units/III-15.md) | 7,382 | 13 | checked |
+| **III.15** | [Cost accounting for observables and the remainder comparison](units/III-15.md) | 7,382 | 13 | edited |
 | **III.16** | [Analytic toolkit](units/III-16.md) | 4,013 | 4 | edited |
 
 ## Part IV. Infinite volume
@@ -57,8 +57,8 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
 | **V.1** | [Decomposition of the limit into phases](units/V-1.md) | 5,713 | 18 | edited |
-| **V.2** | [Osterwalder-Schrader reconstruction of a Wightman theory](units/V-2.md) | 6,456 | 19 | draft |
-| **V.3** | [Reconstruction for every phase and the reconstructed theory](units/V-3.md) | 4,056 | 14 | checked |
+| **V.2** | [Osterwalder-Schrader reconstruction of a Wightman theory](units/V-2.md) | 6,456 | 19 | checked |
+| **V.3** | [Reconstruction for every phase and the reconstructed theory](units/V-3.md) | 4,056 | 14 | edited |
 
 ## Part VI. Symmetry: stress tensor and Ward identities
 
@@ -66,7 +66,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **VI.1** | [Ward identities, the rotation action and the conserved stress tensor](units/VI-1.md) | 7,704 | 23 | draft |
+| **VI.1** | [Ward identities, the rotation action and the conserved stress tensor](units/VI-1.md) | 7,704 | 23 | checked |
 | **VI.2** | [The free Maxwell stress tensor and the local Ward charge](units/VI-2.md) | 14,179 | 38 | draft |
 
 ## Part VII. Identification as Yang–Mills

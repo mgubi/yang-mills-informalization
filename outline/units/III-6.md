@@ -531,8 +531,7 @@ The conclusions concern a branch near the identity and uniqueness in a specified
 
 "Price", "bill", "work item", "receipt", "toll" and "cost" are numerical bounds and their bookkeeping; they have no economic meaning.
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Fresh classical and one-loop inputs.** Proposition III.6.9 is conditional on [`Rates`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/ITERATION_NO_LOSS/Gates.lean#L79-L96). The adapter [`IterationRecipe.stocked`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/ITERATION_RECIPE_PRODUCER/Crown.lean#L102-L112) supplies the cutoff atoms and retains the classical and quantum matching assumptions from [`Heating`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/ITERATION_RECIPE_PRODUCER/Crown.lean#L83-L97); it does not discharge those assumptions. Their discharge in the main construction remains unverified here.
 2. **Small-field domains.** The comparison between the componentwise radii in III.6.7–III.6.8 and the small-field thresholds used downstream remains unverified. The relevant branch and derivative interfaces are linked in III.6.7–III.6.8.
 3. **Iteration over all levels.** The induction beyond one step is in [`Iteration.sweep`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/ITERATION_NO_LOSS/Planned.lean#L18-L35) and [`Luna.uniformZero`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Luna/Table.lean#L166-L172) (III.12). Their proofs are outside this verification.

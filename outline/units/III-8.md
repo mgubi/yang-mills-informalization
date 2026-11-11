@@ -419,8 +419,7 @@ Expand $\prod_i(O_i+(Z_i-O_i))$ over subsets. The empty-subset term cancels, and
 | $\tau_m$ | [`tail`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/GRID_APPROXIMATION/Geometry.lean#L107) | physical cone budget $30a_m(J_m+5)$ |
 | $\mathrm{room}(h,k,r)$ | [`room`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/GRID_APPROXIMATION/Geometry.lean#L153) | $2(a_kr+\tau_k)\lt a_h$ |
 
-## 7. Open points for the writer
-
+## 7. What remains unexplained
 1. **Application of the bounds.** The marked bound III.8.3 feeds III.14 through [`Necks.slushy_uniform`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG08/Necks/Prior.lean#L61-L95). The support and finite-sum identities of III.8.2 also enter III.14 directly. The choices of $W,\delta,\sigma,h$ and the covariance line bounds must be explained there; their derivation from earlier covariance estimates has not been traced here. The paired covariance and potential bounds are explicit hypotheses of that application.
 2. **Gaussian interpretation.** A1 verifies the unmarked formal heat equations for finite index sets and symmetric input tensors and propagators. For symmetric marked inputs, the intended identity is
 $$M_t(\phi)=\frac{\mathbb E_{t\Gamma}[F(g,\phi+\zeta)e^{V(g,\phi+\zeta)}]}{\mathbb E_{t\Gamma}[e^{V(g,\phi+\zeta)}]}\qquad\text{(probable)},$$
