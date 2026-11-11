@@ -1,5 +1,7 @@
 # The construction of four-dimensional quantum Yang–Mills theory
 
+> 🚧 **Under construction.** This manuscript is being written. Most sections do not exist yet, and those that do may change substantially until they are marked *checked* in the [status table](#status). Do not cite it as a finished proof.
+
 A manuscript, written in public, giving a complete mathematical proof of the result formalized in OpenAI's Lean proof
 of the construction of four-dimensional quantum Yang–Mills theory
 ([source](https://github.com/yang-mills-group/OpenAI-YM-20261028), commit
