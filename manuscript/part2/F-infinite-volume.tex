@@ -98,9 +98,14 @@ In each axis choose the translation of the level-$k$ tiling so that no boundary 
 
 We now use the equation projections and corrections of Lemmas~\ref{lem:E2.6}--\ref{lem:E2.9}, and the relative rank comparison of Lemma~\ref{lem:E2.10}. The other inputs are Proposition~\ref{prop:UB}, Definitions~\ref{def:D08}, \ref{def:D10} and~\ref{def:D11}, Lemmas~\ref{lem:E2.1a}, \ref{lem:E2.2} and~\ref{lem:E2.3}, Lemma~\ref{lem:E3.2}, Lemmas~\ref{lem:F1}, \ref{lem:F1a} and~\ref{lem:F1b}, and E1--E3 established above. Lemma~\ref{lem:E2-free-tests} supplies the free test rows independently of the interacting arguments here. Auxiliary coefficient limits may use a common spacing subsequence~$\mathsf n$ at every~$p$; the full ultraviolet kernel limits remain those of UV.
 
-These estimates distinguish coefficients that vanish in every separated correlation. The inclusions and derivatives in the next statement are the maps asserted in FC; the following proof constructs them and proves their defining correlation identities.
+These estimates distinguish coefficients that vanish in every separated correlation. The next lemma constructs the maps asserted in FC and proves its dimension equality. The coefficient maps have types $\kappa_{d,e}:V_d\to V_e$ for $d\le e$ and $\tau_{d,a}:V_d\to V_{d+1}$.
 \begin{lemma}[Quotient compatibility]\label{lem:F2}
-For every $d\le e$, the inclusions of FC preserve correlations and units and compose compatibly. Inclusions and derivatives commute with conjugation, and
+A further strictly increasing refinement of~$\mathsf q$ admits linear maps $\kappa_{d,e},\tau_{d,a}$ such that
+\begin{equation}\label{eq:F-calculus}
+S(\kappa_{d,e}c,\ldots)=S(c,\ldots),\qquad
+S(\tau_{d,a}c,\ldots)=\partial_{x_0^a}S(c,\ldots).
+\end{equation}
+Consequently $\dim_\C F_d=\dim_\C\maxwellspace{d}$, and these maps descend to $\jmath_{d,e},\partial_a$ of FC. The inclusions preserve correlations and units and compose compatibly. Inclusions and derivatives commute with conjugation, and
 \begin{equation*}
 h\partial_a=\sum_bh_{ba}\partial_bh\qquad(h\in\hypercubic).
 \end{equation*}
@@ -108,7 +113,7 @@ Each response map is injective; every response lies in one $\iota_dF_d$; every f
 \end{lemma}
 The proof below constructs the inclusions and derivatives asserted in FC, proves its dimension equality, and then derives the compatibility properties. E1--E3 are already available.
 \begin{proof}
-We use the inputs listed above. Bounded coefficient families satisfy~\eqref{eq:F-subpower}. In fact Lemma~\ref{lem:E2.2} bounds their inverse terminal coordinates by a fixed norm factor times $\prod_{m<N}C_{J_{m+1}}$, and the constant choices in Section~\ref{sec:constants} give $\log C_{J_{m+1}}\le J_{m+1}^{-2}\log\ell_m$. Split the sum at a fixed level. Its finite initial part is~$o(s_N)$, while its tail divided by~$s_N=\sum_{m<N}\log\ell_m$ is bounded by the largest~$J_{m+1}^{-2}$ in that tail. Sending the splitting level to infinity gives $\sum_{m<N}\log C_{J_{m+1}}=o(s_N)$. There are countably many projection matrices and comparison coefficient lists. The uniform bound in Lemma~\ref{lem:E2.6} gives convergent subsequences by finite-dimensional compactness. The same countable diagonal extraction retains every projection and each comparison lift, first in~$N$ at every~$p$, then in volume, retaining~\eqref{eq:F-conf}. Thus, in operator norm,
+We use the inputs listed above. Bounded coefficient families satisfy~\eqref{eq:F-subpower}. In fact Lemma~\ref{lem:E2.2} bounds their inverse terminal coordinates by a fixed norm factor times $\prod_{m<N}C_{J_{m+1}}$, and the constant choices in Section~\ref{sec:constants} give $\log C_{J_{m+1}}\le J_{m+1}^{-2}\log\ell_m$. Split the sum at a fixed level. Its finite initial part is~$o(s_N)$, while its tail divided by~$s_N=\sum_{m<N}\log\ell_m$ is bounded by the largest~$J_{m+1}^{-2}$ in that tail. Sending the splitting level to infinity gives $\sum_{m<N}\log C_{J_{m+1}}=o(s_N)$. There are countably many projection matrices and comparison coefficient lists. The uniform bound in Lemma~\ref{lem:E2.6} gives convergent subsequences by finite-dimensional compactness. The same countable diagonal extraction retains every projection, each comparison lift and each coupling $\beta_{N,p,k}$, $k\in\N$, which lie in the bounded bands $\mathfrak B_k$ by~\eqref{eq:I12-drift-sum}, first in~$N$ at every~$p$, then in volume, retaining~\eqref{eq:F-conf}. Thus, in operator norm,
 \begin{equation}\label{eq:F-projections}
 \Pi_{d,\mathsf n(j),p}\longrightarrow\Pi_d^{(p)},\qquad
 \Pi_d^{(P(k))}\longrightarrow\Pi_d,\qquad
@@ -156,11 +161,7 @@ L(z)&=\lim_{\mathcal U}b_{N,p}L_{N,p}(\Pi w)\\
 =\lambda t_L.
 \end{aligned}
 \end{equation*}
-If $\lambda=0$, then $L(z)=0$ for every spectator test, hence $z\in\nullspace{e}(S)=\ker\Pi_e$ by~\eqref{eq:F-dimension}. Together with $\Pi_ez=z$, this gives $z=0$, contradicting $\|z\|=1$. Thus $\lambda>0$, and $z/\lambda$ represents the target for all spectators simultaneously. Choose these representatives on a basis and extend linearly, obtaining $\kappa_{d,e}$ and~$\tau_{d,a}$ with
-\begin{equation}\label{eq:F-calculus}
-S(\kappa_{d,e}c,\ldots)=S(c,\ldots),\qquad
-S(\tau_{d,a}c,\ldots)=\partial_{x_0^a}S(c,\ldots).
-\end{equation}
+If $\lambda=0$, then $L(z)=0$ for every spectator test, hence $z\in\nullspace{e}(S)=\ker\Pi_e$ by~\eqref{eq:F-dimension}. Together with $\Pi_ez=z$, this gives $z=0$, contradicting $\|z\|=1$. Thus $\lambda>0$, and $z/\lambda$ represents the target for all spectators simultaneously. Choose these representatives on a basis and extend linearly, obtaining $\kappa_{d,e}$ and~$\tau_{d,a}$ with~\eqref{eq:F-calculus}.
 Equation~\eqref{eq:F-conf} converts the distributional identities to pointwise identities.
 
 These maps preserve null coefficients, so they descend to~$\jmath_{d,e}$ and~$\partial_a$. A response vanishes precisely on~$\nullspace{d}(S)$; hence~$\iota_d$ is injective. Equality of responses gives injectivity, composition and uniqueness of inclusions. E1 and Lemma~\ref{lem:E2.1a} give preservation of~$[a_{\reflevel{d}}^d\mathbf1]$. Any finite sum of responses lies in the largest degree involved; quotient surjectivity gives token representatives. Finally E2, conjugation and the chain rule applied to $S(hc;hx)=S(c;x)$ give the asserted symmetry identities by injectivity of the response maps. The same comparison without differentiation gives $h\jmath_{d,e}=\jmath_{d,e}h$. Permuting the distinguished slot proves FC's positional identity in every slot. This proves FC and the lemma using Lemmas~\ref{lem:E2.6}--\ref{lem:E2.10}.
