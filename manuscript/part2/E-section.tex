@@ -45,10 +45,20 @@ The short-distance comparison uses the following intervals of levels. For $b>0$ 
  \quad v_t=\left\lceil\frac{10\log B_t}{\log L}\right\rceil,
  \quad k_t=t-h_t(b)-v_t.
 \end{equation}
-We collect the numerical requirements used in the marked proofs. For each stage~$j$, let $K_j\ge1$ be a nondecreasing bound for the leading coefficient maps and their inverses through that stage's finitely many degrees and symmetry averages. These bounds are fixed before the column bounds~$C_j$. Let $A_d^{\rm sym}$ bound the finite basis recombination in degree~$d$. Let $C_j^{\rm loc}$ bound the local marked error before choosing the ratio. The constant $\mathcal C_j\ge2$ includes these bounds and the finite source comparison constants. Each step below has $j=J_{m+1}$, $K=K_j$, $S=C_j$, $L=\ell_m$ and $\varepsilon_L=L^{-3/8}$.
+We collect the numerical requirements used in the marked proofs. For each stage~$j$, let $K_j\ge1$ be a nondecreasing bound for the leading coefficient maps and their inverses through that stage's finitely many degrees and symmetry averages. These bounds are fixed before the column bounds~$C_j$. Let $A_d^{\rm sym}$ bound the finite basis recombination in degree~$d$. Let $C_j^{\rm loc}$ bound the local marked error before choosing the ratio. Each step below has $j=J_{m+1}$, $K=K_j$, $S=C_j$, $L=\ell_m$ and $\varepsilon_L=L^{-3/8}$. For the retained incoming regular term, let $R_j^{\rm supp}\in\N$ bound the enlargement of its projected incoming read support in units of $B_m$, over the finitely many adjacent stage pairs with fine stage~$j$. Put
+\begin{equation}\label{eq:E-support-conversion}
+ \mathcal A_m=\exp\!\left\{(\sigma_{J_m}+2)(2R_{J_{m+1}}^{\rm supp}+13)^4\right\}.
+\end{equation}
+This factor converts its incoming support weight into the outgoing weight. Indeed, for fine and coarse covering numbers $s_f,s_c$, the connected-cover bound gives
+\begin{align*}
+ Ls_c&\le(L+10s_f)(2R_j^{\rm supp}+13)^4,\\
+ (\sigma_{J_m}+2)s_c
+ &\le\log\mathcal A_m+\tfrac12\sigma_{J_{m+1}}s_f,
+\end{align*}
+provided $20(\sigma_{J_m}+2)(2R_j^{\rm supp}+13)^4\le L\sigma_{J_{m+1}}$. Thus half the incoming exponent remains for the other support factors. The constant $\mathcal C_j\ge2$ includes these bounds and the finite source comparison constants.
 \begin{enumerate}
 \item\label{it:E-columns} Choose nondecreasing columns with $C_j\ge64K_{j+1}^2$, above the derivative factorials and finite basis-recombination constants at stage~$j$. The support exponent is $\sigma_j=100$; we also retain the estimates at exponent~$98$.
-\item\label{it:E-graph} Choose $L^{3/5}>2C_j^{\rm loc}$. The local marked error $\eta_m$ satisfies $\eta_m\le L^{-2/5}$, and
+\item\label{it:E-graph} Choose $L^{3/5}>2C_j^{\rm loc}$, $\mathcal A_m\le L$ and $20(\sigma_{J_m}+2)(2R_j^{\rm supp}+13)^4\le L\sigma_{J_{m+1}}$. The local marked error $\eta_m$ satisfies $\eta_m\le L^{-2/5}$, and
 \begin{equation}\label{eq:E-graph-reserve}
  \eta_m(1+S)A_d^{\rm sym}\le\varepsilon_L,\quad
  2K\varepsilon_L(1+S)\le1,\quad4S\varepsilon_L\le1,\quad
@@ -88,7 +98,7 @@ Use the scale definitions of Section~\ref{sec:renormalization} and the order of 
 \le\min(\slope/4,j^{-2}),\qquad
 \frac{\log\mathcal C_j}{\log\ell_j^{\rm st}}\le j^{-2}.
 \end{equation}
-Each denominator can be increased after its numerator is fixed. The ratio requirements in items~\ref{it:E-graph} and~\ref{it:E-match} are lower bounds on this same later choice: $L^{-2/5}/L^{-3/8}=L^{-1/40}\to0$ and $L^{1/8}L^{-3/8}=L^{-1/4}\to0$. Choose also $L^{3/5}>2C_j^{\rm loc}$, so $C_j^{\rm loc}/L<\tfrac12L^{-2/5}$. For this fixed $L$, raise the coupling entry until the absolute value of the $o_{\widehat\beta_m}(1)$ term is at most $\tfrac12L^{-2/5}$. The local error $C_j^{\rm loc}/L+o_{\widehat\beta_m}(1)$ is then at most $L^{-2/5}$. The column and ratio choices also give the fixed auxiliary-section inequality. Thus no column is chosen in response to a ratio or to a later-stage column.
+Each denominator can be increased after its numerator is fixed. The ratio requirements in items~\ref{it:E-graph} and~\ref{it:E-match} are lower bounds on this same later choice: $L^{-2/5}/L^{-3/8}=L^{-1/40}\to0$ and $L^{1/8}L^{-3/8}=L^{-1/4}\to0$. Choose also $L^{3/5}>2C_j^{\rm loc}$, so $C_j^{\rm loc}/L<\tfrac12L^{-2/5}$. For this fixed $L$, raise the coupling entry until the absolute value of the $o_{\widehat\beta_m}(1)$ term is at most $\tfrac12L^{-2/5}$. The local error $C_j^{\rm loc}/L+o_{\widehat\beta_m}(1)$ is then at most $L^{-2/5}$. The column and ratio choices also give the fixed auxiliary-section inequality. The support radii and exponents in~\eqref{eq:E-support-conversion} are fixed before~$L$, so its compression condition and $\mathcal A_m\le L$ are further fixed lower bounds on the ratio. Thus no column is chosen in response to a ratio or to a later-stage column.
 
 Choose consecutive constant-stage intervals, postponing each new stage until all its fixed coupling requirements hold. On a fixed stage $s_i$ grows linearly, while $B_i=O((\log(2+s_i))^2)$ and $q_i=O(1+\log(2+s_i))$. Thus
 \begin{equation*}
@@ -514,15 +524,15 @@ Let $F=O^{(d)}(c)$, and let $\Delta_{\boldsymbol a}F$ be a fixed iterated normal
 \end{equation*}
 by~\eqref{eq:E-log-cost}. Subtracting these two admissible families proves admissibility of~$z$ before~$c^{\rm pr}$ is bounded.
 
-It remains to bound~$c^{\rm pr}$. Use a fixed sufficiently short-distance trial in Lemma~\ref{lem:E2.10} for degree~$e$. Average the variable slot of every row over $Q_N=\lceil b/a_N\rceil$ sites in each direction occurring in~$\boldsymbol a$, with $b>0$ small enough that all translated tests remain separated. Denote this linear map on coefficients by $\mathcal P_{N,p}$. Telescoping in one direction gives
+It remains to bound~$c^{\rm pr}$. Use a fixed sufficiently short-distance trial in Lemma~\ref{lem:E2.10} for degree~$e$. Let $\delta_0>0$ be the minimum coordinate separation of the fixed trial on the physical torus. Fix a slab margin $0<b<\delta_0/8$ and a centered level~$D$ with $a_D<b$. Average the variable slot of every row over $Q_N=\lceil\rho_{\rm av}/a_N\rceil$ sites in each direction occurring in~$\boldsymbol a$, where $0<\rho_{\rm av}<b/[2(|\boldsymbol a|+1)]$. Eventually $Q_Na_N\le2\rho_{\rm av}$, so the total shift in each coordinate is less than~$b$ and every coordinate hybrid used in the averaging has coordinate separation at least~$4b$. Denote this linear map on coefficients by $\mathcal P_{N,p}$. Telescoping in one direction gives
 \begin{equation*}
 \frac1{Q_N}\sum_{j=0}^{Q_N-1}
 \frac{f(z+(j+1)e_a)-f(z+je_a)}{a_N}
 =\frac{f(z+Q_Ne_a)-f(z)}{Q_Na_N}.
 \end{equation*}
-Since $Q_Na_N\ge b$, iterating bounds the tests of~$\Delta_{\boldsymbol a}F$ by $(2/b)^{|\boldsymbol a|}$ times the supremum of tests of~$F$. The latter is bounded by Lemma~\ref{lem:E2.3}, the interior-root comparison and~\eqref{eq:E-chess}. Matching errors tend to zero in these tests by the finite-cutoff argument of Lemma~\ref{lem:F1b}: put the error and the bounded spectator insertions in distinct cells with fixed margins, use Lemma~\ref{lem:F1a} for their interior roots, and apply~\eqref{eq:E-chess}. All these bounds hold on full cutoff tails and use no positional difference estimate. Thus $\|\mathcal P_{N,p}c^{\boldsymbol a}\|\le C_{\rm test}$ eventually, uniformly in~$p$.
+Since $Q_Na_N\ge\rho_{\rm av}$, iterating bounds the tests of~$\Delta_{\boldsymbol a}F$ by $(2/\rho_{\rm av})^{|\boldsymbol a|}$ times the supremum of tests of~$F$. The latter is bounded by Lemma~\ref{lem:E2.3}, the interior-root comparison and~\eqref{eq:E-chess}. Matching errors tend to zero in these tests by the finite-cutoff argument of Lemma~\ref{lem:F1b}: put the error and the bounded spectator insertions in distinct cells with fixed margins, use Lemma~\ref{lem:F1a} for their interior roots, and apply~\eqref{eq:E-chess}. All these bounds hold on full cutoff tails and use no positional difference estimate. Thus $\|\mathcal P_{N,p}c^{\boldsymbol a}\|\le C_{\rm test}$ eventually, uniformly in~$p$.
 
-The finite-dimensional lower bound is obtained before any cutoff limit. The free matrix has a positive lower bound on the unit sphere. The relative-error estimate and the equation-root bound put the tests of the projected trial lifts within $O(\gamma_\nu)+o_{N\to\infty}(1)$ of the free matrix, uniformly in~$p$. Choose the fixed trial~$\nu$ with this error smaller than its matrix lower bound. Averaging over sufficiently small~$b$ preserves the lower bound: the undifferentiated correlation tests have uniform positional continuity, proved in Lemma~\ref{lem:E-displacement}. The projected lifts are therefore linearly independent. Their number equals $\dim\maxwellspace{e}$, whereas Lemma~\ref{lem:E2.6} bounds $\dim\operatorname{ran}\Pi_e$ by that number. They consequently span the range. Their uniform coefficient bounds give
+The finite-dimensional lower bound is obtained before any cutoff limit. The free matrix has a positive lower bound on the unit sphere. The relative-error estimate and the equation-root bound put the tests of the projected trial lifts within $O(\gamma_\nu)+o_{N\to\infty}(1)$ of the free matrix, uniformly in~$p$. Choose the fixed trial~$\nu$ with this error smaller than its matrix lower bound. Averaging over sufficiently small~$\rho_{\rm av}$ preserves the lower bound: the undifferentiated correlation tests have uniform positional continuity by Lemma~\ref{lem:E-displacement}, with margin~$b$, the centered level~$D$ and the coordinate-hybrid separations just chosen. The level and its root bounds are fixed before reducing~$\rho_{\rm av}$, so the displacement bound tends to zero with~$\rho_{\rm av}$. The projected lifts are therefore linearly independent. Their number equals $\dim\maxwellspace{e}$, whereas Lemma~\ref{lem:E2.6} bounds $\dim\operatorname{ran}\Pi_e$ by that number. They consequently span the range. Their uniform coefficient bounds give
 \begin{equation}\label{eq:E-detection}
 \|c^{\rm pr}\|\le C_{\rm det}\|\mathcal P_{N,p}c^{\rm pr}\|
 \end{equation}

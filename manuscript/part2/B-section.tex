@@ -143,7 +143,8 @@ Its extension to all forms is obtained by the same alias formula, with a straigh
  -\blockpenalty^{-1}d_1d_1^*)\mathsf H_c=d_2^*\mathcal W_3d_2.
 \end{equation}
 
-Write $k=J_m$, and let $C^{\rm tr}_{j,k}$ be the stage-pair transfer bound obtained below; row~5 of Section~\ref{sec:constants} imposes $\ell^2\ge C^{\rm tr}_{j,k}\zeta_j$. At $m=N$ the free form is the identity on curls. This free integration fixes the normalization of the kinetic coefficient in Section~\ref{sec:partII-C}.
+Write $k=J_m$, and let $C^{\rm tr}_{j,k}$ be the stage-pair transfer bound obtained below; row~5 of Section~\ref{sec:constants} imposes $\ell^2\ge C^{\rm tr}_{j,k}\zeta_j$. At $m=N$ the free form is the identity on curls. This free integration fixes the normalization of the kinetic coefficient in Section~\ref{sec:partII-C}. The constants $\gamma_k>0$ below are uniform over histories; require $c_{{\rm dir},k}\le\gamma_k$.
+\begin{samepage}
 \begin{lemma}[Free quadratic forms]\label{lem:B2}
 For the chosen histories with $\ell^2\ge C^{\rm tr}_{j,k}\zeta_j$,
 \begin{gather*}
@@ -151,8 +152,9 @@ W_0^*\mathsf K_{N,m+1}W_0+\blockpenalty(\mathcal Q_mW_0-I)^*(\mathcal Q_mW_0-I)=
 \widehat{\mathsf H}_{N,m}(0)=I,\qquad \mathsf H_{N,m}\ge2\gamma_{J_m}I,\qquad
 \mathsf H_{N,m}-c_{{\rm dir},J_m}I=\rho_{N,m}^*\rho_{N,m}\,.
 \end{gather*}
-Here $\gamma_k>0$ is uniform over histories. The adjacent defect~\eqref{eq:B-free-defect} has $\mathcal W_3\ge c_kI$, $c_k>0$. For $c_{{\rm dir},k}\le\gamma_k$, the row factor is analytic on a fixed strip with exponentially decaying coefficients, uniformly in $N,m,p$.
+The adjacent defect~\eqref{eq:B-free-defect} has $\mathcal W_3\ge c_kI$, $c_k>0$. The row factor is analytic on a fixed strip with exponentially decaying coefficients, uniformly in $N,m,p$. At fixed $m$, these forms converge coefficientwise as $N\to\infty$.
 \end{lemma}
+\end{samepage}
 We prove the history bounds before the energy identity, so that inversion at zero momentum is justified.
 \begin{proof}
 Use the averaging weights of Definition~\ref{def:D21}. The straight-link multiplier is $L b_L(\theta)^j r_L(\theta_a)$. The frame adds a gradient and $\mathcal Q_md_0\phi=d_0(\phi\circ\iota)$. Gauge reduction therefore commutes with the block step. Before reduction the Gaussian marginal is
@@ -223,6 +225,21 @@ At nonzero momentum write $\mathsf C_f=\operatorname{diag}(c_a)$ and $\mathsf C_
 =\langle v,\mathsf K_cv\rangle+\langle a-W_0v,(\mathsf K_f+\blockpenalty\mathcal Q_m^*\mathcal Q_m)(a-W_0v)\rangle\,.
 \end{equation*}
 Set $a=W_0v$ and polarize. This is the asserted adjacent relation. The empty history gives $\mathsf H^0=I$ and hence the Wilson form on curls, also after the inverse modification.
+
+For the cutoff comparison use the exponential coefficient norm
+\begin{equation*}
+\|K\|_c=\max_{a<b,\,d<e}\sum_{z\in\Z^4}e^{c|z|}|K_{ab,de}(z)|.
+\end{equation*}
+Choose $c>0$ below the common decay rate of the forms, inverses and row factors. For convergence fix $m$ and a nonzero real coarse momentum $p$ in the fundamental cube. The cumulative squared straight-link filter at $p$ decreases as the history is extended: each new averaging factor has modulus at most one. It therefore has a limit. The total dilation $M$ tends to infinity, and $M q_a(p/M)\to ip_a$, so $\lambda_M(p)\to|p|^2$. For a fixed nonprincipal integer alias $z$, apply the same filter argument at $p+2\pi z$. The centered alias set eventually contains $z$, and its summand converges. The squared filter estimate~\eqref{eq:B-filter} bounds these summands by the summable function $C_j\prod_a(1+|z_a|)^{-2}$. Dominated convergence gives convergence of the alias sum. The accumulated noise is an increasing sum of nonnegative contributions on real momenta, bounded by the geometric estimate for $r_a$ above, so it too converges. Its most recent contribution is $\blockpenalty^{-1}$; the limiting diagonal covariances are therefore strictly positive.
+
+The rational formulas for $\mathsf H^0$ now converge at every nonzero real momentum. The fixed-stage inverse modification preserves convergence and positivity. To pass to coefficients, use the common bound $|\mathsf H_{N,m}(z)|\le Ce^{-c|z|}$. Every subsequence has a coefficientwise convergent further subsequence, by diagonal extraction on the countable coefficient set. The exponential bound passes to each limit and permits Fourier summation. All such limits have the real symbol just obtained; uniqueness of Fourier coefficients makes them equal. Hence the full coefficient sequence converges. The same bound gives convergence in every strictly smaller exponential coefficient norm: outside a fixed radius the weighted difference is bounded by $2C\sum_{|z|>R}e^{-(c-c')|z|}$ for $0<c'<c$, and inside that radius it converges term by term. The uniformly positive inverses and the positive row factors converge as well, by the resolvent identity and continuity of the positive square root on the real torus, followed by this same coefficient argument. Absolute summation then gives convergence of every fixed periodization.
+
+Writing their limiting kernels as $\mathsf H_{\infty,m}$ and $\rho_{\infty,m}$, we have, for $0<c'<c$,
+\begin{equation}\label{eq:B-free-limit}
+\|\mathsf H_{N,m}-\mathsf H_{\infty,m}\|_{c'}
++\|\mathsf H_{N,m}^{-1}-\mathsf H_{\infty,m}^{-1}\|_{c'}
++\|\rho_{N,m}-\rho_{\infty,m}\|_{c'}\longrightarrow0.
+\end{equation}
 \end{proof}
 
 \subsection*{The stationary configuration}
@@ -265,9 +282,9 @@ Near zero there is an analytic stationary branch with
 \begin{equation*}
 D_zS(v,z(v))=0,\quad z(0)=0,\quad \mathsf Q\ge\nu_{j,\ell} I\,.
 \end{equation*}
-Here $\nu_{j,\ell}>0$ depends on the stage and ratio but not the volume. The axial representative of the free interpolation is $Dz(0)$. The averaging symbol in~\eqref{eq:I12-predictor} vanishes to second order at every nonzero alias. At the zero alias, $\widehat w^{\rm av}(0)=1$. For normalized coarse plane waves on a fixed strip,
+Here $\nu_{j,\ell}>0$ depends on the stage and ratio but not the volume. The axial representative of the free interpolation is $Dz(0)$. The averaging symbol in~\eqref{eq:I12-predictor} vanishes to second order at every nonzero alias. At the zero alias, $\widehat w^{\rm av}(0)=1$. For bounded coarse fields,
 \begin{equation*}
-\|\nabla_f^rW_0v\|_\infty\le C_j\ell^{-1-r}|v|\qquad(0\le r\le2).
+\|\nabla_f^rW_0v\|_\infty\le C_j\ell^{-1-r}\|v\|_\infty\qquad(0\le r\le2).
 \end{equation*}
 \end{lemma}
 The proof uses a local axial estimate for coercivity and a finite-dimensional implicit equation for the branch.
@@ -309,7 +326,11 @@ Dz(0)=-\mathsf Q^{-1}D_vD_zS(0,0)\,.
 \end{equation*}
 The normal equations in Lemma~\ref{lem:B2} identify this with the free interpolation expressed relative to the copied field and the tree slice. The implicit neighbourhood may depend on the volume; the preceding coercivity constant does not.
 
-Finally $\widehat w^{\rm av}(\theta)=b_\ell(\theta)^j$. At a nonzero alias $2\pi z/\ell$, at least one centered geometric sum has a simple zero, so the product has a zero of order at least~$j\ge4$. At zero it equals one. The fine-difference bound follows from~\eqref{eq:B-filter}: a difference multiplies alias $z$ by $q_a(\theta_z)$, of size at most $C\ell^{-1}(1+|z|)$. The remaining covariance denominators and the $j$ averaging factors make these sums absolutely convergent through order two, including the pole-free principal term.
+Finally $\widehat w^{\rm av}(\theta)=b_\ell(\theta)^j$. At a nonzero alias $2\pi z/\ell$, at least one centered geometric sum has a simple zero, so the product has a zero of order at least~$j\ge4$. At zero it equals one. The fine-difference bound follows from~\eqref{eq:B-filter}: a difference multiplies alias $z$ by $q_a(\theta_z)$, of size at most $C\ell^{-1}(1+|z|)$. The remaining covariance denominators and the $j$ averaging factors make these sums absolutely convergent through order two, including the pole-free principal term. This bounds each cell component of the Fourier symbol of $\nabla_f^rW_0$ by $C_j\ell^{-1-r}$ on a common strip, uniformly over the fine residue. Shift the four coarse Fourier contours towards the sign of the displacement. For some $c_j>0$ this gives
+\begin{equation*}
+|\nabla_f^rW_0(\ell y+a,y')|\le C_j\ell^{-1-r}e^{-c_j|y-y'|},\qquad 0\le r\le2.
+\end{equation*}
+Here $a$ is any fine residue in the centered block, and the bound includes all link components. Summing over $y'$ gives the stated bound for arbitrary bounded coarse fields. The periodized row sum obeys the same estimate by the triangle inequality.
 \end{proof}
 
 \subsection*{Gaussian coordinates}
@@ -555,7 +576,7 @@ Fix one hypercubic orientation. Set $x=\widehat\beta_m$, $s=t_m$, $t=t_{m+1}$, $
 \begin{equation*}
 t_{\rm hi}=\bigl(x+\slope\log\ell\bigr)^{-49/100}.
 \end{equation*}
-In this and the remaining subsections, the estimates hold on every coarse torus of period $n_{\rm tor}\ge100(B+1)$, with fine period $\ell n_{\rm tor}$, using the same periodized kernels and local sector conditions. The threshold $t_{\rm hi}$ distinguishes very large tests from tests at scale $t$. Here $\widehat\beta_{m+1}=x+\slope\log\ell$. By the formula for $t_m$ in Section~\ref{sec:renormalization} and $\cutoffsize_m=\exp((\log\log\widehat\beta_m)^2)$ in Section~\ref{sec:constants}, $t/s\to1$ and $B^nt/t_{\rm hi}\to0$ as $x\to\infty$, with $\ell$ fixed, for every fixed $n$. The input and output row maps on two-forms are $\mathcal B_f=(\sqrt{c_{{\rm dir},j}}I,\rho_f)^T$ and $\mathcal B_c=(\sqrt{c_{{\rm dir},J_m}}I,\rho_c)^T$. They satisfy $\mathcal B_f^*\mathcal B_f=\mathsf H_f$ and $\mathcal B_c^*\mathcal B_c=\mathsf H_c$. The free square-completion maps are
+Increase the coupling threshold so that $B\ge j+4$. In this and the remaining subsections, the estimates hold on every coarse torus of period $n_{\rm tor}\ge100(B+1)$, with fine period $\ell n_{\rm tor}$. These periods also satisfy $\ell n_{\rm tor}\ge100((j+3)\ell+1)$, so the patch-size requirement used in Lemmas~\ref{lem:B1}--\ref{lem:B3} holds. Use the same periodized kernels and local sector conditions. The threshold $t_{\rm hi}$ distinguishes very large tests from tests at scale $t$. Here $\widehat\beta_{m+1}=x+\slope\log\ell$. By the formula for $t_m$ in Section~\ref{sec:renormalization} and $\cutoffsize_m=\exp((\log\log\widehat\beta_m)^2)$ in Section~\ref{sec:constants}, $t/s\to1$ and $B^nt/t_{\rm hi}\to0$ as $x\to\infty$, with $\ell$ fixed, for every fixed $n$. The input and output row maps on two-forms are $\mathcal B_f=(\sqrt{c_{{\rm dir},j}}I,\rho_f)^T$ and $\mathcal B_c=(\sqrt{c_{{\rm dir},J_m}}I,\rho_c)^T$. They satisfy $\mathcal B_f^*\mathcal B_f=\mathsf H_f$ and $\mathcal B_c^*\mathcal B_c=\mathsf H_c$. The free square-completion maps are
 \begin{gather*}
 M_f=\mathcal B_f\mathsf H_f^{-1}T\mathcal B_c^*,\qquad
 M_n=\blockpenalty^{-1/2}d_1^*\mathcal B_c^*,\\
@@ -798,7 +819,7 @@ Indeed, if all these coordinates are below that threshold, then $|m_Y(e)+gz_e|\l
 \begin{equation*}
 M_w=2+|\mathbb B_R\times S_4|+|\mathbb B_R|.
 \end{equation*}
-This includes the likelihood relative to uniform tags. With $\varepsilon_w=\widehat\beta_{m+1}^{-\tau_w}$ for a fixed $\tau_w>0$, the weights used below are
+This includes the likelihood relative to uniform tags. Fix any $\tau_w>0$ before the coupling threshold. With $\varepsilon_w=\widehat\beta_{m+1}^{-\tau_w}$, the weights used below are
 \begin{equation*}
 f_i=a_i\quad(i\text{ nonwarning}),\qquad
 f_w=M_w\varepsilon_w\quad(w\in\mathcal J(M)).
@@ -840,16 +861,22 @@ Define the transported integrand by
 \widetilde F_M(V,Y,z)=\mathcal R_I(V,z)F_M(V,Y,z_V).
 \end{equation*}
 The next lemma bounds its ordered derivatives at $V_0$ under the same base law, including products containing old measurable forced activities. It is the second local input to Section~\ref{sec:partII-D}. Its bounds may depend on the fixed mismatch multiplier~$W$ and energy constant~$\kappa$ of Lemma~\ref{lem:B-D1}.
+
+For a compulsory component with selection $A=(A_f,A_n,A_c)$ and $A_c\ne\varnothing$, let $F_A$ contain its full local sector factor and every read meeting it. Adjoin every seed component met by those reads. In this value estimate only, replace the healthy-support condition within this component by the consistent flag condition of Lemma~\ref{lem:B-D1}. Retain the old-support disjointness and inventory incidence. The other factors attached to $F_A$ have the bounds $f_i$ above; their product excludes the component's seed suppression and warnings already included in that component. Fix $0<\kappa'_B<\kappa$ before the coupling threshold. Let $s_A$ count the radius-$B$ blocks of its complete read support, including retained path lengths in those units. The component itself is estimated in value; derivatives fall only on attached smooth factors and the common Gaussian density. Fix the orders $k,q$ and take odd $\ell$ above the stage-data threshold.
 \begin{samepage}
 \begin{lemma}[Simultaneous local integration]\label{lem:B-D2}
-For odd $\ell$ above a threshold depending on the stage data, every fixed derivative order $k$ and spatial direction power $q$, and every admitted molecule $M$, the transported sector integrand has one integrable majorant $g_M$ through order $k$, with
+Every admitted molecule $M$ has one integrable majorant $g_M$ through order $k$, with
 \begin{equation*}
-\int g_M\,d\nu\le P_{j,\ell,k,q}(x)(1+s_M)^{d_{j,\ell,k,q}}\prod_{i\in M}f_i.
+\int g_M\,d\nu\le P(x)(1+s_M)^d\prod_{i\in M}f_i.
 \end{equation*}
-The function $P_{j,\ell,k,q}$ has scale rate zero. Simultaneous events at $r$ distinct warning addresses have probability at most $\varepsilon_w^{2r}$. Disjoint complete read supports factorize, including their Haar and tag coordinates.
+A compulsory component with $A_c\ne\varnothing$ has a value majorant satisfying
+\begin{equation*}
+\int g_A\,d\nu\le P(x)(1+s_A)^d e^{-\kappa'_B\beta t^2|A|}\prod_{i\ {\rm attached}}f_i.
+\end{equation*}
+Here $P$ has scale rate zero. Simultaneous events at $r$ distinct warning addresses have probability at most $\varepsilon_w^{2r}$. Disjoint complete read supports factorize, including Haar and tag coordinates.
 \end{lemma}
 \end{samepage}
-Scale rate zero means $P_{j,\ell,k,q}(x)\le C_\epsilon\widehat\beta_{m+1}^{\epsilon}$ for every $\epsilon>0$ once $x$ is large. Directions and sector parameters have the restrictions of Lemma~\ref{lem:B-windows}.
+Scale rate zero means $P(x)\le C_\epsilon\widehat\beta_{m+1}^{\epsilon}$ for every $\epsilon>0$ once $x$ is large. Write $P=P_{j,\ell,k,q}$ and $d=d_{j,\ell,k,q}$; the compulsory value bound may also depend on $\kappa'_B$. Directions and sector parameters have the restrictions of Lemma~\ref{lem:B-windows}.
 \begin{proof}
 Use Definitions~\ref{def:D04}, \ref{def:D23}, Lemmas~\ref{lem:B1}, \ref{lem:B4}, \ref{lem:B-D1}, and \ref{lem:B-windows}. First retain the exact affine Gaussian substitution. For any chart-supported $F_Y$,
 \begin{align*}
@@ -906,6 +933,13 @@ Take $T=\xi t/(2g)$ and choose $H>0$ with $M_0/2+Hm_0|\mathbb B_{2B}|\le T$. The
 The factor $t/g$ grows faster than every fixed power of $B$ and $\log\widehat\beta_{m+1}$. Consequently $H$ can exceed $2\tau_w\log\widehat\beta_{m+1}+\log(2p_0|\mathbb B_{2B}|)$, proving the claimed bound $\varepsilon_w^{2r}$. 
 
 For the final majorant, take the finite sum of the absolute differentiated smooth expressions and scores, multiplied by the fixed old measurable envelopes, the warning amplitudes $\prod_wM_w$, and the simultaneous warning indicator. The product rule bounds every derivative through order $k$ by this same nonnegative function. Its integral is bounded by its polynomial $L^2$ bound times $\Pr(E_{\mathcal J(M)})^{1/2}$. This retains precisely $\varepsilon_w^r$ and gives the displayed estimate. The seed suppressions in $a_i$ follow from Lemma~\ref{lem:B-D1}; the determinant and covariance corrections use the exponential bounds above. Integrating the independent frozen Haar variables and summing the finite tag probabilities preserve the bound.
+
+For the compulsory component retain its full sector masks and all frozen links read by it. The lower bound in Lemma~\ref{lem:B-D1} gives $\kappa t^2|A|$ in its local energy. The enlarged neighbourhood used by the component adds annular affine remainders bounded by $E(x)|A|$, where $E$ has scale rate $-3/2$: the row error is $O(t^3)$, and the number of positions per seed is a fixed power of $B$. The chart-density, tag, local determinant and normalized frozen-coordinate factors contribute at most $C_{j,\ell}(1+\log\widehat\beta_{m+1})^{d_0}|A|$ to the upper exponent, for a fixed $d_0$. Indeed, their read counts are at most $C_{j,\ell}B^4|A|$; the logarithm of each inverse Gaussian normalization is $O(1+\log\widehat\beta_{m+1})$, the chart logarithms are bounded on the protected chart, and the local determinant terms have the bounds of Lemma~\ref{lem:B-windows}. The retained value envelope is thus at most
+\begin{equation*}
+\exp\!\left[-\kappa\beta t^2|A|+
+ \{\beta E(x)+C_{j,\ell}(1+\log\widehat\beta_{m+1})^{d_0}\}|A|\right].
+\end{equation*}
+Since $\beta$ is in the stated band, $\beta t^2$ is comparable to $(\cutoffsize_{m+1})^2$. Both $E(x)/t^2$ and every fixed power of $\log\widehat\beta_{m+1}$ divided by $(\cutoffsize_{m+1})^2$ tend to zero. Choose $\kappa''_B$ strictly between $\kappa'_B$ and $\kappa$ and increase the coupling threshold. This bounds the component envelope by $e^{-\kappa''_B\beta t^2|A|}$. Use this component envelope and the old measurable supremum envelopes. The attached factors and Gaussian scores have exactly the $L^2$ bound proved above. Cauchy--Schwarz with their warning event retains every attached $f_i$. Polynomial factors in the number of component reads are bounded by a fixed polynomial in $1+s_A$ times a fixed power of $B$, the latter entering $P$. Any remaining fixed per-seed logarithmic loss is absorbed by $\kappa''_B-\kappa'_B$. Frozen Haar integration has mass one. This proves the compulsory value bound, without differentiating its flag masks or taking a supremum of a Gaussian coordinate.
 
 Finally the Gaussian marginal on $I$ has covariance $\Gamma_I$. Every complete read support contains $\Omega_i^{\rm loc}$ for each coordinate $i$ it reads. The windows are symmetric. Hence if $i,j$ belong to disjoint complete read supports, $j\notin\Omega_i^{\rm loc}$ and $i\notin\Omega_j^{\rm loc}$, so $\Gamma_{ij}=0$ by~\eqref{eq:B-window}. The Gaussian characteristic function therefore factorizes over these supports. The frozen Haar and reference tag coordinates are disjoint as well, proving the asserted exact factorization.
 \end{proof}
