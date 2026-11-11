@@ -31,7 +31,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | **III.4** | [Gaussian integration: change of Gaussian sector, determinants, window law](units/III-4.md) | 37,956 | 141 | checked |
 | **III.5** | [Cluster expansion of the polymer gas](units/III-5.md) | 9,746 | 41 | checked |
 | **III.6** | [The stationary branch: background field of the effective action](units/III-6.md) | 21,329 | 44 | checked |
-| **III.7** | [Matching the Wilson energy to fourth order](units/III-7.md) | 19,945 | 24 | draft |
+| **III.7** | [Matching the Wilson energy to fourth order](units/III-7.md) | 19,945 | 24 | checked |
 | **III.8** | [Connected activities and backward dependence cones](units/III-8.md) | 4,147 | 4 | draft |
 | **III.9** | [The marginal flow: the running coupling and its reset](units/III-9.md) | 7,215 | 17 | edited |
 | **III.10** | [One full nonlinear renormalization step: bounds on irrelevant terms](units/III-10.md) | 49,448 | 94 | draft |
