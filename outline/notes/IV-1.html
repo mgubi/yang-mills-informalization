@@ -1,0 +1,2312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>IV.1. Infinite volume: extraction of a subsequence and the
+    Euclidean axioms of the limit &mdash; detailed notes &ndash;
+    Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-16.html">&larr; III.16 Analytic toolkit (notes)</a><span class="ym-part"><a
+      href="../units.html#part-iv-infinite-volume">Part IV</a><font class="ym-sep">&middot;</font><a href="../units/IV-1.html">Unit
+      outline</a></span><a class="ym-next" href="V-1.html">V.1 Decomposition of the limit into
+      phases (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>IV.1. Infinite volume: extraction of a subsequence and the Euclidean
+      axioms of the limit &mdash; detailed notes</h1><a id="iv1-infinite-volume-extraction-of-a-subsequence-and-the-euclidean-axioms-of-the-limit--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">1</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">9</a>
+      </p>
+      <p>
+        4.1 Reflection positivity and chessboard estimates <span style="margin-left: 5mm"></span>
+        <a href="#auto-5">9</a>
+      </p>
+      <p>
+        4.2 Boundedness at separated points <span style="margin-left: 5mm"></span> <a href="#auto-6">11</a>
+      </p>
+      <p>
+        4.3 Equicontinuity <span style="margin-left: 5mm"></span> <a href="#auto-7">11</a>
+      </p>
+      <p>
+        4.4 Compactness and ordered limits <span style="margin-left: 5mm"></span> <a href="#auto-8">13</a>
+      </p>
+      <p>
+        4.5 Label derivatives <span style="margin-left: 5mm"></span> <a href="#auto-9">14</a>
+      </p>
+      <p>
+        4.6 Smoothness <span style="margin-left: 5mm"></span> <a href="#auto-10">16</a>
+      </p>
+      <p>
+        4.7 Euclidean axioms, bounds and assembly <span style="margin-left: 5mm"></span> <a
+        href="#auto-11">17</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-12">18</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-13">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-14">20</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit IV.1: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/IV-1.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/IV-1.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> IV, infinite volume (chapter 10).
+      <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction"><tt class="verbatim">YM/Extraction</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells"><tt class="verbatim">YM/Cells</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice"><tt class="verbatim">YM/Slice</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid"><tt class="verbatim">YM/Euclid</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash"><tt class="verbatim">YM/Dash</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION"><tt class="verbatim">YM/Next/EXTRACTION</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lane"><tt class="verbatim">YM/Lane</tt></a>,
+      and the proofs of the work items <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D01.lean">D01</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D02.lean">D02</a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D03.lean">D03</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D04.lean">D04</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D05.lean">D05</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D06.lean">D06</a>.
+      Their statements are in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean"><tt class="verbatim">YM/Bid/Drops.lean</tt></a>,
+      which is filed with III.10. <strong>Size:</strong> 7,444 lines in 1,049
+      declarations used by the main theorem. Other material in these folders
+      concerns stress tensors, Maxwell comparison and label quotients (Parts
+      V&ndash;VII), or corrected fields (III.11&ndash;III.12).
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Setting and notation.</strong> Let \(G\) be a compact matrix
+      gauge group and \(C\) a Wilson family (II.2, III.13). It has:
+    </p>
+    <ul>
+      <li>
+        <p>
+          lattice spacings \(a_N \downarrow 0\), with \(a_0 = 1\), \(a_{N + 1}
+          = a_N / b_N\) and \(b_N \geqslant 3\) odd;
+        </p>
+      </li>
+      <li>
+        <p>
+          periods \(L_p \uparrow \infty\), each divisible by \(4\);
+        </p>
+      </li>
+      <li>
+        <p>
+          couplings \(\beta_{N, p}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the periodic lattice \(\Lambda_{N, p} = (\mathbb{Z}/ (L_p /
+          a_N)\mathbb{Z})^4\), whose sites are placed in the box \((- L_p / 2,
+          L_p / 2]^4\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the normalized Wilson expectation \(\langle \cdot \rangle_{N, p}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Labels.</strong> Labels at degree \(d\) (polynomial weight at
+      most \(d\)) form a finite-dimensional complex space \(\text{Label}_d\),
+      given by coefficients in a real basis, so that \(v \mapsto \bar{v}\) is
+      defined. We use the supremum norm on coefficient vectors.
+      \(\text{Label}_d\) carries:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a representation \(\rho_d\) of the group \(H_4\) of signed
+          coordinate permutations;
+        </p>
+      </li>
+      <li>
+        <p>
+          a unit label \(1_d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for each axis \(a\) the reflected label \(\theta_a v = \rho_d (s_a) 
+          \bar{v}\), where \(s_a\) reverses axis \(a\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Observables and correlations.</strong> A label \(v \in
+      \text{Label}_d\) has a renormalized lattice observable \(I_{N, p} (v,
+      r)\) at each site \(r\), linear in \(v\). Covariance, reality and the
+      unit identity are required for \(N \geqslant \text{ref} (d)\). Write
+      \(\hat{r}\) for the physical position of a site in \((- L_p / 2, L_p /
+      2]^4\). For a label list \(v = (v_1, \ldots, v_n)\),
+    </p>
+    <center>
+      \(\displaystyle \mathcal{C}_{N, p} (v ; r) = \left\langle \prod_{i =
+      1}^n I_{N, p} (v_i, r_i)
+\right\rangle_{N, p}, \qquad \mathcal{C}_{N, p}
+      (v ; t) = a_N^{4 n}  \sum_{r
+\in \Lambda_{N, p}^n} t (\hat{r}) 
+      \hspace{0.17em} \mathcal{C}_{N, p} (v ; r)
+.\)
+    </center>
+    <p>
+      For a lifted tuple \(r \in (\mathbb{Z}^4)^n\), \(\mathcal{C}_{N, p} (v ;
+      r)\) means evaluation after reduction modulo \(L_p / a_N\); its lifted
+      physical position is \(a_N r\).
+    </p>
+    <p>
+      <strong>Configuration sets.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\text{Conf}_n\): configurations with \(x_i \ne x_j\) for \(i \ne
+          j\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Gen}_n\): configurations with \(x_i^a \neq x_j^a\) for all
+          \(i \ne j\) and all axes \(a\). This set is open and dense, and its
+          complement is Lebesgue-null.
+        </p>
+      </li>
+      <li>
+        <p>
+          On the torus: \(\text{Conf}^{(p)}_n\) requires that for each \(i \ne
+          j\) some \(x_i^a - x_j^a \not\in L_p \mathbb{Z}\);
+          \(\text{Gen}^{(p)}_n\) requires all \(x_i^a - x_j^a \not\in L_p
+          \mathbb{Z}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Test functions.</strong> \(\mathcal{D}_n = C_c^{\infty}
+      (\text{Conf}_n)\). A test function \(t\) is <em>admissible at volume
+      \(p\)</em> if \(\text{supp} t \subset (- L_p / 2, L_p / 2)^{4 n}\).
+    </p>
+    <p>
+      <strong>Extractions.</strong> An <em>extraction</em> \(f\) is a pair of
+      strictly increasing sequences \((N_j)\) and \((p_k)\); a refinement \(f
+      \circ g\) passes to subsequences of both. A property of \((N_j, p_k)\)
+      holds <em>eventually along ordered tails</em> if it holds for \(k
+      \geqslant k_0\) and then \(j \geqslant j_0 (k)\). Convergence along
+      ordered tails means that, for each neighbourhood of the limit,
+      membership holds eventually in this sense. The iterated limits in IV.1.1
+      (c) also require an actual spacing limit at every admissible fixed
+      volume.
+    </p>
+    <p>
+      <strong>Tables.</strong> A <em>table</em> \(S\) assigns to each arity
+      \(n\), degrees \(d_1, \ldots, d_n\) and point \(x\) a multilinear form
+      \(S (\cdot \hspace{0.17em} ; x)\) on \(\text{Label}_{d_1} \times \ldots
+      \times \text{Label}_{d_n}\). Its values off \(\text{Conf}_n\) play no
+      role.
+    </p>
+    <p>
+      <strong>Standing hypotheses.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(H1)</strong> The family satisfies its specification
+          (&sect;2, input 1).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(H2)</strong> The fixed-volume centered budgets, the power
+          budgets along ordered tails, reflection positivity and the
+          chessboard inequalities hold along \(f\), with the quantifiers in
+          &sect;2, input 2.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition IV.1.1 (subsequential raw limits).</strong> Assume
+      (H1) and (H2) for an extraction \(f\). Then there are a refinement \(f
+      \circ g = ((N_j), (p_k))\), a table \(S\) and tables \(P_p\) (\(p \in
+      \mathbb{N}\)) such that the following hold for every \(n\) and every
+      list of labels \(v\).
+    </p>
+    <p>
+      (a) <em>(Spacing limit at fixed volume.)</em> For every \(p\), \(P_p (v
+      ; \cdot)\) is continuous on \(\text{Gen}^{(p)}_n\). For every compact
+      \(K \subset \text{Gen}^{(p)}_n\) and \(\varepsilon > 0\), for all
+      sufficiently large \(j\) and all lifted tuples \(r \in
+      (\mathbb{Z}^4)^n\) with \(a_{N_j} r \in K\),
+    </p>
+    <center>
+      \(\displaystyle |\mathcal{C}_{N_j, p} (v ; r) - P_p (v ; a_{N_j} r) | <
+      \varepsilon .\)
+    </center>
+    <p>
+      (b) <em>(Volume limit.)</em> \(S (v ; \cdot)\) is continuous on
+      \(\text{Gen}_n\), and \(P_{p_k} (v ; \cdot) \to S (v ; \cdot)\)
+      uniformly on compact subsets of \(\text{Gen}_n\).
+    </p>
+    <p>
+      (c) <em>(Ordered smeared limit.)</em> For every \(t \in \mathcal{D}_n\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(t\) is admissible at \(p_k\) for \(k\) large;
+        </p>
+      </li>
+      <li>
+        <p>
+          for every admissible \(p\) the limit \(V_p = \lim_j
+          \mathcal{C}_{N_j, p} (v ; t)\) exists (in the proof, \(V_p = \int
+          tP_p (v ; \cdot)\));
+        </p>
+      </li>
+      <li>
+        <p>
+          \(V_{p_k} \to \int t \hspace{0.17em} S (v ; \cdot)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (d) \(t \hspace{0.17em} S (v ; \cdot)\) is integrable for every \(t \in
+      \mathcal{D}_n\), i.e. \(S\) is locally integrable on \(\text{Conf}_n\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. (H2) holds for every \(f\) as soon as the
+      volume-uniform budget of &sect;2, input 2, holds (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L42-L56"><tt class="verbatim">Wcmain.projects</tt></a>).
+      Part (d) uses the uniform bound of Lemma IV.1.d.
+    </p>
+    <p>
+      <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          existence: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Held.lean#L136-L137"><tt class="verbatim">Extraction.crops</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          conclusion: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L156-L160"><tt class="verbatim">RawLimits</tt></a>, with fields <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L57-L62"><tt class="verbatim">Order.Meshes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L64-L66"><tt class="verbatim">Order.VolumePoints</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L32-L35"><tt class="verbatim">Order.Ordered</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L61-L64"><tt class="verbatim">Order.limits</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          part (d): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L115-L153"><tt class="verbatim">Order.ordinary</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          hypothesis (H2): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L30-L34"><tt class="verbatim">CenterPort</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition IV.1.2 (limits of label derivatives).</strong> Let
+      \(S\) be an ordered limit along \(f\) (IV.1.1 (c)) that is locally
+      integrable (IV.1.1 (d)), with (H1) and (H2) along \(f\). Let
+      \(\text{Null}_d (S)\) be the space of \(u \in \text{Label}_d\) with
+      \(\int tS (\ldots, u, \ldots) = 0\) for every arity \(n\), slot,
+      spectator label list and \(t \in \mathcal{D}_n\). Assume the relay data
+      of &sect;2, input 3:
+    </p>
+    <ul>
+      <li>
+        <p>
+          projections \(\pi_d (N, p)\) on \(\text{Label}_d\) converging along
+          ordered tails in operator norm to a projection \(\pi_d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the relay properties for every \(d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the dimension count \(\dim \text{Null}_d (S) \leqslant \dim \ker
+          \pi_d\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then \(\ker \pi_d = \text{Null}_d (S)\). Moreover there are linear maps
+      \(\kappa_{d, e} : \text{Label}_d \to \text{Label}_e\) (\(d \leqslant
+      e\)) and \(\tau_{d, a} : \text{Label}_d \to \text{Label}_{d + 1}\)
+      (\(a\) an axis) such that, for all \(n\), slots \(i\), labels \(v\) and
+      \(t \in \mathcal{D}_n\),
+    </p>
+    <center>
+      \(\displaystyle \int t \hspace{0.17em} S (v_{i \to \kappa v_i} ; \cdot)
+      = \int t
+\hspace{0.17em} S (v ; \cdot), \qquad \int t \hspace{0.17em} S
+      (v_{i \to
+\tau_a v_i} ; \cdot) = - \int (\partial_{x_i^a} t) 
+      \hspace{0.17em} S (v ;
+\cdot) .\)
+    </center>
+    <p>
+      Here \(v_{i \to w}\) is \(v\) with the \(i\)-th label replaced by \(w\).
+      In other words, \(\partial_{x_i^a} S (v ; \cdot) = S (v_{i \to \tau_a
+      v_i} ; \cdot)\) in \(\mathcal{D}' (\text{Conf}_n)\).
+    </p>
+    <p>
+      <em>Status:</em> theorem, conditional on the relay data and the
+      dimension count. Their suppliers in III.10&ndash;III.11 are listed in
+      &sect;2, input 3.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D04.lean#L212-L240"><tt class="verbatim">Work.D04.answer</tt></a> (conclusion
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L55-L60"><tt class="verbatim">Spans</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L41-L42"><tt class="verbatim">Bin.exactC</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L71-L87"><tt class="verbatim">lifts_model</tt></a> (maps <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L63-L65"><tt class="verbatim">MonitorOps</tt></a>,
+      identities <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L67-L69"><tt class="verbatim">MonitorOps.Wakes</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L89-L96"><tt
+      class="verbatim">Wakes.through_ties</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition IV.1.3 (smoothness of the limit).</strong> Let \(S\)
+      be as in IV.1.1, along an extraction for which IV.1.2 applies. Then
+      there is a table \(T\) with the following properties.
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(T = S\) on \(\text{Gen}_n\), and \(T (v ; \cdot) \in C^{\infty}
+          (\text{Conf}_n)\) for every \(n\) and \(v\).
+        </p>
+      </li>
+      <li>
+        <p>
+          IV.1.1 (a)&ndash;(d) hold for \(T\) along the same extraction and
+          with the same \(P_p\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(T\) satisfies the basic identities (E1) below.
+        </p>
+      </li>
+      <li>
+        <p>
+          The maps \(\kappa\) and \(\tau\) descend to linear maps
+          \(\text{rise}_{d, e} : F_d \to F_e\) and \(\partial_{d, a} : F_d \to
+          F_{d + 1}\) on the quotients \(F_d = \text{Label}_d / \text{Null}_d
+          (T)\). They satisfy, pointwise on \(\text{Conf}_n\),
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle T (\ldots, \text{rise} \hspace{0.17em} u, \ldots) = T
+      (\ldots, u, \ldots),
+\qquad T (\ldots, \partial_a u_i, \ldots) =
+      \partial_{x_i^a} T (\ldots, u_i,
+\ldots) .\)
+    </center>
+    <p>
+      Such a pair of maps is a <em>derivative plan</em> with its inclusion and
+      derivative identities.
+    </p>
+    <p>
+      On \(\text{Conf}_n\), the smooth ordered limit along a given extraction
+      is unique (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L47-L50"><tt class="verbatim">Order.determined</tt></a>).
+    </p>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L101-L109"><tt class="verbatim">Org.Arrives.serves</tt></a> (filed
+      with VIII.1; hypotheses <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L83-L86"><tt class="verbatim">Org.Arrives</tt></a>,
+      conclusion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L90-L96"><tt class="verbatim">Org.Cleaner</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Slew.lean#L26-L58"><tt
+      class="verbatim">Dash.awake</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L194-L202"><tt class="verbatim">RawLimits.ready</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22"><tt class="verbatim">DiffPlan</tt></a> with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L58-L60"><tt class="verbatim">Inclusions</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L61-L64"><tt class="verbatim">Derivatives</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition IV.1.4 (the Euclidean hierarchy).</strong> Let \(T\)
+      be a table and let \(f\) be an extraction. Assume (H1), IV.1.1
+      (a)&ndash;(c) hold for \(T\) and \(T (v ; \cdot) \in C^{\infty}
+      (\text{Conf}_n)\) for every arity \(n\) and label list \(v\). Then \(T\)
+      satisfies (E1)&ndash;(E5), with all points in \(\text{Conf}_n\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(E1) Basic identities.</strong> \(T\) is invariant under
+          simultaneous permutation of points and labels; \(T = 1\) for \(n =
+          0\); and \(T ((1_d, v) ; x) = T (v ; (x_2, \ldots, x_{n + 1}))\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(E2) Real spin.</strong> \(T (\rho (s) v ; sx) = T (v ; x)\)
+          for \(s \in H_4\), and \(T (\bar{v} ; x) = \overline{T (v ; x)}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(E3) Homogeneity.</strong> \(T (v ; x + s) = T (v ; x)\) for
+          every \(s \in \mathbb{R}^4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(E4) Reflection positivity at points.</strong> Fix an axis
+          \(a\) and words \(w_1, \ldots, w_m\), each a finite list of (point,
+          label) pairs with distinct points and all \(x^a > 0\). Let
+          \(\Theta_a w\) be the word in reverse order with \(x^a \mapsto -
+          x^a\) and labels \(\theta_a\). Then for all \(c \in \mathbb{C}^m\)
+          the following expression is real and nonnegative:
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \sum_{i, j} \bar{c}_i c_j  \hspace{0.17em} T (\Theta_a
+      w_i  \hspace{0.17em}
+w_j) \geqslant 0.\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          <strong>(E5) Smeared reflection positivity.</strong> The same holds
+          for tests: replace \(w_i\) by pairs (labels \(v^{(i)}\), test \(t_i
+          \in \mathcal{D}_{n_i}\) supported in \(\{x_k^a > 0 \forall k\}\))
+          and \(T (\Theta_a w_i w_j)\) by \(\iint \overline{t_i (y)}
+          \hspace{0.17em} t_j (z)  \hspace{0.17em} T (\Theta_a
+(v^{(i)}, y)
+          \hspace{0.17em} (v^{(j)}, z))\). These integrals converge
+          absolutely, and the Gram matrix is positive semidefinite.
+        </p>
+      </li>
+    </ul>
+    <p>
+      If in addition <strong>(E7)</strong> (polynomial bounds on derivatives)
+      holds, then \(T\) satisfies the hierarchy (E1)&ndash;(E7), where:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(E6)</strong> is smoothness on \(\text{Conf}_n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(E7)</strong> says: for every arity \(n\), degree list,
+          label list \(v\) and order \(j \geqslant 0\), there are \(A \in
+          \mathbb{N}\) and \(C \geqslant 0\) such that \(\|D^j_x T (v ; x)\|
+          \leqslant Cr^{- A}\) whenever \(0 < r \leqslant 1\) and \(|x_i -
+          x_{\ell} |_{\infty} \geqslant r\) for every \(i \ne \ell\). Here
+          \(D^j\) is the iterated real Fr&eacute;chet derivative with its
+          operator norm on \((\mathbb{R}^4)^n\). The constants are independent
+          of \(r\) and \(x\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. (E6) and (E7) are hypotheses of the assembly.
+      (E6) is supplied by IV.1.3; (E7) is supplied by IV.1.5 together with the
+      promotion lemma B10 of V.1.
+    </p>
+    <p>
+      <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          assembly: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Harvest.lean#L62-L65"><tt class="verbatim">Order.assembles</tt></a>, producing <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L141-L148"><tt class="verbatim">Table.Hierarchy</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          fields: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Table.lean#L75-L78"><tt class="verbatim">Basic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Table.lean#L80-L84"><tt class="verbatim">RealSpin</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Table.lean#L86"><tt class="verbatim">Homogeneous</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L123-L124"><tt class="verbatim">RP</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L136-L138"><tt class="verbatim">RPSmear</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Table.lean#L88-L89"><tt class="verbatim">Smooth</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Table.lean#L97-L99"><tt class="verbatim">Capped</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          call site: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L113-L114"><tt class="verbatim">Org.Cleaner.stay</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition IV.1.5 (polynomial bound at short distance;
+      D05).</strong> Assume (H1) and (H2) along \(f\). Let \(T (v ; \cdot)\)
+      be smooth on \(\text{Conf}_n\) for every arity and label list, and
+      suppose \(T\) satisfies IV.1.1 (a)&ndash;(b) along \(f\). Then for every
+      arity \(n\), degree list \((d_i)\) and label list \(v\) there is \(C
+      \geqslant 0\), independent of \(r\) and \(x\), such that
+    </p>
+    <center>
+      \(\displaystyle |T (v ; x) | \leqslant C \hspace{0.17em} r^{- A} \quad
+      \text{whenever } 0 < r
+\leqslant 1 \text{ and } |x_i - x_{\ell}
+      |_{\infty} \geqslant r \text{ for
+every } i \ne \ell, \qquad A = 4 n (1
+      + \max_i d_i) .\)
+    </center>
+    <p>
+      The maximum of an empty degree list is taken to be \(0\). The displayed
+      exponent follows by choosing the largest degree in the proof.
+    </p>
+    <p>
+      <em>Status:</em> theorem. Together with the derivative plan of IV.1.3,
+      the lemma B10 of V.1 upgrades this to (E7).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D05.lean#L160-L180"><tt class="verbatim">Work.D05.answer</tt></a> (statement
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L70-L71"><tt class="verbatim">Bid.D05</tt></a>, conclusion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L97-L98"><tt class="verbatim">Bid.OneCap</tt></a>);
+      promotion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L101-L102"><tt class="verbatim">Bid.B10</tt></a>, proved by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B10.lean#L95-L105"><tt
+      class="verbatim">Work.B10.answer</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition IV.1.6 (the derivative plan respects the symmetries;
+      D06).</strong> Let \(T\) be smooth on \(\text{Conf}_n\) for every arity
+      and label list, permutation symmetric and with real spin, and let
+      \((\text{rise}, \partial)\) be a derivative plan for \(T\) satisfying
+      its inclusion and derivative identities. Use \(\rho_d\) also for the
+      induced action on \(F_d\). For every \(d \leqslant e\), axis and \(s \in
+      H_4\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\text{rise}_{d, e}\) and every \(\partial_a\) commute with complex
+          conjugation;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{rise}\) commutes with \(\rho (s)\) for every \(s \in H_4\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\rho_{d + 1} (s)  \hspace{0.17em} \partial_b = \sum_a s_{ab} 
+          \hspace{0.17em}
+\partial_a  \hspace{0.17em} \rho_d (s)\), where
+          \((s_{ab})\) is the signed permutation matrix of \(s\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D06.lean#L98-L135"><tt class="verbatim">Work.D06.compat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D06.lean#L137-L139"><tt
+      class="verbatim">Work.D06.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L66-L72"><tt class="verbatim">DiffPlan.Orientation</tt></a>.
+    </p>
+    <p>
+      <strong>Remarks.</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>The package handed downstream</strong> is the bundle <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L42-L51"><tt class="verbatim">Next.Extract.Base</tt></a>. It contains (H1), (H2),
+          the relay data, the raw limit \(S\) with local integrability and the
+          spanning property, the smooth table \(T\) with its plan, the bound
+          of IV.1.5 and the hierarchy of IV.1.4. It also records \(\ker \pi_d
+          = \text{Null}_d (T)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L72-L74"><tt class="verbatim">Base.null</tt></a>). On
+          the main theorem's path it is assembled in III.11 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L48-L71"><tt
+          class="verbatim">MergeProof.Accent.rated</tt></a>) as follows:
+        </p>
+        <ul>
+          <li>
+            <p>
+              extract with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Held.lean#L136-L137"><tt class="verbatim">crops</tt></a>;
+            </p>
+          </li>
+          <li>
+            <p>
+              refine further so that the projections converge (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L86-L93"><tt
+              class="verbatim">include_projections</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              convert the relay estimates (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L178-L181"><tt class="verbatim">Projected.ready</tt></a>).
+            </p>
+          </li>
+          <li>
+            <p>
+              include the rank-detector limits along a further common
+              refinement and obtain the dimension comparison (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Beam.lean#L153-L180"><tt
+              class="verbatim">Beam.arriving_seed</tt></a>), then apply
+              IV.1.2&ndash;IV.1.5. All earlier limits are retained.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>The extraction is subsequential in both indices.</strong> It
+          gives no independence from the volume subsequence. The public form
+          of the theorem (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicWilson.lean#L85-L90"><tt class="verbatim">WilsonFamily.Converges</tt></a>,
+          via <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L44-L56"><tt class="verbatim">wilsonLimit</tt></a>) needs the ordered
+          limit along the <em>full</em> sequence of spacings. The upgrade is
+          proved in III.13 by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reports/Ultraviolet.lean#L62-L69"><tt class="verbatim">UVExtension.Reports.useFull</tt></a>,
+          using <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reports/Ultraviolet.lean#L50-L58"><tt class="verbatim">full_tests</tt></a>. At each admissible
+          fixed volume, uniqueness identifies the full-sequence smeared limit
+          with its subsequential limit; the volume limit and the table \(T\)
+          are retained.
+        </p>
+      </li>
+    </ol>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Inputs from other units.</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Specification of the family.</strong> The definition is in
+          II.1&ndash;II.2. It is proved for the constructed family in III.13
+          (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Forest/Glue.lean#L35-L36"><tt class="verbatim">UVExtension.Mast.calibrated</tt></a>). Its
+          consequences used here are the following; covariance, reality and
+          the unit identity require \(N \geqslant \text{ref} (d)\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(\beta_{N, p} \geqslant 0\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(I_{N, p} (v, x)\) is continuous, gauge invariant and linear in
+              \(v\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(I_{N, p} (v, x)\) depends only on links inside a fixed finite
+              stencil translated to \(x\); for each stencil offset \(z\) and
+              axis \(a\), \(20 (|z^a | + 1) \leqslant L_p / a_N\) whenever \(N
+              \geqslant \text{ref} (d)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              for \(N \geqslant \text{ref} (d)\), the terminal transfer
+              \(B_{d, N, p}\) from cutoff coordinates to reference coordinates
+              is normalized as follows: the coefficient trajectory of \(v\)
+              has \(x_{\text{ref} (d)} = v\), \(x_N = B_{d, N, p}^{- 1} v\),
+              and \(\|x_{m + 1} \|_1 \leqslant \text{column}_{m + 1} \|x_m
+              \|_1\) for \(\text{ref} (d) \leqslant m < N\);
+            </p>
+          </li>
+          <li>
+            <p>
+              translation covariance;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(H_4\)-covariance: \(I (\rho (s) v, sx + b)\) is \(I (v, x)\)
+              composed with the pull-back of the lattice symmetry;
+            </p>
+          </li>
+          <li>
+            <p>
+              reality: \(I (\bar{v}, x) = \overline{I (v, x)}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(I (1_d, x) = 1\) for \(N \geqslant \text{ref} (d)\).
+              <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62"><tt class="verbatim">Family.Makes</tt></a>, <a
+              href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L42"><tt class="verbatim">Family.O</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L88-L98"><tt class="verbatim">rotated</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L74-L86"><tt class="verbatim">reality</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L100-L102"><tt class="verbatim">constant</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Centered chessboard budgets</strong> (interface item 2). A
+          sufficient volume-uniform input is the following: for every degree
+          \(d\), every \(R > 0\) and every \(\varepsilon > 0\) there is \(A
+          \geqslant 0\) such that for every \(m \geqslant \text{ref} (d)\)
+          there is \(N_0 \geqslant m\) with the following property. For all
+          \(N \geqslant N_0\), all \(p\), all \(v \in \text{Label}_d\) with
+          \(\|v\| \leqslant R\), and all sites \(x\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(I_{N, p} (v, x)\) is an interior function of the base cell of
+              the centered tiling \(\mathcal{T}_m (x)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\|I_{N, p} (v, x)\|_{\mathcal{T}_m (x)} \leqslant A
+              \hspace{0.17em} a_m^{- d -
+\varepsilon}\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          This stronger volume-uniform input implies <strong>(H2)</strong>
+          along every extraction \(f\). Precisely, (H2) requires:
+        </p>
+        <ul>
+          <li>
+            <p>
+              for every fixed \(p\) and label \(v\), at every sufficiently
+              fine scale \(m\) there is \(A \geqslant 0\) such that the
+              centered interior condition and root bound \(\|I_{N_j, p} (v,
+              x)\|_{\mathcal{T}_m (x)} \leqslant A\) hold for all \(x\) and
+              all large \(j\), with \(N_j \geqslant \max (m, \text{ref} (d))\)
+              for \(v \in \text{Label}_d\);
+            </p>
+          </li>
+          <li>
+            <p>
+              reflection positivity, the chessboard inequality and
+              subadditivity of roots at every \((N, p)\); and, for every
+              \(d\), \(R > 0\) and \(\varepsilon > 0\), numbers \(m_0
+              \geqslant \text{ref} (d)\) and \(A \geqslant 0\) such that for
+              every \(m \geqslant m_0\) and \(\eta > 0\), eventually along
+              ordered tails, the centered interior condition and \(\|I_{N, p}
+              (v, x)\|_{\mathcal{T}_m (x)} \leqslant A \hspace{0.17em} a_m^{-
+              d -
+\varepsilon} + \eta\) hold for all \(\|v\| \leqslant R\) and
+              all sites \(x\), with \(N \geqslant m\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          On the main theorem's path it is supplied by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Gardens.lean#L19-L40"><tt class="verbatim">MergeProof.Accent.gardena</tt></a>
+          (III.11). The variant <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L75-L76"><tt class="verbatim">Org.Assembly.wcmain</tt></a>
+          is not on that path. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L38-L40"><tt class="verbatim">Wcmain</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L21-L23"><tt class="verbatim">centeredBudget</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L34-L40"><tt class="verbatim">Cells.center</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L68-L79"><tt class="verbatim">CellHyp</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L58-L66"><tt class="verbatim">CenterPort.book</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L25-L28"><tt class="verbatim">CenteredBook</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Relay data</strong> (interface item 3, in the form used
+          here; III.10&ndash;III.11). A family \(Q_{N, p} (x)\) is
+          <em>chessboard-small</em> if there is a real rate \(y (N, p) \to 0\)
+          along ordered tails with the following property. For every integer
+          \(q \geqslant 0\) and lower scale \(m\), there is \(k \geqslant m\)
+          such that, eventually along ordered tails with \(N \geqslant k\),
+          the bound \(\|Q_{N, p} (x)\|_{\mathcal{T}} \leqslant y (N, p)\) and
+          the interior condition hold for every translated bond tiling
+          \(\mathcal{T}\) of side \(a_k\) and every \(x\) in its base cell
+          with lattice coordinates \(z^a\) relative to the base corner
+          satisfying
+        </p>
+        <center>
+          \(\displaystyle M \leqslant z^a, \qquad z^a + M + 1 \leqslant a_k /
+          a_N, \qquad M =
+\left\lfloor \frac{a_k / a_N}{8 (q + 1)}
+          \right\rfloor .\)
+        </center>
+        <p>
+          Thus the error bound must hold for translated cells with prescribed
+          relative interior margins. Centered cells alone do not suffice.
+        </p>
+        <p>
+          A label family \(w (N, p)\) has <em>subpolynomial growth</em> if,
+          for every \(\varepsilon > 0\),
+        </p>
+        <center>
+          \(\displaystyle \|B_{d, N, p}^{- 1} w (N, p)\| \leqslant a_N^{-
+          \varepsilon}\)
+        </center>
+        <p>
+          eventually along ordered tails. For each degree \(d\) the relay data
+          are:
+        </p>
+        <ul>
+          <li>
+            <p>
+              projections \(\pi_d (N, p)\) on \(\text{Label}_d\), bounded at
+              each fixed \(p\) and along ordered tails;
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>pace</em>: for \(v \in \text{Label}_d\) and each axis \(a\)
+              there are degree-\((d + 1)\) labels \(w (N, p)\) of
+              subpolynomial growth such that \(I_{N, p} (w (N, p), \cdot) -
+              a_N^{- 1} [I_{N, p} (v, \cdot + e_a) - I_{N, p}
+(v, \cdot)] \)
+              is chessboard-small;
+            </p>
+          </li>
+        </ul>
+        <p>
+          Here \(e_a\) is one lattice step, of physical length \(a_N\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              <em>transit</em>: the same, with a label of degree \(d'
+              \leqslant d\) approximated at degree \(d\);
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>mark</em>: if \(w (N, p) \in \ker \pi_d (N, p)\) has
+              subpolynomial growth, then \(I_{N, p} (w (N, p), \cdot)\) is
+              chessboard-close to measurable observables, bounded at each
+              cutoff and site, whose correlations with arbitrary spectator
+              labels vanish exactly at every fixed positive separation,
+              eventually along ordered tails;
+            </p>
+          </li>
+          <li>
+            <p>
+              the dimension count \(\dim \text{Null}_d \leqslant \dim \ker
+              \pi_d\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          Supplied in III.11 by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Eureka.lean#L16-L20"><tt class="verbatim">MergeProof.Scotia</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L47"><tt class="verbatim">savings</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Beam.lean#L153-L180"><tt class="verbatim">Beam.arriving_seed</tt></a>.
+          <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L39-L41"><tt class="verbatim">Presentation</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L46-L48"><tt
+          class="verbatim">Affordable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L115-L119"><tt class="verbatim">RelayCosts</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L46-L52"><tt class="verbatim">Bid.RelayBin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L39"><tt class="verbatim">vet</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L25"><tt class="verbatim">close</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L18-L19"><tt class="verbatim">dollar</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L43-L44"><tt class="verbatim">heighten</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L39"><tt class="verbatim">Bin.shortage</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Analytic toolkit (III.16).</strong> The Lipschitz bound for
+          traces of products of a positive kernel (Lemma IV.1.e).
+          <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L76-L106"><tt class="verbatim">TimeKernel.passage</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L170-L229"><tt class="verbatim">Holder.finite_lip</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L124-L165"><tt class="verbatim">Holder.estimation</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Holder.lean#L130-L132"><tt class="verbatim">Holder.convexStrip</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L109-L119"><tt class="verbatim">TimeKernel.learns</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Scale schedule (I.1, III.2, V.1).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              Gentleness, \(\log b_m / \log a_m^{- 1} \to 0\), gives \(a_{m +
+              1} \geqslant c \hspace{0.17em} a_m^2\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L129-L130"><tt class="verbatim">Schedule.Gentle</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L133-L162"><tt class="verbatim">mesh_inequality</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Halves.lean#L29-L39"><tt
+              class="verbatim">OS.thickness</tt></a>). This is used in D05.
+            </p>
+          </li>
+          <li>
+            <p>
+              The column constants of the renormalization group have \(\sum_{m
+              \leqslant N} \log (\text{column}_m) = o (\log a_N^{- 1})\). This
+              is used in D01.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Promotion of derivative bounds (V.1).</strong> The lemma B10
+          (see IV.1.5).
+        </p>
+      </li>
+    </ol>
+    <p>
+      Interface item 4 (whole-sequence convergence at fixed volume) enters
+      only in Remark 2: the extraction itself passes to a spacing subsequence.
+      Interface item 5 (corrected fields) is not used either: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L68-L79"><tt
+      class="verbatim">CellHyp</tt></a> consists only of the chessboard inequality and
+      the budget for \(I_{N, p}\). The corrected-field definitions serve
+      III.11&ndash;III.12.
+    </p>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Reflection positivity of the Wilson action, site and bond
+          reflections.</em> K. Osterwalder, E. Seiler, Ann. Phys. 110 (1978)
+          440&ndash;471. Axioms: Osterwalder&ndash;Schrader, CMP 31 (1973), 42
+          (1975).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Chessboard estimates.</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              J. Glimm, A. Jaffe, T. Spencer, CMP 45 (1975) 203&ndash;216;
+            </p>
+          </li>
+          <li>
+            <p>
+              J. Fr&ouml;hlich, R. Israel, E. Lieb, B. Simon, CMP 62 (1978)
+              1&ndash;34 and J. Stat. Phys. 22 (1980) 297&ndash;347;
+            </p>
+          </li>
+          <li>
+            <p>
+              M. Biskup, <em>Reflection positivity and phase transitions in
+              lattice spin models</em>, LNM 1970 (2009), &sect;5.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Transfer matrices of reflection-positive lattice theories.</em>
+          Glimm&ndash;Jaffe, <em>Quantum Physics</em>, 2nd ed.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>H&ouml;lder's inequality for Schatten norms and complex
+          interpolation (Hadamard three lines).</em> B. Simon, <em>Trace
+          Ideals and Their Applications</em>; Reed&ndash;Simon II, &sect;IX.4.
+          Cauchy's estimate for holomorphic functions.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Compactness and integration.</em> Arzel&agrave;&ndash;Ascoli;
+          Tychonoff for countable products; dominated convergence.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Regularity.</em> A distribution whose localizations have rapidly
+          decreasing Fourier transforms is \(C^{\infty}\) (H&ouml;rmander,
+          <em>The Analysis of Linear Partial Differential Operators I</em>,
+          Ch. 7).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and hypotheses.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Numbers: the budget constants \(A (d, R, \varepsilon)\) and
+          thresholds \(N_0 (m, d, R, \varepsilon)\) (input 2); the reference
+          levels \(\text{ref} (d)\); the gentleness constant \(c\) of input 5.
+          The exponent \(4 n (1 + \max d_i)\) of IV.1.5 comes from choosing
+          \(\varepsilon = 1\) and from applying \(a_{m + 1} \geqslant ca_m^2\)
+          twice.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hypotheses: (H1), (H2), and the relay data and dimension count
+          (input 3). The promotion theorem B10 is proved in V.1.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      Chessboard estimates bound correlations at distinct points uniformly in
+      the cutoff and volume. To obtain equicontinuity, fix an axis and express
+      a correlation as a cyclic trace of transfer kernels and observable
+      kernels supported in slabs. Moving one insertion transfers length
+      between two gaps. Finite-dimensional complex interpolation bounds the
+      trace for complex gap shifts; Cauchy's estimate gives a Lipschitz bound.
+      The required column moments are bounded by the same chessboard budgets.
+      This argument needs separation in every coordinate. Two applications of
+      Arzel&agrave;&ndash;Ascoli, with countable basis indices, give spacing
+      limits at every fixed volume and then a volume limit on
+      \(\text{Gen}_n\). Bounds on all of \(\text{Conf}_n\) supply domination
+      for smeared limits.
+    </p>
+    <p>
+      Smoothness uses the label calculus. The relay estimates approximate each
+      lattice forward difference quotient by a degree-raised observable.
+      Summation by parts computes its weak limit, and chessboard-small errors
+      have vanishing smeared limits. The projections and dimension count
+      identify the null labels. A finite-dimensional compactness argument then
+      replaces the varying approximating labels by fixed linear maps, giving
+      distributional derivatives as kernels with raised labels. Iteration
+      yields rapid Fourier decay after localization, hence a smooth
+      representative on all distinct-point configurations.
+    </p>
+    <p>
+      The exact lattice symmetries pass first at generic grid points and then
+      by continuity. Reflection positivity passes for joint tests supported in
+      a half-space; normalized bump functions give its pointwise form. A
+      two-scale choice of cells yields a polynomial bound at short distances,
+      and the derivative identities promote it to bounds of every order. These
+      arguments assemble the Euclidean hierarchy.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-reflection-positivity-and-chessboard-estimates"></a>4.1 Reflection positivity and chessboard estimates<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma IV.1.a (reflection positivity of the Wilson
+      measure).</strong> Let \(\Lambda = (\mathbb{Z}/ n\mathbb{Z})^4\) with
+      \(n\) even. Let \(a\) be an axis, \(b \in \mathbb{Z}/ n\), and
+      \(\Theta\) either the site reflection \(x^a \mapsto 2 b - x^a\) or the
+      bond reflection \(x^a \mapsto 2 b - 1 - x^a\) (other coordinates fixed),
+      acting on configurations by pull-back. Let \(\Lambda_+\) be the
+      half-torus \(0 < (x^a - b) \bmod n < n / 2\) (site case) or \(0
+      \leqslant (x^a - b) \bmod n < n / 2\) (bond case), with residues in
+      \(\{0, \ldots, n - 1\}\). For every \(\beta \geqslant 0\) and every
+      bounded, measurable, gauge-invariant \(F\) depending only on links in
+      \(\Lambda_+\),
+    </p>
+    <center>
+      \(\displaystyle \langle F \hspace{0.17em} \overline{F \circ \Theta}
+      \rangle_{\beta} \geqslant
+0.\)
+    </center>
+    <p>
+      <em>Proof sketch.</em> This is the Osterwalder&ndash;Seiler argument.
+      Reparametrize configurations by the links in the two fixed planes, the
+      links crossing them, and the two open halves; this map preserves the
+      measure.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Site reflections.</em> Given the plane links, the halves are
+          independent and exchanged by \(\Theta\), so the expectation is a
+          weighted integral of \(|\mathbb{E}(F \mid \text{plane links}) |^2\)
+          with nonnegative weights.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Bond reflections.</em> Integrating the crossing links gives for
+          each plane the one-step kernel \(K_{\beta} (X, Y)\). It is positive
+          semidefinite because \(\text{Re} \hspace{0.17em} \text{tr}
+          (XY^{\ast})\) is a sum of Gram kernels, and exponentials, products
+          and averages of positive semidefinite kernels stay positive
+          semidefinite (Schur). The product of the two boundary kernels is
+          positive semidefinite, so its quadratic integral is nonnegative.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Reflection.lean#L98-L114"><tt class="verbatim">Slice.reflected_positive</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Cut.lean#L116-L117"><tt class="verbatim">Cells.Positive</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Cut.lean#L109-L113"><tt class="verbatim">Cells.Interior</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Cut.lean#L40-L45"><tt class="verbatim">Cells.Cut</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Gate.lean#L94-L102"><tt class="verbatim">Slice.portPos</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Positive.lean#L81-L91"><tt class="verbatim">Slice.step_positive</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.b (chessboard estimate).</strong> Let \(\mathcal{T}\)
+      be a tiling of \(\Lambda\) into \(M^4\) congruent cells (\(M\) even),
+      with site or bond seams. For a cell \(c\) let \(\theta_c\) be the
+      composition of seam reflections carrying the base cell to \(c\). Put
+      \(\text{copy}_c F = F \circ \theta_c\), or its complex conjugate when
+      \(\theta_c\) reverses an odd number of axes. For \(F\) interior to the
+      base cell (bounded, measurable, gauge invariant, depending only on links
+      inside it) put \(\|F\|_{\mathcal{T}} = | \langle \prod_c \text{copy}_c F
+      \rangle_{\beta} |^{1 /
+M^4}\). If \(\beta \geqslant 0\), then for
+      interior \(F_c\)
+    </p>
+    <center>
+      \(\displaystyle | \left\langle \prod_c \text{copy}_c F_c
+      \right\rangle_{\beta} | \leqslant
+\prod_c \|F_c \|_{\mathcal{T}},\)
+    </center>
+    <p>
+      and \(\| \cdot \|_{\mathcal{T}}\) is subadditive. By (H1) this holds for
+      every \((N, p)\) of the family.
+    </p>
+    <p>
+      <em>Proof sketch.</em> This is the
+      Fr&ouml;hlich&ndash;Israel&ndash;Lieb&ndash;Simon argument.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Fold.</em> For an assignment \(A\) of functions to cells, put
+          \(\Phi (A) = | \langle \prod_c \text{copy}_c A_c \rangle_{\beta}
+          |\). Cauchy&ndash;Schwarz for a band cut gives \(\Phi (\text{assign}
+          (f, g))^2 \leqslant \Phi (\text{assign} (f, f)) \Phi
+(\text{assign}
+          (g, g))\), where the two assignments supply the two halves.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Maximization.</em> Among assignments of finitely many functions
+          to cells, the maximum of \(| \langle \prod \rangle |\) is attained
+          by a constant assignment, because a fold-closed property satisfied
+          by some assignment is satisfied by a constant one.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Normalization.</em> Apply this to \(F_c / (\|F_c \|+ \epsilon)\)
+          and let \(\epsilon \to 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Subadditivity.</em> Expand \(\prod_c (F + F')\) into \(2^{M^4}\)
+          assignments and apply the estimate to each.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L14-L19"><tt class="verbatim">Cells.Seam</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L21-L24"><tt
+      class="verbatim">Cells.laws</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Chess.lean#L80-L105"><tt class="verbatim">Tiling.tiles</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Chess.lean#L32-L63"><tt class="verbatim">Tiling.maximize</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Polar.lean#L94-L102"><tt class="verbatim">Tiling.fold_both</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Flood.lean#L110-L128"><tt class="verbatim">Tiling.existence</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Chess.lean#L108-L131"><tt class="verbatim">Tiling.adds</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Tiling.lean#L226-L227"><tt class="verbatim">Tiling.rootTest</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Tiling.lean#L221-L224"><tt class="verbatim">Tiling.copy</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Embedded.lean#L25-L38"><tt class="verbatim">Tiling.planted</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L81-L84"><tt class="verbatim">Cells.seamless</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.c (roots of uncentered observables).</strong> Assume
+      (H1), \(m \leqslant k \leqslant N\) and \(N \geqslant \text{ref} (d)\).
+      Let \(\mathcal{X}\) be a bond tiling of \(\Lambda_{N, p}\) with cells of
+      side \(a_m\), and let \(u \in \text{Label}_d\) have all stencil offsets
+      of coordinate size \(< a_k / a_N\), and assume that for every image
+      \(gu\), \(g \in H_4 \times \{1, \text{conj} \}\), the centered roots
+      satisfy \(\|I (gu, y)\|_{\mathcal{T}_k (y)} \leqslant A\) for all \(y\),
+      with the centered interior conditions. If \(o\) is at distance
+      \(\geqslant 3 a_k\) from the boundary of the base cell of
+      \(\mathcal{X}\), then \(\|I (u, o)\|_{\mathcal{X}} \leqslant A\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Centred case.</em> If \(o\) is the centre of a fine cell aligned
+          with \(\mathcal{X}\), the \(\mathcal{X}\)-copies of \(I (u, o)\) are
+          copies, in the fine centered tiling, of observables \(I (gu, y)\)
+          (by \(H_4\)-covariance and reality) sitting in distinct fine cells.
+          The chessboard estimate in \(\mathcal{T}_k\), with \(1\) in the
+          remaining cells, gives \(\|I (u, o)\|_{\mathcal{X}}^{\sharp
+          \mathcal{X}} \leqslant A^{\sharp
+\mathcal{X}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Log-convexity.</em> Under unit translations,
+          \(\|F\|_{\mathcal{X}}^2 \leqslant \|F \circ \tau_{- e}
+          \|_{\mathcal{X}} 
+\hspace{0.17em} \|F \circ \tau_e
+          \|_{\mathcal{X}}\). This follows from translation invariance and the
+          chessboard estimate with alternating translates, since reversed
+          cells see the opposite shift. A nonnegative log-convex sequence is
+          bounded by its values at the endpoints.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Interpolation.</em> Move between fine-cell centres one axis at a
+          time.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Around.lean#L95-L129"><tt class="verbatim">Around.interior_from</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Around.lean#L57-L93"><tt class="verbatim">Around.swept</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Slide.lean#L89-L101"><tt class="verbatim">Tiling.pathway</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Slide.lean#L60-L86"><tt class="verbatim">Tiling.trip</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Around.lean#L42-L50"><tt class="verbatim">Spin.uses</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-boundedness-at-separated-points"></a>4.2 Boundedness at separated points<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma IV.1.d (uniform bound).</strong> Assume (H1). Let \(x_1,
+      \ldots, x_n \in \Lambda_{N, p}\) be such that every pair has some
+      coordinate at cyclic physical distance \(\geqslant r\). Let \(m
+      \leqslant k \leqslant N\) with \(a_m < r\) and \(6 n \hspace{0.17em} a_k
+      < a_m\), and let \(A \geqslant 0\) bound the centered roots at scale
+      \(k\) of all images \(gv_i\), \(g \in H_4 \times \{1, \text{conj} \}\),
+      with the centered interior conditions. Assume \(N \geqslant \max_i
+      \text{ref} (d_i)\) and that all stencil offsets of these labels have
+      coordinate size \(< a_k / a_N\). Then \(|\mathcal{C}_{N, p} (v ; x) |
+      \leqslant A^n\). Under (H1)&ndash;(H2) this yields the bound
+      <strong>(B)</strong>:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(B1)</strong> for each \(p\) and compact \(K \subset
+          \text{Conf}^{(p)}_n\), \(|\mathcal{C}_{N_j, p} |\) is bounded at
+          lattice points of \(K\) for \(j\) large;
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(B2)</strong> for compact \(K \subset \text{Conf}_n\), it is
+          bounded eventually along ordered tails.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          By pigeonhole, some translate of the tiling with cells of side
+          \(a_m\) puts every \(x_i\) at distance \(\geqslant 3 a_k\) from all
+          cell boundaries (possible because \(n \cdot 2 \cdot 3 a_k < a_m\)).
+        </p>
+      </li>
+      <li>
+        <p>
+          Distinct points lie in distinct cells because \(a_m < r\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Each \(I (v_i, x_i)\) is the copy of some \(I (g_i v_i, y_i)\) with
+          \(y_i\) in the base cell.
+        </p>
+      </li>
+      <li>
+        <p>
+          Apply the chessboard estimate with \(1\) elsewhere, then Lemma
+          IV.1.c.
+        </p>
+      </li>
+      <li>
+        <p>
+          For (B): by compactness a single \(r > 0\) works on \(K\), and for
+          large \(p\) there is no wrap-around. Choose \(m\), then \(k\), then
+          take the budgets from (H2).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Held.lean#L73-L114"><tt class="verbatim">Around.fits_budget</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Held.lean#L120-L132"><tt
+      class="verbatim">Around.size_done</tt></a> (conclusion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L25-L30"><tt class="verbatim">Bound</tt></a>),
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Proximity.lean#L53-L66"><tt class="verbatim">Tiling.fits_together</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Gaps.lean#L63-L80"><tt class="verbatim">Gaps.some</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Gaps.lean#L129-L137"><tt class="verbatim">Gaps.someGrows</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-equicontinuity"></a>4.3 Equicontinuity<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma IV.1.e (Lipschitz bound for traces; proved in
+      III.16).</strong> Let \(X\) be a compact metric space with a finite
+      Borel measure, \(K\) a continuous positive semidefinite kernel, and
+      \(B_1, \ldots, B_n\) continuous kernels, with \(n \geqslant 2\). Let
+      \(q, w \geqslant 1\) be integers, put \(M = 2 qw\), and assume \(Z =
+      \text{Tr} \hspace{0.17em} K^M > 0\). Take gaps \(Y, Y' \in
+      \mathbb{N}^n\) with \(nw + \sum_k Y_k = M\). Suppose \(Y'\) transfers an
+      integer \(\ell \geqslant 0\) units from one gap to a different gap,
+      \(Y_k > 2 r\) for every \(k\), and \(0 \leqslant \ell \leqslant r\) with
+      \(r > 0\). If
+    </p>
+    <center>
+      \(\displaystyle \|B_k \|_{2 q} := (\text{Tr} (B_k^{\ast} B_k)^q)^{1 / (2
+      q)} \leqslant c_k
+Z^{1 / (2 q)},\)
+    </center>
+    <p>
+      then
+    </p>
+    <center>
+      \(\displaystyle | \text{Tr} \prod_k B_k K^{Y'_k} - \text{Tr} \prod_k B_k
+      K^{Y_k} | \leqslant Z
+\left( \prod_k c_k \right) \frac{\ell}{r} .\)
+    </center>
+    <p>
+      Here traces of kernel products are their cyclic integrals.
+    </p>
+    <p>
+      <em>Proof sketch.</em> Approximate the cyclic integrals by finite
+      matrices \((A, b_k)\) using one quadrature for all kernels and their
+      adjoints. For the positive semidefinite matrix \(A\), use the entire
+      spectral family equal to \(e^{z \log \lambda}\) on positive eigenvalues
+      and zero on \(\ker A\) for every \(z\). It agrees with \(A^m\) at
+      positive integers \(m\). The trace with gap vector \(W (z) = Y + z (e_i
+      - e_j)\) is entire. On \(|z| \leqslant 2 r\), all real gap parts are
+      nonnegative and
+    </p>
+    <center>
+      \(\displaystyle \frac{n}{2 q} + \sum_k \frac{\text{Re} \hspace{0.17em}
+      W_k (z)}{M} = 1.\)
+    </center>
+    <p>
+      Writing \(Z_A = \text{Tr} \hspace{0.17em} A^M\), complex interpolation
+      gives the bound \(\prod_k \|b_k \|_{2 q}  \hspace{0.17em} Z_A^{1 - n /
+      (2 q)}\). Cauchy's estimate bounds the derivative on \(|z| \leqslant r\)
+      by this quantity divided by \(r\). Integrate from \(0\) to \(\ell\) and
+      pass to the kernel limit; the partition traces and column moments
+      converge under the common quadrature.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L76-L106"><tt class="verbatim">TimeKernel.passage</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L170-L229"><tt
+      class="verbatim">Holder.finite_lip</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L124-L165"><tt class="verbatim">Holder.estimation</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L22-L24"><tt class="verbatim">Holder.leap</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.f (the Wilson transfer matrix).</strong> Fix \(\beta
+      \geqslant 0\), an axis \(a\) and \(\Lambda_{N, p}\). The one-step kernel
+      \(K_{\beta}\) on slice configurations, with the links in direction \(a\)
+      integrated out and half of each slice action assigned to either side, is
+      continuous and positive semidefinite. With \(M = L_p / a_N\),
+      \(\text{Tr} \hspace{0.17em} K_{\beta}^M = Z\) is the partition function.
+      Every continuous observable local to a slab of width \(1 \leqslant w <
+      M\) lattice steps has a slab representation, whose weighted integration
+      gives a continuous kernel \(B\). Products of such observables, all of
+      width \(w\) and separated by gaps \(Y\), satisfy
+    </p>
+    <center>
+      \(\displaystyle \left\langle \prod_k F_k \right\rangle_{\beta} =
+      \frac{\text{Tr} \prod_k B_k
+K_{\beta}^{Y_k}}{Z}, \qquad nw + \sum_k Y_k
+      = M.\)
+    </center>
+    <p>
+      If \(M = 2 qw\) with \(q \geqslant 1\), the normalized column bounds
+      \((\text{Tr} (B_k^{\ast} B_k)^q / Z)^{1 / (2 q)} \leqslant c_k\)
+      therefore give the difference bound \((\prod_k c_k) \ell / r\) under the
+      gap and shift hypotheses of Lemma IV.1.e.
+    </p>
+    <p>
+      <em>Proof sketch.</em> Fill the complement of the slab with a fixed
+      configuration to express the observable as a function of its slab links.
+      Integrate the interior links with the Wilson weights. Fubini's theorem
+      identifies the product with the cyclic kernel integral. Apply Lemma
+      IV.1.e and divide by \(Z > 0\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Positive.lean#L81-L91"><tt class="verbatim">Slice.step_positive</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Calendar.lean#L34-L38"><tt class="verbatim">Time.partition_seen</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Calendar.lean#L72-L102"><tt class="verbatim">Time.powering</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Resident.lean#L74-L87"><tt class="verbatim">Time.selects</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Ordered.lean#L68-L115"><tt class="verbatim">Time.organized</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.g (chessboard bound for the column norm).</strong>
+      Assume (H1), \(m \leqslant N\) and \(N \geqslant \text{ref} (d_v)\) for
+      a label \(v\) of degree \(d_v\). Put \(d = a_m / a_N\). Suppose \(F =
+      I_{N, p} (v, x)\) and \(J = I_{N, p} (\theta_a v, x)\) are interior to
+      the base cell of \(\mathcal{T}_m (x)\) with roots \(\leqslant c\). Then
+      \(F\) has a slab representation of width \(2 d\) lattice steps. Its
+      kernel \(B\) and the kernel of \(J\) are adjoints. Writing \(L_p / a_N =
+      4 qd\), with \(q \geqslant 1\), and letting \(Z\) be the partition
+      function, one has
+    </p>
+    <center>
+      \(\displaystyle \left( \frac{\text{Tr} (B^{\ast} B)^q}{Z} \right)^{1 /
+      (2 q)} \leqslant c.\)
+    </center>
+    <p>
+      <em>Proof sketch.</em> The observable \(J\) equals \(\overline{F \circ
+      \Theta}\) for the site reflection through \(x^a\). Reversing the slab
+      gives the adjoint kernel. The column consists of \(2 q\) alternating
+      copies of \(J\) and \(F\), placed in every other cell of the row of
+      \(\mathcal{T}_m (x)\) in direction \(a\). Apply the chessboard estimate
+      with \(1\) in all other cells and take the \(1 / (2 q)\)-th power.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Present.lean#L76-L111"><tt class="verbatim">Tiling.enough</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Difference.lean#L51-L87"><tt
+      class="verbatim">Difference.reading</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Difference.lean#L37-L49"><tt class="verbatim">Difference.stars</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.h (Lipschitz bound in one coordinate).</strong>
+      Assume (H1), \(m \leqslant N\) and \(N \geqslant \max_i \text{ref}
+      (d_i)\). Let \(n \geqslant 2\) lattice points have pairwise cyclic
+      physical \(a\)-gaps \(> 2 a_m + 2 \rho\), with \(\rho > 0\). Assume the
+      centered interior conditions and let \(c_i\) bound the roots of \(I
+      (v_i, x_i)\) and \(I (\theta_a v_i, x_i)\) on \(\mathcal{T}_m (x_i)\).
+      Moving one point by \(h \in a_N \mathbb{N}\), \(0 \leqslant h \leqslant
+      \rho\), in direction \(+ e_a\) changes \(\mathcal{C}_{N, p} (v ; x)\) by
+      at most \((\prod_i c_i)  \hspace{0.17em} h / \rho\).
+    </p>
+    <p>
+      <em>Proof sketch.</em> Put \(d = a_m / a_N\) and reorder the points
+      cyclically in the \(a\)-direction (permutation symmetry). Represent each
+      observable by a brick of width \(2 d\); the gaps are then \(> 2 \rho /
+      a_N\) in lattice units. Combine Lemmas IV.1.f and IV.1.g.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Difference.lean#L90-L145"><tt class="verbatim">Difference.primitive</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Difference.lean#L24-L35"><tt class="verbatim">Difference.chrono</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.i (equicontinuity).</strong> Under (H1)&ndash;(H2),
+      for every arity \(n\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(Q1)</strong> for every \(p\), compact \(K \subset
+          \text{Gen}^{(p)}_n\), label list \(v\) and \(\epsilon > 0\), there
+          is \(\delta > 0\) such that, for all large \(j\), the lifted lattice
+          correlations at any \(x, y \in K\) with \(|x - y| < \delta\) differ
+          by less than \(\epsilon\);
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(Q2)</strong> for every \(\epsilon > 0\), the same assertion
+          holds for every compact \(K \subset \text{Gen}_n\), eventually along
+          ordered tails, with one \(\delta\) independent of the volume.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Quantitatively, let \(R > 0\) bound below all cyclic coordinate gaps on
+      a closed neighbourhood of \(K\), and let \(A\) bound the centered roots
+      of the \(v_i\) and all \(\theta_a v_i\) at a scale \(a_m < R / 4\). Then
+      \(| \Delta \mathcal{C}| \leqslant 16 nA^n  |x - y| / R\) for \(|x - y|\)
+      sufficiently small.
+    </p>
+    <p>
+      <em>Proof sketch.</em> Telescope through at most \(4 n\) coordinate
+      moves inside the neighbourhood and apply Lemma IV.1.h with \(\rho = R /
+      4\). For a negative move, interchange its endpoints. For \(n = 1\) use
+      translation invariance; \(n = 0\) is constant.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Equicontinuity.lean#L181-L214"><tt class="verbatim">Difference.completed</tt></a>
+      (conclusion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L26-L30"><tt class="verbatim">TransferLip</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Equicontinuity.lean#L115-L163"><tt
+      class="verbatim">comparable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Equicontinuity.lean#L66-L103"><tt class="verbatim">stepTotal</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Equicontinuity.lean#L51-L64"><tt class="verbatim">permits</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Gaps.lean#L82-L93"><tt class="verbatim">Gaps.all</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Gaps.lean#L119-L127"><tt class="verbatim">Gaps.allGrows</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-compactness-and-ordered-limits"></a>4.4 Compactness and ordered limits<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma IV.1.j (Arzel&agrave;&ndash;Ascoli for countably many
+      families).</strong> Let \((Y_i)\) be a countable family of locally
+      compact separable metric spaces, \(U_i \subset Y_i\) open, and
+      \(T^{(j)}_i : Y_i \to \mathbb{C}\). Assume that \(T^{(j)}_i (y)\) is
+      eventually bounded for each \(y \in U_i\), and that the family is
+      eventually equicontinuous on compact subsets of \(U_i\). Then one
+      strictly increasing sequence \((t_j)\) makes every \(T^{(t_j)}_i\)
+      converge locally uniformly on \(U_i\) to a continuous limit.
+    </p>
+    <p>
+      <em>Proof sketch.</em> Take countable dense sets and replace the
+      finitely many out-of-bound values at each dense point by a point in its
+      bounding ball. By Tychonoff, the countable product of closed balls is
+      sequentially compact, which gives a single subsequence converging at all
+      dense points. Equicontinuity upgrades this to locally uniform
+      convergence.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Tame.lean#L100-L114"><tt class="verbatim">localAscoli</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Simultaneous.lean#L21-L32"><tt
+      class="verbatim">simultaneous</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Tame.lean#L20-L21"><tt class="verbatim">oscillation</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.k (two-stage extraction).</strong> The bound (B) and
+      equicontinuity (Q) along \(f\) imply IV.1.1 (a)&ndash;(b) along a
+      refinement.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Indexing.</em> Index by \((p, n, \text{degrees}, \text{basis
+          vectors})\), a countable set. Limits are taken on basis labels and
+          extended multilinearly.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Spacing.</em> Use the step extensions of the lattice correlators
+          on \(\text{Gen}^{(p)}_n\); the extension moves points by at most \(4
+          na_N\). Equicontinuity comes from (Q1) and the bound from (B1).
+          Lemma IV.1.j gives one subsequence of spacings for all \(p\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Volume.</em> Use the functions \(P_{p_k}\) on \(\text{Gen}_n\).
+          Equicontinuity and the bound come from (Q2) and (B2) passed to \(j
+          \to \infty\); this uses that a compact subset of \(\text{Gen}_n\)
+          lies in \(\text{Gen}^{(p)}_n\) for large \(p\). Apply Lemma IV.1.j
+          again.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L166-L184"><tt class="verbatim">first_surface</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L78-L105"><tt
+      class="verbatim">setMeshes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L51-L68"><tt class="verbatim">each_oscillates</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L116-L138"><tt class="verbatim">volume_oscillates</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Stencil.lean#L69-L70"><tt class="verbatim">fitted</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.l (ordered smeared limits and local
+      integrability).</strong> The bound (B) together with IV.1.1
+      (a)&ndash;(b) implies IV.1.1 (c)&ndash;(d).
+    </p>
+    <p>
+      <em>Proof sketch.</em> Dominated convergence, applied twice.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Fixed volume.</em> At an admissible \(p\), the lattice sum is
+          the integral of a step function. It converges almost everywhere (on
+          \(\text{Gen}^{(p)}_n\)) to \(tP_p\) and is dominated by \(\sup |t|
+          \cdot D\) on the box, using (B1) on \(\text{supp} t \subset
+          \text{Conf}^{(p)}_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Volume limit.</em> \(|P_{p_k} | \leqslant D\) on \(\text{supp} t
+          \cap \text{Gen}_n\) for large \(k\), by (B2) in the limit \(j \to
+          \infty\), and \(P_{p_k} \to S\) on the full-measure set
+          \(\text{Gen}_n\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      IV.1.1 is Lemmas IV.1.d, IV.1.i, IV.1.k and IV.1.l combined.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L155-L158"><tt class="verbatim">Order.poses</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L115-L153"><tt
+      class="verbatim">Order.ordinary</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L66-L95"><tt class="verbatim">Order.intraperiod</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L98-L113"><tt class="verbatim">Order.ring_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Ties.lean#L44-L49"><tt class="verbatim">almostGeneric</tt></a>;
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Held.lean#L136-L137"><tt class="verbatim">crops</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-label-derivatives"></a>4.5 Label derivatives<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma IV.1.m (one-slot difference quotients; D03).</strong>
+      Assume (H1), IV.1.1 (c)&ndash;(d) and (B) along \(f\). For every arity
+      \(n\), label list \(v\), slot \(i\), axis \(a\) and \(t \in
+      \mathcal{D}_n\), put \(u = v_i\) and replace \(I (u, x_i)\) by the
+      forward difference quotient \(a_N^{- 1}  [I_{N, p} (u, x_i + e_a) -
+      I_{N, p} (u, x_i)]\). The resulting smeared lattice correlation
+      converges along ordered tails to \(- \int (\partial_{x_i^a} t) 
+      \hspace{0.17em} S (v ; \cdot)\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Summation by parts on the torus, which is exact, moves the
+          difference onto the test as a backward difference quotient.
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(p\) large and then \(N\) large the shifted test is evaluated
+          without wrap-around.
+        </p>
+      </li>
+      <li>
+        <p>
+          The backward quotient \([t (x - a_N e_{i, a}) - t (x)] / a_N\)
+          converges uniformly to \(- \partial_{x_i^a} t\), where \(e_{i, a}\)
+          is the coordinate vector for slot \(i\) and axis \(a\). The error is
+          at most \(L_p^{4 n} \cdot \sup | \text{residual} | \cdot D\), with
+          \(D\) from (B2) on a compact neighbourhood of \(\text{supp} t\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The main term converges by (c) applied to \(\partial_{x_i^a} t\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D03.lean#L244-L249"><tt class="verbatim">Work.D03.answer</tt></a> (statement
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L61-L62"><tt class="verbatim">Bid.D03</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D03.lean#L71-L77"><tt class="verbatim">on_lattice</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D03.lean#L185-L242"><tt class="verbatim">error_sum</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L43-L44"><tt class="verbatim">heighten</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.n (chessboard-small observables are invisible;
+      D02).</strong> Assume (H1)&ndash;(H2). Let \(Q_{N, p}\) be
+      chessboard-small with rate \(y (N, p) \to 0\). For every \(\delta > 0\),
+      arity, slot and fixed spectator label list, there is \(A_{\delta}
+      \geqslant 0\) such that, eventually along ordered tails, the correlation
+      with \(Q\) in that slot has modulus at most \(A_{\delta} |y (N, p) |\)
+      at every configuration separated by \(\delta\) in the periodic physical
+      supremum norm. Consequently every smeared lattice correlation with \(Q\)
+      in one slot tends to \(0\) along ordered tails.
+    </p>
+    <p>
+      <em>Proof sketch.</em> The first claim is the chessboard argument of
+      Lemma IV.1.d with \(Q\) in one cell. For the second, write the smeared
+      sum as the integral of a step function supported in a fixed ball and
+      bounded by \(\sup |t|  \hspace{0.17em} A_{\delta} |y|\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lane/Lease.lean#L57-L124"><tt class="verbatim">Lease.take</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lane/Lease.lean#L20-L22"><tt
+      class="verbatim">Lease.rents</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lane/Lease.lean#L54-L55"><tt class="verbatim">Lease.gain</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D02.lean#L24-L84"><tt class="verbatim">Work.D02.answer</tt></a> (statement <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L57-L58"><tt class="verbatim">Bid.D02</tt></a>).
+    </p>
+    <p>
+      <strong>Lemma IV.1.o (bounded labels have subpolynomial cutoff
+      coordinates; D01).</strong> Under (H1), every degree-\(d\) label family
+      \(w (N, p)\) bounded along ordered tails has subpolynomial growth in the
+      sense of &sect;2, input 3.
+    </p>
+    <p>
+      <em>Proof sketch.</em> The inverse terminal transfer is bounded, up to a
+      fixed degree-dependent norm factor, by the product of the column
+      constants up to level \(N\), and their logarithms sum to \(o (\log
+      a_N^{- 1})\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D01.lean#L127-L134"><tt class="verbatim">Work.D01.answer</tt></a> (statement
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L54"><tt class="verbatim">Bid.D01</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D01.lean#L92-L125"><tt class="verbatim">terminal_ball</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D01.lean#L34-L63"><tt class="verbatim">columnLogs_le</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.p (spanning; D04).</strong> Assume (H1), (H2), IV.1.1
+      (c)&ndash;(d), and the relay data and dimension count for every \(d\).
+      Then:
+    </p>
+    <ol>
+      <li>
+        <p>
+          for each fixed \(u \in \text{Label}_d\), the smeared lattice
+          correlations of \(u - \pi_d (N, p) u\) (in any slot, with any
+          spectators and tests) tend to \(0\) along ordered tails; together
+          with the dimension count this gives \(\ker \pi_d = \text{Null}_d
+          (S)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for \(d \leqslant e\) and \(u \in \text{Label}_d\) there are
+          degree-\(e\) labels \(w (N, p)\) whose smeared correlations converge
+          along ordered tails to those of \(u\) in the limit;
+        </p>
+      </li>
+      <li>
+        <p>
+          for \(u \in \text{Label}_d\) and each axis \(a\) there are
+          degree-\((d + 1)\) labels \(w (N, p)\) whose smeared correlations
+          converge along ordered tails to \(- \int (\partial_{x_i^a} t) 
+          \hspace{0.17em} S (v ; \cdot)\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      In 2 and 3, one family \(w (N, p)\) works for every arity, slot,
+      spectator list and test. It may be chosen with subpolynomial growth, and
+      the normalized remainders \((w - \pi w) / (1 +\| \pi w\|)\) also have
+      vanishing smeared limits.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (1) \(u - \pi (N, p) u\) is bounded and lies in \(\ker \pi (N, p)\).
+          By Lemma IV.1.o it has subpolynomial growth, so <em>mark</em>
+          applies: it is chessboard-close to an observable with exactly
+          vanishing separated correlations. Lemma IV.1.n then shows the
+          smeared correlations vanish. The one-slot smear maps converge in
+          operator norm, since their domains are finite-dimensional. This
+          allows passage to varying labels and gives \(\ker \pi_d \subset
+          \text{Null}_d (S)\); the dimension count gives equality.
+        </p>
+      </li>
+      <li>
+        <p>
+          (2)&ndash;(3) <em>Transit</em>, resp. <em>pace</em>, gives labels
+          whose observables are chessboard-close to the embedded label, resp.
+          to the forward difference quotient. Lemma IV.1.n transfers the
+          smeared limits, which Lemma IV.1.m computes for the difference
+          quotient.
+        </p>
+      </li>
+      <li>
+        <p>
+          For the normalized remainder, dividing \(w\) by \(1 + \| \pi w\|\)
+          preserves subpolynomial growth, while \(\pi w / (1 +\| \pi w\|)\) is
+          bounded and Lemma IV.1.o applies. Their difference lies in the
+          projection kernel, so <em>mark</em> and Lemma IV.1.n apply.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D04.lean#L212-L240"><tt class="verbatim">Work.D04.answer</tt></a> (statement
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L65-L67"><tt class="verbatim">Bid.D04</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L55-L60"><tt class="verbatim">Spans</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L24-L26"><tt class="verbatim">Bin.Upper</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L41-L42"><tt class="verbatim">Bin.exactC</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.q (fixed derivative labels).</strong> The conclusions
+      of Lemma IV.1.p yield the maps \(\kappa\) and \(\tau\) of IV.1.2.
+    </p>
+    <p>
+      <em>Proof sketch.</em> This is a finite-dimensional compactness
+      argument.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Take a cluster point \((c, z)\) of \(\left( (1 +\| \pi w\|)^{- 1},
+          \hspace{0.17em} \pi w / (1 +\| \pi w\|) \right)\) along the
+          ordered-tail filter. Use one refining ultrafilter for this
+          finite-dimensional pair; all spectator tests then retain their
+          limits.
+        </p>
+      </li>
+      <li>
+        <p>
+          Idempotence and convergence of the projections give \(\pi z = z\).
+          For every spectator test, the limits give \(\langle S, z \rangle = c
+          \cdot (\text{target})\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(c \ne 0\): otherwise \(z \in \text{ran} \pi \cap \ker \pi =
+          \{0\}\) (since \(\ker \pi = \text{Null}\)), contradicting \(\|z\| +
+          c = 1\). So \(z / c\) is a fixed label with the target kernels.
+        </p>
+      </li>
+      <li>
+        <p>
+          Define \(\kappa\) and \(\tau\) this way on a basis and extend
+          linearly.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The identity for \(\tau\) is the distributional relation
+      \(\partial_{x_i^a} S_v = S_{v_{i \to \tau_a v_i}}\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L71-L87"><tt class="verbatim">lifts_model</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Limits.lean#L69-L111"><tt
+      class="verbatim">Dash.brace</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L89-L96"><tt class="verbatim">Wakes.through_ties</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Scope.lean#L108"><tt class="verbatim">Dash.monitor</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-smoothness"></a>4.6 Smoothness<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma IV.1.r (distributional regularity).</strong> Let \(K_w\),
+      with \(w\) ranging over label lists of arity \(n\), be locally
+      integrable on \(\text{Conf}_n\) and continuous on \(\text{Gen}_n\).
+      Assume that for every \(w\), slot \(i\) and axis \(a\) there is \(w'\)
+      with \(\partial_{x_i^a} K_w = K_{w'}\) in \(\mathcal{D}'
+      (\text{Conf}_n)\). Then every \(K_w\) agrees almost everywhere on
+      \(\text{Conf}_n\), and everywhere on \(\text{Gen}_n\), with a function
+      in \(C^{\infty} (\text{Conf}_n)\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For \(\varphi \in \mathcal{D}_n\): \(\xi_{i, a} \hspace{0.17em}
+          \widehat{\varphi K_w} (\xi)\) is a constant times \(\widehat{\varphi
+          K_{w'}} + \widehat{(\partial_{i, a} \varphi) K_w}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          By induction on \(m\), \(| \xi_{i, a} |^m | \widehat{\varphi K_w}
+          |\) is bounded for all \(m\) and all coordinates. So
+          \(\widehat{\varphi K_w}\) decays rapidly, and \(\varphi K_w\) equals
+          a smooth function almost everywhere.
+        </p>
+      </li>
+      <li>
+        <p>
+          Take \(\varphi = 1\) near an arbitrary point of \(\text{Conf}_n\),
+          generic or not.
+        </p>
+      </li>
+      <li>
+        <p>
+          The local smooth representatives agree on \(\text{Gen}_n\), which
+          has full measure, hence on overlaps; glue them. Multilinearity in
+          the labels follows from the same density argument.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Slew.lean#L26-L58"><tt class="verbatim">Dash.awake</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Regular.lean#L91-L113"><tt
+      class="verbatim">aggregate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Regular.lean#L62-L71"><tt class="verbatim">repair</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Twist.lean#L98-L115"><tt
+      class="verbatim">arises</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Twist.lean#L94-L95"><tt class="verbatim">Hidden</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Twist.lean#L58-L59"><tt
+      class="verbatim">currents</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Slew.lean#L17-L18"><tt class="verbatim">closeBy</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.s (the smooth version is a raw limit with a
+      derivative plan).</strong> Let \(T\) be given by Lemma IV.1.r applied to
+      \(S\) and the maps of IV.1.2. Then \(T\) satisfies the conclusions of
+      IV.1.3.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(T\) satisfies IV.1.1 (a)&ndash;(d) with the same \(P_p\), because
+          the volume limit only sees \(\text{Gen}_n\), and (c) follows from
+          Lemma IV.1.l;
+        </p>
+      </li>
+      <li>
+        <p>
+          (E1) holds by Lemma IV.1.t;
+        </p>
+      </li>
+      <li>
+        <p>
+          the kernel identities pass from \(S\) to \(T\), since the smeared
+          values are the same;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\kappa\) and \(\tau\) preserve null labels: their smeared kernels
+          are respectively the original kernel and its distributional
+          derivative. Smoothness turns these into pointwise identities, so the
+          maps descend to the quotients \(F_d\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L101-L109"><tt class="verbatim">Org.Arrives.serves</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L194-L202"><tt
+      class="verbatim">RawLimits.ready</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L74"><tt class="verbatim">Table.Field</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-euclidean-axioms-bounds-and-assembly"></a>4.7 Euclidean axioms, bounds and assembly<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma IV.1.t (symmetries and basic identities).</strong> If
+      \(T\) is smooth on \(\text{Conf}_n\) and is a point limit (IV.1.1
+      (a)&ndash;(b)) along \(f\), and (H1) holds, then \(T\) satisfies
+      (E1)&ndash;(E3).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Grid convergence.</em> For a point \(x\) of the level-\(k\) grid
+          \(a_k \mathbb{Z}^{4 n}\) with \(x \in \text{Gen}_n\), use its
+          reduction in \(\Lambda_{N, p}\) for \(N \geqslant k\) and
+          sufficiently large \(p\). The lattice correlations there converge to
+          \(T (v ; x)\) along ordered tails.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Lattice identities.</em> Permutation symmetry,
+          \(H_4\)-covariance about the origin, translations by grid vectors,
+          reality and the unit label hold exactly on the lattice, by (H1) and
+          the invariance of the Wilson measure.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Extension.</em> Equality on the dense set of generic grid points
+          extends to \(\text{Gen}_n\) by continuity, and then to
+          \(\text{Conf}_n\), since both sides are continuous there and
+          \(\text{Gen}_n\) has full measure. Real translations are
+          approximated by grid translations.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Inherited.lean#L151-L193"><tt class="verbatim">Order.limits_basic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Inherited.lean#L124-L149"><tt
+      class="verbatim">Order.spin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Inherited.lean#L83-L112"><tt class="verbatim">Order.homogeneous</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Inherited.lean#L39-L44"><tt class="verbatim">Order.inPatch</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Inherited.lean#L48-L51"><tt class="verbatim">Order.equal</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.u (reflection positivity of the limit).</strong> If
+      \(T\) is smooth, symmetric and an ordered limit along \(f\), and (H1)
+      holds, then (E5) holds; (E5) implies (E4).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Lattice side.</em> For a test supported in \(\{x^a > 0\}\), take
+          \(p\) large enough that it is admissible. The smeared lattice
+          observable \(a_N^{4 n}  \sum_r t (\hat{r})  \prod I (v_k, r_k)\) is
+          then, for \(N\) large, interior to the half-torus \(0 < x^a < L_p /
+          2\). Its reflection through the site plane \(x^a = 0\) carries
+          labels \(\theta_a\), because \(I (\theta_a v, \Theta x) =
+          \overline{I (v, x) \circ \Theta}\). The lattice Gram matrix of such
+          observables is the smeared lattice correlation of \(\overline{t_i}
+          \otimes t_j\) pulled back by reflection of the first configuration.
+          Symmetry permits reversal of its entries. The resulting joint test
+          has compact support in \(\text{Conf}_{n_i + n_j}\), since the two
+          configurations lie strictly on opposite sides of the plane. Lemma
+          IV.1.a makes the lattice Gram matrix positive semidefinite.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Limit.</em> Smoothness gives absolute integrability on the
+          compact joint supports. Pass to the ordered limit using (c).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>(E4) from (E5).</em> Use bump functions concentrating at the
+          points, together with continuity of \(T\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Harvest.lean#L46-L60"><tt class="verbatim">Order.realPositive</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Pairs.lean#L104-L125"><tt
+      class="verbatim">Banks.at_cut</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Banks.lean#L94-L102"><tt class="verbatim">Banks.kept</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Banks.lean#L19"><tt class="verbatim">Banks.plane</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/RPPeak.lean#L126-L131"><tt class="verbatim">Pairing.at_point</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/RPPeak.lean#L16-L33"><tt class="verbatim">Pairing.nearGram</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.v (the polynomial bound).</strong> Under the
+      hypotheses of IV.1.5, its stated exponent \(4 n (1 + \max_i d_i)\) is
+      valid.
+    </p>
+    <p>
+      <em>Proof sketch.</em> Set \(D = 1 + \max_i d_i\). The centered power
+      budgets for all transformed labels can be bounded by \(Ba_k^{- D}\) for
+      every \(k \geqslant M\), with fixed \(B \geqslant 0\) and \(M\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          Choose the first \(m \geqslant M\) with \(a_m < r / 2\), and the
+          first \(k \geqslant M\) with \(a_k < a_m / [6 (n + 1)]\). The scale
+          inequality, including the possible endpoint \(m = M\) or \(k = M\),
+          gives \(a_m \geqslant c (r / 2)^2\) and then \(a_k \geqslant c'
+          r^4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lemma IV.1.d bounds the lattice correlations by \((Ba_k^{- D})^n\).
+          Pass first to the spacing limit and then to the volume limit at
+          generic points with separation \(> r / 2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Continuity and density extend the bound to every \(r\)-separated
+          configuration. Since \(a_k \geqslant c' r^4\), the bound is at most
+          \(Cr^{- 4 Dn}\), with \(C\) independent of positions and \(r\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D05.lean#L160-L180"><tt class="verbatim">Work.D05.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D05.lean#L43-L68"><tt
+      class="verbatim">image_power</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D05.lean#L132-L158"><tt class="verbatim">scales</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D05.lean#L95-L128"><tt class="verbatim">separated_bound</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.w (orientation).</strong> Under the hypotheses of
+      IV.1.6, its four symmetry identities hold on the quotient spaces
+      \(F_d\).
+    </p>
+    <p>
+      <em>Proof sketch.</em> A class in \(F_d\) is determined by its kernels
+      against all spectators. Compare the kernels of both sides using (E2) and
+      the chain rule for \(x \mapsto sx\) and for complex conjugation.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/D06.lean#L98-L135"><tt class="verbatim">Work.D06.compat</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma IV.1.x (assembly).</strong> If \(T\) is an ordered limit
+      and a point limit along \(f\), (H1) holds, \(T\) is smooth and (E7)
+      holds, then \(T\) satisfies the hierarchy (E1)&ndash;(E7).
+    </p>
+    <p>
+      <em>Proof sketch.</em> Lemmas IV.1.t and IV.1.u give (E1)&ndash;(E5);
+      (E6)&ndash;(E7) are assumed. When (H2) and the derivative plan of IV.1.3
+      are also available, IV.1.5 and B10 supply (E7). B10 inducts on the
+      derivative order: each coordinate derivative is a kernel with one raised
+      label, and the operator norm is bounded by a finite sum of coordinate
+      norms. The base case is IV.1.5. On the main path, compactness of the
+      bounded projection matrices gives a common refinement before forming the
+      bundle of Remark 1.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Harvest.lean#L62-L65"><tt class="verbatim">Order.assembles</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L113-L114"><tt
+      class="verbatim">Org.Cleaner.stay</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L91-L97"><tt class="verbatim">Bid.healthy</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B10.lean#L72-L90"><tt class="verbatim">Work.B10.capped_tags</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L86-L93"><tt class="verbatim">include_projections</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L178-L181"><tt class="verbatim">Projected.ready</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L42-L51"><tt class="verbatim">Next.Extract.Base</tt></a>.
+    </p>
+    <h2 id="auto-12"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The main estimates are the transfer-kernel Lipschitz bound and the
+      control of uncentered chessboard roots. Complex interpolation and
+      Cauchy's estimate turn reflection positivity into equicontinuity without
+      prior derivative bounds. Translation log-convexity allows the centered
+      budgets to control observables at arbitrary interior positions.
+    </p>
+    <p>
+      The regularity argument depends on more than compactness: the relay
+      estimates supply degree-raised approximants to differences, and the rank
+      comparison identifies precisely which labels vanish. The normalized
+      remainder estimate in Lemma IV.1.p is needed to obtain fixed derivative
+      labels. Fourier regularity, passage of symmetries by density, and
+      positivity of limiting Gram matrices then use standard arguments.
+    </p>
+    <p>
+      Three distinctions matter:
+    </p>
+    <ul>
+      <li>
+        <p>
+          Equicontinuity is proved on \(\text{Gen}_n\), whereas bounds and the
+          smooth representative extend to \(\text{Conf}_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The maps \(\tau_{d, a}\) are chosen by compactness. Their kernel
+          identities determine them only modulo \(\text{Null}_{d + 1}\); the
+          induced maps on \(F_d\) are intrinsic.
+        </p>
+      </li>
+      <li>
+        <p>
+          The hierarchy here has signed coordinate symmetries and reflection
+          positivity at coordinate planes. Translation invariance moves those
+          planes. Continuous rotation symmetry is a later result.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-13"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>object</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>code name</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>proposed notation</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Wilson family; spacing, period, coupling</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L24-L30"><tt class="verbatim">Family</tt></a> (<tt class="verbatim">C.S.a</tt>,
+        <tt class="verbatim">C.S.period</tt>, <tt class="verbatim">C.beta</tt>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(C\); \(a_N\), \(L_p\), \(\beta_{N, p}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">specification of the family</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62"><tt class="verbatim">Family.Makes</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(H1)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">label, register of labels</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Register.lean#L88"><tt class="verbatim">Register.Token</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/LatticeFamily.lean#L20"><tt
+        class="verbatim">Family.book</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(v \in \text{Label}_d\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">unit label; reflected label</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Register.lean#L90"><tt class="verbatim">Register.one</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Register.lean#L93"><tt
+        class="verbatim">Register.reflectedToken</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(1_d\); \(\theta_a v = \rho_d (s_a)  \bar{v}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">renormalized lattice observable</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L42"><tt class="verbatim">Family.O</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(I_{N, p} (v, x)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">lattice correlation; smeared</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/LatticeFamily.lean#L68-L69"><tt class="verbatim">Family.numeric</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L26-L27"><tt
+        class="verbatim">Order.smears</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{C}_{N, p} (v ; x)\), \(\mathcal{C}_{N, p} (v ;
+        t)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">configuration sets</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L63"><tt class="verbatim">conf</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L66"><tt class="verbatim">generic</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Patch.lean#L25-L26"><tt class="verbatim">NoHit</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Patch.lean#L28-L29"><tt class="verbatim">Cyclic</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{Conf}_n\), \(\text{Gen}_n\),
+        \(\text{Conf}^{(p)}_n\), \(\text{Gen}^{(p)}_n\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">test functions; admissible at \(p\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Test.lean#L18"><tt class="verbatim">Test</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Patch.lean#L31"><tt class="verbatim">suitable</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{D}_n\); \(\text{supp} t \subset (- L_p / 2, L_p
+        / 2)^{4 n}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">extraction; refinement; ordered sense</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L34-L36"><tt class="verbatim">Order</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L40"><tt class="verbatim">refine</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L47"><tt class="verbatim">late</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Inherited.lean#L27"><tt class="verbatim">fuse</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(f = ((N_j), (p_k))\), \(f \circ g\), &quot;\(k\) large,
+        then \(j\) large&quot;</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">table</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Table.lean#L55-L56"><tt class="verbatim">Table</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(S (v ; x)\), \(T (v ; x)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">raw limits</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L156-L160"><tt class="verbatim">RawLimits</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L68"><tt class="verbatim">PointLimits</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">IV.1.1 (a)&ndash;(c); \(P_p\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">tiling, copy, chessboard root</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Tiling.lean#L19-L25"><tt class="verbatim">Tiling</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Tiling.lean#L221-L224"><tt class="verbatim">copy</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Tiling.lean#L226-L227"><tt class="verbatim">rootTest</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{T}\), \(\text{copy}_c\),
+        \(|F|_{\mathcal{T}}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">centered tiling at \(x\), cells of side \(a_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L34-L40"><tt class="verbatim">Cells.center</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{T}_m (x)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">interior function of a cell</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Cut.lean#L109-L113"><tt class="verbatim">Interior</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(F \in \mathcal{A} (\text{cell})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">reflection positivity and chessboard inequality</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L14-L19"><tt class="verbatim">Seam</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(RP), (CB)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">budgets</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L38-L40"><tt class="verbatim">Wcmain</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L30-L34"><tt class="verbatim">CenterPort</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">input 2; (H2)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">uniform bound; equicontinuity</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L25-L30"><tt class="verbatim">Bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Lipschitz.lean#L26-L30"><tt class="verbatim">TransferLip</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(B1)&ndash;(B2), (E1)&ndash;(E2)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">forward difference quotient</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L43-L44"><tt class="verbatim">heighten</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(a_N^{- 1} [I (v, \cdot + e_a) - I (v, \cdot)]\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">chessboard-small; subpolynomial growth</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L25"><tt class="verbatim">close</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L18-L19"><tt class="verbatim">dollar</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">&mdash;</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">projections; relay data</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Scope.lean#L119"><tt class="verbatim">Dash.Bin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Drops.lean#L46-L52"><tt class="verbatim">RelayBin</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\pi_d (N, p) \to \pi_d\); pace, transit, mark</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">null labels; label quotient</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Scope.lean#L108"><tt class="verbatim">Dash.monitor</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L34"><tt
+        class="verbatim">Table.null</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L74"><tt class="verbatim">Table.Field</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{Null}_d\), \(F_d = \text{Label}_d /
+        \text{Null}_d\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">derivative labels; derivative plan</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Dash/Inert.lean#L63-L65"><tt class="verbatim">MonitorOps</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22"><tt
+        class="verbatim">DiffPlan</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\kappa_{d, e}\), \(\tau_{d, a}\); \(\text{rise}_{d, e}\),
+        \(\partial_{d, a}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Euclidean hierarchy</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L141-L148"><tt class="verbatim">Table.Hierarchy</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(E1)&ndash;(E7)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">zeroth-order polynomial bound</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L97-L98"><tt class="verbatim">Bid.OneCap</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">IV.1.5</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">bundle handed downstream</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L42-L51"><tt class="verbatim">Next.Extract.Base</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">&mdash;</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-14"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Ultraviolet relay and rank estimates.</strong> The
+          interfaces in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Eureka.lean#L16-L20"><tt class="verbatim">MergeProof.Scotia</tt></a> and <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L47"><tt class="verbatim">savings</tt></a> were checked, together with their
+          use in the dimension argument. The upstream proofs of the matching
+          estimates and interacting rank comparison in III.10&ndash;III.11
+          were not audited here. In particular, the dimension inequality is a
+          separate input; it does not follow from the centered root budgets.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Volume-uniform budget.</strong> The supplier is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Gardens.lean#L19-L40"><tt
+          class="verbatim">gardena</tt></a> (III.11). Its proof reduces to earlier
+          estimates on the same family, but their relation to the
+          volume-uniform bounds assigned to III.12 was not traced in full.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Fixed-volume ultraviolet limit.</strong> The full-spacing
+          upgrade required by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L44-L56"><tt class="verbatim">wilsonLimit</tt></a> is
+          located and explained in Remark 2. The upstream construction of the
+          full fixed-volume kernels used by that upgrade was not audited here.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Alternative assembly.</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L79-L92"><tt class="verbatim">Next.Extract.finish</tt></a>
+          and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L111-L122"><tt class="verbatim">common</tt></a> give another conditional
+          route to the same bundle. They require relay costs and detector
+          estimates in addition to the centered budgets. Their hypotheses were
+          checked; they are not additional proofs of the ultraviolet inputs.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-16.html">&larr; III.16 Analytic toolkit (notes)</a><span class="ym-part"><a
+      href="../units.html#part-iv-infinite-volume">Part IV</a><font class="ym-sep">&middot;</font><a href="../units/IV-1.html">Unit
+      outline</a></span><a class="ym-next" href="V-1.html">V.1 Decomposition of the limit into
+      phases (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

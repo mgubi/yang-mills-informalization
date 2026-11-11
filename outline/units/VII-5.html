@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>VII.5. Asymptotic freedom of the running coupling &ndash;
+    Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="VII-4.html">&larr; VII.4 Operator product expansion and contact
+      extensions</a><span class="ym-part"><a href="../units.html#part-vii-identification-as-yangmills">Part VII</a><font class="ym-sep">&middot;</font><a
+      href="../notes/VII-5.html">Detailed notes</a></span><a class="ym-next" href="VII-6.html">VII.6 Scaling variants
+      and fixed-field estimates &rarr;</a>
+    </div>
+    <p>
+      <h1>VII.5. Asymptotic freedom of the running coupling</h1><a id="vii5-asymptotic-freedom-of-the-running-coupling"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-6">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-7">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Code dependencies</b> <span style="margin-left: 5mm"></span> <a href="#auto-8">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Lean source</b> <span style="margin-left: 5mm"></span> <a href="#auto-9">5</a>
+      </p>
+      <p>
+        Additional source locations <span style="margin-left: 5mm"></span> <a href="#auto-10">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Key statements</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">9</a>
+      </p>
+    </div>
+    <p>
+      <em>Part VII &mdash; Identification as Yang&ndash;Mills.</em>
+    </p>
+    <p>
+      Relates the running coupling to its leading logarithmic asymptotic under
+      the construction hypotheses.
+    </p>
+    <p>
+      <strong>Status: edited.</strong> Condensed from the unit's detailed
+      notes, which were checked against the linked Lean in two rounds and
+      edited; the local limitations still apply. <a href="../../data/index.html#outline-status">Status meanings</a>.
+    </p>
+    <p>
+      <a href="../index.html">Overview</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../notes/VII-5.html">Detailed
+      notes</a> &middot; <a href="VII-4.html">&larr; Previous: VII.4</a> &middot; <a href="VII-6.html">Next:
+      VII.6 &rarr;</a>
+    </p>
+    <p>
+      <a href="#unit-results">Results</a> &middot; <a href="#unit-inputs">Inputs</a> &middot; <a href="#unit-strategy">Strategy</a>
+      &middot; <a href="#unit-steps">Proof steps</a> &middot; <a href="#unit-notation">Notation</a>
+      &middot; <a href="#unit-limitations">What remains unexplained</a> &middot; <a href="#code-dependencies">Code
+      dependencies</a> &middot; <a href="#lean-source">Lean source</a> &middot; <a href="#key-statements">Key
+      statements</a>
+    </p>
+    <p>
+      <strong>Reading scope.</strong> The coupling result is in <tt class="verbatim">YM/Pert/Asymptotics</tt>;
+      the allocation also includes auxiliary algebra and limit lemmas from
+      other folders, as explained below.
+    </p>
+    <p>
+      <details><summary>Source inventory and conventions</summary><p>
+        <strong>Part:</strong> VII, identification as Yang&ndash;Mills.
+        <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics"><tt class="verbatim">YM/Pert/Asymptotics</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW"><tt class="verbatim">YM/Extra/WEAK_SCALING_ACTLAW</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation"><tt
+        class="verbatim">YM/TraceExtension/Foundation</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot"><tt class="verbatim">YM/TraceExtension/Soot</tt></a>.
+        <strong>Size:</strong> 232 lines, 43 declarations.
+      </p></details>
+    </p>
+    <p>
+      <a id="unit-results"></a>
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      For VII.5.1&ndash;3, let \(G \subset U (q)\) be compact, \(q \geqslant
+      1\). Write \(2 b_0 = \kappa_G = 11 C_{\mathfrak{g}} / (24 \pi^2)\),
+      \(a_m = (\prod_{k < m} b_k)^{- 1}\), \(s_m = \log (1 / a_m)\), with odd
+      \(b_k \geqslant 3\). The trajectory has inverse couplings \(\beta_{N, p,
+      m}\), bare endpoint \(\beta_{N, p} = \beta_{N, p, N}\), reference value
+      \(\beta_{N, p, 0} = \bar{\beta} > 0\), and \(g_{N, p, m} = \beta_{N, p,
+      m}^{- 1 / 2}\). Simple means real simple and nonabelian. The running
+      clause says that for every \(\varepsilon > 0\), eventually in \(m\),
+    </p>
+    <center>
+      \(\displaystyle | \beta_{N, p, m} - (\bar{\beta} + 2 b_0 s_m) |
+      \leqslant \varepsilon s_m\)
+    </center>
+    <p>
+      uniformly for \(N \geqslant m\) and \(p \in \mathbb{N}\).
+    </p>
+    <p>
+      <strong>Proposition VII.5.1.</strong> If the family satisfies the
+      construction conditions (II.2), then for every \(\varepsilon > 0\) there
+      is \(m_0 \geqslant 1\) such that
+    </p>
+    <center>
+      \(\displaystyle | \beta_{N, p, m} / s_m - 2 b_0 | < \varepsilon \qquad
+      (m \geqslant m_0, N
+\geqslant m, p \in \mathbb{N}) .\)
+    </center>
+    <p>
+      <em>Status:</em> theorem; only the running clause is used, without
+      simplicity. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30"><tt class="verbatim">YM.Pert.Asymptotics.zeroUp_bound</tt></a>.
+    </p>
+    <p>
+      <strong>Corollary VII.5.2.</strong> Under the construction conditions
+      and simplicity of \(\mathfrak{g}\), the Wilson family satisfies (Reg1):
+      for every \(\varepsilon > 0\) there is \(N_0 \geqslant 1\) such that \(|
+      \beta_{N, p} / s_N - b_{\ast} | < \varepsilon\) for all \(N \geqslant
+      N_0\) and \(p \in \mathbb{N}\), where \(b_{\ast} = 2 b_0 > 0\).
+      <em>Status:</em> theorem in VIII.1. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L16-L25"><tt class="verbatim">YangMills.regular</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VII.5.3.</strong> Under the same hypotheses, for any
+      lattice-level and volume sequences \((N_i), (k_i)\) with \(i \leqslant
+      N_i\) eventually,
+    </p>
+    <center>
+      \(\displaystyle g_{N_i, k_i, i}  \sqrt{s_i} \longrightarrow (2 b_0)^{- 1
+      / 2}, \qquad g_{N_i,
+k_i, i}^2 s_i \longrightarrow (2 b_0)^{- 1} .\)
+    </center>
+    <p>
+      <em>Status:</em> theorem; the second limit follows by squaring.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48"><tt class="verbatim">YM.Pert.Asymptotics.comparison</tt></a>.
+    </p>
+    <p>
+      For VII.5.4&ndash;5, \(\mathcal{F}_d, \mathcal{F}_d^{\circ}\) are
+      finite-dimensional complex label spaces of degree at most \(d\) in
+      Euclidean hierarchies on \(S\) and its free Maxwell comparison table, on
+      the same reference labels. Derivative plans have inclusions \(\iota_{d
+      \to e}\) and derivatives \(\partial_{d, a}\). Exact compatibility means
+      preserving inclusions, signed permutations \(\Gamma_4\), conjugation and
+      units.
+    </p>
+    <p>
+      <strong>Proposition VII.5.4.</strong> Fix the free Maxwell data of VI.2,
+      including the finite separating tests and boundary, polynomial and
+      internal-rotation conditions. Its plan \(W\) satisfies the inclusion,
+      derivative and orientation axioms; \(J^{\circ}\) satisfies Ward
+      identities with translation part \(\kappa \partial^W\) and rotation part
+      \(\kappa\) times the infinitesimal rotation action, where \(\kappa \ne
+      0\) and \(\partial^W_4 \ne 0\). Let \(V\) satisfy the inclusion and
+      derivative axioms. Suppose \(J \in \mathcal{F}_4^{4 \times 4}\) is
+      symmetric, real, \(\Gamma_4\)-covariant and satisfies \(\sum_a
+      \partial^V_{4, a} J_{ab} = 0\) for every \(b\), and \((J, p, Y)\)
+      satisfies the local Ward identities. If some \(c \in \mathbb{R}\)
+      satisfies \(p_{4, a} = c \partial^V_{4, a}\) for all \(a = 1, \ldots,
+      4\), there exist \(D, N, M \in \mathbb{N}\), \(R_0 \geqslant 1\) such
+      that \(c / \xi_k \to \kappa\) for every tracking scaling sequence at
+      every level \((n, d, j, R) \geqslant (N, D, M, R_0)\) componentwise
+      (VI.1). Also, for any hierarchy and local Ward identities, \(p \ne 0\)
+      implies \(J \ne 0\). A scaling sequence has complex-linear isomorphisms
+      \(U_k (d) : \mathcal{F}_d^{\circ} \to \mathcal{F}_d\), positive strictly
+      decreasing \(r_k \to 0\) and \(\xi_k > 0\). Tracking \((V, W, J)\) at
+      \((n, d, j, R)\) requires exact compatibility through \(\max (d, 4)\),
+      convergence of transported correlations at \(r_k x\) for each fixed list
+      of at most \(n\) fields of degrees at most \(d\), to the free
+      correlations, with all Fr&eacute;chet derivatives through order \(j\),
+      uniformly on \(\{x : \|x\| \leqslant R, \|x_a - x_b \|_{\infty}
+      \geqslant R^{- 1} (a \ne b)\}\), and \(\xi_k^{- 1} r_k^4 U_k (4)^{- 1}
+      J_{ab} \to J^{\circ}_{ab}\).
+    </p>
+    <p>
+      <em>Status:</em> theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L43-L54"><tt class="verbatim">YM.Extra.WeakScaling.tracks_ratio</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Criteria.lean#L64-L70"><tt class="verbatim">flux_nontrivial</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VII.5.5.</strong> Let \(V, W\) satisfy the inclusion
+      and orientation axioms. For every \(d\) there is a complex-linear,
+      \(\Gamma_4\)-equivariant, conjugation-preserving retraction \(P_d\) of
+      \(\iota^W_d := \iota^W_{d \to d + 1}\). For any complex-linear
+      isomorphisms \(A_d : \mathcal{F}_d^{\circ} \to \mathcal{F}_d\), define
+    </p>
+    <center>
+      \(\displaystyle X_0 = A_0, \qquad X_{d + 1} = \iota^V_d X_d P_d + A_{d +
+      1}  (1 - \iota^W_d
+P_d) .\)
+    </center>
+    <p>
+      Fix \(D \in \mathbb{N}\). If \(A_d\) preserve symmetries and units for
+      \(d \leqslant D\), then \(X_d\) are exactly compatible through degree
+      \(D\). For sequences of such isomorphisms \(A_d^{(k)}\) satisfying
+      \((A_{d + 1}^{(k)})^{- 1} \iota^V_d A_d^{(k)} v \to \iota^W_d v\) for
+      every \(d < D, v\), one has \((A_d^{(k)})^{- 1} X_d^{(k)} \to 1\) in
+      operator norm for every \(d \leqslant D\). These \(X_d^{(k)}\) are
+      eventually bijective; replacing nonbijective terms by \(A_d^{(k)}\)
+      gives isomorphisms \(\tilde{X}_d^{(k)}\) with \((A_d^{(k)})^{- 1} 
+      \tilde{X}_d^{(k)} v \to v\). If the original frames preserve symmetries
+      and units through \(D\), the replacements are eventually exactly
+      compatible simultaneously through \(D\). <em>Status:</em> theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55"><tt class="verbatim">retraction</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L80-L102"><tt
+      class="verbatim">adjusted_exact</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L113-L129"><tt class="verbatim">perturb_limit</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L144-L148"><tt class="verbatim">relative</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VII.5.6.</strong> Along any filter: (a) for an
+      injective linear map \(f : E \to X\) between finite-dimensional real
+      normed spaces, \(f (a_y) \to f (e)\) implies \(a_y \to e\); (b)
+      continuous real-linear maps \(f_y, g : (\mathbb{R}^4)^n \to \mathbb{C}\)
+      satisfy \(f_y \to g\) in operator norm if \(f_y (e_{i, a}) \to g (e_{i,
+      a})\) at all \(4 n\) coordinate vectors. <em>Status:</em> theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L44-L51"><tt class="verbatim">norm_fit</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L63-L70"><tt
+      class="verbatim">norm_fit_deriv</tt></a>.
+    </p>
+    <p>
+      <strong>Definition VII.5.7.</strong> In gauge-invariant radial-jet
+      polynomials, with curvature weight 2 and derivatives adding 1, for \(t
+      \in \mathbb{R}^4\) set
+    </p>
+    <center>
+      \(\displaystyle \mathfrak{s}= \tfrac{1}{4} \sum_{i, j} \langle F_{ij},
+      F_{ij} \rangle, \quad
+T^{(t)}_{ab} = \delta_{ab}  \left( t_0
+      \boldsymbol{1}+ t_1  \sum_i \langle
+F_{ai}, F_{ai} \rangle + 4 t_2
+      \mathfrak{s} \right) + (1 - \delta_{ab}) t_3 
+\sum_i \langle F_{ai},
+      F_{bi} \rangle .\)
+    </center>
+    <p>
+      Here \(F, \partial F\) are linear curls of degree-0 and degree-1 radial
+      Taylor coefficients. These are polynomial identities before quotienting
+      by null fields. Put \(T^{\text{can}} = T^{(0, 1, - 1 / 4, 1)}\),
+      \(\mu^1_b = \sum_i \langle F_{bi}, \partial_b F_{bi} \rangle\),
+      \(\mu^2_b = \sum_{i, j} \langle F_{ij}, \partial_b F_{ij} \rangle\),
+      \(E_b = \sum_{a, i} \langle F_{bi}, \partial_a F_{ai} \rangle\), and,
+      for \(w \in \mathbb{R}^3\),
+    </p>
+    <center>
+      \(\displaystyle \beta (w) = w_0 \mu^1 + w_1 \mu^2 + w_2 E, \quad \delta
+      (w) = \beta (2 (w_0 -
+w_2), 2 w_1 + w_2 / 2, w_2) .\)
+    </center>
+    <p>
+      Both \(\mu^1, \mu^2\) belong to the real space \(\mathcal{R}_1\) of
+      real, \(\Gamma_4\)-covariant vectors of degree at most 5. Every degree-0
+      radial jet is realised by a constant-curvature free Maxwell field with
+      affine potential. <em>Status:</em> definitions and two lemmas.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L70"><tt class="verbatim">raw</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L63-L66"><tt class="verbatim">basisV</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L33"><tt class="verbatim">bareVector</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L43-L50"><tt class="verbatim">shell_affine</tt></a>.
+    </p>
+    <p>
+      <strong>Definition VII.5.8.</strong> Fix a family, nondecreasing \(K :
+      \mathbb{N} \to \mathbb{R}\) with \(K \geqslant 1\), degree \(d\), stages
+      \(\ell_d \leqslant k \leqslant N\), volume \(p\), and \(u \in
+      \mathbb{R}\). The sharp read-out bound asserts \(u \|c_k \|_1 \leqslant
+      4 (1 + n_k) w\) for every \(w \geqslant 0\) and every chain of insertion
+      presentations \(A_i\) at the origin, with coefficient vectors \(c_i\),
+      remainder costs \(q_i\) and densities \(\mathcal{D}_i\), satisfying the
+      admissibility conditions of III.12 (regular and forced remainders, with
+      square-root forced allowance), \(c_{\ell_d} = 0\), and, for every
+      \(\ell_d \leqslant i < k\),
+    </p>
+    <center>
+      \(\displaystyle \begin{equationsbase}
+  \mathcal{D}_i & = b_i^d
+      \mathcal{T}^{(i)}_{\beta_{N, p, i + 1}}
+  \mathcal{D}_{i + 1},\\
+  \|c_i
+      - B_i S_i c_{i + 1} \|_1 & \leqslant b_i^{- 3 / 8}  (\|Pc_{i + 1} \|_1
+ 
+      + q_{i + 1}),\\
+  q_i & \leqslant K_i \|PS_i c_{i + 1} \|_1 + b_i^{- 3 /
+      8} q_{i + 1} .
+\end{equationsbase}\)
+    </center>
+    <p>
+      For each \(\ell_d \leqslant i < k\), costs \(q_i, q_{i + 1}\) are
+      nonnegative and \(B_i\) is a complex-linear automorphism commuting with
+      \(P\), with \(\|B_i^{\pm 1} c\|_1 \leqslant K_i \|c\|_1\) for every
+      \(c\). For \(\ell_d \leqslant i \leqslant k\), the admissible remainder
+      cost is at most \(q_i\), and \(q_k \leqslant w + n_k  (w +\|c_k \|_1)\).
+      <em>Status:</em> definition. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot/Skein.lean#L26"><tt class="verbatim">YM.MergeProof.Accent.SharpRead</tt></a>.
+    </p>
+    <p>
+      <a id="unit-inputs"></a>
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          I.1: Casimir positivity and divergent logarithmic scales (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L117-L120"><tt
+          class="verbatim">Schedule.divergent</tt></a>); II.2, III.1&ndash;2:
+          construction conditions, selected histories and shooting (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L44-L62"><tt
+          class="verbatim">YM.Family.Makes</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          III.7, III.9: one-loop shift and coupling reset.
+        </p>
+      </li>
+      <li>
+        <p>
+          IV.1, VI.1&ndash;2: hierarchies, derivative plans, Ward identities,
+          A04&ndash;A05 and free Maxwell data (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170"><tt class="verbatim">MaxwellData</tt></a>);
+          III.12: insertion estimates.
+        </p>
+      </li>
+      <li>
+        <p>
+          Standard results: Ces&agrave;ro summation, continuity of square root
+          and reciprocal, Maschke averaging, finite-dimensional continuity and
+          openness of invertibility.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="unit-strategy"></a>
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The inverse coupling follows a linear reference trajectory in
+      logarithmic scale. Uniform one-step errors sum to \(o (s_m)\) around
+      \(\bar{\beta} + 2 b_0 s_m\). Division by \(s_m \to \infty\) removes the
+      reference coupling. The auxiliary arguments compare two limits
+      proportional to the same nonzero derivative, which determines the stress
+      normalisation. Averaged retractions split each inclusion; correcting
+      frames recursively on the included subspace makes compatibility exact,
+      while the relative correction tends to the identity.
+    </p>
+    <p>
+      <a id="unit-steps"></a>
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          Given \(\beta_{N, p, 0} = \bar{\beta}\) and transfer errors bounded
+          by \(\delta_{m + 1}\) with \(\delta_{m + 1} / \log b_m \leqslant J
+          (m + 1)^{- 2} \to 0\), summation gives the uniform running clause.
+          Split off a finite initial segment and bound the remaining error by
+          a small multiple of \(s_m\) (III.2). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L23-L53"><tt class="verbatim">trajectory</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Divide by \(s_m\); specialise to \(m = N\) for (Reg1), and use
+          continuity of inverse square root for VII.5.3; positivity uses
+          simplicity. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30"><tt class="verbatim">zeroUp_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48"><tt
+          class="verbatim">comparison</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          A04&ndash;A05 give derivative and Ward limits; a linear functional
+          nonzero on \(\partial^W_4\) extracts \(c / \xi_k \to \kappa\). <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L43-L54"><tt class="verbatim">tracks_ratio</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Average retractions over \(\Gamma_4\) and conjugation; the recursive
+          correction preserves inclusions and tends to the original frames in
+          relative operator norm, ensuring eventual invertibility. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L35-L55"><tt
+          class="verbatim">retraction</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L113-L129"><tt class="verbatim">perturb_limit</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          At the polynomial level, sign cancellation gives covariance of
+          \(\mu^1, \mu^2\); constant curvature realises every degree-0 jet on
+          a Maxwell solution. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L28-L34"><tt class="verbatim">momentum1_mem</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L43-L50"><tt class="verbatim">shell_affine</tt></a>.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <a id="unit-difficulty"></a>
+    </p>
+    <h2 id="auto-5"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The analytic work lies upstream in the one-loop estimate, coupling reset
+      and shooting. This unit establishes the leading lattice logarithm; the
+      main theorem retains only a positive slope through (Reg1).
+    </p>
+    <p>
+      <a id="unit-notation"></a>
+    </p>
+    <h2 id="auto-6"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <p>
+      \(C_{\mathfrak{g}}\) is the Casimir for \(\langle X, Y \rangle = - q^{-
+      1} \text{Re} \hspace{0.17em} \text{tr} (XY)\). For an orthonormal basis
+      \((e_i)\), \(C_{\mathfrak{g}} = - (\dim \mathfrak{g})^{- 1} 
+      \sum_i
+\text{tr}_{\mathfrak{g}} ((\text{ad} \hspace{0.17em} e_i)^2)\),
+      with value 0 if \(\mathfrak{g}= 0\). In VII.5.8, \(\ell_d\) is the
+      family&rsquo;s reference stage, \(P\) removes the unit coordinate,
+      \(\|c\|_1 = \sum_{\alpha} |c_{\alpha} |\), \((S_i c)_{\alpha} = b_i^{d -
+      d_{\alpha}} c_{\alpha}\), \(K_i = K (J (i + 1))\); \(n_k\) is the column
+      number. Here \(d_{\alpha}\) is label weight and \(J\) the scale-stage
+      index. In VII.5.4, \(\xi_k > 0\) is stress normalisation.
+    </p>
+    <p>
+      <a id="unit-limitations"></a>
+    </p>
+    <h2 id="auto-7"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <p>
+      The one-loop integral belongs to III.7. A declaration establishing
+      cutoff removal, infinite-volume limits and comparison with a coupling
+      from continuum correlations has not been identified (tentative).
+      Tracking-sequence existence belongs to VI.1 and VII.1; the read-out
+      bound requires upstream one-step hypotheses.
+    </p>
+    <p>
+      Detailed notes: the full account of this unit, with proof sketches for
+      every step, is on the <a href="../notes/VII-5.html">detailed notes page</a>.
+    </p>
+    <h2 id="auto-8"><a id="code-dependencies"></a>Code dependencies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Code dependencies (from the compiled Lean).</strong> These lists
+      follow references between declarations allocated to units; they can
+      include shared definitions, record fields and alternative constructions.
+      They are not a mathematical reading order. Only unit pairs with at least
+      25 references are shown; see the <a href="../../data/index.html#code-dependencies">counting rules</a>.
+    </p>
+    <p>
+      <strong>References to:</strong> <a href="IV-1.html">IV.1</a>, <a href="I-1.html">I.1</a>, <a
+      href="III-16.html">III.16</a>, <a href="VI-1.html">VI.1</a>, <a href="II-1.html">II.1</a>.
+    </p>
+    <p>
+      <strong>Referenced by:</strong> <a href="VII-2.html">VII.2</a>.
+    </p>
+    <h2 id="auto-9"><a id="lean-source"></a>Lean source<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Source allocation:</strong> 232 attributed lines; 43
+      line-counted declarations; 43 assigned declaration names. Of the
+      assigned names, 43 are in the compiled closure of the seventeen headline
+      results. These quantities have <a href="../../data/index.html#counting-scopes">different scopes</a>.
+    </p>
+    <p>
+      The folders and result chains below are source inventories. Their line
+      counts cover each whole group, including any share allocated to another
+      unit; percentages use attributed lines plus one per assigned name. They
+      need not sum to the unit total.
+    </p>
+    <ul>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW"><tt class="verbatim">YM/Extra/WEAK_SCALING_ACTLAW/</tt></a>
+          &mdash; 162 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation"><tt class="verbatim">YM/TraceExtension/Foundation/</tt></a>
+          &mdash; 37 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics"><tt class="verbatim">YM/Pert/Asymptotics/</tt></a>
+          &mdash; 18 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          proof of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48"><tt class="verbatim">comparison</tt></a> &mdash; 14 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Soot"><tt class="verbatim">YM/TraceExtension/Soot/</tt></a>
+          &mdash; 1 lines.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-10"><a id="additional-source-locations"></a>Additional source locations<span style="margin-left: 1em"></span></h3>
+    <p>
+      Further pinned locations for the definitions and comparisons discussed
+      in this unit.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L12-L22"><tt class="verbatim">YangMills.WilsonRegularity</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Loan.lean#L115-L127"><tt class="verbatim">Duet.Woke</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Loan.lean#L65-L69"><tt class="verbatim">direction</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42"><tt class="verbatim">Lighthouse.Goes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48"><tt class="verbatim">Track</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69"><tt class="verbatim">Pre</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L44-L45"><tt class="verbatim">carry</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L49-L57"><tt class="verbatim">aisle</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22"><tt class="verbatim">DiffPlan</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L90-L97"><tt class="verbatim">StressLaws</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L106-L108"><tt class="verbatim">perturb</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L110-L111"><tt class="verbatim">Near</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L131-L135"><tt class="verbatim">eventually_unit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L137-L140"><tt class="verbatim">rotateChart</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L142-L143"><tt class="verbatim">rotate_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L171-L172"><tt class="verbatim">Graded</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L27-L32"><tt class="verbatim">averaged_cov</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L61-L66"><tt class="verbatim">adjusted</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L72-L76"><tt class="verbatim">Exact</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Adjust.lean#L78-L79"><tt class="verbatim">adjusted_succ</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Analysis.lean#L55-L60"><tt class="verbatim">components</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L28-L39"><tt class="verbatim">scale_limit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Orientation.lean#L56-L70"><tt class="verbatim">kappa_sign</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WEAK_SCALING_ACTLAW/Station.lean#L28"><tt class="verbatim">Free</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Region.lean#L28-L30"><tt class="verbatim">YM.FullVolume.stretching</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L140-L158"><tt class="verbatim">trace_adjoint</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L160-L172"><tt class="verbatim">casimir_pos</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176"><tt class="verbatim">slopeConstant_pos</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt class="verbatim">YM.Gauge.casimir</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">slopeConstant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115"><tt class="verbatim">Schedule.scale</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99"><tt class="verbatim">Schedule.a</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72"><tt class="verbatim">Maxwell.equationIdeal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L57-L63"><tt class="verbatim">Directed.links</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115"><tt class="verbatim">Kin.Planned</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13"><tt class="verbatim">b0</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L14"><tt class="verbatim">b0_normalizes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L35"><tt class="verbatim">regulatorRun</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L62-L66"><tt class="verbatim">YM.Pert.ratio</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Weak.lean#L82-L116"><tt class="verbatim">YM.Pert.centered_line</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L53"><tt class="verbatim">RawOne</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L105"><tt class="verbatim">eom</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L177-L181"><tt class="verbatim">stress</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L187"><tt class="verbatim">weyl</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L50-L51"><tt class="verbatim">pair</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L57-L58"><tt class="verbatim">pairDeriv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L213-L218"><tt class="verbatim">Conv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L223-L227"><tt class="verbatim">Transfer</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230"><tt class="verbatim">Running</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L234-L240"><tt class="verbatim">YM.RG.History.Selected</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79"><tt class="verbatim">hatBeta</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Weak/Compatible.lean#L140-L159"><tt class="verbatim">YM.SharpGram.Weak.Portfolio.tune_grades</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L67-L82"><tt class="verbatim">Recipe.races</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L156-L159"><tt class="verbatim">successful</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Construction.lean#L38"><tt class="verbatim">Family.beta</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L52-L61"><tt class="verbatim">Format</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L63-L68"><tt class="verbatim">remBound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L38"><tt class="verbatim">Spin.comparator</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Token.lean#L75-L88"><tt class="verbatim">mere</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L112-L124"><tt class="verbatim">coordinates1</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L14"><tt class="verbatim">momentum2</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L16"><tt class="verbatim">momentum1</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L17-L20"><tt class="verbatim">sumPerm</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L21-L24"><tt class="verbatim">momentum2_turn</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L25-L27"><tt class="verbatim">momentum2_mem</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L52-L61"><tt class="verbatim">shell_quadratic</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Caps.lean#L96-L110"><tt class="verbatim">through_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L31"><tt class="verbatim">proj3</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L32"><tt class="verbatim">mat3</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L38-L52"><tt class="verbatim">euler</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L54-L63"><tt class="verbatim">bareCoordinates</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L66"><tt class="verbatim">square4</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L67-L69"><tt class="verbatim">mechanical_trace</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L71-L72"><tt class="verbatim">conformal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L73-L74"><tt class="verbatim">eom_vector_raw</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L78-L80"><tt class="verbatim">rho</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Foundation/Dilate.lean#L85-L88"><tt class="verbatim">rho_eom</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Earn.lean#L22-L52"><tt class="verbatim">attain</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Knell.lean#L62-L66"><tt class="verbatim">YM.Trace.Terrace.Sceptre</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Terrace/Lease.lean#L22"><tt class="verbatim">Lease</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A04.lean#L163-L183"><tt class="verbatim">answer</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05.lean#L95-L121"><tt class="verbatim">answer</tt></a>
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-11"><a id="key-statements"></a>Key statements<span style="margin-left: 1em"></span></h2>
+    <p>
+      In the selected statement order. <strong>K-</strong> identifiers name
+      this generated list; proposition and lemma numbers in the outline are
+      separate. Each sentence is an automatically drafted summary of a Lean
+      statement; follow its link for the exact hypotheses and conclusion. The
+      outline status does not certify these summaries. <em>Main result</em>
+      and <em>key result</em> describe importance, not correctness. Full names
+      are in the <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv">statement table</a>.
+    </p>
+    <p>
+      <a id="k-vii-5-1"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-VII.5.1</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L36-L48"><tt class="verbatim">comparison</tt></a>
+          <em>(key result)</em> &mdash; The running regulator coefficient
+          times the square root of log inverse lattice spacing tends to
+          1/sqrt(2 b0), giving the leading-log asymptotics of the running
+          coupling.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview of the proof</a>
+      &middot; <a href="../../index.html">Repository</a>
+    </p>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="VII-4.html">&larr; VII.4 Operator product expansion and contact
+      extensions</a><span class="ym-part"><a href="../units.html#part-vii-identification-as-yangmills">Part VII</a><font class="ym-sep">&middot;</font><a
+      href="../notes/VII-5.html">Detailed notes</a></span><a class="ym-next" href="VII-6.html">VII.6 Scaling variants
+      and fixed-field estimates &rarr;</a>
+    </div>
+  </body>
+</html>

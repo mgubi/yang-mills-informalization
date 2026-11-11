@@ -1,0 +1,3331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>OpenAI's construction of four-dimensional quantum Yang&ndash;Mills
+    theory: an overview of the proof &ndash; Yang&ndash;Mills
+    informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="index.html">Home</a><font class="ym-sep">&middot;</font><a href="statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><font class="ym-here">The proof in one
+      reading</font><font class="ym-sep">&middot;</font><a href="outline/index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="outline/units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="outline/work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="CHANGELOG.html">Changes</a>
+    </div>
+    <p>
+      <h1>OpenAI's construction of four-dimensional quantum Yang&ndash;Mills
+      theory: an overview of the proof</h1><a id="openais-construction-of-four-dimensional-quantum-yangmills-theory-an-overview-of-the-proof"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>The theorem</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>The strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part I. The lattice theory</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">7</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part II. Fields, insertions and polymer activities</b> <span style="margin-left: 5mm"></span>
+        <a href="#auto-4">8</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part III. The ultraviolet construction</b> <span style="margin-left: 5mm"></span> <a
+        href="#auto-5">9</a>
+      </p>
+      <p>
+        The block-spin step and the background field <span style="margin-left: 5mm"></span> <a
+        href="#auto-6">9</a>
+      </p>
+      <p>
+        Gaussian integration and the cluster expansion <span style="margin-left: 5mm"></span> <a
+        href="#auto-7">11</a>
+      </p>
+      <p>
+        Large fields and one nonlinear step <span style="margin-left: 5mm"></span> <a href="#auto-8">11</a>
+      </p>
+      <p>
+        The marginal coupling and the schedule <span style="margin-left: 5mm"></span> <a href="#auto-9">12</a>
+      </p>
+      <p>
+        Renormalized observables, uniformly in the volume <span style="margin-left: 5mm"></span>
+        <a href="#auto-10">14</a>
+      </p>
+      <p>
+        Convergence at fixed volume and the construction run <span style="margin-left: 5mm"></span>
+        <a href="#auto-11">16</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part IV. Infinite volume</b> <span style="margin-left: 5mm"></span> <a href="#auto-12">17</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part V. Phases and relativistic reconstruction</b> <span style="margin-left: 5mm"></span>
+        <a href="#auto-13">18</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part VI. Ward identities, rotations and the stress tensor</b> <span
+        style="margin-left: 5mm"></span> <a href="#auto-14">21</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part VII. Identification as Yang&ndash;Mills theory</b> <span
+        style="margin-left: 5mm"></span> <a href="#auto-15">22</a>
+      </p>
+      <p>
+        Free Maxwell fields at short distance <span style="margin-left: 5mm"></span> <a href="#auto-16">22</a>
+      </p>
+      <p>
+        Running coupling <span style="margin-left: 5mm"></span> <a href="#auto-17">23</a>
+      </p>
+      <p>
+        The trace law and nonfreeness <span style="margin-left: 5mm"></span> <a href="#auto-18">23</a>
+      </p>
+      <p>
+        Operator product expansion and contact extensions <span style="margin-left: 5mm"></span>
+        <a href="#auto-19">25</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Part VIII. Assembly</b> <span style="margin-left: 5mm"></span> <a href="#auto-20">26</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Relation to earlier work, and where the difficulty lies</b> <span
+        style="margin-left: 5mm"></span> <a href="#auto-21">26</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Steps whose informal account is incomplete</b> <span style="margin-left: 5mm"></span>
+        <a href="#auto-22">28</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Reading guide</b> <span style="margin-left: 5mm"></span> <a href="#auto-23">29</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        <strong>Level 2 of the <a href="index.html#the-proof-at-five-levels-of-detail">five levels</a>: the proof in one
+        reading.</strong> Written by an AI model from the <a href="outline/units.html">unit
+        outlines</a>, then checked against the outlines and the Lean and
+        edited by a second model. It will be revised as the unit outlines are
+        completed.
+      </p>
+    </div>
+    <p>
+      This is a substantial overview, about 10,000 words. The contents links
+      locate individual topics; the <a href="statement.html">exact statement</a> fixes the
+      scope of every claim.
+    </p>
+    <p>
+      <strong>Contents</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="#the-theorem">The theorem</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#the-strategy">The strategy</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#part-i-the-lattice-theory">Part I. The lattice theory</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#part-ii-fields-insertions-and-polymer-activities">Part II. Fields, insertions and polymer activities</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#part-iii-the-ultraviolet-construction">Part III. The ultraviolet construction</a>
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="#the-block-spin-step-and-the-background-field">The block-spin step and the background field</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#gaussian-integration-and-the-cluster-expansion">Gaussian integration and the cluster expansion</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#large-fields-and-one-nonlinear-step">Large fields and one nonlinear step</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#the-marginal-coupling-and-the-schedule">The marginal coupling and the schedule</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#renormalized-observables-uniformly-in-the-volume">Renormalized observables, uniformly in the volume</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#convergence-at-fixed-volume-and-the-construction-run">Convergence at fixed volume and the construction
+              run</a>
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <a href="#part-iv-infinite-volume">Part IV. Infinite volume</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#part-v-phases-and-relativistic-reconstruction">Part V. Phases and relativistic reconstruction</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#part-vi-ward-identities-rotations-and-the-stress-tensor">Part VI. Ward identities, rotations and the stress
+          tensor</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#part-vii-identification-as-yangmills-theory">Part VII. Identification as Yang&ndash;Mills theory</a>
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="#free-maxwell-fields-at-short-distance">Free Maxwell fields at short distance</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#running-coupling">Running coupling</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#the-trace-law-and-nonfreeness">The trace law and nonfreeness</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#operator-product-expansion-and-contact-extensions">Operator product expansion and contact extensions</a>
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <a href="#part-viii-assembly">Part VIII. Assembly</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#relation-to-earlier-work-and-where-the-difficulty-lies">Relation to earlier work, and where the difficulty lies</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#steps-whose-informal-account-is-incomplete">Steps whose informal account is incomplete</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="#reading-guide">Reading guide</a>
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-1"><a id="the-theorem"></a>The theorem<span style="margin-left: 1em"></span></h2>
+    <p>
+      Let \(G \subset U (m)\) be a closed subgroup whose Lie algebra
+      \(\mathfrak{g}\) is simple and nonabelian, for instance \(SU (N)\) with
+      \(N \geqslant 2\); \(G\) need not be connected. The main theorem is <tt
+      class="verbatim">YangMills.jointExistence</tt>; its precise statement is in <a
+      href="statement.html">statement.md</a>. It asserts that there is one family of Wilson
+      lattice gauge theories for \(G\) on four-dimensional tori, consisting
+      of:
+    </p>
+    <ul>
+      <li>
+        <p>
+          spacings \(a_N = 1 / D_N \downarrow 0\) and physical side lengths
+          \(L_p \uparrow \infty\);
+        </p>
+      </li>
+      <li>
+        <p>
+          bare couplings \(\beta_{N, p}\) with \(\beta_{N, p} / \log (1 / a_N)
+          \to b_{\ast} > 0\) uniformly in \(p\);
+        </p>
+      </li>
+      <li>
+        <p>
+          insertions \(I_{N, p} (v, y)\) indexed by tokens \(v\), each a
+          continuous gauge-invariant function of the links in a stencil of
+          fixed size in lattice units around the site \(y\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The family has the following property. For every strictly increasing
+      sequence \(p (k)\) of volume indices there are a further subsequence \(p
+      (q (k))\) and a continuum hierarchy satisfying (1)&ndash;(5) below.
+    </p>
+    <p>
+      <strong>(1) Lattice origin.</strong> Let \(\text{Conf}_n \subset
+      (\mathbb{R}^4)^n\) be the open set of configurations of distinct points.
+      For every \(n\), every list of tokens \(v\) and every \(f \in
+      C_c^{\infty} (\text{Conf}_n)\),
+    </p>
+    <center>
+      \(\displaystyle \lim_{k \to \infty}  \hspace{0.17em} \lim_{N \to \infty}
+      \hspace{0.17em}
+a_N^{4 n}  \sum_y f (\hat{y}) \hspace{0.17em}
+      \left\langle \prod_{i = 1}^n
+I_{N, p (q (k))} (v_i, y_i)
+      \right\rangle_{N, p (q (k))} = \int f (x) 
+\hspace{0.17em}
+      S^{\text{mix}} (\pi v ; x)  \hspace{0.17em} dx.\)
+    </center>
+    <p>
+      Here the sum runs over \(n\)-tuples of sites, \(\hat{y}\) are their
+      physical positions, and \(\langle \cdot \rangle_{N, p}\) is the Wilson
+      measure.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The inner limit runs over the whole sequence of spacings, at every
+          volume whose fundamental box contains the support of \(f\); this
+          holds for all large \(k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The test functions are joint functions of the \(n\) points and
+          vanish near all coincidences.
+        </p>
+      </li>
+      <li>
+        <p>
+          One subsequence serves all \(n\), \(v\) and \(f\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>(2) Phases.</strong> On \(\text{Conf}_n\), \(S^{\text{mix}} =
+      \int_X S^{\xi}  \hspace{0.17em} d \nu (\xi)\). Here \(X\) is a compact
+      metric space, \(\nu\) is a probability measure of full support, and
+      \(\xi \mapsto S^{\xi} (a ; x)\) is continuous. All correlations \(S^s\),
+      \(s \in X \sqcup \{ \text{mix} \}\), are smooth and permutation
+      symmetric on \(\text{Conf}_n\).
+    </p>
+    <p>
+      <strong>(3) Reconstruction.</strong> A selected phase \(\xi_{\ast}\)
+      carries a Wightman theory:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a strongly continuous unitary representation of the proper
+          orthochronous Poincar&eacute; group;
+        </p>
+      </li>
+      <li>
+        <p>
+          spectrum in the closed forward cone;
+        </p>
+      </li>
+      <li>
+        <p>
+          a vacuum that is unique up to scalars among translation-invariant
+          vectors;
+        </p>
+      </li>
+      <li>
+        <p>
+          fields that are operator-valued tempered distributions on the
+          invariant domain spanned by field monomials applied to the vacuum;
+        </p>
+      </li>
+      <li>
+        <p>
+          local commutativity and faithful field labels.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Its Wightman functions are boundary values, on product test functions,
+      of the continuation of \(S^{\xi_{\ast}}\) that is holomorphic in the
+      ordered complex times.
+    </p>
+    <p>
+      <strong>(4) Operator product expansion.</strong> One system of
+      coefficients, with finitely many local fields of each degree, satisfies
+      finite-order OPE bounds in the mixed state and in every phase.
+    </p>
+    <p>
+      <strong>(5) Nonfreeness.</strong> Let \(e_4\) be the time direction. A
+      field \(\Theta\) of degree 4 with vanishing vacuum expectation satisfies
+    </p>
+    <center>
+      \(\displaystyle \lim_{r \downarrow 0}  \hspace{0.17em} r^8 \log^2 (1 /
+      r)  \hspace{0.17em}
+G_{\Theta} (r) = \frac{3 \dim_{\mathbb{R}}
+      \mathfrak{g}}{\pi^4}, \qquad
+G_{\Theta} (r) = S^{\xi_{\ast}}  \left(
+      \Theta (- \tfrac{r}{2} e_4)
+\hspace{0.17em} \Theta (\tfrac{r}{2} e_4)
+      \right) .\)
+    </center>
+    <p>
+      Moreover, \(G_{\Theta}\) agrees on no interval \((0, \delta)\) with a
+      finite Wick profile, that is, a finite sum of products of free
+      mass-shell kernels \(\int E^q h (\mathbf{p})  (2 E)^{- 1} e^{- rE} 
+      \hspace{0.17em} d^3 \mathbf{p}\).
+    </p>
+    <p>
+      The lattice data are fixed before the volume sequence. The refinement
+      and all continuum objects may depend on that sequence.
+    </p>
+    <p>
+      <strong>The stronger statement.</strong> The theorem is a projection of
+      a longer statement, <tt class="verbatim">YangMills.constructed</tt>. That
+      statement holds for every value \(b > 0\) of the penalty parameter of
+      the block-spin kernel; the public theorem takes \(b = 1\). The
+      construction supplies the following facts; the slope value is
+      established in the proof of regularity, rather than stated as a separate
+      conjunct of <tt class="verbatim">YangMills.constructed</tt>:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The slope is \(b_{\ast} = \kappa_G = 11 C_{\mathfrak{g}} / (24
+          \pi^2)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A token is a pair \((d, c)\), with \(c\) in the space \(V_d\) of
+          gauge-invariant polynomials of weight at most \(d\) in the curvature
+          and its covariant derivatives (curvature has weight 2, and each
+          derivative adds 1).
+        </p>
+      </li>
+      <li>
+        <p>
+          The field spaces are \(F_d = V_d / N_d\), where \(N_d\) consists of
+          the labels whose mixed correlations with all separated spectators
+          vanish. The label space of the relativistic theory is the directed
+          union of the \(F_d\), so there is no finite field multiplet.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Theta\) is the centred trace of a constructed conserved stress
+          tensor.
+        </p>
+      </li>
+      <li>
+        <p>
+          Every phase carries an irreducible Wightman theory, with low-energy
+          bounds that are uniform in the phase.
+        </p>
+      </li>
+      <li>
+        <p>
+          The correlations extend to distributions across coincident points;
+          uniqueness is not asserted.
+        </p>
+      </li>
+      <li>
+        <p>
+          After finite-dimensional changes of frame, the rescaled correlations
+          converge at short distance to those of \(\dim \mathfrak{g}\) free
+          Maxwell fields.
+        </p>
+      </li>
+      <li>
+        <p>
+          Nested and integrated forms of the OPE hold, as do further
+          nonfreeness tests.
+        </p>
+      </li>
+    </ul>
+    <p>
+      This overview describes the proof of the stronger statement.
+    </p>
+    <p>
+      <strong>What is not claimed.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          No mass gap is proved; the available spectral bounds in every phase
+          are polynomial.
+        </p>
+      </li>
+      <li>
+        <p>
+          The infinite-volume limit is not shown to be unique or independent
+          of the subsequence.
+        </p>
+      </li>
+      <li>
+        <p>
+          The phases are not shown to agree, and \(X\) is not shown to be a
+          point.
+        </p>
+      </li>
+      <li>
+        <p>
+          The mixed state is not shown to cluster.
+        </p>
+      </li>
+      <li>
+        <p>
+          The limit is not shown to be independent of the lattice data.
+        </p>
+      </li>
+      <li>
+        <p>
+          The two limits are taken in a fixed order. No diagonal limit,
+          exchange of limits or rate of convergence is asserted.
+        </p>
+      </li>
+      <li>
+        <p>
+          No phase is shown to be a limit of lattice states; the lattice limit
+          is the mixture.
+        </p>
+      </li>
+      <li>
+        <p>
+          The public theorem asserts nothing at coincident points and no
+          Euclidean axioms. The construction proves those axioms internally.
+        </p>
+      </li>
+      <li>
+        <p>
+          There is no continuum measure on connections, no Wilson-loop
+          observable or area law, and no particle or scattering theory.
+        </p>
+      </li>
+      <li>
+        <p>
+          Only finite Wick profiles are excluded. Generalized free fields with
+          a continuous mass distribution, infinite sums and general composites
+          of Gaussian fields are not excluded.
+        </p>
+      </li>
+      <li>
+        <p>
+          The OPE is a finite-order bound and is not compared with
+          perturbation theory.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Normalizations.</strong> On \(\mathfrak{g}\), put \(\langle X, Y
+      \rangle_{\mathfrak{g}} = - \tfrac{1}{m} \text{Re}
+      \hspace{0.17em}
+\text{tr} (XY)\), and define \(C_{\mathfrak{g}} > 0\) by
+      \(\text{tr} (\text{ad} X \hspace{0.17em} \text{ad} Y) = -
+      C_{\mathfrak{g}}
+\langle X, Y \rangle_{\mathfrak{g}}\). Two facts fix
+      the coupling convention:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(1 - \tfrac{1}{m} \text{Re} \hspace{0.17em} \text{tr}
+          \hspace{0.17em} e^X =
+\tfrac{1}{2} |X|_{\mathfrak{g}}^2 + O
+          (|X|^4)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          each unoriented plaquette is counted once in the Wilson action.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Hence \(\beta = 1 / g_0^2\) for the continuum action \(\frac{1}{2 g_0^2}
+      \int \sum_{\mu < \nu} |F_{\mu \nu} |^2_{\mathfrak{g}}\). The
+      constructed couplings satisfy, uniformly in \(p\),
+    </p>
+    <center>
+      \(\displaystyle \frac{\beta_{N, p}}{\log (1 / a_N)} \longrightarrow
+      \kappa_G = \frac{11
+C_{\mathfrak{g}}}{24 \pi^2} = 2 b_0, \qquad b_0 =
+      \frac{11
+C_{\mathfrak{g}}}{48 \pi^2} .\)
+    </center>
+    <p>
+      For \(SU (N)\) in the defining representation, \(C_{\mathfrak{g}} = 2
+      N^2\) and \(\kappa_G = 11 N^2 / (12 \pi^2)\). In that case \(\beta\) is
+      the usual Wilson coupling \(2 N / g^2\), and the law above is the
+      one-loop running \(1 / g^2 \simeq (11 N / 24 \pi^2) \log (1 / a)\) of
+      Gross&ndash;Wilczek and Politzer.
+    </p>
+    <h2 id="auto-2"><a id="the-strategy"></a>The strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Order of limits.</strong> One lattice family is fixed first.
+      Correlations of renormalized insertions are taken to the limit \(a_N \to
+      0\) at fixed volume, along the whole sequence of spacings. The volume
+      then tends to infinity along a subsequence of the prescribed one. The
+      renormalization group (RG) is used only for the first limit. Its levels
+      run from the Wilson lattice (level \(N\)) to the torus of side \(L_p\)
+      at unit spacing (level \(0\)). The bare coupling is tuned so that the
+      effective coupling at level \(0\) is one fixed number \(\bar{\beta}\),
+      the same for all \(N\) and \(p\). No RG step is taken above the unit
+      scale; infinite volume is reached by compactness, from local bounds that
+      are uniform in the volume.
+    </p>
+    <p>
+      <strong>Ultraviolet construction (Parts I&ndash;III).</strong> At each
+      level the density is written as two pieces:
+    </p>
+    <ul>
+      <li>
+        <p>
+          an explicit gauge-invariant action, whose normalized
+          curvature-squared coefficient is the running coupling \(\beta_{N, p,
+          m}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          polymer activities: regular ones, controlled where the curvature is
+          small, and forced ones, which carry the large-field regions.
+        </p>
+      </li>
+    </ul>
+    <p>
+      One block-spin step integrates the fine links against an exactly
+      normalized, gauge-covariant probability kernel:
+    </p>
+    <ul>
+      <li>
+        <p>
+          In the small-field region this is a Gaussian integral around a
+          stationary background field, organized by a cluster expansion.
+        </p>
+      </li>
+      <li>
+        <p>
+          Large-field regions are kept and paid for by a lower bound on the
+          quadratic energy of the step.
+        </p>
+      </li>
+      <li>
+        <p>
+          The marginal term is absorbed into the coupling. The coupling
+          changes by the one-loop amount \(\kappa_G \log L_m\) up to an error,
+          and block ratios that grow slowly along the levels make the
+          accumulated error \(o (\log (1 / a_m))\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The same steps transport inserted observables. This second layer
+      produces what later parts use:
+    </p>
+    <ul>
+      <li>
+        <p>
+          chessboard bounds on renormalized insertions and on their difference
+          quotients, uniform in the volume;
+        </p>
+      </li>
+      <li>
+        <p>
+          convergence at fixed volume, obtained from fixed-level convergence
+          and uniform observable tails. The construction also supplies
+          analytic estimates in a tuning parameter.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Euclidean limit (Part IV).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Chessboard bounds make the correlations locally bounded, uniformly
+          in the volume.
+        </p>
+      </li>
+      <li>
+        <p>
+          A transfer-matrix representation and complex interpolation make them
+          equicontinuous, and Arzel&agrave;&ndash;Ascoli gives the
+          subsequence.
+        </p>
+      </li>
+      <li>
+        <p>
+          Difference quotients of insertions are close to insertions of higher
+          degree. This yields derivative maps on the field spaces and kernels
+          that are smooth on \(\text{Conf}_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The limit inherits translations, the signed permutations of the axes
+          and reflection positivity. It does not inherit continuous rotations
+          or clustering.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Symmetry (Part VI).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Lattice integration by parts gives shell identities for a conserved
+          tensor. Its normalization is fixed by short-distance comparison with
+          free Maxwell theory.
+        </p>
+      </li>
+      <li>
+        <p>
+          Reflection positivity controls the flux at infinity, and analyticity
+          extends the Ward identities to all separated configurations.
+        </p>
+      </li>
+      <li>
+        <p>
+          The infinitesimal rotations integrate to an \(O (4)\) action, again
+          by comparison with free Maxwell theory.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Phases and reconstruction (Part V).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The zero-energy subspace of the Osterwalder&ndash;Schrader (OS)
+          space of the mixed state carries a commutative \(C^{\ast}\)-algebra;
+          its proof of commutativity uses the \(O (4)\) action. The characters
+          of this algebra are the phases.
+        </p>
+      </li>
+      <li>
+        <p>
+          Each phase is reconstructed as a Wightman theory, from bounds on
+          operators inserted in thin time slabs. Lorentz covariance comes from
+          the Ward identities.
+        </p>
+      </li>
+      <li>
+        <p>
+          A low-energy spectral bound, uniform in the phase and derived from
+          locality, upgrades vacuum uniqueness from almost every phase to
+          every phase.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Identification (Part VII).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Along sequences of scales tending to zero, the theory converges,
+          after changes of frame, to free Maxwell theory.
+        </p>
+      </li>
+      <li>
+        <p>
+          The one-loop coefficient produces an inverse-logarithmic law for the
+          centered stress-tensor trace two-point function, and that law
+          excludes the specified finite Wick profiles.
+        </p>
+      </li>
+      <li>
+        <p>
+          The RG also yields the OPE.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The logical order is not the order of the parts. Part VI uses the OS
+      spaces of the mixed state from Part V and the free comparison from Part
+      VII. Part V uses the \(O (4)\) action from Part VI. Part VIII assembles
+      everything for one family and one limit table.
+    </p>
+    <h2 id="auto-3"><a id="part-i-the-lattice-theory"></a>Part I. The lattice theory<span style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Unit: <a href="outline/units/I-1.html">I.1 &mdash; Lattice, symmetries, gauge groups and the
+      Wilson measure</a>.</em>
+    </p>
+    <p>
+      On \(\Lambda_{\ell} = (\mathbb{Z}/ \ell \mathbb{Z})^4\), a configuration
+      assigns \(U (y, \mu) \in G\) to each positively oriented link. With
+      \(h\) the normalized Haar measure, the Wilson measure is
+    </p>
+    <center>
+      \(\displaystyle d \mu_{\ell, \beta} (U) = Z^{- 1} \exp \left[ - \beta
+      \sum_y \sum_{\mu < \nu}
+\left( 1 - \tfrac{1}{m} \text{Re}
+      \hspace{0.17em} \text{tr} \hspace{0.17em}
+U_{y ; \mu \nu} \right)
+      \right]  \prod_{(y, \mu)} dh (U (y, \mu)) .\)
+    </center>
+    <p>
+      The energy lies in \([0, 12 \ell^4]\), so this is a probability measure
+      for every real \(\beta\). It is invariant under gauge transformations,
+      translations and the signed permutations of the axes.
+    </p>
+    <p>
+      <strong>Lattice schedule.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Block ratios are odd integers \(L_m \geqslant 3\), with \(D_{m + 1}
+          = D_m L_m\) and \(a_m = 1 / D_m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The level-\(m\) torus at volume \(p\) has \(L_p D_m\) sites per
+          side, with \(4 \mid L_p\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Odd ratios make the coarse lattice compatible with the signed
+          permutations.
+        </p>
+      </li>
+      <li>
+        <p>
+          Supports are measured by cover numbers by balls of radius \(B\),
+          which obey a coarsening inequality uniform in the volume.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Group facts.</strong> On \(G\) the unit proves:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a real-analytic logarithm near \(1\);
+        </p>
+      </li>
+      <li>
+        <p>
+          an equivariant nearest-point retraction onto \(G\), whose derivative
+          is the orthogonal projection onto \(\mathfrak{g}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a curvature map \(F (u) \in \mathfrak{g}\) with \(|F (u) | \leqslant
+          \lVert u - 1 \rVert / \sqrt{m}\) and \(F (vuv^{- 1}) = \text{Ad} (v)
+          F (u)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      These are qualitative statements about single group elements;
+      quantitative control comes in Part II.
+    </p>
+    <p>
+      <strong>Role of simplicity.</strong> Simplicity enters through one fact:
+      every \(\text{Ad}\)-invariant symmetric bilinear form on
+      \(\mathfrak{g}\) is a multiple of \(\langle \cdot, \cdot
+      \rangle_{\mathfrak{g}}\). Together with lattice symmetry, this leaves a
+      single marginal coupling. The same fact is used in the one-loop
+      computation and in the uniqueness of the stress tensor.
+    </p>
+    <p>
+      <strong>Reflection positivity.</strong> The Wilson measure is reflection
+      positive for every \(\beta \geqslant 0\), for reflections through planes
+      of sites and through planes between sites (the argument of Osterwalder
+      and Seiler). This is proved in Part IV for the original lattice measure,
+      not for an effective action, and it is used only through the chessboard
+      inequality.
+    </p>
+    <h2 id="auto-4"><a id="part-ii-fields-insertions-and-polymer-activities"></a>Part II. Fields, insertions and polymer activities<span
+    style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Units: <a href="outline/units/II-1.html">II.1 &mdash; Field labels and their lattice
+      representatives</a>; <a href="outline/units/II-2.html">II.2 &mdash; Polymer activities, norms,
+      the Wilson family, the construction record, reflection-positive
+      cells</a>.</em>
+    </p>
+    <p>
+      <strong>Labels.</strong> In radial gauge, a connection near a point is
+      described by its Taylor coefficients, and the coefficient of order \(j\)
+      has weight \(j + 2\). \(V_d\) is the space of \(\text{Ad}
+      (G)\)-invariant complex polynomials of weight at most \(d\) in these
+      coefficients. Equivalently, it consists of the gauge-invariant
+      polynomials of weight at most \(d\) in the curvature and its covariant
+      derivatives. It is finite-dimensional, and \(1 \in V_d \subset V_{d +
+      1}\).
+    </p>
+    <p>
+      <strong>Lattice representatives.</strong> The basic lattice variables
+      are &quot;slots&quot;: plaquette curvatures transported to a base point
+      along walks.
+    </p>
+    <ul>
+      <li>
+        <p>
+          For each \(d\), finitely many slots have linearizations with no
+          common kernel on the jets of weight at most \(d\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The slot map then has an analytic \(\text{Ad}\)-equivariant left
+          inverse near \(0\); it is chosen non-constructively.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compose a basis of \(V_d\) with the order-\(d\) Taylor polynomial of
+          this inverse, and average over the signed permutations. For each
+          label \(c\) this gives a gauge-invariant polynomial \(\Phi_c\) in
+          the link entries of a fixed box stencil.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Two properties follow:
+    </p>
+    <ul>
+      <li>
+        <p>
+          On links obtained by parallel transport of polynomial radial-gauge
+          potentials at spacing \(h\), \(\Phi_c\) reproduces the classical
+          label to order \(h^d\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Suppose the plaquettes near the stencil have chord at most \(t\).
+          Then a component with \(f \geqslant 1\) curvature factors, and its
+          derivatives, are \(O (t^f)\). Conversely, a function with such
+          bounds determines a label with uniformly bounded coefficients.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Renormalized insertions.</strong> The insertion of \(v \in V_d\)
+      at a site \(o\) is
+    </p>
+    <center>
+      \(\displaystyle O_{N, p} (v, o) = a_N^{- d}  \hspace{0.17em}
+      \Phi^{(d)}_{S_{1 / \theta_N}
+\tau^{- 1} v} (o) .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          \(S_t\) multiplies the coefficient of a component with \(f\)
+          curvature factors by \(t^f\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\theta_N\) is the small-field threshold of the finest level.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\tau\) is a linear automorphism of \(V_d\). It commutes with
+          conjugation and with the signed permutations, and it fixes the unit.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The RG defines \(\tau\). The running label coordinates of an insertion
+      obey a transfer relation from level \(N\) down to level \(m\), and
+      \(\tau\) is their value at a reference level \(r (d)\) fixed in advance.
+      So each insertion is normalized to have running coordinates exactly
+      \(v\) at level \(r (d)\). All labels of weight at most \(d\), including
+      the unit, may mix; no triangular structure is imposed. The large-field
+      part of the inserted density goes into reserved forced polymers, so the
+      construction never divides by the vacuum density.
+    </p>
+    <p>
+      <strong>Equation relations.</strong> Haar invariance gives the lattice
+      Schwinger&ndash;Dyson identity \(\langle \langle A, \nabla_e S_W \rangle
+      \hspace{0.17em} S \rangle_{\beta} = 0\) for \(S\) independent of the
+      link \(e\). Products of such forces with slot polynomials span the
+      linearized free-Maxwell equation ideal, up to terms of higher weight.
+      They give lattice observables whose correlations with distant spectators
+      vanish exactly. Two facts are established later, through the comparison
+      with free theory: these relations become null in the limit, and they
+      exhaust \(N_d\).
+    </p>
+    <p>
+      <strong>Polymers, budgets and marks.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A polymer activity has a finite support of sites.
+        </p>
+        <ul>
+          <li>
+            <p>
+              Regular activities are anchored at a site and measured by
+              suprema of derivatives over small-field configurations.
+            </p>
+          </li>
+          <li>
+            <p>
+              Forced activities carry the large-field regions, together with
+              an inventory of flagged sites.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Activities are controlled by budgets summed through each site,
+          \(\sum_{X \ni x} e^{a \hspace{0.17em} \text{cov}_B (X)} \lVert K_X
+          \rVert
+\leqslant \text{budget}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Insertions carry marks: commuting variables \(\lambda\) with
+          \(\lambda^2 = 0\), one for each label or site that may occur.
+          Exponentials of marked quantities are finite sums, and logarithms
+          are finite recursions in the number of marks.
+        </p>
+      </li>
+      <li>
+        <p>
+          The weighted norm \(\lVert a \rVert_w = \sum_x \prod_{\lambda \in x}
+          w_{\lambda} \hspace{0.17em}
+|a (x) |\) is submultiplicative, so
+          bounds do not grow with the number of marks.
+        </p>
+      </li>
+      <li>
+        <p>
+          A tree-graph bound without factorials controls connected clusters of
+          overlapping supports.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-5"><a id="part-iii-the-ultraviolet-construction"></a>Part III. The ultraviolet construction<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-6"><a id="the-block-spin-step-and-the-background-field"></a>The block-spin step and the background field<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Units: <a href="outline/units/III-1.html">III.1 &mdash; The block-spin step and the symmetric
+      gauge fixing</a>; <a href="outline/units/III-6.html">III.6 &mdash; The stationary branch:
+      background field of the effective action</a>; <a href="outline/units/III-3.html">III.3 &mdash;
+      Free lattice kernels and covariances</a>.</em>
+    </p>
+    <p>
+      At level \(m\), relative to product Haar measure, the density is
+    </p>
+    <center>
+      \(\displaystyle \rho_m (U) = \exp \left( v| \Lambda_m | - \beta
+      \hspace{0.17em} \mathcal{K}(U)
+-\mathcal{L}(U) -\mathcal{E}(U) \right) 
+      \hspace{0.17em} \mathcal{G} (U) .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{K}\) is built from lattice paths: a plaquette term,
+          smeared curvature squares, and cubic and quartic polynomials in
+          transported curvatures. It is averaged over the signed permutations
+          and normalized so that its quadratic symbol at zero momentum is the
+          identity; this fixes the meaning of \(\beta\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{L}\) is a loop term independent of \(\beta\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{E}\) is the sum of the regular activities times
+          small-field indicators.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{G}\) is the gas of forced activities.
+        </p>
+      </li>
+      <li>
+        <p>
+          At the finest level, \(\rho_N = e^{- \beta_{N, p, N} S_W}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>The kernel.</strong> One step is \(\rho_m (V) = \int k_{\beta}
+      (V, U)  \hspace{0.17em} \rho_{m + 1} (U) 
+\hspace{0.17em} dU\). Given
+      the fine configuration \(U\), a finite tag \(t\) is drawn with
+      probability \(\lambda (U, t)\). Each coarse link is then drawn
+      independently, with Haar density
+    </p>
+    <center>
+      \(\displaystyle Z_{\beta}^{- 1} \exp \left( - \beta \kappa \left( 1 -
+      \tfrac{1}{m} \text{Re}
+\hspace{0.17em} \text{tr} \hspace{0.17em} V_b Q_b
+      (U, t)^{- 1} \right)
+\right),\)
+    </center>
+    <p>
+      where \(\kappa > 0\) is the penalty. The predictor \(Q_b\) is built in
+      two steps:
+    </p>
+    <ol>
+      <li>
+        <p>
+          On a patch of radius \((J + 3) L\) around each coarse site, a gauge
+          frame is chosen.
+        </p>
+        <ul>
+          <li>
+            <p>
+              If all route holonomies on the patch are close to \(1\), the
+              frame is the unique minimizer of an averaged holonomy
+              discrepancy.
+            </p>
+          </li>
+          <li>
+            <p>
+              Otherwise it is a uniformly drawn eligible axial gauge; such
+              gauges exist for every configuration.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Fine transports of length \(L\), read in these frames, are combined
+          by a nonlinear (minimizing) average with a \(J\)-fold convolution
+          weight, with a random fallback.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Properties of the kernel:
+    </p>
+    <ul>
+      <li>
+        <p>
+          Haar invariance gives \(\int k_{\beta} (V, U)  \hspace{0.17em} dV =
+          1\) exactly.
+        </p>
+      </li>
+      <li>
+        <p>
+          The kernel is exactly covariant under fine gauge transformations and
+          the lattice symmetries.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\int \rho_m\) equals the Wilson partition function at every
+          level, and the step is defined without any small-field assumption.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Background field.</strong> For the integration, the links of a
+      spanning forest are set to \(1\), and each remaining link is \(\exp
+      (a)\) times a fixed lift of the coarse field \(x\). The background is
+      the critical branch \(a = \rho (x)\) of the classical Taylor model of
+      the action (quadratic, cubic and quartic terms) plus the blocking
+      penalty, at fixed \(x\). The steps are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The Hessian at the flat field is a positive &quot;bed&quot; form
+          plus the penalty.
+        </p>
+      </li>
+      <li>
+        <p>
+          Each non-tree link is bounded by the curvature in its block plus the
+          response of the predictor. With this, the Hessian is uniformly
+          positive in the vertical directions, with a constant independent of
+          the volume and the forest.
+        </p>
+      </li>
+      <li>
+        <p>
+          The analytic implicit function theorem then gives \(\rho\) as a
+          locally unique analytic germ with explicit linear part. Statements
+          with a uniform radius and localized jets give control independent of
+          the volume.
+        </p>
+      </li>
+      <li>
+        <p>
+          The branch is not shown to be a global minimizer, and this is not
+          used.
+        </p>
+      </li>
+      <li>
+        <p>
+          Changing the forest multiplies the Hessian determinant by the square
+          of a Jacobian and the Haar measure by the Jacobian itself. So the
+          critical value and the one-loop term do not depend on the forest.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Free kernels.</strong> The free covariances are written in
+      Fourier space through the actual averaging filters, which are entire and
+      multiplicative under composition of blockings. Aliased momenta carry
+      extra powers of \(1 / L\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          All constants (decay rates, strip widths, lower bounds) are fixed
+          before the block ratio \(L\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The quadratic forms decay exponentially and are bounded below
+          uniformly in the volume.
+        </p>
+      </li>
+      <li>
+        <p>
+          An exact identity on each pair of tori splits a quadratic form into
+          a coarse part and a fluctuation part (a Schur complement).
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-7"><a id="gaussian-integration-and-the-cluster-expansion"></a>Gaussian integration and the cluster expansion<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Units: <a href="outline/units/III-4.html">III.4 &mdash; Gaussian integration: change of
+      Gaussian sector, determinants, window law</a>; <a href="outline/units/III-5.html">III.5 &mdash;
+      Cluster expansion of the polymer gas</a>; <a href="outline/units/III-8.html">III.8 &mdash;
+      Connected activities and backward dependence cones</a>.</em>
+    </p>
+    <p>
+      <strong>Change of variables.</strong> Active links are written in
+      exponential coordinates around the background. Inactive links stay in
+      Haar measure.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The change of variables to a Gaussian integral with covariance \(C\)
+          and mean \(m (Y)\) is an exact identity. It holds for any
+          positive-definite \(C\), keeps all Jacobians, and uses no smallness
+          assumption.
+        </p>
+      </li>
+      <li>
+        <p>
+          The covariance actually used is the inverse of the gauge-fixed Gram
+          form on the active links, not the inverse of the Wilson quadratic
+          form. Its precision is bounded below uniformly in the volume.
+        </p>
+      </li>
+      <li>
+        <p>
+          Window law: the global inverse is approximated by inverses on
+          windows of radius \(r\), with error \(Ce^{- vr}\) uniform in the
+          volume.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\log \det\) separates into local terms and far-field terms with
+          summable errors.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Cluster expansion.</strong> The gas is \(\Xi (w) = \sum_s
+      \prod_{i \in s} w_i\), summed over families of polymers with pairwise
+      disjoint supports and real weights. With \(B = \lceil (\log
+      \hat{\beta})^2 \rceil\), the smallness condition is
+    </p>
+    <center>
+      \(\displaystyle \sum_{i : \hspace{0.17em} x \in X_i} |w_i | 
+      \hspace{0.17em} e^{(a + \delta)
+\hspace{0.17em} \text{cov}_B (X_i)}
+      \leqslant \gamma \text{for every site } x,
+\qquad 4 (2 B + 1)^4 \gamma /
+      \delta \leqslant q < 1.\)
+    </center>
+    <p>
+      Under this condition:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\log \Xi\) is an absolutely convergent sum of connected clusters,
+          bounded through spanning trees (Penrose's partition scheme);
+        </p>
+      </li>
+      <li>
+        <p>
+          removing every polymer that meets a set \(Y\) changes \(\log \Xi\)
+          by at most \(|Y| \gamma / (1 - q)\), uniformly in the volume.
+        </p>
+      </li>
+    </ul>
+    <p>
+      So the vacuum logarithm is extensive, but a local change costs only its
+      size. A second, graph-free argument based on a deletion recursion gives
+      bounds of the same type.
+    </p>
+    <p>
+      <strong>Connected activities and dependence cones.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Fixed-order connected coefficients come from the heat equation
+          \(\partial_t W = \tfrac{1}{2} (\Gamma : \nabla^2 W + \Gamma : \nabla
+          W
+\hspace{0.17em} \nabla W)\) for \(W_t = \log \mathbb{E}_{t \Gamma}
+          e^V\). A rooted \(\ell^1\) norm with weight \(e^{\sigma
+          \hspace{0.17em} \text{diam}}\) makes contraction and joining
+          lossless, so these coefficients are polynomially bounded uniformly
+          in the volume. There is no resummation.
+        </p>
+      </li>
+      <li>
+        <p>
+          Pulling a coarse observable back through the block kernel gives a
+          function of the fine links in a window of fixed radius around its
+          support. The backward cone therefore grows by a bounded physical
+          width per step.
+        </p>
+      </li>
+      <li>
+        <p>
+          For disjoint supports, the pull-back factorizes exactly.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-8"><a id="large-fields-and-one-nonlinear-step"></a>Large fields and one nonlinear step<span style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Unit: <a href="outline/units/III-10.html">III.10 &mdash; One full nonlinear renormalization
+      step: bounds on irrelevant terms</a>.</em>
+    </p>
+    <p>
+      At reference coupling \(\hat{\beta}\) the small-field threshold is
+    </p>
+    <center>
+      \(\displaystyle t = \hat{\beta}^{- 1 / 2} P (\hat{\beta}), \qquad P
+      (\hat{\beta}) = \exp
+((\log \log \hat{\beta})^2),\)
+    </center>
+    <p>
+      well above the Gaussian fluctuation scale \(\hat{\beta}^{- 1 / 2}\).
+    </p>
+    <p>
+      <strong>Seeds.</strong> A seed is one of:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a fine plaquette with chord at least \(t / 4\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a coarse link on which the coarse field departs from the predictor
+          by more than a fixed multiple of \(t\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a flagged coarse site.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Energy lower bound.</strong> For every store \(A\) of seeds,
+    </p>
+    <center>
+      \(\displaystyle \kappa \hspace{0.17em} t^2  \hspace{0.17em} \sharp A
+      \leqslant \text{quadratic
+energy of the step integrand, after
+      subtracting the stationary predictor} .\)
+    </center>
+    <p>
+      The energy is a sum over five channels, one of which is the blocking
+      penalty. The proof assigns charges to fine cells with bounded
+      multiplicity, and controls the linearization defects on cells without
+      seeds.
+    </p>
+    <p>
+      <strong>Why this suffices.</strong> Since \(\beta t^2 \simeq P^2\), each
+      seed gains a factor \(e^{- cP^2}\). \(P^2\) grows faster than any power
+      of \(\log \hat{\beta}\), so this gain beats:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the polylogarithmic number of connected seed sets through a site;
+        </p>
+      </li>
+      <li>
+        <p>
+          any per-seed loss of a fixed power of \(\hat{\beta}\), or of order
+          \(P^z\) with \(z < 2\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The decomposition into large-field sectors is exact: large-field sectors
+      are integrated, not discarded.
+    </p>
+    <p>
+      <strong>One step.</strong> The step takes inputs at level \(m + 1\):
+      regular norms at most \(\hat{\beta}^{- 11 / 10}\), forced norms at most
+      \(e^{- P^{1 / 5}}\), and the coupling in the band \([\hat{\beta} / 2, 2
+      \hat{\beta}]\). For \(L\) large, and then \(\hat{\beta}\) large, it
+      produces:
+    </p>
+    <ul>
+      <li>
+        <p>
+          site-summable budgets for the new regular activities;
+        </p>
+      </li>
+      <li>
+        <p>
+          the bound \(\exp \left( (C \hspace{0.17em} \text{bill}^5 - \beta \mu
+          t^2) \sharp A \right)\) for each large-field sector, where
+          \(\text{bill} = 1 + B + (\log \hat{\beta})^2\);
+        </p>
+      </li>
+      <li>
+        <p>
+          bounds on the probabilities of the remaining catastrophic events.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The marginal and vacuum terms are extracted, and the level-\(m\) bounds
+      restored, by the reset below.
+    </p>
+    <h3 id="auto-9"><a id="the-marginal-coupling-and-the-schedule"></a>The marginal coupling and the schedule<span style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Units: <a href="outline/units/III-7.html">III.7 &mdash; Matching the Wilson energy to fourth
+      order</a>; <a href="outline/units/III-9.html">III.9 &mdash; The marginal flow: the running
+      coupling and its reset</a>; <a href="outline/units/III-2.html">III.2 &mdash; Choosing the
+      constants: the order of choice and the RG schedule</a>.</em>
+    </p>
+    <p>
+      <strong>Matching and the one-loop coefficient.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          At the finest level, a path representation is constructed whose jets
+          of order at most 4 agree with those of the Wilson energy in
+          exponential coordinates.
+        </p>
+      </li>
+      <li>
+        <p>
+          At later levels, the cubic and quartic parts are represented in
+          curvature variables by quasi-local lifts (a cost-controlled
+          Poincar&eacute; lemma).
+        </p>
+      </li>
+      <li>
+        <p>
+          In each step, the coefficient \(\alpha_{N, m}\) of curvature squared
+          produced by the one-loop term satisfies \(| \alpha_{N, m} + \kappa_G
+          \log L_m | \leqslant D\), with \(D\) fixed before \(L\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The value of \(\kappa_G\) comes from an explicit momentum integral. The
+      comparison symbol is
+    </p>
+    <center>
+      \(\displaystyle h (k) = 4 C_{\mathfrak{g}}  \left( \frac{k_1^2}{|k|^6} -
+      \frac{4 k_1^2
+k_0^2}{|k|^8} - \frac{1}{|k|^4} \right) .\)
+    </center>
+    <p>
+      Its angular average is \(4 C_{\mathfrak{g}}  (\tfrac{1}{4} -
+      \tfrac{1}{6} - 1) |k|^{- 4} = -
+\tfrac{11}{3} C_{\mathfrak{g}} |k|^{-
+      4}\), and \(\int_{1 / L < |k| \leqslant 1} |k|^{- 4}  \hspace{0.17em}
+      d^4 k = 2 \pi^2 \log
+L\). Hence \((2 \pi)^{- 4}  \int_{1 / L < |k|
+      \leqslant 1} h = - \kappa_G \log L\). Comparing the step's Hessian with
+      \(h\) up to \(O (|k|^{- 3})\) gives the bound on \(\alpha_{N, m}\).
+    </p>
+    <p>
+      <strong>The reset.</strong> After the step, the blocked density is
+      rewritten exactly, at every configuration including large fields:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a new coupling \(\beta_{N, p, m} = \beta_{N, p, m + 1} + \alpha_{N,
+          m} + \delta\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a new vacuum constant;
+        </p>
+      </li>
+      <li>
+        <p>
+          reorganized activities: flat values and isotropic quadratic parts
+          are subtracted, compensating path terms are added, and mismatches of
+          the small-field masks go into the forced gas.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The correction \(\delta\) is the isotropic Hessian coefficient of the
+      regular activities:
+    </p>
+    <ul>
+      <li>
+        <p>
+          By simplicity and hyperoctahedral symmetry, their quadratic part at
+          a point is \(\delta\) times the identity on plaquette orientations.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(| \delta | \leqslant 1\), and \(\delta\) is fixed by a scalar
+          equation with a unique root.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Altogether, with \(\omega_j\) a drift allowance attached to regularity
+      index \(j\),
+    </p>
+    <center>
+      \(\displaystyle | \beta_{N, p, m + 1} - \beta_{N, p, m} - \kappa_G \log
+      L_m | \leqslant
+\omega_{J_{m + 1}} .\)
+    </center>
+    <p>
+      <strong>Endpoint.</strong> For real \(|b| < r_{\ast}\) there is a
+      trajectory with level-\(0\) coupling \(\bar{\beta} + b\). Its bare
+      coupling is unique within the construction, and the trajectory continues
+      analytically to complex \(|b| < r_{\ast}\), with \(r_{\ast}\)
+      independent of \(N\) and \(p\). The family uses \(b = 0\), so
+      \(\beta_{N, p, 0} = \bar{\beta}\) for all \(N\) and \(p\). An
+      intermediate-value shooting argument also produces such trajectories;
+      the analytic version is the one used for convergence at fixed volume
+      below.
+    </p>
+    <p>
+      <strong>Running.</strong> Put \(s_m = \log (1 / a_m)\) and
+      \(\hat{\beta}_m = \bar{\beta} + \kappa_G s_m\). Induction from level
+      \(0\) gives \(| \beta_{N, p, m} - \hat{\beta}_m | \leqslant \sum_{k
+      \leqslant m}
+\omega_{J_k}\), and the schedule makes this \(o (s_m)\):
+    </p>
+    <center>
+      \(\displaystyle \beta_{N, p, m} = \bar{\beta} + \kappa_G \log (1 / a_m)
+      + o (\log (1 / a_m))
+\qquad \text{uniformly in } N \geqslant m \text{
+      and } p.\)
+    </center>
+    <p>
+      At \(m = N\) this is the slope law with \(b_{\ast} = \kappa_G\). Since
+      \(\bar{\beta}\) is chosen large, every level stays in the band
+      \([\hat{\beta}_m / 2, 2 \hat{\beta}_m]\). The statement is
+      leading-logarithmic only: there is no two-loop term.
+    </p>
+    <p>
+      <strong>Why the block ratios grow.</strong> The one-loop error per step
+      is bounded but does not decrease with \(L\). For the accumulated error
+      to be \(o (s_m)\), the allowance per unit of logarithmic scale must tend
+      to zero. The schedule therefore imposes two conditions:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\omega_{J_{m + 1}} \leqslant J_{m + 1}^{- 2} \log L_m\), which
+          forces \(\log L_m \to \infty\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\log L_m / s_m \to 0\), which keeps each step small compared with
+          the total scale.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The ratios are constant while the regularity index is fixed, \(L_m =
+      \ell_{J_{m + 1}}\). The regularity index \(J\) is nondecreasing, rises
+      by at most one per level, tends to infinity toward the fine end, and
+      stays constant on long windows of levels. One sequence \((L_m)\) serves
+      every cutoff \(N\).
+    </p>
+    <p>
+      <strong>Order of choices.</strong> The constants are chosen in a fixed
+      order:
+    </p>
+    <ol>
+      <li>
+        <p>
+          the kernel with its penalty, and for every index \(j\) its
+          regularity profile (derivative order, spatial power, support
+          exponent, widths, path counts, drift allowance), together with the
+          one-loop error constant \(D\);
+        </p>
+      </li>
+      <li>
+        <p>
+          all block ratios \(\ell_j\), so that the allowances and the
+          logarithms of the combinatorial costs are at most \(j^{- 2} \log
+          \ell_j\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the smallness exponents;
+        </p>
+      </li>
+      <li>
+        <p>
+          the entry couplings and the volume conditions;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\bar{\beta}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the assignment of regularity profiles to levels.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Each degree \(d\) has a reference level \(r (d)\) with regularity index
+      at least \(d + 3\). Beyond \(r (d)\) the derivative order exceeds \(d\)
+      and the spatial power is at least \(d\). All choices precede any
+      observable or extraction order, so every degree is served by the same
+      family.
+    </p>
+    <h3 id="auto-10"><a id="renormalized-observables-uniformly-in-the-volume"></a>Renormalized observables, uniformly in the volume<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Units: <a href="outline/units/III-11.html">III.11 &mdash; Comparison with the free Gaussian
+      measure: interacting rank and determinant budgets</a>; <a href="outline/units/III-12.html">III.12
+      &mdash; Bounds uniform in the volume and convergence as the spacing
+      tends to zero</a>; <a href="outline/units/III-15.html">III.15 &mdash; Cost accounting for
+      observables and the remainder comparison</a>; <a href="outline/units/III-16.html">III.16 &mdash;
+      Analytic toolkit</a>.</em>
+    </p>
+    <p>
+      <strong>The chessboard root.</strong> The quantity propagated for
+      observables is the chessboard root. For a function \(F\) of the links in
+      one cell of a tiling of the torus by cells of side \(a_m\),
+    </p>
+    <center>
+      \(\displaystyle \lVert F \rVert_T = | \hspace{0.17em}
+      \mathbb{E}_{\beta_{N, p}} \left[
+\prod_{\operatorname{cells}}
+      \text{reflected copies of } F \right] |^{1 /
+\sharp \text{cells}} .\)
+    </center>
+    <p>
+      The main bound reads as follows. For every degree \(d\), radius \(R\)
+      and \(\varepsilon > 0\) there is \(A\) such that, for every \(m
+      \geqslant r (d)\), there is \(N_0\) independent of \(p\) with
+    </p>
+    <center>
+      \(\displaystyle \lVert O_{N, p} (v, o) \rVert_{T_m (o)} \leqslant A
+      \hspace{0.17em} a_m^{- d -
+\varepsilon} \qquad (N \geqslant N_0,
+      \text{all } p, \lVert v \rVert \leqslant
+R) .\)
+    </center>
+    <p>
+      It is proved by running the insertion through the same RG steps;
+      \(\varepsilon\) absorbs losses smaller than any power. Reflection
+      positivity enters only afterwards, through the chessboard inequality.
+      That inequality makes the root a seminorm and bounds correlations of
+      separated observables by products of roots.
+    </p>
+    <p>
+      <strong>No loss of \(\log \beta\) per site.</strong> A root over \(c\)
+      copies tolerates a fixed cost per copy, but not a factor \(\log \beta\)
+      per site. The determinant budget avoids this by a gauge count on a
+      terminal torus with \(c = L^4\) sites:
+    </p>
+    <ul>
+      <li>
+        <p>
+          A tree gauge leaves \(4 c - (c - 1) = 3 c + 1\) free links.
+        </p>
+      </li>
+      <li>
+        <p>
+          In the numerator, \(3 c - 3\) of them are integrated one at a time,
+          each being the only new link of a chosen plaquette. Each integral
+          gives at most \(b \hspace{0.17em} E^{\dim G}\), with \(E \propto g =
+          \beta^{- 1 / 2}\). The four links that wrap around the torus, one
+          per axis, are left over.
+        </p>
+      </li>
+      <li>
+        <p>
+          The normalization is bounded below by confining all \(3 c + 1\) free
+          links to Haar balls of radius \(g / 4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The ratio is therefore at most \(\exp (c \hspace{0.17em} \pi - 4
+          \dim G \hspace{0.17em} \log g)\), where the cost \(\pi\) per site is
+          independent of \(g\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Since the number of copies is \(c\), the root carries only \(g^{- 4
+          \dim G / c}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Field content.</strong> Free Gaussian detectors give uniform
+      rank detection: \(\lVert \pi x \rVert \leqslant Z \hspace{0.17em} \lVert
+      \text{probe} (\pi x)
+\rVert\), where \(\pi\) is the projection onto
+      quotient labels. The limit field spaces are isomorphic, degree by
+      degree, to those of free Maxwell theory, compatibly with conjugation and
+      reflections.
+    </p>
+    <p>
+      <strong>Difference quotients.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A normalized lattice difference of an insertion of degree \(d\)
+          equals an insertion \(O (x)\) of degree \(d + |l|\), up to a term
+          whose root tends to zero.
+        </p>
+      </li>
+      <li>
+        <p>
+          Write \(x = \pi x + (x - \pi x)\). The part \(x - \pi x\) lies in
+          the Maxwell equation ideal and has small root by the lattice
+          equations of motion. The part \(\pi x\) is bounded by the rank
+          detector.
+        </p>
+      </li>
+      <li>
+        <p>
+          So difference quotients satisfy root bounds of the same form. By the
+          chessboard inequality, lattice correlations with any number of
+          differences are bounded at \(r\)-separated points, uniformly in
+          \(p\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      These bounds are propagated through the RG; they do not come from
+      differentiating a sup norm.
+    </p>
+    <p>
+      <strong>A rank-free trace bound.</strong> Let \(X \geqslant 0\) be a
+      matrix and let the insertions \(b_a\) be separated by gaps of more than
+      \(2 r\) factors of \(X\). Moving \(m \leqslant r\) factors from one gap
+      to another changes \(\text{tr} \prod_a b_a X^{Y_a}\) by at most
+      \((\text{cost} / r)  \hspace{0.17em} m\). The cost is a product of trace
+      norms with no dimension factor. The proof is a H&ouml;lder inequality
+      for complex exponents, obtained from Hadamard's three-lines theorem,
+      followed by a Cauchy estimate. By quadrature it extends to continuous
+      positive kernels. Part IV uses it for equicontinuity.
+    </p>
+    <p>
+      <strong>Bookkeeping.</strong> The numerical conditions of all steps can
+      be met in one fixed order: constants before \(L\), then \(L\), then the
+      later constants, then \(\beta\) large. This holds uniformly across
+      regularity profiles.
+    </p>
+    <h3 id="auto-11"><a id="convergence-at-fixed-volume-and-the-construction-run"></a>Convergence at fixed volume and the construction
+    run<span style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Units: <a href="outline/units/III-12.html">III.12</a>; <a href="outline/units/III-13.html">III.13 &mdash; Extension to all
+      labels: one common Wilson family</a>; <a href="outline/units/III-14.html">III.14 &mdash; The
+      construction run: flat representations and the ultraviolet
+      rate</a>.</em>
+    </p>
+    <p>
+      <strong>The obstacle.</strong> At fixed volume, two cutoffs \(N\) and
+      \(N'\) have different bare couplings, each fixed by the condition
+      \(\beta_{N, p, 0} = \bar{\beta}\). Continuity in a fixed bare coupling
+      therefore compares nothing.
+    </p>
+    <p>
+      <strong>Fixed-level convergence and tails.</strong> The construction has
+      a one-parameter family of trajectories:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The level-\(0\) coupling is \(\bar{\beta} + ws\), with a real tuning
+          parameter \(s \in [- 1, 1]\). For each \(s\) the bare coupling is
+          unique within the recursion.
+        </p>
+      </li>
+      <li>
+        <p>
+          The bare coupling and effective data have analytic dependence on the
+          tuning parameter. The estimates on that dependence are separate from
+          the Cauchy argument below.
+        </p>
+      </li>
+      <li>
+        <p>
+          For fixed \(j\), convergence of the trajectory and stability of the
+          observable transfers give convergence of the effective insertions
+          and their polymer parts. Uniform convergence passes through the Haar
+          integrals, and a positive lower bound on the normalized partition
+          function gives convergent correlation approximations.
+        </p>
+      </li>
+      <li>
+        <p>
+          The omitted part is bounded, uniformly in the cutoff, by \(2 F_0
+          e^{- B_j / 64}\), where \(B_j = \lceil (\log \hat{\beta}_j)^2 \rceil
+          \to \infty\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Choose \(j\) to make this tail small, then take the cutoffs large
+          enough that their level-\(j\) approximations are close. This proves
+          the Cauchy property first at lattice-fitted configurations;
+          equicontinuity extends it to all configurations distinct modulo the
+          period. See <a href="outline/notes/III-12.html#45-convergence-in-the-mesh">III.12, &sect;&sect;4.5&ndash;4.6</a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Combined with the difference bounds, this gives at each fixed volume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          limit kernels smooth away from periodic coincidences;
+        </p>
+      </li>
+      <li>
+        <p>
+          convergence of difference quotients to derivatives;
+        </p>
+      </li>
+      <li>
+        <p>
+          convergence of smeared moments along the whole sequence of spacings.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>The family used by the public theorem.</strong> <a href="outline/units/VIII-1.html">VIII.1</a>
+      assembles the construction for one family, using the bounds and
+      convergence results described in III.9&ndash;III.12. <a href="outline/units/III-13.html">III.13</a>
+      describes an alternative coordinated family with root bounds, an
+      analytic shooting family and Maxwell rank comparisons. Its existence
+      statements do not identify that family with the one used by <tt class="verbatim">YangMills.constructed</tt>;
+      properties from the two constructions should not be combined without
+      such an identification.
+    </p>
+    <p>
+      <strong>The construction run (III.14).</strong> III.14 packages the
+      construction run. It also proves quantitative convergence of the
+      order-zero quadratic part of the effective action (its position-space
+      Hessian kernel) at each fixed level \(i\), at rate \((a_N / a_i)^c\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          The difference between two cutoffs is written in curvature variables
+          as \(d^{\textsf{T}} Ad\), with \(A\) defined modulo kernels
+          annihilated by this map.
+        </p>
+      </li>
+      <li>
+        <p>
+          So the curvature precision, which has zero modes, is never inverted.
+        </p>
+      </li>
+      <li>
+        <p>
+          This rate concerns the quadratic germ only, not the full effective
+          action or the final limits.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-12"><a id="part-iv-infinite-volume"></a>Part IV. Infinite volume<span style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Unit: <a href="outline/units/IV-1.html">IV.1 &mdash; Infinite volume: extraction of a
+      subsequence and the Euclidean axioms of the limit</a>.</em>
+    </p>
+    <p>
+      <strong>Local bounds.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Reflection positivity gives the chessboard inequality \(| \langle
+          \prod_c F_c \rangle | \leqslant \prod_c \lVert F_c \rVert_T\) for
+          every \(\beta \geqslant 0\). Log-convexity of roots under
+          translation handles cells not centred at the insertion.
+        </p>
+      </li>
+      <li>
+        <p>
+          Put each insertion in its own cell of side \(a_m < r\). Then
+          \(|C_{N, p} (v ; x) | \leqslant A^n\) whenever each pair of points
+          has some coordinate at distance at least \(r\), uniformly in \(p\)
+          and for large \(N\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Near collisions, the same argument gives \(|S (v ; x) | \leqslant
+          Cr^{- 4 n (1 + \max d_i)}\) when all points are at mutual distance
+          at least \(r\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Equicontinuity.</strong> Let \(\text{Gen}_n\) be the set of
+      configurations whose points have pairwise distinct coordinates on every
+      axis.
+    </p>
+    <ol>
+      <li>
+        <p>
+          Integrating out the links along one axis gives a positive transfer
+          kernel \(K\). A correlation becomes \(\text{Tr} \prod_k B_k K^{Y_k}
+          / \text{Tr} \hspace{0.17em} K^M\), with slab kernels \(B_k\) and
+          gaps \(Y_k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Moving one point shifts units between two gaps. The trace is entire
+          in the size of the shift.
+        </p>
+      </li>
+      <li>
+        <p>
+          The rank-free H&ouml;lder bound controls the trace on a disc, and a
+          Cauchy estimate gives a Lipschitz bound.
+        </p>
+      </li>
+      <li>
+        <p>
+          The trace norms of the slab kernels are themselves chessboard roots
+          of \(2 q\) alternating copies, so the bound is uniform in the
+          volume.
+        </p>
+      </li>
+    </ol>
+    <p>
+      The result is \(|C (x) - C (y) | \leqslant 16 nA^n  |x - y| / R\) on
+      compact subsets of \(\text{Gen}_n\) whose coordinate gaps exceed \(R\).
+      No derivative bound is used.
+    </p>
+    <p>
+      <strong>Extraction.</strong> Arzel&agrave;&ndash;Ascoli is applied
+      twice, over countably many degrees, basis labels and compact sets: first
+      to extract a spacing subsequence that works for all volumes, then a
+      volume subsequence. This gives limit kernels on \(\text{Gen}_n\). The
+      complement \(\text{Conf}_n \setminus \text{Gen}_n\) is a null set, and
+      the kernels are locally bounded on \(\text{Conf}_n\), so dominated
+      convergence gives the smeared limits.
+    </p>
+    <p>
+      <strong>Derivatives and smoothness.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Exact summation by parts in the lattice positions moves a difference
+          quotient onto the test function.
+        </p>
+      </li>
+      <li>
+        <p>
+          The ultraviolet estimates show that the lattice difference quotient
+          of an insertion is chessboard-close to an insertion of one degree
+          higher.
+        </p>
+      </li>
+      <li>
+        <p>
+          A dimension count, from the rank comparison, identifies the kernel
+          of the limiting projections with the null labels.
+        </p>
+      </li>
+      <li>
+        <p>
+          Finite-dimensional compactness then gives fixed derivative maps
+          \(\partial_a : F_d \to F_{d + 1}\) with
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \partial_{x_i^a} S (\ldots, v_i, \ldots ; x) = S
+      (\ldots, \partial_a v_i,
+\ldots ; x) \qquad \text{in } \mathcal{D}'
+      (\text{Conf}_n) .\)
+    </center>
+    <p>
+      Iteration and a Fourier argument give \(S \in C^{\infty}
+      (\text{Conf}_n)\), with derivatives polynomially bounded near
+      collisions.
+    </p>
+    <p>
+      <strong>What the limit inherits.</strong> The limit inherits:
+    </p>
+    <ul>
+      <li>
+        <p>
+          translations;
+        </p>
+      </li>
+      <li>
+        <p>
+          the group of signed permutations of the axes, acting on points and
+          labels;
+        </p>
+      </li>
+      <li>
+        <p>
+          permutation symmetry, reality and the unit label;
+        </p>
+      </li>
+      <li>
+        <p>
+          reflection positivity at coordinate planes, for point and smeared
+          tests.
+        </p>
+      </li>
+    </ul>
+    <p>
+      It does not inherit continuous rotations, clustering or uniqueness.
+    </p>
+    <p>
+      <strong>Removing the spacing refinement.</strong> The extraction refines
+      both the spacing and the volume sequences. At each admissible fixed
+      volume, the smeared limit along the whole spacing sequence exists (Part
+      III) and agrees with the subsequential one. This removes the spacing
+      refinement from the final statement.
+    </p>
+    <h2 id="auto-13"><a id="part-v-phases-and-relativistic-reconstruction"></a>Part V. Phases and relativistic reconstruction<span
+    style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Units: <a href="outline/units/V-1.html">V.1 &mdash; Decomposition of the limit into
+      phases</a>; <a href="outline/units/V-2.html">V.2 &mdash; Osterwalder&ndash;Schrader
+      reconstruction of a Wightman theory</a>; <a href="outline/units/V-3.html">V.3 &mdash;
+      Reconstruction for every phase and the reconstructed theory</a>.</em>
+    </p>
+    <p>
+      <strong>The OS space of the mixture.</strong> Positive-time field words,
+      modulo the null space of \(\langle \theta w, w' \rangle_S\) and
+      completed, form a Hilbert space. It carries:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a contraction semigroup \(e^{- tH}\) with \(H \geqslant 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a unitary representation of the spatial translations.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The joint spectrum lies in a half-space. No positive spectral gap is
+      asserted. The zero-energy space may be large. Its projection \(\Pi\) is
+      the strong limit of \(e^{- tH}\) as \(t \to \infty\).
+    </p>
+    <p>
+      <strong>Thin slabs.</strong> A word \(w\) placed in a thin time slab
+      defines an operator \(B\) on the OS space. To bound it, consider the
+      train \(v_{n + 1} = B^{\ast} Bv_n\), which contains \(n\) reflected
+      copies of \(w\) and an arbitrary exterior word.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The lattice bounds give \(\lVert v_n \rVert^2 \leqslant B_v A^{4
+          n}\). Here \(A\) is polynomial in the word data and in the inverse
+          buffer width, and \(B_v\) depends on the exterior word but not on
+          \(n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A power lemma removes \(B_v\): if \(\lVert (BA)^n v \rVert \leqslant
+          K_v D^{2 n}\) for all \(n\), then \(\lVert Av \rVert \leqslant D
+          \lVert v \rVert\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      So the exterior word is paid once and disappears under the \(n\)-th
+      root.
+    </p>
+    <p>
+      <strong>Phases.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The compressions \(M (w) = \Pi \hspace{0.17em} B_w |_{\ker H}\) are
+          independent of the width and placement of the slab.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\langle \Omega, M (w_1) \cdots M (w_k) \Omega \rangle\) is the
+          limit of \(S\) as the clusters are moved apart in time order.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The compressions commute:
+    </p>
+    <ol>
+      <li>
+        <p>
+          Place four clusters on the rays \(n (ue_4 + ve_1)\), with \((u, v) =
+          (0, 0), (1, 2), (2, 1), (3, 3)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Exchanging the time axis with a spatial axis reverses the order of
+          the middle pair.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(O (4)\) covariance and permutation symmetry of \(S\) then give
+          \(\langle \Omega, M_x M_y M_w M_z \Omega \rangle = \langle \Omega,
+          M_x M_w M_y
+M_z \Omega \rangle\).
+        </p>
+      </li>
+      <li>
+        <p>
+          By density, \([M_y, M_w] = 0\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      The resulting phase decomposition:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The \(M (w)\) generate a commutative unital \(C^{\ast}\)-algebra.
+          Its Gelfand spectrum is \(X\), which is compact and metrizable.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\nu\) represents the vacuum state, and it has full support because
+          the vacuum is separating.
+        </p>
+      </li>
+      <li>
+        <p>
+          The phase correlations are \(S^{\xi} (w) = \xi (M (w))\). They are
+          continuous in \(\xi\), and \(\int S^{\xi}  \hspace{0.17em} d \nu =
+          S^{\text{mix}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Reflection positivity, \(O (4)\) invariance, the derivative and
+          stress identities and uniform growth bounds hold for every \(\xi\).
+          They are proved as operator identities before any character is
+          applied.
+        </p>
+      </li>
+      <li>
+        <p>
+          Every phase has the same null spaces as the mixture.
+        </p>
+      </li>
+      <li>
+        <p>
+          A variance argument over a countable total family of words gives a
+          one-dimensional zero-energy space for \(\nu\)-almost every phase.
+        </p>
+      </li>
+      <li>
+        <p>
+          The selected phase \(\xi_{\ast}\) is one such phase, chosen by this
+          existence argument; no further condition is imposed. The trace law
+          of Part VII is proved for the phase so chosen.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Reconstruction.</strong> For each phase, slab operators bounded
+      by \(C \hspace{0.17em} p^{- A}\) (with \(p\) the slab half-width) define
+    </p>
+    <center>
+      \(\displaystyle F_n (z ; \mathbf{x}) = \left\langle \Omega,
+      \hspace{0.17em} B (v_1)
+\hspace{0.17em} e^{i (z_1 - z_2) H} U
+      (\mathbf{x}_1 -\mathbf{x}_2)
+\hspace{0.17em} B (v_2) \cdots \Omega
+      \right\rangle .\)
+    </center>
+    <p>
+      This function is holomorphic for \(\text{Im} \hspace{0.17em} z_1 <
+      \ldots < \text{Im} \hspace{0.17em} z_n\), and it equals the Euclidean
+      correlation at imaginary times. The Wightman theory is obtained in five
+      steps:
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Boundary values.</strong> Bounds of order \(k^{- m}\), when
+          all height gaps exceed \(k\), give tempered boundary values \(W_n\).
+          They converge against every joint Schwartz test as the vector of
+          heights tends to zero through all ordered vectors.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Positivity and fields.</strong> This mode of convergence
+          allows two independently regularized vectors to be compared. So
+          \(W\) is a limit of Gram matrices of OS vectors: it is positive, and
+          the Wightman space embeds isometrically into the OS space. Fields
+          act on finite words modulo the null space by prepending a letter.
+          This gives the invariant domain, the formal adjoints and the cyclic
+          vacuum.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Covariance and spectrum.</strong> The rotation Ward
+          identities of Part VI, in planes containing the time axis, continue
+          to infinitesimal boost identities. These integrate to Lorentz
+          covariance without any spectral assumption. The spectral measure of
+          a Wightman vector equals that of its OS image, so it is supported in
+          \(p^0 \geqslant 0\); covariance then moves the support into the
+          forward cone.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Locality.</strong> Only adjacent transpositions are needed.
+          For a spacelike adjacent pair, both orderings have holomorphic
+          germs, constructed with complex boosts. The germs agree to all
+          orders on the Euclidean slice, because the Euclidean kernel is
+          symmetric and smooth away from coincidences.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Faithfulness.</strong> A label whose Wightman functions
+          vanish has a vanishing tube function, hence a vanishing Euclidean
+          kernel.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>Every phase.</strong> The low-energy bound uses only locality
+      and the spectrum condition. Take \(A\) a finite sum of field words with
+      compactly supported tests.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The commutator of time-translated copies of \(A\) vanishes for times
+          at most \(1\) and spatial separations beyond a radius \(R\)
+          independent of \(\xi\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Average over unit time, pair with a spatial-momentum bump of radius
+          \(2 u\) (whose Fourier transform is \(O (u^3)\) in three space
+          dimensions), and use \(|\mathbf{p}| \leqslant E\) on the forward
+          cone. This bounds the spectral weight of each shell \(u / 2 < E
+          \leqslant u\) by \(O (u^2)\), and dyadic summation gives the first
+          bound below.
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \mu_{A \Omega_{\xi}}  (0 < E \leqslant u) \leqslant M_A
+      u^2  (0 < u \leqslant
+1), \qquad 0 \leqslant \langle A \Omega_{\xi},
+      (e^{- sH_{\xi}} - P_{0, \xi}) A
+\Omega_{\xi} \rangle \leqslant M_A s^{-
+      2}  (s \geqslant 1) .\)
+    </center>
+    <p>
+      The constant \(M_A\) is independent of \(\xi\), by compactness of \(X\).
+    </p>
+    <p>
+      Vacuum uniqueness then extends from almost every phase to every phase:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The function \(\xi \mapsto \langle A \Omega_{\xi}, e^{- sH_{\xi}} A
+          \Omega_{\xi} \rangle - |
+\langle \Omega_{\xi}, A \Omega_{\xi}
+          \rangle |^2\) is continuous.
+        </p>
+      </li>
+      <li>
+        <p>
+          For fixed \(A\) and \(s\), the set of phases where this function
+          lies in \([0, M_A s^{- 2}]\) is closed by continuity. It contains
+          the full-measure set of phases with unique vacuum; full support of
+          \(\nu\) makes this closed set all of \(X\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Letting \(s \to \infty\) gives a unique vacuum in every phase.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The comparison map from the Wightman space to the OS space is
+      surjective, proved independently by pushing time-ordered vectors apart.
+      This transfers vacuum uniqueness to the OS space. Each phase theory is
+      irreducible. Its Wightman distributions are continuous in \(\xi\), and
+      their \(\nu\)-average is the boundary value of the continuation of
+      \(S^{\text{mix}}\). The bounds allow spectrum down to zero and give only
+      polynomial decay \(s^{- 2}\) in Euclidean time, not exponential
+      clustering.
+    </p>
+    <h2 id="auto-14"><a id="part-vi-ward-identities-rotations-and-the-stress-tensor"></a>Part VI. Ward identities, rotations and the stress
+    tensor<span style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Units: <a href="outline/units/VI-1.html">VI.1 &mdash; Ward identities, the rotation action
+      and the conserved stress tensor</a>; <a href="outline/units/VI-2.html">VI.2 &mdash; The free
+      Maxwell stress tensor and the local Ward charge</a>.</em>
+    </p>
+    <p>
+      The lattice has only the hypercubic symmetries. The proof obtains the
+      generators of rotations from stress fluxes, and the group action by
+      comparison with free Maxwell theory. It uses the OS spaces of the mixed
+      state in the coordinate directions and the free comparison of Part VII.
+      It uses no decay of correlations.
+    </p>
+    <p>
+      <strong>Free Maxwell theory.</strong> Consider \(\dim \mathfrak{g}\)
+      free Maxwell fields, with field spaces the \(G\)-invariant polynomials
+      in on-shell curvature jets.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The centred, real, symmetric tensors of degree 4 that are covariant
+          under signed permutations form a three-dimensional space.
+        </p>
+      </li>
+      <li>
+        <p>
+          For simple \(\mathfrak{g}\), the divergence maps this space onto a
+          two-dimensional space. So the conserved tensors form a line, spanned
+          by the Maxwell stress tensor.
+        </p>
+      </li>
+      <li>
+        <p>
+          For every Killing field \(v\), the flux of \(\sum_b v_b T_{ab}\)
+          through a shell around an insertion equals the Lie derivative of the
+          insertion. For elementary fields this follows from \(- \Delta G_0 =
+          \delta\); for polynomials, from the Leibniz rule and Wick
+          contraction.
+        </p>
+      </li>
+      <li>
+        <p>
+          An explicit three-point function fixes the sign and normalization of
+          the Ward constant.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Conserved tensor.</strong> There are scaling sequences \(r_k
+      \downarrow 0\) with frames \(U_k\), isomorphisms for large \(k\). Along
+      them the rescaled interacting divergence converges to the free one.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Surjectivity is an open condition, so the interacting divergence is
+          also onto, and its kernel is one-dimensional.
+        </p>
+      </li>
+      <li>
+        <p>
+          A nonzero conserved \(J\) in this kernel converges, after rescaling,
+          to a multiple of the free stress tensor.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Shell identities.</strong> Lattice integration by parts in the
+      link variables, with ultraviolet control of the error terms, gives shell
+      identities. Take \(\chi\) equal to \(1\) near \(x_0\) and vanishing near
+      the spectators:
+    </p>
+    <center>
+      \(\displaystyle - \sum_a \int \partial_a \chi (y)  \hspace{0.17em} S
+      \left( J_{ab} (y)
+\hspace{0.17em} B (x_0) \cdots \right) 
+      \hspace{0.17em} dy = S ((p_b B) (x_0)
+\cdots) .\)
+    </center>
+    <p>
+      With weight \(K (y - x_0)\), for a rotation generator \(K\), the same
+      construction gives maps \(Y_K\). Here \(p_b\) and \(Y_K\) are linear
+      maps on labels, not yet identified with derivatives and rotations.
+      Moving the centre of the shell gives \(\partial p = p \hspace{0.17em}
+      \partial\) and \(\partial_b Y_K + \sum_c K_{cb}  \hspace{0.17em} p_c =
+      Y_K \partial_b\).
+    </p>
+    <p>
+      <strong>Flux at infinity.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For rotations, cut off the rotation field so that it is compactly
+          supported and equal to the exact field on a box far larger than the
+          configuration.
+        </p>
+      </li>
+      <li>
+        <p>
+          Conservation and symmetry cancel the cross terms.
+        </p>
+      </li>
+      <li>
+        <p>
+          The remaining exterior contribution is bounded through spectral
+          measures of the OS semigroups along and transverse to a coordinate
+          line, and it tends to zero.
+        </p>
+      </li>
+      <li>
+        <p>
+          This gives the angular identity for configurations on one coordinate
+          line, together with a line-sum identity, and hence transversality of
+          the label maps.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Normalization.</strong> In free theory, the finitely many
+      relations satisfied by \(p\) and \(\partial\) at a given degree have a
+      one-dimensional solution space. Injectivity is an open condition, so the
+      same holds along the scaling sequence. Hence \(p_b = c \hspace{0.17em}
+      \partial_b\), with \(c\) independent of the degree and \(c \ne 0\). The
+      tensor \(T = J / c\) satisfies
+    </p>
+    <center>
+      \(\displaystyle - \sum_a \int \partial_a \chi (y)  \hspace{0.17em} S^s 
+      \left( T_{ab} (y)
+\hspace{0.17em} B (x_0) \cdots \right) 
+      \hspace{0.17em} dy =
+\frac{\partial}{\partial x_0^b}  \hspace{0.17em}
+      S^s  (B (x_0) \cdots)\)
+    </center>
+    <p>
+      in the mixed state. By the operator identities of Part V, it holds in
+      every phase. Since \(\partial \chi\) vanishes near every insertion, no
+      contact terms arise.
+    </p>
+    <p>
+      <strong>All separated configurations.</strong> Positivity of Gram
+      functions, together with the Ward values already obtained, gives
+      analytic-vector bounds \(\lVert f^{(m)} \rVert \leqslant C (\rho / 2)^{-
+      m} m!\). The angular Ward functional is therefore real-analytic along
+      walks that move one point at a time. Starting from configurations on a
+      line, it vanishes on all configurations whose points have pairwise
+      distinct first coordinates, and by continuity on all of
+      \(\text{Conf}_n\).
+    </p>
+    <p>
+      <strong>Integration to \(O (4)\).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The bracket defect \([Y'_u, Y'_v] - Y'_{[u, v]}\) (with \(Y' = Y /
+          c\)) satisfies a summed identity. A rigidity statement, proved in
+          free theory and transferred by the comparison, forces the defect to
+          vanish.
+        </p>
+      </li>
+      <li>
+        <p>
+          The infinitesimal action converges to the Maxwell one: \(U_k^{- 1}
+          Y'_K U_k \to \text{Lie}^{\text{Max}}_K\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A perturbation of spectral projections of the Casimir operators
+          gives exact intertwiners \(V_d\). The action on \(F_d\) is \(R_d (k)
+          = V_d R^{\text{Max}}_d (k) V_d^{- 1}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Since \(t \mapsto S (R (e^{tK}) v ; e^{tK} x)\) has zero derivative,
+          and reflections act through the real structure, \(S (R (k) v ; kx) =
+          S (v ; x)\) for all \(k \in O (4)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Averaging \(J / c\) over \(O (4)\) gives a conserved, real,
+          symmetric, covariant tensor that satisfies both the translation and
+          the rotation Ward identities.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-15"><a id="part-vii-identification-as-yangmills-theory"></a>Part VII. Identification as Yang&ndash;Mills
+    theory<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-16"><a id="free-maxwell-fields-at-short-distance"></a>Free Maxwell fields at short distance<span style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Units: <a href="outline/units/VII-1.html">VII.1 &mdash; Free Maxwell comparison theory</a>; <a
+      href="outline/units/VI-2.html">VI.2 &mdash; Interacting stress comparison</a>; <a href="outline/units/VII-6.html">VII.6
+      &mdash; Scaling variants and fixed-field estimates</a>. The comparison
+      is assembled in <a href="outline/units/VIII-1.html">VIII.1</a>.</em>
+    </p>
+    <p>
+      <strong>The reference theory.</strong> It consists of \(\dim
+      \mathfrak{g}\) free Maxwell fields built from \(\Gamma (x) = 1 / (4
+      \pi^2 |x|^2)\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          On the lattice, corrected covariances of finite-difference jets
+          converge to \(\partial_a \partial_b \Gamma\) away from coincidences.
+        </p>
+      </li>
+      <li>
+        <p>
+          Wick moments satisfy the same Gaussian recursion on the lattice and
+          in the continuum, so correlations of quotient labels converge.
+        </p>
+      </li>
+      <li>
+        <p>
+          A triangular basis built from the Kelvin transform gives strict
+          reflected Gram positivity for every label outside the ideal \(I_d\)
+          generated by the free Maxwell equations and the Bianchi identities.
+        </p>
+      </li>
+      <li>
+        <p>
+          So the free null space is exactly \(I_d\), and the free field space
+          \(M_d = P_d / I_d\), where \(P_d\) is the corresponding space of
+          polynomials in free curvature jets, is detected by finitely many
+          correlations.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>The comparison.</strong> There are scales \(r_k \downarrow 0\)
+      and linear frames \(U_k\) on the field spaces with the following
+      property. The correlations of the mixed state, rescaled by \(r_k\) and
+      transformed by \(U_k\), converge to the free Maxwell correlations:
+    </p>
+    <ul>
+      <li>
+        <p>
+          with all derivatives;
+        </p>
+      </li>
+      <li>
+        <p>
+          uniformly on compact subsets of \(\text{Conf}_n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for all degrees along one sequence.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The stress tensor converges to the Maxwell stress tensor. An upper bound
+      on \(\dim F_d\) makes the frames isomorphisms for large \(k\), so \(F_d
+      \cong M_d\).
+    </p>
+    <p>
+      The frames are necessary: the claim is not that a fixed normalization of
+      each composite field has a limit along every sequence of radii. The
+      schedule contains a real parameter that moves the scale at which
+      observables are read, and the estimates are uniform in it. Tuning this
+      parameter, every sequence of radii tending to zero has a subsequence
+      along which the comparison holds.
+    </p>
+    <h3 id="auto-17"><a id="running-coupling"></a>Running coupling<span style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Unit: <a href="outline/units/VII-5.html">VII.5 &mdash; Asymptotic freedom of the running
+      coupling</a>.</em>
+    </p>
+    <p>
+      With \(g_{N, p} (m) = \beta_{N, p, m}^{- 1 / 2}\), Part III gives
+    </p>
+    <center>
+      \(\displaystyle g_{N, p} (m) \hspace{0.17em} \sqrt{\log (1 / a_m)}
+      \longrightarrow
+\frac{1}{\sqrt{2 b_0}}  \qquad (m \to \infty),\)
+    </center>
+    <p>
+      uniformly in \(N \geqslant m\) and \(p\). This is the
+      leading-logarithmic running of the coupling of the construction's
+      effective actions. No two-loop term, no \(\Lambda\) parameter and no
+      comparison with another renormalization scheme is claimed. For \(SU
+      (N)\), the conventionally normalized coupling \(g_{\text{std}} = \sqrt{2
+      N}  \hspace{0.17em} g\) satisfies \(g_{\text{std}}  \sqrt{\log (1 /
+      a_m)} \to (11 N / 24 \pi^2)^{- 1 / 2}\).
+    </p>
+    <h3 id="auto-18"><a id="the-trace-law-and-nonfreeness"></a>The trace law and nonfreeness<span style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Units: <a href="outline/units/VII-2.html">VII.2 &mdash; The trace of the stress tensor and the
+      trace anomaly</a>; <a href="outline/units/VII-3.html">VII.3 &mdash; The theory is not free: Gram
+      positivity and exclusion of free-field profiles</a>.</em>
+    </p>
+    <p>
+      <strong>Leading form of the trace.</strong> The classical Maxwell and
+      Yang&ndash;Mills stress tensors are traceless. The quantum trace comes
+      from the scale dependence of the coefficient of curvature squared.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The proof pulls the trace of the lattice stress observable back
+          through the RG steps.
+        </p>
+      </li>
+      <li>
+        <p>
+          Fourth-order matching identifies the leading part of the trace as
+          the derivative of the effective action with respect to scale.
+        </p>
+      </li>
+      <li>
+        <p>
+          The one-loop coefficient enters through a momentum-shell estimate of
+          the kind used in Part III.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Along the scaling sequences, with \(\beta_k\) the running coupling at
+      the RG level that reads scale \(r_k\), and \(O_{F^2}\) the normalized
+      curvature-squared label,
+    </p>
+    <center>
+      \(\displaystyle \beta_k  \hspace{0.17em} r_k^4  \hspace{0.17em} U_k^{-
+      1} \Theta
+\longrightarrow 4 d_2  \hspace{0.17em} O_{F^2}, \qquad d_2 =
+      -
+\frac{\kappa_G}{4}, \qquad \frac{\log (1 / r_k)}{\beta_k}
+      \longrightarrow
+\frac{1}{\kappa_G} .\)
+    </center>
+    <p>
+      In perturbative terms, this is the familiar \(\Theta \simeq \frac{\beta
+      (g)}{2 g^3} F^2\), with \(\beta (g) / (2 g^3) = - b_0 / 2 = d_2\) at one
+      loop. The trace is a curvature-squared field suppressed by \(g^2 (r)
+      \simeq 1 / (\kappa_G \log (1 / r))\).
+    </p>
+    <p>
+      <strong>The two-point law.</strong> Here \(\Theta = \sum_{\mu} T_{\mu
+      \mu} - S^{\xi_{\ast}} \left( \sum_{\mu} T_{\mu \mu}
+\right)
+      \boldsymbol{1}\), in the selected phase, which has a unique vacuum.
+    </p>
+    <ol>
+      <li>
+        <p>
+          The free two-point function of \(O_{F^2}\) is \(3 \dim \mathfrak{g}/
+          (\pi^4 |x|^8)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          So at lattice-fitted configurations along the scaling sequence,
+          \(r_k^8 \log^2 (1 / r_k)  \langle \Theta \Theta \rangle \to (4 d_2 /
+          \kappa_G)^2
+\cdot 3 \dim \mathfrak{g}/ \pi^4 = 3 \dim \mathfrak{g}/
+          \pi^4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Rotation invariance moves the pair onto the time axis.
+        </p>
+      </li>
+      <li>
+        <p>
+          The spectral representation in the phase gives \(G_{\Theta} (r) =
+          \int e^{- rE}  \hspace{0.17em} d \mu (E)\) with a positive measure.
+          So \(G_{\Theta}\) is nonincreasing, which sandwiches \(G_{\Theta}
+          (r)\) between its values at fitted points.
+        </p>
+      </li>
+      <li>
+        <p>
+          If the limit failed along some sequence of radii, the flexible
+          scaling above would give a subsequence along which it holds, a
+          contradiction.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Hence the limit exists over all radii:
+    </p>
+    <center>
+      \(\displaystyle \lim_{r \downarrow 0}  \hspace{0.17em} r^8 \log^2 (1 /
+      r)  \hspace{0.17em}
+G_{\Theta} (r) = \frac{3 \dim_{\mathbb{R}}
+      \mathfrak{g}}{\pi^4} .\)
+    </center>
+    <p>
+      The amplitude does not depend on the value of the one-loop coefficient.
+      \(\kappa_G\) enters once through the trace and once through the running,
+      and \((4 d_2 / \kappa_G)^2 = 1\) identically. So the test detects the
+      inverse-logarithmic suppression and the free normalization of \(F^2\),
+      not the value of \(b_0\); that value is established by the running law
+      of Part III.
+    </p>
+    <p>
+      <strong>Exclusion of free profiles.</strong> Consider a finite Wick
+      profile \(W (r) = \sum_{\alpha} c_{\alpha}  \prod_{\beta} K_{\alpha
+      \beta} (r)\). Each factor \(K (r) = \int E^q  \hspace{0.17em} h
+      (\mathbf{p})  (2 E)^{- 1} e^{- rE} 
+\hspace{0.17em} d^3 \mathbf{p}\) has
+      \(E = \sqrt{\textsf{m}^2 + |\mathbf{p}|^2}\) and \(h\) homogeneous.
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(W\) has an asymptotic expansion at \(r = 0\) in the functions
+          \(r^a (\log r)^k\), with \(a \in \mathbb{Z}\) and \(k \geqslant 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Along \(r = 2^{- n}\), \(r^8 \log^2 (1 / r)  \hspace{0.17em} W (r)\)
+          is then a finite sum of terms \(c \hspace{0.17em} \rho^n n^{k +
+          2}\), which can converge only to \(0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Since the limit for \(G_{\Theta}\) is positive, \(G_{\Theta}\)
+          differs from \(W\) at points arbitrarily close to \(0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      This excludes exactly the finite class of profiles in the statement, and
+      it concerns only \(G_{\Theta}\) on the time axis.
+    </p>
+    <p>
+      The stronger statement adds further tests:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a Wightman-side Wick test;
+        </p>
+      </li>
+      <li>
+        <p>
+          Maxwell&ndash;Fock tests. Consider any isometric embedding of the
+          selected phase's Hilbert space into a Fock space of transverse
+          photons that preserves the vacuum and translations and has
+          transverse symmetric image. No such embedding makes \(\Theta\) local
+          with respect to the Weyl operators.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-19"><a id="operator-product-expansion-and-contact-extensions"></a>Operator product expansion and contact extensions<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <em>Unit: <a href="outline/units/VII-4.html">VII.4 &mdash; Operator product expansion and contact
+      extensions</a>.</em>
+    </p>
+    <p>
+      <strong>The lattice statement.</strong> The product of insertions in one
+      cell equals a single insertion of the same total degree, plus a
+      remainder with small chessboard root. The proof is an induction over the
+      RG levels between the cluster scale and the observation scale: the part
+      of degree at most \(D\) is kept, and the rest is paid into the
+      remainder.
+    </p>
+    <p>
+      <strong>The continuum coefficients.</strong> They are read off rather
+      than given by a formula.
+    </p>
+    <ul>
+      <li>
+        <p>
+          A prescription fixes, degree by degree, biorthogonal systems of
+          fields and detectors. The detectors are finite combinations of
+          mixed-state correlations of the cluster with fixed, separated
+          exterior words.
+        </p>
+      </li>
+      <li>
+        <p>
+          The prescription is averaged over \(O (4)\) and symmetrized for
+          reality.
+        </p>
+      </li>
+      <li>
+        <p>
+          The coefficient \(c_{j, \kappa} (a ; x, o)\) is a coordinate of the
+          cluster's new component of degree \(j\) in a real basis.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Consider an \((r, M, \eta)\)-cluster: points within \(Mr\) of \(o\) and
+      at mutual distance at least \(\eta r\), carrying fields of total degree
+      \(w\). Take spectators at distance at least \(c\) from \(o\) and from
+      each other. Then, for all sufficiently small \(r\),
+    </p>
+    <center>
+      \(\displaystyle |c_{j, \kappa} (a ; x, o) | \leqslant r^{\hspace{0.17em}
+      j - w - \varepsilon},
+\qquad | S^s (a, x ; b, y) - \sum_{j \leqslant D}
+      \sum_{\kappa} c_{j, \kappa}
+(a ; x, o)  \hspace{0.17em} S^s (O_{j,
+      \kappa}, o ; b, y) | \leqslant
+r^{\hspace{0.17em} D + 1 - w -
+      \varepsilon} .\)
+    </center>
+    <p>
+      <strong>Uniformity and limits of the statement.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The coefficients do not depend on the spectators \(b\) and \(y\), on
+          the state \(s\), or on \(D\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The threshold for \(r\) depends on the fields, on \(M, \eta, c,
+          \varepsilon, D\), and in the first bound on the channel, but it is
+          uniform in \(s\), \(x\), \(o\) and \(y\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Uniformity in the spectators comes from the train argument of Part
+          V, in which the exterior word is paid once.
+        </p>
+      </li>
+      <li>
+        <p>
+          Uniformity in the state comes from bounding the error in the
+          zero-energy algebra, whose norm dominates every character and the
+          mixture.
+        </p>
+      </li>
+      <li>
+        <p>
+          The loss \(\varepsilon\) absorbs logarithms. There is no logarithmic
+          refinement, so the bound is weaker than the perturbative OPE.
+        </p>
+      </li>
+      <li>
+        <p>
+          Uniqueness of the coefficients is not asserted. Neither convergence
+          as \(D \to \infty\) nor agreement with perturbation theory is
+          claimed.
+        </p>
+      </li>
+      <li>
+        <p>
+          Nested versions over finite trees of clusters, and integrated
+          versions against measures of bounded variation, also hold.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Contact extensions.</strong> These use Taylor subtractions over
+      forests of collapsing clusters on dyadic shells. The OPE remainder makes
+      the shell sums converge. For every state and every list of labels this
+      gives a distribution of finite order on \((\mathbb{R}^4)^n\) that agrees
+      with the correlation on \(\text{Conf}_n\). Not established: uniqueness,
+      reflection positivity on overlapping supports, contact Ward identities,
+      real-time products, and convergence of the lattice correlations on the
+      diagonals.
+    </p>
+    <h2 id="auto-20"><a id="part-viii-assembly"></a>Part VIII. Assembly<span style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Unit: <a href="outline/units/VIII-1.html">VIII.1 &mdash; Assembly of the main theorem</a>.</em>
+    </p>
+    <p>
+      The construction run depends only on \(G\) and the penalty \(b\). It is
+      chosen before any extraction order or observable. For each extraction
+      order (a spacing sequence and a volume sequence), the assembly composes
+      further refinements:
+    </p>
+    <ul>
+      <li>
+        <p>
+          one refinement for the limits of the running coupling;
+        </p>
+      </li>
+      <li>
+        <p>
+          one that produces the limit table, with the Euclidean hierarchy,
+          stress tensor, phases and reconstruction of Parts IV&ndash;VI.
+        </p>
+      </li>
+    </ul>
+    <p>
+      To these it adds the reconstructions of all phases, the OPE
+      prescription, the nested and contact results and the Maxwell comparison.
+      Everything is transported to a common refinement, so all objects refer
+      to one table.
+    </p>
+    <p>
+      The public theorem is the case \(b = 1\), with the full spacing sequence
+      and the given volume sequence; its \(q\) is the volume part of the
+      refinement.
+    </p>
+    <p>
+      No new estimate enters, but identifying all objects with one table is a
+      real constraint. Separate existence results for a lattice limit, a
+      Wightman theory, an OPE and a trace law would not show that they concern
+      the same correlation functions. The formal construction supplies the
+      hypotheses under which the limit theory is first proved. The outlines
+      have not explained every supplier in full; the <a href="outline/units/VIII-1.html#7-what-remains-unexplained">assembly
+      unit</a> records the limits of its source reading.
+    </p>
+    <h2 id="auto-21"><a id="relation-to-earlier-work-and-where-the-difficulty-lies"></a>Relation to earlier work, and where the difficulty
+    lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Classical sources.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Balaban's program is the model for the ultraviolet analysis:
+          block-spin transformations, gauge fixing around a background field,
+          fluctuation covariances built from averaging operators, the
+          small-field/large-field decomposition, and renormalization of the
+          marginal coupling.
+        </p>
+      </li>
+      <li>
+        <p>
+          The classical cluster expansion (Glimm&ndash;Jaffe, Brydges,
+          Koteck&yacute;&ndash;Preiss) organizes the polymer activities.
+        </p>
+      </li>
+      <li>
+        <p>
+          Reflection positivity (Osterwalder&ndash;Seiler) and chessboard
+          estimates (Glimm&ndash;Jaffe&ndash;Spencer,
+          Fr&ouml;hlich&ndash;Israel&ndash;Lieb&ndash;Simon) connect lattice
+          estimates with bounds on observables.
+        </p>
+      </li>
+      <li>
+        <p>
+          Osterwalder&ndash;Schrader and Glimm&ndash;Jaffe reconstruction
+          turns Euclidean correlations into Wightman fields.
+        </p>
+      </li>
+      <li>
+        <p>
+          The slope is the one-loop coefficient of Gross&ndash;Wilczek and
+          Politzer.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Departures from Balaban's scheme.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The block kernel is an exactly normalized, gauge-covariant Markov
+          kernel with random tags, not a linear averaging operator in a fixed
+          background gauge.
+        </p>
+      </li>
+      <li>
+        <p>
+          Integration uses a spanning-forest gauge.
+        </p>
+      </li>
+      <li>
+        <p>
+          The block ratios grow along the levels.
+        </p>
+      </li>
+      <li>
+        <p>
+          The threshold carries the factor \(e^{(\log \log \hat{\beta})^2}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The construction includes an analytic family in a tuning parameter.
+          The unit outlines do not establish a comprehensive comparison with
+          Balaban's papers.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Beyond the ultraviolet analysis</strong>, the proof does the
+      following:
+    </p>
+    <ul>
+      <li>
+        <p>
+          One schedule and one family serve composite fields of every degree.
+          Each field has a fixed normalization, root bounds uniform in the
+          volume, and derivatives controlled by rank detection, with no
+          coupling-dependent loss per site.
+        </p>
+      </li>
+      <li>
+        <p>
+          Convergence at fixed volume is proved despite tuning that depends on
+          the cutoff.
+        </p>
+      </li>
+      <li>
+        <p>
+          Equicontinuity in infinite volume comes from a rank-free trace
+          inequality, without derivative bounds.
+        </p>
+      </li>
+      <li>
+        <p>
+          Commutativity of the zero-energy algebra is proved, not assumed.
+        </p>
+      </li>
+      <li>
+        <p>
+          Vacuum uniqueness in every phase follows from a uniform low-energy
+          bound that replaces a mass gap or a cluster argument.
+        </p>
+      </li>
+      <li>
+        <p>
+          Lorentz covariance comes from Ward identities.
+        </p>
+      </li>
+      <li>
+        <p>
+          Rotation invariance is restored without decay of correlations, and
+          the group action is obtained by comparison with free Maxwell theory.
+        </p>
+      </li>
+      <li>
+        <p>
+          The trace law holds as a limit over all radii.
+        </p>
+      </li>
+      <li>
+        <p>
+          The OPE is derived from the RG, with one system of coefficients for
+          the mixture and every phase.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Where the difficulty lies.</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Gauge degeneracy and large fields</strong> must be
+          controlled with a bounded cost per site and per seed. This is done
+          by the gauge count of the determinant budget, the energy lower bound
+          for seeds, and the exactness of the kernel.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Effective-action estimates must become estimates for
+          observables</strong>: for every composite field, its derivatives and
+          its fixed-volume limit, inside one family.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The passage from a lattice mixture to relativistic
+          phases</strong> has no continuous symmetry and no clustering to
+          start from. It is handled by Ward identities with free comparison,
+          the commutative zero-energy algebra, and spectral bounds based on
+          locality.
+        </p>
+      </li>
+    </ol>
+    <p>
+      The order of choice of constants and the transport of estimates through
+      the construction account for a substantial part of the formal
+      development. Its length alone does not measure mathematical novelty.
+    </p>
+    <h2 id="auto-22"><a id="steps-whose-informal-account-is-incomplete"></a>Steps whose informal account is incomplete<span style="margin-left: 1em"></span></h2>
+    <p>
+      The theorem is proved in Lean, and the conditional statements of the
+      limit theory are discharged within its proof. The unit outlines,
+      however, describe the following steps only at the level of statements,
+      or with readings marked tentative. A written proof will have to supply
+      them.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>One-loop identification (III.7, VII.2).</strong> The slope
+          bound is first proved for an auxiliary functional and then
+          transferred to the completed Hessian of the actual step. The revised
+          <a href="outline/units/III-7.html#7-what-remains-unexplained">III.7</a> explains the determinant factorization and the
+          transfer of the coefficient; several subsidiary real-quotient,
+          complex-strip, tadpole, bubble and alias estimates remain inputs at
+          statement level. The trace amplitude does not test this value.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Covariance and Hessian (III.4).</strong> The Gaussian
+          covariance is the inverse of the gauge-fixed Gram form on the active
+          links. Whether it equals the inverse Hessian of the effective action
+          at the background is left open.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Nonlinear step.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The correspondence between the outputs of the one-step bounds
+              (III.10) and the norms restored by the reset (III.9) is not
+              written out.
+            </p>
+          </li>
+          <li>
+            <p>
+              Several hypotheses of the step were read only as statements.
+            </p>
+          </li>
+          <li>
+            <p>
+              The cluster expansion is proved for real weights (III.5), while
+              the fixed-volume argument uses complex tuning.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Fixed-volume convergence (III.12, IV.1).</strong> <a href="outline/units/III-12.html#7-what-remains-unexplained">III.12</a>
+          now explains fixed-level convergence, the uniform tail bound and the
+          Cauchy argument; the underlying trajectory-convergence and
+          multiscale estimates remain imported inputs. <a href="outline/units/IV-1.html">IV.1</a>
+          locates the upgrade to the full spacing sequence, while leaving the
+          upstream construction of its fixed-volume kernels outside that
+          unit's review.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Shell identities and the flux at infinity (VI.1,
+          VI.2).</strong> The lattice derivation of the shell identities is
+          given only at statement level. The exterior-flux estimate was not
+          read. The descent of the rotation action to exact intertwiners is
+          marked tentative.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Reconstruction (V.2).</strong> The boundary values, the
+          spectrum condition and the locality argument are described from
+          statements; their mechanisms were confirmed in the Lean but not
+          written out in the unit outlines.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Contact extensions and nested OPE (VII.4).</strong> The
+          shell estimates and the nested rates are described from docstrings.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Field relations (II.1).</strong> It is not shown directly
+          that the lattice equation relations exhaust the null space. The
+          identification \(F_d \cong M_d\) comes from the comparison with free
+          theory.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-23"><a id="reading-guide"></a>Reading guide<span style="margin-left: 1em"></span></h2>
+    <p>
+      The <a href="statement.html">exact statement</a> separates the public theorem from the
+      stronger construction. The <a href="outline/index.html">architecture</a> describes what each
+      part hands to the next. For the stated inputs and remaining gaps in this
+      account, follow the relevant unit's &ldquo;What it uses&rdquo; and
+      &ldquo;What remains unexplained&rdquo; sections. The <a href="outline/units/VIII-1.html">assembly
+      unit</a> describes how the construction is put together.
+    </p>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Question</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Units to read</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">What are the fields, and how are their normalizations
+        fixed?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/II-1.html">II.1</a>, <a href="outline/units/III-12.html">III.12</a>, <a href="outline/units/IV-1.html">IV.1</a>,
+        <a href="outline/units/VII-1.html">VII.1</a></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">How does the ultraviolet analysis relate to Balaban's?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/III-1.html">III.1</a>, <a href="outline/units/III-3.html">III.3</a>, <a href="outline/units/III-4.html">III.4</a>,
+        <a href="outline/units/III-6.html">III.6</a>, <a href="outline/units/III-5.html">III.5</a>, <a href="outline/units/III-10.html">III.10</a></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Where does the one-loop coefficient enter?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/III-7.html">III.7</a>, <a href="outline/units/III-9.html">III.9</a>, <a href="outline/units/VII-5.html">VII.5</a>,
+        <a href="outline/units/VII-2.html">VII.2</a></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Why does one family serve every observable and every
+        limit?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/III-2.html">III.2</a>, <a href="outline/units/II-1.html">II.1</a>, <a href="outline/units/III-12.html">III.12</a>,
+        <a href="outline/units/VIII-1.html">VIII.1</a>; <a href="outline/units/III-13.html">III.13</a> treats an alternative
+        family</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">How are bounds made uniform in the volume?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/III-11.html">III.11</a>, <a href="outline/units/III-12.html">III.12</a>, <a href="outline/units/III-16.html">III.16</a></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">How is infinite volume reached without an infrared RG?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/III-16.html">III.16</a>, <a href="outline/units/IV-1.html">IV.1</a></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Why are there phases, and why does every phase
+        reconstruct?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/V-1.html">V.1</a>, <a href="outline/units/V-2.html">V.2</a>, <a href="outline/units/V-3.html">V.3</a>; <a
+        href="outline/units/VII-4.html">VII.4</a> for the train bounds</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">How are rotations and the stress tensor recovered?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/VI-2.html">VI.2</a>, <a href="outline/units/VI-1.html">VI.1</a>, with <a href="outline/units/VII-1.html">VII.1</a>
+        and <a href="outline/units/VII-6.html">VII.6</a> for the free comparison</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">What makes the theory nonfree?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/VII-2.html">VII.2</a>, <a href="outline/units/VII-3.html">VII.3</a>, with <a href="outline/units/VII-6.html">VII.6</a>
+        for arbitrary short-distance scales</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">What does the OPE say, and what is known at coincident
+        points?</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="outline/units/VII-4.html">VII.4</a>, then <a href="outline/units/VIII-1.html">VIII.1</a> for the
+        assembly</td>
+      </tr></tbody>
+    </table>
+  </body>
+</html>

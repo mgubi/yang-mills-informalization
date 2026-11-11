@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>How the map was made &ndash; Yang&ndash;Mills
+    informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="index.html">Home</a><font class="ym-sep">&middot;</font><a href="statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="outline/index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="outline/units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="outline/work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="data/index.html">Data</a><font class="ym-sep">&middot;</font><font class="ym-here">Method</font><font
+      class="ym-sep">&middot;</font><a href="provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="CHANGELOG.html">Changes</a>
+    </div>
+    <p>
+      <h1>How the map was made</h1><a id="how-the-map-was-made"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Source compilation and kernel checking</b> <span style="margin-left: 5mm"></span> <a
+        href="#auto-1">1</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. The dependency graph</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. Coarse-graining</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">3</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Key statements</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">3</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Statement and explanation checks</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">3</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. The unit outlines and the summary</b> <span style="margin-left: 5mm"></span> <a
+        href="#auto-6">4</a>
+      </p>
+      <p>
+        Unit outline status <span style="margin-left: 5mm"></span> <a href="#auto-7">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Published evidence and tools</b> <span style="margin-left: 5mm"></span> <a href="#auto-8">4</a>
+      </p>
+    </div>
+    <p>
+      This page separates checking the formal proof, interpreting its
+      statement, extracting declaration references and reviewing the
+      explanations. The source is fixed at commit <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464"><tt class="verbatim">3456e5e75cf8d4cd558955a5c7638fba2d68f464</tt></a>.
+      The <a href="faq.html#what-each-check-establishes">FAQ evidence table</a> gives the scope of each check.
+    </p>
+    <h2 id="auto-1"><a id="source-compilation-and-kernel-checking"></a>Source compilation and kernel checking<span style="margin-left: 1em"></span></h2>
+    <p>
+      The released source uses Lean 4.32.0 and pinned external libraries. Its
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/verification/joint-check.log">verification log</a> records a type comparison for <tt class="verbatim">YangMills.jointExistence</tt>,
+      an axiom check for seventeen named results, and a successful kernel
+      replay of 100,168 project declarations reachable from those results. It
+      reports only <tt class="verbatim">propext</tt>, <tt class="verbatim">Classical.choice</tt>
+      and <tt class="verbatim">Quot.sound</tt> as endpoint axioms. The <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/VerifyJoint.lean">checking
+      program</a> compares the solution with a separately loaded reference and
+      replays project declarations with only external libraries initially
+      present.
+    </p>
+    <p>
+      These are checks of formal declarations and proof terms. They do not
+      establish that an English statement expresses the intended physics, that
+      an outline explains every estimate, or that the mass-gap problem has
+      been solved. The placeholder in the reference <tt class="verbatim">Challenge.lean</tt>
+      is separate from the solution's imports; the source's <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/README.md#verification">verification
+      account</a> explains this distinction.
+    </p>
+    <p>
+      To rebuild the project from source, use a fresh checkout without the
+      precompiled project archive. The following follows the <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/README.md#verification">source
+      verification instructions</a>; it downloads compiled dependencies,
+      compiles the project and runs the separate checks:
+    </p>
+    <pre class="verbatim" xml:space="preserve">
+git clone https://github.com/yang-mills-group/OpenAI-YM-20261028
+cd OpenAI-YM-20261028
+git checkout 3456e5e75cf8d4cd558955a5c7638fba2d68f464
+lake exe cache get
+lake build WilsonReference WilsonConstruction
+lake env lean -j1 -DmaxHeartbeats=0 -DmaxRecDepth=4096 VerifyJoint.lean
+lake env lean -j1 -DmaxHeartbeats=0 verification/Usage.lean
+lake env lean -j1 verification/CompactCheck.lean</pre>
+    <p>
+      The build targets are specified in the pinned <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/lakefile.toml">Lake file</a>.
+      Expected messages from <tt class="verbatim">VerifyJoint.lean</tt> include <tt
+      class="verbatim">TYPE_MATCH</tt>, <tt class="verbatim">ENDPOINT_AXIOMS</tt> and <tt class="verbatim">REPLAY_PASS</tt>;
+      inspect the complete output and exit status. This recipe still trusts
+      the downloaded external libraries. The separate <a href="https://github.com/scottnarmstrong/yang-mills-informalization/releases/tag/lean-build-3456e5e">compiled
+      project release</a> is convenient for exploring the proof, but loading
+      it and finding all build targets up to date does not independently
+      recompile the project. A checksum checks the downloaded archive against
+      its published digest.
+    </p>
+    <h2 id="auto-2"><a id="1-the-dependency-graph"></a>1. The dependency graph<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>Files.</strong> The import lines give 9,477 files and 22,454
+          imports. The only external imports are Mathlib and Lean core.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Declarations, from the compiled Lean.</strong> The graph
+          records references in elaborated types and proof terms read from the
+          compiled <tt class="verbatim">.olean</tt> files: 2.26 million references,
+          including implicit instances, coercions and other inserted terms.
+          Generated auxiliary constants are attributed to the declaration that
+          owns them. References in types are distinguished from references in
+          proofs.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Exact comparison roots.</strong> The comparison uses all
+          seventeen names in the pinned <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/verification/joint-headlines.txt">headline list</a>. These
+          include <tt class="verbatim">YangMills.jointExistence</tt>, <tt class="verbatim">YangMills.constructed</tt>,
+          the SU(2) results, contact and comparison results, and <tt class="verbatim">YM.SharpGram.habitat</tt>
+          with its related results. It is a union of their reachable sets, not
+          the closure of the public theorem alone.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Comparison with OpenAI's record.</strong> The released <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/verification/declaration-usage.tsv">declaration-usage table</a> records 100,151 reached constants,
+          including auxiliaries, or 74,115 declarations after attribution to
+          owners. Our graph reaches 74,093 declarations from the same roots.
+          The sets differ by 50: 36 structure constructors reached through
+          recursors in the record, and 14 small definitions reached through
+          shared auxiliary constants. These counts use a different convention
+          from the kernel replay count above.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Limits of the comparison.</strong> Agreement of reachable
+          sets tests coverage at those roots. It does not check every
+          reference edge, turn declaration references into mathematical
+          prerequisites, or validate the English explanations. The unit
+          assignment and size tables have their own counting scope; see the <a
+          href="data/index.html">data</a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The earlier graph, from source text.</strong> Until 11
+          November the map used source text, corrected with OpenAI's record.
+          Of its 0.96 million references, about 57,000 resolved to the wrong
+          declarations; the compiled graph added 1.36 million missing
+          references, nearly all implicit. One unit dependency had been
+          missing (V.3 on II.1), and some earlier links rested on wrongly
+          resolved names: for instance, III.7 does not build on IV.1, V.1, V.2
+          or VI.1. The unit pages now use the compiled graph for declaration
+          references.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="2-coarse-graining"></a>2. Coarse-graining<span style="margin-left: 1em"></span></h2>
+    <p>
+      The declaration graph is reduced in four steps. Inclusion in the unit
+      assignment table should not itself be read as a claim of reachability
+      from <tt class="verbatim">YangMills.jointExistence</tt>.
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Ownership.</strong> Within a chosen set of roots, helpers
+          reached only through one result are folded into that result, using
+          the dominator tree.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Scales.</strong> A result is retained at scale M when its
+          proof and folded helpers occupy at least M lines. Scales from 100 to
+          3,200 lines give increasingly coarse views.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Shared material.</strong> Material used by many results is
+          grouped by source folders and similarity of use, much of it in the
+          renormalization-group estimates.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Units.</strong> Groups are cut and merged into thirty-two
+          mathematically coherent units. A unit's declaration allocation and
+          its explanatory subject can differ. The <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/declaration-units.tsv">assignment
+          table</a> records allocation; the <a href="outline/units.html">unit index</a> describes
+          the questions the outlines address. References between units can
+          occur in both directions because each unit contains several
+          declarations; this does not imply a circular formal proof.
+        </p>
+      </li>
+    </ol>
+    <h2 id="auto-4"><a id="3-key-statements"></a>3. Key statements<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>Grouping and ranking.</strong> Results are grouped with
+          single-use helpers, variants and restatements, then ranked by proof
+          size, documentation and reuse.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Readers.</strong> Two independent AI readers (Claude Sonnet)
+          read 2,424 candidate statements in 106 coherent groups. Each
+          assigned an importance label (main result, key result, technical
+          lemma or bookkeeping) and wrote a one-sentence explanation.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Agreement.</strong> Cohen's &kappa; = 0.72 measures
+          agreement on &ldquo;main or key&rdquo; versus the other importance
+          labels. It is not a measured accuracy rate for the mathematical
+          summaries, nor a probability that a theorem is correct.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Selection.</strong> The 989 selected key statements include
+          numbered results and those rated main or key.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Earlier test.</strong> On the separate Navier&ndash;Stokes
+          formalization, selection matched the human-written paper about twice
+          as well as graph ranking alone, and 14 of 15 sampled sentences were
+          accurate. Those spot checks were not performed on these
+          Yang&ndash;Mills summaries and give no measured accuracy rate for
+          this repository.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-5"><a id="statement-and-explanation-checks"></a>Statement and explanation checks<span style="margin-left: 1em"></span></h2>
+    <p>
+      The <a href="statement.html">statement page</a> transcribes the public theorem, its
+      definitions, quantifiers and qualifications against the pinned Lean. The
+      extra conclusions D1&ndash;D16 have a different scope: as that page
+      records, D3 and D5&ndash;D15 are summarized from definitions and
+      comments and were not all unfolded to the last definition. This
+      comparison is an AI-assisted interpretation of formal text, separate
+      from a kernel check and from an independent mathematical reading of the
+      proof.
+    </p>
+    <p>
+      The glossary was written from definitions, fields and uses. Its
+      <em>certain</em>, <em>probable</em> and <em>tentative</em> labels
+      describe the strength of that interpretation. They are not unit review
+      statuses or certificates of mathematical correctness. The architecture
+      and work-item descriptions likewise need to be read with their linked
+      sources and qualifications.
+    </p>
+    <h2 id="auto-6"><a id="5-the-unit-outlines-and-the-summary"></a>5. The unit outlines and the summary<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-7"><a id="unit-outline-status"></a>Unit outline status<span style="margin-left: 1em"></span></h3>
+    <p>
+      Each outline has a place in a three-round review. All outlines are
+      published; the <a href="outline/units.html">index</a> gives their current statuses.
+    </p>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Status</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Review described by the label</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Limit</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"><strong>Draft</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Claude Sonnet writes propositions, hypotheses, strategy and
+        proof sketches from the source and key statements.</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">The explanation has not completed the next two
+        reviews.</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"><strong>Checked</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Claude Opus compares numbered statements with the linked
+        Lean, including hypotheses and quantifiers, reads the main proof
+        steps, and corrects and rewrites the account.</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Subsidiary estimates may remain at statement level; see the
+        unit's &ldquo;What remains unexplained&rdquo; section.</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid"><strong>Edited</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">A GPT model makes a further comparison with the Lean and
+        edits the exposition.</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">This is not a complete independent human proof review;
+        local limitations still apply.</td>
+      </tr></tbody>
+    </table>
+    <p>
+      The second round found dropped hypotheses and overbroad statements in
+      the first two units. It also found that the coupling's one-loop
+      coefficient is computed in the proof, where the draft had described it
+      as assumed. The labels record review of exposition; a draft outline does
+      not mean the linked formal result is unproved.
+    </p>
+    <p>
+      The summary was written from the outlines by a GPT model and edited by
+      Claude Opus. It is revised as the outlines improve. Human mathematical
+      judgment remains needed to assess whether these explanations give a
+      satisfactory account of the construction; the manuscript being written
+      in public is <a href="https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript">under construction</a>.
+    </p>
+    <h2 id="auto-8"><a id="published-evidence-and-tools"></a>Published evidence and tools<span style="margin-left: 1em"></span></h2>
+    <p>
+      The <a href="data/index.html">data directory</a> contains the published unit,
+      declaration-assignment and key-statement tables. The source's
+      verification programs and logs linked above are available at the fixed
+      commit. The separate programs used here to extract and group the graph
+      and select statements were tested on the earlier Navier&ndash;Stokes
+      formalization; they have been announced for publication but are not yet
+      included in this repository. References to unpublished working analyses
+      are not reproducible evidence for readers.
+    </p>
+    <p>
+      <a href="https://github.com/scottnarmstrong/yang-mills-informalization/issues">Report a correction</a> with the page, heading, quoted sentence
+      and proposed correction or pinned Lean reference.
+    </p>
+  </body>
+</html>

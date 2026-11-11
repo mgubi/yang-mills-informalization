@@ -1,0 +1,1967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.5. Cluster expansion of the polymer gas &ndash;
+    Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-4.html">&larr; III.4 Gaussian integration: change of Gaussian
+      sector, determinants, window law</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part
+      III</a><font class="ym-sep">&middot;</font><a href="../notes/III-5.html">Detailed notes</a></span><a
+      class="ym-next" href="III-6.html">III.6 The stationary branch: background field of the
+      effective action &rarr;</a>
+    </div>
+    <p>
+      <h1>III.5. Cluster expansion of the polymer gas</h1><a id="iii5-cluster-expansion-of-the-polymer-gas"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">1</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-6">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-7">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Code dependencies</b> <span style="margin-left: 5mm"></span> <a href="#auto-8">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Lean source</b> <span style="margin-left: 5mm"></span> <a href="#auto-9">6</a>
+      </p>
+      <p>
+        Additional source locations <span style="margin-left: 5mm"></span> <a href="#auto-10">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Key statements</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">12</a>
+      </p>
+    </div>
+    <p>
+      <em>Part III &mdash; Ultraviolet construction (renormalization
+      group).</em>
+    </p>
+    <p>
+      Controls sums of interacting polymer activities by a convergent cluster
+      expansion.
+    </p>
+    <p>
+      <strong>Status: edited.</strong> Condensed from the unit's detailed
+      notes, which were checked against the linked Lean in two rounds and
+      edited; the local limitations still apply. <a href="../../data/index.html#outline-status">Status meanings</a>.
+    </p>
+    <p>
+      <a href="../index.html">Overview</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../notes/III-5.html">Detailed
+      notes</a> &middot; <a href="III-4.html">&larr; Previous: III.4</a> &middot; <a href="III-6.html">Next:
+      III.6 &rarr;</a>
+    </p>
+    <p>
+      <a href="#unit-results">Results</a> &middot; <a href="#unit-inputs">Inputs</a> &middot; <a href="#unit-strategy">Strategy</a>
+      &middot; <a href="#unit-steps">Proof steps</a> &middot; <a href="#unit-notation">Notation</a>
+      &middot; <a href="#unit-limitations">What remains unexplained</a> &middot; <a href="#code-dependencies">Code
+      dependencies</a> &middot; <a href="#lean-source">Lean source</a> &middot; <a href="#key-statements">Key
+      statements</a>
+    </p>
+    <p>
+      <details><summary>Source inventory and conventions</summary><p>
+        <strong>Part:</strong> III, Ultraviolet construction (renormalization
+        group). <strong>Lean:</strong> work packages <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS"><tt class="verbatim">YM/Push/ABSOLUTE_SUMS/</tt></a>
+        (3,624 lines), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS"><tt class="verbatim">YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/</tt></a>
+        (3,589), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE"><tt class="verbatim">YM/Push/SECTOR_MEASURE/</tt></a> (1,153),
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION"><tt class="verbatim">YM/SectorNext/VACUUM_NORMALIZATION/</tt></a>
+        (935), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES"><tt class="verbatim">YM/Progress/STATIONARY_SCENES/</tt></a>
+        (445). <strong>Size:</strong> 9,746 lines in 1,097 line-counted
+        declarations in the source allocation.
+      </p></details>
+    </p>
+    <p>
+      <a id="unit-results"></a>
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      All propositions are <strong>theorems</strong> under the stated
+      hypotheses. Infinite nonnegative bounds include summability.
+    </p>
+    <p>
+      <strong>Proposition III.5.1.</strong> For finite labels, reflexive
+      symmetric incompatibility \(R\) and real \(w\), put \(\ell_m = \sum_{z
+      \in \iota^{m + 1}} \phi_R^T (z)  \prod_a w_{z_a} / (m + 1) !\). If \(|
+      \ell_m | \leqslant Cq^m\) for every \(m \geqslant 0\), \(C \geqslant
+      0\), \(0 < q < 1\), then \(\Xi (w) = \exp (\sum_m \ell_m)\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L66-L145"><tt
+      class="verbatim">Gas.exact_polynomial</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.2.</strong> On every finite graph with a
+      distinguished vertex, the absolute alternating sum over connected
+      spanning subgraphs is bounded by its number of spanning trees. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Graph.lean#L113-L148"><tt
+      class="verbatim">Graph.pay</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.3.</strong> For arbitrary labels, supports
+      \(X_i \subseteq \Lambda_n\), \(B \in \mathbb{N}\), \(w \geqslant 0\),
+      \(a \geqslant 0\), \(R \subseteq\) overlap and \(\text{Ready} (w ; a,
+      \gamma, \delta, q)\), every site \(x\) and \(m \geqslant 0\) satisfy
+    </p>
+    <center>
+      \(\displaystyle \sum_{k \geqslant m} \sum_{z \in \iota^{k + 1} : x \in X
+      (z)} \frac{| \phi_R^T
+(z) |  \prod_a w_{z_a}}{(k + 1) !} e^{a
+      \text{cov}_B (X (z))} \leqslant
+\frac{\gamma q^m}{1 - q} .\)
+    </center>
+    <p>
+      The same bound holds for connected finite sets through \(x\) of at least
+      \(m + 1\) labels, weighted by \(\prod_i w_i e^{a \text{cov}_B (X_i)}\).
+      If \(Q \subseteq \iota\) has total inflated weight \(\sum_{i \in Q} w_i
+      e^{(a + \delta) \text{cov}_B (X_i)} \leqslant b\), the order-\(m\)
+      cluster sum marked by \(Q\), with individual covering weights, is
+      \(\leqslant bq^m\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L224-L243"><tt class="verbatim">Ursell.log_hit_tail</tt></a> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L148-L183"><tt class="verbatim">Ursell.cluster_at</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.4.</strong> For the same supports, real \(w\),
+      reflexive symmetric \(R \subseteq\) overlap, \(a \geqslant 0\) and
+      \(\text{Ready} (|w| ; a, \gamma, \delta, q)\), the gas converges
+      absolutely with absolute sum \(\leqslant e^{n^4 \gamma}\); its cluster
+      series converges absolutely to \(\log \Xi (w)\), with absolute sum
+      \(\leqslant n^4 \gamma / (1 - q)\) and order-\(m\) bound \(n^4 \gamma
+      q^m\). In particular \(\Xi (w) > 0\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Log.lean#L114-L149"><tt class="verbatim">Gas.price_log</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.5.</strong> Under III.5.4, with nonempty
+      supports and overlap incompatibility, deleting all polymers meeting any
+      \(Y \subseteq \Lambda_n\) gives \(\Xi (w^Y) = \Xi (w) e^{- p}\). \(p\)
+      sums clusters meeting \(Y\); their absolute tail from order \(m\) is
+      \(\leqslant |Y| \gamma q^m / (1 - q)\) for every \(m \geqslant 0\). <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L69-L95"><tt class="verbatim">Gas.restores_log</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.6.</strong> On one lattice, let unforced
+      \((X_i, u_i)\) and forced \((Y_k, d_k)\) have nonempty supports, \(u, d
+      \geqslant 0\), \(R \subseteq\) overlap. Assume \(A \geqslant 0\),
+      \(\delta' > 0\), \(t \geqslant 1\), \(0 \leqslant \sigma < 1\), \(\mu
+      \geqslant 0\), \(\eta > 0\), \(q' < 1\), \(\text{Ready} (u ; A +
+      \delta', \gamma, \delta, q)\), \(\text{Hit}_B (d ; A + \delta', c)\),
+      and
+    </p>
+    <center>
+      \(\displaystyle \frac{te^{\mu} c + t \gamma / (1 - q)}{1 - \sigma}
+      \leqslant \eta \leqslant
+\sigma, \qquad 4 \text{ball}_B \eta / \delta'
+      \leqslant q' .\)
+    </center>
+    <p>
+      Atoms are forced polymers and unforced cluster tuples with absolute
+      cluster weights. For every site \(x\) and \(m \in \mathbb{N}\),
+      connected atom multisets through \(x\), containing a forced atom and
+      total multiplicity \(\geqslant m\), have total weight \(e^{A
+      \text{cov}_B (\cup)}  \prod_{\alpha} w_{\alpha}^{n_{\alpha}} /
+      n_{\alpha}
+!\) at most \(t^{- m} e^{- \mu} \eta / (1 - q')\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Omissions.lean#L48-L100"><tt
+      class="verbatim">OmitClusters.restore</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.7.</strong> For a step of block side \(L\),
+      \(l, B \in \mathbb{N}\), connected packets with \(0 \leqslant p_A
+      \leqslant Ce^{(s - g) |A|}\), \(a, C \geqslant 0\), and \(\rho =
+      K_{\text{step}}^2 e^{s - g + a (2 l + 3)^4} \leqslant q < 1\) satisfy,
+      for every coarse site \(x\) and \(m \in \mathbb{N}\),
+    </p>
+    <center>
+      \(\displaystyle \sum_{A : x \in D (A), \hspace{0.17em} |A| \geqslant m}
+      p_A e^{a \text{cov}_B
+(D (A))} \leqslant K_{\text{hit}} Cq^{\max (1, m)}
+      / (1 - q) .\)
+    </center>
+    <p>
+      This includes variants supported within domes whose total packet weight
+      obeys the same envelope. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L66-L105"><tt class="verbatim">Packets.packet_income</tt></a>
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L124-L175"><tt class="verbatim">Packets.packet_variants_tail</tt></a>
+    </p>
+    <p>
+      For \(\varepsilon, \delta, \gamma_{\text{root}} > 0\), \(a, C, e_s,
+      \mu_s \geqslant 0\), assume the packet condition at \((a + 2 \varepsilon
+      + \delta, s + 2 \varepsilon e_s + \mu_s)\) with ratio \(q_p < 1\),
+      optional polymers \(w_i, \lambda_i \geqslant 0\) satisfying
+      \(\text{Hit}_B (we^{2 \varepsilon \lambda} ; a + 2 \varepsilon +
+      \delta,
+\gamma_{\text{opt}})\), and \(K_{\text{hit}} Cq_p / (1 - q_p) +
+      \gamma_{\text{opt}} \leqslant
+\gamma_{\text{root}}\), \(4 \text{ball}_B
+      \gamma_{\text{root}} / \delta \leqslant q < 1\). Connected mixed sets
+      through \(x\), of size \(\geqslant m + 1\), seed count \(\geqslant r\)
+      and charge \(\text{ch} \geqslant T\), satisfy
+    </p>
+    <center>
+      \(\displaystyle \sum_s \prod_{\alpha \in s} w_{\alpha}  (1 + \text{ch}
+      (s))^k e^{a
+\text{cov}_B (D (s))} \leqslant k! \varepsilon^{- k}
+      e^{\varepsilon} e^{-
+\varepsilon T - \mu_s r} \gamma_{\text{root}} q^m /
+      (1 - q)\)
+    </center>
+    <p>
+      for every \(m, k, r \in \mathbb{N}\), \(T \in \mathbb{R}\). Charge sums
+      individual covering numbers and lengths; packet length is \(e_s |A|\).
+      Disconnected packets have weight zero. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L153-L189"><tt class="verbatim">Mixed.mixed_hit</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.8.</strong> Fix the group, \(L, l\), \(\mu, u
+      > 0\), \(a, D \geqslant 0\), \(d \in \mathbb{N}\), \(z < 2\). Eventually
+      in \(x\), whenever \(s \leqslant F\), \(g \geqslant M\), \(0 \leqslant C
+      \leqslant e^F\), where \(F = D \text{bill}^d P (\beta_F)^z\), \(M = \mu
+      uP (\beta_F)^2\), the packet ratio is \(\leqslant q = e^{- M / 2}\) and
+      \(K_{\text{hit}} Cq^{\max (1, m)} / (1 - q) \leqslant e^{- M \max (1, m)
+      / 4}\) for every \(m\). Every \(\beta \geqslant u \beta_F\) gives
+      \(\beta \mu t^2 \geqslant M\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L165-L214"><tt class="verbatim">Delay.fits</tt></a>
+    </p>
+    <p>
+      For \(\varepsilon, \delta > 0\), \(\beta \geqslant u \beta_F\), \(C, e_s
+      \geqslant 0\), \(C \leqslant e^F\), \(s + 2 \varepsilon e_s \leqslant
+      F\), \(0 \leqslant \gamma_{\text{opt}} \leqslant \delta / (16
+      \text{ball}_B)\), the mixed numerical conditions eventually hold with
+      \(g = \beta \mu t^2\), \(\mu_s = M / 2\), \(q = 1 / 2\),
+      \(\gamma_{\text{root}} = e^{- M / 8} + \gamma_{\text{opt}}\). Actual
+      weight bounds remain hypotheses. For every estimator, choose \(L\)
+      sufficiently large, then \(W\) sufficiently large: some \(\mu > 0\),
+      chosen before \(l, d, u, a, D, z\), gives the point charge for all
+      sufficiently large \(x\) and funded steps of coarse side \(\geqslant 100
+      (1 + B)\), uniformly in volume. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Buy.lean#L67-L103"><tt class="verbatim">Buy.quoted</tt></a>
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Grants.lean#L52-L71"><tt class="verbatim">Grant.order</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.9.</strong> Let \(J\) be finite, \(\emptyset
+      \ne X_i \subseteq J\), \(v \geqslant 0\), \(w \geqslant 1\)
+      submultiplicative on overlapping unions, \(a \geqslant 0\), \(0
+      \leqslant \delta \leqslant 1 - e^{- a}\), and \(\sum_{i : x \in X_i} w
+      (X_i) v_i e^{a |X_i |} \leqslant \delta\) for every \(x\). For every
+      real \(|u| \leqslant v\), the disjoint-support gas satisfies \(Z_u (B) >
+      0\), \(Z_u (B) = e^{- \sum_{A \subseteq B} \lambda_u (A)}\), \(|
+      \lambda_u | \leqslant \lambda_{- v}\) and \(\sum_{A \ni x} w (A)
+      \lambda_{- v} (A) \leqslant a\). Deleting any \(Q \subseteq J\)
+      multiplies \(Z_u (J)\) by \(e^l\), \(|l| \leqslant a |Q|\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L217-L228"><tt
+      class="verbatim">ReLog.catalog</tt></a>
+    </p>
+    <p>
+      For countably many local, gauge-invariant Borel \(E_i\) bounded by
+      \(v_i\) on unflagged supports, mask flagged supports. If \(M \in
+      \mathbb{N}\), \(A, a \geqslant 0\), \(v \geqslant 0\), \(a (2 M + 1)^4
+      \leqslant 1\), \(\delta \leqslant 1 - e^{- a}\) and \(\sum_{i : x \in
+      X_i} e^{(A + 1) \text{cov}_M (X_i)} v_i \leqslant \delta\) at every
+      site, the masked gas has these identities and a field-independent
+      envelope \(| \lambda_P (V) | \leqslant g (P)\), \(\sum_{P \ni x} e^{A
+      \text{cov}_M (P)} g (P) \leqslant a\). Raw coefficients are local,
+      gauge-invariant Borel; masked coefficients vanish on flagged regions. <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L157-L183"><tt class="verbatim">ReLog.intake</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.10.</strong> For finite real matrices \(A >
+      0\), \(C = C^T\), \(S = AC - I\), and \(\sum_j |S_{ij} | \leqslant q <
+      1\), \(q \geqslant 0\), both \(\det C, \det (I + S) > 0\), and \(\log
+      \det (I + S) = \sum_{k \geqslant 1} (- 1)^{k + 1} \text{tr} (S^k) / k\)
+      absolutely. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Round.lean#L149-L155"><tt class="verbatim">Round.exact_trace</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.11.</strong> Fix a funded step, tube,
+      estimator, threshold \(t\), \(W, \kappa > 0\), adapted lawful
+      representation, coupling \(\beta \geqslant 0\), tree-gauge forest and
+      Borel nonnegative allocation summing to one. Require global cell chords
+      \(\geqslant t / 4\) on listed seeds, \(\leqslant t / 2\) otherwise; wire
+      chords \(\geqslant Wt\) on listed bonds, \(\leqslant 2 Wt\) otherwise;
+      and equality of packet sites with coarse flags wherever allocated weight
+      is nonzero. Assume the point charge \(\mathcal{E}_A \geqslant \kappa t^2
+      |A|\) on every local sector on every tree-gauge slice; local tests use
+      \(D_{5 B} (A)\) and positive frame mass. Then, for every \(V\),
+      \(\text{push}_{\beta} \rho_R (V) = \sum_A c_A (V)\) and \(|c_A (V) |
+      \leqslant \pi_{\beta} e^{- \beta \kappa t^2 |A|} \ell_A (V)\), with
+      bounded Borel sector outputs and remainders. The point charge comes from
+      III.10 or the committed-scale hypothesis of III.1. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L157-L210"><tt class="verbatim">Presented.portionCost</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.12.</strong> For finite symmetric \(M
+      \geqslant rI > 0\) with lattice positions, weighted row and column sums
+      \(\leqslant C\) at rate \(\eta \geqslant 0\), \(0 \leqslant \theta
+      \leqslant 1\), \(\theta C \leqslant r / 2\), every \(u \geqslant 0\)
+      satisfies
+    </p>
+    <center>
+      \(\displaystyle e^{\theta \eta d (a_i, a_j)} | (M + uI)^{- 1}_{ij} |
+      \leqslant [\min (1, r /
+2) (1 + u)]^{- 1} .\)
+    </center>
+    <p>
+      Hypotheses persist under principal restriction. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L188-L251"><tt class="verbatim">Green.inverse</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.13.</strong> For finite real symmetric \(A
+      \geqslant rI > 0\), fixed positive weighted row/column bounds at
+      positive rate and counting bound \(\text{card} \{j : d (y, d_j)
+      \leqslant \rho\} \leqslant U (1 + \rho)^4\), windows containing every
+      index within distance \(R\) of their addressed index have, uniformly for
+      large \(R\), inverse residual and inverse difference \(\leqslant Ke^{-
+      cR} < 1\) for some \(K, c > 0\) at a positive rate. Full/windowed
+      inverses are bounded by \(K\) throughout \(tA + (1 - t) I\), \(0
+      \leqslant t \leqslant 1\). At \(t = 1\), the symmetrized windowed
+      inverse has positive uniform lower bounds, as does its inverse. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L106-L178"><tt
+      class="verbatim">Win.Promise.receive</tt></a>
+    </p>
+    <p>
+      <strong>Proposition III.5.14.</strong> Fix an estimator and patch
+      satisfying branch conditions. For all large \(x\), every funded step
+      with that patch, coarse side \(\geqslant 100 (1 + B)\), forest, packet
+      and field with matching flags has completed precision \(G = D^T D +
+      I_{\text{inactive}} \geqslant rI\), uniform counting constant \(U\), and
+      weighted row/column bound \(K\) at half the upper path-decay rate, for
+      some \(r, U, K > 0\). Endpoint windows of radius \(\lfloor B / 4
+      \rfloor\) satisfy III.5.13 with error \(K_{\text{win}} e^{-
+      c_{\text{win}}  \lfloor B / 4 \rfloor} < 1\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Bedrock.lean#L142-L158"><tt class="verbatim">Aff.bedrock</tt></a>
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Warsaw.lean#L25-L42"><tt class="verbatim">Aff.install_promises</tt></a>
+    </p>
+    <p>
+      <a id="unit-inputs"></a>
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          I.1, II.2: lattice covering bounds and connected supports.
+        </p>
+      </li>
+      <li>
+        <p>
+          III.1, III.2: step data, funding, branches, lawful representations
+          and committed-scale energy assumptions.
+        </p>
+      </li>
+      <li>
+        <p>
+          III.10: energy grant; III.6: gauge-fixed Poincar&eacute; inequality.
+        </p>
+      </li>
+      <li>
+        <p>
+          Mayer expansion, Penrose partition, lattice-animal counting,
+          M&ouml;bius inversion, Schur test, Combes&ndash;Thomas conjugation.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="unit-strategy"></a>
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      Component decomposition identifies the finite-gas logarithm. Tree
+      estimates give geometric cluster tails; absolute convergence extends the
+      identity to arbitrary labels. Seed energy dominates packet entropy.
+      Deletion gives another logarithm; exponential conjugation and the
+      spectral gap control windowed inverses.
+    </p>
+    <p>
+      <a id="unit-steps"></a>
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          For gas polynomial \(P\) and cluster series \(L\), splitting the
+          distinguished component gives \(P' = L' P\), hence \(Pe^{- L} = 1\).
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L129-L138"><tt class="verbatim">Coef.recurrence</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          Penrose intervals cancel free edges; parent factorials cost at most
+          \(4^m m!\), absorbed by the reserve exponent. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Graph.lean#L113-L148"><tt class="verbatim">Graph.pay</tt></a>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Weigh.lean#L192-L228"><tt class="verbatim">Trees.trees_afford</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          Count packets by spanning walks and compare their entropy with \(P
+          (\beta_F)^2\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L260-L269"><tt class="verbatim">Packets.stores_count</tt></a> <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L165-L214"><tt class="verbatim">Delay.fits</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          Deletion induction bounds M&ouml;bius logarithm pieces by
+          negative-envelope pieces. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L224-L233"><tt class="verbatim">ReLog.swept</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          Sum allocations, then extract the orientation-averaged point charge.
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L267-L297"><tt class="verbatim">Oriented.turn_charge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          Poincar&eacute; and background comparison give the spectral gap;
+          conjugation gives decay, and window residuals occur beyond \(R\). <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Bedrock.lean#L72-L113"><tt class="verbatim">Aff.surplus</tt></a> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L146-L169"><tt class="verbatim">Windows.window_price</tt></a>
+        </p>
+      </li>
+    </ol>
+    <p>
+      <a id="unit-difficulty"></a>
+    </p>
+    <h2 id="auto-5"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The bounds retain pins, covering weights and repeated labels. Global
+      seed tests survive orientations. The sector remainder has no
+      volume-uniform bound here.
+    </p>
+    <p>
+      <a id="unit-notation"></a>
+    </p>
+    <h2 id="auto-6"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <p>
+      \(\Lambda_n = (\mathbb{Z}/ n\mathbb{Z})^4\), \(n \geqslant 1\); \(d\) is
+      maximum distance; \(\text{cov}_B\) is connected ball-cover number;
+      \(\text{ball}_B = (2 B + 1)^4\). \(\text{Hit}_B (w ; a, \gamma)\) means
+      every site sum of \(w_i e^{a \text{cov}_B (X_i)}\) is \(\leqslant
+      \gamma\). \(\text{Ready}\) adds \(\gamma, \delta > 0\), \(4
+      \text{ball}_B \gamma / \delta \leqslant q < 1\), using exponent \(a +
+      \delta\).
+    </p>
+    <p>
+      \(\Xi\) sums compatible finite sets; \(\phi^T\) is the connected
+      spanning alternating sum on the occurrence graph (edges require mutual
+      \(R\)); singleton coefficient \(1\); \(X (z) = \cup_a X_{z_a}\). Order
+      \(m\) means \(m + 1\) occurrences. Seeds are fine cells, coarse bonds or
+      sites; packets are finite seed sets; \(D_r (A)\) is the radius-\(r\)
+      neighbourhood of seed locations (projected cell vertices, bond
+      endpoints, or site). Skins are individual radius-\(lB\) neighbourhoods;
+      \(D (A)\) is their union, connectedness their overlap connectivity.
+      \(\tau_L = L^4 \text{card} \{ \text{plaquette orientations} \} + 5\),
+      \(K_{\text{hit}} = (2 lB + 3)^4 \tau_L\), \(K_{\text{step}} = (4 lB +
+      5)^4 \tau_L\).
+    </p>
+    <p>
+      \(\beta_F = x + b \log L\), \(B = \lceil (\log x)^2 \rceil\), \(P (s) =
+      e^{(\log \log s)^2}\), \(t = \beta_F^{- 1 / 2} P (\beta_F)\),
+      \(\text{bill} = 1 + B + (\log \beta_F)^2\). \(\lambda_u\) denotes
+      M&ouml;bius pieces of \(- \log Z_u\). \(\mathcal{E}_A\) assesses energy
+      anchored in \(D_{2 B} (A)\) with truncated walks. \(\pi_{\beta}\) is the
+      inverse product of single-bond normalizations; \(\ell_A\) is the
+      remaining absolute sector integral. \(D\) is the transported flat row
+      matrix, using truncated curl/path rows and linearized block constraints,
+      replica transport and centred path gauges in every orientation. Keep row
+      centres outside \(D_{8 B} (A)\) and nontrunk columns with projected
+      endpoints outside \(D_{10 B} (A)\); normalize by the square root of the
+      orientation count. Its range is \(\lfloor B / 100000 \rfloor +
+      R_{\text{pred}} + 2\). Weighted sums at rate \(\eta\) use factors
+      \(e^{\eta d (a_i, a_j)}\). A windowed inverse uses column \(j\) of the
+      principal inverse on \(P (j)\), extended by zero.
+    </p>
+    <p>
+      <a id="unit-limitations"></a>
+    </p>
+    <h2 id="auto-7"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <p>
+      Imported energy and Poincar&eacute; proofs, supporting counts and local
+      Gaussian comparisons remain inputs. Raw logarithm coefficients are
+      local; masked coefficients additionally inspect flags. The transported
+      flat matrix is not identified with the nonlinear derivative.
+    </p>
+    <p>
+      Detailed notes: the full account of this unit, with proof sketches for
+      every step, is on the <a href="../notes/III-5.html">detailed notes page</a>.
+    </p>
+    <h2 id="auto-8"><a id="code-dependencies"></a>Code dependencies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Code dependencies (from the compiled Lean).</strong> These lists
+      follow references between declarations allocated to units; they can
+      include shared definitions, record fields and alternative constructions.
+      They are not a mathematical reading order. Only unit pairs with at least
+      25 references are shown; see the <a href="../../data/index.html#code-dependencies">counting rules</a>.
+    </p>
+    <p>
+      <strong>References to:</strong> <a href="I-1.html">I.1</a>, <a href="III-1.html">III.1</a>, <a
+      href="III-10.html">III.10</a>, <a href="II-2.html">II.2</a>, <a href="III-16.html">III.16</a>, <a href="III-6.html">III.6</a>.
+    </p>
+    <p>
+      <strong>Referenced by:</strong> <a href="III-10.html">III.10</a>, <a href="III-13.html">III.13</a>,
+      <a href="III-4.html">III.4</a>, <a href="III-11.html">III.11</a>, <a href="III-12.html">III.12</a>, <a href="III-2.html">III.2</a>,
+      <a href="III-15.html">III.15</a>, <a href="VII-1.html">VII.1</a>, <a href="III-14.html">III.14</a>, <a href="III-9.html">III.9</a>.
+    </p>
+    <h2 id="auto-9"><a id="lean-source"></a>Lean source<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Source allocation:</strong> 9,746 attributed lines; 1,097
+      line-counted declarations; 1,408 assigned declaration names. Of the
+      assigned names, 1,340 are in the compiled closure of the seventeen
+      headline results. These quantities have <a href="../../data/index.html#counting-scopes">different scopes</a>.
+    </p>
+    <p>
+      The folders and result chains below are source inventories. Their line
+      counts cover each whole group, including any share allocated to another
+      unit; percentages use attributed lines plus one per assigned name. They
+      need not sum to the unit total.
+    </p>
+    <ul>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS"><tt class="verbatim">YM/Push/ABSOLUTE_SUMS/</tt></a>
+          &mdash; 3,624 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS"><tt class="verbatim">YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/</tt></a>
+          &mdash; 3,589 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE"><tt class="verbatim">YM/Push/SECTOR_MEASURE/</tt></a>
+          &mdash; 1,153 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION"><tt class="verbatim">YM/SectorNext/VACUUM_NORMALIZATION/</tt></a>
+          &mdash; 935 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES"><tt class="verbatim">YM/Progress/STATIONARY_SCENES/</tt></a>
+          &mdash; 445 lines.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-10"><a id="additional-source-locations"></a>Additional source locations<span style="margin-left: 1em"></span></h3>
+    <p>
+      Further pinned locations for the definitions and comparisons discussed
+      in this unit.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Nodes.lean#L49"><tt class="verbatim">Ac.Spark</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L12-L13"><tt class="verbatim">Ac.Hit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L59-L82"><tt class="verbatim">Ac.cover</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L116-L118"><tt class="verbatim">Aff.derivative</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L125-L127"><tt class="verbatim">Aff.Dmat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Affine.lean#L145-L147"><tt class="verbatim">Aff.gram</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Bedrock.lean#L134-L139"><tt class="verbatim">Aff.decomposes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Bedrock.lean#L27-L69"><tt class="verbatim">Aff.inflow</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L22-L30"><tt class="verbatim">Win.Promise</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L36-L37"><tt class="verbatim">Promise.Served</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L71-L83"><tt class="verbatim">Turns</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Birthday.lean#L91-L101"><tt class="verbatim">Turns.Takes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/IndexCost.lean#L120-L159"><tt class="verbatim">Aff.stencil</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Mint.lean#L22-L28"><tt class="verbatim">Mint</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Odometer.lean#L23-L24"><tt class="verbatim">Aff.cert</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Rate.lean#L27"><tt class="verbatim">Rates.allowance</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Schur.lean#L69-L70"><tt class="verbatim">Win.planePrice</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Speed.lean#L138-L155"><tt class="verbatim">Aff.received</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Station.lean#L71-L78"><tt class="verbatim">Aff.Alongside</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Stint.lean#L100-L121"><tt class="verbatim">Aff.shifted</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Stint.lean#L44-L97"><tt class="verbatim">Aff.velocity</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Through.lean#L29-L30"><tt class="verbatim">Aff.unit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Veil.lean#L34-L39"><tt class="verbatim">Aff.Reserve</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Veil.lean#L41-L49"><tt class="verbatim">Aff.reserves</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L124-L141"><tt class="verbatim">Windows.inverse_price</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L171-L188"><tt class="verbatim">covariance_price</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L191-L202"><tt class="verbatim">covariance_floor</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L28-L30"><tt class="verbatim">Win.Windows</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L36-L37"><tt class="verbatim">within</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L39"><tt class="verbatim">error</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L51-L69"><tt class="verbatim">Windows.stitched</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L73"><tt class="verbatim">cov</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L129-L131"><tt class="verbatim">Corona.pays</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L14-L30"><tt class="verbatim">Corona.meets_sum</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L81"><tt class="verbatim">separation</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L69-L71"><tt class="verbatim">coverNumber</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Defs.lean#L53-L55"><tt class="verbatim">zLin</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L24"><tt class="verbatim">Next.Fluctuations.grants</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Sector.lean#L229-L259"><tt class="verbatim">Sector.peel</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Sector.lean#L71-L72"><tt class="verbatim">Sector.prefactor</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L101-L109"><tt class="verbatim">Teller.Funds</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L147-L152"><tt class="verbatim">Testing.proceeds</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L166-L181"><tt class="verbatim">notation_ticket</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22"><tt class="verbatim">radiusB</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23"><tt class="verbatim">betaF</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L26"><tt class="verbatim">fiery</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L34-L37"><tt class="verbatim">Stores</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L44"><tt class="verbatim">dome</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L46"><tt class="verbatim">shares</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L51-L58"><tt class="verbatim">Plot</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L85"><tt class="verbatim">assessed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L89-L96"><tt class="verbatim">Teller</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L135-L147"><tt class="verbatim">Green.diminishing</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L149-L168"><tt class="verbatim">Green.schur</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L26-L27"><tt class="verbatim">Green.Rows</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L29-L30"><tt class="verbatim">Green.Both</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L32-L33"><tt class="verbatim">Green.Bottom</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L78-L88"><tt class="verbatim">Green.Rows.restrict</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L93-L113"><tt class="verbatim">Green.Bottom.restrict</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Response.lean#L242-L259"><tt class="verbatim">Response.response_price</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L24"><tt class="verbatim">Gas.cut</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L25"><tt class="verbatim">Gas.missing</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L40-L63"><tt class="verbatim">Gas.missing_tail</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Animals.lean#L122-L137"><tt class="verbatim">Animals.animals</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Animals.lean#L148"><tt class="verbatim">ballCost</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Basic.lean"><tt class="verbatim">Basic.lean</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Breadth.lean"><tt class="verbatim">Breadth.lean</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L28-L29"><tt class="verbatim">ratioCost</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L34-L35"><tt class="verbatim">fit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L37-L38"><tt class="verbatim">totalCharge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L42-L53"><tt class="verbatim">Packets.cover_income</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L185-L192"><tt class="verbatim">Ursell.cluster_tail</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L194-L211"><tt class="verbatim">Ursell.connected_pay</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L59"><tt class="verbatim">Ursell.Tests</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L19"><tt class="verbatim">Coef.gasRow</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L20"><tt class="verbatim">Coef.logRow</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L71-L76"><tt class="verbatim">Coef.unbased</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L79-L125"><tt class="verbatim">Coef.discrete</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L26"><tt class="verbatim">Multiple.Reps</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L28-L29"><tt class="verbatim">manyW</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L60-L72"><tt class="verbatim">Multiple.buy_at</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L128-L156"><tt class="verbatim">Delay.step_delay</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L43-L52"><tt class="verbatim">Delay.comparison</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L74-L101"><tt class="verbatim">Delay.monitor_pays</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Distinct.lean#L245-L276"><tt class="verbatim">Trees.touch_tail</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L22"><tt class="verbatim">Gas.total</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L24"><tt class="verbatim">Gas.term</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L26"><tt class="verbatim">Gas.logSum</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L35-L51"><tt class="verbatim">Gas.absolute_at</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L53-L57"><tt class="verbatim">Gas.absolute</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Forest.lean#L31-L32"><tt class="verbatim">Trees.Ready</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Forest.lean#L46-L56"><tt class="verbatim">Trees.forest_at</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Gas.lean#L128-L137"><tt class="verbatim">Gas.sums</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Gas.lean#L69-L120"><tt class="verbatim">Gas.row</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Grants.lean#L48"><tt class="verbatim">Grant.credit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Labels.lean#L83-L96"><tt class="verbatim">Labels.together</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Log.lean#L29-L41"><tt class="verbatim">Gas.finite_log</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L84-L89"><tt class="verbatim">Mixed.Accounts</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L95-L122"><tt class="verbatim">Mixed.ready_vertices</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L171-L176"><tt class="verbatim">Packets.cover_support</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L181"><tt class="verbatim">typesAt</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L215"><tt class="verbatim">hitCost</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L216"><tt class="verbatim">stepCost</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Packet.lean#L77"><tt class="verbatim">Packets.connected</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Parent.lean#L184-L189"><tt class="verbatim">fanout_bound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Parent.lean#L191-L193"><tt class="verbatim">Trees.parent_fanout</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Partition.lean#L23-L28"><tt class="verbatim">Partition.allMass_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Product.lean#L43-L51"><tt class="verbatim">Product.everyone_ne</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Product.lean#L53-L64"><tt class="verbatim">Product.set_products</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Reserves.lean#L34-L56"><tt class="verbatim">Reserves.reserve_tail</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Reserves.lean#L97-L135"><tt class="verbatim">Reserves.sets</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L22"><tt class="verbatim">blocked</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L32-L33"><tt class="verbatim">Ursell.pot</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Ursell.lean#L35"><tt class="verbatim">Ursell.coefficient</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Weigh.lean#L52"><tt class="verbatim">degreePrice</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Cells.lean#L51-L59"><tt class="verbatim">Seeded</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Cells.lean#L62"><tt class="verbatim">Alive</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Grant.lean#L28-L29"><tt class="verbatim">earn</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L185-L208"><tt class="verbatim">Oriented.enters_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L210-L219"><tt class="verbatim">Oriented.mean_pays</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L29-L32"><tt class="verbatim">PointCharge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L37-L51"><tt class="verbatim">points_grant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Output.lean#L102-L114"><tt class="verbatim">push_columns</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L140-L143"><tt class="verbatim">leftOver</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L145-L148"><tt class="verbatim">cutEntry</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L151-L155"><tt class="verbatim">PortionCost</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L40-L56"><tt class="verbatim">Presented.expel</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L66-L78"><tt class="verbatim">Presented.use_gap</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L68-L78"><tt class="verbatim">Allocation.hard</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L59-L60"><tt class="verbatim">SumBudget</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79"><tt class="verbatim">StepData.push</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L181-L183"><tt class="verbatim">Rep.Lawful</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L182-L185"><tt class="verbatim">Branches</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L104-L114"><tt class="verbatim">ReLog.retest_meas</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L118-L143"><tt class="verbatim">ReLog.retain_mask</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L26-L32"><tt class="verbatim">ReLog.native_rate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L43-L49"><tt class="verbatim">Fund</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L51-L65"><tt class="verbatim">ReLog.permits</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L72-L77"><tt class="verbatim">Tags</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L99-L101"><tt class="verbatim">ReLog.retest</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L180-L211"><tt class="verbatim">ReLog.leash</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L31-L34"><tt class="verbatim">Deletion</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L39-L43"><tt class="verbatim">Receipt</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L46"><tt class="verbatim">locker</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L75-L106"><tt class="verbatim">ReLog.matures</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L122"><tt class="verbatim">fumes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L168-L173"><tt class="verbatim">Sufficient</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L68-L114"><tt class="verbatim">ReLog.stock_deletion</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L118-L134"><tt class="verbatim">ReLog.crop_glue</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L161"><tt class="verbatim">lamp</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L169-L176"><tt class="verbatim">ReLog.lamp_shed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L178-L196"><tt class="verbatim">ReLog.lamp_cropped</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L197-L209"><tt class="verbatim">ReLog.lamp_mono</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L36"><tt class="verbatim">glue</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L38"><tt class="verbatim">shed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L40"><tt class="verbatim">crop</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Leaves.lean#L45-L47"><tt class="verbatim">Rate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Round.lean#L74-L93"><tt class="verbatim">Round.twins</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Round.lean#L95-L144"><tt class="verbatim">Round.twin_log</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Sprig.lean#L23-L28"><tt class="verbatim">pieces</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L24-L29"><tt class="verbatim">Tree.Forest</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Vac/Treasury.lean#L72"><tt class="verbatim">Vac.Numbers.P</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F01.lean#L63-L108"><tt class="verbatim">Work.F01.link_bound</tt></a>
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-11"><a id="key-statements"></a>Key statements<span style="margin-left: 1em"></span></h2>
+    <p>
+      In the selected statement order. <strong>K-</strong> identifiers name
+      this generated list; proposition and lemma numbers in the outline are
+      separate. Each sentence is an automatically drafted summary of a Lean
+      statement; follow its link for the exact hypotheses and conclusion. The
+      outline status does not certify these summaries. <em>Main result</em>
+      and <em>key result</em> describe importance, not correctness. Full names
+      are in the <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv">statement table</a>.
+    </p>
+    <p>
+      <a id="k-iii-5-1"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.1</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L95-L101"><tt class="verbatim">canonical</tt></a>
+          <em>(numbered result)</em> &mdash; A canonical choice of sector-cost
+          allocation profile.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-2"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.2</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Basic.lean#L143-L163"><tt class="verbatim">budget_count_tail</tt></a>
+          <em>(numbered result)</em> &mdash; If the number of live labels of
+          degree k grows like A B^k and weights decay like C r^k with B
+          r&lt;1, then tails of the sum are geometrically bounded.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-3"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.3</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/STATIONARY_SCENES/Green.lean#L188-L251"><tt class="verbatim">inverse</tt></a>
+          <em>(key result)</em> &mdash; A Hermitian matrix with a spectral gap
+          and off-diagonal exponential decay has an inverse with pointwise
+          exponential decay, uniformly in a spectral parameter.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-4"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.4</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Windows.lean#L146-L169"><tt class="verbatim">window_price</tt></a>
+          <em>(numbered result)</em> &mdash; For a Hermitian matrix with a
+          bottom eigenvalue bound and off-diagonal decay, the layered price
+          estimates hold within one window system with small error.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-5"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.5</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Mixed.lean#L47-L58"><tt class="verbatim">Buy</tt></a>
+          <em>(numbered result)</em> &mdash; A named sufficient condition on a
+          cost function for charging a connected result pointwise.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-6"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.6</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Partition.lean#L219-L237"><tt class="verbatim">partition</tt></a>
+          <em>(key result)</em> &mdash; The total mass of a hard-core
+          potential decomposes by splitting off the connected component of a
+          chosen position, as the component coefficient times the mass of the
+          complement.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-7"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.7</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L129-L138"><tt class="verbatim">recurrence</tt></a>
+          <em>(numbered result)</em> &mdash; The gas coefficients and log
+          coefficients satisfy the standard recurrence
+          (m+1)g_{m+1}=&Sigma;(k+1)l_k g_{m-k}.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-8"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.8</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L66-L145"><tt class="verbatim">exact_polynomial</tt></a>
+          <em>(key result)</em> &mdash; If the log series coefficients decay
+          geometrically, the exponential of the full log series equals the
+          finite polynomial sum of values over subsets.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-9"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.9</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Graph.lean#L113-L148"><tt class="verbatim">pay</tt></a> <em>(key
+          result)</em> &mdash; The absolute value of the Ursell (overlap
+          graph) mass is bounded by the number of tree-compatible assignments.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-10"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.10</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Parent.lean#L44-L126"><tt class="verbatim">substochastic</tt></a>
+          <em>(numbered result)</em> &mdash; For a ranked parent function and
+          a substochastic kernel, the sum over all label assignments of the
+          product of kernel entries along the forest is at most 1.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-11"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.11</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Weigh.lean#L192-L228"><tt class="verbatim">trees_afford</tt></a>
+          <em>(numbered result)</em> &mdash; The sum over forests of size m
+          and label choices in a finite set is bounded by a currency factor
+          times a degree price to the power m.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-12"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.12</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Copies.lean#L135-L169"><tt class="verbatim">estimates</tt></a>
+          <em>(key result)</em> &mdash; Sums over unordered repeated-label
+          multisets with connected footprint have an exponential-tail budget
+          bounded by a geometric factor.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-13"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.13</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L148-L183"><tt class="verbatim">cluster_at</tt></a>
+          <em>(key result)</em> &mdash; Ursell cluster sums over tuples
+          containing a marked occurrence satisfy an absolute summability bound
+          geometric in the tuple length.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-14"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.14</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Omissions.lean#L48-L100"><tt class="verbatim">restore</tt></a>
+          <em>(key result)</em> &mdash; After merging, a weighted hit bound
+          with geometric tail holds for every required copy-cut, combining
+          exponential recovery with seed and degree costs.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-15"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.15</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Log.lean#L114-L149"><tt class="verbatim">price_log</tt></a>
+          <em>(key result)</em> &mdash; On hard overlap graphs, absolute-bound
+          hypotheses give absolute convergence of both the value and term
+          series, with exp(log-sum) equal to the positive total and its log
+          equal to the log-sum.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-16"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.16</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Absence.lean#L69-L95"><tt class="verbatim">restores_log</tt></a>
+          <em>(key result)</em> &mdash; Ratio estimate for a polymer gas with
+          a deleted set of labels, expressed via the logarithm with sign
+          retained and an upper bound with absorption cost.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-17"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.17</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L165-L214"><tt class="verbatim">fits</tt></a>
+          <em>(numbered result)</em> &mdash; For large parameter x,
+          tree-vertex price constants fit the required inequalities for all
+          per-packet combinatorial tests uniformly.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-18"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.18</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Buy.lean#L67-L103"><tt class="verbatim">quoted</tt></a>
+          <em>(numbered result)</em> &mdash; For large parameter values,
+          explicit numeric conditions on constants suffice to satisfy the
+          hypotheses for the packet estimates.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-19"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.19</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Charge.lean#L66-L105"><tt class="verbatim">packet_income</tt></a>
+          <em>(numbered result)</em> &mdash; Weights bounded by a per-seed
+          income yield a summability budget for packet sums with an explicit
+          total charge.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-20"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.20</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Path.lean#L182-L201"><tt class="verbatim">bundle_hit</tt></a>
+          <em>(numbered result)</em> &mdash; Winding path bundles with
+          complete path coefficients satisfy a hit bound at common anchors
+          with a tail decaying in true length.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-21"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.21</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Profile.lean#L30-L36"><tt class="verbatim">Allocation</tt></a>
+          <em>(numbered result)</em> &mdash; A partition of unity subordinate
+          to seed prerequisites, as a data structure.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-22"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.22</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Decompose.lean#L120-L126"><tt class="verbatim">plots_column</tt></a>
+          <em>(numbered result)</em> &mdash; The sum over sectors of integrals
+          restricted to each sector's own plots equals the column integral.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-23"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.23</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Draught.lean#L92-L114"><tt class="verbatim">tap_open</tt></a>
+          <em>(numbered result)</em> &mdash; For large x, the minimizing
+          choice on a patch satisfies uniform opening bounds.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-24"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.24</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Station.lean#L222-L241"><tt class="verbatim">escape</tt></a>
+          <em>(numbered result)</em> &mdash; The tree tangent hits every
+          orientation channel on the one field simultaneously.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-25"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.25</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L144-L163"><tt class="verbatim">shelf</tt></a>
+          &mdash; For disjoint-family sums with summable weights, the
+          negative-log piece satisfies the deletion property.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-26"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.26</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Deletion.lean#L224-L233"><tt class="verbatim">swept</tt></a>
+          <em>(key result)</em> &mdash; Under a receipt condition, the re-log
+          of any signed activity dominated by the envelope satisfies an
+          absolute budget applied against the envelope's ceiling.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-27"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.27</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L217-L228"><tt class="verbatim">catalog</tt></a>
+          <em>(key result)</em> &mdash; For countably addressed signed
+          integrated coefficients, the log is exactly defined and obeys an
+          absolute budget with a common envelope.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-28"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.28</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Gas.lean#L235-L271"><tt class="verbatim">omitted</tt></a>
+          <em>(numbered result)</em> &mdash; Deleting arbitrary sites after
+          re-log gives a common ratio multiplying a forced family, with
+          controlled sign of the omitted log contribution.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-29"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.29</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Bulk.lean#L157-L183"><tt class="verbatim">intake</tt></a>
+          <em>(key result)</em> &mdash; Integrated gas coefficients admit
+          absolute support price bounds with a common envelope for all
+          configurations, without global small l&sup1; hypothesis.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-30"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.30</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Oriented.lean#L267-L297"><tt class="verbatim">turn_charge</tt></a>
+          <em>(numbered result)</em> &mdash; Sector payment inequality extends
+          to the orientation-averaged cut rows with a multiplicative earn
+          constant.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-31"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.31</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Presented.lean#L157-L210"><tt class="verbatim">portionCost</tt></a>
+          <em>(key result)</em> &mdash; For a lawful representation with a
+          point charge and funds, every forest and allocation satisfies the
+          portion cost estimate.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-32"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.32</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Consumer.lean#L42-L65"><tt class="verbatim">bought</tt></a>
+          <em>(key result)</em> &mdash; At any committed height pair, a single
+          positive constant &kappa; works uniformly across inputs for the
+          sector-measure consumer estimate.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-33"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.33</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/SECTOR_MEASURE/Grant.lean#L61-L66"><tt class="verbatim">charged_at</tt></a>
+          <em>(numbered result)</em> &mdash; A pointwise inequality on sector
+          points implies the sector charge condition.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-34"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.34</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Through.lean#L70-L122"><tt class="verbatim">pre_center</tt></a>
+          <em>(numbered result)</em> &mdash; A framed patch over the actual
+          field predicts remote no-hole behaviour from curved precision before
+          derivative tests.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-35"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.35</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Odometer.lean#L130-L163"><tt class="verbatim">unfrozen</tt></a>
+          <em>(numbered result)</em> &mdash; The predicted affine energy
+          bounds the local row estimate even for arbitrary formal fields away
+          from frozen regions.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-36"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.36</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/DCompare.lean#L190-L207"><tt class="verbatim">perturb</tt></a>
+          <em>(key result)</em> &mdash; The affine matrix D changes by a
+          controlled amount under local perturbations satisfying a stencil
+          bound, with cost polynomial in the stencil.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-37"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.37</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Ground.lean#L51-L130"><tt class="verbatim">arc_bill</tt></a>
+          <em>(numbered result)</em> &mdash; On a real weak patch, the affine
+          approximation error of the local rows is bounded uniformly pointwise
+          in sector.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-38"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.38</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Breath.lean#L83-L132"><tt class="verbatim">guard_&delta;</tt></a>
+          <em>(numbered result)</em> &mdash; Given a displacement size &delta;
+          along the central chart, one can choose &epsilon; so that trigger
+          disappearance is guaranteed on the same read.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-39"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.39</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Bedrock.lean#L142-L158"><tt class="verbatim">bedrock</tt></a>
+          <em>(key result)</em> &mdash; For large x, the Gram matrix of the
+          step is served by a fixed window promise uniformly over all
+          admissible step data.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-40"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.40</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/Hour.lean#L55-L116"><tt class="verbatim">night</tt></a>
+          <em>(key result)</em> &mdash; For a funded patch with a reserve and
+          wedge conditions, there is &epsilon;&gt;0 such that for large scale
+          the plateau tests (Keys) hold.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-5-41"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.5.41</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_BOUNDS/IndexCost.lean#L165-L181"><tt class="verbatim">gram_budget</tt></a>
+          <em>(key result)</em> &mdash; There is a uniform constant such that
+          the Gram cost of the counted array is bounded across all admissible
+          step data.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview of the proof</a>
+      &middot; <a href="../../index.html">Repository</a>
+    </p>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-4.html">&larr; III.4 Gaussian integration: change of Gaussian
+      sector, determinants, window law</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part
+      III</a><font class="ym-sep">&middot;</font><a href="../notes/III-5.html">Detailed notes</a></span><a
+      class="ym-next" href="III-6.html">III.6 The stationary branch: background field of the
+      effective action &rarr;</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.9. The marginal flow: the running coupling and its reset
+    &mdash; detailed notes &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-8.html">&larr; III.8 Connected activities and backward
+      dependence cones (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-9.html">Unit outline</a></span><a class="ym-next" href="III-10.html">III.10
+      One full nonlinear renormalization step: bounds on irrelevant terms
+      (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>III.9. The marginal flow: the running coupling and its reset &mdash;
+      detailed notes</h1><a id="iii9-the-marginal-flow-the-running-coupling-and-its-reset--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">3</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">13</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">13</a>
+      </p>
+      <p>
+        4.1 Reference scales <span style="margin-left: 5mm"></span> <a href="#auto-5">13</a>
+      </p>
+      <p>
+        4.2 The Wilson start-up <span style="margin-left: 5mm"></span> <a href="#auto-6">13</a>
+      </p>
+      <p>
+        4.3 The scalar response <span style="margin-left: 5mm"></span> <a href="#auto-7">15</a>
+      </p>
+      <p>
+        4.4 The reset step <span style="margin-left: 5mm"></span> <a href="#auto-8">16</a>
+      </p>
+      <p>
+        4.5 Continuity of the transport <span style="margin-left: 5mm"></span> <a href="#auto-9">18</a>
+      </p>
+      <p>
+        4.6 Entry thresholds <span style="margin-left: 5mm"></span> <a href="#auto-10">18</a>
+      </p>
+      <p>
+        4.7 Assembly and the running law <span style="margin-left: 5mm"></span> <a href="#auto-11">20</a>
+      </p>
+      <p>
+        4.8 Auxiliary results <span style="margin-left: 5mm"></span> <a href="#auto-12">21</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-13">22</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-14">23</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">24</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit III.9: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/III-9.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/III-9.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> III, Ultraviolet construction (renormalization
+      group). <strong>Lean:</strong> chapter 21: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET"><tt class="verbatim">YM/UVNext/COUPLING_RESET/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP"><tt class="verbatim">YM/AnalyticBridge/VERIFIED_RESET_STEP/</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP"><tt class="verbatim">YM/Extra/WILSON_STARTUP/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT"><tt class="verbatim">YM/Push/BETA_TRANSPORT/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT"><tt class="verbatim">YM/Further/STRONG_STARTUP_CREDIT/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER"><tt
+      class="verbatim">YM/Push/PRICE_COMPILER/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS"><tt class="verbatim">YM/Extra/MULTISOURCE_BOUNDS/</tt></a>.
+      It also includes five small packages: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH"><tt class="verbatim">PhysicalNext/UNMASKED_THROUGH_LAUNCH</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT"><tt class="verbatim">Planned/RECIPE_STARTUP_PORT</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Wind"><tt
+      class="verbatim">R2I/Wind</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/THRESHOLD_SOURCE_RESTART"><tt class="verbatim">Further/THRESHOLD_SOURCE_RESTART</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/SERVICE"><tt class="verbatim">PhysicalNext/SERVICE</tt></a>. The interfaces
+      this unit fills are in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean"><tt class="verbatim">YM/RG/History.lean</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean"><tt class="verbatim">YM/PCalc/Band.lean</tt></a>, both in unit III.1.
+      <strong>Size:</strong> 7,215 lines in the main-theorem closure:
+    </p>
+    <p>
+      <table style="display: inline-table; vertical-align: middle">
+        <tbody><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>package</strong></td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>lines</strong></td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">verified reset step</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">2,659</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Wilson start-up</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">2,422</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">transport of the coupling</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">652</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">coupling reset</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">592</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">multi-source bounds</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">344</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">each remaining package</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">at most 213</td>
+        </tr></tbody>
+      </table>
+    </p>
+    <p>
+      <strong>Conventions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Levels.</strong> Levels \(m = 0, 1, \ldots, N\) run from the
+          coarsest to the finest:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(m = 0\) is the torus of side \(L_p\) at unit spacing; the
+              sides \(L_p\) are multiples of \(4\) and strictly increase with
+              \(p\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(m = N\) is the Wilson lattice.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Blocking.</strong> The step \(m + 1 \to m\) blocks by an odd
+          factor \(L_m \geqslant 3\). The spacing at level \(m\) is \(a_m =
+          (L_0 \cdots L_{m - 1})^{- 1}\), and the scale is \(s_m := \log (1 /
+          a_m) = \sum_{i < m} \log L_i\). We write \(\Lambda_m\) for the
+          level-\(m\) torus (at volume index \(p\)) and \(| \Lambda_m |\) for
+          its number of sites.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Gauge group.</strong> \(G \subset U (n)\) is closed, and its
+          Lie algebra \(\mathfrak{g}\) carries the inner product \(\langle X,
+          Y \rangle = - \text{Retr} (XY) / n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Plaquettes.</strong> \(s (u) = 1 - \text{Retr} u / n\) is
+          the plaquette function. \(F_p (U) \in \mathfrak{g}\) is the
+          orthogonal projection of \(\tfrac{1}{2} (U_p - U_p^{- 1})\), and
+          \(S_W = \sum_p s (U_p)\) is the Wilson action. Since \(s (e^X) =
+          |X|^2 / 2 + O (|X|^4)\), the inverse coupling \(\beta\) equals \(1 /
+          g_0^2\) in this normalization.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Effective actions.</strong> An effective action at level \(m\)
+      is a <em>representation</em> \(\rho = (P, c, E, K, b, \beta, v)\). It
+      evaluates to
+    </p>
+    <center>
+      \(\displaystyle \rho (U) = \exp \left( v| \Lambda_m | - \beta
+      \hspace{0.17em} \mathcal{K}_P
+(U) -\mathcal{L}_P (U) -\mathcal{E}(U)
+      \right)  \hspace{0.17em} \mathcal{G}
+(U) .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          <strong>The kinetic functional \(\mathcal{K}_P\).</strong> This is
+          the \(\beta\)-coefficient of the leading terms of the path data
+          \(P\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              a clipped plaquette term;
+            </p>
+          </li>
+          <li>
+            <p>
+              smeared curvature-squared terms;
+            </p>
+          </li>
+          <li>
+            <p>
+              cubic and quartic local polynomials in curvatures along lattice
+              paths.
+            </p>
+          </li>
+        </ul>
+        <p>
+          These are averaged over the point group of the lattice, i.e. signed
+          permutations of the axes.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The other factors.</strong> \(\mathcal{L}_P\) is the
+          \(\beta\)-independent loop functional. \(\mathcal{E}\) is the sum of
+          the regular activities multiplied by their small-field indicators.
+          Their weighted norms are summed at each anchor. \(\mathcal{G}\) is
+          the gas of forced activities, whose weighted uniform bounds are
+          summed over supports containing each site. \(b = (k, q, a, B, t)\)
+          records the derivative order \(k \geqslant 6\), spatial power \(q
+          \geqslant 2\), support exponent \(a > 0\), cover radius \(B
+          \geqslant 1\) and threshold \(0 < t \leqslant 1\) of the polymer
+          norms.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Normalization.</strong> The zero-momentum quadratic symbol
+          of the \(\beta\)-term is the identity on plaquette orientations. The
+          loop kernel has vanishing zeroth and first moments. These conditions
+          fix the normalization of \(\beta\) within the representation.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>The block-spin step.</strong> \(T^{(m)}_{\beta'}\) denotes one
+      step from level \(m + 1\) to level \(m\) at inverse coupling \(\beta'\):
+    </p>
+    <center>
+      \(\displaystyle (T^{(m)}_{\beta'} \rho') (V) = \int k_{\beta'} (V, U) 
+      \hspace{0.17em} \rho'
+(U)  \hspace{0.17em} dU.\)
+    </center>
+    <p>
+      The kernel \(k_{\beta'}\) is a probability kernel (unit III.1).
+      Densities are taken relative to product Haar probability measure and are
+      not normalized.
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      This unit tracks the scalar coefficient \(\beta\) of the normalized
+      curvature-squared term through the blocking history. Its three results
+      are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(a) Start-up.</strong> With the start-up bounds, Wilson top
+          path data and recipe acceptance, the Wilson weight at the finest
+          level is admissible for every \(\beta\) in the band.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(b) One step.</strong> Given the early presentation, local
+          bounds, numerical conditions and recipe acceptance stated below, one
+          block-spin step followed by a <em>reset</em> of \(\beta\) maps a
+          continuous admissible family at level \(m + 1\) to one at level
+          \(m\). The coupling moves by \(\alpha_{N, m} + d\), where
+          \(\alpha_{N, m}\) is the one-loop coefficient of the step and \(|d|
+          \leqslant r_m \leqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(c) Thresholds.</strong> The delay-dependent numerical
+          conditions hold beyond entry thresholds, provided the earlier
+          constants satisfy the compatibility inequalities of III.9.7. These
+          choices respect the order of constants in III.2.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Combined with the shooting argument of III.2 and the constructions of
+      III.10 and III.13, this yields the selected history of III.9.3 and the
+      law \(\beta_{N, p} / \log (1 / a_N) \to \kappa\) of the main theorem.
+    </p>
+    <p>
+      <strong>Proposition III.9.1 (the slope constant).</strong> Let
+      \(\mathfrak{g}\) be simple and nonabelian, and let \((b_i)\) be an
+      orthonormal basis of \((\mathfrak{g}, \langle \cdot, \cdot \rangle)\).
+      Put
+    </p>
+    <center>
+      \(\displaystyle C_G = - \frac{1}{\dim \mathfrak{g}}  \sum_i
+      \text{tr}_{\mathfrak{g}}
+((\text{ad} b_i)^2), \qquad \kappa = \frac{11
+      \hspace{0.17em} C_G}{24 \pi^2} .\)
+    </center>
+    <p>
+      Then \(\kappa > 0\).
+    </p>
+    <p>
+      Here \(C_G\) is the adjoint Casimir in the chosen inner product, and
+      \(\kappa = 2 b_0\) in the conventional one-loop notation \(b_0 = 11 C_G
+      / (48 \pi^2)\). For \(SU (N)\) in the defining representation, this
+      normalization gives \(C_G = 2 N^2\) and \(\kappa = 11 N^2 / (12
+      \pi^2)\).
+    </p>
+    <p>
+      The invariant form \(- \text{tr} (\text{ad} X \hspace{0.17em} \text{ad}
+      Y)\) is \(C_G \langle X, Y \rangle\). Its value at \((X, X)\) is
+      \(\sum_i | [X, b_i] |^2\), and nonabelianness makes this positive for
+      some \(X\). Thus \(C_G > 0\).
+    </p>
+    <p>
+      <em>Status:</em> definition; positivity is a theorem and uses
+      simplicity. Inside this unit only two things are used: \(\kappa > 0\),
+      and the identity \(\hat{\beta}_{m + 1} = \hat{\beta}_m + \kappa \log
+      L_m\). The fact that the one-loop coefficient of the actual blocked
+      action is \(- \kappa \log L + O (1)\) is proved in III.7, where \(11 /
+      (24 \pi^2)\) is the value of an explicit momentum integral (&sect;2).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">YM.Gauge.slopeConstant</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt class="verbatim">YM.Gauge.casimir</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176"><tt class="verbatim">YM.Gauge.slopeConstant_pos</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L71-L75"><tt class="verbatim">YM.Gauge.trace_color</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.2 (reference coupling and scale
+      functions).</strong> Fix \(\kappa > 0\), \(\bar{\beta} > 1\) and an
+      infinite sequence of odd block factors \(L_m \geqslant 3\). Define
+    </p>
+    <center>
+      \(\displaystyle \hat{\beta}_m = \bar{\beta} + \kappa s_m, \quad M_m =
+      e^{(\log \log
+\hat{\beta}_m)^2}, \quad t_m = \hat{\beta}_m^{- 1 / 2}
+      M_m, \quad
+\varepsilon_m = \hat{\beta}_m^{- 11 / 10}, \quad
+      \tilde{\varepsilon}_m = e^{-
+M_m^{1 / 5}},\)
+    </center>
+    <p>
+      and set \(B_m = \lceil (\log \hat{\beta}_m)^2 \rceil\) and
+      \(\mathfrak{B}_m = [\hat{\beta}_m / 2, \hspace{0.17em} 2
+      \hat{\beta}_m]\). These are, in order: the reference coupling, the
+      threshold multiplier, the small-field threshold, the regular and forced
+      allowances, the cover size and the band.
+    </p>
+    <p>
+      Then \(\hat{\beta}_{m + 1} = \hat{\beta}_m + \kappa \log L_m\),
+      \(\hat{\beta}\) is nondecreasing, and \(s_m \geqslant m \log 3\), so
+      \(\hat{\beta}_m \to \infty\).
+    </p>
+    <p>
+      The scale conditions are <em>hypotheses</em> on the scale sequence, not
+      consequences of the definitions. They are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Size conditions.</strong> \(\hat{\beta}_m > 1\) and \(t_m
+          \leqslant 1\). For every volume index \(p\), the level-\(m\) side is
+          at least \(100 (B_m + 1)\), and the level-\((m + 1)\) side is at
+          least \(100 (R_m + 1)\), where \(R_m\) is the block-patch radius.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Stage index.</strong> The stage index satisfies \(J_m
+          \geqslant 4\), is nondecreasing, \(J_{m + 1} \leqslant J_m + 1\),
+          and \(J_m \to \infty\). The derivative orders, spatial powers and
+          support exponents are nondecreasing along the levels. There are
+          nondecreasing stage block factors \(\ell_j\) with \(L_m = \ell_{J_{m
+          + 1}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Smallness exponent.</strong> \(0 < \theta_{J_m} \leqslant 1
+          / J_m\), and \(\theta\) is antitone.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Gentle scales.</strong> \(\log L_m / s_m \to 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Drift and logarithmic costs.</strong> With \(\omega_j\) the
+          drift allowance of stage \(j\),
+        </p>
+        <center>
+          \(\displaystyle \frac{\omega_{J_{m + 1}}}{\log L_m} \leqslant J_{m +
+          1}^{- 2}, \qquad
+\frac{\log (1 + \text{paths} + \text{width}^{- 1} +
+          \text{columns} +
+\text{relaxation} + \text{support exponent})_{J_{m
+          + 1}}}{\log L_m} \leqslant
+J_{m + 1}^{- 2} .\)
+        </center>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> definitions (III.1) and elementary theorems. The scale
+      conditions are part of the scale sequence produced in III.2.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79"><tt class="verbatim">Calendar.hatBeta</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L83"><tt
+      class="verbatim">threshold</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L84"><tt class="verbatim">allowance</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L85"><tt class="verbatim">forcedAllowance</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L82"><tt class="verbatim">coverSize</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L97-L118"><tt class="verbatim">Calendar.Fits</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L63"><tt class="verbatim">Shoot.band</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Levels.lean#L43-L45"><tt class="verbatim">Deployment.hat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Fast.lean#L40-L42"><tt class="verbatim">Timing.hat_mono</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L117-L120"><tt class="verbatim">Schedule.divergent</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.3 (selected histories).</strong> A
+      <em>history</em> assigns to all \(N, p\) and \(m \leqslant N\) a
+      level-\(m\) representation \(\rho_{N, p, m}\) with coupling \(\beta_{N,
+      p, m}\). It is <em>selected</em> if the following hold.
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Common path data.</strong> The path data \(P_{N, m}\) of
+          \(\rho_{N, p, m}\) do not depend on \(p\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Shape.</strong> \(\rho_{N, p, m}\) carries the level-\(m\)
+          norm parameters and clip. It is lawful at level \(m\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              its path data obey the stage bounds, with loop cap \(2
+              M_m^{\theta_{J_m}}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              its regular activities are local, gauge invariant, vanish at the
+              flat field, and have zero Hessian on affine link directions
+              whenever their supports do not wrap; their norm bound is
+              \(\varepsilon_m\);
+            </p>
+          </li>
+          <li>
+            <p>
+              its forced activities satisfy the locality, eligibility and
+              symmetry conditions of II.2, with norm bound
+              \(\tilde{\varepsilon}_m\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          The whole activity family transforms under translations and signed
+          permutations of the axes.
+        </p>
+        <p>
+          Moreover \(\beta_{N, p, m} \in \mathfrak{B}_m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Start.</strong> \(v_{N, p, N} = 0\) and \(\rho_{N, p, N} (U)
+          = e^{- \beta_{N, p, N} S_W (U)}\) for all \(U\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Transfer.</strong> For \(m < N\), \(\rho_{N, p, m} =
+          T^{(m)}_{\beta_{N, p, m + 1}} \rho_{N, p, m + 1}\) at every
+          configuration, and
+        </p>
+        <center>
+          \(\displaystyle | \beta_{N, p, m + 1} - \beta_{N, p, m} - \kappa
+          \log L_m | \leqslant
+\omega_{J_{m + 1}} .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          <strong>End point.</strong> \(\beta_{N, p, 0} = \bar{\beta}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Running.</strong> For every \(\varepsilon > 0\) there is
+          \(m_0\) with \(| \beta_{N, p, m} - \hat{\beta}_m | \leqslant
+          \varepsilon s_m\) for all \(m \geqslant m_0\), \(N \geqslant m\) and
+          all \(p\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Consequences:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Partition function.</strong> For all \(m \leqslant N\),
+          \(\int \rho_{N, p, m}  \hspace{0.17em} d \text{Haar} = Z_W
+          (\Lambda_{N, p} ;
+\beta_{N, p, N})\), the Wilson partition function.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Running law.</strong> \(\beta_{N, p, m} / s_m \to \kappa\)
+          uniformly in \(N \geqslant m\) and \(p\), because \(s_m \to
+          \infty\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Bare coupling.</strong> The bare coupling of the Wilson
+          family, \(\beta_{N, p} := \beta_{N, p, N}\), satisfies \(\sup_p |
+          \beta_{N, p} / \log (1 / a_N) - \kappa | \to 0\). This is (Reg1) of
+          the main theorem with \(b_{\ast} = \kappa = 2 b_0\). The continuum
+          running-coupling comparison belongs to VII.5.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> (1)&ndash;(6) are a specification (III.1). It is proved
+      for the history of the main theorem in III.13 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Spark.lean#L78-L85"><tt class="verbatim">Spire.Uses.exists_bolt</tt></a>),
+      using the reset steps of III.9.5, the step program from III.10, and the
+      finite-cutoff construction of Lemma 4.22. The interval shooting of Lemma
+      4.20 also gives a selected history from the step program. In both
+      constructions, Lemma 4.21 derives (6) from (4) and (5).
+    </p>
+    <p>
+      The partition identity follows by induction from probability-kernel
+      normalization and integrability of lawful representations. The
+      calibration condition of VIII.1 requires one datum (scales, kinetic data
+      and recipe) and one family of trails realizing this history, with every
+      step a reset step for all \(N, p\) and \(m < N\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L234-L240"><tt class="verbatim">History.Selected</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L213-L218"><tt
+      class="verbatim">Conv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L223-L227"><tt class="verbatim">Transfer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230"><tt
+      class="verbatim">Running</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L242-L249"><tt class="verbatim">History.partition_eq</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L58-L61"><tt class="verbatim">Spec.Calibrated</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.4 (one reset step along a curve).</strong> Fix
+      a datum \(\mathfrak{D}\) consisting of three things:
+    </p>
+    <ul>
+      <li>
+        <p>
+          levels satisfying the scale and kernel conditions of III.9.2 and
+          &sect;2, and meeting the entry thresholds of the fixed numerical
+          choices;
+        </p>
+      </li>
+      <li>
+        <p>
+          a compatible horizon, a local Haar chart, positive post-block
+          constants, and kinetic data \((\alpha_{N, m}, P_{N, m})\) satisfying
+          the planned one-loop conditions (&sect;2);
+        </p>
+      </li>
+      <li>
+        <p>
+          a recipe, with initial, retention and continuation tests.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Fix \(N, p\) and \(m < N\), let \(I = [l, u]\) with \(l \leqslant u\),
+      and let \(x \mapsto \rho'_x\) (\(x \in I\)) be a continuous curve of
+      admissible level-\((m + 1)\) representations.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Admissible</em> means: path data \(P_{N, m + 1}\), the
+          level-\((m + 1)\) norm parameters and clip, lawful with the
+          level-\((m + 1)\) constants, and accepted by the recipe.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Continuous</em> means: \(\beta\) and \(v\) are continuous; the
+          regular and forced addresses, including supports, inventories and
+          eligibility tests, are fixed; and the coefficients vary continuously
+          in the weighted sum of regular sup-jet norms and forced uniform
+          norms. Regular jets are measured only where their supports are
+          small-field, at the prescribed derivative order and spatial power.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Write \(\beta'_x = \beta (\rho'_x)\) and \(H_x = T^{(m)}_{\beta'_x}
+      \rho'_x\). Let \((c_m, r_m)\) be the reset constants of the stage pair
+      \((J_{m + 1}, J_m)\), with \(c_m > 0\) and \(0 < r_m \leqslant 1\). Let
+      \(g = g_{J_{m + 1}} > 0\) be the prescribed fine-stage forced-decay
+      constant. Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(P) Priced.</strong> \(\eta = \eta_{J_m}\) is a sensor
+          constant (Lemma 4.7), and \(2 (c_m + 1) \varepsilon_m \leqslant \eta
+          \hspace{0.17em} t_m^2 
+\hspace{0.17em} r_m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(V) Probe.</strong> \(V\) is a small-field configuration
+          with \(\mathcal{K}_{P_{N, m}} (V) \geqslant | \Lambda_m | \eta
+          t_m^2\). Such a \(V\) exists by (P).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(I) Income.</strong> There is a family \(F (x, d)\), \(x \in
+          I\), \(|d| \leqslant r_m\), of level-\(m\) activities with fixed
+          addresses, valid with \((\varepsilon_m, \tilde{\varepsilon}_m)\).
+          Assume the catalogue conditions: each coefficient is continuous in
+          its regular sup-jet norm or forced uniform norm, and every
+          convergent parameter sequence admits a subsequence with common
+          summable majorants in those weighted norms. Moreover \(H_x (1), H_x
+          (V) > 0\), and
+        </p>
+        <center>
+          \(\displaystyle | (\beta'_x + \alpha_{N, m}) \mathcal{K} (V)
+          +\mathcal{L} (V) - \log \frac{H_x
+(1)}{H_x (V)} | \leqslant |
+          \Lambda_m | c_m \varepsilon_m,\)
+        </center>
+        <center>
+          \(\displaystyle |\mathcal{E}_{F (x, b)} (V) -\mathcal{E}_{F (x, a)}
+          (V) | \leqslant |
+\Lambda_m | c_m \varepsilon_m  |b - a| .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          <strong>(R) Remainder.</strong> Put
+        </p>
+        <center>
+          \(\displaystyle \text{shape}_{x, d} (U) = e^{- (\beta'_x +
+          \alpha_{N, m} + d) \mathcal{K} (U)
+-\mathcal{L} (U) -\mathcal{E}_{F
+          (x, d)} (U)}  \hspace{0.17em} \mathcal{G}_{F
+(x, d)} (U) .\)
+        </center>
+        <p>
+          Require:
+        </p>
+        <ul>
+          <li>
+            <p>
+              <em>Shape control:</em> \(| \text{shape}_{x, a} (U) - H_x (U) /
+              H_x (1) | \leqslant C_{x, U}
+\hspace{0.17em} |f (x, a) |\) for
+              all \(U\) and \(|a| \leqslant r_m\), where \(f\) is the scalar
+              residual of Lemma 4.9 and, for each \(x, U\), a finite \(C_{x,
+              U} \geqslant 0\) works for every \(|a| \leqslant r_m\);
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Forced bound:</em> the forced activities are bounded by
+              \(e^{- g \hspace{0.17em} M_{m + 1}^2}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Recipe:</em> the recipe accepts every exact trial.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      Conclusion. There is a continuous \(d : I \to [- r_m, r_m]\) with the
+      following properties. Let \(\rho_x\) have path data \(P_{N, m}\),
+      activities \(F (x, d (x))\), coupling \(\beta'_x + \alpha_{N, m} + d
+      (x)\) and \(v_x = | \Lambda_m |^{- 1} \log H_x (1)\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(x \mapsto \rho_x\) is a continuous curve;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\rho_x = H_x\) at every configuration;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\rho_x\) is admissible, its forced activities are bounded by
+          \(e^{- gM_{m + 1}^2}\), and \(| \beta (\rho_x) - \beta'_x -
+          \alpha_{N, m} | = |d (x) | \leqslant r_m
+\leqslant 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Exact density transfer, recipe continuation, admissibility, the stronger
+      forced bound and the error bound \(| \beta - \beta' - \alpha_{N, m} |
+      \leqslant 1\) define a <em>reset step</em>. Without (R), the same \(d\)
+      is the unique zero in \([- r_m, r_m]\) of the scalar residual. In that
+      case \(\rho_x (1) = H_x (1)\) and \(\rho_x (V) = H_x (V)\).
+    </p>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L175-L189"><tt class="verbatim">CouplingReset.advance</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L157-L173"><tt class="verbatim">correct</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L78-L85"><tt class="verbatim">Income</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L97-L103"><tt class="verbatim">Remainder</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L66-L69"><tt class="verbatim">PricedReset</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L55-L58"><tt class="verbatim">Usable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L49-L55"><tt class="verbatim">Directed.Move</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.5 (explicit reset and step program).</strong>
+    </p>
+    <p>
+      (a) <em>Explicit correction.</em> Fix the datum, input curve and reset
+      constants of III.9.4, and assume \(G\) is simple and the input couplings
+      lie in \(\mathfrak{B}_{m + 1}\). Suppose that, for every \(x \in I\),
+      the blocked density has the early presentation
+    </p>
+    <center>
+      \(\displaystyle H_x (U) = \exp \left( \tau_x | \Lambda_m | - \beta'_x
+      \mathcal{K}(U)
+-\mathcal{L}(U) - \sum_i \chi_{X_i} (U) E_{x, i} (U)
+      \right)  \hspace{0.17em}
+\mathcal{G}_x (U)  \hspace{0.17em} e^{-
+      \alpha_{N, m} \mathcal{S} (U)},\)
+    </center>
+    <p>
+      where \(\chi_X\) indicates that \(X\) is small-field and \(\mathcal{S}\)
+      is the masked quadratic receipt of the coarse path data. Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The early regular functions are local, gauge invariant and smooth
+          through the required derivative order. Their sup-jet bounds \(h_{x,
+          i} \geqslant 0\) satisfy, at every anchor \(o\),
+        </p>
+        <center>
+          \(\displaystyle \sum_{i : o_i = o} e^{(a + 3) \hspace{0.17em}
+          \text{cover}_{B_m} (X_i)} h_{x,
+i} \leqslant H_x^E,\)
+        </center>
+        <p>
+          where \(a\) is the level-\(m\) support exponent. The early forced
+          functions satisfy the forced-family conditions and a site-pinned
+          bound \(w_x\) at support exponent \(a + 1\). The full family
+          transforms under translations and the point group.
+        </p>
+      </li>
+      <li>
+        <p>
+          The addresses are fixed along \(I\), and the early functions satisfy
+          the coefficient-continuity and summable-tail conditions used in
+          III.9.4(I).
+        </p>
+      </li>
+      <li>
+        <p>
+          The reset is priced; the clip is compatible with the coarse norm
+          parameters; and the width and cubic conditions hold. There are
+          numerical output bounds \(e_x, k_x\) such that \(H_x^E \leqslant c_m
+          \varepsilon_m / 4\), the regular and forced reorganization estimates
+          fit within \(e_x, k_x\), and these bounds imply both validity with
+          \((\varepsilon_m, \tilde{\varepsilon}_m)\) and the forced bound
+          \(e^{- gM_{m + 1}^2}\). These are the fee and closure conditions of
+          Lemma 4.17.
+        </p>
+      </li>
+      <li>
+        <p>
+          The recipe accepts the reorganized representation and its
+          continuation from \(\rho'_x\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then the reset correction is the isotropic Hessian coefficient
+      \(\delta_x\) of the early regular functions (Lemma 4.12):
+    </p>
+    <center>
+      \(\displaystyle d (x) = \delta_x, \qquad \beta (\rho_x) = \beta'_x +
+      \alpha_{N, m} + \delta_x,
+\qquad t_m^2 | \delta_x | \leqslant H_x^E
+      \leqslant c_m \varepsilon_m / 4,
+\qquad v_x = \tau_x - | \Lambda_m |^{-
+      1}  \sum_i E_{x, i} (1) .\)
+    </center>
+    <p>
+      The output is continuous and has all the properties of III.9.4. The
+      Gaussian-sector formulation additionally requires its integration
+      licenses and the identity between that integral and the push; a direct
+      early presentation of the push supplies the equality used in the reset.
+    </p>
+    <p>
+      (b) <em>Program.</em> Assume \(G\) is simple. Suppose the numerical
+      conditions above hold at every level, the early presentation and its
+      local bounds and continuity are available along every continuous
+      admissible input curve with couplings in \(\mathfrak{B}_{m + 1}\), and
+      the recipe accepts these outputs. Suppose also that the start-up curves
+      below exist and pass the recipe's initial and retention tests. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          For all \(N, p\), there is a continuous admissible curve \(\beta
+          \mapsto F (\beta)\) on \(\mathfrak{B}_N\) with coupling \(\beta\),
+          vacuum constant \(0\) and density \(e^{- \beta S_W}\), passing the
+          initial tests.
+        </p>
+      </li>
+      <li>
+        <p>
+          For all \(N, p, m < N\), every continuous admissible input curve on
+          a closed interval has, when its couplings lie in \(\mathfrak{B}_{m +
+          1}\), a continuous output curve related to it pointwise by reset
+          steps. The finer bound \(| \beta - \beta' - \alpha_{N, m} |
+          \leqslant r_m\) also holds.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The output coupling may lie outside \(\mathfrak{B}_m\); shooting
+      restricts the parameter interval to restore the band (Lemma 4.20).
+    </p>
+    <p>
+      <em>Status:</em> conditional theorems. III.10 supplies the physical
+      inputs, including the Gaussian-sector identity and the early
+      presentation. Its <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L59">Roost.Factor.worksNow</a> concludes the step
+      program from these results.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L64-L90"><tt class="verbatim">Return.reset</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Payment.lean#L56-L57"><tt
+      class="verbatim">Return.result</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L26-L27"><tt class="verbatim">Collection.earlyValue</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L85-L88"><tt class="verbatim">Use.supplier</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Stability.lean#L67-L70"><tt class="verbatim">CouplingReset.program</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Stability.lean#L54-L65"><tt class="verbatim">Supplier.ports</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L65-L72"><tt class="verbatim">Directed.Program</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Payment.lean#L28-L35"><tt class="verbatim">Return.Prices</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Investor.lean#L49-L51"><tt class="verbatim">Collection.Fees</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Comparison.lean#L72-L74"><tt class="verbatim">Collection.Compared</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.6 (Wilson start-up).</strong> Let \(c\) be a
+      clip and \(b\) a set of norm parameters with \(0 < t \leqslant 1\). They
+      are <em>compatible</em> if \(c_{\text{dir}} \leqslant 1\), \(B \geqslant
+      2\), and \(t \hspace{0.17em} e^{(B - 2) / c_{\text{rel}}} \geqslant 2\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Exact start.</strong> For every \(\beta \in \mathbb{R}\) and
+          every configuration \(U\), \(\rho^{\text{start}}_{\beta} (U) = e^{-
+          \beta S_W (U)}\). Here \(\rho^{\text{start}}_{\beta}\) has:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the <em>Wilson top</em> path data \(P^{\text{top}}_c\) (Lemma
+              4.2);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(v = 0\);
+            </p>
+          </li>
+          <li>
+            <p>
+              regular activities \(\beta (1 - c_{\text{dir}}) \times\) (the
+              one-plaquette residuals of small-field plaquettes), averaged
+              over the point group;
+            </p>
+          </li>
+          <li>
+            <p>
+              forced activities \(e^{- \beta \hspace{0.17em} \text{charge} (D,
+              U)}\), one for each connected component \(D\) of the large-field
+              region for the padded adjacency relation.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Residual bound.</strong> For every gauge group \(G\) and all
+          orders \(k\) and spatial powers \(q\) there are \(C > 0\) and
+          \(\delta \in (0, 1]\) with the following property. For every set of
+          norm parameters with order \(k\), power \(q\) and threshold \(t
+          \leqslant \delta\), every torus, every plaquette \(p\) and every
+          site \(o\) of \(p\), the residual \(R_p\) has weighted sup-jet norm
+          at most \(Ct^5\) at \(o\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Eventual bounds and continuity.</strong> For each fixed
+          stage with \(c_{\text{dir}} \leqslant 1\), there is \(\beta^{\ast}\)
+          such that, for every realized choice of levels and every \(N\) at
+          that stage with \(\hat{\beta}_N \geqslant \beta^{\ast}\), the
+          start-up conditions hold: compatibility, small threshold, and the
+          regular and forced norm bounds \(\varepsilon_N,
+          \tilde{\varepsilon}_N\). The start-up curve is continuous on
+          \(\mathfrak{B}_N\). It is admissible for a given recipe if its
+          prescribed top paths are \(P^{\text{top}}\), these paths satisfy the
+          stage bounds, and its initial and retention tests accept the
+          displayed curve.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Installation.</strong> Suppose the old kinetic data satisfy
+          the planned conditions, the Wilson top paths satisfy the stage
+          bounds, and a revised horizon is supplied whose top quadratic datum
+          is the Wilson one, whose lower data agree with the old horizon, and
+          whose initial stationary guesses agree. Then the kinetic data can be
+          replaced by data for that horizon with \(P_{N, N} =
+          P^{\text{top}}\), the same \(\alpha\), and every planned condition
+          preserved.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L96-L103"><tt class="verbatim">WilsonStartup.Start.evaluates</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L76-L101"><tt class="verbatim">residual_price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Cake.lean#L43-L48"><tt class="verbatim">Start.Allows</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Clock.lean#L113-L139"><tt class="verbatim">Timing.enough</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT/Layout.lean#L52-L71"><tt class="verbatim">Planned.Port.card</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Engine.lean#L62-L82"><tt class="verbatim">Change.engine</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Ownership.lean#L20-L23"><tt class="verbatim">WilsonStartup.Decent</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Match.lean#L52-L54"><tt class="verbatim">Design.Suitable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Engine.lean#L22-L25"><tt class="verbatim">Change.Overlay</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.7 (entry thresholds).</strong> Fix a pre-block
+      stage profile and assume \(G\) is simple. There are sensor constants
+      \(\eta_j > 0\), chosen before the block sizes, with the following
+      property. Fix the block factors \(\ell_j\), exponents \(0 < \theta_j
+      \leqslant 1\), reset constants, forced-decay forecasts and post-block
+      costs. For each allowed stage transition \(i \leqslant j \leqslant i +
+      1\), let \(f_{ji}\) be the inherited coefficient and assume
+    </p>
+    <center>
+      \(\displaystyle 8 f_{ji} \leqslant q_i \ell_j^{\min}, \qquad u_{ji} (x)
+      \longrightarrow 0
+\quad (x \to \infty),\)
+    </center>
+    <p>
+      where \(q_i = 1 / [64 (1 + A_i)] > 0\), \(A_i \geqslant 0\) is the
+      coefficient of the early size in the regular reorganization bound (Lemma
+      4.17), and \(\ell_j^{\min}\) is the preassigned block-size floor.
+    </p>
+    <p>
+      Every entry-threshold record \(V\) has a componentwise increase \(U\)
+      such that every further increase \(W \geqslant U\) satisfies the
+      following conditions beyond its thresholds:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the reset pricing inequality;
+        </p>
+      </li>
+      <li>
+        <p>
+          the cubic inequality of Lemma 4.10;
+        </p>
+      </li>
+      <li>
+        <p>
+          clip compatibility when \(c_{\text{dir}} \leqslant 1\), the width
+          condition and the regular and forced reorganization inequalities;
+        </p>
+      </li>
+      <li>
+        <p>
+          the inherited inequality of Lemma 4.17.
+        </p>
+      </li>
+    </ul>
+    <p>
+      For a realized choice of levels, these conclusions require the same
+      stage profile, block factors and exponents, and payment of the
+      thresholds: \(W^{\text{entry}}_{J_{m + 1}} \leqslant \hat{\beta}_m\) for
+      every \(m\). To obtain III.9.5's physical bounds, also assume \(4 q_i
+      \leqslant c_{ji}\) and \(4 g_j \leqslant \text{rate}_{ji}\); raising
+      thresholds does not supply these inequalities or the early presentation.
+      Start-up bounds admit the same monotone choice of thresholds when
+      \(c_{\text{dir}} \leqslant 1\) at every used stage.
+    </p>
+    <p>
+      <em>Status:</em> theorem about numerical conditions, conditional on the
+      compatibility inequalities stated above.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L75-L89"><tt class="verbatim">Time.beforeWait</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Pricing.lean#L87-L107"><tt
+      class="verbatim">StrongStartup.prices</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Fast.lean#L27-L38"><tt class="verbatim">Timing.choose</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Tables.lean#L36"><tt class="verbatim">Time.credit</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.8 (marker-rooted to site-pinned polymer
+      sums).</strong> Fix \(M, \mu \in \mathbb{N}\), \(a \in \mathbb{R}\) and
+      \(c \geqslant 0\). Let \((X_i)\) be polymers on a four-dimensional torus
+      with weights \(f_i \geqslant 0\), indexed by an arbitrary set. Fix a
+      finite set of marker names; each polymer carries a subset of these
+      names, the markers sitting at sites \(o (v)\), with at most \(\mu\)
+      markers per site. Suppose that every polymer with \(f_i > 0\) contains
+      the site of one of its markers, and that for every marker \(v\)
+    </p>
+    <center>
+      \(\displaystyle \sum_{i : \hspace{0.17em} v \text{ is a marker of } i}
+      e^{(a + 1)
+\hspace{0.17em} \text{cover}_M (X_i)} f_i \leqslant c.\)
+    </center>
+    <p>
+      All sums of nonnegative terms here are required to be summable,
+      including when the index set is uncountable. Then for every site \(x\)
+    </p>
+    <center>
+      \(\displaystyle \sum_{i : \hspace{0.17em} x \in X_i} e^{a
+      \hspace{0.17em} \text{cover}_M
+(X_i)} f_i \leqslant \mu \hspace{0.17em}
+      e \hspace{0.17em} (2 (16 M + 9))^4 
+\hspace{0.17em} c,\)
+    </center>
+    <p>
+      uniformly in the size of the torus.
+    </p>
+    <p>
+      <em>Status:</em> theorem. It is used for observable insertions in III.12
+      and III.15, not for the coupling flow.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L161-L199"><tt class="verbatim">Extra.Multi.root_hit</tt></a>.
+    </p>
+    <p>
+      <strong>What the rest of the construction uses.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The shape, band and transfer clauses of III.9.3.
+        </p>
+      </li>
+      <li>
+        <p>
+          The reference coupling \(\hat{\beta}\) used in the later estimates.
+        </p>
+      </li>
+      <li>
+        <p>
+          The step program III.9.5(b), the input of the shooting.
+        </p>
+      </li>
+      <li>
+        <p>
+          The finer accuracy \(| \beta_{N, p, m} - \beta_{N, p, m + 1} -
+          \alpha_{N, m} | \leqslant r_m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          III.9.8.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>III.1 (block-spin step and interfaces).</strong> This unit
+          uses:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the step \(T^{(m)}_{\beta}\) with its symmetry, gauge covariance
+              and probability normalization (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L88-L91"><tt class="verbatim">Calendar.op</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L120-L128"><tt class="verbatim">BlockControl</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L37-L43"><tt class="verbatim">StepData.push_integral</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              the interface records for histories and selection, the datum
+              \(\mathfrak{D}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36"><tt class="verbatim">Directed</tt></a>), and
+              reset step / program;
+            </p>
+          </li>
+          <li>
+            <p>
+              the conversion of a reset step into the transfer inequality (<a
+              href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L57-L63"><tt class="verbatim">Directed.links</tt></a>). This uses \(| \beta -
+              \beta' - \alpha | \leqslant 1\) and \(| \alpha + \kappa \log L|
+              + 1 \leqslant \omega\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>II.2 (polymer activities).</strong> Representations,
+          activities, their bounds and the large-field masks: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L165-L171"><tt
+          class="verbatim">Rep</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L106-L111"><tt class="verbatim">Activities.Valid</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L98-L100"><tt class="verbatim">EBound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L102-L104"><tt class="verbatim">KBound</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154"><tt class="verbatim">PathData</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L173-L185"><tt class="verbatim">PathData.Bounds</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.2 (order of constants and shooting).</strong> This unit
+          uses:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the constants chosen before the block size, and the block sizes
+              (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35"><tt class="verbatim">Supply.Sheet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L39-L48"><tt class="verbatim">Supply.Large</tt></a>).
+              At each used stage, the block factor \(\ell_j\) satisfies
+              \(\omega_j / \log \ell_j \leqslant \kappa / 4\) and \(\omega_j /
+              \log \ell_j \leqslant j^{- 2}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              the record of the scale sequence having met every entry
+              threshold (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162"><tt class="verbatim">Supply.Paid</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              the shooting construction and the running estimate (Lemmas
+              4.20&ndash;4.21).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>III.7 (one-loop coefficient).</strong> The kinetic data
+          satisfy the planned conditions (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115"><tt class="verbatim">Kin.Planned</tt></a>).
+          Among them:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(| \alpha_{N, m} + \kappa \log L_m | + 1 \leqslant \omega_{J_{m
+              + 1}}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the Hessian of the fluctuation term (fine loop functional plus
+              \(\tfrac{1}{2} \log \det\) of the fluctuation Hessian minus the
+              log Haar Jacobian) agrees with that of \(\alpha_{N, m}\) times
+              the coarse quadratic action plus the coarse loop functional,
+              with an error bounded by \(| \Lambda_m | \Gamma \Lambda e^{- c
+              \hspace{0.17em} \text{side} (\Lambda_m)}\) on every pair of
+              bounded plane-wave directions (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71"><tt class="verbatim">FiniteBound</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(P_{N, N}\) matches the Wilson energy to fourth order.
+            </p>
+          </li>
+        </ul>
+        <p>
+          The bound on \(\alpha\) comes from <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L17-L52"><tt class="verbatim">Stationary.pouring</tt></a>,
+          which, for fixed admissible analytic input parameters, constructs
+          one-loop coefficients and constants \(D \geqslant 0, L_{\min}\) with
+          \(| \alpha + \kappa \log L| \leqslant D\) for every odd \(L
+          \geqslant L_{\min}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L20-L23"><tt class="verbatim">HorizCalc</tt></a>). The
+          constant is produced by two steps:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the scalar-minus-half-vector bubble equals \(2 \hspace{0.17em}
+              \text{pole} (p)\), where \(\text{pole} (p) = 4 C_G  (p_1^2
+              |p|^{- 6} - 4 p_1^2 p_0^2 |p|^{- 8} - |p|^{-
+4})\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L127-L141"><tt
+              class="verbatim">haloRate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L125"><tt class="verbatim">poleVec</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              \((2 \pi)^{- 4}  \int_{\mu \leqslant |p| \leqslant 1}
+              \text{pole} = - \kappa
+\log \mu^{- 1}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L326-L338"><tt class="verbatim">poleSpin</tt></a>),
+              with the remaining errors bounded (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L346-L408"><tt class="verbatim">absoluteGeode</tt></a>).
+            </p>
+          </li>
+        </ul>
+        <p>
+          The angular average of \(\text{pole}\) is \(- \tfrac{11}{3} C_G
+          |p|^{- 4}\), the classical split \(\tfrac{1}{3} - 4\) into orbital
+          and spin parts.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.13 (kinetic data and history).</strong> Finite-cutoff
+          kinetic data are built by downward recursion in \(m\). The limiting
+          one-step relation used to compare such data contracts with factor
+          \(\tfrac{1}{2}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward/Tides.lean#L15-L46"><tt class="verbatim">Reward.fieldArray</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward/AtLimit.lean#L46-L66"><tt class="verbatim">Reward.step_contracted</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward/Tides.lean#L49-L62"><tt
+          class="verbatim">Reward.ties</tt></a>). The selected history of the main
+          theorem is also built there.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.10 and III.4 (the nonlinear step).</strong> These
+          provide the hypotheses of III.9.5:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the identification of the blocked density with a Gaussian-sector
+              integral (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L56-L61"><tt class="verbatim">Return.earnings</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              its early presentation (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L70-L71"><tt class="verbatim">Return.atlas</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              the local activity bounds (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Trays.lean#L35-L40"><tt class="verbatim">Collection.Local</tt></a>),
+              continuity and recipe acceptance.
+            </p>
+          </li>
+        </ul>
+        <p>
+          These are delivered by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Rain/Glazing.lean#L97-L104"><tt class="verbatim">Rain.glazing</tt></a> and
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L26-L50"><tt class="verbatim">Roost.Factor</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>I.1 and III.16 (analytic toolkit).</strong> Lie-group facts
+          and Taylor jets of the plaquette function.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Intermediate value theorem, and continuity of the inverse of a
+          uniformly increasing family.
+        </p>
+      </li>
+      <li>
+        <p>
+          Taylor's formula with uniform constants on compact sets.
+        </p>
+      </li>
+      <li>
+        <p>
+          Schur's lemma: an \(\text{Ad}\)-invariant bilinear form on a simple
+          \(\mathfrak{g}\) is a multiple of the inner product.
+        </p>
+      </li>
+      <li>
+        <p>
+          The representation theory of the hyperoctahedral group on plaquette
+          orientations, used through explicit reflections and permutations.
+        </p>
+      </li>
+      <li>
+        <p>
+          Fourier analysis on tori, analytic matrix inversion and exponential
+          decay of Fourier coefficients.
+        </p>
+      </li>
+    </ul>
+    <p>
+      References:
+    </p>
+    <ul>
+      <li>
+        <p>
+          One-loop \(\beta\)-function: Gross&ndash;Wilczek, <em>Phys. Rev.
+          Lett.</em> 30 (1973) 1343; Politzer, <em>Phys. Rev. Lett.</em> 30
+          (1973) 1346.
+        </p>
+      </li>
+      <li>
+        <p>
+          The orbital/spin split \(\tfrac{1}{3} - 4\): Nielsen, <em>Am. J.
+          Phys.</em> 49 (1981) 1171; Hughes, <em>Nucl. Phys. B</em> 186 (1981)
+          376.
+        </p>
+      </li>
+      <li>
+        <p>
+          Lattice gauge theory: Wilson, <em>Phys. Rev. D</em> 10 (1974) 2445;
+          Seiler, <em>Lecture Notes in Physics</em> 159 (1982).
+        </p>
+      </li>
+      <li>
+        <p>
+          Block-spin renormalization of lattice gauge fields with
+          coupling-constant renormalization in four dimensions:
+          Ba&#x0142;aban, <em>Commun. Math. Phys.</em> 109 (1987) 249; 116
+          (1988) 1; 119 (1988) 243; 122 (1989) 175 and 355.
+        </p>
+      </li>
+      <li>
+        <p>
+          Exposition of Ba&#x0142;aban's method: Dimock, &quot;The
+          renormalization group according to Balaban&quot; I&ndash;III
+          (<em>Rev. Math. Phys.</em> 25 (2013); <em>J. Math. Phys.</em> 54
+          (2013); <em>Ann. Henri Poincar&eacute;</em> 15 (2014)).
+        </p>
+      </li>
+      <li>
+        <p>
+          Tracking a marginal coupling and choosing the bare parameters so
+          that the flow ends at a prescribed value:
+          Bauerschmidt&ndash;Brydges&ndash;Slade, <em>Introduction to a
+          Renormalisation Group Method</em>, LNM 2242 (2019).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>The drift allowances \(\omega_j\).</strong> These are
+          constants fixed before the block size, with \(\omega_j \geqslant 1 +
+          D\). The one-loop error \(D\) is fixed in III.7 and III.13, and
+          \(\omega\) is then made small relative to \(\log L\) by choosing
+          \(L\) large (III.2).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The exponents.</strong> The exponents \(- 1 / 2\), \(- 11 /
+          10\), \((\log \log)^2\) and \(1 / 5\) in III.9.2 are part of the
+          definitions.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The hypotheses of III.9.5(a).</strong> These are carried
+          here as assumptions and discharged in III.10.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The nonlinear step gives an early presentation of the blocked density.
+      Its marginal coefficient has three contributions: the input coupling
+      \(\beta'\), the one-loop shift \(\alpha_{N, m}\), and the isotropic
+      Hessian coefficient \(\delta\) of the early regular functions. The reset
+      sets \(\beta = \beta' + \alpha_{N, m} + \delta\). Subtracting flat
+      values and quadratic projections, adding compensating path terms, and
+      absorbing mask discrepancies into the forced gas preserves the full
+      density. The output activity bounds and \(| \delta | \leqslant r_m
+      \leqslant 1\), together with \(| \alpha_{N, m} + \kappa \log L_m | + 1
+      \leqslant \omega\), give the transfer inequality.
+    </p>
+    <p>
+      Two configurations identify the reset: the flat field and a small-field
+      stripe \(V\) with \(\mathcal{K} (V) \geqslant | \Lambda | \eta t^2\).
+      Matching at the flat field fixes \(v = | \Lambda |^{- 1} \log H (1)\).
+      Matching the log-ratio at \(V\) gives a scalar equation \(f (x, d) =
+      0\). The pricing and activity-motion bounds make \(f\) increasing with
+      slope at least \(\mathcal{K} (V) / 2\), and give \(|f (x, 0) | \leqslant
+      \mathcal{K} (V) r / 2\). Its unique root lies in \([- r, r]\) and
+      depends continuously on \(x\). Shape control gives equality at every
+      configuration. For the reorganized activities, \(f (x, d) = (d -
+      \delta_x) \mathcal{K} (V)\), so the correction is explicit.
+    </p>
+    <p>
+      The interval shooting chains these steps from the Wilson lattice down to
+      level \(0\). At each level, the transfer inequality forces the two
+      endpoint couplings to lie on opposite sides of \([\bar{\beta} + \kappa
+      s_m / 2, \bar{\beta} + 2 \kappa s_m]\). Continuity selects a subinterval
+      whose couplings stay within that window and attain its endpoints. At
+      level \(0\), a surviving bare parameter gives \(\beta_0 = \bar{\beta}\).
+      Summing the transfer errors gives the running law, uniformly in cutoff
+      and volume. III.13 uses compatible finite-cutoff fixed points to obtain
+      the centered history and its analytic continuations.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-reference-scales"></a>4.1 Reference scales<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.1 (recursion of the reference coupling).</strong> \(s_{m
+      + 1} = s_m + \log L_m\), so \(\hat{\beta}_{m + 1} = \hat{\beta}_m +
+      \kappa \log L_m\). \(\hat{\beta}\) is nondecreasing if \(\kappa
+      \geqslant 0\). Since \(L_i \geqslant 3\), \(s_m \geqslant m \log 3 \to
+      \infty\), and \(\hat{\beta}_m \to \infty\) when \(\kappa > 0\).
+    </p>
+    <p>
+      <em>Sketch:</em> \(a_m = (L_0 \cdots L_{m - 1})^{- 1}\) and the
+      definitions.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L124-L127"><tt class="verbatim">Schedule.scale_succ</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Levels.lean#L43-L45"><tt class="verbatim">Deployment.hat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Fast.lean#L40-L42"><tt class="verbatim">Timing.hat_mono</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L117-L120"><tt class="verbatim">Schedule.divergent</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-the-wilson-start-up"></a>4.2 The Wilson start-up<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.2 (splitting the plaquette action).</strong> Write \(s
+      (u) = |F (u) |^2 / 2 + Q_4 (F (u)) + R (u)\). Near the identity,
+      curvature gives local coordinates on \(G\). Here \(Q_4\) is the diagonal
+      fourth Taylor coefficient of the plaquette function in those
+      coordinates. The odd coefficients vanish by inversion symmetry. The
+      residual \(R\), defined by the displayed identity for every \(u \in G\),
+      has vanishing derivatives of orders \(0, \ldots, 4\) at the identity.
+    </p>
+    <p>
+      For \(c_{\text{dir}} \leqslant 1\), the top path data
+      \(P^{\text{top}}_c\) consist of:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the clipped plaquette term, which equals \(c_{\text{dir}} 
+          \hspace{0.17em} s (U_p)\) in the small-field region;
+        </p>
+      </li>
+      <li>
+        <p>
+          the row term \(\sqrt{1 - c_{\text{dir}}}  \hspace{0.17em} F_p\),
+          contributing \((1 - c_{\text{dir}}) |F_p |^2 / 2\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the quartic atoms \((1 - c_{\text{dir}}) Q_4 (F_p)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          no cubic and no loop terms.
+        </p>
+      </li>
+    </ul>
+    <p>
+      They satisfy the zero-momentum normalization (\(c_{\text{dir}} + (1 -
+      c_{\text{dir}}) = 1\)). On the small-field region, \(\beta S_W = \beta
+      \hspace{0.17em} \mathcal{K}_{P^{\text{top}}} + \beta (1
+      -
+c_{\text{dir}})  \sum_p R_p\).
+    </p>
+    <p>
+      <em>Sketch:</em> The derivative of the curvature map at the identity is
+      the identity, so the analytic inverse function theorem gives curvature
+      coordinates. Inversion sends \(F\) to \(- F\) and preserves \(s\).
+      Taylor expansion through order \(4\) gives the quadratic and quartic
+      terms and the residual. The identity \(s = \tfrac{1}{2} \text{chord}^2\)
+      fixes the normalization.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L156-L164"><tt class="verbatim">convert_taylor</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L166"><tt
+      class="verbatim">surplus</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L168-L179"><tt class="verbatim">surplus_jet</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Design.lean#L34-L38"><tt class="verbatim">Design.top</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Design.lean#L156-L162"><tt class="verbatim">Design.principal_top</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.3 (exact start).</strong> For a compatible pair \((c,
+      b)\), every \(\beta\) and every \(U\): the path-data channels of
+      \(P^{\text{top}}\) at \(\beta\), plus the regular activities (residuals
+      of small-field plaquettes), plus the large-field remainders, add up to
+      \(\beta S_W (U)\), the sum being averaged over the point group. Moreover
+      the gas equals \(\exp (- \beta \cdot \text{(large-field remainder)})\).
+      Hence \(\rho^{\text{start}}_{\beta} = e^{- \beta S_W}\), which is
+      III.9.6(1).
+    </p>
+    <p>
+      <em>Sketch:</em> Fix \(U\). The only nonzero gas term is the family of
+      connected components of the large-field region for the padded adjacency
+      relation (cover size \(B \geqslant 2\) and the compatibility condition
+      separate the padded components). So the gas collapses to a single
+      product \(\prod_D e^{- \beta \hspace{0.17em} \text{charge} (D, U)}\).
+      The charges sum to the large-field remainder, and the channel identity
+      accounts for the rest.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Channels.lean#L72-L87"><tt class="verbatim">channel_split</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L81-L94"><tt
+      class="verbatim">Start.gas_raw</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L70-L75"><tt class="verbatim">Start.issues</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L96-L103"><tt class="verbatim">Start.evaluates</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.4 (one-plaquette residual).</strong> This is III.9.6(2).
+    </p>
+    <p>
+      <em>Sketch:</em> \(R_p\) is a real-analytic function of the four link
+      matrices of \(p\). On a small-field plaquette (chord \(\leqslant t\))
+      its derivatives of order \(l \leqslant k\) along directions of size
+      \(\leqslant t (1 + 4)^q\) are bounded by \(C_l t^5\). This is Taylor's
+      formula with the flatness of Lemma 4.2 and compactness of \(G\); the
+      factor \((1 + 4)^q\) is the spatial weight of sites within distance
+      \(4\). Take \(C = 1 + \sum_l C_l\) and the smallest \(\delta\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L76-L101"><tt class="verbatim">residual_price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L62-L68"><tt
+      class="verbatim">residual_jet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L70-L74"><tt class="verbatim">healthy_chord</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Residual.lean#L161-L183"><tt class="verbatim">Quad.small_jet</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.5 (eventual start-up bounds).</strong> Under the
+      hypotheses of III.9.6(3), the start-up bounds hold beyond a
+      stage-dependent threshold, uniformly in \(N, p\) and \(\beta \in
+      \mathfrak{B}_N\). With the top-path bounds and recipe approval specified
+      there, the start-up curve is admissible.
+    </p>
+    <p>
+      <em>Sketch:</em> Put \(x = \hat{\beta}_N\) and \(M = e^{(\log \log
+      x)^2}\). The regular bound is a stage-dependent constant times \(2
+      xt_N^5 = 2 x^{- 3 / 2} M^5 = o (x^{- 11 / 10})\). For the forced terms,
+      the proof uses a decay exponent \(M\) and an additional polymer-counting
+      factor \(e^{\gamma} - 1\), with \(\gamma = e^{- M / 2}\). The
+      connected-polymer estimate bounds the forced norm by \(e^{- M + 1}
+      \leqslant e^{- M^{1 / 5}}\) for large \(x\). Compatibility follows from
+      \(B_N \asymp (\log x)^2\) and \(t_N = x^{- 1 / 2} M\). These estimates
+      give the displayed continuous start-up family; admissibility also uses
+      its path bounds and the recipe tests.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Clock.lean#L113-L139"><tt class="verbatim">Timing.enough</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Ink.lean#L104-L122"><tt
+      class="verbatim">Start.ink</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Funds.lean#L130-L143"><tt class="verbatim">Start.Loan.kernel</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT/Layout.lean#L52-L71"><tt class="verbatim">Planned.Port.card</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.6 (installing the Wilson top).</strong> Assume the old
+      fine paths satisfy the stationary, positive-Hessian, initial-guess,
+      classical-matching and finite-period one-loop conditions for a step. Let
+      the new fine paths have the same main-action jets through order \(4\),
+      and suppose both fine loop kernels vanish. With the same local Haar
+      chart and block branches, there are new stationary data satisfying those
+      same conditions, with the same coarse paths and one-loop coefficient.
+      With the revised horizon and top-path bounds of III.9.6(4), this
+      replacement gives planned kinetic data at every cutoff, preserving the
+      stationary data for \(m + 1 < N\).
+    </p>
+    <p>
+      <em>Sketch:</em> Equality of fourth jets gives equality of the
+      fluctuation Hessians at the flat field and of their determinant jets
+      through order \(2\). The analytic implicit function theorem constructs
+      the new stationary branch; finite-order agreement transfers the initial
+      guess, classical match and one-loop bound. The old and Wilson top
+      actions both match the Wilson energy through order \(4\). Only the step
+      \(N \to N - 1\) changes.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/TopStep.lean#L160-L180"><tt class="verbatim">Change.top_step</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Engine.lean#L62-L82"><tt
+      class="verbatim">Change.engine</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-the-scalar-response"></a>4.3 The scalar response<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.7 (sensor).</strong> Assume \(\mathfrak{g} \ne \{0\}\),
+      fix a clip with \(A = c_{\text{dir}} > 0\), and let \(C \geqslant 0\).
+      Then there is \(\eta > 0\), depending only on these data, with the
+      following property. For every even torus side, every path datum
+      satisfying the path bounds with cap \(C\), and every set of norm
+      parameters with \(0 < t \leqslant 1\), there is a configuration \(V\)
+      that is small-field everywhere and satisfies \(\mathcal{K} (V) \geqslant
+      | \Lambda |  \hspace{0.17em} \eta \hspace{0.17em}
+t^2\).
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Choose \(u \in G\) with chord \(h = \tau t\), where \(\tau = \min
+          (\varepsilon_G, \tfrac{1}{4}, A / (512 (1 + C)))\); such \(u\)
+          exists by the intermediate value theorem along a one-parameter
+          subgroup.
+        </p>
+      </li>
+      <li>
+        <p>
+          Put \(u\) on the axis-\(0\) links at sites whose coordinate \(1\) is
+          even, and \(1\) elsewhere. Every \((0, 1)\)-plaquette has chord
+          \(h\), and every plaquette has chord \(\leqslant 4 h \leqslant t\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The quadratic term contributes \(\geqslant | \Lambda | Ah^2 / 2\).
+          The cubic and quartic atoms contribute at least \(- | \Lambda |  (C
+          (4 h)^3 + C (4 h)^4) \geqslant - | \Lambda | Ah^2 / 4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The point-group average permutes plaquettes and preserves these
+          bounds. Hence \(\eta = A \tau^2 / 4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L96-L142"><tt class="verbatim">CouplingReset.sensor</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L40-L54"><tt class="verbatim">reachable_chord</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.8 (monotone response, continuous root).</strong> Let \(I
+      = [l, u]\) with \(l \leqslant u\), let \(r \geqslant 0\), and let \(f :
+      I \times [- r, r] \to \mathbb{R}\) satisfy:
+    </p>
+    <ul>
+      <li>
+        <p>
+          there is \(\mu > 0\) such that \(f (x, b) - f (x, a) \geqslant \mu
+          (b - a)\) for every \(x \in I\) and \(- r \leqslant a \leqslant b
+          \leqslant r\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(f (x, \cdot)\) is continuous for every \(x \in I\), and \(f
+          (\cdot, a)\) is continuous for every \(a \in [- r, r]\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(|f (x, 0) | \leqslant \mu r\) for every \(x \in I\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then there is a unique \(d (x) \in [- r, r]\) with \(f (x, d (x)) = 0\).
+      The function \(d\) is continuous, and \(|d (x) - a| \leqslant |f (x, a)
+      | / \mu\) for every \(x \in I\) and \(a \in [- r, r]\).
+    </p>
+    <p>
+      <em>Sketch:</em> \(f (x, - r) \leqslant 0 \leqslant f (x, r)\), so the
+      intermediate value theorem gives a zero, unique by strict monotonicity.
+      Moreover \(|d (y) - d (x) | \leqslant |f (y, d (x)) - f (x, d (x)) | /
+      \mu \to 0\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L27-L31"><tt class="verbatim">Response</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L80-L83"><tt
+      class="verbatim">Response.balance_solve</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L54-L58"><tt class="verbatim">Response.continuous</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L60-L70"><tt class="verbatim">solve</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.9 (two-point readout).</strong> Fix path data, a clip,
+      norm parameters and activities \(F (x, d)\) whose regular functions
+      vanish at the flat configuration. Let \(V\) be small-field everywhere
+      and suppose \(H_x (1), H_x (V) > 0\). Define
+    </p>
+    <center>
+      \(\displaystyle f (x, d) = (\beta'_x + \alpha + d)  \hspace{0.17em}
+      \mathcal{K} (V)
++\mathcal{L} (V) +\mathcal{E}_{F (x, d)} (V) - \log
+      \frac{H_x (1)}{H_x (V)} .\)
+    </center>
+    <p>
+      Install the trial with coupling \(\beta'_x + \alpha + d (x)\) and vacuum
+      constant \(v_x = | \Lambda |^{- 1} \log H_x (1)\). If \(f (x, d (x)) =
+      0\), the trial equals \(H_x\) at \(1\) and at \(V\). If moreover the
+      template satisfies shape control (III.9.4(R)), it equals \(H_x\) at
+      every configuration.
+    </p>
+    <p>
+      <em>Sketch:</em> At \(U = 1\) the kinetic, loop and activity terms
+      vanish and the gas is \(1\). At small-field \(V\) the gas is \(1\).
+      Shape control at a zero of \(f\) gives \(\text{shape} = H_x / H_x (1)\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L64-L65"><tt class="verbatim">Template.residual</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L99-L105"><tt
+      class="verbatim">Template.passes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L119-L125"><tt class="verbatim">Template.realizes</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L131-L140"><tt class="verbatim">Template.response</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.10 (surplus from a pre-reset presentation).</strong>
+      Suppose that on \(V = 1\) and on every small-field \(V\)
+    </p>
+    <center>
+      \(\displaystyle H_x (V) = \exp \left( u_x | \Lambda_m | - \beta'_x 
+      \hspace{0.17em}
+\mathcal{M}(V) - \alpha_{N, m}  \hspace{0.17em}
+      \mathcal{S}(V) -\mathcal{L}(V)
+-\mathcal{E}_x (V) \right),\)
+    </center>
+    <p>
+      where \(\mathcal{M}\) is the unmasked main term (quadratic, cubic and
+      quartic), \(\mathcal{S}\) its quadratic part, and \(\mathcal{E}_x\) has
+      size \(\leqslant c_m \varepsilon_m / 4\). Assume the coarse path bounds
+      with cap \(C\) and the cubic condition \(| \alpha_{N, m} | 
+      \hspace{0.17em} 2 Ct_m^3 \leqslant c_m \varepsilon_m / 2\). Then the
+      surplus inequality of III.9.4(I) holds. If, in addition, the output
+      activities satisfy the catalogue and slow-variation assumptions of
+      III.9.4(I), then all of (I) holds.
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          On small-field \(V\), \(\mathcal{K} (V) =\mathcal{M} (V)\) and the
+          loop functional is unmasked.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(|\mathcal{K}(V) -\mathcal{S}(V) | \leqslant 2 C | \Lambda | t^3\),
+          since the cubic and quartic atoms are \(O (t^3)\) per site.
+        </p>
+      </li>
+      <li>
+        <p>
+          The regular activities at \(1\) and at \(V\) cost \(2 \cdot |
+          \Lambda | c \varepsilon / 4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The cubic condition absorbs \(| \alpha |  \hspace{0.17em}
+          |\mathcal{K}-\mathcal{S}|\). It holds eventually because \(| \alpha
+          | \leqslant \omega + \kappa \log L\) and \(t^3 \ll \hat{\beta}^{- 11
+          / 10}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Regular.lean#L91-L96"><tt class="verbatim">Prereset.income</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Regular.lean#L73-L87"><tt
+      class="verbatim">Prereset.value_income</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L124-L143"><tt class="verbatim">pays_surplus</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L52-L69"><tt class="verbatim">higher_estimate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L96-L98"><tt class="verbatim">CubicGate</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L89-L94"><tt class="verbatim">within_alpha</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-the-reset-step"></a>4.4 The reset step<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.11 (one step).</strong> This is III.9.4.
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (P) and (V) give \(| \Lambda_m |  (c_m + 1) \varepsilon_m \leqslant
+          \tfrac{1}{2} \mathcal{K} (V)
+r_m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Slow motion in \(d\) gives slope \(\geqslant \mu := \tfrac{1}{2}
+          \mathcal{K} (V)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The surplus inequality and \(|\mathcal{E}(V) | \leqslant | \Lambda |
+          \varepsilon_m\) give \(|f (x, 0) | \leqslant \mu r_m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(f\) is continuous in \(x\) by Lemma 4.15.
+        </p>
+      </li>
+      <li>
+        <p>
+          Lemma 4.8 gives \(d\); Lemma 4.9 installs the trial; (R) gives the
+          identity at all configurations, the forced bound and recipe
+          acceptance.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(| \beta - \beta' - \alpha | = |d| \leqslant r_m \leqslant 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L157-L173"><tt class="verbatim">correct</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L175-L189"><tt class="verbatim">advance</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L121-L137"><tt class="verbatim">Income.paidResponse</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L139-L152"><tt class="verbatim">Income.balance</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.12 (the marginal coefficient of the
+      activities).</strong> Let \(f\) be a local, gauge-invariant regular
+      function anchored at \(o\), smooth through the prescribed derivative
+      order, and let \(\mathfrak{g}\) be simple. The second derivative of
+      \(f\) at the trivial configuration, along the canonical affine link test
+      fields centered at \(o\), with curls \(X\) in orientation \(b\) and
+      \(Y\) in orientation \(b'\), equals \(\text{coeff}_f (b, b') \langle X,
+      Y \rangle\) (Schur). For the projection used below, retain this Hessian
+      coefficient when the support enlarged by the radius-\(2\) halo of \(o\)
+      does not wrap around the torus, and set the projected coefficient to
+      \(0\) otherwise.
+    </p>
+    <p>
+      For a family \(A\) of such functions with an anchored regular norm
+      bound, whose addresses and values transform under translations and the
+      point group, assume the torus side is at least \(4\) and put
+    </p>
+    <center>
+      \(\displaystyle \delta (A) = \sum_{f \text{ anchored at } 0} q_f (01,
+      01) .\)
+    </center>
+    <p>
+      Here \(q_f\) denotes the projected coefficient just defined. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          for every site \(o\), \(\sum_{f \text{ anchored at } o} q_f (b, b')
+          = \delta (A)  \hspace{0.17em}
+\boldsymbol{1}_{b = b'}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the sum of the projected Hessian forms at \(o\) is \(\delta (A) 
+          \sum_b |w_b |^2\). Its quadratic energy is \(\tfrac{1}{2} \delta (A)
+          \sum_b |w_b |^2\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(A\) has regular size \(c\), then \(t^2 | \delta (A) | \leqslant
+          c\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> Gauge invariance makes each color bilinear form
+      invariant under the adjoint action, hence scalar by simplicity. For each
+      pair of distinct plaquette orientations, reflecting an axis belonging to
+      exactly one of them reverses the corresponding off-diagonal coefficient;
+      its sum therefore vanishes. Signed permutations carry each diagonal
+      coefficient to \((01, 01)\). The bound follows from the second
+      derivative in a direction of size \(t\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L75"><tt class="verbatim">Averaging.delta</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L77-L98"><tt
+      class="verbatim">Averaging.isotropic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L100-L102"><tt class="verbatim">Averaging.identity</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L103-L112"><tt class="verbatim">Averaging.delta_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Projection.lean#L34-L40"><tt class="verbatim">label_color</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Projection.lean#L89-L90"><tt class="verbatim">projection</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.13 (exact reorganization).</strong> Assume the early
+      presentation, local bounds, compatible clip, width, reorganization
+      inequalities and recipe acceptance of III.9.5(a). Let \(\delta_x\) be
+      the coefficient of Lemma 4.12. The reorganized representation has the
+      same paths, coupling \(\beta'_x + \alpha_{N, m} + \delta_x\), and vacuum
+      constant \(\tau_x - | \Lambda_m |^{- 1}  \sum_i E_{x, i} (1)\). Its
+      density equals \(H_x\) at every configuration, and it obeys the
+      level-\(m\) allowances and the forced bound \(e^{- gM_{m + 1}^2}\).
+    </p>
+    <p>
+      <em>Sketch:</em> For an early regular function \(E_i\) with support
+      \(X_i\) and anchor \(o_i\), put \(Y_i = X_i \cup \text{halo}_2 \{o_i
+      \}\). Let \(Q_i\) be one half of its projected Hessian applied to the
+      local clover curvatures, and set \(E_i^0 = E_i - E_i (1) - Q_i\). Define
+      \(D_i\) to vanish when \(Y_i\) is small-field, and otherwise by
+    </p>
+    <center>
+      \(\displaystyle D_i = E_i (1) + \chi_{\{o_i \}} Q_i - \chi_{X_i} E_i .\)
+    </center>
+    <p>
+      Then, at every configuration,
+    </p>
+    <center>
+      \(\displaystyle \chi_{X_i} E_i = E_i (1) + \chi_{\{o_i \}} Q_i - D_i +
+      \chi_{Y_i} E_i^0 .\)
+    </center>
+    <p>
+      The projected terms sum to \(\delta_x / 2\) times the small-field
+      clover-curvature square. The regular terms also acquire \(\delta_x\)
+      times the difference between each quadratic clover proxy and its
+      original quadratic path term, and \(- (\alpha_{N, m} + \delta_x)\) times
+      each masked cubic or quartic path term. The remaining mask discrepancies
+      become logarithmic factors in the forced gas.
+    </p>
+    <p>
+      More precisely, let \(\mathcal{E}^{\text{new}}_x\) denote the resulting
+      regular sum and \(\ell_x\) the sum of these logarithmic factors before
+      they are absorbed into the gas. The activity and path splitting
+      identities give
+    </p>
+    <center>
+      \(\displaystyle (\alpha_{N, m} + \delta_x)
+      \mathcal{K}+\mathcal{E}^{\text{new}}_x - \ell_x =
+\alpha_{N, m}
+      \mathcal{S}+\mathcal{E}^{\text{early}}_x - \sum_i E_{x, i} (1) .\)
+    </center>
+    <p>
+      Absorbing \(e^{\ell_x}\) into the original forced gas proves equality of
+      the full densities, including at configurations where masks fail. The
+      reorganization estimates bound the regular terms and the added forced
+      factors; the numerical closure conditions give the claimed allowances.
+      Recipe acceptance is a separate hypothesis.
+    </p>
+    <p>
+      The trial activities are independent of the correction parameter \(d\).
+      Thus exact equality at \(d = \delta_x\) gives \(f (x, d) = (d -
+      \delta_x) \mathcal{K} (V)\) and shape control on \([- r_m, r_m]\). The
+      unique root of Lemma 4.11 is therefore \(\delta_x\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L92-L95"><tt class="verbatim">Collection.Local.actual</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L70-L82"><tt class="verbatim">Local.exponent</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Payment.lean#L77-L84"><tt class="verbatim">Return.settled</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L74-L94"><tt class="verbatim">Return.grants</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L37-L42"><tt class="verbatim">Return.earns</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L44-L61"><tt class="verbatim">Return.remainders</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L30-L36"><tt class="verbatim">Return.physical_shape</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L64-L90"><tt class="verbatim">Return.reset</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Residual.lean#L114-L120"><tt class="verbatim">Residual.splits</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Rewrites.lean#L54-L59"><tt class="verbatim">Local.first_split</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Rewrites.lean#L77-L93"><tt class="verbatim">Collection.path_split</tt></a>.
+      <em>(proof read, including the reorganized activities in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Investor.lean#L112-L128"><tt
+      class="verbatim">Local.renew</tt></a>)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.14 (from per-step inputs to the program).</strong> This
+      is III.9.5(b). The numerical conditions (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L41-L49"><tt class="verbatim">Use.Machine</tt></a>),
+      the existence of early presentations along every admissible input curve
+      (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L77-L81"><tt class="verbatim">Use.Offering</tt></a>) and the start-up curves (<a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L83-L84"><tt class="verbatim">Use.Origins</tt></a>) together give the step program,
+      assuming \(G\) is simple and the machine uses the compatible recipe and
+      physical bounds of III.9.5.
+    </p>
+    <p>
+      <em>Sketch:</em> For each input curve, Lemma 4.7 provides a probe. Lemma
+      4.13 provides (I) and (R). Lemma 4.11 then gives the output curve and
+      the bound \(| \beta - \beta' - \alpha | \leqslant r_m\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L85-L88"><tt class="verbatim">Use.supplier</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L71-L74"><tt
+      class="verbatim">Machine.packet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Stability.lean#L41-L47"><tt class="verbatim">Supplier</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Stability.lean#L67-L70"><tt class="verbatim">program</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-continuity-of-the-transport"></a>4.5 Continuity of the transport<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.15 (joint continuity of the blocked density).</strong>
+      Let \(x \mapsto \rho'_x\) be a continuous curve of lawful
+      representations with fixed path data, clip and norm parameters, and
+      assume the block kernel satisfies the branch conditions of III.1. Then
+      \((x, V) \mapsto (T^{(m)}_{\beta'_x} \rho'_x) (V)\) is jointly
+      continuous, and \(x \mapsto \rho'_x (U)\) is continuous for every \(U\).
+    </p>
+    <p>
+      <em>Sketch:</em> Continuity of the activities in the polymer norm gives
+      uniform convergence of the additive part and of the gas in \(U\). This
+      yields a local uniform bound on \(\rho'_y\), and dominated convergence
+      applies under the kernel. The kernel itself is continuous in \(\beta\)
+      and in the coarse configuration.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L122-L131"><tt class="verbatim">FixedRepData.continuous_push</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L93-L97"><tt class="verbatim">FixedRepData.continuous_eval</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Catalog.lean#L39-L45"><tt
+      class="verbatim">Catalog.stable</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-entry-thresholds"></a>4.6 Entry thresholds<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.16 (monotone thresholds).</strong> Let \(T_j (x)\) be
+      properties, one for each stage \(j\), each holding for all large \(x\).
+      Then any record \(u_j\) can be raised to a nondecreasing record \(m_j
+      \geqslant u_j\) such that \(T_j (x)\) holds for all \(x \geqslant m_j\).
+      For each fine stage \(j\), combine the two possible coarse targets \(i =
+      j\) and \(i = \max (j - 1, 0)\) first.
+    </p>
+    <p>
+      <em>Sketch:</em> Take \(m_j\) to be the prefix maximum of \(\max
+      (\text{threshold}_i, u_i)\) over \(i \leqslant j\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Basic.lean#L111-L118"><tt class="verbatim">collect_upper</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Basic.lean#L126-L131"><tt
+      class="verbatim">eventually_transitions</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Basic.lean#L27"><tt class="verbatim">StepStages</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Post.lean#L34-L38"><tt class="verbatim">DelayLe</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.17 (eventual reset inequalities).</strong> Fix an
+      allowed transition from fine stage \(j\) to coarse stage \(i\), its
+      block factor \(L\), and all the constants in III.9.7. Write \(x =
+      \hat{\beta}_m\), \(y = x + \kappa \log L\), \(M = e^{(\log \log x)^2}\)
+      and \(q_i\) for the early-activity fraction. The conclusions are uniform
+      for \(| \alpha | \leqslant \omega_j + \kappa \log L\) and \(\beta \in [y
+      / 2, 2 y]\). Then all the delay-dependent reset conditions hold for
+      sufficiently large \(x\).
+    </p>
+    <p>
+      <em>Sketch:</em> The sufficient pricing condition \(2 (c + 1) \leqslant
+      \eta rM^2\) holds because \(M \to \infty\). Multiplication by \(x^{-
+      1}\) gives \(2 (c + 1) x^{- 1} \leqslant \eta rt^2\); since
+      \(\varepsilon = x^{- 11 / 10} \leqslant x^{- 1}\) for \(x \geqslant 1\),
+      this implies the required pricing inequality. The cubic condition
+      follows from \(t^3 / \varepsilon = x^{- 2 / 5} M^3 \to 0\).
+    </p>
+    <p>
+      For the local reorganization, its regular bound has the form \(A_i H +
+      B_i | \alpha | t^3\), with \(A_i, B_i\) fixed before \(L\). The choice
+      \(H = q_i \varepsilon\), with \(A_i q_i \leqslant 1 / 64\), leaves room
+      for an output bound \(\varepsilon / 32\). The forced estimate controls
+      both the early forced terms and the added logarithmic factors, at
+      support exponent \(a + 1\), where \(a\) is the coarse support exponent.
+      The width condition is \(4 (a + 1) \leqslant \sigma B\), where
+      \(\sigma\) is the path-decay width. It holds since \(B \to \infty\), as
+      does clip compatibility. The corresponding forced output bound is \(e^{-
+      R_{ji} (y, \beta)}\). If \(4 g_j \leqslant \text{rate}_{ji}\) and
+      \(\beta \in [y / 2, 2 y]\), its definition gives \(R_{ji} (y, \beta)
+      \geqslant g_j M (y)^2\); for large \(x\) it also gives the ordinary
+      forced allowance at \(x\).
+    </p>
+    <p>
+      The inherited condition is
+    </p>
+    <center>
+      \(\displaystyle (f_{ji} / L + u_{ji} (x)) \varepsilon (y)
+      +\mathcal{R}_{ji} (x, y, \beta)
+\leqslant q_i \varepsilon (x), \qquad
+      \beta \in [y / 2, 2 y] .\)
+    </center>
+    <p>
+      Here \(\mathcal{R}_{ji}\) is the fixed step-estimator residual at
+      exponent \(\theta_j\); it is \(o (\varepsilon (x))\) uniformly in this
+      band when \(\theta_j \leqslant 1\), and \(u_{ji} (x) \to 0\). The
+      pre-block inequality gives \(f_{ji} / L \leqslant q_i / 8\). Together
+      with \(\varepsilon (y) / \varepsilon (x) \to 1\), these bounds prove the
+      inequality. Lemma 4.16 combines the conditions in the order: inherited
+      estimates, local reorganization, cubic estimate, reset pricing; the
+      sensors were fixed before \(L\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L56-L62"><tt class="verbatim">can_delay_reset</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L71-L89"><tt
+      class="verbatim">buys_reset</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L46-L49"><tt class="verbatim">sensors</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L100-L106"><tt class="verbatim">delay_cubic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Currency.lean#L75-L126"><tt class="verbatim">Time.cash</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L48-L59"><tt class="verbatim">Time.late</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L62-L65"><tt class="verbatim">Time.open_shop</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L84-L119"><tt class="verbatim">Time.now</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L30-L56"><tt class="verbatim">Time.rawGate</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L75-L89"><tt class="verbatim">Time.beforeWait</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.18 (joint start-up thresholds).</strong> Assume \(G\) is
+      simple and \(c_{\text{dir}} \leqslant 1\) at every used stage. Fix the
+      observable sections, marker bounds and nonnegative additional start-up
+      requests. Before choosing block sizes, enlarge the path and column
+      bounds so that the Wilson top paths satisfy the stage bounds and the
+      column bound is at least the factorial of the derivative order. Then the
+      block-size floors and the coupling and scale thresholds can be enlarged
+      so that every realized choice of levels meeting them has the start-up
+      bounds of Lemma 4.5 and the following additional bounds. Write \(x =
+      \hat{\beta}_N\), \(t = t_N\), \(M = M_N\), \(B = B_N\) and \(a\) for the
+      support exponent at stage \(j = J_N\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          For every prescribed observable section of degree \(d \leqslant j\),
+          its stencil diameter is at most \(B\), and
+        </p>
+        <center>
+          \(\displaystyle \tilde{\varepsilon}_N C_d t^{- s_d} \leqslant
+          \sqrt{\tilde{\varepsilon}_N},\)
+        </center>
+        <p>
+          where \(s_d\) is the total slot order of its section family and
+          \(C_d \geqslant 1\) bounds its evaluation on every configuration by
+          \(C_d\) times the coefficient \(\ell^1\) norm.
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(\beta \in [x / 4, 2 x]\), the start-up regular bound remains
+          \(\varepsilon_N\) after increasing the support exponent by any
+          preassigned \(\delta_j \geqslant 0\). The connected-polymer estimate
+          retains a forced-decay factor \(e^{- \nu M^2}\), where \(\nu = (128
+          h_4)^{- 1} > 0\) and \(h_4 = 2^4  \hspace{0.17em} 4!\) is the order
+          of the lattice point group; its final forced bound is at most
+          \(\tilde{\varepsilon}_N\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The mixture estimates have \(B \geqslant 8\), \(x^{- 1 / 2}  (k + 1)
+          e^{a 5^4} \leqslant 1\), and a connected-polymer bound at most \(1 /
+          2\) with support exponent increased by \(8\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For each preassigned integer observation radius \(r_j\), the
+          first-step numerical bound is
+        </p>
+        <center>
+          \(\displaystyle (4 B + 1)^4  (2 r_j B + 1)^4  \hspace{0.17em} 8
+          \left[ \frac{b_K}{2} + D_G
+\log (4 (1 + 2 x)) \right] \leqslant
+          \frac{x \hspace{0.17em} t^2}{64 h_4},\)
+        </center>
+        <p>
+          where \(b_K > 0\) is the kernel penalty and \(D_G =
+          \dim_{\mathbb{R}} M_n (\mathbb{C})\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      These conclusions persist when the thresholds are increased.
+    </p>
+    <p>
+      <em>Sketch:</em> At a fixed stage only finitely many observable degrees
+      are requested. At fixed stage, the stencil and cylinder constants are
+      fixed, while \(B \to \infty\) and \(e^{- M^{1 / 5}}\) absorbs every
+      fixed power of \(t^{- 1}\). The additional support weights and the
+      first-step cost grow polynomially in \(\log x\), whereas \(xt^2 = M^2\)
+      grows faster than every such polynomial. Take common thresholds and
+      enlarge the block-size floors for the cross-level support estimates. The
+      joint pricing theorem also increases the scale thresholds, while
+      preserving the prescribed volume and growth data. This establishes
+      numerical preparation; subsequent nonlinear steps still require their
+      own activity estimates.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Pricing.lean#L87-L107"><tt class="verbatim">StrongStartup.prices</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Pricing.lean#L47-L64"><tt class="verbatim">StrongStartup.before</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Schedule.lean#L98-L111"><tt class="verbatim">Extra.Multi.pricing</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Fast.lean#L44-L51"><tt class="verbatim">Timing.receive</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L105-L138"><tt class="verbatim">ThroughLaunch.developer</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Author.lean#L34-L36"><tt class="verbatim">Mark.Ready</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Reserve.lean#L69-L76"><tt class="verbatim">StrongStartup.Escrow</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Sleeves.lean#L51-L52"><tt class="verbatim">StrongStartup.BondFuel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/MixRoom.lean#L75-L78"><tt class="verbatim">Mixture.Extras</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-assembly-and-the-running-law"></a>4.7 Assembly and the running law<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.19 (bounds at the edges of the shooting
+      window).</strong> Assume \(\kappa > 0\) and \(\bar{\beta} > 0\). Put
+      \(\phi_m = \bar{\beta} + \tfrac{\kappa}{2} s_m\) and \(\psi_m =
+      \bar{\beta} + 2 \kappa s_m\). Then \([\phi_m, \psi_m] \subset
+      \mathfrak{B}_m\), and \(\phi_0 = \psi_0 = \bar{\beta}\). Assume
+      \(\omega_{J_{m + 1}} \leqslant \tfrac{\kappa}{4} \log L_m\) (guaranteed
+      by the choice of block sizes). If a step satisfies the transfer
+      inequality, then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          input coupling \(\phi_{m + 1}\) forces output coupling \(< \phi_m\);
+        </p>
+      </li>
+      <li>
+        <p>
+          input coupling \(\psi_{m + 1}\) forces output coupling \(> \psi_m\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> \(\beta_m \leqslant \phi_{m + 1} - \kappa \log L_m +
+      \omega \leqslant \phi_m -
+\tfrac{\kappa}{4} \log L_m\), and
+      symmetrically for \(\psi\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L81-L90"><tt class="verbatim">Shoot.gates</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L60-L68"><tt
+      class="verbatim">Shoot.limits</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L73-L79"><tt class="verbatim">Shoot.Drifting.pay</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.20 (shooting in the bare coupling).</strong> Suppose the
+      step program holds and \(G\) is simple. Then for all \(N, p\) there is a
+      trail \((\rho_{N, p, m})_{m \leqslant N}\) with the following
+      properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          it starts with a Wilson start-up \(e^{- \beta S_W}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          each level is admissible, with coupling in \([\phi_m, \psi_m]\);
+        </p>
+      </li>
+      <li>
+        <p>
+          consecutive levels satisfy the transfer clause;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\beta_{N, p, 0} = \bar{\beta}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Choosing these trails for all \(N, p\) gives a history satisfying
+      (1)&ndash;(5) of III.9.3. The common-path clause follows because every
+      trail uses the same prescribed \(P_{N, m}\).
+    </p>
+    <p>
+      <em>Sketch:</em> Decreasing induction on \(m\) carries an interval \([l,
+      u]\) of bare couplings and a continuous curve of trails.
+    </p>
+    <ul>
+      <li>
+        <p>
+          At \(m = N\), restrict the start-up curve to \([\phi_N, \psi_N]\).
+        </p>
+      </li>
+      <li>
+        <p>
+          At each step, apply the step program, giving an output curve over
+          the same interval. By Lemma 4.19 its couplings at \(l\) and \(u\)
+          lie below \(\phi_m\) and above \(\psi_m\). A compactness and
+          intermediate-value argument gives \([l', u'] \subset [l, u]\) whose
+          image is \([\phi_m, \psi_m]\), with \(\phi_m, \psi_m\) attained at
+          the ends.
+        </p>
+      </li>
+      <li>
+        <p>
+          At \(m = 0\) the left end gives \(\beta_0 = \bar{\beta}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L112-L154"><tt class="verbatim">Shoot.steps</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L18-L49"><tt
+      class="verbatim">Shoot.narrow</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L156-L159"><tt class="verbatim">Shoot.successful</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L67-L82"><tt class="verbatim">Recipe.races</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Graces/Eagles.lean#L33-L50"><tt class="verbatim">Graces.winnow</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.21 (running).</strong> For a history on levels
+      satisfying the drift-smallness and stage-divergence conditions of
+      III.9.2, clauses (4) and (5) of III.9.3 imply clause (6).
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          By induction from \(\beta_{N, p, 0} = \bar{\beta} = \hat{\beta}_0\):
+          \(| \beta_{N, p, i} - \hat{\beta}_i | \leqslant \sum_{k = 1}^i
+          \omega_{J_k}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Given \(\varepsilon\), pick \(j\) with \(J_{k + 1}^{- 2} \leqslant
+          \varepsilon / 2\) for \(k \geqslant j\), using \(J \to \infty\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The drift condition gives \(\sum_{k \leqslant i} \omega_{J_k}
+          \leqslant \sum_{k \leqslant j} \omega_{J_k}
++ \tfrac{\varepsilon}{2}
+          (s_i - s_j)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          This is \(\leqslant \varepsilon s_i\) for \(i\) large, since \(s_i
+          \to \infty\). The bound is uniform in \(N \geqslant i\) and \(p\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L23-L53"><tt class="verbatim">Shoot.trajectory</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Orchard/First.lean#L55-L88"><tt
+      class="verbatim">Orchard.traject</tt></a>. The second version replaces (5) by the
+      band at level \(0\).
+    </p>
+    <p>
+      <strong>Lemma 4.22 (the history of the main theorem).</strong> Fix the
+      compatible data of III.13, including its analytic continuation bounds
+      and finite-cutoff solutions. For every \(N, p\) and every real \(b\)
+      with \(|b| < r_{\ast}\), there is a trail in that construction with
+      level-\(0\) coupling \(\bar{\beta} + b\). Its bare coupling is unique
+      within the specified class of finite-cutoff solutions. The coupling and
+      activity arrays admit analytic continuation to the complex disc \(|b| <
+      r_{\ast}\), with \(r_{\ast} > 0\) independent of \(N, p\). At \(b = 0\),
+      these trails form a selected history, and every step is a reset step.
+    </p>
+    <p>
+      <em>Sketch:</em> III.13 solves a coupled finite-cutoff fixed-point
+      problem for all the level couplings. For real offsets its fixed point
+      gives real trails and the stated endpoint; the comparison theorem gives
+      uniqueness in this class. At \(b = 0\), their admissibility gives the
+      common paths and level-wise bounds; their reset steps give exact
+      transfer. Lemma 4.21 supplies running. This is the history used in the
+      Wilson family. The calibration condition records its realized trails and
+      reset steps; it does not assert uniqueness among all representations of
+      the same density.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Spark.lean#L78-L85"><tt class="verbatim">Spire.Uses.exists_bolt</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Spark.lean#L68"><tt class="verbatim">Spire.Uses.hits</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Upland/Plinth.lean#L71-L75"><tt class="verbatim">Upland.Arc.exists_trial</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Forest/Glue.lean#L35-L36"><tt class="verbatim">Mast.calibrated</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Upland/Plinth.lean#L55-L58"><tt class="verbatim">Upland.Arc.finiteCut</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Orbs.lean#L41-L42"><tt class="verbatim">Spire.Fitted.acts</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Alpine.lean#L64-L70"><tt class="verbatim">Spire.Fitted.unions</tt></a>.
+      <em>(proof read for the displayed assembly and finite-cutoff uniqueness
+      theorem; inputs from III.13)</em>
+    </p>
+    <h3 id="auto-12"><a id="48-auxiliary-results"></a>4.8 Auxiliary results<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.23 (marker-rooted sums).</strong> This is III.9.8.
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          If \(x \in X_i\) and a marker \(v\) of \(X_i\) sits in \(X_i\), then
+          \(\text{dist} (o (v), x) \leqslant \text{cover}_M (X_i)  (4 M + 2) +
+          2 M\). So \(e^{a \hspace{0.17em} \text{cover}} \leqslant e^{(a + 1)
+          \text{cover}} 
+\hspace{0.17em} e^{1 - \text{dist} / (4 M + 2)}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Summing over \(i\) marker by marker gives at most \(c\) per marker.
+        </p>
+      </li>
+      <li>
+        <p>
+          Summing over markers gives \(\leqslant \mu \sum_y e^{1 - \text{dist}
+          (y, x) / (4 M + 2)} \leqslant \mu e (2
+(16 M + 9))^4\), uniformly in
+          the torus.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L161-L199"><tt class="verbatim">Extra.Multi.root_hit</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L136-L156"><tt class="verbatim">torus_kernel</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.24 (decay of a shifted Gram inverse).</strong> Fix a
+      finite channel set \(I\), \(r, \eta > 0\) and \(A \geqslant 0\). There
+      are \(C \geqslant 0\) and \(\tau > 0\), depending only on \(I, r, \eta,
+      A\), such that every real convolution kernel \(P\) on \(\mathbb{Z}^4\)
+      with
+    </p>
+    <center>
+      \(\displaystyle \sum_{z \in \mathbb{Z}^4} e^{\eta |z|_1} |P_{ab} (z) |
+      \leqslant A \qquad (a,
+b \in I)\)
+    </center>
+    <p>
+      has a real convolution kernel \(S\) with the corresponding bound \(C\)
+      at exponent \(\tau\), and, on every torus,
+    </p>
+    <center>
+      \(\displaystyle S_n  (rI + P_n^{\textsf{T}} P_n) = I.\)
+    </center>
+    <p>
+      Here \(P_n, S_n\) are periodizations. Thus \(S_n = (rI +
+      P_n^{\textsf{T}} P_n)^{- 1}\), uniformly in the torus side.
+    </p>
+    <p>
+      <em>Sketch:</em> On real momentum, \(rI + \hat{P} (k)^{\ast} \hat{P}
+      (k)\) is positive definite. Compactness in the fixed finite channel
+      space and the weighted kernel bound give invertibility and a uniform
+      inverse bound in a narrower complex strip. Fourier coefficient estimates
+      give an exponentially summable inverse kernel. The discrete Fourier
+      transform identifies its periodization with the inverse matrix on every
+      torus.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L86-L91"><tt class="verbatim">Polar.deliver</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L48-L84"><tt
+      class="verbatim">Polar.invert_tori</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Polar.lean#L142-L163"><tt class="verbatim">Polar.writes</tt></a>.
+    </p>
+    <h2 id="auto-13"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The early presentation with local bounds comes from III.10, the one-loop
+      coefficient from III.7, and the compatible kinetic data from III.13.
+      Given those inputs, the reset must preserve the full masked density,
+      including failed-mask discrepancies and the forced gas. Two-point
+      matching alone does not prove that identity. Lemma 4.13 supplies it and
+      proves the output activity bounds.
+    </p>
+    <p>
+      The marginal coefficient is isolated by gauge symmetry, simplicity and
+      lattice isotropy. It is a Hessian coefficient, so its quadratic energy
+      carries a factor \(1 / 2\). The Wilson start-up has a uniform \(O
+      (t^5)\) residual even when individual links are far from the identity.
+      Continuity in the bare parameter must hold in the activity norms despite
+      the hard configuration masks; shooting depends on this continuity.
+    </p>
+    <p>
+      The block factors grow. The planned one-loop condition implies
+      \(\omega_{J_{m + 1}} \geqslant 1\), while the drift condition gives
+      \(\log L_m \geqslant J_{m + 1}^2 \to \infty\). The gentle-scale
+      condition requires \(\log L_m = o (s_m)\). The reset correction is
+      small:
+    </p>
+    <center>
+      \(\displaystyle | \delta_x | \leqslant \frac{c_m}{4}  \hat{\beta}_m^{- 1
+      / 10} e^{- 2 (\log
+\log \hat{\beta}_m)^2} .\)
+    </center>
+    <p>
+      The constants \(c_m\) depend on the stage pair, so this is a fixed-stage
+      estimate. The separate one-loop error is bounded independently of \(L\)
+      once its earlier parameters are fixed; no decay of that error in \(L\)
+      is required. The argument gives \(\beta_m = \bar{\beta} + \kappa s_m + o
+      (s_m)\) uniformly in the cutoff and volume. It does not give a bounded
+      remainder or a two-loop expansion.
+    </p>
+    <p>
+      The coarsest coupling is prescribed exactly. Shooting chooses the bare
+      coupling separately for each cutoff and volume and restricts the
+      surviving parameter intervals to keep every level in its band. The
+      uniqueness theorem in III.13 applies to its specified continuation
+      class.
+    </p>
+    <h2 id="auto-14"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Written proof</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Lean (glossary)</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Meaning</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\kappa = \frac{11 C_G}{24 \pi^2} = 2 b_0\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">Gauge.slopeConstant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt
+        class="verbatim">Gauge.casimir</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">slope of \(\beta\) against \(\log (1 / a)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(s_m\), \(a_m\), \(L_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115"><tt class="verbatim">Schedule.scale</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99"><tt
+        class="verbatim">Schedule.a</tt></a>, <tt class="verbatim">block</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">scale \(\log (1 / a_m)\), spacing, block factor (odd,
+        \(\geqslant 3\))</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\bar{\beta}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Calendar.bar</tt> (&quot;barrier&quot;)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">coupling at the coarsest level</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\hat{\beta}_m\), \(\mathfrak{B}_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79"><tt class="verbatim">Calendar.hatBeta</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L63"><tt
+        class="verbatim">band</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reference coupling, band \([\hat{\beta} / 2, 2
+        \hat{\beta}]\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(t_m\), \(M_m\), \(B_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L83"><tt class="verbatim">threshold</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L81"><tt class="verbatim">monitor</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L82"><tt class="verbatim">coverSize</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">small-field threshold, its multiplier, cover size</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\varepsilon_m\), \(\tilde{\varepsilon}_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L84"><tt class="verbatim">allowance</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L85"><tt class="verbatim">forcedAllowance</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">sizes of regular and forced activities</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(J_m\), \(\omega_j\), \(\theta_j\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Calendar.J</tt>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L45-L61"><tt class="verbatim">Stage</tt></a>
+        (<tt class="verbatim">drift</tt>), <tt class="verbatim">theta</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">stage index, drift allowance, smallness exponent</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\rho = (P, c, E, K, b, \beta, v)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L165-L171"><tt class="verbatim">Rep</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">effective action (&quot;representation&quot;)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\mathcal{K}_P\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L22-L25"><tt class="verbatim">BetaTransport.kinetic</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\beta\)-coefficient of the leading terms</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(T^{(m)}_{\beta}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79"><tt class="verbatim">StepData.push</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">one block-spin step</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\beta_{N, p, m}\), \(\rho_{N, p, m}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">History.&beta;</tt>, <tt class="verbatim">History.rep</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">selected history</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\alpha_{N, m}\), \(P_{N, m}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77"><tt class="verbatim">Kin</tt></a> (<tt class="verbatim">alpha</tt>,
+        <tt class="verbatim">path</tt>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">one-loop shift of the step, path data</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\mathfrak{D}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36"><tt class="verbatim">Directed</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">scale sequence, kinetic data and recipe</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">reset step</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L49-L55"><tt class="verbatim">Directed.Move</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">one step with exact transfer and \(\lvert \beta - \beta' -
+        \alpha \rvert \leqslant 1\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">step program</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L65-L72"><tt class="verbatim">Directed.Program</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">start-up curves and reset along all admissible curves</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\((c_m, r_m)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L38-L43"><tt class="verbatim">ResetPrices</tt></a> (<tt class="verbatim">cost</tt>,
+        <tt class="verbatim">radius</tt>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">income multiplier, reset window (\(\leqslant 1\))</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\eta_j\), probe \(V\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L92-L94"><tt class="verbatim">Sensor</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L55-L58"><tt class="verbatim">Usable</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">lower bound \(\mathcal{K} (V) \geqslant \lvert \Lambda
+        \rvert \eta t^2\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(f (x, d)\), \(d\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L64-L65"><tt class="verbatim">Template.residual</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">scalar residual, coupling correction</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\chi_X\), \(Q_i\), \(E_i^0\), \(D_i\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Residual.lean#L114-L120"><tt class="verbatim">Residual.splits</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">small-field indicator, local quadratic projection,
+        subtracted regular function, mask discrepancy</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\delta (A)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L75"><tt class="verbatim">Averaging.delta</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">isotropic curvature-squared coefficient of activities</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">early presentation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L26-L27"><tt class="verbatim">Collection.earlyValue</tt></a>, <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L70-L71"><tt class="verbatim">Return.atlas</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">blocked density before the reset</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(P^{\text{top}}\), \(R_p\), \(Q_4\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Design.lean#L34-L38"><tt class="verbatim">Design.top</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L58"><tt
+        class="verbatim">residual</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L154"><tt class="verbatim">fourth</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Wilson top path data, one-plaquette residual, quartic
+        coefficient</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\rho^{\text{start}}_{\beta}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L27-L28"><tt class="verbatim">Bid.Cake</tt></a> with <tt class="verbatim">payload</tt>,
+        <tt class="verbatim">dictionary</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Wilson start-up representation</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">compatible \((c, b)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">WilsonStartup.Decent</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(c_{\text{dir}} \leqslant 1\), \(B \geqslant 2\), \(te^{(B
+        - 2) / c_{\text{rel}}} \geqslant 2\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\phi_m, \psi_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L57"><tt class="verbatim">floorBeta</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L58"><tt class="verbatim">ceilBeta</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">shooting window</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">numerical bounds and entry thresholds</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">glossary item 1</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">constants in the polymer norm estimates and lower bounds on
+        \(\hat{\beta}\)</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-15"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Nonlinear inputs.</strong> The reset is conditional on the
+          early presentation, stronger local activity bounds and continuity.
+          Their supply is the conclusion of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Rain/Glazing.lean#L97-L104">Rain.glazing</a> and <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L56">Roost.Factor.offering</a>. Their assembly proofs identify the
+          required inputs; the underlying nonlinear and Gaussian-sector
+          estimates belong to III.10 and III.4 and are not independently
+          verified here.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Activity reorganization.</strong> The explicit splitting and
+          the proof of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Investor.lean#L112-L128">Local.renew</a> give Lemma 4.13. A full
+          written proof should expand the local reorganization constants and
+          the connected-polymer estimate that absorbs the logarithmic factors.
+          Their detailed norm estimates are inputs from II.2 and III.10.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Finite-cutoff uniqueness.</strong> The uniqueness in Lemma
+          4.22 concerns the class of solutions specified in III.13, with its
+          fixed data and continuation bounds. This construction solves coupled
+          fixed-point equations rather than choosing a subinterval by Lemma
+          4.20. The displayed assembly and uniqueness theorem have been
+          checked; the analytic existence and comparison estimates underneath
+          them remain for III.13. Real offsets satisfy \(|b| < r_{\ast}\);
+          complex offsets parametrize analytic continuations, not real
+          positive densities.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Relaxed histories.</strong> The intermediate history
+          predicate with no endpoint restriction is distinct from the
+          selected-history specification. Its running estimate uses the band
+          at level \(0\). The final centered history satisfies the exact
+          endpoint clause.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Numerical and bibliographic scope.</strong> Lemma 4.18 gives
+          the start-up numerical bounds; their use for source polynomials and
+          first-step observations requires the norm definitions in III.12 and
+          III.15. The cited numerical preparation does not itself construct
+          those observables or their nonlinear continuations. The literature
+          citations in &sect;2 are background references; their exact
+          bibliographic details and comparison with this construction remain
+          unchecked here.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Verification scope.</strong> The correspondence checks use
+          the supplied Lean source and link table. No Lean build or
+          independent axiom-closure check was performed. The package sizes and
+          main-theorem dependency counts are retained from the unit map
+          (tentative).
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-8.html">&larr; III.8 Connected activities and backward
+      dependence cones (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-9.html">Unit outline</a></span><a class="ym-next" href="III-10.html">III.10
+      One full nonlinear renormalization step: bounds on irrelevant terms
+      (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

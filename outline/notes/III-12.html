@@ -1,0 +1,1908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.12. Bounds uniform in the volume and convergence as the spacing
+    tends to zero &mdash; detailed notes &ndash; Yang&ndash;Mills
+    informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-11.html">&larr; III.11 Interacting rank, Gaussian comparison and
+      the stress tensor (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-12.html">Unit outline</a></span><a class="ym-next" href="III-13.html">III.13
+      Alternative construction: one Wilson family for all labels (notes)
+      &rarr;</a>
+    </div>
+    <p>
+      <h1>III.12. Bounds uniform in the volume and convergence as the spacing
+      tends to zero &mdash; detailed notes</h1><a id="iii12-bounds-uniform-in-the-volume-and-convergence-as-the-spacing-tends-to-zero--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">8</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">9</a>
+      </p>
+      <p>
+        4.1 Calculus of the chessboard budget <span style="margin-left: 5mm"></span> <a href="#auto-5">9</a>
+      </p>
+      <p>
+        4.2 Detectors, rank detection and the closure lemma <span style="margin-left: 5mm"></span>
+        <a href="#auto-6">10</a>
+      </p>
+      <p>
+        4.3 Differences of primaries (III.12.2) <span style="margin-left: 5mm"></span> <a href="#auto-7">12</a>
+      </p>
+      <p>
+        4.4 Observable transfer and coupling dependence <span style="margin-left: 5mm"></span>
+        <a href="#auto-8">13</a>
+      </p>
+      <p>
+        4.5 Convergence in the mesh <span style="margin-left: 5mm"></span> <a href="#auto-9">14</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-10">16</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">17</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-12">18</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit III.12: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/III-12.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/III-12.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> III, Ultraviolet construction (renormalization
+      group). <strong>Lean:</strong> chapter 30, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume"><tt class="verbatim">YM/FullVolume/</tt></a>.
+      <strong>Size:</strong> 18,973 lines in the main-theorem closure.
+    </p>
+    <p>
+      <strong>Scope.</strong> This unit proves volume-uniform bounds and takes
+      the ultraviolet limit at each fixed volume. It has three outputs:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) Bounds on lattice correlation functions of composite observables
+          and of their finite differences at separated points. The bounds are
+          uniform in the volume and eventually uniform in the cutoff.
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) Convergence of these correlation functions as \(N \to \infty\)
+          at each fixed volume, with smooth limits.
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) Power-series bounds on their dependence on the renormalized
+          coupling. The assembly uses these.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Notation.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(N\) is the mesh index. The lattice spacing is \(a_N = 1 / D_N\),
+          where \(D_N = \ell_0 \cdots \ell_{N - 1}\) is a product of odd block
+          sizes.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(p\) is the volume index. \(\Lambda_{N, p}\) is the torus of
+          physical side \(L_p\), with \(L_p D_N\) sites per axis. The block
+          size \(\ell_j\) and the physical period \(L_p\) are different
+          quantities.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(m, j, k\) are renormalization-group levels. \(\beta_{N, p}\) is
+          the bare inverse coupling, \(\mathbb{E}_{N, p}\) the Wilson
+          expectation, and \(\hat{\beta}_j\) the renormalized inverse coupling
+          at level \(j\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Lab}_d\) is the finite-dimensional space of labels of degree
+          \(d\). \(O_{N, p} (v ; o)\) is the lattice representative of \(v \in
+          \text{Lab}_d\) at the site \(o\) (II.1).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{N}_d \subset \text{Lab}_d\) is the equation ideal of the
+          free Maxwell field, and \(F_d = \text{Lab}_d /\mathcal{N}_d\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Eventually in the mesh</em> means: there is \(N_0\) such that
+          the statement holds for all \(N \geqslant N_0\) and all \(p\) (the
+          filter <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L13"><tt class="verbatim">mesh</tt></a>). In statements of the form
+          &ldquo;for all large \(m\), eventually in the mesh,&rdquo; \(N_0\)
+          may depend on \(m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A sequence \(w_{N, p}\) in a normed space has <em>sub-power
+          growth</em> if for every \(\varepsilon > 0\), eventually in the
+          mesh, \(\|w_{N, p} \| \leqslant a_N^{- \varepsilon}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L37-L38"><tt
+          class="verbatim">Sluggish</tt></a>). The quantity <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Rates.lean#L40"><tt class="verbatim">flight</tt></a>
+          \((\varepsilon)\) equals \(a_N^{- \varepsilon}\), because <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115"><tt
+          class="verbatim">scale</tt></a> \((N) = \log a_N^{- 1}\).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Definitions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A <em>trial</em> \(F\) is a family of complex functions \(F_{N, p}
+          (o)\) of the gauge field on \(\Lambda_{N, p}\), indexed by a site
+          \(o\). It is <em>local</em> if, eventually in the mesh, it is
+          translation covariant and each \(F_{N, p} (o)\) is gauge invariant,
+          measurable, bounded and depending only on links within \(o + X\),
+          for one fixed finite \(X \subset \mathbb{Z}^4\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Stencils.lean#L20-L22"><tt class="verbatim">Local</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L29"><tt class="verbatim">Stencil</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Chessboard root at scale \(m\).</em> For \(m \leqslant N\),
+          \(T_m (o)\) is the tiling of \(\Lambda_{N, p}\) by cubes of physical
+          side \(a_m\) with one cell centred at \(o\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L34-L40"><tt class="verbatim">center</tt></a>).
+          Let \(G\) be bounded, measurable and gauge invariant, localized in
+          the central cell. Then \(R_m (G) = | \mathbb{E}_{N, p}  \prod_c
+          G^{(c)} |^{1 / \sharp \text{cells}}\). Here \(G^{(c)}\) is obtained
+          by reflecting \(G\) into the cell \(c\) through the cell walls, and
+          is complex conjugated after an odd number of reflections. The number
+          of cells is \(\sharp \text{cells} = (L_p / a_m)^4\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Tiling.lean#L226-L227"><tt
+          class="verbatim">rootTest</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(F\) is <em>affordable at cost</em> \(u (m, N, p)\) if \(F\) is
+          local and the following holds for all large \(m\), eventually in the
+          mesh: \(F_{N, p} (0)\) is localized in the central cell of \(T_m
+          (0)\) and \(R_m (F_{N, p} (0)) \leqslant u (m, N, p)\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(F\) is <em>owed at cost</em> \(v (N, p)\) if it is affordable
+              at a cost independent of \(m\).
+            </p>
+          </li>
+          <li>
+            <p>
+              \(F\) is <em>funded</em> if it is affordable at a cost \(u (m)\)
+              independent of \((N, p)\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L19-L22"><tt class="verbatim">Affords</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L24"><tt class="verbatim">Owed</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L28"><tt class="verbatim">Funded</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Normalized differences:</em> \((\Delta_{\mu} F)_{N, p} (o) =
+          a_N^{- 1}  (F_{N, p} (o + e_{\mu}) - F_{N, p}
+(o))\), and \(\Delta_l
+          = \Delta_{\mu_1} \cdots \Delta_{\mu_k}\) for a list \(l = (\mu_1,
+          \ldots, \mu_k)\) of axes (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L16-L17"><tt class="verbatim">farther</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L19-L21"><tt class="verbatim">hops</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>coin</em> of degree \(d\) is a sequence \(x = (x_{N, p})\) in
+          \(\text{Lab}_d\) whose inverse terminal coordinates have sub-power
+          growth (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L146-L147"><tt class="verbatim">Coin</tt></a>). Thus, if \(\tau_{d ; N,
+          p}\) is the terminal coordinate isomorphism, \(\| \tau_{d ; N, p}^{-
+          1} x_{N, p} \| \leqslant a_N^{- \varepsilon}\) eventually for every
+          \(\varepsilon > 0\). Under the consistency conditions on the family,
+          bounded label sequences are coins. \(O (x)\) denotes the trial
+          \(O_{N, p} (x_{N, p} ; \cdot)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>presentation</em> is, for each \(d\) and each \((N, p)\), an
+          idempotent linear map \(\pi_{N, p}\) on \(\text{Lab}_d\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L39-L41"><tt
+          class="verbatim">Presentation</tt></a>, IV.1). The kernel condition is an
+          additional hypothesis.
+        </p>
+      </li>
+      <li>
+        <p>
+          For a real configuration \(x\), write \(\alpha_N (x)_{i \mu} =
+          \lceil x_{i \mu} / a_N \rceil\) for its coordinatewise ceiling
+          address (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Round.lean#L18"><tt class="verbatim">address</tt></a>). This is the right
+          endpoint convention. Interpolation means multilinear interpolation
+          on the corresponding cubes (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Panes.lean#L52-L53"><tt class="verbatim">interpolated</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.12.1 (kernel bounds uniform in the
+      volume).</strong> Let \(R\) be a run (&sect;2) for a simple gauge group
+      \(G\), with Wilson family \(C\). Fix \(n\), labels \(v_i \in
+      \text{Lab}_{d_i}\) (\(1 \leqslant i \leqslant n\)), a finite list
+      \(\lambda\) of pairs (slot \(i\), axis \(\mu\)), and \(r > 0\). Then
+      there are \(B \geqslant 0\) and \(N_0\) with the following property. For
+      all \(N \geqslant N_0\), \(p\) and integer configurations \(x\)
+      satisfying \(a_N \hspace{0.17em} \text{dist} (x_i, x_j) \geqslant r\)
+      for \(i \ne j\),
+    </p>
+    <center>
+      \(\displaystyle | \Delta_{\lambda}  \hspace{0.17em} \mathbb{E}_{N, p} 
+      [O_{N, p} (v_1 ; x_1)
+\cdots O_{N, p} (v_n ; x_n)] | \leqslant B.\)
+    </center>
+    <p>
+      Here \(\Delta_{(i, \mu)}\) is the normalized forward difference in
+      \(x_i\) along \(e_{\mu}\), and \(\text{dist}\) is the periodic
+      \(\ell^{\infty}\) lattice distance. \(N_0\) and \(B\) may depend on \(R,
+      n, (v_i), \lambda, r\), but not on \(p\). <em>Status:</em> theorem, for
+      every run; the run supplies all inputs (&sect;2). <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Discrete.lean#L50-L52"><tt class="verbatim">FixedBounds</tt></a> (statement), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Discrete.lean#L15-L16"><tt class="verbatim">gKernel</tt></a>
+      (the differenced kernel), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L62"><tt class="verbatim">genuine</tt></a>
+      (theorem), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L42-L61"><tt class="verbatim">funding</tt></a> (reduction to III.12.2).
+    </p>
+    <p>
+      <strong>Proposition III.12.2 (derivative closure of the chessboard
+      budget).</strong> Let \(R\) be a run for a simple \(G\). Let \(w =
+      (w_{N, p})\) be a sequence in \(\text{Lab}_d\) with \(\|w_{N, p} \|
+      \leqslant K\) eventually in the mesh, for some \(K \geqslant 0\), and
+      let \(l\) be a list of axes. Then \(\Delta_l O (w)\) is funded: for some
+      \(u (m)\) and all large \(m\), eventually in the mesh it is localized in
+      the central cell and \(R_m  (\Delta_l O (w)_{N, p} (0)) \leqslant u
+      (m)\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L24-L33"><tt class="verbatim">Run.financed</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.12.3 (closure lemma).</strong> Fix a degree
+      \(d\). Let \(C\) be a Wilson family satisfying its consistency
+      conditions and the following hypotheses:
+    </p>
+    <ol>
+      <li>
+        <p>
+          the centred budget (&sect;2);
+        </p>
+      </li>
+      <li>
+        <p>
+          the scale-selection data of &sect;2;
+        </p>
+      </li>
+      <li>
+        <p>
+          sound section data \(V_e\) and linear automorphisms \(W_e\) of the
+          abstract labels, for every degree \(e\), satisfying the section,
+          symmetry and exact local identities described in &sect;2;
+        </p>
+      </li>
+      <li>
+        <p>
+          a presentation \(\pi\) and the full section-comparison data of
+          &sect;2, including the quantitative comparison with \(V_e\),
+          identification of \(\ker \pi_{N, p}\) with a dressed equation ideal,
+          and a bound \(\sup_{N, p} \| \pi_{N, p} \| < \infty\) for each
+          degree;
+        </p>
+      </li>
+      <li>
+        <p>
+          degree-\(d\) detector rows satisfying the placement and bounded-lift
+          conditions of Lemma 4.6 and the short-distance comparison of Lemma
+          4.8 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L49-L52"><tt class="verbatim">VitalRank</tt></a>).
+        </p>
+      </li>
+    </ol>
+    <p>
+      Let \(F\) be a funded trial whose values \(F_{N, p} (o)\) are continuous
+      functions of the gauge field, and let \(l\) be a list of axes. Let \(x\)
+      be a coin of degree \(d\) such that \(O (x) - \Delta_l F\) is owed at a
+      cost \(u_{N, p} \to 0\) in the mesh. Then \(\Delta_l F\) is funded.
+      <em>Status:</em> theorem under the stated hypotheses. For a run, these
+      follow from its ties, with the detector comparison obtained from its
+      short-distance estimates (&sect;2). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Moneys.lean#L69-L78"><tt class="verbatim">improved</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Moneys.lean#L23-L63"><tt class="verbatim">cap</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.12.4 (uniform rank detection).</strong> Assume
+      hypotheses 1&ndash;5 of III.12.3 and fix a list \(l\) of axes. For all
+      large \(k\) and all sufficiently small \(b > 0\) there is \(Z \geqslant
+      0\) such that, eventually in the mesh,
+    </p>
+    <center>
+      \(\displaystyle \| \pi_{N, p} x\| \leqslant Z \hspace{0.17em} |
+      \mathcal{P}_{k, b, l ; N, p} 
+(\pi_{N, p} x) | \qquad \text{for all } x
+      \in \text{Lab}_d .\)
+    </center>
+    <p>
+      Here \(\mathcal{P}_{k, b, l ; N, p} : \text{Lab}_d \to \mathbb{C}^J\) is
+      the linear detector of Lemma 4.6: correlations with fixed partners,
+      averaged successively in the directions of \(l\) over lengths between
+      \(b\) and \(2 b\). Repeated axes give repeated averages.
+      <em>Status:</em> theorem (conditional on 1&ndash;5). <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Lit.lean#L51-L91"><tt class="verbatim">trained</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Windows.lean#L88"><tt class="verbatim">probe</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.12.5 (labels in the equation ideal give
+      negligible observables).</strong> Assume the consistency conditions on
+      \(C\) and hypotheses 2&ndash;4 of III.12.3. Let \(x\) be a coin of
+      degree \(d\) with \(\pi_{N, p} x_{N, p} = 0\) for all \((N, p)\). Then
+      \(O (x)\) is owed at cost \(a_N^{1 / 32}\): it is local, and for all
+      large \(m\), eventually in the mesh, \(R_m (O (x)_{N, p} (0)) \leqslant
+      a_N^{1 / 32}\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Lit.lean#L17-L19"><tt
+      class="verbatim">sweep</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Silent.lean#L105-L115"><tt class="verbatim">banked</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.12.6 (polynomial bounds on the dependence on the
+      coupling).</strong> Let \(R\) be a run, \(T\) a <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Stage/Crests.lean#L20-L27">campaign</a>
+      for \(R\) with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Vendee.lean#L22-L27">pillars</a> \(W\), and assume the bounds <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fares/Oz.lean#L22-L28"><tt class="verbatim">Sky</tt></a>. Let \(\bar{\beta}\) be the target level-0
+      coupling and \(w > 0\) the fan width (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gain/Resolve.lean#L72"><tt class="verbatim">ask</tt></a>).
+      Fix \(p\), labels \(V_0\) (an \(n\)-tuple) and \(r > 0\). Then there are
+      \(b, m \in \mathbb{N}\) with \(m \geqslant 1\), \(B \geqslant 0\) and
+      \(c \in (0, 1]\) with the following property.
+    </p>
+    <p>
+      Take \(m \leqslant j < N\) and \(a \in [- 1, 1]\). Take a family \(s
+      \mapsto F (s)\), \(s \in [- 1, 1]\), of admissible campaign members,
+      with the same block sequence, sections and labels, whose level-0 inverse
+      coupling at \((N, p)\) is \(\bar{\beta} + w \hspace{0.17em} a
+      \hspace{0.17em} s\). Use the expectation and representatives of the
+      attached auxiliary transfer family; their correlations agree with those
+      of the actual successful trajectory at these positive cutoffs (Lemma
+      4.18). Take an \(r\)-separated configuration \(o\) of sites of
+      \(\Lambda_{j + 1, p}\), embedded into \(\Lambda_{N, p}\). Then the
+      correlation
+    </p>
+    <center>
+      \(\displaystyle s \longmapsto \mathbb{E}^{F (cs / 2)}_{N, p} \left[
+      \prod_i O (V_{0, i} ; o_i)
+\right], \qquad s \in [- 1, 1],\)
+    </center>
+    <p>
+      equals \(\sum_{i \geqslant 0} P_i s^i\) with \(\sum_i |P_i | \leqslant B
+      \hspace{0.17em} a_{j + 1}^{- b}\). The constants depend only on the
+      campaign data, \(p\), the labels and \(r\). <em>Status:</em> theorem,
+      conditional on the campaign records. These are supplied on the
+      main-theorem route by the assembly (VIII.1). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fares/Scrap.lean#L40-L51"><tt
+      class="verbatim">Face.financed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Dome.lean#L31-L32"><tt class="verbatim">PaidBeam</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Ray/Gain.lean#L22"><tt class="verbatim">Ray.sun</tt></a> (\(= [- 1, 1]\)), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Budget.lean#L34"><tt class="verbatim">intervalClock</tt></a>
+      (\(= a_{j + 1}^{- 1}\) at level \(j + 1\)), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Chrome.lean#L58"><tt class="verbatim">slash</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Chrome.lean#L65"><tt class="verbatim">verso</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.12.7 (Cauchy property in the mesh at fixed
+      volume).</strong> Fix a simple gauge group and one renormalization-group
+      construction, with its stationary-path bounds, free amplification,
+      observable-transfer bounds and common reference sections. Assume the
+      uniform perturbation estimates for that construction (&sect;2). Fix
+      \(p\). Let \((C_n)\) be families formed from histories in this
+      construction at cutoffs \(f (n) \to \infty\). Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Capital.lean#L19-L22"><tt class="verbatim">Rising</tt></a>: each history is a selected
+          branch from a level \(k\) on, and agrees with a fixed kinetic path.
+          The stationary kinetic paths converge with a strict reserve in their
+          admissible bounds. For every fixed level \(i \geqslant k\), the
+          inverse couplings are Cauchy and the polymer activities admit Cauchy
+          representatives in the common weighted space (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Honors.lean#L30-L35"><tt class="verbatim">Helmet</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) For each label degree used below, its reference level \(t (d)\)
+          satisfies \(k \leqslant t (d)\) and \(d + 3 \leqslant J (t (d))\).
+          The transfer data are based at the reference section at \(t (d)\)
+          and are obtained by composing the branch transfers of Lemma 4.16.
+        </p>
+      </li>
+      <li>
+        <p>
+          (iii) For every sufficiently large base level \(r\), the multiscale
+          remainder bounds hold for all sufficiently large sequence indices
+          \(n\). Their label allowances \(\zeta (d, r)\) are eventually
+          positive for each degree used, and their occupancy allowances are at
+          least \(1\) at every level.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Fix a finite label list \((v_i)_{i = 1}^s\) and a configuration \(x \in
+      (\mathbb{R}^4)^s\) with \(x_i - x_j \not\in L_p \mathbb{Z}^4\) for \(i
+      \ne j\). Assume that \(x\) <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Eves.lean#L12">lies exactly on a common lattice</a>
+      of some level \(r\): \(x = a_r z\) for an integer configuration \(z\).
+      Then the correlations of \(C_n\) at cutoff \(f (n)\), evaluated at the
+      coordinatewise ceiling lattice points of \(x\), form a Cauchy sequence
+      in \(n\). <em>Status:</em> theorem under these hypotheses. For a run
+      equipped with a campaign, pillars, fixed-level convergence data and the
+      uniform perturbation estimates (&sect;2), it applies with \(C_n = C\)
+      and \(f (n) = n\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Seat.lean#L37-L45"><tt class="verbatim">Rising.cinema</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Timber.lean#L73-L103"><tt class="verbatim">Rising.arrives</tt></a>; run instance <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L30-L38"><tt
+      class="verbatim">Campaign.sees</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.12.8 (positional ultraviolet limit).</strong>
+      Let \(C\) be a Wilson family and \(e\) a strictly increasing sequence of
+      mesh indices. Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the conclusion of III.12.1 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Discrete.lean#L50-L52"><tt class="verbatim">FixedBounds</tt></a>);
+        </p>
+      </li>
+      <li>
+        <p>
+          the lattice correlations at coordinatewise ceiling lattice points
+          are Cauchy along \(e\) at every configuration satisfying \(x_{i \mu}
+          - x_{j \mu} \not\in L_p \mathbb{Z}\) for every \(i \ne j\) and every
+          axis \(\mu\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L56-L58"><tt class="verbatim">Purchased</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then for every \(p\), \(n\) and \(v_1, \ldots, v_n\) there is a function
+      \(f\) on \((\mathbb{R}^4)^n\), \(C^{\infty}\) on \(\text{NoHit}_p = \{x
+      : x_i - x_j \not\in L_p \mathbb{Z}^4 (i \neq j)\}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Patch.lean#L25-L26"><tt class="verbatim">NoHit</tt></a>),
+      such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) for every smooth compactly supported test function \(t\) whose
+          support avoids collisions and lies strictly inside the centred
+          period cell in every coordinate, the smeared lattice sums converge
+          along \(e\) to \(\int tf\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) fix any finite list of coordinate directions (slot, axis), and
+          in each direction choose integers \(q_-, q_+ \geqslant 0\) with
+          \(q_- + q_+ > 0\). Use the stencil \((F (x + q_+ e) - F (x - q_- e))
+          / ((q_- + q_+) a_N)\). If \(g\) is the corresponding iterated
+          coordinate derivative of \(f\), then:
+        </p>
+        <ul>
+          <li>
+            <p>
+              along \(e (s_i)\) for every sequence \(s_i \to \infty\), the
+              difference quotients at lattice configurations whose physical
+              positions converge to \(x \in \text{NoHit}_p\) converge to \(g
+              (x)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Strings.lean#L55-L58"><tt class="verbatim">Cluster</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              their multilinear interpolations converge locally uniformly on
+              \(\text{NoHit}_p\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(tg\) is integrable and the smeared sums of the differences
+              converge to \(\int tg\) for every test \(t\) as in (a).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem under the two displayed hypotheses. For a run
+      with a campaign, pillars, fixed-level convergence and uniform
+      perturbation estimates, the full-sequence instance \(e = (0, 1, 2,
+      \ldots)\) is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L45"><tt class="verbatim">Campaign.realUV</tt></a>. Its pointwise
+      Cauchy hypothesis is derived from III.12.7 in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L40-L44"><tt class="verbatim">Campaign.purchased</tt></a>.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L25-L36"><tt class="verbatim">PositionsUV</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L42-L47"><tt
+      class="verbatim">positioned</tt></a>. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L52-L57"><tt class="verbatim">printed</tt></a> is a
+      variant along an extraction order and is not on the main-theorem route.
+    </p>
+    <p>
+      <strong>Use in the assembly.</strong> The record <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L133-L149"><tt class="verbatim">Final.Jewel</tt></a>
+      is produced by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Joint.lean#L102-L111"><tt class="verbatim">jewelOf17</tt></a>. Its fields take
+      the outputs of this unit:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The kernel-bound conclusion is III.12.1.
+        </p>
+      </li>
+      <li>
+        <p>
+          The full-mesh conclusion is III.12.8 on the full sequence. This is
+          (D5); through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L117-L126"><tt class="verbatim">from_spec</tt></a> it gives the
+          ordered limit with the full ultraviolet sequence, (D4).
+        </p>
+      </li>
+      <li>
+        <p>
+          The analytic-family conclusion uses III.12.6, through the chain of
+          &sect;4.4 ending in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Atlas.lean#L94-L104"><tt class="verbatim">Fan.standing</tt></a> and <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L84-L99"><tt class="verbatim">Travel</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>The run and its ties.</strong> A <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L30-L48"><tt class="verbatim">Run</tt></a>
+      (II.2, III.14) fixes the block sizes and numerical bounds, bare history,
+      interlevel gauge maps and observable transfers. Its degree-\(d\)
+      reference level satisfies \(J (t (d)) \geqslant d + 3\), and its Wilson
+      family satisfies the consistency conditions.
+    </p>
+    <p>
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L73-L75"><tt class="verbatim">Run.again</tt></a>, proved through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Forge.lean#L60-L72"><tt
+      class="verbatim">ahead</tt></a> gives an extracted hierarchy and reconstruction
+      after refining any extraction order, together with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L65-L71"><tt class="verbatim">Run.Ties</tt></a>,
+      which has these fields:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The centred budget <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L38-L40"><tt class="verbatim">Wcmain</tt></a> for the
+          family. For every \(d\), every \(R > 0\) and every \(\varepsilon >
+          0\) there is \(A \geqslant 0\) such that, for every \(m \geqslant t
+          (d)\), eventually in \(N\), for all \(p\), all \(v \in
+          \text{Lab}_d\) with \(\|v\| \leqslant R\) and all sites \(o\):
+          \(O_{N, p} (v ; o)\) is localized in the cell of \(T_m (o)\) centred
+          at \(o\), and its chessboard root is at most \(A \hspace{0.17em}
+          a_m^{- d - \varepsilon}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L21-L23"><tt class="verbatim">centeredBudget</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          The <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Overlay/Prior.lean#L15-L18">scale-selection conditions</a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Remainder and regularity estimates for observables (III.11).
+        </p>
+      </li>
+      <li>
+        <p>
+          Section data \(V_d\), dressings \(W_d\) satisfying <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Portfolio.lean#L51-L58"><tt
+          class="verbatim">Portfolio</tt></a>, a presentation, and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fire.lean#L17-L20"><tt class="verbatim">Hearthside</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          For every limit table and every degree \(d\), detector rows (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Corrected.lean#L53-L66"><tt class="verbatim">Columns.Trials</tt></a>) with the short-distance
+          data <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Bought.lean#L68-L84"><tt class="verbatim">Purchases</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Under the section hypotheses of III.12.3, the section is sound, has the
+      prescribed polynomial realization and finite regularity bounds, and its
+      dressing commutes with signed lattice symmetries and conjugation.
+      Dressed equation labels satisfy the distant-spectator identity of Lemma
+      4.10.
+    </p>
+    <p>
+      The <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Canopy.lean#L30-L32">section-comparison estimates</a> include cutoff-dependent
+      automorphisms \(A_{d ; N, p}\) on terminal coordinates, auxiliary
+      comparison columns, and a sub-power sequence \(E_d (N)\). Eventually,
+      uniformly in \(p\), \(A_{d ; N, p}\) is the symmetry-averaged map
+      determined by these columns and its inverse increases coefficient size
+      by at most a factor \(2\). For every comparison column and every signed
+      or conjugated version, the centred root of the difference between the
+      auxiliary section evaluation and the chosen section evaluation is
+      bounded by
+    </p>
+    <center>
+      \(\displaystyle C_d (m, k) E_d (N) a_N^{1 / 8} .\)
+    </center>
+    <p>
+      This holds for every admissible auxiliary level \(k < N\) and centred
+      scale \(m \leqslant N\); \(C_d (m, k)\) is the comparison constant from
+      III.11. The scale-selection data choose such a \(k\) for each
+      sufficiently large \(m\). The kernel of \(\pi_{N, p}\) is the image of
+      \(\mathcal{N}_d\) under the dressing, threshold rescaling, terminal map
+      and \(A_{d ; N, p}\). The data also retain the projection symmetries and
+      the finite-cutoff equation and difference comparisons needed by
+      extraction.
+    </p>
+    <p>
+      Other existence formulations are <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L55-L60"><tt class="verbatim">Run.ramp</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L83-L95"><tt class="verbatim">realized</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Forge.lean#L28-L49"><tt class="verbatim">dagger</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Unlatch.lean#L38-L76"><tt class="verbatim">rampant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L154-L164"><tt class="verbatim">Final.july</tt></a>.
+    </p>
+    <p>
+      <strong>From other units.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>III.11.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The centred budget for the run's family is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Gardens.lean#L19-L40"><tt class="verbatim">gardena</tt></a>,
+              via <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Baskets.lean#L36-L67"><tt class="verbatim">coastwise</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Balloon.lean#L22-L47"><tt
+              class="verbatim">tent</tt></a>. The centred logarithmic root bound is
+              eventually at most \((d + \varepsilon) \log a_i^{- 1}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              The short-distance estimates for detector lifts compare their
+              cumulant polynomials with the free Maxwell profile in chessboard
+              norm. The lifts are bounded and admissibly placed, and the
+              rescaled test configurations converge.
+            </p>
+          </li>
+          <li>
+            <p>
+              The remainder comparison for normalized local observables and
+              their regularity constants is the input of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Paid.lean#L47-L49"><tt class="verbatim">prepared_rows</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>II.1.</strong> Labels and representatives. The normalized
+          observables \(a_N^d F\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/RawTop.lean#L25-L26"><tt class="verbatim">unpriced</tt></a>) and
+          their regularity class (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/RawTop.lean#L28-L29"><tt class="verbatim">clothed</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/RawTop.lean#L90-L118"><tt class="verbatim">section_bounds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/RawTop.lean#L133-L151"><tt class="verbatim">offmask</tt></a>).
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Placement.lean#L232-L270"><tt class="verbatim">offset</tt></a>: the root on a coarse tiling at
+          any interior offset is bounded by the centred root at a finer scale.
+          The matching rate <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Estimate.lean#L68"><tt class="verbatim">gamma</tt></a> \(= 1 / 8\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>II.2.</strong> The Wilson family, its consistency conditions
+          (translation covariance, locality of the representatives,
+          continuity) and the run record.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>IV.1.</strong> Tilings, chessboard roots and localized
+          observables. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L14-L19"><tt class="verbatim">Seam</tt></a> holds for every
+          \(\beta \geqslant 0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L21-L24"><tt class="verbatim">laws</tt></a>) and gives
+          two inequalities:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the chessboard inequality \(|\mathbb{E} \prod_c G_c^{(c)} |
+              \leqslant \prod_c R (G_c)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the triangle inequality \(R (G + G') \leqslant R (G) + R (G')\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L81-L84"><tt class="verbatim">seamless</tt></a> gives \(\beta_{N, p} \geqslant
+          0\). Also: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Equicontinuity.lean#L66-L103"><tt class="verbatim">stepTotal</tt></a> (Lipschitz bound
+          in the positions for correlations at separated points, derived from
+          centred budgets); <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Tame.lean#L35-L97"><tt class="verbatim">growFrom</tt></a> (Cauchy on a
+          dense set plus asymptotic equicontinuity gives locally uniform
+          convergence).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.2.</strong> Existence of the section-comparison data and
+          the numerical parameter sequence.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.6, III.8, III.9, III.10.</strong> Histories and selected
+          branches; stationary-branch records (used in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Capital.lean#L31-L35"><tt class="verbatim">Rising.flooded</tt></a>).
+          The running coupling satisfies \(\hat{\beta}_j = \text{const} +
+          \kappa_G \log a_j^{- 1}\) with \(\kappa_G > 0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176"><tt class="verbatim">slopeConstant_pos</tt></a>).
+          The large-field radius grows without bound in \(\hat{\beta}\) (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/E01.lean#L210-L211"><tt class="verbatim">radiusB_tendsto</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>VIII.1.</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Glide/Vac.lean#L31-L63"><tt class="verbatim">Winter</tt></a>, proved
+          by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Glide/Vac.lean#L65-L89"><tt class="verbatim">offers</tt></a>, gives fixed-level
+          convergence of the inverse couplings and normalized activities for
+          sequences of successful trajectories whose level-0 couplings
+          converge. It includes the kinetic-path reserve, free amplification
+          and analytic versions of the limits. The activity norm includes
+          regular derivatives, forced terms and support weights; the scalar
+          part of the effective action is excluded. The assembly supplies its
+          stationary-path, free-amplification and uniform perturbation inputs;
+          the pillars identify the run's transfers with the branch transfers.
+          The bare coupling's analytic extension is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L70-L77"><tt class="verbatim">bareTrial</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Reflection positivity of the Wilson action:
+          Osterwalder&ndash;Seiler, <em>Ann. Phys.</em> 110 (1978).
+        </p>
+      </li>
+      <li>
+        <p>
+          Chessboard estimates:
+          Fr&ouml;hlich&ndash;Israel&ndash;Lieb&ndash;Simon, <em>Comm. Math.
+          Phys.</em> 62 (1978) and <em>J. Stat. Phys.</em> 22 (1980);
+          Shlosman, <em>Russian Math. Surveys</em> 41 (1986).
+        </p>
+      </li>
+      <li>
+        <p>
+          The chessboard seminorm (triangle inequality for \(R\)):
+          Fr&ouml;hlich&ndash;Lieb, <em>Comm. Math. Phys.</em> 60 (1978);
+          Biskup, <em>Reflection positivity and phase transitions in lattice
+          spin models</em> (2009).
+        </p>
+      </li>
+      <li>
+        <p>
+          Summation by parts. Stability of injectivity of a linear map under
+          small perturbations. The dimension count for a linear map of known
+          rank.
+        </p>
+      </li>
+      <li>
+        <p>
+          Arzel&agrave;&ndash;Ascoli type arguments. Taylor's theorem with
+          remainder.
+        </p>
+      </li>
+      <li>
+        <p>
+          Absolutely convergent power series, uniqueness from their values on
+          a real interval, polynomial coefficient estimates and dominated
+          convergence for series.
+        </p>
+      </li>
+      <li>
+        <p>
+          The renormalization-group control of effective actions uniformly in
+          the volume: Balaban, <em>Comm. Math. Phys.</em> 1984&ndash;1989
+          (references as in III.9).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The exponent \(- d - \varepsilon\) in the centred budget. III.12.2
+          uses it with \(\varepsilon = 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The matching chain: rate \(\gamma = 1 / 8\), giving an owed cost
+          \(a_N^{1 / 16}\) in Lemma 4.14; the equation-ideal estimate gives
+          \(a_N^{1 / 32}\) (III.12.5).
+        </p>
+      </li>
+      <li>
+        <p>
+          The tail factor \(e^{- B_j / 64}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Sever.lean#L16"><tt class="verbatim">brisk</tt></a>),
+          where \(B_j\) is the budget radius at level \(j\). Positions must
+          have mutual lattice distance at least \(B_j^2\) at level \(j\).
+        </p>
+      </li>
+      <li>
+        <p>
+          All numerical thresholds of the run (III.2).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The centred budget applies to primaries with bounded physical labels. A
+      normalized difference carries the divergent factor \(a_N^{- 1}\), so it
+      needs a separate argument. The local regularity estimates and the
+      matching theorem of III.11 write \(\Delta_l O (w)\) as a degree-\((d +
+      |l|)\) primary \(O (x)\) with an error of root cost \(a_N^{1 / 16}\).
+      The inverse terminal coordinates of \(x\) have only sub-power control.
+      To bound \(\pi x\), test against fixed partner observables and average
+      in the differenced directions. Summation by parts bounds these tests by
+      \((2 / b)^{|l|}\) times an undifferenced correlation bound. At short
+      distances the detector approaches a free Maxwell matrix that separates
+      the quotient by the equation ideal. Finite-dimensional stability then
+      bounds \(\pi x\). The auxiliary equation sections have zero chessboard
+      root by their distant-spectator identity; section comparison makes \(O
+      (x - \pi x)\) negligible. Thus \(\Delta_l O (w)\) is funded, and the
+      chessboard inequality bounds products at separated points
+      (III.12.1&ndash;III.12.5).
+    </p>
+    <p>
+      For convergence, fix the volume and an intermediate level \(j\).
+      Fixed-level convergence of the couplings, normalized activities and
+      effective insertions makes the scalar-normalized level-\(j\) correlation
+      Cauchy as the cutoff grows. The full correlation differs from it by at
+      most \(2 F_0 e^{- B_j / 64}\) for all sufficiently large cutoffs, where
+      \(F_0\) is independent of the cutoff and \(j\). Since \(B_j = \lceil
+      (\log \hat{\beta}_j)^2 \rceil \to \infty\), the full correlations are
+      Cauchy at configurations lying on a common lattice. Positional Lipschitz
+      bounds extend convergence from this dense set to every non-collision
+      configuration. Taylor bounds identify limits of differences with
+      derivatives, giving smoothness and the smeared limits
+      (III.12.7&ndash;III.12.8).
+    </p>
+    <p>
+      For dependence on the coupling, vary the level-0 value in a family
+      parametrized by \(\bar{\beta} + ws\). After reducing the parameter
+      interval, the lattice correlations have absolutely convergent power
+      series whose coefficient norms grow polynomially in \(a_j^{- 1}\),
+      uniformly in the cutoff (III.12.6). Their real level-to-level
+      differences are \(O (a_j)\). A polynomial coefficient estimate after a
+      further interval reduction makes the differences summable in coefficient
+      norm. Fixed-level Cauchy convergence of the series then gives analytic
+      continuum correlations on a complex disc. This uses the same fixed-level
+      convergence input as the preceding paragraph, together with the
+      additional analytic estimates.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-calculus-of-the-chessboard-budget"></a>4.1 Calculus of the chessboard budget<span style="margin-left: 1em"></span></h3>
+    <p>
+      Throughout &sect;&sect;4.1&ndash;4.3, the family satisfies its
+      consistency conditions. In &sect;4.2, assume hypotheses 1&ndash;5 of
+      III.12.3, with the same detector rows and presentation throughout.
+    </p>
+    <p>
+      <strong>Lemma 4.1 (closure properties).</strong> For trials \(F, H\) and
+      costs \(u, v\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\text{Aff} (F, u)\) and \(\text{Aff} (H, v)\) imply \(\text{Aff}
+          (F \pm H, u + v)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Aff} (F, u)\) implies \(\text{Aff} (cF, |c|u)\) for any \(c
+          = c_{N, p} \in \mathbb{C}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Aff} (0, 0)\), and finite sums behave the same way.
+        </p>
+      </li>
+      <li>
+        <p>
+          Affordability is monotone in the cost.
+        </p>
+      </li>
+      <li>
+        <p>
+          It is unchanged if \(F\) is modified off a tail of the mesh.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Hence funded trials form a vector space. <em>Sketch:</em> linear
+      combinations preserve locality; the root is homogeneous and satisfies
+      the chessboard triangle inequality. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L63-L79"><tt class="verbatim">Affords.sub</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L80-L87"><tt class="verbatim">Affords.scalar</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L61-L62"><tt class="verbatim">Affords.enlarged</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L107-L110"><tt class="verbatim">Affords.recurses</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L116-L118"><tt class="verbatim">Funded.sub</tt></a>;
+      negation, addition, the zero trial and finite sums are treated in <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean">the same file</a>.
+    </p>
+    <p>
+      <strong>Lemma 4.2 (all offsets).</strong> Let \(F\) be affordable at
+      cost \(u\). For every \(m\) and every integer \(J \geqslant 1\) there is
+      \(k \geqslant m\) with the following property, eventually in the mesh.
+      For every tiling of physical cell side \(a_m\) and every site \(x\) in
+      its central cell at least one \(J\)-th of the cell side from each wall,
+      \(F_{N, p} (x)\) is localized in that cell and its root on the tiling is
+      at most \(u (k, N, p)\). <em>Sketch:</em> choose \(k\) with \(3 Ja_k
+      \leqslant a_m\) and apply the offset comparison (II.1), using
+      translation covariance. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L39-L60"><tt class="verbatim">Affords.every</tt></a>.
+      <em>(proof read; offset comparison imported from II.1)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.3 (bounded primaries are funded).</strong> Under the
+      centred budget, let \(v_{N, p} \in \text{Lab}_d\) satisfy \(\|v_{N, p}
+      \| \leqslant Y\) eventually in the mesh for some fixed \(Y\). Then \(O
+      (v)\) is funded, with \(u (m) = A \hspace{0.17em} a_m^{- d - 1}\).
+      <em>Sketch:</em> apply the centred budget with \(\varepsilon = 1\) and
+      \(R = \max (1, Y)\), at the offset \(0\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L119-L128"><tt
+      class="verbatim">Funded.primaries</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.4 (products at separated points).</strong> Let \(F_1,
+      \ldots, F_n\) be affordable at costs \(u_1, \ldots, u_n\), and let \(r >
+      0\). For all large \(k\), eventually in the mesh, every configuration
+      \(z\) with \(a_N \hspace{0.17em} \text{dist} (z_i, z_j) \geqslant r\)
+      satisfies
+    </p>
+    <center>
+      \(\displaystyle | \mathbb{E}_{N, p}  \prod_i F_i (z_i) | \leqslant
+      \prod_i u_i (k, N, p) .\)
+    </center>
+    <p>
+      If all \(F_i\) are funded, the left side is bounded uniformly,
+      eventually in the mesh. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Choose \(l\) with \(a_l < r\), and \(k\) with \(6 n \hspace{0.17em}
+          a_k < a_l\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Translate the tiling of side \(a_l\) so that each \(z_i\) lies in
+          the interior margin of width \(3 a_k\) of its cell. Distinct points
+          lie in distinct cells, since their distance exceeds the cell side.
+        </p>
+      </li>
+      <li>
+        <p>
+          Write each \(F_i (z_i)\) as the reflected copy of an observable
+          localized in the central cell. The centred estimate at scale \(k\)
+          and the offset comparison bound its root by \(u_i (k, N, p)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Apply the chessboard inequality. The remaining cells carry the
+          constant \(1\), whose root is \(1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cohort.lean#L39-L66"><tt class="verbatim">cohort</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cohort.lean#L68-L71"><tt class="verbatim">FullVolume.financed</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.5 (III.12.1 from III.12.2).</strong> Suppose \(\Delta_l
+      O (v)\) is funded for every fixed label \(v\), in every degree, and
+      every list \(l\). Then the bounds of III.12.1 hold for \(C\).
+      <em>Sketch:</em> induction on the list \(\lambda\) of pairs (slot,
+      axis). Differencing slot \(i\) differences its insertion (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Discrete.lean#L27-L45"><tt
+      class="verbatim">actuate</tt></a>), by linearity of expectation. Thus the
+      differenced kernel is a correlation of \(\Delta_{l_i} O (v_i)\), each
+      funded. Conclude by Lemma 4.4. Then <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L62"><tt class="verbatim">genuine</tt></a>
+      applies III.12.2 to constant sequences. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L42-L61"><tt
+      class="verbatim">funding</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-detectors-rank-detection-and-the-closure-lemma"></a>4.2 Detectors, rank detection and the closure
+    lemma<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.6 (detectors; summation by parts).</strong> A detector
+      row \(j\) at test scale \(k\) consists of:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a test configuration \(y_{k, j} \in (\mathbb{R}^4)^{1 + e_j}\), with
+          distinct projections on every coordinate axis and contained in a box
+          of side \(a_{\text{width} (k)}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          partner labels \(w_{k, j, u}\) (lifted basis labels whose norms, for
+          fixed \(k\), are bounded uniformly in \(N, p\) and the finite
+          indices).
+        </p>
+      </li>
+    </ul>
+    <p>
+      For a trial \(F\), the <em>monitor</em> is the correlation \(M_j (F) (x)
+      =\mathbb{E}_{N, p}  \left[ F (x_0) \prod_u O (w_{k, j, u} ;
+      x_u)
+\right]\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Windows.lean#L14"><tt class="verbatim">monitor</tt></a>). The
+      <em>assay</em> averages the first slot over \(n_b = \lceil b / a_N
+      \rceil\) consecutive sites in each direction of \(l\), starting at the
+      prescribed lattice approximation of \(y_{k, j}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Windows.lean#L86"><tt class="verbatim">assay</tt></a>).
+      The detector is \(\mathcal{P}_{k, b, l} (x)_j = \text{assay}_j (O
+      (x))\). For each fixed \(k, l\), there is \(b_0 > 0\) such that, for
+      every \(0 < b < b_0\), the following hold:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) if \(F\) is funded with continuous values, then \(\|
+          \text{assay} (\Delta_l F)\| \leqslant v\) eventually in the mesh,
+          for some constant \(v\) depending on \(F, k, b, l\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) if \(F\) is owed at a cost \(u_{N, p} \to 0\), then
+          \(\text{assay} (F) \to 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Windows.lean#L43-L51"><tt class="verbatim">scores_hops</tt></a>: \(M_j  (\Delta_l F)\) is
+          the \(a_N\)-normalized lattice difference of \(M_j (F)\) in the
+          first slot.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Skein.lean#L40-L45"><tt class="verbatim">same_delta</tt></a>: averaging \(n\) consecutive
+          normalized differences telescopes to \((na_N)^{- 1}  (f (x +
+          ne_{\mu}) - f (x))\), with \(na_N \in [b, 2 b]\). Iterating gives <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Skein.lean#L89-L101"><tt class="verbatim">reserve_abs</tt></a>: \(| \text{assay} (\Delta_l F)
+          | \leqslant (2 / b)^{|l|} \sup |M_j (F) |\) near the test point.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L86-L101"><tt class="verbatim">warded</tt></a>: near a generic test point,
+          \(|M_j (F) | \leqslant u (w) \cdot A\). This is Lemma 4.4 applied to
+          \(F\) and the partners, which are funded by Lemma 4.3 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L80-L83"><tt
+          class="verbatim">siblingsPrice</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          For (b), averaging does not increase the bound (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Skein.lean#L77-L87"><tt class="verbatim">rounds</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L104-L139"><tt class="verbatim">invites</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.7 (averaging is harmless on primaries).</strong> For
+      every \(\varepsilon > 0\) and \(k\), for small \(b\) and eventually in
+      the mesh, \(|\mathcal{P}_{k, b, l} (\beta_c)_j - M_j (O (\beta_c))
+      (y_{k, j}) | \leqslant
+\varepsilon\) for all rows \(j\) and all lifted
+      basis labels \(\beta_c\). <em>Sketch:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Pavilion.lean#L185-L202"><tt class="verbatim">lobby</tt></a>
+      gives a radius \(t > 0\) such that correlations of labels of bounded
+      norm vary by less than \(\varepsilon\) within distance \(t\) of the test
+      configuration. This follows from the positional Lipschitz bound derived
+      from the centred budget (IV.1), uniformly in \(p\). Then choose \(2 |l|
+      b \leqslant t\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L57-L78"><tt class="verbatim">probesUp</tt></a>.
+      <em>(proof read; the single-step Lipschitz bound is an input from
+      IV.1)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.8 (short distances: the free Maxwell values).</strong>
+      For every \(\varepsilon > 0\), eventually in \(k\), eventually in the
+      mesh, simultaneously for all rows \(j\) and basis indices \(c\): \(|M_j
+      (O (\beta_c)) (y_{k, j}) - \phi_{jc} | < \varepsilon\). Here
+      \(\phi_{jc}\) is the value of the \(j\)-th test of the free Maxwell
+      table on the \(c\)-th basis vector of \(F_d\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L21"><tt class="verbatim">focus</tt></a>).
+      <em>Sketch:</em> the short-distance comparison of III.11 makes the
+      lattice correlation approach the free Maxwell correlation at the
+      rescaled test configuration. The latter configurations converge to the
+      prescribed free tests, whose correlations are continuous there.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L24-L46"><tt class="verbatim">gaugesFull</tt></a>, packaged as <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L49-L52"><tt class="verbatim">VitalRank</tt></a>. <em>(proof read; short-distance
+      estimates imported from III.11)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.9 (rank detection; III.12.4).</strong> The matrix
+      \((\phi_{jc})\) is injective on \(F_d\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Stand.lean#L73-L83"><tt class="verbatim">true_lower</tt></a>):
+      the free tests separate the quotient. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Stand.lean#L20-L39"><tt class="verbatim">firm</tt></a> gives \(\delta, L > 0\): every
+          linear map whose matrix is \(\delta\)-close to \((\phi_{jc})\)
+          satisfies \(\|y\| \leqslant L\| \cdot \hspace{0.17em} y\|\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Take \(\varepsilon = \delta / 4\). The entries of \(\mathcal{P} (\pi
+          \beta_c)\) are within \(\delta\) of \(\phi_{\cdot c}\), by three
+          estimates: Lemma 4.7; Lemma 4.8; and \(\mathcal{P} (\beta_c - \pi
+          \beta_c) \to 0\), which holds by Lemma 4.10 and Lemma 4.6(b).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{rank} \hspace{0.17em} \pi_{N, p} \leqslant \dim F_d\) (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Lit.lean#L21-L47"><tt class="verbatim">weighed</tt></a>). Indeed \(\ker \pi_{N, p}\) is
+          the dressed image of \(\mathcal{N}_d\), and \(\mathcal{N}_d\) is the
+          null space of the free table by the exact free-field projection.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Stand.lean#L42-L56"><tt class="verbatim">rank_upper</tt></a>: the map \(y \mapsto \pi
+          (\sum_c y_c \beta_c)\) is injective by the previous steps, hence
+          onto \(\text{ran} \hspace{0.17em} \pi\) by dimension. This gives
+          \(\| \pi x\| \leqslant Z \|\mathcal{P}(\pi x)\|\) with \(Z = A
+          \hspace{0.17em} (\dim F_d)  \hspace{0.17em} V \hspace{0.17em} L\).
+          Here \(A\) bounds \(\| \pi \|\) and \(V\) bounds \(\| \beta_c \|\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Lit.lean#L51-L91"><tt class="verbatim">trained</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.10 (equation terms; III.12.5).</strong> Let \(x\) be a
+      coin with \(\pi x = 0\). Then \(O (x)\) is owed at cost \(a_N^{1 /
+      32}\). <em>Sketch:</em> undo the section-comparison automorphism and
+      terminal map to obtain a terminal-coordinate row \(y\) of sub-power
+      growth whose associated abstract labels belong to the dressed equation
+      ideal. The inverse coefficient-size bound in &sect;2 controls this
+      change of coordinates.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Ocean.lean#L41-L75"><tt class="verbatim">ocean</tt></a>: \(O (x) - H (y)\) is owed at
+          \(a_N^{1 / 32}\). Here \(H (y)_{N, p} (o)\) is the bare lattice
+          evaluation of the section data at \(o\), scaled by \(a_N^{- d}\).
+          The proof goes through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Paid.lean#L23-L29"><tt class="verbatim">studded</tt></a>, a bound
+          by a constant times a sub-power factor times \(a_N^{1 / 8}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Silent.lean#L61-L90"><tt class="verbatim">hole</tt></a>: \(H (y)\) is owed at cost \(0\).
+          By the section hypotheses, the evaluation of a dressed element of
+          \(\mathcal{N}_d\) is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_MARK/Micro.lean#L29-L31"><tt class="verbatim">MicroAt</tt></a>: for every
+          \(\beta \neq 0\) and every large torus, its Wilson expectation
+          against any bounded measurable observable depending only on links at
+          lattice distance \(> s\) vanishes. The spectator need not be gauge
+          invariant. Once the cell side exceeds \(2 s + 2\) lattice units, the
+          copies in the other cells are such observables. So the chessboard
+          product has expectation \(0\) and \(R_m = 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The auxiliary equation sections are an input from II.1 (&sect;7).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Lit.lean#L17-L19"><tt class="verbatim">sweep</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Silent.lean#L105-L115"><tt class="verbatim">banked</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.11 (a priori bound on \(\pi x\)).</strong> Under the
+      hypotheses of III.12.3, there is a constant \(A\) such that \(\| \pi_{N,
+      p} x_{N, p} \| \leqslant A\) eventually in the mesh. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          By Lemma 4.6, \(\|\mathcal{P}(x)\| = \| \text{assay} (O (x))\|
+          \leqslant \| \text{assay}
+(\Delta_l F)\| + \| \text{assay} (O (x) -
+          \Delta_l F)\| \leqslant c\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Put \(X = \pi x\), \(\theta = (1 +\|X\|)^{- 1}\) and \(z = \theta (x
+          - X)\). Since \(| \theta | \leqslant 1\), \(\theta x\) is a coin.
+          Since \(\| \theta X\| \leqslant 1\), \(\theta X\) is a coin too.
+          Thus \(z\) is a coin and \(\pi z = 0\), so \(Z \|\mathcal{P}(z)\|
+          \leqslant \frac{1}{2}\) eventually by Lemmas 4.10 and 4.6(b).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\|X\| \leqslant Z \|\mathcal{P}(X)\| \leqslant Z
+          \|\mathcal{P}(x)\|+
+Z\|\mathcal{P}(x - X)\| \leqslant Zc +
+          \tfrac{1}{2} (1 +\|X\|)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Rearrange to obtain \(A = 2 Zc + 1\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Moneys.lean#L23-L63"><tt class="verbatim">cap</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.12 (closure lemma; III.12.3).</strong> \(O (\pi x)\) is
+      funded by Lemmas 4.11 and 4.3. \(O (x - \pi x)\) is owed at \(a_N^{1 /
+      32} \to 0\) by Lemma 4.10, hence funded: a cost tending to \(0\) is
+      eventually below \(1\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Moneys.lean#L65-L67"><tt class="verbatim">fixed_cost</tt></a>). So \(O
+      (x)\) is funded. Finally \(\Delta_l F = O (x) - (O (x) - \Delta_l F)\)
+      is funded, by Lemma 4.1. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Moneys.lean#L69-L78"><tt class="verbatim">improved</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-differences-of-primaries-iii122"></a>4.3 Differences of primaries (III.12.2)<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.13 (regularity under normalized differences).</strong>
+      Call \(F\) <em>tucked of degree \(d\)</em> if the following holds. There
+      are a stencil containing \(0\) and sequences \(c_{N, p}, b_{N, p}\) of
+      sub-power growth. Eventually in the mesh, for every site \(o\), \(a_N^d
+      F_{N, p} (o)\) is regular on the stencil around \(o\), its
+      field-derivative bounds are at most \(c_{N, p}\), and its sup norm is at
+      most \(b_{N, p}\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          for a simple gauge group, \(O (w)\) is tucked of degree \(d\) for
+          every coin \(w\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(F\) is tucked of degree \(d\) and the constants for shifting
+          the field-derivative bounds by one lattice site have sub-power
+          growth, then \(\Delta_{\mu} F\) is tucked of degree \(d + 1\). The
+          run's remainder data supply these shift bounds.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> \(a_N^d O (w)\) is the section evaluation at the
+      threshold-scaled coefficients (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/RawTop.lean#L121-L126"><tt class="verbatim">charged</tt></a>,
+      II.1); the bounds come from the regularity and supremum estimates for
+      section evaluations. For the difference, \(a_N^{d + 1} \Delta_{\mu} F
+      (o) = a_N^d F (o + e_{\mu}) - a_N^d F (o)\). The stencil grows by one
+      step, and the derivative bounds pick up the sub-power shift cost.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L47-L49"><tt class="verbatim">Tucked</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L60-L75"><tt class="verbatim">Tucked.up</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L77-L95"><tt class="verbatim">Tucked.farther</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L97-L101"><tt class="verbatim">Tucked.hops</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.14 (matching a local observable by a primary).</strong>
+      Assume a simple gauge group, the scale-selection data and the observable
+      remainder and regularity bounds of III.11 (&sect;2). Let \(F\) be tucked
+      of degree \(d\), local, and continuous as a function of the gauge field
+      at the insertion site \(0\), eventually in the mesh. Then there is a
+      coin \(v\) of degree \(d\) such that \(O (v) - F\) is owed at cost
+      \(a_N^{1 / 16}\). <em>Sketch:</em> apply the local regularity comparison
+      of III.11 to \(a_N^d F\). After undoing this normalization, the centred
+      root of \(O (v) - F\) at scale \(m\) is at most a constant (depending on
+      \(m\) and an auxiliary level chosen by the scale-selection conditions)
+      times a sub-power factor times \(a_N^{\gamma}\), with \(\gamma = 1 /
+      8\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Paid.lean#L35-L46"><tt class="verbatim">readyCoin</tt></a> and the sub-power absorption
+      estimate absorb the sub-power factor into \(a_N^{1 / 8 - 1 / 16}\).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Paid.lean#L47-L49"><tt class="verbatim">prepared_rows</tt></a>.
+      <em>(statement and reduction read; the III.11 inputs statement
+      only)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.15 (proof of III.12.2).</strong> In a run for a simple
+      gauge group, let \(w\) be eventually bounded in the mesh and set \(F = O
+      (w)\). Lemma 4.3 funds \(F\). By Lemma 4.13, \(\Delta_l F\) is tucked of
+      degree \(d + |l|\); it is also local and continuous in the gauge field.
+      Lemma 4.14 gives a coin \(x\) of that degree with \(O (x) - \Delta_l F\)
+      owed at \(a_N^{1 / 16} \to 0\). The run's ties supply hypotheses
+      1&ndash;5 at degree \(d + |l|\), so III.12.3 funds \(\Delta_l F\).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L24-L33"><tt class="verbatim">Run.financed</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-observable-transfer-and-coupling-dependence"></a>4.4 Observable transfer and coupling dependence<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      The analytic transfer bounds use III.12.6's campaign data; analytic
+      continuum convergence also uses III.12.7's fixed-level convergence and
+      perturbation inputs.
+    </p>
+    <p>
+      <strong>Lemma 4.16 (composition of observable transfers).</strong> Fix a
+      simple gauge group, a branch from level \(k\) to cutoff \(N\), the
+      observable-transfer bounds and compatible intermediate representations
+      of &sect;2. Fix \(k \leqslant r \leqslant N\) and \(d + 3 \leqslant J
+      (r)\). There are degree-\(d\) transfer data based at the reference
+      section at \(r\), obtained by composing the one-step transfers along the
+      branch. <em>Sketch:</em> a one-step transfer tool with its capacity
+      estimate acts on an observable at level \(m + 1\) and produces an
+      observable at level \(m\) whose density is the exact
+      renormalization-group pushforward with the degree-dependent block
+      normalization. It preserves linearity and symmetry and supplies
+      coefficient, remainder and response bounds (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Mark/Wheels.lean#L38-L247"><tt class="verbatim">motor</tt></a>).
+      These steps compose with the prescribed top observable (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Mark/Vega.lean#L47-L78"><tt
+      class="verbatim">composeT</tt></a>). The branch includes selectedness, available
+      coefficient spaces and the one-step transfer data (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Major.lean#L30-L33"><tt class="verbatim">Branch</tt></a>);
+      its estimates provide the required capacities. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Major.lean#L53-L63"><tt
+      class="verbatim">Branch.composing</tt></a>. Fixed-level convergence follows from
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Master.lean#L50-L53"><tt class="verbatim">Branch.stays</tt></a>, using the stability of the
+      step maps under two cutoff subsequences (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Pole.lean#L50-L59"><tt class="verbatim">Branch.tiers</tt></a>)
+      (Lemma 4.19). <em>(proof read for composition and fixed-level reduction;
+      one-step capacity estimate statement only)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.17 (power series in the tuning parameter, level by
+      level).</strong> Assume the campaign data and estimates of III.12.6.
+      Write \(f \in \text{PB} (t)\) if \(f (s) = \sum_i P_i s^i\) on \([- 1,
+      1]\) with \(\sum \|P_i \| \leqslant t\). This class is closed under sums
+      (\(\text{PB} (t) + \text{PB} (t') \subset \text{PB} (t + t')\)) and
+      under rescaling \(s \mapsto as\) with \(|a| \leqslant 1\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          The one-step analytic capacity estimates bound the remainder map,
+          applied to a coefficient vector \(x\), by \(\text{PB} (\nu \|x\|)\).
+          Here \(\nu\) is the prescribed one-step bound in the completed
+          remainder norm; the parameter interval has already been reduced by a
+          factor \(2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A bound \(\text{PB} (t)\) at level \(m\) propagates to level \(m +
+          1\) as \(\text{PB} (\ell_m t)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Dais.lean#L64-L80"><tt class="verbatim">linked</tt></a>),
+          or as \(\text{PB} (2 v_T \chi_d t)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Brace.lean#L61-L78"><tt class="verbatim">destination</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Here \(v_T\) is the prescribed transfer bound and \(\chi_d\) the
+          finite-dimensional coefficient constant. Since \(\prod_{m = 0}^j
+          \ell_m = a_{j + 1}^{- 1}\), iterating gives bounds polynomial in
+          \(a_{j + 1}^{- 1}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Vault.lean#L83-L98"><tt class="verbatim">cruise</tt></a> gives per-label bounds. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Income.lean#L67-L72"><tt
+      class="verbatim">polynomial</tt></a> bounds a correlation item at \(s \mapsto cs\)
+      by \(B_0 a_{j + 1}^{- b_0}\) for fixed \(B_0, b_0\). Here \(c\) is fixed
+      by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Summary.lean#L62-L68"><tt class="verbatim">aperture</tt></a> so that \(|c|  \hspace{0.17em}
+      Q / Z_{\ast} \leqslant \frac{1}{2}\), where \(Q\) bounds the source
+      contribution and \(Z_{\ast} > 0\) bounds the scalar-normalized partition
+      function from below; see also <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Summary.lean#L72-L74"><tt class="verbatim">storms</tt></a>. <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fares/Scrap.lean#L40-L51"><tt class="verbatim">Face.financed</tt></a> identifies the item for the full
+      mode with the correlation (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Seat.lean#L31-L33"><tt class="verbatim">absolute</tt></a>), which
+      gives III.12.6. The weighted analytic bounds for the parameter-dependent
+      effective densities (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Attic.lean#L50-L88"><tt class="verbatim">attic_close</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Pulse.lean#L101-L104"><tt
+      class="verbatim">many</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Nectar/Laid.lean#L85-L102"><tt class="verbatim">program</tt></a>) belong to
+      this fan analysis. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Amp/Blank.lean#L16-L39"><tt class="verbatim">Amp.give</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Amp/Blank.lean#L42-L43"><tt
+      class="verbatim">Amp.stage</tt></a> extend a multilinear series from a dense
+      isometric image, with geometric bounds; this builds the series on real
+      jets without complexifying the field. <em>(proof read for the
+      power-series calculus, parameter rescaling, interval selection and final
+      correlation bound; intermediate analytic estimates statement only)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.18 (analytic continuum correlations).</strong> Assume a
+      campaign and pillars, the analytic estimates of III.12.6, fixed-level
+      convergence and the uniform perturbation estimates of &sect;2. Fix
+      \(p\), finitely many labels, a compact \(K \subset \text{NoHit}_p\) and
+      \(q \in \mathbb{N}\). There is a positive parameter width, independent
+      of the cutoff, and an open neighbourhood \(\Omega\) of \(K\) within
+      \(\text{NoHit}_p\), on which the limiting kernels are \(C^q\) in
+      position and analytic in the complex parameter. For each spatial stencil
+      list of length at most \(q\), the lattice kernels, their multilinear
+      interpolations and their admissible smeared sums have analytic
+      continuations whose parameter derivatives of every fixed order converge
+      uniformly on compact subdiscs and compact spatial subsets of \(\Omega\).
+      <em>Sketch:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tess/BarsP.lean#L79-L96"><tt class="verbatim">pricedB</tt></a> gives
+      coefficient-norm bounds \(Ba_j^{- b}\) for differenced kernels on a
+      fixed compact set. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tess/Lease.lean#L88-L96"><tt class="verbatim">traceS</tt></a> chooses series
+      representing these kernels. Their real values at consecutive levels
+      differ by \(O (a_j)\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tess/Pier.lean#L25-L42">A polynomial coefficient estimate</a>
+      after a fixed reduction of the parameter interval turns this into a
+      coefficient-norm bound \(C \sqrt{a_j}\), summable in \(j\). For each
+      fixed \(j\), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tess/Zoom.lean#L43-L48">Cauchy convergence of the real values</a> gives
+      Cauchy convergence of the series in the cutoff after another interval
+      reduction (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tess/Stream.lean#L54-L77"><tt class="verbatim">astronomer</tt></a>). Thus the series
+      converge uniformly in position (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tess/Tan.lean#L104-L109"><tt class="verbatim">charted</tt></a>).
+      Their absolutely convergent complex power series give analytic limits
+      and convergence of all parameter derivatives on smaller discs. The width
+      may depend on \(p, K, q\). The final identification uses the actual
+      successful Wilson trajectories, whose <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Real.lean#L71-L73">correlations agree with
+      those of the auxiliary transfer families</a> at every positive cutoff.
+      This is the content of the analytic spatial statement <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Atlas.lean#L85-L91"><tt
+      class="verbatim">Spending</tt></a> and its theorem <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Atlas.lean#L94-L104"><tt class="verbatim">Fan.standing</tt></a>,
+      used by the assembly's analytic family. <em>(proof read for the
+      series-convergence and final assembly reductions; spatial derivative
+      identification statement only)</em>
+    </p>
+    <p>
+      <strong>Additional estimates in this folder.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Under the connected-activity hypotheses of III.8, the large-field
+          step estimate applies when its rate parameter is at most \(- 7 /
+          16\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Florid/Gild.lean#L57-L101"><tt class="verbatim">projects</tt></a>, namespace of the
+          connected-activity bounds, III.8).
+        </p>
+      </li>
+      <li>
+        <p>
+          Under the one-step source, degree, threshold and release hypotheses
+          of III.10, the primary insertion satisfies its step estimate (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Glitz/RockG.lean#L81-L129"><tt class="verbatim">primaryJG</tt></a>, III.10).
+        </p>
+      </li>
+      <li>
+        <p>
+          Fix \(g < e\), \(w < w'\), \(w \leqslant 1\), a torus with at least
+          four sites per axis, and a budget point and clipping parameter
+          satisfying the admissibility and kinetic-width conditions. There is
+          \(t > 0\) such that every \(|a| \leqslant t\) sends a representation
+          with bounds \((\sigma, C, \Lambda, g, w)\) to one with bounds
+          \((\sigma, C, \Lambda, e, w')\), preserving its evaluation (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Shroud/Plateau.lean#L53-L67"><tt
+          class="verbatim">earned</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Comparisons of rank data between two cutoff sequences (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rank/Tracks.lean#L79"><tt
+          class="verbatim">cams</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rank/Stitch.lean#L104-L130"><tt class="verbatim">linters</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          The connected-activity and stationary-branch results used by these
+          estimates.
+        </p>
+      </li>
+    </ul>
+    <p>
+      These are inputs to the transfer and analytic estimates, not additional
+      convergence assertions. Their full hypotheses and proofs belong to
+      III.8&ndash;III.10; see &sect;7.
+    </p>
+    <h3 id="auto-9"><a id="45-convergence-in-the-mesh"></a>4.5 Convergence in the mesh<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.19 (fixed-level convergence).</strong> In the setting of
+      III.12.7, fix \(m \geqslant k\) and above the reference levels of all
+      labels used. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the inverse couplings and weighted activities are Cauchy (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Capital.lean#L31-L35"><tt
+          class="verbatim">flooded</tt></a>, by the fixed-level convergence input);
+        </p>
+      </li>
+      <li>
+        <p>
+          the level-\(m\) coefficients and coins of each label converge (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Capital.lean#L55-L56"><tt class="verbatim">grow</tt></a>, by stability of the composed
+          transfers);
+        </p>
+      </li>
+      <li>
+        <p>
+          the effective observable and its polymer parts converge uniformly
+          (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Capital.lean#L57-L61"><tt class="verbatim">hail</tt></a>). The property <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Basin.lean#L10-L12"><tt
+          class="verbatim">Confluence</tt></a> means eventual uniform boundedness and
+          uniform Cauchy convergence.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> the kinetic-path reserve and activity convergence
+      control the normalized density. Stability of the composed transfers
+      gives Cauchy coefficients and remainders; evaluation preserves their
+      uniform Cauchy bounds. <em>(proof read for these reductions; transfer
+      stability estimates statement only)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.20 (correlations computed at a fixed level
+      converge).</strong> Let the level-\(j\) data be as in Lemma 4.19. Assume
+      the effective insertions and their polymer components are measurable,
+      and that the scalar-normalized partition function is eventually bounded
+      below by \(a > 0\). Then the level-\(j\) value
+    </p>
+    <center>
+      \(\displaystyle C_j^I (n) = Z_{j, n}^{- 1}  \int Q_{j, n}^I (U) 
+      \hspace{0.17em} d
+\mu_{\text{Haar}} (U)\)
+    </center>
+    <p>
+      is Cauchy in \(n\) for every fixed label subset \(I\). Here \(Q_{j,
+      n}^I\) is the coefficient indexed by \(I\) in the scalar-normalized
+      effective polynomial obtained by retaining the vacuum and singleton
+      source data; \(Z_{j, n}\) is its vacuum normalization, and
+      \(\mu_{\text{Haar}}\) is the product Haar probability measure.
+      <em>Sketch:</em> uniform convergence passes through the Haar integral.
+      The normalizations have a positive limit, so the quotients converge. The
+      additive action scalar cancels. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Ivy.lean#L37-L39"><tt class="verbatim">Confluence.laven</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Timber.lean#L57-L66"><tt class="verbatim">Rising.latter</tt></a>, with the uniform bounds <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Timber.lean#L51-L53"><tt class="verbatim">ships</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Timber.lean#L29-L33"><tt class="verbatim">limitVault</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.21 (tail bound uniform in the cutoff).</strong> In the
+      setting of III.12.7, fix a non-collision configuration lying exactly on
+      a lattice of some level. Choose a sufficiently large base level \(r\),
+      above the reference levels and with distinct insertion sites. Fix
+      positive label weights so that their weighted coefficient costs are
+      within the allowances at \(r\); these weights exist by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Capital.lean#L62-L63"><tt
+      class="verbatim">creditP</tt></a>. For every fixed subset \(I\) of the labels,
+      there is \(F_0 \geqslant 0\), independent of \(j\) and the cutoff, such
+      that for each sufficiently large \(j > r\), eventually in \(n\),
+    </p>
+    <center>
+      \(\displaystyle |p_n^I - C_j^I (n) | \leqslant 2 F_0 e^{- B_j / 64} .\)
+    </center>
+    <p>
+      Here \(p_n^I\) is the product correlation at cutoff \(f (n)\) and
+      \(C_j^I (n)\) is its scalar-normalized level-\(j\) approximation. The
+      lower threshold on \(j\) ensures separation by \(B_j^2\) lattice units,
+      support exponent at least \(2\), and \(e^{B_j / 64} > 2\). The threshold
+      on \(n\) may depend on \(j\). <em>Sketch:</em> propagate the exact
+      polynomial density of the inserted observables down the renormalization
+      group. The weighted remainder estimate controls its part of degree at
+      least two. Separation forces a nonzero such term to occupy enough blocks
+      to gain the factor \(e^{- B_j / 64}\). The remaining omission estimate
+      divides by a uniformly positive scalar-normalized partition function.
+      Uniform bounds on the effective insertions at \(r\) and \(j\) follow
+      from Lemma 4.19; the final numerator depends only on the data at \(r\).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Peat.lean#L41-L64"><tt class="verbatim">Sever.echoes</tt></a>. <em>(proof
+      read for the exact-density, remainder and omission reduction; underlying
+      multiscale estimates are inputs)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.22 (Cauchy property).</strong> Under the hypotheses of
+      Lemma 4.21, \(p_n^I\) is Cauchy for every fixed subset \(I\) of the
+      labels. <em>Sketch:</em> \(B_j = \lceil (\log \hat{\beta}_j)^2 \rceil\),
+      so \(g (j) = e^{B_j / 64} \to \infty\) because \(\hat{\beta}_j =
+      \text{const} + \kappa_G \log a_j^{- 1} \to \infty\). Choose \(j\) with
+      \(g (j) > 2\) and \(2 F_0 / g (j) \leqslant \varepsilon / 4\). Lemma
+      4.21 bounds \(|p_n^I - C_j^I (n) |\) by \(\varepsilon / 4\) for large
+      \(n\). Lemma 4.20 gives the Cauchy property of \(C_j^I (n)\). Conclude
+      with the triangle inequality. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Timber.lean#L73-L103"><tt class="verbatim">Rising.arrives</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.23 (III.12.7).</strong> Under the hypotheses of
+      III.12.7, take the subset containing all labels. The full-subset
+      quantity is the correlation itself (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Seat.lean#L31-L33"><tt class="verbatim">absolute</tt></a>).
+      The positions are \(o_N = \text{wrap} (\alpha_N (x))\). For \(x \in
+      \text{NoHit}_p\) lying exactly on a lattice of some level, these satisfy
+      the separation \(B_j^2\) for all large \(j\) by the lattice-ancestry
+      estimates, and they are injective at the base level. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Seat.lean#L37-L45"><tt class="verbatim">Rising.cinema</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.24 (all non-collision points, full sequence).</strong>
+      For a run with a campaign, pillars, fixed-level convergence and uniform
+      perturbation estimates, III.12.7 holds on the full sequence of cutoffs
+      (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L30-L38"><tt class="verbatim">Campaign.sees</tt></a>, with the same
+      cutoff-dependent history family repeated for every sequence index and
+      \(f (n) = n\)). Configurations lying exactly on some lattice are dense.
+      III.12.1 gives a local Lipschitz bound (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Region.lean#L42-L54"><tt class="verbatim">localLip</tt></a>),
+      hence asymptotic equicontinuity on compact subsets of \(\text{NoHit}_p\)
+      (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L38-L54"><tt class="verbatim">circulating</tt></a>). The dense-set convergence
+      theorem (IV.1) then gives locally uniform convergence on
+      \(\text{NoHit}_p\), in particular the Cauchy property on the subset with
+      no coordinate ties. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L40-L44"><tt class="verbatim">Campaign.purchased</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.25 (positional limits; III.12.8).</strong> Assume the
+      two hypotheses of III.12.8.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L60-L61"><tt class="verbatim">established</tt></a>: the kernels converge
+          locally uniformly on \(\text{NoHit}_p\) to a continuous \(f\). The
+          argument is the one of Lemma 4.24.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L71-L125"><tt class="verbatim">from_previous</tt></a>: if the \(l\)-differences
+          converge, so do the differences with one additional coordinate
+          direction \(a\). Fix \(q = \min (t / 2, r / 3, \varepsilon / (8 (B +
+          1))) > 0\), where \(t\) is a neighbourhood radius and \(r, B\) are
+          the Taylor constants. Choose integers \(n_N\) with \(k_N = n_N a_N
+          \in [q, 2 q]\) and \(k_N \to q\). If \(a_N x_N \to x\), compare the
+          unit difference \(D_N\) with \(W_N = k_N^{- 1}  (F_N (x_N + n_N e_a)
+          - F_N (x_N))\). Both endpoint values converge (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L21-L31"><tt class="verbatim">returns</tt></a>),
+          so \(W_N\) converges. The Taylor estimate \(|F_N (x_N + n_N e_a) -
+          F_N (x_N) - k_N D_N | \leqslant Bk_N^2\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Region.lean#L58-L77"><tt class="verbatim">taylor</tt></a>)
+          gives \(|W_N - D_N | \leqslant \varepsilon / 4\) eventually. Hence
+          \(D_N\) is Cauchy.
+        </p>
+      </li>
+      <li>
+        <p>
+          Limits of differences are derivatives of \(f\), so \(f \in
+          C^{\infty} (\text{NoHit}_p)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Strings.lean#L90-L92"><tt class="verbatim">reachable</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Every fixed forward/backward interval stencil is a finite average of
+          translates of a unit forward difference. These translates approach
+          the same physical point, so they have the same derivative limit.
+          Multilinear interpolation preserves this limit. For admissible
+          tests, the corresponding piecewise constant Riemann sums have an
+          integrable bound on a fixed compact set, and dominated convergence
+          gives the smeared limits.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Under the hypotheses of Lemma 4.24, the run instance is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L45"><tt
+      class="verbatim">Campaign.realUV</tt></a>: III.12.8 applied to III.12.1 and Lemma
+      4.24. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L42-L47"><tt class="verbatim">positioned</tt></a>. <em>(proof
+      read for equicontinuity, Taylor comparison, derivative convergence,
+      stencil averaging, interpolation and smearing)</em>
+    </p>
+    <h2 id="auto-10"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      Matching controls only inverse terminal coordinates. Rank detection must
+      bound the projected physical labels, while the equation-section
+      comparison controls the projection kernel. These estimates precede every
+      limit.
+    </p>
+    <p>
+      The estimates of III.12.1&ndash;III.12.5 are uniform in every admitted
+      volume. The convergence results III.12.7&ndash;III.12.8 fix the volume
+      first. Their thresholds may depend on the period, labels, compact
+      spatial set, derivative order and test function. The parameter width in
+      Lemma 4.18 may also depend on these data.
+    </p>
+    <p>
+      All positional limits are off collisions on the torus, including
+      configurations with coordinate ties and configurations crossing the
+      boundary of a period cell. Extension across collisions belongs to VII.4.
+      Every derivative order or stencil is fixed before the cutoff threshold
+      is chosen.
+    </p>
+    <p>
+      Sub-power factors are absorbed by the positive error exponents.
+      Fixed-level convergence uses a positive lower bound on the
+      scalar-normalized partition function; the additive action scalar need
+      not converge.
+    </p>
+    <h2 id="auto-11"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Written proof</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Lean (glossary)</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Meaning</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">eventually in the mesh</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L13"><tt class="verbatim">mesh</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">for \(N \geqslant N_0\) and all \(p\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">sub-power growth</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L37-L38"><tt class="verbatim">Sluggish</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/RELAY_DIFFERENCE/Rates.lean#L40"><tt class="verbatim">flight</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(|w| \leqslant a_N^{- \varepsilon}\) for all \(\varepsilon
+        > 0\); flight \((\varepsilon) = a_N^{- \varepsilon}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">trial \(F\), local</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Trial</tt>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L29"><tt class="verbatim">Stencil</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">site-indexed lattice observables on a fixed stencil</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(T_m (o)\), \(R_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L34-L40"><tt class="verbatim">center</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Tiling.lean#L226-L227"><tt class="verbatim">rootTest</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">centred tiling of side \(a_m\); chessboard root</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">affordable, owed, funded</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L19-L22"><tt class="verbatim">Affords</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L24"><tt class="verbatim">Owed</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Rent.lean#L28"><tt class="verbatim">Funded</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">centred root bound by \(u (m, N, p)\), \(v (N, p)\), \(u
+        (m)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\Delta_{\mu}\), \(\Delta_l\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L16-L17"><tt class="verbatim">farther</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L19-L21"><tt class="verbatim">hops</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(a_N\)-normalized forward differences</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">tucked of degree \(d\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Hits.lean#L47-L49"><tt class="verbatim">Tucked</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(a_N^d F\) regular with sub-power bounds</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">coin; \(O (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L146-L147"><tt class="verbatim">Coin</tt></a>, <tt class="verbatim">Bid.upper</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">label sequence with sub-power inverse terminal coordinates;
+        its representative</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\pi_{N, p}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Relay.lean#L39-L41"><tt class="verbatim">Presentation</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Lit.lean#L50"><tt
+        class="verbatim">display</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">idempotent with kernel the dressed equation ideal</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(M_j\), detector \(\mathcal{P}_{k, b, l}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Windows.lean#L14"><tt class="verbatim">monitor</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Windows.lean#L86"><tt class="verbatim">assay</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Windows.lean#L88"><tt class="verbatim">probe</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">test correlation; iterated directional average</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\phi_{jc}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Maintain.lean#L21"><tt class="verbatim">focus</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">free Maxwell value of test \(j\) on basis vector \(c\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">centred budget</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L38-L40"><tt class="verbatim">Wcmain</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">root \(\leqslant A \hspace{0.17em} a_m^{- d -
+        \varepsilon}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">kernel bounds</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Discrete.lean#L50-L52"><tt class="verbatim">FixedBounds</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">III.12.1</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">run, ties</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L30-L48"><tt class="verbatim">Run</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L65-L71"><tt class="verbatim">Run.Ties</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">record of one construction; its inputs for this unit</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">fan parameter \(s \in [- 1, 1]\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Ray/Gain.lean#L22"><tt class="verbatim">Ray.sun</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gain/Resolve.lean#L72"><tt class="verbatim">ask</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">level-0 coupling \(\bar{\beta} + ws\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{PB} (t)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Spiral/Dome.lean#L31-L32"><tt class="verbatim">PaidBeam</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">power series on \([- 1, 1]\) with \(\ell^1\) coefficient
+        norm \(\leqslant t\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(a_j^{- 1}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Relay/Budget.lean#L34"><tt class="verbatim">intervalClock</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(D_j = \ell_0 \cdots \ell_{j - 1}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">campaign, pillars, sky</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Stage/Crests.lean#L20-L27"><tt class="verbatim">Campaign</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Vendee.lean#L22-L27"><tt class="verbatim">Pillars</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fares/Oz.lean#L22-L28"><tt class="verbatim">Sky</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">records carrying the fan and its bounds</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">fixed-level convergence; function convergence</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Gables/Honors.lean#L30-L35"><tt class="verbatim">Helmet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Basin.lean#L10-L12"><tt class="verbatim">Confluence</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Cauchy couplings and weighted activities; eventual uniform
+        boundedness and uniform Cauchy convergence of functions</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">point-Cauchy property</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L56-L58"><tt class="verbatim">Purchased</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Cauchy correlations at ceiling addresses when no coordinate
+        projections tie</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">positional limit</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L25-L36"><tt class="verbatim">PositionsUV</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">III.12.8; (D5) of the main statement</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-12"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Local matching and equation sections.</strong> Lemma 4.14
+          imports the local-to-primary estimate of III.11; only its reduction
+          to a coin and an \(a_N^{1 / 16}\) root bound is checked here. The
+          construction of the auxiliary sections from the Maxwell equation
+          ideal, and its relation to a lattice Schwinger&ndash;Dyson identity,
+          remain unverified. Lemma 4.10 uses their exact distant-spectator
+          identity, without identifying it with the Wilson action's naive
+          equation of motion.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>One-step observable transfer.</strong> The capacity estimate
+          used by Lemma 4.16 remains at statement level. Its coefficient and
+          remainder constants require the one-step analysis.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Analytic estimates.</strong> The intermediate weighted
+          estimates in Lemma 4.17 and the identification of spatial
+          derivatives of the analytic limit in Lemma 4.18 remain at statement
+          level. The outer series-convergence argument is checked.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Additional estimates in &sect;4.4.</strong> The large-field
+          and primary-step results and the two transfer comparisons retain
+          their full hypotheses in III.8&ndash;III.10. Their proofs, and the
+          detailed small-shift lawfulness estimate, are not checked here.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Fixed-level convergence and tails.</strong> The analytic
+          trajectory-convergence theorem and the multiscale remainder and
+          omission estimates remain imported inputs; their applications are
+          checked. The tail argument needs only \(B_j = \lceil (\log
+          \hat{\beta}_j)^2 \rceil \to \infty\), not geometric decay in \(j\).
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-11.html">&larr; III.11 Interacting rank, Gaussian comparison and
+      the stress tensor (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-12.html">Unit outline</a></span><a class="ym-next" href="III-13.html">III.13
+      Alternative construction: one Wilson family for all labels (notes)
+      &rarr;</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.7. Matching the Wilson energy to fourth order &mdash; detailed
+    notes &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-6.html">&larr; III.6 The stationary branch: background field of
+      the effective action (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-7.html">Unit outline</a></span><a class="ym-next" href="III-8.html">III.8
+      Connected activities and backward dependence cones (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>III.7. Matching the Wilson energy to fourth order &mdash; detailed
+      notes</h1><a id="iii7-matching-the-wilson-energy-to-fourth-order--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">12</a>
+      </p>
+      <p>
+        4.1 Fourier kernels of local functionals <span style="margin-left: 5mm"></span> <a href="#auto-5">12</a>
+      </p>
+      <p>
+        4.2 The lattice Poincar&eacute; lemma in momentum space <span style="margin-left: 5mm"></span>
+        <a href="#auto-6">12</a>
+      </p>
+      <p>
+        4.3 Classical emission and the Wilson jet <span style="margin-left: 5mm"></span> <a
+        href="#auto-7">13</a>
+      </p>
+      <p>
+        4.4 Two-leg kernels: the \(F^2\)-coefficient and irrelevance <span
+        style="margin-left: 5mm"></span> <a href="#auto-8">14</a>
+      </p>
+      <p>
+        4.5 The one-loop term in covariant form <span style="margin-left: 5mm"></span> <a href="#auto-9">15</a>
+      </p>
+      <p>
+        4.6 Uniform invertibility of the fluctuation operators <span style="margin-left: 5mm"></span>
+        <a href="#auto-10">15</a>
+      </p>
+      <p>
+        4.7 The slope of the regulated determinant <span style="margin-left: 5mm"></span> <a
+        href="#auto-11">16</a>
+      </p>
+      <p>
+        4.8 From the regulated determinant to the blocked determinant <span
+        style="margin-left: 5mm"></span> <a href="#auto-12">18</a>
+      </p>
+      <p>
+        4.9 The step and the iteration <span style="margin-left: 5mm"></span> <a href="#auto-13">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-14">21</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">21</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-16">23</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit III.7: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/III-7.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/III-7.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> III, Ultraviolet construction (renormalization
+      group). <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY"><tt class="verbatim">YM/Next/STATIONARY/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral"><tt class="verbatim">YM/WilsonBulk/Spectral/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection"><tt
+      class="verbatim">YM/UVExtension/Projection/</tt></a>, and a few lines of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward"><tt
+      class="verbatim">YM/UVExtension/Reward/</tt></a>. <strong>Size:</strong> 19,945
+      lines in the main-theorem closure: 19,391 in <tt class="verbatim">Next/STATIONARY</tt>,
+      286 in <tt class="verbatim">UVExtension/Projection</tt>, 215 in <tt class="verbatim">WilsonBulk/Spectral</tt>,
+      and about 50 elsewhere.
+    </p>
+    <p>
+      <em>Conventions.</em> Levels \(m = 0, \ldots, N\) run from the coarsest
+      level (\(m = 0\)) to the Wilson lattice (\(m = N\)). Blocking from fine
+      level \(m + 1\) to coarse level \(m\) uses an odd factor \(L_m\). The
+      stage \(J_m\) is the index of the constants used at level \(m\); it
+      satisfies \(J_{m + 1} \in \{J_m, J_m + 1\}\). In one step the fine torus
+      \(\Lambda_f\) has side \(f = Lc\) and the coarse torus \(\Lambda_c\) has
+      side \(c\); in general \(| \Lambda_n | = n^4\). Fields are Lie-algebra
+      link variables \(x\), and configurations are \(U = e^x\). \(E_W (U) =
+      \sum_p \left( 1 - d_{\text{rep}}^{- 1} \text{Re}
+      \hspace{0.17em}
+\text{tr} \hspace{0.17em} U_p \right)\) is the Wilson
+      energy in the fixed matrix representation of dimension
+      \(d_{\text{rep}}\), \(C_G\) is the adjoint Casimir constant of I.1, and
+      \(\kappa = 11 C_G / (24 \pi^2)\).
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      At level \(m\) the effective action has the form \(\beta \hspace{0.17em}
+      \text{main}_{\mathbf{c}, R} (U) + \text{loop}_R (U)\), plus polymer
+      activities (III.10). Here \(R\) is a <em>path datum</em>: an
+      exponentially weighted, explicit sum of gauge-covariant curvature
+      monomials along lattice paths. This unit constructs the path data and
+      the coupling shifts.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(A)</strong> At the finest level there is a path datum whose
+          leading part has the same Taylor jet as \(E_W\) through order four
+          (III.7.2).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(B)</strong> For one block-spin step, the coarse leading
+          part can be chosen as the classical (tree-level) transform of the
+          fine one through order four. The second-order Taylor coefficient of
+          the one-loop term equals \(\alpha\) times the coarse quadratic form
+          plus coarse two-leg atoms, up to an error exponentially small in the
+          side of the torus. Moreover \(| \alpha + \kappa \log L|\) is bounded
+          independently of \(L\) (III.7.4).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(C)</strong> The value \(\kappa = 11 C_G / (24 \pi^2)\) is
+          computed, not assumed. The one-loop determinant of the
+          background-field operator in Feynman gauge, regularized in the
+          infrared at scale \(1 / L\), has \(F^2\)-coefficient \(- \kappa \log
+          L + O (1)\) (III.7.3). Two results connect this determinant to the
+          blocked one: an exact Faddeev&ndash;Popov identity (III.7.6) and
+          uniform invertibility of the completed fluctuation operators
+          (III.7.5, &sect;4.6).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Iterated over all levels, (A)&ndash;(C) give the kinetic data satisfying
+      the conditions required in III.9. The slope \(\kappa\), a defined
+      constant in I.1 and III.9.1, is identified here with the one-loop
+      coefficient of the blocked action.
+    </p>
+    <p>
+      <strong>Proposition III.7.1 (path data, beds, Fourier kernels).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Legs and atoms.</em> A leg is a lattice walk \(\gamma\) from the
+          origin of \(\mathbb{Z}^4\) together with a plaquette orientation
+          \(P\). At base point \(x\) it evaluates \(U\) to \(\text{Ad}
+          (U_{\gamma})  \hspace{0.17em} \mathcal{F} (U_{\partial p})
+          \in
+\mathfrak{g}\). Here \(p\) is the plaquette of orientation \(P\)
+          at the end of \(\gamma\), \(U_{\gamma}\) is the transport along
+          \(\gamma\), and \(\mathcal{F} (u)\) is the
+          \(\mathfrak{g}\)-component of \((u - u^{- 1}) / 2\). The length of a
+          leg is \(| \gamma | + 4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A \(k\)-atom is a \(k\)-tuple of legs with a coefficient tensor \(a
+          : \{1, \ldots, \dim \mathfrak{g}\}^k \to \mathbb{R}\). It evaluates
+          to \(\sum_b a (b)  \prod_i (\text{leg}_i)_{b_i}\). It is
+          <em>invariant</em> if this polynomial is \(\text{Ad}\)-invariant.
+          Its exponential weight at width \(\sigma\) is \(\|a\|_1 e^{\sigma
+          \cdot \text{length}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Path datum</em> \(R\). For each of the six plaquette
+          orientations \(P\), a sequence of rows \((\lambda_{P, k},
+          \text{leg}_{P, k})\); and sequences of 2-atoms (<em>loop
+          atoms</em>), 3-atoms and 4-atoms. The rows define \(\ell_R (U)_{(x,
+          P)} = \sum_k \lambda_{P, k} \hspace{0.17em} \text{leg}_{P, k}
+(U,
+          x)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Main term.</em> For a clip \(\mathbf{c}\) (only \(c_{\text{dir}}
+          > 0\) enters here), whenever the row and atom series converge
+          absolutely:
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \text{main}_{\mathbf{c}, R} (U) = \frac{1}{384}  \sum_s
+      \left[ \sum_p \left(
+c_{\text{dir}}  \left( 1 - d_{\text{rep}}^{- 1}
+      \text{Re} \hspace{0.17em}
+\text{tr} \hspace{0.17em} U_p \right) +
+      \tfrac{1}{2} | \ell_R (U)_p |^2
+\right) + \sum_x \sum_k
+      (\mathcal{A}^{(3)}_k +\mathcal{A}^{(4)}_k) (U, x)
+\right]_{U \to sU} .\)
+    </center>
+    <p>
+      This is an average over the 384 signed permutations \(s\) of the axes.
+      \(\text{loop}_R\) is the same average of the sum of all loop atoms.
+      These are the unclipped analytic germs; the small-field clipping of the
+      full action does not enter them.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Weight clauses</em> \(R \in \text{Bounds} (\mathbf{c}; \sigma,
+          C, \Lambda)\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(\sigma > 0\), and \(\sum_k | \lambda_{P, k} | e^{\sigma
+              \hspace{0.17em} \text{len}} \leqslant C\) for each \(P\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the sums of exponential weights are \(\leqslant C\) for the
+              cubic and quartic atoms and \(\leqslant \Lambda\) for the loop
+              atoms;
+            </p>
+          </li>
+          <li>
+            <p>
+              all atoms are invariant;
+            </p>
+          </li>
+          <li>
+            <p>
+              normalization at zero momentum: \(c_{\text{dir}} \delta_{PQ} +
+              \sum_{P'} \hat{\ell}_{P' P} (0)  \hat{\ell}_{P'
+Q} (0) =
+              \delta_{PQ}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the <em>moment conditions</em>: for each pair of leg
+              orientations and colours, the loop coefficients have total
+              weight \(0\) and first moment \(0\) in the displacement between
+              the two legs (with the required summability).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Bed</em> \(B = (D, \tilde{D}, H, \tilde{H}, \rho)\): five
+          translation-invariant kernels on plaquette fields (diagonal, its
+          inverse, metric, its inverse, roots).
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(R\) is <em>attached</em> to \(B\) if its rows, summed by end
+              plaquette and displacement, give \(\rho\).
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\text{Floor} (B, \mathbf{c}, n ; \varepsilon, C)\) on
+              \(\Lambda_n\) means: \(D \tilde{D} = 1\); \(H \tilde{H} = 1\);
+              \(\Phi^{\textsf{T}} \Phi = H\) with \(\Phi =
+              (\sqrt{c_{\text{dir}}}  \hspace{0.17em} \boldsymbol{1}; \rho)\);
+              \(\hat{H} (0) = 1\); \(H \hspace{0.17em} d_1 = D \hspace{0.17em}
+              d_1\) on link fields; \(H, D\) symmetric with \(\varepsilon I
+              \leqslant H, D \leqslant CI\) as quadratic forms.
+            </p>
+          </li>
+          <li>
+            <p>
+              A kernel is in \(\text{strip} (\sigma, C)\) if \(\sum_y
+              e^{\sigma |y|_1} |K (y) | \leqslant C\) entrywise.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Fourier kernels.</em> A \((t + 1)\)-leg kernel assigns a number
+          \(\hat{K}_{b, a} (p_1, \ldots, p_t)\) to colours \(b\), directions
+          \(a\) and momenta, with \(p_0 = - \sum p_j\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(\hat{K}\) is <em>strip-analytic of width \(\sigma\) and size
+              \(K\)</em> if it is holomorphic, \(2 \pi\)-periodic in each
+              scalar momentum coordinate, and bounded by \(K\) on \(|
+              \text{Im} \hspace{0.17em} p_{j, a} | < \sigma\).
+            </p>
+          </li>
+          <li>
+            <p>
+              A function \(F\) on link fields on \(\Lambda_n\) is
+              <em>recorded</em> by \(\hat{K}\) with error \(\epsilon\) if its
+              complexified Taylor coefficient \(D^{t + 1} F (0) / (t + 1) !\),
+              evaluated on canonical unit plane waves, differs from \(|
+              \Lambda_n |  \hat{K}_{b, a} (p)\) when the momenta sum to zero,
+              and from \(0\) otherwise, by at most \(\epsilon\). All tuples of
+              lattice momenta are tested.
+            </p>
+          </li>
+          <li>
+            <p>
+              \(F\) <em>vanishes to order \(s\) along rays</em> if \(F (tv) =
+              O (t^s)\) as \(t \to 0\) for every \(v\), with the constant
+              allowed to depend on \(v\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>\(F^2\)-coefficient.</em> For a two-leg kernel, \(\alpha_b
+          (\hat{K})\) is twice the real part of the coefficient of \(s^2\) in
+          \(\hat{K}_{(b, b), (1, 1)}  (s \hspace{0.17em} e_0)\). For the
+          quadratic kernel of a bed whose metric has positive strip width and
+          \(\hat{H} (0) = 1\), it equals \(1\), so \(\alpha\) is measured in
+          units of the classical \(F^2\) term.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> definitions. Path data, weight clauses, main term, beds
+      and Floor are specifications of III.1; the Fourier notions are defined
+      in this unit. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154"><tt class="verbatim">RG.PathData</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L38-L40"><tt class="verbatim">RG.Slot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L84-L86"><tt class="verbatim">RG.Atom</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L173-L185"><tt class="verbatim">PathData.Bounds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L161-L162"><tt class="verbatim">metric_zero</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L167-L169"><tt class="verbatim">loop_jets</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L139-L146"><tt class="verbatim">RG.Clip</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L27-L28"><tt class="verbatim">Precision.mainTerm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L35-L40"><tt class="verbatim">Precision.Bed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L44-L46"><tt class="verbatim">Attached</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68"><tt class="verbatim">Floor</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L199"><tt class="verbatim">Firm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L28-L29"><tt class="verbatim">Rays</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Pathways.lean#L491-L492"><tt class="verbatim">Recorded</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L699"><tt class="verbatim">alphaPay</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L700-L708"><tt class="verbatim">tip_fuel</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.7.2 (the Wilson jet at the finest
+      level).</strong> Let \(G\) be a gauge group, \(\sigma_0 > 0\) and \(A, Z
+      \geqslant 0\). There are \(\sigma \in (0, \sigma_0]\) and \(C \geqslant
+      0\) with the following property.
+    </p>
+    <p>
+      <em>Hypotheses:</em> sides \(n_i \to \infty\); a clip with
+      \(c_{\text{dir}} \leqslant Z\); a bed \(B\) such that
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\rho \in \text{strip} (\sigma_0, A)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Floor} (B, \mathbf{c}, n ; a, b)\) holds for every side
+          \(n\) and some \(a, b\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the quadratic gauge form of \(B\) is invariant under signed
+          permutations on each \(\Lambda_{n_i}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(D = 1\) on each \(\Lambda_{n_i}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion:</em> there is a path datum \(Q\) such that:
+    </p>
+    <ol>
+      <li>
+        <p>
+          the rows of \(Q\) are the entries of \(\rho\) placed on straight
+          lattice routes, \(Q\) is attached to \(B\), and all loop
+          coefficients vanish;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(Q \in \text{Bounds} (\mathbf{c}; \tau, k, \Lambda)\) for all \(0 <
+          \tau \leqslant \sigma\), all \(k \geqslant \max (C, 6 Ae^{4
+          \sigma_0})\) and all \(\Lambda \geqslant 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(i\) and every \(j \leqslant 4\), the functions \(x
+          \mapsto \text{main}_{\mathbf{c}, Q} (e^x)\) and \(x \mapsto E_W
+          (e^x)\) on \(\Lambda_{n_i}\) are real-analytic at \(0\) and have
+          equal \(j\)-th derivatives there.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L270-L305"><tt class="verbatim">Stationary.launch</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L169-L171"><tt class="verbatim">rowPath</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L176"><tt class="verbatim">rowPrice</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L105-L106"><tt class="verbatim">SameJet</tt></a>.
+    </p>
+    <p>
+      <em>All stages and all volumes.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          With stage widths and amplitude bounds given, the statement holds at
+          every stage with stage constants \((\sigma_j, A_j)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L101-L105"><tt
+          class="verbatim">beckon</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L93-L99"><tt class="verbatim">BasesFine</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Take a compatible history satisfying the thresholds of III.2 and a
+          horizon satisfying the free-field conditions of &sect;2, and apply
+          the statement to the sequence of periodic sides at level \(N\). The
+          result is a top datum (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L220-L225"><tt class="verbatim">budding</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L166"><tt class="verbatim">BranchRow</tt></a>) that:
+        </p>
+        <ul>
+          <li>
+            <p>
+              satisfies the level-\(N\) weight clauses with loop amplitude
+              \(\text{loopCap}_N\);
+            </p>
+          </li>
+          <li>
+            <p>
+              matches \(E_W\) through order four on every volume;
+            </p>
+          </li>
+          <li>
+            <p>
+              has vanishing loop coefficients.
+            </p>
+          </li>
+        </ul>
+        <p>
+          This is the top condition used in III.9.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.7.3 (the one-loop slope).</strong> Let \(G\) be
+      simple. For \(\sigma, \varepsilon > 0\), \(C, Z \geqslant 0\), \(\tau >
+      0\) and \(A \geqslant 0\) there is \(D \geqslant 0\) with the following
+      property.
+    </p>
+    <p>
+      <em>Hypotheses:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(L \geqslant 1\) is odd, \(\mu = 1 / L\), and \(n_i \to \infty\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathbf{c}\) is a clip with \(c_{\text{dir}} \leqslant Z\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(B\) is a bed with \(H \in \text{strip} (\sigma, C)\),
+          \(\text{Floor} (B, \mathbf{c}, n ; \varepsilon, C)\) for every
+          \(n\), and gauge form invariant under signed permutations on each
+          \(\Lambda_{n_i}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for any \(\Lambda \in \mathbb{R}\), a datum \(R \in \text{Bounds}
+          (\mathbf{c}; \tau, A, \Lambda)\) is attached to \(B\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      For a link field \(x\) on \(\Lambda_{n_i}\) and \(U = e^x\) put
+    </p>
+    <center>
+      \(\displaystyle \Pi_{\mu} (x) = \tfrac{1}{2} \log \det
+      (\mathcal{H}_{\mathbf{c}, R} (U) + d_U
+d_U^{\ast} +\mathcal{M}_{\mu}
+      (U)) - \log \det (d_U^{\ast} d_U
++\mathfrak{m}_{\mu} (U)) .\)
+    </center>
+    <p>
+      Here:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{H}_{\mathbf{c}, R} (U)\) is the Hessian at \(y = 0\) of
+          \(y \mapsto \text{main}_{\mathbf{c}, R} (e^y U)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(d_U\) is the covariant difference \((d_U \phi)_e = \phi (e_-) -
+          \text{Ad} (U_e) \phi (e_+)\) from adjoint site fields to link
+          fields;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathfrak{m}_{\mu} (U) = \mu^2  (\mu^2 (d_U^{\ast} d_U + \mu^2)^{-
+          1})^9\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{M}_{\mu}\) applies \(\mathfrak{m}_{\mu}\) separately to
+          the four link components, each regarded as a site field at the
+          initial endpoint.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion:</em> there are a strip-analytic two-leg kernel
+      \(\hat{Y}\) and numbers \(e_i \to 0\) such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) \(\hat{Y}\) records the second-order Taylor coefficient of
+          \(\Pi_{\mu}\) at \(0\) on \(\Lambda_{n_i}\) with error \(|
+          \Lambda_{n_i} |  \hspace{0.17em} e_i\), for every \(i\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) \(| \alpha_b (\hat{Y}) + \kappa \log L| \leqslant D\) for every
+          colour \(b\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      \(\Pi_{\mu}\) is the one-loop effective action of the fine leading part
+      in the background \(U\), in Feynman background gauge: \(d_U d_U^{\ast}\)
+      is the gauge-fixing term and \(d_U^{\ast} d_U\) the ghost operator. The
+      infrared regulator of mass \(\mu = 1 / L\) stands in for the block-spin
+      constraint. \(D\) does not depend on \(L\). The error \(e_i\) decays
+      exponentially in \(n_i\), at an \(L\)-dependent rate.
+    </p>
+    <p>
+      <em>Status:</em> theorem, for all odd \(L \geqslant 1\): the minimal
+      block factor produced is \(1\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L17-L52"><tt class="verbatim">pouring</tt></a>
+      (proves <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L115"><tt class="verbatim">Fluent</tt></a>, i.e. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L20-L23"><tt class="verbatim">HorizCalc</tt></a>
+      for all parameters), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L138"><tt class="verbatim">PoleTest</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L46"><tt
+      class="verbatim">fineMag</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L45"><tt class="verbatim">rankAux</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Regulator.lean#L338"><tt
+      class="verbatim">grenade</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">Gauge.slopeConstant</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.7.4 (one renormalization step of the leading
+      part).</strong> Fix a simple \(G\), kernel parameters \(K\) (penalty \(a
+      > 0\)), a stage \(J\), and constants \(\varepsilon, w, \delta > 0\) and
+      \(D, Z, C, Z' \geqslant 0\) for the fine and coarse beds and clips.
+      There are \(A_{\ast} \geqslant 0\) and \(s > 0\) (output amplitude and
+      width) such that, for every input width \(\tau > 0\) and amplitude \(A
+      \geqslant 0\), there are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(d \geqslant 0\) (the drift) and \(\gamma > 0\) (a rate);
+        </p>
+      </li>
+      <li>
+        <p>
+          a minimal block factor \(u\);
+        </p>
+      </li>
+      <li>
+        <p>
+          functions \(\Theta_0 (L)\) and \(\Lambda_0 (L)\),
+        </p>
+      </li>
+    </ul>
+    <p>
+      with the following property.
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Steps.</em> Coarse sides \(m_i \to \infty\); block-spin steps
+          \(\Lambda_{Lm_i} \to \Lambda_{m_i}\) with one admissible patch of
+          stage \(J\) and block factor \(L \geqslant u\), and kernel \(K\);
+          each coarse side is greater than \(1\), and each fine side is at
+          least \(100\) times the patch extent.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Clips and beds.</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              A fine clip \(\mathbf{p}\) with \(p_{\text{dir}} \leqslant Z\)
+              and a coarse clip \(\mathbf{q}\) with \(q_{\text{dir}} \leqslant
+              Z'\).
+            </p>
+          </li>
+          <li>
+            <p>
+              A fine bed \(B\) with \(H, \rho \in \text{strip} (w, D)\),
+              \(\text{Floor} (B, \mathbf{p}, n ; \varepsilon, D)\) for every
+              \(n\), and signed-permutation-invariant gauge form on the fine
+              tori.
+            </p>
+          </li>
+          <li>
+            <p>
+              A coarse bed \(T\) with \(H_T, \rho_T \in \text{strip} (\delta,
+              C)\), \(\text{Floor} (T, \mathbf{q}, n ; \varepsilon', C)\) for
+              every \(n\) and some \(\varepsilon' \in \mathbb{R}\), and
+              signed-permutation-invariant gauge form on the coarse tori.
+            </p>
+          </li>
+          <li>
+            <p>
+              A tower with interpolation kernel \(A_0\), satisfying the
+              quadratic-form interpolation, curl-transport and
+              diagonal-transport identities of III.1 on each step. For every
+              list \(\nu\) of at most two fine-coordinate differences,
+              \(\nabla^{\nu} A_0\) has strip width \(w\) and entrywise
+              weighted sum at most \(D / L^{1 + | \nu |}\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Fine datum.</em> \(R \in \text{Bounds} (\mathbf{p}; \tau, A,
+          \Lambda)\) attached to \(B\), with \(\Lambda \geqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Stationary branches.</em> A common \(\eta > 0\) and, for each
+          \(i\), an axial forest \(F_i\) and a branch \(g_i\) (coarse fields
+          \(\to\) free fine variables) such that:
+        </p>
+        <ul>
+          <li>
+            <p>
+              for every choice of block-kernel data, the second variation in
+              the free variables at \((0, 0)\) is at least \(\eta \sum_e |v_e
+              |^2\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(g_i (0) = 0\), \(g_i\) and the fine action are real-analytic
+              at \(0\), and \(g_i\) is stationary for every choice of
+              block-kernel data;
+            </p>
+          </li>
+          <li>
+            <p>
+              on every free edge, \(Dg_i (0) v\) is the free interpolant in
+              the chosen axial gauge minus the derivative of the copied coarse
+              configuration;
+            </p>
+          </li>
+          <li>
+            <p>
+              the second jet of the tree-level coarse action is the quadratic
+              form of \(T\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Chart.</em> A local Haar chart ratio \(\textsf{J}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> There are a coarse path datum \(Y\) and \(\alpha
+      \in \mathbb{R}\) such that:
+    </p>
+    <ol>
+      <li>
+        <p>
+          the rows of \(Y\) are the straight-route rows of \(T\), and \(Y\) is
+          attached to \(T\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(Y \in \text{Bounds} (\mathbf{q}; \eta', A', \Lambda')\) whenever
+          \(0 < \eta' \leqslant s\), \(A' \geqslant A_{\ast}\) and \(\Lambda'
+          \geqslant \max (\Lambda_0 (L), \Lambda / 2)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(| \alpha + \kappa \log L| + 1 \leqslant d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>classical match:</em> for every \(i\), every choice \(t\) of
+          block-kernel data and every \(j \leqslant 4\), the \(j\)-th jets at
+          \(0\) of
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle x \mapsto S_t (x, g_i (x)) \quad \text{and} \quad x
+      \mapsto
+\text{main}_{\mathbf{q}, Y} (e^x)\)
+    </center>
+    <p>
+      coincide. Here \(S_t (x, z) = \text{main}_{\mathbf{p}, R} (U_{x, z}) + a
+      \sum_e \left( 1 -
+d_{\text{rep}}^{- 1} \text{Re} \hspace{0.17em}
+      \text{tr} (V_e  \hspace{0.17em}
+\Pi_t (U_{x, z})_e^{- 1}) \right)\) is
+      the fine leading part plus the block-spin penalty. \(U_{x, z}\) is the
+      fine configuration lifted from \(V = e^x\) through the forest with free
+      variables \(z\), and \(\Pi_t\) is the block predictor;
+    </p>
+    <ol>
+      <li>
+        <p>
+          <em>finite bound:</em> for every \(i\), every \(\Theta \geqslant
+          \Theta_0 (L)\) and every \(c' \leqslant \gamma\), consider the
+          one-loop function
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle \text{th}_{i, t} (x) = \text{loop}_R (U_{x, g_i (x)}) +
+      \tfrac{1}{2} \log \det
+\text{Hess}_z S_t (x, g_i (x)) - \log \prod_e
+      \textsf{J} (g_i (x)_e) .\)
+    </center>
+    <p>
+      It is analytic at \(0\), the Hessian determinant is positive near \(0\),
+      and for all coarse lattice momenta \(p, p'\) and real plane waves
+      \(w_{p, \xi} (x) = \text{Re} (e^{ip \cdot x} \xi)\) and \(w_{p',
+      \zeta}\), with every direction-colour component of \(\xi, \zeta\) of
+      modulus at most \(1\),
+    </p>
+    <center>
+      \(\displaystyle | D^2 \text{th}_{i, t} (0) [w_{p, \xi}, w_{p', \zeta}] -
+      D^2  \left( \alpha
+\hspace{0.17em} \text{quad}_{\mathbf{q}, Y} +
+      \text{loop}_Y \right) (0) [w_{p,
+\xi}, w_{p', \zeta}] | \leqslant |
+      \Lambda_{m_i} |  \hspace{0.17em} \Theta
+\hspace{0.17em} e^{- c' m_i} .\)
+    </center>
+    <p>
+      Here \(\text{quad}_{\mathbf{q}, Y}\) is the signed-permutation average
+      of the Wilson-plaquette and row-square terms in
+      \(\text{main}_{\mathbf{q}, Y}\), with the cubic and quartic atoms
+      omitted. Its Hessian is the coarse quadratic form. The comparison
+      function is also analytic at \(0\). The estimate holds for every \(t\).
+    </p>
+    <p>
+      <em>On the constants.</em> \(A_{\ast}\) and \(s\) are fixed before
+      \((\tau, A)\). The drift is \(d = d_{\text{cmp}} + D_{\text{slope}} +
+      1\), where \(d_{\text{cmp}}\) is the comparison constant of &sect;4.8
+      and \(D_{\text{slope}}\) is the constant of III.7.3. Both may depend on
+      \((\tau, A)\) but are independent of \(L\). The construction gives
+      \(\Lambda_0 (L) = a_0 L^4 + b_0 \log L + c_0\) and \(\Theta_0 (L) = b_1
+      L^4\), with nonnegative constants depending on the fixed input
+      parameters; both are \(O (L^4)\).
+    </p>
+    <p>
+      <em>Iteration.</em> Fix positive stage widths and lower bounds for the
+      free quadratic forms, stage amplitude bounds, kernel parameters \(K\)
+      and clip bounds. The constants are then chosen in the following order:
+    </p>
+    <ol>
+      <li>
+        <p>
+          maximal path widths \(\sigma_j\) and minimal path amplitudes
+          \(A_j\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for each positive sequence \(\tau_j \leqslant \sigma_j\) and
+          sequence \(A'_j \geqslant A_j\): drifts \(d_j \geqslant 0\), rates
+          \(\gamma_j > 0\) and minimal block factors \(u_j\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every compatible choice of stage parameters, with direct clip
+          coefficients below their prescribed bounds, drifts at least \(d_j\)
+          and block-factor lower bounds at least \(u_j\), and then every
+          admissible choice of block factors: volume thresholds and positive
+          Hessian lower bounds \(\eta_j\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every admissible protection sequence \(\theta\): entry
+          thresholds \(\Delta_j\) for the reference coupling.
+        </p>
+      </li>
+    </ol>
+    <p>
+      For each such choice, take post-step constants \(\Gamma_j \geqslant 1\)
+      and \(0 < c_j \leqslant \gamma_j\) and the Hessian lower bounds
+      \(\eta_j\) just chosen. The conclusion holds for every history
+      satisfying the compatibility, size and coupling thresholds of III.2;
+      every free-field horizon satisfying the strip, Floor, symmetry,
+      top-identity, interpolation and three-form coercivity conditions of
+      III.10; every second horizon with the same beds and the same
+      interpolation and curl-transport kernels; and every local Haar chart
+      ratio. For such data there are kinetic data \((\alpha_{N, m}, P_{N, m},
+      g_{N, m})\) satisfying all the following conditions:
+    </p>
+    <ul>
+      <li>
+        <p>
+          every \(P_{N, m}\) is attached to its bed and satisfies the
+          level-\(m\) clauses with loop amplitude \(\text{loopCap}_m\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(P_{N, N}\) is the Wilson top datum of III.7.2;
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(m < N\), every volume index and every axial forest: the
+          second-variation lower bound \(\eta_{J_{m + 1}}\), stationarity, the
+          derivative condition and the classical match; also \(| \alpha_{N, m}
+          + \kappa \log L_m | + 1 \leqslant \text{drift}_{m + 1}\), and the
+          finite bound with constants \((\Gamma_{J_{m + 1}}, c_{J_{m + 1}})\)
+          at loop amplitude \(\text{loopCap}_{m + 1}\) and also at amplitude
+          \(1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The step and iteration are theorems; their output conditions are the
+          definitions used in III.9.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L92-L182"><tt class="verbatim">transition_cap</tt></a> proves the step property
+          at every stage using III.7.3 for the input constants. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L122-L143"><tt
+          class="verbatim">claiming</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L366-L391"><tt class="verbatim">under_contract</tt></a>
+          and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L59-L66"><tt class="verbatim">geared</tt></a> iterate it.
+        </p>
+      </li>
+      <li>
+        <p>
+          The iteration supplies the one-loop slope internally; its remaining
+          hypotheses are the free-field, history and Haar-chart conditions
+          just listed.
+        </p>
+      </li>
+      <li>
+        <p>
+          The coarse-datum construction and induction are also expressed by <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L394-L435"><tt class="verbatim">color_pipe</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L254-L285"><tt class="verbatim">energized</tt></a>
+          and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L307-L335"><tt class="verbatim">plowed</tt></a>, together with the preceding
+          step theorem.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L86-L90"><tt class="verbatim">Transition</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L26-L38"><tt
+      class="verbatim">Scud</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L25"><tt class="verbatim">Hull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L170-L177"><tt
+      class="verbatim">Bubble</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L301-L305"><tt class="verbatim">FullPaths</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115"><tt
+      class="verbatim">Kin.Planned</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L108-L109"><tt class="verbatim">ClassicalMatch</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L81-L84"><tt class="verbatim">tested</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L46-L49"><tt class="verbatim">thermal</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71"><tt class="verbatim">FiniteBound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L51"><tt class="verbatim">draft</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.7.5 (uniform inverse of the completed free
+      operator).</strong> Let \(j\) be a stage, \(K\) kernel parameters,
+      \(\sigma, \varepsilon > 0\) and \(\Omega \geqslant 0\). There is \(\eta
+      > 0\), and for every block factor \(L\) a constant \(A_L \geqslant 0\),
+      with the following property.
+    </p>
+    <p>
+      For every admissible patch of stage \(j\) and block factor \(L\), and
+      every bed \(B\) with \(H \in \text{strip} (\sigma / L, \Omega)\) and
+      \(\text{Floor} (B, \mathbf{c}, n ; \varepsilon, D)\) for all \(n\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          the inverse \(\mathcal{G}_B\) of the block-Bloch symbol of the
+          completed free operator lies in \(\text{strip} (\eta, A_L)\) on the
+          coarse lattice;
+        </p>
+      </li>
+      <li>
+        <p>
+          for every step with this patch (any coarse side \(c\), fine side
+          \(cL\), any choice of block-kernel data), \(\mathcal{C}_B 
+          \hspace{0.17em} \mathcal{G}_B = 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      In the rooted coordinates, the joint variables are a fine link field
+      \(v\) and a coarse site field \(h\). Before gauge completion, the
+      quadratic form is
+    </p>
+    <center>
+      \(\displaystyle \langle dv, H \hspace{0.17em} dv \rangle + a \|- Qv +
+      d_c h\|^2,\)
+    </center>
+    <p>
+      where \(Q\) is the linear block average and \(d_c\) the coarse gradient.
+      The completed operator adds \(F_{1 / L}^{\textsf{T}} F_{1 / L}\), where
+      \(F_{\mu} = d_{\hspace{-0.17em} 1}^{\ast} P_f +\mathfrak{m}_{\mu} X\),
+      \(P_f\) projects onto fine links, and \(X\) is minus the derivative of
+      the logarithm of the fine rooted frame. Here \(d_{\hspace{-0.17em} 1}\)
+      is \(d_U\) at \(U = 1\). All matrices use physical counting bases. The
+      decay rate \(\eta\) is uniform in \(L\); only the amplitude depends on
+      \(L\).
+    </p>
+    <p>
+      <em>Status:</em> theorem; used in III.4. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral/Backing.lean#L54-L66"><tt
+      class="verbatim">WilsonBulk.uniform_backing</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral/Backing.lean#L18-L20"><tt class="verbatim">completedM</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral/Backing.lean#L22-L23"><tt class="verbatim">jointInverse</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.7.6 (Faddeev&ndash;Popov identity for the
+      one-loop term).</strong> Fix an admissible step, a clip \(\mathbf{p}\)
+      and a datum \(R \in \text{Bounds} (\mathbf{p}; \sigma, A, \Lambda)\) for
+      some \(\sigma > 0\) and \(A, \Lambda \in \mathbb{R}\). Let \(g (0) = 0\)
+      be a real-analytic stationary branch for an axial forest, stationary for
+      every choice of block-kernel data, with second variation \(\geqslant
+      \eta \sum_e |v_e |^2\) (\(\eta > 0\)). Let \(\mu > 0\), let \(t\) be a
+      choice of block-kernel data, and let \(\textsf{J}\) be a local Haar
+      chart ratio. Then for coarse fields \(x\) near \(0\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          the completed Hessian \(\mathcal{P}_{\mu} (x)\) has positive
+          determinant;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{th} (x) = \text{loop}_R (U_{x, g (x)}) + \tfrac{1}{2} \log
+          \det
+\mathcal{P}_{\mu} (x) - \log \det \mathcal{G}_{\mu} (x)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      \(\mathcal{P}_{\mu} (x)\) acts on all fine-link and coarse-frame
+      directions. It is the Hessian in left exponential coordinates of the
+      joint action
+    </p>
+    <center>
+      \(\displaystyle \mathscr{S}_t (V ; U, h) = \text{main}_{\mathbf{p}, R}
+      (U) + a \sum_e \left( 1
+- d_{\text{rep}}^{- 1} \text{Re} \hspace{0.17em}
+      \text{tr} (V_e
+[\text{gauge}_h \Pi_t (U)]_e^{- 1}) \right),\)
+    </center>
+    <p>
+      at \(V = e^x\) and the lifted joint stationary configuration, plus
+      \(F_{\mu}^{\textsf{T}} F_{\mu}\). Here \(F_{\mu} = d_U^{\ast} P_f
+      +\mathfrak{m}_{\mu} (U) X\), with the rooted-frame derivative \(X\) as
+      in III.7.5. The joint stationary configuration combines the lifted fine
+      field \(U_{x, g (x)}\) with its coarse frame. \(\mathcal{G}_{\mu} =
+      d_U^{\ast} d_U +\mathfrak{m}_{\mu} (U)\) is the ghost operator at the
+      lifted configuration. The underlying algebraic identity is
+    </p>
+    <center>
+      \(\displaystyle T^2 \det \mathcal{P}_{\mu} = \det M \hspace{0.17em}
+      (\det
+\mathcal{G}_{\mu})^2,\)
+    </center>
+    <p>
+      with \(M\) the axial Hessian and \(T\) the Haar Jacobian of the chart.
+    </p>
+    <p>
+      <em>Status:</em> theorem; used in the renormalization and remainder
+      comparisons of III.4, III.2 and VII.2. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L177-L202"><tt
+      class="verbatim">tribute</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L166-L167"><tt class="verbatim">bounty</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Completion.lean#L59-L60"><tt
+      class="verbatim">medals</tt></a>.
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>I.1 (gauge groups, Wilson action).</strong> \(E_W\), the
+          exponential chart, \(\text{Ad}\), the Casimir \(C_G\), and
+          \(\kappa\) with \(\kappa > 0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176"><tt class="verbatim">slopeConstant_pos</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt class="verbatim">casimir</tt></a>). Simplicity enters as
+          \(\text{tr} (\text{ad}_b \text{ad}_b) = - C_G\) for every unit
+          vector \(b\), and through Schur's lemma.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.1 (block-spin step).</strong> The specifications of
+          III.7.1. Also: steps, patches (block factor \(L\), stage \(J\)),
+          axial forests (tree gauge), the fine action plus block penalty, and
+          the stationarity notions (stationarity, second-variation lower
+          bound, derivative condition, equality of jets, classical match).
+          Further: the one-loop function, the finite bound, the kinetic data
+          and the iteration conditions, towers, horizons, and local Haar chart
+          ratios.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.6 (stationary branch).</strong> For every admissible
+          step there is a Hessian lower bound \(\eta_j > 0\) (chosen after
+          \(L\)) such that every admissible fine datum has a stationary branch
+          with:
+        </p>
+        <ul>
+          <li>
+            <p>
+              second variation \(\geqslant \eta_j\);
+            </p>
+          </li>
+          <li>
+            <p>
+              derivative given by the free interpolation in the chosen axial
+              gauge, after subtracting the copied coarse field;
+            </p>
+          </li>
+          <li>
+            <p>
+              quadratic part equal to the coarse bed.
+            </p>
+          </li>
+        </ul>
+        <p>
+          This is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L229-L232"><tt class="verbatim">Integrated.stationary_scene</tt></a>,
+          packaged here by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L58-L61"><tt class="verbatim">scene_gate</tt></a>. Also from
+          III.6: positivity of the Hessian near \(0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F05/Graphs.lean#L75-L79"><tt class="verbatim">hessian_pos</tt></a>)
+          and independence of the one-loop function from the forest (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F05.lean#L42-L57"><tt
+          class="verbatim">same_thermal</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.10 (conditions on beds and steps).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L54-L55"><tt class="verbatim">Bid.Sworn</tt></a>: signed-permutation
+              invariance of the bed's gauge form.
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L83-L84"><tt class="verbatim">Bid.HeatG</tt></a>: quadratic jet of the
+              tree-level action.
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L64"><tt class="verbatim">Bid.Larger</tt></a>: size of the torus.
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L63-L73"><tt class="verbatim">Craft.Rack</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L104-L105"><tt class="verbatim">Bid.Retained</tt></a>:
+              uniform strip and Floor bounds, symmetry and three-form
+              coercivity for the free-field horizon; and equality of the beds
+              and the two interpolation kernels for the second horizon.
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Scope.lean#L35-L43"><tt class="verbatim">Bid.one_for_all</tt></a>: the classical
+              match does not depend on the forest.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>III.2 (order of constants).</strong> The admissible stage
+          parameters, block factors, protection exponents, entry and volume
+          thresholds, and the history compatibility conditions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162"><tt
+          class="verbatim">Supply.Paid</tt></a>, free-field bounds and constants chosen
+          after the block factors. Also the reference coupling <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79"><tt
+          class="verbatim">&beta;&#x0302;_m</tt></a> \(= \bar{\beta} + \kappa s_m\) and
+          the loop cap <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L86"><tt class="verbatim">loopCap_m</tt></a> \(= 2 \exp
+          (\theta_{J_m} (\log \log \hat{\beta}_m)^2)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>II.1.</strong> The local Haar chart ratio of the exponential
+          chart (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FOUNDATIONS/Primary.lean#L84"><tt class="verbatim">chart_ok</tt></a>), used in the
+          iteration.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.16, III.3.</strong> Laurent/Bloch calculus on strips
+          (products, inverses, Cauchy estimates, Riemann sums versus
+          integrals); the block-Bloch (&quot;slab&quot;) representation of
+          fine translation-invariant operators on the coarse lattice.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Standard mathematics.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              Taylor expansion of the plaquette action; polarization (a jet is
+              determined by its restrictions to lines).
+            </p>
+          </li>
+          <li>
+            <p>
+              The Koszul complex of the regular sequence \(q_j (p) = e^{ip_j}
+              - 1\) with Hadamard division in a strip, i.e. the lattice
+              Poincar&eacute; lemma in momentum space.
+            </p>
+          </li>
+          <li>
+            <p>
+              Schur's lemma for invariant forms on a simple Lie algebra.
+            </p>
+          </li>
+          <li>
+            <p>
+              The Faddeev&ndash;Popov procedure.
+            </p>
+          </li>
+          <li>
+            <p>
+              The background-field method ('t Hooft and Abbott;
+              Peskin&ndash;Schroeder, &sect;16.6).
+            </p>
+          </li>
+          <li>
+            <p>
+              The one-loop \(\beta\)-function (Gross&ndash;Wilczek and
+              Politzer) and its orbital/spin split \(- \tfrac{11}{3} =
+              \tfrac{1}{3} - 4\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Balaban's propagator bounds and background-field renormalization
+              group; see also Dimock, <em>The renormalization group according
+              to Balaban</em>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Rotation-invariant integrals over shells in \(\mathbb{R}^4\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Imported constants and assumptions.</strong> No one-loop
+          coefficient is assumed. \(\kappa\) is defined in I.1, and III.7.3
+          proves that it is the one-loop slope. The hypotheses carried are
+          those displayed in the propositions; the free-field and history
+          assumptions are supplied by III.4.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Classical part.</strong> At every level the quadratic part of
+      the leading action is fixed by the free-field bed of that level. The
+      cubic and quartic parts are curvature atoms, determined by Taylor
+      agreement through order four with a given gauge-invariant function
+      \(E\). At the top, \(E\) is the Wilson energy. At each step, \(E\) is
+      the tree-level coarse action \(x \mapsto S_t (x, g (x))\). The
+      atom-emission lemma (&sect;4.3, Lemma 4.4) serves both cases. Its
+      mechanism has four parts:
+    </p>
+    <ol>
+      <li>
+        <p>
+          The Taylor coefficients of a translation sum of local analytic
+          functionals have Fourier kernels on \(\mathbb{Z}^4\) that are
+          strip-analytic. Finite-volume coefficients agree with \(| \Lambda_n
+          |\) times these kernels up to \(o (| \Lambda_n |)\) along any
+          sequence of sides; this is how volume-uniformity enters.
+        </p>
+      </li>
+      <li>
+        <p>
+          Gauge invariance makes the kernels transversal in each leg
+          (linearized Ward identity).
+        </p>
+      </li>
+      <li>
+        <p>
+          Transversal kernels with at least three legs factor through the
+          curvature. This is the lattice Poincar&eacute; lemma, proved by
+          contracting the Koszul complex of the differences \(e^{ip_j} - 1\),
+          one axis at a time, with Hadamard division. A one-leg solve reduces
+          the width from \(\sigma\) to \(\sigma / 4\) once, regardless of the
+          four coordinate divisions within it. Successive leg solves cause
+          further width losses, depending only on the fixed number of legs.
+        </p>
+      </li>
+      <li>
+        <p>
+          The real, colour-invariant Laurent coefficients of the factored
+          kernels are the coefficients of atoms, and exponential decay is the
+          strip bound.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>One-loop part.</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          In the axial chart the one-loop term is \(\text{loop} + \tfrac{1}{2}
+          \log \det - \log (\text{Haar Jacobian})\). An exact
+          Faddeev&ndash;Popov identity turns it into \(\tfrac{1}{2} \log
+          \det\) of a covariantly completed Hessian minus \(\log \det\) of a
+          ghost operator.
+        </p>
+      </li>
+      <li>
+        <p>
+          Its second-order Taylor coefficient is a two-leg kernel. Its
+          \(F^2\)-coefficient \(\alpha\) is compared, with an
+          \(L\)-independent error, to that of the regulated Feynman-gauge
+          background-field determinant on the fine lattice.
+        </p>
+      </li>
+      <li>
+        <p>
+          The latter is computed. The lattice integrand is the continuum
+          bubble integrand \(h (k)\) of the vector loop (weight
+          \(\tfrac{1}{2}\)) and the ghost loop (weight \(- 1\)), up to errors
+          \(O (|k|^{- 3} + \mu^2 |k|^{- 6})\); its angular average is \(-
+          \tfrac{11}{3} C_G |k|^{- 4}\). Integration over the shell \(1 / L <
+          |k| \leqslant 1\) gives \(- \kappa \log L\), and the rest is bounded
+          by absolute values.
+        </p>
+      </li>
+      <li>
+        <p>
+          After subtracting \(\alpha\) times the bed's quadratic kernel, the
+          remaining kernel vanishes to fourth order at zero momentum. It is
+          therefore represented by loop atoms satisfying the two moment
+          conditions, i.e. by irrelevant terms. Inherited fine loop atoms
+          contribute with a factor \(L^{- 2}\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>Constants.</strong> The output width and cubic/quartic amplitude
+      of a step are fixed before the input amplitude. The input enters the
+      output only with factors \(L^{- 1}\) or \(L^{- 2}\), which a large \(L\)
+      makes small. The strip widths and inverse bounds for the completed
+      operators are uniform in \(L\) in block-scaled norms. The newly
+      generated loop-atom amplitude is \(O (L^4)\). It is absorbed by
+      \(\text{loopCap}_m\), which grows with \(\hat{\beta}_m\).
+    </p>
+    <p>
+      <strong>Relation to Balaban.</strong> The construction uses
+      background-field renormalization with block-spin constraints. Here:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the effective action is carried by explicit, exponentially weighted
+          path data;
+        </p>
+      </li>
+      <li>
+        <p>
+          the \(F^2\)-coefficient is obtained by comparison with a regulated
+          covariant determinant plus a Fourier computation, with \(O (1)\)
+          error, for an arbitrary simple compact gauge group.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-fourier-kernels-of-local-functionals"></a>4.1 Fourier kernels of local functionals<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.1 (translation sums of local functionals; limits of
+      kernels).</strong> (a) Let \(F_k\) be functions of configurations on
+      \(\mathbb{Z}^4\). Suppose \(F_k\) depends only on links in a box of size
+      \(d_k\), has a holomorphic extension with bound \(w_k\) on a polydisc of
+      radius \(r\) around the identity, uniformly after translation and
+      periodic restriction, and \(\sum_k w_k \exp (4 (t + 1)^2 \sigma d_k)
+      \leqslant A\), with \(r, \sigma > 0\) and \(w_k \geqslant 0\). Then for
+      every side \(n\) the translation sum on \(\Lambda_n\) is analytic at
+      \(1\). Its \((t + 1)\)-th Taylor coefficient is recorded
+      <em>exactly</em> by a kernel that is strip-analytic of width \(\sigma\)
+      and size \(A \hspace{0.17em} c (t, r)\), independent of \(n\). For the
+      Wilson energy, kernels of every order exist with width \(1\). (b)
+      Suppose a strip-analytic kernel records \(F_i\) on \(\Lambda_{n_i}\)
+      with error \(| \Lambda_{n_i} | \epsilon_i\), where \(n_i \to \infty\)
+      and \(\epsilon_i \to 0\). If the \(F_i\) are analytic, invariant near
+      \(0\) under global colour rotations and lattice gauge transformations,
+      and their Taylor coefficients of positive orders \(1, \ldots, t\)
+      vanish, then the kernel is transversal in each leg, real and colour
+      invariant. <em>Sketch:</em> (a) Cauchy estimates on the polydisc bound
+      each local Taylor coefficient; its Fourier support has size at most \(4
+      (t + 1)^2 d_k\), which gives the stated exponential factor. (b) Each
+      property holds exactly for the finite-volume coefficients; divide by \(|
+      \Lambda_{n_i} |\) and pass to the limit along lattice momenta
+      approaching any prescribed real momenta. Strip analyticity gives the
+      required continuity. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/LocalOracle.lean#L312-L348"><tt class="verbatim">gathered</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L312-L326"><tt class="verbatim">Wilson_stream</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Ward.lean#L647-L697"><tt class="verbatim">withdrew</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Vertex.lean#L371-L379"><tt class="verbatim">wedlock</tt></a>. <em>(proof read at top level; Ward
+      identity input statement only)</em>
+    </p>
+    <h3 id="auto-6"><a id="42-the-lattice-poincar&Atilde;&#x013E;-lemma-in-momentum-space"></a>4.2 The lattice Poincar&eacute; lemma in momentum
+    space<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.2 (one-leg solve).</strong> Let the momentum space have
+      \(d\) scalar coordinates, including four selected coordinates, and let
+      \(\delta\) contract differential forms with \(q_j (p) = e^{ip_j} - 1\)
+      in those four coordinates. Let \(\sigma > 0\), \(A \geqslant 0\), and
+      let \(f\) be a form of degree \(r \geqslant 0\) with the following
+      properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          each component is strip-analytic of width \(\sigma\) and size \(A\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\delta f = 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(f\) vanishes to order \(s\) along rays;
+        </p>
+      </li>
+      <li>
+        <p>
+          on real momenta, \(f\) takes values in subspaces unchanged when any
+          of the four selected momentum coordinates varies;
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(r = 0\), \(f\) vanishes where the projected momentum is \(0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then \(f = \delta B\), where \(B\) has degree \(r + 1\), is
+      strip-analytic of width \(\sigma / 4\) and size \(4 A \hspace{0.17em}
+      \pi_d (\sigma)\) with \(\pi_d (\sigma) = (4 / \sigma)  (2 (1 + \sigma /
+      4) / (\sigma / 4))^d\), vanishes to order \(\max (s - 1, 0)\), and takes
+      values in the same subspaces on real momenta. <em>Sketch:</em> Comb one
+      axis at a time. \(f (p) - f (p) |_{p_j = 0} = q_j (p) D_j (p)\) by
+      Hadamard division (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Koszul.lean#L88-L128"><tt class="verbatim">div_var</tt></a>). \(D_j\) has
+      width \(\sigma / 4\) and size \(A \pi_d (\sigma)\) by Cauchy estimates,
+      while the restriction \(f|_{p_j = 0}\) keeps width \(\sigma\). After all
+      four axes, no positive-degree component remains. In degree zero the
+      remainder is \(f\) with all selected momenta set to zero, which vanishes
+      by hypothesis. The factor \(4\) counts the axes; the width loss is a
+      single one. For positive vanishing order, division by \(q_j \sim ip_j\)
+      lowers it by one; order zero remains order zero. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Koszul.lean#L571-L587"><tt
+      class="verbatim">wall_lift</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.3 (transversal kernels are curvature kernels;
+      atoms).</strong> For every \(t \geqslant 2\) and \(\sigma > 0\), there
+      are \(\eta \in (0, \sigma]\) and \(K \geqslant 0\) such that every \((t
+      + 1)\)-leg kernel \(f\), strip-analytic of width \(\sigma\) and size \(A
+      \geqslant 0\) and transversal in each leg, admits the factorization
+    </p>
+    <center>
+      \(\displaystyle f (p) = \sum_b \prod_i \hat{s} (p_i)_{b_i a_i} 
+      \hspace{0.17em} g_b (p),\)
+    </center>
+    <p>
+      for real momenta, where \(\hat{s}\) is the symbol of the lattice curl
+      and \(g\) is a plaquette kernel, strip-analytic of width \(\eta\) and
+      size \(AK\), with \(\eta, K\) depending on \(t, \sigma\). If \(f\) is
+      also real and colour invariant, the Laurent coefficients of \(g\) can be
+      taken real, colour invariant and exponentially decaying. Placed on
+      straight routes, they define atoms. If \(f\) records an analytic
+      functional invariant under signed permutations, the signed-permutation
+      average of their translation sum reproduces that Taylor coefficient up
+      to the recording error. <em>Sketch:</em> Solve the dependent-momentum
+      leg first, then the independent legs by Lemma 4.2, preserving the
+      subspace constraints from the earlier solves. Symmetrize by conjugate
+      reflection to obtain real Laurent coefficients and project the colour
+      tensors onto the invariant subspace. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/ManyLegs.lean#L533-L549"><tt class="verbatim">allleg</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Pathways.lean#L193-L201"><tt class="verbatim">strokes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Ward.lean#L192-L216"><tt class="verbatim">colors_align</tt></a>.
+      <em>(proof read at top level)</em>
+    </p>
+    <h3 id="auto-7"><a id="43-classical-emission-and-the-wilson-jet"></a>4.3 Classical emission and the Wilson jet<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.4 (emission of cubic and quartic atoms).</strong> Let
+      \(\sigma, \sigma_0 > 0\) and \(A, Z \geqslant 0\). There are \(\tau \in
+      (0, \sigma]\) and \(C \geqslant 0\) with the following property.
+    </p>
+    <p>
+      <em>Hypotheses:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          sides \(n_i \to \infty\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a bed \(B\) with \(\rho \in \text{strip} (\sigma_0, A)\) and Floor
+          on the one-site torus, and a clip with \(c_{\text{dir}} \leqslant
+          Z\);
+        </p>
+      </li>
+      <li>
+        <p>
+          real-analytic functions \(E_i\) of link fields on \(\Lambda_{n_i}\),
+          invariant near \(0\) under lattice gauge transformations, global
+          colour rotations and signed permutations, such that \(E_i\) minus
+          the bare row action of \(B\) vanishes to order \(3\) along rays; the
+          bare row action has the straight-route rows of \(\rho\) and no
+          atoms;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(M \geqslant 1\) such that the Taylor coefficients of orders \(3\)
+          and \(4\) of \(E_i\) are recorded exactly by kernels strip-analytic
+          of width \(\sigma\) and size \(M\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion:</em> there are invariant cubic atoms \(X\) and quartic
+      atoms \(V\) with sums of exponential weights at most \(MC\) at width
+      \(\tau\) such that, for every choice \(f\) of loop atoms and every
+      \(i\), \(x \mapsto E_i (x) - \text{main}_{\mathbf{c}, (\rho
+      \text{-rows}, f, X, V)}
+(e^x)\) vanishes to order \(5\) along rays.
+      <em>Sketch:</em> At order \(3\), subtract the full bare row action,
+      whose quadratic jet agrees with that of \(E\). The residual kernel is
+      transversal (Lemma 4.1(b)) and is matched by cubic atoms (Lemma 4.3). At
+      order \(4\), subtract the same bare row action and the cubic atoms; the
+      remainder is transversal and is matched by quartic atoms. <em>Lean:</em>
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L561-L595"><tt class="verbatim">assembly</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.5 (proof of III.7.2).</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Take \(E_i = E_W\) on \(\Lambda_{n_i}\). The kernels of orders \(3\)
+          and \(4\) come from Lemma 4.1(a).
+        </p>
+      </li>
+      <li>
+        <p>
+          Under \(D = 1\), Floor and invariance, \(H\) agrees with the
+          identity on exact 2-forms. Hence \(E_W\) minus the quadratic term of
+          the bare datum (rows of \(\rho\), no atoms) vanishes to order \(3\)
+          (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L441-L471"><tt class="verbatim">top_Wilson</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lemma 4.4 gives \(X, V\), and \(Q\) is formed from the rows of
+          \(\rho\), zero loop atoms, \(X\) and \(V\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Order-\(5\) vanishing along every ray of the difference of two
+          analytic functions gives equality of all derivatives of order
+          \(\leqslant 4\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L254-L260"><tt class="verbatim">matched</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          The weight clauses come from the row prices \(6 Ae^{4 \sigma_0}\),
+          the zero-momentum normalization (Floor on the one-site torus, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L214-L258"><tt class="verbatim">symbol_match</tt></a>), and the common atom bound
+          \((1 + C_3 + C_4) C\), where \(C_3, C_4\) bound the Wilson Taylor
+          kernels and \(C\) is the emission constant.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L270-L305"><tt class="verbatim">launch</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L101-L105"><tt class="verbatim">beckon</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L220-L225"><tt class="verbatim">budding</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.6 (every admissible leading part is Wilson up to
+      irrelevant terms).</strong> Fix \(\sigma, \tau > 0\), \(\varepsilon \in
+      \mathbb{R}\) and \(C, Z, A \geqslant 0\). Let \(n_i \to \infty\),
+      \(c_{\text{dir}} \leqslant Z\), and let \(R \in \text{Bounds}
+      (\mathbf{c}; \tau, A, \Lambda)\) be attached to a bed with
+      \(\text{Floor} (B, \mathbf{c}, n ; \varepsilon, C)\) for every \(n\),
+      invariant gauge form on each \(\Lambda_{n_i}\) and \(H \in \text{strip}
+      (\sigma, C)\). Then the Taylor kernels of orders \(2\), \(3\) and \(4\)
+      of \(\text{main}_{\mathbf{c}, R} - E_W\) vanish at zero momentum to
+      orders \(3\), \(2\) and \(1\) respectively. Their strip bounds depend
+      only on \((\sigma, \varepsilon, C, Z, \tau, A)\). In words: all
+      admissible leading parts share the marginal (dimension-four) part of
+      \(E_W\). <em>Sketch:</em> \(\hat{H} (0) = 1\) makes the quadratic
+      difference vanish to order \(3\). Ward identities then force the cubic
+      and quartic differences to vanish to orders \(2\) and \(1\). Apply the
+      same Ward argument to the invariant cubic and quartic atom sums, whose
+      quadratic jets vanish. These statements concern their full nonlinear
+      Taylor coefficients, including transport and curvature expansions.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L363-L403"><tt class="verbatim">greyson</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L349-L358"><tt class="verbatim">veneer</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/SoftTransfers.lean#L59-L103"><tt class="verbatim">extra_curves</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Lattice.lean#L528-L535"><tt class="verbatim">saunter</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Lattice.lean#L41-L54"><tt class="verbatim">tideMark</tt></a>. <em>(proof read at top
+      level)</em>
+    </p>
+    <h3 id="auto-8"><a id="44-two-leg-kernels-the-f2-coefficient-and-irrelevance"></a>4.4 Two-leg kernels: the \(F^2\)-coefficient and
+    irrelevance<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.7 (a two-leg kernel without \(F^2\)-term vanishes to
+      fourth order).</strong> Let \(G\) be simple. Let \(f\) be a two-leg
+      kernel that is strip-analytic, transversal, real, colour invariant,
+      symmetric under exchange of the legs, and invariant under signed
+      permutations. If the \(p_q^2\)-coefficient of \(f_{(b, b), (w, w)}
+      (p)\), for \(p\) along an axis \(q \neq w\), vanishes for one colour
+      \(b\), then \(f\) vanishes to order \(4\) at zero momentum.
+      Consequently, for every bed with positive metric strip width, \(\hat{H}
+      (0) = 1\) and signed-permutation-invariant quadratic form, \(f -
+      \alpha_b (f)  \hspace{0.17em} \hat{K}_B\) vanishes to order \(4\), where
+      \(\hat{K}_B\) is the bed's quadratic kernel. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Transversality gives vanishing to order \(2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The third-order coefficient is odd under \(p \mapsto - p\), hence
+          \(0\) by reflection symmetry.
+        </p>
+      </li>
+      <li>
+        <p>
+          By transversality, hypercubic symmetry and Schur's lemma, the
+          second-order coefficient is a multiple of \((p^2 \delta_{aa'} - p_a
+          p_{a'}) \delta_{bb'}\), and the multiple is the given coefficient.
+          <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L611-L625"><tt class="verbatim">TributeColor.vanish</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L710-L727"><tt class="verbatim">subtract_fee</tt></a>. <em>(proof read at top
+          level)</em>
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Lemma 4.8 (loop atoms are irrelevant).</strong> Let \(R \in
+      \text{Bounds} (\mathbf{c}; \sigma, C, \Lambda)\). The two-leg kernel of
+      the loop atoms, symmetrized over legs and lattice symmetries:
+    </p>
+    <ul>
+      <li>
+        <p>
+          records \(\text{loop}_R\) exactly on every torus;
+        </p>
+      </li>
+      <li>
+        <p>
+          is strip-analytic of width \(\sigma\) and size \(\Lambda
+          \hspace{0.17em} r (\sigma)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          vanishes to order \(4\) at zero momentum.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> The kernel is \(\hat{s} (- p)^{\textsf{T}} \hat{K} (p)
+      \hat{s} (p)\) with \(\hat{K} (p) = \sum \text{coeff} \hspace{0.17em}
+      e^{ip \cdot y}\). Here \(\hat{s} = O (p)\), and the two moment
+      conditions give \(\hat{K} (0) = 0\) and \(\nabla \hat{K} (0) = 0\).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Scaled.lean#L231-L234"><tt class="verbatim">filing_ready</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-the-one-loop-term-in-covariant-form"></a>4.5 The one-loop term in covariant form<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.9 (proof of III.7.6).</strong> Let \(H_{\text{joint}}\)
+      be the Hessian of the joint action before gauge completion, and let
+      \(\textsf{R}\) select its axial directions. Three determinant identities
+      combine:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the completed Hessian factors as \(\det \mathcal{P}_{\mu} = (\det
+          \mathcal{G}_{\mu})^2 \det
+(\textsf{R}^{\textsf{T}} H_{\text{joint}}
+          \textsf{R})\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Completion.lean#L491-L502"><tt class="verbatim">root_determines</tt></a>);
+        </p>
+      </li>
+      <li>
+        <p>
+          the axial Hessian satisfies \(\det M = (\det \partial s)^2 \det
+          (\textsf{R}^{\textsf{T}} H_{\text{joint}}
+\textsf{R})\), where \(s\)
+          is the left-trivializing chart change (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L140-L161"><tt class="verbatim">certified</tt></a>);
+        </p>
+      </li>
+      <li>
+        <p>
+          the Haar Jacobian is \(T = | \det \partial s|\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L63-L114"><tt class="verbatim">treasury</tt></a>,
+          by comparison of densities on compact sets).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Together they give \(T^2 \det \mathcal{P}_{\mu} = \det M (\det
+      \mathcal{G}_{\mu})^2\). \(\det M > 0\) by the second-variation lower
+      bound and \(\det \mathcal{G}_{\mu} > 0\) since \(\mathcal{G}_{\mu}
+      \geqslant \mathfrak{m}_{\mu} > 0\); take logarithms.
+    </p>
+    <p>
+      In addition, the one-loop function is analytic at \(0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L76-L103"><tt
+      class="verbatim">born</tt></a>), and a finite bound proved for one forest
+      transfers to any other (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L105-L113"><tt class="verbatim">transfer_bound</tt></a>).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/HaarJac.lean#L177-L202"><tt class="verbatim">tribute</tt></a>. <em>(proof read;
+      determinant factorization inputs statement only)</em>
+    </p>
+    <h3 id="auto-10"><a id="46-uniform-invertibility-of-the-fluctuation-operators"></a>4.6 Uniform invertibility of the fluctuation
+    operators<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.10 (real stability and complex invertibility).</strong>
+      Fix a stage \(j\), a penalty \(a > 0\), a lower bound \(\varepsilon >
+      0\) and a bound \(A_F \geqslant 0\) for the gauge-completing map \(F\).
+      Let
+    </p>
+    <center>
+      \(\displaystyle \mathcal{C}_F (p) =\mathcal{Q}_B (p) + F (-
+      p)^{\textsf{T}} F (p),\)
+    </center>
+    <p>
+      where \(\mathcal{Q}_B\) is the block-Bloch symbol of the joint quadratic
+      form in III.7.5. Suppose \(B\) has metric strip bound \((\sigma / L,
+      \Omega)\) and Floor lower bound \(\varepsilon\) on every torus, and
+      \(F\) is holomorphic and periodic in width \(\sigma > 0\), with
+      block-scaled norm at most \(A_F\). On real momenta require
+    </p>
+    <center>
+      \(\displaystyle F (p) R_{\text{gauge}} (p) =\mathcal{G}_{1 / L} (p),
+      \qquad F (-
+p)^{\textsf{T}} = F (p)^{\ast},\)
+    </center>
+    <p>
+      where \(R_{\text{gauge}}\) inserts a fine gauge direction into the joint
+      variables and \(\mathcal{G}_{1 / L}\) is the free regulated ghost
+      symbol.
+    </p>
+    <p>
+      (a) There is \(y > 0\), depending only on \((G, j, a, A_F,
+      \varepsilon)\), such that \(\|\mathcal{C}_F (p) v\| \geqslant y \|v\|\)
+      in the block-scaled coordinates for every real \(p\), every \(L\) and
+      every patch of stage \(j\).
+    </p>
+    <p>
+      (b) If \(0 < \sigma \leqslant 1\), \(\Omega \geqslant 0\), the patch is
+      admissible, and \(F\) represents the rooted gauge-completing map on a
+      sequence of tori with coarse sides tending to infinity, then there are
+      \(\eta \in (0, \sigma]\) and \(C \geqslant 0\), depending only on \((G,
+      j, K, \varepsilon, \sigma, \Omega, A_F)\), such that \(\mathcal{C}_F^{-
+      1}\) is holomorphic in width \(\eta\) and has block-scaled norm at most
+      \(C\), uniformly in \(L\).
+    </p>
+    <p>
+      <em>Sketch:</em> The real estimate controls the quotient by gauge
+      directions using the quadratic form and block penalty; the displayed
+      identity controls the remaining gauge directions. Strip bounds give a
+      uniform perturbation estimate from real to nearby complex momenta.
+      Choose the width so that this perturbation is smaller than the real
+      lower bound.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/RealGap.lean#L647-L664"><tt class="verbatim">stadium</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/ComplexGap.lean#L330-L353"><tt class="verbatim">post_cert</tt></a>.
+      <em>(proof read at top level; real quotient and strip perturbation
+      estimates not expanded)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.11 (all five operators).</strong> Fix the numerical
+      parameters of III.7.4. There are \(0 < \eta \leqslant w_0 \leqslant \min
+      (w, \delta, 1 / 128)\) and \(C \geqslant 0\), depending only on the
+      free-field bounds, \(G, K\) and \(J\), with the following property.
+      Under the geometric, fine-bed, fine-datum and interpolation hypotheses
+      of III.7.4, form the actual fluctuation symbols using the free
+      interpolation \(A_0\) and the block predictor. At zero background, the
+      following five operators are invertible in width \(\eta\), with inverse
+      norm at most \(C\) in their respective block-scaled coordinates,
+      uniformly in \(L\) and in the input path width, cubic/quartic amplitude
+      and loop amplitude:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the auxiliary operator;
+        </p>
+      </li>
+      <li>
+        <p>
+          its block-aliased copy;
+        </p>
+      </li>
+      <li>
+        <p>
+          the completed Hessian;
+        </p>
+      </li>
+      <li>
+        <p>
+          the completed Hessian without the contact term;
+        </p>
+      </li>
+      <li>
+        <p>
+          the ghost operator.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The unaliased free auxiliary operator and the free regulated ghost
+      operator satisfy corresponding inverse bounds. <em>Sketch:</em> Bound
+      the fine auxiliary and ghost inverses directly in Fourier space and
+      transfer the auxiliary bound to its aliased copy. Apply Lemma 4.10 to
+      the joint completion, then use finite-volume compatibility for the
+      completed and contact-removed symbols. Take minima of widths and maxima
+      of constants. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L25-L68"><tt class="verbatim">honored</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L15-L22"><tt class="verbatim">GrantF</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral/Joint.lean#L44-L69"><tt class="verbatim">completion_choice</tt></a>.
+      <em>(proof read at top level)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.12 (proof of III.7.5).</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Choose \((\eta, C)\) by Lemma 4.10(b) for the regulator family of
+          the completed operator.
+        </p>
+      </li>
+      <li>
+        <p>
+          For each \(L\), a constant \(W (L)\) converts block-scaled norms
+          into the plain strip norm.
+        </p>
+      </li>
+      <li>
+        <p>
+          The bound on the inverse gives the strip bound \((\eta / 2,
+          \text{cost} (\eta, CW (L)))\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The inverse Fourier coefficients are real by finite-volume
+          compatibility. On every torus their Fourier multiplier is the
+          inverse symbol, which gives the matrix identity.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/WilsonBulk/Spectral/Backing.lean#L54-L66"><tt class="verbatim">uniform_backing</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-the-slope-of-the-regulated-determinant"></a>4.7 The slope of the regulated determinant<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.13 (the continuum bubble).</strong> Assume \(G\) is
+      simple. Take an external field of colour \(b\), polarization \(e_1\) and
+      momentum \(t \hspace{0.17em} e_0\), and loop momentum \(k \neq 0\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          The vector bubble has orbital vertex \(- 2 ik_1\) and spin vertex
+          \(\pm 2 it\) in the \((0, 1)\) plane.
+        </p>
+      </li>
+      <li>
+        <p>
+          Both bubbles carry the colour trace \(\text{tr} (\text{ad}_b^2) = -
+          C_G\), which uses simplicity.
+        </p>
+      </li>
+      <li>
+        <p>
+          The propagators are \(|k|^{- 2}\) and \(|k + te_0 |^{- 2}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Writing \(c_{\text{gh}} (t)\) for the ghost bubble and \(c_{\text{vec}}
+      (t)\) for the vector bubble,
+    </p>
+    <center>
+      \(\displaystyle \partial_t^2 c_{\text{gh}} (0) - \tfrac{1}{2}
+      \hspace{0.17em} \partial_t^2
+c_{\text{vec}} (0) = 2 h (k), \qquad h (k)
+      = 4 C_G  \left( \frac{k_1^2}{|k|^6}
+- \frac{4 k_1^2 k_0^2}{|k|^8} -
+      \frac{1}{|k|^4} \right) .\)
+    </center>
+    <p>
+      The terms in \(k_1^2\) come from the orbital coupling: one adjoint
+      scalar's worth, \(\tfrac{1}{2} \cdot 4\) vector components minus one
+      ghost. The term \(- |k|^{- 4}\) comes from the spin coupling of the
+      vector field. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L127-L141"><tt class="verbatim">haloRate</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L125"><tt class="verbatim">poleVec</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.14 (the shell integral).</strong> For \(0 < \mu
+      \leqslant 1\),
+    </p>
+    <center>
+      \(\displaystyle \frac{1}{(2 \pi)^4}  \int_{\mu < |k| \leqslant 1} h (k) 
+      \hspace{0.17em} d^4 k
+= - \kappa \log \mu^{- 1} .\)
+    </center>
+    <p>
+      <em>Sketch:</em> By rotation invariance \(\int k_1^2 |k|^{- 6} =
+      \tfrac{1}{4} \int |k|^{- 4}\), and \(\int k_1^2 k_0^2 |k|^{- 8} =
+      \tfrac{1}{24} \int |k|^{- 4}\), the latter from averaging over \(e_i \pm
+      e_j\). Also \(\int_{\mu < |k| \leqslant 1} |k|^{- 4} = 2 \pi^2 \log
+      \mu^{- 1}\). So \(h\) averages to \(4 C_G  (\tfrac{1}{4} - \tfrac{1}{6}
+      - 1) |k|^{- 4} = - \tfrac{11}{3} C_G
+|k|^{- 4}\): orbital \(+
+      \tfrac{1}{3} C_G\), spin \(- 4 C_G\). Finally \(\tfrac{11}{3} C_G \cdot
+      2 \pi^2 / (2 \pi)^4 = \kappa\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L326-L338"><tt class="verbatim">poleSpin</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L270-L275"><tt class="verbatim">joy_two</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L292-L304"><tt class="verbatim">joy_heights</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L200-L202"><tt class="verbatim">polar_m</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.15 (the lattice integrand is close to \(h\)).</strong>
+      Under the hypotheses of III.7.3, let \(\Phi_{\mu}\) be the unintegrated
+      second-derivative kernel of \(\Pi_{\mu}\), built from the vertex kernels
+      of Lemma 4.6:
+    </p>
+    <center>
+      \(\displaystyle \Phi_{\mu} = \tfrac{1}{2} \hspace{0.17em} (\text{vector
+      film}) - (\text{ghost
+film}) .\)
+    </center>
+    <p>
+      Let \(k_b (k) = \tfrac{1}{2} \partial_s^2 \Phi_{\mu, (1, b), (1, b)}
+      (s
+\hspace{0.17em} e_0 ; k) |_{s = 0}\) be its integrand at loop
+      momentum \(k\). The recorded quadratic Taylor kernel is
+    </p>
+    <center>
+      \(\displaystyle \hat{Y}_{\mu} = \frac{1}{2 (2 \pi)^4}  \int_{[- \pi,
+      \pi]^4} \Phi_{\mu}
+(\hspace{0.17em} \cdot \hspace{0.17em} ; k) 
+      \hspace{0.17em} d^4 k,\)
+    </center>
+    <p>
+      and \(\alpha_b (\hat{Y}_{\mu}) = (2 \pi)^{- 4}  \int_{[- \pi, \pi]^4}
+      \text{Re}
+\hspace{0.17em} k_b (k)  \hspace{0.17em} d^4 k\). There are
+      \(a, b' \geqslant 0\), uniform over all data of III.7.3 and all \(\mu
+      \in (0, 1]\), such that:
+    </p>
+    <center>
+      \(\displaystyle |k_b (k) | \leqslant \frac{a}{(|k| + \mu)^4} \text{on
+      the Brillouin cube},
+\qquad |k_b (k) - h (k) | \leqslant b' (|k|^{- 3} +
+      \mu^2 |k|^{- 6}) \text{for
+} |k| \geqslant \mu .\)
+    </center>
+    <p>
+      <em>Sketch:</em> Each film is (tadpole) \(-\) (bubble). The tadpoles are
+      \(O (|k|^{- 2} + \mu^2 |k|^{- 6})\). The lattice bubbles differ from the
+      continuum ones by \(O (|k|^{- 3} + \mu^2 |k|^{- 6})\), using the
+      softness of Lemma 4.6. Lemma 4.13 identifies the continuum combination.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L278-L292"><tt class="verbatim">astronomy</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L179-L184"><tt
+      class="verbatim">Rally.coin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L191-L222"><tt class="verbatim">Rally.shell</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L136-L159"><tt class="verbatim">polar_clock</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Lattice.lean#L333"><tt class="verbatim">amena</tt></a>.
+      <em>(proof read at top level; analytic tadpole and bubble estimates not
+      expanded)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.16 (from the bounds to the slope).</strong> For \(0 <
+      \mu \leqslant 1\), under the strip regularity and two bounds of Lemma
+      4.15 with \(a, b' \geqslant 0\),
+    </p>
+    <center>
+      \(\displaystyle | \alpha_b + \kappa \log \mu^{- 1} | \leqslant (2
+      \pi)^{- 4}  \left( a
+\tfrac{\pi^2}{2} + a (2 \pi)^4 + 3 \pi^2 b' \right)
+      .\)
+    </center>
+    <p>
+      <em>Sketch:</em> Split the cube into three regions.
+    </p>
+    <ul>
+      <li>
+        <p>
+          On \(|k| \leqslant \mu\): the integrand is \(\leqslant a \mu^{- 4}\)
+          and the volume is \(\pi^2 \mu^4 / 2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          On the shell: compare with \(h\) and use Lemma 4.14; the error is
+          \(\int b' (|k|^{- 3} + \mu^2 |k|^{- 6}) \leqslant 3 \pi^2 b'\).
+        </p>
+      </li>
+      <li>
+        <p>
+          On \(|k| > 1\): the integrand is \(\leqslant a\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L346-L408"><tt class="verbatim">absoluteGeode</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.17 (proof of III.7.3).</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Lemma 4.6 and Lemma 4.1 give the vertex kernels of
+          \(\text{main}_{\mathbf{c}, R} = E_W + (\text{main} - E_W)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The film \(\Phi_{1 / L}\) represents \(\Pi_{1 / L}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Lattice.lean#L356-L363"><tt
+          class="verbatim">gemF</tt></a>). For fixed \(L\) it is strip-analytic, since
+          the vector and ghost symbols are invertible at real momenta, by
+          Floor and the regulator, and hence in a strip (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Lattice.lean#L451-L456"><tt class="verbatim">HouseWord.done</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          One half of the normalized loop-momentum integral of the
+          second-derivative film is the Taylor kernel \(\hat{Y}\). Comparing
+          the torus Riemann sum with the integral gives an error \(|
+          \Lambda_{n_i} | K_L e^{- z_L n_i / 4}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Fourier.lean#L454-L482"><tt class="verbatim">profit</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lemmas 4.15&ndash;4.16 with \(\mu = 1 / L\) give (b), with \(D = (2
+          \pi)^{- 4} (\ldots)\) independent of \(L\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L17-L52"><tt class="verbatim">pouring</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="48-from-the-regulated-determinant-to-the-blocked-determinant"></a>4.8 From the regulated determinant to the blocked
+    determinant<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.18 (comparison of \(F^2\)-coefficients).</strong> Assume
+      \(G\) is simple and the hypotheses of III.7.4, together with the
+      interpolation, vertex and inverse bounds of Lemma 4.11. Consider the
+      two-leg films of:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the medal film: \(\tfrac{1}{2} \log \det\) of the completed Hessian
+          minus \(\log \det\) of the ghost operator, with regulator \(1 / L\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the core film: the same with the contact term removed;
+        </p>
+      </li>
+      <li>
+        <p>
+          the auxiliary film: built from the block-aliased auxiliary operator.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the medal film is strip-analytic of width \(\eta / 2\) and size
+          \(L^4 a\);
+        </p>
+      </li>
+      <li>
+        <p>
+          one half of its normalized loop-momentum integral records the
+          determinant part of the one-loop function along the branch on
+          \(\Lambda_{m_j}\), with error \(| \Lambda_{m_j} |  \hspace{0.17em}
+          c_L e^{- \eta m_j / 8}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(| \alpha_b (\text{medal}) - \alpha_b (\text{auxiliary}) |
+          \leqslant
+d_{\text{cmp}}\), with \(d_{\text{cmp}}\) depending on the
+          stage and vertex bounds, including the input width and amplitude,
+          but not on \(L\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For the contact contribution, the tested diagonal entry of the
+          integrated kernel vanishes to order \(3\) along the external
+          momentum ray. Hence \(\alpha (\text{medal}) = \alpha (\text{core})\)
+          (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L789-L818"><tt class="verbatim">drift_tip</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          The difference core \(-\) auxiliary is strip-analytic with an
+          \(L\)-independent bound. Cauchy estimates bound its
+          \(F^2\)-coefficient (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L24-L41"><tt class="verbatim">boundedTip</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L67-L96"><tt class="verbatim">quoting</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L84"><tt class="verbatim">medalCue</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L86"><tt class="verbatim">coreCue</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L85"><tt class="verbatim">rankCue</tt></a>.
+      <em>(proof read at top level; contact identities not expanded)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.19 (aliasing preserves \(\alpha\)).</strong> Under the
+      hypotheses of Lemma 4.18, the \(F^2\)-coefficient of the auxiliary film
+      on the coarse lattice equals \(\alpha_b (\hat{Y})\), where \(\hat{Y}\)
+      is the kernel of III.7.3 for \(\Pi_{1 / L}\) on the fine tori
+      \(\Lambda_{Lm_i}\). <em>Sketch:</em> The coarse symbol at momentum \(p\)
+      is the sum over the \(L^4\) aliases of the fine symbol. The nonzero
+      aliases vanish to order \(4\). The zero alias agrees through order two
+      with \(L^4 L^{- 2}\) times the fine kernel at \(p / L\). The additional
+      \(L^{- 2}\) from momentum rescaling gives \(L^4 L^{- 2} L^{- 2} = 1\),
+      so the \(F^2\) coefficient is unchanged. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L719-L741"><tt
+      class="verbatim">pole_reduced</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L255-L278"><tt class="verbatim">carry_plan</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/HessianMatch.lean#L670-L705"><tt class="verbatim">fine_alpha</tt></a>. <em>(proof read at top level;
+      high-alias and zero-alias estimates statement only)</em>
+    </p>
+    <h3 id="auto-13"><a id="49-the-step-and-the-iteration"></a>4.9 The step and the iteration<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.20 (construction of the coarse datum).</strong> Assume
+      the geometric, bed, Haar-chart and stationary-branch hypotheses of
+      III.7.4. Fix a common Fourier width \(\sigma > 0\), coarse-bed width \(w
+      > 0\), coarse metric and root bound \(M \geqslant 0\), and a bound on
+      the coarse direct clip coefficient. Require \(H_T, \rho_T \in
+      \text{strip} (w, M)\). There are \(s \in (0, \min (\sigma, w)]\) and
+      \(K, D \geqslant 0\), independent of the following kernel amplitudes,
+      with this property.
+    </p>
+    <p>
+      Suppose the tree-level action has exact Taylor kernels of orders \(3\)
+      and \(4\), of width \(\sigma\) and size \(X \geqslant 1\). Suppose a
+      two-leg kernel \(\hat{A}\) of width \(\sigma\) and size \(\Phi\) records
+      the determinant part with errors \(| \Lambda_{m_i} | e_i\), where \(e_i
+      \geqslant 0\) and \(e_i \to 0\). Suppose a two-leg kernel \(\hat{L}\) of
+      the same width and size \(R_0\) records the inherited loop functional
+      exactly and vanishes to order \(4\) at zero momentum. Set \(\alpha =
+      \alpha_b (\hat{A})\) for one fixed colour \(b\).
+    </p>
+    <p>
+      There is a coarse datum \(Y\), with the straight-route rows of \(T\) and
+      attached to \(T\), whose classical jets agree through order four. It
+      satisfies the weight clauses at every \(0 < s' \leqslant s\), every
+      row/cubic/quartic bound
+    </p>
+    <center>
+      \(\displaystyle A' \geqslant \max \{6 Me^{4 w}, XK\},\)
+    </center>
+    <p>
+      and every loop bound
+    </p>
+    <center>
+      \(\displaystyle \Lambda' \geqslant (\Phi + | \alpha |C_T + R_0) D,\)
+    </center>
+    <p>
+      where \(C_T\) is the uniform strip bound for the quadratic kernel of
+      \(T\) at width \(\min (\sigma, w)\).
+    </p>
+    <p>
+      For every \(i, \Theta, c', \Omega\), the finite bound of III.7.4 holds
+      with right-hand side \(| \Lambda_{m_i} | \Theta \Omega e^{- c' m_i}\)
+      whenever \(B_G e_i \leqslant \Theta \Omega e^{- c' m_i}\), where \(B_G =
+      2 (4 \dim \mathfrak{g})^2\).
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Apply Lemma 4.4 to the tree-level action. Its quadratic jet agrees
+          with the bare row action by the stationary-branch hypotheses.
+        </p>
+      </li>
+      <li>
+        <p>
+          The determinant and inherited-loop functionals are analytic and
+          invariant under gauge, colour and signed-permutation symmetries.
+          Their recorded kernels inherit these properties. Thus \(\hat{A} -
+          \alpha \hat{K}_T + \hat{L}\) vanishes to order \(4\) by Lemma 4.7
+          and the hypothesis on \(\hat{L}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Represent this residual kernel by two-leg curvature atoms with zero
+          zeroth and first displacement moments (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L122-L159"><tt class="verbatim">reach_symbol</tt></a>).
+          The weighted Laurent bound gives the stated loop amplitude.
+        </p>
+      </li>
+      <li>
+        <p>
+          The Faddeev&ndash;Popov identity converts the determinant recording
+          error to the error for the one-loop function. Expanding real waves
+          into complex basis waves gives the factor \(B_G\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L281-L324"><tt
+          class="verbatim">draft_pipe</tt></a>). Classical jet equality follows from
+          order-\(5\) ray vanishing (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L377-L386"><tt class="verbatim">achieved</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L343-L376"><tt class="verbatim">violet</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L394-L435"><tt class="verbatim">color_pipe</tt></a>. <em>(proof read
+      at top level)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.21 (proof of III.7.4).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Coercivity.</em> Lemma 4.11 at widths \(\min (w, \delta)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Tree-level vertices.</em> Cubic and quartic vertex bounds have
+          the form \(a + L^{- 1} \ell\) and \(c + L^{- 1} r\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/VertexWeights.lean#L357-L382"><tt
+          class="verbatim">setWest</tt></a>). By <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/Exchange.lean#L407-L415"><tt class="verbatim">exchangeYield</tt></a>,
+          the order-\(3\) and order-\(4\) kernels of the tree-level action,
+          the latter including the one-propagator exchange of two cubic
+          vertices, are bounded by
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle M = 1 + \tfrac{a + 1}{6} + \tfrac{(c + 1) + 3 (a + 1)^2
+      E}{24} .\)
+    </center>
+    <p>
+      Here \(E\) bounds the completed free inverse. The term \(3 (a + 1)^2 E\)
+      bounds the three pairings of two cubic vertices joined by one
+      propagator.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Inherited loops.</em> The inherited loop kernel has size \(L^{-
+          2} \Lambda C_0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/Curvature.lean#L66-L92"><tt class="verbatim">bequest</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>The slope.</em> Lemma 4.18 and Lemma 4.19 give \(\alpha =
+          \alpha_b (\text{medal film})\) with \(| \alpha + \kappa \log L|
+          \leqslant d_{\text{cmp}} + D_{\text{slope}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Assembly.</em> Lemma 4.20 builds \(Y\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Choice of \(L\).</em> \(L \geqslant u\) is chosen so that \(L^{-
+          1}\) times the input-dependent constants lies below the output
+          thresholds, and \(L^{- 2} C_0 D_{\text{lift}} \leqslant
+          \tfrac{1}{4}\), where \(D_{\text{lift}}\) is the loop-representation
+          constant of Lemma 4.20 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L42-L49"><tt class="verbatim">age_control</tt></a>).
+          The loop amplitude is the sum of a newly generated term and an
+          inherited term. Their bounds are \(\leqslant \Lambda' / 2\) and
+          \(\leqslant \Lambda' / 2\), respectively, when \(\Lambda' \geqslant
+          \Lambda_0 (L)\) and \(\Lambda' \geqslant \Lambda / 2\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L74-L80"><tt
+          class="verbatim">cap_invoice</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L92-L182"><tt class="verbatim">transition_cap</tt></a>. <em>(proof
+      read at top level)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.22 (loop caps and the iteration).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Loop caps.</em> For every \(W_j\) there are thresholds
+          \(\Delta_j\) such that, once \(\hat{\beta}\) at the entry exceeds
+          them, \(W_{J_{m + 1}} \leqslant \text{loopCap}_m\),
+          \(\text{loopCap}_{m + 1} \leqslant 2 \hspace{0.17em}
+          \text{loopCap}_m\) and \(\text{loopCap}_m \geqslant 1\). The history
+          must satisfy the stage, block-factor and entry conditions of III.2,
+          with positive protection exponents nonincreasing with stage. Use
+          \(\hat{\beta}_{m + 1} = \hat{\beta}_m + \kappa \log L_m\), and
+          \((\log \log (s + k))^2 - (\log \log s)^2 \leqslant 3 k / s\) for
+          each fixed \(k \geqslant 0\) and all sufficiently large \(s\) (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L18-L49"><tt class="verbatim">bump</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Iteration.</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L122-L143"><tt class="verbatim">claiming</tt></a> applies Lemma 4.21 to the
+              stage pairs \((j, j)\) and \((j + 1, j)\) and takes minima and
+              maxima of the constants.
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L254-L285"><tt class="verbatim">energized</tt></a> produces one step's
+              record at level \(m\).
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L307-L335"><tt class="verbatim">plowed</tt></a> assembles the kinetic data
+              by downward induction from \(m = N\), starting from the top
+              datum.
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L366-L391"><tt class="verbatim">under_contract</tt></a> chooses the volume
+              thresholds so that \(F (L) e^{- \gamma n} \leqslant \Gamma e^{-
+              (\gamma / 2) n}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L353-L358"><tt class="verbatim">waits_up</tt></a>).
+            </p>
+          </li>
+          <li>
+            <p>
+              The final iteration uses III.7.3.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L51-L74"><tt class="verbatim">clocks</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L59-L66"><tt class="verbatim">geared</tt></a>.
+    </p>
+    <h2 id="auto-14"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>The coefficient and its identification.</strong> The
+          continuum bubble yields the factor \(11 / 3\) from the orbital and
+          spin vertices and \(\text{tr} (\text{ad}_b^2) = - C_G\). Relating
+          this calculation to the blocked determinant also requires the exact
+          Faddeev&ndash;Popov identity, cancellation of the contact
+          contribution to \(\alpha\), a comparison uniform in \(L\), and
+          control of every Fourier alias.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Quantitative curvature factorization.</strong> The lattice
+          Poincar&eacute; lemma must preserve exponential decay, colour
+          invariance and the constraints already imposed on other legs. Each
+          one-leg solve loses a factor four in strip width; the number of legs
+          is fixed.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Uniformity in the volume.</strong> A single infinite-volume
+          kernel or path datum works on every torus in the chosen sequence.
+          Limits along increasingly fine momentum meshes transfer Ward
+          identities and colour symmetries to that kernel. In the iteration,
+          the sequence consists of the sides at one fixed level as the volume
+          index varies.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Order of constants.</strong> The output width and
+          cubic/quartic amplitude precede the input path amplitude.
+          Contributions depending on the latter carry a factor \(L^{- 1}\);
+          inherited loop atoms carry \(L^{- 2}\). The new loop amplitude is
+          \(O (L^4)\), and the reference-coupling thresholds make the allowed
+          loop amplitude large enough to absorb it.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Strength of the conclusion.</strong> The slope estimate has
+          an \(O (1)\) error uniform in \(L\). This suffices for III.9 when
+          \(\log L\) dominates that error. Polymer activities are absent from
+          the argument.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The regulator.</strong> The scalar regulator is \(\mu^{20} 
+          (\Delta_U + \mu^2)^{- 9}\). Its componentwise extension to link
+          fields respects gauge transformations and unsigned axis
+          permutations; full signed-permutation symmetry is not asserted for
+          this auxiliary determinant. The blocked action has the full lattice
+          symmetry.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-15"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <p>
+      A determinant film records the second derivative before loop-momentum
+      integration. Its quadratic Taylor kernel is one half of its normalized
+      loop-momentum integral.
+    </p>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Written proof</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Lean</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Meaning</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(R = (\ell, \mathcal{A}^{(2)}, \mathcal{A}^{(3)},
+        \mathcal{A}^{(4)})\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154"><tt class="verbatim">RG.PathData</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">path datum (rows, loop/cubic/quartic atoms)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">leg, atom</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L38-L40"><tt class="verbatim">RG.Slot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L84-L86"><tt class="verbatim">RG.Atom</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">transported curvature; curvature monomial</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{Bounds} (\mathbf{c}; \sigma, C, \Lambda)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L173-L185"><tt class="verbatim">PathData.Bounds</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">exponential summability, invariance and moment clauses</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{main}_{\mathbf{c}, R}\), \(\text{loop}_R\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L27-L28"><tt class="verbatim">mainTerm</tt></a>, <tt class="verbatim">loop</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">leading part; loop functional</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">clip \(\mathbf{c}\), \(c_{\text{dir}}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L139-L146"><tt class="verbatim">RG.Clip</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">clipping parameters; <tt class="verbatim">direct</tt></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">bed \(B\), Floor, attached</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L35-L40"><tt class="verbatim">Bed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68"><tt class="verbatim">Floor</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L44-L46"><tt class="verbatim">Attached</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">free quadratic-form data of a level</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">straight-route rows of \(\rho\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L169-L171"><tt class="verbatim">rowPath</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/SliceGate.lean#L173-L174"><tt class="verbatim">emitBase</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">rows realizing the bed roots on straight lattice
+        routes</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">strip-analytic \((\sigma, K)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L199"><tt class="verbatim">Firm</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">bounded holomorphic periodic kernel</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">vanishing to order \(s\) along rays</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L28-L29"><tt class="verbatim">Rays</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">raywise \(O (t^s)\) at \(t = 0\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\((t + 1)\)-leg kernel; records</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Picture</tt>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Pathways.lean#L491-L492"><tt class="verbatim">Recorded</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Fourier kernel of a Taylor coefficient</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\alpha_b (\hat{K})\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/LeadingRay.lean#L699"><tt class="verbatim">alphaPay</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(F^2\)-coefficient, normalized by the bed</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\Pi_{\mu}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L138"><tt class="verbatim">PoleTest</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/AuxReferences.lean#L46"><tt class="verbatim">fineMag</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">regulated background-field one-loop action</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\mathcal{G}_{\mu}\), \(\mathcal{P}_{\mu}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Regulator.lean#L338"><tt class="verbatim">grenade</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Completion.lean#L59-L60"><tt class="verbatim">medals</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">ghost operator; completed Hessian</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\mu = 1 / L\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Spectral/Slabs.lean#L189"><tt class="verbatim">inch</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">regulator mass</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(h (k)\); \(k_b (k)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L125"><tt class="verbatim">poleVec</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L155"><tt class="verbatim">keelRay</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">continuum bubble integrand; lattice integrand</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">bounds of Lemma 4.15</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L276"><tt class="verbatim">Waves1</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L277"><tt class="verbatim">Waves2</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">global infrared bound and shell comparison bound</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\((2 \pi)^{- 4}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L28"><tt class="verbatim">cartWeight</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">normalization of the momentum integral</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(S_t (x, z)\); \(\text{th}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L81-L84"><tt class="verbatim">tested</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L46-L49"><tt class="verbatim">thermal</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">fine action plus penalty; one-loop function</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">classical match; finite bound</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L108-L109"><tt class="verbatim">ClassicalMatch</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71"><tt
+        class="verbatim">FiniteBound</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">items 4 and 5 of III.7.4</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">slope statement</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L20-L23"><tt class="verbatim">HorizCalc</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L115"><tt class="verbatim">Fluent</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">III.7.3 for given / all parameters</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">step property; step record</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L86-L90"><tt class="verbatim">Transition</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L170-L177"><tt
+        class="verbatim">Bubble</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">III.7.4</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">top datum</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L166"><tt class="verbatim">BranchRow</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">III.7.2 at level \(N\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">kinetic data, planned conditions</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77"><tt class="verbatim">Kin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115"><tt class="verbatim">Kin.Planned</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Recurse.lean#L301-L305"><tt class="verbatim">FullPaths</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">output to III.9</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">invertibility bounds</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L15-L22"><tt class="verbatim">GrantF</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Loops/UniformMatrix.lean#L270-L272"><tt class="verbatim">Freezer</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">strip invertibility with inverse bound</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">medal, core, auxiliary films</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L84"><tt class="verbatim">medalCue</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L86"><tt class="verbatim">coreCue</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Films/RankColor.lean#L85"><tt class="verbatim">rankCue</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">&sect;4.8</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\hat{\beta}_m\), \(\text{loopCap}_m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79"><tt class="verbatim">hatBeta</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L86"><tt class="verbatim">loopCap</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">reference coupling; loop-amplitude cap</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\kappa\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">Gauge.slopeConstant</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(11 C_G / (24 \pi^2)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(D^r F (0) / r!\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Infrastructure/Jets.lean#L341"><tt class="verbatim">noteAt</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">complexified Taylor coefficient</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">analytic gauge and lattice symmetry</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Shape/ClassicalMatch.lean#L373-L377"><tt class="verbatim">Pointwise</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">hypotheses of atom emission</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\pi_d (\sigma)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Lift/Koszul.lean#L84"><tt class="verbatim">priceDivision</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">one-coordinate division constant in \(d\) momentum
+        coordinates</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">joint free form; gauge completion</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Block/Static.lean#L20"><tt class="verbatim">frontR</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/FourPoint.lean#L221"><tt class="verbatim">postroom</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Joint/Regulator.lean#L499"><tt class="verbatim">cannonade</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">fine-link and coarse-frame operators</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-16"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Analytic estimates below the stated lemmas.</strong> The
+          real quotient estimate and complex-strip perturbation estimate used
+          in Lemma 4.10, and the analytic tadpole and bubble bounds used in
+          Lemma 4.15, have not been checked through every subsidiary proof.
+          Their statements support the estimates given here. The
+          determinant-factorization and Haar-density lemmas of Lemma 4.9
+          remain inputs at statement level. The contact identities used in
+          Lemma 4.18 and the high-alias and zero-alias estimates used in Lemma
+          4.19 likewise remain inputs at statement level.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Choice of regulator power.</strong> The ninth power is part
+          of the explicit definition, and the cited estimates use it. A
+          minimal power, or a conceptual reason for choosing exactly nine, has
+          not been established.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Supply of the global hypotheses.</strong> III.4 supplies the
+          free-field horizons and history conditions. The <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/B70FreeStationaryConnection.lean#L17-L56"><tt class="verbatim">free/stationary
+          connection</tt></a> explicitly constructs the two horizons with
+          identical beds and interpolation kernels before applying the
+          iteration. The discharge of these conditions in every downstream
+          application has not been checked.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Limits of path data.</strong> The projection results support
+          the compactness argument in III.13: exponential weights give
+          Hilbert-space parameters for curvature coefficients (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Ink.lean#L79-L99"><tt
+          class="verbatim">fitting</tt></a>); coefficientwise convergence with uniform
+          row bounds gives convergence of row-action jets (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Lines.lean#L89-L109"><tt class="verbatim">insideLine</tt></a>);
+          compatible source jets and a common positive Hessian lower bound
+          give continuity of stationary, tree-level and one-loop jets (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Projection/Fumes.lean#L56-L87"><tt class="verbatim">interview</tt></a>). The complete compactness
+          construction and passage through all its quantifiers belong to
+          III.13 and remain outside this unit.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-6.html">&larr; III.6 The stationary branch: background field of
+      the effective action (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-7.html">Unit outline</a></span><a class="ym-next" href="III-8.html">III.8
+      Connected activities and backward dependence cones (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

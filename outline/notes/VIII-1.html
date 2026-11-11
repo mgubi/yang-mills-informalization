@@ -1,0 +1,2561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>VIII.1. Assembly of the main theorem &mdash; detailed notes &ndash;
+    Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="VII-6.html">&larr; VII.6 Scaling variants and fixed-field estimates
+      (notes)</a><span class="ym-part"><a href="../units.html#part-viii-assembly-of-the-main-theorem">Part VIII</a><font class="ym-sep">&middot;</font><a
+      href="../units/VIII-1.html">Unit outline</a></span>
+    </div>
+    <p>
+      <h1>VIII.1. Assembly of the main theorem &mdash; detailed notes</h1><a
+      id="viii1-assembly-of-the-main-theorem--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">8</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">11</a>
+      </p>
+      <p>
+        4.1 The run and the ultraviolet endpoint <span style="margin-left: 5mm"></span> <a href="#auto-5">11</a>
+      </p>
+      <p>
+        4.2 The data at one extraction order <span style="margin-left: 5mm"></span> <a href="#auto-6">12</a>
+      </p>
+      <p>
+        4.3 The internal headline <span style="margin-left: 5mm"></span> <a href="#auto-7">15</a>
+      </p>
+      <p>
+        4.4 Translation to the public statement <span style="margin-left: 5mm"></span> <a href="#auto-8">17</a>
+      </p>
+      <p>
+        4.5 The headline theorems <span style="margin-left: 5mm"></span> <a href="#auto-9">19</a>
+      </p>
+      <p>
+        4.6 Endpoints filed here and not on the path of the main theorem <span
+        style="margin-left: 5mm"></span> <a href="#auto-10">20</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">20</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-12">21</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-13">21</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit VIII.1: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/VIII-1.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/VIII-1.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> VIII, Assembly of the main theorem.
+      <strong>Lean:</strong> the top-level files <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Solution.lean"><tt class="verbatim">Solution.lean</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean"><tt class="verbatim">Construction.lean</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ConcreteSU2.lean"><tt class="verbatim">ConcreteSU2.lean</tt></a>;
+      the bridges <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean"><tt class="verbatim">WilsonBridge.lean</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean"><tt
+      class="verbatim">HierarchyBridge.lean</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/TraceBridge.lean"><tt class="verbatim">TraceBridge.lean</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean"><tt class="verbatim">ContactBridge.lean</tt></a>; the public
+      definitions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicTheory.lean"><tt class="verbatim">PublicTheory</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicWilson.lean"><tt
+      class="verbatim">PublicWilson</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicView.lean"><tt class="verbatim">PublicView</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean"><tt class="verbatim">ChallengeSpec</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactSpec.lean"><tt class="verbatim">ContactSpec</tt></a>;
+      the folders <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative"><tt class="verbatim">YM/Nonperturbative</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent"><tt
+      class="verbatim">YM/Independent</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec"><tt class="verbatim">YM/Spec</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org"><tt class="verbatim">YM/Org</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Parity"><tt class="verbatim">YM/Pert/Parity</tt></a>;
+      the files <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean"><tt class="verbatim">YM/R2I/Campaign/Accepted.lean</tt></a> and
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Joint.lean"><tt class="verbatim">YM/RG17/Joint.lean</tt></a>; and parts of
+      YM/FullVolume, YM/EveryPhase, YM/TraceExtension, YM/OPE, YM/Contacts and
+      YM/Pert. <strong>Size:</strong> 12,060 lines in 1,674 declarations.
+    </p>
+    <p>
+      The construction chooses one Wilson family for each gauge group and
+      block-spin parameter \(b > 0\). At each requested extraction order, it
+      assembles the continuum table, phases, fields, reconstruction and OPE on
+      one refinement. Fixed-volume ultraviolet convergence removes the mesh
+      subsequence. The bridges then give the public theorem in <a href="../../statement.html">statement.md</a>.
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Conventions.</strong> The notation follows statement.md:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \((m, G, \mathfrak{g})\) is a gauge group: \(m \geqslant 1\), \(G\)
+          is a closed subgroup of \(U (m)\), and \(\mathfrak{g}= \{X : \exp
+          (tX) \in G \text{for all } t \in \mathbb{R}\}\). Simplicity includes
+          nonabelianness.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{W}= (L_p, D_N, \beta_{N, p}, h, \mathcal{T}, I_{N, p})\)
+          is a Wilson family, with \(a_N = 1 / D_N\), smeared moments \(C_{N,
+          p} (v ; f)\) and separated configurations \(\text{Conf}_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A hierarchy has a Wightman theory \(\mathfrak{W}\),
+          finite-dimensional field spaces \(F_d\), label maps \(\iota_d\),
+          token projection \(\pi\), phases \((X, \nu, \xi_{\ast})\),
+          correlations \(S^s\), time continuations \(\textsf{F}_n\), OPE data
+          \((\text{Ch}_j, O_{j, \kappa}, c_{j, \kappa})\), and \(\Theta \in
+          F_4\). Write \(\mathbb{F}= \bigsqcup_d F_d\). The function
+          \(G_{\Theta} (r)\) is the selected two-point correlation of
+          \(\Theta\) at time-axis points \(- r / 2\) and \(r / 2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (Reg1)&ndash;(Reg4), (R1)&ndash;(R15), (O1)&ndash;(O2),
+          (T1)&ndash;(T4), (P1)&ndash;(P4) and (D1)&ndash;(D16) are as in
+          statement.md.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(b_0 = 11 C_{\mathfrak{g}} / (48 \pi^2)\), where
+          \(C_{\mathfrak{g}}\) is the adjoint Casimir in the construction
+          normalization. All Lie-algebra dimensions are real.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Internal objects:
+    </p>
+    <ul>
+      <li>
+        <p>
+          An <em>extraction order</em> is a pair \(\sigma =
+          (\sigma^{\text{m}}, \sigma^{\text{v}})\) of strictly increasing maps
+          \(\mathbb{N} \to \mathbb{N}\): a mesh sequence and a volume
+          sequence.
+        </p>
+      </li>
+      <li>
+        <p>
+          Its <em>refinement</em> by \(\tau\) is \(\sigma \circ \tau :=
+          (\sigma^{\text{m}} \circ \tau^{\text{m}},
+\sigma^{\text{v}} \circ
+          \tau^{\text{v}})\). The full sequence is written \(\text{id}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          An <em>internal family</em> \(\mathcal{C}\) is the record of a
+          renormalization-group construction: trajectory, couplings
+          \(\beta_{N, p} (m)\) at levels \(m \leqslant N\), labels and local
+          lattice sections. (D3) is its construction predicate, and
+          \(\mathcal{W} (\mathcal{C})\) is its Wilson family, with \(\beta_{N,
+          p} := \beta_{N, p} (N)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>table</em> \(S\) is a family of continuum correlation
+          functions \(S (v ; x)\) indexed by token lists.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Ordered limit.</em> \(\text{Ord}_{\sigma} (\mathcal{C}, S)\) means
+      the following. For every \(n\), \(v \in \mathcal{T}^n\) and \(t \in
+      C^{\infty}_c (\text{Conf}_n)\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(t\) is \(\sigma^{\text{v}} (k)\)-admissible for large \(k\);
+        </p>
+      </li>
+      <li>
+        <p>
+          there are numbers \(R_p\) with \(C_{\sigma^{\text{m}} (j), p} (v ;
+          t) \to R_p\) for every admissible \(p\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R_{\sigma^{\text{v}} (k)} \to \int tS (v ; \cdot)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Final object.</em> A final object \(\mathfrak{F}\) on
+      \((\mathcal{C}, \sigma, S)\) consists of five parts:
+    </p>
+    <ol>
+      <li>
+        <p>
+          Chosen renormalization data and step witnesses whose trajectory is
+          exactly that of \(\mathcal{C}\) (D6).
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>seed</em>: (D3), \(\text{Ord}_{\sigma} (\mathcal{C}, S)\),
+          point limits, the Euclidean hierarchy axioms for \(S\), cell
+          hypotheses and corrected-field widths.
+        </p>
+      </li>
+      <li>
+        <p>
+          A field algebra: derivatives, rotations and a stress tensor.
+        </p>
+      </li>
+      <li>
+        <p>
+          A phase selection with its certificate.
+        </p>
+      </li>
+      <li>
+        <p>
+          Analytic continuations of the mixed and selected correlations, and a
+          Wightman theory realizing the selected one.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>Proposition VIII.1.1 (main theorem, public form).</strong> Let
+      \((m, G, \mathfrak{g})\) be a gauge group with \(\mathfrak{g}\) simple.
+      Then there is a Wilson family \(\mathcal{W}\) for \(G\) satisfying
+      (Reg1)&ndash;(Reg4), with the following property. For every strictly
+      increasing \(p : \mathbb{N} \to \mathbb{N}\) there are a strictly
+      increasing \(q\) and a hierarchy over \(\mathcal{W}\) satisfying
+      (P1)&ndash;(P4) along \(p \circ q\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(P1)</strong> For every \(n\), every \(v \in \mathcal{T}^n\)
+          and every \(f \in C^{\infty}_c (\text{Conf}_n)\), \(f\) is \(p (q
+          (k))\)-admissible for all large \(k\). There are numbers \(R_{p'}\)
+          such that \(C_{N, p'} (v ; f) \to R_{p'}\) along all \(N\) for every
+          \(p'\) for which \(f\) is admissible, and \(R_{p (q (k))} \to \int f
+          \hspace{0.17em} S^{\text{mix}} (\pi (v) ; \cdot)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(P2)</strong> The selected phase carries a Wightman theory
+          satisfying (W0)&ndash;(W3), with faithful fields. The mixed
+          correlations are the \(\nu\)-average of continuous phase
+          correlations, with \(\nu\) a probability measure of full support.
+          The continuation is holomorphic in the complex times at fixed real
+          spatial positions, and its boundary values on product Schwartz tests
+          are the selected Wightman functions. All clauses (R1)&ndash;(R15)
+          hold.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(P3)</strong> The OPE bounds (O1)&ndash;(O2) hold with one
+          system of coefficients, uniformly in the state \(s \in X \sqcup \{
+          \text{mix} \}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(P4)</strong> \(\Theta\) has zero vacuum expectation,
+          \(A_{\mathfrak{g}} := 3 \dim_{\mathbb{R}} \mathfrak{g}/ \pi^4 > 0\),
+          and \(r^8  (\log 1 / r)^2 G_{\Theta} (r) \to A_{\mathfrak{g}}\) as
+          \(r \downarrow 0\). For every finite Wick profile and every \(\delta
+          > 0\), the profile differs from \(G_{\Theta}\) at some \(r \in (0,
+          \delta)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Solution.lean#L4-L10"><tt class="verbatim">YangMills.jointExistence</tt></a>,
+      statement <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L186-L188"><tt class="verbatim">JointExistence</tt></a>, with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L12-L22"><tt
+      class="verbatim">WilsonRegularity</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L24-L48"><tt class="verbatim">Hierarchy</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L177-L181"><tt class="verbatim">Properties</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicWilson.lean#L85-L90"><tt class="verbatim">Converges</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L117-L143"><tt class="verbatim">Reconstructed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L70-L80"><tt class="verbatim">OperatorProductExpansion</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L168-L175"><tt class="verbatim">TraceTest</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.2 (detailed construction theorem).</strong>
+      Fix a gauge group \((m, G, \mathfrak{g})\) with \(\mathfrak{g}\) simple
+      and a real \(b > 0\). Then there is an internal family \(\mathcal{C}\)
+      such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          its block-spin kernel has penalty \(b\) (D16);
+        </p>
+      </li>
+      <li>
+        <p>
+          (D3) holds;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{W} (\mathcal{C})\) satisfies (Reg1)&ndash;(Reg4).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Moreover, for every extraction order \(\sigma\) there are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a refinement \(\tau\) and a table \(S\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a final object \(\mathfrak{F}\) on \((\mathcal{C}, \sigma \circ
+          \tau, S)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          an every-phase reconstruction \(\mathfrak{L}\), an OPE reader \(Q\),
+          contact devices \(\textsf{M}\) and scaling data \(\Sigma = (r_k,
+          \xi_k, U_k)\), with \(r_k \downarrow 0\) and \(\xi_k > 0\);
+        </p>
+      </li>
+    </ul>
+    <p>
+      such that the following hold:
+    </p>
+    <ol>
+      <li>
+        <p>
+          The public hierarchy \(T (\mathfrak{F}, Q)\) over \(\mathcal{W}
+          (\mathcal{C})\) has (P1)&ndash;(P4) along \((\sigma \circ
+          \tau)^{\text{v}}\), and every correlation \(S^s (a ; \cdot)\)
+          extends to a distribution on \((\mathbb{R}^4)^n\) (D1, D2).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Ord}_{(\text{id}, (\sigma \circ \tau)^{\text{v}})}
+          (\mathcal{C}, S)\) holds: the ordered limit with the full mesh
+          sequence (D4).
+        </p>
+      </li>
+      <li>
+        <p>
+          Positional ultraviolet convergence at every fixed volume holds along
+          the full mesh sequence (D5). See VIII.1.6.
+        </p>
+      </li>
+      <li>
+        <p>
+          Chosen renormalization data and step witnesses generate exactly the
+          trajectory of \(\mathcal{C}\) (D6).
+        </p>
+      </li>
+      <li>
+        <p>
+          The bundle (Core) holds: OPE services, reconstruction in every
+          phase, the trace tests, the OPE foundation, and integrated OPE
+          remainder bounds for integrable complex densities against positive
+          measures, with bounded \(L^1\) mass.
+        </p>
+      </li>
+      <li>
+        <p>
+          The internal Wightman axioms hold for the selected phase and for
+          every phase \(\xi \in X\), and the public (W0)&ndash;(W3) hold for
+          every phase. The \(\nu\)-average of the phase Wightman distributions
+          is the boundary distribution of the mixed continuation (D7).
+        </p>
+      </li>
+      <li>
+        <p>
+          The separated OPE and the nested OPE over finite trees hold (D8,
+          D10).
+        </p>
+      </li>
+      <li>
+        <p>
+          The seven headline trace clauses hold, together with the unique
+          high-energy spectral law contained in (Core) (D9; VIII.1.n and
+          VIII.1.o).
+        </p>
+      </li>
+      <li>
+        <p>
+          The contact devices use the reader's prescription and give a full
+          contact resolution, real bases of the OPE strata and contact
+          thresholds (D11)&ndash;(D13).
+        </p>
+      </li>
+      <li>
+        <p>
+          The leading scaling comparison with free Maxwell fields along
+          \(\Sigma\) and the normalization at degree four hold (D14, D15).
+        </p>
+      </li>
+    </ol>
+    <p>
+      The family \(\mathcal{C}\) depends only on \((G, b)\). Items 3 and 4 are
+      properties of \(\mathcal{C}\) alone, although they are stated inside the
+      quantifier over \(\sigma\). <em>Status:</em> theorem. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L40"><tt class="verbatim">YangMills.constructed</tt></a>. Internal form: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Headlines.lean#L19-L36"><tt
+      class="verbatim">Nonperturbative.existence</tt></a>, statement <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L143-L155"><tt class="verbatim">Headline.WilsonExistence</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.3 (continuum theorem for the funded
+      run).</strong> Fix a gauge group with \(\mathfrak{g}\) simple and \(b >
+      0\). Let \(\mathcal{C}_{G, b}\) be the family of the run
+      \(\textsf{R}_{G, b}\) chosen in VIII.1.a. Its penalty is \(b\). For
+      every extraction order \(\sigma\) there are \(\tau, S, \mathfrak{F},
+      \mathfrak{L}, Q, \textsf{M}\), with \(\mathfrak{F}\) on
+      \((\mathcal{C}_{G, b}, \sigma \circ \tau, S)\), satisfying:
+    </p>
+    <ul>
+      <li>
+        <p>
+          items 2, 3, 5 and 9 of VIII.1.2;
+        </p>
+      </li>
+      <li>
+        <p>
+          the uniform nested OPE over admissible finite trees;
+        </p>
+      </li>
+      <li>
+        <p>
+          a scaling sequence \(\Sigma\) with (D14) and (D15).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L28-L48"><tt class="verbatim">continuum_with_position_tests</tt></a>.
+      The form without \(\Sigma\) is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L52-L66"><tt class="verbatim">continuum</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.4 (a funded run supplies
+      everything).</strong> Let \(\textsf{R}\) be a run with campaign \(T\)
+      and pillars \(W\), let \(\Delta\) be a choice of local step estimates,
+      and let \(\mathfrak{g}\) be simple. Assume \(\textsf{R}\) is
+      <em>funded</em> (Fd): see &sect;2, item 1. Then the assembly package
+      (Goal) holds:
+    </p>
+    <ol>
+      <li>
+        <p>
+          (Fd).
+        </p>
+      </li>
+      <li>
+        <p>
+          The ultraviolet package (UV\(_{\infty}\)) of VIII.1.5.
+        </p>
+      </li>
+      <li>
+        <p>
+          The logarithmic OPE package.
+        </p>
+      </li>
+      <li>
+        <p>
+          The dense-coverage property of the sharp Gram family.
+        </p>
+      </li>
+      <li>
+        <p>
+          For every \(\sigma\), every table \(S\) and every final object
+          \(\mathfrak{F}\) on \((\mathcal{C}_{\textsf{R}}, \sigma, S)\): the
+          trace result of VIII.1.h.
+        </p>
+      </li>
+      <li>
+        <p>
+          For every \(\sigma\) there are \(\tau\), numbers \((B_m)_{m \in
+          \mathbb{N}}\) and data \(S, \mathfrak{F}\) (on \(\sigma \circ
+          \tau\)), \(\Sigma, \mathfrak{L}, Q\) such that:
+        </p>
+        <ul>
+          <li>
+            <p>
+              for every level \(m\) the couplings \(\beta_{N, p} (m)\) have
+              the ordered limit \(B_m\) along \(\sigma \circ \tau\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\text{Ord}_{(\text{id}, (\sigma \circ
+              \tau)^{\text{v}})}
+(\mathcal{C}_{\textsf{R}}, S)\) and (D5)
+              hold;
+            </p>
+          </li>
+          <li>
+            <p>
+              (D14) holds;
+            </p>
+          </li>
+          <li>
+            <p>
+              the reconstruction in every phase holds;
+            </p>
+          </li>
+          <li>
+            <p>
+              the trace result holds;
+            </p>
+          </li>
+          <li>
+            <p>
+              the OPE facilities, the OPE foundation for \(Q\) and the uniform
+              nested OPE hold;
+            </p>
+          </li>
+          <li>
+            <p>
+              the all-shapes OPE holds for every coherent prescription;
+            </p>
+          </li>
+          <li>
+            <p>
+              for every ultrafilter on \(\mathbb{N}^2\) finer than the
+              extraction filter of \(\sigma \circ \tau\) there is a compatible
+              allocation of the sharp Gram data.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167"><tt class="verbatim">R2IGoals.fromFunded</tt></a>,
+      statement <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L130-L148"><tt class="verbatim">Broad</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.5 (ultraviolet endpoint).</strong> Let
+      \(\mathfrak{g}\) be simple, let \(\textsf{R}\) be a run with campaign
+      \(T\) and pillars \(W\), and assume the stationary-point and
+      amplification condition, the delay condition, and the weight-and-tableau
+      data \((\vartheta, v)\) of (Fd). Then the ultraviolet package
+      (UV\(_{\infty}\)) holds:
+    </p>
+    <ol>
+      <li>
+        <p>
+          (D3) holds for \(\mathcal{C}_{\textsf{R}}\), and the weight data
+          exist.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Sampler.</em> Every \(\sigma\) has a refinement \(\tau\)
+          carrying a table \(S\) and a final object on
+          \((\mathcal{C}_{\textsf{R}}, \sigma \circ \tau, S)\), and
+          \(\text{Ord}_{(\text{id}, (\sigma \circ \tau)^{\text{v}})}\) holds.
+        </p>
+      </li>
+      <li>
+        <p>
+          The trajectory at every \((p, N)\) competes in, and is issued by,
+          the fixed tuning recursion.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Tuning and convergence.</em> The parameter \(s \in [- 1, 1]\)
+          specifies the target coupling \(\bar{\beta} + ws\) at level \(0\),
+          where \(w > 0\) is the fixed tuning width. For every \((p, N, s)\)
+          there is a successful trajectory, and its bare coupling at level
+          \(N\) is unique within the prescribed recursion. These bare
+          couplings are values of a function analytic on the open unit disc in
+          \(s\). At each fixed \((m, p)\), the couplings and activities of
+          successful trajectories converge as \(N \to \infty\) whenever their
+          level-zero targets converge. For complex targets in the disc,
+          convergence of the analytic couplings and activities, with every
+          parameter derivative, is uniform on compact subsets; activities are
+          measured in the fixed weighted norm at \((m, p)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For every fixed \((m, p)\) there is \(c_{m, p} > 0\) such that
+        </p>
+        <center>
+          \(\displaystyle e^{- \text{scalar}_{N, p, m}} Z_{N, p} \geqslant
+          c_{m, p}  \qquad (N \geqslant
+m),\)
+        </center>
+        <p>
+          where \(Z_{N, p}\) is the bare Wilson partition function relative to
+          probability Haar measure and \(\text{scalar}_{N, p, m}\) is the
+          field-independent scalar in the level-\(m\) action. Its scalar
+          density \(v_{N, p, m}\) tends to \(- \infty\) as \(N \to \infty\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The volume-uniform bounds hold, as stated in VIII.1.c, step 1.
+        </p>
+      </li>
+      <li>
+        <p>
+          (D5) holds along the full mesh sequence.
+        </p>
+      </li>
+      <li>
+        <p>
+          For every fixed \(p\) there is a family of successful trajectories
+          with target \(\bar{\beta} + \lambda ws\), \(s \in [- 1, 1]\), for
+          some \(\lambda > 0\), whose central member is the chosen family.
+          They obey the same step relations and insertion normalization. For
+          each token list, each compact \(K \subset \text{NoHit}_p\) and each
+          finite spatial derivative order \(h\), there are an open
+          neighbourhood \(\Omega\) of \(K\) in \(\text{NoHit}_p\) and a
+          smaller positive parameter width, independent of \(N\). In the
+          resulting unit-disc coordinate, the limiting correlation is
+          holomorphic in the parameter and \(C^h\) in position on \(\Omega\).
+          All fixed coordinate differences of order at most \(h\), their
+          interpolants and their admissible smearings converge to the
+          corresponding derivatives, uniformly on compact parameter and
+          position sets, with every parameter derivative.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorem. It is assembled here; its ingredients are in
+      III.12&ndash;III.15. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Joint.lean#L102-L111"><tt class="verbatim">FullVolume.Final.jewelOf17</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L133-L149"><tt class="verbatim">Jewel</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.6 (the ultraviolet limit along the full
+      spacing sequence).</strong> For \(p \in \mathbb{N}\), let
+      \(\text{NoHit}_p\) be the set of configurations no two of whose points
+      are congruent modulo \(L_p \mathbb{Z}^4\).
+    </p>
+    <p>
+      (a) For the family of a run satisfying VIII.1.5's hypotheses, the
+      following holds for every \(p\), \(n\) and \(v \in \mathcal{T}^n\).
+      There is \(f_{p, v} \in C^{\infty} (\text{NoHit}_p)\) such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(C_{N, p} (v ; t) \to \int t \hspace{0.17em} f_{p, v}\) as \(N \to
+          \infty\) along all \(N\), for every \(p\)-admissible \(t\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every fixed finite list of normalized forward, backward or
+          centered coordinate differences, with fixed integer stencil widths,
+          the interpolated lattice differences converge locally uniformly on
+          \(\text{NoHit}_p\) to the corresponding derivatives of \(f_{p, v}\).
+          The same limit holds whenever lattice configurations approach a
+          point of \(\text{NoHit}_p\), along any cutoff indices tending to
+          infinity. The smeared differences converge to the integral of the
+          derivative against the test, and that integrand is integrable.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The cutoff thresholds may depend on \(p, n, v\), the compact set, the
+      tests and the difference stencils.
+    </p>
+    <p>
+      (b) Suppose a final object exists on \((\mathcal{C}, \sigma, S)\) and
+      (a) holds for \(\mathcal{C}\). Then \(\text{Ord}_{(\text{id},
+      \sigma^{\text{v}})} (\mathcal{C}, S)\) holds.
+    </p>
+    <p>
+      <em>Status:</em> theorems. <em>Lean:</em> (a) <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L45"><tt class="verbatim">Campaign.realUV</tt></a>,
+      with the definition <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L25-L36"><tt class="verbatim">PositionsUV</tt></a>. (b) <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L117-L126"><tt class="verbatim">FullVolume.Final.from_spec</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.7 (public bridges).</strong> Let
+      \(\mathfrak{F}\) be a final object on \((\mathcal{C}, \sigma, S)\) and
+      \(Q\) a reader, and let \(T (\mathfrak{F}, Q)\) be the public hierarchy
+      built from them (VIII.1.p).
+    </p>
+    <ol>
+      <li>
+        <p>
+          The public Wilson energy, Wilson measure, lattice moments and
+          smeared moments of \(\mathcal{W} (\mathcal{C})\) equal the internal
+          ones. \(\text{Ord}_{(\text{id}, s)} (\mathcal{C}, S)\) implies (P1)
+          along \(s\).
+        </p>
+      </li>
+      <li>
+        <p>
+          If (D3) holds and \(\mathfrak{g}\) is simple, then \(\mathcal{W}
+          (\mathcal{C})\) satisfies (Reg1)&ndash;(Reg4), with \(b_{\ast} = 2
+          b_0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The reconstruction in every phase implies (R1)&ndash;(R15).
+        </p>
+      </li>
+      <li>
+        <p>
+          The internal separated OPE implies (O1)&ndash;(O2).
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(\mathfrak{g}\) is simple, the seven internal headline trace
+          clauses imply (T1)&ndash;(T4), with \(3 \dim \mathfrak{g}/ \pi^4\)
+          identified with the internal amplitude.
+        </p>
+      </li>
+      <li>
+        <p>
+          The full contact resolution implies (D2).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L20-L30"><tt class="verbatim">wilsonFamily</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L62-L67"><tt class="verbatim">fromWilson</tt></a> (1); <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L16-L25"><tt class="verbatim">regular</tt></a>
+      (2); <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L79-L133"><tt class="verbatim">publicReconstruction</tt></a> (3); <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L68-L77"><tt
+      class="verbatim">publicOPE</tt></a> (4); <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/TraceBridge.lean#L35-L44"><tt class="verbatim">publicTrace</tt></a>
+      (5); <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49"><tt class="verbatim">contactDistribution</tt></a> (6).
+    </p>
+    <p>
+      <strong>Proposition VIII.1.8 (exclusion of Wick descriptions in momentum
+      space).</strong> Let \(\mathfrak{F}\) be a final object. Assume \(s^8 
+      (\log 1 / s)^2 G_{\Theta} (s) \to A > 0\) as \(s \downarrow 0\). Let
+      \(W\) be any finite list of complex coefficients \(c_{\alpha}\) and
+      products of mass-shell modes, in the class defining Wick profiles in
+      statement.md. There are Schwartz functions \(f, g\) on \(\mathbb{R}^4\)
+      for which
+    </p>
+    <center>
+      \(\displaystyle v_{f, g} (p) := \overline{\mathcal{F}_+ f (p)}
+      \hspace{0.17em} \mathcal{F}_+ g
+(p)\)
+    </center>
+    <p>
+      has compact support and
+    </p>
+    <center>
+      \(\displaystyle \mathcal{W}^{\xi_{\ast}}_2 (\Theta^{\ast}, \Theta) 
+      (\bar{f} \otimes g) \ne
+\sum_{\alpha} c_{\alpha} \hspace{0.17em}
+      \text{read}_{\alpha} (v_{f, g}) .\)
+    </center>
+    <p>
+      Here \(\mathcal{F}_+\) is the unnormalized positive-sign Fourier
+      transform used in the spectral representation. The four-dimensional test
+      \(v_{f, g}\) is the transform of the joint test restricted to relative
+      momenta \((- p, p)\). <em>Status:</em> theorem. It enters the trace
+      result of VII.3. The public (T4) follows directly from the Euclidean
+      exclusion (VIII.1.r). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L86-L105"><tt class="verbatim">TraceExtension.Wick.polynomial_excludes</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.9 (\(SU (2)\)).</strong> \(\mathfrak{su} (2)
+      \subset M_2 (\mathbb{C})\) is simple. Hence VIII.1.1 holds for \((2, SU
+      (2), \mathfrak{su} (2))\). <em>Status:</em> theorem. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ConcreteSU2.lean#L12"><tt class="verbatim">su2Simple</tt></a> (from <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Examples/SU2.lean#L79-L106"><tt class="verbatim">Examples.SU2.simple</tt></a>)
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ConcreteSU2.lean#L15-L18"><tt class="verbatim">su2Theory</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VIII.1.10 (definitions filed here and used
+      elsewhere).</strong> Several definitions used by III.10&ndash;III.15,
+      V.1&ndash;V.3, VI.1&ndash;VI.2 and VII.1&ndash;VII.4 are filed in this
+      unit:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the structure of a final object and its parts: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L64-L73"><tt class="verbatim">Spec.Final</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L26"><tt class="verbatim">Seed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43"><tt class="verbatim">Locals</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L45-L47"><tt class="verbatim">Materializes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L50-L54"><tt class="verbatim">Relativistic</tt></a>
+          and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L58-L61"><tt class="verbatim">Calibrated</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the input bundles <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L47-L54"><tt class="verbatim">Org.Alloy</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L64-L66"><tt
+          class="verbatim">Assembly</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170"><tt class="verbatim">MaxwellData</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L172-L175"><tt class="verbatim">IR</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L177-L186"><tt class="verbatim">UV</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the volume-uniform bounds of YM/FullVolume, for example <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Discrete.lean#L50-L52"><tt
+          class="verbatim">FixedBounds</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L62"><tt class="verbatim">genuine</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> definitions, and theorems described in the units that
+      use them.
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>From other units.</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>III.14 and III.2 (selection of the run).</strong> For simple
+          \(\mathfrak{g}\) and \(b > 0\) there are a run \(\textsf{R}\), a
+          campaign \(T\) and pillars \(W\) such that the penalty is \(b\) and
+          \(\textsf{R}\) is funded for the fixed local-estimate choice
+          \(\Delta\). A run records levels, schedule of constants, step
+          budgets, the trajectory and its tuning, the reference levels and the
+          transfer data of the labels.
+        </p>
+        <ul>
+          <li>
+            <p>
+              (Fd) comprises thirteen conditions: local step budgets;
+              phase-comparison and dense-coverage data; divergence of a
+              schedule \(Q\); stationary-point and amplification data; a delay
+              condition; frame compatibility; polynomial schedule
+              compatibility; support exponent \(100\) at every level; the
+              logarithmic OPE budget; the halo condition; a pacing condition;
+              thermal OPE estimates; and weight-and-tableau data \((\vartheta,
+              v)\). The detailed numerical conditions belong to III.15.
+            </p>
+          </li>
+          <li>
+            <p>
+              The run is produced by a selection theorem for runs with a fixed
+              treasury period, a preselected component recipe and the default
+              dynamics (III.2).
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L14-L28"><tt class="verbatim">Independent.constructionRun</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73"><tt class="verbatim">Funded</tt></a>, and the selection theorem
+              in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean"><tt class="verbatim">NativePreselectedPostnumericPeriodRun.lean</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>III.12&ndash;III.15 (ultraviolet bounds and
+          convergence).</strong> Used for VIII.1.5 and (D5):
+        </p>
+        <ul>
+          <li>
+            <p>
+              the convergence and alignment of the activities along the tuning
+              recursion;
+            </p>
+          </li>
+          <li>
+            <p>
+              uniqueness and analyticity of the trial couplings;
+            </p>
+          </li>
+          <li>
+            <p>
+              the volume-uniform bounds on correlation kernels and their
+              lattice differences at separated points (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Literal.lean#L62"><tt class="verbatim">FullVolume.genuine</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              the pointwise Cauchy property of lattice correlations along the
+              full spacing sequence at fixed volume (as used in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L30-L38"><tt
+              class="verbatim">Campaign.sees</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              the property that every extraction order has a refinement
+              carrying a final object (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L73-L75"><tt class="verbatim">Run.again</tt></a>,
+              through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Forge.lean#L60-L72"><tt class="verbatim">ahead</tt></a>).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>I.1, II.1&ndash;II.2 (setting and construction
+          record).</strong> The internal family, (D3) including the running
+          law: for every \(\varepsilon > 0\), \(| \beta_{N, p} (m) -
+          \hat{\beta}_m | \leqslant \varepsilon \log (1 / a_m)\) for all
+          sufficiently large \(m\) and all \(N \geqslant m\) and all \(p\),
+          where \(\hat{\beta}_m = \bar{\beta} + 2 b_0 \log (1 / a_m)\); the
+          band condition \(\beta_{N, p} (m) \in [\hat{\beta}_m / 2, 2
+          \hat{\beta}_m]\); tokens, local sections and their stencils; tables.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>IV.1 (infinite volume).</strong> The seed: a subsequential
+          table \(S\) with \(\text{Ord}_{\sigma \circ \tau}\), point limits,
+          the Euclidean hierarchy axioms, cell hypotheses and corrected-field
+          widths. It is produced inside the run's extraction property and used
+          in VIII.1.g.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>V.1&ndash;V.3 (phases and reconstruction).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The phase selection with its certificate (work items
+              B01&ndash;B18).
+            </p>
+          </li>
+          <li>
+            <p>
+              The Osterwalder&ndash;Schrader&ndash;Wightman reconstruction of
+              the selected phase (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L247-L255"><tt class="verbatim">after_materializes</tt></a>).
+            </p>
+          </li>
+          <li>
+            <p>
+              The reconstruction in every phase, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L75-L80"><tt class="verbatim">EveryPhase.all_characters</tt></a>
+              with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L51-L71"><tt class="verbatim">Completed</tt></a> (V.3).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>VI.1&ndash;VI.2 (symmetry).</strong> The field algebra
+          (derivatives, rotations, conserved stress tensor) and its local
+          laws: the local-law package built by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168"><tt class="verbatim">Bid.station</tt></a>
+          from work items A01&ndash;A17, and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24"><tt class="verbatim">Org.Tab</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>VII.1 (free Maxwell comparison).</strong> The free-Maxwell
+          data <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L45-L48"><tt class="verbatim">maxwell_supplies</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Choose.lean#L137-L150"><tt
+          class="verbatim">FreeStress.fire</tt></a>; the leading short-distance
+          comparison; the degree-four normalization (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Crest.lean#L50-L52"><tt class="verbatim">credible</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Four.lean#L13-L15"><tt class="verbatim">square_four</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>VII.2&ndash;VII.3 (trace).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The gallery property <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Chart/Line.lean#L41-L44"><tt class="verbatim">Trace.Over.Gallery</tt></a>
+              and the chain from it to the trace result.
+            </p>
+          </li>
+          <li>
+            <p>
+              The Euclidean Wick exclusion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L75-L80"><tt class="verbatim">euclidean_excludes</tt></a>,
+              with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L18-L22"><tt class="verbatim">real_profile</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Log.lean#L96-L108"><tt
+              class="verbatim">no_powerlog</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>VII.4 (OPE and contacts).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The existence of a coherent prescription (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31"><tt class="verbatim">Prescription.chosen</tt></a>).
+            </p>
+          </li>
+          <li>
+            <p>
+              The OPE services, which accompany the final object in VIII.1.g.
+            </p>
+          </li>
+          <li>
+            <p>
+              The integrated estimates <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L98-L108"><tt class="verbatim">estimates_weighted</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The contact resolution <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L65-L69"><tt class="verbatim">Solstice.provided</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L52-L61"><tt class="verbatim">real_basis</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L30-L36"><tt class="verbatim">installs</tt></a>
+              and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact/Detector.lean#L28-L35"><tt class="verbatim">detector_exists</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>VII.5 (asymptotic freedom).</strong> The value of the slope,
+          \(2 b_0 = 11 C_{\mathfrak{g}} / (24 \pi^2)\), and \(C_{\mathfrak{g}}
+          > 0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L160-L172"><tt class="verbatim">casimir_pos</tt></a>).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>Standard mathematics used.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          uniqueness of limits, and stability of limits under passage to
+          subsequences;
+        </p>
+      </li>
+      <li>
+        <p>
+          sequential compactness of countable products of compact intervals
+          (Tychonoff), with a diagonal extraction;
+        </p>
+      </li>
+      <li>
+        <p>
+          extension of convergence from a dense set by equicontinuity, and
+          discrete Taylor estimates to recover derivatives, for (D5);
+        </p>
+      </li>
+      <li>
+        <p>
+          dominated convergence, and the Laplace transform of a positive
+          measure (K&auml;ll&eacute;n&ndash;Lehmann representation of the
+          trace two-point function: K&auml;ll&eacute;n 1952, Lehmann 1954),
+          for VIII.1.8;
+        </p>
+      </li>
+      <li>
+        <p>
+          asymptotic scales \(r^a (\log r)^k\), for (T4).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The inputs rest on further standard mathematics:
+    </p>
+    <ul>
+      <li>
+        <p>
+          Ba&#x0142;aban's block-spin renormalization group for lattice gauge
+          fields (Ba&#x0142;aban, CMP 1984&ndash;1989);
+        </p>
+      </li>
+      <li>
+        <p>
+          cluster expansions (Brydges, Les Houches 1984);
+        </p>
+      </li>
+      <li>
+        <p>
+          chessboard estimates
+          (Fr&ouml;hlich&ndash;Israel&ndash;Lieb&ndash;Simon, CMP 1978);
+        </p>
+      </li>
+      <li>
+        <p>
+          Osterwalder&ndash;Schrader reconstruction (CMP 1973, 1975) and
+          Glaser's linear-growth argument;
+        </p>
+      </li>
+      <li>
+        <p>
+          decomposition of a translation-invariant state through the
+          commutative algebra on the zero-energy subspace (Borchers; Ruelle;
+          see Glimm&ndash;Jaffe, <em>Quantum Physics</em>, &sect;19.7);
+        </p>
+      </li>
+      <li>
+        <p>
+          one-loop asymptotic freedom (Gross&ndash;Wilczek, Politzer 1973) and
+          the trace anomaly (Collins&ndash;Duncan&ndash;Joglekar 1977).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong> The final existence
+      theorem has no additional analytic hypotheses. The run, local-law
+      packages, final object and (Core) are supplied by the preceding
+      construction results.
+    </p>
+    <p>
+      Parameters and auxiliary choices:
+    </p>
+    <ul>
+      <li>
+        <p>
+          The penalty \(b > 0\) of the block-spin kernel. The coarse link
+          \(V\) is drawn around the block prediction \(Q\) with weight \(\exp
+          (- \beta b \hspace{0.17em} \varrho (VQ^{- 1}))\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean"><tt
+          class="verbatim">penaltyWeight</tt></a>). It plays the role of
+          Ba&#x0142;aban's averaging parameter and is unrelated to
+          \(b_{\ast}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The implication VIII.1.4 accepts a local-estimate choice \(\Delta\);
+          VIII.1.a uses the fixed choice supplied by III.14.
+        </p>
+      </li>
+      <li>
+        <p>
+          The run-selection theorem is instantiated with the fixed dynamics
+          and auxiliary estimates of III.2.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Constants:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(b_0 = 11 C_{\mathfrak{g}} / (48 \pi^2)\), and \(b_{\ast} = 2 b_0\)
+          in (Reg1).
+        </p>
+      </li>
+      <li>
+        <p>
+          The trace amplitude \(A_{\mathfrak{g}} = 12 (d_2 / b_0)^2 \dim
+          \mathfrak{g}/ \pi^4\) with \(d_2 = - b_0 / 2\), so
+          \(A_{\mathfrak{g}} = 3 \dim \mathfrak{g}/ \pi^4\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\bar{\beta} > 0\), the reference coupling at level \(0\).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      Choose one run \(\textsf{R}_{G, b}\) before any extraction order,
+      observable or test. Given \(\sigma\), first extract a refinement
+      \(\sigma \circ g\) on which the couplings at every fixed level have
+      ordered limits. Next extract \((\sigma \circ g) \circ w\), carrying a
+      continuum table and a final object. The later reconstruction, trace, OPE
+      and contact results attach to that object. Passing to further
+      subsequences preserves the earlier limits, so \(\tau = g \circ w\)
+      serves every conclusion.
+    </p>
+    <p>
+      At each fixed volume, the renormalization-step estimates make the
+      lattice correlations Cauchy on a dense union of grids. Equicontinuity
+      gives convergence on separated configurations; discrete Taylor estimates
+      recover all derivatives. Dominated convergence gives the smeared limits.
+      Uniqueness of limits identifies these full-sequence limits with the rows
+      of the extracted table, removing the mesh subsequence.
+    </p>
+    <p>
+      Specialize the detailed theorem to \(b = 1\) and \(\sigma = (\text{id},
+      p)\). The volume part of \(\tau\) is the required \(q\). The public
+      hierarchy is read from the final object and its OPE reader. The bridges
+      identify the Wilson measures and moments, reconstruction axioms, OPE
+      estimates and trace tests. The plaquette identity, equality of Wick
+      profiles and evaluation of the trace amplitude are the required
+      computations.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <p>
+      The internal statements use a fixed gauge group \((m, G,
+      \mathfrak{g})\). When a run is specified, its campaign and pillars are
+      those appearing in (Fd) and VIII.1.5.
+    </p>
+    <h3 id="auto-5"><a id="41-the-run-and-the-ultraviolet-endpoint"></a>4.1 The run and the ultraviolet endpoint<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VIII.1.a (the chosen run).</strong> Fix a gauge group with
+      \(\mathfrak{g}\) simple and \(b > 0\). There are a run \(\textsf{R}_{G,
+      b}\), a campaign and pillars with penalty \(b\) satisfying (Fd). Write
+      \(\mathcal{C}_{G, b}\) for its family. <em>Proof sketch.</em> Apply the
+      run-selection theorem of III.2 with the fixed dynamics, local estimates
+      and component prescription of III.14. The required schedule predicate is
+      identically true, so it is satisfied after any delay extension. Choose
+      one witness before specifying an extraction order.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L14-L28"><tt class="verbatim">constructionRun</tt></a> (III.14) and
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L30-L31"><tt class="verbatim">fundedRun</tt></a>. <em>(proof read; selection
+      theorem statement only)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.b (ultraviolet endpoint).</strong> This is
+      VIII.1.5. <em>Proof sketch.</em> The convergence theorem of
+      III.13&ndash;III.15 supplies the analytic families of couplings and
+      activities. Its uniqueness clause identifies successful trajectories
+      with the same level-zero target, and its analytic clause gives the
+      bare-coupling interpolation. Removing the field-independent scalar from
+      the partition function gives the positive lower bound; decay of the bare
+      partition function then forces the scalar density to \(- \infty\). The
+      volume-uniform bounds and VIII.1.c give (D5). The parameter-family
+      construction gives item 8. Finally, refine to a final object and apply
+      VIII.1.d to obtain the sampler with the full mesh sequence. The full
+      funding hypothesis supplies the three assumptions of VIII.1.5.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L101-L113"><tt class="verbatim">clients</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Joint.lean#L102-L111"><tt class="verbatim">jewelOf17</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L60-L68"><tt class="verbatim">wins</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L70-L77"><tt class="verbatim">bareTrial</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L89-L91"><tt class="verbatim">Funded.jewel</tt></a>. Further sources: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Glide/Vac.lean#L31-L63"><tt
+      class="verbatim">YM.PhysicalNext.Repeat.Legato.Campaign.Winter</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Glide/Vac.lean#L65-L89"><tt
+      class="verbatim">YM.PhysicalNext.Repeat.Legato.Campaign.offers</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Scalar.lean#L87-L88"><tt
+      class="verbatim">YM.FullVolume.stripped</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Scalar.lean#L97-L128"><tt class="verbatim">YM.FullVolume.saved</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Scalar.lean#L130-L143"><tt class="verbatim">YM.FullVolume.field_independent</tt></a>.
+      <em>(assembly, analytic convergence, tuning, costs and parameter-family
+      proofs read; their estimates are inputs from III.12&ndash;III.15)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.c (convergence along all spacings at fixed
+      volume).</strong> This is VIII.1.6(a). <em>Proof sketch.</em> Fix \(p,
+      n, v\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          The volume-uniform bounds control every fixed list of lattice
+          differences on separated configurations. The bound and its cutoff
+          threshold may depend on \(n, v\), the differences and the
+          separation, but are uniform in \(p\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The union of the configuration grids is dense. Grid nesting makes
+          each point of this union a grid point at all sufficiently fine
+          spacings. At these configurations, the renormalization-step
+          comparison from III.12 gives a Cauchy sequence along all \(N\).
+          Equicontinuity extends convergence locally uniformly to
+          \(\text{NoHit}_p\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A discrete Taylor estimate compares each first difference with a
+          difference quotient over a fixed small physical displacement. The
+          function values already converge; first let \(N \to \infty\), then
+          let the displacement shrink. This proves that the first differences
+          are Cauchy. Iterating gives limits of all differences, and the
+          Taylor estimate identifies them as the derivatives of a smooth
+          function \(f_{p, v}\). Multilinear interpolation has the same
+          limits.
+        </p>
+      </li>
+      <li>
+        <p>
+          The lattice sums are integrals of piecewise constant functions on a
+          fundamental cell. A uniform bound on the test support permits
+          dominated convergence, giving the smeared limits.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L45"><tt class="verbatim">realUV</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Filled.lean#L40-L44"><tt class="verbatim">purchased</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L42-L47"><tt class="verbatim">positioned</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Discrete.lean#L50-L52"><tt class="verbatim">FixedBounds</tt></a>.
+      Further sources: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Eves.lean#L13-L14"><tt class="verbatim">YM.FullVolume.Eves.dense</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Fields/Eves.lean#L15-L24"><tt class="verbatim">YM.FullVolume.Eves.lateAnch</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Tuned.lean#L71-L125"><tt
+      class="verbatim">YM.FullVolume.from_previous</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Wish.lean#L22-L49"><tt class="verbatim">YM.FullVolume.honors</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Wish.lean#L61-L81"><tt class="verbatim">YM.FullVolume.augments</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Smears.lean#L49-L82"><tt class="verbatim">YM.FullVolume.pudding</tt></a>.
+      <em>(proof read, including dense-grid convergence, Taylor recovery and
+      smearing; the renormalization-step estimate is an input)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.d (removing the mesh subsequence).</strong> This is
+      VIII.1.6(b). <em>Proof sketch.</em> The seed of \(\mathfrak{F}\) gives,
+      for each admissible \(p\), \(C_{\sigma^{\text{m}} (j), p} (v ; t) \to
+      R_p\), and also \(R_{\sigma^{\text{v}} (k)} \to \int tS (v ; \cdot)\).
+      By VIII.1.c, \(C_{N, p} (v ; t) \to \int tf_{p, v}\) along all \(N\).
+      Since \(\sigma^{\text{m}}\) is cofinal, uniqueness of limits gives \(R_p
+      = \int tf_{p, v}\). Thus the same rows \(R_p\) are limits along all
+      \(N\), and the volume limit is unchanged. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L117-L126"><tt
+      class="verbatim">from_spec</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.e (OPE and logarithmic packages).</strong> Let
+      \(\textsf{R}\) be a run with campaign \(T\) and pillars \(W\). Assume
+      \(\mathfrak{g}\) simple and (Fd). Then the family carries the OPE
+      package and its logarithmic extension. <em>Proof sketch.</em> The
+      pillars, polynomial schedule compatibility, halo condition and weight
+      data supply the ordinary package. The logarithmic extension adds the
+      logarithmic exit estimate, its budget, the fixed support exponent, and
+      divergence of the composed schedule \(m \mapsto Q (J (m))\). The last
+      property follows from \(J (m) \to \infty\) and \(Q (k) \to \infty\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L100-L106"><tt class="verbatim">Funded.logPackage</tt></a> and <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Witness.lean#L98-L106"><tt class="verbatim">opePackage17</tt></a>. <em>(assembly proofs read)</em>
+    </p>
+    <h3 id="auto-6"><a id="42-the-data-at-one-extraction-order"></a>4.2 The data at one extraction order<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VIII.1.f (limits of the couplings at fixed
+      level).</strong> Assume (D3) holds for \(\mathcal{C}\), and let
+      \(\sigma\) be an extraction order. Then there are \(g\) and \((B_m)_m\)
+      such that, for every \(m\), \(\beta_{N, p} (m)\) has the ordered limit
+      \(B_m\) along \(\sigma \circ g\). Moreover \(B_m / \log (1 / a_m) \to 2
+      b_0\). <em>Proof sketch.</em> Set \(c_N (p, m) := \beta_{N, p} (m)\) for
+      \(m \leqslant N\) and \(c_N (p, m) := \hat{\beta}_m\) for \(m > N\). By
+      the band condition of (D3), \(c_N \in \prod_{(p, m)} [\hat{\beta}_m / 2,
+      2 \hat{\beta}_m]\), a compact metrizable space.
+    </p>
+    <ol>
+      <li>
+        <p>
+          Extract \(g^{\text{m}}\) with \(c_{\sigma^{\text{m}} (g^{\text{m}}
+          (j))} \to a\) in the product.
+        </p>
+      </li>
+      <li>
+        <p>
+          Extract \(g^{\text{v}}\) with \(a (\sigma^{\text{v}} (g^{\text{v}}
+          (k)), \cdot) \to B\) in \(\prod_m [\hat{\beta}_m / 2, 2
+          \hat{\beta}_m]\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For fixed \(m\) the truncation is eventually inactive.
+        </p>
+      </li>
+      <li>
+        <p>
+          The running law of (D3) gives \(|B_m - \hat{\beta}_m | \leqslant
+          \varepsilon \log (1 / a_m)\) for large \(m\), hence the slope.
+        </p>
+      </li>
+    </ol>
+    <p>
+      The slope is not used by the main theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PertExtension/Running.lean#L40-L56"><tt
+      class="verbatim">Running.extraction</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PertExtension/Running.lean#L64-L84"><tt class="verbatim">Running.discrete</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.g (a final object on a refinement).</strong> Let
+      \(\mathfrak{g}\) be simple, let \(\textsf{R}\) be a run with the OPE
+      package, and let \(\sigma\) be an extraction order. Then there are a
+      refinement \(w\), a table \(S\), a final object \(\mathfrak{F}\) on
+      \((\mathcal{C}_{\textsf{R}}, \sigma \circ w, S)\) and scaling data
+      \(\Sigma\), with OPE services and (D14). <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          The run's extraction property supplies a table and seed on a
+          refinement, together with the trajectory witnesses (D6).
+        </p>
+      </li>
+      <li>
+        <p>
+          Add the free Maxwell data, with the translation normalization in
+          which \(\kappa^{- 1} J\) is the free Maxwell stress tensor.
+        </p>
+      </li>
+      <li>
+        <p>
+          The weak comparison estimates give the infrared data, scaling data
+          \(\Sigma\) and the first comparison.
+        </p>
+      </li>
+      <li>
+        <p>
+          The symmetry results of VI.1&ndash;VI.2 produce the derivatives,
+          rotations and stress tensor with their local laws.
+        </p>
+      </li>
+      <li>
+        <p>
+          The phase results B01&ndash;B18 produce the selection and its
+          certificate. The reconstruction theorem then supplies the mixed and
+          selected continuations and the selected Wightman theory. These data
+          form \(\mathfrak{F}\) with the prescribed field algebra.
+        </p>
+      </li>
+      <li>
+        <p>
+          The leading mixed comparison, the one-dimensional space of conserved
+          tensors, and the limits of derivatives and rotations give (D14).
+          <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Construction.lean#L21-L31"><tt class="verbatim">Pert.withFinal</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Joint.lean#L60-L90"><tt
+          class="verbatim">Run.extractible17</tt></a>. <em>(assembly and final-object
+          proofs read; analytic and symmetry inputs as stated)</em>
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>Lemma VIII.1.h (trace result for every final object).</strong>
+      Assume (Fd) and \(\mathfrak{g}\) simple. For every extraction order
+      \(\sigma\), every table \(S\) and every final object \(\mathfrak{F}\) on
+      \((\mathcal{C}_{\textsf{R}}, \sigma, S)\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(d_2 = - b_0 / 2\) and \(A_{\mathfrak{g}} > 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Theta\) is fixed by the adjoint and Lorentz actions, and
+          \(\langle \Omega, \Theta (f) \Omega \rangle = 0\) for every Schwartz
+          test \(f\);
+        </p>
+      </li>
+      <li>
+        <p>
+          on the common invariant domain,
+        </p>
+        <center>
+          \(\displaystyle \Theta (f) = \left( \sum_a T_{aa} \right) (f) -
+          \left\langle \sum_a T_{aa}
+\right\rangle_{\xi_{\ast}} \left( \int f
+          \right) \text{id},\)
+        </center>
+        <p>
+          and \(\Theta \ne 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(s^8  (\log 1 / s)^2 G_{\Theta} (s) \to A_{\mathfrak{g}}\) as \(s
+          \downarrow 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the trace has a unique spectral measure \(\mu\), with
+        </p>
+        <center>
+          \(\displaystyle \rho^{- 8} (\log \rho)^2  \int \varphi (p / \rho) 
+          \hspace{0.17em} \mu (dp)
+\longrightarrow
+          \frac{A_{\mathfrak{g}}}{1536 \pi}  \int_{\bar{V}_+} \textsf{m}
+(p)^2
+          \varphi (p)  \hspace{0.17em} dp \qquad (\rho \to \infty),\)
+        </center>
+        <p>
+          for every compactly supported continuous \(\varphi\) and every
+          Schwartz \(\varphi\), where \(\textsf{m} (p) = (p^4)^2 -
+          |\mathbf{p}|^2\) and \(\bar{V}_+ = \{p : p^4 \geqslant
+          |\mathbf{p}|\}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          there exist a scaling hierarchy, a Wilson coupling and an
+          ultrafilter compatible with \(\sigma\) for which a normalized
+          position-space scheme exists. Every scheme with that hierarchy and
+          ultrafilter satisfying the stated alignment, leading-derivative and
+          scalar normalization conditions admits the stress comparison of
+          VII.3;
+        </p>
+      </li>
+      <li>
+        <p>
+          the momentum-space Wick countertest of VIII.1.8 and the Maxwell
+          relative-locality countertests of VIII.1.n hold, including the
+          version localized in any ball.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> The phase-comparison condition in (Fd) supplies
+      the trace comparison data at \(\sigma\). The trace asymptotic, spectral
+      law and exclusions of VII.2&ndash;VII.3 then apply to this final object.
+      Centering and scalar covariance follow from the stress-tensor laws. The
+      stress-comparison theorem first constructs one admissible normalized
+      scheme, then proves the comparison for every scheme satisfying those
+      same conditions.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Endpoint.lean#L99-L120"><tt class="verbatim">Trace.Target.Result</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Endpoint.lean#L138-L152"><tt class="verbatim">assembled</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Agora.lean#L69-L74"><tt class="verbatim">arenaT</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Belfry.lean#L31-L37"><tt class="verbatim">crest_ready</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L93-L95"><tt class="verbatim">Funded.gallery</tt></a>.
+      <em>(assembly proofs read; the trace estimates are inputs from
+      VII.2&ndash;VII.3)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.i (Wick exclusion in momentum space).</strong> This
+      is VIII.1.8. <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Let \(\mu\) be the trace spectral measure. It is tempered and
+          supported in the forward cone. For a joint Schwartz test
+          \(\varphi\), the selected two-point function is the integral of its
+          relative-momentum transform against \(\mu\), and
+        </p>
+        <center>
+          \(\displaystyle G_{\Theta} (s) = \int e^{- sp^4}  \hspace{0.17em}
+          \mu (dp)  \qquad (s > 0) .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          Suppose the Wick identity held for every allowed pair \((f, g)\).
+          Then \(\int v \hspace{0.17em} d \mu = \sum_{\alpha} c_{\alpha}
+          \text{read}_{\alpha}
+(v)\) for every compactly supported Schwartz
+          \(v\). To see this, choose \(u\) with \(|\mathcal{F}_+ u| = 1\) on a
+          ball containing \(\text{supp} \hspace{0.17em} v\), and use Fourier
+          surjectivity to choose \(w\) with \(\mathcal{F}_+ w = (\mathcal{F}_+
+          u) v\). Thus \(\overline{\mathcal{F}_+ u} \mathcal{F}_+ w = v\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For each \(s > 0\), approximate \(e^{- sp^4}\) by compactly
+          supported smooth cutoffs bounded in absolute value by \(e^{-
+          sp^4}\). Exponential integrability for \(\mu\) and for every
+          mass-shell term permits dominated convergence on both sides. Hence
+          \(G_{\Theta} (s) = \sum_{\alpha} c_{\alpha} K_{\alpha} (s)\) for
+          every \(s > 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The resulting Wick profile contradicts VIII.1.r(c).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L86-L105"><tt class="verbatim">polynomial_excludes</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L62-L73"><tt class="verbatim">identifies_euclid</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L99-L119"><tt class="verbatim">traceSpectrum_exists</tt></a>.
+      Further sources: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Momentum.lean#L22"><tt class="verbatim">YM.TraceExtension.productTest</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Momentum.lean#L26-L35"><tt class="verbatim">YM.TraceExtension.waveTest_product</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.j (reconstruction in every phase; input from
+      V.3).</strong> For every final object \(\mathfrak{F}\) there are
+      reconstruction data \(\mathfrak{L}\) with the following properties. The
+      phasewise assertions hold for every \(\xi \in X\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          For every \(\xi \in X\), a Wightman theory \(\mathfrak{W}_{\xi}\)
+          realizes the continuation of that phase, with the same labels. At
+          \(\xi_{\ast}\) it is the selected theory of \(\mathfrak{F}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The comparison map from \(\mathfrak{W}_{\xi}\) to its
+          Osterwalder&ndash;Schrader space is onto.
+        </p>
+      </li>
+      <li>
+        <p>
+          The Euclidean ground state is unique, and the zero-energy subspace
+          is \(\mathbb{C} \Omega_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For every finite sum \(A\) of field words there is \(M_A \geqslant
+          0\), independent of \(\xi\), such that
+        </p>
+        <center>
+          \(\displaystyle \mu_{A \Omega_{\xi}} (\{0 < p^4 \leqslant u\})
+          \leqslant M_A u^2  \quad (0 < u
+\leqslant 1),\)
+        </center>
+        <center>
+          \(\displaystyle 0 \leqslant \langle A \Omega_{\xi}, (e^{- sH_{\xi}}
+          - P_{0, \xi}) A
+\Omega_{\xi} \rangle \leqslant M_A s^{- 2}  \quad (s
+          \geqslant 1) .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          The bounded weak commutant, defined using the unbounded adjoints on
+          the field-word domain, is \(\mathbb{C} \hspace{0.17em} \text{id}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The stress tensor continues to every phase, and each Wightman
+          distribution evaluated on a fixed joint Schwartz test is continuous
+          in \(\xi\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\int S^{\xi}  \hspace{0.17em} d \nu = S\) on separated words, and
+          \(\int \mathcal{W}^{\xi}  \hspace{0.17em} d \nu
+          =\mathcal{W}^{\text{mix}}\) on every joint Schwartz test.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Proof sketch (V.1, V.3).</em> The phases are characters of the
+      commutative \(C^{\ast}\)-algebra generated by time-slab word operators
+      compressed to the mixed Osterwalder&ndash;Schrader zero-energy subspace.
+      Its vacuum measure is \(\nu\). Translate a separated word into a slab to
+      obtain the Euclidean barycentre identity. Apply the reconstruction,
+      low-energy, heat-decay, irreducibility and stress-continuation results
+      of V.3 to every character, retaining the original selected theory at
+      \(\xi_{\ast}\). Their continuity and boundary barycentre identities give
+      the last two assertions.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L75-L80"><tt class="verbatim">all_characters</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L51-L71"><tt
+      class="verbatim">Completed</tt></a>. <em>(statement and top-level proof read)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.k (the OPE reader and its estimates).</strong> Let
+      \(\mathfrak{F}\) be a final object on \((\mathcal{C}, \sigma, S)\) with
+      OPE services for that family, order and table. Choose a coherent
+      prescription \(P\) for the field derivatives, adapted to the symmetric
+      laws of the table and to the transport injection. Let \(Q\) be the
+      reader formed by \(P\), its coherence, the Euclidean kernel and the
+      transport data (injection, orientation, local laws). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the OPE foundation holds for \(Q\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the uniform nested OPE holds;
+        </p>
+      </li>
+      <li>
+        <p>
+          the all-shapes OPE holds for every coherent prescription;
+        </p>
+      </li>
+      <li>
+        <p>
+          under the dense-coverage property of the sharp Gram family, a
+          compatible sharp Gram allocation exists for every ultrafilter finer
+          than the extraction filter of \(\sigma\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> Extend the finite-degree prescriptions compatibly
+      and take their common restriction in each degree. The OPE services give
+      the coefficient and remainder estimates, which also supply the nested
+      expansions and the all-shapes expansion. Dense coverage supplies the
+      test portfolios used to construct the sharp Gram allocation.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31"><tt class="verbatim">Prescription.chosen</tt></a> (VII.4),
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L67-L68"><tt class="verbatim">Orbits.produce</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Endpoint.lean#L31-L36"><tt class="verbatim">Nesting.uniform</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Canvas.lean#L54-L58"><tt class="verbatim">attains_mantle17</tt></a>. <em>(assembly proofs
+      read; OPE estimates as stated)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.l (assembly of the full package).</strong> This is
+      VIII.1.4. <em>Proof sketch.</em> The proof has three parts.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Global items.</em> (UV\(_{\infty}\)) comes from VIII.1.b and the
+          logarithmic package from VIII.1.e. The trace result for every
+          \((\sigma, S, \mathfrak{F})\) comes from VIII.1.h. Coverage comes
+          from the phase-comparison and coverage clause of (Fd).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>At an order \(\sigma\).</em> Apply VIII.1.f to obtain \((g,
+          B)\). Apply VIII.1.g to \(\sigma \circ g\) to obtain \((w, S,
+          \mathfrak{F}, \Sigma)\). Apply VIII.1.j to obtain \(\mathfrak{L}\),
+          and VIII.1.k to obtain \(Q\). Then:
+        </p>
+        <ul>
+          <li>
+            <p>
+              subsequence stability carries the coupling limits from \(\sigma
+              \circ g\) to \((\sigma \circ g) \circ w = \sigma \circ (g \circ
+              w)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              VIII.1.d, with the full-mesh clause of (UV\(_{\infty}\)), gives
+              \(\text{Ord}_{(\text{id}, (\sigma \circ g \circ
+              w)^{\text{v}})}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the OPE facilities consist of the services, the run parameters
+              and the logarithmic package.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Output.</em> The refinement returned is \(\tau = g \circ w\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167"><tt class="verbatim">fromFunded</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L66-L68"><tt
+      class="verbatim">Order.retained</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-the-internal-headline"></a>4.3 The internal headline<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VIII.1.m (contact devices).</strong> Let \(\mathfrak{F}\)
+      carry a reader \(Q\) and OPE services. Then there are devices
+      \(\textsf{M}\) with the following properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the prescription of \(\textsf{M}\) is the reader's prescription;
+        </p>
+      </li>
+      <li>
+        <p>
+          the full contact resolution holds;
+        </p>
+      </li>
+      <li>
+        <p>
+          each OPE stratum has a complex basis of real fields, and the
+          degree-zero basis contains the unit field;
+        </p>
+      </li>
+      <li>
+        <p>
+          there are positive thresholds \(t_n \to 0\) with \(4 t_{n + 1} <
+          t_n\) and \(2 (n + 1) t_n \leqslant \text{clearance}_{\textsf{M}}
+          (n)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> Use the reader&rsquo;s coherent prescription, the
+      rotations, the Euclidean hierarchy and the phase transport laws,
+      together with a multiple-contact detector in each degree. The contact
+      theorem of VII.4 gives the resolution from the OPE services. Real
+      conjugation permits a real basis in each stratum, containing the unit in
+      degree zero. Successively choose each positive threshold below one
+      eighth of its predecessor, \(2^{- n}\) and
+      \(\text{clearance}_{\textsf{M}} (n) / (2 (n + 1))\). <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L14-L24"><tt class="verbatim">contacts_on</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L52-L63"><tt class="verbatim">MultipleLight</tt></a>.
+      Further sources: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28"><tt class="verbatim">YM.Contacts.Solstice.Thresholds</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.n (continuum theorem).</strong> This is VIII.1.3.
+      <em>Proof sketch.</em> Take \((T, W)\) and (Fd) from the specification
+      of \(\textsf{R}_{G, b}\), and apply the refinement clause of VIII.1.4 at
+      \(\sigma\). The coupling limits, the all-shapes OPE and the sharp Gram
+      allocations are omitted. Contacts come from VIII.1.m. (Core) comprises:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the OPE services;
+        </p>
+      </li>
+      <li>
+        <p>
+          the reconstruction in every phase;
+        </p>
+      </li>
+      <li>
+        <p>
+          the eight trace tests from VIII.1.h;
+        </p>
+      </li>
+      <li>
+        <p>
+          the OPE foundation;
+        </p>
+      </li>
+      <li>
+        <p>
+          the integrated remainder estimates of VII.4: fix cluster fields
+          \(a_i \in F_{d_i}\) and spectator fields. For a measurable parameter
+          space, an integrable complex density \(w\) against a positive
+          measure \(\mu\), with \(\int |w|  \hspace{0.17em} d \mu \leqslant
+          B\) and an almost everywhere measurable configuration map that is
+          admissible at scale \(r\) wherever \(w \ne 0\), the weighted raw
+          correlation, finite OPE sum and their difference are integrable. The
+          norm of the integrated difference is at most \(B \hspace{0.17em}
+          r^{D + 1 - \sum_i d_i - \varepsilon}\), for every almost everywhere
+          measurable choice of phases and for the mixed state. The radius
+          threshold depends on the finite field lists, geometric constants,
+          \(\varepsilon > 0\), truncation degree \(D\), parameter space and
+          mass bound \(B\), and precedes the choice of \(\mu, w\),
+          configurations and phases.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The internal trace-test bundle has eight clauses:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (T1);
+        </p>
+      </li>
+      <li>
+        <p>
+          the operator identity of VIII.1.h;
+        </p>
+      </li>
+      <li>
+        <p>
+          the asymptotics;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(A_{\mathfrak{g}} > 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the unique spectral law;
+        </p>
+      </li>
+      <li>
+        <p>
+          the Wick countertest;
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(n\) and every complex-linear isometry \(U\) from
+          \(\mathcal{H}\) into the \(n\)-colour free Maxwell Fock space,
+          preserving the vacuum, intertwining translations and taking values
+          in symmetric transverse waves, there are compactly supported
+          Schwartz tests \(f, h_1, \ldots, h_n\), with each \(h_i\) real and
+          spacelike separated from \(f\), such that
+        </p>
+        <center>
+          \(\displaystyle \langle W (- h) \Omega, U \Theta (f) \Omega \rangle
+          \ne \langle U \Theta
+(\bar{f}) \Omega, W (h) \Omega \rangle ;\)
+        </center>
+      </li>
+      <li>
+        <p>
+          for every such \(U\), every probability measure on an index space
+          and every family of maps preserving inner products on physical waves
+          and fixing \(U\mathcal{H}\) pointwise, the analogous identity with
+          the coherent vectors averaged under those maps also fails. For every
+          \(r > 0\), the test \(f\) can be supported in an open set whose
+          closure lies in \(B (0, r)\), with the real tests \(h_i\) supported
+          in a common open set whose closure is spacelike separated from the
+          closure of the support region for \(f\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Finally, the degree-four determining tests of VII.1 convert (D14) into
+      (D15). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L28-L48"><tt class="verbatim">continuum_with_position_tests</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L18-L34"><tt class="verbatim">Core</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L38-L44"><tt class="verbatim">Core.of_receipts</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ManuscriptTraceTests.lean#L77-L89"><tt class="verbatim">ManuscriptTraceTests.of_result</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Four.lean#L49-L53"><tt
+      class="verbatim">Pert.Position.four_on</tt></a>. <em>(assembly and degree-four
+      normalization proofs read)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.o (internal headline).</strong> For a gauge group
+      with simple \(\mathfrak{g}\) and \(b > 0\), the internal detailed
+      existence statement holds with \(\mathcal{C}=\mathcal{C}_{G, b}\).
+      <em>Proof sketch.</em> Item by item:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (D3) comes from the run, and (D6) from the final object.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Reconstruction.</em> It consists of:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the mixed and selected continuations;
+            </p>
+          </li>
+          <li>
+            <p>
+              the internal Wightman axioms for the selected theory and for
+              every \(\mathfrak{W}_{\xi}\): normalized cyclic vacuum, dense
+              domain, temperedness, adjoints, the moment identity, positivity,
+              locality, covariance, strong continuity, spectral
+              representation, forward support, and uniqueness of the invariant
+              vector;
+            </p>
+          </li>
+          <li>
+            <p>
+              the \(\nu\)-average of the phase Wightman distributions.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Separated OPE.</em> It consists of the coefficient bounds from
+          the OPE foundation, the single-centre remainder bound and the
+          integrated bounds of (Core).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Trace clauses.</em> The seven headline clauses are centering,
+          the operator identity, short-distance asymptotics, positive
+          amplitude, and the Wick, Maxwell and averaged Maxwell countertests.
+          The unique spectral law is retained separately in (Core).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Headlines.lean#L19-L36"><tt class="verbatim">Nonperturbative.existence</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L75-L81"><tt class="verbatim">Reconstruction</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L52-L71"><tt class="verbatim">WightmanAxioms</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L24-L48"><tt class="verbatim">SeparatedOPE</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L128-L138"><tt class="verbatim">NestedOPE</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L84-L120"><tt class="verbatim">TraceExclusions</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L49-L63"><tt class="verbatim">Core.point</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-translation-to-the-public-statement"></a>4.4 Translation to the public statement<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VIII.1.p (the public Wilson family and
+      hierarchy).</strong> Let \(\mathfrak{F}\) be a final object on
+      \((\mathcal{C}, \sigma, S)\) and \(Q\) a reader. The public Wilson
+      family \(\mathcal{W} (\mathcal{C})\) is defined by:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(L_p\) and \(D_N\) are the period and denominator sequences of
+          \(\mathcal{C}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\beta_{N, p} = \beta_{N, p} (N)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(h\) is the normalized Haar measure;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{T}\) is the set of internal tokens;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(I_{N, p}\) is the internal insertion.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The public Wilson energy equals the internal one. The proof matches the
+      plaquette \(U (y, \mu) U (y + e_{\mu}, \nu) U (y + e_{\nu}, \mu)^{- 1} U
+      (y, \nu)^{- 1}\) with the internal face value. Hence the measures, the
+      lattice moments and the smeared moments agree.
+    </p>
+    <p>
+      The hierarchy \(T (\mathfrak{F}, Q)\) has the following components:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{H}\) and \(\mathfrak{W}\) are those of the selected
+          reconstruction, with the same Hilbert space, domain, labels and
+          operators;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{L}\) is the filtered union of the field spaces, with
+          \(F_d =\) the quotient field spaces of \(S\), \(\iota_d =\) the
+          field-label inclusion and \(\pi =\) the class map of tokens;
+        </p>
+      </li>
+      <li>
+        <p>
+          \((X, \nu, \xi_{\ast})\) are the phase space, its measure and the
+          selected point;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(S^s\) is the table read in state \(s\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\textsf{F}_n\) is the selected continuation;
+        </p>
+      </li>
+      <li>
+        <p>
+          \((\text{Ch}_j, O_{j, \kappa}, c_{j, \kappa})\) come from \(Q\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Theta = \sum_a T_{aa} - \langle \sum_a T_{aa}
+          \rangle_{\xi_{\ast}}
+\boldsymbol{1}_4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L32-L41"><tt class="verbatim">energy_eq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L43-L46"><tt
+      class="verbatim">law_eq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L49-L55"><tt class="verbatim">moment_eq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L57-L60"><tt
+      class="verbatim">smear_eq</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L27-L42"><tt class="verbatim">hierarchy</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.q (regularity and the Wilson limit).</strong> Let
+      \(\mathfrak{F}\) be a final object on \((\mathcal{C}, \sigma, S)\) and
+      \(Q\) a reader.
+    </p>
+    <p>
+      (a) If (D3) holds and \(\mathfrak{g}\) is simple, then
+      (Reg1)&ndash;(Reg4) hold:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (Reg1): the running law of (D3) at \(m = N\) gives \(| \beta_{N, p}
+          / \log D_N - 2 b_0 | < \varepsilon\) for every \(\varepsilon > 0\),
+          all sufficiently large \(N\) and all \(p\), and \(2 b_0 > 0\) by
+          \(C_{\mathfrak{g}} > 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (Reg2) and (Reg3): continuity and gauge invariance of the local
+          sections;
+        </p>
+      </li>
+      <li>
+        <p>
+          (Reg4): the stencil of the local section.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (b) If \(\text{Ord}_{(\text{id}, s)} (\mathcal{C}, S)\) holds, then (P1)
+      holds along \(s\). The smeared moments agree by VIII.1.p. The mixed
+      correlation of \(\pi (v)\) equals \(S (v ; \cdot)\) on
+      \(\text{Conf}_n\), and \(t = 0\) off \(\text{Conf}_n\). <em>Lean:</em>
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L16-L25"><tt class="verbatim">regular</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30"><tt class="verbatim">zeroUp_bound</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L62-L67"><tt class="verbatim">fromWilson</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L44-L56"><tt class="verbatim">wilsonLimit</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.r (reconstruction, OPE and trace clauses).</strong>
+      Let \(\mathfrak{F}\) be a final object and \(Q\) a reader for it. The
+      conclusions concern \(T (\mathfrak{F}, Q)\).
+    </p>
+    <p>
+      (a) The reconstruction in every phase implies (R1)&ndash;(R15). Clause
+      by clause:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (R1): the reconstruction bridge assembles the internal domain,
+          adjoint, spectral, covariance and locality properties into
+          (W0)&ndash;(W3).
+        </p>
+      </li>
+      <li>
+        <p>
+          (R2): faithfulness of the selected theory.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R3): injectivity of the field-label inclusion.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R4): the unit field of degree \(0\) is nonzero, and faithfulness
+          applies to it.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R5): the labels are covered by the derivative plan.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R6): token representatives.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R7), (R8): the phase decomposition.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R9), (R10): permutation symmetry and smoothness of each state.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R11): continuity of the characters, after moving a separated word
+          into a time slab.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R12): the barycentre identity of VIII.1.j.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R13), (R14): holomorphy and the values at Euclidean points of the
+          selected continuation.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R15): the boundary values, together with the moment identity, which
+          identifies the public vacuum expectations with the internal Wightman
+          distributions.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (b) The internal separated OPE implies (O1)&ndash;(O2), after
+      enumerating \(I \sqcup J\) once.
+    </p>
+    <p>
+      (c) Assume \(\mathfrak{g}\) simple and the seven internal headline trace
+      clauses. Then (T1)&ndash;(T4) hold. Clause (T1) is the centered clause.
+      For (T2) and (T3), the internal amplitude is \(12 (d_2 / b_0)^2 \dim
+      \mathfrak{g}/ \pi^4 = 3 \dim \mathfrak{g}/ \pi^4\), and \(G_{\Theta}\)
+      is by definition the internal Euclidean two-point function. For (T4),
+      public and internal Wick profiles coincide; then apply the Euclidean
+      Wick exclusion. The real part of a finite Wick profile has, for every
+      \(k \in \mathbb{Z}\), an expansion modulo \(O (r^k)\) in the span of
+      \(r^a (\log r)^j\) with \(a \in \mathbb{Z}\) and \(j \in \mathbb{N}\).
+      No function with such an expansion modulo \(O (1)\) satisfies \(r^8 
+      (\log 1 / r)^2 f (r) \to A \ne 0\), since that would need the power
+      \((\log r)^{- 2}\). Thus (T3), together with \(A_{\mathfrak{g}} > 0\)
+      from (T2), implies (T4). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L79-L133"><tt class="verbatim">publicReconstruction</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicView.lean#L102-L142"><tt class="verbatim">view_axioms</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicView.lean#L144-L172"><tt class="verbatim">publicMoment</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L68-L77"><tt class="verbatim">publicOPE</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/TraceBridge.lean#L35-L44"><tt class="verbatim">publicTrace</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L75-L80"><tt class="verbatim">euclidean_excludes</tt></a>. <em>(proofs read,
+      including the power-log exclusion)</em>
+    </p>
+    <p>
+      <strong>Lemma VIII.1.s (contact distributions).</strong> Let
+      \(\mathfrak{F}\) be a final object with contact devices \(\textsf{M}\)
+      satisfying the full contact resolution. For every state \(s\), every
+      \(k\) and every \(a \in \mathbb{F}^k\), there is a continuous linear
+      functional \(\mathcal{D}\) on \(C^{\infty}_c ((\mathbb{R}^4)^k)\) with
+      \(\mathcal{D} (f) = \int fS^s (a ; \cdot)\) whenever \(\text{supp} f
+      \subset \text{Conf}_k\), using the usual test-function topology. No
+      uniqueness is asserted. <em>Proof sketch.</em> Apply the distribution
+      clause of the resolution with:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the identity embedding of \((\mathbb{R}^4)^k\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the full collision group, centred at \(0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(B = \min (1, \text{clearance}_{\textsf{M}} (\sum_i d_i))\) and \(r
+          = B / 4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The contact theorem supplies \(\mathcal{D}\). On a separated test, the
+      subtraction formula reduces to the original field word. Reading that
+      word gives the correlation; off the support of the test both integrands
+      vanish. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49"><tt class="verbatim">contactDistribution</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-the-headline-theorems"></a>4.5 The headline theorems<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VIII.1.t (detailed theorem).</strong> This is VIII.1.2.
+      <em>Proof sketch.</em> Apply VIII.1.o to obtain \(\mathcal{C}\), the
+      penalty and (D3). Regularity follows from VIII.1.q(a). For each
+      \(\sigma\), unpack the data and conclude as follows:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (P1) by VIII.1.q(b);
+        </p>
+      </li>
+      <li>
+        <p>
+          (P2) by VIII.1.r(a), from (Core);
+        </p>
+      </li>
+      <li>
+        <p>
+          (P3) by VIII.1.r(b);
+        </p>
+      </li>
+      <li>
+        <p>
+          (P4) by VIII.1.r(c);
+        </p>
+      </li>
+      <li>
+        <p>
+          (D2) by VIII.1.s;
+        </p>
+      </li>
+      <li>
+        <p>
+          (W0)&ndash;(W3) for every phase by the reconstruction bridge.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L40"><tt class="verbatim">constructed</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.u (public theorem).</strong> This is VIII.1.1.
+      <em>Proof sketch.</em> Apply VIII.1.t with \(b = 1\). Given \(p\), let
+      \(\sigma = (\text{id}, p)\), and let \(\tau\) be the refinement
+      produced. Take \(q := \tau^{\text{v}}\) and the hierarchy \(T
+      (\mathfrak{F}, Q)\). Then \((\sigma \circ \tau)^{\text{v}} = p \circ
+      q\), and the mesh part of \(\tau\) plays no role because (P1) is proved
+      along the full mesh sequence (VIII.1.d). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Solution.lean#L4-L10"><tt
+      class="verbatim">jointExistence</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L40"><tt class="verbatim">Order.refine</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VIII.1.v (\(SU (2)\)).</strong> This is VIII.1.9.
+      <em>Proof sketch.</em> The matrices
+    </p>
+    <center>
+      \(\displaystyle A = \left( \begin{array}{cc}
+  i & 0\\
+  0 & -
+      i
+\end{array} \right), \qquad B = \left( \begin{array}{cc}
+  0 & 1\\
+  -
+      1 & 0
+\end{array} \right), \qquad C = \left( \begin{array}{cc}
+  0 &
+      i\\
+  i & 0
+\end{array} \right)\)
+    </center>
+    <p>
+      span \(\mathfrak{su} (2)\) over \(\mathbb{R}\) and satisfy \([A, B] = 2
+      C\), \([B, C] = 2 A\), \([C, A] = 2 B\). If an ideal contains \(aA + bB
+      + cC \ne 0\), a suitable operator \(1 + \tfrac{1}{4} (\text{ad}
+      \hspace{0.17em} A)^2\), or its cyclic counterpart, isolates a nonzero
+      multiple of one basis vector. The bracket identities then put all three
+      in the ideal. Apply VIII.1.u. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ConcreteSU2.lean#L8-L10"><tt class="verbatim">su2</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ConcreteSU2.lean#L15-L18"><tt class="verbatim">su2Theory</tt></a>. <em>(proof read, including
+      simplicity)</em>
+    </p>
+    <h3 id="auto-10"><a id="46-endpoints-filed-here-and-not-on-the-path-of-the-main-theorem"></a>4.6 Endpoints filed here and not on the path of the
+    main theorem<span style="margin-left: 1em"></span></h3>
+    <p>
+      These separate results and alternative existence theorems are not inputs
+      to the assembly above:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the degree-four normalization <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Four.lean#L56-L63"><tt class="verbatim">normalized_four</tt></a>,
+          obtained by applying the normalization result to a separately
+          constructed family;
+        </p>
+      </li>
+      <li>
+        <p>
+          the parity results <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Parity/End.lean#L21-L30"><tt class="verbatim">parityEndpoint</tt></a> and
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Parity/EvenLow.lean#L44-L49"><tt class="verbatim">low_read</tt></a>: parity is retained by the
+          degree-four normalization, and every odd perturbative coefficient of
+          the finite-volume ledger vanishes at each field-degree horizon \(d
+          \leqslant 5\) for simple \(\mathfrak{g}\) (VII.6);
+        </p>
+      </li>
+      <li>
+        <p>
+          the contact endpoint <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L78-L79"><tt class="verbatim">celestial</tt></a>, built
+          on <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Layers/Conclusion.lean#L20-L27"><tt class="verbatim">signed_placements</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Single.lean#L57-L58"><tt
+          class="verbatim">OPE.single</tt></a> (VII.4);
+        </p>
+      </li>
+      <li>
+        <p>
+          the alternative ultraviolet endpoint <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L154-L164"><tt class="verbatim">july</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The volume-uniform ultraviolet bounds belong mathematically to
+      III.12&ndash;III.15; the supporting reconstruction and symmetry lemmas
+      belong to V.2&ndash;V.3 and VI.1.
+    </p>
+    <h2 id="auto-11"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The assembly preserves the order of choices. A family fixed before
+      \(\sigma\) must support the coupling limits, continuum table and all
+      later structures on one refinement. In particular, the fixed-volume
+      ultraviolet convergence must concern this same family. Uniqueness of row
+      limits then removes the mesh subsequence without replacing the final
+      object or its point-limit data.
+    </p>
+    <p>
+      The momentum-space Wick exclusion requires a further argument: every
+      compactly supported relative-momentum test must be realizable as
+      \(\overline{\mathcal{F}_+ u} \mathcal{F}_+ w\). Fourier surjectivity and
+      an auxiliary transform of modulus one on the test support give that
+      realization. Exponential integrability then permits passage to Euclidean
+      Laplace transforms.
+    </p>
+    <p>
+      The public theorem retains less than the detailed construction. Its
+      Wilson limit concerns the mixed state, while its trace test concerns the
+      selected phase. The Euclidean Wick exclusion follows from
+      (T2)&ndash;(T3); the detailed theorem also gives momentum-space and
+      Maxwell relative-locality countertests. The low-energy and heat bounds
+      are polynomial and imply no mass gap. Coupling limits, all-shapes OPE
+      and sharp Gram allocations occur in (Goal) but are omitted from
+      VIII.1.3. Neither independence of the volume subsequence nor agreement
+      between different penalties or run choices is asserted.
+    </p>
+    <h2 id="auto-12"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>object</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>code name</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>proposed notation</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">gauge group</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicTheory.lean#L25-L33"><tt class="verbatim">GaugeGroup</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicTheory.lean#L39-L45"><tt
+        class="verbatim">IsSimple</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((m, G, \mathfrak{g})\), \(\mathfrak{g}\) simple</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">public Wilson family</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L20-L30"><tt class="verbatim">wilsonFamily</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{W} (\mathcal{C}) = (L_p, D_N, \beta_{N, p}, h,
+        \mathcal{T}, I_{N, p})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">regularity</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L12-L22"><tt class="verbatim">WilsonRegularity</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(Reg1)&ndash;(Reg4)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">public hierarchy</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L27-L42"><tt class="verbatim">hierarchy</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(T (\mathfrak{F}, Q)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">extraction order, refinement</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L34-L36"><tt class="verbatim">Extraction.Order</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Orders.lean#L40"><tt
+        class="verbatim">refine</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\sigma = (\sigma^{\text{m}}, \sigma^{\text{v}})\),
+        \(\sigma \circ \tau\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">ordered limit</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Limits.lean#L32-L35"><tt class="verbatim">Ordered</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{Ord}_{\sigma} (\mathcal{C}, S)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">internal family, construction predicate</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Family</tt>, <tt class="verbatim">Makes</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{C}\), (D3)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">run, funding conditions</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Cross.lean#L30-L48"><tt class="verbatim">Run</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L30-L31"><tt class="verbatim">fundedRun</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73"><tt class="verbatim">Funded</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\textsf{R}_{G, b}\), (Fd)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">ultraviolet endpoint</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Finale/Program.lean#L133-L149"><tt class="verbatim">Jewel</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(UV\(_{\infty}\))</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">positional convergence</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Profiles.lean#L25-L36"><tt class="verbatim">PositionsUV</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(D5), \(f_{p, v}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">full assembly package</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L130-L148"><tt class="verbatim">Broad</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(Goal)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">table</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Table</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(S\), read as \(S^s\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">final object</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L64-L73"><tt class="verbatim">Spec.Final</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathfrak{F}\) on \((\mathcal{C}, \sigma, S)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">reconstruction in every phase</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L117-L132"><tt class="verbatim">Almanac</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L51-L71"><tt class="verbatim">Completed</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathfrak{L}= (\mathfrak{W}_{\xi})_{\xi \in X}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">OPE reader</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23"><tt class="verbatim">Orbits.Reader</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(Q\); \((\text{Ch}_j, O_{j, \kappa}, c_{j, \kappa})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">contact devices</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26"><tt class="verbatim">Contacts.Devices</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\textsf{M}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">scaling sequence</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31"><tt class="verbatim">Climb.Scaling</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\Sigma = (r_k, \xi_k, U_k)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">combined continuum properties</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L18-L34"><tt class="verbatim">Independent.Core</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(Core)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">first comparison, degree-four normalization</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/FirstTarget.lean#L26-L39"><tt class="verbatim">FirstExtension</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Position/Four.lean#L45-L47"><tt
+        class="verbatim">FourMeters</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(D14), (D15)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">centered trace, its two-point function</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L48"><tt class="verbatim">TraceExtension.center</tt></a>, <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/WilsonTrace.lean#L53"><tt class="verbatim">euclidean</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\Theta\), \(G_{\Theta}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">trace amplitude</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Day.lean#L41"><tt class="verbatim">Trace.Verse.award</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(A_{\mathfrak{g}} = 3 \dim \mathfrak{g}/ \pi^4\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">one-loop constants</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L13"><tt class="verbatim">Pert.Asymptotics.b0</tt></a>, <tt
+        class="verbatim">Trace.Over.d2</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(b_0 = 11 C_{\mathfrak{g}} / (48 \pi^2)\), \(b_{\ast} = 2
+        b_0\), \(d_2 = - b_0 / 2\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">reference coupling</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Calendar.hatBeta</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\hat{\beta}_m = \bar{\beta} + 2 b_0 \log (1 / a_m)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">penalty of the block-spin kernel</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">KernelChoices.penalty</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(b\)</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-13"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Numerical run conditions.</strong> The thirteen funding
+          conditions in &sect;2 are specified by their roles. The exact
+          inequalities for the frame and polynomial schedules, delays, pacing,
+          thermal estimates and weight tableau must be supplied from III.15.
+          The numerical proofs are inputs.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Renormalization comparison.</strong> VIII.1.c uses the
+          fixed-volume Cauchy estimate from III.12. The underlying
+          renormalization-step estimate is an input; the dense-grid, Taylor
+          and smearing arguments are given in VIII.1.c.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Normalized trace schemes.</strong> VIII.1.h retains the
+          existence and universal quantifiers of the stress-comparison
+          theorem. The alignment, leading-derivative and scalar normalization
+          conditions require the definitions and notation of VII.3. No
+          comparison for an arbitrary renormalization prescription follows.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Upstream reconstruction.</strong> The phase selection and
+          selected reconstruction are produced inside the final-object
+          construction. The every-phase theorem is an input from V.3; its
+          low-energy, decay, irreducibility and boundary arguments remain
+          inputs from V.3.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="VII-6.html">&larr; VII.6 Scaling variants and fixed-field estimates
+      (notes)</a><span class="ym-part"><a href="../units.html#part-viii-assembly-of-the-main-theorem">Part VIII</a><font class="ym-sep">&middot;</font><a
+      href="../units/VIII-1.html">Unit outline</a></span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,3222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>VI.1. Ward identities, the rotation action and the conserved stress
+    tensor &mdash; detailed notes &ndash; Yang&ndash;Mills
+    informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-3.html">&larr; V.3 Reconstruction for every phase and the
+      reconstructed theory (notes)</a><span class="ym-part"><a href="../units.html#part-vi-symmetry-stress-tensor-and-ward-identities">Part VI</a><font
+      class="ym-sep">&middot;</font><a href="../units/VI-1.html">Unit outline</a></span><a class="ym-next" href="VI-2.html">VI.2
+      The free Maxwell stress tensor and the local Ward charge (notes)
+      &rarr;</a>
+    </div>
+    <p>
+      <h1>VI.1. Ward identities, the rotation action and the conserved stress
+      tensor &mdash; detailed notes</h1><a id="vi1-ward-identities-the-rotation-action-and-the-conserved-stress-tensor--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">3</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">8</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">11</a>
+      </p>
+      <p>
+        4.1 Local structure of the raw shell maps (A01&ndash;A03) <span style="margin-left: 5mm"></span>
+        <a href="#auto-5">11</a>
+      </p>
+      <p>
+        4.2 The collinear Ward identity <span style="margin-left: 5mm"></span> <a href="#auto-6">12</a>
+      </p>
+      <p>
+        4.3 Normalisation \(p = c \hspace{0.17em} \partial\) (A04&ndash;A06)
+        <span style="margin-left: 5mm"></span> <a href="#auto-7">14</a>
+      </p>
+      <p>
+        4.4 Continuation off the line <span style="margin-left: 5mm"></span> <a href="#auto-8">16</a>
+      </p>
+      <p>
+        4.5 Brackets (A07, A08) <span style="margin-left: 5mm"></span> <a href="#auto-9">18</a>
+      </p>
+      <p>
+        4.6 Descent of the free rotation action (A09&ndash;A12) <span style="margin-left: 5mm"></span>
+        <a href="#auto-10">19</a>
+      </p>
+      <p>
+        4.7 Integration to \(O (4)\) (A13, A14) <span style="margin-left: 5mm"></span> <a href="#auto-11">21</a>
+      </p>
+      <p>
+        4.8 The averaged stress tensor (A15) <span style="margin-left: 5mm"></span> <a href="#auto-12">22</a>
+      </p>
+      <p>
+        4.9 Lorentz group, and assembly <span style="margin-left: 5mm"></span> <a href="#auto-13">22</a>
+      </p>
+      <p>
+        4.10 Free-field stress algebra <span style="margin-left: 5mm"></span> <a href="#auto-14">23</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">23</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-16">24</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-17">25</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit VI.1: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/VI-1.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/VI-1.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> VI, symmetry: stress tensor and Ward identities.
+      <strong>Lean:</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          the work items A01&ndash;A17, stated in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean"><tt class="verbatim">YM/Bid/Angular.lean</tt></a>,
+          combined in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean"><tt class="verbatim">YM/Bid/Town.lean</tt></a> and proved
+          in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work"><tt class="verbatim">YM/Work/A01</tt>&ndash;<tt class="verbatim">A17</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the collinear flux estimate, in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS"><tt class="verbatim">YM/Next/ROTATIONS</tt></a>
+          with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Axis"><tt class="verbatim">YM/Axis</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the analytic continuation, in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward"><tt class="verbatim">YM/Ward</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the scaling comparison, in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb"><tt class="verbatim">YM/Climb</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the descent of the rotation action, in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin"><tt class="verbatim">YM/Spin</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          the assembled record, in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean"><tt class="verbatim">YM/Org/Twist.lean</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          in part, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX"><tt class="verbatim">YM/Push/STRESS_FLUX</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift"><tt
+          class="verbatim">YM/Shift</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY"><tt class="verbatim">YM/Next/BOUNDARY</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Size (approximate):</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          7,704 lines are assigned to this unit and used by the main theorem.
+          Of these, about 900 (<tt class="verbatim">Shift</tt> and most of <tt class="verbatim">Next/BOUNDARY</tt>)
+          are reconstruction material for V.2, and about 1,000 (<tt class="verbatim">STRESS_FLUX</tt>)
+          are free-field algebra used in VII.2 (Remark in &sect;4.10).
+        </p>
+      </li>
+      <li>
+        <p>
+          About 6,100 further lines of <tt class="verbatim">Next/ROTATIONS</tt> carry
+          the collinear flux estimate. The declaration table files them under
+          III.6, but they belong here, and the III.6 note says so too.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Conventions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Table.</em> \(S\) is the limit table of IV.1. For labels \(v_i
+          \in F_{d_i}\) and \(x \in \text{Conf}_n\) (pairwise distinct points
+          of \(\mathbb{R}^4\)), \(S (v_1, \ldots, v_n ; x_1, \ldots, x_n)\) is
+          a correlation kernel, smooth on \(\text{Conf}_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Label spaces.</em> \(F_d\) is the finite-dimensional complex
+          space of labels of degree \(\leqslant d\) modulo null labels. It has
+          inclusions \(\iota = \iota_{d \to e}\), a unit \(\boldsymbol{1}_d\),
+          the action \(M_{\sigma}\) of the signed permutation matrices
+          \(\sigma \in B_4 \subset O (4)\), and an antilinear conjugation
+          \(\Gamma\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Euclidean axioms</em>:
+        </p>
+        <ul>
+          <li>
+            <p>
+              permutation symmetry, normalisation of the empty correlation,
+              deletion of unit insertions, and translation invariance;
+            </p>
+          </li>
+          <li>
+            <p>
+              covariance under \(B_4\) and \(\Gamma\);
+            </p>
+          </li>
+          <li>
+            <p>
+              reflection positivity in the coordinate hyperplanes, for point
+              words and for smeared tests;
+            </p>
+          </li>
+          <li>
+            <p>
+              smoothness on configuration space;
+            </p>
+          </li>
+          <li>
+            <p>
+              for each fixed arity, labels and derivative order \(j\),
+              constants \(C \geqslant 0\) and \(A \in \mathbb{N}\) such that
+              \(\|D^j S (x)\| \leqslant Cr^{- A}\) whenever \(0 < r \leqslant
+              1\) and the points are separated by at least \(r\) in the
+              maximum norm. The constants are uniform in the positions.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Differential plan.</em> Complex linear maps \(\partial_a : F_d
+          \to F_{d + 1}\) satisfying three laws:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the <em>derivative law</em> \(S (\ldots, \partial_a v_k, \ldots
+              ; x) = \partial_{x_k^a} S (\ldots, v_k,
+\ldots ; x)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the <em>inclusion law</em> \(S (\ldots, \iota v_k, \ldots) = S
+              (\ldots, v_k, \ldots)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>orientation</em>: \(\Gamma\) and \(M_{\sigma}\) commute with
+              the inclusions, \(\partial\) commutes with \(\Gamma\), and
+              \(M_{\sigma} \partial_b = \sum_a \sigma_{ab}  \hspace{0.17em}
+              \partial_a
+M_{\sigma}\). Commutation of \(\partial\) with the
+              inclusions follows from the inclusion and derivative laws.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Rotations.</em> \(\mathfrak{so} (4)\) is the space of real skew
+          \(4 \times 4\) matrices with \([K, K'] = KK' - K' K\). \(K^{(ba)} =
+          E_{ba} - E_{ab}\) generates the rotation field \(x_a e_b - x_b
+          e_a\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Spin rows.</em> A system of spin rows is a family of
+          \(\mathbb{R}\)-linear maps \(T : \mathfrak{so} (4) \to
+          \text{End}_{\mathbb{C}} F_d\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Angular sum.</em> For spin rows \(T\) and maps \(P_b : F_d \to
+          F_{d + 1}\),
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \mathcal{W}_K [T, P] (q ; x) = \sum_{i = 1}^n \left[ S
+      (\ldots, T_K q_i,
+\ldots ; x) + \sum_b (Kx_i)_b  \hspace{0.17em} S
+      (\ldots, P_b q_i, \ldots ; x)
+\right], \qquad \mathcal{W}_K [T] :=
+      \mathcal{W}_K [T, \partial] .\)
+    </center>
+    <p>
+      By the derivative law, \(\mathcal{W}_K [T] = 0\) says \(\frac{d}{dt} |_0
+      S (q ; e^{tK} x) = - \sum_i S (\ldots, T_K q_i, \ldots ; x)\). This is
+      infinitesimal rotation covariance with spin part \(T\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Lorentz group.</em> Axes are numbered \(0, 1, 2, 3\); axis \(3\)
+          is time and \(0, 1, 2\) are spatial. Write \(e_t = e_3\). The axis
+          \(0\) used for the continuation in &sect;4.4 has no distinguished
+          physical role.
+        </p>
+      </li>
+      <li>
+        <p>
+          All identities hold at separated points. No contact term is
+          evaluated.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Inputs.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The table and its differential plan.
+        </p>
+      </li>
+      <li>
+        <p>
+          An unnormalised stress \(J = (J_{ab})\), \(J_{ab} \in F_4\), with
+          complex linear <em>raw translation maps</em> \(p_a : F_d \to F_{d +
+          1}\) and real linear <em>raw spin rows</em> \(Y : \mathfrak{so} (4)
+          \to \text{End} \hspace{0.17em} F_d\). These satisfy the shell
+          identities below with unknown right-hand sides.
+        </p>
+      </li>
+      <li>
+        <p>
+          Free-Maxwell comparison data: a free table with its differential
+          plan \(\partial^{\text{free}}\), rotation action \(R^{\text{free}}\)
+          with generators \(\mathcal{L}^{\text{free}}_K\), stress
+          \(J^{\text{free}}\) and Ward constant \(\kappa \ne 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A weak scaling comparison of \(S\) with the free table.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The table and differential plan come from IV.1. The stress, shell maps
+      and comparison data come from VI.2, using ultraviolet inputs as
+      specified in &sect;2. Every result below assumes the Euclidean axioms
+      for \(S\), unless it is a statement solely about groups or operators.
+    </p>
+    <p>
+      <strong>Outputs.</strong> Given the differential plan and the comparison
+      inputs, the unit constructs:
+    </p>
+    <ul>
+      <li>
+        <p>
+          an action of \(O (4)\) on every \(F_d\) whose generators are \(c^{-
+          1} Y\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(O (4)\)-covariance of \(S\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a conserved, symmetric, real, \(O (4)\)-tensorial stress \(J'\)
+          satisfying the Ward identity (13) of the assessment and its rotation
+          analogue;
+        </p>
+      </li>
+      <li>
+        <p>
+          a Lorentz action on the labels, compatible with the rotation action.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Shells and stress laws.</strong> A <em>window</em> for \(x =
+      (x_0, \ldots, x_n) \in \text{Conf}_{n + 1}\) is a real function \(\chi
+      \in C^{\infty}_c (\mathbb{R}^4)\) that equals \(1\) near \(x_0\) and
+      whose closed support excludes \(x_1, \ldots, x_n\). For \(B \in F_d\)
+      and tags \(q\) at \(x_1, \ldots, x_n\), the two shells are
+    </p>
+    <center>
+      \(\displaystyle \Phi^{\text{tr}}_{\chi} (b) = - \sum_a \int \partial_a
+      \chi (y) 
+\hspace{0.17em} S (J_{ab} (y), B (x_0), q)  \hspace{0.17em}
+      dy, \qquad
+\Phi^{\text{rot}}_{\chi} (K) = - \sum_{a, b} \int \partial_a
+      \chi (y) 
+\hspace{0.17em} (K (y - x_0))_b  \hspace{0.17em} S (J_{ab}
+      (y), B (x_0), q) 
+\hspace{0.17em} dy.\)
+    </center>
+    <p>
+      The integrands vanish near all insertions. Given maps \(P_b : F_d \to
+      F_{d + 1}\) and \(A : \mathfrak{so} (4) \to \text{End} \hspace{0.17em}
+      F_d\), the triple \((J ; P, A)\) satisfies the <em>stress laws</em> if
+    </p>
+    <center>
+      \(\displaystyle \Phi^{\text{tr}}_{\chi} (b) = S (P_b B (x_0), q) \qquad
+      \text{and} \qquad
+\Phi^{\text{rot}}_{\chi} (K) = S (A_K B (x_0), q)\)
+    </center>
+    <p>
+      for all windows, all \(B\) and all \(q\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L90-L97"><tt class="verbatim">Table.StressLaws</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L79-L81"><tt class="verbatim">shellGrad</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L84-L86"><tt class="verbatim">shellSpin</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73"><tt class="verbatim">Window</tt></a>).
+    </p>
+    <p>
+      <strong>Raw hypotheses (R)</strong> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69"><tt class="verbatim">Climb.Pre</tt></a>):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(J\) is <em>conserved</em>: symmetric, \(\Gamma\)-real, and
+          \(\sum_a \partial_a J_{ab} = 0\) in \(F_5\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L59-L62"><tt class="verbatim">Conserved</tt></a>);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(J\) is <em>raw-tensorial</em>: \(M_{\sigma} J_{ab} = \sum_{ij}
+          \sigma_{ia} \sigma_{jb} J_{ij}\) for \(\sigma \in B_4\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L68-L70"><tt
+          class="verbatim">RawTensor</tt></a>);
+        </p>
+      </li>
+      <li>
+        <p>
+          \((J ; p, Y)\) satisfies the stress laws.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition VI.1.1 (collinear rotation Ward identity and line
+      sums).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(S\) satisfies the Euclidean axioms.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\partial\) satisfies the derivative law and orientation.
+        </p>
+      </li>
+      <li>
+        <p>
+          \((J, p, Y)\) satisfies (R).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) Let \(x \in \text{Conf}_n\) have all its points on a coordinate
+          axis \(\mathbb{R}e_l\). Then for every \(K \in \mathfrak{so} (4)\)
+          and all tags \(q\): \(\mathcal{W}_K [Y, p] (q ; x) = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) (Line sums.) Let \(x \in \text{Conf}_n\) lie on
+          \(\mathbb{R}e_l\), let \(j \neq l\), and let \(v_1, \ldots, v_n \in
+          F_d\). Then \(\sum_i S (v_1, \ldots, p_j v_i, \ldots, v_n ; x) =
+          0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <ul>
+      <li>
+        <p>
+          It answers the request <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L13-L15"><tt class="verbatim">Bid.Miles</tt></a>
+          through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L123"><tt class="verbatim">Outer.miles</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The analytic input is the exterior flux estimate (Lemma VI.1.e). It
+          uses reflection positivity and the polynomial bounds, but no mass
+          gap or clustering.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L114-L121"><tt class="verbatim">Outer.outer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L35-L36"><tt
+      class="verbatim">Bid.LineSum</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L72-L74"><tt class="verbatim">Climb.localTurn</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.2 (normalisation of the shell maps: \(p = c
+      \hspace{0.17em} \partial\)).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\partial\) satisfies all three laws.
+        </p>
+      </li>
+      <li>
+        <p>
+          The ultraviolet record holds, in particular (R) and the weak
+          comparison law against the free data (input 4 of &sect;2).
+        </p>
+      </li>
+      <li>
+        <p>
+          The free-Maxwell data hold (input 3 of &sect;2).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> There is a real \(c \ne 0\), independent of the
+      degree and coordinate axis, such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(p_a = c \hspace{0.17em} \partial_a\) on every \(F_d\), for every
+          \(a\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the rescaled rows \(D := c^{- 1} Y\) satisfy
+        </p>
+        <ul>
+          <li>
+            <p>
+              (C) \(\partial_b D_K + \sum_i K_{ib}  \hspace{0.17em} \partial_i
+              = D_K 
+\hspace{0.17em} \partial_b\) on every \(F_d\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (L) \(\mathcal{W}_K [D] (q ; x) = 0\) for every configuration
+              \(x\) on a coordinate axis.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L49-L59"><tt class="verbatim">Bid.pressured</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L61-L78"><tt
+      class="verbatim">Bid.formed</tt></a>; the record is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L83-L87"><tt class="verbatim">Climb.Crystal</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.3 (rotation Ward identity at all separated
+      configurations).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(S\) satisfies the Euclidean axioms.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\partial\) satisfies the derivative law.
+        </p>
+      </li>
+      <li>
+        <p>
+          The spin rows \(T\) satisfy (C) and (L).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> \(\mathcal{W}_K [T] (q ; x) = 0\) for all \(n\),
+      all \(x \in \text{Conf}_n\), all tags \(q\) and all \(K\).
+    </p>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139"><tt class="verbatim">Ward.global</tt></a>; the vanishing
+      is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L45"><tt class="verbatim">Ward.Still</tt></a>; the hypotheses are <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L29-L30"><tt
+      class="verbatim">Ward.commutes</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L34-L35"><tt class="verbatim">Ward.Collinear</tt></a>;
+      the sum is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L25-L27"><tt class="verbatim">Ward.angular</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.4 (\(\mathfrak{so} (4)\) brackets;
+      A08).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\partial\) satisfies the inclusion and derivative laws.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(T\) satisfies the conclusion of VI.1.3.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(T\) is <em>compatible</em> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20"><tt class="verbatim">Bid.Hyper</tt></a>):
+          it commutes with \(\Gamma\) and with \(\iota\), kills
+          \(\boldsymbol{1}\), and \(M_{\sigma} T_K = T_{\sigma K \sigma^{- 1}}
+          M_{\sigma}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Internal row erasure</em> holds (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L149-L152"><tt class="verbatim">Org.erases</tt></a>).
+          That is, for some \(N\) and all \(d \geqslant N\), let \(\Delta :
+          \mathfrak{so} (4) \times \mathfrak{so} (4) \to
+          \text{End}
+\hspace{0.17em} F_d\) be a real bilinear family of
+          complex linear endomorphisms with these properties (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L141-L146"><tt
+          class="verbatim">Org.Winds</tt></a>):
+        </p>
+        <ul>
+          <li>
+            <p>
+              it is covariant under signed permutations of determinant \(1\);
+            </p>
+          </li>
+          <li>
+            <p>
+              it is \(\Gamma\)-real;
+            </p>
+          </li>
+          <li>
+            <p>
+              it kills \(\boldsymbol{1}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              it is alternating;
+            </p>
+          </li>
+          <li>
+            <p>
+              for every \(e \leqslant d\) and \(u, v\), \(\Delta (u, v)\)
+              preserves \(\iota_{e \to d} (F_e)\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          If moreover \(\sum_i S (w_1, \ldots, \Delta (u, v) w_i, \ldots, w_m
+          ; x) = 0\) for all \(m\), all \(x \in \text{Conf}_m\), all \(u, v
+          \in \mathfrak{so} (4)\) and all \(w \in F_d^m\), then \(\Delta =
+          0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> \([T_u, T_v] = T_{[u, v]}\) on every \(F_d\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. Erasure for \(S\) is itself proved (A07, Lemma
+      VI.1.q).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247"><tt class="verbatim">Work.A08.answer</tt></a> for <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L76-L78"><tt
+      class="verbatim">Bid.A08</tt></a>; the conclusion is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L74"><tt class="verbatim">Bid.Brackets</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.5 (descent of the free rotation
+      action).</strong> Under the hypotheses of VI.1.2, let \(c\) be its
+      normalisation constant and put \(D = c^{- 1} Y\).
+    </p>
+    <p>
+      <em>Conclusion.</em> There are complex linear isomorphisms \(V_d :
+      F^{\text{free}}_d \to F_d\) with these properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(V_d M^{\text{free}}_{\sigma} = M_{\sigma} V_d\) and \(V_d
+          \Gamma^{\text{free}} = \Gamma V_d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(D_K V_d = V_d  \hspace{0.17em} \mathcal{L}^{\text{free}}_K\) for
+          all \(K \in \mathfrak{so} (4)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Hence \(R_d (k) := V_d  \hspace{0.17em} R^{\text{free}}_d (k) 
+      \hspace{0.17em} V_d^{-
+1}\), \(k \in O (4)\), is a continuous
+      representation of \(O (4)\) on \(F_d\). It equals \(M_{\sigma}\) on
+      \(B_4\), commutes with \(\Gamma\), and has infinitesimal generator
+      \(D\). Call such an action, with its specified generators, a
+      <em>rotation port</em>. The Ward identity of VI.1.3 holds for \(D\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. The \(V_d\) are chosen independently for each
+      \(d\). Compatibility with the inclusions comes later (VI.1.6).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L90-L98"><tt class="verbatim">Climb.descends</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L26-L47"><tt
+      class="verbatim">Spin.produces</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L134-L157"><tt class="verbatim">Spin.meet</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L124-L157"><tt class="verbatim">Bid.services</tt></a>; the transported action is <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L22-L24"><tt class="verbatim">Spin.morph</tt></a> and a port is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L13-L19"><tt class="verbatim">Spin.Port</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.6 (covariance and the rotation laws;
+      A14).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\partial\) satisfies the inclusion and derivative laws.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R\) is a port with generators \(T\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{W}_K [T] = 0\) on all of \(\text{Conf}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(R\) is <em>oriented</em>: \(S (R (k) v_1, \ldots, R (k) v_n ;
+          kx_1, \ldots, kx_n) = S (v ; x)\) for all \(k \in O (4)\) and all
+          \(x \in \text{Conf}_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R\) satisfies the <em>rotation laws</em>: it fixes
+          \(\boldsymbol{1}\); it commutes with \(\iota\); it acts on
+          derivatives as a vector, \(R_{d + 1} (k)  \hspace{0.17em} \partial_a
+          v = \sum_i k_{ia}  \hspace{0.17em}
+\partial_i R_d (k) v\); and it
+          keeps the port properties.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. It uses A13: \(O (4)\) is generated by \(B_4\)
+      and the one-parameter groups \(e^{tK}\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L417-L420"><tt class="verbatim">Work.A14.answer</tt></a> for <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L105-L107"><tt
+      class="verbatim">Bid.A14</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L31-L42"><tt class="verbatim">Rotation.Laws</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L46-L48"><tt class="verbatim">Rotation.Oriented</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200"><tt class="verbatim">Work.A13.answer</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.7 (the averaged stress tensor and the Ward
+      identity (13); A15).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\partial\) satisfies the derivative law.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R\) is a rotation action satisfying the rotation laws, and \(R\)
+          is oriented.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(p = c \hspace{0.17em} \partial\) with \(c \neq 0\), and \((J, p,
+          Y)\) satisfies (R).
+        </p>
+      </li>
+      <li>
+        <p>
+          The generators of \(R\) are \(c^{- 1} Y\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> There is a stress \(J'\) with these properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          it is conserved, i.e. symmetric, real and divergence-free;
+        </p>
+      </li>
+      <li>
+        <p>
+          it is <em>tensorial</em>: \(R_4 (k) J'_{ab} = \sum_{ij} k_{ia}
+          k_{jb} J'_{ij}\) for all \(k \in O (4)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \((J' ; \partial, c^{- 1} Y)\) satisfies the stress laws.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The translation law is the Ward identity (13):
+    </p>
+    <center>
+      \(\displaystyle - \sum_a \int \partial_a \chi (y)  \hspace{0.17em} S
+      (J'_{ab} (y), B (x_0), q)
+\hspace{0.17em} dy = \frac{\partial}{\partial
+      x_0^b} S (B (x_0), q) .\)
+    </center>
+    <p>
+      <em>Status:</em> theorem. It uses A10.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192"><tt class="verbatim">Work.A15.answer</tt></a> for <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L109-L112"><tt
+      class="verbatim">Bid.A15</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L64-L66"><tt class="verbatim">Table.Tensorial</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.8 (Lorentz action on the labels).</strong> For
+      (b)&ndash;(c), assume the hypotheses of VI.1.2 and choose \(V_d\), \(R\)
+      and \(J'\) as in VI.1.5&ndash;7.
+    </p>
+    <p>
+      <em>(a)</em> \(SO^+ (1, 3)\) is generated by the spatial rotations and
+      the coordinate boosts (A16).
+    </p>
+    <p>
+      <em>(b)</em> Let \(B^{\text{free}}\) be the Lorentz action on the free
+      labels, which is part of the free data. Let \(B_d (\Lambda) = V_d
+      B^{\text{free}}_d (\Lambda) V_d^{- 1}\). Then \(B_e (\Lambda) 
+      \hspace{0.17em} \iota = \iota \hspace{0.17em} B_d (\Lambda)\) for all
+      \(d \leqslant e\) and \(\Lambda \in SO^+ (1, 3)\) (A17).
+    </p>
+    <p>
+      <em>(c)</em> The compatible actions \(B_d\) define a representation on
+      the union of the label spaces. For every degree \(d\) and spatial axis
+      \(i\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          the action on \(F_d\) is continuous;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\frac{d}{ds} |_{s = 0} B_d (\text{boost}_i (s)) v = - i
+          \hspace{0.17em}
+D_{K^{(3 i)}} v\) for every \(v \in F_d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(B_d\) equals \(R_d\) on spatial rotations;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(B_d\) commutes with the time-reflection adjoint \(M_{\theta_t}
+          \Gamma\), where \(\theta_t\) reverses the time coordinate.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorems.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L91-L101"><tt class="verbatim">Work.A16.answer</tt></a> for <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L116"><tt
+      class="verbatim">Bid.A16</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L88-L101"><tt class="verbatim">Work.A17.answer</tt></a>
+      for <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L118-L119"><tt class="verbatim">Bid.A17</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L24-L25"><tt class="verbatim">Spin.wand</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L39-L74"><tt class="verbatim">Spin.reach</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L26-L35"><tt class="verbatim">Boundary.Spins.Descends</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition VI.1.9 (the assembled record).</strong> Let the free
+      data, the infrared triple \((J, p, Y)\) and the ultraviolet record be as
+      in &sect;2 (inputs 3&ndash;4). Then the six assembly clauses hold:
+      compatibility of the raw maps, their normalisation, descent of
+      rotations, covariance, normalisation and averaging of the stress, and
+      compatibility of the Lorentz action with inclusions.
+    </p>
+    <p>
+      Hence, if \(\partial\) satisfies the inclusion and derivative laws,
+      there exist \(c\), \((V_d)\) and \(J'\) such that the following local
+      field laws hold:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the normalisation of VI.1.2 for \(c\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(V_d\) intertwines \(M\) and \(\Gamma\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R = VR^{\text{free}} V^{- 1}\) with generators \(c^{- 1} Y\) is a
+          port;
+        </p>
+      </li>
+      <li>
+        <p>
+          the three plan laws; the rotation laws and orientation of \(R\);
+          each \(F_d\) is isomorphic to \(F^{\text{free}}_d\) compatibly with
+          \(M\) and \(\Gamma\); and \(J'\) is conserved, tensorial and
+          satisfies the stress laws with \((\partial, c^{- 1} Y)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      There is also a Lorentz action descending from \(R\) (VI.1.8(c)).
+    </p>
+    <p>
+      <em>Status:</em> theorem conditional on the inputs in &sect;2. Their
+      production uses VI.2 and the ultraviolet units; VIII.1 assembles the
+      resulting local field laws with the phase and reconstruction data.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS.lean#L126-L131"><tt class="verbatim">Outer.commission</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168"><tt
+      class="verbatim">Bid.station</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L29-L43"><tt class="verbatim">Org.Commission</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L45-L53"><tt class="verbatim">Commission.picks</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24"><tt class="verbatim">Org.Tab</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43"><tt class="verbatim">Spec.Locals</tt></a>.
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Inputs from other units.</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>IV.1 (limit table and differential plan).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The Euclidean axioms <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L141-L148"><tt class="verbatim">Table.Hierarchy</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The plan laws <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L61-L64"><tt class="verbatim">DiffPlan.Derivatives</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L58-L60"><tt class="verbatim">Inclusions</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L66-L72"><tt class="verbatim">Orientation</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Also: \(\partial_a \partial_b = \partial_b \partial_a\);
+              injectivity of \(\iota\); the unique lift of compatible maps to
+              the union of label spaces.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>V.1 (OS chambers).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              For each coordinate axis there is the Osterwalder&ndash;Schrader
+              Hilbert space of reflection in \(\{x_a = 0\}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57-L61"><tt
+              class="verbatim">OS.Chamber</tt></a>). It carries a self-adjoint
+              contraction semigroup \(e^{- tH}\), the unitary translations
+              parallel to the hyperplane, and their joint spectral measure.
+            </p>
+          </li>
+          <li>
+            <p>
+              It is built from the axioms by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L106-L107"><tt class="verbatim">OS.realization</tt></a>,
+              so it is not an assumption.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>VI.2 (free-Maxwell data)</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170"><tt class="verbatim">Org.MaxwellData</tt></a>:
+        </p>
+        <ul>
+          <li>
+            <p>
+              a free table with its axioms;
+            </p>
+          </li>
+          <li>
+            <p>
+              free comparison data (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29"><tt class="verbatim">Climb.Lighthouse</tt></a>),
+              i.e. \((\partial^{\text{free}}, R^{\text{free}},
+              J^{\text{free}}, \kappa \ne 0)\), with laws <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42"><tt class="verbatim">Goes</tt></a>:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  plan laws;
+                </p>
+              </li>
+              <li>
+                <p>
+                  rotation laws and orientation;
+                </p>
+              </li>
+              <li>
+                <p>
+                  stress laws for \((J^{\text{free}} ; \kappa
+                  \partial^{\text{free}}, \kappa
+\mathcal{L}^{\text{free}})\);
+                </p>
+              </li>
+              <li>
+                <p>
+                  \(\partial^{\text{free}}\) is nonzero on
+                  \(F^{\text{free}}_4\);
+                </p>
+              </li>
+              <li>
+                <p>
+                  at every sufficiently large degree, finitely many collinear
+                  readouts whose common kernel within the free vector-map
+                  space is \(\mathbb{R} \partial^{\text{free}}\);
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              a free Lorentz action \(B^{\text{free}}\) descending from
+              \(R^{\text{free}}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the perfect commutator relations among the free generators;
+            </p>
+          </li>
+          <li>
+            <p>
+              Casimir projection polynomials;
+            </p>
+          </li>
+          <li>
+            <p>
+              free row erasure.
+            </p>
+          </li>
+        </ul>
+        <p>
+          The free-data producer <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L45-L48"><tt class="verbatim">Maxwell.Free.maxwell_supplies</tt></a>
+          and its stress replacement <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Choose.lean#L137-L150"><tt class="verbatim">FreeStress.fire</tt></a>
+          are supplied in VI.2. A12 and A10+A09 give the Casimir polynomials
+          and the generator relations. These free-data producers assume \(G\)
+          simple.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>VI.2 and III.11 (raw stress, shell maps and weak
+          comparison).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L172-L175"><tt class="verbatim">Org.IR</tt></a> is the triple \((J, p, Y)\).
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L177-L186"><tt class="verbatim">Org.UV</tt></a> contains the lattice and
+              extraction data, corrected-field bounds and Euclidean axioms for
+              \(S\); orientation of \(\partial\); (R); the <em>weak action
+              law</em>; and grid approximations.
+            </p>
+          </li>
+          <li>
+            <p>
+              The weak action law <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L50-L51"><tt class="verbatim">Climb.ActLaw</tt></a>
+              says: for every arity bound \(N\), degree bound \(d\),
+              derivative bound \(m\) and \(R \geqslant 1\), there is a
+              <em>scaling system</em> \(X = (r_k \downarrow 0, \xi_k > 0,
+              U_{k, e} : F^{\text{free}}_e \to F_e)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31"><tt class="verbatim">Climb.Scaling</tt></a>)
+              with a <em>track</em> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48"><tt class="verbatim">Climb.Track</tt></a>):
+            </p>
+            <ul>
+              <li>
+                <p>
+                  every \(U_{k, e}\) is a complex linear isomorphism; for \(e
+                  \leqslant \max (d, 4)\) it intertwines \(M\), \(\Gamma\) and
+                  the unit, and these maps respect inclusions within that
+                  degree range;
+                </p>
+              </li>
+              <li>
+                <p>
+                  for \(n \leqslant N\), labels of degree at most \(d\), and
+                  \(j \leqslant m\), \(D_y^j S (U_k v ; r_k y) \to D^j
+                  S^{\text{free}} (v ; y)\) uniformly on the compact set
+                  \(\|y\| \leqslant R\) with pairwise maximum-norm separation
+                  at least \(R^{- 1}\);
+                </p>
+              </li>
+              <li>
+                <p>
+                  \(\xi_k^{- 1} r_k^4  \hspace{0.17em} U_{k, 4}^{- 1} J_{ab}
+                  \to
+J^{\text{free}}_{ab}\) for every \(a, b\).
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              The scaling system may depend on all four bounds. Any finite
+              collection of requests can be combined by increasing them.
+            </p>
+          </li>
+          <li>
+            <p>
+              The conserved-current construction produces the raw stress; the
+              annular-field construction supplies its shell maps. The
+              immediate suppliers are <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Emanate.lean#L15-L30"><tt class="verbatim">Acme.readyA</tt></a>
+              and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Orange.lean#L33-L63"><tt class="verbatim">Acme.shells_law</tt></a>. They provide
+              the weak comparison and shell laws for this same stress.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>VIII.1 (assembly).</strong> Combines the local field laws
+          obtained here with the phase decomposition and reconstruction.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Ward identities for a conserved symmetric stress tensor: the flux of
+          \(J_{ab} V_b\) through a closed shell, for a Killing field \(V\)
+          (Noether; e.g. Itzykson&ndash;Zuber &sect;2-4).
+        </p>
+      </li>
+      <li>
+        <p>
+          Osterwalder&ndash;Schrader reconstruction and the transfer operator
+          along a coordinate axis (Osterwalder&ndash;Schrader 1973/1975;
+          Glimm&ndash;Jaffe, <em>Quantum Physics</em>, ch. 6 and 19). Spectral
+          theorem and Laplace representations.
+        </p>
+      </li>
+      <li>
+        <p>
+          Analytic vectors (Nelson, Ann. of Math. 1959). Holomorphic
+          contraction semigroups (Reed&ndash;Simon II). Formal uniqueness at a
+          noncharacteristic line (as proved in VI.1.m). Identity theorem for
+          real-analytic functions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Representation theory:
+        </p>
+        <ul>
+          <li>
+            <p>
+              Haar measure and Weyl's unitarian trick;
+            </p>
+          </li>
+          <li>
+            <p>
+              the Casimir element;
+            </p>
+          </li>
+          <li>
+            <p>
+              McWeeny purification \(x \mapsto 3 x^2 - 2 x^3\) of approximate
+              idempotents (Rev. Mod. Phys. 1960).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Groups and ODEs:
+        </p>
+        <ul>
+          <li>
+            <p>
+              Cartan&ndash;Dieudonn&eacute; (\(O (n)\) is generated by
+              reflections; Mathlib);
+            </p>
+          </li>
+          <li>
+            <p>
+              Givens rotations;
+            </p>
+          </li>
+          <li>
+            <p>
+              generation of \(SO^+ (1, 3)\) by rotations and boosts;
+            </p>
+          </li>
+          <li>
+            <p>
+              Picard&ndash;Lindel&ouml;f uniqueness.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\kappa \neq 0\) comes from the chosen free data. The initial
+          free-data constructor has \(\kappa = - \tau\); the stress
+          replacement used in assembly supplies a common nonzero Ward constant
+          without identifying its numerical value.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(c\) is determined by \(p = c \hspace{0.17em} \partial\). Along
+          scaling systems satisfying the degree-\(4\) requests in VI.1.g, \(c
+          / \xi_k \to \kappa\) (Lemma VI.1.u).
+        </p>
+      </li>
+      <li>
+        <p>
+          The flux estimate uses \(\lambda_k = e^k\) and the exponents \(100,
+          150, 300, 3000\). These are internal choices.
+        </p>
+      </li>
+      <li>
+        <p>
+          Inputs 3&ndash;4 are hypotheses of the assembly theorem; their
+          existence is supplied by the units cited above.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      Conservation and the raw shell laws make the maps \(p\) and \(Y\)
+      compatible with inclusions, conjugation and signed permutations. Moving
+      the center inside a fixed window gives their commutators with
+      derivatives. To obtain a global rotation identity on a coordinate line,
+      test the stress against a compact vector field that equals the rotation
+      field near the insertions. Its cutoff has widths \(\lambda^{100}\) in
+      the rotation plane, \(\lambda^{150}\) in the line direction if that
+      direction is transverse to the plane, and \(\lambda^{300}\) in the
+      remaining directions. Two derivative terms cancel by symmetry of the
+      stress. Reflection positivity and spectral estimates make the remaining
+      exterior flux \(O (\lambda^{- 1})\), so the collinear angular sum
+      vanishes. Translation along the line then gives the transverse
+      translation sums.
+    </p>
+    <p>
+      The free comparison identifies \(p = c \partial\): finitely many
+      collinear tests have a one-dimensional kernel in the free vector-map
+      space, and this rank condition persists along a sufficiently accurate
+      scaling system. Dividing by \(c\) gives the collinear Ward identity for
+      \(D = c^{- 1} Y\). Its derivatives determine the transverse Taylor
+      series of each two-point function from an explicit analytic comparison
+      function built from radial correlations. Positivity turns the resulting
+      bounds on Gram-kernel jets into factorial bounds for derivatives of the
+      corresponding OS vectors. Correlations are therefore analytic when one
+      insertion moves while remaining extreme in some coordinate. The Ward
+      identity propagates along finite chains of these moves; density gives it
+      at every separated configuration.
+    </p>
+    <p>
+      Differentiating the global Ward identity twice gives the \(\mathfrak{so}
+      (4)\) brackets, after row erasure is transported from the free theory. A
+      relative-Casimir polynomial and McWeeny iteration produce exact
+      intertwiners with the free rotation generators. Transporting the free
+      action through them gives \(O (4)\) actions on each degree. The Ward
+      identity implies covariance, which in turn gives compatibility with
+      inclusions, the unit and derivatives. Haar averaging of \(c^{- 1} J\)
+      gives the tensorial stress \(J'\) without changing its Ward laws. The
+      free Lorentz action is transported through the same intertwiners;
+      uniqueness for the boost ODEs makes it compatible across degrees.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-local-structure-of-the-raw-shell-maps-a01a03"></a>4.1 Local structure of the raw shell maps
+    (A01&ndash;A03)<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VI.1.a (A01: compatibility).</strong> Assume (R), the
+      derivative law and the inclusion law. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(p\) lies in the <em>colour space</em> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L89-L91"><tt class="verbatim">Climb.ColorLaw</tt></a>):
+          \(p_i \boldsymbol{1}= 0\); \(p\) commutes with \(\iota\) and
+          \(\Gamma\); \(M_{\sigma} p_i = \sum_j \sigma_{ji}  \hspace{0.17em}
+          p_j M_{\sigma}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(Y\) is compatible (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20"><tt class="verbatim">Bid.Hyper</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> Each identity is tested against all words in a
+      fixed window. The shells are fluxes of \(J\) against \(\partial \chi
+      \otimes V\), with \(V \equiv e_i\) for \(p\) and \(V (y) = K (y - x_0)\)
+      for \(Y\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Unit.</em> If the label at the centre is \(\boldsymbol{1}\), the
+          unit axiom deletes that insertion. Integrating by parts against
+          \(\chi\) gives \(\int \chi \hspace{0.17em} \text{div} \left( \sum_b
+          V_b S (J_{ab} (y), \ldots)
+\right)\), and this vanishes.
+          Conservation handles one term. The Killing property (\(\partial_a
+          V_b\) antisymmetric) together with \(J_{ab} = J_{ba}\) handles the
+          other.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Mirrors.</em> Substitute \(y \mapsto \sigma y\) and use the
+          window \(\chi \circ \sigma^{- 1}\) at \(\sigma x\). Then use
+          \(B_4\)-covariance of \(S\), raw tensoriality of \(J\), and \(\sigma
+          K (\sigma^{- 1} \cdot) = (\sigma K \sigma^{- 1}) \cdot\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Reality.</em> Reality of \(S\) and \(J\), and the weights are
+          real.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Inclusions.</em> The inclusion law inside the integrand.
+        </p>
+      </li>
+      <li>
+        <p>
+          The orientation hypothesis is not used.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L115-L117"><tt class="verbatim">Work.A01.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L27-L76"><tt
+      class="verbatim">translation_color</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01.lean#L78-L112"><tt class="verbatim">angular_hyper</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L154-L181"><tt class="verbatim">cutoff_zero</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Conserve.lean#L183-L203"><tt class="verbatim">flux_unit</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A01/Mirror.lean#L161-L194"><tt class="verbatim">flux_mirror</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.b (A02: moving the centre).</strong> Assume (R) and
+      the derivative law. Then
+    </p>
+    <center>
+      \(\displaystyle \partial_b Y_K u + \sum_c K_{cb}  \hspace{0.17em} p_c u
+      = Y_K  \hspace{0.17em}
+\partial_b u \qquad \text{and} \qquad \partial_b 
+      \hspace{0.17em} p_i = p_i 
+\hspace{0.17em} \partial_b\)
+    </center>
+    <p>
+      on every \(F_d\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L27-L29"><tt class="verbatim">Bid.ShellCom</tt></a>).
+    </p>
+    <p>
+      <em>Proof sketch.</em> Keep \(\chi\) fixed and move the centre to \(x_0
+      + te_b\); for small \(t\), \(\chi\) is still a window. Differentiate
+      both shell laws at \(t = 0\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          The right-hand sides give \(S (\partial_b Y_K B)\) and \(S
+          (\partial_b p_i B)\), by the derivative law.
+        </p>
+      </li>
+      <li>
+        <p>
+          On the left, the kernel's \(t\)-derivative replaces \(B\) by
+          \(\partial_b B\). The weight \(K (y - x_0 - te_b)\) contributes \(-
+          \sum_c K_{cb}\) times the translation shell.
+        </p>
+      </li>
+      <li>
+        <p>
+          Differentiation under the integral is dominated on \(\text{supp}
+          \hspace{0.17em} \nabla \chi \times [- r, r]\), so no near-diagonal
+          behaviour is needed.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L272-L307"><tt class="verbatim">Work.A02.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L213-L259"><tt
+      class="verbatim">deriv_shellSpin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A02.lean#L37-L48"><tt class="verbatim">stable</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.c (A03: transversality).</strong> Assume the plan
+      laws, the colour law for \(p\), the second identity of VI.1.b, and the
+      line sums of VI.1.1(ii). Then \(p\) and \(\partial\) are
+      <em>transverse</em> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Peaks.lean#L57"><tt class="verbatim">Climb.transverse</tt></a>).
+      That is: for \(x \in \text{Conf}_n\) on \(\mathbb{R}e_a\), \(b \neq a\)
+      and \(v \in F_d^n\), the function \(y \mapsto \sum_k S (v_1, \ldots, P_b
+      v_k, \ldots, v_n ; y)\) has vanishing jet of every order at \(x\), for
+      \(P = p\) and for \(P = \partial\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The inclusion law extends the line sums to labels of mixed degree.
+        </p>
+      </li>
+      <li>
+        <p>
+          By \(\partial p = p \hspace{0.17em} \partial\) and the derivative
+          law, a derivative of such a row sum in a direction \(e_{k, c}\) is
+          the same kind of row sum with \(\partial_c\) inserted at slot \(k\).
+          Induction on the order, quantified over all words, reduces every jet
+          to a line sum at \(x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(\partial\), the line sum is translation invariance, and the
+          colour law is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L93-L96"><tt class="verbatim">Climb.native</tt></a>, which uses
+          orientation.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L197-L202"><tt class="verbatim">Work.A03.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L51-L80"><tt
+      class="verbatim">all_line</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L83-L103"><tt class="verbatim">row_D</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A03.lean#L152-L186"><tt
+      class="verbatim">full_jet</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-the-collinear-ward-identity"></a>4.2 The collinear Ward identity<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VI.1.d (flux identity).</strong> Assume (R) and the
+      derivative law. Let \(x \in \text{Conf}_n\) and \(K \in \mathfrak{so}
+      (4)\). Let \(F\) be a smooth compactly supported vector field that
+      equals \(y \mapsto Ky\) near every \(x_i\). Then
+    </p>
+    <center>
+      \(\displaystyle \mathcal{W}_K [Y, p] (q ; x) = - \int \sum_{a, b}
+      \partial_a F_b (y) 
+\hspace{0.17em} S (J_{ab} (y), q ; x) 
+      \hspace{0.17em} dy.\)
+    </center>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Choose disjoint windows \(\chi_i\) around the \(x_i\), and split \(F
+          = (F - u) + u\) with \(u = \sum_i \chi_i  \hspace{0.17em} K
+          (\cdot)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The flux of \(F - u\) vanishes: it is a sum of constant-field fluxes
+          against a cutoff supported away from all points, which are zero by
+          conservation (as in VI.1.a).
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(u\), write \(\partial_a  (\chi_i Ky)_b = \partial_a \chi_i 
+          \hspace{0.17em} (Ky)_b + \chi_i
+K_{ba}\). The second term pairs to
+          zero with the symmetric \(J\).
+        </p>
+      </li>
+      <li>
+        <p>
+          In the first term, write \(Ky = K (y - x_i) + Kx_i\). These produce,
+          at \(x_i\), the rotation shell and \((Kx_i)_b\) times the
+          translation shell. Use permutation symmetry to place \(x_i\) in the
+          first slot.
+        </p>
+      </li>
+      <li>
+        <p>
+          The shell laws turn these into the two terms of \(\mathcal{W}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/River.lean#L84-L113"><tt class="verbatim">Outer.flux_value</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/River.lean#L40-L64"><tt
+      class="verbatim">sands</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/River.lean#L66-L82"><tt class="verbatim">paid_zero</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.e (exterior flux estimate).</strong> Fix data and
+      cutoff field as follows.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Fix axes \(a \neq b\) and a line direction \(l\). Put \(\lambda =
+          \lambda_k = e^k\), with \(k \to \infty\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Let \(\eta\) be an even smooth bump equal to \(1\) on \(|s|
+          \leqslant 1\) and zero for \(|s| \geqslant 2\), and put \(\ell (s) =
+          s \eta (s)\). Then \(\ell\) is odd and equals \(s\) on \(|s| < 1\).
+          Its derivative \(\ell'\) is even, compactly supported and equal to
+          \(1\) on \(|s| < 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Put \(\text{petal}_{ab} (y) = \lambda^{100}  \hspace{0.17em} \ell
+          (\lambda^{- 100}
+y_a)  \prod_{j \ne a} \ell'  (\lambda^{c_j} y_j)\),
+          with \(c_j = - 100\) for \(j \in \{a, b\}\), \(c_l = - 150\) if \(l
+          \not\in \{a, b\}\), and \(c_j = - 300\) otherwise.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(J\) is conserved and raw-tensorial.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\partial\) satisfies the derivative law and orientation.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(x \in \text{Conf}_n\) lies on \(\mathbb{R}e_l\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(d \neq a\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> For every fixed tuple of tags \(q\), the integrand
+      is absolutely integrable for all sufficiently large \(k\), and \(\int
+      \partial_d \hspace{0.17em} \text{petal}_{ab} (y)  \hspace{0.17em}
+      S
+(J_{db} (y), q ; x)  \hspace{0.17em} dy = O (\lambda^{- 1})\). The
+      constant may depend on the tags, configuration, axes and stress, but not
+      on \(k\). The integrand is supported in the exterior shell \(\lambda^{-
+      c_d} \leqslant |y_d | \leqslant 2 \lambda^{- c_d}\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Cluster form.</em> Off the insertions, \(S (J_{db} (y), q ; x) =
+          \langle \bar{B} ; J_{db} (y) \rangle\). Here \(B\) is the reflected
+          word of the collinear insertions. Its insertion points have
+          transverse coordinates \(0\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L84-L103"><tt class="verbatim">collimated</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Parity.</em> Decompose \(B\) into components of definite
+          reflection parity in each axis. Only the component odd in \(a\) and
+          \(b\) survives integration against the test (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean"><tt class="verbatim">Yard.lean</tt></a>:
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L49-L77"><tt class="verbatim">pick_price</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Laplace representation.</em> Represent the correlation through
+          the OS space of axis \(d\). Because the test vanishes for \(|y_d | <
+          \lambda^{- c_d}\), the \(y_d\)-integral becomes a Laplace transform.
+          Its time factor satisfies \(| \text{Lap} (E) | \leqslant C
+          \lambda^{c_d} / (E + \lambda^{c_d})\), paired with the polarised
+          spectral measure \(\nu_d (B, J_{db})\) of the transfer operator (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Axis"><tt class="verbatim">YM/Axis</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Vanishing.lean#L68-L120"><tt class="verbatim">exterior_size</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Outside the low box.</em> Where \(E > 1\) or some \(|p_j | >
+          \lambda^{1 + c_j}\), the contribution is \(O (\lambda^{- \infty})\).
+          This uses only Schwartz decay of the profiles and the zeroth moment.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Inside the box.</em> A weighted Cauchy&ndash;Schwarz (Young)
+          inequality splits the bound between \(\nu_d (B)\) and \(\nu_d
+          (J_{db})\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Shear case \(d \not\in \{a, b\}\).</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The line cost of the cluster is \(\int_{E \leqslant 1} (E +
+              \lambda^{- 3000})^{- 1}  \prod_j h_j 
+\hspace{0.17em} d \nu_d
+              (B) = O (\lambda^1)\) for \(d = l\), and \(O (\lambda^{150})\)
+              otherwise.
+            </p>
+          </li>
+          <li>
+            <p>
+              The point cost \(\int_{E \leqslant 1} (E + \lambda^{c_d})^{- 1} 
+              \prod_j h_j  \hspace{0.17em} d
+\nu_d (J) = O
+              (\lambda^{\delta})\) holds for every \(\delta > 0\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Here \(h_j\) are fixed nonnegative even smooth bumps, rescaled
+              in \(L^1\) at widths \(\lambda^{1 + c_j}\); products run over
+              \(j \ne d\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Before multiplication by the prefactor \(\lambda^{100}\) in the
+              cutoff, the exponent is at most \(- 146\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Diagonal case \(d = b\).</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(J_{bb}\) is even in every axis, so the mixed-parity point
+              estimate does not apply. Split at \(E = \lambda^{- 3000}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Above the split, the cluster's line cost is paired with the
+              <em>mass estimate</em> \(\int_{E \leqslant 1} EW^4  (E + W)^{-
+              4}  \prod h_j  \hspace{0.17em} d \nu_b
+(J_{bb}) = O
+              (\lambda^{\delta} W^4)\) for every \(\delta > 0\), at \(W =
+              \lambda^{- 99}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Below the split, the packet estimate gains \(\lambda^{- 1500}\);
+              the line estimate then suffices with a polynomial bound on the
+              stress measure.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Point cost.</em> Proved by a <em>sign alternation</em>. The same
+          Euclidean integral is a positive spectral pairing along one axis and
+          minus a positive pairing along an axis of opposite parity.
+          Moment-subtracted profiles have Laplace responses bounded below by
+          \(c / (E + w)\) down to \(E = 0\). Walking through the axes, with
+          orders chosen backwards, moves every profile to scale \(\geqslant
+          1\) at subpower cost. These estimates also control the contribution
+          at zero energy and require no spectral gap.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Moment bounds.</em> For an axis-pointlike weight, \(\int e^{-
+          tE} |p_j |^{2 m}  \hspace{0.17em} d \nu \leqslant Ct^{- D}\) for \(0
+          < t \leqslant 1\) and \(j \ne d\). The polynomial kernel bounds give
+          this estimate by finite differences. Shifted cluster weights have
+          analogous damped moment estimates.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Mass estimate.</em> Uses conservation in tested form. Tested
+          conservation relates the contact-normalised two-point symbols by \(B
+          = p_i^2 A + D_B\) and \(C = p_i^2 B + D_C\). Contact terms vanish on
+          tests with enough zero moments; the remaining error estimates enter
+          after normalisation by the band widths. Positivity gives alternating
+          signs for the three residual band differences. Comparing the bands
+          \(W\) and \(2 W\) bounds the positive residual, which dominates the
+          displayed mass integral.
+        </p>
+      </li>
+      <li>
+        <p>
+          The mass estimate uses conservation, the derivative law and
+          orientation. Raw tensoriality supplies the parities. Combining the
+          two spectral regions gives \(O (\lambda^{- 101})\) before the
+          prefactor \(\lambda^{100}\), and hence the stated \(O (\lambda^{-
+          1})\) bound.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L105-L114"><tt class="verbatim">Outer.blows</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Moments.lean#L228-L243"><tt
+      class="verbatim">point_moment</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Switch.lean#L145-L160"><tt class="verbatim">alternate</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Pivot.lean#L59-L72"><tt class="verbatim">budget_lock</tt></a>; the cutoff profile is defined in
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Patch.lean"><tt class="verbatim">Patch.lean</tt></a>; the line and point estimates
+      are in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Tunnel.lean"><tt class="verbatim">Tunnel.lean</tt></a> and the mass estimate is
+      in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Mass.lean"><tt class="verbatim">Mass.lean</tt></a>. <em>(proof read for the
+      reduction and combination of the spectral estimates; supporting analytic
+      inputs remain as listed in &sect;7)</em>
+    </p>
+    <p>
+      <strong>Lemma VI.1.f (collinear identity and line sums).</strong> This
+      is Proposition VI.1.1.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Take \(F = \text{vane}_{ab}\), with \(F_b = \text{petal}_{ab}\),
+          \(F_a = - \text{petal}_{ba}\) and \(F_d = 0\) otherwise. For
+          sufficiently large cutoff index it equals the Killing field of
+          \(K^{(ba)}\) near every \(x_i\).
+        </p>
+      </li>
+      <li>
+        <p>
+          In the flux of VI.1.d, the diagonal terms \(\partial_a
+          \text{petal}_{ab} \hspace{0.17em} J_{ab}\) and \(\partial_b
+          \text{petal}_{ba} \hspace{0.17em} J_{ba}\) cancel identically, since
+          \(\partial_a \text{petal}_{ab} = \partial_b \text{petal}_{ba}\) and
+          \(J\) is symmetric. What remains is a finite sum of integrals of
+          VI.1.e.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\mathcal{W}_{K^{(ba)}} [Y, p] (q ; x)\), which does not
+          depend on \(n\), is \(O (e^{- n})\), so it is \(0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{W}_K [Y, p]\) is \(\mathbb{R}\)-linear in \(K\), so it
+          vanishes for all \(K\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Translating the configuration by \(e_l\) along its line changes
+          \(\mathcal{W}_{K^{(jl)}} [Y, p]\) by exactly \(\sum_i S (\ldots, p_j
+          q_i, \ldots)\). Both values vanish, which gives the line sums.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L31-L48"><tt class="verbatim">draught_river</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L49-L56"><tt
+      class="verbatim">drained</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L57-L67"><tt class="verbatim">axisTurn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L83-L96"><tt
+      class="verbatim">fullTurn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L98-L108"><tt class="verbatim">stagger</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L21-L27"><tt
+      class="verbatim">vane_home</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-normalisation-pcpartial-a04a06"></a>4.3 Normalisation \(p = c \hspace{0.17em} \partial\)
+    (A04&ndash;A06)<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VI.1.g (scaling limits; A04, A05).</strong> Assume the
+      inclusion and derivative laws, (R), and the free data of &sect;2. For
+      each degree \(d\), there are bounds \(d_0, N_0, m_0, R_0\), with \(R_0
+      \geqslant 1\), such that every track whose arity, degree, derivative and
+      size bounds are at least \(N_0, d_0, m_0, R_0\), respectively has the
+      following limits. Write \(X\) for its scaling system and define
+      \(\text{aisle}_{k, d} (P)_a = U_{k, d + 1}^{- 1} P_a U_{k, d}\). At this
+      fixed degree:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(r_k \hspace{0.17em} \text{aisle}_{k, d} (\partial) \to
+          \partial^{\text{free}}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \((r_k / \xi_k) \hspace{0.17em} \text{aisle}_{k, d} (p) \to
+          \kappa
+\hspace{0.17em} \partial^{\text{free}}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\xi_k^{- 1} U_{k, d}^{- 1} Y_K U_{k, d} \to \kappa
+          \hspace{0.17em}
+\mathcal{L}^{\text{free}}_K\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>First limit.</em> Test against a finite family of free
+          correlations that is faithful on \(F^{\text{free}}_{d + 1}\). The
+          chain rule gives the factor \(r_k\). Then use first-order jet
+          convergence, and invert by finite-dimensional linear algebra.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Second and third limits.</em> Write the shell law at \(r_k x\)
+          with the window \(\chi (\cdot / r_k)\). Substituting \(y = r_k z\)
+          produces \(r_k^4 \cdot r_k^{- 1}\). For the translation shell,
+          multiplication by \(r_k / \xi_k\) gives the stress factor \(\xi_k^{-
+          1} r_k^4 J\). For the rotation shell, the weight \(K (y - r_k x_0) =
+          r_k K (z - x_0)\) supplies the additional factor, so the multiplier
+          is \(\xi_k^{- 1}\). The stress convergence and uniform kernel
+          convergence on the compact shell supports give the free shell laws.
+          Finite faithful tests recover the two operator limits.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A04.lean#L163-L183"><tt class="verbatim">Work.A04.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05.lean#L95-L121"><tt
+      class="verbatim">Work.A05.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05/Window.lean#L158-L172"><tt class="verbatim">integrate_sheet_scale</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A05/Read.lean#L70-L81"><tt class="verbatim">recover_on</tt></a>; the requests are <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L43-L46"><tt
+      class="verbatim">Bid.Watches</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L48-L49"><tt class="verbatim">Bid.ConLap</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.h (A06 and the identification \(p = c \hspace{0.17em}
+      \partial\)).</strong> Assume the hypotheses of VI.1.2 and the
+      transversality conclusions of VI.1.c.
+    </p>
+    <p>
+      <em>Setting.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The free data supply \(d_{\ast}\) such that, for every \(d \geqslant
+          d_{\ast}\), there is a finite <em>selection</em> of collinear
+          transverse readouts on \(F^{\text{free}}\): \(m\)-th jets of row
+          sums at configurations on a coordinate axis.
+        </p>
+      </li>
+      <li>
+        <p>
+          These readouts vanish, within the colour space of the free table,
+          exactly on \(\mathbb{R} \hspace{0.17em} \partial^{\text{free}}\) (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L101-L104"><tt class="verbatim">Climb.Ens</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L95-L99"><tt class="verbatim">Select</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Claims.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (A06) Along any scaling system meeting a sufficiently large finite
+          request for these readouts, the actual rescaled readouts converge to
+          the free ones. They annihilate \(\text{aisle}_{k, d} (p)\) and
+          \(\text{aisle}_{k, d} (\partial)\) exactly at every \(k\). The
+          reason is that a readout of \(\text{aisle}_{k, d} (P)\) equals
+          \(r_k^m\) times an actual collinear jet of \(P\), which vanishes by
+          VI.1.c.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consequently there is a real \(c \neq 0\) with \(p_a = c
+          \hspace{0.17em} \partial_a\) on all \(F_d\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Persistence lemma.</em> Let \(\mathcal{C}\) be the fixed real
+          space of free vector maps and suppose \(Z_k \to Z\) with \(\ker Z
+          \cap \mathcal{C}=\mathbb{R}x\), \(x \ne 0\). Choose a real linear
+          functional \(\ell\) with \(\ell (x) \ne 0\). The map \((Z, \ell)\)
+          is injective on \(\mathcal{C}\); injectivity persists under small
+          perturbations in finite dimension. Thus \(\ker Z_k \cap
+          \mathcal{C}\) has dimension at most one for large \(k\). This gives
+          \(\text{aisle}_{k, d} (p) = c_d \hspace{0.17em} \text{aisle}_{k, d}
+          (\partial)\), hence \(p = c_d \partial\) on \(F_d\) for large \(d\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The constants agree across \(d\), and lower degrees follow, by
+          injectivity of \(\iota\) and the colour law.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(p \neq 0\) and \(\partial \ne 0\) by VI.1.g and \(\kappa
+          \partial^{\text{free}} \neq 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A06.lean#L236-L256"><tt class="verbatim">Work.A06.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Peaks.lean#L98-L111"><tt
+      class="verbatim">Climb.extends_form</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L49-L59"><tt class="verbatim">Bid.pressured</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.i (the normalised Ward data).</strong> With \(c\) as
+      in VI.1.h, \(D = c^{- 1} Y\) satisfies (C) and (L). This proves
+      Proposition VI.1.2.
+    </p>
+    <p>
+      <em>Proof sketch.</em> Divide the first identity of VI.1.b, and the
+      identity of VI.1.1(i), by \(c\), using \(p = c \hspace{0.17em}
+      \partial\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L61-L78"><tt class="verbatim">Bid.formed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L33-L39"><tt
+      class="verbatim">Bid.witnessing</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-continuation-off-the-line"></a>4.4 Continuation off the line<span style="margin-left: 1em"></span></h3>
+    <p>
+      Throughout this subsection \(S\) satisfies the Euclidean axioms, \(T\)
+      satisfies (C) and (L), and \(\partial\) satisfies the derivative law.
+    </p>
+    <p>
+      <strong>Lemma VI.1.j (derivatives of angular sums).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\partial_{x_k^a} \mathcal{W}_K [T] (q ; x) =\mathcal{W}_K [T] (q'
+          ; x)\), where \(q'\) is \(q\) with \(q_k\) replaced by \(\partial_a
+          q_k\). In particular \(\mathcal{W}_K [T] (q ; \cdot)\) is
+          \(C^{\infty}\) on \(\text{Conf}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence, if \(\mathcal{W}_K [T] (\cdot \hspace{0.17em} ; y) = 0\) for
+          all tags at one point \(y\), then every derivative of
+          \(\mathcal{W}_K [T] (q ; \cdot)\) at \(y\) vanishes, for every
+          \(q\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> Product rule. The derivative of \((Kx_k)_b\) in
+      \(x_k^a\) is \(K_{ba}\). Use \(\partial_a \partial_b = \partial_b
+      \partial_a\), and (C) absorbs the extra term. The second statement is
+      induction on the order, with \(q\) generalised.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L92-L136"><tt class="verbatim">Ward.traverses</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L138-L143"><tt
+      class="verbatim">Ward.ac</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Motion.lean#L31-L42"><tt class="verbatim">Ward.jet_line</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.k (OS vectors of one insertion).</strong> Let
+      \(\mathcal{H}_a\) be the OS space for reflection in \(\{x_a = 0\}\).
+      Write \(\Theta_a\) for the corresponding reflection of words, including
+      the label adjoint \(M_{\theta_a} \Gamma\). For \(x_a > 0\) let
+      \(\text{spot} (A, x) \in \mathcal{H}_a\) be the vector of the one-point
+      word \(A (x)\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) For any word \(w\) supported in \(\{y_a > 0\}\) with distinct
+          insertion points, its OS vector \([w]\) satisfies \(\langle [w],
+          \text{spot} (A, x) \rangle = S (A (x), \Theta_a w)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) \(\text{spot} (A, x + se_a) = e^{- sH} \text{spot} (A, x)\) for
+          \(s \geqslant 0\), and \(\text{spot} (A, x + v) = U (v)
+          \hspace{0.17em} \text{spot} (A, x)\) for \(v \perp e_a\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (iii) For \(b \neq a\), \(s \mapsto \text{spot} (A, x + se_b)\) is
+          \(C^{\infty}\) with derivative \(\text{spot} (\partial_b A,
+          \cdot)\). The weak derivative comes from the derivative law and is
+          upgraded to a strong one.
+        </p>
+      </li>
+      <li>
+        <p>
+          (iv) \(t \mapsto \text{spot} (A, x + te_a)\) is real-analytic for
+          \(x_a + t > 0\), because \(e^{- zH}\) is holomorphic on \(\text{Re}
+          \hspace{0.17em} z > 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (v) \(t \mapsto S (A (te_a), B (0))\) is real-analytic for \(t >
+          0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L55"><tt class="verbatim">Ward.spot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L64-L73"><tt
+      class="verbatim">link</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L102-L118"><tt class="verbatim">responds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L120-L133"><tt
+      class="verbatim">blooms</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L137-L158"><tt class="verbatim">advancing</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L19-L41"><tt
+      class="verbatim">Analysis.represents</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L54-L68"><tt class="verbatim">Ward.radial</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.l (transverse jets of the two-point
+      function).</strong> Fix \(a \neq b\) and \(K = K^{(ba)}\). For a pair of
+      labels \(\pi = (\pi_1, \pi_2)\) put \(\Phi_{\pi} (x_1, x_2) = S (\pi_1
+      (x_1 e_a + x_2 e_b), \pi_2 (0))\) on \(\{x_1 > 0\}\). Define
+    </p>
+    <center>
+      \(\displaystyle (\mathcal{L} \Phi)_{\pi} = (x_1 \partial_2 - x_2
+      \partial_1) \Phi_{\pi} +
+\Phi_{(T_K \pi_1, \pi_2)} + \Phi_{(\pi_1, T_K
+      \pi_2)} .\)
+    </center>
+    <p>
+      Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \((\mathcal{L} \Phi)_{\pi} (x) =\mathcal{W}_K [T] (\pi ; (x_1 e_a +
+          x_2 e_b, 0))\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\partial_2^n  (\mathcal{L} \Phi)_{\pi} (t, 0) = 0\) for all \(n\),
+          all \(t > 0\) and all \(\pi\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> The first identity is the definition of
+      \(\mathcal{W}\), by the derivative law. At \(x_2 = 0\) both points lie
+      on \(\mathbb{R}e_a\), so (L) gives \(\mathcal{W}= 0\) for all labels.
+      VI.1.j then gives all \(x_2\)-derivatives. This supplies the collinear
+      jets needed for the analytic comparison.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Rows.lean#L73-L97"><tt class="verbatim">Ward.sigma</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Rows.lean#L99-L116"><tt
+      class="verbatim">Ward.realized</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.m (comparison function and formal
+      uniqueness).</strong> Let \((r, \theta)\) be polar coordinates of
+      \((x_1, x_2)\) with \(x_1 > 0\). Put
+    </p>
+    <center>
+      \(\displaystyle Q_{\pi} (x) = S \left( (e^{- \theta T_K} \pi_1) (re_a),
+      \hspace{0.17em} (e^{-
+\theta T_K} \pi_2) (0) \right) .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          \(Q\) is real-analytic on \(\{x_1 > 0\}\), by VI.1.k(v),
+          finite-dimensionality of the label spaces, and the matrix
+          exponential.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{L}Q = 0\) identically, since \(\theta\) has derivative
+          \(1\) and \(r\) has derivative \(0\) along the rotation field.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(Q = \Phi\) on \(\{x_2 = 0\}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (Formal uniqueness.) Let \(L\) be smooth on the half-plane with
+          \(L_{\pi} (t, 0) = 0\) and \(\partial_2^n  (\mathcal{L}L)_{\pi} (t,
+          0) = 0\) for all \(n, \pi\) and \(t > 0\). Then \(\partial_2^n
+          L_{\pi} (t, 0) = 0\) for all \(n\).
+        </p>
+        <p>
+          Applied to \(L = \Phi - Q\): the \(x_2\)-Taylor series of \(\Phi\)
+          at \((t, 0)\) is that of the analytic function \(Q\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> Strong induction on \(n\), for all \(\pi\) at
+      once. For \(n \geqslant 1\), at \((t, 0)\),
+    </p>
+    <center>
+      \(\displaystyle t \hspace{0.17em} \partial_2^{n + 1} L_{\pi} = -
+      \partial_2^n  (L_{(T_K \pi_1,
+\pi_2)} + L_{(\pi_1, T_K \pi_2)}) + n
+      \hspace{0.17em} \partial_1 \partial_2^{n
+- 1} L_{\pi} .\)
+    </center>
+    <p>
+      For \(n = 0\) the transport equation directly gives \(t \partial_2
+      L_{\pi} = - L_{(T_K \pi_1, \pi_2)} - L_{(\pi_1, T_K \pi_2)} = 0\). In
+      the displayed recurrence, the first term vanishes by induction, and the
+      last term vanishes because \(\partial_2^{n - 1} L_{\pi}\) vanishes on
+      the whole half-line. Since \(t \neq 0\), the line is noncharacteristic.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L89-L90"><tt class="verbatim">Ward.Q</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L115-L128"><tt class="verbatim">htQ</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L130-L174"><tt class="verbatim">solves</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/PDE.lean#L121-L141"><tt class="verbatim">PDE.sure</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.n (analytic Gram kernel).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (Abstract.) Let \(f : \mathbb{R} \to \mathcal{H}\) be \(C^{\infty}\)
+          with \(\langle f (s), f (s') \rangle = A (s' - s)\), where \(A\) has
+          at \(0\) the Taylor series of a real-analytic germ. Then \(f\) is
+          real-analytic on \(\mathbb{R}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (Application.) Hence, for \(x_a > 0\) and \(b \neq a\), \(s \mapsto
+          \text{spot} (A, x + se_b)\) is real-analytic on \(\mathbb{R}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\|f^{(m)} (s)\|^2 = |A^{(2 m)} (0) | \leqslant C \rho^{- 2 m}  (2
+          m) !\) uniformly in \(s\). With \((2 m) ! \leqslant 4^m (m!)^2\)
+          this gives \(\|f^{(m)} \| \leqslant \sqrt{C}  (\rho / 2)^{- m} m!\)
+          everywhere, and the Taylor remainder finishes.
+        </p>
+      </li>
+      <li>
+        <p>
+          For the application: by reflection and translation invariance,
+          \(\langle f (s), f (s') \rangle = \Phi_{(A, \Theta_a A)} (2 x_a, s'
+          - s)\). VI.1.m identifies its Taylor series at \(0\) with that of
+          \(s \mapsto Q_{(A, \Theta_a A)} (2 x_a, s)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Uniformity in \(s\), which comes from positivity and translation
+          invariance, is why a jet at a single point suffices.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L76-L96"><tt class="verbatim">Analysis.blossoms</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Ket.lean#L46-L74"><tt
+      class="verbatim">bud</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Rate.lean#L93-L102"><tt class="verbatim">builds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L72-L81"><tt
+      class="verbatim">Ward.fires</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Genuine.lean#L33-L43"><tt class="verbatim">swing</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Circles.lean#L179-L209"><tt
+      class="verbatim">Ward.pure</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.o (analyticity at an extreme point).</strong> Suppose
+      that after moving \(x_k\) to \(x_k + se_b\), the point \(k\) is strictly
+      latest, or strictly earliest, in coordinate \(a\). Then \(u \mapsto S (q
+      ; x \text{ with } x_k + ue_b)\) is real-analytic at \(s\), for every
+      \(b\) (including \(b = a\)). Hence \(\mathcal{W}_K [T]\) is
+      real-analytic along such a move.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Translate in \(e_a\) so that the other points lie in \(\{y_a < 0\}\)
+          and \(x_k + se_b\) in \(\{y_a > 0\}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Then \(S = \langle \Theta (\text{word of the others}), \text{spot}
+          (q_k, \cdot)
+\rangle\), a bounded functional of one vector. This is
+          analytic by VI.1.n for \(b \neq a\), and by VI.1.k(iv) for \(b =
+          a\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The &quot;earliest&quot; case reduces to the &quot;latest&quot; case
+          by the reflection \(\Theta_a\) with mirrored labels.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Extreme.lean#L23-L69"><tt class="verbatim">Ward.higher</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Extreme.lean#L102-L121"><tt
+      class="verbatim">last_adv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Extreme.lean#L131-L153"><tt class="verbatim">first_adv</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L15-L26"><tt class="verbatim">Ward.channel</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.p (walks; proof of VI.1.3).</strong> A <em>walk</em>
+      is a finite chain of segments. Each segment moves one point \(x_k\)
+      along \(e_b\), and on the whole segment \(x_k\) is strictly earliest or
+      latest in some coordinate \(a\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          If \(\mathcal{W}_K [T] (\cdot \hspace{0.17em} ; y) = 0\) (all tags)
+          at the end \(y\) of a walk, then the same holds at its start.
+        </p>
+      </li>
+      <li>
+        <p>
+          Every configuration with pairwise distinct \(0\)-coordinates is
+          joined by a walk to a configuration on \(\mathbb{R}e_0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Such configurations are dense in \(\text{Conf}_n\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Propagation.</em> On a segment, \(\mathcal{W}\) is analytic
+          (VI.1.o), and all its derivatives vanish at the endpoint (VI.1.j).
+          By the identity theorem it vanishes on the segment.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Geometry.</em> Take the earliest point in coordinate \(0\). Move
+          it beyond all others in coordinate \(1\), then beyond all others in
+          coordinate \(0\), then set its coordinates \(1, 2, 3\) to \(0\),
+          keeping it latest in coordinate \(0\). Induct on the remaining
+          points.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Density.</em> Add \(t (0, 1, \ldots, n - 1)\) to the
+          \(0\)-coordinates.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Conclusion.</em> (L) holds on \(\mathbb{R}e_0\), so
+          \(\mathcal{W}= 0\) on a dense set. \(\mathcal{W}\) is continuous on
+          \(\text{Conf}\) (VI.1.j).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L60-L71"><tt class="verbatim">Ward.stood</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L75-L78"><tt
+      class="verbatim">Walk</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L79-L84"><tt class="verbatim">along</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L36-L53"><tt
+      class="verbatim">park1</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L57-L74"><tt class="verbatim">pushes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L86-L108"><tt
+      class="verbatim">line</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Axis.lean#L130-L139"><tt class="verbatim">global</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-brackets-a07-a08"></a>4.5 Brackets (A07, A08)<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VI.1.q (A07: erasure for the limit table).</strong> The
+      weak action law, with its alignment of \(M\), \(\Gamma\), units and
+      inclusions, transports free row erasure to \(S\) and \(\partial\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For \(d \geqslant N\), the free bilinear families of the kind in
+          VI.1.4 form a finite-dimensional real space \(\mathcal{M}\). Free
+          erasure means that the free row tests separate \(\mathcal{M}\), so
+          finitely many of them do.
+        </p>
+      </li>
+      <li>
+        <p>
+          Along a scaling system, the transported actual rows converge to
+          these, so they are injective on \(\mathcal{M}\) at some scale \(k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          An actual family \(\Delta\) with vanishing row sums, pulled back by
+          \(U_k\), lies in \(\mathcal{M}\), because \(U_k\) respects \(M\),
+          \(\Gamma\), \(\boldsymbol{1}\) and \(\iota\). Its rows are actual
+          row sums at \(r_k x\), which vanish. So \(\Delta = 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A07.lean#L287-L289"><tt class="verbatim">Work.A07.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A07.lean#L243-L285"><tt
+      class="verbatim">transfer</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.r (A08: brackets).</strong> This is Proposition
+      VI.1.4.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Let \(\mathcal{O}_u\) be the orbital derivative along \(x_i \mapsto
+          ux_i\) for all points at once. VI.1.3 says \(\mathcal{O}_u S (q) = -
+          \sum_i S (\ldots, T_u q_i, \ldots)\) on the open set
+          \(\text{Conf}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Apply it twice: \(\mathcal{O}_u \mathcal{O}_v S = \sum_{i, j} S
+          (\ldots T_u q_j \ldots T_v q_i
+\ldots)\). Linear vector fields
+          satisfy \([\mathcal{O}_u, \mathcal{O}_v] = -\mathcal{O}_{[u, v]}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Subtracting, the off-diagonal terms cancel. So the defect \(\Delta
+          (u, v) = [T_u, T_v] - T_{[u, v]}\) has vanishing row sums.
+        </p>
+      </li>
+      <li>
+        <p>
+          By compatibility of \(T\) and \(\sigma [u, v] \sigma^{- 1} = [\sigma
+          u \sigma^{- 1}, \sigma v \sigma^{- 1}]\), \(\Delta\) is a family of
+          the kind in VI.1.4. Erasure gives \(\Delta = 0\) for \(d \geqslant
+          N\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lower degrees follow by injecting into degree \(\max (d, N)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L232-L247"><tt class="verbatim">Work.A08.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L62-L68"><tt
+      class="verbatim">orbital_comm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L91-L107"><tt class="verbatim">orbit_twice</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L192-L205"><tt class="verbatim">defect_winds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A08.lean#L209-L230"><tt class="verbatim">defect_ward</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-descent-of-the-free-rotation-action-a09a12"></a>4.6 Descent of the free rotation action
+    (A09&ndash;A12)<span style="margin-left: 1em"></span></h3>
+    <p>
+      Fix \(d\). Index the generators by ordered pairs \(\pi = (i, j)\), with
+      \(K_{\pi} = E_{ij} - E_{ji}\) and \(C_{\pi} =\mathcal{L}^{\text{free}}
+      (K_{\pi})\) on \(F^{\text{free}}_d\). For tuples \(B, C\) of operators
+      on \(F^{\text{free}}_d\) define
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\text{ad}_{B, C} (X) = BX - XC\) on \(\text{End} \hspace{0.17em}
+          F^{\text{free}}_d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Omega (B, C) = \sum_{\pi} \text{ad}_{B_{\pi}, C_{\pi}}^2\), the
+          relative Casimir.
+        </p>
+      </li>
+    </ul>
+    <p>
+      A tuple satisfies the <em>perfect relations</em> if \(X_{ij} = [X_{ik},
+      X_{kj}]\) for a fixed \(k \not\in \{i, j\}\). Any \(\mathfrak{so} (4)\)
+      representation does (A09).
+    </p>
+    <p>
+      <strong>Lemma VI.1.s (A12: the intertwiner projection).</strong> There
+      is a real polynomial \(z\) such that \(P = z (\Omega (C, C))\)
+      satisfies:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(P^2 = P\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(P (\text{id}) = \text{id}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{ad}_{C_{\pi}, C_{\pi}} P = 0\) for all \(\pi\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      So \(P\) projects onto the commutant of the \(C_{\pi}\), along
+      \(\text{range} \hspace{0.17em} \Omega\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Haar averaging over \(O (4)\) gives an inner product on \(\text{End}
+          \hspace{0.17em} F^{\text{free}}_d\) in which every \(\text{ad}
+          \hspace{0.17em} C_{\pi}\) is skew (unitarian trick). So \(\Omega\)
+          is self-adjoint, \(\ker \Omega = \bigcap_{\pi} \ker \text{ad}
+          \hspace{0.17em} C_{\pi}\), and \(\ker \Omega^2 = \ker \Omega\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Cayley&ndash;Hamilton, with the powers of \(X\) removed, gives a
+          real \(z\) with \(z (0) = 1\) and \(\Omega z (\Omega) = 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A12.lean#L323-L336"><tt class="verbatim">Work.A12.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L68-L71"><tt
+      class="verbatim">Spin.Works</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L57"><tt class="verbatim">wave</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.t (approximate to exact intertwiners).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) <em>Purification.</em> In a Banach algebra, let \(Z_n \to z\)
+          with \(z^2 = z\). There are \(C > 0\) and \(n_0\) such that, for \(n
+          \geqslant n_0\), the iterates of \(\varphi (x) = 3 x^2 - 2 x^3\)
+          starting at \(Z_n\) converge to idempotents \(P_n \to z\), with
+          \(\|P_n - Z_n \| \leqslant 2 C \|Z_n^2 - Z_n \|\). This uses
+          \(\varphi (x) - x = (1 - 2 x)  (x^2 - x)\) and \(\text{def} (\varphi
+          x) = (4 \hspace{0.17em} \text{def} \hspace{0.17em} x -
+          3)
+(\text{def} \hspace{0.17em} x)^2\), where \(\text{def}
+          \hspace{0.17em} x = x^2 - x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) <em>Norm gap.</em> If operators \(D_{\pi}\) satisfy the perfect
+          relations and all \(\|D_{\pi} \| < \tfrac{1}{2}\), then all
+          \(D_{\pi} = 0\), since \(\max \|D\| \leqslant 2 \max \|D\|^2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (iii) <em>Exact intertwiners.</em> Assume:
+        </p>
+        <ul>
+          <li>
+            <p>
+              tuples \(B_n \to C\), with \(B_n\) (eventually) and \(C\)
+              satisfying the perfect relations;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(P = z (\Omega (C, C))\) is as in VI.1.s;
+            </p>
+          </li>
+          <li>
+            <p>
+              there is a closed additive subgroup \(\mathcal{F} \subset
+              \text{End}_{\mathbb{C}} F^{\text{free}}_d\) containing
+              \(\text{id}\) such that, eventually, \(z (\Omega (B_n, C))\)
+              preserves \(\mathcal{F}\) and commutes with every
+              \(\text{ad}_{B_{n, \pi}, C_{\pi}}\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          Then for large \(n\) there is an invertible \(f \in \mathcal{F}\)
+          with \(B_{n, \pi} f = fC_{\pi}\) for all \(\pi\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch of (iii).</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Work in \(\text{End} (\text{End} \hspace{0.17em}
+          F^{\text{free}}_d)\) with \(D_{\pi} (n) = \text{ad}_{B_{n, \pi},
+          C_{\pi}}\). These satisfy the perfect relations and converge to
+          \(\text{ad}_{C_{\pi}, C_{\pi}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(z (\Omega (B_n, C)) \to P\). Purify it to idempotents \(Q_n\).
+          Every iterate preserves \(\mathcal{F}\) and commutes with \(D_{\pi}
+          (n)\). The preserving operators form a closed subring of
+          \(\text{End} (\text{End} \hspace{0.17em} F^{\text{free}}_d)\), so
+          these properties pass to \(Q_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The compressions \(D_{\pi} (n) Q_n\) satisfy the perfect relations
+          and tend in norm to \(\text{ad}_{C_{\pi}, C_{\pi}} P = 0\). By (ii)
+          they vanish for large \(n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Then \(f_n = Q_n (\text{id}) \to P (\text{id}) = \text{id}\), so
+          \(f_n\) is invertible. It lies in \(\mathcal{F}\), and
+          \(\text{ad}_{B_{n, \pi}, C_{\pi}} f_n = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          No complete reducibility of the representation \(D = c^{- 1} Y\) on
+          \(F_d\), and no Lie integration for it, is used.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Isolates.lean#L25-L69"><tt class="verbatim">Spin.rectify</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Isolates.lean#L72-L98"><tt
+      class="verbatim">stable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Close.lean#L27-L38"><tt class="verbatim">enough</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Close.lean#L42-L70"><tt
+      class="verbatim">onto</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L77-L93"><tt class="verbatim">realize</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L74-L75"><tt
+      class="verbatim">Tracks</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.u (descent of rotations; proof of VI.1.5).</strong>
+      Assume the hypotheses of VI.1.2. The normalised rows \(D = c^{- 1} Y\)
+      satisfy the global Ward identity by VI.1.3.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Choice of \(U_n\).</strong> Choose one scaling system
+          meeting the requests of VI.1.g at degrees \(d\) and \(4\), and
+          aligned through degree \(d\). Put \(U_n = U_{n, d}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Convergence.</strong> At degree \(4\), \(p = c
+          \hspace{0.17em} \partial\) and VI.1.g give \(c / \xi_k \to \kappa\).
+          Hence \(U_n^{- 1} DU_n \to \mathcal{L}^{\text{free}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Inputs of VI.1.t(iii).</strong> These are the <em>tilt</em>
+          (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L116-L122"><tt class="verbatim">Spin.Tilt</tt></a>):
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(U_n\) intertwines \(M\) and \(\Gamma\) (track);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(D\) satisfies the perfect relations, by A08 (with erasure from
+              A07) and A09;
+            </p>
+          </li>
+          <li>
+            <p>
+              the free data supply these relations and the Casimir polynomial
+              of VI.1.s for \(\mathcal{L}^{\text{free}}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              let \(\mathcal{F} \subset \text{End}_{\mathbb{C}}
+              F^{\text{free}}_d\) be the closed real subspace of maps
+              commuting with the free \(M\) and \(\Gamma\). The operators \(z
+              (\Omega (U_n^{- 1} DU_n, C))\) preserve \(\mathcal{F}\) (A11:
+              real coefficients and cancellation of the signed-permutation
+              factors in the sum of squares) and commute with the relative
+              generators (A09).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Exact intertwiner.</strong> VI.1.t gives \(f_n\). Put \(V_d
+          = U_n f_n\). Then \(V_d\) intertwines \(M\) and \(\Gamma\), and
+          \(D_{K_{\pi}} V_d = V_d C_{\pi}\). By linearity this holds for all
+          \(K\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Port.</strong> \(R_d = V_d R^{\text{free}}_d V_d^{- 1}\)
+          inherits continuity, the group law, \(R (\sigma) = M_{\sigma}\),
+          reality, and the generator \(D\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L124-L157"><tt class="verbatim">Bid.services</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L80-L90"><tt
+      class="verbatim">Bid.currencies</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L102-L122"><tt class="verbatim">Bid.imaginary</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A09.lean#L85-L90"><tt class="verbatim">Work.A09.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A11.lean#L199-L206"><tt class="verbatim">Work.A11.answer</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L55-L64"><tt class="verbatim">Spin.fine</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L134-L157"><tt class="verbatim">Spin.meet</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L26-L47"><tt class="verbatim">Spin.produces</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L90-L98"><tt class="verbatim">Climb.descends</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-integration-to-o4-a13-a14"></a>4.7 Integration to \(O (4)\) (A13, A14)<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VI.1.v (A13).</strong> \(O (4)\) is generated by \(B_4\)
+      and the one-parameter groups \(e^{tK}\), \(K \in \mathfrak{so} (4)\).
+    </p>
+    <p>
+      <em>Proof sketch.</em> \(O (4)\) is generated by hyperplane reflections
+      (Cartan&ndash;Dieudonn&eacute;). The reflection in \(v^{\perp}\) equals
+      \(g^{- 1} R_0 g\), where \(R_0\) is a coordinate mirror and \(g\) is a
+      product of plane rotations \(e^{t (E_{ij} - E_{ji})}\) that turn \(v\)
+      onto \(e_0\) (Givens rotations).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L191-L200"><tt class="verbatim">Work.A13.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A13.lean#L151-L174"><tt
+      class="verbatim">reflection_conjugate</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.w (A14: covariance and laws).</strong> This is
+      Proposition VI.1.6.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The set of \(k\) with \(S (R (k) v ; kx) = S (v ; x)\) for all \(v,
+          x\) is a subgroup of \(O (4)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          It contains \(B_4\), since \(R (\sigma) = M_{\sigma}\) and \(S\) is
+          \(B_4\)-covariant.
+        </p>
+      </li>
+      <li>
+        <p>
+          It contains each \(e^{tK}\). The function \(f (t) = S (R (e^{tK}) v
+          ; e^{tK} x)\) is differentiable, and by the group law \(f' (t)\) is
+          \(\mathcal{W}_K [T]\) at the moved data, which is \(0\). So \(f\) is
+          constant.
+        </p>
+      </li>
+      <li>
+        <p>
+          By A13 the subgroup is all of \(O (4)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The rotation laws:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(R (k) \boldsymbol{1}=\boldsymbol{1}\): apply covariance,
+              delete the unit insertion, apply covariance again;
+            </p>
+          </li>
+          <li>
+            <p>
+              commutation with \(\iota\): covariance plus the inclusion law
+              (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L50-L69"><tt class="verbatim">Spin.team</tt></a>);
+            </p>
+          </li>
+          <li>
+            <p>
+              the vector law: differentiate the covariance identity and use
+              the chain rule for \(x \mapsto kx\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the remaining fields are those of the port.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L277-L292"><tt class="verbatim">Work.A14.oriented</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L245-L261"><tt
+      class="verbatim">cov_parameter</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L310-L325"><tt class="verbatim">unit_fixed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L364-L398"><tt class="verbatim">vectorLaw</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A14.lean#L403-L415"><tt class="verbatim">laws_of_oriented</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="48-the-averaged-stress-tensor-a15"></a>4.8 The averaged stress tensor (A15)<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VI.1.x (A15: Haar averaging).</strong> Under the
+      hypotheses of VI.1.7, put \(J_0 = c^{- 1} J\), so that \((J_0 ;
+      \partial, c^{- 1} Y)\) satisfies the stress laws. Define
+    </p>
+    <center>
+      \(\displaystyle J' = \int_{O (4)} k \cdot J_0  \hspace{0.17em} d \mu
+      (k), \qquad (k \cdot
+J)_{ab} = \sum_{ij} k_{ai} k_{bj}  \hspace{0.17em}
+      R_4 (k) J_{ij},\)
+    </center>
+    <p>
+      with \(\mu\) normalised Haar measure on \(O (4)\). Then \(J'\) satisfies
+      Proposition VI.1.7.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(k \cdot\) is a linear group action on the finite-dimensional space
+          of stresses. Fixed points are exactly the tensorial stresses, and
+          invariance of \(\mu\) makes \(J'\) fixed.
+        </p>
+      </li>
+      <li>
+        <p>
+          Each \(k \cdot J_0\) is conserved: symmetry by the index structure,
+          reality by the reality law, divergence by the vector law.
+        </p>
+      </li>
+      <li>
+        <p>
+          Each \(k \cdot J_0\) satisfies the same stress laws. Substitute \(y
+          \mapsto ky\) and use the window \(\chi \circ k\) at \(k^{- 1} x\);
+          pull the labels back by \(R (k^{- 1})\); use covariance of \(S\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              The translation weight \(e_b\) becomes \(k^{- 1} e_b\). The
+              right side is independent of \(k\) by the vector law.
+            </p>
+          </li>
+          <li>
+            <p>
+              The weight \(K (y - x_0)\) becomes \(k^{- 1} Kk\) centred at
+              \(k^{- 1} x_0\). The right side is independent of \(k\) by A10:
+              \(R (k)  \hspace{0.17em} \mathcal{L}_K =\mathcal{L}_{kKk^{- 1}} 
+              \hspace{0.17em}
+R (k)\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          All the conditions are linear, so they pass to the integral.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L187-L192"><tt class="verbatim">Work.A15.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L22-L41"><tt
+      class="verbatim">normalize_flux</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L86"><tt class="verbatim">averageStress</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L117-L118"><tt class="verbatim">tensorial_average</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L134-L154"><tt class="verbatim">conserved_average</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L156-L183"><tt class="verbatim">stressLaws_average</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15/Transfer.lean#L124-L168"><tt class="verbatim">rotate_flux</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A10.lean#L113-L115"><tt class="verbatim">Work.A10.answer</tt></a>.
+    </p>
+    <h3 id="auto-13"><a id="49-lorentz-group-and-assembly"></a>4.9 Lorentz group, and assembly<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VI.1.y (A16, A17 and the descended Lorentz
+      action).</strong> This is Proposition VI.1.8.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>(a) Generation.</em> Let \(\Lambda \in SO^+ (1, 3)\). Then
+          \(\Lambda e_t\) is a future unit timelike vector. At each step,
+          apply a coordinate boost with rapidity \(- \text{artanh} (y_i /
+          y_t)\) to the current vector \(y\). This kills its \(i\)-th spatial
+          component and preserves the other spatial components. After three
+          steps the vector is \(e_t\). The resulting Lorentz transformation
+          fixes \(e_t\), so it is a spatial rotation.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>(b) Compatibility with inclusions.</em> Induct over the
+          generators.
+        </p>
+        <ul>
+          <li>
+            <p>
+              Spatial rotations: here \(B\) is the transported rotation
+              action, which commutes with \(\iota\) by VI.1.6.
+            </p>
+          </li>
+          <li>
+            <p>
+              Boosts: \(t \mapsto B_e (\text{boost}_i (t)) \iota v\) and \(t
+              \mapsto \iota B_d (\text{boost}_i (t)) v\) both solve \(f' =
+              Gf\) with \(G = - i \hspace{0.17em} D_{K^{(3 i)}}\), and they
+              agree at \(t = 0\). Here \(G\) commutes with \(\iota\), which
+              follows by differentiating the inclusion law of \(R\).
+              Uniqueness for the linear ODE finishes.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>(c) Descent.</em> Compatibility with inclusions and the unique
+          lift to the union of label spaces give the representation. Its
+          descent properties transfer from the free action through \(V\) (<a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L30-L37"><tt class="verbatim">Spin.transmits</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L82-L89"><tt class="verbatim">exists_rest</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L70-L84"><tt
+      class="verbatim">run_boost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A17.lean#L57-L68"><tt class="verbatim">rise_generator</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L21-L22"><tt class="verbatim">Spin.run</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L39-L74"><tt class="verbatim">Spin.reach</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VI.1.z (assembly).</strong> Under the hypotheses of
+      VI.1.9, the preceding constructions give its local field laws and
+      Lorentz action.
+    </p>
+    <p>
+      <em>Proof sketch.</em> A01&ndash;A03 and the collinear flux argument
+      give the raw compatibility laws. VI.1.h&ndash;i give \(c\) and the
+      normalised Ward data. VI.1.3 and VI.1.u give the intertwiners, rotation
+      port and global Ward identity. A13&ndash;A14 give covariance and the
+      rotation laws; A10 and A15 give the conserved tensorial stress with the
+      required shells. Each \(F_d\) has the free comparison isomorphism by any
+      aligned scaling system at that degree. A16&ndash;A17 give compatibility
+      of the Lorentz actions, and the unique lift to the union gives the final
+      representation.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Town.lean#L159-L168"><tt class="verbatim">Bid.station</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L45-L53"><tt
+      class="verbatim">Commission.picks</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L53-L63"><tt class="verbatim">Climb.comparison</tt></a>.
+    </p>
+    <h3 id="auto-14"><a id="410-free-field-stress-algebra"></a>4.10 Free-field stress algebra<span style="margin-left: 1em"></span></h3>
+    <p>
+      Assume \(G\) is simple. The free stress satisfies the following
+      finite-dimensional algebraic facts:
+    </p>
+    <ul>
+      <li>
+        <p>
+          adjoint-invariant linear forms vanish, and invariant bilinear forms
+          are multiples of the inner product.
+        </p>
+      </li>
+      <li>
+        <p>
+          Gauge-invariant composites of weight \(\leqslant 5\) have explicit
+          normal forms.
+        </p>
+      </li>
+      <li>
+        <p>
+          The real symmetric \(B_4\)-covariant \(2\)-tensors of weight at most
+          \(4\) form a space of dimension \(\leqslant 4\), spanned by the
+          four-parameter family
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle T_{ab} = \delta_{ab}  \left( w_0 + w_1  \sum_i \langle
+      F_{ai}, F_{ai} \rangle
++ w_2  \sum_{ij} \langle F_{ij}, F_{ij} \rangle
+      \right) + (1 - \delta_{ab}) 
+\hspace{0.17em} w_3  \sum_i \langle F_{ai},
+      F_{bi} \rangle .\)
+    </center>
+    <p>
+      Here \(F_{ab}\) is the free curvature and \(w \in \mathbb{R}^4\). The
+      Maxwell stress is \(w = (0, 1, - \tfrac{1}{4}, 1)\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          Wick's theorem computes the free one- and two-point tests. Centring
+          and conservation force \(w = w_3 \cdot (0, 1, - \tfrac{1}{4}, 1)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      These facts feed VII.2's statement that, in the free table, the
+      divergence map from centred, real, symmetric, \(B_4\)-tensorial stresses
+      in \((F^{\text{free}}_4)^{4 \times 4}\) to real \(B_4\)-vector fields in
+      \((F^{\text{free}}_5)^4\) is onto and has a one-dimensional kernel (<a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/PHYSICAL_PERIOD_LIMIT_F933/FreeRanks.lean#L159-L165"><tt class="verbatim">free_rank</tt></a>). They are not used in the Ward
+      chain above.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Color.lean#L79-L91"><tt class="verbatim">bilinear_invariant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L129-L167"><tt
+      class="verbatim">finrank_two</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Counts.lean#L190-L231"><tt class="verbatim">finrank_one</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/Polynomial.lean#L202-L214"><tt class="verbatim">stress_tensor</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeTests.lean#L177-L184"><tt class="verbatim">div_kernel</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STRESS_FLUX/FreeTests.lean#L227-L235"><tt class="verbatim">stress_bijective</tt></a>. <em>(proof of the
+      divergence test read; polynomial classification and dimension bounds:
+      statement only)</em>
+    </p>
+    <h2 id="auto-15"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The exterior flux estimate (VI.1.e) bears most of the analytic burden.
+      Reflection positivity along axes of opposite parity gives the subpower
+      estimate without a gap. Diagonal stress components require a separate
+      conservation argument, since they have no odd reflection parity. The
+      widths \(\lambda^{100}, \lambda^{150}, \lambda^{300}\) and the split at
+      \(\lambda^{- 3000}\) make the powers in these estimates compatible.
+    </p>
+    <p>
+      Continuation off the line (VI.1.j&ndash;p) requires more than a smooth
+      function with vanishing jets. The collinear Ward identities determine
+      the transverse jets of the two-point function; Hilbert-space positivity
+      turns those jets into uniform factorial derivative bounds and hence
+      analyticity.
+    </p>
+    <p>
+      The descent (VI.1.s&ndash;u) constructs exact intertwiners from the free
+      comparison. Lie brackets alone would give an action of a covering group
+      after integration; they would not by themselves identify the required
+      \(O (4)\) action or its signed-permutation subgroup. Covariance
+      subsequently forces compatibility between degrees.
+    </p>
+    <p>
+      The remaining steps use compactly supported integration by parts,
+      finite-dimensional tests, group generation, Haar averaging and
+      uniqueness for linear ODEs.
+    </p>
+    <h2 id="auto-16"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>object</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>code name</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>proposed notation</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">label spaces, tags, inclusions, unit</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L74"><tt class="verbatim">Field d</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Lift.lean#L66"><tt class="verbatim">Tag</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22"><tt class="verbatim">rise</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L100"><tt class="verbatim">unit</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(F_d\), \((d, v)\), \(\iota\), \(\boldsymbol{1}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">signed permutations, conjugation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L23-L26"><tt class="verbatim">Signed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L138-L140"><tt class="verbatim">mirror</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Null.lean#L142-L144"><tt class="verbatim">conj</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(B_4\), \(M_{\sigma}\), \(\Gamma\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">differential plan and its laws</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L20-L22"><tt class="verbatim">DiffPlan</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L61-L64"><tt class="verbatim">Derivatives</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L58-L60"><tt class="verbatim">Inclusions</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L66-L72"><tt class="verbatim">Orientation</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\partial_a\); derivative, inclusion, orientation
+        laws</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">stress, window, shells</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L57"><tt class="verbatim">Table.Stress</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73"><tt
+        class="verbatim">Window</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L79-L81"><tt class="verbatim">shellGrad</tt></a>, <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L84-L86"><tt class="verbatim">shellSpin</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(J_{ab} \in F_4\), \(\chi\), \(\Phi^{\text{tr}}_{\chi}\),
+        \(\Phi^{\text{rot}}_{\chi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">raw shell maps; raw hypotheses</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L58"><tt class="verbatim">Climb.Parts</tt></a> (\(p\)), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L17"><tt
+        class="verbatim">Ward.SpinRows</tt></a> (\(Y\)); <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L66-L69"><tt class="verbatim">Climb.Pre</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(p_a\), \(Y_K\); (R)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">angular sum; its vanishing</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L72-L74"><tt class="verbatim">localTurn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L25-L27"><tt class="verbatim">Ward.angular</tt></a>;
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L45"><tt class="verbatim">Still</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L34-L35"><tt class="verbatim">Collinear</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Sum.lean#L29-L30"><tt class="verbatim">commutes</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{W}_K [Y, p]\), \(\mathcal{W}_K [T]\); (L),
+        (C)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">line sums, transversality</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L35-L36"><tt class="verbatim">LineSum</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Peaks.lean#L57"><tt class="verbatim">Climb.transverse</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">line sums, transverse</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">colour space and law</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L66-L87"><tt class="verbatim">Colors</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L89-L91"><tt class="verbatim">ColorLaw</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">colour space</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">normalised data</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L83-L87"><tt class="verbatim">Climb.Crystal</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(p = c \hspace{0.17em} \partial\), \(D = c^{- 1} Y\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">free data</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L159-L170"><tt class="verbatim">MaxwellData</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L20"><tt
+        class="verbatim">Climb.Bel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L24-L29"><tt class="verbatim">Lighthouse</tt></a>, <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L34-L42"><tt class="verbatim">Goes</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(F^{\text{free}}_d, \partial^{\text{free}},
+        R^{\text{free}},
+\mathcal{L}^{\text{free}}, J^{\text{free}},
+        \kappa\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">scaling system, track, weak law</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Cells.lean#L24-L31"><tt class="verbatim">Climb.Scaling</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L44-L48"><tt
+        class="verbatim">Track</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L50-L51"><tt class="verbatim">ActLaw</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Tests.lean#L49-L57"><tt
+        class="verbatim">aisle</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((r_k, \xi_k, U_{k, d})\), \(\text{aisle}_{k, d}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">cutoff field</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Patch.lean#L72"><tt class="verbatim">petal</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L14"><tt class="verbatim">vane</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Budget.lean#L15"><tt class="verbatim">fuel</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{petal}_{ab}\), \(\lambda = e^k\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">OS vector of one insertion</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Plants.lean#L55"><tt class="verbatim">spot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57-L61"><tt class="verbatim">OS.Chamber</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{spot} (A, x) \in \mathcal{H}_a\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">row erasure</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L149-L152"><tt class="verbatim">erases</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L141-L146"><tt class="verbatim">Winds</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">erasure</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">compatibility of spin rows</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L16-L20"><tt class="verbatim">Bid.Hyper</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">compatible</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">perfect relations, Casimir projection</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L35"><tt class="verbatim">Spin.rel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L57"><tt class="verbatim">wave</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L68-L71"><tt class="verbatim">Works</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Shape.lean#L21"><tt class="verbatim">effect</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">perfect relations, \(z (\Omega (B, C))\), \(\text{ad}_{B,
+        C}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">tilt, intertwiners</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L116-L122"><tt class="verbatim">Spin.Tilt</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L50-L52"><tt class="verbatim">realH</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Sheets.lean#L44"><tt class="verbatim">change</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(U_n\), \(V_d\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">port, transported action</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L13-L19"><tt class="verbatim">Spin.Port</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Lands.lean#L22-L24"><tt class="verbatim">Spin.morph</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L17"><tt class="verbatim">Org.mill</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(R_d (k) = V_d R^{\text{free}}_d (k) V_d^{- 1}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">rotation laws, covariance</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L31-L42"><tt class="verbatim">Rotation.Laws</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L46-L48"><tt
+        class="verbatim">Rotation.Oriented</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">rotation laws; \(S (R (k) v ; kx) = S (v ; x)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">conserved, tensorial; average</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L59-L62"><tt class="verbatim">Conserved</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L64-L66"><tt class="verbatim">Tensorial</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A15.lean#L86"><tt class="verbatim">averageStress</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(J' = \int k \cdot c^{- 1} J \hspace{0.17em} d \mu\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Lorentz action on labels</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L21-L22"><tt class="verbatim">Spin.run</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spin/Floor.lean#L24-L25"><tt class="verbatim">wand</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L22-L24"><tt class="verbatim">Boundary.Spins</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L26-L35"><tt class="verbatim">Descends</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(B_d (\Lambda)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">record</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L29-L43"><tt class="verbatim">Org.Commission</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Twist.lean#L19-L24"><tt
+        class="verbatim">Org.Tab</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43"><tt class="verbatim">Spec.Locals</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((c, V, J')\); local laws</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-17"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Supporting analysis in the exterior flux estimate
+          (probable).</strong> The reductions to spectral integrals, the point
+          and line estimates, the diagonal mass estimate and their combination
+          in VI.1.e were checked against the cited proofs. The proofs of the
+          remote-gap profiles, the odd temporal variant, the contact extension
+          on product tests, and the finite-difference and interpolation
+          estimates were not checked in full. These are the files <tt class="verbatim">GapTest</tt>,
+          <tt class="verbatim">Nodal</tt>/<tt class="verbatim">Mode</tt>/<tt class="verbatim">Odd</tt>, <tt
+          class="verbatim">Collision</tt>/<tt class="verbatim">Fold</tt>/<tt class="verbatim">Journal</tt>,
+          <tt class="verbatim">MomentFD</tt> and <tt class="verbatim">Nodes</tt>. In particular,
+          the construction and normalisation of the contact extension remain
+          inputs to the mass-estimate sketch.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Free-field stress algebra (probable).</strong> The
+          statements in &sect;4.10 and the proof that centring and the two
+          divergence tests select the Maxwell line were checked. The
+          polynomial normal-form and dimension-count proofs were not checked
+          in full. The map in the cited rank theorem has centred stresses as
+          its domain; centring cannot be omitted from the
+          one-dimensional-kernel claim.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Production of the inputs.</strong> The immediate producers
+          of the raw stress, shell maps, weak comparison and free data are
+          identified in &sect;2. Their ultraviolet hypotheses, including the
+          annular estimates and finite comparison systems, are not discharged
+          in this unit. The unused lattice shell-law interfaces in <tt class="verbatim">STRESS_FLUX</tt>
+          are not the source of (R).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Normalisation and centring.</strong> The Ward coefficient of
+          \(J'\) is exactly \(1\). Centring is not part of the conclusion of
+          VI.1.7; the centred trace is formed in VII.2. The stress replacement
+          used before the weak comparison supplies \(\kappa \ne 0\) without
+          the numerical identity \(\kappa = - \tau\). Along the scaling
+          systems used in VI.1.u, positivity of \(\xi_k\) and \(c / \xi_k \to
+          \kappa \ne 0\) imply that \(c\) and \(\kappa\) have the same sign.
+          Neither sign is specified by this unit's hypotheses.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Scope.</strong> The folder ownership and line counts in the
+          header have not been independently recounted. The assignment of <tt
+          class="verbatim">Shift</tt> and most of <tt class="verbatim">Next/BOUNDARY</tt> to V.2
+          is tentative. The statements above are source comparisons; Lean
+          elaboration and the transitive axiom dependencies were not checked.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-3.html">&larr; V.3 Reconstruction for every phase and the
+      reconstructed theory (notes)</a><span class="ym-part"><a href="../units.html#part-vi-symmetry-stress-tensor-and-ward-identities">Part VI</a><font
+      class="ym-sep">&middot;</font><a href="../units/VI-1.html">Unit outline</a></span><a class="ym-next" href="VI-2.html">VI.2
+      The free Maxwell stress tensor and the local Ward charge (notes)
+      &rarr;</a>
+    </div>
+  </body>
+</html>

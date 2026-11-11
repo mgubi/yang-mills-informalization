@@ -1,0 +1,1982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>I.1. Lattice, symmetries, gauge groups and the Wilson measure
+    &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <span class="ym-part"><a href="../units.html#part-i-setting">Part I</a><font class="ym-sep">&middot;</font><a href="../notes/I-1.html">Detailed
+      notes</a></span><a class="ym-next" href="II-1.html">II.1 Field labels and their lattice
+      representatives &rarr;</a>
+    </div>
+    <p>
+      <h1>I.1. Lattice, symmetries, gauge groups and the Wilson measure</h1><a
+      id="i1-lattice-symmetries-gauge-groups-and-the-wilson-measure"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">1</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-6">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-7">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Code dependencies</b> <span style="margin-left: 5mm"></span> <a href="#auto-8">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Lean source</b> <span style="margin-left: 5mm"></span> <a href="#auto-9">6</a>
+      </p>
+      <p>
+        Additional source locations <span style="margin-left: 5mm"></span> <a href="#auto-10">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Key statements</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">15</a>
+      </p>
+    </div>
+    <p>
+      <em>Part I &mdash; Setting.</em>
+    </p>
+    <p>
+      Sets up the periodic lattices, gauge groups and Wilson probability
+      measure used throughout the construction.
+    </p>
+    <p>
+      <strong>Status: edited.</strong> Condensed from the unit's detailed
+      notes, which were checked against the linked Lean in two rounds and
+      edited; the local limitations still apply. <a href="../../data/index.html#outline-status">Status meanings</a>.
+    </p>
+    <p>
+      <a href="../index.html">Overview</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../notes/I-1.html">Detailed
+      notes</a> &middot; <a href="II-1.html">Next: II.1 &rarr;</a>
+    </p>
+    <p>
+      <a href="#unit-results">Results</a> &middot; <a href="#unit-inputs">Inputs</a> &middot; <a href="#unit-strategy">Strategy</a>
+      &middot; <a href="#unit-steps">Proof steps</a> &middot; <a href="#unit-notation">Notation</a>
+      &middot; <a href="#unit-limitations">What remains unexplained</a> &middot; <a href="#code-dependencies">Code
+      dependencies</a> &middot; <a href="#lean-source">Lean source</a> &middot; <a href="#key-statements">Key
+      statements</a>
+    </p>
+    <p>
+      <details><summary>Source inventory and conventions</summary><p>
+        <strong>Part:</strong> I, Setting. <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice"><tt
+        class="verbatim">YM/Lattice</tt></a> (1,215 lines), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge"><tt class="verbatim">YM/Gauge</tt></a>
+        (1,131), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space"><tt class="verbatim">YM/Space</tt></a> (430), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona"><tt
+        class="verbatim">YM/Corona</tt></a> (405), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink"><tt class="verbatim">YM/Mink</tt></a>
+        (363), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson"><tt class="verbatim">YM/Wilson</tt></a> (157).
+        <strong>Size:</strong> 3,701 lines in 595 line-counted declarations in
+        the source allocation.
+      </p></details>
+    </p>
+    <p>
+      <a id="unit-results"></a>
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      Throughout, \(G \subset U (N)\) is a closed subgroup, \(N \geqslant 1\),
+      \(\ell \geqslant 1\) is integral, and \(\Lambda_{\ell} = (\mathbb{Z}/
+      \ell \mathbb{Z})^4\). Configurations assign \(U (x, i) \in G\) to links
+      \(x \to x + e_i\); transport multiplies these variables, using inverses
+      on backward steps.
+    </p>
+    <p>
+      <strong>Proposition I.1.1 (torus geometry).</strong> Every site has a
+      unique lift \(r_{\ell} (x) \in (- \ell / 2, \ell / 2]^4 \cap
+      \mathbb{Z}^4\), and \(| \Lambda_{\ell} | = \ell^4\). The metric \(|x -
+      y|_{\ell} = \max_i |r_{\ell} (x - y)_i |\) is translation and
+      signed-permutation invariant; \(| [y]_{\ell} |_{\ell} \leqslant
+      |y|_{\infty}\) for every \(y \in \mathbb{Z}^4\). <em>Status:</em>
+      theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L61-L68"><tt class="verbatim">lift_eq_iff</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L103-L105"><tt class="verbatim">separation_triangle</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.2 (transport and symmetries).</strong> On
+      \(\Lambda_{\ell}\) or \(\mathbb{Z}^4\), let \(A = (\rho, b)\), \(Ax =
+      \rho x + b\), with \(\rho = (\pi, \epsilon) \in B_4\) a signed
+      permutation, \((\rho x)_{\pi (i)} = \epsilon_i x_i\), \(b \in \Lambda\).
+      Pullback assigns image-link transport and satisfies \(1^{\ast} =
+      \text{id}\), \(B^{\ast} A^{\ast} = (A \circ B)^{\ast}\) and \((A^{\ast}
+      U) (x ; w) = U (Ax ; \rho w)\). For every \(g : \Lambda \to G\), \(U^g
+      (x, i) = g (x) U (x, i) g (x + e_i)^{- 1}\) gives
+    </p>
+    <center>
+      \(\displaystyle U^g (x ; w) = g (x) U (x ; w) g (x_{\text{end}})^{- 1}
+      .\)
+    </center>
+    <p>
+      Transport depends only on links with endpoints visited by \(w\). For \(p
+      = (x ; i < j)\) put \(U_p = U (x ; e_i, e_j, - e_i, - e_j)\). Affine
+      maps injectively send plaquettes to image squares \(A_{\sharp} p\),
+      bijectively on the torus; every conjugation- and inversion-invariant
+      \(\phi : G \to M\) satisfies \(\phi ((A^{\ast} U)_p) = \phi
+      (U_{A_{\sharp} p})\). Gauge invariance means \(F (U^g) = F (U)\) for all
+      \(g\); locality on \(X\) means dependence only on links with both
+      endpoints in \(X\). Periodic extension \(E_b U (y, i) = U ([y]_{\ell} +
+      b, i)\) respects transport, gauge transformations and locality, and
+      \(E_b  ((\rho, a)^{\ast} U) = (\rho, 0)^{\ast} E_{\rho b + a} U\).
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L160-L167"><tt class="verbatim">travel_pull</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L141-L143"><tt class="verbatim">travel_gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L128-L143"><tt class="verbatim">Face.send_price</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L227-L235"><tt class="verbatim">expandAt_pull</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.3 (spacings and blocks).</strong> For \(m, p \in
+      \mathbb{N}\), odd integers \(L_m \geqslant 3\) and strictly increasing
+      positive integers \(P_p\) divisible by \(4\), set \(D_0 = 1\), \(D_{m +
+      1} = D_m L_m\), \(a_m = D_m^{- 1}\), \(\ell (m, p) = P_p D_m\), \(s_m =
+      \log (1 / a_m)\). Then \(a_m \downarrow 0\) strictly, \(s_m \to
+      \infty\), and \(a_m \ell (m, p) = P_p\); placements \(a_m r_{\ell (m,
+      p)}\) lie in \((- P_p / 2, P_p / 2]^4\) and are preserved by
+      subdivisions. If \(\log L_m / s_m \to 0\) for \(m \geqslant 1\), some
+      \(c > 0\) satisfies \(a_{m + 1} \geqslant ca_m^2\) for every \(m\).
+    </p>
+    <p>
+      For every integer \(L \geqslant 1\), \(\ell' = \ell L\), the equivariant
+      injective homomorphism \(\iota x = [Lr_{\ell} (x)]_{\ell'}\) satisfies
+      \(r_{\ell'} \iota = Lr_{\ell}\). The bijection \((x, y) \mapsto \iota x
+      + [r_L (y)]_{\ell'}\) defines parent and residue maps. For odd \(L\),
+      parent is \(B_4\)-equivariant with cubic fibres of radius \((L - 1) /
+      2\) centred at \(\iota x\). For odd \(L\), \(\text{par} (z + e_i) =
+      \text{par} (z) + e_i\) if \(r_L (\text{res} \hspace{0.17em} z)_i = (L -
+      1) / 2\), and equals \(\text{par} (z)\) otherwise. For all fine sites
+      \(z, z'\),
+    </p>
+    <center>
+      \(\displaystyle |z - \iota \text{par} \hspace{0.17em} z|_{\ell'}
+      \leqslant L / 2, \qquad L |
+\text{par} \hspace{0.17em} z - \text{par}
+      \hspace{0.17em} z' |_{\ell}
+\leqslant |z - z' |_{\ell'} + L.\)
+    </center>
+    <p>
+      <em>Status:</em> schedule definition, chosen in III.2; consequences
+      theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L28-L34"><tt class="verbatim">Schedule</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L133-L162"><tt
+      class="verbatim">mesh_inequality</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L103-L111"><tt class="verbatim">Ratio.assemble_bijective</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L32-L36"><tt class="verbatim">Corona.foreshorten</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.4 (cover numbers).</strong> Let \(\text{halo}_M
+      (D) = \{y : \exists x \in D, |x - y|_{\ell} \leqslant M\}\), and let
+      \(\text{cov}_M (X)\) minimize \(|D|\) subject to \(X \subset
+      \text{halo}_M (D)\) and halo connectivity by steps of sup-distance at
+      most \(1\); empty sets are allowed. For all sets and \(M \in
+      \mathbb{N}\), cover numbers are monotone and subadditive for
+      intersecting sets,
+    </p>
+    <center>
+      \(\displaystyle |X| \leqslant (2 M + 1)^4 \text{cov}_M (X), \qquad |x -
+      y|_{\ell} \leqslant (4
+M + 2) \text{cov}_M (X) + 2 M \quad (x, y \in X)
+      .\)
+    </center>
+    <p>
+      A halo is connected exactly when its centres are chained by steps at
+      most \(2 M + 1\), and \(| \text{halo}_M (D) | \leqslant (2 M + 1)^4
+      |D|\). For \(b, k, m \in \mathbb{N}\), \(b \geqslant 1\), \(\text{cov}_b
+      (\text{halo}_{kb} \{x\}) \leqslant (2 k + 1)^4\); a scale-\(mb\) cover
+      \(D\) gives \(\text{cov}_b (X) \leqslant (2 m + 3)^4 |D|\). For
+      subdivision ratio \(L \geqslant 1\), \(X \subset \Lambda_{\ell L}\),
+      \(M, B, s \in \mathbb{N}\), \(B \geqslant 1\), \(M \leqslant 2 B\),
+    </p>
+    <center>
+      \(\displaystyle L \text{cov}_B (\text{halo}_{sB} (\text{par}
+      \hspace{0.17em} X)) \leqslant (L
++ 10 \text{cov}_M (X))  (2 s + 13)^4
+      .\)
+    </center>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L69-L71"><tt class="verbatim">coverNumber</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L73-L105"><tt class="verbatim">Corona.collapse</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.5 (cost and Haar measure).</strong> \(G\) is
+      compact and second countable. Put \(\sigma (u) = 1 - N^{- 1} \text{Re}
+      \hspace{0.17em} \text{tr} \hspace{0.17em} u\), \(\chi (u) = \|u - 1\|_F
+      / \sqrt{N}\). Both are continuous, conjugation- and inversion-invariant,
+      vanish at \(1\), and satisfy \(\chi^2 = 2 \sigma\), \(0 \leqslant
+      \sigma, \chi \leqslant 2\), \(\chi (uv) \leqslant \chi (u) + \chi (v)\).
+      Haar probability \(\mu_G\) is invariant under inversion and both
+      translations. <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L117-L126"><tt
+      class="verbatim">chord_price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L193-L200"><tt class="verbatim">probHaar_rightInv</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.6 (Lie algebra and Casimir).</strong>
+      \(\mathfrak{g}= \{X \in M_N (\mathbb{C}) : e^{tX} \in G \forall t
+      \in
+\mathbb{R}\}\) is a closed real Lie subalgebra of skew-Hermitian
+      matrices, invariant under conjugation. Every curve \(f : \mathbb{R} \to
+      G\) differentiable at \(0\) with \(f (0) = 1\) has \(f' (0) \in
+      \mathfrak{g}\). The invariant inner product \(- N^{- 1} \text{tr} (XY)\)
+      identifies \(\mathfrak{g}\) with colours \(\mathbb{R}^d\), \(d = \dim
+      \mathfrak{g}\), \(c \mapsto X_c\), with \(\|X_c \|_F = \sqrt{N} |c|\).
+      Projection satisfies \(X_{\Pi A} = P_{\mathfrak{g}} A\), \(| \Pi A|
+      \leqslant \|A\|_F / \sqrt{N}\); conjugation induces orthogonal
+      \(\text{Ad}\), and \(\text{ad} (x) y\) represents \([X_x, X_y]\).
+    </p>
+    <p>
+      If \(\mathfrak{g}\) is nonabelian with no nonzero proper ideals, every
+      symmetric real bilinear form satisfying \(B (\text{ad} (x) y, z) = - B
+      (y, \text{ad} (x) z)\) for all \(x, y, z\) is a scalar multiple of the
+      inner product. Writing \(C_{\mathfrak{g}} = - d^{- 1}  \sum_i \text{tr}
+      (\text{ad} (b_i)^2)\) in the orthonormal colour basis, for all colours
+      \(x, y\),
+    </p>
+    <center>
+      \(\displaystyle - \text{tr} (\text{ad} (x) \text{ad} (y)) =
+      C_{\mathfrak{g}} \langle x, y
+\rangle, \qquad C_{\mathfrak{g}} > 0,
+      \qquad \kappa = 11 C_{\mathfrak{g}} /
+(24 \pi^2) > 0.\)
+    </center>
+    <p>
+      <em>Status:</em> theorems; constants definitions. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L126-L135"><tt class="verbatim">lie</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L99-L125"><tt class="verbatim">invariant_scalar</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L140-L158"><tt class="verbatim">trace_adjoint</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L160-L172"><tt class="verbatim">casimir_pos</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.7 (small balls).</strong> For every \(0 < r
+      \leqslant 1\), \(\mu_G  \{\chi \leqslant r\} \geqslant (r / 4)^{2
+      N^2}\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Size.lean#L80-L130"><tt class="verbatim">shell_ge</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.8 (local group geometry).</strong> There exist
+      open neighbourhoods \(V \ni 1\), \(W \ni 0\) and \(\log_G : M_N
+      (\mathbb{C}) \to \mathbb{R}^d\), real-analytic on \(V\), with \(\log_G
+      (1) = 0\), \(\log_G (e^{X_c}) = c\) for \(c \in W\) and \(e^{X_{\log_G
+      u}} = u\) for \(u \in G \cap V\). Every matrix \(X\) has a
+      Frobenius-nearest point \(u \in G\), satisfying \(u^{\ast} X - 1 \in
+      \mathfrak{g}^{\perp}\). Nearest points respect left and right
+      translations by \(G\) and are unique in some tube about \(G\); near
+      \(1\) this retraction is analytic with strict derivative
+      \(P_{\mathfrak{g}}\). For every \(\varepsilon > 0\), some \(\delta > 0\)
+      gives
+    </p>
+    <center>
+      \(\displaystyle \|u - v - P_{\mathfrak{g}} (X - Y)\|_F \leqslant
+      \varepsilon \|X - Y\|_F\)
+    </center>
+    <p>
+      whenever \(\|X - 1\|_F, \|Y - 1\|_F < \delta\) and \(u, v\) are nearest
+      to \(X, Y\). Curvature \(F (u) = \Pi ((u - u^{- 1}) / 2)\) is
+      continuous, odd under inversion, satisfies \(F (vuv^{- 1}) = \text{Ad}
+      (v) F (u)\), \(F (1) = 0\), \(|F (u) | \leqslant \chi (u)\), and has
+      derivative \(c\) along \(e^{tX_c}\) at \(0\). <em>Status:</em> theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L164-L175"><tt class="verbatim">plog_right</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L172-L181"><tt
+      class="verbatim">nearest_approximate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L78-L96"><tt class="verbatim">leading_curvature</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.9 (Wilson law).</strong> For product Haar
+      \(\mu_{\ell}\) and plaquette holonomies \(U_p\), set
+    </p>
+    <center>
+      \(\displaystyle E_{\ell} = \sum_{x, i < j} \sigma (U_{(x ; i < j)}),
+      \qquad Z_{\ell} (\beta) =
+\int e^{- \beta E_{\ell}} d \mu_{\ell}, \qquad
+      d\mathbb{P}_{\ell, \beta} =
+Z_{\ell} (\beta)^{- 1} e^{- \beta E_{\ell}}
+      d \mu_{\ell} .\)
+    </center>
+    <p>
+      For every real \(\beta\), \(E_{\ell}\) is continuous, \(0 \leqslant
+      E_{\ell} \leqslant 12 \ell^4\), \(Z_{\ell} (\beta) > 0\), and
+      \(\mathbb{P}_{\ell, \beta}\) is a probability measure integrating
+      continuous or bounded measurable complex functions. <em>Status:</em>
+      definition with theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L87"><tt class="verbatim">law</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L76-L80"><tt class="verbatim">partition_pos</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.10 (invariance).</strong> For every real
+      \(\beta\), affine lattice map \(A\) and \(g : \Lambda_{\ell} \to G\),
+      pullback and gauge transformation preserve \(\mu_{\ell}\), \(E_{\ell}\)
+      and \(\mathbb{P}_{\ell, \beta}\). <em>Status:</em> theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L93-L95"><tt class="verbatim">law_pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L97-L99"><tt
+      class="verbatim">law_gauge</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.11 (continuum symmetries).</strong> \(B_4 \to O
+      (4)\) respects coordinate actions; skew-matrix exponentials lie in \(O
+      (4)\). With \(x = (\vec{x}, x_t)\), set \(\textsf{m} = x_t^2 - | \vec{x}
+      |^2\), \(\bar{V}_+ = \{| \vec{x} | \leqslant x_t \}\), \(V_+ = \{|
+      \vec{x} | < x_t \}\). The topological group \(\mathcal{L}= \{g \in GL
+      (4, \mathbb{R}) : \det g = 1, \textsf{m} \circ g =
+\textsf{m}, g
+      \bar{V}_+ = \bar{V}_+ \}\) preserves Lebesgue measure and \(V_+\) and
+      contains time-fixing elements of \(SO (4)\). For \(R (\vec{x}, x_t) = (-
+      \vec{x}, x_t)\), \(g^{\vee} = RgR = (g^{- 1})^T\) satisfies \(\langle
+      gx, g^{\vee} p \rangle = \langle x, p \rangle\). For every unit spatial
+      vector \(e\), the boost \(B_e (r)\) is a continuous one-parameter
+      subgroup of \(\mathcal{L}\), with generator \((\vec{x}, x_t) \mapsto
+      (x_t e, \vec{x} \cdot e)\). The closed cone is self-dual and equals
+      \(\{x : (g^{\vee} x)_t \geqslant 0 \forall g \in \mathcal{L}\}\). For
+      \(x \in V_+\) and \(p \in \bar{V}_+ \setminus \{0\}\), \(\langle x, p
+      \rangle > 0\). The Poincar&eacute; group \(\mathcal{L} \ltimes
+      \mathbb{R}^4\), acting by \(x \mapsto \Lambda x + b\), preserves
+      Lebesgue measure diagonally on every \((\mathbb{R}^4)^n\).
+      Distinct-point configurations form an open set; pairwise distinct
+      coordinates on every axis, or positive pairwise sup-separation, imply
+      distinct points. <em>Status:</em> definitions and theorems.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L32-L44"><tt class="verbatim">Mink.Proper</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L135-L158"><tt
+      class="verbatim">Lorentz.from_half</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L32-L34"><tt class="verbatim">Poincare</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.12 (cover boxes and routes).</strong> For every
+      \(r \in \mathbb{N}\), \(B_r = \{- r, \ldots, r\}^4\) is
+      \(B_4\)-invariant with \((2 r + 1)^4\) points. For cover sites \(x, y\),
+      axis routes from \(x\) to \(y\) end at \(y\), give the reverse route
+      from \(y\) to \(x\) when axis order is reversed, and transform
+      covariantly under affine maps. For \(a \in \mathbb{Z}^4\) and an axis
+      set \(J\), slabs \(\{y \in B_r : y_i = a_i (i \not\in J)\}\) decompose
+      into pinned layers when an axis \(i \not\in J\) is freed; their sums
+      decompose accordingly for every function into a commutative additive
+      monoid. Pinned layers \(z, w \in \{- r, \ldots, r\}\) correspond by
+      translation \((w - z) e_i\). For every cover configuration and integer
+      \(d\), \(U (x ; \text{straight}_j (d + 1)) = U (x ; \text{straight}_j
+      (d)) U (x + de_j,
+j)\), where \(\text{straight}_j (d)\) has displacement
+      \(de_j\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L74-L80"><tt class="verbatim">route_end</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L62-L71"><tt class="verbatim">slab_sum</tt></a>.
+    </p>
+    <p>
+      <a id="unit-inputs"></a>
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          No inputs from other units.
+        </p>
+      </li>
+      <li>
+        <p>
+          Standard results: Haar uniqueness, product measures, matrix
+          exponential, analytic inverse function theorem, spectral theorem,
+          finite-dimensional volume scaling, Minkowski geometry.
+        </p>
+      </li>
+      <li>
+        <p>
+          Local radii depend on \(G\); the mesh constant depends on the
+          schedule.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="unit-strategy"></a>
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The spacing schedule separates physical periods from mesh sizes; centred
+      residues define the metric. Connected covers turn set size into path
+      length, allowing coarsening by sparse sampling. Image-link transport
+      reduces Wilson invariance to Haar invariance and conjugation/inversion
+      invariance of the cost.
+    </p>
+    <p>
+      The exponential definition of the Lie algebra supplies tangent
+      directions. Normal complements and the inverse function theorem give
+      local coordinates and nearest points; simplicity forces invariant
+      symmetric forms to be scalar.
+    </p>
+    <p>
+      <a id="unit-steps"></a>
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          Centred division gives the metric and subdivision; odd residue
+          windows give parent equivariance. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L154-L157"><tt class="verbatim">Ratio.parent_signed</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Traverse a fine cover by a path, sample parents every \(LB\) steps,
+          then tile the resulting coarse halo; this proves the coarsening
+          bound. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L73-L105"><tt class="verbatim">Corona.collapse</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Walk induction gives transport covariance; gauge factors telescope.
+          Reversal and change of starting corner give plaquette inversion and
+          conjugation. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L141-L143"><tt class="verbatim">travel_gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L128-L143"><tt
+          class="verbatim">Face.send_price</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          For the curve of I.1.6, approximate \(e^X\) by \(f (1 / n)^n\) to
+          prove the tangent criterion. Isolation of normal exponentials gives
+          the local logarithm. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L98-L111"><tt class="verbatim">tangent_generates</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L71-L91"><tt class="verbatim">isolates</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Minimize distance and use normality with local coordinates to
+          identify nearest points. The symmetric operator associated with an
+          invariant form has ideal eigenspaces; simplicity gives the Casimir
+          identity. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L128-L139"><tt class="verbatim">nearest_is_focus</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L99-L125"><tt
+          class="verbatim">invariant_scalar</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Pack ambient matrix balls for I.1.7; normalize the positive Wilson
+          density and use link permutations, inversions and two-sided
+          translations for invariance. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Size.lean#L80-L130"><tt class="verbatim">shell_ge</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L75-L91"><tt class="verbatim">law_preserved</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Boosts and Cauchy&ndash;Schwarz establish the cone
+          characterizations. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L113-L129"><tt class="verbatim">cone_test</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L135-L158"><tt
+          class="verbatim">Lorentz.from_half</tt></a>.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <a id="unit-difficulty"></a>
+    </p>
+    <h2 id="auto-5"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      Local group geometry must handle disconnected groups. Coarsening is
+      uniform in torus size. Real simplicity suffices without irreducibility
+      of the defining representation. Reflections shift link base points;
+      even-side lift ties prevent unrestricted placement covariance.
+    </p>
+    <p>
+      <a id="unit-notation"></a>
+    </p>
+    <h2 id="auto-6"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <p>
+      \([y]_{\ell}\): reduction; \(r_{\ell}\): centred lift; \(\text{par}\):
+      block parent; \(\| \cdot \|_F\): Frobenius norm; \(P_{\mathfrak{g}}\):
+      real Frobenius orthogonal projection; \(\text{ad}\): Lie bracket in
+      colour coordinates. Time is coordinate \(3\).
+    </p>
+    <p>
+      <a id="unit-limitations"></a>
+    </p>
+    <h2 id="auto-7"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <p>
+      Helpers outside the six principal folders remain uncovered. The
+      condition \(M \leqslant 2 B\) for the consecutive cover scales in III.5
+      and III.10 remains to be traced. Exact bibliographic theorem locations
+      remain unchecked.
+    </p>
+    <p>
+      Detailed notes: the full account of this unit, with proof sketches for
+      every step, is on the <a href="../notes/I-1.html">detailed notes page</a>.
+    </p>
+    <h2 id="auto-8"><a id="code-dependencies"></a>Code dependencies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Code dependencies (from the compiled Lean).</strong> These lists
+      follow references between declarations allocated to units; they can
+      include shared definitions, record fields and alternative constructions.
+      They are not a mathematical reading order. Only unit pairs with at least
+      25 references are shown; see the <a href="../../data/index.html#code-dependencies">counting rules</a>.
+    </p>
+    <p>
+      <strong>References to:</strong> none above the threshold.
+    </p>
+    <p>
+      <strong>Referenced by:</strong> <a href="III-10.html">III.10</a>, <a href="III-11.html">III.11</a>,
+      <a href="III-4.html">III.4</a>, <a href="VII-2.html">VII.2</a>, <a href="III-7.html">III.7</a>, <a href="III-13.html">III.13</a>,
+      <a href="III-12.html">III.12</a>, <a href="III-6.html">III.6</a>, <a href="III-2.html">III.2</a>, <a href="II-1.html">II.1</a>,
+      <a href="III-9.html">III.9</a>, <a href="III-14.html">III.14</a>, <a href="VI-2.html">VI.2</a>, <a href="III-5.html">III.5</a>,
+      <a href="VII-4.html">VII.4</a>, <a href="III-1.html">III.1</a>, <a href="VII-1.html">VII.1</a>, <a href="VIII-1.html">VIII.1</a>,
+      <a href="IV-1.html">IV.1</a>, <a href="VI-1.html">VI.1</a>, <a href="III-3.html">III.3</a>, <a href="III-15.html">III.15</a>,
+      <a href="V-2.html">V.2</a>, <a href="VII-3.html">VII.3</a>, <a href="VII-6.html">VII.6</a>, <a href="III-8.html">III.8</a>,
+      <a href="V-1.html">V.1</a>, <a href="V-3.html">V.3</a>, <a href="III-16.html">III.16</a>, <a href="II-2.html">II.2</a>,
+      <a href="VII-5.html">VII.5</a>.
+    </p>
+    <h2 id="auto-9"><a id="lean-source"></a>Lean source<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Source allocation:</strong> 3,701 attributed lines; 595
+      line-counted declarations; 1,136 assigned declaration names. Of the
+      assigned names, 949 are in the compiled closure of the seventeen
+      headline results. These quantities have <a href="../../data/index.html#counting-scopes">different scopes</a>.
+    </p>
+    <p>
+      The folders and result chains below are source inventories. Their line
+      counts cover each whole group, including any share allocated to another
+      unit; percentages use attributed lines plus one per assigned name. They
+      need not sum to the unit total.
+    </p>
+    <ul>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice"><tt class="verbatim">YM/Lattice/</tt></a> &mdash; 1,215
+          lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge"><tt class="verbatim">YM/Gauge/</tt></a> &mdash; 1,131
+          lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space"><tt class="verbatim">YM/Space/</tt></a> &mdash; 430
+          lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona"><tt class="verbatim">YM/Corona/</tt></a> &mdash; 405
+          lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink"><tt class="verbatim">YM/Mink/</tt></a> &mdash; 363
+          lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson"><tt class="verbatim">YM/Wilson/</tt></a> &mdash; 157
+          lines.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-10"><a id="additional-source-locations"></a>Additional source locations<span style="margin-left: 1em"></span></h3>
+    <p>
+      Further pinned locations for the definitions and comparisons discussed
+      in this unit.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L12-L17"><tt class="verbatim">GaugeGroup.coreSimple</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L32-L41"><tt class="verbatim">energy_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L43-L46"><tt class="verbatim">law_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L117-L118"><tt class="verbatim">Corona.box_size</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L120-L127"><tt class="verbatim">Corona.halo_size</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L129-L131"><tt class="verbatim">Corona.pays</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L32-L39"><tt class="verbatim">Corona.lap</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L69-L93"><tt class="verbatim">Corona.ship_halo</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L95-L111"><tt class="verbatim">Corona.halo_ship</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fit.lean#L38-L74"><tt class="verbatim">Corona.ring_path</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fit.lean#L76-L82"><tt class="verbatim">Corona.path_span</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fit.lean#L84-L95"><tt class="verbatim">Corona.extent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L10-L12"><tt class="verbatim">Corona.cover_mono</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L115-L125"><tt class="verbatim">Corona.tiling</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L14-L30"><tt class="verbatim">Corona.meets_sum</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L66-L113"><tt class="verbatim">Corona.tile</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L17-L22"><tt class="verbatim">Corona.near</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L24-L30"><tt class="verbatim">Corona.below</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L38-L70"><tt class="verbatim">Corona.fuel</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/ITERATION_NO_LOSS/Geometry.lean#L75-L76"><tt class="verbatim">YM.Extra.Iteration.Shapes.raw</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L128-L137"><tt class="verbatim">minusKilling_sq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176"><tt class="verbatim">slopeConstant_pos</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L30-L50"><tt class="verbatim">Simple.ideals</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L56-L62"><tt class="verbatim">ad_jacobi</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L64-L70"><tt class="verbatim">ad_skew</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L91-L96"><tt class="verbatim">minusKilling_invariant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L106"><tt class="verbatim">splitNormal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L124-L133"><tt class="verbatim">splitDeriv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L138"><tt class="verbatim">plog</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L152-L155"><tt class="verbatim">plog_diff</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L157-L162"><tt class="verbatim">plog_left</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L40-L69"><tt class="verbatim">direction_in_lie</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L106-L107"><tt class="verbatim">project_colorMat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L109-L111"><tt class="verbatim">project_norm</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L114-L117"><tt class="verbatim">adjoint</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L126-L128"><tt class="verbatim">adjoint_mul</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L130-L134"><tt class="verbatim">norm_adjoint</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L136-L150"><tt class="verbatim">ad</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L152-L154"><tt class="verbatim">colorMat_ad</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L160"><tt class="verbatim">lieExp</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L165-L170"><tt class="verbatim">lieExp_cont</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L173"><tt class="verbatim">curvature</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L175-L177"><tt class="verbatim">curvature_inv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt class="verbatim">casimir</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">slopeConstant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L43"><tt class="verbatim">Color</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L52-L54"><tt class="verbatim">colorIso</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L56-L62"><tt class="verbatim">inner_frob_color</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L64"><tt class="verbatim">colorMat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L71-L75"><tt class="verbatim">trace_color</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L77-L86"><tt class="verbatim">trace_color_real</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L91-L94"><tt class="verbatim">colorMat_norm</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L96-L97"><tt class="verbatim">projectColor</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L99-L101"><tt class="verbatim">colorMat_project</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L35-L47"><tt class="verbatim">project_conjugate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L55-L60"><tt class="verbatim">curvature_conjugate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L62-L75"><tt class="verbatim">curvature_norm</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L114-L124"><tt class="verbatim">generates_add</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L141"><tt class="verbatim">closed_lie</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L151-L157"><tt class="verbatim">conjugate_mem</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L159-L176"><tt class="verbatim">bracket_mem</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L179-L182"><tt class="verbatim">Simple</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L31-L40"><tt class="verbatim">tangent_skew</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L42-L44"><tt class="verbatim">generates_skew</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L47-L59"><tt class="verbatim">frob_pow_difference</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L61-L96"><tt class="verbatim">tangent_approx</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L112"><tt class="verbatim">price</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L115"><tt class="verbatim">chord</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L134-L139"><tt class="verbatim">chord_le_two</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L141-L144"><tt class="verbatim">price_range</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L146-L155"><tt class="verbatim">chord_triangle</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L157-L158"><tt class="verbatim">price_inv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L160-L164"><tt class="verbatim">price_conj</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L166-L167"><tt class="verbatim">chord_inv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L169-L170"><tt class="verbatim">chord_conj</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L187"><tt class="verbatim">probHaar</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L202-L207"><tt class="verbatim">probHaar_invInv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L209-L210"><tt class="verbatim">preserve_inv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L212-L214"><tt class="verbatim">preserve_two_sided</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L34-L43"><tt class="verbatim">frob_sq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L45-L48"><tt class="verbatim">mul_frob_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L55-L59"><tt class="verbatim">unitary_frob</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L61-L67"><tt class="verbatim">compactGaugeU</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L78"><tt class="verbatim">El</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L94"><tt class="verbatim">mat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L141-L153"><tt class="verbatim">nearest_tube</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L155-L170"><tt class="verbatim">focus_deriv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L26"><tt class="verbatim">Nearest</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L28-L31"><tt class="verbatim">nearest_exists</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L33-L36"><tt class="verbatim">nearest_left</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L38-L41"><tt class="verbatim">nearest_right</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L65-L68"><tt class="verbatim">nearest_normal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L70"><tt class="verbatim">tubular</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L78-L86"><tt class="verbatim">tubularDeriv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L91"><tt class="verbatim">focus</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L95-L98"><tt class="verbatim">focus_diff</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Size.lean#L28"><tt class="verbatim">shell</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L13"><tt class="verbatim">box</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L20-L31"><tt class="verbatim">box_covariant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L44"><tt class="verbatim">route</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L19-L25"><tt class="verbatim">Ratio.half_box</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L27-L31"><tt class="verbatim">Ratio.half_lift</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L33-L36"><tt class="verbatim">Ratio.embed_parent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L54-L84"><tt class="verbatim">Ratio.parents_hop</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L86-L95"><tt class="verbatim">Ratio.internal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L112-L113"><tt class="verbatim">Face.lower</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L115-L116"><tt class="verbatim">Face.send</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L119-L126"><tt class="verbatim">Face.injective_send</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L14"><tt class="verbatim">Face</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L47"><tt class="verbatim">faceValue</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L49-L51"><tt class="verbatim">face_gauge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L62-L66"><tt class="verbatim">oriented_swap</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L69-L73"><tt class="verbatim">oriented_next</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L80-L85"><tt class="verbatim">price_flip</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L91-L107"><tt class="verbatim">price_shift_pos</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L18-L19"><tt class="verbatim">slab</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L52-L60"><tt class="verbatim">slab_update_image</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L91-L106"><tt class="verbatim">carry_succ</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L105-L107"><tt class="verbatim">travel</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L132-L133"><tt class="verbatim">gauge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L135"><tt class="verbatim">GaugeInvariant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L137-L139"><tt class="verbatim">Step.gauge_read</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L145"><tt class="verbatim">affine</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L147-L148"><tt class="verbatim">pull</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L150-L158"><tt class="verbatim">Step.pull_read</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L169-L171"><tt class="verbatim">pull_id</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L173-L179"><tt class="verbatim">pull_pull</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L182"><tt class="verbatim">translate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L184-L186"><tt class="verbatim">pull_one</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L192-L193"><tt class="verbatim">Agrees</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L196-L197"><tt class="verbatim">LocalOn</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L200-L220"><tt class="verbatim">travel_local</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L21"><tt class="verbatim">Links</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L224-L225"><tt class="verbatim">expandAt</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L23-L26"><tt class="verbatim">Step</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L240-L247"><tt class="verbatim">travel_at</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L249-L251"><tt class="verbatim">expandAt_gauge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L253-L261"><tt class="verbatim">LocalOn.expandAt</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L27"><tt class="verbatim">Walk</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L47-L50"><tt class="verbatim">Step.rotate_mul</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Route.lean#L36-L37"><tt class="verbatim">back_route</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Route.lean#L55-L61"><tt class="verbatim">send_route</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L103-L104"><tt class="verbatim">a_step</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L108-L109"><tt class="verbatim">shrinks</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L111-L113"><tt class="verbatim">strictAnti</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115"><tt class="verbatim">scale</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L117-L120"><tt class="verbatim">divergent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L124-L127"><tt class="verbatim">scale_succ</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L129-L130"><tt class="verbatim">Gentle</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L167"><tt class="verbatim">place</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L169-L171"><tt class="verbatim">span_side</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L173-L182"><tt class="verbatim">places_period</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L184-L189"><tt class="verbatim">embeds_scale</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L191-L198"><tt class="verbatim">embeds_place</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L39-L41"><tt class="verbatim">denominator</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L60-L65"><tt class="verbatim">den_strict</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L67"><tt class="verbatim">side</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L76"><tt class="verbatim">side_four</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L83-L90"><tt class="verbatim">toDepth</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L92-L97"><tt class="verbatim">toDepth_odd</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99"><tt class="verbatim">a</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L107-L115"><tt class="verbatim">pdist_invariant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L117-L118"><tt class="verbatim">separation_translate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L119-L121"><tt class="verbatim">separation_signed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L17"><tt class="verbatim">Side</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L20"><tt class="verbatim">Cover</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L32-L33"><tt class="verbatim">site_card</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L35-L38"><tt class="verbatim">wrap</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L51"><tt class="verbatim">lift</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L70-L75"><tt class="verbatim">wrap_injOn</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L78"><tt class="verbatim">pdist</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L93-L94"><tt class="verbatim">separation_comm</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L96-L101"><tt class="verbatim">pdist_triangle</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L117"><tt class="verbatim">Ratio.parent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L128-L130"><tt class="verbatim">Ratio.unpack_at</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L138-L148"><tt class="verbatim">Ratio.lift_signed_of_odd</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L150-L152"><tt class="verbatim">Ratio.assemble_signed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L22-L24"><tt class="verbatim">Ratio</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L29"><tt class="verbatim">Ratio.embed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L31-L42"><tt class="verbatim">Ratio.lift_embed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L44-L52"><tt class="verbatim">Ratio.embed_injective</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L67-L75"><tt class="verbatim">Ratio.root</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L78-L81"><tt class="verbatim">Ratio.signed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L85-L88"><tt class="verbatim">Ratio.residue</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L93-L95"><tt class="verbatim">Ratio.residue_embed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L43-L44"><tt class="verbatim">halo</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L52-L55"><tt class="verbatim">covers</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L114-L117"><tt class="verbatim">Ray.generator</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L48-L52"><tt class="verbatim">Ray.adds</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L67-L84"><tt class="verbatim">Ray.positive</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L86-L90"><tt class="verbatim">Ray.staysM</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L92-L101"><tt class="verbatim">Ray.boost</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L131-L141"><tt class="verbatim">strict_pair</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L77"><tt class="verbatim">m</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L78"><tt class="verbatim">cone</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L79"><tt class="verbatim">inside</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L120-L122"><tt class="verbatim">Lorentz.dual_sent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L132-L135"><tt class="verbatim">Lorentz.dual_adjoint</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L46"><tt class="verbatim">Mink.Lorentz</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L54-L60"><tt class="verbatim">Lorentz.stays</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L75-L78"><tt class="verbatim">Lorentz.preserves</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L95-L103"><tt class="verbatim">Lorentz.dual</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L101-L102"><tt class="verbatim">Poincare.preserving</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L117-L121"><tt class="verbatim">Poincare.together</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L18-L29"><tt class="verbatim">Lorentz.room</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L44-L47"><tt class="verbatim">Poincare.by_placement</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Support.lean#L39-L65"><tt class="verbatim">YM.Next.Scheduling.Buy.footage</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L14"><tt class="verbatim">b0_normalizes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30"><tt class="verbatim">zeroUp_bound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/CORRECTED_COLUMNS/Program.lean#L179-L209"><tt class="verbatim">YM.Push.Corrected.Tests.Offer.stamp</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Noise.lean#L53-L73"><tt class="verbatim">YM.SectorNext.Vacuum.shell_pZ</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L153-L180"><tt class="verbatim">Points.volume_product</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L24"><tt class="verbatim">E4</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L27"><tt class="verbatim">time</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L28"><tt class="verbatim">spatial</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L51"><tt class="verbatim">cubedist</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L56"><tt class="verbatim">Points</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L63"><tt class="verbatim">conf</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L66"><tt class="verbatim">generic</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L70"><tt class="verbatim">spaced</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L72-L74"><tt class="verbatim">generic_conf</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L76-L81"><tt class="verbatim">spaced_conf</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L83-L90"><tt class="verbatim">conf_open</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L23-L26"><tt class="verbatim">Signed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L47-L51">its group law</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L62-L63"><tt class="verbatim">Signed.act</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L108-L115"><tt class="verbatim">Signed.ortho_move</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L117-L120"><tt class="verbatim">Signed.inclusionO</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L124-L126"><tt class="verbatim">Signed.mirrored</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L132-L142"><tt class="verbatim">Ortho.skewSpace</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L146-L148"><tt class="verbatim">Ortho.oneParameter</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L152-L154"><tt class="verbatim">Ortho.plane</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L20"><tt class="verbatim">Ortho</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L93-L106"><tt class="verbatim">Signed.ortho</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Vac/Shelter.lean#L39-L45"><tt class="verbatim">YM.RG.space</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L101-L103"><tt class="verbatim">continuous_integrable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L105-L107"><tt class="verbatim">bounded_integrable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L110-L121"><tt class="verbatim">moment_formula</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L29"><tt class="verbatim">energy</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L31-L32"><tt class="verbatim">energy_nonneg</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L42-L43"><tt class="verbatim">energy_cont</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L45-L50"><tt class="verbatim">energy_pull</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L52-L53"><tt class="verbatim">energy_gauge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L55"><tt class="verbatim">prior</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L58"><tt class="verbatim">bare</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L71-L72"><tt class="verbatim">bare_integrable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L74"><tt class="verbatim">partition</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L99"><tt class="verbatim">moment</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L101-L104"><tt class="verbatim">law_translate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L106-L113"><tt class="verbatim">moment_pull</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L25-L26"><tt class="verbatim">sendEdge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L28-L37"><tt class="verbatim">sendEdge_injective</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L45-L67"><tt class="verbatim">prior_pull</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L69-L72"><tt class="verbatim">prior_gauge</tt></a>
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-11"><a id="key-statements"></a>Key statements<span style="margin-left: 1em"></span></h2>
+    <p>
+      In the selected statement order. <strong>K-</strong> identifiers name
+      this generated list; proposition and lemma numbers in the outline are
+      separate. Each sentence is an automatically drafted summary of a Lean
+      statement; follow its link for the exact hypotheses and conclusion. The
+      outline status does not certify these summaries. <em>Main result</em>
+      and <em>key result</em> describe importance, not correctness. Full names
+      are in the <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv">statement table</a>.
+    </p>
+    <p>
+      <a id="k-i-1-1"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-I.1.1</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L19"><tt class="verbatim">Site</tt></a>
+          <em>(numbered result)</em> &mdash; The set of sites of the discrete
+          periodic torus of side n.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-i-1-2"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-I.1.2</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L81"><tt class="verbatim">separation</tt></a>
+          <em>(numbered result)</em> &mdash; The max-distance between two
+          torus sites computed via canonical lifts to the cover.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-i-1-3"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-I.1.3</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L23-L26"><tt class="verbatim">Gauge</tt></a>
+          <em>(numbered result)</em> &mdash; A closed compact matrix group
+          together with a fixed faithful unitary representation.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-i-1-4"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-I.1.4</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L99-L125"><tt class="verbatim">invariant_scalar</tt></a>
+          &mdash; On a simple compact Lie algebra, every symmetric
+          ad-invariant bilinear form is a scalar multiple of the Killing/inner
+          product.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-i-1-5"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-I.1.5</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Size.lean#L80-L130"><tt class="verbatim">shell_ge</tt></a>
+          <em>(numbered result)</em> &mdash; The Haar measure of a shell of
+          radius r in a compact group is at least (r/4) to the dimension of
+          the Lie algebra.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-i-1-6"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-I.1.6</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L24"><tt class="verbatim">Config</tt></a>
+          <em>(numbered result)</em> &mdash; The space of lattice gauge
+          configurations for a gauge group on a torus of side n.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview of the proof</a>
+      &middot; <a href="../../index.html">Repository</a>
+    </p>
+    <div class="ym-unit-nav">
+      <span class="ym-part"><a href="../units.html#part-i-setting">Part I</a><font class="ym-sep">&middot;</font><a href="../notes/I-1.html">Detailed
+      notes</a></span><a class="ym-next" href="II-1.html">II.1 Field labels and their lattice
+      representatives &rarr;</a>
+    </div>
+  </body>
+</html>

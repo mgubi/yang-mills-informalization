@@ -1,0 +1,2328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>I.1. Lattice, symmetries, gauge groups and the Wilson measure
+    &mdash; detailed notes &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <span class="ym-part"><a href="../units.html#part-i-setting">Part I</a><font class="ym-sep">&middot;</font><a href="../units/I-1.html">Unit
+      outline</a></span><a class="ym-next" href="II-1.html">II.1 Field labels and their lattice
+      representatives (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>I.1. Lattice, symmetries, gauge groups and the Wilson measure
+      &mdash; detailed notes</h1><a id="i1-lattice-symmetries-gauge-groups-and-the-wilson-measure--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">1</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">11</a>
+      </p>
+      <p>
+        4.1 Torus, subdivision, schedule <span style="margin-left: 5mm"></span> <a href="#auto-5">11</a>
+      </p>
+      <p>
+        4.2 Cover numbers <span style="margin-left: 5mm"></span> <a href="#auto-6">12</a>
+      </p>
+      <p>
+        4.3 Links, transport, plaquettes <span style="margin-left: 5mm"></span> <a href="#auto-7">13</a>
+      </p>
+      <p>
+        4.4 Gauge group <span style="margin-left: 5mm"></span> <a href="#auto-8">14</a>
+      </p>
+      <p>
+        4.5 The Wilson measure <span style="margin-left: 5mm"></span> <a href="#auto-9">16</a>
+      </p>
+      <p>
+        4.6 Continuum symmetry groups <span style="margin-left: 5mm"></span> <a href="#auto-10">16</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">17</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-12">18</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-13">19</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit I.1: every proposition with its proof sketch,
+        checked against the Lean in two rounds and edited. The condensed
+        outline and the map of the Lean are on the <a href="../units/I-1.html">unit page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/I-1.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> I, Setting. <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice"><tt
+      class="verbatim">YM/Lattice</tt></a> (1,215 lines), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge"><tt class="verbatim">YM/Gauge</tt></a>
+      (1,131), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space"><tt class="verbatim">YM/Space</tt></a> (430), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona"><tt
+      class="verbatim">YM/Corona</tt></a> (405), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink"><tt class="verbatim">YM/Mink</tt></a>
+      (363), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson"><tt class="verbatim">YM/Wilson</tt></a> (157).
+      <strong>Size:</strong> 3,701 lines in 595 declarations used by the main
+      theorem.
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      The unit fixes the setting of the construction:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the periodic lattices and their symmetry group;
+        </p>
+      </li>
+      <li>
+        <p>
+          parallel transport and gauge transformations;
+        </p>
+      </li>
+      <li>
+        <p>
+          the subdivision of a torus into blocks and the schedule of lattice
+          spacings;
+        </p>
+      </li>
+      <li>
+        <p>
+          a combinatorial measure of the size of a lattice set;
+        </p>
+      </li>
+      <li>
+        <p>
+          the gauge group in its defining representation, with its Lie
+          algebra, Casimir constant, local logarithm and nearest-point
+          retraction;
+        </p>
+      </li>
+      <li>
+        <p>
+          the Wilson measure and its invariance;
+        </p>
+      </li>
+      <li>
+        <p>
+          the continuum symmetry groups of \(\mathbb{R}^4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The results require no input theorem from another unit. Simplicity of
+      \(\mathfrak{g}\) is assumed only in Proposition I.1.6(d)&ndash;(f); the
+      other hypotheses are stated locally.
+    </p>
+    <p>
+      <em>Conventions.</em> \(G\) is a closed subgroup of \(U (N)\), with \(N
+      \geqslant 1\) fixed. For an integer \(\ell \geqslant 1\), write
+      \(\Lambda_{\ell} = (\mathbb{Z}/ \ell \mathbb{Z})^4\). Axes \(0, 1, 2\)
+      are spatial and axis \(3\) is time; \(e_i\) are the unit vectors. A link
+      \((x, i)\) joins \(x\) to \(x + e_i\). A configuration is a map \(U :
+      \Lambda_{\ell} \times \{0, 1, 2, 3\} \to G\); the same transport and
+      gauge definitions apply on the cover \(\mathbb{Z}^4\). The norm \(\|
+      \cdot \|_F\) is the Frobenius norm on \(M_N (\mathbb{C})\); norms on
+      real coordinate spaces are Euclidean unless marked otherwise.
+    </p>
+    <p>
+      <strong>Proposition I.1.1 (torus geometry).</strong> For \(y \in
+      \mathbb{Z}^4\) let \([y]_{\ell} \in \Lambda_{\ell}\) be its reduction
+      mod \(\ell\). For \(x \in \Lambda_{\ell}\) let \(r_{\ell} (x) \in
+      \mathbb{Z}^4\) be the representative with coordinates in \((- \ell / 2,
+      \ell / 2]\) (the centred lift; the tie \(x_i = \ell / 2\) lifts to \(+
+      \ell / 2\)). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \([r_{\ell} (x)]_{\ell} = x\), and \(r_{\ell} (x)\) is the unique
+          \(y\) with \([y]_{\ell} = x\) and \(- \ell < 2 y_i \leqslant \ell\)
+          for all \(i\);
+        </p>
+      </li>
+      <li>
+        <p>
+          reduction is injective on this centred box, and \(| \Lambda_{\ell} |
+          = \ell^4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Put \(|x|_{\ell} = \max_i |r_{\ell} (x)_i |\). The separation \(|x -
+      y|_{\ell}\) is a metric on the torus:
+    </p>
+    <ul>
+      <li>
+        <p>
+          it is symmetric and is zero exactly when \(x = y\);
+        </p>
+      </li>
+      <li>
+        <p>
+          it satisfies the triangle inequality;
+        </p>
+      </li>
+      <li>
+        <p>
+          it is invariant under translations and under the hyperoctahedral
+          group \(B_4\) of Proposition I.1.2;
+        </p>
+      </li>
+      <li>
+        <p>
+          reduction does not increase distances: \(| [y]_{\ell} |_{\ell}
+          \leqslant \max_i |y_i |\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L19"><tt class="verbatim">Lattice.Site</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L35-L38"><tt class="verbatim">wrap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L51"><tt class="verbatim">lift</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L61-L68"><tt class="verbatim">lift_eq_iff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L70-L75"><tt class="verbatim">wrap_injOn</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L32-L33"><tt class="verbatim">site_card</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L81"><tt class="verbatim">separation</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L93-L94"><tt class="verbatim">separation_comm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L103-L105"><tt class="verbatim">separation_triangle</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L117-L118"><tt class="verbatim">separation_translate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L119-L121"><tt class="verbatim">separation_signed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L32-L39"><tt class="verbatim">Corona.lap</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.2 (lattice symmetries, transport, gauge
+      transformations).</strong> Let \(B_4\) be the group of signed
+      permutations of the four axes; it has order \(2^4 \cdot 4! = 384\). An
+      element \(\rho = (\pi, \epsilon)\), with \(\epsilon_i \in \{\pm 1\}\),
+      acts on \(\mathbb{Z}^4\) and on \(\Lambda_{\ell}\) by \((\rho x)_{\pi
+      (i)} = \epsilon_i x_i\). On either lattice \(\Lambda\), an affine map is
+      \(A = (\rho, b)\), \(Ax = \rho x + b\), with \(b \in \Lambda\).
+    </p>
+    <p>
+      A walk \(w\) is a finite word of steps \(\pm e_i\). The transport \(U (x
+      ; w) \in G\) is the ordered product along \(w\) from \(x\): a forward
+      step along the link \((y, i)\) contributes \(U (y, i)\), and a backward
+      step from \(y\) contributes \(U (y - e_i, i)^{- 1}\).
+    </p>
+    <p>
+      The pullback \(A^{\ast} U\) is
+    </p>
+    <center>
+      \(\displaystyle (A^{\ast} U) (x, i) = \left\{ \begin{array}{ll}
+  U (Ax,
+      \pi (i)), & \epsilon_i = + 1,\\
+  U (Ax - e_{\pi (i)}, \pi (i))^{- 1}, &
+      \epsilon_i = - 1,
+\end{array} \right.\)
+    </center>
+    <p>
+      that is, the transport of \(U\) along the image of the link \((x, i)\).
+      Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) \(1^{\ast} = \text{id}\) and \(B^{\ast} A^{\ast} = (A \circ
+          B)^{\ast}\), i.e. \((\rho', b')^{\ast} (\rho, b)^{\ast} = (\rho
+          \rho', \rho b' + b)^{\ast}\). For \(A = (1, b)\) the pullback is the
+          translation \((\tau_b U) (x, i) = U (x + b, i)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) \((A^{\ast} U) (x ; w) = U (Ax ; \rho w)\), where \(\rho w\) is
+          the image word.
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) For \(g : \Lambda \to G\) put \(U^g (x, i) = g (x) U (x, i) g (x
+          + e_i)^{- 1}\). Then \(U^g (x ; w) = g (x)  \hspace{0.17em} U (x ;
+          w)  \hspace{0.17em} g
+(x_{\text{end}})^{- 1}\); for a closed walk
+          this is conjugation by \(g (x)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) (locality) If \(U\) and \(V\) agree on every link whose two
+          endpoints are visited by \(w\) from \(x\), then \(U (x ; w) = V (x ;
+          w)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (e) (plaquettes) A plaquette is \(p = (x ; i < j)\) with holonomy
+          \(U_p = U (x ; e_i, e_j, - e_i, - e_j)\). Each \(A\) induces an
+          injective map $A_\sharp $ of plaquettes, bijective on
+          \(\Lambda_{\ell}\). It sends the axis pair to \(\{\pi (i), \pi
+          (j)\}\) in increasing order and the base point to \(Ax - \sum_{k \in
+          \{i, j\} : \hspace{0.17em} \epsilon_k = - 1} e_{\pi (k)}\). For
+          every set \(M\) and every \(\phi : G \to M\) satisfying \(\phi (u^{-
+          1}) = \phi (u)\) and \(\phi (vuv^{- 1}) = \phi (u)\) for all \(u, v
+          \in G\), one has \(\phi ((A^{\ast} U)_p) = \phi (U_{A_{\sharp}
+          p})\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (f) (periodic extension) For \(b \in \Lambda_{\ell}\) let \((E_b U)
+          (y, i) = U ([y]_{\ell} + b, i)\) on \(\mathbb{Z}^4\). Then:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \((E_b U) (y ; w) = U ([y]_{\ell} + b ; w)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(E_b  ((\rho, a)^{\ast} U) = (\rho, 0)^{\ast}  (E_{\rho b + a}
+              U)\) for \(a \in \Lambda_{\ell}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(E_b (U^g) = (E_b U)^{g ([\cdot]_{\ell} + b)}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              if \(F\) depends only on links inside \(X \subset
+              \mathbb{Z}^4\), then \(F \circ E_b\) depends only on links
+              inside \([X]_{\ell} + b\).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      A function \(F\) of configurations is <em>gauge invariant</em> if \(F
+      (U^g) = F (U)\) for all \(g\). It is <em>local on \(X\)</em> if \(F (U)
+      = F (V)\) whenever \(U, V\) agree on all links with both endpoints in
+      \(X\). These are the notions of (Reg3)&ndash;(Reg4) in the main
+      statement. <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L23-L26"><tt class="verbatim">Signed</tt></a>
+      with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L47-L51">its group law</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L62-L63"><tt class="verbatim">Signed.act</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L105-L107"><tt class="verbatim">travel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L147-L148"><tt class="verbatim">pull</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L173-L179"><tt class="verbatim">pull_pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L184-L186"><tt class="verbatim">pull_one</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L160-L167"><tt class="verbatim">travel_pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L132-L133"><tt class="verbatim">gauge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L141-L143"><tt class="verbatim">travel_gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L135"><tt class="verbatim">GaugeInvariant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L192-L193"><tt class="verbatim">Agrees</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L196-L197"><tt class="verbatim">LocalOn</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L200-L220"><tt class="verbatim">travel_local</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L115-L116"><tt class="verbatim">Face.send</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L119-L126"><tt class="verbatim">Face.injective_send</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L128-L143"><tt class="verbatim">Face.send_price</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L224-L225"><tt class="verbatim">expandAt</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L227-L235"><tt class="verbatim">expandAt_pull</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L240-L247"><tt class="verbatim">travel_at</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L249-L251"><tt class="verbatim">expandAt_gauge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L253-L261"><tt class="verbatim">LocalOn.expandAt</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.3 (schedule of spacings; subdivision and
+      blocks).</strong>
+    </p>
+    <p>
+      (a) <em>Schedule.</em> A schedule consists of odd integers \(L_m
+      \geqslant 3\) and a strictly increasing sequence of positive integers
+      \(P_p\) with \(4 \mid P_p\), indexed by \(m, p \in \mathbb{N}\). Put
+    </p>
+    <center>
+      \(\displaystyle D_0 = 1, \quad D_{m + 1} = D_m L_m, \quad a_m = 1 / D_m,
+      \quad \ell (m, p) =
+P_p D_m, \quad s_m = \log (1 / a_m) .\)
+    </center>
+    <p>
+      Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(D_m\) is odd and strictly increasing;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(a_0 = 1\), \(a_{m + 1} = a_m / L_m\), and \(a_m \downarrow 0\)
+          strictly;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(s_0 = 0\), \(s_{m + 1} = s_m + \log L_m\), and \(s_m \to \infty\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(4 \mid \ell (m, p)\) and \(a_m \ell (m, p) = P_p\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the placement \(x \mapsto a_m  \hspace{0.17em} r_{\ell (m, p)} (x)\)
+          maps \(\Lambda_{\ell (m, p)}\) into \((- P_p / 2, P_p / 2]^4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      For \(m \leqslant m'\), \(\Lambda_{\ell (m, p)} \to \Lambda_{\ell (m',
+      p)}\) is a subdivision of odd ratio \(L_m \cdots L_{m' - 1}\) that
+      preserves placements.
+    </p>
+    <p>
+      (b) <em>Mesh inequality.</em> If \(\log L_m / s_m \to 0\) as \(m \to
+      \infty\) (the schedule is <em>gentle</em>), then there is \(c > 0\),
+      depending on the schedule, with \(a_{m + 1} \geqslant c \hspace{0.17em}
+      a_m^2\) for all \(m \in \mathbb{N}\). The ratio defining gentleness is
+      considered for \(m \geqslant 1\), when \(s_m > 0\).
+    </p>
+    <p>
+      (c) <em>Subdivision.</em> Let \(L \geqslant 1\) be an integer and
+      \(\ell' = \ell L\). Put \(\iota (x) = [L \hspace{0.17em} r_{\ell}
+      (x)]_{\ell'}\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(r_{\ell'}  (\iota x) = L \hspace{0.17em} r_{\ell} (x)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\iota : \Lambda_{\ell} \to \Lambda_{\ell'}\) is an injective group
+          homomorphism commuting with \(B_4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The residue map \(\text{res} : \Lambda_{\ell'} \to \Lambda_L\)
+      (reduction mod \(L\)) is additive with \(\text{res} \circ \iota = 0\).
+      The map \((x, y) \mapsto \iota (x) + [r_L (y)]_{\ell'}\) is a bijection
+      \(\Lambda_{\ell} \times \Lambda_L \to \Lambda_{\ell'}\), with inverse
+      \(z \mapsto (\text{par} \hspace{0.17em} z, \text{res} \hspace{0.17em}
+      z)\); moreover \(\text{par} \circ \iota = \text{id}\).
+    </p>
+    <p>
+      (d) <em>Odd ratio.</em> If \(L\) is odd, then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(r_L\) commutes with \(B_4\) and \(\text{par} (\rho z) = \rho
+          \hspace{0.17em} \text{par} (z)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the block \(\text{par}^{- 1} (x)\) is \(\iota (x) + [\{- \tfrac{L -
+          1}{2}, \ldots, \tfrac{L - 1}{2} \}^4]_{\ell'}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{par} (z + e_i) = \text{par} (z) + e_i\) if \(r_L (\text{res}
+          \hspace{0.17em} z)_i = \tfrac{L - 1}{2}\), and \(\text{par} (z +
+          e_i) = \text{par} (z)\) otherwise.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (e) <em>Metric comparison.</em> For every integer \(L \geqslant 1\), all
+      \(x, x' \in \Lambda_{\ell}\) and all \(z, z' \in \Lambda_{\ell'}\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(|z - \iota \hspace{0.17em} \text{par} \hspace{0.17em} z|_{\ell'}
+          \leqslant L /
+2\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(L \hspace{0.17em} |x - x' |_{\ell} \leqslant | \iota x - \iota x'
+          |_{\ell'}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(L \hspace{0.17em} | \text{par} \hspace{0.17em} z - \text{par}
+          \hspace{0.17em}
+z' |_{\ell} \leqslant |z - z' |_{\ell'} + L\)
+          (foreshortening).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> (a) the schedule is a definition (data with
+      conditions); the schedule of the construction is chosen in III.2. The
+      consequences are theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L28-L34"><tt class="verbatim">Schedule</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L39-L41"><tt class="verbatim">denominator</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L67"><tt class="verbatim">side</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L76"><tt class="verbatim">side_four</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99"><tt class="verbatim">a</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L111-L113"><tt class="verbatim">strictAnti</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L108-L109"><tt class="verbatim">shrinks</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115"><tt class="verbatim">scale</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L117-L120"><tt class="verbatim">divergent</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L169-L171"><tt class="verbatim">span_side</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L167"><tt class="verbatim">place</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L173-L182"><tt class="verbatim">places_period</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L83-L90"><tt class="verbatim">toDepth</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L92-L97"><tt class="verbatim">toDepth_odd</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L191-L198"><tt class="verbatim">embeds_place</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L129-L130"><tt class="verbatim">Gentle</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L133-L162"><tt class="verbatim">mesh_inequality</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L22-L24"><tt class="verbatim">Ratio</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L29"><tt class="verbatim">Ratio.embed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L67-L75"><tt class="verbatim">Ratio.root</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L78-L81"><tt class="verbatim">Ratio.signed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L85-L88"><tt class="verbatim">Ratio.residue</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L103-L111"><tt class="verbatim">Ratio.assemble_bijective</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L117"><tt class="verbatim">Ratio.parent</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L154-L157"><tt class="verbatim">Ratio.parent_signed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L19-L25"><tt class="verbatim">Ratio.half_box</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L54-L84"><tt class="verbatim">Ratio.parents_hop</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L33-L36"><tt class="verbatim">Ratio.embed_parent</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L17-L22"><tt class="verbatim">Corona.near</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L24-L30"><tt class="verbatim">Corona.below</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L32-L36"><tt class="verbatim">Corona.foreshorten</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.4 (cover numbers of lattice sets).</strong> For
+      \(X \subset \Lambda_{\ell}\) and \(M \in \mathbb{N}\) let
+      \(\text{halo}_M (X) = \{y : \exists x \in X, |x - y|_{\ell} \leqslant
+      M\}\). Use the graph joining sites at sup-distance at most \(1\);
+      diagonal moves are allowed. Connectivity means that every two vertices
+      can be joined, so the empty set is allowed. A set \(D\) <em>covers \(X\)
+      at scale \(M\)</em> if \(X \subset \text{halo}_M (D)\) and
+      \(\text{halo}_M (D)\) is connected in this graph. Let \(\text{cov}_M
+      (X)\) be the least \(|D|\) over such \(D\); it is finite since \(D =
+      \Lambda_{\ell}\) covers. For all \(X, Y, D \subset \Lambda_{\ell}\) and
+      \(M \in \mathbb{N}\), the following bounds hold independently of
+      \(\ell\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) \(X \subset Y\) implies \(\text{cov}_M (X) \leqslant
+          \text{cov}_M (Y)\), and \(\text{cov}_M (X \cup Y) \leqslant
+          \text{cov}_M (X) + \text{cov}_M (Y)\) if \(X \cap Y \neq
+          \emptyset\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) \(| \text{halo}_M (D) | \leqslant (2 M + 1)^4 |D|\) and \(|X|
+          \leqslant (2 M + 1)^4 \hspace{0.17em} \text{cov}_M (X)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) \(\text{halo}_M (D)\) is connected in this graph if and only if
+          any two points of \(D\) are joined by a chain in \(D\) with steps of
+          sup-distance at most \(2 M + 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) (diameter) For \(x, y \in X\): \(|x - y|_{\ell} \leqslant (4 M +
+          2) \hspace{0.17em} \text{cov}_M (X) + 2 M\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (e) (change of scale) For \(b, k, m \in \mathbb{N}\) with \(b
+          \geqslant 1\) and \(x \in \Lambda_{\ell}\), \(\text{cov}_b
+          (\text{halo}_{kb} \{x\}) \leqslant (2 k + 1)^4\). If \(D\) covers
+          \(X\) at scale \(mb\), then \(\text{cov}_b (X) \leqslant (2 m + 3)^4
+          |D|\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (f) (coarsening) Let \(\text{par} : \Lambda_{\ell L} \to
+          \Lambda_{\ell}\) be the parent map of a subdivision of integer ratio
+          \(L \geqslant 1\). Let \(X \subset \Lambda_{\ell L}\) and \(M, B, s
+          \in \mathbb{N}\) with \(B \geqslant 1\) and \(M \leqslant 2 B\).
+          Then
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle L \cdot \text{cov}_B \left( \text{halo}_{sB} (\text{par}
+      \hspace{0.17em} X)
+\right) \leqslant \left( L + 10 \hspace{0.17em}
+      \text{cov}_M (X) \right) 
+\hspace{0.17em} (2 s + 13)^4,\)
+    </center>
+    <p>
+      with the left side computed on the coarse torus. Thus a fine set of
+      cover number \(k\) has coarse cover number \(\leqslant (2 s + 13)^4  (1
+      + 10 k / L)\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L43-L44"><tt class="verbatim">halo</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L52-L55"><tt class="verbatim">covers</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L69-L71"><tt class="verbatim">coverNumber</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L10-L12"><tt class="verbatim">Corona.cover_mono</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L14-L30"><tt class="verbatim">Corona.meets_sum</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L120-L127"><tt class="verbatim">Corona.halo_size</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L129-L131"><tt class="verbatim">Corona.pays</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L69-L93"><tt class="verbatim">Corona.ship_halo</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L95-L111"><tt class="verbatim">Corona.halo_ship</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fit.lean#L84-L95"><tt class="verbatim">Corona.extent</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L66-L113"><tt class="verbatim">Corona.tile</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L115-L125"><tt class="verbatim">Corona.tiling</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L73-L105"><tt class="verbatim">Corona.collapse</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.5 (gauge group, plaquette cost, chord, Haar
+      measure).</strong> \(G\) is compact and second countable, with its Borel
+      structure. For \(u \in G\) put
+    </p>
+    <center>
+      \(\displaystyle \sigma (u) = 1 - \tfrac{1}{N} \text{Re} \hspace{0.17em}
+      \text{tr}
+\hspace{0.17em} u, \qquad \chi (u) = \|u - 1\|_F / \sqrt{N}
+      .\)
+    </center>
+    <p>
+      Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\chi^2 = 2 \sigma\), \(0 \leqslant \chi \leqslant 2\), \(0
+          \leqslant \sigma \leqslant 2\), and \(\sigma (1) = \chi (1) = 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\chi (uv) \leqslant \chi (u) + \chi (v)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\sigma\) and \(\chi\) are continuous and invariant under \(u
+          \mapsto u^{- 1}\) and \(u \mapsto vuv^{- 1}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The Frobenius norm is invariant under left and right multiplication by
+      unitaries, and \(\|u\|_F = \sqrt{N}\). The normalized Haar measure
+      \(\mu_G\) is invariant under left and right translations and under
+      inversion; hence \(u \mapsto vuw\) preserves \(\mu_G\). <em>Status:</em>
+      theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L23-L26"><tt class="verbatim">Gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L61-L67"><tt
+      class="verbatim">compactGaugeU</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L112"><tt class="verbatim">price</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L115"><tt class="verbatim">chord</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L117-L126"><tt class="verbatim">chord_price</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L134-L139"><tt class="verbatim">chord_le_two</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L141-L144"><tt class="verbatim">price_range</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L146-L155"><tt class="verbatim">chord_triangle</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L157-L158"><tt class="verbatim">price_inv</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L160-L164"><tt class="verbatim">price_conj</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L166-L167"><tt class="verbatim">chord_inv</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L169-L170"><tt class="verbatim">chord_conj</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L45-L48"><tt class="verbatim">mul_frob_eq</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L187"><tt class="verbatim">probHaar</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L193-L200"><tt class="verbatim">probHaar_rightInv</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L209-L210"><tt class="verbatim">preserve_inv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L212-L214"><tt class="verbatim">preserve_two_sided</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.6 (Lie algebra, colours, Casimir constant, slope
+      constant).</strong>
+    </p>
+    <p>
+      (a) \(\mathfrak{g}= \{X \in M_N (\mathbb{C}) : e^{tX} \in G \forall t
+      \in
+\mathbb{R}\}\) is a closed real subspace of skew-Hermitian matrices.
+      It is closed under \([X, Y] = XY - YX\) and under \(X \mapsto uXu^{-
+      1}\), \(u \in G\). <em>Tangent criterion:</em> if \(f : \mathbb{R} \to
+      M_N (\mathbb{C})\) takes values in \(G\), \(f (0) = 1\), and \(f\) is
+      differentiable at \(0\) with \(f' (0) = X\), then \(X \in
+      \mathfrak{g}\).
+    </p>
+    <p>
+      (b) <em>Colours.</em> \(\langle X, Y \rangle_{\mathfrak{g}} = -
+      \frac{1}{N} \text{tr} (XY)\) is real on \(\mathfrak{g}\) and is an
+      \(\text{Ad} (G)\)-invariant inner product. Fix an orthonormal basis and
+      write \(\mathfrak{g} \cong \mathbb{R}^d\), \(c \mapsto X_c\), \(d = \dim
+      \mathfrak{g}\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\|X_c \|_F = \sqrt{N} \hspace{0.17em} |c|\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(P_{\mathfrak{g}}\) is the orthogonal projection onto
+          \(\mathfrak{g}\) for the real Frobenius inner product \(\text{Re}
+          \hspace{0.17em} \text{tr} (XY^{\ast})\), define \(\Pi : M_N
+          (\mathbb{C}) \to \mathbb{R}^d\) by \(X_{\Pi A} = P_{\mathfrak{g}}
+          A\). Then \(\Pi X_c = c\) and \(| \Pi A| \leqslant \|A\|_F /
+          \sqrt{N}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Ad} (u) c = \Pi (uX_c u^{- 1})\) is an orthogonal
+          representation of \(G\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{ad} (c) c' = \Pi [X_c, X_{c'}]\) satisfies \(X_{\text{ad}
+          (c) c'} = [X_c, X_{c'}]\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(c \mapsto \exp c := e^{X_c} \in G\) is continuous.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (c) \(G\) is <em>simple</em> if two conditions hold: there are \(X, Y
+      \in \mathfrak{g}\) with \([X, Y] \neq 0\), and every real subspace \(I
+      \subset \mathfrak{g}\) with \([\mathfrak{g}, I] \subset I\) is \(0\) or
+      \(\mathfrak{g}\). This agrees with the simplicity hypothesis of the main
+      theorem: its Lie algebra is characterized by the same exponential
+      condition (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L12-L17"><tt class="verbatim">GaugeGroup.coreSimple</tt></a>, unit
+      VIII.1).
+    </p>
+    <p>
+      If \(G\) is simple, then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (d) for every symmetric real bilinear form \(B\) on \(\mathbb{R}^d\)
+          satisfying \(B (\text{ad} (x) y, z) = - B (y, \text{ad} (x) z)\) for
+          all \(x, y, z\), there is \(c \in \mathbb{R}\) such that \(B (x, y)
+          = c \langle x, y \rangle\) for all \(x, y\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (e) \(- \text{tr}_{\mathbb{R}^d} (\text{ad} (x) \text{ad} (y)) =
+          C_{\mathfrak{g}}
+\langle x, y \rangle\) for all \(x, y \in
+          \mathbb{R}^d\), where \(C_{\mathfrak{g}} := - \frac{1}{d}  \sum_{i =
+          1}^d \text{tr}_{\mathbb{R}^d}
+(\text{ad} (b_i)^2) > 0\) and
+          \((b_i)_{i = 1}^d\) is the standard orthonormal basis;
+        </p>
+      </li>
+      <li>
+        <p>
+          (f) the <em>slope constant</em> \(\kappa := 11 C_{\mathfrak{g}} /
+          (24 \pi^2)\) is positive.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem; \(C_{\mathfrak{g}}\) and \(\kappa\) are
+      definitions. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L126-L135"><tt class="verbatim">lie</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L141"><tt
+      class="verbatim">closed_lie</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L42-L44"><tt class="verbatim">generates_skew</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L98-L111"><tt class="verbatim">tangent_generates</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L159-L176"><tt class="verbatim">bracket_mem</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L151-L157"><tt class="verbatim">conjugate_mem</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L179-L182"><tt class="verbatim">Simple</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L52-L54"><tt class="verbatim">colorIso</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L64"><tt class="verbatim">colorMat</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L71-L75"><tt class="verbatim">trace_color</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L77-L86"><tt class="verbatim">trace_color_real</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L91-L94"><tt class="verbatim">colorMat_norm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L96-L97"><tt class="verbatim">projectColor</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L99-L101"><tt class="verbatim">colorMat_project</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L106-L107"><tt class="verbatim">project_colorMat</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L109-L111"><tt class="verbatim">project_norm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L114-L117"><tt class="verbatim">adjoint</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L126-L128"><tt class="verbatim">adjoint_mul</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L130-L134"><tt class="verbatim">norm_adjoint</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L136-L150"><tt class="verbatim">ad</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L152-L154"><tt class="verbatim">colorMat_ad</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L160"><tt class="verbatim">lieExp</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L165-L170"><tt class="verbatim">lieExp_cont</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt class="verbatim">casimir</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">slopeConstant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L99-L125"><tt class="verbatim">invariant_scalar</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L140-L158"><tt class="verbatim">trace_adjoint</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L160-L172"><tt class="verbatim">casimir_pos</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176"><tt class="verbatim">slopeConstant_pos</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.7 (Haar mass of small balls around
+      \(1\)).</strong> For \(0 < r \leqslant 1\), \(\mu_G \{u : \chi (u)
+      \leqslant r\} \geqslant (r / 4)^{2 N^2}\). The exponent is the real
+      dimension of \(M_N (\mathbb{C})\), not \(\dim G\). <em>Status:</em>
+      theorem (not sharp). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Size.lean#L28"><tt class="verbatim">shell</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Size.lean#L80-L130"><tt class="verbatim">shell_ge</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.8 (local logarithm, nearest point, curvature of
+      a group element).</strong> Let \(\mathfrak{g}^{\perp}\) be the
+      orthogonal complement of \(\mathfrak{g}\) in \(M_N (\mathbb{C})\) for
+      \(\text{Re} \hspace{0.17em} \text{tr} (XY^{\ast})\).
+    </p>
+    <p>
+      (a) There are a map \(\log_G : M_N (\mathbb{C}) \to \mathbb{R}^d\), an
+      open neighbourhood \(V\) of \(1\) in \(M_N (\mathbb{C})\) and an open
+      neighbourhood \(W\) of \(0\) in \(\mathbb{R}^d\) such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\log_G\) is real-analytic on \(V\) and \(\log_G (1) = 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\log_G (e^{X_c}) = c\) for all \(c \in W\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\exp (\log_G u) = u\) for all \(u \in G \cap V\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      It is the first component of the local inverse of \((c, \nu) \mapsto
+      e^{X_c} e^{\nu}\) on \(\mathbb{R}^d \times \mathfrak{g}^{\perp}\).
+      Connectedness of \(G\) is not assumed, and nothing is claimed away from
+      \(1\).
+    </p>
+    <p>
+      (b) \(u \in G\) is a <em>nearest point</em> to \(X \in M_N
+      (\mathbb{C})\) if \(\|X - u\|_F \leqslant \|X - v\|_F\) for all \(v \in
+      G\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          nearest points exist;
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(v \in G\), \(u\) is nearest to \(X\) iff \(vu\) is
+          nearest to \(vX\), iff \(uv\) is nearest to \(Xv\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(u\) is nearest to \(X\), then \(u^{\ast} X - 1 \in
+          \mathfrak{g}^{\perp}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          there is \(\delta > 0\), depending only on \(G\), such that \(X\)
+          has exactly one nearest point whenever \(\|X - v\|_F < \delta\) for
+          some \(v \in G\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      On a neighbourhood of \(1\) the nearest point is \(\text{foc} (X) = \exp
+      (c)\), where \((c, \nu)\) is the local inverse of \(\Psi (c, \nu) =
+      e^{X_c}  (1 + \nu)\) at \(X\). As a matrix-valued map, \(X \mapsto
+      \text{foc} (X)\) is real-analytic at \(1\), with strict derivative the
+      orthogonal projection \(P_{\mathfrak{g}}\) onto \(\mathfrak{g}\).
+      Consequently, for every \(\varepsilon > 0\) there is \(\delta > 0\) such
+      that, for all \(X, Y \in M_N (\mathbb{C})\) and \(u, v \in G\), the
+      conditions \(\|X - 1\|_F, \|Y - 1\|_F < \delta\) and \(u, v\) nearest to
+      \(X, Y\) imply
+    </p>
+    <center>
+      \(\displaystyle \|u - v - P_{\mathfrak{g}} (X - Y)\|_F \leqslant
+      \varepsilon \|X - Y\|_F .\)
+    </center>
+    <p>
+      (c) The curvature of \(u \in G\) is \(F (u) = \Pi \left( \tfrac{1}{2} (u
+      - u^{- 1}) \right) \in \mathbb{R}^d\), the projected anti-Hermitian
+      part. It is continuous and satisfies:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(F (1) = 0\) and \(F (u^{- 1}) = - F (u)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(F (vuv^{- 1}) = \text{Ad} (v) F (u)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(|F (u) | \leqslant \chi (u)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\frac{d}{dt} F (\exp (tc)) |_{t = 0} = c\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. The neighbourhoods and \(\delta\) come from
+      the inverse function theorem and compactness and are not explicit.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L138"><tt class="verbatim">plog</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L106"><tt class="verbatim">splitNormal</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L152-L155"><tt class="verbatim">plog_diff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L157-L162"><tt class="verbatim">plog_left</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L164-L175"><tt class="verbatim">plog_right</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L26"><tt class="verbatim">Nearest</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L28-L31"><tt class="verbatim">nearest_exists</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L33-L36"><tt class="verbatim">nearest_left</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L38-L41"><tt class="verbatim">nearest_right</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L65-L68"><tt class="verbatim">nearest_normal</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L91"><tt class="verbatim">focus</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L128-L139"><tt class="verbatim">nearest_is_focus</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L95-L98"><tt class="verbatim">focus_diff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L141-L153"><tt class="verbatim">nearest_tube</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L155-L170"><tt class="verbatim">focus_deriv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L172-L181"><tt class="verbatim">nearest_approximate</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L173"><tt class="verbatim">curvature</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L175-L177"><tt class="verbatim">curvature_inv</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L55-L60"><tt class="verbatim">curvature_conjugate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L62-L75"><tt class="verbatim">curvature_norm</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L78-L96"><tt class="verbatim">leading_curvature</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.9 (the Wilson measure on the torus).</strong>
+      Let \(\mu_{\ell} = \mu_G^{\otimes (\Lambda_{\ell} \times \{0, \ldots,
+      3\})}\) be the product Haar measure on configurations. Let
+    </p>
+    <center>
+      \(\displaystyle E_{\ell} (U) = \sum_{x \in \Lambda_{\ell}} \sum_{i < j}
+      \sigma (U_{(x ; i <
+j)})\)
+    </center>
+    <p>
+      be the Wilson energy: \(6 \ell^4\) terms, each unoriented plaquette
+      counted once. For every \(\beta \in \mathbb{R}\) put
+    </p>
+    <center>
+      \(\displaystyle Z_{\ell} (\beta) = \int e^{- \beta E_{\ell}} 
+      \hspace{0.17em} d \mu_{\ell},
+\qquad d\mathbb{P}_{\ell, \beta} =
+      Z_{\ell} (\beta)^{- 1} e^{- \beta E_{\ell}}
+\hspace{0.17em} d \mu_{\ell}
+      .\)
+    </center>
+    <p>
+      For integrable complex \(F\), write \(\langle F \rangle_{\ell, \beta} =
+      \int F \hspace{0.17em} d\mathbb{P}_{\ell,
+\beta}\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(E_{\ell}\) is continuous, with \(0 \leqslant E_{\ell} \leqslant 12
+          \ell^4\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(Z_{\ell} (\beta) > 0\) and \(\mathbb{P}_{\ell, \beta}\) is a
+          probability measure;
+        </p>
+      </li>
+      <li>
+        <p>
+          every continuous complex function, and every bounded measurable
+          complex function, is \(\mathbb{P}_{\ell, \beta}\)-integrable;
+        </p>
+      </li>
+      <li>
+        <p>
+          for integrable complex \(F\), \(\langle F \rangle_{\ell, \beta} =
+          Z_{\ell} (\beta)^{- 1}  \int e^{- \beta
+E_{\ell}} F \hspace{0.17em}
+          d \mu_{\ell}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      These are the energy and measure of Definitions 1.3&ndash;1.4 of the
+      main statement, with \(h = \mu_G\); the identification is proved in
+      VIII.1 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L32-L41"><tt class="verbatim">energy_eq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/WilsonBridge.lean#L43-L46"><tt class="verbatim">law_eq</tt></a>).
+      <em>Status:</em> definition, with theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L24"><tt
+      class="verbatim">Wilson.Config</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L29"><tt class="verbatim">energy</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L31-L32"><tt class="verbatim">energy_nonneg</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L42-L43"><tt class="verbatim">energy_cont</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L55"><tt class="verbatim">prior</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L58"><tt class="verbatim">bare</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L74"><tt class="verbatim">partition</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L76-L80"><tt class="verbatim">partition_pos</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L87"><tt class="verbatim">law</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L99"><tt class="verbatim">moment</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L101-L103"><tt class="verbatim">continuous_integrable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L105-L107"><tt class="verbatim">bounded_integrable</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L110-L121"><tt class="verbatim">moment_formula</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.10 (invariance of the Wilson measure).</strong>
+      For every \(\beta \in \mathbb{R}\), every lattice affine map \(A =
+      (\rho, b)\) and every \(g : \Lambda_{\ell} \to G\), the maps \(U \mapsto
+      A^{\ast} U\) and \(U \mapsto U^g\) preserve \(\mu_{\ell}\), \(E_{\ell}\)
+      and \(\mathbb{P}_{\ell, \beta}\).
+    </p>
+    <p>
+      This covers translations, axis permutations, and reflections \(x_a
+      \mapsto b_a - x_a\). When \(\ell\) is even, the reflection planes pass
+      through sites for even \(b_a\) and bisect links for odd \(b_a\). Hence
+      \(\langle F \circ A^{\ast} \rangle_{\ell, \beta} = \langle F
+      \rangle_{\ell,
+\beta}\) for every integrable complex \(F\). More
+      generally, any measurable map preserving \(\mu_{\ell}\) and \(E_{\ell}\)
+      preserves \(\mathbb{P}_{\ell, \beta}\). Reflection positivity is a
+      separate assertion. <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L45-L50"><tt
+      class="verbatim">energy_pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L52-L53"><tt class="verbatim">energy_gauge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L45-L67"><tt class="verbatim">prior_pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L69-L72"><tt class="verbatim">prior_gauge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L75-L91"><tt class="verbatim">law_preserved</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L93-L95"><tt class="verbatim">law_pull</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L97-L99"><tt class="verbatim">law_gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L101-L104"><tt class="verbatim">law_translate</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L106-L113"><tt class="verbatim">moment_pull</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.11 (continuum symmetry groups).</strong>
+      \(\mathbb{R}^4\) carries the Euclidean norm and Lebesgue measure. Write
+      \(x = (\vec{x}, x_t)\), with time the last coordinate. Let \(\textsf{m}
+      (x) = x_t^2 - | \vec{x} |^2\), \(\bar{V}_+ = \{| \vec{x} | \leqslant x_t
+      \}\) and \(V_+ = \{| \vec{x} | < x_t \}\).
+    </p>
+    <p>
+      (a) <em>Euclidean.</em> There is a homomorphism \(B_4 \to O (4)\) whose
+      image acts on coordinates as in Proposition I.1.2. The mirror in axis
+      \(a\) maps to the reflection \(x_a \mapsto - x_a\). The real skew
+      matrices form \(\mathfrak{so} (4)\), with plane generators \(\Omega_{ij}
+      = E_{ij} - E_{ji}\) for \(i < j\), and \(t \mapsto e^{t \Omega} \in O
+      (4)\).
+    </p>
+    <p>
+      (b) <em>Lorentz group.</em> \(\mathcal{L}= \{g \in GL (\mathbb{R}^4) :
+      \det g = 1, \textsf{m} \circ g =
+\textsf{m}, g \bar{V}_+ = \bar{V}_+
+      \}\); this is \(SO^+ (1, 3)\). It is a topological group of
+      Lebesgue-preserving maps that preserves \(V_+\), and it contains every
+      element of \(SO (4)\) fixing the time coordinate. For a unit spatial
+      vector \(e\), the boost
+    </p>
+    <center>
+      \(\displaystyle B_e (r) : x_t \mapsto \cosh r \hspace{0.17em} x_t +
+      \sinh r \hspace{0.17em}
+(\vec{x} \cdot e), \quad \vec{x} \mapsto \vec{x}
+      + \left( \sinh r
+\hspace{0.17em} x_t + (\cosh r - 1) (\vec{x} \cdot e)
+      \right) e\)
+    </center>
+    <p>
+      is a continuous one-parameter subgroup of \(\mathcal{L}\). Its generator
+      at \(r = 0\) is \(K_e : (\vec{x}, x_t) \mapsto \left( x_t 
+      \hspace{0.17em} e, \vec{x} \cdot e
+\right)\).
+    </p>
+    <p>
+      (c) <em>Dual action and cone.</em> With \(R (\vec{x}, x_t) = (- \vec{x},
+      x_t)\), put \(g^{\vee} = RgR\). Then \(g^{\vee} \in \mathcal{L}\),
+      \((g^{\vee})^{\vee} = g\), \(g^{\vee} = (g^{- 1})^T\), and \(\langle gx,
+      g^{\vee} p \rangle = \langle x, p \rangle\) for the Euclidean pairing.
+      Moreover:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(x \in \bar{V}_+\) iff \(\langle x, p \rangle \geqslant 0\) for all
+          \(p \in \bar{V}_+\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(x \in V_+\) and \(p \in \bar{V}_+ \setminus 0\), then \(\langle
+          x, p \rangle > 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(x \in \bar{V}_+\) iff \((g^{\vee} x)_t \geqslant 0\) for every \(g
+          \in \mathcal{L}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (d) <em>Poincar&eacute; group.</em> \(\mathcal{P}=\mathcal{L} \ltimes
+      \mathbb{R}^4\) consists of pairs \((\Lambda, b)\) and acts by \(x
+      \mapsto \Lambda x + b\), with \((\Lambda, b) (\Lambda', b') = (\Lambda
+      \Lambda', \Lambda b' + b)\). It is a topological group, determined by
+      its action on points, and preserves Lebesgue measure on \(\mathbb{R}^4\)
+      and, diagonally, on \((\mathbb{R}^4)^n\) for every \(n \in \mathbb{N}\).
+    </p>
+    <p>
+      (e) <em>Configurations.</em> For \(n \in \mathbb{N}\), \(r \in
+      \mathbb{R}\) and \(x \in (\mathbb{R}^4)^n\), call \(x\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>separated</em> (\(x \in \text{Conf}_n\)) if the \(x_i\) are
+          pairwise distinct; \(\text{Conf}_n\) is open;
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>generic</em> if for every axis the \(n\) coordinates on that
+          axis are pairwise distinct (generic implies separated);
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>\(r\)-spaced</em> if \(|x_i - x_j |_{\infty} \geqslant r\) for
+          \(i \ne j\) (\(r > 0\) implies separated).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Lebesgue measure on \((\mathbb{R}^4)^n\) is the product of the
+      four-dimensional ones. <em>Status:</em> theorem, apart from the
+      definitions. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L93-L106"><tt class="verbatim">Signed.ortho</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L108-L115"><tt class="verbatim">Signed.ortho_move</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L117-L120"><tt class="verbatim">Signed.inclusionO</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L124-L126"><tt class="verbatim">Signed.mirrored</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L132-L142"><tt class="verbatim">Ortho.skewSpace</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L146-L148"><tt class="verbatim">Ortho.oneParameter</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L152-L154"><tt class="verbatim">Ortho.plane</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L32-L44"><tt class="verbatim">Mink.Proper</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L75-L78"><tt class="verbatim">Lorentz.preserves</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L54-L60"><tt class="verbatim">Lorentz.stays</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L18-L29"><tt class="verbatim">Lorentz.room</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L92-L101"><tt class="verbatim">Ray.boost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L114-L117"><tt class="verbatim">Ray.generator</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L95-L103"><tt class="verbatim">Lorentz.dual</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L120-L122"><tt class="verbatim">Lorentz.dual_sent</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L132-L135"><tt class="verbatim">Lorentz.dual_adjoint</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L113-L129"><tt class="verbatim">cone_test</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L131-L141"><tt class="verbatim">strict_pair</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L135-L158"><tt class="verbatim">Lorentz.from_half</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L32-L34"><tt class="verbatim">Poincare</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L44-L47"><tt class="verbatim">Poincare.by_placement</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L117-L121"><tt class="verbatim">Poincare.together</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L63"><tt class="verbatim">conf</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L66"><tt class="verbatim">generic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L70"><tt class="verbatim">spaced</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L83-L90"><tt class="verbatim">conf_open</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L153-L180"><tt class="verbatim">Points.volume_product</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition I.1.12 (boxes, axis routes and slabs on the
+      cover).</strong> For \(r \in \mathbb{N}\) let \(B_r = \{- r, \ldots,
+      r\}^4 \subset \mathbb{Z}^4\); then \(|B_r | = (2 r + 1)^4\) and \(\rho
+      B_r = B_r\) for \(\rho \in B_4\). For \(x, y \in \mathbb{Z}^4\) and an
+      ordering \(o\) of the four axes, the <em>axis route</em>
+      \(\text{route}_o (x, y)\) goes from \(x\) in straight legs along the
+      axes in the order \(o\), adjusting one coordinate at a time. It ends at
+      \(y\), and:
+    </p>
+    <ul>
+      <li>
+        <p>
+          reversing the order gives the reverse of \(\text{route}_o (y, x)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the image of \(\text{route}_o (x, y)\) under \(A = (\rho, b)\) is
+          \(\text{route}_{\pi \circ o} (Ax, Ay)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      For an anchor \(a \in \mathbb{Z}^4\) and a set \(J\) of axes, define
+      \(\text{slab} (r, a, J) = \{y \in B_r : y_i = a_i \text{ for } i \not\in
+      J\}\). If \(i \not\in J\), then, for any function \(f\) with values in a
+      commutative additive monoid,
+    </p>
+    <center>
+      \(\displaystyle \sum_{y \in \text{slab} (r, a, J \cup \{i\})} f (y) =
+      \sum_{z = - r}^r \sum_{y
+\in \text{slab} (r, a [i \leftarrow z], J)} f
+      (y) .\)
+    </center>
+    <p>
+      For \(z, w \in \{- r, \ldots, r\}\), translation by \((w - z) e_i\) maps
+      the layer with pinned coordinate \(z\) bijectively onto the layer with
+      pinned coordinate \(w\). Write \(\text{straight}_j (d)\) for the signed
+      leg of displacement \(de_j\), \(d \in \mathbb{Z}\). For every cover
+      configuration \(U\),
+    </p>
+    <center>
+      \(\displaystyle U (x ; \text{straight}_j (d + 1)) = U (x ;
+      \text{straight}_j (d)) 
+\hspace{0.17em} U (x + de_j, j) .\)
+    </center>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L13"><tt class="verbatim">box</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L20-L31"><tt class="verbatim">box_covariant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L117-L118"><tt class="verbatim">Corona.box_size</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L44"><tt class="verbatim">route</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L74-L80"><tt class="verbatim">route_end</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Route.lean#L36-L37"><tt class="verbatim">back_route</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Route.lean#L55-L61"><tt class="verbatim">send_route</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L18-L19"><tt class="verbatim">slab</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L62-L71"><tt class="verbatim">slab_sum</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L52-L60"><tt class="verbatim">slab_update_image</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L91-L106"><tt class="verbatim">carry_succ</tt></a>.
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      No result from another unit is needed. The definitions and estimates are
+      used throughout the proof. Main consumers include:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the nearest-point retraction (I.1.8(b)): gauge fixing and alignment
+          in III.1;
+        </p>
+      </li>
+      <li>
+        <p>
+          the invariant-form lemma (I.1.6(d)): the one-loop computation in
+          III.7 and the stress-tensor forms in VI.1&ndash;VI.2;
+        </p>
+      </li>
+      <li>
+        <p>
+          the coarsening estimate (I.1.4(f)): III.5 and III.10;
+        </p>
+      </li>
+      <li>
+        <p>
+          the mesh inequality: V.1;
+        </p>
+      </li>
+      <li>
+        <p>
+          invariance of the law: IV.1, III.13 and VII.2;
+        </p>
+      </li>
+      <li>
+        <p>
+          positivity of \(C_{\mathfrak{g}}\): VIII.1 (the slope in (Reg1)) and
+          VII.2;
+        </p>
+      </li>
+      <li>
+        <p>
+          the Haar-ball bound (I.1.7): a product lower bound for
+          configurations whose links are near \(1\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Vac/Shelter.lean#L39-L45"><tt class="verbatim">YM.RG.space</tt></a>),
+          a lower bound for the block-kernel noise normalizer (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/VACUUM_NORMALIZATION/Noise.lean#L53-L73"><tt
+          class="verbatim">YM.SectorNext.Vacuum.shell_pZ</tt></a>), and positivity of
+          the ball mass used in corrected-field tests (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/CORRECTED_COLUMNS/Program.lean#L179-L209"><tt class="verbatim">YM.Push.Corrected.Tests.Offer.stamp</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Standard mathematics.</strong> The underlying results from
+      Mathlib, together with references for the mathematical context, are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          Existence and uniqueness of Haar measure on a compact group, and its
+          right and inversion invariance (Halmos, <em>Measure Theory</em>,
+          &sect;&sect;58&ndash;60; Folland, <em>A Course in Abstract Harmonic
+          Analysis</em>, Ch. 2).
+        </p>
+      </li>
+      <li>
+        <p>
+          Product measures and invariance of product measures under coordinate
+          permutations; change of variables for measure-preserving maps;
+          Bochner integration.
+        </p>
+      </li>
+      <li>
+        <p>
+          Matrix exponential; the inverse function theorem in the
+          real-analytic class.
+        </p>
+      </li>
+      <li>
+        <p>
+          The local structure of a closed matrix group near \(1\): the Lie
+          algebra as the set of generators of one-parameter subgroups, the
+          Lie&ndash;Trotter limit, and von Neumann's argument that a closed
+          subgroup meets \(\exp (\mathfrak{g}^{\perp})\) only at \(1\) near
+          the identity (B. C. Hall, <em>Lie Groups, Lie Algebras, and
+          Representations</em>, Ch. 2&ndash;3). The local structure is derived
+          here from the exponential definition of the Lie algebra.
+        </p>
+      </li>
+      <li>
+        <p>
+          Spectral theorem for symmetric operators on a finite-dimensional
+          Euclidean space; the Schur-type uniqueness of invariant forms on a
+          simple real Lie algebra (Knapp, <em>Lie Groups Beyond an
+          Introduction</em>, Ch. I).
+        </p>
+      </li>
+      <li>
+        <p>
+          Scaling of Lebesgue measure of balls in a finite-dimensional space.
+        </p>
+      </li>
+      <li>
+        <p>
+          Lattice gauge theory: Wilson's action (K. Wilson, Phys. Rev. D 10
+          (1974) 2445); gauge-invariant lattice measures and their symmetries
+          (Osterwalder&ndash;Seiler, Ann. Phys. 110 (1978) 440; Seiler,
+          Lecture Notes in Physics 159).
+        </p>
+      </li>
+      <li>
+        <p>
+          Minkowski geometry and the restricted Lorentz and Poincar&eacute;
+          groups (Streater&ndash;Wightman, <em>PCT, Spin and Statistics, and
+          All That</em>, Ch. 1).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong> The group \(G\) is
+      an arbitrary closed subgroup of \(U (N)\), possibly disconnected.
+      Simplicity is assumed only in I.1.6(d)&ndash;(f), and agrees with the
+      main theorem's hypothesis by the bridge cited in I.1.6(c). The local
+      radii depend on \(G\); the mesh constant also depends on the schedule.
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The torus metric comes from the absolute values of centred
+      representatives. Odd subdivision ratios give symmetric residue windows,
+      so the parent map commutes with signed permutations even when the coarse
+      torus has even side. The schedule separates the physical period from the
+      mesh; gentle growth of the block factors gives the mesh inequality.
+      Cover numbers measure the size of lattice sets by connected unions of
+      balls. Sampling a path through a fine cover at intervals of \(LB\)
+      yields the coarsening bound \(O (1 + k / L)\) for a set of fine cover
+      number \(k\), with constants independent of the period.
+    </p>
+    <p>
+      Affine pullback assigns to each link the transport along its image.
+      Reflections reverse links and shift their base points. The pullback
+      therefore permutes link variables and inverts some of them, preserving
+      product Haar measure. Image plaquette holonomies differ by conjugation
+      and possibly inversion; the cost \(\sigma\) is invariant under both.
+      Summing over the plaquette bijection proves invariance of the energy and
+      hence of the Wilson measure.
+    </p>
+    <p>
+      For the closed matrix group, the tangent criterion follows by
+      approximating \(e^X\) with \(f (1 / n)^n\). It gives the linear and
+      bracket closure of \(\mathfrak{g}\). The inverse function theorem,
+      together with isolation of \(\exp (\mathfrak{g}^{\perp})\) from \(G\)
+      near \(1\), gives a local logarithm. Applying the same theorem to
+      \(e^{X_c}  (1 + \nu)\) identifies the nearest-point retraction and its
+      derivative. Finally, the spectral theorem reduces an invariant symmetric
+      form to an eigenspace; real simplicity forces that eigenspace to be all
+      of \(\mathfrak{g}\). Applied to the negative Killing form, this gives
+      \(C_{\mathfrak{g}} > 0\).
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-torus-subdivision-schedule"></a>4.1 Torus, subdivision, schedule<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma I.1.a (centred lift and separation).</strong> Proposition
+      I.1.1. <em>Proof sketch.</em> Coordinatewise, \(r_{\ell}\) is the
+      representative of minimal absolute value, with the tie sent to \(+ \ell
+      / 2\). This gives uniqueness, \(|r_{\ell} (a + b)_i | \leqslant
+      |r_{\ell} (a)_i | + |r_{\ell} (b)_i |\) (hence the triangle inequality
+      for the maximum), and \(|r_{\ell} ([y]_{\ell})_i | \leqslant |y_i |\). A
+      zero lift reduces to the zero site, so zero separation implies equality.
+      Signed permutations permute coordinates and change signs, and the
+      centred absolute value is even, including at the tie. Thus \(| \rho
+      x|_{\ell} = |x|_{\ell}\). There are \(\ell\) choices in each coordinate,
+      giving \(\ell^4\) sites. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L61-L68"><tt class="verbatim">lift_eq_iff</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L96-L101"><tt class="verbatim">pdist_triangle</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L107-L115"><tt class="verbatim">pdist_invariant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L32-L39"><tt class="verbatim">Corona.lap</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.b (subdivision).</strong> Proposition I.1.3(c).
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(L \hspace{0.17em} r_{\ell} (x)\) lies in the centred window of
+          \(\Lambda_{\ell L}\), so \(r_{\ell L}  (\iota x) = L \hspace{0.17em}
+          r_{\ell} (x)\), and \(\iota\) is injective.
+        </p>
+      </li>
+      <li>
+        <p>
+          For every \(y \in \mathbb{Z}^4\), \(\iota ([y]_{\ell}) = [Ly]_{\ell
+          L}\), because changing \(y\) by \(\ell z\) changes \(Ly\) by \(\ell
+          Lz\). This gives additivity and \(B_4\)-covariance.
+        </p>
+      </li>
+      <li>
+        <p>
+          Applying \(\text{res}\) to an equality of assembled points gives
+          equality of their residue coordinates. Injectivity of \(\iota\) then
+          gives equality of the coarse coordinates. The count \(\ell^4 L^4 =
+          (\ell L)^4\) makes the assembly map bijective. Since \(\iota x\) is
+          assembled from \((x, 0)\), its parent is \(x\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L31-L42"><tt class="verbatim">Ratio.lift_embed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L44-L52"><tt
+      class="verbatim">Ratio.embed_injective</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L67-L75"><tt class="verbatim">Ratio.root</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L78-L81"><tt class="verbatim">Ratio.signed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L93-L95"><tt class="verbatim">Ratio.residue_embed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L103-L111"><tt class="verbatim">Ratio.assemble_bijective</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L128-L130"><tt
+      class="verbatim">Ratio.unpack_at</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.c (odd blocks and their symmetry).</strong>
+      Proposition I.1.3(d). <em>Proof sketch.</em> For odd \(L\), the window
+      \((- L / 2, L / 2] \cap \mathbb{Z}= [- \frac{L - 1}{2}, \frac{L - 1}{2}]
+      \cap
+\mathbb{Z}\) is symmetric. Hence \(r_L  (\rho y) = \rho
+      \hspace{0.17em} r_L (y)\), the assembly map intertwines \((\rho, \rho)\)
+      with \(\rho\), and \(\text{par}\) commutes with \(\rho\). Every residue
+      has exactly one representative in \(B_{(L - 1) / 2}\), so the assembly
+      bijection identifies each parent fibre with the stated translated box.
+      For the crossing rule, write \(z = \iota (\text{par} \hspace{0.17em} z)
+      + [q]\) with \(q = r_L (\text{res} \hspace{0.17em} z) \in B_{(L - 1) /
+      2}\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          If \(q_i < \frac{L - 1}{2}\), then \(q + e_i\) stays in the block.
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(q_i = \frac{L - 1}{2}\), then \(z + e_i = \iota (\text{par}
+          \hspace{0.17em} z + e_i) + [q - (L - 1) e_i]\), because \(\iota (x +
+          e_i) = \iota (x) + Le_i\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L138-L148"><tt class="verbatim">Ratio.lift_signed_of_odd</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L150-L152"><tt class="verbatim">Ratio.assemble_signed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L154-L157"><tt class="verbatim">Ratio.parent_signed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L19-L25"><tt class="verbatim">Ratio.half_box</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L27-L31"><tt class="verbatim">Ratio.half_lift</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L54-L84"><tt class="verbatim">Ratio.parents_hop</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Crossing.lean#L86-L95"><tt class="verbatim">Ratio.internal</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.d (metric comparison across scales).</strong>
+      Proposition I.1.3(e). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The vector \(r_L (\text{res} \hspace{0.17em} z)\) has coordinates
+          bounded by \(L / 2\). Its reduction is \(z - \iota (\text{par}
+          \hspace{0.17em} z)\), and reduction cannot increase the torus norm.
+        </p>
+      </li>
+      <li>
+        <p>
+          The lift of \(\iota (x - x')\) is \(L \hspace{0.17em} r_{\ell}  (x -
+          x')\), which gives the second inequality.
+        </p>
+      </li>
+      <li>
+        <p>
+          Foreshortening follows from the second inequality and two
+          applications of the first.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L17-L22"><tt class="verbatim">Corona.near</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L24-L30"><tt
+      class="verbatim">Corona.below</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L32-L36"><tt class="verbatim">Corona.foreshorten</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.e (schedule and mesh inequality).</strong> Proposition
+      I.1.3(a),(b). <em>Proof sketch.</em> The product \(D_m\) is odd,
+      strictly increasing and at least \(3^m\), which gives \(a_m \to 0\) and
+      \(s_m \to \infty\). Placement follows by multiplying \(- \ell < 2
+      r_{\ell} \leqslant \ell\) by \(a_m\) and using \(a_m \ell (m, p) =
+      P_p\). The scaled-lift identity gives compatibility under subdivision.
+      Gentleness gives \(\log L_m < s_m\) for all \(m \geqslant m_0\), hence
+      \(a_{m + 1} > a_m^2\). Take \(c\) to be the minimum of the finite
+      nonempty set \(\{1\} \cup \{a_{m + 1} / a_m^2 : m < m_0 \}\); every
+      member is positive. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L60-L65"><tt class="verbatim">den_strict</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L103-L104"><tt class="verbatim">a_step</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L124-L127"><tt class="verbatim">scale_succ</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L184-L189"><tt class="verbatim">embeds_scale</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L133-L162"><tt class="verbatim">mesh_inequality</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-cover-numbers"></a>4.2 Cover numbers<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma I.1.f (elementary properties).</strong> Proposition
+      I.1.4(a),(b). <em>Proof sketch.</em> A cover of a set covers its
+      subsets. For the union, take optimal covers \(A\) of \(X\) and \(B\) of
+      \(Y\). The halo of \(A \cup B\) is the union of the two haloes, which is
+      connected through a common point of \(X \cap Y\). Counting:
+      \(\text{halo}_M (D)\) is the image of \(D \times B_M\) under \((x, q)
+      \mapsto x + [q]\), and \(X \subset \text{halo}_M (D)\) for an optimal
+      \(D\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L10-L12"><tt class="verbatim">Corona.cover_mono</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L14-L30"><tt class="verbatim">Corona.meets_sum</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L120-L127"><tt class="verbatim">Corona.halo_size</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L129-L131"><tt class="verbatim">Corona.pays</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.g (connectivity of haloes).</strong> Proposition
+      I.1.4(c). <em>Proof sketch.</em> Use lattice segments \(t \mapsto x +
+      [\text{clamp}_{[- t, t]} r_{\ell} (y - x)]\), which move by \(\leqslant
+      1\) per unit time and reach \(y\) at \(t = |x - y|_{\ell}\). If \(|x -
+      y|_{\ell} \leqslant 2 M + 1\), the segment stays in \(\text{halo}_M \{x,
+      y\}\). Conversely, a path with steps of sup-distance at most \(1\) in
+      \(\text{halo}_M (D)\) yields a chain of centres with consecutive
+      distances \(\leqslant 2 M + 1\), by the triangle inequality.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L69-L93"><tt class="verbatim">Corona.ship_halo</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fill.lean#L95-L111"><tt
+      class="verbatim">Corona.halo_ship</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.h (a path through a chained set; diameter).</strong>
+      Let \(D \subset \Lambda_{\ell}\) and \(b \in \mathbb{N}\). Suppose any
+      two points of \(D\) can be joined in \(D\) by a chain with steps of
+      sup-distance at most \(b\). Then there are \(n \leqslant 2 b |D|\) and
+      sites \(R_0, \ldots, R_n\) visiting every point of \(D\), with \(|R_{k +
+      1} - R_k |_{\ell} \leqslant 1\) for \(k < n\). Consequently Proposition
+      I.1.4(d) holds. <em>Proof sketch.</em> For nonempty \(D\), start at one
+      point. The chain condition gives a point of \(D\) outside the visited
+      set within distance \(b\) of a visited point. Insert a detour out and
+      back along a coordinatewise-clamped segment, costing at most \(2 b\)
+      steps. For \(D = \emptyset\), take a constant path of length \(0\). A
+      cover has chain bound \(b = 2 M + 1\), so the resulting path has length
+      at most \((4 M + 2) \hspace{0.17em} \text{cov}_M (X)\). Distances along
+      it are bounded by its length, and the two halo radii add \(2 M\).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fit.lean#L38-L74"><tt class="verbatim">Corona.ring_path</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fit.lean#L76-L82"><tt
+      class="verbatim">Corona.path_span</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Fit.lean#L84-L95"><tt class="verbatim">Corona.extent</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.i (change of scale).</strong> Proposition I.1.4(e).
+      <em>Proof sketch.</em> The grid \(x + [b \hspace{0.17em} q]\), \(q \in
+      B_k\), covers \(\text{halo}_{kb} \{x\}\) at scale \(b\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          division with remainder puts every point within \(b\) of a grid
+          point;
+        </p>
+      </li>
+      <li>
+        <p>
+          consecutive grid points along coordinatewise-clamped paths are at
+          most \(b\) apart on the torus, so the grid is \(b\)-chained.
+        </p>
+      </li>
+    </ul>
+    <p>
+      For a general \(D\) covering \(X\) at scale \(mb\), I.1.g gives chains
+      of centres with steps at most \(2 mb + 1 \leqslant 2 (m + 1) b\). The
+      balls \(\text{halo}_{(m + 1) b} \{x\}\) along such a chain overlap. For
+      each centre, the grid above gives a cover of its ball whose \(b\)-halo
+      is connected and contains that ball. These connected haloes meet
+      successively, so their union covers \(X\) and is connected. The union of
+      their centres has at most \((2 m + 3)^4 |D|\) points. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L66-L113"><tt class="verbatim">Corona.tile</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Halo.lean#L115-L125"><tt class="verbatim">Corona.tiling</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.j (coarsening).</strong> Proposition I.1.4(f).
+      <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Take an optimal cover \(A\) of \(X\) at scale \(M\). By I.1.h there
+          is a fine path \(R_0, \ldots, R_n\) visiting \(A\), with steps of
+          sup-distance at most \(1\) and \(n \leqslant (4 M + 2) |A|\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Sample its parents every \(LB\) steps: \(D' = \{ \text{par}
+          \hspace{0.17em} R_{jLB} : 0 \leqslant j \leqslant \lfloor n
+/ (LB)
+          \rfloor\}\). By foreshortening, parents of path points at most
+          \(LB\) steps apart are within \(2 B\) on the coarse torus. Thus
+          \(D'\) is \(2 B\)-chained, every \(\text{par} \hspace{0.17em} R_k\)
+          with \(0 \leqslant k \leqslant n\) lies in \(\text{halo}_{2 B}
+          (D')\), and \(LB |D' | \leqslant n + LB\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A point of \(\text{halo}_{sB} (\text{par} \hspace{0.17em} X)\) lies
+          within \(sB + 3 B + 2 B\) of \(D'\). The middle term uses \(L |
+          \text{par} \hspace{0.17em} c - \text{par} \hspace{0.17em}
+          v|_{\ell}
+\leqslant M + L \leqslant 3 BL\) for \(c \in A\) within
+          \(M\) of \(v \in X\). The \((s + 5) B\)-halo of \(D'\) is connected
+          by I.1.g, since \(D'\) is \(2 B\)-chained, so \(D'\) is a cover at
+          that scale.
+        </p>
+      </li>
+      <li>
+        <p>
+          Apply I.1.i with \(m = s + 5\), giving a factor \((2 s + 13)^4\).
+          Since \(M \leqslant 2 B\) and \(B \geqslant 1\), \(4 M + 2 \leqslant
+          10 B\). Thus \(LB |D' | \leqslant LB + 10 B |A|\), and division by
+          \(B\) gives \(L |D' | \leqslant L + 10 |A|\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L38-L70"><tt class="verbatim">Corona.fuel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Corona/Spend.lean#L73-L105"><tt
+      class="verbatim">Corona.collapse</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-links-transport-plaquettes"></a>4.3 Links, transport, plaquettes<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma I.1.k (pullback is a right action).</strong> Proposition
+      I.1.2(a). <em>Proof sketch.</em> Evaluate at a link. The image step of
+      \(\pm e_i\) under \(\rho'\) and then \(\rho\) is its image under \(\rho
+      \rho'\), and the affine maps compose as \((\rho, b) \circ (\rho', b') =
+      (\rho \rho', \rho b' + b)\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L47-L50"><tt class="verbatim">Step.rotate_mul</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L169-L171"><tt class="verbatim">pull_id</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L173-L179"><tt class="verbatim">pull_pull</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L184-L186"><tt class="verbatim">pull_one</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.l (transport under pullback and gauge;
+      locality).</strong> Proposition I.1.2(b)&ndash;(d). <em>Proof
+      sketch.</em> Induction on the walk. One step: the variable that
+      \(A^{\ast} U\) assigns to a step equals the variable that \(U\) assigns
+      to the image step at the image point. For a backward step, this is the
+      inverse of the forward variable at the shifted base point, which is why
+      base points move under reflections. Gauge: the product telescopes,
+      \(\prod_k g (x_k) U_k g (x_{k + 1})^{- 1} = g (x_0) \left( \prod_k U_k
+      \right) g
+(x_n)^{- 1}\). Locality: each factor reads one link whose
+      endpoints are visited. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L150-L158"><tt class="verbatim">Step.pull_read</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L160-L167"><tt class="verbatim">travel_pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L137-L139"><tt class="verbatim">Step.gauge_read</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L141-L143"><tt class="verbatim">travel_gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L200-L220"><tt class="verbatim">travel_local</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.m (plaquettes under symmetries).</strong> Proposition
+      I.1.2(e). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          By I.1.l, \((A^{\ast} U)_p\) is the transport of \(U\) around the
+          image square, read from the image of the base point along the image
+          steps.
+        </p>
+      </li>
+      <li>
+        <p>
+          Reversing the orientation of a square inverts its holonomy, and
+          starting it at the next corner conjugates its holonomy.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\phi\) of the holonomy equals \(\phi\) of the holonomy of
+          the positive-axis square based at \(Ax - \sum_{k \in \{i, j\} :
+          \hspace{0.17em} \epsilon_k = - 1} e_{\pi (k)}\), with axes in
+          increasing order.
+        </p>
+      </li>
+      <li>
+        <p>
+          Injectivity of $A_\sharp $: the axis pair is permuted bijectively,
+          and the shifted base point and the axis pair determine \(Ax\). On
+          the finite torus, injective implies bijective.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L62-L66"><tt class="verbatim">oriented_swap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L69-L73"><tt
+      class="verbatim">oriented_next</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L80-L85"><tt class="verbatim">price_flip</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L91-L107"><tt class="verbatim">price_shift_pos</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L112-L113"><tt class="verbatim">Face.lower</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L119-L126"><tt class="verbatim">Face.injective_send</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L128-L143"><tt class="verbatim">Face.send_price</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.n (periodic extension).</strong> Proposition I.1.2(f).
+      <em>Proof sketch.</em> \(E_b U\) evaluates \(U\) at the reduced, shifted
+      point. Reduction is additive, commutes with \(B_4\) and sends unit steps
+      to unit steps. So transport, pullback and gauge action commute with
+      \(E_b\) step by step, and an agreement set on the cover maps to its
+      image. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L227-L235"><tt class="verbatim">expandAt_pull</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L240-L247"><tt class="verbatim">travel_at</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L249-L251"><tt class="verbatim">expandAt_gauge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L253-L261"><tt class="verbatim">LocalOn.expandAt</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.o (boxes, routes, slabs).</strong> Proposition I.1.12.
+      <em>Proof sketch.</em> The endpoint of a route is computed axis by axis:
+      each leg changes one coordinate by \(y_a - x_a\), and the axes are
+      distinct. Reversal and covariance hold leg by leg, since the image of a
+      straight leg along \(a\) is a straight leg along \(\pi (a)\) of signed
+      length \(\epsilon_a  (y_a - x_a)\). When \(i \not\in J\), the slab sum
+      is a disjoint decomposition by \(y_i\); translating a pinned layer by
+      \((w - z) e_i\) changes only that coordinate. The transport identity
+      follows by appending a forward step for \(d \geqslant 0\) and cancelling
+      a final backward step for \(d < 0\). Box covariance follows
+      coordinatewise from the symmetric interval \([- r, r]\), and its
+      cardinality is the product of the four interval cardinalities.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L74-L80"><tt class="verbatim">route_end</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Route.lean#L36-L37"><tt
+      class="verbatim">back_route</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Route.lean#L55-L61"><tt class="verbatim">send_route</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L62-L71"><tt class="verbatim">slab_sum</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L91-L106"><tt class="verbatim">carry_succ</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-gauge-group"></a>4.4 Gauge group<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma I.1.p (cost, chord, Haar).</strong> Proposition I.1.5.
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\|u - 1\|_F^2 = \text{tr} ((u - 1) (u - 1)^{\ast}) = 2 N - 2
+          \hspace{0.17em}
+\text{Re} \hspace{0.17em} \text{tr} \hspace{0.17em}
+          u\), using \(uu^{\ast} = 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\|u - 1\|_F \leqslant \|u\|_F + \|1\|_F = 2 \sqrt{N}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(uv - 1 = (u - 1) + u (v - 1)\) and \(\|u (v - 1)\|_F = \|v -
+          1\|_F\) give the triangle inequality.
+        </p>
+      </li>
+      <li>
+        <p>
+          The trace is conjugation invariant, and \(\text{tr} \hspace{0.17em}
+          u^{- 1} = \overline{\text{tr} \hspace{0.17em} u}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A right translate of \(\mu_G\) is again a left Haar probability
+          measure, hence equals \(\mu_G\) by uniqueness. Right invariance then
+          makes the image under inversion a left Haar probability measure as
+          well. Continuity of \(\sigma\) and \(\chi\) follows from continuity
+          of the trace and norm.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L34-L43"><tt class="verbatim">frob_sq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L55-L59"><tt class="verbatim">unitary_frob</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L117-L126"><tt class="verbatim">chord_price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L146-L155"><tt class="verbatim">chord_triangle</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L157-L158"><tt class="verbatim">price_inv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L193-L200"><tt class="verbatim">probHaar_rightInv</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L202-L207"><tt class="verbatim">probHaar_invInv</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.q (the Lie algebra).</strong> Proposition I.1.6(a).
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Skewness: differentiate \(f (t) f (t)^{\ast} = 1\) at \(0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Tangent criterion: if \(f\) takes values in \(G\) with \(f (0) = 1\)
+          and \(f' (0) = X\), then \(X\) is skew and
+        </p>
+        <center>
+          \(\displaystyle \|f (1 / n)^n - e^X \|_F \leqslant n \hspace{0.17em}
+          \|f (1 / n) - e^{X / n}
+\|_F = o (1),\)
+        </center>
+        <p>
+          by the telescoping \(\|A^n - B^n \|_F \leqslant n \|A - B\|_F\) for
+          unitary \(A, B\). Unitary multiplication is isometric, so the bound
+          has no exponential factor. Closedness of \(G\) gives \(e^X \in G\);
+          apply this to \(f (t \hspace{0.17em} \cdot)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Additivity: apply the criterion to \(e^{tX} e^{tY}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Scalar multiplication follows by rescaling the one-parameter
+          subgroup. The resulting real subspace is closed because it is finite
+          dimensional. Conjugation preserves it since \(e^{s (uXu^{- 1})} =
+          ue^{sX} u^{- 1}\) for \(u \in G\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Brackets: \(e^{tX} Ye^{- tX} \in \mathfrak{g}\) and the closed
+          subspace \(\mathfrak{g}\) contains the limit \([X, Y]\) of its
+          difference quotients.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L31-L40"><tt class="verbatim">tangent_skew</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L47-L59"><tt
+      class="verbatim">frob_pow_difference</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L61-L96"><tt class="verbatim">tangent_approx</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L98-L111"><tt class="verbatim">tangent_generates</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L114-L124"><tt class="verbatim">generates_add</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L151-L157"><tt class="verbatim">conjugate_mem</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L159-L176"><tt class="verbatim">bracket_mem</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.r (colours, invariant forms, Casimir).</strong>
+      Proposition I.1.6(b)&ndash;(f). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The colour frame is a Frobenius-orthonormal basis of
+          \(\mathfrak{g}\) scaled by \(\sqrt{N}\). For skew \(X, Y\),
+          \(\text{Re} \hspace{0.17em} \text{tr} (XY^{\ast}) = - \text{tr}
+          (XY)\) and \(\text{tr} (XY)\) is real. Orthogonal projection
+          followed by the inverse colour frame gives \(\Pi\) and its norm
+          bound. Unitary conjugation preserves \(\mathfrak{g}\) and the
+          Frobenius inner product, so it induces the orthogonal adjoint
+          representation. The exponential is continuous by the matrix
+          exponential and the induced topology on \(G\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (d): let \(A\) be the symmetric operator with \(\langle Ax, y
+          \rangle = B (x, y)\). Invariance of \(B\) and skewness of
+          \(\text{ad}\) give \(A \hspace{0.17em} \text{ad}_x = \text{ad}_x
+          A\). Nonabelianity gives \(d > 0\). Choose a real eigenvalue \(c\)
+          of \(A\); its nonzero eigenspace is an \(\text{ad}\)-invariant
+          subspace, hence an ideal. Simplicity makes it the whole space, so
+          \(A = c \cdot \text{id}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (e): \(K (x, y) = - \text{tr} (\text{ad}_x \text{ad}_y)\) is
+          symmetric and invariant, by \(\text{ad}_{[x, y]} = [\text{ad}_x,
+          \text{ad}_y]\) and cyclicity, so \(K = c \langle \cdot, \cdot
+          \rangle\). Taking the trace over an orthonormal basis gives \(c =
+          C_{\mathfrak{g}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Positivity: \(K (x, x) = \sum_i | \text{ad}_x b_i |^2\), which is
+          \(> 0\) for some \(x\) because \(\mathfrak{g}\) is nonabelian. This
+          forces \(C_{\mathfrak{g}} > 0\), and the positive factor \(11 / (24
+          \pi^2)\) gives \(\kappa > 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L56-L62"><tt class="verbatim">inner_frob_color</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L30-L50"><tt
+      class="verbatim">Simple.ideals</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L56-L62"><tt class="verbatim">ad_jacobi</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L64-L70"><tt class="verbatim">ad_skew</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L91-L96"><tt class="verbatim">minusKilling_invariant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L99-L125"><tt class="verbatim">invariant_scalar</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L128-L137"><tt class="verbatim">minusKilling_sq</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L140-L158"><tt class="verbatim">trace_adjoint</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L160-L172"><tt class="verbatim">casimir_pos</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.s (Haar mass of small balls).</strong> Proposition
+      I.1.7. <em>Proof sketch.</em> Points of \(G\) lie on the Frobenius
+      sphere of radius \(\sqrt{N}\) in \(M_N (\mathbb{C}) \cong \mathbb{R}^{2
+      N^2}\). Take a finite set \(p \subset G\) whose distinct points have
+      Frobenius distance strictly greater than \(r \sqrt{N}\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          the balls of radius \(r \sqrt{N} / 2\) around its points are
+          disjoint and lie in the ball of radius \(2 \sqrt{N}\), so \(|p|  (r
+          / 4)^{2 N^2} \leqslant 1\); in particular a maximal such set exists;
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(p\) is maximal, then \(G = \bigcup_{i \in p} i \cdot \{\chi
+          \leqslant r\}\), and left invariance gives \(1 \leqslant |p| 
+          \hspace{0.17em} \mu_G  \{\chi \leqslant r\}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Size.lean#L80-L130"><tt class="verbatim">shell_ge</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.t (local logarithm).</strong> Proposition I.1.8(a).
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\Phi (c, \nu) = e^{X_c} e^{\nu}\) on \(\mathbb{R}^d \times
+          \mathfrak{g}^{\perp}\) is analytic, with \(D \Phi (0) (c, \nu) = X_c
+          + \nu\) invertible, so it has a local analytic inverse.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Isolation:</em> near \(0\), \(e^{\nu} \in G\) with \(\nu \in
+          \mathfrak{g}^{\perp}\) forces \(\nu = 0\). Otherwise take \(\nu_k
+          \to 0\), \(\nu_k \neq 0\), \(e^{\nu_k} \in G\), with \(\nu_k / \|
+          \nu_k \|_F \to Y\) along a subsequence. For \(t \geqslant 0\),
+          \(e^{tY} = \lim (e^{\nu_k})^{\lfloor t /\| \nu_k \|_F \rfloor} \in
+          G\) by closedness; inverses handle \(t < 0\). So \(Y \in
+          \mathfrak{g} \cap \mathfrak{g}^{\perp} = 0\), contradicting
+          \(\|Y\|_F = 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(u \in G\) near \(1\), write \(u = \Phi (c, \nu)\); then
+          \(e^{\nu} = e^{- X_c} u \in G\) forces \(\nu = 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L40-L69"><tt class="verbatim">direction_in_lie</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L71-L91"><tt
+      class="verbatim">isolates</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L124-L133"><tt class="verbatim">splitDeriv</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L152-L155"><tt class="verbatim">plog_diff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L157-L162"><tt class="verbatim">plog_left</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L164-L175"><tt class="verbatim">plog_right</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.u (nearest point).</strong> Proposition I.1.8(b).
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Existence by compactness; equivariance because left and right
+          unitary multiplication are Frobenius isometries.
+        </p>
+      </li>
+      <li>
+        <p>
+          First-order condition: if \(1\) is nearest to \(X\), then \(t
+          \mapsto \|e^{tY} - X\|_F^2\) is minimal at \(0\), so \(\langle X -
+          1, Y \rangle = 0\) for \(Y \in \mathfrak{g}\). The general case
+          follows by left translation.
+        </p>
+      </li>
+      <li>
+        <p>
+          Identification near \(1\): for any choice \(b (X)\) of nearest
+          points, \(\|b (X) - 1\|_F \leqslant 2 \|X - 1\|_F\). Hence \(\nu (X)
+          = b (X)^{\ast} X - 1 \in \mathfrak{g}^{\perp}\) tends to \(0\), and
+          \(X = \Psi (\log_G b (X), \nu (X))\) with both arguments near \(0\).
+          Injectivity of the local diffeomorphism \(\Psi\) gives \(b (X) =
+          \text{foc} (X)\). To obtain one neighbourhood valid for every
+          nearest point, choose \(b (X)\) to differ from \(\text{foc} (X)\)
+          whenever such a nearest point exists. The same argument forces this
+          selection to equal \(\text{foc}\) on a neighbourhood, excluding all
+          such exceptions there.
+        </p>
+      </li>
+      <li>
+        <p>
+          Uniqueness in a tube: translate by \(v^{- 1}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The derivative of \(\text{foc}\) at \(1\) is \(X_{(\cdot)} \circ
+          \text{pr}_1 \circ D \Psi (0)^{- 1} = P_{\mathfrak{g}}\), and the
+          approximation bound is the strict differentiability of
+          \(\text{foc}\) at \(1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L28-L31"><tt class="verbatim">nearest_exists</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L33-L36"><tt
+      class="verbatim">nearest_left</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L65-L68"><tt class="verbatim">nearest_normal</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L70"><tt class="verbatim">tubular</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L78-L86"><tt class="verbatim">tubularDeriv</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L128-L139"><tt class="verbatim">nearest_is_focus</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L141-L153"><tt class="verbatim">nearest_tube</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L155-L170"><tt class="verbatim">focus_deriv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L172-L181"><tt class="verbatim">nearest_approximate</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.v (curvature of a group element).</strong> Proposition
+      I.1.8(c). <em>Proof sketch.</em> Conjugation by \(v \in G\) is a
+      Frobenius isometry preserving \(\mathfrak{g}\), hence also
+      \(\mathfrak{g}^{\perp}\), so \(\Pi (vAv^{- 1}) = \text{Ad} (v) \Pi A\).
+      For the bound:
+    </p>
+    <center>
+      \(\displaystyle |F (u) | \leqslant \tfrac{1}{2 \sqrt{N}} \|u - u^{- 1}
+      \|_F \leqslant
+\tfrac{1}{2} (\chi (u) + \chi (u^{- 1})) = \chi (u) .\)
+    </center>
+    <p>
+      The derivative of \(\frac{1}{2}  (e^{tX_c} - e^{- tX_c})\) at \(0\) is
+      \(X_c\), and \(\Pi X_c = c\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L35-L47"><tt class="verbatim">project_conjugate</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L55-L60"><tt class="verbatim">curvature_conjugate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L62-L75"><tt class="verbatim">curvature_norm</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Curvature.lean#L78-L96"><tt class="verbatim">leading_curvature</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-the-wilson-measure"></a>4.5 The Wilson measure<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma I.1.w (the law).</strong> Proposition I.1.9. <em>Proof
+      sketch.</em> \(E_{\ell}\) is a finite sum of continuous functions on a
+      compact space. There are \(6 \ell^4\) terms, each in \([0, 2]\), giving
+      the energy bounds. The weight \(e^{- \beta E_{\ell}}\) is continuous and
+      strictly positive, so it is integrable and \(Z_{\ell} > 0\). The density
+      \(e^{- \beta E_{\ell}} / Z_{\ell}\) has integral \(1\). Continuous
+      complex functions are bounded by compactness, and bounded measurable
+      functions are integrable against a probability measure. The moment
+      formula follows by integration against the density. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L71-L72"><tt class="verbatim">bare_integrable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L76-L80"><tt class="verbatim">partition_pos</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L110-L121"><tt class="verbatim">moment_formula</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.x (invariance of Haar measure, energy and
+      law).</strong> Proposition I.1.10. <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Haar.</em> \(A^{\ast}\) is the composite of two maps. The first
+          is the relabelling \(U \mapsto U \circ e_A\), where \(e_A\) maps the
+          link \((x, i)\) to the positively oriented link carrying its image;
+          this is injective, hence a permutation of the finite link set. The
+          second inverts the variables on links with \(\epsilon_i = - 1\).
+          Permutations of factors preserve a product measure, and inversion
+          preserves \(\mu_G\). A gauge transformation acts on each factor by
+          \(u \mapsto g (x) ug (x + e_i)^{- 1}\), which preserves \(\mu_G\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Energy.</em> Gauge: plaquette holonomies are conjugated.
+          Pullback: by I.1.m the energy is re-summed over the bijection
+          $A_\sharp $.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Law.</em> A map preserving \(\mu_{\ell}\) and \(E_{\ell}\)
+          preserves the density, hence the law.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L25-L26"><tt class="verbatim">sendEdge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L28-L37"><tt
+      class="verbatim">sendEdge_injective</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L45-L67"><tt class="verbatim">prior_pull</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L69-L72"><tt class="verbatim">prior_gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L49-L51"><tt class="verbatim">face_gauge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L45-L50"><tt class="verbatim">energy_pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L75-L91"><tt class="verbatim">law_preserved</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Symmetry.lean#L106-L113"><tt class="verbatim">moment_pull</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-continuum-symmetry-groups"></a>4.6 Continuum symmetry groups<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma I.1.y (Euclidean group and configurations).</strong>
+      Proposition I.1.11(a),(e). <em>Proof sketch.</em> The matrix of \(\rho\)
+      has entry \(\epsilon_a\) at \((\pi (a), a)\); it is orthogonal and
+      multiplies like \(B_4\). The exponential of a skew matrix is orthogonal.
+      The set \(\text{Conf}_n\) is a finite intersection of open sets \(\{x_i
+      \neq x_j \}\). Distinct time coordinates imply distinct points, as does
+      a positive lower bound on pairwise sup-distances. Splitting off one
+      Euclidean four-dimensional factor at a time identifies Lebesgue measure
+      on \((\mathbb{R}^4)^n\) with the product measure. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L108-L115"><tt class="verbatim">Signed.ortho_move</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L117-L120"><tt class="verbatim">Signed.inclusionO</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L72-L74"><tt class="verbatim">generic_conf</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L76-L81"><tt class="verbatim">spaced_conf</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L83-L90"><tt class="verbatim">conf_open</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma I.1.z (Lorentz group, boosts, cone, Poincar&eacute;
+      group).</strong> Proposition I.1.11(b)&ndash;(d). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The three defining conditions of \(\mathcal{L}\) are stable under
+          products and inverses, and \(\det = 1\) gives Lebesgue invariance.
+        </p>
+      </li>
+      <li>
+        <p>
+          Boosts: the addition law \(B_e (r) B_e (r') = B_e  (r + r')\)
+          follows from the addition formulas for \(\cosh, \sinh\), and
+          \(\textsf{m}\) is preserved by \(\cosh^2 - \sinh^2 = 1\). For the
+          determinant: \(RB_e (r) R = B_e  (- r)\) gives \(\det B_e (r) = \det
+          B_e  (- r) = \det B_e (r)^{- 1}\), and \(\det B_e (r) = \det B_e  (r
+          / 2)^2 > 0\), so \(\det = 1\). The cone is preserved by \(| \sinh r|
+          \leqslant \cosh r\). Differentiating the boost formula at \(r = 0\)
+          gives \(K_e\); continuity follows from \(\cosh\) and \(\sinh\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Dual action: the identity \(\langle gx, g^{\vee} p \rangle = \langle
+          x, p \rangle\) is polarization of \(\textsf{m} (x) = \langle x, Rx
+          \rangle\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Cone duality: Cauchy&ndash;Schwarz gives \(\langle x, p \rangle
+          \geqslant x_t p_t - | \vec{x} | \hspace{0.17em} | \vec{p}
+|
+          \geqslant 0\) for \(x, p \in \bar{V}_+\). Conversely, test against
+          \(p = (- \vec{x} / | \vec{x} |, 1)\) when \(\vec{x} \ne 0\), and
+          against \((0, 1)\) otherwise. If \(x \in V_+\) and \(p \in \bar{V}_+
+          \setminus \{0\}\), then \(p_t > 0\) makes the bound strict.
+        </p>
+      </li>
+      <li>
+        <p>
+          Half-space characterization: for \(x \in \bar{V}_+\), every
+          \(g^{\vee} x\) remains in that cone and has nonnegative time
+          coordinate. If \(x_t < 0\), take \(g = 1\). Otherwise, if \(x
+          \not\in \bar{V}_+\), put \(e = \vec{x} / | \vec{x} |\), choose \(x_t
+          / | \vec{x} | < s < 1\), and set \(r = \text{artanh} \hspace{0.17em}
+          s > 0\) and \(g = B_e (r)\). Then \(g^{\vee} = B_e  (- r)\) and
+          \((g^{\vee} x)_t = \cosh r \hspace{0.17em} (x_t - s| \vec{x} |) <
+          0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The open cone is characterized by \(x_t > 0\) and \(\textsf{m} (x) >
+          0\), and is preserved by the cone and quadratic-form identities. A
+          Euclidean rotation fixing time preserves \(| \vec{x} |\) and hence
+          both cones and \(\textsf{m}\); determinant \(1\) places it in
+          \(\mathcal{L}\). Affine composition gives the Poincar&eacute; group
+          law. Evaluation at \(0\) recovers the translation, and subtracting
+          it recovers the Lorentz map. Joint continuity follows from linear
+          evaluation; the diagonal measure statement follows from preservation
+          of each factor.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L48-L52"><tt class="verbatim">Ray.adds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L67-L84"><tt
+      class="verbatim">Ray.positive</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L86-L90"><tt class="verbatim">Ray.staysM</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L120-L122"><tt class="verbatim">Lorentz.dual_sent</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L113-L129"><tt class="verbatim">cone_test</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L135-L158"><tt class="verbatim">Lorentz.from_half</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L101-L102"><tt class="verbatim">Poincare.preserving</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L117-L121"><tt class="verbatim">Poincare.together</tt></a>.
+    </p>
+    <h2 id="auto-11"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The local logarithm and nearest-point retraction require a
+      closed-subgroup argument that also handles disconnected groups. The
+      coarsening estimate must control arbitrary periodic sets uniformly in
+      the torus side. The invariant-form argument uses simplicity over
+      \(\mathbb{R}\); irreducibility of the defining representation is not
+      assumed. Invariance of the Wilson law reduces to Haar invariance, but
+      reflections require the correct shifts of link and plaquette base
+      points.
+    </p>
+    <p>
+      The representation \(G \subset U (N)\) fixes the cost and the colour
+      inner product, and hence \(C_{\mathfrak{g}}\) and \(\kappa\). Each
+      positive-axis plaquette is counted once. The later running-coupling
+      estimate says that the ratio of the level-\(m\) coupling to \(s_m\)
+      tends to \(\kappa\), uniformly in the ultraviolet cutoff \(N' \geqslant
+      m\) and the volume index \(p\), for a family satisfying the construction
+      conditions (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L15-L30"><tt class="verbatim">zeroUp_bound</tt></a>). Its
+      normalization is \(\kappa = 2 b_0\), where \(b_0 = 11 C_{\mathfrak{g}} /
+      (48 \pi^2)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pert/Asymptotics/RawAxis.lean#L14"><tt class="verbatim">b0_normalizes</tt></a>).
+    </p>
+    <p>
+      Even torus sides create tie points in the centred lift. Absolute values,
+      and hence separation, remain invariant under reflections. Placements
+      commute with signed permutations on the strict interior of the
+      fundamental box. Odd subdivision ratios remove this ambiguity from the
+      residue window, which gives equivariance of the parent map.
+    </p>
+    <h2 id="auto-12"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>object</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>code name</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>proposed notation</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">torus, side, cover</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L19"><tt class="verbatim">Site</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L17"><tt class="verbatim">Side</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L20"><tt class="verbatim">Cover</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\Lambda_{\ell} = (\mathbb{Z}/ \ell \mathbb{Z})^4\),
+        \(\ell\), \(\mathbb{Z}^4\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">reduction, centred lift</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L35-L38"><tt class="verbatim">wrap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L51"><tt class="verbatim">lift</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\([y]_{\ell}\), \(r_{\ell} (x)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">torus norm, separation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L78"><tt class="verbatim">pdist</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L81"><tt class="verbatim">separation</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\lvert x \rvert_{\ell}\), \(\lvert x - y
+        \rvert_{\ell}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">signed permutations, affine maps</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Index.lean#L23-L26"><tt class="verbatim">Signed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L145"><tt class="verbatim">affine</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\rho = (\pi, \epsilon) \in B_4\), \(A = (\rho, b)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">step, walk, transport</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L23-L26"><tt class="verbatim">Step</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L27"><tt class="verbatim">Walk</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L105-L107"><tt class="verbatim">travel</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\pm e_i\), \(w\), \(U (x ; w)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">configuration</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L21"><tt class="verbatim">Links</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L24"><tt class="verbatim">Wilson.Config</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(U\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">pullback, translation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L147-L148"><tt class="verbatim">pull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L182"><tt class="verbatim">translate</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(A^{\ast} U\), \(\tau_b U\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">gauge transformation; invariance; locality</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L132-L133"><tt class="verbatim">gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L135"><tt class="verbatim">GaugeInvariant</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L196-L197"><tt class="verbatim">LocalOn</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(U^g\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">plaquette, holonomy, image plaquette</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L14"><tt class="verbatim">Face</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L47"><tt class="verbatim">faceValue</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Faces.lean#L115-L116"><tt class="verbatim">Face.send</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(p = (x ; i < j)\), \(U_p\), \(A_{\sharp} p\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">periodic extension</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Path.lean#L224-L225"><tt class="verbatim">expandAt</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(E_b U\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">box, axis route, slab</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L13"><tt class="verbatim">box</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Box.lean#L44"><tt class="verbatim">route</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Foliation.lean#L18-L19"><tt class="verbatim">slab</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(B_r\), \(\text{route}_o (x, y)\), \(\text{slab} (r, a,
+        J)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">schedule: block factors, periods</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L28-L34"><tt class="verbatim">Schedule</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((L_m)\), \((P_p)\); the statement writes \(L_p\) for
+        \(P_p\) and \(b_k\) for \(L_k\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">denominator, spacing, side, log-scale</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L39-L41"><tt class="verbatim">denominator</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99"><tt
+        class="verbatim">a</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L67"><tt class="verbatim">side</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115"><tt
+        class="verbatim">scale</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(D_m\), \(a_m\), \(\ell (m, p)\), \(s_m = \log (1 /
+        a_m)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">placement</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L167"><tt class="verbatim">place</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(a_m  \hspace{0.17em} r_{\ell} (x)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">subdivision</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L22-L24"><tt class="verbatim">Ratio</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L29"><tt class="verbatim">embed</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L85-L88"><tt class="verbatim">residue</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L117"><tt class="verbatim">parent</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">ratio \(L\), \(\iota\), \(\text{res}\), \(\text{par}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">halo, cover number</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L43-L44"><tt class="verbatim">halo</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Support.lean#L69-L71"><tt class="verbatim">coverNumber</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{halo}_M (X)\), \(\text{cov}_M (X)\) (as in
+        III.5)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">gauge group</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L23-L26"><tt class="verbatim">Gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L78"><tt class="verbatim">El</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L94"><tt class="verbatim">mat</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(G \subset U (N)\), \(N = n + 1\) (the statement writes
+        \(m\))</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">plaquette cost, chord</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L112"><tt class="verbatim">price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L115"><tt class="verbatim">chord</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\sigma (u) = 1 - \frac{1}{N} \text{Re} \hspace{0.17em}
+        \text{tr}
+\hspace{0.17em} u\), \(\chi (u)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Haar probability</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L187"><tt class="verbatim">probHaar</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mu_G\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Lie algebra, colours, projection</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L126-L135"><tt class="verbatim">lie</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L43"><tt class="verbatim">Color</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L64"><tt class="verbatim">colorMat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L96-L97"><tt class="verbatim">projectColor</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathfrak{g} \cong \mathbb{R}^d\), \(c \mapsto X_c\),
+        \(\Pi\); \(X_{\Pi A} = P_{\mathfrak{g}} A\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">adjoint action, bracket, exponential</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L114-L117"><tt class="verbatim">adjoint</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L136-L150"><tt class="verbatim">ad</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L160"><tt class="verbatim">lieExp</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{Ad} (u)\), \(\text{ad} (c)\), \(\exp c\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">simplicity</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Lie.lean#L179-L182"><tt class="verbatim">Simple</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(G\) simple</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Casimir, slope constant</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt class="verbatim">casimir</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">slopeConstant</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(C_{\mathfrak{g}}\), \(\kappa = 11 C_{\mathfrak{g}} / (24
+        \pi^2)\) (\(= b_{\ast} = 2 b_0\) of the statement)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">local logarithm, nearest point</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Chart.lean#L138"><tt class="verbatim">plog</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L26"><tt class="verbatim">Nearest</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Nearest.lean#L91"><tt class="verbatim">focus</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\log_G\), nearest point, \(\text{foc} (X)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">curvature of a group element</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L173"><tt class="verbatim">curvature</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(F (u)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Wilson energy, weight, partition function</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L29"><tt class="verbatim">energy</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L58"><tt class="verbatim">bare</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L74"><tt class="verbatim">partition</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(E_{\ell} (U)\), \(e^{- \beta E_{\ell}}\), \(Z_{\ell}
+        (\beta)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">product Haar, Wilson law, expectation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L55"><tt class="verbatim">prior</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L87"><tt class="verbatim">law</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L99"><tt class="verbatim">moment</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mu_{\ell}\), \(\mathbb{P}_{\ell, \beta}\), \(\langle
+        \cdot \rangle_{\ell, \beta}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">spacetime, time, space, sup-distance</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L24"><tt class="verbatim">E4</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L27"><tt class="verbatim">time</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L28"><tt class="verbatim">spatial</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L51"><tt class="verbatim">cubedist</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathbb{R}^4\), \(x_t\), \(\vec{x}\), \(\lvert x - y
+        \rvert_{\infty}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(n\)-point configurations</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L56"><tt class="verbatim">Points</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L63"><tt class="verbatim">conf</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L66"><tt class="verbatim">generic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L70"><tt class="verbatim">spaced</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((\mathbb{R}^4)^n\), \(\text{Conf}_n\), generic,
+        \(r\)-spaced</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">orthogonal group, rotation generators</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L20"><tt class="verbatim">Ortho</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L132-L142"><tt class="verbatim">skewSpace</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L152-L154"><tt class="verbatim">plane</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(O (4)\), \(\mathfrak{so} (4)\), \(\Omega_{ij}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Minkowski square, cones</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L77"><tt class="verbatim">m</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L78"><tt class="verbatim">cone</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Geometry.lean#L79"><tt class="verbatim">inside</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\textsf{m} (x)\), \(\bar{V}_+\), \(V_+\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Lorentz group, dual, boost, Poincar&eacute; group</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L46"><tt class="verbatim">Mink.Lorentz</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Lorentz.lean#L95-L103"><tt
+        class="verbatim">dual</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Boost.lean#L92-L101"><tt class="verbatim">Ray.boost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Mink/Poincare.lean#L32-L34"><tt
+        class="verbatim">Poincare</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{L}= SO^+ (1, 3)\), \(g^{\vee}\), \(B_e (r)\),
+        \(\mathcal{P}\)</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-13"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Additional helper lemmas.</strong> The assignment of
+          declarations to I.1 includes helpers outside the six principal
+          folders, including in <tt class="verbatim">Cells</tt>, <tt class="verbatim">Extra</tt>,
+          <tt class="verbatim">Further</tt> and <tt class="verbatim">Next</tt>. Their statements
+          and proofs are not covered here; their elementary character should
+          not be assumed.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Coarsening along the selected schedule.</strong> Direct
+          consumers retain \(M \leqslant 2 B\) explicitly, for example <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Support.lean#L39-L65"><tt class="verbatim">YM.Next.Scheduling.Buy.footage</tt></a>, or include
+          it in a conjunction, as in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/ITERATION_NO_LOSS/Geometry.lean#L75-L76"><tt class="verbatim">YM.Extra.Iteration.Shapes.raw</tt></a>.
+          The derivation of this condition for the particular consecutive
+          cover scales used in III.5 and III.10 remains to be traced through
+          their schedule hypotheses.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Bibliographic precision.</strong> The references in &sect;2
+          give context. Exact theorem locations and agreement of their
+          conventions with the statements here remain to be checked.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <span class="ym-part"><a href="../units.html#part-i-setting">Part I</a><font class="ym-sep">&middot;</font><a href="../units/I-1.html">Unit
+      outline</a></span><a class="ym-next" href="II-1.html">II.1 Field labels and their lattice
+      representatives (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

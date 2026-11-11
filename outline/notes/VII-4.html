@@ -1,0 +1,3130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>VII.4. Operator product expansion and contact extensions &mdash;
+    detailed notes &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="VII-3.html">&larr; VII.3 Free Wick polynomials and reflected Gram
+      positivity (notes)</a><span class="ym-part"><a href="../units.html#part-vii-identification-as-yangmills">Part VII</a><font class="ym-sep">&middot;</font><a
+      href="../units/VII-4.html">Unit outline</a></span><a class="ym-next" href="VII-5.html">VII.5 Asymptotic freedom of
+      the running coupling (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>VII.4. Operator product expansion and contact extensions &mdash;
+      detailed notes</h1><a id="vii4-operator-product-expansion-and-contact-extensions--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">3</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">11</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">11</a>
+      </p>
+      <p>
+        4.1 Rates and sequences <span style="margin-left: 5mm"></span> <a href="#auto-5">11</a>
+      </p>
+      <p>
+        4.2 Prescription and Reader <span style="margin-left: 5mm"></span> <a href="#auto-6">12</a>
+      </p>
+      <p>
+        4.3 Norms in the ground algebra <span style="margin-left: 5mm"></span> <a href="#auto-7">13</a>
+      </p>
+      <p>
+        4.4 The lattice cluster estimate <span style="margin-left: 5mm"></span> <a href="#auto-8">14</a>
+      </p>
+      <p>
+        4.5 The OPE at grid configurations <span style="margin-left: 5mm"></span> <a href="#auto-9">16</a>
+      </p>
+      <p>
+        4.6 Arbitrary configurations and exponents <span style="margin-left: 5mm"></span> <a
+        href="#auto-10">17</a>
+      </p>
+      <p>
+        4.7 The Reader and the separated OPE <span style="margin-left: 5mm"></span> <a href="#auto-11">18</a>
+      </p>
+      <p>
+        4.8 Integrated and nested forms <span style="margin-left: 5mm"></span> <a href="#auto-12">19</a>
+      </p>
+      <p>
+        4.9 The slab bound of V.1 <span style="margin-left: 5mm"></span> <a href="#auto-13">20</a>
+      </p>
+      <p>
+        4.10 Contact extensions <span style="margin-left: 5mm"></span> <a href="#auto-14">21</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">24</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-16">25</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-17">26</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit VII.4: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/VII-4.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/VII-4.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> VII, identification as Yang&ndash;Mills.
+      <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE"><tt class="verbatim">YM/OPE</tt></a>. Its folders,
+      by role:
+    </p>
+    <ul>
+      <li>
+        <p>
+          prescription and Reader: <tt class="verbatim">Splitting</tt>, <tt class="verbatim">Orbits</tt>;
+        </p>
+      </li>
+      <li>
+        <p>
+          bounds in the ground algebra: <tt class="verbatim">Eye</tt>, <tt class="verbatim">Cards</tt>,
+          <tt class="verbatim">Exchange</tt>;
+        </p>
+      </li>
+      <li>
+        <p>
+          lattice cluster estimate: <tt class="verbatim">Sweep</tt>, <tt class="verbatim">Replicas</tt>,
+          <tt class="verbatim">Grouping</tt>, <tt class="verbatim">Columns</tt>, <tt class="verbatim">Prices</tt>;
+        </p>
+      </li>
+      <li>
+        <p>
+          passage to arbitrary configurations: <tt class="verbatim">Schemes</tt>, <tt
+          class="verbatim">Interpolate</tt>, <tt class="verbatim">Height</tt>, <tt class="verbatim">Rate</tt>;
+        </p>
+      </li>
+      <li>
+        <p>
+          trees: <tt class="verbatim">Nesting</tt>, <tt class="verbatim">Trees</tt>, <tt class="verbatim">Single</tt>,
+          <tt class="verbatim">Subpower</tt>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Also <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE"><tt class="verbatim">YM/Next/PHASE</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts"><tt class="verbatim">YM/Contacts</tt></a>
+      (<tt class="verbatim">Normal</tt>, <tt class="verbatim">Score</tt>, <tt class="verbatim">Layers</tt>,
+      <tt class="verbatim">Harvest</tt>, <tt class="verbatim">Solstice</tt>, <tt class="verbatim">Transport</tt>),
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact"><tt class="verbatim">YM/MultipleContact</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram"><tt class="verbatim">YM/SharpGram</tt></a>.
+      The public statements are <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L68-L77"><tt class="verbatim">publicOPE</tt></a> and <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49"><tt class="verbatim">contactDistribution</tt></a>.
+    </p>
+    <p>
+      <strong>Size:</strong> about 10,200 lines in 2,035 declarations assigned
+      to this unit:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <tt class="verbatim">OPE</tt> about 4,600, mostly in <tt class="verbatim">Grouping</tt>,
+          <tt class="verbatim">Replicas</tt>, <tt class="verbatim">Columns</tt>, <tt class="verbatim">Trees</tt>,
+          <tt class="verbatim">Sweep</tt>;
+        </p>
+      </li>
+      <li>
+        <p>
+          <tt class="verbatim">Next/PHASE</tt> 840;
+        </p>
+      </li>
+      <li>
+        <p>
+          <tt class="verbatim">Contacts</tt> about 3,400;
+        </p>
+      </li>
+      <li>
+        <p>
+          <tt class="verbatim">MultipleContact</tt> about 290;
+        </p>
+      </li>
+      <li>
+        <p>
+          <tt class="verbatim">SharpGram</tt> about 250.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Conventions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(G\) is the compact gauge group, with simple Lie algebra, and
+          \(\mathcal{W}\) is the Wilson family of the construction. Its
+          lattice levels \(k = 0, 1, 2, \ldots\) have spacings \(a_k
+          \downarrow 0\). Larger \(k\) means finer. The sequence is
+          <em>gentle</em>: \(\log (a_k / a_{k + 1}) / \log (1 / a_k) \to 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(I_{N, p} (v, x)\) is the renormalized lattice observable of a
+          lattice label (token) \(v\) at the site \(x\).
+          \(\|F\|_{\mathcal{T}_k}\) is the chessboard root of a lattice
+          function \(F\) in the centred tiling of scale \(a_k\). Both follow
+          IV.1.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(S\) is the limit table along the refined extraction order. It has
+          field spaces \(F_d\) and the inclusions \(\iota_{m, n} : F_m \to
+          F_n\) (\(m \leqslant n\)) of the field algebra. A label list is \(a
+          = (a_i)_{i \in I}\) with \(a_i \in F_{d_i}\), and its total degree
+          is \(w (a) = \sum_i d_i\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{A}\) is the ground algebra of V.1: the commutative
+          C*-algebra generated by the compressed slab operators \(M (u)\) of
+          separated words \(u\). Its vacuum is \(\Omega\), its Gelfand
+          spectrum is the phase space \(X\) with measure \(\nu\) of full
+          support, and its characters are \(\chi_{\xi}\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(S^{\xi} (u) = \chi_{\xi} (M (u))\) and \(S^{\text{mix}} (u) =
+              \langle \Omega, M (u) \Omega \rangle\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Hence, for \(A \in \mathcal{A}\) and \(c \geqslant 0\): \(\|A\|
+              \leqslant c\) if and only if \(|s (A) | \leqslant c\) for every
+              state \(s \in X \sqcup \{ \text{mix} \}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Views.lean#L67-L68"><tt class="verbatim">glance_contract</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L89-L92"><tt class="verbatim">Cards.pressure</tt></a>).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Clusters and clearance follow Definition 1.13 of the statement.
+        </p>
+        <ul>
+          <li>
+            <p>
+              \((x, o)\) is an <em>\((r, M, \eta)\)-cluster</em> if \(|x_i -
+              o| \leqslant Mr\) and \(|x_i - x_{i'} | \geqslant \eta r\) for
+              \(i \ne i'\).
+            </p>
+          </li>
+          <li>
+            <p>
+              \(y \in (\mathbb{R}^4)^J\) is <em>\(c\)-clear of \(o\)</em> if
+              \(|o - y_j | \geqslant c\) and \(|y_j - y_{j'} | \geqslant c\)
+              for \(j \ne j'\).
+            </p>
+          </li>
+          <li>
+            <p>
+              \(S^s (a, x ; b, y)\) and \(M (a, x ; b, y)\) denote the
+              concatenated word.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          &quot;For all sufficiently small \(r\)&quot; means: there is \(r_0 >
+          0\), depending only on the data quantified before the phrase, such
+          that the assertion holds for all \(r \in (0, r_0)\) and all
+          configurations and states quantified after it.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Proposition VII.4.1 (separated OPE; properties (O1)&ndash;(O2)
+      of the main theorem).</strong>
+    </p>
+    <p>
+      <em>Setting.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \((\mathcal{W}, S, F)\) is a family, limit table and final record
+          satisfying the RG hypotheses of Remark VII.4.7, denoted (RG).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{P}\) is any coherent prescription (VII.4.6).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{R}\) is the Reader built from \(\mathcal{P}\) and the
+          rotation and reality structures of \(F\) (Lemma VII.4.c). It
+          provides strata \(E_j \subset F_j\), bases fixed by conjugation
+          \((O_{j, \kappa})_{\kappa \in \text{Ch}_j}\) of \(E_j\), and
+          coefficients \(c_{j, \kappa} (a ; x, o)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(O1)</strong> Fix a finite \(I\), labels \(a\), \(M
+          \geqslant 0\), \(\eta > 0\), \(\varepsilon > 0\), \(j\) and \(\kappa
+          \in \text{Ch}_j\). For all sufficiently small \(r\) and every \((r,
+          M, \eta)\)-cluster \((x, o)\): \(|c_{j, \kappa} (a ; x, o) |
+          \leqslant r^{\hspace{0.17em} j - w (a) -
+\varepsilon}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(O2)</strong> Fix finite \(I, J\), labels \(a, b\), \(M
+          \geqslant 0\), \(\eta, c, \varepsilon > 0\) and \(D \in
+          \mathbb{N}\). For all sufficiently small \(r\), every \((r, M,
+          \eta)\)-cluster \((x, o)\) and every \(y\) that is \(c\)-clear of
+          \(o\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              the points of \((x, y)\) are pairwise distinct, and so are those
+              of \((o, y)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the remainder satisfies
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle | M (a, x ; b, y) - \sum_{j \leqslant D} \sum_{\kappa
+      \in \text{Ch}_j} c_{j,
+\kappa} (a ; x, o)  \hspace{0.17em} M \left( (j,
+      O_{j, \kappa}), o ;
+\hspace{0.17em} b, y \right) |_{\mathcal{A}}
+      \leqslant r^{\hspace{0.17em} D +
+1 - w (a) - \varepsilon} ;\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          hence \(| S^s (a, x ; b, y) - \sum_{j \leqslant D} \sum_{\kappa}
+          c_{j, \kappa} (a ; x,
+o)  \hspace{0.17em} S^s ((j, O_{j, \kappa}), o
+          ; b, y) | \leqslant r^{D + 1 -
+w (a) - \varepsilon}\) for every \(s
+          \in X \sqcup \{ \text{mix} \}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The coefficients do not depend on \(b\), \(y\), \(s\) or \(D\). The
+      thresholds do not depend on \(x\), \(o\), \(y\) or \(s\).
+    </p>
+    <p>
+      <em>Status:</em> theorem for every Reader on the given final record
+      under (RG). The main construction supplies the coherent prescription and
+      (RG) in VIII.1.
+    </p>
+    <p>
+      <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L62-L64"><tt class="verbatim">Orbits.Foundation</tt></a>: clause <tt class="verbatim">coefficients</tt>
+          is (O1); clause <tt class="verbatim">discrepancy</tt> gives injectivity, the
+          bound in \(\mathcal{A}\) and the bound in every state.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L67-L68"><tt class="verbatim">Orbits.produce</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L64-L69"><tt class="verbatim">coefficient_separated</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L71-L85"><tt class="verbatim">quantitative_separated</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The error element is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L61-L63"><tt class="verbatim">algebraError</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Headline: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L24-L48"><tt class="verbatim">SeparatedOPE</tt></a>, clauses <tt
+          class="verbatim">coefficient</tt> and <tt class="verbatim">remainder</tt>, the latter
+          via <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L49-L63"><tt class="verbatim">Independent.Core.point</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Public form: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L68-L77"><tt class="verbatim">publicOPE</tt></a> into <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L70-L80"><tt
+          class="verbatim">Hierarchy.OperatorProductExpansion</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition VII.4.2 (integrated remainder; item (D8)).</strong>
+      Fix the data of (O2), a measurable space \(K\) and \(B \geqslant 0\).
+      For all sufficiently small \(r\) the following holds.
+    </p>
+    <p>
+      <em>Hypotheses.</em> Let \(\mu\) be a positive measure on \(K\), \(w \in
+      L^1 (\mu ; \mathbb{C})\) with \(\int |w|  \hspace{0.17em} d \mu
+      \leqslant B\), and \(k \mapsto (x (k), o (k), y (k))\) an
+      a.e.-measurable configuration map. Assume that \(\mu\)-a.e. on \(\{w \ne
+      0\}\), \((x, o)\) is an \((r, M, \eta)\)-cluster and \(y\) is
+      \(c\)-clear of \(o\).
+    </p>
+    <p>
+      <em>Conclusion.</em> Take for \(s (k)\) either the mixed state, or \(\xi
+      (k)\) for an arbitrary a.e.-measurable phase map \(\xi : K \to X\).
+      Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(w \hspace{0.17em} S^s (a, x ; b, y)\), \(w\) times the truncated
+          sum, and \(w\) times their difference are integrable;
+        </p>
+      </li>
+      <li>
+        <p>
+          the integrals satisfy
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle | \int_K w (k)  \left[ S^{s (k)} (a, x ; b, y) - \sum_{j
+      \leqslant D}
+\sum_{\kappa} c_{j, \kappa} (a ; x, o) \hspace{0.17em} S^{s
+      (k)} ((j, O_{j,
+\kappa}), o ; b, y) \right] d \mu (k) | \leqslant B
+      \hspace{0.17em} r^{D + 1 -
+w (a) - \varepsilon} .\)
+    </center>
+    <p>
+      In particular, for every probability measure \(\nu'\) on \(X\), the
+      \(\nu'\)-mixture of the phases satisfies the bound of (O2) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L58"><tt
+      class="verbatim">probability_mixtures</tt></a>). The same pointwise threshold
+      works for every \(K\) and \(B\).
+    </p>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L98-L108"><tt class="verbatim">estimates_weighted</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L53-L57"><tt
+      class="verbatim">JointEstimate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L17"><tt class="verbatim">FitsOn</tt></a>;
+      clause <tt class="verbatim">profiles</tt> of <tt class="verbatim">SeparatedOPE</tt>, through
+      <tt class="verbatim">Core.joint</tt>.
+    </p>
+    <p>
+      <strong>Proposition VII.4.3 (nested OPE, i.e. composition of
+      coefficients over trees; item (D10)).</strong>
+    </p>
+    <p>
+      <em>Trees and plots.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(t\) is a finite rooted tree whose root is an inner node, and \(v\)
+          labels its leaves.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(w_p\) is the total degree of the leaves below the inner node
+          \(p\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>plot</em> \(z\) assigns points to the leaves and an anchor
+          \(z_p\) to each inner node.
+        </p>
+      </li>
+      <li>
+        <p>
+          Radii \(s_p > 0\) are attached to the inner nodes, with \(\rho_p =
+          s_p / s_{\text{parent} (p)}\) for non-root \(p\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Admissibility.</em> \((s, z)\) is <em>\((r, M,
+      \eta)\)-admissible</em> if:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(s_{\text{root}} = r\) and \(s_p \leqslant s_{\text{parent} (p)}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          at every inner node \(p\), all positions of the subtree lie within
+          \(Ms_p\) of \(z_p\);
+        </p>
+      </li>
+      <li>
+        <p>
+          positions in different children of \(p\) are at distance \(\geqslant
+          \eta s_p\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Costs.</em> Put
+    </p>
+    <center>
+      \(\displaystyle \text{toll}_m (s) = r^{\hspace{0.17em} m - w (v) -
+      \varepsilon}  \prod_{p \ne
+\text{root}} \rho_p^{- w_p - \varepsilon},
+      \qquad \text{nest}_D (s) = \sum_{p
+\ne \text{root}}
+      \rho_p^{\hspace{0.17em} D_p + 1} .\)
+    </center>
+    <p>
+      <em>Conclusions.</em> Fix \(m\), \(\kappa \in \text{Ch}_m\), truncation
+      degrees \(D_p\) at the inner nodes, \(M \geqslant 0\) and \(\eta,
+      \varepsilon > 0\). For all sufficiently small \(r\) and every admissible
+      \((s, z)\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) \(|c_{m, \kappa} (v ; z_{\text{leaves}}, z_{\text{root}}) |
+          \leqslant
+\text{toll}_m (s)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) \(|c_{m, \kappa} (v ; \cdot) - c^{(D)}_{m, \kappa} (v ; z) |
+          \leqslant
+\text{toll}_m (s) \hspace{0.17em} \text{nest}_D (s)\).
+          Define \(c^{(D)}\) recursively: each inner child \(q\) contributes a
+          channel \((j_q, \kappa_q)\) with \(j_q \leqslant D_q\), its composed
+          coefficient, and the output field \(O_{j_q, \kappa_q}\) at \(z_q\).
+          Each leaf child contributes its original label and the factor \(1\).
+          Multiply these factors by the root coefficient for the resulting
+          child labels, and sum over the inner children's channels. The root
+          output is fixed at \((m, \kappa)\); \(D_{\text{root}}\) is unused.
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) Fix a finite spectator list \(b\) and \(\delta > 0\) before
+          taking \(r\) small. If \(y\) is at distance \(\geqslant \delta\)
+          from every point of the plot, with mutual distances \(\geqslant
+          \delta\), then the degree-\(m\) remainder of VII.4.1 for the leaves
+          at \(z_{\text{root}}\) has \(\mathcal{A}\)-norm, and absolute value
+          in every state, at most \(\text{toll}_{m + 1} (s)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) Fix a measurable space \(K\). For each small \(r\), keep the
+          radii \(s\) fixed throughout the integration. Let \(\mu\) be a
+          positive measure on \(K\) and \(q \in L^1 (\mu ; \mathbb{C})\) with
+          \(\int |q|  \hspace{0.17em} d \mu \leqslant B\). Let the plot, and
+          in (c) the spectators, be a.e.-measurable maps satisfying the stated
+          geometry a.e. where \(q \ne 0\). The direct and composed
+          coefficients are integrable after multiplication by \(q\); their
+          integral and the difference of their integrals satisfy (a)&ndash;(b)
+          with an additional factor \(B\). The tested remainder has the
+          integrated conclusion of VII.4.2 with bound \(B \hspace{0.17em}
+          \text{toll}_{m + 1} (s)\), for the mixed state or any
+          a.e.-measurable phase map. The thresholds are uniform in \(s, \mu,
+          q, B\) and the configuration maps.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem for every Reader on the final record under
+      (RG).
+    </p>
+    <p>
+      <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Composite.lean#L33-L35"><tt class="verbatim">Composite.token</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Composite.lean#L93-L95"><tt class="verbatim">Composite.nShot</tt></a>
+          distinguish unchanged leaf inputs from inner-node expansions.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L128-L138"><tt class="verbatim">NestedOPE</tt></a> (clauses <tt class="verbatim">direct</tt>,
+          <tt class="verbatim">tested</tt>, <tt class="verbatim">joint</tt>, <tt class="verbatim">jointLaw</tt>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Endpoint.lean#L17-L27"><tt class="verbatim">Nesting.Uniform</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Endpoint.lean#L31-L36"><tt class="verbatim">Nesting.uniform</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L15-L18"><tt class="verbatim">Accept</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Actual.lean#L18-L19"><tt class="verbatim">Tree.toll</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Weights.lean#L102-L103"><tt class="verbatim">Tree.nestPrice</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Composite.lean#L115"><tt class="verbatim">Composite.stacked</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Integration.lean#L66-L71"><tt class="verbatim">CoefIntegral</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition VII.4.4 (contact extensions; items (D2),
+      (D11)&ndash;(D13)).</strong>
+    </p>
+    <p>
+      <em>Setting.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{M}\) is a system of contact devices on the final record.
+          Its prescription is the Reader's (\(\mathcal{M}. \text{basis}
+          =\mathcal{P}\); this is (D11)) and its rotation action is that of
+          \(F\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (RG) holds.
+        </p>
+      </li>
+      <li>
+        <p>
+          For labels \(a_1, \ldots, a_k\) of degrees \(d_i\) and a state
+          \(s\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              let \(\text{cl} (n) > 0\) be the clearance of the devices up to
+              degree \(n\);
+            </p>
+          </li>
+          <li>
+            <p>
+              put \(B_0 = \min (1, \text{cl} (w (a)))\) and fix a subtraction
+              length \(s_0 \in (0, B_0 / 2]\); the public form uses \(s_0 =
+              B_0 / 4\);
+            </p>
+          </li>
+          <li>
+            <p>
+              let \(\mathcal{D}^s_a (f) = \int \langle \text{full} \rangle_s
+              (f ; x) 
+\hspace{0.17em} dx\), the kernel being given by the
+              forest formula of Lemma VII.4.r.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) \(\mathcal{D}^s_a\) is a distribution of order at most \((2 + w
+          (a))  \hspace{0.17em} k\). For every compact \(K\) there is \(C_K\)
+          with \(\int | \langle \text{full} \rangle_s (f ; x) | 
+          \hspace{0.17em} dx \leqslant
+C_K \max_{| \alpha | \leqslant (2 + w
+          (a)) k} \| \partial^{\alpha}
+f\|_{\infty}\) for all \(f\) supported
+          in \(K\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) <strong>(D2)</strong> \(\mathcal{D}^s_a (f) = \int f (x) 
+          \hspace{0.17em} S^s (a ; x)  \hspace{0.17em}
+dx\) for every \(f \in
+          C_c^{\infty}\) supported in \(\text{Conf}_k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) The same construction gives distributions on affine slices \(o +
+          P (E)\), where \(P\) is a linear isometry whose range contains the
+          normal space of the diagonal of a group \(g \subset \{1, \ldots,
+          k\}\), and \(o\) lies on that diagonal.
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) <strong>(D12)</strong> For the admissible stage families
+          described below, the pairing equals the sum over subtraction choices
+          and dyadic shells. Every shell kernel is integrable, the sum of
+          their \(L^1\) norms is finite, and the iterated forest sums give the
+          same pairing.
+        </p>
+      </li>
+      <li>
+        <p>
+          (e) <strong>(D12)</strong> For the single-block partition \(Q =
+          \{g\}\) with \(g \ne \emptyset\), use pure dilation in its normal
+          space \(K_g\), with \(R \in (0, 1]\). Put \(q_g = 4 (|g| - 1)\) and
+          \(f_R (x) = R^{- q_g} f (R^{- 1} x_{K_g} + x_{K_g^{\perp}})\). If
+          \(\text{supp} f\) lies in the rescaled stage and \(\|f\|_{C^N}
+          \leqslant H\), where \(N = (2 + \sum_{i = 1}^k d_i)  (|g| - 1)\),
+          then for every \(\varepsilon > 0\) the integral of the absolute
+          kernel is at most \(CHR^{\hspace{0.17em} u - w (a_g) -
+          \varepsilon}\). Here \(u = 0\) for the full resolution, \(u = n\)
+          for the weight-\(n\) coefficient and \(u = n + 1\) for the remainder
+          after degree \(n\). For the last two bounds the stage must also lie
+          within clearance \(\text{cl} (n)\) of the \(g\)-diagonal. For \(|g|
+          > 1\), tests supported away from that diagonal give the same pairing
+          as the punctured expression, which already includes
+          proper-subcluster subtractions.
+        </p>
+      </li>
+      <li>
+        <p>
+          (f) <strong>(D13)</strong> The device strata have bases fixed by
+          conjugation, and the basis in degree 0 contains the unit field.
+        </p>
+      </li>
+      <li>
+        <p>
+          (g) <strong>(D13)</strong> For every positive sequence \((f_n)\)
+          there are thresholds \(0 < t_n \leqslant f_n\) with \(4 t_{n + 1} <
+          t_n\), \(t_n \to 0\) and \(2 (n + 1) t_n \leqslant \text{cl} (n)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      In (d)&ndash;(e), an admissible stage family consists of a partition
+      \(Q\) of a group \(g\), affine placements \(o + P (E)\), positive
+      subtraction lengths \(s\), and block scales \(R_i \in (0, 1]\). Each
+      \(o\) lies on the block diagonals, and the range of \(P\) contains their
+      normal spaces. A common ceiling \(B \leqslant \min (1, \text{cl} (\sum_i
+      d_i))\) satisfies \(2 s \leqslant B\). At each placement a common linear
+      frame acts by \(R_i\) on every block normal space and preserves each
+      orthogonal complement. The closed stages lie in a fixed ball in frame
+      coordinates and within normal distance \(B\) of each block diagonal; for
+      nonsingleton blocks \(R_i \leqslant C_1 s\) with fixed \(C_1\). Original
+      and spectator labels have uniform norm bounds. Spectator positions and
+      labels are continuous on each stage and constant in each block's normal
+      directions. All centroids of nonempty subgroups of different blocks, and
+      all spectators, are uniformly separated by some \(\delta > 0\). These
+      conditions are the geometric and field hypotheses for the summation and
+      scaling estimates; their constants may depend on the fixed family.
+    </p>
+    <p>
+      Uniqueness, reflection positivity on overlapping supports, contact Ward
+      identities for arbitrary subtractions and real-time products are not
+      asserted.
+    </p>
+    <p>
+      <em>Status:</em> theorem (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L65-L69"><tt class="verbatim">provided</tt></a>). In the
+      main theorem the devices are assembled in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/Continuum.lean#L14-L24"><tt class="verbatim">contacts_on</tt></a>
+      (VIII.1), with detectors from <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultipleContact/Detector.lean#L28-L35"><tt class="verbatim">detector_exists</tt></a>.
+      (D2) appears in the detailed theorem <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L40"><tt class="verbatim">constructed</tt></a>,
+      not in the public joint existence statement.
+    </p>
+    <p>
+      <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Stage hypotheses: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Harvest/Route.lean#L24-L45"><tt class="verbatim">Route</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Harvest/Reader.lean#L57"><tt
+          class="verbatim">Route.Authority</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Strict.lean#L48-L52"><tt class="verbatim">Backdrop.Eligible</tt></a>;
+          output clearance: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Projection.lean#L28"><tt class="verbatim">sees</tt></a>; derivative
+          order: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Harvest/Aperture.lean#L25"><tt class="verbatim">stairs</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L52-L63"><tt class="verbatim">MultipleLight</tt></a>, with clauses <tt class="verbatim">slope</tt>
+          = <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L33-L40"><tt class="verbatim">Sunshine</tt></a>, <tt class="verbatim">moment</tt> = <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L23-L31"><tt class="verbatim">Resolution</tt></a>, and <tt class="verbatim">distribution</tt>
+          = <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31"><tt class="verbatim">Charge</tt></a> of order <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Skies.lean#L48"><tt class="verbatim">totalTestOrder</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L47-L51"><tt class="verbatim">SystemBasis</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28"><tt class="verbatim">Thresholds</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Public form: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49"><tt class="verbatim">contactDistribution</tt></a> for <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactSpec.lean#L12-L14"><tt class="verbatim">Hierarchy.Contacts</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition VII.4.5 (slab-operator bound; the bench
+      V.1.7).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em> \((\mathcal{W}, f, S)\) is a seed:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{W}\) has the construction properties;
+        </p>
+      </li>
+      <li>
+        <p>
+          the extraction is ordered and has generic point limits;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(S\) satisfies the Euclidean hierarchy;
+        </p>
+      </li>
+      <li>
+        <p>
+          the corrected field estimates of IV.1 hold;
+        </p>
+      </li>
+      <li>
+        <p>
+          the cell hypothesis holds: reflection positivity and the chessboard
+          inequality at every cutoff, and centred bounds \(\|I_{N, p} (v,
+          x)\|_{\mathcal{T}_m} \leqslant A \hspace{0.17em} a_m^{- d
+          -
+\varepsilon} + \eta\) late in the extraction.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> For every \(D \in \mathbb{N}\) and \(R > 0\) there
+      are \(C_0 > 0\) and \(P \in \mathbb{N}\) with the following property.
+      Let \(d > 0\), \(r \in (0, 1]\), and let \(w \neq \emptyset\) be a word
+      with these properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          its tokens have degree \(\leqslant D\) and coefficient norm
+          \(\leqslant R\);
+        </p>
+      </li>
+      <li>
+        <p>
+          it lies in the time slab \((0, d)\) and is \(r\)-buffered there.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then there are a level \(b\) and a width \(0 < s \leqslant d\) with \(s
+      \in a_b \mathbb{N}\) and \(w\) in the slab \((0, s)\), such that every
+      word \(v\) supported at positive times has a constant \(B_v\) with
+    </p>
+    <center>
+      \(\displaystyle |S (\Theta v_n \cdot v_n) | \leqslant B_v 
+      \hspace{0.17em} \rho^{4 n}  \quad
+(n \in \mathbb{N}), \qquad \rho =
+      C_0^{|w|}  \hspace{0.17em} (|w| / r)^{P |w|}
+.\)
+    </center>
+    <p>
+      Here \(v_n\) is \(v\) preceded by \(2 n\) consecutive slabs of width
+      \(s\) that hold alternately \(w\) and its reflection. In V.1 an iterated
+      Schwarz inequality turns this into \(\|T_s (w)\| \leqslant \rho\). One
+      may take \(P = 4 (D + 1)\).
+    </p>
+    <p>
+      <em>Status:</em> theorem: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160"><tt class="verbatim">Next.Phase.seats</tt></a>
+      proves <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L27"><tt class="verbatim">Bid.Seats</tt></a>.
+    </p>
+    <ul>
+      <li>
+        <p>
+          It enters the phase construction of V.1 through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Assembly.lean#L69-L73"><tt class="verbatim">Next.Phase.vacuum</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The OPE proofs of this unit do not use it directly; they use the
+          algebra \(\mathcal{A}\) it helps to build.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Phase.lean#L21-L24"><tt class="verbatim">Bid.Bench</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L70-L71"><tt
+      class="verbatim">OS.QRead</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Slabs.lean#L109"><tt class="verbatim">Spread.radius</tt></a>;
+      steps in Lemmas VII.4.o&ndash;p.
+    </p>
+    <p>
+      <strong>Proposition VII.4.6 (coherent prescription).</strong>
+    </p>
+    <p>
+      <em>Setting.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A <em>probe</em> is a finite separated configuration of tokens; its
+          first point is the anchor, and the other points are taken relative
+          to it.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{sp}_n : F_n \to \mathbb{C}^{\{ \text{probes} \}}\) sends
+          \(\phi\) to the correlations of \(\phi\) at the anchor with the
+          probe tokens. This map is injective, by the definition of \(F_n\) as
+          a quotient by null fields, and compatible with the inclusions.
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>mode</em> is a pair \(i = (n, \alpha)\), where \(\alpha\)
+          indexes a basis of \(F_n / \iota (F_{n - 1})\), with \(F_{- 1} =
+          0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> There are, for every mode, a vector \(u_i \in F_n\)
+      (needle) and a finitely supported family \(\lambda_i\) of complex
+      weights on probes (sheet), with the following property. Write
+      \(\lambda_i^{(m)} = \sum_p \lambda_i (p) \hspace{0.17em} \text{sp}_m
+      (\cdot) (p)\) for the induced functional (test) on \(F_m\). Then for
+      every \(n\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\lambda_i^{(n)}  (\iota u_j) = \delta_{ij}\) for all modes \(i,
+          j\) of degree \(\leqslant n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\phi = \sum_{\deg i \leqslant n} \lambda_i^{(n)} (\phi) 
+          \hspace{0.17em} \iota
+u_i\) for all \(\phi \in F_n\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Tests of degree \(> n\) vanish on \(F_n\). One prescription serves every
+      truncation degree.
+    </p>
+    <p>
+      <em>Status:</em> theorem.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46"><tt class="verbatim">Prescription</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L59-L61"><tt
+      class="verbatim">SignedOff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L63"><tt class="verbatim">Coherent</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31"><tt class="verbatim">Prescription.chosen</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L32-L35"><tt class="verbatim">highVan</tt></a>.
+    </p>
+    <p>
+      <strong>Remark VII.4.7 (hypotheses and order of choices).</strong>
+    </p>
+    <p>
+      <em>The order of choices.</em> In the main theorem (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L143-L155"><tt class="verbatim">WilsonExistence</tt></a>),
+      the family is chosen first, for \(G\) with simple Lie algebra and any
+      penalty \(b > 0\). Then, for every extraction order, a refinement, the
+      table, the final record, the Reader and the devices are chosen together.
+    </p>
+    <p>
+      <em>The hypotheses (RG)</em> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60"><tt class="verbatim">Services</tt></a>)
+      bundle four items:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the grid-approximant property;
+        </p>
+      </li>
+      <li>
+        <p>
+          simplicity of the Lie algebra of \(G\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the per-step and cluster RG estimates;
+        </p>
+      </li>
+      <li>
+        <p>
+          the continuum extraction record.
+        </p>
+      </li>
+    </ul>
+    <p>
+      For the table of the construction these hypotheses are proved by <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG17/Joint.lean#L60-L90"><tt class="verbatim">Run.extractible17</tt></a> (VIII.1, from Part III
+      outputs; &sect;2 input 6).
+    </p>
+    <p>
+      <em>Separate existence theorems.</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Single.lean#L32-L37"><tt class="verbatim">through_final</tt></a>
+      and the raw tree theorem allow any penalty \(b > 0\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L70-L77"><tt
+      class="verbatim">Orbits.foundation</tt></a>, the single-cluster existence theorem,
+      the covariant tree existence theorem and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L78-L79"><tt class="verbatim">celestial</tt></a>
+      choose \(b = 1\). The main theorem instead applies the OPE estimates to
+      its already chosen family.
+    </p>
+    <p>
+      <em>Further results.</em> The same construction also gives:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the OPE in the raw (complex, non-covariant) needle basis (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Single.lean#L40-L51"><tt
+          class="verbatim">SingleSubpower</tt></a>);
+        </p>
+      </li>
+      <li>
+        <p>
+          tree versions for every coherent prescription (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L39-L45"><tt class="verbatim">AllShapes</tt></a>,
+          via <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Subpower.lean#L47-L48"><tt class="verbatim">Services.everything</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>What is not claimed.</em> The coefficients depend on the
+      prescription and the Reader. Independence of the extraction subsequence
+      is not claimed (Assessment &sect;7.5).
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Inputs from other units</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <em>The final record and its seed</em> (IV.1, V.1&ndash;V.3, VI.1;
+          assembled in VIII.1). This comprises:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the cutoff family with the construction properties (II.2,
+              III.13);
+            </p>
+          </li>
+          <li>
+            <p>
+              the hierarchy (Euclidean axioms) of \(S\), and generic point
+              limits on grid configurations;
+            </p>
+          </li>
+          <li>
+            <p>
+              the field algebra: inclusions \(\iota\), derivative identities,
+              rotation action and its laws, reality structure.
+            </p>
+          </li>
+        </ul>
+        <p>
+          Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L26"><tt class="verbatim">Seed</tt></a>, <tt class="verbatim">Locals</tt>, <tt
+          class="verbatim">Final</tt>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Reflection positivity and centred bounds</em> (IV.1, interface
+          item 2; I.1). Two parts:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the chessboard inequality at every cutoff;
+            </p>
+          </li>
+          <li>
+            <p>
+              for every degree \(d\) and \(\varepsilon, R > 0\), there are
+              \(m_0\) and \(A \geqslant 0\) such that, for every \(m \geqslant
+              m_0\) and \(\eta > 0\), eventually along the extraction every
+              \(I_{N, p} (v, x)\) with \(\|v\| \leqslant R\) is interior to
+              its centred cell at scale \(a_m\), with root \(\leqslant A
+              \hspace{0.17em} a_m^{- d - \varepsilon} + \eta\), uniformly in
+              \(v\) and the site \(x\).
+            </p>
+          </li>
+        </ul>
+        <p>
+          Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Packing.lean#L68-L79"><tt class="verbatim">CellHyp</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>The ground algebra and phases</em> (V.1). This comprises:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(\mathcal{A}\) commutative, with \(X\) its Gelfand spectrum and
+              \(\nu\) of full support;
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B17.lean#L71-L90"><tt class="verbatim">B17.answer</tt></a>: \(\langle \Omega,
+              (u^{\ast} u)^n \Omega \rangle\) is the limit, as the spacing
+              \(\to \infty\), of the continuum correlation of \(2 n\)
+              time-translates of \(u\), alternately conjugated;
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Detect.lean#L22-L58"><tt class="verbatim">Retain.bit</tt></a>: if \(c \geqslant 0\)
+              and \(\langle \Omega, (u^{\ast} u)^n \Omega \rangle \leqslant
+              c^{2 n}\) for all \(n\), then \(| \chi_{\xi} (u) | \leqslant c\)
+              for all \(\xi\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the selection, the every-phase tables, and their smoothness.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>The derivative identity</em> (VI.1, IV.1): the derivative in one
+          point of a correlation is the correlation with the derivative label,
+          of degree one higher. It is used in Lemma VII.4.i.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Haar measure on \(O (4)\) and the rotation laws</em> (VI.1).
+          They are used for the covariant Reader.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>The RG hypotheses (RG).</em> The estimates come from Part III
+          and are collected in VIII.1:
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L121-L123"><tt class="verbatim">Org.Grill</tt></a>: for every degree bound
+              \(d\) and level \(m\) there is \(k \geqslant m\) such that
+              conjugation-fixed token tuples of degree \(\leqslant d\) on
+              generic level-\(k\) grid configurations admit coverings that
+              work along the extraction. It is supplied in III.11 and used in
+              the a priori bounds (Lemma VII.4.e).
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas/Budget.lean#L13-L16"><tt class="verbatim">Package</tt></a> = <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rough/Factory.lean#L18-L27"><tt class="verbatim">TableTickets</tt></a>,
+              together with cluster product cuts for every arity. It supplies
+              per-step RG bounds, coefficient transport and column estimates,
+              halo summability, polymer representations, and per-cell scale
+              choices. These are the Part III inputs to Lemmas
+              VII.4.f&ndash;g, collected in VIII.1.
+            </p>
+          </li>
+          <li>
+            <p>
+              The continuum extraction record (IV.1, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean"><tt class="verbatim">Next/EXTRACTION/Base.lean</tt></a>):
+              the extraction to the smooth continuum table. It is supplied
+              with the extraction in III.11 and used in the grid estimates
+              (Lemma VII.4.h).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      <strong>Standard mathematics</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Commutative C*-algebras: the Gelfand isometry and norm \(= \sup\)
+          over characters (Bratteli&ndash;Robinson I, &sect;2.3.5).
+        </p>
+      </li>
+      <li>
+        <p>
+          Reflection positivity and chessboard estimates
+          (Fr&ouml;hlich&ndash;Israel&ndash;Lieb&ndash;Simon 1978;
+          Fr&ouml;hlich&ndash;Simon 1977; Glimm&ndash;Jaffe, Ch. 6 and 18).
+        </p>
+      </li>
+      <li>
+        <p>
+          The iterated Schwarz inequality for transfer operators on an
+          invariant pre-Hilbert domain: exponential bounds on the iterates of
+          an adjoint pair give \(\|Av\| \leqslant D \|v\|\). This is used in
+          V.1 (Glimm&ndash;Jaffe, Ch. 6).
+        </p>
+      </li>
+      <li>
+        <p>
+          Block-spin renormalization and polymer representations
+          (Ba&#x0142;aban; Brydges, <em>Lectures on the renormalisation
+          group</em>; Gaw&#x0119;dzki&ndash;Kupiainen).
+        </p>
+      </li>
+      <li>
+        <p>
+          The Wilson&ndash;Zimmermann OPE (Wilson 1969; Zimmermann 1973) and
+          its axiomatic form (Hollands&ndash;Wald 2008). The conclusions here
+          are finite-order asymptotic bounds with \(\varepsilon\)-loss.
+        </p>
+      </li>
+      <li>
+        <p>
+          Extension of distributions across diagonals with Taylor subtraction
+          of order given by the scaling degree (Epstein&ndash;Glaser 1973;
+          Brunetti&ndash;Fredenhagen 2000; H&ouml;rmander I, Thm
+          3.2.3&ndash;3.2.4). Forest formulas (Zimmermann 1969).
+        </p>
+      </li>
+      <li>
+        <p>
+          Normalized Haar measure on \(O (4)\), finite-dimensional duality,
+          Taylor's formula with remainder, and the mean value theorem.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\varepsilon > 0\) is an arbitrary exponent loss. The estimates do
+          not determine logarithmic corrections.
+        </p>
+      </li>
+      <li>
+        <p>
+          Constants of the cluster estimate (Lemma VII.4.f):
+        </p>
+        <ul>
+          <li>
+            <p>
+              the gain margin \(1 / 16\), from the RG transport factor \((a_k
+              / a_m)^{1 / 8}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the loss \((a_m / a_j)^{4 |I|}\), where the exponent \(4\) is
+              bookkeeping slack (\(L_i^4 \geqslant 6 L_i\));
+            </p>
+          </li>
+          <li>
+            <p>
+              subpower factors in the per-cell, halo and insertion bounds,
+              absorbed by \(\varepsilon\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          The constant \(P = 4 (D + 1)\) of VII.4.5 comes from degree-\(d\)
+          bounds of the form \(a_k^{- (d + 1)}\) and \(a_k \geqslant c
+          \hspace{0.17em} (r / |w|)^4\).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      A coherent system of probes reads every output degree from the mixed
+      correlation table. For mode \(i\), the raw coefficient is \(\lambda_i (a
+      ; x, o) = \sum_p \lambda_i (p) S (a, x - o ; \text{probe } p)\), with
+      each reading set to zero when the combined configuration is not
+      separated (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Detector.lean#L80"><tt class="verbatim">Prescription.ope</tt></a>).
+      Biorthogonality makes these readings exact on single fields (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Observe.lean#L27-L31"><tt
+      class="verbatim">sumAll</tt></a>). Averaging over \(O (4)\), symmetrizing the
+      input and output conjugations, and removing lower-degree components
+      gives the Reader's real covariant strata. These choices are fixed before
+      the spectator labels, state and truncation degree.
+    </p>
+    <p>
+      The RG estimate replaces a lattice cluster by one label \(Q\) of
+      prescribed degree \(t\). Its remainder gains \((a_m / a_k)^{t + 1 /
+      16}\), while the label and remainder both pay the factor \(a_j^{- w} 
+      (a_m / a_j)^{4 |I|}\). Along the scale induction, nearby groups fuse and
+      separated groups pass through the next block-spin step. After
+      extraction, exact reconstruction of \(Q\) by the probes yields the grid
+      OPE. Reflection positivity bounds decks of widely translated copies by
+      products of chessboard roots, treating a cluster remainder as one
+      factor. The deck limit gives all vacuum moments of \(u^{\ast} u\) in the
+      ground algebra; full support of the phase measure and the Gelfand
+      isometry then give \(\|u\|_{\mathcal{A}}\). Each spectator costs only
+      its own one-field bound. The resulting norm estimate controls every
+      phase and the mixed state with the same coefficients.
+    </p>
+    <p>
+      Exponential rates organize the choices of lattice scales. A downward
+      induction in total degree extends the grid bounds to arbitrary
+      configurations: each derivative raises the degree by one, while the
+      distance to the fine grid recovers one power. At sufficiently high
+      degree the crude bound already suffices to start the induction. Bringing
+      the auxiliary scale heights together gives an arbitrary
+      \(\varepsilon\)-loss; refinement arguments turn these rates into uniform
+      small-radius estimates. Tree expansions repeat this replacement
+      recursively, leaving leaf labels unchanged. Contacts use a forest
+      recursion: each retained weight receives a normal Taylor subtraction of
+      its own order, and the remainder gains enough radial power for
+      integration. Partial collisions are handled by the same recursion on
+      finer partitions. Separately, the slab-operator bound follows by
+      applying the two-scale chessboard estimate to a reflection-positive
+      train and using iterated Schwarz to remove the fixed exterior cost.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-rates-and-sequences"></a>4.1 Rates and sequences<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.a (from sequences and rates to uniform small-\(r\)
+      bounds).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) Let \(P (r, z)\) and \(Q (r, z)\) be predicates. Suppose that
+          for every choice \(r \mapsto z_r\) and every non-trivial refinement
+          of \(r \to 0^+\) along which \(P (r, z_r)\) holds eventually, a
+          further refinement makes \(Q (r, z_r)\) hold eventually. Then, for
+          all sufficiently small \(r\), \(P (r, z)\) implies \(Q (r, z)\) for
+          every \(z\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) <em>Rates.</em> A quantity has upper rate \(\kappa\) along \(T
+          \to \infty\) if \(|f| \leqslant e^{\kappa' T}\) eventually, for
+          every \(\kappa' > \kappa\). With \(T = - \log r\) this means \(|f|
+          \leqslant r^{- \kappa - \varepsilon}\) eventually, for every
+          \(\varepsilon > 0\). Below, &ldquo;rate&rdquo; means upper rate
+          unless an exact rate is specified.
+        </p>
+      </li>
+      <li>
+        <p>
+          (iii) <em>Clusters and spectators.</em> Under \(T = - \log r\), an
+          \((r, M, \eta)\)-cluster has extent of upper rate \(- 1\) and
+          reciprocal separation of upper rate \(1\). For \(c\)-clear
+          spectators, both the reciprocal mutual separation and the reciprocal
+          distance to the centre have upper rate \(0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (iv) <em>Heights.</em> A sequence of levels \(m \to \infty\) has
+          height \(c\) if \(\log (1 / a_m) / T \to c\). Every height \(c
+          \geqslant 0\) is attained for a gentle spacing sequence.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> For (i), choose a bad configuration at each bad
+      radius and refine to a non-trivial filter supported on those radii. The
+      assumed further refinement is a contradiction. Parts (ii)&ndash;(iii)
+      follow from \(r = e^{- T}\). For (iv), choose the first level whose
+      logarithmic spacing exceeds \(cT\) when \(c > 0\), and \(\sqrt{T}\) when
+      \(c = 0\); gentleness makes the relative overshoot tend to zero.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L17-L22"><tt class="verbatim">refine_geometry</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rate.lean#L23-L24"><tt
+      class="verbatim">RateLE</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L35-L37"><tt class="verbatim">loglife</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L38-L42"><tt
+      class="verbatim">room_regime</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L43-L47"><tt class="verbatim">free_clear</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L18-L20"><tt class="verbatim">Height</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L58-L64"><tt class="verbatim">found</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-prescription-and-reader"></a>4.2 Prescription and Reader<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.b (extension one level at a time).</strong> A
+      prescription that is biorthogonal and reconstructing on \(F_n\) extends
+      to one with the same property on \(F_{n + 1}\), without changing the
+      needles and sheets of degree \(\leqslant n\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Let \(B = \sum_{\deg i \leqslant n} \lambda^{(n + 1)}_i (\cdot) 
+          \hspace{0.17em}
+\iota_{\deg i, n} u_i : F_{n + 1} \to F_n\), a left
+          inverse of \(\iota_{n, n + 1}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Take any linear section of \(F_{n + 1} \to F_{n + 1} / \iota F_n\),
+          and subtract from it its projection \(\iota \circ B\). This gives a
+          lift \(\Phi\) whose image lies in the kernel of all old tests.
+        </p>
+      </li>
+      <li>
+        <p>
+          The new needles are \(\Phi\) applied to a basis of the quotient.
+        </p>
+      </li>
+      <li>
+        <p>
+          The new sheets realize the dual coordinates composed with the
+          quotient map. Such sheets exist because the probe functionals span
+          the dual of \(F_{n + 1}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L37-L42"><tt class="verbatim">reachReads</tt></a>,
+          by faithfulness).
+        </p>
+      </li>
+      <li>
+        <p>
+          A recursive choice, collected along \(n\), gives a coherent
+          prescription.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L44-L53"><tt class="verbatim">startRows</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Needle.lean#L57-L92"><tt
+      class="verbatim">nextRows</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Legacy.lean#L20-L31"><tt class="verbatim">Prescription.chosen</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VII.4.c (the Reader).</strong> Fix a coherent
+      prescription.
+    </p>
+    <p>
+      <em>Construction.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The <em>raw vector</em> of degree \(n\) is \(\sigma_n (a ; x, o) =
+          \sum_{\deg i \leqslant n} \lambda_i (a ; x, o) 
+\hspace{0.17em}
+          \iota u_i \in F_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Define the covariant average
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle A_n (a ; x, o) = \int_{O (4)} \rho_n (g) 
+      \hspace{0.17em} \sigma_n (\rho (g^{-
+1}) a ; g^{- 1} x, g^{- 1} o) 
+      \hspace{0.17em} dg,\)
+    </center>
+    <p>
+      where \(\rho (g^{- 1})\) acts on every input label. Set \(A_n = 0\)
+      outside the domain where all rotated probes through degree \(n\) stay
+      clear. The conjugation-symmetric reading is
+    </p>
+    <center>
+      \(\displaystyle \bar{\sigma}_n (a ; x, o) = \tfrac{1}{2} (A_n (a ; x, o)
+      + \overline{A_n
+(\bar{a} ; x, o)}) .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          Define recursively \(\pi_n = \text{id} - \sum_{i < n} \iota \circ
+          \pi_i \circ \ell_{i, n}\) on \(F_n\), where \(\ell_{i, n} (\phi) =
+          \bar{\sigma}_i (\phi ; 0, 0)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>cut tests</em> are \(\tau_{n, q} = \pi_n \circ \ell_{n,
+          q}\), and the <em>stratum</em> is \(E_n = \bigcap_{i < n} \ker
+          \tau_{i, n}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>fresh vector</em> is \(\pi_n  \bar{\sigma}_n (a ; x, o) \in
+          E_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \((O_{n, \kappa})\) is a basis fixed by conjugation of \(E_n\), and
+          \(c_{n, \kappa} (a ; x, o)\) are the coordinates of the fresh vector
+          in it.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Properties.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\tau_{n, q} = 0\) for \(q < n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\sum_{i \leqslant n} \iota \tau_{i, q} = \iota_{q, n}\) for \(q
+          \leqslant n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The fresh vectors and cut tests intertwine rotations and
+          conjugation; simultaneous translations and permutations of the
+          inputs preserve the fresh vectors. Coordinates transform in the
+          corresponding channel representations.
+        </p>
+      </li>
+      <li>
+        <p>
+          The coefficients are smooth where the probes are clear.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          On a single field of degree \(j \leqslant n\) at the origin, the
+          degree-\(n\) averaged reading is \(\iota_{j, n}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Real.lean#L81-L84"><tt
+          class="verbatim">checkReal_fixed</tt></a>); this uses coherence and the
+          rotation laws.
+        </p>
+      </li>
+      <li>
+        <p>
+          The identities for \(\tau\) then follow by strong induction on
+          \(n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A complex finite-dimensional space with an antilinear involution has
+          a basis of fixed vectors.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Real.lean#L43-L44"><tt class="verbatim">checkValue</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23"><tt
+      class="verbatim">Reader</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Average.lean#L22"><tt class="verbatim">averageV</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Real.lean#L37-L39"><tt
+      class="verbatim">checkReal</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L49"><tt class="verbatim">knife</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L51"><tt
+      class="verbatim">cutTest</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L66-L68"><tt class="verbatim">reconstruct</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L70-L79"><tt class="verbatim">kills_lower</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L83"><tt class="verbatim">stratum</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Fresh.lean#L15"><tt class="verbatim">fresh</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Stars.lean#L81"><tt class="verbatim">Reader.basis</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L18-L19"><tt class="verbatim">coef</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-norms-in-the-ground-algebra"></a>4.3 Norms in the ground algebra<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.d (norm from decks).</strong> Let \(u \in
+      \mathcal{A}\) come from a finite combination of separated grid words. It
+      has lattice versions \(U_{N, p}\) at the cutoffs.
+    </p>
+    <p>
+      <em>Hypothesis.</em> Let \(c \geqslant 0\). The lattice labels converge
+      to those defining \(u\) along a non-trivial refinement of the
+      extraction. For every \(n\) and all sufficiently large translation
+      spacings \(t\), eventually along that refinement the lattice moment of
+      the deck \(\prod_{l < 2 n} U^{(\ast)}_{N, p} \circ \tau_{2 tl}\) (time
+      translates, even ones conjugated) has modulus \(\leqslant c^{2 n}\).
+    </p>
+    <p>
+      <em>Conclusion.</em> \(\|u\|_{\mathcal{A}} \leqslant c\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The deck moments converge to the continuum deck correlation.
+        </p>
+      </li>
+      <li>
+        <p>
+          As \(t \to \infty\), that correlation tends to \(\langle \Omega,
+          (u^{\ast} u)^n \Omega \rangle = \int | \chi_{\xi} (u) |^{2 n}
+d
+          \nu\) (B17, V.1).
+        </p>
+      </li>
+      <li>
+        <p>
+          Since \(\nu\) has full support, the bound for all \(n\) gives \(|
+          \chi_{\xi} (u) | \leqslant c\) for every \(\xi\).
+        </p>
+      </li>
+      <li>
+        <p>
+          By Gelfand, \(\|u\| = \sup_{\xi} | \chi_{\xi} (u) |\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L98-L104"><tt class="verbatim">Cards.carrying</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Pressure.lean#L89-L92"><tt
+      class="verbatim">Cards.pressure</tt></a>. <em>(proof read; the geometric inputs to
+      <tt class="verbatim">B17.answer</tt> are taken from V.1)</em>
+    </p>
+    <p>
+      <strong>Lemma VII.4.e (a priori and replacement bounds in
+      \(\mathcal{A}\)).</strong> Assume (RG).
+    </p>
+    <p>
+      <em>Setting.</em> Main points are at mutual distance \(> 2 a_b\).
+      Exterior points are at mutual distance \(> 2 a_l\), and at distance \(>
+      2 a_b\) from the main points. The levels satisfy \(b \leqslant f
+      \leqslant l \leqslant n\) and \(f \leqslant q\), with
+    </p>
+    <center>
+      \(\displaystyle |I| \cdot 10 a_f < a_b, \qquad |J| \cdot 6 a_n < a_l .\)
+    </center>
+    <p>
+      Main tokens have centred bounds \(B_i\) at level \(q\), and exterior
+      tokens have bounds \(D_j\) at level \(n\).
+    </p>
+    <p>
+      <em>Conclusions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) \(\|M (\text{main} \cup \text{exterior})\|_{\mathcal{A}}
+          \leqslant \prod_i B_i 
+\prod_j D_j\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) For a cluster on a fixed grid with distinct coordinates on
+          every axis, suppose lattice labels \(Q_{N, p}\) of degree \(t\)
+          converge to \(Q\) along a non-trivial refinement of the extraction.
+          Suppose \(R_{N, p} = \prod_i I_{N, p} (v_i, x_i) - I_{N, p} (Q_{N,
+          p}, 0)\) is interior to its centred cell at level \(q\) with root
+          \(\leqslant \alpha\) along that refinement. Require \(b\) no finer
+          than the grid, the origin to be \(2 a_b\)-clear of the exterior, and
+          both the cluster&ndash;exterior and origin&ndash;exterior
+          configurations to be separated. Use the cell-fitting inequalities
+          above with one main factor. Then
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle | M (v, x ; \text{ext}) - M ((t, Q), 0 ; \text{ext})
+      |_{\mathcal{A}} \leqslant
+\alpha \prod_j D_j .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          (iii) In rate form, let \(0 \leqslant \alpha \leqslant \beta\). If
+          reciprocal main&ndash;main and main&ndash;exterior distances have
+          upper rate \(\alpha\), and reciprocal exterior&ndash;exterior
+          distances have upper rate \(\beta\), then \(M\) has upper rate \(w
+          (\text{main}) \alpha + w (\text{ext}) \beta\), uniformly in states.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i)&ndash;(ii): the two-scale chessboard inequality is applied to
+          decks of \(2 n\) translates. Main factors occupy distinct cells of
+          the coarse tiling. Exterior factors, possibly several per coarse
+          cell, are grouped and bounded in a finer aligned tiling. This gives
+          the deck bound \((\prod B \prod D)^{2 n}\) or \((\alpha \prod D)^{2
+          n}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lemma VII.4.d then gives the norm bound at grid configurations.
+          Smoothness of correlations extends it to the limit configuration.
+        </p>
+      </li>
+      <li>
+        <p>
+          (iii): take bounds \(a_k^{- d - \delta}\) at heights slightly above
+          the separation rates.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Literal.lean#L107-L127"><tt class="verbatim">Cards.plant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Mix.lean#L57-L94"><tt
+      class="verbatim">Cards.mixed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Mix.lean#L45-L51"><tt class="verbatim">Cards.Hall</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Civic.lean#L32-L46"><tt class="verbatim">civic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Civic.lean#L63-L87"><tt class="verbatim">viewing_admits</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Admire.lean#L47-L62"><tt class="verbatim">mirrorMatch</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Fast.lean#L22-L31"><tt class="verbatim">admitted</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Fast.lean#L49-L54"><tt class="verbatim">phase_budget</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Fast.lean#L55-L57"><tt class="verbatim">viewer_cost</tt></a>.
+      <em>(proof read; <tt class="verbatim">TileDoc.global</tt> statement only)</em>
+    </p>
+    <h3 id="auto-8"><a id="44-the-lattice-cluster-estimate"></a>4.4 The lattice cluster estimate<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.f (lattice cluster replacement).</strong> Fix the RG
+      representation, product-cut and transport data of &sect;2 for output
+      degree \(t\). Let \(I\) be finite and nonempty. Levels \(J \leqslant k
+      \leqslant m < m + 1 \leqslant j < N\) are ordered from coarse to fine.
+      Require \(\text{ref} (t) \leqslant k\) and \(\text{ref} (d_i) \leqslant
+      j\) for every input degree \(d_i\).
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Geometry.</em> Lattice observables \(f_i = I_{N, p} (s_i, o_i)\)
+          of degrees \(d_i\) sit at level-\(j\) sites whose level-\((m + 1)\)
+          ancestor is the centre cell. They are pairwise at least \(B_j^2\)
+          level-\(j\) units apart, where \(B_j\) is the polymer scale. Require
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle (B_{m + 1}^2 + 1) a_{m + 1} \leqslant a_J, \qquad
+      \mathfrak{c}_k^2 a_k
+\leqslant a_J, \qquad 2 (a_m \ell_t + \tau_m) < a_J
+      .\)
+    </center>
+    <p>
+      Here \(\mathfrak{c}_k\) is the supplied cover count, \(\ell_t\) is the
+      output stencil radius plus \(4\), and \(\tau_m = 30 a_m  (\jmath_m +
+      5)\) is the cone-tail bound with supplied aperture parameter
+      \(\jmath_m\). All \(f_i\) and all \(I_{N, p} (z, 0)\) are interior to
+      the centre chamber.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Weights.</em> Choose \(\alpha_i > 0\) with \(\alpha_i
+          \hspace{0.17em} \text{paid}_j (s_i) \leqslant \zeta (d_i, j)\). Here
+          \(\text{paid}_j\) is the insertion-size bound and \(\zeta\) the
+          allowed RG weight. Choose \(0 < \alpha \leqslant 1\) below every
+          halo allowance from \(m\) through \(j - 1\). With \(H = |I|\),
+          require
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle 0 < A \leqslant \alpha^H \left( \frac{a_j}{a_{m + 1}}
+      \right)^{4 H} \left(
+\frac{\alpha}{8} \right)^{H^2} \left(
+      \frac{\delta_j \varphi_j}{8} \right)^H 
+\prod_i \alpha_i .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          <em>Output weights.</em> Let \(\delta_m, x_m, \varphi_m, \zeta (t,
+          k)\) and \(c_m\) be the supplied RG constants, with \(c_m\) the
+          column count. Write \(\mathfrak{m}_{k, m} (b)\) for the weight
+          obtained by transporting \(b > 0\) from \(k\) to \(m\), and \(A_{k,
+          t}\) for the output transport map. Require \(e > 0\) and
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \mathfrak{m}_{k, m} (b) \leqslant \frac{\delta_m A}{16
+      x_m}, \qquad 8 (1 +
+c_m) a_{m + 1}^t  \frac{4 x_m}{A} \leqslant e,\)
+    </center>
+    <center>
+      \(\displaystyle 32 (1 + c_m) b \hspace{0.17em} \|A_{k, t} \|
+      \frac{e}{(a_k / a_m)^{1 / 8}}
+\leqslant \frac{\zeta (t, k)}{2} .\)
+    </center>
+    <p>
+      <em>Conclusion.</em> There is a lattice label \(z\) of degree \(t\) with
+      these properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          its coefficient size at level \(m\) is at most \(2 e\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R = \prod_i f_i - I_{N, p} (z, 0)\) is interior to the centre
+          chamber;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\|R\|_{\mathcal{T}_J} \leqslant 2 \hspace{0.17em} \text{stakes}
+          (J, k) / b\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Here \(\text{stakes} (J, k) = \exp ((a_J / a_k)^4 \text{treasury}_k +
+      5)\) is the supplied per-cell chessboard factor. In Lemma VII.4.g the
+      two coarse levels are chosen so that this factor has upper rate \(0\).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Transport.</em> From \(N\) down to \(j\), each insertion is
+          transported separately, since the points are separated.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Induction from \(j\) down to \(m + 1\).</em> The carried state
+          is a polymer representation of the RG-pushed generating function,
+          with the points grouped and the representatives spaced. At each step
+          one of two things happens:
+        </p>
+        <ul>
+          <li>
+            <p>
+              if the representatives stay spaced, one block-spin step is
+              taken, and the weights lose at most a factor \(L_i^4\) per
+              point;
+            </p>
+          </li>
+          <li>
+            <p>
+              otherwise a maximal spaced set is kept and the remaining
+              representatives are fused into it. Enlarging polymer supports to
+              reach a representative costs a bounded factor in halo
+              summability. Each fusion pays a subpower toll.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>The weights.</em> Their surviving product contains \((a_j / a_{m
+          + 1})^{4 |I|}  (\alpha / 8)^{|I|  (|I| - s)}\) when \(s\) groups
+          remain. Its reciprocal contributes to the final error bound.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Final step.</em> At level \(m + 1\), fuse the remaining groups
+          into one variable per cell copy. The RG step to level \(m\) splits
+          the result into a coefficient \(Q_0\) of degree \(\leqslant t\),
+          with its coefficient and remainder bounds, and an irrelevant
+          remainder. Transport to the coarse level gives a factor \((a_m /
+          a_k)^{t + 1}\) in the remainder bound.
+        </p>
+      </li>
+      <li>
+        <p>
+          The constant \(2\) comes from two halves, each \(\leqslant
+          \text{stakes} / b\), joined by the triangle inequality for roots.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Camp.lean#L54-L94"><tt class="verbatim">joins</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Induct.lean#L93-L117"><tt class="verbatim">inductionLive</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Sweep/Ballet.lean#L35-L76"><tt class="verbatim">Ballet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Replicas/Antique.lean#L33-L46"><tt class="verbatim">ranch</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Grouping/Shift.lean#L54-L93"><tt class="verbatim">hitB</tt></a>. <em>(statement read; proof read in
+      outline, at the level of the calls in <tt class="verbatim">Ballet</tt>, <tt class="verbatim">inductionLive</tt>,
+      <tt class="verbatim">Live.gathers</tt>, <tt class="verbatim">bequeathed</tt>)</em>
+    </p>
+    <p>
+      <strong>Lemma VII.4.g (replacement rates and the limit label).</strong>
+      Assume (RG), fix a nonempty finite token list of total degree \(w\), and
+      take heights \(0 \leqslant b < a < c\) for the coarse, output and
+      insertion levels. Fix a target degree \(t\), and put \(Z' = w
+      \hspace{0.17em} c + 4 |I|  (c - a)\).
+    </p>
+    <p>
+      <em>Conclusion.</em> There are rate functions \(g\) and \(o\) with these
+      properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(g\) has exact rate \(Z' - ta\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(o\) has upper rate \(Z' - (t + \tfrac{1}{16})  (a - b)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          eventually, the replacement of Lemma VII.4.f has coefficient size
+          \(\leqslant g\) and remainder root \(\leqslant o\), whenever its
+          cluster and interior conditions hold.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Up to subpower factors, the coefficient size is bounded by \(a_j^{- w} 
+      (a_m / a_j)^{4 |I|} a_m^t\), and the remainder root by \(a_j^{- w}  (a_m
+      / a_j)^{4 |I|}  (a_m / a_k)^{t + 1 / 16}\). For each fixed configuration
+      satisfying the cluster and interior conditions, bounded coefficient size
+      gives a convergent refinement of the extraction in the
+      finite-dimensional label space. Its limit \(Q\) retains the remainder
+      bound.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Apply Lemma VII.4.f with all parameters exponential in \(T\), and
+          check its size conditions as inequalities between exponents.
+        </p>
+      </li>
+      <li>
+        <p>
+          The loss \(4 |I|  (c - a)\) is the rate of \((a_{m + 1} / a_j)^{4
+          |I|}\), the reciprocal of the surviving weight factor.
+        </p>
+      </li>
+      <li>
+        <p>
+          The binding condition is the transport condition, which needs
+          exponent \(< (t + \tfrac{1}{8})  (a - b) - Z'\). The value
+          \(\tfrac{1}{16}\) leaves strict slack.
+        </p>
+      </li>
+      <li>
+        <p>
+          Subpower factors have rate \(0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices/Circuit.lean#L64-L87"><tt class="verbatim">funding</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Prices/Circuit.lean#L52-L59"><tt class="verbatim">PriceAt</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L47-L65"><tt class="verbatim">price_plot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L42-L44"><tt class="verbatim">Survival</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Extract.lean#L25-L32"><tt class="verbatim">for_plot</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-the-ope-at-grid-configurations"></a>4.5 The OPE at grid configurations<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.h (grid estimates).</strong>
+    </p>
+    <p>
+      <em>Setting.</em> Assume (RG) and fix a coherent prescription and a
+      nonempty finite token list \(a\). Heights satisfy \(0 < \beta < a_0 < x
+      < d\), for levels \(k, m, j\) at heights \(\beta, a_0, d\). The cluster
+      consists of level-\(j\) grid points with distinct coordinates on every
+      axis, extent of upper rate \(- x\) about the origin and reciprocal
+      separation of upper rate \(x\). Spectator distances from the origin have
+      reciprocal upper rate \(0 \leqslant c < \beta\), and their mutual
+      distances have reciprocal upper rate \(u \geqslant c\). Put \(\text{tax}
+      = w (a) d + 4 |I|  (d - a_0)\).
+    </p>
+    <p>
+      <em>Conclusions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          each fixed raw coefficient \(\lambda_i (a ; \text{cluster}, 0)\) has
+          upper rate \(\text{tax} - (\deg i) a_0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(N \in \mathbb{N}\), the correlation with the spectators
+          minus \(\sum_{\deg i \leqslant N} \lambda_i  \hspace{0.17em} S^s
+          (u_i, 0 ;
+\text{spect.})\) has upper rate \(\text{tax} - (N + 1) 
+          (a_0 - c) + w (b) u\), uniformly in the state \(s\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em> For the remainder choose \(q \geqslant N\) with
+      \((N + 1) a_0 \leqslant (q + \tfrac{1}{16})  (a_0 - \beta)\); for a
+      coefficient choose \(q \geqslant \deg i\) with the analogous inequality.
+      Let \(Q\) be the degree-\(q\) label of Lemma VII.4.g. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (1) by Lemma VII.4.e(ii), replacing the cluster by \(Q\) at \(0\)
+          costs rate \(\text{tax} - (q + \tfrac{1}{16})  (a_0 - \beta) + w (b)
+          u\) in \(\mathcal{A}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (2) the same with the probes in the role of spectators: \(|
+          \lambda_i (\text{cluster}) - \lambda_i (Q) |\) has the rate of the
+          remainder root;
+        </p>
+      </li>
+      <li>
+        <p>
+          (3) for \(\deg i \leqslant q\), the coefficient of \(Q\) is bounded
+          by its coefficient size times \(a_m^{- (q - \deg i)}\), up to
+          subpower factors, and hence has rate \(\text{tax} - (\deg i) a_0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (4) exact reconstruction: \(S (Q, 0 ; \cdot) = \sum_{\deg i
+          \leqslant q} \lambda_i (Q)  \hspace{0.17em} S
+(u_i, 0 ; \cdot)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (5) the modes of degree in \((N, q]\) contribute at most rate
+          \(\text{tax} - (N + 1)  (a_0 - c) + w (b) u\), using the upper rate
+          \((\deg i) c + w (b) u\) for \(S^s (u_i, 0 ; \text{spect.})\) from
+          Lemma VII.4.e(iii).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Ladder.lean#L34-L42"><tt class="verbatim">grid_coeff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Ladder.lean#L53-L73"><tt
+      class="verbatim">grid_remainder</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Extract.lean#L64-L66"><tt class="verbatim">see_cost</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Read.lean#L68-L80"><tt class="verbatim">det_cost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Read.lean#L37-L52"><tt class="verbatim">at_grade</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Observe.lean#L27-L31"><tt class="verbatim">sumAll</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-arbitrary-configurations-and-exponents"></a>4.6 Arbitrary configurations and exponents<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.i (derivative bootstrap).</strong> Fix a finite
+      index set \(I\) and levels \(j\) of height \(d > x_0\). A configuration
+      path \(x (T)\) lies in the height-\(x_0\) corridor if its extent about
+      the origin has upper rate \(- x_0\) and its reciprocal separation has
+      upper rate \(x_0\). Let \(h_T (v ; x)\) be functions for every token
+      list \(v\) on \(I\). Suppose the following hold for every such list and
+      every configuration path in this corridor, with constants \(c_0, d_0\)
+      independent of the list:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (rough) \(h_T (v ; x (T))\) has upper rate \(x_0 w (v) + c_0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (grid) on level-\(j\) grid paths with distinct coordinates on every
+          axis, \(h_T (v ; x (T))\) has upper rate \(dw (v) + d_0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (derivative) eventually \(h_T (v ; \cdot)\) is differentiable at \(x
+          (T)\), and its derivative in each point and coordinate equals
+          \(h_T\) with that token replaced by its derivative token, of degree
+          one higher.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then \(h\) has rate \(d \hspace{0.17em} w (v) + d_0\) on the whole
+      corridor.
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Use induction downward on \(w (v)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(w (v)\) large, \((d - x_0) w (v) \geqslant c_0 - d_0\), so the
+          rough bound suffices.
+        </p>
+      </li>
+      <li>
+        <p>
+          Otherwise choose a grid path whose distance from \(x (T)\) has upper
+          rate \(- d\). All intervening points stay in the same corridor. The
+          mean value theorem and the induction bound for the derivative give
+          rate \(- d + d (w (v) + 1) + d_0 = dw (v) + d_0\) for the change.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Interpolate/Corridor.lean#L34-L47"><tt class="verbatim">interpolated</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Interpolate/Leap.lean#L39-L49"><tt
+      class="verbatim">cloud_jump</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Interpolate/Leap.lean#L20-L27"><tt class="verbatim">leap_cost</tt></a>.
+      <em>(proof read for <tt class="verbatim">interpolated</tt>)</em>
+    </p>
+    <p>
+      <strong>Lemma VII.4.j (raw coefficient and remainder rates).</strong>
+    </p>
+    <p>
+      <em>Setting.</em> Assume (RG) and fix a coherent prescription and finite
+      token lists \(a, b\). Along \(T \to \infty\), the cluster has extent of
+      upper rate \(- x\) around \(o\) and reciprocal separation of upper rate
+      \(x > 0\). Spectator distances from \(o\) have reciprocal upper rate \(0
+      \leqslant y < x\), and their mutual distances have reciprocal upper rate
+      \(u \geqslant y\).
+    </p>
+    <p>
+      <em>Conclusions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For each fixed mode \(i\), \(\lambda_i (a ; \cdot, o)\) has upper
+          rate \((w (a) - \deg i) x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For every \(N\), the remainder of the raw truncation has upper rate
+          \(w (a) x - (N + 1)  (x - y) + w (b) u\), uniformly in states and in
+          \(\mathcal{A}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          In powers, with \(r = e^{- xT}\), spectator distance \(\rho\) and
+          spectator separation \(\rho'\): the remainder is \(\lesssim r^{- w
+          (a)}  (r / \rho)^{N + 1} {\rho'}^{- w (b)}\) up to
+          \(\varepsilon\)-losses.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Apply Lemma VII.4.i to Lemma VII.4.h, with grid height \(d\) and
+          auxiliary height \(a_0\). The rough bound is Lemma VII.4.e(iii).
+        </p>
+      </li>
+      <li>
+        <p>
+          This gives the bounds of Lemma VII.4.h with \(\text{tax} = wd + 4
+          |I|  (d - a_0)\). Let \(a_0 \uparrow x\) and \(d \downarrow x\);
+          continuity of the exponents and availability of all intermediate
+          heights give the claimed rates. Empty clusters are handled by the
+          exact unit identities.
+        </p>
+      </li>
+      <li>
+        <p>
+          Translation invariance moves the centre to \(o\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The bound in \(\mathcal{A}\) follows from the bounds in every state
+          by the norm characterization in the conventions.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L22-L25"><tt class="verbatim">coefficient_rough</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L37-L41"><tt
+      class="verbatim">common_rate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Corridor.lean#L68-L74"><tt class="verbatim">early_rate</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Travel.lean#L24-L30"><tt class="verbatim">group_coeff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Schemes/Travel.lean#L31-L41"><tt class="verbatim">group_remainder</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L49-L52"><tt class="verbatim">ground_cost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27"><tt class="verbatim">groundError</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L68-L71"><tt class="verbatim">arrangement_cost</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-the-reader-and-the-separated-ope"></a>4.7 The Reader and the separated OPE<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.k (transfer to the Reader).</strong> In the regime
+      of Lemma VII.4.j:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the fresh vector of degree \(n\) has rate \((w (a) - n) x\), and
+          hence so does each \(c_{n, \kappa}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the error element of VII.4.1 has rate \(w (a) x - (D + 1)  (x - y) +
+          w (b) u\) in \(\mathcal{A}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Compare the cluster with its raw truncation at a horizon \(H\),
+          placed at \(o\). Inside every rotated probe correlation, the
+          difference has rate \((w - H - 1) x\) by Lemma VII.4.j.
+        </p>
+      </li>
+      <li>
+        <p>
+          The raw estimate holds uniformly over all rotations, including the
+          conjugate input reading. Integrating over normalized Haar measure
+          and applying the fixed linear projections preserve its upper rate.
+          Thus the fresh vector differs from \(\tau_{n, H}\) of the raw vector
+          by upper rate \((w - H - 1) x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          In \(\tau_{n, n}\) of the raw vector, only modes of degree \(n\)
+          survive, with rate \((w - n) x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For the remainder, write the error as the raw error plus \(\sum_{j
+          \leqslant D}\) (the correlation of \(\tau_{j, D} (\text{raw}) -
+          \text{fresh}_j\)), and bound each term.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Fee.lean#L45-L50"><tt class="verbatim">fresh_bridge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Gain.lean#L21-L30"><tt
+      class="verbatim">fresh_price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Gain.lean#L57-L72"><tt class="verbatim">balance_rate</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L17-L22"><tt class="verbatim">coefficient_rate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L30-L35"><tt class="verbatim">algebra_rate</tt></a>.
+      <em>(proof read; <tt class="verbatim">fit_old</tt>, <tt class="verbatim">discrepancy_rate_old</tt>
+      statement only)</em>
+    </p>
+    <p>
+      <strong>Lemma VII.4.l (proof of VII.4.1).</strong> For (O1) and (O2),
+      apply Lemma VII.4.a with \(T = - \log r\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          An \((r, M, \eta)\)-cluster sits at height \(x = 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Fixed clearance \(c\) gives \(y = u = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          So Lemma VII.4.k gives rates \(w - n\) and \(w - (D + 1)\). These
+          are the powers \(r^{n - w - \varepsilon}\) and \(r^{D + 1 - w -
+          \varepsilon}\), uniformly in configurations and states.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L64-L69"><tt class="verbatim">coefficient_separated</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Separated.lean#L71-L85"><tt class="verbatim">quantitative_separated</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L67-L68"><tt class="verbatim">produce</tt></a>;
+      assembly in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L150-L167"><tt class="verbatim">R2IGoals.fromFunded</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="48-integrated-and-nested-forms"></a>4.8 Integrated and nested forms<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.m (integrated forms; VII.4.2).</strong>
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For small \(r\), every admissible configuration lies in an open set
+          on which the correlations and the coefficients are continuous.
+          There, the raw correlation is bounded by \(r^{- w - \varepsilon}\)
+          and the remainder by \(r^{D + 1 - w - \varepsilon}\), in every
+          state.
+        </p>
+      </li>
+      <li>
+        <p>
+          So the integrands are measurable and dominated by \(|w|\) times a
+          constant, and the integrals are bounded by \(B\) times the pointwise
+          bound.
+        </p>
+      </li>
+      <li>
+        <p>
+          For any probability measure on \(X\), continuity of each fixed
+          separated correlation in \(\xi\) permits termwise integration of the
+          finite truncation; the same pointwise bound then gives the mixture
+          estimate.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Profile.lean#L98-L108"><tt class="verbatim">estimates_weighted</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L58"><tt
+      class="verbatim">probability_mixtures</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VII.4.n (nested OPE; VII.4.3).</strong>
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Along a sequence, put \(T = \sum_p \log (1 / s_p)\), summing over
+          the inner nodes. The normalized logarithms lie in a compact simplex,
+          so a refinement gives heights \(a_p \geqslant 0\) with \(\sum_p a_p
+          = 1\). This also covers scales shrinking faster than every power of
+          the root radius.
+        </p>
+      </li>
+      <li>
+        <p>
+          Then induct over the tree.
+        </p>
+      </li>
+      <li>
+        <p>
+          At a fork, children whose rate equals the parent's are merged into
+          the parent cluster.
+        </p>
+      </li>
+      <li>
+        <p>
+          Each other child is replaced by its own expansion at an auxiliary
+          horizon high enough that its remainder is below any prescribed rate.
+        </p>
+      </li>
+      <li>
+        <p>
+          The replacements are telescoped in a fixed triangular order, so that
+          each switch sees only outputs already fixed.
+        </p>
+      </li>
+      <li>
+        <p>
+          Summing the node costs gives (a). The composition error gains the
+          smallest value of \((D_p + 1)  (a_p - a_{\text{parent} (p)})\) over
+          non-root inner nodes. The extra \(\varepsilon\)-loss converts this
+          rate estimate into (b). If there are no such nodes, the composed
+          coefficient equals the direct coefficient exactly.
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) and (d) follow as in Lemmas VII.4.k&ndash;m.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Fusion.lean#L97-L104"><tt class="verbatim">Fusion.tariff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean"><tt
+      class="verbatim">Quantified.lean</tt></a> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L43-L51"><tt class="verbatim">Limits.coe_power</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L54-L71"><tt class="verbatim">Limits.tested_power</tt></a>), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Geometry.lean#L21-L23"><tt class="verbatim">Tree.Tapered</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Grove.lean#L99-L103"><tt class="verbatim">Tree.Relative</tt></a>. <em>(proof read for <tt
+      class="verbatim">coe_power</tt>, <tt class="verbatim">tested_power</tt>, <tt class="verbatim">tariff</tt>;
+      <tt class="verbatim">supplies</tt> proof read; <tt class="verbatim">sequential</tt> and <tt
+      class="verbatim">high</tt> statement only)</em>
+    </p>
+    <h3 id="auto-13"><a id="49-the-slab-bound-of-v1"></a>4.9 The slab bound of V.1<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.o (point and train bounds).</strong> Take levels \(m
+      \leqslant k \leqslant l \leqslant b\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) <em>Point bound.</em> Assume:
+        </p>
+        <ul>
+          <li>
+            <p>
+              all points are separated; main&ndash;main and
+              main&ndash;exterior sup-distances exceed \(a_m\), and
+              exterior&ndash;exterior sup-distances exceed \(a_l\);
+            </p>
+          </li>
+          <li>
+            <p>
+              main points are congruent mod \(a_m\) to one of \(P\) fixed
+              points;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(P \cdot 10 a_k < a_m\) and \(\sharp (\text{ext}) \cdot 6 a_b <
+              a_l\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(A, B \geqslant 0\); main tokens have one-field bounds \(A\) at
+              level \(k\) for all signed and reflected variants, and exterior
+              tokens have bounds \(B\) at level \(b\), eventually along the
+              extraction;
+            </p>
+          </li>
+          <li>
+            <p>
+              the cutoff family has the construction properties, \(S\) is
+              smooth on separated configurations, and generic point limits
+              hold along this extraction.
+            </p>
+          </li>
+        </ul>
+        <p>
+          Then \(|S (x ; v) | \leqslant A^{\sharp \text{main}} B^{\sharp
+          \text{ext}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) <em>Train bound.</em> Assume the Euclidean hierarchy and the
+          same cutoff and point-limit hypotheses. Let \(w\) be \(r\)-buffered
+          in a slab of width \(d \in a_m \mathbb{N}\), with \(a_m < r\). Let
+          \(v\) be a word supported at positive times with buffer larger than
+          \(a_l\). Require \(2 |w| \cdot 10 a_k < a_m\) and \(2 |v| \cdot 6
+          a_b < a_l\), and the one-field bounds in (a). Then for every \(q \in
+          \mathbb{N}\) the Gram pairing satisfies
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle |S (\Theta v_q \cdot v_q) | \leqslant B^{2 |v|} A^{4 q
+      |w|} .\)
+    </center>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) The two-scale chessboard estimate at the cutoff: main factors
+          are in separated coarse cells, and exterior groups in a finer
+          tiling, with no restriction on how many exterior factors share a
+          coarse cell. A translation of less than one exterior cell fits all
+          the margins. Point limits at generic configurations and continuity
+          give the continuum bound.
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) The Gram pairing is the correlation of \(4 q |w|\) main and \(2
+          |v|\) exterior insertions at separated points. Apply (a).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L125-L179"><tt class="verbatim">cutoff_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L187-L229"><tt
+      class="verbatim">point_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L84-L87"><tt class="verbatim">Gapped</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Trains.lean#L273-L304"><tt class="verbatim">travel_price</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VII.4.p (uniform constants; proof of VII.4.5).</strong>
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>One-field bounds.</em> For degrees \(\leqslant D\) and norms
+          \(\leqslant R\) there are \(F\) and \(J > 0\) such that, for \(k
+          \geqslant F\), every such token, together with all its signed and
+          reflected variants, has one-field bound \(J \hspace{0.17em} a_k^{-
+          (D + 1)}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Choice of level.</em> For \(r \in (0, 1]\), take the first \(m
+          \geqslant F\) with \(a_m < r / 32\). Gentleness gives a uniform
+          lower bound \(a_m \geqslant c_1 r^2\). A second level choice gives
+          \(k \geqslant m\) with \(2 |w| \cdot 10 a_k < a_m\) and \(a_k
+          \geqslant c (r / |w|)^4\). Hence \(A^{|w|} \leqslant \rho =
+          C_0^{|w|}  (|w| / r)^{4 (D + 1) |w|}\) with \(C_0 = Jc^{- (D +
+          1)}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Exterior.</em> For each exterior word \(v\), choose its own
+          levels and bound \(X_v\). Lemma VII.4.o(b) then gives the bound of
+          VII.4.5 with \(B_v = X_v^{2 |v|}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Width.</em> A sub-width \(s \leqslant d\) covered at level \(m\)
+          is chosen before the exterior.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L55-L77"><tt class="verbatim">rates</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L119-L151"><tt class="verbatim">replicas</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Seats.lean#L154-L160"><tt class="verbatim">seats</tt></a>. In V.1: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L20-L60"><tt class="verbatim">Drive.against</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L116-L123"><tt class="verbatim">producer</tt></a>.
+    </p>
+    <h3 id="auto-14"><a id="410-contact-extensions"></a>4.10 Contact extensions<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma VII.4.q (Taylor deviation on shells).</strong> Let \(E\)
+      be a finite-dimensional Euclidean space, \(K \subset E\) a subspace,
+      \(m, n \in \mathbb{N}\), \(B \geqslant 1\), and \(U\) a compact subset
+      of \(\{ \tfrac{1}{2} \leqslant |x_K | \leqslant 2\}\). Write \(D_a x =
+      ax_K + x_{K^{\perp}}\). There is \(X \geqslant 1\), depending only on
+      \(E, K, U, m, n, B\), with the following property. Let \(a, r, s > 0\)
+      and let \(A : E \to E\) be a linear isomorphism satisfying \((Ax)_K =
+      rx_K\) for every \(x\) and \(Ax = rx\) for \(x \in K\). Let \(f\) be
+      smooth and assume \(ra / s \leqslant B\), \(r \leqslant Bs\), and
+    </p>
+    <center>
+      \(\displaystyle \text{supp} (f \circ A) \subset \{x : |x_K | \leqslant B
+      / 2\}, \qquad \|f
+\circ A\|_{C^{n + m + 1}} \leqslant H.\)
+    </center>
+    <p>
+      Then the cut-off normal Taylor operator satisfies
+    </p>
+    <center>
+      \(\displaystyle | (f - T^K_{m, s} f) \circ A \circ D_a |_{C^n (U)}
+      \leqslant XH \left\{
+\begin{array}{ll}
+  a^{m + 1}, & a \leqslant 1,\\
+ 
+      a^m, & a > 1.
+\end{array} \right.\)
+    </center>
+    <p>
+      <em>Proof sketch.</em> Taylor's formula with remainder, together with
+      jet bounds for the smooth cut-off.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/ShellTest.lean#L43-L72"><tt class="verbatim">compact_deviation</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VII.4.r (the subtraction formula).</strong>
+    </p>
+    <p>
+      <em>Notation.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\varphi_i\) is the field \(a_i\) at \(x_i\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For a group \(h \subset \{1, \ldots, k\}\), \(|h| \geqslant 2\):
+          \(x^{\perp}_h\) is the component of \(x\) normal to the
+          \(h\)-diagonal, \(\bar{x}_h\) the centroid, and \(L_h = \max \left(
+          0, \sum_{i \in h} d_i + 1 - 4 (|h| - 1) \right)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(T^h_m f (x) = \chi (|x_h^{\perp} |^2 / s_0^2)  \sum_{l \leqslant
+          m}
+\frac{1}{l!} D^l f (x - x^{\perp}_h)  [x^{\perp}_h, \ldots,
+          x^{\perp}_h]\), with \(\chi = 1\) near \(0\) and \(\chi
+          (|x^{\perp}_h |^2 / s_0^2) = 0\) for \(|x^{\perp}_h | \geqslant 2
+          s_0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R^h_w\) replaces a field polynomial by the weight-\(w\) component
+          of its OPE projection, placed at \(\bar{x}_h\). The device detectors
+          use finite probe sets, a linear decoder, an \(O (4)\)-average and
+          simultaneous input and output conjugation, followed by the device's
+          graded splitting.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Definition.</em> Set \(C_{\{i\}} = \varphi_i \otimes 1\) and, for
+      \(|h| \geqslant 2\),
+    </p>
+    <center>
+      \(\displaystyle C_h = - \sum_{w < L_h} R^h_w (\Pi_h) \cdot T^h_{L_h - 1
+      - w}, \qquad \Pi_h =
+\sum_{\pi} \prod_{\beta \in \pi} C_{\beta}, \qquad
+      \text{full}_h = \Pi_h +
+C_h,\)
+    </center>
+    <p>
+      where \(\pi\) runs over partitions of \(h\) into at least two blocks.
+      For a singleton the full expression is \(\varphi_i \otimes 1\); for the
+      empty group it is the unit. The kernel of \(\mathcal{D}^s_a\) at \(x\)
+      is the \(s\)-expectation of \(\text{full}_{\{1.. k\}}\) applied to
+      \(f\). Expanding the recursion gives a Zimmermann-type forest sum. The
+      child expressions are constructed recursively first. On the test
+      function, the parent Taylor operator acts first, followed by the
+      operators already present in the child expression; nested operators need
+      not commute.
+    </p>
+    <p>
+      <em>Per-group form.</em> \(\left[ \Pi_h - \sum_{w < L_h} R^h_w \Pi_h
+      \right] f + \sum_{w < L_h} R^h_w
+(\Pi_h)  \hspace{0.17em} (1 - T^h_{L_h
+      - 1 - w}) f\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          Put \(d_h = \sum_{i \in h} d_i\) and \(q_h = 4 (|h| - 1)\). After
+          retaining weights \(w < L_h\), the remainder has radial order \(O
+          (|x^{\perp}_h |^{L_h - d_h - \varepsilon})\), with \(L_h - d_h
+          \geqslant 1 - q_h\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A retained weight-\(w\) term has coefficient order \(O (|x^{\perp}_h
+          |^{w - d_h - \varepsilon})\) and test deviation \(O (|x^{\perp}_h
+          |^{L_h - w})\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(0 < \varepsilon < 1\) these radial powers are integrable in
+          \(q_h\) normal dimensions. Angular sectors containing partial
+          collisions require the subcluster induction of Lemma VII.4.s.
+        </p>
+      </li>
+      <li>
+        <p>
+          Each weight-\(w\) coefficient has scaling degree at most \(d_h -
+          w\), and receives its own Taylor subtraction.
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(\sum_{i \in h} d_i + 1 \leqslant 4 (|h| - 1)\), nothing is
+          subtracted.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Score/Tape.lean#L56-L60"><tt class="verbatim">takeRight</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Score/Formula.lean"><tt
+      class="verbatim">Score/Formula.lean</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/Subtractions.lean#L68"><tt class="verbatim">Normal.taylor</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L59"><tt class="verbatim">majorKernel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26"><tt class="verbatim">Devices</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Coherent.lean#L137-L139"><tt class="verbatim">Devices.clearance</tt></a>. <em>(definitions
+      read)</em>
+    </p>
+    <p>
+      <strong>Lemma VII.4.s (absolute bound; summation and scaling).</strong>
+      Fix the devices, labels, state and subtraction length as in VII.4.4. For
+      every compact \(U \subset (\mathbb{R}^4)^k\) there is \(C > 0\) such
+      that
+    </p>
+    <center>
+      \(\displaystyle \int | \langle \text{full} \rangle_s (f ; x) | 
+      \hspace{0.17em} dx \leqslant C
+\hspace{0.17em} \|f\|_{C^{(2 + w (a)) k}}
+      \quad \text{whenever } \text{supp} f
+\subset U.\)
+    </center>
+    <p>
+      The summation formulas and scaling bounds hold under the stage-family
+      hypotheses of VII.4.4(d)&ndash;(e).
+    </p>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Patching.</em> Cover \(U\) by finitely many patches. On each
+          patch the relevant partition is the set of coincidence classes of
+          its centre. A smooth partition of unity and the Leibniz rule combine
+          the patch bounds.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Induction.</em> On a patch, use strong induction on \(|h|\)
+          minus the number of blocks.
+        </p>
+        <ul>
+          <li>
+            <p>
+              Base case: the separated correlation times \(f\), bounded
+              pointwise.
+            </p>
+          </li>
+          <li>
+            <p>
+              Inductive step: split into the remainder arm and the
+              weight-\(w\) arms. Cut into dyadic normal shells \(|x^{\perp}_h
+              | \sim 2^{- n}\) and angular fans. Rescale each sector to a
+              finer partition, and apply the induction hypothesis.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>OPE input.</em> The raw coefficient rate and the remainder rate
+          in \(\mathcal{A}\) from Lemma VII.4.j.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Shell exponent.</em> Including normal volume, the effective
+          exponent is \(4 (|h| - 1) + L_h - d_h \geqslant 1\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              the remainder gains \(L_h\);
+            </p>
+          </li>
+          <li>
+            <p>
+              a weight-\(w\) arm gains \(w\) from the coefficient and \(L_h -
+              w\) from Lemma VII.4.q.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Summing.</em> Choose \(\gamma > 0\) with \((3^{|g| - |Q|} + 1)
+          \gamma \leqslant 1\), where \(|Q|\) is the number of blocks. The
+          accumulated exponent losses leave a factor \(2^{- n \gamma}\) in the
+          shell sum. The corresponding geometric series converges.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Skies.lean#L59-L79"><tt class="verbatim">glues_total</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L62-L63"><tt
+      class="verbatim">global_charge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L44-L45"><tt class="verbatim">commissions</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Scaling.lean#L61"><tt class="verbatim">Claim</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Puncture.lean#L53"><tt class="verbatim">Annulus</tt></a>.
+      <em>(proof read in outline)</em>
+    </p>
+    <p>
+      <strong>Lemma VII.4.t (distribution and restriction).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A kernel with the bound of Lemma VII.4.s defines a continuous linear
+          functional on \(C_c^{\infty}\), of order \(\leqslant (2 + w (a))
+          k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          With the full group, \(P = \text{id}\), \(o = 0\), \(B_0 = \min (1,
+          \text{cl} (w (a)))\) and \(s_0 = B_0 / 4\), the hypotheses of Lemma
+          VII.4.s hold on all of \((\mathbb{R}^4)^k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(\text{supp} f \subset \text{Conf}_k\), the Taylor terms
+          evaluate jets of \(f\) on diagonals, where \(f\) vanishes with all
+          its derivatives. So the kernel equals \(f (x) S^s (a ; x)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31"><tt class="verbatim">Charge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Blend.lean#L70-L71"><tt class="verbatim">Transport.harmonic</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactBridge.lean#L14-L49"><tt class="verbatim">contactDistribution</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma VII.4.u (real bases and thresholds).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The device strata have bases fixed by the conjugation, and the basis
+          in degree 0 contains the unit. Proof: real and imaginary parts span,
+          and a real independent set extends to a basis.
+        </p>
+      </li>
+      <li>
+        <p>
+          Given \(f_n > 0\), a valid choice of thresholds is
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle g_n = \min (f_n, 2^{- n}, \text{cl} (n) / (2 (n + 1))),
+      \qquad t_0 = g_0,
+\qquad t_{n + 1} = \min (t_n / 8, g_{n + 1}) .\)
+    </center>
+    <p>
+      The thresholds define smooth scalar cutoffs. At a length \(0 < \ell
+      \leqslant t_n\), the cutoff-weighted projection agrees with the original
+      projection through degree \(n\). These cutoffs do not enter
+      \(\mathcal{D}^s_a\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Transport/Register.lean#L52-L61"><tt class="verbatim">real_basis</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L30-L36"><tt
+      class="verbatim">installs</tt></a>.
+    </p>
+    <h2 id="auto-15"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Routine but long.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The rate bookkeeping (Lemmas VII.4.a, j).
+        </p>
+      </li>
+      <li>
+        <p>
+          The \(O (4)\)-covariant Reader (Lemmas VII.4.c, k).
+        </p>
+      </li>
+      <li>
+        <p>
+          The tree combinatorics (Lemma VII.4.n).
+        </p>
+      </li>
+      <li>
+        <p>
+          The geometry of normal shells, angular sectors and compact patches.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Main estimates.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>The OPE comes from the RG.</strong> The basic estimate
+          (Lemmas VII.4.f&ndash;g) is a lattice statement: a cluster of
+          renormalized observables equals one observable of degree \(t\) plus
+          a remainder that gains \((a_m / a_k)^{t + 1 / 16}\), at a cost
+          \((a_m / a_j)^{4 |I|}\). The margin \(\tfrac{1}{16}\) is set by the
+          transport gain \((a_k / a_m)^{1 / 8}\) of Part III's RG, not by the
+          contraction \((a_m / a_k)^{t + 1}\) of the irrelevant part. This is
+          where Part III enters.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Uniformity in states and spectators comes from the
+          C*-norm.</strong> The norm of \(\mathcal{A}\) is computed by
+          chessboard bounds on decks of translated copies, together with
+          Gelfand and the full support of \(\nu\) (Lemmas VII.4.d&ndash;e).
+          The spectators then cost only their own one-field bounds, at their
+          own scale, and the bound holds in every phase at once.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The derivative bootstrap</strong> (Lemma VII.4.i). Each
+          derivative costs one power of the fine spacing, so a first-order
+          comparison with the grid gains nothing. The induction therefore
+          starts from high degree, where the crude bound is already strong
+          enough.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>One coefficient system for every truncation degree.</strong>
+          It comes from a coherent prescription (VII.4.6) and the strata of
+          the Reader.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Unusual, weaker or stronger than expected.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Exponents.</em> The estimates have an arbitrary
+          \(\varepsilon\)-loss and do not determine logarithmic corrections.
+          The degree \(w\) is the sum of the label degrees; the statement does
+          not identify it with a scaling dimension.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Coefficients.</em> They depend on the prescription and the
+          Reader, and nothing relates them to perturbation theory (VII.5,
+          VII.6).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Spectator distance.</em> The remainder bound holds with
+          power-separated spectators, \((r / \rho)^{N + 1}\). The main theorem
+          uses only a fixed clearance.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Contacts.</em> The contact extension is an existence statement.
+          Its order \((2 + w (a)) k\) is crude. Its OPE projection uses the
+          device detectors, with the same prescription as the Reader but
+          separate probe sets.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Interface to Part III.</em> The cluster replacement requires the
+          numerical and geometric hypotheses in Lemma VII.4.f.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-16"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>object</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>code name</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>proposed notation</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">upper and exact exponential rates</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Rate.lean#L23-L24"><tt class="verbatim">RateLE</tt></a>, <tt class="verbatim">RateIs</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(f \preceq e^{\kappa T}\); \(\log f / T \to \kappa\) with
+        \(f > 0\) eventually</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">height of a level sequence</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Height.lean#L18-L20"><tt class="verbatim">Height</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(m \to \infty\), \(\log (1 / a_m) / T \to c\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">cluster, clearance</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L24-L26"><tt class="verbatim">WithinRoom</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Regime.lean#L28-L30"><tt
+        class="verbatim">ClearOf</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((r, M, \eta)\)-cluster; \(c\)-clear</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">total degree</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">weight</tt>, <tt class="verbatim">sigma</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(w (a)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">needles, sheets, tests</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Basis.lean#L44-L46"><tt class="verbatim">Prescription</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(u_i\), \(\lambda_i\), \(\lambda_i^{(n)}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">raw coefficient</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Splitting/Detector.lean#L80"><tt class="verbatim">Prescription.ope</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\lambda_i (a ; x, o)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Reader</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Cuts.lean#L17-L23"><tt class="verbatim">Orbits.Reader</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{R}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">lower-degree removal, cut test, stratum</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">knife</tt>, <tt class="verbatim">cutTest</tt>, <tt class="verbatim">stratum</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\pi_n\), \(\tau_{n, q}\), \(E_n\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">channels, actors, coefficients</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">channels</tt>, <tt class="verbatim">actor</tt>, <tt class="verbatim">coef</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{Ch}_j\), \(O_{j, \kappa}\), \(c_{j, \kappa} (a ; x,
+        o)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">ground algebra, states</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">unselected.algebra</tt>, <tt class="verbatim">glance</tt>,
+        <tt class="verbatim">Viewers</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{A}\); \(s \in X \sqcup \{ \text{mix} \}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">error element</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/System.lean#L61-L63"><tt class="verbatim">algebraError</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L26-L27"><tt
+        class="verbatim">groundError</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{E}_D (a, x ; b, y)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">chessboard root with interior condition</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Cards/Literal.lean#L28-L31"><tt class="verbatim">Cards.PaidAt</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(|F|_{\mathcal{T}_k} \leqslant A\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">deck of translates</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">deck</tt>, <tt class="verbatim">Episode</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\prod_{l < 2 n} U^{(\ast)} \circ \tau_{2 tl}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">limit label of a cluster</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Eye/Remit.lean#L42-L44"><tt class="verbatim">Survival</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(Q\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">coefficient size of a label</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">quota</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(|z|_m\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">RG insertion, step and column bounds</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">paid</tt>, <tt class="verbatim">&zeta;</tt>, <tt class="verbatim">&delta;</tt>,
+        <tt class="verbatim">&phi;</tt>, <tt class="verbatim">x</tt>, <tt class="verbatim">columns</tt>, <tt
+        class="verbatim">alto</tt>, <tt class="verbatim">march</tt>, <tt class="verbatim">gainChart</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{paid}_j\), \(\zeta\), \(\delta\), \(\varphi\),
+        \(x\), \(c_m\), \(A_{k, t}\), \(\mathfrak{m}_{k, m}\), \((a_k /
+        a_m)^{1 / 8}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">cell and stencil fitting data</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">coverSize</tt>, <tt class="verbatim">lensScope</tt>, <tt
+        class="verbatim">GridApprox.tail</tt>, <tt class="verbatim">clock.J</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathfrak{c}_k\), \(\ell_t\), \(\tau_m\),
+        \(\jmath_m\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">RG package</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Exchange/Arrangement.lean#L56-L60"><tt class="verbatim">Services</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(RG)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">tree plot, admissibility</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Quantified.lean#L15-L18"><tt class="verbatim">Accept</tt></a>, <tt class="verbatim">Plot</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((s, z)\) admissible</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">tree costs</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Actual.lean#L18-L19"><tt class="verbatim">Tree.toll</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Nesting/Weights.lean#L102-L103"><tt class="verbatim">nestPrice</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\text{toll}_m\), \(\text{nest}_D\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">one-field bound, separation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Roots.lean#L25-L26"><tt class="verbatim">Next.Phase.Single</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/PHASE/Passage.lean#L84-L87"><tt
+        class="verbatim">Gapped</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(|I (v, \cdot) |_{\mathcal{T}_k} \leqslant A\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">train, quantum read</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">ride</tt>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L70-L71"><tt class="verbatim">QRead</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(v_n\); bench bound \(\rho\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">contact devices, clearance</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Tomography.lean#L17-L26"><tt class="verbatim">Contacts.Devices</tt></a>, <tt class="verbatim">clearance</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{M}\), \(\text{cl} (n)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">cumulant, punctured, full</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">cumulant</tt>, <tt class="verbatim">punctured</tt>, <tt
+        class="verbatim">full</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(C_h\), \(\Pi_h\), \(\text{full}_h\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">normal Taylor operator</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/Subtractions.lean#L68"><tt class="verbatim">Normal.taylor</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(T^h_m\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">distribution of finite order</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Venue.lean#L30-L31"><tt class="verbatim">Charge</tt></a>, <tt class="verbatim">totalTestOrder</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{D}^s_a\), order \((2 + w) k\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">contact thresholds</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Gates.lean#L23-L28"><tt class="verbatim">Thresholds</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(t_n\)</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-17"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>RG inputs below the cluster replacement.</strong> Lemmas
+          VII.4.f&ndash;g identify the scalar inequalities and the scale
+          induction. The polymer norm estimates inside the one-step
+          representation, fusion and final remainder transport have not been
+          checked line by line. The dependence of their constants, and the
+          complete Part III proofs of these inputs, remain to be reconciled
+          with the stated RG package.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Proofs used through their statements.</strong> The full
+          geometry behind the vacuum deck limit and the two-scale continuum
+          transfer belongs to V.1. The rotated comparison estimates used in
+          Lemma VII.4.k, and the triangular replacement and high-horizon
+          lemmas used in VII.4.n, have not been checked internally. Their uses
+          and exponent arithmetic agree with their stated conclusions.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Contact sector induction.</strong> The global patching
+          argument, subtraction recursion, shell Taylor bound and scaling
+          normalization have been checked. The finer angular decompositions
+          and the full induction through partially coincident strata remain
+          checked only at the level of their theorem calls. Lemma VII.4.r's
+          radial estimate alone does not settle these partial collisions.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Contact projection versus Reader coefficients.</strong> The
+          devices share the Reader's prescription but use separate detectors
+          and a separate graded splitting. An identity between their
+          weight-\(w\) rows and \(\sum_{\kappa} c_{w, \kappa} O_{w, \kappa}\)
+          has not been located. No such identity is used in the contact
+          statement above.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Limits of the conclusions.</strong> The results do not
+          assert uniqueness of coefficients or contact extensions,
+          independence of the extraction subsequence, convergence as \(D \to
+          \infty\), reflection positivity or Ward identities for the
+          extensions, or agreement with perturbative coefficients.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="VII-3.html">&larr; VII.3 Free Wick polynomials and reflected Gram
+      positivity (notes)</a><span class="ym-part"><a href="../units.html#part-vii-identification-as-yangmills">Part VII</a><font class="ym-sep">&middot;</font><a
+      href="../units/VII-4.html">Unit outline</a></span><a class="ym-next" href="VII-5.html">VII.5 Asymptotic freedom of
+      the running coupling (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

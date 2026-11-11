@@ -1,0 +1,1726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.9. The marginal flow: the running coupling and its reset
+    &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-8.html">&larr; III.8 Connected activities and backward
+      dependence cones</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font class="ym-sep">&middot;</font><a
+      href="../notes/III-9.html">Detailed notes</a></span><a class="ym-next" href="III-10.html">III.10 One full nonlinear
+      renormalization step: bounds on irrelevant terms &rarr;</a>
+    </div>
+    <p>
+      <h1>III.9. The marginal flow: the running coupling and its reset</h1><a
+      id="iii9-the-marginal-flow-the-running-coupling-and-its-reset"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">1</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-6">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-7">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Code dependencies</b> <span style="margin-left: 5mm"></span> <a href="#auto-8">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Lean source</b> <span style="margin-left: 5mm"></span> <a href="#auto-9">5</a>
+      </p>
+      <p>
+        Additional source locations <span style="margin-left: 5mm"></span> <a href="#auto-10">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Key statements</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">12</a>
+      </p>
+    </div>
+    <p>
+      <em>Part III &mdash; Ultraviolet construction (renormalization
+      group).</em>
+    </p>
+    <p>
+      Tracks the running coupling and resets the effective density after each
+      renormalization step.
+    </p>
+    <p>
+      <strong>Status: edited.</strong> Condensed from the unit's detailed
+      notes, which were checked against the linked Lean in two rounds and
+      edited; the local limitations still apply. <a href="../../data/index.html#outline-status">Status meanings</a>.
+    </p>
+    <p>
+      <a href="../index.html">Overview</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../notes/III-9.html">Detailed
+      notes</a> &middot; <a href="III-8.html">&larr; Previous: III.8</a> &middot; <a href="III-10.html">Next:
+      III.10 &rarr;</a>
+    </p>
+    <p>
+      <a href="#unit-results">Results</a> &middot; <a href="#unit-inputs">Inputs</a> &middot; <a href="#unit-strategy">Strategy</a>
+      &middot; <a href="#unit-steps">Proof steps</a> &middot; <a href="#unit-notation">Notation</a>
+      &middot; <a href="#unit-limitations">What remains unexplained</a> &middot; <a href="#code-dependencies">Code
+      dependencies</a> &middot; <a href="#lean-source">Lean source</a> &middot; <a href="#key-statements">Key
+      statements</a>
+    </p>
+    <p>
+      <details><summary>Source inventory and conventions</summary><p>
+        <strong>Part:</strong> III, Ultraviolet construction (renormalization
+        group). <strong>Lean:</strong> unit III.9: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET">coupling
+        reset</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP">verified reset</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP">Wilson start-up</a>.
+        <strong>Size:</strong> 7,215 lines.
+      </p></details>
+    </p>
+    <p>
+      <a id="unit-results"></a>
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      Let \(G \subset U (n)\) be closed, with Lie algebra \(\mathfrak{g}\).
+    </p>
+    <p>
+      <strong>Proposition III.9.1 (slope).</strong> For simple nonabelian
+      \(\mathfrak{g}\) with orthonormal basis \((b_i)\) in \(\langle X, Y
+      \rangle = - \text{Retr} (XY) / n\), define \(C_G = - (\dim
+      \mathfrak{g})^{- 1}  \sum_i \text{tr}_{\mathfrak{g}}
+      ((\text{ad}
+b_i)^2)\) and \(\kappa = 11 C_G / (24 \pi^2)\). Then
+      \(\kappa > 0\). <em>Status:</em> definition and positivity theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Casimir.lean#L174-L176">slopeConstant_pos</a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.2 (reference scales).</strong> Fix \(\kappa >
+      0\), \(\bar{\beta} > 1\), an infinite sequence of odd \(L_m \geqslant
+      3\). Set
+    </p>
+    <center>
+      \(\displaystyle s_m = \sum_{i < m} \log L_i = \log (1 / a_m), \quad
+      \hat{\beta}_m =
+\bar{\beta} + \kappa s_m, \quad M_m = e^{(\log \log
+      \hat{\beta}_m)^2},\)
+    </center>
+    <center>
+      \(\displaystyle t_m = \hat{\beta}_m^{- 1 / 2} M_m, \quad \varepsilon_m =
+      \hat{\beta}_m^{- 11 /
+10}, \quad \tilde{\varepsilon}_m = e^{- M_m^{1 /
+      5}}, \quad B_m = \lceil (\log
+\hat{\beta}_m)^2 \rceil, \quad
+      \mathfrak{B}_m = [\hat{\beta}_m / 2, 2
+\hat{\beta}_m] .\)
+    </center>
+    <p>
+      Then \(\hat{\beta}_{m + 1} = \hat{\beta}_m + \kappa \log L_m\),
+      \(\hat{\beta}\) is nondecreasing and diverges. Additional scale
+      hypotheses are: \(t_m \leqslant 1\); sides at least \(100 (B_m + 1)\)
+      and \(100 (R_m + 1)\) at levels \(m, m + 1\), for every volume; \(J_m
+      \geqslant 4\) nondecreasing, divergent, increasing by at most one;
+      nondecreasing derivative orders, spatial powers, support exponents and
+      stage factors \(\ell_j\), with \(L_m = \ell_{J_{m + 1}}\); antitone \(0
+      < \theta_{J_m} \leqslant 1 / J_m\); \(\log L_m / s_m \to 0\);
+      \(\omega_{J_{m + 1}} / \log L_m \leqslant J_{m + 1}^{- 2}\) and \(\log
+      (1 + \text{paths} + \text{width}^{- 1} + \text{columns}
+      +
+\text{relaxation} + \text{support exponent})_{J_{m + 1}} / \log L_m
+      \leqslant
+J_{m + 1}^{- 2}\). <em>Status:</em> definitions and elementary
+      theorems; scale hypotheses supplied by III.2. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L97-L118">Calendar.Fits</a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.3 (selected histories).</strong> A selected
+      history assigns representations \(\rho_{N, p, m}\) for all \(N, p\) and
+      \(m \leqslant N\), with volume-independent paths \(P_{N, m}\), level
+      norms and clip, stage path bounds and loop cap \(2 M_m^{\theta_{J_m}}\),
+      and \(\beta_{N, p, m} \in \mathfrak{B}_m\). Regular activities are
+      local, gauge invariant, vanish at the flat field, with zero affine
+      Hessian on nonwrapping supports and bound \(\varepsilon_m\); forced
+      activities obey II.2 with bound \(\tilde{\varepsilon}_m\); the family
+      respects translations and signed permutations. At the top, \(v_N = 0\),
+      \(\rho_N = e^{- \beta_N S_W}\); at the bottom, \(\beta_0 =
+      \bar{\beta}\). For every \(m < N\),
+    </p>
+    <center>
+      \(\displaystyle \rho_m = T^{(m)}_{\beta_{m + 1}} \rho_{m + 1}, \qquad |
+      \beta_{m + 1} -
+\beta_m - \kappa \log L_m | \leqslant \omega_{J_{m + 1}}
+      .\)
+    </center>
+    <p>
+      For every \(\epsilon > 0\), eventually \(| \beta_{N, p, m} -
+      \hat{\beta}_m | \leqslant \epsilon s_m\) uniformly in \(N \geqslant m,
+      p\). Consequently \(\beta_{N, p, m} / s_m \to \kappa\) uniformly,
+      including \(m = N\), and \(\int \rho_{N, p, m}  \hspace{0.17em} d
+      \text{Haar} = Z_W (\Lambda_{N, p} ;
+\beta_{N, p, N})\) for every \(m
+      \leqslant N\). <em>Status:</em> specification; realized in III.13 using
+      III.9.5 and III.10. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L234-L240">History.Selected</a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.4 (reset along a curve).</strong> Fix scales
+      meeting entry thresholds and kernel conditions, compatible horizon, Haar
+      chart, positive post-block constants, planned kinetic data and recipe.
+      For \(N, p, m < N\), let \(\rho'_x\), \(x \in I = [l, u]\), be
+      continuous admissible fine representations, with \(l \leqslant u\);
+      write \(\beta'_x = \beta (\rho'_x)\). Fix stage-pair reset constants \(c
+      > 0\), \(0 < r \leqslant 1\), prescribed fine-stage \(g > 0\), and
+      coarse-stage sensor \(\eta > 0\). Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(2 (c + 1) \varepsilon_m \leqslant \eta t_m^2 r\); a small-field
+          probe satisfies \(\mathcal{K} (V) \geqslant | \Lambda_m | \eta
+          t_m^2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Trial activities \(F (x, d)\), \(|d| \leqslant r\), have fixed
+          addresses, valid allowances, coefficient continuity, and common
+          summable norm majorants along subsequences of every convergent
+          parameter sequence. For \(H_x = T^{(m)}_{\beta'_x} \rho'_x\), \(H_x
+          (1), H_x (V) > 0\) and
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle | (\beta'_x + \alpha)\mathcal{K}(V) +\mathcal{L}(V) -
+      \log (H_x (1) / H_x (V))
+| \leqslant | \Lambda_m | c \varepsilon_m,\)
+    </center>
+    <center>
+      \(\displaystyle |\mathcal{E}_{F (x, b)} (V) -\mathcal{E}_{F (x, a)} (V)
+      | \leqslant |
+\Lambda_m | c \varepsilon_m  |b - a| .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          The trial shape \(e^{- (\beta'_x + \alpha + d)
+          \mathcal{K}-\mathcal{L}-\mathcal{E}_{F (x, d)}}
+\mathcal{G}_{F (x,
+          d)}\) differs from \(H_x (U) / H_x (1)\) by at most \(C_{x, U} |f
+          (x, d) |\), with finite \(C_{x, U} \geqslant 0\) independent of
+          \(d\); forced activities have bound \(e^{- gM_{m + 1}^2}\); every
+          exact trial passes the recipe.
+        </p>
+      </li>
+    </ul>
+    <p>
+      There is continuous \(d : I \to [- r, r]\) giving continuous admissible
+      \(\rho_x = H_x\), coupling \(\beta'_x + \alpha + d (x)\) and \(v_x = |
+      \Lambda_m |^{- 1} \log H_x (1)\), retaining the stronger forced bound.
+      Without the last bullet, the unique residual root still matches \(1,
+      V\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L175-L189">advance</a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.5 (explicit reset; program).</strong> Under
+      III.9.4's datum, curve and constants, assume simplicity, \(\beta'_x \in
+      \mathfrak{B}_{m + 1}\), and the early presentation
+    </p>
+    <center>
+      \(\displaystyle H_x = e^{\tau_x | \Lambda_m | - \beta'_x
+      \mathcal{K}-\mathcal{L}- \sum_i
+\chi_{X_i} E_{x, i}} \mathcal{G}_x e^{-
+      \alpha \mathcal{S}} .\)
+    </center>
+    <p>
+      Assume local gauge-invariant smooth regular functions with nonnegative
+      sup-jet bounds \(h_{x, i}\) satisfying, at every anchor, \(\sum_{i : o_i
+      = o} e^{(a + 3) \text{cover}_{B_m} (X_i)} h_{x, i} \leqslant
+H_x^E\),
+      forced-family conditions and site-pinned bound \(w_x\) at exponent \(a +
+      1\), translation and point-group symmetry, fixed addresses and III.9.4's
+      continuity/tails. Require priced reset, compatible clip, width and cubic
+      conditions, \(H_x^E \leqslant c \varepsilon_m / 4\), regular/forced
+      reorganization estimates fitting numerical bounds \(e_x, k_x\) that
+      imply both allowances and \(e^{- gM_{m + 1}^2}\), and recipe acceptance
+      and continuation. Then
+    </p>
+    <center>
+      \(\displaystyle d (x) = \delta_x, \quad t_m^2 | \delta_x | \leqslant
+      H_x^E, \quad v_x = \tau_x
+- | \Lambda_m |^{- 1}  \sum_i E_{x, i} (1) .\)
+    </center>
+    <p>
+      All III.9.4 conclusions hold. A Gaussian-sector formulation additionally
+      requires integration licenses and equality of that integral with the
+      push. If these inputs hold at every level along every continuous
+      admissible curve with couplings in \(\mathfrak{B}_{m + 1}\), and
+      start-up curves pass initial and retention tests, they give, for every
+      \(N, p\), an admissible continuous Wilson curve on \(\mathfrak{B}_N\)
+      with coupling parameter \(\beta\) and \(v = 0\), and reset outputs along
+      every continuous admissible input curve with couplings in
+      \(\mathfrak{B}_{m + 1}\) on every closed interval, for all \(m < N\).
+      Output couplings need not remain in the coarse band before shooting.
+      <em>Status:</em> conditional theorems; physical inputs supplied by
+      III.10. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L64-L90">Return.reset</a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Stability.lean#L67-L70">program</a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.6 (Wilson start-up).</strong> For compatible
+      clip/norm pairs (\(0 < t \leqslant 1\), \(c_{\text{dir}} \leqslant 1\),
+      \(B \geqslant 2\), \(te^{(B - 2) / c_{\text{rel}}} \geqslant 2\)),
+      Wilson top paths, point-group-averaged regular activities \(\beta (1 -
+      c_{\text{dir}}) R_p\) on small-field plaquettes and forced activities
+      \(e^{- \beta \hspace{0.17em} \text{charge} (D, U)}\) on padded
+      large-field components give \(\rho^{\text{start}}_{\beta} (U) = e^{-
+      \beta S_W (U)}\) for every real \(\beta\) and configuration \(U\), with
+      \(v = 0\). For every \(G, k, q\), some \(C > 0\), \(0 < \delta \leqslant
+      1\) give residual sup-jet bound \(Ct^5\) for every norm choice of order
+      \(k\) and power \(q\), every torus, plaquette and site of that plaquette
+      when \(t \leqslant \delta\). At each fixed stage with \(c_{\text{dir}}
+      \leqslant 1\), some \(\beta^{\ast}\) ensures compatibility, small
+      threshold and both norm allowances for every realized choice of levels
+      and every \(N\) at that stage with \(\hat{\beta}_N \geqslant
+      \beta^{\ast}\). The band curve is continuous; admissibility additionally
+      requires Wilson top paths, their stage bounds and recipe tests. Given
+      old planned data and a revised horizon with Wilson top quadratic datum,
+      unchanged lower data and initial guesses, bounded Wilson top paths can
+      replace the old top while preserving \(\alpha\) and planned conditions.
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L96-L103">Start.evaluates</a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.7 (thresholds).</strong> For a fixed pre-block
+      profile and simple \(G\), sensors \(\eta_j > 0\) precede block sizes.
+      Fix block factors, \(0 < \theta_j \leqslant 1\), reset constants, decay
+      forecasts and post-block costs. Assume, for each \(i \leqslant j
+      \leqslant i + 1\), \(8 f_{ji} \leqslant q_i \ell_j^{\min}\) and \(u_{ji}
+      (x) \to 0\), where \(f_{ji}\) is the inherited coefficient,
+      \(\ell_j^{\min}\) the preassigned block-size floor, and \(q_i = 1 / [64
+      (1 + A_i)]\) for the regular reorganization coefficient \(A_i \geqslant
+      0\). Every threshold record \(V\) admits \(U \geqslant V\) such that
+      every \(W \geqslant U\) ensures pricing, cubic, width, reorganization
+      and inherited inequalities beyond thresholds; clip compatibility
+      requires \(c_{\text{dir}} \leqslant 1\). Realized levels must share
+      these data and satisfy \(W^{\text{entry}}_{J_{m + 1}} \leqslant
+      \hat{\beta}_m\). Physical bounds also require \(4 q_i \leqslant c_{ji}\)
+      and \(4 g_j \leqslant \text{rate}_{ji}\). Start-up thresholds are
+      likewise monotone when every used clip has \(c_{\text{dir}} \leqslant
+      1\). <em>Status:</em> conditional numerical theorem. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L75-L89">Time.beforeWait</a>.
+    </p>
+    <p>
+      <strong>Proposition III.9.8 (marker sums).</strong> Fix \(M, \mu \in
+      \mathbb{N}\), \(a \in \mathbb{R}\), \(c \geqslant 0\). On a four-torus
+      let arbitrarily indexed polymers \(X_i\) have \(f_i \geqslant 0\) and
+      subsets of finitely many marker names, at most \(\mu\) markers per site.
+      Every positive-weight polymer contains one of its markers' sites. If
+      every marker-rooted sum \(\sum_{i : v \in \text{markers} (i)} e^{(a + 1)
+      \text{cover}_M (X_i)} f_i
+\leqslant c\), then every site-pinned sum
+      \(\sum_{i : x \in X_i} e^{a \text{cover}_M (X_i)} f_i \leqslant \mu e (2
+      (16 M +
+9))^4 c\), uniformly in volume. All nonnegative sums must be
+      summable. <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L161-L199">root_hit</a>.
+    </p>
+    <p>
+      <a id="unit-inputs"></a>
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          II.2: polymer norms, masks and gas estimates; III.1: normalized
+          block kernels and representation interfaces.
+        </p>
+      </li>
+      <li>
+        <p>
+          III.2: constant order, scales and shooting; III.7: \(| \alpha +
+          \kappa \log L| + 1 \leqslant \omega\).
+        </p>
+      </li>
+      <li>
+        <p>
+          III.4, III.10: Gaussian-sector identity, early presentation, local
+          bounds, continuity and recipe acceptance; III.13: compatible kinetic
+          data and selected history.
+        </p>
+      </li>
+      <li>
+        <p>
+          Intermediate value theorem, Taylor's formula, Schur's lemma, lattice
+          reflections and permutations, Fourier analysis.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="unit-strategy"></a>
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      Extract the isotropic quadratic coefficient of the early regular
+      activities into \(\beta\). Subtract flat values and quadratic
+      projections, compensate path terms, and absorb failed-mask discrepancies
+      into the forced gas. A scalar equation identifies this exact
+      reorganization with the continuous reset; shooting chooses the bare
+      coupling with endpoint \(\bar{\beta}\).
+    </p>
+    <p>
+      <a id="unit-steps"></a>
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <p>
+      Under the corresponding hypotheses in &sect;1:
+    </p>
+    <ol>
+      <li>
+        <p>
+          Taylor expansion through order four gives the Wilson residual;
+          connected large-field components give the exact gas. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L81-L94">Start.gas_raw</a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          A small-field stripe gives \(\mathcal{K} (V) \geqslant | \Lambda |
+          \eta t^2\). Pricing and the activity-motion bound make \(f (x, d) =
+          (\beta'_x + \alpha + d) \mathcal{K} (V) +\mathcal{L}
+          (V)
++\mathcal{E}_{F (x, d)} (V) - \log (H_x (1) / H_x (V))\)
+          increasing with slope at least \(\mathcal{K} (V) / 2\), yielding a
+          unique continuous root. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L121-L137">paidResponse</a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Simplicity and lattice symmetry make the projected Hessian
+          isotropic; exact masked splitting preserves every density value and
+          gives \(d = \delta\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L70-L82">Local.exponent</a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Fixed-stage asymptotics make the reset inequalities eventual; prefix
+          maxima combine their thresholds monotonically. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Basic.lean#L111-L118">collect_upper</a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Shooting restricts intervals to keep couplings in their bands and
+          reach \(\beta_0 = \bar{\beta}\); summing drift errors gives uniform
+          running. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L23-L53">Shoot.trajectory</a>.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <a id="unit-difficulty"></a>
+    </p>
+    <h2 id="auto-5"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      Two-point matching requires full masked reorganization to imply exact
+      transfer. Activity-norm continuity must survive hard configuration
+      masks. The running estimate gives an \(o (s_m)\) remainder, without a
+      bounded remainder or two-loop expansion.
+    </p>
+    <p>
+      <a id="unit-notation"></a>
+    </p>
+    <h2 id="auto-6"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <p>
+      \(N, p, m\): cutoff, volume, level; \(| \Lambda_m |\): site count;
+      \(\alpha = \alpha_{N, m}\): one-loop shift; \(a\): support exponent;
+      \(\text{cover}_M\): polymer cover size; \(J_m\): stage; \(\omega_j\):
+      drift allowance; \(R_m\): patch radius. \(\mathcal{K}, \mathcal{L},
+      \mathcal{E}, \mathcal{G}\): kinetic, loop, regular and forced-gas terms;
+      \(\mathcal{S}\): masked quadratic receipt; \(\delta\): isotropic Hessian
+      coefficient; \(\chi_X\): small-field indicator. Admissible means
+      prescribed paths/norms/clip, lawfulness and recipe acceptance. Curve
+      continuity means continuous coupling and vacuum constant, fixed
+      supports, inventories and eligibility tests, and continuity in weighted
+      regular sup-jet/forced uniform norms; regular jets are measured on
+      small-field supports at the prescribed order and power.
+    </p>
+    <p>
+      <a id="unit-limitations"></a>
+    </p>
+    <h2 id="auto-7"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <p>
+      Expand reorganization constants and connected-polymer estimates.
+      Nonlinear inputs belong to III.4/III.10; analytic existence and
+      uniqueness within the specified continuation class belong to III.13.
+    </p>
+    <p>
+      Detailed notes: the full account of this unit, with proof sketches for
+      every step, is on the <a href="../notes/III-9.html">detailed notes page</a>.
+    </p>
+    <h2 id="auto-8"><a id="code-dependencies"></a>Code dependencies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Code dependencies (from the compiled Lean).</strong> These lists
+      follow references between declarations allocated to units; they can
+      include shared definitions, record fields and alternative constructions.
+      They are not a mathematical reading order. Only unit pairs with at least
+      25 references are shown; see the <a href="../../data/index.html#code-dependencies">counting rules</a>.
+    </p>
+    <p>
+      <strong>References to:</strong> <a href="I-1.html">I.1</a>, <a href="III-1.html">III.1</a>, <a
+      href="III-2.html">III.2</a>, <a href="III-15.html">III.15</a>, <a href="III-16.html">III.16</a>, <a href="II-2.html">II.2</a>,
+      <a href="III-6.html">III.6</a>, <a href="II-1.html">II.1</a>, <a href="III-10.html">III.10</a>, <a href="III-3.html">III.3</a>,
+      <a href="III-5.html">III.5</a>, <a href="III-4.html">III.4</a>, <a href="VI-1.html">VI.1</a>.
+    </p>
+    <p>
+      <strong>Referenced by:</strong> <a href="III-13.html">III.13</a>, <a href="III-10.html">III.10</a>,
+      <a href="III-12.html">III.12</a>, <a href="III-2.html">III.2</a>, <a href="III-11.html">III.11</a>, <a href="VII-2.html">VII.2</a>,
+      <a href="III-4.html">III.4</a>, <a href="VIII-1.html">VIII.1</a>, <a href="III-15.html">III.15</a>, <a href="III-14.html">III.14</a>,
+      <a href="VII-4.html">VII.4</a>.
+    </p>
+    <h2 id="auto-9"><a id="lean-source"></a>Lean source<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Source allocation:</strong> 7,215 attributed lines; 1,261
+      line-counted declarations; 1,678 assigned declaration names. Of the
+      assigned names, 1,582 are in the compiled closure of the seventeen
+      headline results. These quantities have <a href="../../data/index.html#counting-scopes">different scopes</a>.
+    </p>
+    <p>
+      The folders and result chains below are source inventories. Their line
+      counts cover each whole group, including any share allocated to another
+      unit; percentages use attributed lines plus one per assigned name. They
+      need not sum to the unit total.
+    </p>
+    <ul>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP"><tt class="verbatim">YM/AnalyticBridge/VERIFIED_RESET_STEP/</tt></a>
+          &mdash; 2,659 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP"><tt class="verbatim">YM/Extra/WILSON_STARTUP/</tt></a>
+          &mdash; 2,422 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT"><tt class="verbatim">YM/Push/BETA_TRANSPORT/</tt></a>
+          &mdash; 652 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET"><tt class="verbatim">YM/UVNext/COUPLING_RESET/</tt></a>
+          &mdash; 592 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS"><tt class="verbatim">YM/Extra/MULTISOURCE_BOUNDS/</tt></a>
+          &mdash; 344 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT"><tt class="verbatim">YM/Further/STRONG_STARTUP_CREDIT/</tt></a>
+          &mdash; 213 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER"><tt class="verbatim">YM/Push/PRICE_COMPILER/</tt></a>
+          &mdash; 139 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH"><tt class="verbatim">YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/</tt></a>
+          &mdash; 65 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT"><tt class="verbatim">YM/Planned/RECIPE_STARTUP_PORT/</tt></a>
+          &mdash; 60 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Wind"><tt class="verbatim">YM/R2I/Wind/</tt></a> &mdash; 34
+          lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/THRESHOLD_SOURCE_RESTART"><tt class="verbatim">YM/Further/THRESHOLD_SOURCE_RESTART/</tt></a>
+          &mdash; 24 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/SERVICE"><tt class="verbatim">YM/PhysicalNext/SERVICE/</tt></a>
+          &mdash; 11 lines.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-10"><a id="additional-source-locations"></a>Additional source locations<span style="margin-left: 1em"></span></h3>
+    <p>
+      Further pinned locations for the definitions and comparisons discussed
+      in this unit.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L30-L36"><tt class="verbatim">Return.physical_shape</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L37-L42"><tt class="verbatim">Return.earns</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Advance.lean#L44-L61"><tt class="verbatim">Return.remainders</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Comparison.lean#L72-L74"><tt class="verbatim">Collection.Compared</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L41-L49"><tt class="verbatim">Use.Machine</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L71-L74"><tt class="verbatim">Machine.packet</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L77-L81"><tt class="verbatim">Use.Offering</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L83-L84"><tt class="verbatim">Use.Origins</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Downstream.lean#L85-L88"><tt class="verbatim">Use.supplier</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L26-L27"><tt class="verbatim">Collection.earlyValue</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L92-L95"><tt class="verbatim">Collection.Local.actual</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L30-L56"><tt class="verbatim">Time.rawGate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L56-L61"><tt class="verbatim">Return.earnings</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L70-L71"><tt class="verbatim">Return.atlas</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inputs.lean#L74-L94"><tt class="verbatim">Return.grants</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Investor.lean#L112-L128"><tt class="verbatim">Local.renew</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Investor.lean#L49-L51"><tt class="verbatim">Collection.Fees</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L100-L102"><tt class="verbatim">Averaging.identity</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L103-L112"><tt class="verbatim">Averaging.delta_bound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L75"><tt class="verbatim">Averaging.delta</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Isotropy.lean#L77-L98"><tt class="verbatim">Averaging.isotropic</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L48-L59"><tt class="verbatim">Time.late</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L84-L119"><tt class="verbatim">Time.now</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Payment.lean#L28-L35"><tt class="verbatim">Return.Prices</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Payment.lean#L56-L57"><tt class="verbatim">Return.result</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Payment.lean#L77-L84"><tt class="verbatim">Return.settled</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Projection.lean#L34-L40"><tt class="verbatim">label_color</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Projection.lean#L89-L90"><tt class="verbatim">projection</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Residual.lean#L114-L120"><tt class="verbatim">Residual.splits</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Rewrites.lean#L54-L59"><tt class="verbatim">Local.first_split</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Rewrites.lean#L77-L93"><tt class="verbatim">Collection.path_split</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Tables.lean#L36"><tt class="verbatim">Time.credit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Trays.lean#L35-L40"><tt class="verbatim">Collection.Local</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L27-L28"><tt class="verbatim">Bid.Cake</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L136-L156"><tt class="verbatim">torus_kernel</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Author.lean#L34-L36"><tt class="verbatim">Mark.Ready</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Cake.lean#L43-L48"><tt class="verbatim">Start.Allows</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Channels.lean#L72-L87"><tt class="verbatim">channel_split</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Clock.lean#L113-L139"><tt class="verbatim">Timing.enough</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L154"><tt class="verbatim">fourth</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L156-L164"><tt class="verbatim">convert_taylor</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L166"><tt class="verbatim">surplus</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Curvature.lean#L168-L179"><tt class="verbatim">surplus_jet</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Design.lean#L156-L162"><tt class="verbatim">Design.principal_top</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Design.lean#L34-L38"><tt class="verbatim">Design.top</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Engine.lean#L22-L25"><tt class="verbatim">Change.Overlay</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L58"><tt class="verbatim">residual</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L62-L68"><tt class="verbatim">residual_jet</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L70-L74"><tt class="verbatim">healthy_chord</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Fast.lean#L27-L38"><tt class="verbatim">Timing.choose</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Fast.lean#L40-L42"><tt class="verbatim">Timing.hat_mono</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Fast.lean#L44-L51"><tt class="verbatim">Timing.receive</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Funds.lean#L130-L143"><tt class="verbatim">Start.Loan.kernel</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L70-L75"><tt class="verbatim">Start.issues</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Ink.lean#L104-L122"><tt class="verbatim">Start.ink</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Match.lean#L52-L54"><tt class="verbatim">Design.Suitable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/MixRoom.lean#L75-L78"><tt class="verbatim">Mixture.Extras</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Ownership.lean#L20-L23"><tt class="verbatim">WilsonStartup.Decent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Polar.lean#L142-L163"><tt class="verbatim">Polar.writes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Residual.lean#L161-L183"><tt class="verbatim">Quad.small_jet</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L48-L84"><tt class="verbatim">Polar.invert_tori</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Pricing.lean#L47-L64"><tt class="verbatim">StrongStartup.before</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Reserve.lean#L69-L76"><tt class="verbatim">StrongStartup.Escrow</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Sleeves.lean#L51-L52"><tt class="verbatim">StrongStartup.BondFuel</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L180-L182"><tt class="verbatim">YM.Gauge.casimir</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L184"><tt class="verbatim">YM.Gauge.slopeConstant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L71-L75"><tt class="verbatim">YM.Gauge.trace_color</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L115"><tt class="verbatim">Schedule.scale</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L117-L120"><tt class="verbatim">Schedule.divergent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L124-L127"><tt class="verbatim">Schedule.scale_succ</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Scale.lean#L99"><tt class="verbatim">Schedule.a</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Levels.lean#L43-L45"><tt class="verbatim">Deployment.hat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/FullPlanned.lean#L17-L52"><tt class="verbatim">Stationary.pouring</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L20-L23"><tt class="verbatim">HorizCalc</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L125"><tt class="verbatim">poleVec</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/Bubbles.lean#L127-L141"><tt class="verbatim">haloRate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L326-L338"><tt class="verbatim">poleSpin</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L346-L408"><tt class="verbatim">absoluteGeode</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean"><tt class="verbatim">YM/PCalc/Band.lean</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L26-L36"><tt class="verbatim">Directed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L49-L55"><tt class="verbatim">Directed.Move</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L57-L63"><tt class="verbatim">Directed.links</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Band.lean#L65-L72"><tt class="verbatim">Directed.Program</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L62-L71"><tt class="verbatim">FiniteBound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L74-L77"><tt class="verbatim">Kin</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Loop.lean#L93-L115"><tt class="verbatim">Kin.Planned</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Graces/Eagles.lean#L33-L50"><tt class="verbatim">Graces.winnow</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Rain/Glazing.lean#L97-L104"><tt class="verbatim">Rain.glazing</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L26-L50"><tt class="verbatim">Roost.Factor</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L56">Roost.Factor.offering</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Roost/Foundry.lean#L59">Roost.Factor.worksNow</a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162"><tt class="verbatim">Supply.Paid</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35"><tt class="verbatim">Supply.Sheet</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L39-L48"><tt class="verbatim">Supply.Large</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L22-L25"><tt class="verbatim">BetaTransport.kinetic</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L93-L97"><tt class="verbatim">FixedRepData.continuous_eval</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Basic.lean#L126-L131"><tt class="verbatim">eventually_transitions</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Basic.lean#L27"><tt class="verbatim">StepStages</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L102-L104"><tt class="verbatim">KBound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L106-L111"><tt class="verbatim">Activities.Valid</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L98-L100"><tt class="verbatim">EBound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L77-L79"><tt class="verbatim">StepData.push</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean"><tt class="verbatim">YM/RG/History.lean</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L120-L128"><tt class="verbatim">BlockControl</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L165-L171"><tt class="verbatim">Rep</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L213-L218"><tt class="verbatim">Conv</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L223-L227"><tt class="verbatim">Transfer</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L229-L230"><tt class="verbatim">Running</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L242-L249"><tt class="verbatim">History.partition_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L45-L61"><tt class="verbatim">Stage</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L79"><tt class="verbatim">Calendar.hatBeta</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L81"><tt class="verbatim">monitor</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L82"><tt class="verbatim">coverSize</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L83"><tt class="verbatim">threshold</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L84"><tt class="verbatim">allowance</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L85"><tt class="verbatim">forcedAllowance</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L88-L91"><tt class="verbatim">Calendar.op</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L150-L154"><tt class="verbatim">PathData</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L173-L185"><tt class="verbatim">PathData.Bounds</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Push.lean#L37-L43"><tt class="verbatim">StepData.push_integral</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Criteria.lean#L63"><tt class="verbatim">Shoot.band</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Race.lean#L67-L82"><tt class="verbatim">Recipe.races</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L112-L154"><tt class="verbatim">Shoot.steps</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L156-L159"><tt class="verbatim">Shoot.successful</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L18-L49"><tt class="verbatim">Shoot.narrow</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L57"><tt class="verbatim">floorBeta</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L58"><tt class="verbatim">ceilBeta</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L60-L68"><tt class="verbatim">Shoot.limits</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L73-L79"><tt class="verbatim">Shoot.Drifting.pay</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shoot/Reach.lean#L81-L90"><tt class="verbatim">Shoot.gates</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L58-L61"><tt class="verbatim">Spec.Calibrated</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Forest/Glue.lean#L35-L36"><tt class="verbatim">Mast.calibrated</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Orchard/First.lean#L55-L88"><tt class="verbatim">Orchard.traject</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward/AtLimit.lean#L46-L66"><tt class="verbatim">Reward.step_contracted</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward/Tides.lean#L15-L46"><tt class="verbatim">Reward.fieldArray</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Reward/Tides.lean#L49-L62"><tt class="verbatim">Reward.ties</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Alpine.lean#L64-L70"><tt class="verbatim">Spire.Fitted.unions</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Orbs.lean#L41-L42"><tt class="verbatim">Spire.Fitted.acts</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Spark.lean#L68"><tt class="verbatim">Spire.Uses.hits</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Spire/Spark.lean#L78-L85"><tt class="verbatim">Spire.Uses.exists_bolt</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Upland/Plinth.lean#L55-L58"><tt class="verbatim">Upland.Arc.finiteCut</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVExtension/Upland/Plinth.lean#L71-L75"><tt class="verbatim">Upland.Arc.exists_trial</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L139-L152"><tt class="verbatim">Income.balance</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L157-L173"><tt class="verbatim">correct</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L55-L58"><tt class="verbatim">Usable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L78-L85"><tt class="verbatim">Income</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L97-L103"><tt class="verbatim">Remainder</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Catalog.lean#L39-L45"><tt class="verbatim">Catalog.stable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L100-L106"><tt class="verbatim">delay_cubic</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L124-L143"><tt class="verbatim">pays_surplus</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L52-L69"><tt class="verbatim">higher_estimate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L89-L94"><tt class="verbatim">within_alpha</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Precision.lean#L96-L98"><tt class="verbatim">CubicGate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L38-L43"><tt class="verbatim">ResetPrices</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L46-L49"><tt class="verbatim">sensors</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L56-L62"><tt class="verbatim">can_delay_reset</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L66-L69"><tt class="verbatim">PricedReset</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Prices.lean#L71-L89"><tt class="verbatim">buys_reset</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L40-L54"><tt class="verbatim">reachable_chord</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L92-L94"><tt class="verbatim">Sensor</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Regular.lean#L73-L87"><tt class="verbatim">Prereset.value_income</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Regular.lean#L91-L96"><tt class="verbatim">Prereset.income</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L119-L125"><tt class="verbatim">Template.realizes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L131-L140"><tt class="verbatim">Template.response</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L64-L65"><tt class="verbatim">Template.residual</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Reset.lean#L99-L105"><tt class="verbatim">Template.passes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L27-L31"><tt class="verbatim">Response</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L54-L58"><tt class="verbatim">Response.continuous</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L60-L70"><tt class="verbatim">solve</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Root.lean#L80-L83"><tt class="verbatim">Response.balance_solve</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Stability.lean#L41-L47"><tt class="verbatim">Supplier</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Stability.lean#L54-L65"><tt class="verbatim">Supplier.ports</tt></a>
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-11"><a id="key-statements"></a>Key statements<span style="margin-left: 1em"></span></h2>
+    <p>
+      In the selected statement order. <strong>K-</strong> identifiers name
+      this generated list; proposition and lemma numbers in the outline are
+      separate. Each sentence is an automatically drafted summary of a Lean
+      statement; follow its link for the exact hypotheses and conclusion. The
+      outline status does not certify these summaries. <em>Main result</em>
+      and <em>key result</em> describe importance, not correctness. Full names
+      are in the <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv">statement table</a>.
+    </p>
+    <p>
+      <a id="k-iii-9-1"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.1</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Root.lean#L161-L199"><tt class="verbatim">root_hit</tt></a>
+          <em>(key result)</em> &mdash; If each positive source has an
+          anchored name in its support and rooted costs are bounded, the
+          multi-marker connected-cover budget holds with an explicit
+          site-factor constant.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-2"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.2</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Post.lean#L34-L38"><tt class="verbatim">DelayLe</tt></a>
+          <em>(numbered result)</em> &mdash; A componentwise order relation on
+          delay data.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-3"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.3</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Probe.lean#L96-L142"><tt class="verbatim">sensor</tt></a>
+          <em>(key result)</em> &mdash; For a nontrivial gauge group and a
+          clipped action there is a uniform &eta; making two tests separate
+          with the true clipped action.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-4"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.4</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Currency.lean#L75-L126"><tt class="verbatim">cash</tt></a>
+          <em>(numbered result)</em> &mdash; For a forecast and nonnegative
+          shifts, a family of numerical inequalities holds eventually as x
+          tends to infinity.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-5"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.5</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Opening.lean#L62-L65"><tt class="verbatim">open_shop</tt></a>
+          <em>(numbered result)</em> &mdash; A delay assignment can be boosted
+          so that all further boosts are opened for the given costs and
+          scouts.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-6"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.6</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/MULTISOURCE_BOUNDS/Schedule.lean#L98-L111"><tt class="verbatim">pricing</tt></a>
+          <em>(key result)</em> &mdash; For a simple gauge, there is a floor
+          beyond which delay records can be raised to satisfy ringing with
+          large values and make every paid level prepared for the given scope.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-7"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.7</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/BETA_TRANSPORT/Curve.lean#L122-L131"><tt class="verbatim">continuous_push</tt></a>
+          <em>(key result)</em> &mdash; For a continuous curve of
+          representations, the push is jointly continuous in the parameter and
+          the fine configuration.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-8"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.8</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/COUPLING_RESET/Advance.lean#L175-L189"><tt class="verbatim">advance</tt></a>
+          <em>(key result)</em> &mdash; Under additional remainder hypotheses,
+          a priced reset step can be advanced to the next stage with
+          continuous representatives.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-9"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.9</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Transform.lean#L86-L91"><tt class="verbatim">deliver</tt></a>
+          <em>(key result)</em> &mdash; For rows with exponential-decay strip
+          bounds, the inverse of r plus the transpose-product exists as a row
+          with uniform strip bounds, with constants depending only on r, eta,
+          A.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-10"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.10</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Gas.lean#L96-L103"><tt class="verbatim">evaluates</tt></a>
+          <em>(key result)</em> &mdash; At startup, the cake built from the
+          payload and dictionary evaluates exactly to the bare Wilson weight
+          at coupling &beta;.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-11"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.11</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Face.lean#L76-L101"><tt class="verbatim">residual_price</tt></a>
+          <em>(key result)</em> &mdash; The one-face Wilson matching residual
+          is bounded by C times threshold to the fifth power in the budgeted
+          sup norms, for small threshold.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-12"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.12</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Planned/RECIPE_STARTUP_PORT/Layout.lean#L52-L71"><tt class="verbatim">card</tt></a>
+          <em>(numbered result)</em> &mdash; If the allowance conditions hold
+          and the level is at top, the stamped recipe satisfies the required
+          menu of estimates with the actual pot and kettle.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-13"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.13</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/STRONG_STARTUP_CREDIT/Pricing.lean#L87-L107"><tt class="verbatim">prices</tt></a>
+          <em>(key result)</em> &mdash; After enlarging the floor sequence,
+          startup price conditions hold monotonically and any supplied delays
+          can be raised to ones ensuring the prepared hypotheses for the
+          scope.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-14"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.14</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L105-L138"><tt class="verbatim">developer</tt></a>
+          <em>(key result)</em> &mdash; One can modify a schedule sheet to
+          satisfy stationary purchase, order, and suitability conditions while
+          preserving the kernel and floor.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-15"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.15</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Inherited.lean#L75-L89"><tt class="verbatim">beforeWait</tt></a>
+          <em>(key result)</em> &mdash; There exist thresholds beyond which
+          the raw prices, openings, inherited conditions and cubic gates all
+          hold, so that reset prices are paid.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-16"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.16</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/Engine.lean#L62-L82"><tt class="verbatim">engine</tt></a>
+          <em>(key result)</em> &mdash; A planned kin can be modified in its
+          boundary condition, giving a new planned kin with revised path and
+          unchanged stationary data away from the end.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-9-17"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.9.17</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/WILSON_STARTUP/TopStep.lean#L160-L180"><tt class="verbatim">top_step</tt></a>
+          <em>(key result)</em> &mdash; Replacing top input paths in a
+          Wilson-loop step preserves the critical, guessed, price-gap,
+          classical-match and finite-bound properties.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview of the proof</a>
+      &middot; <a href="../../index.html">Repository</a>
+    </p>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-8.html">&larr; III.8 Connected activities and backward
+      dependence cones</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font class="ym-sep">&middot;</font><a
+      href="../notes/III-9.html">Detailed notes</a></span><a class="ym-next" href="III-10.html">III.10 One full nonlinear
+      renormalization step: bounds on irrelevant terms &rarr;</a>
+    </div>
+  </body>
+</html>

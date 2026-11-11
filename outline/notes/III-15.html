@@ -1,0 +1,2224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.15. Cost accounting for observables and the remainder
+    comparison &mdash; detailed notes &ndash; Yang&ndash;Mills
+    informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-14.html">&larr; III.14 The construction run: flat representations
+      and the ultraviolet rate (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part
+      III</a><font class="ym-sep">&middot;</font><a href="../units/III-15.html">Unit outline</a></span><a
+      class="ym-next" href="III-16.html">III.16 Analytic toolkit (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>III.15. Cost accounting for observables and the remainder comparison
+      &mdash; detailed notes</h1><a id="iii15-cost-accounting-for-observables-and-the-remainder-comparison--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">3</a>
+      </p>
+      <p>
+        Part A: pair-step pricing <span style="margin-left: 5mm"></span> <a href="#auto-2">3</a>
+      </p>
+      <p>
+        Part B: derivative bounds for local observables <span style="margin-left: 5mm"></span>
+        <a href="#auto-3">5</a>
+      </p>
+      <p>
+        Part C: launch data for the remainder comparison <span style="margin-left: 5mm"></span>
+        <a href="#auto-4">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-6">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-7">10</a>
+      </p>
+      <p>
+        4.1 Elementary asymptotics <span style="margin-left: 5mm"></span> <a href="#auto-8">10</a>
+      </p>
+      <p>
+        4.2 Pair-step rates <span style="margin-left: 5mm"></span> <a href="#auto-9">11</a>
+      </p>
+      <p>
+        4.3 Merging hard and soft families <span style="margin-left: 5mm"></span> <a href="#auto-10">11</a>
+      </p>
+      <p>
+        4.4 Slots and atoms <span style="margin-left: 5mm"></span> <a href="#auto-11">12</a>
+      </p>
+      <p>
+        4.5 The Chron chain (Part C) <span style="margin-left: 5mm"></span> <a href="#auto-12">13</a>
+      </p>
+      <p>
+        4.6 Records and other fragments (Part D) <span style="margin-left: 5mm"></span> <a href="#auto-13">18</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-14">18</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-16">20</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit III.15: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/III-15.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/III-15.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> III, Ultraviolet construction (renormalization
+      group). <strong>Lean:</strong> chapter 32: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison"><tt class="verbatim">YM/RemainderComparison/</tt></a>
+      (packages Chron, Cadenza, Halo, Muse, Solo, Lyric, Herbal, Cascade,
+      Sleet, Access, Portal, Aux and about twenty smaller ones), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE"><tt
+      class="verbatim">YM/Progress/DIRECTED_RECIPE/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE"><tt class="verbatim">YM/Next/SCHEDULE/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG05Readout"><tt class="verbatim">YM/RG05Readout/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/ChronPreconstruction"><tt class="verbatim">YM/Integration/ChronPreconstruction/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction"><tt class="verbatim">YM/Integration/RG05Preconstruction/</tt></a>, and
+      small parts of <tt class="verbatim">YM/R2I/</tt>, <tt class="verbatim">YM/RG12/</tt>, <tt
+      class="verbatim">YM/OPE/Therm/</tt>. <strong>Size:</strong> 7,382 lines in 1,053
+      declarations used by the main theorem. About 4,200 of these lines are
+      the launch theorem and its prerequisites.
+    </p>
+    <p>
+      <strong>Overview.</strong> The unit has three independent parts, plus
+      some record types.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(A) Pair-step pricing</strong> (<tt class="verbatim">DIRECTED_RECIPE</tt>).
+          Two numerical facts used by the RG step of III.9 and III.10. A hard
+          family of polymer activities is merged with the Mayer expansion of
+          the exponential of soft local terms. The merged family keeps a
+          weighted polymer bound and carries an explicit Gaussian large-field
+          factor (III.15.1&ndash;2).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(B) Derivative bounds for local observables</strong> (<tt
+          class="verbatim">SCHEDULE/Wages</tt>). On the small-field region, a
+          transported curvature slot has left derivatives of every order
+          \(\leqslant K\) bounded by a constant times \(t\). A \(k\)-leg
+          monomial in slots has them bounded by a constant times \(t^k\). Here
+          \(t\) is the small-field threshold (III.15.3&ndash;4).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(C) Launch data for the remainder comparison</strong> (<tt
+          class="verbatim">RemainderComparison</tt>). For connected-activity targets
+          with rates below \(- \tfrac{3}{8}\), a sufficiently large block side
+          permits the numerical conditions of a comparison step. After the
+          auxiliary data are fixed, one chooses the comparison functions and
+          then an entry coupling above which those conditions hold
+          (III.15.5&ndash;7).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(D) Records and numerical definitions.</strong> These
+          include the construction-run bounds, the additional-expense and
+          readout records, and the RG05 readout prices. Their scope is
+          described in &sect;4.6.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Status of the parts for the main theorem.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (A) and (B) are consumed by III.2, III.9 and III.10.
+        </p>
+      </li>
+      <li>
+        <p>
+          (C) supplies additional comparison data in the main-theorem
+          dependency chain:
+        </p>
+        <ul>
+          <li>
+            <p>
+              III.2's assembly lemma <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L28-L119"><tt class="verbatim">YM.PhysicalNext.Repeat.Legato.R2I.RG05Joint.joinExpensesShipWithPrediction</tt></a>
+              calls the launch and delay-enlargement theorems to build the
+              additional conjunct <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Rig.lean#L21-L22"><tt class="verbatim">YM.PhysicalNext.Repeat.Legato.Stagehands.News</tt></a>,
+              which records a family of quarries and their stagewise bounds.
+            </p>
+          </li>
+          <li>
+            <p>
+              That conjunct is passed unchanged up to the selected-run theorem
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/NativePreselectedPostnumericPeriodRun.lean#L99-L114"><tt class="verbatim">YM.PhysicalNext.Repeat.Legato.R2I.RG05Joint.selectRunWithTreasuryPeriod_preselected_quote_orders_postnumeric</tt></a>
+              of III.14.
+            </p>
+          </li>
+          <li>
+            <p>
+              In the main-theorem dependency chain, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/ConstructionRun.lean#L14-L28"><tt class="verbatim">YM.Independent.constructionRun</tt></a>
+              discards it. The retained construction-run conditions form a
+              separate record.
+            </p>
+          </li>
+          <li>
+            <p>
+              Part C imposes additional lower bounds on block sides and entry
+              couplings. Its comparison conclusions are absent from the final
+              construction-run statement.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <strong>Conventions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(x\) denotes the coarse renormalized inverse coupling
+          \(\hat{\beta}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\beta_F (x, L) = x + b_G \log L\) is the inverse coupling at the
+          next finer scale (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23"><tt class="verbatim">YM.Pressure.betaF</tt></a>);
+          \(b_G\) is the slope constant of \(G\), positive when \(G\) is
+          simple.
+        </p>
+      </li>
+    </ul>
+    <p>
+      For \(\beta > 0\) and \(x > 1\), use the scale functions
+    </p>
+    <center>
+      \(\displaystyle g (\beta) = \beta^{- 1 / 2}, \qquad p (x) = e^{(\log
+      \log x)^2}, \qquad t (x)
+= g (x)  \hspace{0.17em} p (x), \qquad
+      \mathcal{B} (x) = \lceil (\log x)^2
+\rceil .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          \(t\) is the small-field threshold (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L25"><tt class="verbatim">YM.Pressure.temp</tt></a>,
+          equal to <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Dues.lean#L59"><tt class="verbatim">YM.Next.Scheduling.Instrument.t</tt></a>
+          for the plain instrument).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{B}\) is the cluster radius (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22"><tt class="verbatim">YM.Pressure.radiusB</tt></a>,
+          the same formula as <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean#L38"><tt class="verbatim">YM.Next.Scheduling.Clock.cover</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          The band of \(y\) is \([y / 4, 4 y]\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Dues.lean#L99"><tt class="verbatim">YM.Next.Scheduling.inBand</tt></a>).
+          On it, \(g (y) / 2 \leqslant g (\beta) \leqslant 2 g (y)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Dues.lean#L105-L111"><tt
+          class="verbatim">YM.Next.Scheduling.band_gap</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Growth classes, at fixed \(L\), as \(x \to \infty\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Rate</strong> \(\leqslant a\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Numerics.lean#L22-L23"><tt class="verbatim">YM.ConnectedActivityE6.Rate</tt></a>):
+          for every \(v > a\), eventually \(|w (x) | \leqslant \beta_F (x,
+          L)^v\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Reserve</strong> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Access/Geometry.lean#L25-L26"><tt class="verbatim">YM.RemainderComparison.Reserve</tt></a>):
+          \(|w (x) | \leqslant M (x)^k\) eventually for some \(k \in
+          \mathbb{N}\), where \(M (x) = p (\beta_F (x, L))\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L24"><tt
+          class="verbatim">YM.Push.AbsoluteSums.Delay.fineMonitor</tt></a>). Every
+          reserve has rate at most \(0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Gear</strong> \(a\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Gear/Class.lean#L25"><tt class="verbatim">YM.RemainderComparison.Gear</tt></a>):
+          \(\beta_F^{- a} w\) is a reserve, equivalently \(|w (x) | \leqslant
+          \beta_F (x, L)^a M (x)^k\) eventually for some \(k \in \mathbb{N}\).
+          This implies rate at most \(a\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Weighted hit bound (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L12-L13"><tt class="verbatim">YM.Ac.Hit</tt></a>): for
+      supports \(X_i\), weights \(f_i \geqslant 0\), scale \(M\) and exponent
+      \(a\), write \(\text{Hit}_M (f ; a) \leqslant \gamma\) if
+    </p>
+    <center>
+      \(\displaystyle \sum_{i : \hspace{0.17em} z \in X_i} f_i 
+      \hspace{0.17em} e^{aN_M (X_i)}
+\leqslant \gamma \quad \text{for every
+      site } z,\)
+    </center>
+    <p>
+      where \(N_M (X)\) is the minimal number of \(M\)-balls with connected
+      union covering \(X\).
+    </p>
+    <p>
+      The quote is \(\text{quote} (\kappa, \gamma) = e^{- \kappa}  (e^{\gamma}
+      - 1)\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L18"><tt class="verbatim">YM.Bid.quote</tt></a>).
+    </p>
+    <p>
+      In the code, a price or bill is a numerical bound;
+      &ldquo;financed&rdquo; means that the bound satisfies the specified
+      growth conditions.
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-2"><a id="part-a-pair-step-pricing"></a>Part A: pair-step pricing<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Proposition III.15.1 (pair-step rates).</strong> Let \(\rho >
+      0\), \(C \geqslant 0\), \(r > \rho\), \(d \in \mathbb{N}\), \(e \in
+      \mathbb{R}\) and \(q > 0\). For \(y > 1\) and \(\beta > 0\) put
+    </p>
+    <center>
+      \(\displaystyle s (y, \beta) = \frac{t (y)}{g (\beta)} = p (y)
+      \sqrt{\beta / y}, \quad
+\text{mild} (y) = C (1 +\mathcal{B}(y))^d p
+      (y)^e g (y)^q,\)
+    </center>
+    <center>
+      \(\displaystyle \text{strong} (y, \beta) = Ce^{- rs^2}, \quad \kappa (y,
+      \beta) = \rho s^2 .\)
+    </center>
+    <p>
+      For all sufficiently large \(y > 1\), the following holds for every
+      \(\beta \in [y / 4, 4 y]\) and every integer \(0 \leqslant B \leqslant
+      \mathcal{B} (y)\). With \(a = \text{strong} (y, \beta)\), \(b =
+      \text{mild} (y)\) and \(\gamma = e^{\kappa} a + 2 b\):
+    </p>
+    <center>
+      \(\displaystyle \kappa \geqslant 0, \quad a \geqslant 0, \quad 0
+      \leqslant b \leqslant 1,
+\quad (2 B + 1)^4 \gamma \leqslant 1, \quad
+      \text{quote} (\kappa, \gamma)
+\leqslant e^{- \kappa} .\)
+    </center>
+    <p>
+      These are the rate conditions with target \(w = e^{- \kappa}\). The
+      threshold in \(y\) depends only on \((\rho, C, r, d, e, q)\).
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Economy.lean#L76-L139"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.Pairing.currency</tt></a>;
+      data <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Economy.lean#L28-L36"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.Pairing</tt></a>;
+      conditions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L33-L39"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.Rates</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L32"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.inflation</tt></a>.
+      <em>Used in:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          III.9, in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Currency.lean#L75-L126"><tt class="verbatim">YM.AnalyticBridge.VerifiedReset.Time.cash</tt></a>,
+          with \(d = e = 0\), \(q = \tfrac{1}{2}\), \(y = x + b_G \log L\) and
+          \(B =\mathcal{B} (x)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          III.2, in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sym/Purse.lean#L72-L85"><tt class="verbatim">YM.PhysicalNext.Repeat.Jams.reunite</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.15.2 (merging a hard and a soft
+      family).</strong> Fix a parameter point \(P\) with derivative order \(K
+      \geqslant 6\), direction power \(P_0 \geqslant 2\), cluster scale \(B_P
+      \geqslant 1\), support exponent \(\sigma > 0\) and threshold \(0 < t_P
+      \leqslant 1\). Consider a countably indexed regular family \(E_i\), a
+      <strong>hard family</strong> of forced activities \(F_i\) with supports
+      \(X_i\), and a <strong>soft family</strong> of real local exponential
+      corrections \(\ell_i\) with nonempty supports \(X'_i\). Assume:
+    </p>
+    <ol>
+      <li>
+        <p>
+          The regular terms satisfy the regular-family conditions at \(P\):
+          regularity on their supports, vanishing at the flat field, and
+          vanishing affine Hessian on nonwrapping supports. The forced terms
+          and their eligibility tests are gauge invariant, measurable and
+          determined by the links and final flags on their supports; a nonzero
+          forced term satisfies its eligibility test. The regular and forced
+          families admit the prescribed translation/reflection permutations,
+          including the support and inventory transformations. Each \(\ell_i\)
+          is gauge invariant, measurable and determined by the links and final
+          flags on \(X'_i\); it vanishes on configurations small-field on
+          \(X'_i\). The soft family is also covariant under translations and
+          reflections.
+        </p>
+      </li>
+      <li>
+        <p>
+          The regular family has bound \(\delta\): it admits nonnegative
+          bounds on all left derivatives through order \(K\) on its
+          small-field supports, in the directions specified by \(P\), whose
+          weighted sum at each anchor is at most \(\delta\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For every \(i\) and every configuration \(U\), \(|F_i (U) |
+          \leqslant p_i\) and \(| \ell_i (U) | \leqslant q_i\), with \(p_i,
+          q_i \geqslant 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Hit}_{B_P} (p ; \sigma + 1) \leqslant a\) on \((X_i)\) and
+          \(\text{Hit}_{B_P} (q ; \sigma + 1) \leqslant b\) on \((X'_i)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The rate inequalities of III.15.1 hold with \(B = B_P\), with the
+          final inequality replaced by \(\text{quote} (\kappa, e^{\kappa} a +
+          2 b) \leqslant w\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      Then the fusion input condition with \((\delta, w)\) holds. Explicitly:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the original regular and forced families retain bounds \(\delta\)
+          and \(a\), respectively; the soft corrections admit a summable
+          uniform majorant;
+        </p>
+      </li>
+      <li>
+        <p>
+          the merged family \((F_i) \sqcup (e^{\ell_i} - 1)\), with weights
+          \(e^{\kappa} p_i\) and \(2 q_i\), satisfies \(|F_i | \leqslant e^{-
+          \kappa} \cdot e^{\kappa} p_i\) and \(|e^{\ell_i} - 1| \leqslant 2
+          q_i\);
+        </p>
+      </li>
+      <li>
+        <p>
+          that family has \(\text{Hit}_{B_P} (\cdot \hspace{0.17em} ; \sigma +
+          1) \leqslant \gamma :=
+e^{\kappa} a + 2 b\), with \((2 B_P + 1)^4
+          \gamma \leqslant 1\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{quote} (\kappa, \gamma) \leqslant w\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. The only analytic input is \(|e^z - 1|
+      \leqslant 2 |z|\) for \(|z| \leqslant 1\). Through the fusion lemmas of
+      III.10 (<tt class="verbatim">Work.H01</tt>&ndash;<tt class="verbatim">H03</tt>, used in <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Batch.lean#L63-L68"><tt class="verbatim">YM.Progress.DirectedRecipe.Ingredients.gates</tt></a>),
+      the conclusion gives the fused polymer family with norm bound
+      \(\leqslant w\). With \(w = e^{- \kappa}\) from III.15.1, this is the
+      Gaussian large-field factor \(\exp (- \rho \hspace{0.17em} (\beta / y)
+      \hspace{0.17em} p (y)^2)\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L124-L133"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.tender</tt></a>;
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L42-L43"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.hardCost</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L45-L46"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.softCost</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L48-L49"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.rooted</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L52-L62"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.Fittings</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Batch.lean#L32-L33"><tt class="verbatim">YM.Progress.DirectedRecipe.Ingredients</tt></a>.
+      <em>Used in:</em> III.9 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Investor.lean#L112-L128"><tt class="verbatim">YM.AnalyticBridge.VerifiedReset.Collection.Local.renew</tt></a>)
+      and III.10 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Marlin/Pylon.lean#L38-L49"><tt class="verbatim">YM.PhysicalNext.Repeat.Marlin.cannon</tt></a>).
+    </p>
+    <h3 id="auto-3"><a id="part-b-derivative-bounds-for-local-observables"></a>Part B: derivative bounds for local observables<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      A <em>slot</em> \(s\) is a lattice walk \(\omega\) from the origin,
+      followed by a plaquette \(\pi\) (two axes) at the endpoint of \(\omega\)
+      (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L38-L40"><tt class="verbatim">YM.RG.Slot</tt></a>). Its length is \(|s| = |
+      \omega | + 4\), and its value at a site \(o\) is the transported
+      curvature
+    </p>
+    <center>
+      \(\displaystyle s (U, o) = \text{Ad} (U_{\omega})  \hspace{0.17em}
+      \mathcal{C} (U_{\pi}) \in
+\mathfrak{g},\)
+    </center>
+    <p>
+      where \(\mathcal{C}\) is the colour projection of the anti-Hermitian
+      part.
+    </p>
+    <p>
+      A <em>\(k\)-leg atom</em> \(a\) has slots \(s_1, \ldots, s_k\) and a
+      real coefficient tensor \(c_b\) indexed by colour multi-indices \(b \in
+      \{1, \ldots, \dim \mathfrak{g}\}^k\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L84-L86"><tt class="verbatim">YM.RG.Atom</tt></a>).
+      Its value is \(a (U, o) = \sum_b c_b  \prod_i s_i (U, o)^{b_i}\), its
+      size is \(|a| = \sum_b |c_b |\), and its length is \(\text{len} (a) =
+      \sum_i |s_i |\).
+    </p>
+    <p>
+      Fix a parameter point with derivative order \(K \geqslant 6\), power \(P
+      \geqslant 2\) and threshold \(t \in (0, 1]\). Directions are
+      colour-valued increments \(A\) of the left derivative \(\partial_A\). A
+      direction is <em>admissible at \(o\)</em> if
+    </p>
+    <center>
+      \(\displaystyle \|A_e \| \leqslant t \hspace{0.17em} (1 + \text{dist}
+      (e, o))^P \quad
+\text{for every link } e.\)
+    </center>
+    <p>
+      Here \(\text{dist} (e, o)\) is the periodic maximum distance from the
+      basepoint of \(e\) to \(o\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L141-L142"><tt class="verbatim">YM.RG.BudgetPoint.dirBound</tt></a>).
+    </p>
+    <p>
+      A configuration is <em>small-field on \(X\)</em> (healthy, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L41"><tt
+      class="verbatim">YM.RG.Healthy</tt></a>) if every plaquette touching a site of
+      \(X\) has chord distance \(\leqslant t\) from the identity. Let
+      \(\kappa_G > 0\) be the colour scale of \(G\) and \(\|1\|\) the
+      Frobenius norm of the identity matrix.
+    </p>
+    <p>
+      <strong>Proposition III.15.3 (slot derivative bound).</strong> Let
+      \(\ell \in \mathbb{N}\) and \(s\) be a slot with \(|s| \leqslant \ell\),
+      let \(S\) be a finite set of points of \(\mathbb{Z}^4\) containing the
+      stencil of \(s\), and let \(o\) be a site. Then \(U \mapsto s (U, o)\)
+      is \(K\) times left-differentiable. Let \(U\) be small-field on \(o +
+      S\) (wrapped on the torus), and let \(A_1, \ldots, A_m\) be admissible
+      directions at \(o\) with \(m \leqslant K\). Then
+    </p>
+    <center>
+      \(\displaystyle | \partial_{A_1} \cdots \partial_{A_m} s (U, o) |
+      \leqslant \text{slotCost}
+(P, K, \ell)  \hspace{0.17em} t,\)
+    </center>
+    <center>
+      \(\displaystyle \text{slotCost} (P, K, \ell) = (1 + \kappa_G^{- 1}
+      \|1\|) \hspace{0.17em}
+\text{margin} (P, \ell)^K, \qquad \text{margin}
+      (P, \ell) = 2 (\kappa_G + 1) 
+\hspace{0.17em} 2^P  (\ell + 1)^{P + 1}
+      .\)
+    </center>
+    <p>
+      The constant depends on \(P, K, \ell, G\) only, not on \(t\), \(o\) or
+      the volume. At \(m = 0\) the stronger order-zero bound is \(\|s (U, o)\|
+      \leqslant t\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L108-L159"><tt
+      class="verbatim">YM.Next.Scheduling.Wages.slotPays</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L95"><tt class="verbatim">YM.Next.Scheduling.Wages.slotCost</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L94"><tt class="verbatim">YM.Next.Scheduling.Wages.margin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07/Calculus.lean#L124-L129"><tt
+      class="verbatim">YM.Work.G07.LeftBound</tt></a>. <em>Used in:</em> III.9 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Quadratic.lean#L64-L83"><tt
+      class="verbatim">YM.AnalyticBridge.VerifiedReset.Low.plain_bill</tt></a>) and
+      III.15.4.
+    </p>
+    <p>
+      <strong>Proposition III.15.4 (bound for \(k\)-leg atoms).</strong> Let
+      \(k \in \mathbb{N}\), let \(a\) be a \(k\)-leg atom, \(o\) a site, and
+      \(U\) small-field on the footprint \(o + \text{stencil} (a)\). Then \(U
+      \mapsto a (U, o)\) is \(K\) times left-differentiable, and every left
+      derivative of order \(m \leqslant K\) in admissible directions at \(o\)
+      is bounded by
+    </p>
+    <center>
+      \(\displaystyle \text{price} (a) = |a|  \hspace{0.17em} 2^K  \left( 2^K
+      \hspace{0.17em}
+\text{slotCost} (P, K, \text{len} (a)) \hspace{0.17em} t
+      \right)^k =
+\text{start} (G, k, P, K)  \hspace{0.27em} t^k
+      \hspace{0.27em} |a| 
+\hspace{0.27em} (\text{len} (a) + 1)^{(P + 1)
+      Kk},\)
+    </center>
+    <p>
+      where \(\text{start} (G, k, P, K) = 2^K (2^K \text{slotCost} (P, K,
+      0))^k\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/TensorCost.lean#L56-L71"><tt class="verbatim">YM.Next.Scheduling.Wages.fin</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/TensorCost.lean#L52-L54"><tt class="verbatim">YM.Next.Scheduling.Wages.price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/TensorCost.lean#L85-L89"><tt
+      class="verbatim">YM.Next.Scheduling.Wages.scan</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/TensorCost.lean#L78"><tt class="verbatim">YM.Next.Scheduling.Wages.startup</tt></a>.
+      <em>Used in:</em> III.9 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Higher.lean#L35-L41"><tt class="verbatim">YM.AnalyticBridge.VerifiedReset.High.paid</tt></a>)
+      and III.10.
+    </p>
+    <h3 id="auto-4"><a id="part-c-launch-data-for-the-remainder-comparison"></a>Part C: launch data for the remainder comparison<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      A <em>connected-activity target</em> \(Q\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/OptionCost.lean#L62-L76"><tt class="verbatim">YM.ConnectedActivityE6.Target</tt></a>,
+      III.10) carries:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a rate \(\rho_Q \in (- \tfrac{1}{2}, 0)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          an exponent \(\text{e}_Q \geqslant 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          small parameters \(\varepsilon_Q, \delta_Q > 0\) with \(4
+          \varepsilon_Q\) below the top support exponent;
+        </p>
+      </li>
+      <li>
+        <p>
+          a halo \(h_Q \geqslant 500\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a chart table with its local-ratio property. The target also
+          requires \(8 \varepsilon_Q\) below both input chart widths.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Its relative exponent is \(\text{rel}_Q = \text{e}_Q + 2 \varepsilon_Q +
+      \delta_Q\).
+    </p>
+    <p>
+      Stage pairs \((j, i)\) are those with \(i \in \{j, j - 1\}\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/PRICE_COMPILER/Basic.lean#L27"><tt
+      class="verbatim">YM.Push.PriceCompiler.StepStages</tt></a>). The stage profile
+      \(P_j\) has support exponent \(\sigma_j\).
+    </p>
+    <p>
+      <strong>Proposition III.15.5 (launch data).</strong> Let \(G\) be
+      simple. Fix:
+    </p>
+    <ul>
+      <li>
+        <p>
+          a sheet with stage profiles \(P_j\) and a kernel choice;
+        </p>
+      </li>
+      <li>
+        <p>
+          a compatible price table and targets \(R_{ji}\) with \(\tfrac{3}{8}
+          + \rho_{R_{ji}} < 0\) for all \(j, i \in \mathbb{N}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          tolerances \(h_{ji} > 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          libraries \(C_{ji}\) (of the order of \(P_i\));
+        </p>
+      </li>
+      <li>
+        <p>
+          mark numbers \(r_{ji}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then there are thresholds \(f : \mathbb{N} \to \mathbb{N}\) and
+      constants \(C'_{ji} \geqslant 1\) such that:
+    </p>
+    <ol>
+      <li>
+        <p>
+          For all \(j, i\), the <em>quotation bound</em> holds for \((C_{ji},
+          \text{power} (P_i), r_{ji})\) with fine exponent \(\sigma_j\),
+          coarse exponent \(\sigma_i + 2\) and constant \(C'_{ji}\). More
+          precisely, take an RG step of side \(L\), fine and coarse parameter
+          points \(B, P\), and supports \(X, Y\) such that \(Y\) lies in the
+          \(r_{ji} \mathcal{B} (x)\)-neighbourhood of the coarse image of
+          \(X\). Assume \(P\) has the power of \(P_i\), \(B\) has support
+          exponent \(\sigma_j\), \(B_P =\mathcal{B} (x)\), \(B_B \leqslant 2
+          B_P\), \(t_P \leqslant 2 t_B\), and the acceptance condition in (c)
+          below. For every \(u \geqslant 0\) satisfying the local analytic
+          smallness condition for the return fee and every \(\tau \geqslant
+          0\),
+        </p>
+        <center>
+          \(\displaystyle e^{(\sigma_i + 2) N_{B_P} (Y)}  \hspace{0.17em} \tau
+          \hspace{0.17em}
+\text{returnFee} \leqslant C'_{ji} L^{- 5}
+          e^{\sigma_j N_{B_B} (X)} \tau .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          For every stage pair \((j, i)\) and every block side \(L \geqslant
+          f_j\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              (a) the quay condition (III.15.6) holds for \(R_{ji}\) at side
+              \(L\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (b) \((\text{rel}_{R_{ji}} + 1)  \hspace{0.17em} 10
+              \hspace{0.17em} c_{h + 5} / L +
+2 \varepsilon_{R_{ji}} \leqslant
+              \sigma_j\), where \(c_{h + 5}\) is the pre-cost of halo
+              \(h_{R_{ji}} + 5\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (c) the acceptance condition \(20 (\sigma_i + 2) \hspace{0.17em}
+              \text{toll} (r_{ji}) \leqslant L \sigma_j\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (d) \(C'_{ji} / L \leqslant h_{ji}\).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorem. The construction run calls it with rates \(< -
+      \tfrac{7}{16}\); these are supplied by III.2's company selection, and
+      \(- \tfrac{7}{16}\) implies the hypothesis. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L98-L111"><tt
+      class="verbatim">YM.RemainderComparison.Chron.sails</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L94-L95"><tt class="verbatim">YM.RemainderComparison.Chron.Pledge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Choirs.lean#L23-L27"><tt class="verbatim">YM.PhysicalNext.JointLoad.Heir.Release.Quotation</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Fusion.lean#L59"><tt class="verbatim">YM.PhysicalNext.JointLoad.Heir.Release.accepts</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Orbit.lean#L35-L36"><tt class="verbatim">YM.RemainderComparison.Lyric.radiusCost</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L68-L71"><tt class="verbatim">YM.RemainderComparison.Chron.Contemple</tt></a>
+      (tolerances).
+    </p>
+    <p>
+      The <em>heart condition</em> on rays for a stage \(E'\) and exponent
+      \(\text{e}_Q\) consists of the support inequalities
+    </p>
+    <center>
+      \(\displaystyle 0 \leqslant \sigma_{\ast}, \quad \sigma_{E'} \leqslant
+      \sigma_{\ast}, \quad
+\sigma_{\ast} + 1 \leqslant a_{\ast}, \quad
+      \varepsilon_{\ast} > 0, \quad
+a_{\ast} + 3 \varepsilon_{\ast} \leqslant
+      \text{e}_Q,\)
+    </center>
+    <p>
+      and the order inequalities
+    </p>
+    <center>
+      \(\displaystyle \text{ord} (E') \leqslant J_{\ast}, \quad \text{ord}
+      (E') + (p_{\ast} + 1) +
+p_{\ast} + 2 \leqslant n_{\ast}, \quad p_{\ast}
+      + 1 \leqslant s_{\ast}, \quad
+k_{\ast} + 1 \leqslant s_{\ast} .\)
+    </center>
+    <p>
+      The starred quantities are the support exponents, slack and requested
+      orders carried by the rays.
+    </p>
+    <p>
+      <strong>Proposition III.15.6 (the quay for large sides).</strong> Let
+      \(G\) be simple, \(K\) a kernel choice, and \(Q\) a target with
+      \(\tfrac{3}{8} + \rho_Q < 0\). There is \(n\) such that for every block
+      side \(L \geqslant n\) the following holds. Take any:
+    </p>
+    <ul>
+      <li>
+        <p>
+          patch \(p\) of side \(L\) satisfying the branching condition;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(W, \mu > 0\), and order datum at \(W\);
+        </p>
+      </li>
+      <li>
+        <p>
+          songbook and scrollwork at side \(L\), and \(\chi\);
+        </p>
+      </li>
+      <li>
+        <p>
+          stages \(E, E'\), and rays with the heart property for \((E',
+          \text{e}_Q)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          library \(C\) of the order of \(E'\);
+        </p>
+      </li>
+      <li>
+        <p>
+          record with parameter \(\varepsilon \leqslant \tfrac{1}{4}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(j \in \mathbb{N}\), reserve \(f\), and \(\eta, \delta > 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then there exist a quarry \(D\) (a record of bounding functions of
+      \(x\), with \(d (D) > 0\) and paint supply) and a threshold \(P_1\)
+      with:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(D\) is financed at rate \(\rho_Q\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(x \geqslant P_1\), the poster comparison and chart
+          conditions and the instructions hold. For every \(\beta \in [\beta_F
+          (x, L) / 4, 4 \beta_F (x, L)]\) and every parameter point \(Z\)
+          tempered to \(E'\) at \(x\), the active, resonance and tolerance
+          conditions hold.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Here <em>tempered</em> means that \(Z\) has cluster radius \(\mathcal{B}
+      (x)\), threshold \(t (x)\), the order, power and support exponent of
+      \(E'\), and threshold at most \(2 t (\beta_F (x, L))\). The active
+      conditions comprise the local analytic estimates, readiness of the
+      spatial restrictions, compatibility estimates and the prescribed tail
+      bounds. The block-side threshold \(n\) is independent of the auxiliary
+      data; the quarry and \(P_1\) may depend on all of them. The quarry is a
+      fixed record of functions of \(x\). <em>Status:</em> theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Syllabus.lean#L47-L58"><tt class="verbatim">YM.RemainderComparison.Cadenza.buoys</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Syllabus.lean#L46"><tt class="verbatim">YM.RemainderComparison.Cadenza.Quay</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Syllabus.lean#L42-L44"><tt class="verbatim">YM.RemainderComparison.Cadenza.Allot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Syllabus.lean#L35-L41"><tt
+      class="verbatim">YM.RemainderComparison.Cadenza.Coaxes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Sheriff.lean#L34-L39"><tt
+      class="verbatim">YM.RemainderComparison.Cadenza.Quarry.Financed</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.15.7 (using the launch data).</strong> Fix a
+      sheet, compatible target and expense tables \(R, X\), chosen block sizes
+      \(L_j\), a protection, a register and a firmament. The register supplies
+      \(W_{ji}, \mu_{ji}\) and order data, with positivity for stage pairs.
+      The firmament gives, for each stage pair, finitely many <em>request
+      slots</em>; each carries a scrollwork, a songbook, grade and order data,
+      a reserve, positive constants, and an extra condition that holds
+      eventually for every financed quarry. Fix also tolerances, libraries
+      \(C_{ji}\), mark numbers \(r_{ji}\) and records \(u_{ji}\). Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          launch data as in III.15.5 with thresholds \(k_j \leqslant L_j\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\varepsilon (u_{ji}) \leqslant \tfrac{1}{4}\) for stage pairs with
+          \(i\) at least the first stage;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\sigma_i + 3 < \text{e}_{R_{ji}}\) for all \(j, i\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then for every initial delay datum \(T_0\) there are a delay datum \(W
+      \geqslant T_0\) and a quarry \(V_{jig}\) for every request slot \(g\),
+      indexed at all \((j, i)\), with the following properties for every delay
+      datum \(U \geqslant W\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) launch data with \(f_j \leqslant L_j\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) for every stage pair \((j, i)\) with \(j \geqslant 4\), \(i\) at
+          least the first stage, and the patch branching, and for every slot
+          \(g\): the slot's rays have the heart property; \(d (V_{jig}) > 0\);
+          paint supply holds; the allotment of III.15.6 holds with threshold
+          \(\beta^{\ast}_j (U)\); and the slot's extra condition holds for \(x
+          \geqslant \beta^{\ast}_j (U)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) for every stage pair with \(i\) at least the first stage, every
+          request slot \(g\), every \(x \geqslant \beta^{\ast}_j (U)\) and
+          every torus side \(c \geqslant \text{shells}_j (U)  \hspace{0.17em}
+          (1
++\mathcal{B}(x))^{\text{growth}_j (U)}\), the slot's scope is
+          tiled at \((x, c)\). This means \(2 z_g (x) < c\) and \(4
+          \hspace{0.17em} \text{halo}_g (x) + 16 \leqslant c\), where \(z_g\)
+          and \(\text{halo}_g\) belong to its scrollwork.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The order on delay data increases entry couplings, scale-entry
+      functions, shell counts and growth exponents componentwise. The quarries
+      are chosen before \(U\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Corners.lean#L33-L70"><tt class="verbatim">YM.RemainderComparison.Chron.grows</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Corners.lean#L23-L28"><tt class="verbatim">YM.RemainderComparison.Chron.Pillar</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L64-L66"><tt class="verbatim">YM.RemainderComparison.Chron.Firmament</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L49-L63"><tt class="verbatim">YM.RemainderComparison.Chron.Glint</tt></a>. <em>Use of
+      III.15.5 and III.15.7:</em> III.2 (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Expenses.lean#L28-L119"><tt class="verbatim">YM.PhysicalNext.Repeat.Legato.R2I.RG05Joint.joinExpensesShipWithPrediction</tt></a>),
+      whose comparison conjunct reaches the selected-run theorem of III.14 and
+      is discarded by the final construction-run theorem (see the overview).
+    </p>
+    <h2 id="auto-5"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>From other units.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          III.1: the scale functions \(t\), \(\mathcal{B}\) and \(\beta_F\);
+          slots and atoms.
+        </p>
+      </li>
+      <li>
+        <p>
+          II.1: ordered left-derivative calculus; the order-zero slot bound <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/G07/Stencil.lean#L165-L176"><tt class="verbatim">YM.Work.G07.slot_bound</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          II.2: weighted hit bounds.
+        </p>
+      </li>
+      <li>
+        <p>
+          III.5: the logarithmic tail bound of the cluster expansion, used in
+          Lemma 4.15.
+        </p>
+      </li>
+      <li>
+        <p>
+          III.10, a large set of inputs:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the growth classes, connected-activity targets and step records;
+            </p>
+          </li>
+          <li>
+            <p>
+              the three fusion theorems, which turn the fusion input condition
+              into a fused activity bound;
+            </p>
+          </li>
+          <li>
+            <p>
+              the quotation constants <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Choirs.lean#L28-L29"><tt class="verbatim">YM.PhysicalNext.JointLoad.Heir.Release.quoting</tt></a>
+              (including the factor \(L^{- 5}\));
+            </p>
+          </li>
+          <li>
+            <p>
+              the per-vertex weight <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Height/Highway.lean#L25"><tt class="verbatim">YM.PhysicalNext.Repeat.Height.grow</tt></a>
+              \(= \beta_F^{3 / 8}\) and the criterion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Height/Highway.lean#L30-L35"><tt class="verbatim">YM.PhysicalNext.Repeat.Height.pressureYoung</tt></a>;
+            </p>
+          </li>
+          <li>
+            <p>
+              the local derivative and connected-activity estimates, including
+              the rate-\(\rho_Q\) bound on the tree sum.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          III.2: the targets \(R_{ji}\) with rates \(< - \tfrac{7}{16}\) and
+          \(\sigma_i + 3 < \text{e}_{R_{ji}}\) (the expense records of the
+          company selection). Also the block-size and delay order into which
+          III.15.5 and III.15.7 are inserted.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Cluster and polymer expansions with weighted per-site bounds
+          (Koteck&yacute;&ndash;Preiss, Commun. Math. Phys. 103 (1986);
+          Brydges, <em>A short course on cluster expansions</em>, Les Houches
+          1984).
+        </p>
+      </li>
+      <li>
+        <p>
+          The small-field/large-field decomposition and Mayer expansion used
+          in the RG step. The \(L^{- 5}\) estimate is an input from III.10,
+          with its explicit support and analytic hypotheses.
+        </p>
+      </li>
+      <li>
+        <p>
+          The Leibniz rule and the chain rule for products of group elements
+          along a path.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(|e^z - 1| \leqslant 2 |z|\) for \(|z| \leqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Elementary asymptotics: \(e^{a (\log \log y)^d}\) grows faster than
+          every power of \(\log y\) when \(a > 0\) and \(d > 1\), and \(e^{- c
+          \hspace{0.17em} p (y)^a}\) decays faster than every inverse power of
+          \(y\) when \(a, c > 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Simplicity of \(G\). In Part C it enters through the local
+          single-occurrence estimate used in Lemma 4.16. Parts (A) and (B) do
+          not use it.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\tfrac{3}{8} + \rho < 0\) for the targets. The value
+          \(\tfrac{3}{8}\) is the exponent of the per-vertex tree weight
+          \(\beta_F^{3 / 8}\) of III.10. In Lemma 4.17 it is used to make that
+          weight times the activity summable. Since targets have \(\rho_Q > -
+          \tfrac{1}{2}\), the admissible window is \((- \tfrac{1}{2}, -
+          \tfrac{3}{8})\); the run uses \((- \tfrac{1}{2}, - \tfrac{7}{16})\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The tolerance table \(h_{ji}\) and the firmament are inputs. In the
+          run they come from a fixed default (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RiderResourceDynamics.lean#L24-L25"><tt class="verbatim">YM.Integration.RiderResourceDynamics.defaultDynamics</tt></a>).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-6"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      Part A separates the numerical loss from the fusion argument. On the
+      coupling band, the hard bound is \(Ce^{- rs^2}\) with \(s \geqslant p
+      (y) / 2\). Retaining \(e^{- \rho s^2}\) leaves \(Ce^{- (r - \rho) s^2}\)
+      to absorb the support-counting factor. The soft bound decays because its
+      negative power of \(y\) dominates its powers of \(p (y)\) and
+      \(\mathcal{B} (y)\). The Mayer expansion then combines the hard
+      activities with \(e^{\ell_i} - 1\); their weighted bounds add to
+      \(e^{\kappa} a + 2 b\). Both families may be supported on large fields.
+      The terminology &ldquo;hard&rdquo; and &ldquo;soft&rdquo; distinguishes
+      their estimates.
+    </p>
+    <p>
+      Part B represents a transported curvature slot as the projection of the
+      single group word \(\omega \cdot \partial \pi \cdot \omega^{- 1}\).
+      Unitarity bounds each differentiated product without an exponential loss
+      in path length. Each derivative contributes one direction norm, at most
+      \(t (1 + 2 \ell)^P\), and has at most \(2 \ell\) possible link
+      occurrences. For positive derivative order, \(t^m \leqslant t\); at
+      order zero, the small-field plaquette bound gives the factor \(t\). The
+      Leibniz rule gives \(t^k\) for a product of \(k\) slots, with a
+      polynomial loss in total path length.
+    </p>
+    <p>
+      Part C first chooses a block-side threshold and then, for each permitted
+      side and each fixed set of auxiliary data, chooses comparison functions
+      and an entry coupling. The connected-activity bounds have rate
+      \(\rho_Q\); the extra tree weight \(\beta_F^{3 / 8}\) still leaves
+      negative rate. A marked input family of size \(\delta \leqslant
+      \beta_F^{- 11 / 10}\) gives an anchored output bound \((C' / L + o (1))
+      \delta\), subject to the support and local analytic conditions in Lemma
+      4.16. Clusters with at least one marked occurrence and \(m\) further
+      occurrences outside the inserted leaves gain an additional factor \(S'
+      (x)^m\) of negative rate. At each fixed expansion order, the tail bounds
+      are small enough to absorb any prescribed power of \(g (\beta)\).
+      Finally, finitely many requests at each stage are met by enlarging the
+      entry coupling and spatial-size thresholds.
+    </p>
+    <h2 id="auto-7"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-8"><a id="41-elementary-asymptotics"></a>4.1 Elementary asymptotics<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.1.</strong> For every \(k \in \mathbb{N}\), as \(x \to
+      \infty\):
+    </p>
+    <ol>
+      <li>
+        <p>
+          \(p (x)^a g (x)^q \to 0\) for all \(a \in \mathbb{R}\) and \(q >
+          0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \((1 +\mathcal{B}(x))^k / p_d (x)^a \to 0\) for \(d > 1\) and \(a >
+          0\), where \(p_d (x) = e^{(\log \log x)^d}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(g (x)^q e^{- c \hspace{0.17em} p_d (x)^a} \to 0\) for every real
+          \(q\), \(c, a > 0\) and \(d > 1\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Sketch:</em> substitute \(u = \log \log x\), so that \(\log x =
+      e^u\); each claim reduces to a polynomial or exponential in \(u\)
+      against \(e^u\) or \(e^{u^d}\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean"><tt class="verbatim">Clocks.lean</tt></a>;
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean#L100-L106"><tt class="verbatim">YM.Next.Scheduling.Clock.light</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean#L110-L120"><tt
+      class="verbatim">YM.Next.Scheduling.Clock.ceiling_cheaper</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean#L141-L152"><tt
+      class="verbatim">YM.Next.Scheduling.Clock.burnt</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="42-pair-step-rates"></a>4.2 Pair-step rates<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.2 (III.15.1).</strong> Under the hypotheses of III.15.1,
+      the rate conditions hold eventually, uniformly over the coupling band
+      and \(B \leqslant \mathcal{B} (y)\).
+    </p>
+    <p>
+      <em>Proof sketch:</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Put \(\eta = (r - \rho) / 4\). On the band, \(g (\beta) \leqslant 2
+          g (y)\), so \(s \geqslant p (y) / 2\). Hence \(e^{\kappa}
+          \hspace{0.17em} \text{strong} = Ce^{- (r - \rho) s^2} \leqslant
+          h
+(y) := Ce^{- \eta p (y)^2}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Put \(v = h + 2 \hspace{0.17em} \text{mild}\). For every \(k\), \((1
+          +\mathcal{B})^k v \to 0\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              for \(h\), write \((1 +\mathcal{B})^k e^{- \eta p^2} = [(1
+              +\mathcal{B})^k g] \cdot [g^{- 1} e^{-
+\eta p^2}]\) and use
+              Lemma 4.1(1, 2, 3);
+            </p>
+          </li>
+          <li>
+            <p>
+              for \(\text{mild}\), write \((1 +\mathcal{B})^{d + k} p^e g^q =
+              [(1 +\mathcal{B})^{d + k} / p] \cdot [p^{1
++ e} g^q]\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          With \(k = 4\): \((2 B + 1)^4 \gamma \leqslant 2^4  (1
+          +\mathcal{B})^4 v \leqslant 1\) eventually.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(e^v - 1 \leqslant 1\) eventually gives \(\text{quote} (\kappa,
+          \gamma) \leqslant e^{- \kappa}\), and \(\text{mild} \to 0\) gives
+          \(\text{mild} \leqslant 1\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      All thresholds are independent of \(\beta\) and of \(B \leqslant
+      \mathcal{B} (y)\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Economy.lean#L76-L139"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.Pairing.currency</tt></a>,
+      the two private asymptotic estimates in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Economy.lean"><tt class="verbatim">Economy.lean</tt></a>.
+      The same file also defines the record of these rate conditions along the
+      chosen sequence of scales.
+    </p>
+    <h3 id="auto-10"><a id="43-merging-hard-and-soft-families"></a>4.3 Merging hard and soft families<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.3 (blend).</strong> Let \(p, q \geqslant 0\) satisfy
+      \(\text{Hit}_B (p ; \sigma + 1) \leqslant a\) on \((X_i)\) and
+      \(\text{Hit}_B (q ; \sigma + 1) \leqslant b\) on \((X'_i)\). Then the
+      weights \((e^{\kappa} p_i) \sqcup (2 q_i)\) on the disjoint union
+      satisfy \(\text{Hit}_B (\cdot \hspace{0.17em} ; \sigma + 1) \leqslant
+      e^{\kappa} a + 2 b\).
+    </p>
+    <p>
+      <em>Sketch:</em> multiply a hit bound by a constant, then add two
+      summable families. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L78-L86"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.give</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L88"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.blend</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L98-L105"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.merges</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.4 (activity bounds of the merged family).</strong> Under
+      the nonempty-support and positive-exponent conventions of III.15.2,
+      assume \(p_i, q_i \geqslant 0\), \(|F_i | \leqslant p_i\), \(| \ell_i |
+      \leqslant q_i\), the soft hit bound \(b\), and \(b \leqslant 1\). Then
+      \(\|F_i \| \leqslant e^{- \kappa}  (e^{\kappa} p_i)\) and \(|e^{\ell_i}
+      - 1| \leqslant 2 q_i\).
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Dropping one unit of support exponent gives a sum bound for the
+          weights \(e^{\sigma N (X'_i)} q_i\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A single term is at most the sum, so \(| \ell_i | \leqslant q_i
+          \leqslant e^{\sigma N (X'_i)} q_i \leqslant b
+\leqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Then \(|e^z - 1| \leqslant 2 |z|\) for \(|z| \leqslant 1\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L107-L117"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.shares</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L64-L76"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.drop_reserve</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.5 (III.15.2).</strong> Under the hypotheses of III.15.2,
+      the fusion input condition holds, with witness \((\kappa, e^{\kappa} a +
+      2 b, a)\).
+    </p>
+    <p>
+      <em>Sketch:</em> the original-family estimate combines the structural
+      assumptions, the regular bound \(\delta\), the hard sup bounds and the
+      reduction of the support exponent by one. The merged-family estimate
+      uses \(\gamma \geqslant 0\) and \(\kappa \geqslant 0\), the capital
+      inequality, Lemma 4.3 and Lemma 4.4. The quote inequality is the last
+      rate condition. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L124-L133"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.tender</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="44-slots-and-atoms"></a>4.4 Slots and atoms<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.6 (a slot is one group word).</strong> For every slot
+      \(s\), site \(o\) and configuration \(U\),
+    </p>
+    <center>
+      \(\displaystyle s (U, o) = \Pi (U_{\omega \cdot \partial \pi \cdot
+      \omega^{- 1}}), \qquad \Pi
+(A) =\mathcal{P}_G \left( \tfrac{1}{2} (A -
+      A^{\ast}) \right), \qquad \| \Pi
+(A)\| \leqslant \kappa_G^{- 1} \|A\|
+      .\)
+    </center>
+    <p>
+      Here \(\mathcal{P}_G\) is the colour-coordinate projection with the
+      normalization of \(G\).
+    </p>
+    <p>
+      <em>Sketch:</em> \(\mathcal{C} (hgh^{- 1}) = \text{Ad} (h) 
+      \hspace{0.17em} \mathcal{C} (g)\). The detour has length \(2| \omega | +
+      4 \leqslant 2 |s|\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L64-L65"><tt class="verbatim">YM.Next.Scheduling.Wages.detour</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L67-L68"><tt class="verbatim">YM.Next.Scheduling.Wages.projector</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L70-L80"><tt class="verbatim">YM.Next.Scheduling.Wages.hangs</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L82-L88"><tt
+      class="verbatim">YM.Next.Scheduling.Wages.norm_projector</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.7 (derivatives of a word).</strong> Let \(w\) be a
+      product of link variables and inverses with \(n\) link uses, and let \(T
+      \geqslant 0\). Write \(\iota_G\) for the colour-to-matrix map. Suppose
+      the matrix representative of every increment satisfies \(\| \iota_G
+      (A_e)\| = \kappa_G \|A_e \| \leqslant T\) on every used link \(e\), for
+      every direction in the list \(\vec{A}\). Then
+    </p>
+    <center>
+      \(\displaystyle \| \partial_{\vec{A}} U_w \| \leqslant \|1\| 
+      \hspace{0.17em} (Tn)^{| \vec{A}
+|} .\)
+    </center>
+    <p>
+      <em>Sketch:</em> the Leibniz rule; each derivative replaces one factor
+      by its left increment. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/GridCost.lean#L184-L197"><tt class="verbatim">YM.Next.Scheduling.Wages.Path.bill</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.8 (III.15.3).</strong> Under the hypotheses of III.15.3,
+      the slot derivative bound holds.
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Every used link basepoint of the detour is within distance \(2
+          \ell\) of \(o\). Admissible directions therefore give \(T = \kappa_G
+          t (1 + 2 \ell)^P\), and \(T \cdot 2 \ell \leqslant \text{margin}
+          \cdot t\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lemma 4.7, then \(\Pi\), give \(\kappa_G^{- 1} \|1\| (\text{margin}
+          \hspace{0.17em} t)^m\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Since \(\text{margin} \geqslant 1\), \(t \leqslant 1\) and \(1
+          \leqslant m \leqslant K\), this is at most \(\kappa_G^{- 1} \|1\|
+          \hspace{0.17em} \text{margin}^K t\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(m = 0\), use the order-zero small-field slot bound.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L108-L159"><tt class="verbatim">YM.Next.Scheduling.Wages.slotPays</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.9 (III.15.4).</strong> Under the hypotheses of III.15.4,
+      the atom derivative bound and its closed form hold.
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Extract colour components by an orthonormal projection.
+        </p>
+      </li>
+      <li>
+        <p>
+          Apply the Leibniz rule to the product of the \(k\) leg components:
+          two derivative bounds \(c_1, c_2\) up to order \(K\) give \(2^K c_1
+          c_2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Multiply by \(c_b\) and sum over \(b\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The closed form follows from \(\text{slotCost} (P, K, \ell) =
+          \text{slotCost} (P, K, 0)  (\ell + 1)^{(P + 1)
+K}\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/TensorCost.lean#L56-L71"><tt class="verbatim">YM.Next.Scheduling.Wages.fin</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/TensorCost.lean#L85-L89"><tt class="verbatim">YM.Next.Scheduling.Wages.scan</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="45-the-chron-chain-part-c"></a>4.5 The Chron chain (Part C)<span style="margin-left: 1em"></span></h3>
+    <p>
+      The following conventions specify the conditional estimates in this
+      chain. An <em>admissible step record</em> consists of step data with the
+      prescribed patch, a stamped tube, an input representation \(R\), and its
+      connected-activity hypotheses at \((W, x, \mu, L, Q)\). A <em>marked
+      input</em> \((E, w, \delta)\) is a set \(E\) of regular input indices
+      with derivative bounds \(w_i \geqslant 0\), zero outside \(E\),
+      satisfying
+    </p>
+    <center>
+      \(\displaystyle \sum_{i : \hspace{0.17em} o_i = z} e^{\sigma_R N_{B_R}
+      (X_i)} w_i \leqslant
+\delta \qquad \text{for every fine site } z.\)
+    </center>
+    <p>
+      Here \(o_i, X_i\) are the input anchors and supports, and the derivative
+      bounds use the input parameter point. In particular, \(\delta \geqslant
+      0\).
+    </p>
+    <p>
+      For a finite family of inserted leaves with supports \(Z_{\alpha}\),
+      nonnegative coefficients \(l_{\alpha}\), attached root sets
+      \(A_{\alpha}\) and leaf weights \(\omega_{\alpha}\), the <em>leaf-scale
+      condition</em> with parameters \((n, \sigma, Y)\) requires \(Y \geqslant
+      0\), at most \(n\) roots over each coarse site, and
+    </p>
+    <center>
+      \(\displaystyle \sum_{\alpha : \hspace{0.17em} v \in A_{\alpha}}
+      e^{\sigma N_{B_R}
+(Z_{\alpha})} \omega_{\alpha} \leqslant Y \qquad
+      \text{for every root } v.\)
+    </center>
+    <p>
+      The weights \(\omega_{\alpha}\) include the leaf norm and
+      \(l_{\alpha}\), and each positive weight must have an attached root
+      lying in its leaf support. The <em>radius condition at \(\sigma\)</em>
+      is \((\text{rel}_Q + 1) 10 c_{h_Q + 5} / L + 2 \varepsilon_Q \leqslant
+      \sigma\).
+    </p>
+    <p>
+      A cluster together with chosen leaf insertions has \(N\) <em>remaining
+      occurrences</em>: the sum, over its vertices, of the numbers of input
+      occurrences outside those insertions. It is <em>marked</em> if at least
+      one remaining occurrence comes from \(E\). Thus \(N \geqslant 1\) for a
+      marked cluster, but the other remaining occurrences need not be marked.
+      The insertion count is the total number of leaves, counted with
+      multiplicity. These are the two counts used below.
+    </p>
+    <p>
+      <strong>Lemma 4.10 (quotation and acceptance).</strong> Let \(t, u\) be
+      stage profiles, \(C\) a library of order \(\text{ord} (u)\), \(r' \in
+      \mathbb{N}\) and \(h > 0\). There are \(E \geqslant 1\) and \(k\) such
+      that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the quotation bound holds with exponents \((\sigma_t, \sigma_u +
+          2)\) and constant \(E\) under the support and analytic hypotheses of
+          III.15.5;
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(L \geqslant k\): \(20 (\sigma_u + 2) \text{toll} (r')
+          \leqslant L \sigma_t\) and \(E / L \leqslant h\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> the quotation theorem of III.10 gives an
+      \(L\)-independent \(E\). Then \(E / L \to 0\) and \(L \sigma_t \to
+      \infty\). The return-fee estimate gives the factor \(L^{- 5}\). Summing
+      over the \(L^4\) fine sites of a block leaves \(E / L\), by the
+      anchored-sum estimate. <em>Lean:</em> inner step of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L98-L111"><tt class="verbatim">YM.RemainderComparison.Chron.sails</tt></a>;
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Choirs.lean#L28-L29"><tt class="verbatim">YM.PhysicalNext.JointLoad.Heir.Release.quoting</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.11 (radius cost).</strong> If \(b > 0\) and \(b + 2
+      \varepsilon_Q \leqslant v\), then \((\text{rel}_Q + 1) 10
+      \hspace{0.17em} c_{h_Q + 5} / L + 2 \varepsilon_Q
+\leqslant v\) for all
+      large \(L\). In III.15.5, take \(b = \varepsilon_Q\): the target
+      condition gives \(3 \varepsilon_Q < 4 \varepsilon_Q < \sigma_j\).
+    </p>
+    <p>
+      <em>Sketch:</em> multiply the desired inequality by \(L > 0\) and choose
+      \(L\) so large that \((\text{rel}_Q + 1) 10 c_{h_Q + 5} \leqslant bL\).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Orbit.lean#L37-L42"><tt class="verbatim">YM.RemainderComparison.Lyric.bidLift</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.12 (comparison functions).</strong> Fix a target \(Q\),
+      a patch, stages \(E, E'\), a kernel choice, an order datum at \(W\), a
+      songbook, a scrollwork, \(\mu > 0\), and rays satisfying the heart
+      condition for \((E', \text{e}_Q)\). There is a poster \(D\) such that
+      \(d (D) > 0\), its paint-supply condition holds, and its radius, charge
+      and four comparison functions are reserves. Eventually in \(x\), it
+      satisfies the conditional comparison statement, the chart-radius
+      estimates and the axis-chart existence statement required by the poster
+      condition.
+    </p>
+    <p>
+      <em>Sketch:</em> obtain the radius and chart estimates from the chart
+      construction, and choose the paint constant. The comparison-function
+      theorem applies when the chart parameter is positive; otherwise the
+      chart hypotheses are inconsistent. It requires positive comparison
+      parameters \(a, d\), a subpower bound on the volume function, reserves
+      for the radius, charge and derivative control, paint supply, and orders
+      satisfying \(j + (r + 1) + r + 2 \leqslant n\) and \(n + N \leqslant
+      k\). The ray heart condition supplies these order inequalities. It
+      produces four reserve functions, uniformly over the subsequent step and
+      chart choices. Its conclusion is conditional on local derivative bounds,
+      the chart estimates and coefficient matching: derivatives through order
+      \(j\) of the differences of the expansion coefficients through degree
+      \(r\) have the prescribed bound. The proof combines finite-order
+      exponential bounds, analytic expansion estimates and the assumed
+      coefficient match. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Metro.lean#L29-L51"><tt class="verbatim">YM.RemainderComparison.Cadenza.Poster.quorum</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Herbal/Orbit.lean#L41-L56"><tt class="verbatim">YM.RemainderComparison.Herbal.compile</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Herbal/Orbit.lean#L33-L39"><tt class="verbatim">YM.RemainderComparison.Herbal.Airstrip</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Portal/Wire.lean#L80-L81"><tt class="verbatim">YM.RemainderComparison.Portal.JMatch</tt></a>
+      <em>(proof read; proofs of the analytic expansion estimates not
+      expanded)</em>.
+    </p>
+    <p>
+      <strong>Lemma 4.13 (connected-activity structures).</strong> Fix an
+      input specification and target \(Q\). There is \(l\) such that, for
+      every \(L \geqslant l\), branching patch, order \(j\), auxiliary choice
+      \(\chi\), \(W, \mu > 0\) and order datum at \(W\), one can choose
+      constants and functions before \(x\) as follows: \(d, v\) have gear \(-
+      \tfrac{1}{2}\); \(B, r, T'\) have rate at most \(0\); and \(p\) is a
+      reserve, with \(T', p \geqslant 0\). Eventually in \(x\), every
+      admissible step record admits a connected-activity structure with the
+      heavy, derivative and marked-input estimates specified by its three
+      accompanying conditions.
+    </p>
+    <p>
+      <em>Sketch:</em> combine the connected-activity existence theorem with
+      the derivative estimates for its local factors and the marked-input
+      estimate. The growth-class rules keep \(d, v\) at gear \(-
+      \tfrac{1}{2}\) and the remaining stated functions at rate at most \(0\).
+      The structure is chosen separately for each step record; the bounding
+      functions are common to all those records. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Halo/Nexus.lean#L12-L57"><tt
+      class="verbatim">YM.RemainderComparison.Halo.seeds</tt></a> <em>(proof read;
+      analytic inputs from III.10)</em>.
+    </p>
+    <p>
+      <strong>Lemma 4.14 (remaining-occurrence bound).</strong> There is a
+      block-side threshold depending only on the input specification and \(Q\)
+      such that, for every \(L\) above it and every branching patch, the
+      following holds. Fix the remaining data of Lemma 4.13 and \(a \geqslant
+      0\), \(\varepsilon > 0\) with \(a + 2 \varepsilon \leqslant
+      \text{e}_Q\). One can choose bounding functions such that, for every
+      fixed pair of orders \(I, J\), reserve \(Y\) and nonnegative
+      integer-valued function \(n\) whose real-valued cast is a reserve, there
+      are a reserve \(V\) and a function \(S'\) of gear \(q < 0\) with the
+      following property. Eventually in \(x\), every admissible step record
+      admits a connected-activity structure for which the following holds. For
+      every finite leaf family satisfying the leaf-scale condition \((n (x),
+      \sigma, Y (x))\) and the radius condition at \(\sigma\), every marked
+      input with \(\delta \leqslant \beta_F^{- 11 / 10}\), and every \(m \in
+      \mathbb{N}\), the bills restricted to marked clusters with \(N \geqslant
+      1 + m\) remaining occurrences and insertion count at most \(I\) satisfy
+    </p>
+    <center>
+      \(\displaystyle \text{Hit}_{\mathcal{B} (x)} (\text{bill} ; a) \leqslant
+      V (x) S' (x)^m \delta
+.\)
+    </center>
+    <p>
+      The derivative order is \(j\) and the support-polynomial order in the
+      bill is \(J\). The bill is formed from the local majorant supplied by
+      the chosen structure.
+    </p>
+    <p>
+      <em>Sketch:</em> increase the weights of the remaining occurrences by a
+      factor whose inverse has negative gear. On the indicated clusters the
+      inflated product contains at least one marked factor and \(m\) further
+      factors. Apply the weighted cluster bound and divide by those factors.
+      The leaf-scale and radius conditions control the inserted leaves; the
+      insertion cap \(I\) controls the accompanying polynomial losses.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Halo/Tome.lean#L33-L65"><tt class="verbatim">YM.RemainderComparison.Halo.ramp</tt></a>
+      <em>(proof read; weighted-cluster estimates used as inputs)</em>.
+    </p>
+    <p>
+      <strong>Lemma 4.15 (restriction to a cluster predicate).</strong> Fix an
+      admissible step record, a connected-activity structure, a nonnegative
+      local majorant satisfying its derivative condition, nonnegative leaf
+      coefficients and nonnegative vertex weights \(\gamma\). Let \(a
+      \geqslant 0\), \(e_1, \delta > 0\) and \(q' < 1\). Suppose the polymer
+      majorant has hit bound \(e_1\) at exponent \(a + 2 \delta\), and its
+      degree price with slack \(\delta\) is at most \(q'\). If a cluster
+      predicate \(V\) and \(v \geqslant 0\) satisfy \(1 \leqslant v \prod
+      \gamma\) on \(V\), then the restricted bills have hit bound at exponent
+      \(a\) at most
+    </p>
+    <center>
+      \(\displaystyle vA_{\delta} (x ; j, m) e_1  (1 - q')^{- 1}, \qquad
+      A_{\delta} (x ; j, m) = [4
+(2\mathcal{B}(x) + 1)]^{mj}  (mj) !
+      \hspace{0.17em} \delta^{- mj} e^{\delta} .\)
+    </center>
+    <p>
+      The bill uses derivative order \(j\) and support-polynomial order \(m\).
+    </p>
+    <p>
+      <em>Sketch:</em> the logarithmic cluster-tail estimate gives the
+      geometric sum \(e_1 / (1 - q')\). Absorb \((1 + N)^{mj}\) into
+      \(e^{\delta N}\), using \(N^{mj} e^{- \delta N} \leqslant (mj) !
+      \delta^{- mj}\) with the corresponding shift by \(1\). The spatial
+      factor is \([4 (2\mathcal{B}(x) + 1)]^{mj}\). Finally insert \(v \prod
+      \gamma \geqslant 1\) on the retained clusters. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Salary.lean#L49-L76"><tt
+      class="verbatim">YM.RemainderComparison.Lyric.gathers</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Salary.lean#L82-L100"><tt
+      class="verbatim">YM.RemainderComparison.Lyric.run</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.16 (anchored bound for marked outputs).</strong> There
+      is a block-side threshold depending only on the input specification and
+      \(Q\) such that the following holds for every \(L\) above it and every
+      branching patch. Fix the remaining data of Lemma 4.13 and \(a \geqslant
+      0\), \(\varepsilon > 0\) with \(a + 3 \varepsilon \leqslant
+      \text{e}_Q\). The connected-activity functions can be chosen as follows.
+      Fix orders \(J, r, I, n, P_0\) with \(2 \leqslant n \leqslant j\),
+      assume \(G\) simple, and fix an auxiliary choice, a reserve \(Y\) and a
+      nonnegative integer-valued function \(i\) whose cast is a reserve, a
+      record with parameter at most \(\tfrac{1}{4}\), and a library of order
+      \(n\). There are a reserve \(V\) and a function \(V'\) of some rate \(q'
+      < 0\) such that, eventually in \(x\), every admissible step record has:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the marked hit bound \(V (x) \delta\) at exponent \(a +
+          \varepsilon\), for leaf families with scale \((i (x), \sigma, Y
+          (x))\) satisfying the radius condition, marked inputs \(\delta
+          \leqslant \beta_F^{- 11 / 10}\), and insertion count at most \(I\);
+        </p>
+      </li>
+      <li>
+        <p>
+          an anchored output bound \((C_0 / L + V' (x)) \delta\) at exponent
+          \(a\), provided the output parameter point has radius \(\mathcal{B}
+          (x)\), threshold \(t (x)\) and power \(P_0 \leqslant J\), the
+          library's compatibility condition holds, \(r \geqslant h_Q + 5\),
+          and the acceptance, quotation and local analytic smallness
+          conditions hold with quotation constant \(C_0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The anchored bound includes regularity and all left derivatives through
+      the output order on the small-field supports. The proof gives \(q' =
+      \max (q, - \tfrac{1}{2})\), where \(q < 0\) is the gear exponent in
+      Lemma 4.14.
+    </p>
+    <p>
+      <em>Sketch:</em> separate clusters with a single remaining occurrence
+      from those with at least two, and separate supports whose covering
+      number exceeds \(\mathcal{B} (x)\). The single-occurrence contribution
+      uses the quotation bound and the sum over \(L^4\) sites. Lemma 4.14
+      bounds the other contributions by \(VS'\) and \(e^{- \varepsilon
+      \mathcal{B}} V\). A further local comparison error has rate at most \(-
+      \tfrac{1}{2}\). Their sum defines \(V'\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Solo/Barque.lean#L21-L61"><tt
+      class="verbatim">YM.RemainderComparison.Solo.atlas</tt></a> <em>(proof read; local
+      singleton estimate used as an input)</em>.
+    </p>
+    <p>
+      <strong>Lemma 4.17 (tail bounds).</strong> Fix \(L\), \(\mu > 0\), \(a
+      \geqslant 0\), \(b > 0\) with \(a + 2 b \leqslant \text{e}_Q\), and
+      \(\tfrac{3}{8} + \rho_Q < 0\). Fix orders \(j, n, k, s, J\), functions
+      \(B, p_0\) of rate at most \(0\), and a nonnegative integer-valued
+      function \(m\) whose cast has rate at most \(0\). Put \(G_{\ast} (x) =
+      \beta_F (x, L)^{3 / 8}\) and \(\tau (x) = G_{\ast} (x)^5\). Let \(I
+      (x)\) be the additional root-activity bound formed from \(m, p_0\), and
+      let \(\Sigma (x)\) be the resulting tree-sum majorant with derivative
+      factor \(1 + 2^j B (x)\). Eventually in \(x\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          the degree prices of \(G_{\ast}  ((\text{root activity}) + I)\) and
+          of \(\Sigma\) are at most \(\tfrac{1}{2}\), with slacks \(\delta_Q\)
+          and \(b\), respectively;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(G_{\ast} \geqslant 1\), \(I\) is below the prescribed root
+          allowance, and \(G_{\ast}^{5 k + 2 s} \leqslant e^{\text{mark}}\)
+          and \(G_{\ast}^{5 k + 2 s} \leqslant e^{\varepsilon_Q  \lfloor
+          \mathcal{B}/ 100000
+\rfloor}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(\beta\) in the band of \(\beta_F\),
+        </p>
+        <center>
+          \(\displaystyle \tau^k G_{\ast}^{- (5 k + 2 s)} A_b (x ; j, J) 
+          \hspace{0.17em} 2 \Sigma (x)
+\leqslant g (\beta)^s,\)
+        </center>
+        <center>
+          \(\displaystyle \tau^k e^{- \text{mark}}  \hspace{0.17em} 2
+          \text{pledge} (x) \leqslant e^{-
+\text{mark} / 2} g (\beta)^s ;\)
+        </center>
+      </li>
+      <li>
+        <p>
+          \(e^{- \text{mark} / 2} \leqslant e^{- 4 p (x)^{1 / 5}}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> the additional root term has rate at most \(-
+      \tfrac{3}{2}\). Thus \(\Sigma\) has rate at most \(\tfrac{3}{8} + \rho_Q
+      < 0\), and the polynomial spatial factors have rate at most \(0\). These
+      facts give the two degree-price inequalities. In the first displayed
+      tail bound the factors \(\tau^k\) and \(G_{\ast}^{- 5 k}\) cancel;
+      \(G_{\ast}^{- 2 s}\) supplies \(\beta_F^{- 3 s / 4}\), sufficient for
+      \(g (\beta)^s\) uniformly on the band. The large marking exponent
+      absorbs the remaining powers in the second bound. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Forecast.lean#L93-L120"><tt class="verbatim">YM.RemainderComparison.Lyric.epochs</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Forecast.lean#L80-L89"><tt
+      class="verbatim">YM.RemainderComparison.Lyric.Premium</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.18 (simultaneous derivative and tail
+      estimates).</strong> Suppose \(\tfrac{3}{8} + \rho_Q < 0\). There is
+      \(\ell\) such that, for every \(L \geqslant \ell\), branching patch,
+      \(W, \mu > 0\), order datum, auxiliary choice, orders \(j, J, k, s\),
+      and \(a \geqslant 0\), \(\varepsilon, \Delta > 0\) with \(a + 2
+      \varepsilon \leqslant \text{e}_Q\), the following holds. Fix a reserve
+      \(Y\), a nonnegative integer-valued function \(n\) whose cast is a
+      reserve, and a function \(p_0\) of any fixed finite rate. There are
+      reserves \(A, B, C\) and a function \(E\) of rate \(q < 0\) such that,
+      eventually in \(x\), each admissible step record admits three
+      connected-activity structures with these properties:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the first has the derivative estimates, mass condition and tail
+          bounds of Lemma 4.17, and the required depth bound for \(G_{\ast}^{5
+          k + 2 s}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(A (x) \geqslant 1\), and the full bill from the second has hit
+          bound \(B (x)\) at exponent \(a\) for leaves whose coefficients have
+          been divided by \(A (x)\), whenever the original leaf-scale
+          condition \((n (x), \sigma, Y (x))\) and radius condition hold;
+        </p>
+      </li>
+      <li>
+        <p>
+          the third gives hit bound \(C (x) E (x)^i \delta\) at exponent \(a\)
+          for marked clusters with \(N \geqslant 1 + i\), insertion count at
+          most \(k\), and \(\delta \leqslant \beta_F^{- 11 / 10}\), under the
+          same leaf-scale and radius conditions;
+        </p>
+      </li>
+      <li>
+        <p>
+          writing \(\pi_{\Delta} (x) = e^{- \Delta \lfloor \mathcal{B}(x) /
+          100000 \rfloor}\), the crop inequalities hold:
+        </p>
+        <center>
+          \(\displaystyle \pi_{\Delta} p_0 \leqslant \beta_F^{- 11 / 10},
+          \qquad C \pi_{\Delta} p_0
+\leqslant g (\beta_H)^s, \qquad
+          \pi_{\Delta} A^k B \leqslant g (\beta_H)^s .\)
+        </center>
+      </li>
+    </ul>
+    <p>
+      The full and marked majorants also satisfy their local derivative
+      conditions. Here \(\beta_H\) is the coupling of the step record; the
+      last bounds are for each fixed \(s\).
+    </p>
+    <p>
+      <em>Sketch:</em> use separate connected-activity structures for the mass
+      bound, the full bill and the marked bill. Combine the full-bill
+      estimate, Lemma 4.14, Lemma 4.17 and the decay of \(\pi_{\Delta}\)
+      against every function of finite rate. The three structures need not
+      coincide. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Muse/Baton.lean#L80-L96"><tt class="verbatim">YM.RemainderComparison.Muse.generation</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Muse/Baton.lean#L63-L77"><tt class="verbatim">YM.RemainderComparison.Muse.Roles</tt></a>
+      <em>(proof read; connected-activity and full-bill estimates used as
+      inputs)</em>.
+    </p>
+    <p>
+      <strong>Lemma 4.19 (extending the comparison functions).</strong>
+      Suppose \(G\) is simple and \(\tfrac{3}{8} + \rho_Q < 0\). There is
+      \(\ell\) such that, for every branching patch of side at least \(\ell\),
+      \(W, \mu > 0\), order datum, songbook, scrollwork, auxiliary choice,
+      mark number \(r\), stage \(E'\), rays with the heart property, library
+      of order \(\text{ord} (E')\), record with parameter at most
+      \(\tfrac{1}{4}\), and financed poster \(D\), there is a quarry \(F\)
+      extending \(D\), chosen before \(x\), such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          its new functions \(Y\), spin and \(e\) are reserves, its
+          connected-activity bound \(R_b\) has rate at most \(\rho_Q\), and
+          its marked-output correction \(h\) has some negative rate;
+        </p>
+      </li>
+      <li>
+        <p>
+          eventually in \(x\), every parameter point tempered to \(E'\) and
+          every compatible admissible step record has the required local
+          analytic bounds and a connected-activity structure with tree-sum
+          bound at most \(R_b (x)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          its marked-output bound is \((C_0 / L + h (x)) \delta\), under all
+          the marked-input, compatibility, acceptance, quotation and local
+          analytic hypotheses of Lemma 4.16, with \(r \geqslant h_Q + 5\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em> take the new reserve functions and the finite-rate tail
+      function from Lemma 4.18. The tree-sum bound is twice the polynomial
+      spatial factor times the connected-activity majorant, whose rate is at
+      most \(\rho_Q\). Take \(h = V'\) from Lemma 4.16 and apply that lemma
+      with an empty leaf family. The additional tail function is a field of
+      the quarry but carries no separate growth assertion in its financing
+      condition. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Sheriff.lean#L64-L80"><tt class="verbatim">YM.RemainderComparison.Cadenza.rollBefore</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Sheriff.lean#L57-L60"><tt class="verbatim">YM.RemainderComparison.Cadenza.Instructions</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Sheriff.lean#L47-L51"><tt class="verbatim">YM.RemainderComparison.Cadenza.Quarry.Staked</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Sheriff.lean#L44-L45"><tt class="verbatim">YM.RemainderComparison.Cadenza.Quarry.Bequest</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.20 (III.15.6).</strong> Under the hypotheses of
+      III.15.6, the quay condition holds for all sufficiently large block
+      sides.
+    </p>
+    <p>
+      <em>Sketch:</em> take \(n\) from 4.19. For given data, 4.12 gives a
+      poster, and 4.19 extends it to a quarry. The remaining step conditions
+      hold eventually in \(x\) by their local analytic estimates and the
+      scrollwork growth condition. Take \(P_1\) beyond all of these
+      thresholds. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Syllabus.lean#L47-L58"><tt class="verbatim">YM.RemainderComparison.Cadenza.buoys</tt></a>
+      <em>(proof read; individual local analytic estimates not expanded)</em>.
+    </p>
+    <p>
+      <strong>Lemma 4.21 (III.15.5).</strong> Under the hypotheses of
+      III.15.5, the launch data exist.
+    </p>
+    <p>
+      <em>Sketch:</em> for each \((j, i)\), take \(k_{ji}\) (4.10), \(g_{ji}\)
+      (4.20) and \(n_{ji}\) (4.11). Set
+    </p>
+    <center>
+      \(\displaystyle f_j = \max_{i \in \{j, j - 1\}} g_{ji} + \max_{i \in
+      \{j, j - 1\}} k_{ji} +
+\max_{i \in \{j, j - 1\}} n_{ji}\)
+    </center>
+    <p>
+      and take \(C'_{ji} = E_{ji}\) from 4.10. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L98-L111"><tt
+      class="verbatim">YM.RemainderComparison.Chron.sails</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.22 (III.15.7).</strong> Under the hypotheses of
+      III.15.7, the quarries and a common enlargement of the delay data exist.
+    </p>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          For each stage pair and slot, apply the pledge at \(L = L_j\)
+          (allowed since \(k_j \leqslant L_j\)) to the slot's data. The chosen
+          rays have the heart property because \(\sigma_i + 3 <
+          \text{e}_{R_{ji}}\). This gives a quarry \(V_{jig}\) and a
+          threshold. The slot's extra condition holds eventually.
+        </p>
+      </li>
+      <li>
+        <p>
+          Set \(\text{shells}_j = \max (\text{shells}_j (T_0), \max_{i \in
+          \{j, j - 1\}, g} (4
+\ell_g + 50))\) and \(\text{growth}_j = \max
+          (\text{growth}_j (T_0), 1)\). The inner maximum is \(0\) when there
+          are no request slots. Tiling follows from the scrollwork growth
+          conditions.
+        </p>
+      </li>
+      <li>
+        <p>
+          Since there are finitely many slots and two stage pairs per \(j\),
+          choose \(\beta^{\ast}_j\) beyond all thresholds.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Corners.lean#L33-L70"><tt class="verbatim">YM.RemainderComparison.Chron.grows</tt></a>.
+    </p>
+    <h3 id="auto-13"><a id="46-records-and-other-fragments-part-d"></a>4.6 Records and other fragments (Part D)<span style="margin-left: 1em"></span></h3>
+    <p>
+      The construction-run record collects local estimates, growth of the copy
+      count, bounds for the selected representations, and the conditions
+      required for later OPE and comparison arguments. Its fields are
+      established when the run is assembled. The additional-expense records
+      collect the hypotheses needed on the same selected run. The readout
+      record extends three primitive conditions and adds a growth condition, a
+      bound on block sizes by an iterated logarithm of the coupling, and
+      cross-stage comparison inequalities.
+    </p>
+    <p>
+      The unit also contains numerical definitions and lemmas for the RG05
+      readout, the scale functions, and the instrument and postage records.
+      These are not all mere projections: some prove asymptotic and transport
+      estimates. The readout formulas and the remaining RG12 and R2I fragments
+      are outside the detailed statements above; see &sect;7.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Accepted.lean#L60-L73"><tt class="verbatim">YM.PhysicalNext.Repeat.Legato.R2I.Funded</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/R2I/Campaign/Expenses.lean#L35-L45"><tt class="verbatim">YM.PhysicalNext.Repeat.Legato.R2I.Extras</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Resources.lean#L41-L43"><tt class="verbatim">YM.Integration.RG05Preconstruction.PrimitiveExtras</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integration/RG05Preconstruction/Resources.lean#L28-L39"><tt class="verbatim">YM.Integration.RG05Preconstruction.ReadoutPurchase</tt></a>.
+    </p>
+    <h2 id="auto-14"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The active outputs III.15.1&ndash;4 require uniform estimates in the
+      coupling band and the volume. In III.15.1, the threshold must work for
+      every \(\beta\) in the band and every \(B \leqslant \mathcal{B} (y)\).
+      In III.15.3&ndash;4, the constants depend on derivative order and path
+      length but not on \(t\) or the torus side. The single-word
+      representation and unitarity give that independence.
+    </p>
+    <p>
+      Part C adds the conditional comparison bounds to the selected run, but
+      those bounds are discarded in the final construction-run theorem. Its
+      main estimates concern an inherited marked family: the anchored bound
+      \((C' / L + o (1)) \delta\) and the geometric gain per additional
+      remaining occurrence. Their application requires the leaf-scale, radius,
+      quotation and local analytic conditions. The gain counts all remaining
+      occurrences, with at least one marked occurrence.
+    </p>
+    <p>
+      The exponent \(\tfrac{3}{8}\) is the tree-weight exponent inherited from
+      III.10. Requiring \(\rho_Q < - \tfrac{3}{8}\) makes the relevant
+      tree-sum majorant decay; the run's choice \(\rho_Q < - \tfrac{7}{16}\)
+      leaves a margin greater than \(\tfrac{1}{16}\). The large-side threshold
+      is independent of the later auxiliary data. The comparison functions and
+      entry-coupling threshold may depend on those data, and the estimates
+      then hold for all larger \(x\).
+    </p>
+    <h2 id="auto-15"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Written proof</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Lean (glossary)</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Meaning</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(g (\beta)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean#L40"><tt class="verbatim">YM.Next.Scheduling.Clock.gap</tt></a>,
+        <tt class="verbatim">gStep</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\beta^{- 1 / 2}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(p (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Dues.lean#L55"><tt class="verbatim">YM.Next.Scheduling.Instrument.P</tt></a>
+        (plain), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean#L42"><tt class="verbatim">YM.Next.Scheduling.Clock.watch</tt></a>
+        \(2\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(e^{(\log \log x)^2}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(t (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L25"><tt class="verbatim">YM.Pressure.temp</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Dues.lean#L59"><tt
+        class="verbatim">YM.Next.Scheduling.Instrument.t</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">small-field threshold \(g (x) p (x)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\mathcal{B} (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L22"><tt class="verbatim">YM.Pressure.radiusB</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Clocks.lean#L38"><tt
+        class="verbatim">YM.Next.Scheduling.Clock.cover</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">cluster radius \(\lceil (\log x)^2 \rceil\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\beta_F (x, L)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Pressure/Seeds.lean#L23"><tt class="verbatim">YM.Pressure.betaF</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(x + b_G \log L\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">band of \(y\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/Dues.lean#L99"><tt class="verbatim">YM.Next.Scheduling.inBand</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\([y / 4, 4 y]\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{Rate}_L (a)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Numerics.lean#L22-L23"><tt class="verbatim">YM.ConnectedActivityE6.Rate</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\lvert w \rvert \leqslant \beta_F^v\) eventually, for
+        every \(v > a\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">reserve; \(M (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Access/Geometry.lean#L25-L26"><tt class="verbatim">YM.RemainderComparison.Reserve</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Delay.lean#L24"><tt class="verbatim">YM.Push.AbsoluteSums.Delay.fineMonitor</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\lvert w \rvert \leqslant M^k\) with \(M = p
+        (\beta_F)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">gear \(a\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Gear/Class.lean#L25"><tt class="verbatim">YM.RemainderComparison.Gear</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\beta_F^{- a} w\) is a reserve</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{Hit}_M (f ; a) \leqslant \gamma\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ac/Tree.lean#L12-L13"><tt class="verbatim">YM.Ac.Hit</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">weighted per-site polymer bound</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{quote} (\kappa, \gamma)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Kitchen.lean#L18"><tt class="verbatim">YM.Bid.quote</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(e^{- \kappa}  (e^{\gamma} - 1)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">rate conditions \((B, w, a, b, \kappa)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L33-L39"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.Rates</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">the five inequalities of III.15.1</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">mild, strong, \(\kappa\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Economy.lean#L28-L36"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.Pairing</tt></a>
+        (<tt class="verbatim">mild</tt>, <tt class="verbatim">strong</tt>, <tt class="verbatim">kGoal</tt>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">power-decaying and Gaussian pair-step costs</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">hard and soft family</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L42-L43"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.hardCost</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Tender.lean#L45-L46"><tt class="verbatim">YM.Progress.DirectedRecipe.Payments.softCost</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">forced activities and local exponential corrections</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Ingredients</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Progress/DIRECTED_RECIPE/Batch.lean#L32-L33"><tt class="verbatim">YM.Progress.DirectedRecipe.Ingredients</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">input to the fusion of III.10</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">slot \(s\), atom \(a\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Slot</tt>, <tt class="verbatim">Atom</tt> (III.1)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">transported curvature; \(k\)-leg monomial</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">small-field on \(X\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L41"><tt class="verbatim">YM.RG.Healthy</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">plaquettes touching \(X\) within chord \(t\) of \(1\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">admissible direction</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L141-L142"><tt class="verbatim">YM.RG.BudgetPoint.dirBound</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\lVert A_e \rVert \leqslant t (1 + \text{dist} (e,
+        o))^P\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{slotCost}\), \(\text{margin}\),
+        \(\text{price}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L95"><tt class="verbatim">YM.Next.Scheduling.Wages.slotCost</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/SlotPay.lean#L94"><tt class="verbatim">YM.Next.Scheduling.Wages.margin</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/SCHEDULE/TensorCost.lean#L52-L54"><tt
+        class="verbatim">YM.Next.Scheduling.Wages.price</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">derivative constants of III.15.3&ndash;4</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">target \(Q\); \(\rho_Q\), \(\text{e}_Q\),
+        \(\varepsilon_Q\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/OptionCost.lean#L62-L76"><tt class="verbatim">YM.ConnectedActivityE6.Target</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">connected-activity target (rate, exponent, &hellip;)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\beta_F^{3 / 8}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Height/Highway.lean#L25"><tt class="verbatim">YM.PhysicalNext.Repeat.Height.grow</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">per-vertex tree weight (III.10)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">pledge</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Age.lean#L94-L95"><tt class="verbatim">YM.RemainderComparison.Chron.Pledge</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">launch conditions (1)&ndash;(2) of III.15.5</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">quay</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Syllabus.lean#L46"><tt class="verbatim">YM.RemainderComparison.Cadenza.Quay</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">all step conditions available at side \(L\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">quarry, financed</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Sheriff.lean#L21-L27"><tt class="verbatim">YM.RemainderComparison.Cadenza.Quarry</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Sheriff.lean#L34-L39"><tt class="verbatim">YM.RemainderComparison.Cadenza.Quarry.Financed</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">bounding functions of \(x\) with reserve/rate bounds</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Pillar</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Chron/Corners.lean#L23-L28"><tt class="verbatim">YM.RemainderComparison.Chron.Pillar</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">pledge plus per-slot allotments and tilings</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">radius cost</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Orbit.lean#L35-L36"><tt class="verbatim">YM.RemainderComparison.Lyric.radiusCost</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((\text{rel}_Q + 1) 10 c_{h + 5} / L + 2 \varepsilon_Q
+        \leqslant v\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">comparison estimate</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Herbal/Orbit.lean#L33-L39"><tt class="verbatim">YM.RemainderComparison.Herbal.Airstrip</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Portal/Wire.lean#L80-L81"><tt class="verbatim">YM.RemainderComparison.Portal.JMatch</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">interacting vs. model, with jets matched to order
+        \(r\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">heart condition</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Cord.lean#L50-L59"><tt class="verbatim">YM.RemainderComparison.Cadenza.Rays.Heart</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">support and order inequalities stated before III.15.6</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(B_P, t_P\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Masks.lean#L125-L136"><tt class="verbatim">YM.RG.BudgetPoint</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">cluster radius and threshold of a parameter point</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">support enlargement</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Depth.lean#L44"><tt class="verbatim">YM.PhysicalNext.JointLoad.Heir.Walled</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(Y\) lies within distance \(r\mathcal{B} (x)\) of the
+        coarse image of \(X\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">local analytic smallness</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Fusion.lean#L25-L26"><tt class="verbatim">YM.PhysicalNext.JointLoad.Heir.Lute.Plented</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">numerical hypothesis on the return fee</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">library compatibility</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/V9_JOINT_ENDPOINT_LOAD/Heir/Sonata.lean#L66-L75"><tt class="verbatim">YM.PhysicalNext.JointLoad.Heir.Plays</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">registered local estimates for the library</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">marked input</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Halo/Cut.lean#L26-L29"><tt class="verbatim">YM.RemainderComparison.Halo.Presents</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">derivative bounds on an inherited regular subfamily</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">leaf-scale condition</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Flux.lean#L54-L59"><tt class="verbatim">YM.RemainderComparison.Lyric.Scale</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">nonnegative weights, attached roots, rooted bound and
+        occupancy</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(N\); marked cluster</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Halo/Strike.lean#L39"><tt class="verbatim">YM.RemainderComparison.Halo.gross</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">remaining occurrences after removing leaf insertions</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">insertion count</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Plectrum.lean#L33"><tt class="verbatim">YM.RemainderComparison.Lyric.notes</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">number of inserted leaves, with multiplicity</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(A_b (x ; j, J)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticNext/CONNECTED_ACTIVITY_JETS_E6/Armada.lean#L25"><tt class="verbatim">YM.ConnectedActivityE6.Blaze.March.collars</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">polynomial spatial factor in Lemma 4.15</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\pi_{\Delta} (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Sleet/Flint.lean#L42"><tt class="verbatim">YM.RemainderComparison.Sleet.pigment</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(e^{- \Delta \lfloor \mathcal{B}(x) / 100000
+        \rfloor}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">tempered point</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Cadenza/Cord.lean#L63-L69"><tt class="verbatim">YM.RemainderComparison.Cadenza.Temper</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">agreement of scale, threshold and stage parameters</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">comparison structure</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Portal/Lamps.lean#L51-L58"><tt class="verbatim">YM.RemainderComparison.Portal.Pan</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">analytic expansion data and coefficient match</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\iota_G\); \(\mathcal{P}_G\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L64"><tt class="verbatim">YM.Gauge.colorMat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L96-L97"><tt
+        class="verbatim">YM.Gauge.projectColor</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">colour-to-matrix map; normalized colour projection</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(I (x)\); \(\Sigma (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Forecast.lean#L31"><tt class="verbatim">YM.RemainderComparison.Lyric.ink</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Lyric/Store.lean#L62-L63"><tt class="verbatim">YM.RemainderComparison.Lyric.salaries</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">additional root term; tree-sum majorant in Lemma 4.17</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{pledge} (x)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Daisy/Corral.lean#L26"><tt class="verbatim">YM.PhysicalNext.Repeat.Daisy.pledgeQ</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">tail coefficient in Lemma 4.17</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">marked cluster</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RemainderComparison/Halo/Strike.lean#L37"><tt class="verbatim">YM.RemainderComparison.Halo.dyed</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">a remaining occurrence belongs to the inherited family</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-16"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Scope of Part C.</strong> The selected-run theorem retains
+          its comparison data as an additional conjunct; the final
+          construction-run theorem discards that conjunct. A written proof
+          using only the final run properties can omit these comparison
+          conclusions. An all-order expansion using them would also have to
+          supply the coefficient-matching hypotheses; existence of the
+          comparison functions alone does not supply that match.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Local analytic conditions.</strong> The quotation bound and
+          Lemmas 4.12, 4.16 and 4.19 retain the source's support-enlargement,
+          library-compatibility and analytic-smallness conditions. Their full
+          numerical definitions, and the local analytic, readiness,
+          compatibility, resonance and tolerance conditions in III.15.6,
+          remain to be written out. In particular, the local analytic
+          condition attached to a funded step has not been translated into an
+          independent mathematical statement.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Provider proofs.</strong> The assembly proofs in &sect;4
+          have been read. The deeper proofs of the local singleton estimate,
+          weighted-cluster bounds, full-bill estimates and analytic expansion
+          estimates have not all been checked here. The contraction and
+          occurrence-count statements are consequences of the cited
+          conditional estimates, not unconditional bounds for arbitrary local
+          terms.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Historical interpretation.</strong> The estimate \(L^{- 5}\)
+          per fine site and its conversion to \(L^{- 1}\) per coarse block are
+          explicit. Identifying it with a particular dimension-five operator
+          is not justified by those inequalities alone. The reason for the
+          choice \(\tfrac{3}{8}\) belongs to III.10's tree estimates.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Other fragments.</strong> The construction-run,
+          additional-expense and readout record statements have been read. The
+          RG05 readout price formulas and their proofs, and the remaining RG12
+          and R2I fragments, are not covered by the detailed verification. The
+          thermodynamic fragment also includes eventual numerical estimates
+          and a delay-enlargement lemma; it is not solely a collection of
+          definitions.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-14.html">&larr; III.14 The construction run: flat representations
+      and the ultraviolet rate (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part
+      III</a><font class="ym-sep">&middot;</font><a href="../units/III-15.html">Unit outline</a></span><a
+      class="ym-next" href="III-16.html">III.16 Analytic toolkit (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

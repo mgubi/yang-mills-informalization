@@ -1,0 +1,2492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>V.3. Reconstruction in every phase &mdash; detailed notes &ndash;
+    Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-2.html">&larr; V.2 Osterwalder-Schrader reconstruction of a
+      Wightman theory (notes)</a><span class="ym-part"><a href="../units.html#part-v-phases-and-reconstruction">Part V</a><font class="ym-sep">&middot;</font><a
+      href="../units/V-3.html">Unit outline</a></span><a class="ym-next" href="VI-1.html">VI.1 Ward identities, the
+      rotation action and the conserved stress tensor (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>V.3. Reconstruction in every phase &mdash; detailed notes</h1><a id="v3-reconstruction-in-every-phase--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">1</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">7</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">7</a>
+      </p>
+      <p>
+        4.1 Slab bounds and the family of reconstructions <span style="margin-left: 5mm"></span>
+        <a href="#auto-5">7</a>
+      </p>
+      <p>
+        4.2 Continuity in the phase and barycenter <span style="margin-left: 5mm"></span> <a
+        href="#auto-6">9</a>
+      </p>
+      <p>
+        4.3 Surjectivity of the boundary isometry <span style="margin-left: 5mm"></span> <a
+        href="#auto-7">11</a>
+      </p>
+      <p>
+        4.4 Low-energy bound and heat decay <span style="margin-left: 5mm"></span> <a href="#auto-8">12</a>
+      </p>
+      <p>
+        4.5 Every phase <span style="margin-left: 5mm"></span> <a href="#auto-9">14</a>
+      </p>
+      <p>
+        4.6 Irreducibility <span style="margin-left: 5mm"></span> <a href="#auto-10">15</a>
+      </p>
+      <p>
+        4.7 The continued stress tensor <span style="margin-left: 5mm"></span> <a href="#auto-11">16</a>
+      </p>
+      <p>
+        4.8 Assembly <span style="margin-left: 5mm"></span> <a href="#auto-12">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-13">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-14">20</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">21</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit V.3: every proposition with its proof sketch,
+        checked against the Lean in two rounds and edited. The condensed
+        outline and the map of the Lean are on the <a href="../units/V-3.html">unit page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/V-3.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> V, phases and reconstruction.
+      <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase"><tt class="verbatim">YM/EveryPhase</tt></a> (34
+      files). Its hypotheses are recorded in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L73"><tt class="verbatim">YM/Spec/Closed.lean</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L65-L148"><tt class="verbatim">YM/Phase/Mixture.lean</tt></a>.
+      <strong>Size:</strong> 5,268 lines.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The 436 declarations occupy about 4,180 lines; 419 of them (about
+          4,070 lines) occur in the main theorem&rsquo;s dependency graph.
+        </p>
+      </li>
+      <li>
+        <p>
+          About half the folder (15 files, about 2,600 lines) continues the
+          stress tensor (&sect;4.7).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Setting.</strong> Fix a Wilson family, an extraction and the
+      limit table \(S = S^{\text{mix}}\), together with a record <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L64-L73"><tt
+      class="verbatim">Final</tt></a> for them. The unit uses the following parts of it.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The Euclidean axioms of \(S^{\text{mix}}\) (IV.1).
+        </p>
+      </li>
+      <li>
+        <p>
+          The phase decomposition of V.1:
+        </p>
+        <ul>
+          <li>
+            <p>
+              a compact metric space \(X\) with a Borel probability measure
+              \(\nu\) of full support;
+            </p>
+          </li>
+          <li>
+            <p>
+              the commutative C\(^{\ast}\)-algebra \(\mathfrak{A}\) generated
+              by the time-slab operators of \(S^{\text{mix}}\), compressed to
+              the ground space \(\mathcal{D}\) of the
+              Osterwalder&ndash;Schrader (OS) space
+              \(\mathcal{H}^{\text{OS}}\) of \(S^{\text{mix}}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              continuous characters \(\chi_{\xi}\) of \(\mathfrak{A}\),
+              indexed bijectively by \(X\), with \(\xi \mapsto \chi_{\xi}
+              (M)\) continuous for every \(M \in \mathfrak{A}\) and \(\int_X
+              \chi_{\xi} (M)  \hspace{0.17em} d \nu = \langle \omega, M
+              \omega
+\rangle\);
+            </p>
+          </li>
+          <li>
+            <p>
+              spatial translations acting trivially on \(\mathcal{D}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              tables \(S^{\xi}\) satisfying the Euclidean axioms, with
+              \(S^{\xi} (w) = \chi_{\xi} (M_w)\) for every word \(w\) of
+              pairwise distinct points. Here \(M_w \in \mathfrak{A}\) is the
+              compressed slab operator of a time translate of \(w\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          The relativistic theory \(\mathfrak{W}_{\xi_{\ast}}\) of V.2 at the
+          selected phase \(\xi_{\ast}\), and the analytic continuations of
+          \(S^{\text{mix}}\) and \(S^{\xi_{\ast}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The field algebra of VI.1 (derivatives, rotations, the Euclidean
+          stress tensor \(T^{\text{E}}_{ab} \in F_4\)), and the Euclidean Ward
+          identities in every phase.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Notation.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>OS side.</strong> For each \(\xi\),
+          \(\mathcal{H}^{\text{OS}}_{\xi}\) is an OS space of \(S^{\xi}\) for
+          the time axis. It carries the transfer semigroup \(e^{-
+          sH^{\text{OS}}_{\xi}}\) and the Euclidean vacuum \(\omega_{\xi}\).
+          Its ground space is \(\mathcal{D}_{\xi} = \{v : e^{-
+          sH^{\text{OS}}_{\xi}} v = v \text{for all } s
+\geqslant 0\}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Wightman theory.</strong> \(\mathfrak{W}_{\xi} =
+          (\mathcal{H}_{\xi}, \mathfrak{D}_{\xi}, \Omega_{\xi},
+\phi_{\xi},
+          U_{\xi}, P_{\xi})\) consists of:
+        </p>
+        <ul>
+          <li>
+            <p>
+              a Hilbert space \(\mathcal{H}_{\xi}\) and a dense common
+              invariant domain \(\mathfrak{D}_{\xi}\) spanned by word vectors;
+            </p>
+          </li>
+          <li>
+            <p>
+              a unit vacuum \(\Omega_{\xi}\);
+            </p>
+          </li>
+          <li>
+            <p>
+              fields \(\phi_{\xi} (a, f)\) for labels \(a \in \mathbb{F}\)
+              (the common label space generated by the \(F_d\)) and \(f \in
+              \mathcal{S} (\mathbb{R}^4)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              a strongly continuous unitary Poincar&eacute; representation
+              \(U_{\xi}\) and an energy&ndash;momentum spectral measure
+              \(P_{\xi}\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Time and energy.</strong> Time is the fourth coordinate.
+          \(H_{\xi}\) generates the time translations, and \(P^0_{\xi} =
+          P_{\xi} (\{p^4 = 0\})\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Words.</strong> A <em>finite sum of words</em> is \(A =
+          \sum_k c_k  \hspace{0.17em} \phi (a_{k 1}, f_{k 1}) \cdots \phi
+          (a_{kn_k},
+f_{kn_k})\). It is <em>compactly supported</em> if every
+          \(f_{kj} \in C^{\infty}_c (\mathbb{R}^4)\). \(A^{\dagger}\) is its
+          formal adjoint (conjugate coefficients and tests, apply the star
+          operation to labels, and reverse each word). The spectral measure of
+          \(A \Omega_{\xi}\) is \(\mu^{\xi}_A (B) = \langle A \Omega_{\xi},
+          P_{\xi} (B) A \Omega_{\xi} \rangle\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Continuations.</strong> \(\textsf{F}^{\xi}_n (a ; z,
+          \vec{x})\) is the analytic continuation of \(S^{\xi}\) to complex
+          times with \(\text{Im} z_1 < \ldots < \text{Im} z_n\). \(W^{\xi}_n
+          (a ; g)\), for \(g \in \mathcal{S} ((\mathbb{R}^4)^n)\), are its
+          boundary distributions. \(W^{\text{mix}}_n\) are those of the
+          continuation of \(S^{\text{mix}}\) (V.2).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.3.1 (reconstruction in every phase).</strong>
+      There is a family indexed by \(X\) with the following data for each
+      \(\xi \in X\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          an OS space \(\mathcal{H}^{\text{OS}}_{\xi}\) of \(S^{\xi}\) with
+          its time-slab operators;
+        </p>
+      </li>
+      <li>
+        <p>
+          a continuation \(\textsf{F}^{\xi}\) of \(S^{\xi}\) with boundary
+          distributions \(W^{\xi}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a Wightman theory \(\mathfrak{W}_{\xi}\) on the label space
+          \(\mathbb{F}\), with the same star operation and the same
+          Poincar&eacute; action on labels as \(\mathfrak{W}_{\xi_{\ast}}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          an isometry \(J_{\xi} : \mathcal{H}_{\xi} \to
+          \mathcal{H}^{\text{OS}}_{\xi}\) with \(J_{\xi} \Omega_{\xi} =
+          \omega_{\xi}\). It intertwines the space&ndash;time translations and
+          sends word vectors to the boundary values of the corresponding
+          Euclidean vectors at imaginary times (Lemma V.3.b).
+        </p>
+      </li>
+    </ul>
+    <p>
+      At \(\xi = \xi_{\ast}\) these are the data of V.1 and V.2. For
+      <strong>every</strong> \(\xi \in X\), with no exceptional set, the
+      following hold.
+    </p>
+    <ol>
+      <li>
+        <p>
+          <em>Wightman axioms.</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The vacuum expectation values of products of fields are
+              \(W^{\xi}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              The Hilbert-space adjoint of \(\phi_{\xi} (a, f)\) extends
+              \(\phi_{\xi} (a^{\ast}, \bar{f})\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Fields with spacelike separated supports commute on
+              \(\mathfrak{D}_{\xi}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              \(U_{\xi}\) implements Poincar&eacute; covariance.
+            </p>
+          </li>
+          <li>
+            <p>
+              The joint spectrum of the translations lies in the closed
+              forward cone \(\bar{V}_+\).
+            </p>
+          </li>
+          <li>
+            <p>
+              For every nonzero label \(a\), there is a test function \(f\)
+              for which \(\phi_{\xi} (a, f) \ne 0\) on \(\mathfrak{D}_{\xi}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Every translation-invariant vector is a multiple of
+              \(\Omega_{\xi}\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Surjectivity.</em> \(J_{\xi}\) is unitary.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Euclidean vacuum.</em> \(\mathcal{D}_{\xi} =\mathbb{C}
+          \omega_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Zero energy.</em> For every \(x \in \mathcal{H}_{\xi}\),
+          \(P^0_{\xi} x = x\) if and only if \(x \in \mathbb{C}
+          \Omega_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Low-energy bound.</em> For every compactly supported finite sum
+          of words \(A\) there is \(M \geqslant 0\) such that \(\mu^{\xi}_A
+          (\{0 < p^4 \leqslant u\}) \leqslant Mu^2\) for all \(\xi \in X\) and
+          \(u \in (0, 1]\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Heat decay.</em> For every such \(A\) there is \(M \geqslant 0\)
+          such that, for all \(\xi \in X\) and \(s \geqslant 1\),
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle 0 \leqslant \langle A \Omega_{\xi}, (e^{- sH_{\xi}} -
+      P^0_{\xi}) A
+\Omega_{\xi} \rangle \leqslant Ms^{- 2} .\)
+    </center>
+    <ol>
+      <li>
+        <p>
+          <em>Irreducibility.</em> For a bounded complex-linear operator \(B\)
+          on \(\mathcal{H}_{\xi}\), the following are equivalent: \(B \in
+          \mathbb{C} \hspace{0.17em} 1\); and, for every \(a\), \(f\) and \(u,
+          v \in \mathfrak{D}_{\xi}\), one has \(u \in \text{dom}
+          \hspace{0.17em} \phi_{\xi} (a, f)^{\ast}\) and \(\langle \phi_{\xi}
+          (a, f)^{\ast} u, Bv \rangle = \langle u, B \phi_{\xi} (a,
+f) v
+          \rangle\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Stress tensor.</em> The conclusions (T0)&ndash;(T6) of
+          Proposition V.3.y hold for \(\mathfrak{W}_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Dependence on the phase.</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              For all \(n\), \(a \in \mathbb{F}^n\) and \(g \in \mathcal{S}
+              ((\mathbb{R}^4)^n)\), the map \(\xi \mapsto W^{\xi}_n (a ; g)\)
+              is continuous and \(\int_X W^{\xi}_n (a ; g)  \hspace{0.17em} d
+              \nu (\xi) = W^{\text{mix}}_n (a ;
+g)\).
+            </p>
+          </li>
+          <li>
+            <p>
+              For every word \(w\) of pairwise distinct points, \(\int_X
+              S^{\xi} (w)  \hspace{0.17em} d \nu (\xi) = S^{\text{mix}} (w)\).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      In item 6, \(e^{- sH_{\xi}}\) is defined as \(J_{\xi}^{\ast} e^{-
+      sH^{\text{OS}}_{\xi}} J_{\xi}\). Since \(J_{\xi}\) intertwines the
+      spectral projections (V.3.b), this equals \(\int e^{- sp^4} 
+      \hspace{0.17em} dP_{\xi} (p)\). The projection subtracted in item 6 is
+      the full zero-energy projection. Items 5 and 6 are therefore proved
+      before item 4 and independently of it.
+    </p>
+    <p>
+      <em>Status:</em> theorem, for an arbitrary record <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L64-L73"><tt class="verbatim">Final</tt></a>.
+      The record is constructed in the proof of the main theorem (VIII.1), so
+      the statement is unconditional there.
+    </p>
+    <ul>
+      <li>
+        <p>
+          The detailed main theorem states V.3.1 as its clause (D7), via <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L18-L34"><tt class="verbatim">Independent.Core</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The public theorem uses the Euclidean barycenter formula of item 9
+          for clause (R12), via <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L79-L133"><tt class="verbatim">publicReconstruction</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Item 1 and the averaged Wightman distributions of item 9 enter <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L75-L81"><tt class="verbatim">Headline.Reconstruction</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          No unit uses items 2&ndash;8 as hypotheses.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L75-L80"><tt class="verbatim">all_characters</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L51-L71"><tt
+      class="verbatim">Completed</tt></a> (the statement; see &sect;6 for the fields),
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L19-L22"><tt class="verbatim">member</tt></a> (weak commutant), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L117-L132"><tt
+      class="verbatim">Almanac</tt></a> (the data), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L157-L194"><tt class="verbatim">almanac</tt></a>
+      (existence).
+    </p>
+    <p>
+      <strong>Proposition V.3.2 (no exceptional phase).</strong> For every
+      \(\xi \in X\) and \(x \in \mathcal{H}_{\xi}\),
+    </p>
+    <center>
+      \(\displaystyle P^0_{\xi} x = \langle \Omega_{\xi}, x \rangle 
+      \hspace{0.17em} \Omega_{\xi} .\)
+    </center>
+    <p>
+      <em>Status:</em> theorem (Lemma V.3.r). Items 3, 4 and 7 of V.3.1 are
+      derived from it. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L115-L144"><tt class="verbatim">all_plant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L158-L162"><tt class="verbatim">boundary_zero_energy</tt></a>.
+    </p>
+    <p>
+      <strong>Remark V.3.3 (recorded consequences, not used by the main
+      theorem).</strong> Under V.3.1, for every \(\xi \in X\) and \(x \in
+      \mathcal{H}_{\xi}\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) \(e^{- sH_{\xi}} x = x\) for all \(s \geqslant 0\) if and only
+          if \(x \in \mathbb{C} \Omega_{\xi}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) \(x\) is invariant under all translations if and only if \(x \in
+          \mathbb{C} \Omega_{\xi}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) for every degree \(d\) and degree-\(d\) token coefficient vector
+          \(v\), \(v\) is null for \(S^{\xi}\) if and only if the field
+          associated to its class in \(F_d\) vanishes on every test function;
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) reflection positivity holds for every affine hyperplane. More
+          precisely, let \(O \in O (4)\), \(b \in \mathbb{R}^4\) and \(a \in
+          \{1, 2, 3, 4\}\). For any finite family of words \(w_i\) with
+          distinct points in \(\{x : (O^{- 1} (x - b))^a > 0\}\),
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \sum_{i, j} \overline{c_i} c_j  \hspace{0.17em} S^{\xi} 
+      (\theta_{O, b, a} w_i
+\hspace{0.17em} w_j) \geqslant 0 \qquad (c_i \in
+      \mathbb{C}) .\)
+    </center>
+    <p>
+      Here \(\theta_{O, b, a}\) reverses the word, reflects its points across
+      the hyperplane, and acts on labels by transporting the \(a\)-axis
+      reflection through \(O\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L100-L102"><tt class="verbatim">fixedHeat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L103-L106"><tt
+      class="verbatim">exactly_fixed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L90-L98"><tt class="verbatim">recognizes</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L84-L88"><tt class="verbatim">allPlanes</tt></a>.
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>From other units.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>IV.1 (infinite volume).</strong> The Euclidean axioms of
+          \(S^{\text{mix}}\): translation homogeneity, reflection positivity,
+          smoothness. Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L26"><tt class="verbatim">Seed</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>V.1 (decomposition into phases).</strong> The data:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the triple \((X, \nu, \chi)\) with the properties of &sect;1: <a
+              href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L65-L72"><tt class="verbatim">Resolution</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L78-L86"><tt class="verbatim">Resolution.Out</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L89-L91"><tt class="verbatim">Resolution.receives</tt></a>;
+            </p>
+          </li>
+          <li>
+            <p>
+              for every \(\xi\): the Euclidean axioms of \(S^{\xi}\), null
+              spaces equal to those of \(S^{\text{mix}}\), the inclusion,
+              derivative and rotation laws, and the Euclidean Ward identities
+              of the stress tensor;
+            </p>
+          </li>
+          <li>
+            <p>
+              the slab laws of \(S^{\text{mix}}\), including its copy bounds
+              (below): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L127-L134"><tt class="verbatim">Selection</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L136-L148"><tt
+              class="verbatim">Selection.Certificate</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>V.1, tools.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The OS space of a table: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L106-L107"><tt class="verbatim">OS.realization</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The multiple-reflection bound for slab operators: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L116-L123"><tt
+              class="verbatim">OS.producer</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              A countable family of positive-time words whose OS vectors are
+              total in the OS space of every symmetric smooth table: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B14.lean#L119-L143"><tt
+              class="verbatim">Work.B14.universal</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Continuity of OS vectors in the points: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B14.lean#L99-L107"><tt class="verbatim">Work.B14.plant_cont</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The full slab laws from the copy bounds: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B02.lean#L17-L30"><tt class="verbatim">Work.B02.answer</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Almost-everywhere uniqueness of the Euclidean vacuum (Lemma
+              V.3.c): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Unique.lean#L91-L110"><tt class="verbatim">Cluster.lifts</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The Euclidean barycenter formula: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L113-L117"><tt class="verbatim">Resolution.barycenter</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>V.2 (OS reconstruction).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The continuations of \(S^{\text{mix}}\) and of
+              \(S^{\xi_{\ast}}\), and the theory \(\mathfrak{W}_{\xi_{\ast}}\)
+              with all Wightman axioms: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L50-L54"><tt class="verbatim">Relativistic</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Compatibility of both continuations with the slab operators,
+              which includes the polynomial bound on one-point slab operators
+              used in V.3.d: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Compatibility.lean#L26-L29"><tt class="verbatim">onFinal</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The estimates of work items C01&ndash;C29 on the continuation
+              and its partial boundary values (used in V.3.d, V.3.g, V.3.i).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Reconstruction machinery from V.2:</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              Wightman data lacking only vacuum uniqueness: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L34-L44"><tt
+              class="verbatim">FieldCore</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The boundary isometry and its properties: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L156-L161"><tt class="verbatim">Attachment</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L198-L204"><tt class="verbatim">Attachment.measures</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L207-L246"><tt
+              class="verbatim">Attachment.projections</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L191-L194"><tt class="verbatim">Attachment.with_heat</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The constructions run at each phase: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L46-L49"><tt class="verbatim">contour</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L200-L215"><tt class="verbatim">compatible</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L167-L184"><tt class="verbatim">establishing</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>VI.1 (Ward identities, rotations, stress tensor).</strong>
+          Derivative plan, rotations and Euclidean stress tensor: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L28-L31"><tt
+          class="verbatim">Algebra</tt></a>. Their laws (conservation and symmetry of
+          \(T^{\text{E}}\), tensor covariance, rotation laws): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43"><tt
+          class="verbatim">Locals</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          OS reconstruction: Osterwalder&ndash;Schrader, CMP 31 (1973) and CMP
+          42 (1975); Glimm&ndash;Jaffe, <em>Quantum Physics</em>, Ch. 6 and
+          19.
+        </p>
+      </li>
+      <li>
+        <p>
+          Boundedness of transfer operators by iterated reflection and the
+          Cauchy&ndash;Schwarz inequality: Glimm&ndash;Jaffe, Ch. 10;
+          Fr&ouml;hlich&ndash;Israel&ndash;Lieb&ndash;Simon, CMP 62 (1978).
+        </p>
+      </li>
+      <li>
+        <p>
+          Decomposition of a state along an abelian algebra of the vacuum
+          sector, used in V.1 and in V.3.c: Bratteli&ndash;Robinson, vol. 1,
+          Ch. 4.
+        </p>
+      </li>
+      <li>
+        <p>
+          Spectral theorem for unitary representations of \(\mathbb{R}^4\),
+          Bochner's theorem, Laplace transforms of positive measures:
+          Reed&ndash;Simon I&ndash;II.
+        </p>
+      </li>
+      <li>
+        <p>
+          Boundary values of holomorphic functions of polynomial growth and
+          their Taylor representation: Streater&ndash;Wightman, Ch. 2;
+          Reed&ndash;Simon II, &sect;IX.3.
+        </p>
+      </li>
+      <li>
+        <p>
+          Complex analysis: Vitali&ndash;Montel theorem, identity theorem,
+          Morera's theorem, Liouville's theorem.
+        </p>
+      </li>
+      <li>
+        <p>
+          Uniqueness of the vacuum and irreducibility of the field algebra:
+          Streater&ndash;Wightman, Ch. 4; Jost, <em>The General Theory of
+          Quantized Fields</em>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong> The record <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L64-L73"><tt
+      class="verbatim">Final</tt></a> is the only hypothesis. Its quantitative inputs
+      are as follows.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(i) Copy bounds of \(S^{\text{mix}}\)</strong> (V.1, from
+          the chessboard estimates). For every degree bound \(D\) and
+          coefficient bound \(R\) there are \(C > 0\) and \(Q \in \mathbb{N}\)
+          with
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \| \Pi (d, w)\| \leqslant C^{|w|}  (|w| / r)^{Q |w|} .\)
+    </center>
+    <p>
+      This holds for every word \(w\) of \(|w|\) points with degrees
+      \(\leqslant D\) and coefficients \(\leqslant R\), lying in the slab
+      \([r, d - r]\), with points \(r\)-separated and \(0 < r \leqslant 1\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(ii) One-point slab operators</strong> (V.2). For each label
+          \(a \in \mathbb{F}\) there are \(Q_a > 0\) and \(N_a \in
+          \mathbb{N}\) such that the one-point slab operator of
+          \(S^{\text{mix}}\), of thickness \(2 p\) with \(a\) at \((\vec{0},
+          p)\), has norm at most \(Q_a p^{- N_a}\) for \(0 < p < 1\). The
+          exponent \(N_a\) is a bound, not an asserted scaling dimension.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The one-point bound is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L62-L63"><tt class="verbatim">Boundary.Small.rated</tt></a>.
+    </p>
+    <p>
+      The unit's own constants are explicit:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(R = 4 r + 1\) in V.3.m;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(c (R, M) = 16 \pi \hspace{0.17em} |B_1 | \hspace{0.17em} |B_R |
+          
+\hspace{0.17em} M / c_3\) in V.3.k, where \(|B_r |\) is the volume
+          of the ball of radius \(r\) in \(\mathbb{R}^3\) and \(c_3 = (2
+          \pi)^3\) for the Fourier convention in V.3.k;
+        </p>
+      </li>
+      <li>
+        <p>
+          the factor \(2\) in V.3.l;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Gamma (3) = 2\) in V.3.o.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The Fourier convention and constant are <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Distribution/Tests.lean#L84-L90"><tt class="verbatim">Boundary.Probe.hat_eq</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Distribution/Tests.lean#L48"><tt class="verbatim">Boundary.Probe.pref</tt></a>.
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      V.2 reconstructs a relativistic theory at a selected phase
+      \(\xi_{\ast}\). The same construction applies to every \(S^{\xi}\)
+      before vacuum uniqueness is known. The norm of each phase&rsquo;s slab
+      operator is bounded by the corresponding norm for \(S^{\text{mix}}\)
+      (V.3.a): repeated reflection gives a power bound, and the fixed norm of
+      the character disappears on taking roots. This gives polynomial
+      continuation bounds uniform in \(\xi\). Character continuity at
+      imaginary times propagates to complex times by Vitali&rsquo;s theorem,
+      then to boundary distributions by a Taylor formula with an integrable
+      remainder. Integration over phases commutes with both passages
+      (V.3.d&ndash;V.3.h).
+    </p>
+    <p>
+      Vacuum uniqueness holds almost everywhere by the phase decomposition
+      (V.3.c). To extend it to every phase, fix a compactly supported finite
+      sum of words \(A\) and set
+    </p>
+    <center>
+      \(\displaystyle r_{\xi} (s) = \langle A \Omega_{\xi}, e^{- sH_{\xi}} A
+      \Omega_{\xi} \rangle -
+| \langle \Omega_{\xi}, A \Omega_{\xi} \rangle
+      |^2 .\)
+    </center>
+    <p>
+      Locality makes the vacuum commutator vanish at large spatial separation
+      for \(|t| \leqslant 1\). Its time-averaged odd part is the spatial
+      Fourier transform of a positive measure, weighted by \((1 - \cos E) /
+      E\). A momentum bump of radius \(u\) bounds its shell mass by \(O
+      (u^2)\): the bump contributes \(u^3\), while the weight contributes
+      \(u\). Dyadic summation and a Laplace transform give decay \(Ms^{- 2}\),
+      uniformly in \(\xi\), after subtracting the full zero-energy projection
+      (V.3.k&ndash;V.3.o). Almost everywhere this is the vacuum projection.
+      Since \(r_{\xi} (s)\) is continuous, the same estimate holds everywhere
+      by full support of \(\nu\). Letting \(s \to \infty\) identifies the
+      zero-energy projection with the vacuum projection at every phase
+      (V.3.q&ndash;V.3.r). This needs no continuity of the zero-energy
+      projection itself.
+    </p>
+    <p>
+      Separately, positive-height Euclidean vectors are images of Wightman
+      vectors with exponentially weighted frequency tests, so \(J_{\xi}\) is
+      onto (V.3.i&ndash;V.3.j). Vacuum uniqueness therefore holds on both
+      sides. A Liouville argument gives irreducibility. Finally, continuation
+      of the Euclidean Ward identities gives the local stress-charge
+      commutator (V.3.u&ndash;V.3.y). The removal of the exceptional set uses
+      uniform low-energy control from locality, rather than a mass gap.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-slab-bounds-and-the-family-of-reconstructions"></a>4.1 Slab bounds and the family of reconstructions<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.3.a (slab operators of a phase are dominated).</strong>
+      Fix \(\xi \in X\). Let \(\mathcal{K}\) be any OS space of \(S^{\xi}\)
+      for the time axis, and \(\Pi_{\xi}\) any family of slab operators on it.
+      Then for every thickness \(d > 0\) and every word \(w\) of pairwise
+      distinct points in the slab \((0, d)\),
+    </p>
+    <center>
+      \(\displaystyle \| \Pi_{\xi} (d, w)\| \leqslant \| \Pi (d, w)\|,\)
+    </center>
+    <p>
+      where \(\Pi\) are the slab operators of \(S^{\text{mix}}\) on
+      \(\mathcal{H}^{\text{OS}}\). Here \(\Pi (d, w)\) maps the OS vector of a
+      positive-time word \(v\) to that of \(w\) followed by \(v\) translated
+      by \(d\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Let \(u = \Pi (d, w)\) and \(D > \|u\|\). For a positive-time word
+          \(v\), let \(X (v)\) be the slab operator of \(v\) restricted to the
+          ground space \(\mathcal{D}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The compression of the doubled word \(\theta v \hspace{0.17em} v\)
+          is \(X (v)^{\ast} X (v) \in \mathfrak{A}\). Let \(r_n\) be \(v\)
+          with \(n\) reflected pairs of copies of \(w\) inserted. Then \(X
+          (r_n) = (u^{\ast} u)^n X (v)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence the diagonal Gram entry of \(r_n\) in \(S^{\xi}\) satisfies
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle |S^{\xi} (\theta r_n  \hspace{0.17em} r_n) | = |
+      \chi_{\xi} (X (r_n)^{\ast} X
+(r_n)) | \leqslant \| \chi_{\xi} \|
+      \hspace{0.17em} \|X (v)\|^2 D^{4 n} .\)
+    </center>
+    <ol>
+      <li>
+        <p>
+          The power argument (iterated Cauchy&ndash;Schwarz on the span of OS
+          vectors) turns this into an operator on \(\mathcal{K}\) of norm at
+          most \(D\) that inserts \(w\). The fixed factor \(\| \chi_{\xi} \|
+          \hspace{0.17em} \|X (v)\|^2\) disappears in the limit.
+        </p>
+      </li>
+      <li>
+        <p>
+          Slab operators are determined by their action on OS vectors, so this
+          operator is \(\Pi_{\xi} (d, w)\). Finally let \(D \downarrow
+          \|u\|\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L95-L100"><tt class="verbatim">sameBound</tt></a>, with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L32-L50"><tt
+      class="verbatim">x_train</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L53-L74"><tt class="verbatim">buys</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L76-L91"><tt
+      class="verbatim">actual</tt></a>, and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L116-L123"><tt class="verbatim">OS.producer</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.b (the family of reconstructions).</strong> For every
+      \(\xi\) there are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) an OS space \(\mathcal{H}^{\text{OS}}_{\xi}\) of \(S^{\xi}\)
+          with slab operators \(\Pi_{\xi}\) satisfying the slab laws (copy
+          bounds, smoothness in the positions, derivative rule), with the copy
+          constants of \(S^{\text{mix}}\), hence uniformly in \(\xi\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) a continuation \(\textsf{F}^{\xi}\) of \(S^{\xi}\) with
+          non-tangential boundary values \(W^{\xi}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (iii) a Wightman theory \(\mathfrak{W}_{\xi}\) with all properties
+          of V.3.1(1) except uniqueness of the vacuum, with the star operation
+          and label action of \(\mathfrak{W}_{\xi_{\ast}}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (iv) an isometry \(J_{\xi}\) with \(J_{\xi} \Omega_{\xi} =
+          \omega_{\xi}\) and \(J_{\xi} U_{\xi} (a) = U^{\text{OS}}_{\xi} (a)
+          J_{\xi}\) for \(a \in \mathbb{R}^4\), where \(U^{\text{OS}}_{\xi}\)
+          is the OS translation group. It is uniquely determined by the
+          following boundary property: Euclidean word vectors at positive
+          imaginary heights, smeared with a joint Schwartz test \(g\),
+          converge in Hilbert norm to \(J_{\xi} \Phi_{\xi} (a ; g)\) as the
+          heights and slab widths tend to zero with the positive margins of
+          V.3.i. Here \(\Phi_{\xi}\) is the continuous extension of word
+          vectors to joint tests.
+        </p>
+      </li>
+    </ul>
+    <p>
+      At \(\xi_{\ast}\) these are the data of V.1&ndash;V.2. Moreover:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(J_{\xi} P_{\xi} (B) = P^{\text{OS}}_{\xi} (B) J_{\xi}\) for every
+          Borel set \(B \subset \mathbb{R}^4\), so \(\mu^{\xi}_x\) is the
+          spectral measure of \(J_{\xi} x\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(\mathcal{D}_{\xi} =\mathbb{C} \omega_{\xi}\), then
+          \(\mathfrak{W}_{\xi}\) satisfies all of V.3.1(1).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For \(\xi \ne \xi_{\ast}\), the OS space is built from \(S^{\xi}\)
+          and the slab operators are those of V.3.a.
+        </p>
+      </li>
+      <li>
+        <p>
+          Their copy bounds are those of \(S^{\text{mix}}\), by V.3.a; the
+          remaining slab laws follow from the copy bounds.
+        </p>
+      </li>
+      <li>
+        <p>
+          The continuation, the compatibility data and a theory without vacuum
+          uniqueness come from the reconstruction machinery of V.2. The
+          boundary property in (iv) determines the isometry on a dense span of
+          word vectors.
+        </p>
+      </li>
+      <li>
+        <p>
+          At \(\xi_{\ast}\) the existing data are taken, so the construction
+          does not alter V.2.
+        </p>
+      </li>
+      <li>
+        <p>
+          The intertwining of the spectral projections follows from
+          intertwining the translations, by comparing characteristic
+          functions.
+        </p>
+      </li>
+      <li>
+        <p>
+          The last assertion holds because a translation-invariant \(x\) has
+          \(J_{\xi} x \in \mathcal{D}_{\xi}\) and \(J_{\xi}\) is injective.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L134-L155"><tt class="verbatim">storeys</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L157-L194"><tt class="verbatim">almanac</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L196-L199"><tt class="verbatim">Almanac.priced</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L207-L246"><tt class="verbatim">Attachment.projections</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L191-L194"><tt class="verbatim">Attachment.with_heat</tt></a>. <em>(proof read for
+      these; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L46-L49"><tt class="verbatim">contour</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L200-L215"><tt class="verbatim">compatible</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L167-L184"><tt class="verbatim">establishing</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B02.lean#L17-L30"><tt class="verbatim">Work.B02.answer</tt></a>
+      also read; underlying analytic inputs from V.2)</em>
+    </p>
+    <p>
+      <strong>Lemma V.3.c (unique Euclidean vacuum for almost every phase;
+      from V.1).</strong> For \(\nu\)-almost every \(\xi\),
+      \(\mathcal{D}_{\xi} =\mathbb{C} \omega_{\xi}\).
+    </p>
+    <p>
+      <em>Sketch (a variance identity).</em> For a positive-time word \(b\),
+      let \(\Psi_{\xi} (b) \in \mathcal{H}^{\text{OS}}_{\xi}\) be its OS
+      vector and \(Q_{\xi}\) the projection onto \(\mathcal{D}_{\xi}\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          \(\|Q_{\xi} \Psi_{\xi} (b)\|^2 = \lim_{s \to \infty} S^{\xi} 
+          (\theta b_s 
+\hspace{0.17em} b_s)\), where \(b_s\) is \(b\)
+          translated by \(s\) in time. The terms are character values,
+          continuous in \(\xi\), nonincreasing in \(s\) and dominated by the
+          value at \(s = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          By dominated convergence and the barycenter identity, \(\int
+          \|Q_{\xi} \Psi_{\xi} (b)\|^2 d \nu = \|Q \Psi (b)\|^2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          On the other hand \(S^{\xi} (b) = \chi_{\xi} (M_b)\) and \(M_b
+          \omega = Q \Psi (b)\). Multiplicativity of characters gives \(\int
+          |S^{\xi} (b) |^2 d \nu = \int \chi_{\xi}  (M_b^{\ast} M_b)
+          
+\hspace{0.17em} d \nu = \|Q \Psi (b)\|^2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence the nonnegative function \(\|Q_{\xi} \Psi_{\xi} (b)\|^2 -
+          |S^{\xi} (b) |^2 = \|Q_{\xi} \Psi_{\xi} (b) -
+S^{\xi} (b)
+          \omega_{\xi} \|^2\) has integral zero, so \(Q_{\xi} \Psi_{\xi} (b)
+          \in \mathbb{C} \omega_{\xi}\) almost everywhere.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let \(b\) run over a countable family of words whose OS vectors are
+          total in every OS space (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B14.lean#L119-L143"><tt class="verbatim">Work.B14.universal</tt></a>).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L208-L212"><tt class="verbatim">Almanac.almostEvery</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Unique.lean#L91-L110"><tt class="verbatim">Cluster.lifts</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Unique.lean#L56-L86"><tt class="verbatim">Cluster.exp_real</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-continuity-in-the-phase-and-barycenter"></a>4.2 Continuity in the phase and barycenter<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.3.d (polynomial bound, uniform in the phase).</strong>
+      For every \(n\) and \(a \in \mathbb{F}^n\) there are \(m \in
+      \mathbb{N}\) and \(C_0 \geqslant 0\) with the following property. For
+      all \(\xi\), all real configurations \(x\), and all heights \(y\) with
+      \(y_j - y_i \geqslant k\) for \(i < j\), where \(k \in (0, 1]\),
+    </p>
+    <center>
+      \(\displaystyle | \textsf{F}^{\xi}_n (a ; \hspace{0.17em} t (x) + iy,
+      \hspace{0.17em} \vec{x})
+| \leqslant C_0  \hspace{0.17em} k^{- m} .\)
+    </center>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\textsf{F}^{\xi}_n\) at such points is a matrix element, between
+          \(\omega_{\xi}\) and \(\omega_{\xi}\), of a product of contractions
+          (complex-time evolutions, spatial translations) and one-point slab
+          operators of thickness of order \(k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Each one-point slab operator is bounded by the corresponding one for
+          \(S^{\text{mix}}\) (V.3.a), which is polynomial in \(1 / k\) (input
+          (ii) of &sect;2).
+        </p>
+      </li>
+      <li>
+        <p>
+          Choose slab half-width \(p = k / 8\). With the constants of
+          &sect;2(ii), take \(m = \sum_j N_{a_j}\) and \(C_0 = \prod_j
+          (Q_{a_j} 8^{N_{a_j}})\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L19-L46"><tt class="verbatim">power</tt></a>. <em>(proof read; the
+      matrix-element representation of the continuation comes from V.2)</em>
+    </p>
+    <p>
+      <strong>Lemma V.3.e (strict heights).</strong> For all \(n\), \(a\),
+      real \(x\) and \(y_1 < \ldots < y_n\), the map \(\xi \mapsto
+      \textsf{F}^{\xi}_n (a ; t (x) + iy, \vec{x})\) is continuous and its
+      \(\nu\)-integral is \(\textsf{F}^{\text{mix}}_n (a ; t (x) + iy,
+      \vec{x})\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          At purely imaginary times \(z_j = iy_j\), \(\textsf{F}^{\xi}_n\) is
+          \(S^{\xi}\) of a word of distinct points, hence a character value.
+          It is therefore continuous in \(\xi\), with barycenter
+          \(S^{\text{mix}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Along the complex line \(c \mapsto iy + c \hspace{0.17em} t (x)\),
+          for \(c\) in a strip \(| \text{Im} c| < \delta\) (where the heights
+          stay ordered with gaps \(\geqslant k / 2\)), the functions are
+          holomorphic and bounded uniformly in \(\xi\) by V.3.d.
+        </p>
+      </li>
+      <li>
+        <p>
+          By Vitali's theorem, convergence along nets \(\xi' \to \xi\) on the
+          imaginary segment through \(0\) propagates to the whole strip.
+        </p>
+      </li>
+      <li>
+        <p>
+          The integral over \(X\) is holomorphic in \(c\). It agrees with the
+          unselected function on that segment, hence on the strip by the
+          identity theorem. Evaluate at \(c = 1\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L152-L170"><tt class="verbatim">imaginary_evaluation</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L193-L228"><tt class="verbatim">strict_evaluation</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L114-L146"><tt class="verbatim">integral_holomorphic</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vitali.lean#L67-L89"><tt class="verbatim">propagate_limit</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.f (tested strict heights).</strong> For \(y_1 < \ldots
+      < y_n\) and \(g \in \mathcal{S} ((\mathbb{R}^4)^n)\), define
+      \(\psi^{\xi} (a, y, g) = \int \textsf{F}^{\xi}_n (a ; t (x) + iy,
+      \vec{x}) 
+\hspace{0.17em} g (x)  \hspace{0.17em} dx\). Then \(\xi
+      \mapsto \psi^{\xi} (a, y, g)\) is continuous, and \(\int \psi^{\xi} 
+      \hspace{0.17em} d \nu = \psi^{\text{mix}}\).
+    </p>
+    <p>
+      <em>Sketch.</em> Dominated convergence with dominator \(C_0 k^{- m}
+      |g|\) (V.3.d), and Fubini.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Barycenter.lean#L18-L42"><tt class="verbatim">eager</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.g (continuity and barycenter of the Wightman
+      distributions).</strong> Item 9 of V.3.1, first part.
+    </p>
+    <p>
+      <em>Sketch.</em> Let \(\rho = (0, 1, \ldots, n - 1)\) and \(D = - i
+      \sum_{j = 1}^n (j - 1) \partial_{t_j}\) on joint test functions. The
+      Cauchy&ndash;Riemann equations and integration by parts give
+      \(\frac{d}{dt} \psi (a, y + t \rho, g) = \psi (a, y + t \rho, Dg)\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          With \(m\) as in V.3.d, the boundary value has the Taylor
+          representation
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle W^{\xi}_n (a ; g) = \sum_{k = 0}^m \frac{(- 1)^k}{k!} 
+      \hspace{0.17em}
+\psi^{\xi} (a, \rho, D^k g) - \int_0^1 \frac{(-
+      t)^m}{m!}  \hspace{0.17em}
+\psi^{\xi} (a, t \rho, D^{m + 1} g) 
+      \hspace{0.17em} dt.\)
+    </center>
+    <ol>
+      <li>
+        <p>
+          By V.3.d the integrand is bounded by \(C_0  \|D^{m + 1} g\|_{L^1}\),
+          uniformly in \(t\) and \(\xi\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Continuity then follows from V.3.f and dominated convergence in
+          \(t\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For the barycenter: \(\psi^{\xi} (a, y, g) \to W^{\xi}_n (a ; g)\)
+          as \(y \to 0\) among ordered heights, with a bound uniform in
+          \(\xi\) and \(y\) given by the same representation. Integrate over
+          \(X\) by dominated convergence, and use V.3.f at each \(y\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Barycenter.lean#L48-L73"><tt class="verbatim">word_continuity</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Barycenter.lean#L75-L90"><tt
+      class="verbatim">barycenter</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Breath.lean#L27-L28"><tt class="verbatim">Waves.desired</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Breath.lean#L50-L66"><tt class="verbatim">Waves.meant</tt></a>. The derivative convention is
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L78"><tt class="verbatim">Boundary.Waves.clock</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.h (inner products).</strong> For finite sums of words
+      \(A, A'\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\xi \mapsto \langle A \Omega_{\xi}, A' \Omega_{\xi} \rangle\) is
+          continuous on \(X\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(M_A := \sup_{\xi} \|A \Omega_{\xi} \|^2 = \sup_{\xi}
+          \mu^{\xi}_A
+(\mathbb{R}^4) < \infty\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em> \(\langle \phi_{\xi} (w) \Omega_{\xi}, \phi_{\xi} (w')
+      \Omega_{\xi} \rangle =
+W^{\xi}  (w^{\dagger} w')\), with the same star
+      operation for all \(\xi\). Apply V.3.g, then use compactness of \(X\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L179-L183"><tt class="verbatim">word_pair</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L185-L195"><tt
+      class="verbatim">sum_pair</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L197-L206"><tt class="verbatim">word_bound</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-surjectivity-of-the-boundary-isometry"></a>4.3 Surjectivity of the boundary isometry<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.3.i (Euclidean vectors at positive heights are in the
+      range).</strong> Fix \(n \geqslant 1\), \(\xi \in X\), labels \(a \in
+      \mathbb{F}^n\), heights \(0 < y_1 < \ldots < y_n\) and \(p \in (0, 1)\)
+      with \(4 p < y_1\) and \(4 p < y_{j + 1} - y_j\) for \(1 \leqslant j <
+      n\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          Let \(B_{\xi, p} (a)\) be the centered one-point slab operator of
+          thickness \(2 p\). For \(\text{Im} z > \ell\) put
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle R_{\xi, \ell} (z, \vec{x}) = e^{- (\text{Im} z - \ell)
+      H^{\text{OS}}_{\xi}}
+e^{i \text{Re} zH^{\text{OS}}_{\xi}}
+      U^{\text{OS}}_{\xi} (\vec{x}) .\)
+    </center>
+    <p>
+      For a real configuration \(q\), write \(z_j = q_j^4 + iy_j\) and define
+    </p>
+    <center>
+      \(\displaystyle \Psi^{\xi}_p (a ; q + iy) = R_{\xi, p} (z_1, \vec{q}_1)
+      B_{\xi, p} (a_1)
+\left( \prod_{j = 2}^n R_{\xi, 2 p} (z_j - z_{j - 1},
+      \vec{q}_j - \vec{q}_{j -
+1}) B_{\xi, p} (a_j) \right) \omega_{\xi},\)
+    </center>
+    <p>
+      where the factors are ordered by increasing \(j\) from left to right;
+      the product is empty when \(n = 1\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          Let \(h \in C^{\infty}_c ((\mathbb{R}^4)^n)\) and use the convention
+          \(g (q) = \hat{h} (q) = \int e^{- i \sum_j p_j \cdot q_j} h (p) 
+          \hspace{0.17em}
+dp\). Set \(g_y = \widehat{e^{- \sum_j y_j p_j^4}
+          h}\). Then
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \int g (q)  \hspace{0.17em} \Psi^{\xi}_p (a ; q + iy) 
+      \hspace{0.17em} dq =
+J_{\xi}  \hspace{0.17em} \Phi_{\xi} (a ; g_y) .\)
+    </center>
+    <p>
+      Here \(\Phi_{\xi} (a ; \cdot)\) is the joint-test extension from V.3.b.
+      Compact support of \(h\) ensures that the exponential multiplier
+      preserves the Schwartz class.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Consequently every \(\Psi^{\xi}_p (a ; q + iy)\) lies in
+          \(\text{ran} \hspace{0.17em} J_{\xi}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Call the two sides \(v\) and \(J_{\xi} \Phi\). Their squared norms
+          and their inner product, \(\|v\|^2\), \(\langle v, J_{\xi} \Phi
+          \rangle\) and \(\|J_{\xi} \Phi \|^2\), are each expressed through
+          partial boundary values of \(W^{\xi}\) at heights \(y\).
+        </p>
+      </li>
+      <li>
+        <p>
+          On tests of compact frequency support these partial boundary values
+          equal \(W^{\xi}\) tested against the damped test functions, so the
+          three numbers coincide and \(\|v - J_{\xi} \Phi \| = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Density of compact-frequency tests and continuity in \(g\) extend
+          the membership in \(\text{ran} \hspace{0.17em} J_{\xi}\) to all
+          Schwartz \(g\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Testing against all \(g\), and using continuity in \(q\), gives the
+          pointwise statement. The range is closed since \(J_{\xi}\) is an
+          isometry.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Hot.lean#L29-L75"><tt class="verbatim">vector_cooled</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Hot.lean#L99-L109"><tt
+      class="verbatim">vector_in</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Hot.lean#L111-L124"><tt class="verbatim">shot_in</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Frequency.lean#L103-L111"><tt class="verbatim">boundary_tilt</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Frequency.lean#L83"><tt class="verbatim">chilled</tt></a>.
+      <em>(proof read; V.2's partial-boundary identities statement only)</em>
+    </p>
+    <p>
+      <strong>Lemma V.3.j (surjectivity).</strong> Item 2 of V.3.1.
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          The empty word gives \(\omega_{\xi} = J_{\xi} \Omega_{\xi}\). Take a
+          nonempty positive-time Euclidean word with strictly increasing
+          times. Its OS vector is a vector \(\Psi^{\xi}_p\) of V.3.i (real
+          times \(0\), heights equal to the Euclidean times), so it lies in
+          the range.
+        </p>
+      </li>
+      <li>
+        <p>
+          Take a general positive-time word. By symmetry its points may be
+          reordered so that the times are nondecreasing, say \(r\). Then \(r +
+          u \rho\) is strictly increasing for \(u > 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Its OS vector is the limit, as \(u \downarrow 0\), of OS vectors in
+          the range, by continuity of OS vectors in the points. It therefore
+          lies in the range, because the range is closed.
+        </p>
+      </li>
+      <li>
+        <p>
+          These vectors span a dense subspace, so \(\text{ran} \hspace{0.17em}
+          J_{\xi}\) is dense and closed.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Vacuum uniqueness is not used.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Surjective.lean#L178-L223"><tt class="verbatim">onto</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Surjective.lean#L160-L176"><tt class="verbatim">ordered_covered</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Surjective.lean#L119-L128"><tt class="verbatim">bright_shot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L20-L25"><tt class="verbatim">reaches</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-low-energy-bound-and-heat-decay"></a>4.4 Low-energy bound and heat decay<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.3.k (time-averaged commutator).</strong> Let \(\rho,
+      \sigma\) be finite positive measures on \(\mathbb{R}^4\) supported in
+      \(\bar{V}_+\), with \(\rho (\mathbb{R}^4) + \sigma (\mathbb{R}^4)
+      \leqslant M\). Put
+    </p>
+    <center>
+      \(\displaystyle \hat{\rho} (\vec{x}, t) = \int e^{i (\vec{p} \cdot
+      \vec{x} + p^4 t)} 
+\hspace{0.17em} d \rho (p), \qquad a = \hat{\rho}
+      (\cdot) - \hat{\sigma} (-
+\hspace{0.17em} \cdot), \qquad D (\vec{x}) =
+      \int_0^1 \frac{a (\vec{x}, t) - a
+(\vec{x}, - t)}{2 i}  \hspace{0.17em}
+      dt.\)
+    </center>
+    <p>
+      Then \(|D| \leqslant M\). Write \(\mathcal{F}f (x) = \int e^{- i \vec{p}
+      \cdot x} f (\vec{p})  \hspace{0.17em} d
+\vec{p}\), so \(c_3 = (2
+      \pi)^3\). If moreover \(D (\vec{x}) = 0\) for \(| \vec{x} | > R\), then
+      for \(0 < u \leqslant 1\)
+    </p>
+    <center>
+      \(\displaystyle \rho (\{u / 2 < p^4 \leqslant u\}) \leqslant c (R, M) 
+      \hspace{0.17em} u^2,
+\qquad c (R, M) = 16 \pi \hspace{0.17em} |B_1 |
+      \hspace{0.17em} |B_R | 
+\hspace{0.17em} M / c_3 .\)
+    </center>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          By Fubini, \(D\) is the spatial Fourier transform of \(\rho^{\sharp}
+          + \sigma^{\sharp}\). Here \(\rho^{\sharp}\) is the image under \(p
+          \mapsto \vec{p}\) of \(\pi (p^4)  \hspace{0.17em} d \rho (p)\), with
+          \(\pi (E) = \int_0^1 \sin (Et)  \hspace{0.17em} dt\), equal to \((1
+          - \cos E) / E\) for \(E > 0\) and to \(0\) at \(E = 0\), and
+          \(\sigma^{\sharp}\) is the analogous image of \(\sigma\) under \(p
+          \mapsto - \vec{p}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          On \(\bar{V}_+\) one has \(\pi (p^4) \geqslant 0\) at all energies,
+          and \(\pi (E) \geqslant E / \pi\) for \(0 \leqslant E \leqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Test \(D\) against \(\mathcal{F}f\), where \(f\) is a smooth
+          spatial-momentum bump with \(0 \leqslant f \leqslant 1\), equal to
+          \(1\) on the ball of radius \(u\) and supported in the ball of
+          radius \(2 u\). Then \(|\mathcal{F}f| \leqslant |B_{2 u} | = 8 |B_1
+          | u^3\). Since \(D\) vanishes outside \(B_R\), the pairing is at
+          most \(8 |B_1 | |B_R | M \hspace{0.17em} u^3\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The pairing equals \(c_3  \left( \int f \hspace{0.17em} d
+          \rho^{\sharp} + \int f \hspace{0.17em} d
+\sigma^{\sharp} \right)\),
+          which is at least \(c_3 \hspace{0.17em} \tfrac{u}{2 \pi}
+          \hspace{0.17em} \rho (\{u / 2 < p^4
+\leqslant u\})\). On that shell
+          \(| \vec{p} | \leqslant p^4 \leqslant u\), so \(f = 1\) there, and
+          \(\pi (p^4) \geqslant u / (2 \pi)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Thus the exponent \(2\) is \(3\) (spatial dimension, from the volume
+          of the momentum ball) minus \(1\) (first-order vanishing of the
+          weight).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L43-L129"><tt class="verbatim">annulus</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L16-L25"><tt class="verbatim">averaged_bound</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L35-L36"><tt class="verbatim">fee</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L149-L160"><tt class="verbatim">two_average</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L113-L147"><tt class="verbatim">one_average</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L35-L44"><tt class="verbatim">pulse_positive</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L46-L59"><tt class="verbatim">pulse_lower</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.l (dyadic summation).</strong> Let \(\rho\) be a
+      finite measure and \(C \geqslant 0\) with \(\rho (\{u / 2 < p^4
+      \leqslant u\}) \leqslant Cu^2\) for all \(u \in (0, 1]\). Then \(\rho
+      (\{0 < p^4 \leqslant u\}) \leqslant 2 Cu^2\) for \(u \in (0, 1]\).
+    </p>
+    <p>
+      <em>Sketch.</em> Cover \((0, u]\) by the shells with \(u_n = u 2^{-
+      n}\). Then \(\sum_n Cu^2  \hspace{0.17em} 4^{- n} \leqslant \frac{4}{3}
+      Cu^2\); the bound \(2\) follows already from the coarser majorant
+      \(\sum_n 2^{- n} = 2\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L135-L168"><tt class="verbatim">dyadic</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.m (locality at large distance, uniformly in the
+      phase).</strong> Let \(A\) be a compactly supported finite sum of words,
+      and \(r \geqslant 0\) a bound for \(|t|\) and \(| \vec{x} |\) on the
+      supports of all its test functions. Put \(R = 4 r + 1\). Then for all
+      \(\xi\), \(|t| \leqslant 1\) and \(| \vec{x} | > R\):
+    </p>
+    <center>
+      \(\displaystyle \hat{\mu}^{\xi}_A (\vec{x}, t) -
+      \hat{\mu}^{\xi}_{A^{\dagger}} (- \vec{x}, -
+t) = \langle \Omega_{\xi},
+      [A^{\dagger}, \alpha_{(\vec{x}, t)} A]
+\hspace{0.17em} \Omega_{\xi}
+      \rangle = 0,\)
+    </center>
+    <p>
+      where \(\alpha\) denotes translation of the test functions. Hence the
+      function \(D\) of V.3.k, built from \(\rho = \mu^{\xi}_A\) and \(\sigma
+      = \mu^{\xi}_{A^{\dagger}}\), vanishes for \(| \vec{x} | > R\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The first identity follows from covariance and the adjoint relation.
+        </p>
+      </li>
+      <li>
+        <p>
+          The supports of \(A^{\dagger}\) and \(\alpha_{(\vec{x}, t)} A\) are
+          spacelike separated, so the commutator vanishes by locality.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R\) depends only on the supports, and translating test functions
+          is the same operation for every \(\xi\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L208-L219"><tt class="verbatim">late</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L146-L160"><tt class="verbatim">distant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L175-L207"><tt class="verbatim">comm_expect</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L106-L119"><tt class="verbatim">op_comm</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition V.3.n (low-energy bound).</strong> Item 5 of V.3.1,
+      with \(M = 2 c (R, M_A + M_{A^{\dagger}})\).
+    </p>
+    <p>
+      <em>Sketch.</em> Apply V.3.k to \(\rho = \mu^{\xi}_A\) and \(\sigma =
+      \mu^{\xi}_{A^{\dagger}}\). These are supported in \(\bar{V}_+\) by the
+      spectrum condition, with mass bounds from V.3.h and \(R\) from V.3.m.
+      Then apply V.3.l.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L221-L232"><tt class="verbatim">light_bound</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition V.3.o (heat decay with the full zero-energy
+      projection).</strong> Item 6 of V.3.1, with \(M = 2 \max (M_A, 2 c (R,
+      M_A + M_{A^{\dagger}}))\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          By the spectral theorem and \(\text{supp} \hspace{0.17em}
+          \mu^{\xi}_A \subset \{p^4 \geqslant 0\}\):
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle \langle A \Omega_{\xi}, (e^{- sH_{\xi}} - P^0_{\xi}) A
+      \Omega_{\xi} \rangle =
+\int_{\{p^4 > 0\}} e^{- sp^4}  \hspace{0.17em} d
+      \mu^{\xi}_A \geqslant 0.\)
+    </center>
+    <ol>
+      <li>
+        <p>
+          Let \(\rho\) be a finite measure with \(\rho (\{0 < p^4 \leqslant
+          t\}) \leqslant Ct^2\) for all \(t > 0\); for \(t > 1\) this follows
+          from the total-mass bound. Write \(e^{- sE} = \int_E^{\infty} se^{-
+          st}  \hspace{0.17em} dt\). Fubini gives
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle \int_{\{p^4 > 0\}} e^{- sp^4} d \rho = \int_0^{\infty}
+      se^{- st} \rho (\{0 <
+p^4 \leqslant t\})  \hspace{0.17em} dt \leqslant
+      Cs \int_0^{\infty} t^2 e^{-
+st} dt = \Gamma (3)  \hspace{0.17em} C
+      \hspace{0.17em} s^{- 2} .\)
+    </center>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L145-L150"><tt class="verbatim">residual_pair</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L22-L75"><tt
+      class="verbatim">decay</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L173-L192"><tt class="verbatim">inverse_square</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L97-L100"><tt class="verbatim">bHeat_pair</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.p (continuity of the heat form).</strong> For every
+      finite sum of words \(A\) and \(s > 0\), \(\xi \mapsto \langle A
+      \Omega_{\xi}, e^{- sH_{\xi}} A \Omega_{\xi} \rangle =
+\int e^{- sp^4} 
+      \hspace{0.17em} d \mu^{\xi}_A\) is continuous.
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          The Fourier transform \(\hat{\mu}^{\xi}_A (p) = \langle A
+          \Omega_{\xi}, (\alpha_p A) \Omega_{\xi}
+\rangle\) is continuous in
+          \(\xi\) by V.3.h, and bounded by \(M_A\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\int h \hspace{0.17em} d \mu^{\xi}_A\) is continuous in
+          \(\xi\) for every Schwartz \(h\), by Parseval and dominated
+          convergence.
+        </p>
+      </li>
+      <li>
+        <p>
+          On \(\bar{V}_+\) outside the ball of radius \(2 N\) one has \(p^4
+          \geqslant N\). Multiplying \(e^{- sp^4}\) by a bump equal to \(1\)
+          on that ball changes the integral by at most \(M_A e^{- sN}\),
+          uniformly in \(\xi\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A uniform limit of continuous functions is continuous.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L113-L170"><tt class="verbatim">uniform_heat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L82-L88"><tt
+      class="verbatim">char_cont</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L93-L111"><tt class="verbatim">test_cont</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-every-phase"></a>4.5 Every phase<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.3.q (vacuum-subtracted decay at every phase).</strong>
+      For every compactly supported finite sum of words \(A\) there is \(M
+      \geqslant 0\) such that \(0 \leqslant r_{\xi} (s) \leqslant Ms^{- 2}\)
+      for all \(\xi \in X\) and \(s \geqslant 1\), with \(r_{\xi} (s)\) as in
+      &sect;3.
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          \(r_{\xi} (s)\) is continuous in \(\xi\) by V.3.p and V.3.h;
+          \(\Omega_{\xi}\) is the vector of the empty word.
+        </p>
+      </li>
+      <li>
+        <p>
+          Where \(\mathcal{D}_{\xi} =\mathbb{C} \omega_{\xi}\), which is
+          \(\nu\)-almost everywhere by V.3.c, \(J_{\xi}\) intertwines the
+          zero-energy projections. Then \(P^0_{\xi} x = \langle \Omega_{\xi},
+          x \rangle \Omega_{\xi}\), so \(r_{\xi} (s) = \langle A \Omega_{\xi},
+          (e^{- sH_{\xi}} - P^0_{\xi}) A
+\Omega_{\xi} \rangle \in [0, Ms^{-
+          2}]\) by V.3.o.
+        </p>
+      </li>
+      <li>
+        <p>
+          The set \(\{\xi : r_{\xi} (s) \in [0, Ms^{- 2}]\}\) is closed and of
+          full measure. Since \(\nu\) charges every nonempty open set, it is
+          \(X\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L22-L39"><tt class="verbatim">proj_eq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L42-L46"><tt class="verbatim">univ_of_closed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L51-L78"><tt class="verbatim">extends_decay</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.r (zero-energy projection = vacuum
+      projection).</strong> Proposition V.3.2.
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          \(e^{- sH_{\xi}} \to P^0_{\xi}\) strongly as \(s \to \infty\), so
+          V.3.q gives \(\langle x, P^0_{\xi} x \rangle = | \langle
+          \Omega_{\xi}, x \rangle |^2\) for \(x = A \Omega_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Since \(P^0_{\xi}\) is an orthogonal projection with \(P^0_{\xi}
+          \Omega_{\xi} = \Omega_{\xi}\), this gives \(\|P^0_{\xi} x - \langle
+          \Omega_{\xi}, x \rangle \Omega_{\xi} \|^2 =
+\|P^0_{\xi} x\|^2 - |
+          \langle \Omega_{\xi}, x \rangle |^2 = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The identity extends from compactly supported to Schwartz test
+          functions by cutoffs converging in \(\mathcal{S}\) and continuity of
+          the word vectors in the joint test function.
+        </p>
+      </li>
+      <li>
+        <p>
+          Bounded operators that agree on all word vectors are equal.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L16-L20"><tt class="verbatim">groundvac</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L102-L109"><tt
+      class="verbatim">bHeat_limit</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L80-L112"><tt class="verbatim">cluster_zero</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L115-L144"><tt class="verbatim">all_plant</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.s (Euclidean vacuum and Wightman axioms at every
+      phase).</strong> Items 1, 3 and 4 of V.3.1.
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Let \(v \in \mathcal{D}_{\xi}\). By V.3.j, \(v = J_{\xi} x\) for
+          some \(x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The projection onto \(\mathcal{D}_{\xi}\) equals the zero-energy
+          spectral projection of the OS translation group: both are the strong
+          limit of \(e^{- sH^{\text{OS}}_{\xi}}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Intertwining with V.3.2 gives \(v = J_{\xi} P^0_{\xi} x = \langle
+          \Omega_{\xi}, x \rangle  \hspace{0.17em}
+\omega_{\xi}\). This is
+          item 3.
+        </p>
+      </li>
+      <li>
+        <p>
+          Item 1 then follows from V.3.b, and item 4 from V.3.2.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L146-L153"><tt class="verbatim">every</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L77-L86"><tt class="verbatim">reflection_projection</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L155-L156"><tt class="verbatim">boundary_realizes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L158-L162"><tt class="verbatim">boundary_zero_energy</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-irreducibility"></a>4.6 Irreducibility<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Proposition V.3.t (trivial weak commutant).</strong> Item 7 of
+      V.3.1.
+    </p>
+    <p>
+      <em>Sketch.</em> The weak commutant is first rewritten with \(\phi_{\xi}
+      (a^{\ast}, \bar{f})\) in place of the Hilbert adjoint, since the former
+      is the restriction of the latter to \(\mathfrak{D}_{\xi}\). The converse
+      direction is the adjoint relation. Now let \(B\) be weakly central and
+      write \(\Omega = \Omega_{\xi}\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          For word vectors \(u = \phi (w) \Omega\) and \(v = \phi
+          (w^{\dagger}) \Omega\), and \(\text{Im} z \geqslant 0\), set
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle p (z) = \langle J_{\xi} u, e^{izH^{\text{OS}}_{\xi}}
+      J_{\xi} B \Omega \rangle,
+\qquad q (z) = \langle J_{\xi} B^{\ast}
+      \Omega, e^{izH^{\text{OS}}_{\xi}}
+J_{\xi} v \rangle .\)
+    </center>
+    <p>
+      Both are bounded, continuous, and holomorphic for \(\text{Im} z > 0\).
+      On the real axis \(p (t) = \langle u, U_{\xi} (t) B \Omega \rangle\),
+      and at \(z = is\) one has \(p (is) = \langle u, e^{- sH_{\xi}} B \Omega
+      \rangle\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          Covariance and weak centrality give \(p (t) = q (- t)\) for real
+          \(t\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Gluing \(p\) on the upper half-plane to \(q (- \hspace{0.17em}
+          \cdot)\) on the lower one gives a bounded continuous function,
+          holomorphic off \(\mathbb{R}\). It is entire by Morera's theorem and
+          constant by Liouville's theorem.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\langle u, e^{- sH_{\xi}} B \Omega \rangle = \langle u, B
+          \Omega \rangle\) for all \(s \geqslant 0\). Letting \(s \to \infty\)
+          and using V.3.2 gives \(B \Omega = a \Omega\) with \(a = \langle
+          \Omega, B \Omega \rangle\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Weak centrality then gives \(\langle \phi (c) \Omega, B \phi (b)
+          \Omega \rangle = \langle \phi
+(b^{\dagger}) \phi (c) \Omega, B
+          \Omega \rangle = a \langle \phi (c) \Omega,
+\phi (b) \Omega
+          \rangle\) for all words, so \(B = a \hspace{0.17em} 1\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      The proof uses V.3.2 and the reconstruction data of V.3.b. It requires
+      neither surjectivity of \(J_{\xi}\) nor invariance of
+      \(\mathfrak{D}_{\xi}\) under \(B\).
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L118-L193"><tt class="verbatim">commutant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L56-L84"><tt
+      class="verbatim">saturated</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L22-L54"><tt class="verbatim">paste</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L195-L205"><tt
+      class="verbatim">precise</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L207-L216"><tt class="verbatim">irreducible</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-the-continued-stress-tensor"></a>4.7 The continued stress tensor<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Conventions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Indices \(a, b \in \{1, 2, 3, 4\}\), with \(4\) the time index.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\eta = \text{diag} (- 1, - 1, - 1, 1)\), \(\zeta_4 = - i\),
+          \(\zeta_j = 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The Minkowski stress labels are \(T^{\text{M}}_{ab} = - \zeta_a
+          \zeta_b T^{\text{E}}_{ab}\), that is \(T^{\text{M}}_{44} =
+          T^{\text{E}}_{44}\), \(T^{\text{M}}_{4 j} = iT^{\text{E}}_{4 j}\),
+          \(T^{\text{M}}_{jk} = - T^{\text{E}}_{jk}\). Write \(T_{ab} (f) =
+          \phi_{\xi} (T^{\text{M}}_{ab}, f)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A Killing field is \(K (x) = k + Vx\), where \(k \in \mathbb{R}^4\)
+          and \(V^{\textsf{T}} \eta + \eta V = 0\). Write \(\Sigma_K\) for the
+          infinitesimal label action of \(V\) (VI.1). Its Euclidean
+          continuation is \(K_{\text{E}}^b (y) = \zeta_b  (k^b + \sum_c V_{bc}
+          \kappa_c y^c)\), where \(\kappa_4 = i\) and \(\kappa_j = 1\) for \(j
+          \leqslant 3\). The Euclidean derivative label is denoted by
+          \(\partial_b^{\text{E}} B\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Killing.lean#L20-L23"><tt class="verbatim">EveryPhase.Stress.Killing</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          The charge is
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle Q_K (f, c) = \sum_b T_{4 b}  \left( K^b  \hspace{0.17em}
+      (c \otimes f)
+\right),\)
+    </center>
+    <p>
+      for a time profile \(f\) and a spatial cutoff \(c\).
+    </p>
+    <p>
+      <strong>Lemma V.3.u (Euclidean contact identity and current
+      jump).</strong> Fix \(\xi \in X\), distinct Euclidean points \(x_1,
+      \ldots, x_{n + 1}\), a distinguished label \(B \in F_d\) at \(x_k\),
+      arbitrary spectator labels, and a Killing field \(K\). Let \(\chi \in
+      C^{\infty}_c (\mathbb{R}^4 ; \mathbb{R})\) equal \(1\) near \(x_k\),
+      with every other \(x_j\) outside \(\text{supp} \hspace{0.17em} \chi\).
+      Then the following integral is absolutely convergent and
+    </p>
+    <center>
+      \(\displaystyle - \int \sum_{a, b} \partial_a \chi (y)  \hspace{0.17em}
+      K^b_{\text{E}} (y) 
+\hspace{0.17em} S^{\xi} (\ldots, T^{\text{E}}_{ab}
+      (y), \ldots) 
+\hspace{0.17em} dy = S^{\xi} (\ldots, \Sigma_K B (x_k),
+      \ldots) + \sum_b
+K^b_{\text{E}} (x_k)  \hspace{0.17em} S^{\xi} (\ldots,
+      \partial_b^{\text{E}} B
+(x_k), \ldots) .\)
+    </center>
+    <p>
+      If the exterior Euclidean times are strictly ordered and \(c \in
+      C^{\infty}_c (\mathbb{R}^3 ; \mathbb{R})\) equals \(1\) near
+      \(\vec{x}_k\), the difference of the currents \(\sum_b \int c (\vec{y})
+      K_{\text{E}}^b (\vec{y}, t) S^{\xi} (\ldots,
+T^{\text{E}}_{4 b}
+      (\vec{y}, t), \ldots)  \hspace{0.17em} d \vec{y}\), with the stress
+      insertion immediately after \(B\) at \(t = x_k^4 + \varepsilon\) and
+      immediately before \(B\) at \(t = x_k^4 - \varepsilon\), tends to the
+      right side as \(\varepsilon \downarrow 0\).
+    </p>
+    <p>
+      <em>Sketch.</em> Decompose \(V\) into a spatial rotation and a boost.
+      The translation and rotation Ward identities give the displayed formula,
+      including the Wick factors. Choose \(\chi (y) = c (\vec{y}) h (y^4 -
+      x_k^4)\) with a fixed smooth time cutoff supported between the
+      neighboring exterior times. Conservation identifies the time derivative
+      of the integrated current with the flux through \(\nabla c\). The
+      fundamental theorem of calculus, applied on both sides of \(x_k^4\),
+      gives the jump. For complex exterior times, the spacelike continuation
+      germs in (T0) give equal limits for the two spatial fluxes; bounded
+      derivatives give joint current limits. Vitali&rsquo;s theorem then
+      continues the jump identity from imaginary exterior times. Only
+      spatially integrated currents have a jump limit here.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Shell.lean#L128-L176"><tt class="verbatim">euclidean_shell</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pure.lean#L43-L115"><tt
+      class="verbatim">Stress.pure_clock</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Through.lean#L129-L142"><tt class="verbatim">Stress.through_jump</tt></a>.
+      The cutoff condition is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73"><tt class="verbatim">Table.Window</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.v (Minkowski jump identity).</strong> Fix \(\xi\), a
+      Killing field \(K\), labels at \(n + 1\) points and a distinguished
+      index \(k\). Let \(M \in C^{\infty}_c ((\mathbb{R}^4)^{n + 1})\), \(f
+      \in C^{\infty}_c (\mathbb{R})\) and \(c \in C^{\infty}_c (\mathbb{R}^3 ;
+      \mathbb{R})\). For every \(x \in \text{supp} \hspace{0.17em} M\), assume
+      that \(c = 1\) near \(\vec{x}_k\) and
+    </p>
+    <center>
+      \(\displaystyle |s - x_k^4 | < | \vec{y} - \vec{x}_k |  \qquad (s \in
+      \text{supp}
+\hspace{0.17em} f, \vec{y} \in \text{supp} \hspace{0.17em}
+      \partial_j c, j =
+1, 2, 3) .\)
+    </center>
+    <p>
+      Then
+    </p>
+    <center>
+      \(\displaystyle \sum_b \zeta_b  [W^{\xi} (\ldots, a_k, \mathcal{T}_b,
+      \ldots) - W^{\xi}
+(\ldots, \mathcal{T}_b, a_k, \ldots)] = \left( \int f
+      \right)  \left[ W^{\xi}
+(\ldots, \Sigma_K a_k, \ldots ; M) + \sum_b
+      \zeta_b W^{\xi} (\ldots,
+\partial_b^{\text{E}} a_k, \ldots ; K^b_k M)
+      \right] .\)
+    </center>
+    <p>
+      The left side is tested jointly against \(M\) in the original variables
+      and \(K^b (y) c (\vec{y}) f (y^4)\) in the inserted stress variable
+      \(y\). Thus \(\mathcal{T}_b\) denotes the Euclidean label
+      \(T^{\text{E}}_{4 b}\) inserted immediately after, respectively before,
+      the \(k\)-th field. On the right, \(K^b_k M (x) = K^b (x_k) M (x)\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Use the common sequence of tied heights from (T0). At each height,
+          integrate the continued current jump of V.3.u against \(M (x) f
+          (t)\). Joint convergence and compactness of the test supports give a
+          common integrable bound; the right side is independent of \(t\),
+          producing \(\int f\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Pass to the limit with the continuity of the partial boundary
+          values.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L208-L242"><tt class="verbatim">Stress.verdict</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L77-L164"><tt
+      class="verbatim">Stress.partial_jump</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L73-L75"><tt class="verbatim">Stress.Jury</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.w (Ward identity with arbitrary spectators).</strong>
+      In V.3.v take \(\int f = 1\) and a product test with a compactly
+      supported factor \(m\) at the distinguished field. The resulting
+      identity holds with arbitrary Schwartz spectator words before and after
+      the inserted pair. The cutoff conditions need hold only for points of
+      \(\text{supp} \hspace{0.17em} m\).
+    </p>
+    <p>
+      <em>Sketch.</em> Cut off the spectator test functions. Apply V.3.v. Pass
+      to the limit by continuity of \(W^{\xi}\) on joint test functions.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Court.lean#L147-L163"><tt class="verbatim">Stress.Schwartz_shells</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Court.lean#L77-L117"><tt class="verbatim">Stress.compact_shells</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.3.x (the charge generates the transformation).</strong>
+      Fix \(\xi \in X\), \(B \in F_d\) and a Killing field \(K\). Let
+      \(\mathcal{O} \subset \mathbb{R}^4\) be compact, \(m \in C^{\infty}_c
+      (\mathbb{R}^4)\) with \(\text{supp} \hspace{0.17em} m \subset
+      \mathcal{O}\), and \(f \in C^{\infty}_c (\mathbb{R}; \mathbb{R})\) with
+      \(\int f = 1\). Let \(c \in C^{\infty}_c (\mathbb{R}^3 ; \mathbb{C})\)
+      equal \(1\) on an open ball such that, for every \(s \in \text{supp}
+      \hspace{0.17em} f\), every point \((\vec{y}, s)\) over its complement is
+      strictly spacelike to every point of \(\mathcal{O}\). Then, on
+      \(\mathfrak{D}_{\xi}\),
+    </p>
+    <center>
+      \(\displaystyle i [Q_K (f, c), \phi_{\xi} (B, m)] = \phi_{\xi} (\Sigma_K
+      B, m) - \sum_{a =
+1}^4 \phi_{\xi} (B, \partial_a (K^a m)) .\)
+    </center>
+    <p>
+      The derivative includes the affine coefficient \(K^a\). Equivalently,
+      the last term is \(\sum_a \zeta_a \phi_{\xi} (\partial_a^{\text{E}} B,
+      K^a m)\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Replace \(c\) by its real part. The difference of the two charges
+          commutes with \(\phi_{\xi} (B, m)\) by locality, since it is
+          supported off the ball.
+        </p>
+      </li>
+      <li>
+        <p>
+          Then take matrix elements between word vectors and apply V.3.w.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L143-L177"><tt class="verbatim">Stress.local_action</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L104-L137"><tt class="verbatim">Stress.measure_identity</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L80-L81"><tt class="verbatim">Stress.Charge</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L14-L17"><tt class="verbatim">Stress.Season</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L37-L40"><tt class="verbatim">Stress.Reservation</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition V.3.y (the stress tensor of
+      \(\mathfrak{W}_{\xi}\)).</strong> For every \(\xi \in X\) the following
+      hold. Statements (T1)&ndash;(T4) hold for all \(f \in \mathcal{S}
+      (\mathbb{R}^4)\), \(a, b \in \{1, 2, 3, 4\}\) and \(u, v, x \in
+      \mathfrak{D}_{\xi}\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(T0)</strong> There are holomorphic extensions of
+          \(\textsf{F}^{\xi}\) to the full forward tube and continuous tested
+          partial boundary values, equal to \(W^{\xi}\) at zero height. For
+          each adjacent pair there is a sequence of tied imaginary heights
+          tending to zero, independent of the labels, at which the two field
+          orders have equal continuation germs at spacelike separation. The
+          tube consists of complex configurations with consecutive imaginary
+          differences in the open forward cone; partial boundary values are
+          taken on the corresponding closed cone. These data are used in
+          V.3.u&ndash;V.3.v.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(T1)</strong> \(U_{\xi} (g) \mathfrak{D}_{\xi} \subset
+          \mathfrak{D}_{\xi}\) for every proper orthochronous Poincar&eacute;
+          transformation \(g\), and \(U_{\xi} (g) T_{ab} (f) x = \sum_{i, j}
+          \Lambda (g)_{ia} \Lambda (g)_{jb} 
+\hspace{0.17em} T_{ij}  (f \circ
+          g^{- 1})  \hspace{0.17em} U_{\xi} (g) x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(T2)</strong> \(T_{ab} = T_{ba}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(T3)</strong> \(\langle T_{ab} (f) u, v \rangle = \langle u,
+          T_{ab} (\bar{f}) v \rangle\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(T4)</strong> \(\sum_a \eta_{aa}  \hspace{0.17em} T_{ab} 
+          (\partial_a f) = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(T5)</strong> The commutator identity of V.3.x.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(T6)</strong> Under the cutoff and profile conditions of
+          V.3.x, for every finite sum of words \(A\) whose test functions are
+          supported in \(\mathcal{O}\), \(i [Q_K (f, c), A]\) is the sum
+          obtained by replacing one factor at a time by the right side of
+          V.3.x and retaining the original order of the other factors. The
+          formula holds for any choice of representatives of the labels in the
+          spaces \(F_d\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (T0) is supplied by the full-tube and partial-boundary
+          reconstruction of V.2, with one common sequence of exchange heights
+          for all labels (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Cross.lean#L76-L83"><tt class="verbatim">EveryPhase.Stress.Prospect</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L167-L171"><tt class="verbatim">EveryPhase.Stress.Gallery</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          (T1)&ndash;(T4) are the tensor covariance, symmetry, reality and
+          conservation of \(T^{\text{E}}\) (VI.1), read through the Wick
+          factors and the derivative rule for fields.
+        </p>
+      </li>
+      <li>
+        <p>
+          (T5) is V.3.x; (T6) follows from (T5) by the derivation property of
+          commutators.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L81-L92"><tt class="verbatim">Stress.Force</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L94-L116"><tt
+      class="verbatim">Stress.force</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L64-L78"><tt class="verbatim">Stress.Generated</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L210-L215"><tt class="verbatim">Stress.tensor_lorentz</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L217-L220"><tt class="verbatim">Stress.tensor_herm</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L227-L237"><tt class="verbatim">Stress.tensor_conserved</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="48-assembly"></a>4.8 Assembly<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Proof of V.3.1.</strong> Take the family of V.3.b. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          item 1 is V.3.s; item 2 is V.3.j; item 3 is V.3.s; item 4 is V.3.2;
+        </p>
+      </li>
+      <li>
+        <p>
+          item 5 is V.3.n; item 6 is V.3.o; item 7 is V.3.t; item 8 is V.3.y;
+        </p>
+      </li>
+      <li>
+        <p>
+          item 9: the Wightman part is V.3.g; the Euclidean part is V.1's
+          barycenter formula, which translates a word of distinct points into
+          a slab using the homogeneity of \(S^{\text{mix}}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L75-L80"><tt class="verbatim">all_characters</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L113-L117"><tt
+      class="verbatim">Resolution.barycenter</tt></a>.
+    </p>
+    <h2 id="auto-13"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The delicate points are the common bounds near the analytic boundary,
+      the recovery of positive-height Euclidean vectors from joint frequency
+      tests, and the joint current limits in the stress-tensor argument. The
+      last passage uses equal continuation germs only at spacelike separation;
+      the current itself is spatially integrated. It gives a charge commutator
+      for every admissible time profile, without defining a stress field at a
+      fixed real time.
+    </p>
+    <p>
+      The low-energy estimate needs only locality, the spectrum condition and
+      the two vector-norm bounds. Its positive weight avoids differentiating
+      spectral integrals or imposing generator-domain bounds. The exponent
+      \(2\) is compatible with the massless scalar measure, since \(\int_{|
+      \vec{p} | \leqslant u} d^3 p / | \vec{p} | \sim u^2\). Thus this
+      estimate does not imply a mass gap. For removal of the exceptional set,
+      any decay rate tending to zero uniformly in \(\xi\) would suffice.
+    </p>
+    <p>
+      The remaining integrations, dyadic summation and assembly are routine
+      once their uniform bounds have been established.
+    </p>
+    <p>
+      <em>What looks unusual.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Item 8 quantifies over all admissible time profiles and spatial
+          cutoffs. Admissible profiles and cutoffs exist (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L24-L35"><tt class="verbatim">Stress.accepts</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L42-L59"><tt class="verbatim">Stress.reservable</tt></a>); this existence
+          assertion is separate from the commutator conclusion. The main
+          theorem does not use it or the auxiliary results of Remark V.3.3.
+        </p>
+      </li>
+      <li>
+        <p>
+          The reconstruction agrees with V.2 at \(\xi_{\ast}\). The subsequent
+          proof of vacuum uniqueness applies to every phase.
+        </p>
+      </li>
+      <li>
+        <p>
+          The Euclidean half of item 9 restates V.1, and the public clause
+          (R12) is derived from it.
+        </p>
+      </li>
+      <li>
+        <p>
+          Nothing here or in the main theorem decides whether \(X\) is a
+          single point. Each \(\mathfrak{W}_{\xi}\) is irreducible, while
+          \(S^{\text{mix}}\) is the \(\nu\)-mixture of the \(S^{\xi}\).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-14"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>object</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>code name</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>proposed notation</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">phases, measure, selected phase</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">F.&alpha;.space.X</tt>, <tt class="verbatim">F.&alpha;.space.&mu;</tt>,
+        <tt class="verbatim">F.&alpha;.atPoint</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(X\), \(\nu\), \(\xi_{\ast}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">characters of the ground algebra</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">F.&alpha;.space.character</tt>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L54"><tt
+        class="verbatim">Spread.algebra</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\chi_{\xi}\) on \(\mathfrak{A}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">unselected table; table of phase \(\xi\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">S</tt>; <tt class="verbatim">F.&alpha;.ensemble
+        &xi;</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(S^{\text{mix}}\); \(S^{\xi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">OS space and slab operators of \(S^{\text{mix}}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">F.&alpha;.room</tt>, <tt class="verbatim">F.&alpha;.unselected</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{H}^{\text{OS}}\), \(\Pi (d, w)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">ground space, Euclidean vacuum</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Chamber.D</tt>, <tt class="verbatim">Chamber.omega0</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{D}_{\xi}\), \(\omega_{\xi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">one-dimensional ground space</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L35"><tt class="verbatim">Chamber.UniqueHeat</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{D}_{\xi} =\mathbb{C} \omega_{\xi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">family of reconstructions</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L117-L132"><tt class="verbatim">Almanac</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((\mathcal{H}^{\text{OS}}_{\xi}, \Pi_{\xi},
+        \textsf{F}^{\xi},
+\mathfrak{W}_{\xi}, J_{\xi})_{\xi \in X}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">OS space, slab operators of \(S^{\xi}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">L.chambers &xi;</tt>, <tt class="verbatim">L.spreads
+        &xi;</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{H}^{\text{OS}}_{\xi}\), \(\Pi_{\xi} (d,
+        w)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">continuation and boundary values</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">L.contours &xi;</tt> (<tt class="verbatim">waves</tt>, <tt
+        class="verbatim">world</tt>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\textsf{F}^{\xi}_n\), \(W^{\xi}_n\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Wightman theory of phase \(\xi\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">L.actors &xi;</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathfrak{W}_{\xi} = (\mathcal{H}_{\xi},
+        \mathfrak{D}_{\xi}, \Omega_{\xi},
+\phi_{\xi}, U_{\xi}, P_{\xi})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">boundary isometry</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">L.J &xi;</tt>, <tt class="verbatim">L.links &xi;</tt> (<a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L156-L161"><tt class="verbatim">Attachment</tt></a>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(J_{\xi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Wightman data without vacuum uniqueness</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L34-L44"><tt class="verbatim">FieldCore</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">&mdash;</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">heat semigroup on \(\mathcal{H}_{\xi}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L94-L95"><tt class="verbatim">bHeat</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(e^{- sH_{\xi}} = J_{\xi}^{\ast} e^{-
+        sH^{\text{OS}}_{\xi}} J_{\xi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">zero-energy projection</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">momentum.region zeroE</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(P^0_{\xi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">finite sum of words; compact supports; adjoint; vector</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L14"><tt class="verbatim">SumOfWords</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L85"><tt
+        class="verbatim">finite</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L42"><tt class="verbatim">reverseP</tt></a>, <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L55"><tt class="verbatim">stands</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(A\), \(A^{\dagger}\), \(A \Omega_{\xi}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">spectral measure of \(A \Omega_{\xi}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L173-L174"><tt class="verbatim">&nu;letter</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mu^{\xi}_A\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">low-energy region; shell</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L132"><tt class="verbatim">lowE</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L40"><tt class="verbatim">ringE</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\{0 < p^4 \leqslant u\}\); \(\{u / 2 < p^4 \leqslant
+        u\}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">vacuum commutator function</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L171-L173"><tt class="verbatim">delta</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\langle \Omega_{\xi}, [A^{\dagger}, \alpha_p A]
+        \Omega_{\xi} \rangle\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">time-averaged odd part; weight</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L88-L89"><tt class="verbatim">averaged</tt></a>, <tt class="verbatim">pulse</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(D (\vec{x})\); \(\pi (0) = 0\), \(\pi (E) = (1 - \cos E)
+        / E\) for \(E > 0\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">strict-height values; tested values</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">waves.restricted</tt>, <tt class="verbatim">waves.psi</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\textsf{F}^{\xi}_n (a ; t (x) + iy, \vec{x})\);
+        \(\psi^{\xi} (a, y, g)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">weak commutant</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L19-L22"><tt class="verbatim">member</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L93-L96"><tt class="verbatim">weaklyCentral</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">&mdash;</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Minkowski stress labels and fields</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L27"><tt class="verbatim">Stress.M</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L206"><tt class="verbatim">Stress.fieldM</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(T^{\text{M}}_{ab}\), \(T_{ab} (f)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Killing field; charge; Lie derivative of a field</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Stress.Killing</tt>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L80-L81"><tt class="verbatim">Stress.Charge</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L86-L88"><tt class="verbatim">Stress.action</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(K\), \(Q_K (f, c)\), \(\phi (\Sigma_K B) + K^a \partial_a
+        \phi (B)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">stress record</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L81-L92"><tt class="verbatim">Stress.Force</tt></a> (fields
+        appointment, orbital, symmetric, hermitian, conserve, commutator,
+        rule)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(T0)&ndash;(T6)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">complete record</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L51-L71"><tt class="verbatim">Completed</tt></a> (fields isTheory,
+        into_onto, euclid, mink, light, heat, commutant, continued_stress,
+        depends, at_boundary, at_words)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">items 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9 of V.3.1</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-15"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Analytic inputs from V.2.</strong> The constructions <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L46-L49"><tt class="verbatim">contour</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L200-L215"><tt class="verbatim">compatible</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L167-L184"><tt class="verbatim">establishing</tt></a> and their use here were
+          checked in source. The underlying C01&ndash;C29 analytic estimates,
+          including the partial-boundary identities used in V.3.i and the
+          exchange continuations in (T0), remain inputs from V.2; their proofs
+          are not audited here. The local statements and proof sketches have
+          been checked against the declarations that consume them.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Partial-boundary data.</strong> (T0) states the existence
+          and compatibility needed for the current-jump argument. A detailed
+          proof must specify the admissible tube faces and the spacelike
+          neighborhoods of the tied pair; it must not replace integrated
+          current limits by pointwise limits of the stress insertion.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-2.html">&larr; V.2 Osterwalder-Schrader reconstruction of a
+      Wightman theory (notes)</a><span class="ym-part"><a href="../units.html#part-v-phases-and-reconstruction">Part V</a><font class="ym-sep">&middot;</font><a
+      href="../units/V-3.html">Unit outline</a></span><a class="ym-next" href="VI-1.html">VI.1 Ward identities, the
+      rotation action and the conserved stress tensor (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

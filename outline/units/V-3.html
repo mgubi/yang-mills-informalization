@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>V.3. Reconstruction for every phase and the reconstructed theory
+    &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-2.html">&larr; V.2 Osterwalder-Schrader reconstruction of a
+      Wightman theory</a><span class="ym-part"><a href="../units.html#part-v-phases-and-reconstruction">Part V</a><font class="ym-sep">&middot;</font><a
+      href="../notes/V-3.html">Detailed notes</a></span><a class="ym-next" href="VI-1.html">VI.1 Ward identities, the
+      rotation action and the conserved stress tensor &rarr;</a>
+    </div>
+    <p>
+      <h1>V.3. Reconstruction for every phase and the reconstructed
+      theory</h1><a id="v3-reconstruction-for-every-phase-and-the-reconstructed-theory"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">3</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">4</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-6">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-7">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Code dependencies</b> <span style="margin-left: 5mm"></span> <a href="#auto-8">5</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Lean source</b> <span style="margin-left: 5mm"></span> <a href="#auto-9">5</a>
+      </p>
+      <p>
+        Additional source locations <span style="margin-left: 5mm"></span> <a href="#auto-10">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Key statements</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">10</a>
+      </p>
+    </div>
+    <p>
+      <em>Part V &mdash; Phases and reconstruction.</em>
+    </p>
+    <p>
+      Passes reconstruction and field identities from almost every phase to
+      every phase.
+    </p>
+    <p>
+      <strong>Status: edited.</strong> Condensed from the unit's detailed
+      notes, which were checked against the linked Lean in two rounds and
+      edited; the local limitations still apply. <a href="../../data/index.html#outline-status">Status meanings</a>.
+    </p>
+    <p>
+      <a href="../index.html">Overview</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../notes/V-3.html">Detailed
+      notes</a> &middot; <a href="V-2.html">&larr; Previous: V.2</a> &middot; <a href="VI-1.html">Next:
+      VI.1 &rarr;</a>
+    </p>
+    <p>
+      <a href="#unit-results">Results</a> &middot; <a href="#unit-inputs">Inputs</a> &middot; <a href="#unit-strategy">Strategy</a>
+      &middot; <a href="#unit-steps">Proof steps</a> &middot; <a href="#unit-notation">Notation</a>
+      &middot; <a href="#unit-limitations">What remains unexplained</a> &middot; <a href="#code-dependencies">Code
+      dependencies</a> &middot; <a href="#lean-source">Lean source</a> &middot; <a href="#key-statements">Key
+      statements</a>
+    </p>
+    <p>
+      <details><summary>Source inventory and conventions</summary><p>
+        <strong>Part:</strong> V, phases and reconstruction.
+        <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase"><tt class="verbatim">YM/EveryPhase</tt></a> (34
+        files). Its hypotheses are recorded in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L73"><tt class="verbatim">YM/Spec/Closed.lean</tt></a>
+        and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L65-L148"><tt class="verbatim">YM/Phase/Mixture.lean</tt></a>. <strong>Folder
+        inventory (a different scope from the allocation below):</strong>
+        5,268 lines.
+      </p></details>
+    </p>
+    <p>
+      <a id="unit-results"></a>
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Hypotheses throughout.</strong> Fix a Wilson family, extraction
+      and limit table \(S^{\text{mix}}\) satisfying <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L64-L73"><tt class="verbatim">Final</tt></a>,
+      constructed in VIII.1. This includes the Euclidean axioms; a compact
+      metric phase space \(X\) with full-support Borel probability \(\nu\);
+      continuous characters \(\chi_{\xi}\), indexed bijectively by \(X\), of
+      the commutative C\(^{\ast}\) ground-space slab algebra \(\mathfrak{A}\),
+      with \(\xi \mapsto \chi_{\xi} (M)\) continuous and \(\int \chi_{\xi} (M)
+      d \nu = \langle \omega, M \omega \rangle\) for every \(M \in
+      \mathfrak{A}\); spatial translations trivial on the mixed ground space;
+      phase tables satisfying the Euclidean axioms and \(S^{\xi} (w) =
+      \chi_{\xi} (M_w)\) for distinct-point words, where \(M_w\) is their
+      time-translated compressed slab operator; the selected reconstruction at
+      \(\xi_{\ast}\) and continuations of \(S^{\text{mix}}, S^{\xi_{\ast}}\);
+      and the VI.1 field algebra, derivatives, rotations, Euclidean stress
+      tensor and phase Ward identities.
+    </p>
+    <p>
+      <strong>Proposition V.3.1 (every phase).</strong> There exist OS spaces
+      of \(S^{\xi}\) with slab operators, continuations \(\textsf{F}^{\xi}\)
+      of \(S^{\xi}\) with boundary distributions \(W^{\xi}\), and theories
+      \(\mathfrak{W}_{\xi} = (\mathcal{H}_{\xi}, \mathfrak{D}_{\xi},
+      \Omega_{\xi},
+\phi_{\xi}, U_{\xi}, P_{\xi})\) for every \(\xi \in X\),
+      agreeing with V.1&ndash;V.2 at \(\xi_{\ast}\). The common label space
+      \(\mathbb{F}\), generated by the \(F_d\), has the selected star
+      operation and Poincar&eacute; action; \(\mathfrak{D}_{\xi}\) is the
+      dense invariant word domain, \(\Omega_{\xi}\) a unit vacuum, and
+      \(U_{\xi}\) a strongly continuous unitary Poincar&eacute; representation
+      on the Hilbert space \(\mathcal{H}_{\xi}\). Fields \(\phi_{\xi} (a, f)\)
+      use \(a \in \mathbb{F}\), \(f \in \mathcal{S} (\mathbb{R}^4)\). For
+      every phase:
+    </p>
+    <ol>
+      <li>
+        <p>
+          Vacuum field products equal \(W^{\xi}\); \(\phi_{\xi} (a,
+          f)^{\ast}\) extends \(\phi_{\xi} (a^{\ast}, \bar{f})\); spacelike
+          separated fields commute on \(\mathfrak{D}_{\xi}\); \(U_{\xi}\)
+          implements Poincar&eacute; covariance; the translation spectrum lies
+          in \(\bar{V}_+\). Every nonzero \(a \in \mathbb{F}\) has some \(f
+          \in \mathcal{S} (\mathbb{R}^4)\) with \(\phi_{\xi} (a, f) \ne 0\) on
+          \(\mathfrak{D}_{\xi}\); translation-invariant vectors are multiples
+          of \(\Omega_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A unitary \(J_{\xi} : \mathcal{H}_{\xi} \to
+          \mathcal{H}^{\text{OS}}_{\xi}\) sends \(\Omega_{\xi}\) to
+          \(\omega_{\xi}\), intertwines translations and spectral projections,
+          and sends word vectors to boundary values of the corresponding
+          Euclidean vectors at imaginary times.
+        </p>
+      </li>
+      <li>
+        <p>
+          The OS ground space is \(\mathcal{D}_{\xi} =\mathbb{C}
+          \omega_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For every \(x \in \mathcal{H}_{\xi}\), \(P^0_{\xi} x = x\) iff \(x
+          \in \mathbb{C} \Omega_{\xi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For every compactly supported finite sum of words \(A\), some \(M
+          \geqslant 0\) satisfies \(\mu_A^{\xi} (\{0 < p^4 \leqslant u\})
+          \leqslant Mu^2\) for all \(\xi \in X\), \(0 < u \leqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For every such \(A\), some \(M \geqslant 0\) satisfies, for all
+          \(\xi \in X\), \(s \geqslant 1\),
+        </p>
+        <center>
+          \(\displaystyle 0 \leqslant \langle A \Omega_{\xi}, (e^{- sH_{\xi}}
+          - P^0_{\xi}) A
+\Omega_{\xi} \rangle \leqslant Ms^{- 2} .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          A bounded complex-linear \(B\) is scalar iff, for every \(a, f\) and
+          \(u, v \in \mathfrak{D}_{\xi}\), \(u \in \text{dom} \hspace{0.17em}
+          \phi_{\xi} (a, f)^{\ast}\) and \(\langle \phi_{\xi} (a, f)^{\ast} u,
+          Bv \rangle = \langle u, B \phi_{\xi} (a,
+f) v \rangle\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Proposition V.3.y holds.
+        </p>
+      </li>
+      <li>
+        <p>
+          For every \(n\), \(a \in \mathbb{F}^n\), \(g \in \mathcal{S}
+          ((\mathbb{R}^4)^n)\), \(\xi \mapsto W_n^{\xi} (a ; g)\) is
+          continuous and \(\int_X W_n^{\xi} (a ; g) d \nu = W_n^{\text{mix}}
+          (a ; g)\). For every distinct-point word \(w\), \(\int_X S^{\xi} (w)
+          d \nu = S^{\text{mix}} (w)\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorem under the stated hypotheses. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L75-L80"><tt class="verbatim">all_characters</tt></a>. Items 5&ndash;7 are also
+      Propositions V.3.n (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L221-L232"><tt class="verbatim">light_bound</tt></a>), V.3.o (<a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L173-L192"><tt class="verbatim">inverse_square</tt></a>) and V.3.t (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L118-L193"><tt class="verbatim">commutant</tt></a>).
+    </p>
+    <p>
+      <strong>Proposition V.3.2 (no exceptional phase).</strong> For every
+      \(\xi \in X\) and \(x \in \mathcal{H}_{\xi}\), \(P^0_{\xi} x = \langle
+      \Omega_{\xi}, x \rangle \Omega_{\xi}\). <em>Status:</em> theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L115-L144"><tt class="verbatim">all_plant</tt></a>.
+    </p>
+    <p>
+      <strong>Remark V.3.3 (additional consequences).</strong> Under V.3.1,
+      for every \(\xi\) and \(x \in \mathcal{H}_{\xi}\), being fixed by \(e^{-
+      sH_{\xi}}\) for all \(s \geqslant 0\), being translation invariant, and
+      belonging to \(\mathbb{C} \Omega_{\xi}\) are equivalent. For every
+      degree \(d\) and degree-\(d\) token coefficient vector \(v\), nullness
+      for \(S^{\xi}\) is equivalent to vanishing of the field of its \(F_d\)
+      class on every test. For every \(O \in O (4)\), \(b \in \mathbb{R}^4\),
+      coordinate \(a\), finite family of distinct-point words \(w_i\) in \(\{x
+      : (O^{- 1} (x - b))^a > 0\}\) and coefficients \(c_i \in \mathbb{C}\),
+    </p>
+    <center>
+      \(\displaystyle \sum_{i, j} \overline{c_i} c_j S^{\xi}  (\theta_{O, b,
+      a} w_i  \hspace{0.17em}
+w_j) \geqslant 0.\)
+    </center>
+    <p>
+      Here \(\theta_{O, b, a}\) reverses the word, reflects its points across
+      the hyperplane, and transports the \(a\)-axis label reflection through
+      \(O\). <em>Status:</em> theorem consequences, unused by the main
+      theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L100-L102"><tt class="verbatim">fixedHeat</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L103-L106"><tt
+      class="verbatim">exactly_fixed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L90-L98"><tt class="verbatim">recognizes</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L84-L88"><tt class="verbatim">allPlanes</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition V.3.y (stress tensor).</strong> For every \(\xi \in
+      X\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(T0)</strong> \(\textsf{F}^{\xi}\) extends holomorphically
+          to the full forward tube (consecutive imaginary differences in the
+          open forward cone), with continuous tested partial boundaries on the
+          closed cone, equal to \(W^{\xi}\) at zero. Each adjacent pair has
+          label-independent tied heights tending to zero with equal exchange
+          germs at spacelike separation.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(T1)&ndash;(T4)</strong> For every proper orthochronous
+          Poincar&eacute; transformation \(g\), Schwartz \(h\), indices \(a, b
+          \in \{1, 2, 3, 4\}\) and \(u, v, x \in \mathfrak{D}_{\xi}\),
+          \(U_{\xi} (g) \mathfrak{D}_{\xi} \subset \mathfrak{D}_{\xi}\) and
+        </p>
+        <center>
+          \(\displaystyle U_{\xi} (g) T_{ab} (h) x = \sum_{i, j} \Lambda
+          (g)_{ia} \Lambda (g)_{jb}
+T_{ij}  (h \circ g^{- 1}) U_{\xi} (g) x,\)
+        </center>
+        <center>
+          \(\displaystyle T_{ab} = T_{ba}, \qquad \langle T_{ab} (h) u, v
+          \rangle = \langle u, T_{ab}
+(\bar{h}) v \rangle, \qquad \sum_a
+          \eta_{aa} T_{ab}  (\partial_a h) = 0.\)
+        </center>
+      </li>
+      <li>
+        <p>
+          <strong>(T5)</strong> Fix \(B \in F_d\), a Killing field \(K\),
+          compact \(\mathcal{O} \subset \mathbb{R}^4\), \(m \in C_c^{\infty}
+          (\mathbb{R}^4)\) supported in \(\mathcal{O}\), real \(f \in
+          C_c^{\infty} (\mathbb{R})\) with \(\int f = 1\), and complex \(c \in
+          C_c^{\infty} (\mathbb{R}^3)\) equal to \(1\) on an open ball.
+          Suppose every \((\vec{y}, s)\) over its complement, for \(s \in
+          \text{supp} \hspace{0.17em} f\), is strictly spacelike to every
+          point of \(\mathcal{O}\). On \(\mathfrak{D}_{\xi}\),
+        </p>
+        <center>
+          \(\displaystyle i [Q_K (f, c), \phi_{\xi} (B, m)] = \phi_{\xi}
+          (\Sigma_K B, m) - \sum_a
+\phi_{\xi} (B, \partial_a (K^a m)) .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          <strong>(T6)</strong> Under these conditions, \(i [Q_K (f, c), A]\),
+          for every finite sum of words \(A\) supported in \(\mathcal{O}\), is
+          the sum replacing one factor at a time by (T5), preserving order,
+          for any representatives in the \(F_d\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L94-L116"><tt class="verbatim">Stress.force</tt></a>.
+    </p>
+    <p>
+      <a id="unit-inputs"></a>
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>IV.1:</strong> Euclidean axioms (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L26"><tt class="verbatim">Seed</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>V.1:</strong> character decomposition, copy bounds, OS
+          realization and almost-everywhere vacuum uniqueness (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Unique.lean#L91-L110"><tt
+          class="verbatim">Cluster.lifts</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>V.2:</strong> reconstruction, polynomial one-point slab
+          bounds and C01&ndash;C29 analytic estimates (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L50-L54"><tt class="verbatim">Relativistic</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>VI.1:</strong> field algebra and Euclidean stress Ward
+          identities (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L34-L43"><tt class="verbatim">Locals</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          OS reconstruction; spectral theorem; Vitali&ndash;Montel, Morera and
+          Liouville theorems; dominated convergence.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="unit-strategy"></a>
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      Uniform slab domination transfers reconstruction to every phase.
+      Character continuity passes through holomorphic continuation to boundary
+      distributions. Locality supplies uniform low-energy and heat decay; full
+      support and continuity extend vacuum-subtracted decay from almost every
+      phase to every phase. Its large-time limit identifies the vacuum
+      projection. Separately, Euclidean vector recovery proves surjectivity;
+      continued Ward identities give stress charges.
+    </p>
+    <p>
+      <a id="unit-steps"></a>
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Uniform reconstruction.</strong> Write \(\Pi_{\xi} (d, w)\)
+          and \(\Pi (d, w)\) for phase and mixed slab operators. Repeated
+          reflection and taking roots give \(\| \Pi_{\xi} (d, w)\| \leqslant
+          \| \Pi (d, w)\|\) for every positive thickness and distinct-point
+          slab word. Apply V.2 phasewise. Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L95-L100"><tt class="verbatim">sameBound</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L157-L194"><tt class="verbatim">almanac</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Boundary continuity.</strong> Uniform polynomial bounds,
+          Vitali&rsquo;s theorem and a Taylor formula with integrable
+          remainder prove continuity and barycenters of \(W^{\xi}\). Lean: <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Barycenter.lean#L48-L73"><tt class="verbatim">word_continuity</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Barycenter.lean#L75-L90"><tt class="verbatim">barycenter</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Surjectivity.</strong> Tests with compact frequency support
+          and exponential damping recover positive-height Euclidean vectors in
+          \(\text{ran} \hspace{0.17em} J_{\xi}\); totality and closedness give
+          surjectivity. Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Surjective.lean#L178-L223"><tt class="verbatim">onto</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Low energy.</strong> For compactly supported \(A\), locality
+          makes the time-averaged odd vacuum commutator compactly supported in
+          space. The nonnegative weight \((1 - \cos E) / E\) (zero at \(E =
+          0\)) and a momentum bump give shell mass \(O (u^2)\): spatial volume
+          contributes \(u^3\), the weight contributes \(u\). Dyadic summation
+          yields item 5; Laplace integration yields item 6. Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L221-L232"><tt
+          class="verbatim">light_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L173-L192"><tt class="verbatim">inverse_square</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Every vacuum.</strong> Heat forms are continuous in \(\xi\).
+          Almost-everywhere uniqueness and full support extend
+          vacuum-subtracted decay everywhere; strong heat limits and density
+          give V.3.2. Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L51-L78"><tt class="verbatim">extends_decay</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L115-L144"><tt class="verbatim">all_plant</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Irreducibility.</strong> Glue bounded half-plane matrix
+          elements by weak centrality; Morera and Liouville make them
+          constant. Vacuum uniqueness forces the commutant to be scalar. Lean:
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L118-L193"><tt class="verbatim">commutant</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Stress charges.</strong> Continue Euclidean contact
+          identities through spatially integrated current jumps, then remove
+          spectator cutoffs and take word-vector matrix elements to obtain
+          (T5). Lean: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Through.lean#L129-L142"><tt class="verbatim">Stress.through_jump</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L143-L177"><tt class="verbatim">Stress.local_action</tt></a>.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <a id="unit-difficulty"></a>
+    </p>
+    <h2 id="auto-5"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      Uniform analytic boundary bounds, Euclidean vector recovery and joint
+      current limits require care. Exchange germs agree only at spacelike
+      separation; current limits are spatially integrated. The \(u^2\)
+      estimate does not imply a mass gap. Uniqueness of the phase itself
+      remains undecided.
+    </p>
+    <p>
+      <a id="unit-notation"></a>
+    </p>
+    <h2 id="auto-6"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <p>
+      \(\mathcal{D}_{\xi}\) is the fixed space of the OS heat semigroup;
+      \(\mathfrak{D}_{\xi}\) is the Wightman word domain. Time is coordinate
+      \(4\); \(P^0_{\xi} = P_{\xi} (\{p^4 = 0\})\), \(\mu_A^{\xi} (B) =
+      \langle A \Omega_{\xi}, P_{\xi} (B) A \Omega_{\xi} \rangle\), and \(e^{-
+      sH_{\xi}} = J_{\xi}^{\ast} e^{- sH^{\text{OS}}_{\xi}} J_{\xi}\). A
+      compactly supported word sum has all tests in \(C_c^{\infty}\). Write
+      \(\eta = \text{diag} (- 1, - 1, - 1, 1)\), \(\zeta_4 = - i\), \(\zeta_j
+      = 1\), \(T_{ab} (h) = \phi_{\xi} (- \zeta_a \zeta_b T^{\text{E}}_{ab},
+      h)\), and \(Q_K (f, c) = \sum_b T_{4 b}  (K^b (c \otimes f))\). Here \(K
+      (x) = k + Vx\), \(V^{\textsf{T}} \eta + \eta V = 0\), and \(\Sigma_K\)
+      is its infinitesimal label action.
+    </p>
+    <p>
+      The reconstruction family is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L117-L132"><tt class="verbatim">Almanac</tt></a> (<tt
+      class="verbatim">L.chambers</tt>, <tt class="verbatim">L.contours</tt>, <tt class="verbatim">L.actors</tt>,
+      <tt class="verbatim">L.J</tt>); word sums are <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L14"><tt class="verbatim">SumOfWords</tt></a>;
+      the charge is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L80-L81"><tt class="verbatim">Stress.Charge</tt></a>.
+    </p>
+    <p>
+      <a id="unit-limitations"></a>
+    </p>
+    <h2 id="auto-7"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <p>
+      The C01&ndash;C29 estimates remain analytic inputs from V.2. The
+      current-jump argument needs explicit tube faces and spacelike
+      neighborhoods; integrated limits do not supply pointwise stress limits.
+    </p>
+    <p>
+      Detailed notes: the full account of this unit, with proof sketches for
+      every step, is on the <a href="../notes/V-3.html">detailed notes page</a>.
+    </p>
+    <h2 id="auto-8"><a id="code-dependencies"></a>Code dependencies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Code dependencies (from the compiled Lean).</strong> These lists
+      follow references between declarations allocated to units; they can
+      include shared definitions, record fields and alternative constructions.
+      They are not a mathematical reading order. Only unit pairs with at least
+      25 references are shown; see the <a href="../../data/index.html#code-dependencies">counting rules</a>.
+    </p>
+    <p>
+      <strong>References to:</strong> <a href="V-2.html">V.2</a>, <a href="I-1.html">I.1</a>, <a
+      href="IV-1.html">IV.1</a>, <a href="V-1.html">V.1</a>, <a href="VI-1.html">VI.1</a>, <a href="VIII-1.html">VIII.1</a>,
+      <a href="II-1.html">II.1</a>, <a href="III-16.html">III.16</a>, <a href="III-10.html">III.10</a>.
+    </p>
+    <p>
+      <strong>Referenced by:</strong> <a href="VIII-1.html">VIII.1</a>.
+    </p>
+    <h2 id="auto-9"><a id="lean-source"></a>Lean source<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Source allocation:</strong> 4,056 attributed lines; 395
+      line-counted declarations; 475 assigned declaration names. Of the
+      assigned names, 451 are in the compiled closure of the seventeen
+      headline results. These quantities have <a href="../../data/index.html#counting-scopes">different scopes</a>.
+    </p>
+    <p>
+      The folders and result chains below are source inventories. Their line
+      counts cover each whole group, including any share allocated to another
+      unit; percentages use attributed lines plus one per assigned name. They
+      need not sum to the unit total.
+    </p>
+    <ul>
+      <li>
+        <p>
+          proof of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L75-L80"><tt class="verbatim">all_characters</tt></a> (in part, 77%)
+          &mdash; 4,992 lines.
+        </p>
+      </li>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase"><tt class="verbatim">YM/EveryPhase/</tt></a> &mdash; 154
+          lines.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-10"><a id="additional-source-locations"></a>Additional source locations<span style="margin-left: 1em"></span></h3>
+    <p>
+      Further pinned locations for the definitions and comparisons discussed
+      in this unit.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/HierarchyBridge.lean#L79-L133"><tt class="verbatim">publicReconstruction</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Distribution/Tests.lean#L48"><tt class="verbatim">Boundary.Probe.pref</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Distribution/Tests.lean#L84-L90"><tt class="verbatim">Boundary.Probe.hat_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L72-L73"><tt class="verbatim">Table.Window</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L113-L147"><tt class="verbatim">one_average</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L149-L160"><tt class="verbatim">two_average</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L35-L44"><tt class="verbatim">pulse_positive</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L46-L59"><tt class="verbatim">pulse_lower</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Average.lean#L88-L89"><tt class="verbatim">averaged</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Barycenter.lean#L18-L42"><tt class="verbatim">eager</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L104-L137"><tt class="verbatim">Stress.measure_identity</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L14-L17"><tt class="verbatim">Stress.Season</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L24-L35"><tt class="verbatim">Stress.accepts</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L37-L40"><tt class="verbatim">Stress.Reservation</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L42-L59"><tt class="verbatim">Stress.reservable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L86-L88"><tt class="verbatim">Stress.action</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Compatibility.lean#L26-L29"><tt class="verbatim">onFinal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Court.lean#L77-L117"><tt class="verbatim">Stress.compact_shells</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Cross.lean#L76-L83"><tt class="verbatim">EveryPhase.Stress.Prospect</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L113-L170"><tt class="verbatim">uniform_heat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L22-L75"><tt class="verbatim">decay</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L82-L88"><tt class="verbatim">char_cont</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L93-L111"><tt class="verbatim">test_cont</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L167-L171"><tt class="verbatim">EveryPhase.Stress.Gallery</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L73-L75"><tt class="verbatim">Stress.Jury</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L77-L164"><tt class="verbatim">Stress.partial_jump</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L19-L22"><tt class="verbatim">member</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L51-L71"><tt class="verbatim">Completed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Frequency.lean#L103-L111"><tt class="verbatim">boundary_tilt</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Frequency.lean#L83"><tt class="verbatim">chilled</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Hot.lean#L111-L124"><tt class="verbatim">shot_in</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Hot.lean#L29-L75"><tt class="verbatim">vector_cooled</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Hot.lean#L99-L109"><tt class="verbatim">vector_in</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L64-L78"><tt class="verbatim">Stress.Generated</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L81-L92"><tt class="verbatim">Stress.Force</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L195-L205"><tt class="verbatim">precise</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L22-L54"><tt class="verbatim">paste</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L56-L84"><tt class="verbatim">saturated</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L93-L96"><tt class="verbatim">weaklyCentral</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Killing.lean#L20-L23"><tt class="verbatim">EveryPhase.Stress.Killing</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L132"><tt class="verbatim">lowE</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L135-L168"><tt class="verbatim">dyadic</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L16-L25"><tt class="verbatim">averaged_bound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L173-L174"><tt class="verbatim">&nu;letter</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L179-L183"><tt class="verbatim">word_pair</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L185-L195"><tt class="verbatim">sum_pair</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L197-L206"><tt class="verbatim">word_bound</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L208-L219"><tt class="verbatim">late</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L35-L36"><tt class="verbatim">fee</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L40"><tt class="verbatim">ringE</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L43-L129"><tt class="verbatim">annulus</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L134-L155"><tt class="verbatim">storeys</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L196-L199"><tt class="verbatim">Almanac.priced</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L208-L212"><tt class="verbatim">Almanac.almostEvery</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L32-L50"><tt class="verbatim">x_train</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L53-L74"><tt class="verbatim">buys</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L76-L91"><tt class="verbatim">actual</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L114-L146"><tt class="verbatim">integral_holomorphic</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L152-L170"><tt class="verbatim">imaginary_evaluation</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L19-L46"><tt class="verbatim">power</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L106-L119"><tt class="verbatim">op_comm</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L146-L160"><tt class="verbatim">distant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L171-L173"><tt class="verbatim">delta</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L175-L207"><tt class="verbatim">comm_expect</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L42"><tt class="verbatim">reverseP</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L55"><tt class="verbatim">stands</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Polynomials.lean#L85"><tt class="verbatim">finite</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L102-L109"><tt class="verbatim">bHeat_limit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L145-L150"><tt class="verbatim">residual_pair</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L20-L25"><tt class="verbatim">reaches</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L77-L86"><tt class="verbatim">reflection_projection</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L94-L95"><tt class="verbatim">bHeat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Projection.lean#L97-L100"><tt class="verbatim">bHeat_pair</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Shell.lean#L128-L176"><tt class="verbatim">euclidean_shell</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Surjective.lean#L119-L128"><tt class="verbatim">bright_shot</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Surjective.lean#L160-L176"><tt class="verbatim">ordered_covered</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L206"><tt class="verbatim">Stress.fieldM</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L210-L215"><tt class="verbatim">Stress.tensor_lorentz</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L217-L220"><tt class="verbatim">Stress.tensor_herm</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L227-L237"><tt class="verbatim">Stress.tensor_conserved</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Tensor.lean#L27"><tt class="verbatim">Stress.M</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L146-L153"><tt class="verbatim">every</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L155-L156"><tt class="verbatim">boundary_realizes</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L158-L162"><tt class="verbatim">boundary_zero_energy</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L16-L20"><tt class="verbatim">groundvac</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L22-L39"><tt class="verbatim">proj_eq</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L42-L46"><tt class="verbatim">univ_of_closed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L80-L112"><tt class="verbatim">cluster_zero</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vitali.lean#L67-L89"><tt class="verbatim">propagate_limit</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L62-L63"><tt class="verbatim">Boundary.Small.rated</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Independent/Core.lean#L18-L34"><tt class="verbatim">Independent.Core</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L156-L161"><tt class="verbatim">Attachment</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L191-L194"><tt class="verbatim">Attachment.with_heat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L198-L204"><tt class="verbatim">Attachment.measures</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L207-L246"><tt class="verbatim">Attachment.projections</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L34-L44"><tt class="verbatim">FieldCore</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L167-L184"><tt class="verbatim">establishing</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L200-L215"><tt class="verbatim">compatible</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L46-L49"><tt class="verbatim">contour</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Nonperturbative/HeadlineSpec.lean#L75-L81"><tt class="verbatim">Headline.Reconstruction</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L106-L107"><tt class="verbatim">OS.realization</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Train.lean#L116-L123"><tt class="verbatim">OS.producer</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L113-L117"><tt class="verbatim">Resolution.barycenter</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L127-L134"><tt class="verbatim">Selection</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L136-L148"><tt class="verbatim">Selection.Certificate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L35"><tt class="verbatim">Chamber.UniqueHeat</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L54"><tt class="verbatim">Spread.algebra</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L65-L72"><tt class="verbatim">Resolution</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L78-L86"><tt class="verbatim">Resolution.Out</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L89-L91"><tt class="verbatim">Resolution.receives</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Unique.lean#L56-L86"><tt class="verbatim">Cluster.exp_real</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Breath.lean#L27-L28"><tt class="verbatim">Waves.desired</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Breath.lean#L50-L66"><tt class="verbatim">Waves.meant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L78"><tt class="verbatim">Boundary.Waves.clock</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L28-L31"><tt class="verbatim">Algebra</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B02.lean#L17-L30"><tt class="verbatim">Work.B02.answer</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B14.lean#L119-L143"><tt class="verbatim">Work.B14.universal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/B14.lean#L99-L107"><tt class="verbatim">Work.B14.plant_cont</tt></a>
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-11"><a id="key-statements"></a>Key statements<span style="margin-left: 1em"></span></h2>
+    <p>
+      In the selected statement order. <strong>K-</strong> identifiers name
+      this generated list; proposition and lemma numbers in the outline are
+      separate. Each sentence is an automatically drafted summary of a Lean
+      statement; follow its link for the exact hypotheses and conclusion. The
+      outline status does not certify these summaries. <em>Main result</em>
+      and <em>key result</em> describe importance, not correctness. Full names
+      are in the <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv">statement table</a>.
+    </p>
+    <p>
+      <a id="k-v-3-1"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.1</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pack.lean#L117-L132"><tt class="verbatim">Almanac</tt></a>
+          <em>(numbered result)</em> &mdash; A bundled data structure of
+          contours and reflection constructions indexed by characters, used to
+          run the Wightman reconstruction before vacuum uniqueness is known.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-2"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.2</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pure.lean#L43-L115"><tt class="verbatim">pure_clock</tt></a>
+          <em>(key result)</em> &mdash; The integrated current jump at
+          Euclidean external arguments converges, as the time parameter tends
+          to zero from above, to the stated task value.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-3"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.3</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Through.lean#L129-L142"><tt class="verbatim">through_jump</tt></a>
+          <em>(numbered result)</em> &mdash; The jump of the current converges
+          to the prescribed constant jointly as the configuration tends to p
+          and the parameter tends to 0+.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-4"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.4</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decree.lean#L208-L242"><tt class="verbatim">verdict</tt></a>
+          <em>(key result)</em> &mdash; Partial and joint real distribution
+          limits of the current jump hold, identifying the limit of tested
+          Wightman-type boundary values with the prescribed expression.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-5"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.5</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Court.lean#L147-L163"><tt class="verbatim">Schwartz_shells</tt></a>
+          <em>(numbered result)</em> &mdash; The shell identity for
+          stress-tensor matrix elements extends from compactly supported to
+          arbitrary sentences by approximation.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-6"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.6</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Charge.lean#L143-L177"><tt class="verbatim">local_action</tt></a>
+          <em>(key result)</em> &mdash; The time-smeared stress charge acts by
+          commutator on a local field with compactly supported test as the
+          expected Lorentz/translation action when the spatial cutoff is equal
+          to one near the support.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-7"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.7</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Implement.lean#L94-L116"><tt class="verbatim">force</tt></a> <em>(key
+          result)</em> &mdash; For the reconstructed systems in all phases,
+          the stress operator satisfies the force relations with the energy,
+          rotations and derivatives.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-8"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.8</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Extension.lean#L75-L80"><tt class="verbatim">all_characters</tt></a>
+          <em>(main result)</em> &mdash; There exists a family of
+          reconstructed theories, one for each character phase, that is
+          completed, i.e., satisfies all reconstruction requirements.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-9"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.9</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Pages.lean#L193-L228"><tt class="verbatim">strict_evaluation</tt></a>
+          <em>(numbered result)</em> &mdash; Strict-height waves evaluated at
+          points are continuous in the character, and their integral over
+          characters equals the base value.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-10"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.10</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L173-L192"><tt class="verbatim">inverse_square</tt></a>
+          <em>(key result)</em> &mdash; After subtracting the full zero-energy
+          projection, the vacuum-subtracted word correlations decay at an
+          inverse-square rate uniformly over characters.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-11"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.11</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Surjective.lean#L178-L223"><tt class="verbatim">onto</tt></a>
+          <em>(main result)</em> &mdash; The boundary isometry is surjective,
+          so there are no missing directions.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-12"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.12</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L221-L232"><tt class="verbatim">light_bound</tt></a>
+          <em>(key result)</em> &mdash; The spectral measure of low energies
+          below u of word states is bounded by a constant times u squared,
+          uniformly in the character.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-13"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.13</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Irreducible.lean#L207-L216"><tt class="verbatim">irreducible</tt></a>
+          <em>(key result)</em> &mdash; An operator is weakly central for the
+          reconstructed theory exactly when it is a scalar multiple of the
+          identity.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-v-3-14"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-V.3.14</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Vacuum.lean#L115-L144"><tt class="verbatim">all_plant</tt></a>
+          <em>(key result)</em> &mdash; The zero-energy spectral projection of
+          each character theory is the projection onto the vacuum.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview of the proof</a>
+      &middot; <a href="../../index.html">Repository</a>
+    </p>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-2.html">&larr; V.2 Osterwalder-Schrader reconstruction of a
+      Wightman theory</a><span class="ym-part"><a href="../units.html#part-v-phases-and-reconstruction">Part V</a><font class="ym-sep">&middot;</font><a
+      href="../notes/V-3.html">Detailed notes</a></span><a class="ym-next" href="VI-1.html">VI.1 Ward identities, the
+      rotation action and the conserved stress tensor &rarr;</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.16. Analytic toolkit &mdash; detailed notes &ndash;
+    Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-15.html">&larr; III.15 Cost accounting for observables and the
+      remainder comparison (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-16.html">Unit outline</a></span><a class="ym-next" href="IV-1.html">IV.1
+      Infinite volume: extraction of a subsequence and the Euclidean axioms of
+      the limit (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>III.16. Analytic toolkit &mdash; detailed notes</h1><a id="iii16-analytic-toolkit--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">8</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">10</a>
+      </p>
+      <p>
+        4.1 Positive kernels and quadrature <span style="margin-left: 5mm"></span> <a href="#auto-5">10</a>
+      </p>
+      <p>
+        4.2 The finite trace inequality <span style="margin-left: 5mm"></span> <a href="#auto-6">11</a>
+      </p>
+      <p>
+        4.3 From matrices to kernels <span style="margin-left: 5mm"></span> <a href="#auto-7">13</a>
+      </p>
+      <p>
+        4.4 Holomorphy in a strip and Laurent coefficients <span style="margin-left: 5mm"></span>
+        <a href="#auto-8">14</a>
+      </p>
+      <p>
+        4.5 Fourier analysis on tori <span style="margin-left: 5mm"></span> <a href="#auto-9">15</a>
+      </p>
+      <p>
+        4.6 Matrix square root <span style="margin-left: 5mm"></span> <a href="#auto-10">16</a>
+      </p>
+      <p>
+        4.7 Taylor coefficients and analyticity <span style="margin-left: 5mm"></span> <a href="#auto-11">16</a>
+      </p>
+      <p>
+        4.8 Free Maxwell field <span style="margin-left: 5mm"></span> <a href="#auto-12">17</a>
+      </p>
+      <p>
+        4.9 Labels <span style="margin-left: 5mm"></span> <a href="#auto-13">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-14">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">20</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-16">21</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit III.16: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/III-16.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/III-16.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> III, Ultraviolet construction (renormalization
+      group). <strong>Lean:</strong> eight folders, none a numbered chapter of
+      its own: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex"><tt class="verbatim">YM/Complex/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel"><tt class="verbatim">YM/TimeKernel/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis"><tt class="verbatim">YM/Analysis/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent"><tt class="verbatim">YM/Laurent/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier"><tt class="verbatim">YM/CellFourier/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07"><tt class="verbatim">YM/Work/F07/</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell"><tt class="verbatim">YM/Maxwell/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels"><tt class="verbatim">YM/Labels/</tt></a>.
+      <strong>Size:</strong> 5,318 physical source lines in 41 files, plus
+      elementary helper lemmas in other folders.
+    </p>
+    <p>
+      The results fall into three groups.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(A) Traces of kernel products.</strong> A H&ouml;lder
+          inequality and Cauchy's estimate give a dimension-free Lipschitz
+          bound for moving insertions between time slices. Quadrature passes
+          the bound from matrices to kernels; IV.1 uses it for equicontinuity.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(B) Analytic and Fourier estimates.</strong> Holomorphic
+          symbols correspond to exponentially summable Laurent coefficients.
+          Fourier and Bloch identities diagonalize periodized kernels, and a
+          binomial series supplies a matrix square root. Taylor coefficient
+          identities and several-variable analyticity support these arguments.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(C) Maxwell fields and labels.</strong> Radial-gauge
+          potentials correspond to closed curvature jets. Restriction to the
+          Maxwell shell defines the free contractions and Wick hierarchy.
+          Gauge-invariant polynomial labels admit coherent complex bases with
+          real coefficients.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      The contraction kernel and Wick hierarchy are definitions whose
+      properties are proved here.
+    </p>
+    <p>
+      <em>Notation for (A).</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Matrices are complex \(\iota \times \iota\) matrices with \(\iota\)
+          finite, and \(\| \cdot \|\) is the operator norm.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\|b\|_{2 q} := (\text{tr} ((b^{\ast} b)^q))^{1 / (2 q)}\) is the
+          Schatten \(2 q\)-norm.
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(A \succeq 0\) with spectral decomposition \(A = \sum_{\lambda}
+          \lambda P_{\lambda}\), put \(A^z := \sum_{\lambda > 0} e^{z \log
+          \lambda} P_{\lambda}\) for \(z \in \mathbb{C}\). This is entire in
+          \(z\). It vanishes on \(\ker A\) for every \(z\), so \(A^0\) is the
+          projection onto the range, and it equals the ordinary power \(A^m\)
+          for every integer \(m \geqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Products \(\prod_{k = 1}^n\) are ordered by \(k\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.16.1 (integrating a positive-semidefinite
+      kernel).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(X\) is a compact metric space with a finite Borel measure \(\mu\),
+          and \(\mathcal{A}, \mathcal{B}\) are sets.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(K : \mathcal{A} \times \mathcal{A} \to \mathbb{C}\) is positive
+          semidefinite: for every \(m\) and all \(a_1, \ldots, a_m \in
+          \mathcal{A}\) (repetitions allowed), the matrix \((K (a_i, a_j))_{i,
+          j}\) is Hermitian and positive semidefinite.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(g : \mathcal{B} \times X \to \mathcal{A}\) is such that \((x, y)
+          \mapsto K (g (b, x), g (c, y))\) is continuous on \(X \times X\) for
+          all \(b, c \in \mathcal{B}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em> The kernel
+    </p>
+    <center>
+      \(\displaystyle \tilde{K} (b, c) = \int_X \hspace{-0.17em} \int_X K (g
+      (b, x), g (c, y)) 
+\hspace{0.17em} d \mu (y)  \hspace{0.17em} d \mu
+      (x)\)
+    </center>
+    <p>
+      is positive semidefinite on \(\mathcal{B}\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Projected.lean#L44-L70"><tt class="verbatim">YM.Analysis.NNKernel.accumulate</tt></a>;
+      the notion of positive semidefinite kernel is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L18-L19"><tt class="verbatim">NNKernel</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.16.2 (H&ouml;lder inequality for traces with
+      complex exponents).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(A \succeq 0\) and \(b_1, \ldots, b_n\) are complex \(\iota \times
+          \iota\) matrices.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(q, M \geqslant 1\) are integers, and \(Z_A := \text{tr}
+          \hspace{0.17em} A^M > 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(v \in \mathbb{C}^n\) satisfies \(\text{Re} \hspace{0.17em} v_k
+          \geqslant 0\) for all \(k\) and \(\frac{n}{2 q} + \frac{1}{M} 
+          \sum_k \text{Re} \hspace{0.17em} v_k = 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em>
+    </p>
+    <center>
+      \(\displaystyle | \text{tr} \prod_{k = 1}^n b_k A^{v_k} | \leqslant
+      \prod_k \|b_k \|_{2 q}
+\cdot Z_A^{\hspace{0.17em} 1 - n / (2 q)} .\)
+    </center>
+    <p>
+      For real \(v_k > 0\), the corresponding Schatten exponent is \(M / v_k\)
+      and \(\|A^{v_k} \|_{M / v_k} = Z_A^{v_k / M}\). At \(v_k = 0\), the
+      factor is the range projection, whose operator norm is \(1\) since \(Z_A
+      > 0\). The bound has no dimension factor.
+    </p>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L124-L165"><tt class="verbatim">YM.Holder.estimation</tt></a>.
+      The left side is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L108-L109"><tt class="verbatim">total</tt></a> and the right side
+      is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L111-L112"><tt class="verbatim">cost</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.16.3 (Lipschitz bound in the gaps, matrices; key
+      result).</strong>
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(A \succeq 0\) and \(b_1, \ldots, b_n\) are as in III.16.2.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(q, w \geqslant 1\) are integers, \(M = 2 qw\), and \(\text{tr}
+          \hspace{0.17em} A^M > 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(Y \in \mathbb{N}^n\) satisfies \(nw + \sum_k Y_k = M\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For some \(i \ne j\) and some \(\ell \in \mathbb{N}\), the vector
+          \(Y' \in \mathbb{N}^n\) moves \(\ell\) units from gap \(j\) to gap
+          \(i\): \(Y'_i = Y_i + \ell\), \(Y'_j + \ell = Y_j\), and \(Y'_k =
+          Y_k\) otherwise.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(r > 0\), \(Y_k > 2 r\) for every \(k\), and \(\ell \leqslant r\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em>
+    </p>
+    <center>
+      \(\displaystyle | \text{tr} \prod_k b_k A^{Y'_k} - \text{tr} \prod_k b_k
+      A^{Y_k} | \leqslant
+\frac{\ell}{r}  \hspace{0.17em} \prod_k \|b_k \|_{2
+      q} \hspace{0.17em} \left(
+\text{tr} \hspace{0.17em} A^M \right)^{1 - n /
+      (2 q)} .\)
+    </center>
+    <p>
+      The condition \(i \ne j\) forces \(n \geqslant 2\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L170-L229"><tt class="verbatim">YM.Holder.finite_lip</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.16.4 (Lipschitz bound in the gaps, kernels; key
+      result).</strong>
+    </p>
+    <p>
+      <em>Setting.</em> \(X\) is a compact metric space with a finite Borel
+      measure \(\mu\). For \(L \geqslant 1\) and continuous \(k_1, \ldots, k_L
+      : X \times X \to \mathbb{C}\), write
+    </p>
+    <center>
+      \(\displaystyle \text{Tr} (k_1 \cdots k_L) = \int_{X^L} \prod_{l = 1}^L
+      k_l  (x_l, x_{l + 1}) 
+\hspace{0.17em} d \mu (x_1) \cdots d \mu (x_L),
+      \qquad x_{L + 1} = x_1,\)
+    </center>
+    <p>
+      and write \(k^{\ast} (x, y) = \overline{k (y, x)}\) for the adjoint
+      kernel. Powers inside \(\text{Tr}\) denote repetitions in the cyclic
+      word.
+    </p>
+    <p>
+      <em>Hypotheses.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(K\) is a continuous positive-semidefinite kernel, and \(B_1,
+          \ldots, B_n\) are continuous kernels.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(q, w \geqslant 1\), \(M = 2 qw\), and \(\text{Tr} (K^M) = Z\) with
+          \(Z > 0\) real.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(Y, Y', \ell, r\) are as in III.16.3.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(c_1, \ldots, c_n\) are real numbers with \(| \text{Tr}
+          ((B_k^{\ast} B_k)^q) |^{1 / (2 q)} \leqslant c_k 
+          \hspace{0.17em}
+Z^{1 / (2 q)}\) for every \(k\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Conclusion.</em>
+    </p>
+    <center>
+      \(\displaystyle | \text{Tr} (B_1 K^{Y'_1} \cdots B_n K^{Y'_n}) -
+      \text{Tr} (B_1 K^{Y_1} \cdots
+B_n K^{Y_n}) | \leqslant Z \left( \prod_k
+      c_k \right) \frac{\ell}{r} .\)
+    </center>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L76-L106"><tt class="verbatim">YM.TimeKernel.passage</tt></a>,
+      with <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L76"><tt class="verbatim">closed</tt></a> (the cyclic integral), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L17-L18"><tt
+      class="verbatim">along</tt></a> (the word with gaps) and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L20"><tt class="verbatim">multiply</tt></a>
+      (the column word \((B^{\ast} B)^q\)).
+    </p>
+    <p>
+      <em>Notation for (B).</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\alpha\) is a finite index set; in the applications it is the four
+          axes.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(|x|_1 = \sum_a |x_a |\) for \(x \in \mathbb{Z}^{\alpha}\), and
+          \(e^{ip \cdot x} = \exp (i \sum_a p_a x_a)\) for \(p \in
+          \mathbb{C}^{\alpha}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(S_{\eta} = \{p \in \mathbb{C}^{\alpha} : | \text{Im}
+          \hspace{0.17em} p_a | <
+\eta \forall a\}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(f : \mathbb{Z}^{\alpha} \to \mathbb{C}\), the symbol is
+          \(\hat{f} (p) = \sum_x f (x) e^{ip \cdot x}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.16.5 (holomorphy in a strip and exponentially
+      weighted Laurent coefficients).</strong> Let \(\eta > 0\).
+    </p>
+    <p>
+      (a) Let \(u\) be holomorphic on \(S_{\eta}\) and \(2 \pi\)-periodic
+      there: \(u (p + 2 \pi x) = u (p)\) for \(p \in S_{\eta}\) and \(x \in
+      \mathbb{Z}^{\alpha}\). For \(p \in S_{\eta}\) let \(\hat{u}_p (x) =
+      \int_{[0, 1]^{\alpha}} u (p + 2 \pi \theta) e^{- 2 \pi i
+\theta \cdot x}
+      d \theta\), and put \(\hat{u} = \hat{u}_0\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the integral \(\int u (p + 2 \pi \theta)  \hspace{0.17em} d \theta\)
+          does not depend on \(p \in S_{\eta}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\hat{u}_p (x) = e^{ip \cdot x}  \hat{u} (x)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      If moreover \(|u| \leqslant K\) on \(S_{\eta}\), then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(| \hat{u}_p (x) | \leqslant K\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for \(H \geqslant 0\) and \(b > 0\) with \(H + b < \eta\), \(\sum_x
+          e^{H |x|_1} | \hat{u} (x) | \leqslant K (2 (1 + b) /
+          b)^{\text{card}
+\hspace{0.17em} \alpha}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(u (p) = \sum_x \hat{u} (x) e^{ip \cdot x}\) on \(S_{\eta}\), with
+          absolute convergence.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (b) Let \(\sum_x e^{\eta |x|_1} |f (x) | \leqslant W\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(| \hat{f} (p) | \leqslant W\) whenever \(| \text{Im}
+          \hspace{0.17em} p_a | \leqslant \eta\) for all \(a\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for \(0 < \sigma < \eta\), \(\hat{f}\) is holomorphic on
+          \(S_{\sigma}\) with \(\|D \hat{f} (p)\| \leqslant W / (\eta -
+          \sigma)\) (operator norm for the sup norm on
+          \(\mathbb{C}^{\alpha}\)), so \(| \hat{f} (p) - \hat{f} (p') |
+          \leqslant W \|p - p' \|_{\infty} / (\eta -
+\sigma)\) on
+          \(S_{\sigma}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for real \(p\), the symbol of \(\text{Re} \hspace{0.17em} f\) equals
+          \(\tfrac{1}{2} (\hat{f} (p) + \overline{\hat{f} (- p)})\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorems. <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          for (a): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Rune.lean#L91-L99"><tt class="verbatim">market_cap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Turn.lean#L103-L112"><tt
+          class="verbatim">full_turn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Turn.lean#L114-L118"><tt class="verbatim">coat_price</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Art.lean#L61-L87"><tt class="verbatim">Vane.issues</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Art.lean#L90-L104"><tt class="verbatim">Vane.paints</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          for (b): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L131-L133"><tt class="verbatim">Width.estimate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/Read.lean#L55-L95"><tt
+          class="verbatim">readDeriv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/Read.lean#L97-L101"><tt class="verbatim">readDiff</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/Read.lean#L119-L133"><tt class="verbatim">readRealPart</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.16.6 (Fourier and Bloch decomposition on
+      tori).</strong>
+    </p>
+    <p>
+      <em>Setting.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          All torus side lengths \(n, c, f, L\) are positive integers, and
+          \(\Lambda_n = (\mathbb{Z}/ n\mathbb{Z})^4\). For \(p \in
+          \Lambda_n\), represented in \(\{0, \ldots, n - 1\}^4\), let \(k_p =
+          2 \pi p / n\), and let \(F_n = (e^{ik_p \cdot x})_{x, p \in
+          \Lambda_n}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\alpha, \beta\) are finite index sets, and the real kernel \(R =
+          (R_{ab} (x))\), \(x \in \mathbb{Z}^4\), satisfies \(\sum_x |R_{ab}
+          (x) | < \infty\) for every \(a \in \alpha\), \(b \in \beta\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Its periodization on \(\Lambda_n\) is \(R_n ((y, a), (y', b)) =
+          \sum_{x : \hspace{0.17em} y + x \equiv y'} R_{ab} (x)\), and its
+          symbol is \(\hat{R} (k)_{ab} = \sum_x R_{ab} (x) e^{ik \cdot x}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (a) \(F_n F_n^{\ast} = F_n^{\ast} F_n = n^4 I\), and \(R_n  (F_n \otimes
+      I_{\beta}) = (F_n \otimes I_{\alpha}) \hspace{0.17em}
+\text{diag}_{p \in
+      \Lambda_n} \hat{R} (k_p)\). This holds for every \(p\), including \(p =
+      0\).
+    </p>
+    <p>
+      (b) Let \(f = cL\). For \(p \in \Lambda_c\) and \(l \in \Lambda_L\) let
+      \(k_{p, l} = 2 \pi (p + cl) / f\). These are the \(L^4\) fine momenta
+      \(k\) with \(Lk \equiv 2 \pi p / c\) modulo \(2 \pi\), i.e. the aliases
+      of the coarse momentum \(2 \pi p / c\). The fine Fourier matrix \(\Phi =
+      (e^{ik_{p, l} \cdot y})_{y \in \Lambda_f, (p, l)}\) satisfies:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\Phi \Phi^{\ast} = f^4 I\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(R_f  (\Phi \otimes I_{\beta}) = (\Phi \otimes I_{\alpha})
+          \hspace{0.17em}
+\text{diag}_{p \in \Lambda_c} \hspace{0.17em}
+          \text{diag}_{l \in \Lambda_L}
+\hat{R} (k_{p, l})\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (c) For every \(p \in \mathbb{C}^4\), the alias block \(E_L (p) = (e^{i
+      (p + 2 \pi l) \cdot x / L})_{x, l \in \Lambda_L}\) satisfies \(E_L
+      (\bar{p})^{\ast} E_L (p) = L^4 I\).
+    </p>
+    <p>
+      <em>Status:</em> theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L117-L119"><tt class="verbatim">gram</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L121-L127"><tt class="verbatim">coGram</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L88-L104"><tt class="verbatim">circulant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L66-L75"><tt class="verbatim">readingsGram</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L110-L129"><tt class="verbatim">aligns</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Alias.lean#L41-L53"><tt class="verbatim">straightens</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.16.7 (analytic square root near a spectral
+      band).</strong> Let \(m > 0\) and let the finite matrix index set be
+      nonempty. For complex matrices \(X\) with \(\|X / m - 1\| < 1\), put
+      \(\Phi_m (X) := \sqrt{m}  \sum_{k \geqslant 0} \binom{1 / 2}{k} (X / m -
+      1)^k\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\Phi_m\) is holomorphic on this ball.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Phi_m\) is bounded on each smaller ball \(\|X / m - 1\| \leqslant
+          r < 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Phi_m\) commutes with entrywise complex conjugation.
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(X\) is Hermitian and \(v \leqslant X \leqslant m\) as quadratic
+          forms, with \(v > 0\), then \(\Phi_m (X)\) is Hermitian, \(\Phi_m
+          (X)^2 = X\), and \(\sqrt{v} \leqslant \Phi_m (X) \leqslant
+          \sqrt{m}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L185-L198"><tt class="verbatim">binRoot_on_band</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L127-L130"><tt class="verbatim">binRoot_deriv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L116-L123"><tt class="verbatim">binSum_bound</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L138-L143"><tt class="verbatim">binRoot_conj</tt></a>.
+    </p>
+    <p>
+      <em>Notation for (C).</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Fix a compact matrix gauge group \(G\). Its colour space
+          \(\mathfrak{g}\) is the real Lie algebra in coordinates orthonormal
+          for \(- (\text{dim} \hspace{0.17em} \rho)^{- 1} \text{Re}
+          \hspace{0.17em} \text{tr}
+(XY)\), where \(\rho\) is the fixed
+          defining representation.
+        </p>
+      </li>
+      <li>
+        <p>
+          A homogeneous polynomial on spacetime is identified with its
+          symmetric multilinear Taylor coefficient.
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(j \geqslant 0\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(\mathcal{A}_j\) is the space of \(4\)-tuples \((A_l)\) of
+              \(\mathfrak{g}\)-valued homogeneous polynomials of degree \(j +
+              1\) on \(\mathbb{R}^4\) with \(\sum_l x_l A_l (x) = 0\) (radial,
+              or Fock&ndash;Schwinger, gauge);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\mathcal{C}_j\) is the space of \(\mathfrak{g}\)-valued
+              homogeneous polynomials \(F_{il}\) of degree \(j\) with \(F_{il}
+              = - F_{li}\) and \(\partial_a F_{bc} + \partial_b F_{ca} +
+              \partial_c F_{ab} = 0\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\mathcal{S}_j \subset \mathcal{C}_j\), the Maxwell shell, adds
+              the condition \(\sum_a \partial_a F_{ab} = 0\).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.16.8 (free Maxwell field).</strong>
+    </p>
+    <p>
+      (a) <em>(Poincar&eacute; lemma in radial gauge.)</em> The curl \(A
+      \mapsto F_{il} = \partial_i A_l - \partial_l A_i\) is a linear
+      isomorphism \(\mathcal{A}_j \to \mathcal{C}_j\). Its inverse is \(A_i
+      (x) = (j + 2)^{- 1}  \sum_k x_k F_{ki} (x)\).
+    </p>
+    <p>
+      (b) <em>(Taylor coefficients of solutions.)</em> Let \(U \subset
+      \mathbb{R}^4\) be open, and let the \(\mathfrak{g}\)-valued field \(f =
+      (f_{ab})\) be smooth and antisymmetric on \(U\) and satisfy the Bianchi
+      and Maxwell equations there. Then for every \(x \in U\) and \(j
+      \geqslant 0\), the \(j\)-th Taylor coefficient of \(f\) at \(x\) lies in
+      \(\mathcal{S}_j\).
+    </p>
+    <p>
+      (c) <em>(Free two-point function.)</em> The function \(G_0 (x) = 1 / (4
+      \pi^2 |x|^2)\) is harmonic on \(\mathbb{R}^4 \setminus \{0\}\). Put
+    </p>
+    <center>
+      \(\displaystyle C_{ab, km} = \partial_a \psi_{b, km} - \partial_b
+      \psi_{a, km}, \qquad
+\psi_{b, km} = \delta_{kb} \partial_m G_0 -
+      \delta_{mb} \partial_k G_0 .\)
+    </center>
+    <p>
+      This is the field-strength two-point function \(\langle F_{ab} (x)
+      F_{km} (0) \rangle\) of one colour component of the free field in
+      Feynman gauge. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          for fixed \((k, m)\), \((a, b) \mapsto C_{ab, km}\) is smooth and
+          antisymmetric on \(x \ne 0\) and solves the Bianchi and Maxwell
+          equations there;
+        </p>
+      </li>
+      <li>
+        <p>
+          the same holds in \((k, m)\) for fixed \((a, b)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(C_{ab, km} (x) = C_{km, ab} (x) = C_{ab, km}  (- x)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (d) <em>(One contraction between jets.)</em> Let \(j, l \geqslant 0\),
+      and let \(p\) and \(q\) be real linear forms on \(\mathcal{S}_j\) and
+      \(\mathcal{S}_l\) (probes). Write \(c_j h (z) = D^j h (z) / j!\), and
+      let \((e_c)\) be the orthonormal colour basis. Choose linear extensions
+      \(P, Q\) of \(p, q\) to the unrestricted two-index multilinear tensors.
+      Define the colour-valued field
+    </p>
+    <center>
+      \(\displaystyle R_{P, km} (z) = \sum_c P ((c_j (C_{ab, km} e_c) (z))_{a,
+      b}) e_c,\)
+    </center>
+    <p>
+      and, for \(z \ne 0\), put
+    </p>
+    <center>
+      \(\displaystyle \kappa (p, q) (z) = (- 1)^l Q ((c_l R_{P, km} (z))_{k,
+      m}) .\)
+    </center>
+    <p>
+      This definition is independent of both extensions. It is bilinear in
+      \((p, q)\), smooth for \(z \ne 0\), and satisfies \(\kappa (p, q) (z) =
+      \kappa (q, p)  (- z)\).
+    </p>
+    <p>
+      For the coordinate probes \(p (F) = F_{ab} [u]_c\) and \(q (F) = F_{km}
+      [v]_d\), with \(u \in (\mathbb{R}^4)^j\) and \(v \in (\mathbb{R}^4)^l\),
+    </p>
+    <center>
+      \(\displaystyle \kappa (p, q) (z) = \delta_{cd}  (- 1)^l c_l  (t \mapsto
+      c_j C_{ab, km} (t)
+[u]) (z) [v] .\)
+    </center>
+    <p>
+      Equivalently, at \(z = x - y\) this is the mixed Taylor coefficient at
+      \((x, y)\) of \(\delta_{cd} C_{ab, km}  (x - y)\). Thus \(\kappa\) is
+      the free covariance of the corresponding jet observables, with Taylor
+      coefficients used at both endpoints.
+    </p>
+    <p>
+      <em>Status:</em> theorems in (a)&ndash;(c); definition and theorems in
+      (d). <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L218-L224"><tt class="verbatim">potential</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L108-L128"><tt class="verbatim">closedCurl</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L163-L195"><tt class="verbatim">curl_inverse</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L197-L214"><tt class="verbatim">potential_recover</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          (b): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L73-L122"><tt class="verbatim">WaveOn.jets</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          (c): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/PotentialKernel.lean#L69-L77"><tt class="verbatim">harmonic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L82-L98"><tt class="verbatim">Bare.equation</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L111-L123"><tt class="verbatim">Bare.equation_right</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L104-L109"><tt
+          class="verbatim">Bare.exchange</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L100-L102"><tt class="verbatim">Bare.even</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          (d): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L161-L162"><tt class="verbatim">legKernel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L148-L159"><tt class="verbatim">descends</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Bilinear.lean#L24-L47"><tt class="verbatim">pairing</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Bilinear.lean#L159-L169"><tt class="verbatim">exchange</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Bilinear.lean#L72-L87"><tt class="verbatim">raw_mixed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Bilinear.lean#L90-L105"><tt class="verbatim">reads_mixed</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.16.9 (field labels).</strong>
+    </p>
+    <p>
+      <em>Setting.</em> Let \(d \geqslant 0\) be an integer.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Fix real bases of the spaces \(\mathcal{A}_j\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Pol}\) is the algebra of complex polynomials in the
+          resulting coordinates of a jet sequence \((A_j)_{j \geqslant 0}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A coordinate from \(\mathcal{A}_j\) has weight \(j + 2\), and a
+          monomial has the sum of the weights of its factors.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{Label}_d \subset \text{Pol}\) consists of the polynomials of
+          weight \(\leqslant d\) that are invariant under the simultaneous
+          adjoint action of \(G\) on all \(A_j\). Invariance is imposed on the
+          whole polynomial.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (a) A polynomial that vanishes on all real jet sequences is zero.
+    </p>
+    <p>
+      (b) There are finitely many monomials of weight \(\leqslant d\), so
+      \(\text{Label}_d\) is finite-dimensional.
+    </p>
+    <p>
+      (c) Every element of \(\text{Label}_d\) is the sum of its bihomogeneous
+      components (weight, polynomial degree), both indices \(\leqslant d\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          Each component is again a label.
+        </p>
+      </li>
+      <li>
+        <p>
+          Taking components commutes with complex conjugation of coefficients
+          and with the action of \(O (4)\) on jets.
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(s \in O (4)\), set \((T_s A_j)_i (x) = \sum_k s_{ik} (A_j)_k 
+          (s^{- 1} x)\). The induced label action is \((s \cdot P) (A) = P
+          (T_{s^{- 1}} A)\); it satisfies \((st) \cdot P = s \cdot (t \cdot
+          P)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (d) For every integer \(d \geqslant 0\), \(\text{Label}_d\) has a
+      complex basis (a frame) \(e_0 = 1, e_1, \ldots, e_{N_d}\) of
+      bihomogeneous labels with real coefficients. These bases can be chosen
+      simultaneously so that, under the natural inclusion, every basis vector
+      at level \(d\) occurs at level \(d + 1\). No ordering beyond \(e_0 = 1\)
+      is prescribed.
+    </p>
+    <p>
+      <em>Status:</em> theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L38-L49"><tt class="verbatim">eval_ext</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L63-L94"><tt class="verbatim">cap_finite</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L114-L117"><tt class="verbatim">labels_finite</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Grading.lean#L87-L105"><tt class="verbatim">decompose</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Grading.lean#L66-L71"><tt class="verbatim">gradePart_bar</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Grading.lean#L73-L74"><tt class="verbatim">gradePart_turn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Action.lean#L82-L88"><tt class="verbatim">rotation_law</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L50-L57"><tt class="verbatim">Frame</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L107-L111"><tt class="verbatim">frames</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.16.10 (free Wick hierarchy on labels).</strong>
+    </p>
+    <p>
+      <em>Definitions.</em> Let \(n \geqslant 0\), let \(d_1, \ldots, d_n
+      \geqslant 0\) be integers, and let \(x_1, \ldots, x_n \in \mathbb{R}^4\)
+      be pairwise distinct.
+    </p>
+    <ul>
+      <li>
+        <p>
+          For Wick monomials in the coordinates of shell jets, the <em>free
+          moment</em> is the sum, over all pairings of the factor occurrences
+          in which partners sit at different points, of the products of the
+          kernels \(\kappa (\cdot, \cdot)  (x_i - x_{i'})\) of the paired
+          coordinate forms. It is extended multilinearly to Wick polynomials.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>free correlation</em> of labels \(P_k \in
+          \text{Label}_{d_k}\) is the moment of their restrictions to on-shell
+          jets, \(A_j = \text{curl}^{- 1} F_j\) with \(F_j \in
+          \mathcal{S}_j\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Properties.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The free correlation is smooth on the configuration space.
+        </p>
+      </li>
+      <li>
+        <p>
+          It vanishes if one label vanishes on all on-shell jets, i.e. lies in
+          the equation ideal.
+        </p>
+      </li>
+      <li>
+        <p>
+          It is invariant under permuting the points together with the labels.
+          More generally, embedding the index set into a larger configuration
+          of distinct points preserves the correlation when each added point
+          carries the label \(1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The moment with every insertion equal to \(1\) is \(1\), including
+          at \(n = 0\). For constant insertions \(a_1, \ldots, a_n \in
+          \mathbb{C}\), it is \(\prod_i a_i\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> definitions and theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127"><tt
+      class="verbatim">Wick.moment</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L145-L147"><tt class="verbatim">Wick.correlation</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L152-L154"><tt class="verbatim">Wick.smooth</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L149-L150"><tt class="verbatim">Wick.kills_equation</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L74-L79"><tt class="verbatim">ideal_meaning</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Reorder.lean#L112-L124"><tt class="verbatim">Wick.exchangeSites</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Reorder.lean#L103-L110"><tt class="verbatim">Wick.monExtension</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Reorder.lean#L126-L144"><tt class="verbatim">Wick.adjoin</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Reorder.lean#L146-L153"><tt class="verbatim">Wick.constants</tt></a>.
+    </p>
+    <p>
+      Other units also quote, by name, the general lemmas of &sect;4: the
+      algebra of positive kernels (4.1), quadrature (4.2), the calculus of
+      Taylor coefficients (4.19), and analyticity in several variables and
+      weak analyticity (4.20).
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>I.1 (lattice, symmetries, gauge groups).</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The torus \(\Lambda_n\), its cover \(\mathbb{Z}^4\), and the
+              coarse/fine subdivision maps: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L19"><tt class="verbatim">Lattice.Site</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Site.lean#L35-L38"><tt class="verbatim">Lattice.wrap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Lattice/Subdivision.lean#L22-L24"><tt class="verbatim">Lattice.Ratio</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\mathbb{R}^4\) with its axes, and \(O (4)\): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L24"><tt
+              class="verbatim">E4</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Orthogonal.lean#L20"><tt class="verbatim">Ortho</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The gauge-group data, namely the colour space and the adjoint
+              action: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L23-L26"><tt class="verbatim">Gauge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L43"><tt class="verbatim">Gauge.Color</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/Colors.lean#L114-L117"><tt class="verbatim">Gauge.adjoint</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The configuration space of distinct points: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Space/Configurations.lean#L63"><tt class="verbatim">conf</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              All of these are definitions.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>III.1:</strong> the summability condition &quot;nonnegative,
+          summable, sum \(\leqslant W\)&quot;, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L59-L60"><tt class="verbatim">RG.SumBudget</tt></a>,
+          used to define the weighted norms of (B). It is a definition.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Mathlib:</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              Hadamard's three-lines theorem;
+            </p>
+          </li>
+          <li>
+            <p>
+              Cauchy's estimate for the derivative on a circle, and the mean
+              value inequality on convex sets;
+            </p>
+          </li>
+          <li>
+            <p>
+              the spectral theorem for Hermitian matrices;
+            </p>
+          </li>
+          <li>
+            <p>
+              the Schur product theorem;
+            </p>
+          </li>
+          <li>
+            <p>
+              dominated convergence;
+            </p>
+          </li>
+          <li>
+            <p>
+              Cauchy's theorem for rectangles and the Cauchy integral formula;
+            </p>
+          </li>
+          <li>
+            <p>
+              multivariable Fourier inversion for continuous torus functions
+              with absolutely summable Fourier coefficients;
+            </p>
+          </li>
+          <li>
+            <p>
+              the binomial series in Banach algebras;
+            </p>
+          </li>
+          <li>
+            <p>
+              symmetry of second derivatives;
+            </p>
+          </li>
+          <li>
+            <p>
+              the identity theorem for polynomials on infinite sets.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Standard references:</strong> B. Simon, <em>Trace Ideals and
+          Their Applications</em>, for Schatten inequalities;
+          Berg&ndash;Christensen&ndash;Ressel, <em>Harmonic Analysis on
+          Semigroups</em>, for positive kernels; Katznelson, <em>An
+          Introduction to Harmonic Analysis</em>, for torus Fourier series;
+          Reed&ndash;Simon, <em>Methods of Modern Mathematical Physics</em>,
+          vol. I, for operator functional calculus; H&ouml;rmander, <em>An
+          Introduction to Complex Analysis in Several Variables</em>, and
+          Rudin, <em>Functional Analysis</em>, for holomorphy;
+          Glimm&ndash;Jaffe, <em>Quantum Physics</em>, for Wick products and
+          reflection positivity.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Imported constants and assumptions.</strong> All analytic
+          assumptions appear in the statements above. The numerical factors
+          are explicit. The parameters \(q, w, M, r\) in (A), the strip widths
+          and torus sizes in (B), and the label cutoff \(d\) are chosen in the
+          applications.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Uses in other units.</strong> The principal applications are
+      listed below; the scope of the longer dependency lists is noted in
+      &sect;7.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>III.16.1&ndash;III.16.4:</strong> the external applications
+          of this trace argument are in IV.1.
+        </p>
+        <ul>
+          <li>
+            <p>
+              III.16.1 gives the positivity of the Wilson transfer kernel: <a
+              href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Positive.lean#L81-L91"><tt class="verbatim">Slice.step_positive</tt></a>, Lemma IV.1.f.
+            </p>
+          </li>
+          <li>
+            <p>
+              III.16.4 gives the time-direction Lipschitz bound: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Calendar.lean#L72-L102"><tt
+              class="verbatim">Slice.Time.powering</tt></a>, Lemmas IV.1.e&ndash;f.
+            </p>
+          </li>
+          <li>
+            <p>
+              Lemma 4.1 (the algebra of positive kernels) is also used in
+              III.2, III.4, III.6, III.10, III.11, III.13 and VIII.1.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>III.16.5:</strong> III.7, III.3, III.6, III.2, III.4, III.9,
+          III.10, III.12&ndash;III.15, VII.1, VII.2.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.16.6:</strong> III.7, III.3, III.4, III.2, III.6,
+          III.14, III.10, III.13, III.9, III.11, III.1, III.5, VII.1, VII.2.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.16.7:</strong> III.6, in the square-root theorem
+          described in &sect;3.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.16.8 and III.16.10:</strong> VI.2, VII.1, VII.3, VI.1,
+          III.11, II.1, VII.2, IV.1.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.16.9:</strong> II.1, III.11, VII.2, III.12, III.13,
+          III.6, VI.2, VI.1, III.10, III.2, VII.3, VII.1, VII.4, VIII.1.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Lemma 4.20:</strong> III.6 and V.2 use <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Polydisc.lean#L222-L238"><tt class="verbatim">finiteD</tt></a>;
+          III.13, V.1 and V.2 use <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Weak.lean#L21-L50"><tt class="verbatim">lift_weak</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>(A) Moving an insertion.</strong> Transfer-kernel correlations
+      have the form \(\text{Tr} (B_1 K^{Y_1} \cdots B_n K^{Y_n}) / Z\). Moving
+      one insertion transfers \(\ell\) units between two gaps. For finite
+      matrices, continue the exponents along \(Y + z (e_i - e_j)\). The trace
+      is entire, and the H&ouml;lder balance is unchanged. III.16.2 bounds it
+      by a constant \(C\) on \(|z| \leqslant 2 r\); Cauchy's estimate gives
+      \(|F' | \leqslant C / r\) on \(|z| \leqslant r\), hence a change of at
+      most \(C \ell / r\). The dimension-free bound passes to kernels by
+      sampling every factor and adjoint with the same partition. In IV.1, for
+      nonnegative Wilson coupling, positivity follows from III.16.1 and the
+      positive-kernel algebra; \(Z\) is the partition function. The condition
+      \(M = 2 qw\) makes the reflected column \((B^{\ast} B)^q\) fill the time
+      period, so chessboard estimates bound its normalized trace. The
+      normalized difference is at most \((\prod_k c_k) \ell / r\); uniformity
+      in volume and spacing requires corresponding control of \(c_k\) and
+      \(\ell / r\).
+    </p>
+    <p>
+      <strong>(B) Kernels and symbols.</strong> Exponentially weighted
+      summability gives bounded holomorphic symbols. Moving the Fourier
+      integration torus in the imaginary directions gives the converse, with a
+      narrower exponential weight. Discrete Fourier identities then transfer
+      symbol identities to every finite torus, including the zero momentum.
+      For the square-root construction in III.6, take a real square matrix
+      kernel \(Q\) with \(\sum_x e^{\eta |x|_1} |Q_{ab} (x) | \leqslant A\)
+      for every entry, \(\eta > 0\), and Hermitian real-momentum symbols
+      satisfying \(vI \leqslant \hat{Q} (p) \leqslant AI\), where \(0 < v
+      \leqslant A\). The derivative bound, together with the norm conversion
+      from entrywise bounds to the matrix operator norm, keeps \(\hat{Q} / A -
+      I\) in a ball of radius less than \(1\) on a thinner strip. III.16.7
+      gives a bounded holomorphic root there. Its Laurent coefficients have an
+      exponential bound; taking their real parts preserves the positive
+      square-root symbol at real momenta because \(\hat{Q} (- p) =
+      \overline{\hat{Q} (p)}\). Fourier diagonalization yields
+      \(P_n^{\textsf{T}} P_n = Q_n\) with \(P_n\) symmetric on every torus.
+      The parameter choices and assembly belong to III.6.
+    </p>
+    <p>
+      <strong>(C) Free fields and labels.</strong> For homogeneous closed
+      curvature jets, the radial-gauge formula \(A_i = (j + 2)^{- 1}  \sum_k
+      x_k F_{ki}\) inverts the curl. Imposing the Maxwell equation gives the
+      shell. The explicit two-curl kernel derived from \(G_0 (x) = (4 \pi^2
+      |x|^2)^{- 1}\) solves both equations in each leg away from the origin,
+      so its Taylor coefficients define pairings on shell probes. Wick sums of
+      these pairings give the free hierarchy on polynomial labels.
+      Bihomogeneous decomposition and conjugation provide coherent complex
+      bases with real coefficients. This hierarchy is the comparison object
+      for short-distance limits, stress-tensor identities, the trace anomaly
+      and nontriviality in VI.1&ndash;VI.2 and VII.1&ndash;VII.3; its kernels
+      are used at distinct points.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-positive-kernels-and-quadrature"></a>4.1 Positive kernels and quadrature<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.1 (algebra of positive-semidefinite kernels).</strong>
+    </p>
+    <p>
+      <em>Statement.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Generators: the class contains the Gram kernels \(\overline{f (x)} f
+          (y)\) and the constant \(1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Closure: it is closed under multiplication by constants \(c
+          \geqslant 0\), finite sums, pointwise (Schur) products, nonnegative
+          integer powers, pullbacks \(K (\varphi (x), \varphi (y))\),
+          pointwise limits, and \(K \mapsto e^K\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Criterion: a kernel is positive semidefinite if and only if it is
+          Hermitian and \(\sum_{i, j} \bar{c}_i K (x_i, x_j) c_j \geqslant 0\)
+          for all finite families.
+        </p>
+      </li>
+      <li>
+        <p>
+          Integrated form: on a compact metric space with a finite Borel
+          measure, for continuous positive-semidefinite \(K\) and bounded
+          measurable \(f\), \(\iint K (x, y) \overline{f (x)} f (y) 
+          \hspace{0.17em} d \mu \hspace{0.17em} d
+\mu \geqslant 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Products follow from the Schur product theorem.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(e^K\) is the limit of the partial sums \(\sum_{m < N} K^m / m!\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Limits are handled by the quadratic-form criterion. Hermitian
+          symmetry passes to the limit through the \(2 \times 2\) Gram
+          matrices.
+        </p>
+      </li>
+      <li>
+        <p>
+          For the integrated form, replace \(K\) by its values at the tags of
+          a fine partition (Lemma 4.2). The integral becomes \(\sum_{i, j}
+          \overline{\int_{\text{cell } i} f} \hspace{0.17em} K (x_i, x_j)
+          
+\int_{\text{cell } j} f \geqslant 0\), and dominated convergence
+          finishes the proof.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L24-L28"><tt class="verbatim">gram</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L33-L34"><tt class="verbatim">scaled</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L35-L36"><tt class="verbatim">plus</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L37-L38"><tt class="verbatim">times</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L49-L52"><tt class="verbatim">pow</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L54-L55"><tt class="verbatim">titled</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L69-L75"><tt class="verbatim">criterion</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L80-L88"><tt class="verbatim">closed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L90-L99"><tt class="verbatim">exp</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/MomentPD.lean#L19-L62"><tt class="verbatim">integrated</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.2 (quadrature).</strong>
+    </p>
+    <p>
+      <em>Statement.</em> Let \(X\) be a compact metric space with a finite
+      Borel measure \(\mu\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          For each \(k \geqslant 0\) there is a finite measurable partition of
+          \(X\) with assigned tags such that every point lies within \(1 / (k
+          + 1)\) of its cell's tag. Empty cells and zero masses are allowed; a
+          tag need not lie in its cell.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let \(m_i = \mu (\text{cell } i)\). For every finite index set \(I\)
+          and every continuous \(F : X^I \to E\) with \(E\) a Banach space,
+          the Riemann sums \(\sum_{i \in \text{cells}^I} \prod_{j \in I}
+          m_{i_j}  \hspace{0.17em} F
+((x_{i_j})_{j \in I})\) converge to
+          \(\int F \hspace{0.17em} d \mu^{\otimes I}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The partitions: cover \(X\) by finitely many balls of radius \(1 /
+          (k + 1)\) and disjointify.
+        </p>
+      </li>
+      <li>
+        <p>
+          The convergence: the Riemann sum equals \(\int F \circ \pi_k 
+          \hspace{0.17em} d \mu^{\otimes I}\), where \(\pi_k\) sends every
+          point to the tag of its cell. Since \(\pi_k \to \text{id}\)
+          pointwise and \(F\) is bounded, dominated convergence applies.
+        </p>
+      </li>
+      <li>
+        <p>
+          The statement concerns each fixed \(F\) and finite product; it
+          asserts no uniform rate over families of integrands.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Quadrature.lean#L22-L26"><tt class="verbatim">Quad</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Quadrature.lean#L40-L63"><tt class="verbatim">refine_</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Quadrature.lean#L65-L66"><tt class="verbatim">shrink</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Quadrature.lean#L95-L114"><tt class="verbatim">counting</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Quadrature.lean#L119-L133"><tt class="verbatim">approximation</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Projected.lean#L19-L38"><tt class="verbatim">approx</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.3 (proof of III.16.1).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For a partition, define \(G_Q (b, c) = \sum_{i, j} m_i m_j K (g (b,
+          x_i), g (c, x_j))\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(G_Q\) is Hermitian. For each finite family of elements \(b \in
+          \mathcal{B}\) and coefficients \(r_b\), its quadratic form
+          \(\sum_{b, c} \bar{r}_b G_Q (b, c) r_c\) is the quadratic form of
+          \(K\) at the points \(g (b, x_i)\), indexed by \((b, i)\), with
+          coefficients \(r_b m_i\). Hence \(G_Q\) is positive semidefinite.
+        </p>
+      </li>
+      <li>
+        <p>
+          By Lemma 4.2 in two variables, \(G_Q \to \tilde{K}\) pointwise.
+        </p>
+      </li>
+      <li>
+        <p>
+          Positive-semidefinite kernels are closed under pointwise limits
+          (Lemma 4.1).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Projected.lean#L44-L70"><tt class="verbatim">accumulate</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-the-finite-trace-inequality"></a>4.2 The finite trace inequality<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.4 (three-lines H&ouml;lder lemma).</strong>
+    </p>
+    <p>
+      <em>Definition.</em> A <em>strip path</em> is an entire map \(V :
+      \mathbb{C} \to M_{\iota} (\mathbb{C})\) with:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\|V (t)\| \leqslant 1\) for \(0 \leqslant \text{Re}
+          \hspace{0.17em} t \leqslant 1\);
+        </p>
+      </li>
+      <li>
+        <p>
+          trace norm \(\sup_{\|C\| \leqslant 1} | \text{tr} \hspace{0.17em} V
+          (t) C| \leqslant 1\) for \(\text{Re} \hspace{0.17em} t = 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Statement.</em> If \(V_1, \ldots, V_n\) are strip paths and \(h_k
+      \in \mathbb{C}\) satisfy \(\text{Re} \hspace{0.17em} h_k \in [0, 1]\)
+      and \(\sum_k \text{Re} \hspace{0.17em} h_k = 1\), then \(| \text{tr}
+      \hspace{0.17em} V_1 (h_1) \cdots V_n (h_n) | \leqslant 1\).
+    </p>
+    <p>
+      <em>Sketch.</em> Prove \(| \text{tr} (c \hspace{0.17em} V_1 (h_1) \cdots
+      V_n (h_n)) | \leqslant 1\) for every contraction \(c\), by induction on
+      \(n\). The case \(n = 0\) is excluded by the balance condition. In the
+      induction step let \(t = \text{Re} \hspace{0.17em} h_1\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Case \(t = 1\).</em> The other factors are contractions. Apply
+          the trace-norm bound of \(V_1\) after a cyclic permutation.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Case \(t < 1\).</em> Put \(E (x) = \text{tr} \left( c
+          \hspace{0.17em} V_1 (x + i \hspace{0.17em}
+\text{Im} \hspace{0.17em}
+          h_1) \prod_{k \geqslant 2} V_k (x_k (x)) \right)\) with \(x_k (x) =
+          \text{Re} \hspace{0.17em} h_k  \hspace{0.17em} \frac{1 - x}{1 - t}
+          +
+i \hspace{0.17em} \text{Im} \hspace{0.17em} h_k\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(E\) is entire and bounded on \(0 \leqslant \text{Re}
+              \hspace{0.17em} x \leqslant 1\). The bound depends on
+              \(\text{card} \hspace{0.17em} \iota\), but it is used only
+              qualitatively.
+            </p>
+          </li>
+          <li>
+            <p>
+              On \(\text{Re} \hspace{0.17em} x = 0\), the first factor is a
+              contraction absorbed into \(c\), and the remaining real parts
+              sum to \(1\); the induction hypothesis gives \(|E| \leqslant
+              1\).
+            </p>
+          </li>
+          <li>
+            <p>
+              On \(\text{Re} \hspace{0.17em} x = 1\), the factors \(V_k (x_k
+              (x))\) with \(k \geqslant 2\) are contractions, and the
+              trace-norm bound of \(V_1\) gives \(|E| \leqslant 1\).
+            </p>
+          </li>
+          <li>
+            <p>
+              The three-lines theorem gives \(|E (t) | \leqslant 1\), and \(E
+              (t)\) is the trace to be bounded.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Holder.lean#L25-L29"><tt class="verbatim">Flex</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Holder.lean#L73-L126"><tt class="verbatim">holder_core</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Holder.lean#L130-L132"><tt class="verbatim">convexStrip</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.5 (Schatten factorization).</strong> For every matrix
+      \(b\) and integer \(q \geqslant 1\) there is a strip path \(V\) with \(b
+      = \|b\|_{2 q}  \hspace{0.17em} V (1 / (2 q))\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Write \(b^{\ast} b = U \hspace{0.17em} \text{diag} (s_i^2) 
+          \hspace{0.17em} U^{\ast}\). Then \(b = W \hspace{0.17em} \text{diag}
+          (s)  \hspace{0.17em} U^{\ast}\) with \(\|W\| \leqslant 1\), where
+          \(W = bU \hspace{0.17em} \text{diag} (s)^{- 1}\) on the support of
+          \(s\).
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(b = 0\), take \(V = 0\). Otherwise let \(f_i = s_i^{2 q} /
+          \sum_j s_j^{2 q}\) and \(V (t) = W \hspace{0.17em} \text{diag}
+          (f_i^{\hspace{0.17em} t}) 
+\hspace{0.17em} U^{\ast}\), with the
+          convention \(0^t = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Since \(f_i \leqslant 1\), \(\|V (t)\| \leqslant 1\) on the closed
+          strip.
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(\text{Re} \hspace{0.17em} t = 1\), \(| \text{tr}
+          \hspace{0.17em} V (t) C| \leqslant \sum_i f_i | (U^{\ast} CW)_{ii}
+|
+          \leqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          At \(t = 1 / (2 q)\), \(f_i^{1 / (2 q)} = s_i / \|b\|_{2 q}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Columns.lean#L183-L214"><tt class="verbatim">even_cost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Columns.lean#L114-L156"><tt
+      class="verbatim">imageForm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Columns.lean#L60-L81"><tt class="verbatim">weighted</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Columns.lean#L38"><tt class="verbatim">specPow</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.6 (complex powers).</strong> For \(A \succeq 0\) and
+      integer \(M \geqslant 1\) there is a strip path \(P\) with \(A^z =
+      Z_A^{z / M} P (z / M)\) for all \(z \in \mathbb{C}\). Here \(Z_A^w =
+      e^{w \log Z_A}\) if \(Z_A > 0\), and \(Z_A^w = 0\) otherwise. Moreover
+      \(A^z\) equals the ordinary power \(A^m\) at every integer \(z = m
+      \geqslant 1\).
+    </p>
+    <p>
+      <em>Sketch.</em> If \(Z_A = 0\), positivity gives \(A = 0\) and one may
+      take \(P = 0\). Otherwise take \(P (w) = U \hspace{0.17em} \text{diag}
+      ((\lambda_i^M / Z_A)^w) U^{\ast}\). The normalized eigenvalues sum to
+      \(1\), so the strip and trace-norm bounds follow as in Lemma 4.5.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L22-L24"><tt class="verbatim">leap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L26-L32"><tt class="verbatim">leap_at</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L39-L63"><tt class="verbatim">flexPower</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.7 (proof of III.16.2).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Write \(b_k = \|b_k \|_{2 q} V_k  (1 / (2 q))\) (Lemma 4.5) and
+          \(A^{v_k} = Z_A^{v_k / M} P (v_k / M)\) (Lemma 4.6).
+        </p>
+      </li>
+      <li>
+        <p>
+          The scalar prefactors have modulus \(\prod_k \|b_k \|_{2 q} 
+          \hspace{0.17em} Z_A^{\sum \text{Re} v_k / M} = \prod_k
+\|b_k \|_{2
+          q}  \hspace{0.17em} Z_A^{1 - n / (2 q)}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The \(2 n\) strip paths \(V_1, P, V_2, P, \ldots\) are evaluated at
+          exponents whose real parts, \(1 / (2 q)\) and \(\text{Re}
+          \hspace{0.17em} v_k / M\), lie in \([0, 1]\) and sum to \(1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lemma 4.4 bounds the remaining trace by \(1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L124-L165"><tt class="verbatim">estimation</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.8 (proof of III.16.3).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Let \(F (z) = \text{tr} \prod_k b_k A^{W_k (z)}\) with \(W (z) = Y +
+          z (e_i - e_j)\), and put \(C = (\prod_k \|b_k \|_{2 q}) (\text{tr}
+          \hspace{0.17em} A^M)^{1 - n / (2 q)}\). The function \(F\) is
+          entire.
+        </p>
+      </li>
+      <li>
+        <p>
+          The relation \(nw + \sum Y_k = M\) is the balance \(n / (2 q) +
+          \sum_k Y_k / M = 1\), and \(\sum_k \text{Re} \hspace{0.17em} W_k (z)
+          = \sum_k Y_k\).
+        </p>
+      </li>
+      <li>
+        <p>
+          On \(|z| \leqslant 2 r\), \(\text{Re} \hspace{0.17em} W_k (z)
+          \geqslant Y_k - 2 r > 0\), so III.16.2 gives \(|F| \leqslant C\)
+          there.
+        </p>
+      </li>
+      <li>
+        <p>
+          For \(|x| \leqslant r\), the circle of radius \(r\) about \(x\) lies
+          in this disc, and Cauchy's estimate gives \(|F' (x) | \leqslant C /
+          r\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The mean value inequality on the convex disc \(|z| \leqslant r\),
+          between \(0\) and \(\ell\), gives the claim.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(F (0)\) and \(F (\ell)\) are the two traces, because all \(Y_k,
+          Y'_k \geqslant 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L170-L229"><tt class="verbatim">finite_lip</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-from-matrices-to-kernels"></a>4.3 From matrices to kernels<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.9 (sampled traces).</strong> Let \(L \geqslant 1\). For
+      a partition with masses \(m_i\) and tags \(x_i\), sample a kernel as
+      \(k^Q = (\sqrt{m_i}  \hspace{0.17em} k (x_i, x_j) \sqrt{m_j})_{ij}\).
+      Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \((k^{\ast})^Q = (k^Q)^{\ast}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(k^Q\) is positive semidefinite whenever \(k\) is;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\text{tr} (k_1^Q \cdots k_L^Q) = \sum_{i_1, \ldots, i_L} \prod_l
+          m_{i_l} 
+\prod_l k_l  (x_{i_l}, x_{i_{l + 1}})\), because every
+          vertex contributes two square-root weights;
+        </p>
+      </li>
+      <li>
+        <p>
+          this Riemann sum converges to \(\text{Tr} (k_1 \cdots k_L)\) for
+          continuous \(k_l\) along the partitions of Lemma 4.2.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L81"><tt class="verbatim">sample</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L90-L94"><tt class="verbatim">safe</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L96-L104"><tt class="verbatim">measureWeight</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L109-L119"><tt class="verbatim">learns</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.10 (proof of III.16.4).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em> Apply III.16.3, for each partition, to \(A = K^Q\) and
+      \(b_l = B_l^Q\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          By Lemma 4.9, \(\text{tr} A^M \to Z > 0\), so the hypothesis
+          \(\text{tr} A^M > 0\) holds for fine partitions.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\|b_l \|_{2 q} \to | \text{Tr} ((B_l^{\ast} B_l)^q) |^{1 / (2
+          q)}\), because the column word is sampled with the same partition.
+        </p>
+      </li>
+      <li>
+        <p>
+          The two gap traces converge to the cyclic integrals.
+        </p>
+      </li>
+      <li>
+        <p>
+          Passing to the limit at fixed \((q, w, Y, Y', \ell, r)\) gives the
+          bound \(\frac{\ell}{r}  \prod_l | \text{Tr} ((B_l^{\ast} B_l)^q)
+          |^{1 / (2 q)} 
+\hspace{0.17em} Z^{1 - n / (2 q)}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The column hypothesis turns this into \(Z \prod_l c_l 
+          \hspace{0.17em} \ell / r\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L76-L106"><tt class="verbatim">passage</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L45-L58"><tt class="verbatim">goes</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L60-L72"><tt class="verbatim">totality</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-holomorphy-in-a-strip-and-laurent-coefficients"></a>4.4 Holomorphy in a strip and Laurent coefficients<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.11 (torus integrals inside the strip).</strong> These
+      are the first three claims of III.16.5(a).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The coefficient bound: \(\hat{u}_p (x)\) is an average of \(u\) over
+          the torus \(p + 2 \pi [0, 1]^{\alpha}\) against a unimodular
+          character.
+        </p>
+      </li>
+      <li>
+        <p>
+          Independence of \(p\): change one coordinate at a time. A real shift
+          leaves a full-period integral unchanged. For an imaginary shift in
+          coordinate \(i\), apply Cauchy's theorem to a rectangle of
+          horizontal width \(2 \pi\) between heights \(\text{Im}
+          \hspace{0.17em} p_i\) and \(\text{Im} \hspace{0.17em} p'_i\).
+          Periodicity cancels the vertical sides, so the horizontal integrals
+          agree.
+        </p>
+      </li>
+      <li>
+        <p>
+          The identity \(\hat{u}_p (x) = e^{ip \cdot x}  \hat{u} (x)\) is
+          independence applied to \(u (p) e^{- ip \cdot x}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Rune.lean#L91-L99"><tt class="verbatim">market_cap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Turn.lean#L103-L112"><tt
+      class="verbatim">full_turn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Turn.lean#L114-L118"><tt class="verbatim">coat_price</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.12 (weighted \(\ell^1\) bound).</strong> Under the
+      holomorphy and periodicity hypotheses of III.16.5(a), if \(|u| \leqslant
+      K\) on \(S_{\eta}\), \(H \geqslant 0\), \(b > 0\), and \(H + b < \eta\),
+      then \(\sum_x e^{H |x|_1} | \hat{u} (x) | \leqslant K (2 (1 + b) /
+      b)^{\text{card}
+\hspace{0.17em} \alpha}\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For given \(x\), take \(p\) with \(\text{Im} \hspace{0.17em} p_a = -
+          (H + b) \hspace{0.17em} \text{sign}
+\hspace{0.17em} x_a\). Then
+          \(|e^{ip \cdot x} | = e^{(H + b) |x|_1}\), and Lemma 4.11 gives \(|
+          \hat{u} (x) | \leqslant Ke^{- (H + b) |x|_1}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Then \(\sum_{x \in \mathbb{Z}^{\alpha}} e^{- b |x|_1} \leqslant
+          \left( 2 \sum_{k
+\geqslant 0} e^{- bk} \right)^{\text{card}
+          \hspace{0.17em} \alpha} \leqslant
+(2 (1 + b) / b)^{\text{card}
+          \hspace{0.17em} \alpha}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Art.lean#L61-L87"><tt class="verbatim">Vane.issues</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Art.lean#L39-L57"><tt
+      class="verbatim">Width.compactPay</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Art.lean#L13-L35"><tt class="verbatim">pins</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.13 (Laurent representation).</strong> Under the same
+      holomorphy and periodicity hypotheses, if \(|u| \leqslant K\) on
+      \(S_{\eta}\), then \(u (p) = \sum_x \hat{u} (x) e^{ip \cdot x}\) on
+      \(S_{\eta}\).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          By Lemma 4.12, with \(H = \max (\{0\} \cup \{| \text{Im}
+          \hspace{0.17em} p_a | : a \in \alpha\})\) and \(b = (\eta - H) /
+          2\), the Fourier series of \(\theta \mapsto u (p + 2 \pi \theta)\)
+          is absolutely summable.
+        </p>
+      </li>
+      <li>
+        <p>
+          Fourier inversion for the continuous shifted function identifies
+          this series with the function.
+        </p>
+      </li>
+      <li>
+        <p>
+          Evaluate at \(\theta = 0\) and use \(\hat{u}_p (x) = e^{ip \cdot x} 
+          \hat{u} (x)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Art.lean#L90-L104"><tt class="verbatim">Vane.paints</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.14 (Laurent sums).</strong> This is III.16.5(b).
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Differentiate term by term, using \(\|D_p e^{ip \cdot x} \|
+          \leqslant |x|_1 e^{\sigma |x|_1} \leqslant (\eta -
+\sigma)^{- 1}
+          e^{\eta |x|_1}\) on \(S_{\sigma}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The derivative series is uniformly summable on the open convex
+          strip, which gives holomorphy and the derivative bound.
+        </p>
+      </li>
+      <li>
+        <p>
+          The Lipschitz bound follows from the mean value inequality.
+        </p>
+      </li>
+      <li>
+        <p>
+          The real-part identity follows from \(\overline{e^{- ip \cdot x}} =
+          e^{ip \cdot x}\) for real \(p\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L131-L133"><tt class="verbatim">Width.estimate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L48-L56"><tt
+      class="verbatim">reward</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/Read.lean#L55-L95"><tt class="verbatim">readDeriv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/Read.lean#L97-L101"><tt
+      class="verbatim">readDiff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/Read.lean#L119-L133"><tt class="verbatim">readRealPart</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-fourier-analysis-on-tori"></a>4.5 Fourier analysis on tori<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.15 (orthogonality).</strong> \(\sum_{x \in \Lambda_n}
+      e^{i (k_p - k_{p'}) \cdot x} = n^4 \delta_{pp'}\), and hence \(F_n
+      F_n^{\ast} = F_n^{\ast} F_n = n^4 I\).
+    </p>
+    <p>
+      <em>Sketch.</em> For \(p \ne 0\) some unit step \(e_a\) has \(e^{ik_p
+      \cdot e_a} \ne 1\). Translation invariance of the sum then forces it to
+      vanish.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L98-L104"><tt class="verbatim">sum_cell</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L106-L110"><tt
+      class="verbatim">orthogonal</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L117-L119"><tt class="verbatim">gram</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L121-L127"><tt
+      class="verbatim">coGram</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.16 (circulant diagonalization; III.16.6(a)).</strong>
+      Under the hypotheses of III.16.6, periodization is diagonalized by the
+      Fourier matrix. For real \(p\), the symbol is \(2 \pi\)-periodic and
+      satisfies \(\hat{R} (- \bar{p}) = \overline{\hat{R} (p)}\) entrywise.
+      These identities also hold at complex momenta wherever the series
+      converge absolutely.
+    </p>
+    <p>
+      <em>Sketch.</em> For fixed \(a, b, p\), summing the periodized kernel
+      against the Fourier column gives \(\sum_z R_{ab} (z) e^{ik_p \cdot (y +
+      z)} = e^{ik_p \cdot y}  \hat{R}
+(k_p)_{ab}\). Absolute convergence
+      permits regrouping by residues. Periodicity follows from \(e^{2 \pi im
+      \cdot z} = 1\), and conjugation follows term by term because \(R\) is
+      real.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L88-L104"><tt class="verbatim">circulant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L49-L50"><tt
+      class="verbatim">Row.periods</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L39-L45"><tt class="verbatim">Row.conjugate</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.17 (aliases; III.16.6(b)&ndash;(c)).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The fine Fourier matrix factors as the coarse Fourier matrix
+          composed with the alias blocks \(E_L  (2 \pi p / c)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(E_L (\bar{p})^{\ast} E_L (p) = L^4 I\) is Lemma 4.15 on
+          \(\Lambda_L\). The common factor \(e^{ip \cdot x / L}\) cancels
+          against its conjugate taken at \(\bar{p}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The intertwining relation is Lemma 4.16 on the fine torus, using
+          \(e^{ik_{p, l} \cdot fz} = 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Alias.lean#L20"><tt class="verbatim">aliasAt</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Alias.lean#L30-L31"><tt class="verbatim">aliasBlock</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Alias.lean#L41-L53"><tt class="verbatim">straightens</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Alias.lean#L65-L69"><tt class="verbatim">energy</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L46"><tt class="verbatim">readings</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L66-L75"><tt class="verbatim">readingsGram</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L110-L129"><tt class="verbatim">aligns</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-matrix-square-root"></a>4.6 Matrix square root<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.18 (= III.16.7).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Diagonalize \(X = U \hspace{0.17em} \text{diag} (s)  \hspace{0.17em}
+          U^{\ast}\) with \(v \leqslant s_i \leqslant m\). Then \(X / m - 1\)
+          has eigenvalues of modulus \(\leqslant 1 - v / m < 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The scalar identity \(\sum_k \binom{1 / 2}{k} t^k = \sqrt{1 + t}\)
+          for \(|t| < 1\), applied to the eigenvalues, gives \(\Phi_m (X) = U
+          \hspace{0.17em} \text{diag} (\sqrt{s_i}) 
+          \hspace{0.17em}
+U^{\ast}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The binomial series in the Banach algebra of matrices has radius of
+          convergence at least \(1\), giving holomorphy. Continuity and
+          compactness give boundedness on each smaller closed ball. Its real
+          scalar coefficients imply commutation with entrywise conjugation.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L185-L198"><tt class="verbatim">binRoot_on_band</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L104-L114"><tt
+      class="verbatim">binSum_deriv</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L21-L24"><tt class="verbatim">Band</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-taylor-coefficients-and-analyticity"></a>4.7 Taylor coefficients and analyticity<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.19 (Taylor coefficients).</strong> Let \(E, F\) be real
+      normed spaces, let \(j, l \geqslant 0\) be integers, let \(f : E \to
+      F\), and put \(c_j f (x) = D^j f (x) / j!\).
+    </p>
+    <ul>
+      <li>
+        <p>
+          If \(f\) is \(C^j\) at \(x\), then \(D^j f (x)\) is symmetric.
+        </p>
+      </li>
+      <li>
+        <p>
+          Two symmetric continuous \(j\)-linear forms with the same diagonal
+          are equal.
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(U \subset E\) is open, \(f\) is smooth on \(U\), \(x \in U\),
+          \(u \in E^j\), and \(v \in E^l\), then
+        </p>
+        <center>
+          \(\displaystyle c_j  (y \mapsto c_l f (y) [v]) (x) [u] = c_l  (y
+          \mapsto c_j f (y) [u]) (x)
+[v] .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          If \(f\) is \(C^j\) at \(- x\), then \(c_j (f (- \cdot)) (x) = (-
+          1)^j c_j f (- x)\). If \(f\) is \(C^j\) at \(x - y\), then \(c_j 
+          (y' \mapsto f (x - y')) (y) = (- 1)^j c_j f (x - y)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(f\) is \(C^{j + 1}\) at \(x\), then, for \(u, z \in E\),
+        </p>
+        <center>
+          \(\displaystyle D_u  (t \mapsto c_{j + 1} f (x) [t, \ldots, t]) (z)
+          = c_j  (D_u f) (x) [z,
+\ldots, z] .\)
+        </center>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em> Induct on \(j\) for symmetry, using symmetry of the
+      second derivative to exchange the first two slots and the induction
+      hypothesis for the remaining slots. Equality on diagonals then implies
+      equality of the forms by differentiating the diagonal and inducting on
+      the arity. For commutation, peel off one directional derivative at a
+      time. The chain rule gives the reflection identities. Differentiating a
+      symmetric diagonal contributes \(j + 1\) equal terms; the factorials
+      give the last identity.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/SmoothJets.lean#L71-L134"><tt class="verbatim">sym_Jet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/SmoothJets.lean#L54-L60"><tt class="verbatim">commuteD</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Symmetric.lean#L62-L77"><tt class="verbatim">ext_diag</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Homogeneous.lean#L65-L66"><tt class="verbatim">coeff</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Exchange.lean#L36-L69"><tt class="verbatim">exchangeJet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Exchange.lean#L72-L99"><tt class="verbatim">reflectionJet</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Exchange.lean#L102-L108"><tt class="verbatim">oppositeCoeff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Homogeneous.lean#L71-L78"><tt class="verbatim">slot_lower</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.20 (several-variable and weak analyticity).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A map between finite-dimensional complex normed spaces that is
+          complex-differentiable on a neighbourhood of \(x\) is analytic at
+          \(x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Let \(E\) be a complex Banach space and \(f : \mathbb{C} \to E\)
+          continuous on an open set \(U\). If \(L \circ f\) is holomorphic on
+          \(U\) for every \(L\) in a family of continuous complex linear
+          functionals that separates points, then \(f\) is analytic on \(U\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          First claim: choose coordinates and a closed polydisc contained in
+          the differentiability neighbourhood. Successive applications of the
+          one-variable Cauchy formula express each scalar component as a
+          continuous linear functional applied to the product of the Cauchy
+          kernels and the fixed boundary values. Each kernel is analytic in
+          the interior variables, since its denominator is invertible in the
+          Banach algebra of continuous functions on the angle torus. Their
+          finite product and the resulting integral are analytic. Coordinate
+          changes recover the assertion for the original spaces.
+        </p>
+      </li>
+      <li>
+        <p>
+          Second claim: the Cauchy integral formula holds after applying each
+          \(L\), the separating family lifts it to \(E\), and the Cauchy power
+          series converges.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Polydisc.lean#L222-L238"><tt class="verbatim">finiteD</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Weak.lean#L21-L50"><tt class="verbatim">lift_weak</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="48-free-maxwell-field"></a>4.8 Free Maxwell field<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.21 (Poincar&eacute; lemma in radial gauge;
+      III.16.8(a)).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The curl is closed by symmetry of second derivatives.
+        </p>
+      </li>
+      <li>
+        <p>
+          Inverse on \(\mathcal{C}_j\): for \(F \in \mathcal{C}_j\) and \(A_i
+          = (j + 2)^{- 1} x_k F_{ki}\), compute \(\partial_i A_l - \partial_l
+          A_i = (j + 2)^{- 1}  (2 F_{il} + x_k (\partial_i
+F_{kl} - \partial_l
+          F_{ki}))\). By Bianchi this equals \((j + 2)^{- 1}  (2 F_{il} + x_k
+          \partial_k F_{il})\), and by Euler's identity this is \(F_{il}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The map lands in radial gauge, since \(x_i x_k F_{ki} = 0\) by
+          antisymmetry.
+        </p>
+      </li>
+      <li>
+        <p>
+          Inverse on \(\mathcal{A}_j\): differentiating \(x_k A_k = 0\) gives
+          \(x_k \partial_i A_k = - A_i\). Hence \(x_k F_{ki} = (j + 1) A_i +
+          A_i = (j + 2) A_i\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L97-L98"><tt class="verbatim">takeCurl</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L108-L128"><tt
+      class="verbatim">closedCurl</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L130-L154"><tt class="verbatim">contracted</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L163-L195"><tt class="verbatim">curl_inverse</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L197-L214"><tt class="verbatim">potential_recover</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L218-L224"><tt class="verbatim">potential</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.22 (the shell; III.16.8(b)).</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{S}_j\) is a subspace of \(\mathcal{C}_j\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The inverse curl restricted to the shell is injective: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L46-L47"><tt
+          class="verbatim">gaugeJet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L49-L50"><tt class="verbatim">leg_injective</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch for III.16.8(b).</em> By Lemma 4.19, for \(j \geqslant 1\)
+      the derivatives of the \(j\)-th homogeneous Taylor polynomial are the
+      \((j - 1)\)-th Taylor coefficients of the derivatives; the degree-zero
+      case is constant. The Bianchi and Maxwell combinations of \(f\) vanish
+      near \(x\), so the corresponding combinations of Taylor coefficients
+      vanish.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L18-L42"><tt class="verbatim">onShell</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L57-L62"><tt class="verbatim">WaveOn</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L73-L122"><tt class="verbatim">WaveOn.jets</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.23 (the free kernel; III.16.8(c)).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\partial_i \partial_j G_0 = - 2 N \delta_{ij} |x|^{- 4} + 8 Nx_i
+          x_j |x|^{- 6}\) with \(N = (4 \pi^2)^{- 1}\). The trace vanishes in
+          dimension four.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\psi_{\cdot, km}\) is divergence-free and harmonic, so \(\sum_a
+          \partial_a C_{ab, km} = \Delta \psi_b - \partial_b
+          \hspace{0.17em}
+\text{div} \hspace{0.17em} \psi = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Bianchi holds because \(C\) is a curl.
+        </p>
+      </li>
+      <li>
+        <p>
+          Exchange and evenness follow from the explicit Hessian.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/PotentialKernel.lean#L22"><tt class="verbatim">Green</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/PotentialKernel.lean#L49-L66"><tt class="verbatim">second_Green</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/PotentialKernel.lean#L69-L77"><tt class="verbatim">harmonic</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L17-L18"><tt class="verbatim">curlOpp</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L20"><tt class="verbatim">bareCurl</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L82-L98"><tt class="verbatim">Bare.equation</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L104-L109"><tt class="verbatim">Bare.exchange</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.24 (jet pairing; III.16.8(d)).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          By III.16.8(b)&ndash;(c), the Taylor coefficients of \(C\) in either
+          leg lie on the shell. Hence only the restrictions of \(p\) and \(q\)
+          matter.
+        </p>
+      </li>
+      <li>
+        <p>
+          Symmetry: it suffices to check probes that read single mixed Taylor
+          coefficients, because these span the dual of the shell. For those,
+          the claim follows from:
+        </p>
+        <ul>
+          <li>
+            <p>
+              commutation of Taylor coefficients of different orders (Lemma
+              4.19);
+            </p>
+          </li>
+          <li>
+            <p>
+              the reflection rule, with sign \((- 1)^l\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(C_{ab, km} (x) = C_{km, ab}  (- x)\).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L64"><tt class="verbatim">Probe</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L145-L146"><tt class="verbatim">contraction</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L148-L159"><tt class="verbatim">descends</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L168-L172"><tt class="verbatim">kernel_smooth</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Bilinear.lean#L159-L169"><tt class="verbatim">exchange</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.25 (Wick hierarchy; III.16.10).</strong>
+    </p>
+    <p>
+      <em>Definitions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Pairings</em> are fixed-point-free involutions of the factor
+          occurrences whose partners sit at different points; no
+          self-contractions are allowed.
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>moment</em> is defined on the monomial basis and extended
+          multilinearly.
+        </p>
+      </li>
+      <li>
+        <p>
+          Labels enter through the substitution \(A_j = \text{curl}^{- 1}
+          F_j\), \(F_j \in \mathcal{S}_j\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The <em>equation ideal</em> is the kernel of this substitution. It
+          consists of the labels that vanish on every on-shell jet sequence.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch of the properties.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Vanishing on the equation ideal: multilinearity.
+        </p>
+      </li>
+      <li>
+        <p>
+          Relabelling and insertion of \(1\): added unit monomials have no
+          occurrences. An injection of the remaining indices induces
+          bijections of occurrences and pairings. If the orientation of an
+          edge reverses, the exchange identity for \(\kappa\) preserves its
+          value. Extend from monomials by multilinearity.
+        </p>
+      </li>
+      <li>
+        <p>
+          Smoothness: each polynomial has finitely many monomials and each
+          monomial finitely many pairings, so the result is a finite sum of
+          products of smooth kernels off the diagonal. When all insertions are
+          \(1\), there are no occurrences and exactly one empty pairing, whose
+          product is \(1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L24"><tt class="verbatim">Wick.entry</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L75-L76"><tt
+      class="verbatim">Wick.Occ.Matching</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L107"><tt class="verbatim">Wick.monomial</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L47-L50"><tt class="verbatim">reduceEq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L66-L67"><tt class="verbatim">observable</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72"><tt class="verbatim">equationIdeal</tt></a>, and the links of III.16.10.
+    </p>
+    <h3 id="auto-13"><a id="49-labels"></a>4.9 Labels<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.26 (= III.16.9).</strong>
+    </p>
+    <p>
+      <em>Sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (a) A complex polynomial that vanishes on \(\mathbb{R}^N\) is zero.
+        </p>
+      </li>
+      <li>
+        <p>
+          (b) A coordinate's exponent in a monomial of weight \(\leqslant d\)
+          is at most \(d\), and only finitely many coordinates have weight
+          \(\leqslant d\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) Bihomogeneous components of an invariant polynomial are
+          invariant, because the adjoint action is linear in each \(A_j\) and
+          preserves bidegree. They are real if the label is real.
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) Real bihomogeneous labels span \(\text{Label}_d\) over
+          \(\mathbb{C}\), by taking real and imaginary parts of its
+          bihomogeneous components. A basis containing \(1\) can be extracted,
+          and the bases are extended inductively from level \(d\) to level \(d
+          + 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Each frame gives coordinates on \(\text{Label}_d\). For every real
+          \(t\), rescaling the coordinate of \(e_i\) by \(t^{\deg e_i}\)
+          (polynomial degree) commutes with the action of \(O (4)\), since
+          that action preserves each polynomial degree: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L58-L61"><tt class="verbatim">Frame.scaled</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Reference.lean#L96-L109"><tt class="verbatim">Frame.scaling</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Jet.lean#L22-L37"><tt class="verbatim">radial</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L38-L49"><tt class="verbatim">eval_ext</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L63-L94"><tt class="verbatim">cap_finite</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Grading.lean#L35-L48"><tt class="verbatim">component_mem</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Grading.lean#L87-L105"><tt class="verbatim">decompose</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L83-L86"><tt class="verbatim">frame_exists</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L107-L111"><tt class="verbatim">frames</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Action.lean#L82-L88"><tt class="verbatim">rotation_law</tt></a>.
+    </p>
+    <h2 id="auto-14"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The analytic issue in III.16.3&ndash;III.16.4 is to retain a bound
+      independent of matrix dimension while varying the exponents and passing
+      to integral kernels. The three-lines argument uses dimension only for
+      qualitative boundedness on the strip. Arbitrary insertions are allowed:
+      their Schatten norms supply the entire insertion cost. Positivity and a
+      positive cyclic trace are required of the transfer kernel, and
+      quadrature is taken at fixed exponents and period.
+    </p>
+    <p>
+      The complex-power convention matters at zero: \(A^0\) is the range
+      projection. The strict inequalities \(Y_k > 2 r\) ensure that the
+      integer endpoints agree with ordinary positive powers. Fourier inversion
+      loses strip width and the explicit factor \((2 (1 + b) / b)^4\);
+      differentiating a Laurent sum costs \(1 / (\eta - \sigma)\). The Bloch
+      identities retain all momenta, and at complex momentum the alias
+      identity uses the adjoint evaluated at \(\bar{p}\).
+    </p>
+    <p>
+      For Maxwell jets, the conventions are Taylor coefficients \(D^j / j!\),
+      real orthonormal colour coordinates, the normalization \((4 \pi^2)^{-
+      1}\), and the sign \((- 1)^l\) at the second endpoint. The equation
+      subspace is defined by restriction to shell jets; no presentation by
+      invariant generators is needed. The chosen label bases are coherent as
+      sets of polynomials, rather than as prescribed ordered lists.
+    </p>
+    <h2 id="auto-15"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Written proof</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Lean</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Meaning</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">positive-semidefinite kernel</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Nonnegative.lean#L18-L19"><tt class="verbatim">NNKernel</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">all finite Gram matrices Hermitian and positive
+        semidefinite</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">tagged partitions \(Q_k\), masses \(m_i\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Quadrature.lean#L22-L26"><tt class="verbatim">Quad</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Quadrature.lean#L65-L66"><tt class="verbatim">Quad.shrink</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">finite measurable partition with tags; mesh \(1 / (k +
+        1)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\lVert b \rVert_{2 q}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L106"><tt class="verbatim">paysNorm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L105"><tt class="verbatim">rate</tt></a>
+        \(= 1 / (2 q)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Schatten norm via \(\text{tr} ((b^{\ast} b)^q)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">strip path</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Holder.lean#L25-L29"><tt class="verbatim">Flex</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">entire; contraction on the strip; trace norm \(\leqslant
+        1\) on \(\text{Re} = 1\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(A^z\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L22-L24"><tt class="verbatim">leap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Columns.lean#L38"><tt class="verbatim">specPow</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">complex power, \(0\) on \(\ker A\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(Z_A = \text{tr} A^M\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L37"><tt class="verbatim">Holder.Q</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">absolute trace, equal to the trace for \(A \succeq 0\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">sides of III.16.2</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L108-L109"><tt class="verbatim">total</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Complex/Gaps.lean#L111-L112"><tt class="verbatim">cost</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">trace product and H&ouml;lder bound</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(q, w, M, \ell, K, Z, c_k, Y'\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">p</tt>, <tt class="verbatim">width</tt>, <tt class="verbatim">N</tt>,
+        <tt class="verbatim">m</tt>, <tt class="verbatim">T</tt>, <tt class="verbatim">R</tt>, <tt class="verbatim">K</tt>,
+        <tt class="verbatim">Z</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Lean parameters of <tt class="verbatim">finite_lip</tt>, <tt class="verbatim">passage</tt></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{Tr} (k_1 \cdots k_L)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L76"><tt class="verbatim">TimeKernel.closed</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">cyclic integral</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(k^Q\), \(k^{\ast}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L81"><tt class="verbatim">sample</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Trace.lean#L83"><tt class="verbatim">op</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">sampled matrix; adjoint kernel</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(B_1 K^{Y_1} \cdots\); \((B^{\ast} B)^q\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L17-L18"><tt class="verbatim">along</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TimeKernel/Unit.lean#L20"><tt class="verbatim">multiply</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">gap word; column word</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(S_{\eta}\); \(e^{ip \cdot x}\); \(\lvert x
+        \rvert_1\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L43"><tt class="verbatim">strip</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L39"><tt class="verbatim">mode</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L34"><tt class="verbatim">size</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">strip, Fourier character and lattice one-norm</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\sum e^{\eta \lvert x \rvert_1} \lvert f (x) \rvert
+        \leqslant W\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L104"><tt class="verbatim">Width</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">weighted norm bound</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\hat{f}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L123"><tt class="verbatim">Laurent.read</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L30-L31"><tt
+        class="verbatim">Row.read</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">symbol (Laurent series)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">periodic holomorphic \(u\) on \(S_{\eta}\);
+        \(\hat{u}_p\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Rune.lean#L18-L21"><tt class="verbatim">Vane</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Rune.lean#L80"><tt class="verbatim">market</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">strip hypotheses and shifted Fourier coefficients</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">kernel \(R\); periodization \(R_n\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L22"><tt class="verbatim">Bloch.Row</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L33-L34"><tt class="verbatim">Row.acts</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L26"><tt class="verbatim">Row.strip</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">real kernel over \(\mathbb{Z}^4\) with internal
+        indices</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(k_p\); \(F_n\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L18"><tt class="verbatim">mon</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L20"><tt class="verbatim">cell</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Mesh.lean#L113"><tt class="verbatim">F</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">torus momentum, character and Fourier matrix</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">alias momenta; \(E_L (p)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Alias.lean#L20"><tt class="verbatim">aliasAt</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Alias.lean#L30-L31"><tt class="verbatim">aliasBlock</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">fine momenta over one coarse momentum and their Fourier
+        block</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\Phi_m\); \(v \leqslant X \leqslant m\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L125"><tt class="verbatim">binRoot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07/MatrixRoot.lean#L21-L24"><tt class="verbatim">Band</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">analytic root and quadratic-form bounds</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(c_j f (x) = D^j f (x) / j!\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Analysis/Homogeneous.lean#L65-L66"><tt class="verbatim">Tensor.coeff</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Taylor coefficient</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\partial_i\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L20"><tt class="verbatim">Maxwell.grad</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">partial derivative along axis \(i\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\mathcal{A}_j\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Jet.lean#L39"><tt class="verbatim">Labels.Taylor</tt></a> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Jet.lean#L22-L37"><tt
+        class="verbatim">radial</tt></a>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">radial-gauge potentials, degree \(j + 1\), weight \(j +
+        2\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\mathcal{C}_j\); \(\mathcal{S}_j\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L63-L95"><tt class="verbatim">formSpace</tt></a> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L57-L61"><tt class="verbatim">ClosedJet</tt></a>);
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Shell.lean#L44"><tt class="verbatim">Shell</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">closed curvature jets; Maxwell shell</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">curl and its inverse</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L97-L98"><tt class="verbatim">takeCurl</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Exterior.lean#L130-L154"><tt class="verbatim">contracted</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">homogeneous radial-gauge identification</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(G_0\); \(C_{ab, km}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/PotentialKernel.lean#L22"><tt class="verbatim">Green</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Curls.lean#L20"><tt class="verbatim">bareCurl</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(G_0 = (4 \pi^2 \lvert x \rvert^2)^{- 1}\); free
+        field-strength two-point function</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">probe; \(\kappa (p, q)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L64"><tt class="verbatim">Probe</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Leg.lean#L161-L162"><tt class="verbatim">legKernel</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">linear form on \(\mathcal{S}_j\); one-contraction
+        kernel</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">free moment; free correlation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L126-L127"><tt class="verbatim">Wick.moment</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Wick.lean#L145-L147"><tt
+        class="verbatim">Wick.correlation</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">Wick pairing sum and its restriction to labels</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">equation ideal</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72"><tt class="verbatim">equationIdeal</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">labels vanishing on all on-shell jets</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{Pol}\); \(\text{Label}_d\); weight</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L29"><tt class="verbatim">Labels.Pol</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L112"><tt
+        class="verbatim">Labels.Label</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L55"><tt class="verbatim">height</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">polynomial algebra, invariant filtered subspace and
+        engineering weight</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">frame</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L50-L57"><tt class="verbatim">Frame</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Basis.lean#L107-L111"><tt class="verbatim">frames</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">complex basis of real bihomogeneous polynomials, with \(e_0
+        = 1\), coherent in \(d\)</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-16"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Additional lemmas and dependency lists.</strong> The
+          elementary helper lemmas assigned to this unit outside the eight
+          folders have not been checked individually. The longer unit lists in
+          &sect;2 have not been independently verified entry by entry and
+          should be treated as guides to placement.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Norms and parameter choices.</strong> The square-root
+          argument uses the matrix operator norm; its entrywise Laurent bounds
+          require a finite-dimensional norm conversion. In III.6 the strip is
+          narrowed to \(\tau = \min (\eta / 2, v / (2 CD))\), with \(D = 2 A /
+          \eta\) and \(C\) a norm-conversion constant, and then to \(\tau /
+          3\). IV.1 chooses \(q, w, r\) and sums successive insertion moves.
+          Those choices must accompany any claim of uniformity in volume or
+          spacing.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Placement.</strong> The trace estimate belongs with IV.1,
+          Laurent and Bloch analysis with III.2&ndash;III.7, labels with II.1,
+          and Maxwell jets and Wick correlations with VI.1&ndash;VI.2 and
+          VII.1&ndash;VII.3. The full square-root theorem is assembled in
+          III.6.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-15.html">&larr; III.15 Cost accounting for observables and the
+      remainder comparison (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-16.html">Unit outline</a></span><a class="ym-next" href="IV-1.html">IV.1
+      Infinite volume: extraction of a subsequence and the Euclidean axioms of
+      the limit (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

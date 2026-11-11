@@ -1,0 +1,2236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.11. Interacting rank, Gaussian comparison and the stress tensor
+    &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-10.html">&larr; III.10 One full nonlinear renormalization step:
+      bounds on irrelevant terms</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../notes/III-11.html">Detailed notes</a></span><a class="ym-next" href="III-12.html">III.12
+      Bounds uniform in the volume and convergence as the spacing tends to
+      zero &rarr;</a>
+    </div>
+    <p>
+      <h1>III.11. Interacting rank, Gaussian comparison and the stress
+      tensor</h1><a id="iii11-interacting-rank-gaussian-comparison-and-the-stress-tensor"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">6</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">7</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">7</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-5">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-6">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-7">10</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Code dependencies</b> <span style="margin-left: 5mm"></span> <a href="#auto-8">11</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Lean source</b> <span style="margin-left: 5mm"></span> <a href="#auto-9">11</a>
+      </p>
+      <p>
+        Additional source locations <span style="margin-left: 5mm"></span> <a href="#auto-10">11</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>Key statements</b> <span style="margin-left: 5mm"></span> <a href="#auto-11">13</a>
+      </p>
+    </div>
+    <p>
+      <em>Part III &mdash; Ultraviolet construction (renormalization
+      group).</em>
+    </p>
+    <p>
+      Compares field-space ranks with the free theory and constructs
+      stress-tensor data using Gaussian estimates.
+    </p>
+    <p>
+      <strong>Status: edited.</strong> Condensed from the unit's detailed
+      notes, which were checked against the linked Lean in two rounds and
+      edited; the local limitations still apply. <a href="../../data/index.html#outline-status">Status meanings</a>.
+    </p>
+    <p>
+      <a href="../index.html">Overview</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../notes/III-11.html">Detailed
+      notes</a> &middot; <a href="III-10.html">&larr; Previous: III.10</a> &middot; <a
+      href="III-12.html">Next: III.12 &rarr;</a>
+    </p>
+    <p>
+      <a href="#unit-results">Results</a> &middot; <a href="#unit-inputs">Inputs</a> &middot; <a href="#unit-strategy">Strategy</a>
+      &middot; <a href="#unit-steps">Proof steps</a> &middot; <a href="#unit-notation">Notation</a>
+      &middot; <a href="#unit-limitations">What remains unexplained</a> &middot; <a href="#code-dependencies">Code
+      dependencies</a> &middot; <a href="#lean-source">Lean source</a> &middot; <a href="#key-statements">Key
+      statements</a>
+    </p>
+    <p>
+      <details><summary>Source inventory and conventions</summary><p>
+        <strong>Part:</strong> III, Ultraviolet construction (renormalization
+        group). <strong>Lean:</strong> unit III.11: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK"><tt class="verbatim">YM/Next/RANK/</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON"><tt class="verbatim">YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS"><tt class="verbatim">YM/PhysicalNext/RANK_COVARIANCE_ATLAS/</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof"><tt class="verbatim">YM/MergeProof/</tt></a> (with <tt class="verbatim">West/</tt>,
+        <tt class="verbatim">North/</tt>, <tt class="verbatim">East/</tt>, <tt class="verbatim">South/</tt>).
+        <strong>Size:</strong> 42,556 lines (about 5,300 declarations).
+      </p></details>
+    </p>
+    <p>
+      <a id="unit-results"></a>
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      The unit has two outputs. The first is the <strong>rank
+      comparison</strong>. In the continuum limit, the space \(F_d\) of local
+      fields of degree \(d\) is isomorphic to the corresponding space of the
+      free Maxwell field, compatibly with complex conjugation and with the
+      lattice symmetry group. Here \(F_d\) is the space of labels of degree
+      \(d\) modulo labels whose correlations vanish. The second output is the
+      <strong>stress tensor of the limit</strong>: a nonzero conserved stress
+      tensor that satisfies the translation and rotation Ward identities and
+      is normalized against the free Maxwell stress tensor along a scaling
+      sequence. Both outputs rest on quantitative estimates proved here: a
+      per-site determinant budget, chessboard bounds for connected parts of
+      corrected observables, and comparisons of covariances with the free
+      curvature kernel. The trial systems test a finite separating family of
+      free one- and two-point correlations.
+    </p>
+    <p>
+      Notation. Set \(\mu_k = \exp ((\log \log \hat{\beta}_k)^2)\). The
+      centered estimate and the trial systems use this fixed schedule
+      quantity. \(G\) is a compact matrix group, assumed simple only where
+      stated; \(\dim G\) is the dimension of its Lie algebra; \(h\) is
+      normalized Haar measure; \(\text{chord} (u) \geqslant 0\) is the chordal
+      distance from \(u\) to \(1\); and \(\text{shell} (r) = \{u \in G :
+      \text{chord} (u) \leqslant r\}\). The torus of side \(n \geqslant 2\) is
+      \(\Lambda_n = (\mathbb{Z}/ n)^4\), with \(c = n^4\) sites, \(4 c\) bonds
+      and \(6 c\) plaquettes. The prior \(\mu_{\text{prior}}\) is product Haar
+      measure on bonds. An RG representation \(R\) on \(\Lambda_n\) has an
+      inverse coupling \(\beta = \beta (R)\), an exponent
+      \(\text{exponent}_R\) with constant part \(\text{scalar} (R)\), and an
+      unnormalized density \(e^R = e^{\text{exponent}_R} \cdot (\text{polymer
+      gas})\).
+    </p>
+    <p>
+      <strong>Proposition III.11.1 (determinant budget on the torus, and its
+      per-site price).</strong> (a) Let \(R\) be a lawful representation on
+      \(\Lambda_n\), \(n \geqslant 2\), with lawful-class parameters
+      \((\sigma, A, \Lambda, \delta, w)\), and assume \(e^R \geqslant 0\)
+      pointwise. Let \(0 < s \leqslant 1 \leqslant b\) be a Haar budget (Step
+      1). Let \(g > 0\) with \(g \leqslant \text{threshold} (R)\) and \(\beta
+      g^2 = 1\). Let \(F\) be a \(\mu_{\text{prior}}\)-integrable complex
+      function and \(z \geqslant 0\), \(X \in \mathbb{R}\) such that \(z |F
+      (U) | \leqslant \exp (\text{exponent}_R (U) + cX)\) for every
+      configuration \(U\). Then
+    </p>
+    <center>
+      \(\displaystyle \frac{z \hspace{0.17em} | \int F \hspace{0.17em} d
+      \mu_{\text{prior}} |}{\int
+e^R  \hspace{0.17em} d \mu_{\text{prior}}}
+      \hspace{0.27em} \leqslant
+\hspace{0.27em} \exp \left( c \hspace{0.17em}
+      \pi (R, X, g) - 4 \dim G
+\hspace{0.17em} \log g \right),\)
+    </center>
+    <p>
+      where the per-site price is
+    </p>
+    <center>
+      \(\displaystyle \pi = 2 \hspace{0.17em} \text{exCost} (A, \Lambda,
+      \delta) + 6 + \beta
+\hspace{0.17em} \text{baseBudget} (A, g) + X + 3
+      \hspace{0.17em} \text{ent} -
+4 \log s, \qquad \text{ent} = \log b - \dim
+      G \hspace{0.17em} \log \sigma_R,\)
+    </center>
+    <p>
+      with \(\sigma_R = \min (1, \ell_R)\), where \(q_R\) and \(\ell_R\) are
+      the quadratic and linear clip coefficients. Here \(\text{exCost} =
+      \delta + \text{loopsPrice}\) bounds the loop and additive activity terms
+      per site, and \(\text{baseBudget} = 3 (q_R + A^2) g^2\) bounds the
+      remaining action on configurations whose bonds all lie in \(\text{shell}
+      (g / 4)\). (b) Let \((\mathcal{A}_m)\) be the levels of an RG schedule
+      for simple \(G\), and let \(O = (s, b)\) be a Haar budget. For all
+      sufficiently large levels \(m\), every period \(p\), every
+      representation \(P\) on the level-\(m\) torus (with \(c_{m, p}\) sites),
+      every \(k \in \mathbb{N}\), every \(X \leqslant 1 + k\), and every \((g,
+      \Lambda, \delta)\) admissible at level \(m\), the following holds:
+    </p>
+    <center>
+      \(\displaystyle \pi (P, X, g) - \frac{4 \dim G \hspace{0.17em} \log
+      g}{c_{m, p}}
+\hspace{0.27em} \leqslant \hspace{0.27em} \text{work item}
+      (O, m, k) .\)
+    </center>
+    <p>
+      Admissible at level \(m\) means: same clip as the stage of \(m\),
+      \(\beta (P) \leqslant 4 \hat{\beta}_m\), \(\beta (P) g^2 = 1\), \(0 < g
+      \leqslant \text{threshold} (P) \leqslant \text{threshold}_m\), \(\delta
+      \leqslant 1\), \(\Lambda \leqslant \text{loopCap}_m\). The work item is
+    </p>
+    <center>
+      \(\displaystyle \text{work item} = 2 (8 \hspace{0.17em} \text{paths}_m +
+      2) + 6 + 3
+(\text{direct}_m + \text{paths}_m^2) + (1 + k) + 3
+      \hspace{0.17em} \text{ent}
+- 4 \log s + 1.\)
+    </center>
+    <p>
+      In (b), \(\pi\) uses \(A = \text{paths}_m\) and the clip of stage \(m\).
+      The work item depends on that stage, \(O\) and \(k\), uniformly over the
+      admissible couplings and periods. <em>Status:</em> theorems.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274"><tt class="verbatim">determinant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L225-L227"><tt
+      class="verbatim">protection</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L26-L33"><tt class="verbatim">HaarBudget</tt></a>; (b)
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StationMeter.lean#L119-L123"><tt class="verbatim">affordable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StationMeter.lean#L28-L36"><tt class="verbatim">Meets</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StationMeter.lean#L41-L44"><tt class="verbatim">work item</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.11.2 (free pair terms).</strong> Fix \(G\), \(d,
+      n \in \mathbb{N}\), and two colored plaquette derivative stencils \(L,
+      S\) based at the origin, with scaling degrees \(\Delta_L = 2 +
+      \text{ord} (L) \leqslant d\) and \(\Delta_S = 2 + \text{ord} (S)
+      \leqslant d\). There is \(C \geqslant 0\), depending only on these data,
+      such that the following holds. Let \(x \in (\mathbb{R}^4)^n\) have
+      distinct entries and let \(i \ne j\). Suppose \(D \geqslant 0\)
+      satisfies \(| \text{Re} \hspace{0.17em} \Gamma_{(i, a), (j, b)} |
+      \leqslant D\) for every pair of free-current keys \(a, b\) of scaling
+      degree at most \(d\). Then, for every \(r \geqslant 1\),
+    </p>
+    <center>
+      \(\displaystyle r \hspace{0.17em} | r^{\Delta_L + \Delta_S}
+      \hspace{0.17em} \langle
+\text{ev}_L \otimes \text{ev}_S, B_r (i, j)
+      \rangle - \text{light} (L, S)
+(x_i, x_j) | \leqslant CD.\)
+    </center>
+    <p>
+      Here
+    </p>
+    <center>
+      \(\displaystyle B_r (i, j) = \sum_{a, b} \text{Re} \hspace{0.17em}
+      \Gamma_{(i, a), (j, b)} 
+\hspace{0.27em} r^{- \text{gen} (a)} t_a
+      \otimes r^{- \text{gen} (b)} t_b,\)
+    </center>
+    <p>
+      where \(t_a\) is the polynomial jet sample of key \(a\), \(\text{gen}
+      (a)\) is its scaling degree, and \(\text{ev}_L\) applies the stencil
+      \(L\). The kernel \(\text{light} (L, S)\) is the corresponding
+      derivative of the free Maxwell curvature two-point function.
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StrideCost.lean#L70-L98"><tt class="verbatim">Prayer.fence</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StrideCost.lean#L64-L67"><tt class="verbatim">deck</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.11.3 (window estimate for the free covariance,
+      uniform in the regulator).</strong> Let \(\alpha, \eta > 0\), \(\Omega
+      \in \mathbb{R}\) and \(n \in \mathbb{N}\). Then there is \(C \geqslant
+      0\) with the following property. For every regulator \(f\) in the family
+      \(\text{Firm} (\alpha, \Omega, \eta)\) of III.3, every \(G\), and every
+      pair of colored plaquette stencils \(a, b\), the frequency chart \(K =
+      K_f (a, b)\) is measurable, vanishes for \(| \xi | > 2\), is \(C^n\)
+      away from \(0\), and satisfies:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(|K (0) | \leqslant C\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(| \partial^i K (\xi) | \hspace{0.17em} | \xi |^i \leqslant C\) for
+          \(0 < | \xi | \leqslant 2\) and \(i \leqslant n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(| \partial^i (K - H_{a, b}) (\xi) | \hspace{0.17em} | \xi |^i
+          \leqslant C |
+\xi |\) for \(0 < | \xi | \leqslant 1\) and \(i
+          \leqslant n\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Here \(\partial^i\) denotes the \(i\)-th Fr&eacute;chet derivative,
+      measured in operator norm, and \(H_{a, b}\) is the degree-zero Maxwell
+      curvature symbol for the plaquettes and colors of \(a, b\), with heat
+      parameter \((2 \pi)^2\). If \(a, b\) have different colors, then \(K =
+      H_{a, b} = 0\). <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Window.lean#L118-L136"><tt
+      class="verbatim">window_prices</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Radian/Signed.lean#L47-L53"><tt class="verbatim">Window</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Radian/Means.lean#L16-L19"><tt class="verbatim">Cast</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.11.4 (frequent good scales produce corrected
+      trial systems).</strong> Let \(G\) be simple and \(C\) a Wilson family
+      satisfying the construction record. Let \(d\) be a degree and
+      \(\mathcal{F}\) a stage package for degree \(d\) (fixed band \(b_0
+      \geqslant \max (6, \hspace{0.17em} s_d + 3)\), with \(s_d\) the label's
+      scaling saving, and Taylor order \(\geqslant d\)). Let \(X\) consist of
+      a real basis of \(F_d^{\text{free}}\), starting with the unit, and
+      finitely many generic one- and two-point tests that separate this space.
+      Choose representatives of that basis in the label space. Let \(O\) be a
+      Haar budget, \(J\) a chart ratio, and \(B\) a binding of the RG history
+      of \(C\) to its price lists. Fix \(w \in \mathbb{R}\). Assume that at
+      infinitely many levels \(k\) the following conditions hold
+      simultaneously:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the four price conditions: tender, metering with \((O, w)\), and,
+          for some common auxiliary parameters \(l, r\), hours with \((J, B,
+          l, r, w)\) and vents with \((J, B, l, r)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the lantern-mark condition for \(X\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then there is a trial system \(Z\) for \(X\) that travels with the
+      station and satisfies the purchase conditions:
+    </p>
+    <ul>
+      <li>
+        <p>
+          depths \(k_1 < k_2 < \ldots\) and test scales \(s_i = a_{k_i}
+          \mu_{k_i}^{\hspace{0.17em} b'}\) (fixed \(b' > 0\)) strictly
+          decreasing to \(0\), with strictly increasing width levels
+          \(\text{width}_i \leqslant k_i\) and the stage index constant on
+          \([\text{width}_i, k_i]\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for each trial \(i\), coefficient vectors \(v_i (N, p)\) of
+          corrected observables that are real, bounded uniformly in \((N,
+          p)\), and have first entry the reference unit;
+        </p>
+      </li>
+      <li>
+        <p>
+          generic test configurations lying strictly inside the centred width
+          cell, whose rescalings converge to the prescribed configuration of
+          each row;
+        </p>
+      </li>
+      <li>
+        <p>
+          for each trial \(i\), eventually in \(N\) and for every period
+          \(p\), on the centred tiling of the cutoff torus: for every row,
+          every basis column and every nonempty set \(s\) of insertion modes,
+          the chessboard root, at coupling \(\beta_{N, p}\), of the
+          \(s\)-connected part of the corrected observable (taken relative to
+          its free Maxwell one- and two-point profile) is at most \(\gamma_i =
+          \mu_{k_i}^{- 1 / 32} \to 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem, with the frequent-scale conditions carried as
+      hypotheses. In the main chain they are discharged as follows. In <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L48-L71"><tt class="verbatim">Accent.rated</tt></a>, the lantern marks hold
+      eventually in \(k\) by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/SteamW.lean#L54-L59"><tt class="verbatim">bursts</tt></a>. The four
+      price conditions are supplied to the rank assembly by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Snow.lean#L55-L60"><tt
+      class="verbatim">franchise</tt></a> (this unit) inside the assembly <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L36-L66"><tt
+      class="verbatim">jointOffers</tt></a>. That assembly is closed by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130"><tt
+      class="verbatim">uv_log</tt></a> (III.13), whose only hypotheses are that \(G\) is
+      simple and \(b > 0\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Star.lean#L64-L66"><tt class="verbatim">cast_off</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Star.lean#L68-L69"><tt class="verbatim">wheeled</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L84-L95"><tt class="verbatim">v_culminates</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L177-L222"><tt class="verbatim">v_obtain_purchases</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Bought.lean#L68-L84"><tt class="verbatim">Purchases</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.11.5 (the field spaces of the limit are those of
+      the free Maxwell field).</strong> Let \(G\) be simple. Write
+      \(\mathcal{L}_d\) for abstract labels and \(\mathcal{V}_d\) for their
+      fixed coordinate space. Let \(C\) be a Wilson family satisfying the
+      construction record and the centred estimate: for each \(d\) and \(R,
+      \varepsilon > 0\) there is \(A \geqslant 0\) such that, at every level
+      \(m \geqslant \text{ref} (d)\), eventually in \(N\) and for all \(p\),
+      every label of degree \(d\) and norm \(\leqslant R\) has centred budget
+      \(A \hspace{0.17em} a_m^{- d - \varepsilon}\). Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (i) a projector presentation of the labels: for each \(d\) and
+          cutoff \((N, p)\), a projector \(\Pi_{d, N, p}\) on the coordinate
+          label space \(\mathcal{V}_d\) whose kernel is the image of the
+          Maxwell equation ideal \(\mathcal{E}_d \subset \mathcal{L}_d\) under
+          an invertible corrected label map \(\mathcal{L}_d \to
+          \mathcal{V}_d\). For each \(d\), both are real and equivariant for
+          all sufficiently large \(N\), uniformly in \(p\). Assume also
+          affordability and relay-cost bounds along every extraction;
+        </p>
+      </li>
+      <li>
+        <p>
+          (ii) the one-step cost package along the gauge-door maps between
+          successive RG levels;
+        </p>
+      </li>
+      <li>
+        <p>
+          (iii) panels \(Q_d\), the mark exponents \(c_d = 2 (w_d + 1)\), a
+          chart ratio and a binding such that, for each \(d\), the four price
+          conditions of III.11.4 hold simultaneously at infinitely many
+          levels, with \(w = - 3\). The panels are specialized to the family
+          using \(c_d\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then for every extraction order \(f\) there are a refinement \(g\), a
+      smooth limit table \(T\) with a differentiation plan \(E\), and the
+      extraction record of IV.1 along \(f \circ g\) (raw limits, bins, spans,
+      cleaning to \(T\), Euclidean axioms), together with a seed record for
+      \((C, f \circ g, T)\). The seed record consists of: cutoff, ordered and
+      generic point limits, Euclidean axioms, cell hypothesis, and corrected
+      rank widths. Moreover the following holds: there is a real structure on
+      the free Maxwell table and, for every \(d\), a linear isomorphism
+    </p>
+    <center>
+      \(\displaystyle \Phi_d : \hspace{0.27em} F_d (T) \hspace{0.27em}
+      \xrightarrow{\sim}
+\hspace{0.27em} F_d^{\text{free}} =\mathcal{L}_d
+      /\mathcal{E}_d\)
+    </center>
+    <p>
+      that intertwines complex conjugation and the action of the signed
+      permutations of the four axes. More precisely, there is a real,
+      equivariant linear isomorphism \(L_d : \mathcal{L}_d \to \mathcal{V}_d\)
+      carrying \(\mathcal{E}_d\) onto \(\text{null}_d (T)\). Thus \(\dim F_d
+      (T) = \dim F_d^{\text{free}}\); the identification of null spaces uses
+      this corrected map. <em>Status:</em> theorem with hypotheses
+      (i)&ndash;(iii). All three are discharged in the main chain: (i) by <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Eureka.lean#L22-L30"><tt class="verbatim">reception</tt></a> through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Inns.lean#L33-L53"><tt class="verbatim">chaletrail</tt></a>
+      (this unit), (iii) by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Snow.lean#L55-L60"><tt class="verbatim">franchise</tt></a>, and the
+      binding by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Snow.lean#L28-L43"><tt class="verbatim">castle</tt></a>. The one-step package
+      (ii) and the centred estimate are also included in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Almandine.lean#L24-L36"><tt class="verbatim">Chateau</tt></a>
+      and consumed by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130"><tt class="verbatim">uv_log</tt></a> (III.13).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L48-L71"><tt class="verbatim">Accent.rated</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L135-L139"><tt
+      class="verbatim">Maxwell.Ranks</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L26"><tt class="verbatim">Spec.Seed</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Eureka.lean#L16-L20"><tt class="verbatim">Scotia</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Center.lean#L38-L40"><tt class="verbatim">Wcmain</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.11.6 (the stress tensor of the limit, normalized
+      against free Maxwell).</strong> (a) Let \(C\) satisfy the construction
+      record and \(f\) be an extraction order with ordered and generic point
+      limits, giving a table \(S\). Assume:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(S\) satisfies the Euclidean axioms (with spin structure \(H\)) and
+          the cell hypothesis;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(W\) is a differentiation plan for \(S\) with its inclusion and
+          derivative laws;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\dim F_d (S) \leqslant \dim F_d^{\text{free}}\) for every \(d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{T}\) is a free Maxwell comparison model, with Euclidean
+          axioms \(a\), inclusion, derivative and orientation laws, and a
+          divergence-free stress;
+        </p>
+      </li>
+      <li>
+        <p>
+          the station hypothesis linking \(C\), \(f\) and \(a\) holds;
+        </p>
+      </li>
+      <li>
+        <p>
+          the shell estimate of \(C\) holds.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then \(W\) satisfies the orientation law, and there are a stress record
+      \(I\) (stress tensor \(\mathcal{J}\), translation parts, spin rows) and
+      a scaling \(X\) of \(S\) such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{J} \neq 0\) and \(\mathcal{J}\) lies in the kernel space
+          of \(H\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the scaled tables approach the isotropic panel, and the scaling is
+          stable and compatible between the spin structures of \(S\) and
+          \(\mathcal{T}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the scaled \(\mathcal{J}\) is metered against the free stress tensor
+          \(\mathcal{T}.\mathcal{J}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{J}\) is conserved and symmetric and satisfies the
+          translation and rotation Ward identities (III.11.7);
+        </p>
+      </li>
+      <li>
+        <p>
+          the action law relating \(\mathcal{J}\) to the free model holds.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (b) Let \(G\) be simple, let \(C\) carry the shell estimate, and assume
+      the cofinal grid approximation condition and weak completeness of the
+      corrected comparison tests for \(f\), together with the seed record of
+      III.11.5 for \((C, f, S)\). Then for every differentiation plan \(W\)
+      with inclusion and derivative laws there are Maxwell data \(M\) and a
+      stress record \(I\) with \(\mathcal{J} \ne 0\) satisfying the UV
+      interface record \(\text{UV} (C, f, S, W, M, I)\). <em>Status:</em>
+      theorems. In (b), the free model comes from <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L45-L48"><tt class="verbatim">maxwell_supplies</tt></a>
+      (VI.2). The station hypothesis is built from the seed and weak
+      completeness, and the hypothesis <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Invert.lean#L108"><tt class="verbatim">DimAbove</tt></a>
+      from the seed's corrected rank widths; this is how III.11.5 feeds
+      III.11.6. The shell budget is proved by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Economist.lean#L23-L32"><tt class="verbatim">laurelE</tt></a>
+      and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Economist.lean#L34"><tt class="verbatim">fugacious</tt></a> (this unit) inside <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130"><tt
+      class="verbatim">uv_log</tt></a>. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Emanate.lean#L15-L30"><tt class="verbatim">Acme.readyA</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Emanate.lean#L31-L37"><tt class="verbatim">Acme.emanate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Ozone.lean#L16-L19"><tt class="verbatim">Aroma</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.11.7 (Ward identity: the flux of the stress
+      against a Killing field is a local field).</strong> Let \(C\) satisfy
+      the construction record, let \(f\) be an extraction order with the cell
+      hypothesis and generic point limits \(S\), and suppose \(S\) satisfies
+      the Euclidean axioms with real structure \(H\). Let \(W\) satisfy the
+      derivative laws, and assume the shell estimate of III.11.6. Let:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{J}\) be a stress tensor of \(S\) that is conserved with
+          respect to \(W\), and \(v \in F_d (S)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(U\) be a smooth Killing field on \(\mathbb{R}^4\), homogeneous of
+          degree \(p\) (\(U (ry) = r^p U (y)\) for \(r > 0\));
+        </p>
+      </li>
+      <li>
+        <p>
+          \(d, D, p \in \mathbb{N}\) and \(D + 3 + p = d + 4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then there is \(B \in F_D (S)\) with the following property. For every
+      \(n\), all fields \(q_1, \ldots, q_n\), every configuration of distinct
+      points \(x_0, \ldots, x_n\), and every window \(\chi\) adapted to \(x\)
+      (smooth, compactly supported, equal to \(1\) near \(x_0\), with support
+      avoiding \(x_1, \ldots, x_n\)), the flux of \(\mathcal{J}\) against \(U
+      (\cdot - x_0)\) and \(\chi\), inserted with \(v\) at \(x_0\) and \(q_k\)
+      at \(x_k\), equals the correlation of \(B\) at \(x_0\) with the \(q_k\)
+      at \(x_k\). The sign convention is
+    </p>
+    <center>
+      \(\displaystyle \text{flux} = - \sum_{i, j} \int_{\mathbb{R}^4}
+      \partial_i \chi (y) 
+\hspace{0.17em} U_j  (y - x_0)  \hspace{0.17em}
+      \langle \mathcal{J}_{ij} (y)
+\hspace{0.17em} v (x_0) \hspace{0.17em} q_1
+      (x_1) \cdots q_n (x_n) \rangle 
+\hspace{0.17em} dy.\)
+    </center>
+    <p>
+      Nonzero homogeneous Killing fields have \(p = 0\) (translations, \(D = d
+      + 1\)) or \(p = 1\) (rotations, \(D = d\)). <em>Status:</em> theorem.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Bravo.lean#L55-L89"><tt class="verbatim">annular_fieldA</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Blanca.lean#L49-L120"><tt
+      class="verbatim">tenet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Orange.lean#L33-L63"><tt class="verbatim">shells_law</tt></a>.
+    </p>
+    <p>
+      <a id="unit-inputs"></a>
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>I.1, II.2:</strong> the torus, Wilson measure, product Haar
+          prior, lawful RG representations, construction record, cells and
+          chessboard roots; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L55"><tt class="verbatim">prior</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L181-L183"><tt
+          class="verbatim">Rep.Lawful</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>II.1:</strong> label spaces, their real structures, the
+          Maxwell equation ideal and the free Wick realization; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72"><tt
+          class="verbatim">equationIdeal</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.2:</strong> stages, thresholds, clip coefficients, loop
+          caps, delays and waiting windows; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Expound.lean#L68-L77"><tt class="verbatim">ruese</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.3&ndash;III.4:</strong> free covariances, regulator
+          symbol bounds, Gaussian integration and window-to-kernel transfer;
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Radian/Signed.lean#L56-L92"><tt class="verbatim">intended</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.9&ndash;III.10:</strong> coupling growth, exact RG
+          histories and vacuum identities, one-step bounds and the
+          waiting-window engine; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Divisors.lean#L26-L135"><tt class="verbatim">Wait.engine</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>IV.1:</strong> extraction, refinements, raw limits, spans
+          and cleaning to smooth tables; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/EXTRACTION/Base.lean#L42-L51"><tt class="verbatim">Base</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>VI.1&ndash;VI.2:</strong> windows and flux, finite
+          faithfulness of testers, free Maxwell data and stress, and
+          production of the current; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/Lit.lean#L45-L48"><tt class="verbatim">maxwell_supplies</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Limit.lean#L129-L167"><tt class="verbatim">produce_current</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.13:</strong> the common Wilson family closes the
+          conditional chain; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130"><tt class="verbatim">uv_log</tt></a> has only the
+          hypotheses that \(G\) is simple and \(b > 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Standard results:</strong> the chessboard estimate and
+      reflection positivity of the Wilson action; axial tree gauge and Haar
+      invariance; small-ball Haar volume estimates; Wick expansion; Schur
+      complements; frequency-symbol estimates; finite-dimensional duality; and
+      Ward identities for conserved symmetric stress tensors and Killing
+      fields.
+    </p>
+    <p>
+      <strong>Constants and assumptions:</strong> the Haar budget is fixed
+      independently of stages and volumes by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Haar.lean#L170-L211"><tt class="verbatim">integral_budget</tt></a>.
+      The projector, one-step, centred, frequent-scale, binding, shell,
+      grid-approximation and weak-completeness hypotheses remain explicit in
+      &sect;1; their main-chain producers are identified there. The older
+      one-step interfaces in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/LedgerGate.lean"><tt class="verbatim">LedgerGate.lean</tt></a> are
+      conditional definitions, not consequences of lawful representations.
+    </p>
+    <p>
+      <a id="unit-strategy"></a>
+    </p>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The Maxwell equations give the upper bound on the interacting
+      field-space dimensions. Corrected observables tested at short distances
+      give the reverse bound: their one- and two-point correlations approach a
+      finite separating family of free correlations, so their classes are
+      eventually independent. The two bounds identify the limit null space
+      with a limit projector kernel. Conjugating a cutoff projector to the
+      limit projector then gives the isomorphism compatible with conjugation
+      and signed permutations.
+    </p>
+    <p>
+      The quantitative comparison uses the exact RG history to carry reflected
+      products to a coarse torus, then bounds a ratio of Haar integrals.
+      Plaquette elimination gives \(3 c - 3\) numerator factors, while tree
+      gauge leaves \(3 c + 1\) vacuum factors; the remaining coupling cost is
+      only \(g^{- 4 \dim G} = \beta^{2 \dim G}\) in total. Its chessboard root
+      is affordable, allowing connected errors to tend to zero along
+      infinitely many good scales. For the stress tensor, comparison with free
+      Maxwell fixes its normalization along a scaling sequence; conservation,
+      shell estimates and finite-dimensional duality represent each
+      Killing-field flux by a local field.
+    </p>
+    <p>
+      <a id="unit-steps"></a>
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Haar budget.</strong> There are \(0 < s \leqslant 1
+          \leqslant b\) with \(h (\text{shell} (r / 4)) \geqslant sr^{\dim
+          G}\) for \(0 < r \leqslant 1\) and \(\int e^{- \text{chord} (u) / t}
+          \hspace{0.17em} dh (u) \leqslant bt^{\dim G}\) for \(t > 0\).
+          Exponential coordinates give the local volume estimates; compactness
+          and a shell sum give the integral estimate. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Haar.lean#L170-L211"><tt class="verbatim">integral_budget</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Plaquette elimination.</strong> For \(n \geqslant 2\) and
+          continuous \(\varphi : G \to [0, 1]\), \(\int \prod_p \varphi (U_p) 
+          \hspace{0.17em} d \mu_{\text{prior}} \leqslant
+(\int \varphi
+          \hspace{0.17em} dh)^{3 c - 3}\). A triangular sweep assigns \(3 c -
+          3\) plaquettes to distinct bonds, whose successive Haar integrations
+          factor; the unselected factors are at most \(1\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Axial.lean#L368-L383"><tt
+          class="verbatim">elimination</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Axial.lean#L347-L365"><tt class="verbatim">charged_integral</tt></a>
+          <em>(proof read; sweep count and triangularity statement only)</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Vacuum and numerator.</strong> Under III.11.1(a), tree gauge
+          and restriction of the \(3 c + 1\) free bonds to \(\text{shell} (g /
+          4)\) give the vacuum lower bound, while the clipped action retains
+          exponential chord decay for the numerator. Applying Steps 1&ndash;2
+          and dividing gives \(\exp (c \pi) g^{- 4 \dim G}\); the four-factor
+          difference between the counts accounts for the remaining power of
+          \(g\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L76-L111"><tt class="verbatim">vacuum_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L153-L181"><tt
+          class="verbatim">exponent_retains</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274"><tt class="verbatim">determinant</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Per-site price and chessboard root.</strong> Under
+          III.11.1(b), the stage bounds give \(\pi \leqslant \text{work item}
+          - 1\) and \(- 4 \dim G \log g / c_{m, p} \leqslant 1\) eventually,
+          uniformly in admissible parameters and periods. In the trial
+          comparison, the exact vacuum identity and local activity
+          decomposition transfer the determinant estimate to the chessboard
+          root; deleting additive activities costs the \(2 \delta\) already
+          included in the price. Allocation and affordability, with allowance
+          \(e^{2 I}\) and \(I \geqslant \text{work item}\), then give root
+          error \(e^{- I}\) for every nonempty connected part. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StationMeter.lean#L119-L123"><tt
+          class="verbatim">affordable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Denarii.lean#L49-L85"><tt class="verbatim">s_postage</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Denarii.lean#L90-L123"><tt class="verbatim">coupon</tt></a> <em>(proof read; flow identity
+          and cell-stamp bookkeeping statement only)</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Free pair and window estimates.</strong> In III.11.2,
+          stencil evaluation kills keys below the stencil degree, the
+          equal-degree terms give the free curvature kernel, and every
+          remaining term gains \(r^{- 1}\), giving the bound \(CD / r\) on the
+          scaled remainder. For III.11.3, the regulator chart is a symbol of
+          order zero and differs from the heat symbol by a symbol of order
+          one; the change of variables \(\zeta = 2 \pi \xi\) and the finite
+          number of plaquette pairs give a uniform constant. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StrideCost.lean#L70-L98"><tt
+          class="verbatim">Prayer.fence</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Window.lean#L118-L136"><tt class="verbatim">window_prices</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Covariance splitting.</strong> For an atlas compatible with
+          the schedule and retained unmasked quadratic forms, satisfying
+          symmetry, coercivity, inverse and crossing laws, and a step \(i <
+          N\) with a tree forest and the required torus size, the complete
+          curvature covariances satisfy
+        </p>
+        <center>
+          \(\displaystyle \mathcal{C}_{i + 1} - W_i \mathcal{C}_i
+          W_i^{\textsf{T}} = d_f \Gamma_i
+d_f^{\textsf{T}}, \qquad \Gamma_i
+          \succeq 0.\)
+        </center>
+        <p>
+          This is the Schur-complement identity on the curl image; uniform
+          resolvent estimates give the propagation constant for fixed kernel
+          choices and stage indices \(j, t \geqslant 4\) in the range \(d - 1
+          \leqslant j - 2\) (natural-number subtraction). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Identity.lean#L198-L213"><tt class="verbatim">one_fold</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Step.lean#L106-L116"><tt class="verbatim">train_issue</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Local polynomial comparison.</strong> For regular local
+          observables with the prescribed derivative bounds, Taylor expansion
+          in link coordinates gives bounded polynomial coefficients and a
+          remainder of the required order. For zero-mean formal Gaussian data
+          with symmetric covariance vanishing within each location, Wick
+          expansion runs over cross-location pairings without requiring
+          positive covariance; under the comparison's common-mask, support,
+          coefficient, mean and covariance hypotheses, these moments give the
+          corrected connected-component bounds. The allocation, integrability,
+          locality and compatibility hypotheses give exact sector
+          decomposition and factorization over disjoint supports. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/LineBox.lean#L168-L205"><tt
+          class="verbatim">minted</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/GaussTrack.lean#L131-L173"><tt class="verbatim">headed</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Festoon.lean#L57-L126"><tt class="verbatim">console</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Rendered.lean#L36-L86"><tt class="verbatim">rendered</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Sight.lean#L132-L158"><tt class="verbatim">peer_beams</tt></a> <em>(proof read; local
+          comparison and allocation inputs statement only)</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Corrected trials.</strong> Under III.11.4, one correction
+          map and polynomial approximations serve all test rows; the
+          free-profile correction cancels the leading terms, and the one-step
+          estimates propagate the remaining source bounds from the middle
+          level to the width level. Steps 3&ndash;4 give the purchase bounds,
+          and an inductive choice among the good levels gives increasing
+          depths and widths, decreasing test scales, and bounded real
+          coefficient vectors with the reference unit first. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Diana.lean#L57-L104"><tt
+          class="verbatim">v_paid_factory</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L84-L95"><tt class="verbatim">v_culminates</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L29-L53"><tt class="verbatim">v_conditioned</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L177-L222"><tt class="verbatim">v_obtain_purchases</tt></a>
+          <em>(proof read; analytic inputs and helper estimates statement
+          only)</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Supply of good levels.</strong> For simple \(G\), the
+          construction record and one-step package with the prescribed weights
+          and multiplicities at least \(1\), a fixed degree-\(d\) column
+          family and stage package with mark exponent \(c \geqslant 2 (w_d +
+          1)\) satisfy the lantern-mark condition at every sufficiently large
+          metered level. Compatible pre-\(L\) prices and one-step bounds,
+          stage thresholds below block lengths, eventual presence of each
+          degree index, nonnegative mark exponents and a Haar budget give
+          panels and an enlarged waiting window on which every Wilson family
+          paid on that window and every binding with those prices have
+          infinitely many simultaneous good levels for each \(d\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/SteamW.lean#L54-L59"><tt
+          class="verbatim">bursts</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Snow.lean#L55-L60"><tt class="verbatim">franchise</tt></a>
+          <em>(proof structure read; analytic inputs and helpers statement
+          only)</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Equations and independent columns.</strong> Under
+          III.11.5(i), free probes separate the on-shell sector and give
+          \(\dim \mathcal{L}_d \leqslant \dim \ker \Pi_{d, N, p} + \dim
+          F_d^{\text{free}}\) at each cutoff. For a Wilson family satisfying
+          the construction record, with generic point limits and continuous
+          kernels integrable against every separated test function, purchases
+          and iterated coefficient limits give moment errors \(P_k \gamma_k
+          \to 0\), so the limiting corrected columns are independent modulo
+          the integrated-test null space for all sufficiently large trials.
+          Relay estimates put the limit projector kernel inside the null
+          space; with the centred port, raw limits, convergent relay
+          projectors, equation counts and trials in every degree, extraction
+          and the dimension comparison give a smooth table \(T\), its seed,
+          and \(\text{null}_d (T) = \ker \Pi_{\infty}\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L47"><tt class="verbatim">savings</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Monitors.lean#L71-L87"><tt class="verbatim">measured</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Beam.lean#L153-L180"><tt class="verbatim">arriving_seed</tt></a>
+          <em>(proof read; free positivity, chessboard and analytic inputs
+          statement only)</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Equivariant identification.</strong> Under the projector
+          presentation and its extraction record, if \(A_i \to \Pi_{\infty}\),
+          then \(Y_i = \Pi_{\infty} A_i + (1 - \Pi_{\infty})  (1 - A_i) \to
+          1\) and \(Y_i A_i = \Pi_{\infty} Y_i\). For large \(i\), \(Y_i\) is
+          invertible, real and equivariant; composing it with the corrected
+          label map carries \(\mathcal{E}_d\) onto \(\text{null}_d (T)\) and
+          induces III.11.5's quotient isomorphism. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Thrush.lean#L13-L68"><tt class="verbatim">drumroll</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Thrush.lean#L72-L114"><tt class="verbatim">thrush</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L48-L71"><tt class="verbatim">Accent.rated</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Flux becomes a local field.</strong> Under III.11.7,
+          conservation permits windows on shrinking annuli; the shell estimate
+          shows that every finite combination of grid testers annihilating
+          \(F_D\) also annihilates the flux. Finite-dimensional duality
+          supplies a matching field for each finite tester family, finite
+          faithfulness gives a single field for all testers, and translation
+          covariance, continuity and grid density extend the identity to all
+          distinct configurations. Constant and rotational Killing fields give
+          the translation and rotation maps. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Blanca.lean#L49-L120"><tt class="verbatim">tenet</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Bravo.lean#L55-L89"><tt class="verbatim">annular_fieldA</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Orange.lean#L33-L63"><tt class="verbatim">shells_law</tt></a>
+          <em>(proof read; annulus comparison inputs statement only)</em>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Stress and ultraviolet records.</strong> Under III.11.6(a),
+          the orientation law and station equivalences allow the free
+          comparison to produce a nonzero current and scaling sequence; zero
+          current divergence gives conservation, the weak scaling comparison
+          gives the action law, and Step 12 gives the stress laws. Under
+          III.11.6(b), canonical free Maxwell data, the seed's corrected rank
+          widths and weak completeness supply the comparison model, dimension
+          bound and station hypothesis needed for (a). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Emanate.lean#L15-L30"><tt class="verbatim">Acme.readyA</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Emanate.lean#L31-L37"><tt class="verbatim">Acme.emanate</tt></a> <em>(proof read; helper
+          estimates statement only)</em>
+        </p>
+      </li>
+    </ol>
+    <p>
+      <a id="unit-difficulty"></a>
+    </p>
+    <h2 id="auto-5"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The determinant comparison must avoid a per-site loss of \(\log \beta\):
+      that would overwhelm the vanishing chessboard error. Tree-gauge counting
+      leaves only the volume-independent factor \(\beta^{2 \dim G}\); this is
+      a Haar integral estimate rather than a Hessian determinant calculation.
+      The lower rank bound requires short-distance comparison at infinitely
+      many scales, whereas the upper bound is algebraic at every cutoff. The
+      isomorphism comes from conjugating projectors, and its symmetry
+      statement concerns complex representations with compatible conjugations
+      under signed permutations. Constants must be chosen before block lengths
+      and uniformly in the period; eventual estimates require the specified
+      delays before use on comparison windows.
+    </p>
+    <p>
+      <a id="unit-notation"></a>
+    </p>
+    <h2 id="auto-6"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>Symbol:</strong> \(\mu_k\), \(w_d\)
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Fixed schedule factor \(\exp
+          ((\log \log \hat{\beta}_k)^2)\); coefficient exponent. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L81"><tt
+          class="verbatim">monitor</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Tender.lean#L11"><tt class="verbatim">winter</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> \((s, b)\), \(\sigma_R\), \(\pi\), work
+          item
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Haar budget, clip strength,
+          per-site determinant price and stage allowance of III.11.1. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L26-L33"><tt
+          class="verbatim">HaarBudget</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L116"><tt class="verbatim">strength</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L225-L227"><tt class="verbatim">protection</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StationMeter.lean#L41-L44"><tt class="verbatim">work
+          item</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> \(\mathcal{L}_d\), \(\mathcal{V}_d\),
+          \(\mathcal{E}_d\)
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Abstract labels, coordinate
+          labels and Maxwell equation ideal; \(F_d^{\text{free}}
+          =\mathcal{L}_d /\mathcal{E}_d\). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Maxwell/Equation.lean#L72"><tt class="verbatim">equationIdeal</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> \(F_d (T)\), \(\text{null}_d (T)\)
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Local fields of degree \(d\)
+          and labels with vanishing correlations. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L135-L139"><tt class="verbatim">Maxwell.Ranks</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> \(\Pi_{d, N, p}\), \(\Pi_{\infty}\)
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Cutoff and limit projectors;
+          their kernels identify the equations after correction. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Eureka.lean#L16-L20"><tt
+          class="verbatim">Scotia</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> Stage package and price conditions
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Stage data; tender,
+          metering, hours, vents and lantern marks in III.11.4. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Concord.lean#L38-L51"><tt
+          class="verbatim">Cohesion</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Consumer.lean#L71"><tt class="verbatim">Tender</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Concord.lean#L62-L64"><tt class="verbatim">Metering</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Pleas.lean#L21-L26"><tt class="verbatim">ShowHours</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Postsale.lean#L19-L21"><tt class="verbatim">Vents</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Proceed.lean#L74-L77"><tt class="verbatim">LanternMarks</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> \(\mathcal{C}_i\), \(W_i\), \(d_f\),
+          \(\Gamma_i\)
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Complete curvature
+          covariance, passage map, fine exterior derivative and uncut tree
+          covariance. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Identity.lean#L198-L213"><tt class="verbatim">one_fold</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> \(\mathcal{J}\), shell budget
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Stress tensor; annular
+          estimates with radii tending to zero. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Ozone.lean#L16-L19"><tt class="verbatim">Aroma</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Symbol:</strong> Seed, station, grid approximation, weak
+          completeness
+        </p>
+        <p>
+          <strong>Meaning and Lean link:</strong> Records used in
+          III.11.5&ndash;III.11.6. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spec/Closed.lean#L20-L26"><tt class="verbatim">Spec.Seed</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Station.lean#L112-L114"><tt class="verbatim">Stations</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L121-L123"><tt class="verbatim">Grill</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/East/Gran.lean#L35"><tt class="verbatim">CompleteWeak</tt></a>
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="unit-limitations"></a>
+    </p>
+    <h2 id="auto-7"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          The discrete stencil, interpolation and shell estimates underlying
+          the annulus bound have not been independently checked through their
+          analytic dependencies; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Ozone.lean#L21-L45"><tt class="verbatim">zone</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The nonlinear integration and remainder estimates beneath the
+          one-step comparison were not checked in full. The correspondence
+          between the older conditional interfaces in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/LedgerGate.lean"><tt class="verbatim">LedgerGate.lean</tt></a>
+          and all restarted replacements remains to be documented.
+        </p>
+      </li>
+      <li>
+        <p>
+          Complete mathematical estimates for the stage, launch, hours, vents,
+          relay, station and shell records remain to be written. Their
+          structural hypotheses cannot be replaced by the displayed
+          inequalities alone.
+        </p>
+      </li>
+      <li>
+        <p>
+          Sweep triangularity and the auxiliary estimates were checked at
+          statement level. The lower-level proofs supplying the centred
+          estimate, one-step package and schedule existence were not checked
+          in full.
+        </p>
+      </li>
+    </ul>
+    <p>
+      Detailed notes: the full account of this unit, with proof sketches for
+      every step, is on the <a href="../notes/III-11.html">detailed notes page</a>.
+    </p>
+    <h2 id="auto-8"><a id="code-dependencies"></a>Code dependencies<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Code dependencies (from the compiled Lean).</strong> These lists
+      follow references between declarations allocated to units; they can
+      include shared definitions, record fields and alternative constructions.
+      They are not a mathematical reading order. Only unit pairs with at least
+      25 references are shown; see the <a href="../../data/index.html#code-dependencies">counting rules</a>.
+    </p>
+    <p>
+      <strong>References to:</strong> <a href="I-1.html">I.1</a>, <a href="III-1.html">III.1</a>, <a
+      href="II-2.html">II.2</a>, <a href="II-1.html">II.1</a>, <a href="III-10.html">III.10</a>, <a href="III-16.html">III.16</a>,
+      <a href="III-4.html">III.4</a>, <a href="IV-1.html">IV.1</a>, <a href="III-5.html">III.5</a>, <a href="V-2.html">V.2</a>,
+      <a href="VIII-1.html">VIII.1</a>, <a href="III-2.html">III.2</a>, <a href="III-9.html">III.9</a>, <a href="III-3.html">III.3</a>,
+      <a href="VI-2.html">VI.2</a>, <a href="III-15.html">III.15</a>, <a href="VI-1.html">VI.1</a>, <a href="III-8.html">III.8</a>,
+      <a href="III-6.html">III.6</a>.
+    </p>
+    <p>
+      <strong>Referenced by:</strong> <a href="VII-6.html">VII.6</a>, <a href="III-12.html">III.12</a>,
+      <a href="III-4.html">III.4</a>, <a href="VII-4.html">VII.4</a>, <a href="III-2.html">III.2</a>, <a href="VIII-1.html">VIII.1</a>,
+      <a href="III-13.html">III.13</a>, <a href="VII-2.html">VII.2</a>, <a href="VII-1.html">VII.1</a>, <a href="III-15.html">III.15</a>.
+    </p>
+    <h2 id="auto-9"><a id="lean-source"></a>Lean source<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Source allocation:</strong> 42,556 attributed lines; 5,286
+      line-counted declarations; 7,425 assigned declaration names. Of the
+      assigned names, 7,102 are in the compiled closure of the seventeen
+      headline results. These quantities have <a href="../../data/index.html#counting-scopes">different scopes</a>.
+    </p>
+    <p>
+      The folders and result chains below are source inventories. Their line
+      counts cover each whole group, including any share allocated to another
+      unit; percentages use attributed lines plus one per assigned name. They
+      need not sum to the unit total.
+    </p>
+    <ul>
+      <li>
+        <p>
+          work package <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK"><tt class="verbatim">YM/Next/RANK/</tt></a>, with <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON"><tt class="verbatim">YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof"><tt class="verbatim">YM/MergeProof/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West"><tt class="verbatim">YM/MergeProof/West/</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North"><tt class="verbatim">YM/MergeProof/North/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/East"><tt
+          class="verbatim">YM/MergeProof/East/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS"><tt class="verbatim">YM/PhysicalNext/RANK_COVARIANCE_ATLAS/</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/South"><tt class="verbatim">YM/MergeProof/South/</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_GUARD_7F546"><tt
+          class="verbatim">YM/PhysicalNext/PHYSICAL_GUARD_7F546/</tt></a> &mdash; 42,556
+          lines.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-10"><a id="additional-source-locations"></a>Additional source locations<span style="margin-left: 1em"></span></h3>
+    <p>
+      Further pinned locations for the definitions and comparisons discussed
+      in this unit.
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Climb/Beams.lean#L53-L63"><tt class="verbatim">Climb.comparison</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Comparator.lean#L102-L118"><tt class="verbatim">projectionExact</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extra/FREE_DETECTOR_ALGEBRA/Rank.lean#L38-L54"><tt class="verbatim">no_residual</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Gauge/MatrixGroup.lean#L115"><tt class="verbatim">chord</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Biscuit.lean#L29-L34"><tt class="verbatim">Scrim</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Economist.lean#L20-L21"><tt class="verbatim">Economics</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/SteamW.lean#L45-L52"><tt class="verbatim">quaking</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Bravo.lean#L31-L52"><tt class="verbatim">obtainable</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Allowance.lean#L42"><tt class="verbatim">banking</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Axial.lean#L115-L119"><tt class="verbatim">free_count</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Axial.lean#L278-L303"><tt class="verbatim">independent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Axial.lean#L314-L345"><tt class="verbatim">pull_link</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Beam.lean#L142-L147"><tt class="verbatim">equation_retains</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Bought.lean"><tt class="verbatim">Bought.lean</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Bought.lean#L112-L123"><tt class="verbatim">Purchases.samples</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Bought.lean#L125-L133"><tt class="verbatim">converge</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L189-L217"><tt class="verbatim">numerator</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L220"><tt class="verbatim">ent</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L35-L36"><tt class="verbatim">exists_budget</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L46-L68"><tt class="verbatim">gauge_eval</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/EastBell.lean#L44-L67"><tt class="verbatim">Prayer.penalty</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Monitors.lean#L92-L94"><tt class="verbatim">EquationCount</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Ratchet.lean#L35-L41"><tt class="verbatim">Launch</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StationMeter.lean#L46-L79"><tt class="verbatim">rolls_law</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/UV_STRESS/Tensor.lean#L121-L125"><tt class="verbatim">linear_cons</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Input.lean#L177-L186"><tt class="verbatim">Org.UV</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Denarii.lean#L27-L43"><tt class="verbatim">denture</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Diana.lean#L37"><tt class="verbatim">s_provisions</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Diana.lean#L44-L51"><tt class="verbatim">s_empire</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Star.lean#L49-L63"><tt class="verbatim">backstage</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L110"><tt class="verbatim">Offers_</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L112-L125"><tt class="verbatim">v_pay_all</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L134-L147"><tt class="verbatim">Travels_</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L149-L173"><tt class="verbatim">ticketed</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L76-L79"><tt class="verbatim">Turning_</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Fourier.lean#L26"><tt class="verbatim">circleRate</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Window.lean#L57-L76"><tt class="verbatim">heat_window</tt></a>
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/FREE_STRESS_CERTIFICATE/Choose.lean#L137-L150"><tt class="verbatim">FreeStress.fire</tt></a>
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-11"><a id="key-statements"></a>Key statements<span style="margin-left: 1em"></span></h2>
+    <p>
+      In the selected statement order. <strong>K-</strong> identifiers name
+      this generated list; proposition and lemma numbers in the outline are
+      separate. Each sentence is an automatically drafted summary of a Lean
+      statement; follow its link for the exact hypotheses and conclusion. The
+      outline status does not certify these summaries. <em>Main result</em>
+      and <em>key result</em> describe importance, not correctness. Full names
+      are in the <a href="https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv">statement table</a>.
+    </p>
+    <p>
+      <a id="k-iii-11-1"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.1</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Value.lean#L38-L46"><tt class="verbatim">SourceAt</tt></a>
+          <em>(numbered result)</em> &mdash; A structure packaging a monomial
+          in a marked exponent with a value-only representative for local
+          value-order estimates.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-2"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.2</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Value.lean#L49-L60"><tt class="verbatim">Lifted</tt></a>
+          <em>(numbered result)</em> &mdash; A structure packaging a labelled
+          occurrence of a K-pattern with geometry and flag conditions.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-3"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.3</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Terrain.lean#L66-L123"><tt class="verbatim">conquer</tt></a>
+          <em>(numbered result)</em> &mdash; A product of smooth functions
+          equal to 1 at a point with derivative bounds up to order D has
+          derivative bounds polynomial in length and B.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-4"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.4</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Haar.lean#L170-L211"><tt class="verbatim">integral_budget</tt></a>
+          <em>(key result)</em> &mdash; Haar measure of small balls is bounded
+          below by r^dim and the exponential-chord tail integral is bounded
+          above by b t^dim, with uniform constants.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-5"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.5</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Axial.lean#L368-L383"><tt class="verbatim">elimination</tt></a>
+          <em>(key result)</em> &mdash; On the torus, the expected product of
+          a [0,1]-valued function over all plaquettes is at most the Haar
+          integral to the power 3|sites|-3.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-6"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.6</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274"><tt class="verbatim">determinant</tt></a>
+          <em>(key result)</em> &mdash; Under a Haar budget and a weighted
+          exponential bound on F, the ratio of the integral of F to the
+          normalization integral is bounded by an exponential in volume times
+          a protection term minus a power-of-g factor.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-7"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.7</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StrideCost.lean#L70-L98"><tt class="verbatim">fence</tt></a>
+          <em>(key result)</em> &mdash; The rescaled difference between the
+          covariance-based pair term and the free light-cone kernel is bounded
+          by a constant times the bound D on the free covariance, uniformly in
+          r&#x2A7E;1.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-8"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.8</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Dock.lean#L179-L185"><tt class="verbatim">grant</tt></a>
+          <em>(key result)</em> &mdash; Combining first-system estimates, the
+          polynomial-type output (sum of sent contributions times dust)
+          satisfies a Notice bound with prescribed radius, exponent and
+          output.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-9"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.9</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/GaussTrack.lean#L131-L173"><tt class="verbatim">headed</tt></a>
+          <em>(key result)</em> &mdash; The Gaussian expectation of a product
+          of linear forms expands as a sum over pairings (matchings) of
+          products of covariances, respecting a location constraint.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-10"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.10</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/LineBox.lean#L168-L205"><tt class="verbatim">minted</tt></a>
+          <em>(key result)</em> &mdash; A smooth function with sup bounds has
+          a Taylor polynomial in link variables of degree d with controlled
+          coefficient size and remainder at most c&#x2016;x&#x2016;^{d+1}.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-11"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.11</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Stories.lean#L99-L112"><tt class="verbatim">till</tt></a>
+          <em>(key result)</em> &mdash; For regular summable families of
+          observables with sup bounds, there is a polynomial in link variables
+          of degree at most d approximating the weighted sum, with constant
+          growing like (number of links+1)^d.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-12"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.12</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Chimes.lean#L113-L153"><tt class="verbatim">pedestals</tt></a>
+          <em>(numbered result)</em> &mdash; Eventually in s, numerical cost
+          bounds on time bands hold for all budget points in the stated
+          ranges.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-13"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.13</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Anise.lean#L21-L39"><tt class="verbatim">grafted</tt></a>
+          <em>(key result)</em> &mdash; Under the arc hypotheses, there exist
+          served functions with dominated profiles and blade bounds, and these
+          are transported along the affine symmetry for other vertices.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-14"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.14</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/StationMeter.lean#L119-L123"><tt class="verbatim">affordable</tt></a>
+          <em>(numbered result)</em> &mdash; For sufficiently fine widths, a
+          protection quantity minus a log-volume correction is bounded by the
+          determinant estimate price for simple gauge group.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-15"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.15</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Prayer.lean#L74-L111"><tt class="verbatim">resolution</tt></a>
+          <em>(key result)</em> &mdash; Uniform finite measured errors are
+          controlled relative to a sampled free current, given a reads
+          structure.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-16"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.16</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Window.lean#L118-L136"><tt class="verbatim">window_prices</tt></a>
+          <em>(key result)</em> &mdash; The colored chart of every free
+          covariance satisfies a window estimate with constant uniform in the
+          regulator family.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-17"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.17</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Distant.lean#L69-L100"><tt class="verbatim">chamber_now</tt></a>
+          <em>(key result)</em> &mdash; For large k, uniformly in the physical
+          period, distinct chosen test points give meridian-arc separation
+          estimates for all models.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-18"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.18</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Denarii.lean#L49-L85"><tt class="verbatim">s_postage</tt></a>
+          <em>(key result)</em> &mdash; The root test of a mode observable is
+          bounded by an exponential in a determinant budget divided by a power
+          of r, under a Notice hypothesis.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-19"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.19</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Consumer.lean#L30-L38"><tt class="verbatim">Binding</tt></a>
+          <em>(numbered result)</em> &mdash; Extra history-receipt data tying
+          a rank-covariance family to the same path and prices.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-20"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.20</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Brite.lean#L31-L122"><tt class="verbatim">on_hold</tt></a>
+          <em>(key result)</em> &mdash; For points converging to a
+          configuration of distinct points, eventually every admissible fit at
+          large scale satisfies the Bell property for every vantage.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-21"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.21</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Promises.lean#L37-L127"><tt class="verbatim">on_demand</tt></a>
+          <em>(key result)</em> &mdash; For generic points and large k, the
+          Bell property holds for all vantage data produced from Fourier
+          terminal/lifted stencil ports.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-22"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.22</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Identity.lean#L198-L213"><tt class="verbatim">one_fold</tt></a>
+          <em>(key result)</em> &mdash; A single conditional covariance
+          identity for real links, derived via the hinge resolution.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-23"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.23</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Antilles.lean#L43-L75"><tt class="verbatim">antilles</tt></a>
+          <em>(key result)</em> &mdash; Starting from an admissible
+          coefficient at scale m, one constructs a backward chain of states
+          with prescribed endpoint, challenge compatibility, and exact density
+          and index relations.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-24"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.24</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Tilt.lean#L36-L59"><tt class="verbatim">forge</tt></a>
+          <em>(key result)</em> &mdash; For large k, a stamp-duty structure
+          exists for every admissible representation and atlas data at each
+          level.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-25"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.25</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Prism.lean#L102-L168"><tt class="verbatim">cardinal_spin</tt></a>
+          <em>(key result)</em> &mdash; The loading is positive and the
+          freight equals loading times exp of the spool lift for certified
+          matched pilots.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-26"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.26</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Step.lean#L106-L116"><tt class="verbatim">train_issue</tt></a>
+          <em>(key result)</em> &mdash; For fixed kernel choices and periods,
+          there is a uniform constant R such that the difference-motion train
+          bound holds for all gauges, levels, and indices in the tested range.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-27"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.27</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Attic.lean#L157-L203"><tt class="verbatim">chamber</tt></a>
+          <em>(key result)</em> &mdash; For all sufficiently large sides L and
+          large couplings W, there is m&gt;0 such that the rank-meter
+          condition holds eventually in x.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-28"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.28</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/PHYSICAL_GUARD_7F546/Continuation/Suppression.lean#L120-L134"><tt class="verbatim">reserve_away</tt></a>
+          <em>(key result)</em> &mdash; For a Gaussian with positive
+          semidefinite covariance bounded entrywise by U, the probability that
+          the central guard coordinates deviate by more than t is at most e^2
+          exp(-c t^2) with c depending on K and U.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-29"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.29</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Beam.lean#L153-L180"><tt class="verbatim">arriving_seed</tt></a>
+          <em>(key result)</em> &mdash; Given raw limits and trial columns
+          with purchases, one can choose a refinement order with index data
+          preserving the inputs and satisfying the required properties.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-30"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.30</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Blanca.lean#L49-L120"><tt class="verbatim">tenet</tt></a>
+          <em>(key result)</em> &mdash; The flux of the conserved stress
+          against a Killing-type vector field and window functions vanishes
+          for any finite combination annihilating all tests.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-31"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.31</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Rail.lean#L197-L229"><tt class="verbatim">laminate</tt></a>
+          <em>(key result)</em> &mdash; On actual stencils with pose and
+          payment hypotheses, the coarse observable is valid on the fine patch
+          and the rank arguments are close to the critical bias.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-32"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.32</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RANK_COVARIANCE_ATLAS/Gates.lean#L86"><tt class="verbatim">prepared</tt></a>
+          <em>(numbered result)</em> &mdash; A chosen prepared table obtained
+          from the nonemptiness result.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-33"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.33</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Conditions.lean#L100-L119"><tt class="verbatim">arise</tt></a>
+          <em>(numbered result)</em> &mdash; A weight satisfying a cost bound
+          is integrable on the tilted measure and its inflated integral is
+          bounded by the cost.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-34"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.34</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Sight.lean#L132-L158"><tt class="verbatim">peer_beams</tt></a>
+          <em>(numbered result)</em> &mdash; For shaders on disjoint supports,
+          the product is integrable and its integral factorizes as the product
+          of integrals.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-35"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.35</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Meringue.lean#L32-L102"><tt class="verbatim">single</tt></a>
+          <em>(key result)</em> &mdash; A single scale-step estimate: applying
+          a coupon bound to an already packed coefficient yields a controlled
+          remainder after one gauge-door step.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-36"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.36</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Tael.lean#L58-L90"><tt class="verbatim">earnings</tt></a>
+          <em>(key result)</em> &mdash; For label data on a compact set of
+          distinct-point configurations, a quantitative estimate on lifts with
+          tested marks holds eventually in the scale.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-37"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.37</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Dispenser.lean#L121-L143"><tt class="verbatim">arriving</tt></a>
+          <em>(key result)</em> &mdash; The pushed-forward density at a
+          configuration equals a sum over sectors with matching flags of
+          integrals over tag variables weighted by streak shares.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-38"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.38</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Star.lean#L68-L69"><tt class="verbatim">wheeled</tt></a>
+          <em>(key result)</em> &mdash; Under provisions hypotheses there
+          exists a trial system that travels and satisfies purchases.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-39"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.39</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Diana.lean#L57-L104"><tt class="verbatim">v_paid_factory</tt></a>
+          <em>(key result)</em> &mdash; Provisions hypotheses imply the empire
+          (aggregate) property for the factory data.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-40"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.40</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Lys.lean#L40-L60"><tt class="verbatim">y_ready</tt></a>
+          <em>(key result)</em> &mdash; Under a heavy list of hypotheses, the
+          root test of the invoice part at every mode is bounded by the
+          budget.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-41"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.41</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Gelatin.lean#L23-L92"><tt class="verbatim">asideP</tt></a>
+          <em>(numbered result)</em> &mdash; Applying the coupon estimate to
+          already packed key addresses yields the coupon bound with parameters
+          scaled by eta times t.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-42"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.42</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/East/Reach.lean#L27-L42"><tt class="verbatim">lava_v</tt></a>
+          <em>(key result)</em> &mdash; Uniformly on a compact set, eventually
+          in k, an endpoint estimate holds for poised configurations.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-43"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.43</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L48-L71"><tt class="verbatim">rated</tt></a>
+          <em>(key result)</em> &mdash; Along a refined subsequence the
+          limiting data form a table with seed whose rank matrix has the
+          Maxwell ranks.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-44"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.44</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Delft.lean#L27-L35"><tt class="verbatim">attire</tt></a>
+          <em>(key result)</em> &mdash; Under spacing and budget hypotheses,
+          the main budget to the boundary holds at any eligible specification.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-45"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.45</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Morning.lean#L35-L53"><tt class="verbatim">herald</tt></a>
+          <em>(key result)</em> &mdash; For a branching patch, there is a
+          constant U&#x2A7E;1 such that for large t and x in [t/2,t], suitable
+          parameters make the Dawn condition hold uniformly for &beta;,&beta;'
+          in range.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-46"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.46</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Emanate.lean#L15-L30"><tt class="verbatim">readyA</tt></a>
+          <em>(key result)</em> &mdash; Under the standing hypotheses there is
+          a nonzero conserved current in the kernel together with a scaling
+          that is stable and compatible between the two hierarchies.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-47"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.47</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Focusing.lean#L43-L101"><tt class="verbatim">scopes</tt></a>
+          <em>(key result)</em> &mdash; For a branching patch, there exists
+          E&#x2A7E;1 such that the strong-scope property holds for all large
+          x.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-48"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.48</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Bravo.lean#L55-L89"><tt class="verbatim">annular_fieldA</tt></a>
+          <em>(key result)</em> &mdash; The flux of the stress against
+          homogeneous Killing fields is represented by a single limit field B
+          on annular windows.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-49"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.49</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Star.lean#L64-L66"><tt class="verbatim">cast_off</tt></a>
+          <em>(key result)</em> &mdash; For a simple graph, frequent good
+          scales (tender, metering, hours, marks) imply the provisions
+          conclusion for the sequence.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-50"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.50</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/TeamKernel.lean#L71-L89"><tt class="verbatim">success</tt></a>
+          <em>(key result)</em> &mdash; The weighted sum over molecules
+          converges to the push-forward value of the partition-type quantity,
+          completing the expansion identity.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-51"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.51</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Offers.lean#L38-L61"><tt class="verbatim">hoops</tt></a>
+          <em>(key result)</em> &mdash; At weak coupling, eventually in s, for
+          dyed step data matching a patch and ratio, the Helps property holds
+          with beta at most 4 times retimed x.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-52"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.52</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Starring.lean#L31-L37"><tt class="verbatim">boot</tt></a>
+          <em>(key result)</em> &mdash; For generic points and suitable
+          parameters, the initial uncorrected array (Boot) hypothesis holds
+          for all sufficiently large k.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-53"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.53</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/West/Esme.lean#L42-L57"><tt class="verbatim">mural_cast</tt></a>
+          <em>(key result)</em> &mdash; Over any compact set of distinct-point
+          configurations, the wall conditions with numeric gates hold
+          uniformly for all sufficiently large scales.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-54"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.54</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Crowns.lean#L146-L157"><tt class="verbatim">s_choir</tt></a>
+          <em>(key result)</em> &mdash; For fit points of at most two, the
+          choir property holds for the short stamp.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-55"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.55</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/North/Economist.lean#L23-L32"><tt class="verbatim">laurelE</tt></a>
+          <em>(key result)</em> &mdash; If a configuration is created and
+          makes its requirements, then the economics (budget) condition holds.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-56"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.56</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Opacity/Dredge.lean#L33-L75"><tt class="verbatim">dredge</tt></a>
+          <em>(key result)</em> &mdash; There is &#x2113;&#x2A7E;1 such that
+          eventually in x the soundness property holds for all positioned
+          configurations with parameters in range.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-57"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.57</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Festoon.lean#L57-L126"><tt class="verbatim">console</tt></a>
+          <em>(key result)</em> &mdash; For healthy polynomial data on a
+          common mask, the tagged cumulant calculation yields a quantitative
+          estimate for the polygon-composed polynomial under degree and weight
+          bounds.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-58"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.58</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Hearth.lean#L87-L88"><tt class="verbatim">preheat</tt></a>
+          <em>(key result)</em> &mdash; For large sides and couplings there is
+          m&gt;0 such that for all K, D, the peaking property holds eventually
+          in x after subtracting affine squares.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-59"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.59</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/East/Medal.lean#L36-L76"><tt class="verbatim">aspect</tt></a>
+          <em>(key result)</em> &mdash; Along a sequence of poised tables with
+          diverging index, there exist limiting balances (extraction) for the
+          calibrated data.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-60"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.60</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L84-L95"><tt class="verbatim">v_culminates</tt></a>
+          <em>(main result)</em> &mdash; For simple G and b large enough, the
+          empire hypothesis implies the Turning property.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-61"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.61</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/South/FinalG.lean#L76-L83"><tt class="verbatim">grilled</tt></a>
+          <em>(key result)</em> &mdash; Cell hypotheses imply the Grill
+          property for the observable.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-62"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.62</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Copse.lean#L50-L72"><tt class="verbatim">stroke</tt></a>
+          <em>(key result)</em> &mdash; A served property for a family of
+          observables propagates through a pushforward kernel with explicit
+          exponential-type bound loss.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-63"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.63</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Rendered.lean#L36-L86"><tt class="verbatim">rendered</tt></a>
+          <em>(key result)</em> &mdash; If a layout achieves the pointwise
+          representation on positioned data, the pushforward of the field
+          density equals the tableau expression.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-64"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.64</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L177-L222"><tt class="verbatim">v_obtain_purchases</tt></a>
+          <em>(key result)</em> &mdash; Offers imply the existence of a trial
+          system that travels and satisfies purchases.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-65"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.65</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Supra.lean#L29-L53"><tt class="verbatim">v_conditioned</tt></a>
+          <em>(key result)</em> &mdash; Under a path, tally and instance
+          hypotheses with sufficiently large m, an estimate holds for the ship
+          with the given allowance.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-66"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.66</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/AFTERNOON_INTERACTING_RANK_COMPARISON/Soft/Agate.lean#L37-L63"><tt class="verbatim">v_reward</tt></a>
+          <em>(key result)</em> &mdash; Under coupler, return-trip and
+          small-parameter hypotheses, the dust pushforward satisfies matric
+          and radii bounds with explicit constants.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a id="k-iii-11-67"></a>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>K-III.11.67</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/East/Gran.lean#L38-L51"><tt class="verbatim">sponsored</tt></a>
+          <em>(key result)</em> &mdash; For a simple gauge group and local
+          ratio, a sufficiently long wait structure guarantees that families
+          paid at those levels satisfy weak completeness.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview of the proof</a>
+      &middot; <a href="../../index.html">Repository</a>
+    </p>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-10.html">&larr; III.10 One full nonlinear renormalization step:
+      bounds on irrelevant terms</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../notes/III-11.html">Detailed notes</a></span><a class="ym-next" href="III-12.html">III.12
+      Bounds uniform in the volume and convergence as the spacing tends to
+      zero &rarr;</a>
+    </div>
+  </body>
+</html>

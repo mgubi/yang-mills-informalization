@@ -1,0 +1,2463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>III.3. Free lattice kernels and covariances &mdash; detailed notes
+    &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-2.html">&larr; III.2 Choosing the constants: the order of choice
+      and the RG schedule (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-3.html">Unit outline</a></span><a class="ym-next" href="III-4.html">III.4
+      Gaussian integration: change of Gaussian sector, determinants, window
+      law (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>III.3. Free lattice kernels and covariances &mdash; detailed
+      notes</h1><a id="iii3-free-lattice-kernels-and-covariances--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">8</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">9</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">10</a>
+      </p>
+      <p>
+        4.1 Filters and histories <span style="margin-left: 5mm"></span> <a href="#auto-5">10</a>
+      </p>
+      <p>
+        4.2 Explicit metric data <span style="margin-left: 5mm"></span> <a href="#auto-6">11</a>
+      </p>
+      <p>
+        4.3 Transfer kernels of one flight <span style="margin-left: 5mm"></span> <a href="#auto-7">12</a>
+      </p>
+      <p>
+        4.4 The defect and the amendment <span style="margin-left: 5mm"></span> <a href="#auto-8">14</a>
+      </p>
+      <p>
+        4.5 The catalogue <span style="margin-left: 5mm"></span> <a href="#auto-9">15</a>
+      </p>
+      <p>
+        4.6 Along a schedule: pre-repair, repair, output <span style="margin-left: 5mm"></span>
+        <a href="#auto-10">15</a>
+      </p>
+      <p>
+        4.7 All tori <span style="margin-left: 5mm"></span> <a href="#auto-11">17</a>
+      </p>
+      <p>
+        4.8 Free covariance of the curvature (III.3.6) <span style="margin-left: 5mm"></span> <a
+        href="#auto-12">17</a>
+      </p>
+      <p>
+        4.9 Calculus lemmas (III.3.7) <span style="margin-left: 5mm"></span> <a href="#auto-13">18</a>
+      </p>
+      <p>
+        4.10 Auxiliary results <span style="margin-left: 5mm"></span> <a href="#auto-14">18</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">19</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-16">20</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-17">21</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit III.3: every proposition with its proof
+        sketch, checked against the Lean in two rounds and edited. The
+        condensed outline and the map of the Lean are on the <a href="../units/III-3.html">unit
+        page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/III-3.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> III, Ultraviolet construction (renormalization
+      group). <strong>Lean:</strong> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS"><tt class="verbatim">YM/Next/FREE_KERNELS/</tt></a>
+      (5,450 lines), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION"><tt class="verbatim">YM/MultiNext/SIGNED_SOURCE_CONTINUATION/</tt></a>
+      (1,674), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP"><tt class="verbatim">YM/Further/FREE_COVARIANCE_KP/</tt></a>
+      (924), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS"><tt class="verbatim">YM/UVNext/PRICED_KERNELS/</tt></a> (533), <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/CORRECTED_LIFT_COEFFICIENTS"><tt class="verbatim">YM/Further/CORRECTED_LIFT_COEFFICIENTS/</tt></a> (248),
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/CUTOFF_PROJECTORS"><tt class="verbatim">YM/Push/CUTOFF_PROJECTORS/</tt></a> (139), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/ProofPorts/GRID_RENEWED_RESERVES"><tt
+      class="verbatim">YM/ProofPorts/GRID_RENEWED_RESERVES/</tt></a> (30).
+      <strong>Size:</strong> 8,998 lines in the main-theorem closure.
+    </p>
+    <p>
+      <strong>Conventions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Tori and forms.</strong> \(\Lambda_n = (\mathbb{Z}/
+          n\mathbb{Z})^4\), \(n \geqslant 1\). \(\Omega^r (\Lambda_n)\) is the
+          space of real \(r\)-cochains, with the counting inner product. \(d_r
+          : \Omega^r \to \Omega^{r + 1}\) is the exterior derivative, and \(d
+          = d_1\). \(X^{\ast}\) denotes the transpose on real cochains and the
+          Hermitian adjoint of a symbol at real momentum. Displacements use
+          \(|y|_1\); real momenta use the Euclidean norm \(|p|\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Levels.</strong> In mesh \(N\) the levels are \(i = N,
+          \ldots, 0\). Level \(N\) is the bare lattice. Step \(i < N\) maps
+          level \(i + 1\) (fine torus \(\Lambda_f\)) to level \(i\) (coarse
+          torus \(\Lambda_c\)), with \(f = cL_i\) and \(L_i \geqslant 3\) odd.
+          Level \(i\) has a stage index \(J (i) \geqslant 4\), and \(J (i)
+          \leqslant J (i + 1) \leqslant J (i) + 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Kernels.</strong> A <em>kernel</em> is a map \(R :
+          \mathbb{Z}^4 \to \text{Hom} (\mathbb{R}^{\beta},
+          \mathbb{R}^{\alpha})\), where \(\alpha, \beta\) are sets of face
+          types. It acts on every torus by periodisation: \((R_n \omega) (x) =
+          \sum_{y \in \mathbb{Z}^4} R (y)  \hspace{0.17em} \omega (x
++ y)\).
+          Its symbol is \(\hat{R} (p) = \sum_y R (y) e^{ip \cdot y}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Cross kernels.</strong> A <em>cross kernel</em> of block
+          size \(L\) also carries a fine residue \(r \in (\mathbb{Z}/ L)^4\)
+          in its row index. It maps cochains on \(\Lambda_c\) to cochains on
+          \(\Lambda_{cL}\), for every \(c\). Its displacements are measured on
+          the coarse lattice.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Strip bound.</strong> \(R \in \mathcal{S} (\alpha, \Omega)\)
+          means \(\sum_y e^{\alpha |y|_1} |R_{ab} (y) | \leqslant \Omega\) for
+          every entry. This implies that \(\hat{R}\) is analytic and bounded
+          on \(| \text{Im} \hspace{0.17em} p_a | < \alpha\). Conversely, a
+          bounded periodic analytic symbol has such a weighted coefficient
+          bound on each narrower strip.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Aliases and lattice momenta.</strong> For a coarse momentum
+          \(p\), the fine aliases are \(q_{\ell} = (p + 2 \pi \ell) / L\),
+          \(\ell \in (\mathbb{Z}/ L)^4\) (centred representatives). \(\tau (p)
+          = (e^{ip_a} - 1)_{a = 1}^4\) is the lattice momentum, and \(\sigma_r
+          (p)\) is the symbol of \(d_r\), so \(\sigma_0 = \tau\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Complex cubes.</strong> Write \(\mathcal{C}_{\theta} = \{p
+          \in \mathbb{C}^4 : | \text{Re} \hspace{0.17em} p_a
+| < \pi + \theta,
+          | \text{Im} \hspace{0.17em} p_a | < \theta\}\) and
+          \(\mathcal{C}_{\theta}^{\mathbb{R}} =\mathcal{C}_{\theta} \cap
+          \mathbb{R}^4\). Absolute squares in the real-momentum formulas are
+          continued holomorphically as \(g (p) g (- p)\) for real-coefficient
+          filters, and \(| \tau (p) |^2\) as \(\sum_a (e^{ip_a} - 1)  (e^{-
+          ip_a} - 1)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Constants from the kernel choice.</strong> \(\kappa > 0\) is
+          the penalty of the kernel choice \(K\) (the number \(b\) of the main
+          theorem). \(c_i > 0\) is the direct coefficient of the clip of level
+          \(i\), that is, the coefficient of the bare plaquette term in the
+          quadratic part of the action.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      The unit computes the Gaussian part of the block-spin step of III.1 in
+      closed form, for every history of steps. It proves three things about
+      it:
+    </p>
+    <ul>
+      <li>
+        <p>
+          exact algebraic identities on every torus, giving an orthogonal
+          splitting of the quadratic form;
+        </p>
+      </li>
+      <li>
+        <p>
+          exponential decay, uniform in the block sizes, history length and
+          torus, with constants fixed by the kernel choice and stage index,
+          and, after repair, by the sheet's direct clip coefficients;
+        </p>
+      </li>
+      <li>
+        <p>
+          uniform ellipticity and hypercubic symmetry of the quadratic forms.
+        </p>
+      </li>
+    </ul>
+    <p>
+      The constants are fixed before the block sizes (Proposition III.3.1).
+      Positivity of the rolled kernel requires the lower bound \(L \geqslant
+      b_j\).
+    </p>
+    <p>
+      The package also contains:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the free covariance of the curvature and its comparison with the
+          continuum (III.3.6, used in III.11);
+        </p>
+      </li>
+      <li>
+        <p>
+          calculus lemmas used in the nonlinear step (III.3.7, used in III.10
+          and III.2).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>The identities of one step.</strong> Fix a step with tori
+      \(\Lambda_f, \Lambda_c\), \(f = cL\). Let \(Q : \Omega^1 (\Lambda_f) \to
+      \Omega^1 (\Lambda_c)\) be the linearised block average of III.1: a
+      weighted average, over a \(J\)-fold smoothing patch, of line integrals
+      of the fine 1-form along \(L\)-link paths.
+    </p>
+    <p>
+      <em>Metric data</em> on a level is a quintuple \(\mathcal{B}= (D, D^{-
+      1}, H, H^{- 1}, R)\) of kernels on 2-forms: a diagonal multiplier, its
+      inverse, a metric, its inverse, and a root. With the direct coefficient
+      \(c\) of the level's clip, set
+    </p>
+    <center>
+      \(\displaystyle V = (\sqrt{c}  \hspace{0.17em} 1, \hspace{0.17em} R) :
+      \Omega^2 \to \Omega^2
+\oplus \Omega^2 .\)
+    </center>
+    <p>
+      Then \(V^{\ast} V = c \hspace{0.17em} 1 + R^{\ast} R = H\) and \(\langle
+      dA, H \hspace{0.17em} dA \rangle = |V \hspace{0.17em} dA|^2\).
+    </p>
+    <p>
+      <em>Transfer kernels</em> are \(\mathcal{U}= (W, T, M_f, M_n, O)\) with:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(W : \Omega^1 (\Lambda_c) \to \Omega^1 (\Lambda_f)\) and \(T :
+          \Omega^2 (\Lambda_c) \to \Omega^2 (\Lambda_f)\) (cross kernels);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(M_f : (\Omega^2)^{\oplus 2} (\Lambda_c) \to (\Omega^2)^{\oplus 2}
+          (\Lambda_f)\) (cross kernel);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(M_n : (\Omega^2)^{\oplus 2} (\Lambda_c) \to \Omega^1
+          (\Lambda_c)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(O : (\Omega^2)^{\oplus 2} (\Lambda_c) \to ((\Omega^2)^{\oplus 2}
+          \oplus
+\Omega^3) (\Lambda_c)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      With fine data \((\mathcal{B}, V)\) and coarse data \((\mathcal{B}',
+      V')\), the identities are:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (D1) \(d^{\ast} H \hspace{0.17em} d \hspace{0.17em} W = Q^{\ast}
+          d^{\ast} H' d\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (D2) \(QW = 1 - \kappa^{- 1} d^{\ast} H' d\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (D3) \(T^{\ast} d = dQ\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (D4) \(T \hspace{0.17em} D' d = D \hspace{0.17em} d \hspace{0.17em}
+          W\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (R1) \(M_f^{\ast} M_f + M_n^{\ast} M_n + O^{\ast} O = 1\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (R2) \(\sqrt{\kappa}  \hspace{0.17em} M_n^{\ast} = V' d\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (R3) \(M_f V' d = V \hspace{0.17em} d \hspace{0.17em} W\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (R4) \(M_n V' d = \kappa^{- 1 / 2} d^{\ast} H' d\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (R5) \(OV' d = 0\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (R6) \(M_f^{\ast} V \hspace{0.17em} d = \sqrt{\kappa} 
+          \hspace{0.17em} M_n^{\ast} Q\)
+        </p>
+      </li>
+      <li>
+        <p>
+          (&Delta;) \(H'  \left( {H'}^{- 1} - T^{\ast} H^{- 1} T - \kappa^{-
+          1} d \hspace{0.17em}
+d^{\ast} \right) H' = d_2^{\ast} P
+          \hspace{0.17em} d_2\), for a 3-form kernel \(P\) on the coarse
+          level.
+        </p>
+      </li>
+    </ul>
+    <p>
+      What the identities mean:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(D1)&ndash;(D2).</strong> These say that \(A = WB\) is a
+          critical point, hence a minimiser, of \(A \mapsto \langle dA, H
+          \hspace{0.17em} dA \rangle + \kappa |QA - B|^2\), and that the
+          minimum is \(\langle dB, H' dB \rangle\). So \(W\) is Balaban's
+          background-field (minimiser) map, and \(H'\) is the effective metric
+          of the coarse level. The value identity is III.1's <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L93-L103"><tt
+          class="verbatim">action</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(D3)&ndash;(D4).</strong> (D3) makes \(T^{\ast}\) a 2-form
+          average compatible with \(Q\). (D4) says that \(T\) carries the
+          weighted coarse curvature \(D' dB\) to the weighted fine curvature
+          \(D \hspace{0.17em} dWB\) of the background field.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(R1)&ndash;(R6): orthogonal splitting.</strong> For \(A \in
+          \Omega^1 (\Lambda_f)\), \(B \in \Omega^1 (\Lambda_c)\) and \(Z = A -
+          WB\), (R3), (R4) and (D2) give
+        </p>
+        <center>
+          \(\displaystyle \left( V \hspace{0.17em} dA, \sqrt{\kappa} (B - QA)
+          \right) = (M_f, M_n) V' dB
++ \left( V \hspace{0.17em} dZ,
+          \hspace{0.17em} - \sqrt{\kappa} 
+\hspace{0.17em} QZ \right) .\)
+        </center>
+        <p>
+          The two summands are orthogonal by (R6), and \(| (M_f, M_n) V' dB| =
+          |V' dB|\) by (R1) and (R5). Hence
+        </p>
+        <center>
+          \(\displaystyle \langle dA, H \hspace{0.17em} dA \rangle + \kappa
+          |QA - B|^2 = \langle dB, H'
+dB \rangle + \langle dZ, H
+          \hspace{0.17em} dZ \rangle + \kappa |QZ|^2 .\)
+        </center>
+      </li>
+      <li>
+        <p>
+          <strong>(&Delta;).</strong> This is the same splitting for inverse
+          metrics. It says \({H'}^{- 1} = T^{\ast} H^{- 1} T + \kappa^{- 1}
+          dd^{\ast} {+ H'}^{- 1}
+d_2^{\ast} Pd_2 {H'}^{- 1}\), and the last
+          term sees only \(d_2 {H'}^{- 1} \omega\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition III.3.1 (catalogue fixed before the block
+      sizes).</strong> Let \(K\) be a kernel choice. There are numbers
+      \(\alpha_j > 0\), \(\eta_j > 0\), \(\Omega_j \in \mathbb{R}\),
+      \(\lambda_j \geqslant 0\) (amendments), \(\gamma_j > 0\) (clip bounds)
+      and \(b_j \in \mathbb{N}\) (block thresholds), \(j \in \mathbb{N}\),
+      depending only on \(K\), with the following properties.
+    </p>
+    <p>
+      (a) <em>Metric data of a history.</em> Let \(j \geqslant 4\), let the
+      clip have direct coefficient \(c \leqslant \gamma_j\), and let \(v\) be
+      a history of stage index \(j\). Then there is metric data \((D, D^{- 1},
+      H, H^{- 1}, R)\) such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(D\) and \(D^{- 1}\) are the explicit kernels of \(v\) with penalty
+          \(\kappa\), and \(H^{- 1} = D^{- 1} + \lambda_j  (d_2 D^{-
+          1})^{\ast}  (d_2 D^{- 1})\) (Lemmas 4.4&ndash;4.7);
+        </p>
+      </li>
+      <li>
+        <p>
+          all five kernels lie in \(\mathcal{S} (\alpha_j, \Omega_j)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          on every torus: \(DD^{- 1} = HH^{- 1} = 1\), \(c \hspace{0.17em} 1 +
+          R^{\ast} R = H\), \(\hat{H} (0) = 1\), \(Hd = Dd\), and \(H\) and
+          \(D\) are symmetric;
+        </p>
+      </li>
+      <li>
+        <p>
+          on every torus: \(\eta_j | \omega |^2 \leqslant \langle \omega, H
+          \omega \rangle \leqslant
+\Omega_j | \omega |^2\), and the same for
+          \(D\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every gauge group \(G\), the form \(\langle A, d^{\ast} Hd
+          \hspace{0.17em} A \rangle\) on \(\mathfrak{g}\)-valued 1-forms is
+          invariant under the signed lattice symmetries;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(D = 1\) if \(v\) is the empty history.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (b) <em>One step.</em> Let \(j, t \geqslant 4\) with \(t \in \{j, j -
+      1\}\), and let \(P\) be a flight of index \((j, t)\): odd block size \(L
+      \geqslant 3\) and fine history of index \(j\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          the explicit transfer kernels \(W, T\) of \(P\) satisfy \(\nabla_u W
+          \in \mathcal{S} (\alpha_j, \Omega_j L^{- 1 - |u|})\) and \(\nabla_u
+          T \in \mathcal{S} (\alpha_j, \Omega_j L^{- 2 - |u|})\), for every
+          word \(u\) of at most \(j - 2\) fine forward differences;
+        </p>
+      </li>
+      <li>
+        <p>
+          the rolled 3-form kernel \(\mathcal{P}\) of \(P\), built with fine
+          amendment \(\lambda_j\) and coarse amendment \(\lambda_t\) (Lemma
+          4.12), lies in \(\mathcal{S} (\alpha_j, \Omega_j)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(L \geqslant b_j\), then at every real momentum
+          \(\hat{\mathcal{P}} (p)\) is Hermitian and \(\eta_j \leqslant
+          \hat{\mathcal{P}} (p) \leqslant \Omega_j\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem, with no hypothesis beyond the kernel choice.
+      It uses III.6's square-root theorem to construct \(R\). The catalogue
+      does not depend on \(G\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L29-L33"><tt class="verbatim">Catalog</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L67-L93"><tt class="verbatim">pledges</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L22-L24"><tt class="verbatim">BottomQuote</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L25-L28"><tt class="verbatim">HopQuote</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L20"><tt class="verbatim">Mag</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Ground.lean#L54-L58"><tt class="verbatim">Defined</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68"><tt class="verbatim">Floor</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L21-L22"><tt class="verbatim">Donate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L38-L40"><tt class="verbatim">Funds</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.3.2 (free kernels along an admissible
+      schedule).</strong> Let \(G\) be a gauge group and \(K\) a kernel
+      choice. There is a catalogue \((\alpha, \Omega, \eta, \lambda, \gamma,
+      b)\) as in III.3.1 with the following property. For every sheet
+      \(\mathfrak{S}\) with kernel \(K\) (the pre-\(L\) constants, III.2)
+      there is a second table \((\alpha'_j, \Omega'_j, \eta_j)\) such that the
+      conclusion below holds.
+    </p>
+    <p>
+      Let \(A\) be an RG trajectory with kernel \(K\) and the stage profile of
+      \(\mathfrak{S}\), satisfying the <em>credit condition</em>:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (C1) \(c_i \leqslant \gamma_{J (i)}\) for every level \(i\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (C2) \(b_{J (i + 1)} \leqslant L_i\) for every step \(i\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then, simultaneously for all \(N \geqslant 0\) and \(0 \leqslant i
+      \leqslant N\), there are two families of metric data and transfer
+      kernels: a pre-repair family \(\textsf{M} = (\mathcal{B}^{N, i},
+      \mathcal{U}^{N, i})\) and an output family \(\textsf{H} =
+      (\mathcal{B}^{N, i}, \tilde{\mathcal{U}}^{N, i})\). They have the same
+      metric data and the same \(W, T\), and satisfy:
+    </p>
+    <ol>
+      <li>
+        <p>
+          <em>Explicit formulas.</em> \(\mathcal{B}^{N, i}\) is the metric
+          data of III.3.1(a) for the history of level \(i\) in mesh \(N\),
+          with amendment \(\lambda_{J (i)}\). That history is the composite of
+          the stage hops of steps \(N - 1, \ldots, i\), starting from the
+          empty history at level \(N\). \(W^{N, i}, T^{N, i}\) are the
+          explicit transfer kernels of the flight of step \(i\), of index \((J
+          (i + 1), J (i))\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Pre-repair conditions (\(\textsf{M}\)).</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(\mathcal{B}^{N, i} \in \mathcal{S} (\alpha_{J (i)}, \Omega_{J
+              (i)})\), with lower and upper bounds \(\eta_{J (i)}, \Omega_{J
+              (i)}\) on every torus for the clip of level \(i\), and the
+              symmetry;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(D^{N, N} = 1\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(W, T\) have the derivative bounds of III.3.1(b) at stage \(J
+              (i + 1)\), with \(J (i + 1) - 2\) differences;
+            </p>
+          </li>
+          <li>
+            <p>
+              (D1)&ndash;(D4) hold on every schedule torus pair of step \(i\);
+            </p>
+          </li>
+          <li>
+            <p>
+              there is a 3-form kernel \(P \in \mathcal{S} (\alpha_{J (i +
+              1)}, \Omega_{J (i + 1)})\), Hermitian at real momenta, with
+              \(\langle v, \hat{P} (p) v \rangle \geqslant \eta_{J (i + 1)}
+              |v|^2\) for real \(p\) and \(v\) in the range of \(\sigma_2
+              (p)\), such that (&Delta;) holds on every schedule torus pair.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Output conditions (\(\textsf{H}\)), with the second table.</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              the metric bounds of III.3.1(a), with strip constants
+              \(\alpha'_j, \Omega'_j\) and the same lower bounds \(\eta_j\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\tilde{M}_n, \tilde{O} \in \mathcal{S} (\alpha'_{J (i + 1)},
+              \Omega'_{J (i +
+1)})\) and \(\tilde{M}_f \in \mathcal{S}
+              (\alpha'_{J (i + 1)}, \Omega'_{J (i + 1)} L_i^{-
+2})\), and the
+              derivative bounds on \(W, T\) with \(\alpha'_j, \Omega'_j\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (D1)&ndash;(D4) and (R1)&ndash;(R6) on every schedule torus
+              pair, with the clips of levels \(i + 1, i\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(D^{N, N} = 1\), and the symmetry of every \(\mathcal{B}^{N,
+              i}\).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      <em>Status:</em> theorem. The inputs F06&ndash;F09 (III.6) are
+      discharged inside the proof. For trajectories with the stated kernel and
+      profile, the additional hypothesis is the credit condition. The variant
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L108-L124"><tt class="verbatim">before_paid</tt></a> (assigned to III.4) replaces it
+      by:
+    </p>
+    <ul>
+      <li>
+        <p>
+          two conditions on the sheet: clip coefficients \(\leqslant
+          \gamma_j\), and block-size floors \(\geqslant b_j\), for all stages
+          from the first one on;
+        </p>
+      </li>
+      <li>
+        <p>
+          the schedule's payment record (III.2), which gives \(L_i \geqslant\)
+          floor.
+        </p>
+      </li>
+    </ul>
+    <p>
+      III.9 builds the sheet so that these hold: its floors are exactly \(b\)
+      and its clip coefficients are \(\leqslant \gamma\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/UNMASKED_THROUGH_LAUNCH/Dome.lean#L90-L101"><tt class="verbatim">housing</tt></a>).
+      The variant also lets the second table be computed from a preliminary
+      sheet \(\mathfrak{S}\) and used for any later sheet \(\mathfrak{S}'\),
+      provided \(\mathfrak{S}'\) has the same direct clip coefficients, the
+      same kernel, a drift at least as large, and logarithmic parameter size
+      at least as large.
+    </p>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L134-L145"><tt class="verbatim">retained_support</tt></a>; conditions
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L82-L85"><tt class="verbatim">Present</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L63-L73"><tt class="verbatim">Craft.Rack</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L104-L105"><tt class="verbatim">Bid.Retained</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139"><tt class="verbatim">Horizon.Suffices</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L54-L55"><tt class="verbatim">Bid.Sworn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L87-L88"><tt class="verbatim">Credit</tt></a>;
+      discharge <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L95-L102"><tt class="verbatim">credit_from_sheet</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L28"><tt
+      class="verbatim">Willing</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.3.3 (identities on every torus).</strong> Let a
+      family satisfy the output conditions of III.3.2(3) for some table. For
+      every \(N\), \(m < N\) and positive sides \(c, f\) with \(f = cL_m\),
+      (D1)&ndash;(D4) and (R1)&ndash;(R6) hold, with the same kernels and the
+      clips of levels \(m + 1, m\). The diagonal identities follow by rigidity
+      (III.10, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Purl.lean#L20-L53"><tt class="verbatim">panes</tt></a>). They also follow from the
+      explicit formulas when the family realises them (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Tori.lean#L46-L60"><tt class="verbatim">universal_diagonal</tt></a>).
+      Given the diagonal identities, the roll identities follow from the
+      output conditions by the same rigidity argument. <em>Status:</em>
+      theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Tori.lean#L109-L157"><tt class="verbatim">complete_roll</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L82-L86"><tt class="verbatim">Towers.Diagonal</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L88-L96"><tt class="verbatim">Towers.Roll</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L76-L79"><tt class="verbatim">Inputs</tt></a>. Used in III.10.
+    </p>
+    <p>
+      <strong>Proposition III.3.4 (positivity of the rolled 3-form
+      kernel).</strong> Fix a kernel choice \(K\) and \(j, t \geqslant 4\).
+      There are \(C_0, B > 0\), depending only on \((K, j, t)\), with the
+      following property. For every coarse amendment \(\lambda \geqslant C_0\)
+      and fine amendment \(\mu \geqslant 0\) there are \(\eta, \sigma, \Omega
+      > 0\) such that, for every flight \(P\) of index \((j, t)\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{P}_{\mu, \lambda} (P) \in \mathcal{S} (\sigma, \Omega)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          if \(\mu B \leqslant L^2\), then at every real \(p\),
+          \(\hat{\mathcal{P}}_{\mu, \lambda} (p)\) is Hermitian and \(\eta
+          \leqslant \hat{\mathcal{P}}_{\mu, \lambda} (p) \leqslant \Omega\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L99-L140"><tt class="verbatim">Flight.frontier</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L58-L95"><tt class="verbatim">Flight.absorb_before</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.3.5 (line and box filters).</strong> For
+      positive integers \(L, M\), define the uncentred line average below; for
+      odd \(L, M\), also define the centred line and box averages:
+    </p>
+    <center>
+      \(\displaystyle \text{plank}_M (z) = M^{- 1}  \sum_{|s| \leqslant (M -
+      1) / 2} e^{isz}, \qquad
+\text{rail}_M (z) = M^{- 1}  \sum_{s = 0}^{M -
+      1} e^{isz}, \qquad a_L (p) =
+\prod_a \text{plank}_L (p_a)\)
+    </center>
+    <p>
+      (centred line average, uncentred line average, box average). Then:
+    </p>
+    <p>
+      (a) \(\text{rail}_L (Mz) \hspace{0.17em} \text{rail}_M (z) =
+      \text{rail}_{LM} (z)\) for all positive \(L, M\), and \(\text{plank}_L
+      (Mz) \hspace{0.17em} \text{plank}_M (z) = \text{plank}_{LM} (z)\) for
+      odd \(L, M\). For odd \(M\), \(\text{plank}_M\) is even, \(2
+      \pi\)-periodic and real on \(\mathbb{R}\).
+    </p>
+    <p>
+      (b) \(| \text{plank}_M (z) |, | \text{rail}_M (z) | \leqslant e^{M |
+      \text{Im}
+\hspace{0.17em} z|}\).
+    </p>
+    <p>
+      (c) There are absolute constants \(c_{\ast}, c_1 > 0\) such that \(|
+      \text{rail}_M (z) | \geqslant c_{\ast}\) for complex \(z\) with \(M |z|
+      \leqslant 3 \pi / 2\), and \(| \text{plank}_M (z) | \geqslant e^{- c_1 M
+      / L}\) for real \(z\), \(M \leqslant L\) and \(L |z| \leqslant 3 \pi /
+      2\).
+    </p>
+    <p>
+      (d) There is an absolute \(B\) such that \(| \text{rail}_L
+      ((q_{\ell})_a) |, | \text{plank}_L ((q_{\ell})_a) | \leqslant
+B / (1 + |
+      \ell_a |)\). This holds for odd \(L\), every \(p\) in the complex cube
+      \(\{| \text{Re} \hspace{0.17em} p_a | < \tfrac{5 \pi}{4}, |
+      \text{Im}
+\hspace{0.17em} p_a | < \tfrac{\pi}{4} \}\), every alias
+      \(\ell\) and every \(a\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L38"><tt class="verbatim">plank</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L34"><tt class="verbatim">rail</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L18"><tt class="verbatim">area</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L68-L76"><tt class="verbatim">plank_bind</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L51-L62"><tt class="verbatim">rail_bind</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L127-L133"><tt class="verbatim">plank_height</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L140-L152"><tt class="verbatim">rail_lower</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L162-L196"><tt class="verbatim">principal_plank</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L200-L245"><tt class="verbatim">alias_rail</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.3.6 (free covariance of the curvature).</strong>
+      Call a real 2-form kernel \(f\) <em>firm</em> with constants \((\alpha,
+      \Omega, \eta)\) if \(f \in \mathcal{S} (\alpha, \Omega)\), \(\hat{f} (0)
+      = 1\), and \(\eta | \omega |^2 \leqslant \langle \omega, f_n \omega
+      \rangle \leqslant
+\Omega | \omega |^2\) for every real cochain on every
+      torus. Symmetry is not required. Fix \(\alpha, \eta > 0\) and \(\Omega
+      \in \mathbb{R}\), and let \(U = \{p \in \mathbb{R}^4 \setminus \{0\}:
+      |p_a | < 3 \pi / 2\}\). For \(p \in U\) define:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\Phi_f (p) = \sigma_1 (p)^{\ast} \hat{f} (p) \sigma_1 (p) +
+          \sigma_0 (p)
+\sigma_0 (p)^{\ast}\), the symbol of \(d_1^{\ast} fd_1
+          + d_0 d_0^{\ast}\) on 1-forms;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(G_f (p) = \sigma_1 (p) \Phi_f (p)^{- 1} \sigma_1 (p)^{\ast}\), the
+          curvature covariance symbol when \(f\) is symmetric and the
+          gauge-fixed potential has precision \(d_1^{\ast} fd_1 + d_0
+          d_0^{\ast}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(G_{\infty} (p) = s (p) |p|^{- 2} s (p)^{\ast}\), where \(s (p)\)
+          is wedging with \(ip\) on 1-forms: the continuum Feynman-gauge
+          curvature symbol.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (a) There is \(b > 0\), depending only on \(\alpha, \Omega, \eta\), such
+      that \(\text{Re} \hspace{0.17em} \langle x, \Phi_f (p) x \rangle
+      \geqslant b |p|^2
+|x|^2\) for every firm \(f\), \(p \in U\) and complex
+      1-form \(x\).
+    </p>
+    <p>
+      (b) For every \(n \in \mathbb{N}\) there is \(C_n \geqslant 0\),
+      depending only on \(n, \alpha, \Omega, \eta\), such that, for all firm
+      \(f\) and \(p \in U\), \(\|D^n G_f (p)\| \leqslant C_n |p|^{- n}\) and
+      \(\|D^n (G_f - G_{\infty}) (p)\| \leqslant C_n |p|^{1 - n}\).
+    </p>
+    <p>
+      (c) If \(f\) is a scalar kernel with \(\sum_x e^{\alpha |x|_1} |f (x) |
+      \leqslant \Omega\), then \(\hat{f}\) is \(C^{\infty}\) on
+      \(\mathbb{R}^4\) and \(\|D^n  \hat{f} (p)\| \leqslant A_n \Omega\) for
+      every \(p\), where \(A_0 = 1\) and \(A_n = (n / \alpha)^n\) for \(n
+      \geqslant 1\). Here \(D^n\) is the full \(n\)th Fr&eacute;chet
+      derivative, with its multilinear operator norm; this notation also
+      applies to (b).
+    </p>
+    <p>
+      <em>Status:</em> theorems. Part (b) is used in III.11. <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Core.lean#L115-L125"><tt class="verbatim">tank_full</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Alloy.lean#L110-L120"><tt class="verbatim">gem_quote</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Plain.lean#L101-L133"><tt class="verbatim">radial_prices</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Floor.lean#L17-L21"><tt class="verbatim">Firm</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Core.lean#L62"><tt class="verbatim">fuel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Alloy.lean#L15"><tt class="verbatim">garnet</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Alloy.lean#L17"><tt class="verbatim">pearl</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition III.3.7 (calculus lemmas for the nonlinear
+      step).</strong> These do not concern free kernels; they are consumed in
+      III.10 and III.2.
+    </p>
+    <p>
+      (a) <em>Discrete Taylor expansion with scaled bounds.</em> Let \(b, k
+      \in \mathbb{N}\) with \(k \leqslant b\). There is \(C = C (b, k)
+      \geqslant 1\) with the following property. Let \(L \geqslant 1\), \(M
+      \geqslant 0\), and let \(p : \mathbb{Z}^4 \to E\) (\(E\) a real normed
+      vector space) satisfy \(\| \nabla_u p (x)\| \leqslant ML^{- 1 - |u|}  (1
+      + L^{- 1} |x|_1)^b\) for all words \(u\) of forward differences with
+      \(|u| \leqslant k\). Then the Newton pieces \(P_i (x) = \sum_{| \nu | =
+      i} \binom{x}{\nu} \nabla^{\nu} p (0)\), of degree at most \(i\), satisfy
+      \(\|P_i (x)\| \leqslant CML^{- 1 - i}  (1 + |x|_1)^b\) for \(i < k\),
+      and the remainder satisfies \(\|p (x) - \sum_{i < k} P_i (x)\| \leqslant
+      CML^{- 1 - k}  (1 + |x|_1)^b\).
+    </p>
+    <p>
+      (b) <em>Weighted Taylor coefficients.</em> Let \(d \in \mathbb{N}\) and
+      let \(f : E \to F\) be \(C^d\) at \(0\) between real normed vector
+      spaces. Let \(p_v : E \to E\) (\(v \in V\) finite) be continuous linear
+      maps with \(\sum_v p_v = 1\), and let \(Y_v \geqslant 1\) be integers.
+      Suppose that for every \(z\) the function \(t \mapsto f (\sum_v t^{Y_v}
+      p_v z)\) has vanishing derivatives of orders \(0, \ldots, d\) at \(0\).
+      Then \(D^m f (0) (x_1, \ldots, x_m) = 0\) whenever there are integers
+      \(k_i \geqslant 1\) with \(\sum_i k_i \leqslant d\) and \(p_v (x_i) =
+      0\) for every \(v\) with \(Y_v > k_i\).
+    </p>
+    <p>
+      (c) <em>Moments of local gauge-invariant functions.</em> Fix \(b, d \in
+      \mathbb{N}\) with \(b \leqslant d\), a torus \(\Lambda_n\) with \(n
+      \geqslant 2\), an anchor \(o\), and a finite support \(X\) satisfying
+      \(10 \hspace{0.17em} \text{dist} (x, o) < n\) for every \(x \in X\),
+      where \(\text{dist}\) is the torus \(\ell^{\infty}\) distance. Let \(u :
+      \text{Config} (G, \Lambda_n) \to \mathbb{C}\) be gauge invariant and
+      depend only on links whose two endpoints lie in \(X\), with \(u \circ
+      \exp\) of class \(C^b\) at \(0\). For every radial polynomial connection
+      jet \(J\) through weight \(d\), let \(U_{J, o} (t)\) be its link
+      holonomies at scale \(t\), based at \(o\): a homogeneous connection
+      component of degree \(r - 1\) has weight \(r\), \(2 \leqslant r
+      \leqslant d\), and is multiplied by \(t^r\). Assume \(\frac{d^k}{dt^k} u
+      (U_{J, o} (t)) |_{t = 0} = 0\) for every \(J\) and \(0 \leqslant k
+      \leqslant b\). For any \(m \in \mathbb{N}\), \(p_1, \ldots, p_m
+      \geqslant 1\) with \(\sum_i p_i \leqslant b\), and link fields \(w_i\)
+      whose values on those links are polynomials of degree at most \(p_i -
+      1\) in the centred lift of the initial site relative to \(o\), one has
+      \(D^m  (u \circ \exp) (0) (w_1, \ldots, w_m) = 0\). Values of \(w_i\) on
+      other links are unrestricted.
+    </p>
+    <p>
+      (d) <em>Radial decomposition.</em> Let \(j \in \mathbb{N}\) and let
+      \(Q_a : \mathbb{R}^4 \to \mathfrak{g}\) (\(a = 1, \ldots, 4\)) be
+      homogeneous polynomials of degree \(j + 1\). Then \(Q_a = K_a +
+      \partial_a r\), where \(r = (j + 2)^{- 1}  \sum_a x_a Q_a\) is
+      homogeneous of degree \(j + 2\), and \(K\) is homogeneous of degree \(j
+      + 1\) with \(\sum_a x_a K_a = 0\) (the Fock&ndash;Schwinger condition).
+    </p>
+    <p>
+      (e) <em>Small-field condition along rays.</em> There is \(C = C (G) >
+      0\) with the following property. Let \(0 \leqslant b \leqslant 1\),
+      \(\tau \geqslant Cb^2\), and let \(v\) be Lie-algebra link variables
+      with \(|v_x | \leqslant b\) on all links within distance \(5\) of \(Y\).
+      If every plaquette touching \(Y\) has holonomy within chord distance
+      \(\tau\) of \(1\) for the configuration \(\exp (v)\), then the same
+      plaquette bounds hold for \(\exp (sv)\), \(0 \leqslant s \leqslant 1\).
+    </p>
+    <p>
+      <em>Status:</em> theorems. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/TownHall.lean#L31-L90"><tt class="verbatim">capital</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/Weighted.lean#L120-L147"><tt class="verbatim">cancel</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/Weighted.lean#L84-L115"><tt class="verbatim">converse</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/PMOM.lean#L43-L61"><tt class="verbatim">wiped</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/Averaging.lean#L84-L114"><tt class="verbatim">locale</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/Safeguard.lean#L148-L177"><tt class="verbatim">strings</tt></a>.
+    </p>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>From other units.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>I.1.</strong> The lattice, the signed (hypercubic)
+          symmetries, and the gauge group. In the free-kernel construction the
+          gauge group enters only the symmetry statement; III.3.7 also uses
+          its exponential and holonomy maps.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.1.</strong> The block-spin data:
+        </p>
+        <ul>
+          <li>
+            <p>
+              the block ratio, the patch (odd \(L \geqslant 3\), \(J \geqslant
+              4\)), the kernel choices <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L37-L45"><tt class="verbatim">KernelChoices</tt></a>
+              and the clips <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L139-L146"><tt class="verbatim">Clip</tt></a>;
+            </p>
+          </li>
+          <li>
+            <p>
+              the linearised average \(Q\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/FrameResponse.lean#L65-L66"><tt class="verbatim">mean</tt></a>)
+              and the lattice exterior derivative;
+            </p>
+          </li>
+          <li>
+            <p>
+              the trajectory record <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L131-L134"><tt class="verbatim">Levels</tt></a>: block
+              sizes, stage indices with \(J (i) \leqslant J (i + 1) \leqslant
+              J (i) + 1\), and schedule tori whose sides tend to infinity.
+            </p>
+          </li>
+        </ul>
+        <p>
+          III.1 also defines the output objects:
+        </p>
+        <ul>
+          <li>
+            <p>
+              metric data <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L35-L40"><tt class="verbatim">Bed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L49-L51"><tt
+              class="verbatim">Bed.full</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68"><tt class="verbatim">Floor</tt></a>;
+            </p>
+          </li>
+          <li>
+            <p>
+              transfer kernels <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L70-L75"><tt class="verbatim">Towers</tt></a> and their
+              bounds <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L111-L114"><tt class="verbatim">Towers.Deep</tt></a>;
+            </p>
+          </li>
+          <li>
+            <p>
+              the identities (D1)&ndash;(D4), (R1)&ndash;(R6), with \(d^{\ast}
+              Hd\) as <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L68-L69"><tt class="verbatim">K</tt></a>;
+            </p>
+          </li>
+          <li>
+            <p>
+              kernel families <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L119-L121"><tt class="verbatim">Horizon</tt></a>, the output
+              conditions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139"><tt class="verbatim">Horizon.Suffices</tt></a>, and
+              price tables <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L123-L128"><tt class="verbatim">MapPrices</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>III.2.</strong> The sheet <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L26-L35"><tt class="verbatim">Sheet</tt></a>,
+          the block sizes <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L50-L53"><tt class="verbatim">Rolls</tt></a>, and the payment
+          record <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Price/Intent.lean#L145-L162"><tt class="verbatim">Paid</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.6.</strong> The four linear-algebra theorems <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F06.lean#L64-L128"><tt
+          class="verbatim">F06</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07.lean#L180-L201"><tt class="verbatim">F07</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F08.lean#L53-L146"><tt
+          class="verbatim">F08</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F09.lean#L41-L150"><tt class="verbatim">F09</tt></a>. Their
+          statements are in Lemma 4.16. F07 is also used in Lemma 4.8.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>III.10.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The interface conditions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L63-L73"><tt class="verbatim">Craft.Rack</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L32"><tt class="verbatim">Bleeps</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L34-L36"><tt class="verbatim">Reaches</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L38-L40"><tt class="verbatim">Funds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L21-L22"><tt class="verbatim">Donate</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L53-L58"><tt class="verbatim">Replaces</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L104-L105"><tt class="verbatim">Bid.Retained</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L54-L55"><tt class="verbatim">Bid.Sworn</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              The repair theorem <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L107-L166"><tt class="verbatim">Bid.pinning</tt></a>
+              (Lemma 4.16), and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Purl.lean#L20-L53"><tt class="verbatim">panes</tt></a> for
+              III.3.3.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>III.16.</strong> Kernels and their action on tori: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L22"><tt
+          class="verbatim">Row</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L26"><tt class="verbatim">Cross</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L35"><tt
+          class="verbatim">installed</tt></a>. The weighted norms <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L26"><tt class="verbatim">Row.strip</tt></a>
+          and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Laurent/Eval.lean#L104"><tt class="verbatim">Laurent.Width</tt></a>, where the size of a
+          displacement is its \(\ell^1\) norm. The alias-resolved Fourier
+          transform on \(\Lambda_f\), which is unitary up to \(f^4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Fourier analysis on \(\mathbb{Z}^4\) and on periodic lattices. Bloch
+          (alias) decomposition of operators that commute with coarse
+          translations. Periodic strip analyticity gives exponential
+          coefficient bounds on narrower strips.
+        </p>
+      </li>
+      <li>
+        <p>
+          Gaussian block-spin transformations computed in Fourier space: K.
+          Gaw&#x0119;dzki, A. Kupiainen, <em>Massless lattice \(\varphi^4_4\)
+          theory</em>, CMP 99 (1985). Balaban's averaging and background-field
+          operators for lattice gauge fields: T. Balaban, CMP 95 and 96
+          (1984), CMP 98 (1985). Exposition: J. Dimock, <em>The
+          renormalization group according to Balaban I</em>, Rev. Math. Phys.
+          25 (2013).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lagrange's identity. The Schur-complement (orthogonal) splitting of
+          a quadratic form.
+        </p>
+      </li>
+      <li>
+        <p>
+          Exactness of the lattice de Rham (Koszul) complex for exponentially
+          decaying translation-invariant kernels.
+        </p>
+      </li>
+      <li>
+        <p>
+          Newton forward-difference interpolation. Weighted-homogeneous Taylor
+          expansions. The Fock&ndash;Schwinger (radial) gauge.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The kernel choice \(K\); only the penalty \(\kappa\) enters the free
+          kernels.
+        </p>
+      </li>
+      <li>
+        <p>
+          The analyticity half-width \(\pi / 4\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Chip.lean#L21"><tt class="verbatim">zone</tt></a>)
+          and the radius \(3 \pi / 2\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Chip.lean#L24"><tt class="verbatim">domainRadius</tt></a>).
+          The proved compactness bounds \(c_- |w| \leqslant |e^{iw} - 1|
+          \leqslant c_+ |w|\) on \(|w| \leqslant 3 \pi / 2\) (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Chip.lean#L82"><tt
+          class="verbatim">meter</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          The credit condition, a hypothesis of III.3.2. It is discharged
+          through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L108-L124"><tt class="verbatim">before_paid</tt></a>, the construction
+          of the sheet in III.9, and the payment record of III.2.
+        </p>
+      </li>
+      <li>
+        <p>
+          F06&ndash;F09 are proved in III.6 and plugged in inside <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L134-L145"><tt
+          class="verbatim">retained_support</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The Gaussian block-spin problem is solved in Fourier space. Iterating
+      the block average and its independent noise gives a diagonal 1-form
+      covariance symbol. Minimising its precision over gauge directions gives
+      the effective form \(d^{\ast} Dd\) by Lagrange's identity. The
+      background-field map \(W\) and curvature transfer \(T\) are then
+      explicit alias sums satisfying (D1)&ndash;(D4).
+    </p>
+    <p>
+      Uniform decay follows from the filters. A stage-\(J\) box filter gives
+      \(\prod_a (1 + | \ell_a |)^{- J}\) alias decay, leaving \(J - 2\) fine
+      differences summable. Along a history, successive dilation ratios
+      decrease at least geometrically by \(1 / 3\), so the extra filter
+      products and accumulated noise stay uniformly bounded. Before estimating
+      inverse symbols, the principal-alias poles are cancelled. The remaining
+      denominators are bounded below at real momenta and hence on a thinner
+      complex cube. These constants depend on the kernel choice and stage,
+      uniformly in history length and block sizes.
+    </p>
+    <p>
+      The inverse-metric defect factors through \(d_2\) as \({X'}^{\ast}
+      CX'\), where \(X' = d_2 {D'}^{- 1}\) and \(C\) need not be positive.
+      Amending the fine and coarse inverse metrics leaves their quadratic
+      forms on potentials unchanged and replaces \(C\) by \(C + \lambda_t -
+      \lambda_j S^{\ast} S\). The squared 3-form transfer satisfies \(S^{\ast}
+      S = O (L^{- 2})\), including the sum over fine residues. Choose the
+      coarse amendments first, then require \(\lambda_j B / L^2 \leqslant 1\).
+      The resulting positive defect yields \(M_f, M_n, O\) and (R1)&ndash;(R6)
+      through III.6 and the repair theorem of III.10. The repair constants
+      also depend on the sheet's direct clip coefficients. Rigidity extends
+      the schedule identities to all tori.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-filters-and-histories"></a>4.1 Filters and histories<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.1 (filter algebra).</strong> This is III.3.5(a).
+      <em>Sketch:</em> \(M \hspace{0.17em} \text{rail}_M (z)  (e^{iz} - 1) =
+      e^{iMz} - 1\); apply it twice and cancel \(e^{iz} - 1\) when nonzero. If
+      \(e^{iz} = 1\), every uncentred average is \(1\). For the centred
+      filter, the centring phases add up, since \(M \hspace{0.17em} \frac{L -
+      1}{2} + \frac{M - 1}{2} = \frac{LM - 1}{2}\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L51-L62"><tt
+      class="verbatim">rail_bind</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L68-L76"><tt class="verbatim">plank_bind</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.2 (size of filters).</strong> This is
+      III.3.5(b)&ndash;(d). <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (b) Triangle inequality.
+        </p>
+      </li>
+      <li>
+        <p>
+          (c) The compactness constants and Lemma 4.1 give \(| \text{rail}_M |
+          \geqslant c_- / c_+\). On the principal alias, averaging \(|e^{isz}
+          - 1| \leqslant c_+  |sz|\) gives \(| \text{plank}_M (z) - 1|
+          \leqslant c_+ \tfrac{3 \pi}{2} \tfrac{M}{L}\), so \(| \text{plank}_M
+          | \geqslant \max (c_{\ast}, 1 - kx) \geqslant e^{- c_1 x}\) with \(x
+          = M / L\). The exponent is linear in \(x\) with no prefactor, which
+          is what makes products along a history converge.
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) \(L \hspace{0.17em} \text{rail}_L (z)  (e^{iz} - 1) = e^{ip_a} -
+          1\) at \(z = (q_{\ell})_a\), and \(L |z| \gtrsim 1 + | \ell_a |\)
+          when \(\ell_a \ne 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L127-L133"><tt class="verbatim">plank_height</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L114-L122"><tt
+      class="verbatim">rail_height</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L140-L152"><tt class="verbatim">rail_lower</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L154-L155"><tt class="verbatim">plank_lower</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L162-L196"><tt class="verbatim">principal_plank</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L200-L245"><tt class="verbatim">alias_rail</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.3 (histories).</strong> A history of stage index \(j\)
+      is either empty, or a hop \((L, J)\) with \(j \leqslant J \leqslant j +
+      1\) and odd \(L \geqslant 3\), applied after a history of index \(J\).
+      Its dilation \(M_v\) is the product of its block sizes. Its cumulative
+      filter is defined by \(s_{\emptyset} = 1\) and \(s_{(L, J) \circ v} (p)
+      = a_L  (M_v p)^J s_v (p)\). Equivalently, \(s_v =
+      a_{M_v}^{\hspace{0.17em} j} e_v\), where \(e_v\) is a product of box
+      filters at the hops where the index drops. Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(s_v\) is entire, \(2 \pi \mathbb{Z}^4\)-periodic and invariant
+          under signed permutations;
+        </p>
+      </li>
+      <li>
+        <p>
+          on \(\mathcal{C}_{\pi / 4}\), \(|s_v (q_{\ell}) | \leqslant C_j 
+          \prod_a (1 + | \ell_a |)^{- j}\) at the aliases \(q_{\ell} = (p + 2
+          \pi \ell) / M_v\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for \(p \in \mathcal{C}_{\pi / 4}^{\mathbb{R}}\), \(|s_v (p / M_v) |
+          \geqslant c_j > 0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Here \(C_j, c_j\) do not depend on \(v\), that is, on the number of hops
+      or the block sizes. <em>Sketch:</em> After \(k\) further hops, a hop of
+      dilation \(M'\) is evaluated at the momentum scaled by \(M' / M_v
+      \leqslant 3^{- k}\). Lemma 4.2 gives factors \(e^{\pm CM' / M_v}\), and
+      these products converge. The factor \(a_{M_v}^j\) gives the alias decay
+      by 4.2(d); the geometric product bounds the extra factors.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L22-L24"><tt class="verbatim">Train</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L36"><tt class="verbatim">Train.smooth</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L43-L48"><tt class="verbatim">Train.bind</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L169-L184"><tt class="verbatim">Train.smooth_upper</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L186-L194"><tt class="verbatim">Train.smooth_lower</tt></a>.
+    </p>
+    <h3 id="auto-6"><a id="42-explicit-metric-data"></a>4.2 Explicit metric data<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.4 (auxiliary 1-form covariance symbols).</strong> Fix
+      \(\kappa > 0\) and a history \(v\) of dilation \(M\). For a direction
+      \(a\), let \(\chi_{v, a} (p) = s_v (p) \hspace{0.17em} \text{rail}_M
+      (p_a)\). For \(p \in \mathcal{C}_{\pi / 4}^{\mathbb{R}} \setminus
+      \{0\}\) and \(q_{\ell} = (p + 2 \pi \ell) / M\), define
+    </p>
+    <center>
+      \(\displaystyle D_a (p) = M^{- 2}  \sum_{\ell} \frac{| \chi_{v, a}
+      (q_{\ell}) |^2}{| \tau
+(q_{\ell}) |^2} + \kappa^{- 1}  \sum_{v'}
+      M_{v'}^{- 2}  \sum_{\ell'} |
+\chi_{v', a} (q'_{\ell'}) |^2 .\)
+    </center>
+    <p>
+      The second sum runs over the proper final segments \(v'\) of \(v\) (the
+      last \(k\) hops, \(0 \leqslant k < \sharp v\)), with \(q'_{\ell'} = (p +
+      2 \pi \ell') / M_{v'}\). For the empty history, \(D_a = | \tau |^{-
+      2}\). The formula obeys the exact one-step recursion \(D'_a (p) = L^{-
+      2}  \sum_{\ell} |a_L (q_{\ell})^j \text{rail}_L ((q_{\ell})_a)
+|^2 D_a
+      (q_{\ell}) + \kappa^{- 1}\), which is the covariance recursion for an
+      averaged field with independent noise. These singular symbols are used
+      only away from zero; Lemma 4.6 constructs the regular 2-form symbols.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L133-L134"><tt class="verbatim">Train.levelD</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L154-L156"><tt
+      class="verbatim">D_feedback</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L131"><tt class="verbatim">Train.levelNoise</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L62"><tt class="verbatim">feed</tt></a>. <em>(definitions and covariance
+      recursion proof read)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.5 (the diagonal).</strong> At the nonzero real momenta
+      of Lemma 4.4, let \(\rho = \sum_a | \tau_a |^2 / D_a\) and \(D_{\mu \nu}
+      = (\rho \hspace{0.17em} D_{\mu} D_{\nu})^{- 1}\); this is a multiplier
+      diagonal in the plaquette orientation. Then, with \(F = \text{diag}
+      (D_a)\),
+    </p>
+    <center>
+      \(\displaystyle \sigma_1^{\ast} D \hspace{0.17em} \sigma_1 = F^{- 1} -
+      \rho^{- 1} F^{- 1} \tau
+\hspace{0.17em} \tau^{\ast} F^{- 1} .\)
+    </center>
+    <p>
+      So \(d^{\ast} Dd\) is the precision \(F^{- 1}\) minimised over gauge
+      directions. For the empty history, \(D = 1\) (the Wilson quadratic
+      form). <em>Sketch:</em> Lagrange's identity \(\sum_{\mu < \nu} w_{\mu}
+      w_{\nu}  | \tau_{\mu} x_{\nu} - \tau_{\nu} x_{\mu}
+|^2 = (\sum_a w_a |
+      \tau_a |^2) (\sum_a w_a |x_a |^2) - | \sum_a w_a 
+\bar{\tau}_a x_a
+      |^2\), with \(w_a = D_a^{- 1}\). The weights and \(\rho\) are positive.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Signal.lean#L103-L120"><tt class="verbatim">rotor_law</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Heart.lean#L22"><tt
+      class="verbatim">pulse</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Heart.lean#L20"><tt class="verbatim">vault</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Curl.lean#L54"><tt
+      class="verbatim">pink</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Curl.lean#L55"><tt class="verbatim">blue</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Heart.lean#L140-L155"><tt
+      class="verbatim">top_metric</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.6 (filled symbols, uniform analyticity).</strong> Fix
+      \(\kappa > 0\). Away from \(p = 0\) in the real cube, the singular
+      formulas become regular combinations. With \(| \tau_M |^2 = \sum_a M^2 
+      |e^{ip_a / M} - 1|^2\):
+    </p>
+    <center>
+      \(\displaystyle D_a = \beta_a / | \tau_M |^2, \qquad \rho = | \tau_M |^4
+      h, \qquad D_{\mu \nu}
+= (h \hspace{0.17em} \beta_{\mu} \beta_{\nu})^{-
+      1} .\)
+    </center>
+    <p>
+      Here \(\beta_a\) is the principal term \(| \chi_{v, a} (p / M) |^2\)
+      plus \(| \tau_M |^2\) times the non-principal and noise terms, and \(h\)
+      is a rational combination of filters whose denominators stay nonzero on
+      a sufficiently thin cube. The regular formulas give \(\beta_a (0) = h
+      (0) = 1\). For each \(j \geqslant 4\) there are \(\theta, C, c > 0\),
+      depending only on \(\kappa, j\), such that, for all histories of index
+      \(j\), \(\beta_a\) and \(h\) are analytic and bounded by \(C\) on
+      \(\mathcal{C}_{\theta}\), and \(| \beta_a |, |h| \geqslant c\) on
+      \(\mathcal{C}_{\theta}^{\mathbb{R}}\). Hence \(D\) and \(D^{- 1}\) lie
+      in a common \(\mathcal{S} (\alpha, \Omega)\), uniformly over histories
+      of index \(j\). <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Upper bounds: Lemma 4.3 summed over the aliases.
+        </p>
+      </li>
+      <li>
+        <p>
+          Lower bound on \(\beta_a\): its principal term (4.3 and 4.2(c)).
+        </p>
+      </li>
+      <li>
+        <p>
+          Lower bound on \(h\): away from zero use \(| \tau_M |^2 h = \sum_a |
+          \tau_a |^2 / \beta_a\), \(\beta_a \leqslant C\) and \(| \tau |^2
+          \asymp | \tau_M |^2 \asymp |p|^2\); at zero use \(h (0) = 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Inverses: a lower bound at real momenta plus an analytic bound gives
+          a lower bound on a thinner complex cube, so the inverses stay
+          analytic.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L39"><tt class="verbatim">Train.bulb</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L43-L44"><tt
+      class="verbatim">Train.bend</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L192-L201"><tt class="verbatim">Train.pole_split</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L88-L100"><tt class="verbatim">Train.lift_bend</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L150-L153"><tt class="verbatim">Train.recover_rho</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L160-L163"><tt class="verbatim">Train.bulb_firm</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L188-L194"><tt class="verbatim">Train.bend_firm</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Dispatch.lean#L40-L47"><tt class="verbatim">heart_banked</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Moderate.lean#L105-L106"><tt class="verbatim">Moderate</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.7 (amended metric).</strong> Fix \(\kappa > 0\), \(j
+      \geqslant 4\) and \(\lambda \geqslant 0\). For each history of index
+      \(j\), let
+    </p>
+    <center>
+      \(\displaystyle H^{- 1} = D^{- 1} + \lambda \hspace{0.17em} X^{\ast} X,
+      \quad X = d_2 D^{- 1},
+\qquad \mathcal{T}_{\lambda} = (1 + \lambda
+      \hspace{0.17em} Xd_2^{\ast})^{- 1}
+\text{on 3-forms} .\)
+    </center>
+    <p>
+      Then on every torus: \(HH^{- 1} = 1\), \(Hd = Dd\), \(XH
+      =\mathcal{T}_{\lambda} d_2\), and \(H, \mathcal{T}_{\lambda}\) are
+      symmetric. Moreover \(\hat{H} (0) = 1\), and \(H, H^{- 1},
+      \mathcal{T}_{\lambda}, \mathcal{T}_{\lambda}^{- 1}\) have strip bounds
+      and two-sided bounds at real momenta, with constants depending only on
+      \(\kappa, j, \lambda\). The amendment changes \(H\) only away from exact
+      2-forms, and leaves \(d^{\ast} Hd = d^{\ast} Dd\) unchanged.
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(XDd = d_2 d = 0\), which gives \(Hd = Dd\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \((1 + \lambda Xd_2^{\ast}) X = d_2 H^{- 1}\), which gives \(XH
+          =\mathcal{T}_{\lambda} d_2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Uniform bounds \(a \hspace{0.17em} 1 \leqslant D^{- 1} \leqslant A
+          \hspace{0.17em} 1\) and \(\|X\| \leqslant B\) give \(a
+          \hspace{0.17em} 1 \leqslant H^{- 1} \leqslant (A + \lambda B^2)
+          
+\hspace{0.17em} 1\) and hence two-sided bounds for \(H\). The
+          analogous argument applies to \(1 + \lambda d_2 D^{- 1}
+          d_2^{\ast}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L30"><tt class="verbatim">pledge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L31"><tt class="verbatim">amend</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L32"><tt class="verbatim">bail</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L33"><tt class="verbatim">treble</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L95-L127"><tt class="verbatim">obligations</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L41-L59"><tt class="verbatim">pledge_warm</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L78-L79"><tt class="verbatim">insurance</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L80-L94"><tt class="verbatim">forced_amend</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.8 (metric data of every history; III.3.1(a)).</strong>
+      Let \(\kappa > 0\), \(\lambda \geqslant 0\), \(j \geqslant 4\). There
+      are \(\gamma, \sigma, \eta, C > 0\) with the following property. For
+      every clip with \(c \leqslant \gamma\) and every history of index \(j\),
+      the explicit \(D, D^{- 1}, H, H^{- 1}\), together with a positive
+      symmetric square root \(R\) of \(H - c \hspace{0.17em} 1\), satisfy
+      III.3.1(a) with amendment \(\lambda\) and bounds \(\sigma, \eta, C\).
+      These constants depend only on \(\kappa, j, \lambda\). <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\gamma\) is half the real-momentum lower bound of \(H\), so \(H -
+          c \hspace{0.17em} 1\) has two-sided bounds.
+        </p>
+      </li>
+      <li>
+        <p>
+          III.6's square-root theorem gives \(R \in \mathcal{S}\) with
+          \(R^{\ast} R = H - c \hspace{0.17em} 1\) on every torus.
+        </p>
+      </li>
+      <li>
+        <p>
+          Torus bounds follow from symbol bounds, since \(\Lambda_n\) is
+          diagonalised by the momenta \(2 \pi \mathbb{Z}^4 / n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The symmetry follows from Lemma 4.3.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(D = 1\) for the empty history by Lemma 4.5.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Ground.lean#L69-L120"><tt class="verbatim">bid_bed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Ground.lean#L54-L58"><tt class="verbatim">Defined</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Ground.lean#L22-L35"><tt class="verbatim">full_cover</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Ground.lean#L37-L51"><tt class="verbatim">low_ceiling</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Signed.lean#L65-L70"><tt class="verbatim">sworn_metric</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-transfer-kernels-of-one-flight"></a>4.3 Transfer kernels of one flight<span style="margin-left: 1em"></span></h3>
+    <p>
+      A flight of index \((j, t)\) consists of an odd block size \(L \geqslant
+      3\), a fine history \(v\) of index \(j\), and the coarse history (hop
+      \((L, j)\) after \(v\)) of index \(t \in \{j - 1, j\}\).
+    </p>
+    <p>
+      <strong>Lemma 4.9 (alias symbols and derivative bounds).</strong> Fix
+      \(\kappa > 0\) and \(j, t \geqslant 4\). There are \(\theta, \alpha, C >
+      0\), depending only on \(\kappa, j, t\), such that the following holds
+      for every flight of index \((j, t)\). Its explicit \(W\) and \(T\) are
+      cross kernels; at this stage \(M_f = M_n = O = 0\). Their fibre at
+      coarse momentum \(p\) and fine residue \(r\) is
+    </p>
+    <center>
+      \(\displaystyle L^{- e}  \sum_{\ell} e^{iq_{\ell} \cdot r} w_e (p,
+      \ell), \qquad e = 1 (W),
+\quad e = 2 (T),\)
+    </center>
+    <p>
+      with explicit per-alias symbols built from the filters and from
+      \(\beta_a, h\) of both histories. At the harmonic point \(w_e (0, 0) =
+      1\) and \(w_e (0, \ell) = 0\) for \(\ell \ne 0\). Each \(w_e (\cdot,
+      \ell)\) is analytic on \(\mathcal{C}_{\theta}\) and bounded by \(C
+      \prod_a (1 + | \ell_a |)^{- j}\), uniformly over flights. Hence, for
+      words \(u\) with \(|u| \leqslant j - 2\), \(\nabla_u W \in \mathcal{S}
+      (\alpha, CL^{- 1 - |u|})\) and \(\nabla_u T \in \mathcal{S} (\alpha,
+      CL^{- 2 - |u|})\). <em>Sketch:</em> A fine difference in direction \(a\)
+      multiplies the alias term by \(e^{i (q_{\ell})_a} - 1 = O ((1 + | \ell
+      |) / L)\). The sum \(\sum_{\ell} (1 + | \ell |)^{|u|}  \prod_a (1 + |
+      \ell_a |)^{- j}\) converges for \(|u| \leqslant j - 2\). In other words,
+      the order \(j\) of the smoothing pays for \(j - 2\) derivatives. Decay
+      is measured on the coarse lattice, so the fine-lattice rate is \(\alpha
+      / L\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Primal.lean#L24-L29"><tt class="verbatim">Flight.duo</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Docked.lean#L103-L110"><tt
+      class="verbatim">Flight.pilot_cost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Docked.lean#L53-L71"><tt class="verbatim">Flight.ahead_cost</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Cable.lean#L97-L103"><tt class="verbatim">Flight.wire_budget</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Strands.lean#L30-L38"><tt class="verbatim">secure_both</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Strands.lean#L85-L107"><tt class="verbatim">Secured.propels</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.10 (exact identities for one flight).</strong> Fix a
+      flight of index \((j, t)\) with \(t \geqslant 4\), a kernel choice
+      \(K\), and any pair of tori with \(f = cL\). Then (D1)&ndash;(D4) hold
+      for:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(W\), \(T\) of the flight and \(Q\) of the step;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(D\), \(D'\) the diagonals of the fine and coarse histories;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(H\), \(H'\) the amended metrics for any amendments \(\geqslant
+          0\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          All operators commute with coarse translations. On the Bloch fibre
+          over \(p\), the identities become identities between per-alias
+          symbols, for each alias \(q = q_{\ell}\):
+        </p>
+        <ul>
+          <li>
+            <p>
+              \((\sigma_1^{\ast} D \sigma_1) (q)  \hspace{0.17em} W_{\ell} =
+              L^{- 3} h_1
+(q)^{\ast}  (\sigma_1^{\ast} D' \sigma_1) (p)\),
+              giving (D1);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\sigma_1 (q)^{\ast} T_{\ell} = L^{- 3} h_1 (q)^{\ast} \sigma_1
+              (p)^{\ast}\), giving (D3);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(T_{\ell} D' (p) \sigma_1 (p) = D (q) \sigma_1 (q) W_{\ell}\),
+              giving (D4);
+            </p>
+          </li>
+          <li>
+            <p>
+              the alias sum \(\sum_{\ell} Lh_1 (q_{\ell}) W_{\ell} = 1 -
+              \kappa^{- 1}  (\sigma_1^{\ast} D'
+\sigma_1) (p)\), giving (D2).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Here \(W_{\ell} = L^{- 1} w_1 (p, \ell)\), \(T_{\ell} = L^{- 2} w_2
+          (p, \ell)\), and \(h_r (q) = a_L (q)^j  \prod_{a \in \text{face}}
+          \text{rail}_L (q_a)\) is the alias symbol of the \(r\)-form average.
+          The forward block average has alias row \(Lh_1 (q)\), and its
+          adjoint has alias column \(L^{- 3} h_1 (q)^{\ast}\) because the
+          fine-to-coarse volume ratio is \(L^4\). The form averages intertwine
+          the exterior derivatives: \(h_{r + 1} (q)  \hspace{0.17em} L
+          \sigma_r (q) = \sigma_r (p)  \hspace{0.17em}
+h_r (q)\), from \(L
+          \hspace{0.17em} \text{rail}_L (q)  (e^{iq} - 1) = e^{iLq} - 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The point \(p = 0\) is treated separately: the box filter vanishes
+          at the non-principal aliases of \(0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The identities pass from the fibres to the tori through the
+          alias-resolved Fourier transform.
+        </p>
+      </li>
+      <li>
+        <p>
+          Replacing \(D\) by the amended \(H\) in (D1)&ndash;(D2) changes
+          nothing, since \(d^{\ast} Hd = d^{\ast} Dd\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Primal.lean#L63-L118"><tt class="verbatim">Flight.tangent</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L44-L56"><tt
+      class="verbatim">diagonal</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Primal.lean#L33-L49"><tt class="verbatim">Flight.scaled_tri</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Signal.lean#L60-L63"><tt class="verbatim">hinge_transport</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/ZeroAlias.lean"><tt class="verbatim">ZeroAlias.lean</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Pilot.lean#L46-L47"><tt class="verbatim">pilot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Wire.lean#L63"><tt class="verbatim">wire</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Scripts.lean#L122-L139"><tt class="verbatim">script_main</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Scripts.lean#L141-L156"><tt class="verbatim">script_cross</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Scripts.lean#L179-L211"><tt class="verbatim">script_dual</tt></a>. <em>(proof read, including the
+      nonzero-alias algebra and harmonic point)</em>
+    </p>
+    <h3 id="auto-8"><a id="44-the-defect-and-the-amendment"></a>4.4 The defect and the amendment<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.11 (unamended defect).</strong> In the setting of 4.10,
+      let \({\mathcal{V}= D'}^{- 1} - T^{\ast} D^{- 1} T - \kappa^{- 1}
+      dd^{\ast}\) on \(\Omega^2 (\Lambda_c)\). Then \(D' \mathcal{V}D'\) is
+      symmetric, and \(D' \mathcal{V}D' d = 0\) on every torus. Consequently
+      there is an explicit symmetric 3-form kernel \(C\), decaying uniformly
+      over flights of index \((j, t)\), with
+    </p>
+    <center>
+      \(\displaystyle \mathcal{V}= (d_2 {D'}^{- 1})^{\ast}  \hspace{0.17em} C
+      \hspace{0.17em} (d_2
+{D'}^{- 1}) \quad \text{on every torus.}\)
+    </center>
+    <p>
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          By (D4), (D3), (D2): \(T^{\ast} D^{- 1} TD' d = T^{\ast} dW = dQW =
+          d - \kappa^{- 1} dd^{\ast} D' d\). Hence \(\mathcal{V}D' d = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A symmetric decaying 2-form kernel \(A\) with \(Ad = 0\) on every
+          torus equals \(d_2^{\ast} Bd_2\), for an explicit decaying 3-form
+          kernel \(B\). This is a lattice Poincar&eacute; lemma for
+          translation-invariant kernels, proved by an axis-by-axis contracting
+          homotopy of the Koszul complex of \((e^{ip_a} - 1)_a\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The hypothesis is needed on all tori, not on one: at a single period
+          the harmonic (zero-momentum) forms obstruct the factorisation.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Sell.lean#L33-L35"><tt class="verbatim">Flight.gap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Sell.lean#L158-L187"><tt
+      class="verbatim">Flight.dep_zero</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lifts.lean#L121-L143"><tt class="verbatim">Double.duplex</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Sell.lean#L43"><tt class="verbatim">Flight.fund</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Sell.lean#L215-L227"><tt class="verbatim">Flight.banked_dollars</tt></a>.
+      Quantitative control: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lifts.lean#L145-L154"><tt class="verbatim">duplex_stock</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.12 (amended defect: identity (&Delta;)).</strong> In the
+      setting of Lemma 4.10, take fine amendment \(\mu \geqslant 0\) and
+      coarse amendment \(\lambda \geqslant 0\). Then (&Delta;) holds on every
+      pair of tori, with \(P =\mathcal{P}_{\mu, \lambda}\) where
+    </p>
+    <center>
+      \(\displaystyle \mathcal{P}_{\mu, \lambda} =\mathcal{T}_{\lambda}^{\ast}
+      \left( C + \lambda
+\hspace{0.17em} 1 - \mu \hspace{0.17em} S^{\ast} S
+      \right)
+\mathcal{T}_{\lambda} .\)
+    </center>
+    <p>
+      Here \(S\) is the 3-form transfer kernel of the flight, with \(S
+      \hspace{0.17em} d_2 {D'}^{- 1} = d_2 D^{- 1} T\), and \(S^{\ast} S\) has
+      strip bounds \(O (L^{- 2})\). <em>Sketch:</em> Write \(X = d_2 D^{- 1}\)
+      and \(X' = d_2 {D'}^{- 1}\). Then
+    </p>
+    <center>
+      \(\displaystyle {H'}^{- 1} - T^{\ast} H^{- 1} T - \kappa^{- 1} dd^{\ast}
+      {=\mathcal{V}+
+\lambda X'}^{\ast} X' - \mu \hspace{0.17em} T^{\ast}
+      X^{\ast} XT.\)
+    </center>
+    <p>
+      Since \(XT = SX'\), the last term is \({- X'}^{\ast}  (\mu S^{\ast} S)
+      X'\); with Lemma 4.11 the whole expression is \({X'}^{\ast}  (C +
+      \lambda - \mu S^{\ast} S) X'\). Conjugate by \(H'\) and use \(X' H'
+      =\mathcal{T}_{\lambda} d_2\) (Lemma 4.7). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L144-L181"><tt
+      class="verbatim">Flight.rebased</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L27-L29"><tt class="verbatim">Flight.rollFunds</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L23-L25"><tt class="verbatim">Flight.render</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Sell.lean#L136-L149"><tt class="verbatim">Flight.intake</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Curl.lean#L90"><tt class="verbatim">Flight.sale</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L34-L41"><tt class="verbatim">Flight.netted</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L57-L58"><tt class="verbatim">check_bleep</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.13 (positivity; III.3.4).</strong> The constants and
+      bounds of III.3.4 hold uniformly over flights of the fixed index \((j,
+      t)\). <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The strip bound on \(C\) bounds its entries at real momenta, so \(C
+          \geqslant - C_1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mu S^{\ast} S \leqslant \mu B / L^2 \leqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(C + \lambda - \mu S^{\ast} S \geqslant 1\) for \(\lambda
+          \geqslant C_0 = C_1 + 2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{T}_{\lambda}^{- 1} = 1 + \lambda X' d_2^{\ast}\), with
+          \(X' = d_2 {D'}^{- 1}\), has bounded entries, so \(|x|^2 \leqslant W
+          |\mathcal{T}_{\lambda} x|^2\), and \(\hat{\mathcal{P}} \geqslant
+          W^{- 1}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The upper bound and the strip bound follow from products of
+          strip-bounded kernels.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L58-L95"><tt class="verbatim">Flight.absorb_before</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L99-L140"><tt class="verbatim">Flight.frontier</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-the-catalogue"></a>4.5 The catalogue<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.14 (III.3.1).</strong> For every kernel choice \(K\), a
+      catalogue satisfying III.3.1 exists. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>One hop.</em> For each \((j, t)\) there is \(\lambda_0 (j, t)\)
+          with the following property: for every coarse amendment \(\lambda
+          \geqslant \lambda_0\) and fine amendment \(\mu \geqslant 0\), there
+          are rates, constants and an integer \(b > \mu B (j, t)\) for which
+          III.3.1(b) holds. The proof combines Lemma 4.13 with Lemma 4.9 at
+          \(e = 1, 2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Assembly.</em> Set \(\lambda_j = \max (\lambda_0 (j, j),
+          \lambda_0 (j + 1, j))\): each stage's amendment acts as the coarse
+          amendment of the hops \((j, j)\) and \((j + 1, j)\), and as the fine
+          amendment of \((j, j)\) and \((j, j - 1)\). Then:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(\alpha_j\) is the minimum of the rates of the bottom quote
+              (Lemma 4.8 with \(\lambda_j\)) and of the hops \((j, j)\), \((j,
+              j - 1)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\Omega_j\) is the corresponding maximum, and \(\eta_j\) the
+              corresponding minimum;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(b_j = \max (b (j, j), b (j, j - 1))\);
+            </p>
+          </li>
+          <li>
+            <p>
+              weaker constants are always admissible.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          The block size enters only through \(b_j\), which guarantees
+          \(\lambda_j B \leqslant L^2\). The stronger choice \(L \geqslant b_j
+          > \lambda_j B (j, t)\) suffices for each admissible \(t\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L46-L65"><tt class="verbatim">buys</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L67-L93"><tt class="verbatim">pledges</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-along-a-schedule-pre-repair-repair-output"></a>4.6 Along a schedule: pre-repair, repair, output<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.15 (pre-repair family).</strong> Fix a catalogue of
+      III.3.1 and a trajectory with its kernel, satisfying the credit
+      condition. Define:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{B}^{N, i}\): the metric data of Lemma 4.8 for the history
+          of level \(i\) in mesh \(N\), with the clip of level \(i\) (allowed
+          by (C1));
+        </p>
+      </li>
+      <li>
+        <p>
+          \(W^{N, i}, T^{N, i}\): those of the flight of step \(i\), of index
+          \((J (i + 1), J (i))\) (allowed since \(J (i) \leqslant J (i + 1)
+          \leqslant J (i) + 1\)).
+        </p>
+      </li>
+    </ul>
+    <p>
+      This family satisfies the pre-repair conditions of III.3.2(2):
+    </p>
+    <ul>
+      <li>
+        <p>
+          the bounds, from III.3.1;
+        </p>
+      </li>
+      <li>
+        <p>
+          (D1)&ndash;(D4), from Lemma 4.10;
+        </p>
+      </li>
+      <li>
+        <p>
+          (&Delta;), with \(P\) the rolled kernel;
+        </p>
+      </li>
+      <li>
+        <p>
+          the positivity of \(P\), from III.3.1(b) and (C2).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L90-L120"><tt class="verbatim">shelves</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L64-L65"><tt class="verbatim">stageHop</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L73"><tt class="verbatim">location</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L74"><tt class="verbatim">destination</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.16 (repair; III.10 with III.6's theorems).</strong> For
+      every sheet and every table \(X\) there is a table \(X'\) with the
+      following property. Every pre-repair family for \(X\) (for a trajectory
+      with the sheet's profile and kernel) has a repaired family with the same
+      metric data and the same \(W, T\), which satisfies the output conditions
+      for \(X'\). For step \(i\) the construction is:
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>F06</strong> applied to \(P\) from (&Delta;): a kernel
+          \(P_1\) with two-sided bounds at real momenta, a strip bound, and
+          \(d_2^{\ast} P_1 d_2 = d_2^{\ast} Pd_2\) on every torus.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>F07</strong>: a symmetric decaying square root, \(P_1 =
+          P_2^{\ast} P_2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>F08</strong>: kernels with the same \(W, T\) and
+        </p>
+        <center>
+          \(\displaystyle M_f = VH^{- 1} T \hspace{0.17em} {V'}^{\ast}, \qquad
+          M_n = \kappa^{- 1 / 2}
+d^{\ast} {V'}^{\ast}, \qquad O = \left( 1 -
+          \Pi, P_2  \hspace{0.17em} d_2
+{H'}^{- 1} {V'}^{\ast} \right), \qquad
+          \Pi = V' {H'}^{- 1} {V'}^{\ast},\)
+        </center>
+        <p>
+          with the strip and derivative bounds of III.3.2(3). The constants
+          depend only on \(X\), \(\kappa\) and the sheet's direct clip
+          coefficients.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>F09</strong> (algebra) gives (R1)&ndash;(R6). Since
+          \({V'}^{\ast} V' = H'\), \(\Pi\) is the orthogonal projection onto
+          the range of \(V'\). Then:
+        </p>
+        <ul>
+          <li>
+            <p>
+              (R1): \(M_f^{\ast} M_f + M_n^{\ast} M_n + O^{\ast} O = V' 
+              (T^{\ast} H^{- 1} T +
+\kappa^{- 1} dd^{\ast} {+ H'}^{- 1}
+              d_2^{\ast} P_1 d_2 {H'}^{- 1}) {V'}^{\ast}
++ 1 - \Pi = 1\), by
+              (&Delta;);
+            </p>
+          </li>
+          <li>
+            <p>
+              (R2) and (R4) follow from \({V'}^{\ast} V' = H'\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (R3) follows from (D4) and \(H' d = D' d\), \(Hd = Dd\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (R5) follows from \((1 - \Pi) V' = 0\) and \(d_2 d = 0\);
+            </p>
+          </li>
+          <li>
+            <p>
+              (R6) follows from (D3).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      The second table depends on the sheet only through the direct clip
+      coefficients, which enter \(V, V'\). It can be chosen with \(\alpha'_j
+      \leqslant \alpha_j\), \(\Omega'_j \geqslant \Omega_j\) and unchanged
+      \(\eta_j\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L107-L166"><tt class="verbatim">Bid.pinning</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L84-L85"><tt class="verbatim">F06</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L90-L91"><tt class="verbatim">F07</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L93-L96"><tt class="verbatim">F08</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L99-L101"><tt class="verbatim">F09</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L53-L58"><tt class="verbatim">Replaces</tt></a>. <em>(repair proof and F08&ndash;F09
+      proofs read)</em>
+    </p>
+    <p>
+      <strong>Lemma 4.17 (III.3.2 and its variant).</strong> The catalogue and
+      repair construction give the families and constants asserted in III.3.2,
+      including its preliminary-sheet variant. <em>Sketch:</em> Take the
+      catalogue (4.14), then the second table from the repair theorem with
+      III.6's theorems (4.16), then the pre-repair family (4.15), then its
+      repair. The explicit formulas and the symmetry carry over because the
+      metric data and \(W, T\) are unchanged. In the variant, the payment
+      record of the schedule turns sheet-level bounds into (C1)&ndash;(C2). A
+      preliminary sheet is handled by re-running the construction for a copy
+      of the trajectory with the preliminary profile; this preserves the
+      histories and the direct clip coefficients. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L134-L145"><tt
+      class="verbatim">retained_support</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L121-L126"><tt class="verbatim">retained_presents</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L108-L124"><tt class="verbatim">before_paid</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Calendar.lean#L95-L102"><tt class="verbatim">credit_from_sheet</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-all-tori"></a>4.7 All tori<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.18 (rigidity of decaying kernels).</strong> Suppose two
+      finite sums of products of decaying kernels, or of cross kernels of the
+      same block size, define equal matrices on tori \(\Lambda_{c_k}\)
+      (respectively on pairs \((c_k, c_k L)\)) with \(c_k \to \infty\). Then
+      they are equal on every torus (pair). <em>Sketch:</em> Sums and products
+      of decaying kernels are decaying kernels, so each side is a single
+      kernel. A summable kernel is the limit of its periodisations as the
+      period tends to infinity. Dominated convergence justifies this
+      coefficient limit; the schedule sides of each fixed step tend to
+      infinity. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bank.lean#L49-L67"><tt class="verbatim">entry_limit</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Echo.lean#L77-L81"><tt class="verbatim">Echo.all</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Echo.lean#L105-L116"><tt class="verbatim">Echo.allAcross</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Echo.lean#L38"><tt class="verbatim">Echo.Sound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Echo.lean#L118-L119"><tt class="verbatim">Echo.schedule_sides</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.19 (III.3.3).</strong> Every output family of III.3.2
+      satisfies (D1)&ndash;(D4) and (R1)&ndash;(R6) on every torus pair of the
+      same block ratio. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (R1)&ndash;(R5) are identities between finite sums of products of
+          kernels, with \(M_f\) and \(W\) as cross kernels. Apply 4.18 on the
+          schedule tori.
+        </p>
+      </li>
+      <li>
+        <p>
+          (R6) contains \(Q\). Given (D3) and (R2) at \((c, f)\), (R6) is
+          equivalent to \((V \hspace{0.17em} d)^{\ast} M_f = d^{\ast}  (T
+          \hspace{0.17em} {V'}^{\ast})\), which is again an identity between
+          kernels.
+        </p>
+      </li>
+      <li>
+        <p>
+          (D1)&ndash;(D4) at arbitrary \((c, f)\) follow by the same argument,
+          because \(Q\) is itself given by a cross kernel (III.10). They also
+          follow directly from Lemma 4.10 for any family realising the
+          explicit formulas.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Tori.lean#L109-L157"><tt class="verbatim">complete_roll</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Tori.lean#L87-L98"><tt
+      class="verbatim">orthogonal_iff</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PhysicalNext/RG_NEXT_COMPLETE_REPEATABLE_NONLINEAR_STEP/Pane/Purl.lean#L20-L53"><tt class="verbatim">panes</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Tori.lean#L46-L60"><tt class="verbatim">universal_diagonal</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="48-free-covariance-of-the-curvature-iii36"></a>4.8 Free covariance of the curvature (III.3.6)<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.20 (lower bound).</strong> The coercivity bound of
+      III.3.6(a) holds uniformly over firm kernels. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\sigma_1^{\ast} \sigma_1 + \sigma_0 \sigma_0^{\ast} = | \tau |^2
+          
+\hspace{0.17em} 1\) on 1-form symbols; this is \(d^{\ast} d +
+          dd^{\ast} = - \Delta\) in Fourier space.
+        </p>
+      </li>
+      <li>
+        <p>
+          A firm \(f\) satisfies \(\text{Re} \hspace{0.17em} \langle x,
+          \hat{f} (p) x \rangle \geqslant \eta
+|x|^2\) at every real \(p\):
+          the torus bounds give it at the frequencies \(2 \pi \mathbb{Z}^4 /
+          n\), and these are dense; conclude by continuity.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\text{Re} \hspace{0.17em} \langle x, \Phi_f (p) x \rangle
+          \geqslant \min
+(\eta, 1) | \tau (p) |^2 |x|^2\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(| \tau (p) |^2 \geqslant c_0 |p|^2\) for \(|p_a | \leqslant 3 \pi
+          / 2\), since \(e^{ir} \ne 1\) for \(0 < |r| \leqslant 3 \pi / 2\)
+          (compactness).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Core.lean#L41-L57"><tt class="verbatim">blade_id</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Core.lean#L68-L79"><tt
+      class="verbatim">ion</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Floor.lean#L94-L100"><tt class="verbatim">real_price</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Core.lean#L115-L125"><tt
+      class="verbatim">tank_full</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.21 (smooth symbols).</strong> This is III.3.6(c).
+      <em>Sketch:</em> Differentiate the Fourier series termwise and use
+      \(|y|_1^n \leqslant A_n e^{\alpha |y|_1}\), with \(A_n\) as in
+      III.3.6(c). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Plain.lean#L101-L133"><tt class="verbatim">radial_prices</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma 4.22 (comparison with the continuum).</strong> This is
+      III.3.6(b). Let \(S^k (U)\) be the class of families with \(\|D^n g\|
+      \leqslant C_n |p|^{k - n}\) on \(U\), uniformly over the family. Sums
+      preserve a fixed order, products add orders, and inversion reverses the
+      order when the rescaled matrix has a uniform coercivity bound.
+      <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\tau - ip \in S^2\) (Taylor at \(0\)), and \(\hat{f} - 1 \in S^1\)
+          (since \(\hat{f} (0) = 1\), and by Lemma 4.21).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(\Phi_f \in S^2\) and \(\Phi_f - |p|^2  \hspace{0.17em} 1 \in
+          S^3\).
+        </p>
+      </li>
+      <li>
+        <p>
+          By (a) and the resolvent identity, \(\Phi_f^{- 1} \in S^{- 2}\) and
+          \(\Phi_f^{- 1} - |p|^{- 2}  \hspace{0.17em} 1 \in S^{- 1}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(G_f \in S^0\) and \(G_f - G_{\infty} \in S^1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Alloy.lean#L110-L120"><tt class="verbatim">gem_quote</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Weight.lean#L39-L41"><tt
+      class="verbatim">Weight</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Gem.lean#L17"><tt class="verbatim">Value</tt></a>. <em>(proof
+      read, including the symbol-class product and inverse estimates)</em>
+    </p>
+    <h3 id="auto-13"><a id="49-calculus-lemmas-iii37"></a>4.9 Calculus lemmas (III.3.7)<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma 4.23 (nonlinear calculus).</strong> The statements of
+      III.3.7 hold under their respective hypotheses. <em>Sketch:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>(a)</strong> Split at \(|x|_1 = L\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              For \(|x|_1 \leqslant L\): localised Newton remainder estimate,
+              \(\|p (x) - \sum_{i < k} P_i (x)\| \leqslant M'  (1 + |x|_1)^k\)
+              with \(M'\) the bound on \(k\)-th differences.
+            </p>
+          </li>
+          <li>
+            <p>
+              For \(|x|_1 > L\): bound \(p\) and the pieces directly, using
+              \(L^{- 1 - i}  (1 + |x|)^i \leqslant L^{- 1 - k}  (1 + |x|)^b\)
+              when \(L^{- 1}  (1 + |x|) \geqslant 1\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>(b)</strong> Substitute \(z \mapsto \sum_v t^{Y_v} p_v z\)
+          in the Taylor polynomial of \(f\) and read off each coefficient of
+          \(t^r\) for \(r \leqslant d\). Rescaling \(z\) by an independent
+          scalar separates the ordinary Taylor degrees, and polarization
+          recovers the multilinear coefficients. All weighted components of
+          weight \(\leqslant d\) of every Taylor coefficient vanish. A
+          component of weight \(> d\) vanishes on the given inputs by the
+          support condition.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(c)</strong> Locality restricts the logarithmic link fields
+          to links with both endpoints in \(X\). Gauge invariance identifies
+          \(u\) near the identity with its pullback by the map taking a site
+          gauge and a radial connection jet to gauged logarithmic holonomies.
+          Part (b) gives weighted vanishing for this pullback. The derivative
+          of that map covers every polynomial link field of degree at most \(p
+          - 1\): part (d) supplies the highest degree, line integration
+          changes it only by lower degrees, and induction removes the error.
+          Its higher derivatives preserve the total weight. Fa&agrave; di
+          Bruno and induction on the number of inputs therefore transfer
+          vanishing to \(u \circ \exp\). Non-wrapping and \(n \geqslant 2\)
+          ensure that the centred lifts of adjacent sites differ by a unit
+          vector.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(d)</strong> \(r = (j + 2)^{- 1}  \sum_a x_a Q_a\) is
+          homogeneous of degree \(j + 2\), and Euler's identity gives \(\sum_a
+          x_a  (Q_a - \partial_a r) = 0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>(e)</strong> On the unit ball, \(\|g (sv) - g (0)\|
+          \leqslant s\|g (v) - g (0) \|+ Q (1 - s) \|v\|^2\) for the matrix
+          \(g\) of the plaquette holonomy of four link variables (second-order
+          Taylor bound). Hence the chord distance at \(sv\) is at most \(s
+          \tau + (1 - s) \tau\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> see III.3.7; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/Mom.lean#L43-L52"><tt class="verbatim">Maps</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/Routes.lean#L63-L127"><tt
+      class="verbatim">covers</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MultiNext/SIGNED_SOURCE_CONTINUATION/Mediator.lean#L70-L98"><tt class="verbatim">attenuation</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Local.lean#L74-L75"><tt class="verbatim">testLinks</tt></a>. <em>(proof read for (a)&ndash;(e),
+      including the moment-space definition and transfer argument)</em>
+    </p>
+    <h3 id="auto-14"><a id="410-auxiliary-results"></a>4.10 Auxiliary results<span style="margin-left: 1em"></span></h3>
+    <p>
+      Three auxiliary packages concern local observables and equation spaces:
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Corrected observables.</strong> An exact identity recovering
+          holonomy-jet probes from the coefficients of corrected observables
+          (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/CORRECTED_LIFT_COEFFICIENTS/Original.lean#L134-L146"><tt class="verbatim">Screen.reproduces</tt></a>). Used by the
+          rank-covariance part of III.11, by VII.2 and by VII.4.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Equation projections.</strong> Orthogonal projections onto a
+          finite-dimensional equation subspace and its complement (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/CUTOFF_PROJECTORS/Frame.lean#L104-L105"><tt
+          class="verbatim">drop</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/CUTOFF_PROJECTORS/Frame.lean#L108-L109"><tt class="verbatim">retain</tt></a>). The
+          additional criterion <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/CUTOFF_PROJECTORS/Bank.lean#L161-L169"><tt class="verbatim">spectral_bank</tt></a>
+          gives spectral separation under construction and comparison
+          hypotheses, exact top-jet tests, and approximation by a fixed
+          triangular model on finitely many probes.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Local jet vanishing.</strong> Vanishing of test-jet
+          derivatives below the engineering degree for non-unit basis
+          observables, assuming their local section is readable (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/ProofPorts/GRID_RENEWED_RESERVES/Speeds.lean"><tt
+          class="verbatim">Speeds.lean</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/ProofPorts/GRID_RENEWED_RESERVES/Speeds.lean#L37-L49"><tt class="verbatim">canon_first</tt></a>).
+          Used in the nonlinear step of III.10.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>(statements read; the coefficient identity and jet-vanishing proofs
+      read)</em>
+    </p>
+    <h2 id="auto-15"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <ul>
+      <li>
+        <p>
+          <strong>Uniformity.</strong> The algebraic identities must be
+          accompanied by bounds uniform over histories of any length and over
+          all block sizes, with the kernel choice and stage index fixed. The
+          mechanism is in Lemmas 4.2&ndash;4.3:
+        </p>
+        <ul>
+          <li>
+            <p>
+              geometric dilation along the history;
+            </p>
+          </li>
+          <li>
+            <p>
+              a lower bound on the principal alias, with an exponent linear in
+              \(M / L\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(J\)-fold smoothing, which gives \(\prod_a (1 + | \ell_a |)^{-
+              J}\) alias decay and therefore \(J - 2\) derivatives on \(W,
+              T\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Positivity is proved only at real momenta.</strong> \(| \tau
+          |^{- 2}\) is never estimated on a strip. Every symbol is put in a
+          filled form (Lemma 4.6) whose denominators are bounded below at real
+          momenta, and inverses are taken on a thinner complex cube. The
+          estimates use the Banach algebra of exponentially decaying kernels
+          and its analytic symbols.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Unusual features.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              The amendment \(\lambda_j\) (Lemma 4.7) changes the inverse
+              metric. It modifies the metric only off exact 2-forms, so
+              \(d^{\ast} Hd\) is unchanged, and it exists only to make the
+              defect's 3-form factor positive.
+            </p>
+          </li>
+          <li>
+            <p>
+              \(L\) enters the catalogue only through \(\lambda_j B \leqslant
+              L^2\).
+            </p>
+          </li>
+          <li>
+            <p>
+              The second table depends on the sheet through its direct clip
+              coefficients.
+            </p>
+          </li>
+          <li>
+            <p>
+              The factorisation of the defect (Lemma 4.11) needs the
+              identities on all tori, because of the harmonic forms.
+            </p>
+          </li>
+          <li>
+            <p>
+              For explicit families, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/UVNext/PRICED_KERNELS/Tori.lean#L46-L60"><tt class="verbatim">universal_diagonal</tt></a>
+              gives the diagonal identities directly. The output conditions
+              alone give them by rigidity.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Units.</strong> Decay is in the \(\ell^1\) norm, on the
+          lattice where the kernel acts. For \(W, T, M_f\) that is the coarse
+          lattice, so the fine-lattice rate is \(\alpha / L\), with amplitudes
+          \(L^{- 1}\), \(L^{- 2}\) and an extra \(L^{- 1}\) per fine
+          difference. These are the scalings of Balaban's background field:
+          smooth on scale \(L\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Statement strength.</strong> III.3.2 is an existence
+          statement whose output is a package of bounds and identities. Later
+          units use (R1)&ndash;(R6), the floors and the strip bounds. The
+          repaired family retains the pre-repair metric data and \(W, T\), so
+          the defect identity and positivity remain available, although they
+          are not fields of the output conditions.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-16"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Written proof</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Lean (glossary)</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>Meaning</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(R\), \(\hat{R}\), \(R_n\); \(\mathcal{S} (\alpha,
+        \Omega)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L22"><tt class="verbatim">Row</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Circulant.lean#L26"><tt class="verbatim">Row.strip</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">translation-invariant kernel, symbol, action on
+        \(\Lambda_n\); strip bound</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">cross kernel</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L26"><tt class="verbatim">Cross</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/CellFourier/Shuttle.lean#L35"><tt class="verbatim">installed</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">coarse-to-fine kernel and its action</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(\text{plank}_M, \text{rail}_M, a_L, a_L^J\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L38"><tt class="verbatim">plank</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Lines.lean#L34"><tt class="verbatim">rail</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L18"><tt class="verbatim">area</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L23"><tt class="verbatim">massFilter</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">line, box and \(J\)-fold box filters</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">history \(v\), dilation \(M_v\), filter \(s_v\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L22-L24"><tt class="verbatim">Train</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Train.lean#L36"><tt class="verbatim">Train.smooth</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">finite history of block averages</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">flight of index \((j, t)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Signal.lean#L22-L29"><tt class="verbatim">Flight</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Signal.lean#L35"><tt class="verbatim">Flight.land</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">one step: block size, fine history, coarse history</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(D_a\); \(\rho\); \(\beta_a\), \(h\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L133-L134"><tt class="verbatim">Train.levelD</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Feed.lean#L154-L156"><tt
+        class="verbatim">D_feedback</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L46"><tt class="verbatim">Train.rho</tt></a>; <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L39"><tt class="verbatim">Train.bulb</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Bend.lean#L43-L44"><tt class="verbatim">Train.bend</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">1-form covariance; gauge factor; filled symbols</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(D\), \(D^{- 1}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Curl.lean#L54"><tt class="verbatim">pink</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Curl.lean#L55"><tt class="verbatim">blue</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">diagonal 2-form multiplier, inverse</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(H^{- 1}\), \(H\); \(\mathcal{T}_{\lambda}\);
+        \(\lambda\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L30"><tt class="verbatim">pledge</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L31"><tt class="verbatim">amend</tt></a>;
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Amend.lean#L33"><tt class="verbatim">treble</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">amended inverse metric, metric; 3-form factor;
+        amendment</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">metric data \(\mathcal{B}\), \(V\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L35-L40"><tt class="verbatim">Bed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L49-L51"><tt class="verbatim">Bed.full</tt></a>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L61-L68"><tt class="verbatim">Floor</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((D, D^{- 1}, H, H^{- 1}, R)\); \(V = (\sqrt{c} 
+        \hspace{0.17em} 1, R)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">transfer kernels \((W, T, M_f, M_n, O)\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L70-L75"><tt class="verbatim">Towers</tt></a> (<tt class="verbatim">A0</tt>,
+        <tt class="verbatim">T</tt>, <tt class="verbatim">mf</tt>, <tt class="verbatim">mn</tt>, <tt class="verbatim">o</tt>),
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Primal.lean#L24-L29"><tt class="verbatim">Flight.duo</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">background-field map, curvature transport, isometry
+        blocks</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">(D1)&ndash;(D4); (R1)&ndash;(R6); (&Delta;)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L82-L86"><tt class="verbatim">Towers.Diagonal</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L76-L79"><tt
+        class="verbatim">Inputs</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L88-L96"><tt class="verbatim">Towers.Roll</tt></a>; <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L32"><tt class="verbatim">Bleeps</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">identities of one step</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">\(C\), \(S\), \(\mathcal{P}_{\mu, \lambda}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Sell.lean#L43"><tt class="verbatim">Flight.fund</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Curl.lean#L90"><tt
+        class="verbatim">Flight.sale</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Eject.lean#L27-L29"><tt class="verbatim">Flight.rollFunds</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">unamended 3-form defect, 3-form transport, rolled 3-form
+        kernel</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">derivative bounds</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L21-L22"><tt class="verbatim">Donate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L111-L114"><tt class="verbatim">Towers.Deep</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\nabla_u\) bounds with \(L^{- 1 - \lvert u \rvert}\),
+        \(L^{- 2 - \lvert u \rvert}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">positive on \(\text{ran} \hspace{0.17em} \sigma_2\);
+        two-sided at real momenta</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L34-L36"><tt class="verbatim">Reaches</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L38-L40"><tt class="verbatim">Funds</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">positivity conditions on 3-form kernels</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">kernel family; pre-repair; output conditions</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L119-L121"><tt class="verbatim">Horizon</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Craft.lean#L63-L73"><tt class="verbatim">Craft.Rack</tt></a>;
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L132-L139"><tt class="verbatim">Horizon.Suffices</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">metric data and transfer kernels for all \((N, i)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">explicit formulas; credit condition</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L82-L85"><tt class="verbatim">Present</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Rack.lean#L87-L88"><tt class="verbatim">Credit</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(III.3.2(1)); (C1)&ndash;(C2)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">catalogue; price table</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FREE_KERNELS/Priced.lean#L29-L33"><tt class="verbatim">Catalog</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/Stacks.lean#L123-L128"><tt class="verbatim">MapPrices</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">constants fixed before \(L\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">hypercubic symmetry of \(d^{\ast} Hd\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Station.lean#L54-L55"><tt class="verbatim">Bid.Sworn</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">invariance under signed permutations</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">firm kernel; \(\Phi_f\); \(G_f\); \(G_{\infty}\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Floor.lean#L17-L21"><tt class="verbatim">Firm</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Core.lean#L62"><tt class="verbatim">fuel</tt></a>;
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Alloy.lean#L15"><tt class="verbatim">garnet</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Alloy.lean#L17"><tt class="verbatim">pearl</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">curvature covariance, lattice and continuum</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-17"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Gaussian interpretation and zero modes.</strong> Lemma 4.4
+          verifies the covariance recursion away from zero momentum. A
+          measure-level derivation requires a stated treatment of gauge
+          directions and harmonic modes; neither the auxiliary singular
+          symbols nor III.1's <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L93-L103"><tt class="verbatim">action</tt></a> alone
+          specifies that Gaussian measure. The identification with an iterated
+          Feynman-gauge covariance remains probable.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Change of Gaussian variables.</strong> The quadratic
+          splitting in &sect;1 follows from the identities. Its use as a
+          change of integration variables, including null directions and
+          determinants, belongs to III.4 and III.10 and is not established by
+          this unit alone.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Auxiliary spectral criterion.</strong> The finite-test
+          hypotheses of the cited cutoff-projector criterion must be supplied
+          at its point of use. Its statement does not assert that a trajectory
+          satisfies them.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Further proof detail.</strong> The analytic
+          coefficient-extraction machinery underlying the strip bounds and the
+          deeper positivity and square-root proofs F06&ndash;F07 are inputs
+          here; their full proofs remain outside this account. The
+          symbol-class calculations in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Gem.lean"><tt class="verbatim">Gem.lean</tt></a>
+          and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Further/FREE_COVARIANCE_KP/KP/Weight.lean"><tt class="verbatim">Weight.lean</tt></a> support the covariance
+          comparison, but no position-space continuum limit or contact-term
+          statement is asserted in III.3.6.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="III-2.html">&larr; III.2 Choosing the constants: the order of choice
+      and the RG schedule (notes)</a><span class="ym-part"><a href="../units.html#part-iii-ultraviolet-construction-renormalization-group">Part III</a><font
+      class="ym-sep">&middot;</font><a href="../units/III-3.html">Unit outline</a></span><a class="ym-next" href="III-4.html">III.4
+      Gaussian integration: change of Gaussian sector, determinants, window
+      law (notes) &rarr;</a>
+    </div>
+  </body>
+</html>

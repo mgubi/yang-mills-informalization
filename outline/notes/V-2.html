@@ -1,0 +1,3363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:x="https://www.texmacs.org/2002/extensions">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>V.2. Osterwalder&ndash;Schrader reconstruction of a Wightman theory
+    &mdash; detailed notes &ndash; Yang&ndash;Mills informalization</title>
+    <meta content="TeXmacs 2.1.5" name="generator"></meta>
+    <style type="text/css">
+      body { text-align: justify } h5 { display: inline; padding-right: 1em }
+      h6 { display: inline; padding-right: 1em } table { border-collapse:
+      collapse } td { padding: 0.2em; vertical-align: baseline } dt { float:
+      left; min-width: 1.75em; text-align: right; padding-right: 0.75em;
+      font-weight: bold; } dd { margin-left: 2.75em; padding-bottom: 0.25em; }
+      dd p { padding-top: 0em; } .subsup { display: inline; vertical-align:
+      -0.2em } .subsup td { padding: 0px; text-align: left} .fraction {
+      display: inline; vertical-align: -0.8em } .fraction td { padding: 0px;
+      text-align: center } .wide { position: relative; margin-left: -0.4em }
+      .accent { position: relative; margin-left: -0.4em; top: -0.1em }
+      .title-block { width: 100%; text-align: center } .title-block p {
+      margin: 0px } .compact-block p { margin-top: 0px; margin-bottom: 0px }
+      .left-tab { text-align: left } .center-tab { text-align: center }
+      .balloon-anchor { border-bottom: 1px dotted #000000; outline: none;
+      cursor: help; position: relative; } .balloon-anchor [hidden] {
+      margin-left: -999em; position: absolute; display: none; }
+      .balloon-anchor: hover [hidden] { position: absolute; left: 1em; top:
+      2em; z-index: 99; margin-left: 0; width: 500px; display: inline-block; }
+      .balloon-body { } .ornament { border-width: 1px; border-style: solid;
+      border-color: black; display: inline-block; padding: 0.2em; } .right-tab
+      { float: right; position: relative; top: -1em; } .no-breaks {
+      white-space: nowrap; } .underline { text-decoration: underline; }
+      .overline { text-decoration: overline; } .strike-through {
+      text-decoration: line-through; } del { text-decoration: line-through
+      wavy red; } .fill-out { text-decoration: underline dotted; } 
+    </style>
+    <link href="max-html.css" rel="stylesheet" type="text/css"></link>
+    <link href="ym-outline.css" rel="stylesheet" type="text/css"></link>
+    <script defer language="javascript" src="max-html.js"></script>
+    <script defer language="javascript">var bs = String.fromCharCode(92); window.MathJax =
+    {tex: {environments: {equationsbase: [bs + 'begin{aligned}', bs +
+    'end{aligned}']}, macros: {ring: [bs + 'mathring{#1}', 1]}}};</script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="ym-nav">
+      <a href="../../index.html">Home</a><font class="ym-sep">&middot;</font><a href="../../statement.html">The
+      theorem</a><font class="ym-sep">&middot;</font><a href="../../summary.html">The proof in one
+      reading</a><font class="ym-sep">&middot;</font><a href="../index.html">Architecture</a><font
+      class="ym-sep">&middot;</font><a href="../units.html">Units</a><font class="ym-sep">&middot;</font><a
+      href="../../glossary.html">Glossary</a><font class="ym-sep">&middot;</font><a href="../../faq.html">FAQ</a><font
+      class="ym-sep">&middot;</font><a href="../work-items.html">Work items</a><font class="ym-sep">&middot;</font><a
+      href="../../data/index.html">Data</a><font class="ym-sep">&middot;</font><a href="../../method.html">Method</a><font
+      class="ym-sep">&middot;</font><a href="../../provenance.html">Provenance</a><font class="ym-sep">&middot;</font><a
+      href="../../CHANGELOG.html">Changes</a>
+    </div>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-1.html">&larr; V.1 Decomposition of the limit into phases
+      (notes)</a><span class="ym-part"><a href="../units.html#part-v-phases-and-reconstruction">Part V</a><font class="ym-sep">&middot;</font><a
+      href="../units/V-2.html">Unit outline</a></span><a class="ym-next" href="V-3.html">V.3 Reconstruction for
+      every phase and the reconstructed theory (notes) &rarr;</a>
+    </div>
+    <p>
+      <h1>V.2. Osterwalder&ndash;Schrader reconstruction of a Wightman theory
+      &mdash; detailed notes</h1><a id="v2-osterwalderschrader-reconstruction-of-a-wightman-theory--detailed-notes"></a>
+    </p>
+    <div class="max-toc">
+      <div class="max-toc-title">
+        Contents
+      </div>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>1. What this unit proves</b> <span style="margin-left: 5mm"></span> <a href="#auto-1">2</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>2. What it uses</b> <span style="margin-left: 5mm"></span> <a href="#auto-2">12</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>3. Strategy</b> <span style="margin-left: 5mm"></span> <a href="#auto-3">14</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>4. Steps</b> <span style="margin-left: 5mm"></span> <a href="#auto-4">15</a>
+      </p>
+      <p>
+        4.1 Tools <span style="margin-left: 5mm"></span> <a href="#auto-5">15</a>
+      </p>
+      <p>
+        4.2 The strict-time continuation <span style="margin-left: 5mm"></span> <a href="#auto-6">16</a>
+      </p>
+      <p>
+        4.3 Boundary values and spectral support <span style="margin-left: 5mm"></span> <a href="#auto-7">17</a>
+      </p>
+      <p>
+        4.4 Poincar&eacute; covariance <span style="margin-left: 5mm"></span> <a href="#auto-8">18</a>
+      </p>
+      <p>
+        4.5 Continuation to the full tube <span style="margin-left: 5mm"></span> <a href="#auto-9">20</a>
+      </p>
+      <p>
+        4.6 Locality <span style="margin-left: 5mm"></span> <a href="#auto-10">21</a>
+      </p>
+      <p>
+        4.7 Real-time vectors, Gram limits, nulls <span style="margin-left: 5mm"></span> <a
+        href="#auto-11">23</a>
+      </p>
+      <p>
+        4.8 Assembly (VIII.1) and the field realization <span style="margin-left: 5mm"></span>
+        <a href="#auto-12">24</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>5. Where the difficulty lies</b> <span style="margin-left: 5mm"></span> <a href="#auto-13">25</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>6. Notation</b> <span style="margin-left: 5mm"></span> <a href="#auto-14">26</a>
+      </p>
+      <p style="margin-top: 1em; margin-bottom: 0.5em">
+        <b>7. What remains unexplained</b> <span style="margin-left: 5mm"></span> <a href="#auto-15">27</a>
+      </p>
+    </div>
+    <div style="margin-top: 0.5em; margin-bottom: 0.5em; margin-left: 77.321376014376px; margin-right: 77.321376014376px">
+      <p>
+        The full account of unit V.2: every proposition with its proof sketch,
+        checked against the Lean in two rounds and edited. The condensed
+        outline and the map of the Lean are on the <a href="../units/V-2.html">unit page</a>.
+      </p>
+    </div>
+    <p>
+      <a href="../units/V-2.html">Unit page</a> &middot; <a href="../units.html">All units</a> &middot; <a href="../index.html">Overview</a>
+    </p>
+    <p>
+      <strong>Part:</strong> V, phases and reconstruction.
+    </p>
+    <p>
+      <strong>Lean:</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          The work items A16 and C01&ndash;C29.
+        </p>
+        <ul>
+          <li>
+            <p>
+              Statements: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean"><tt class="verbatim">Bid/Corners</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean"><tt
+              class="verbatim">Bid/Tar</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean"><tt class="verbatim">Bid/Grow</tt></a>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Proofs: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work"><tt class="verbatim">YM/Work</tt></a>, files
+              C01&ndash;C29, subfolders C07/ and C13/.
+            </p>
+          </li>
+          <li>
+            <p>
+              Collected by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L182-L212"><tt class="verbatim">Integrated.reconstructionArcs</tt></a>.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          The folders <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary"><tt class="verbatim">YM/Boundary</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields"><tt
+          class="verbatim">YM/Fields</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Hilbert"><tt class="verbatim">YM/Hilbert</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Compact"><tt class="verbatim">YM/Compact</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Distribution"><tt class="verbatim">YM/Distribution</tt></a>
+          and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spark"><tt class="verbatim">YM/Spark</tt></a>. Spark is the
+          Schwartz-space calculus used by C05, C08, C12, C14 and C25.
+        </p>
+      </li>
+      <li>
+        <p>
+          Material filed elsewhere but described here because it completes the
+          reconstruction (&sect;4.3, &sect;4.6, &sect;4.8):
+        </p>
+        <ul>
+          <li>
+            <p>
+              The boundary-value and germ lemmas of <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift"><tt class="verbatim">YM/Shift</tt></a>,
+              filed partly under VI.1 by the declaration table.
+            </p>
+          </li>
+          <li>
+            <p>
+              The assembly in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean"><tt class="verbatim">Next/BOUNDARY/Stage.lean</tt></a>
+              and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Theatre.lean"><tt class="verbatim">Org/Theatre.lean</tt></a>, filed under
+              VIII.1.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <strong>Size:</strong> 6,456 lines in 705 declarations.
+    </p>
+    <p>
+      <table style="display: inline-table; vertical-align: middle">
+        <tbody><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>part</strong></td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>lines</strong></td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">proofs collected by reconstructionArcs</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">4,279</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Fields</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">438</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Compact</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">218</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Distribution</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">189</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Spark</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">120</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Hilbert</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">85</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Boundary</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">66</td>
+        </tr><tr>
+          <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Overlay and Vac (ultraviolet material)</td>
+          <td style="border-right: 1px solid; border-bottom: 1px solid">558</td>
+        </tr></tbody>
+      </table>
+    </p>
+    <p>
+      Three bundles in Integrated.lean are also ultraviolet material placed
+      here by the dependency cut; they are listed at the end of &sect;1.
+    </p>
+    <h2 id="auto-1"><a id="1-what-this-unit-proves"></a>1. What this unit proves<span style="margin-left: 1em"></span></h2>
+    <p>
+      <em>Conventions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Points.</strong> A point of \(\mathbb{R}^4\) is \(x =
+          (\vec{x}, x^0)\); time is the last coordinate, as in the code. A
+          configuration is \(x = (x_1, \ldots, x_n) \in \mathbb{R}^{4 n}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Pairing.</strong> \(\langle \cdot, \cdot \rangle\) is the
+          <em>Euclidean</em> inner product of \(\mathbb{R}^{4 n}\), extended
+          complex-bilinearly. Dual cones are taken with respect to this
+          pairing. Hilbert-space inner products are antilinear in the first
+          argument.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Cones and groups.</strong> \(V_+ = \{\lvert \vec{x} \rvert <
+          x^0 \}\), with closure \(\bar{V}_+\). \(\mathcal{L}^{\uparrow}_+\)
+          is the proper orthochronous Lorentz group. \(\Lambda_a (t)\) is the
+          boost of rapidity \(t\) along the spatial axis \(a\). The
+          Poincar&eacute; group \(\mathcal{P}\) acts on tests by \((g_{\ast}
+          f) (x) = f (g^{- 1} x_1, \ldots, g^{- 1} x_n)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Heights.</strong> Heights \(y \in \mathbb{R}^n\) may be
+          negative. \(E_n = \{y_1 < \ldots < y_n \}\) is the set of ordered
+          heights, and \(\Sigma_n = \{z \in \mathbb{C}^n : \text{Im}
+          \hspace{0.17em} z \in E_n \}\) is the strict region. We write
+          \(\underline{y} = ((\vec{0}, y_1), \ldots, (\vec{0}, y_n)) \in
+          \mathbb{R}^{4 n}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Fourier transform.</strong> \(\hat{f} (p) = \int e^{- i
+          \langle x, p \rangle} f (x)  \hspace{0.17em} dx\), \(\check{f} (p) =
+          (2 \pi)^{- 4 n}  \int e^{i \langle p, x \rangle} f (x)
+          
+\hspace{0.17em} dx\), and \((\mathcal{F}W) (f) = W (\hat{f})\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Unless stated otherwise, arities \(n, m\) range over \(\mathbb{N}\),
+      including \(0\), and label tuples range over \(\mathcal{F}^n\). Supports
+      of functions are closed supports.
+    </p>
+    <p>
+      <em>Tables and the OS space.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(S\) and \(T\) are tables on one label register (glossary). \(N_d
+          (Q)\) denotes the raw degree-\(d\) labels whose correlations in
+          \(Q\) vanish with arbitrary other insertions. The quotient label
+          space of \(S\) is \(F_d = \text{Label}_d / N_d (S)\), and
+          \(\mathcal{F}\) is their union, into which \(F_d\) embeds by
+          \(\text{pin}_d\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(T (x ; v)\) is the Euclidean \(n\)-point function of \(T\) at a
+          non-coincident configuration \(x\), read on tags \(v_k = (d_k,
+          v_k)\) of \(S\). For a tuple of tags, \(\text{pin} \hspace{0.17em}
+          v\) means \((\text{pin}_{d_k} v_k)_k\); the insertion into
+          \(\mathcal{F}\) is implicit in \(\psi_v\). It is meaningful when
+          \(T\) <em>respects</em> \(S\), i.e. \(N_d (S) \subseteq N_d (T)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\mathcal{H}\) is the OS Hilbert space of \(T\) for the time axis.
+          It carries the vacuum \(\Omega\), a Hamiltonian \(H \geqslant 0\)
+          with holomorphic contraction semigroup \(e^{- \zeta H}\)
+          (\(\text{Re} \hspace{0.17em} \zeta > 0\)), the spatial translations
+          \(U (\vec{a})\), and a unitary space-time translation group.
+        </p>
+      </li>
+      <li>
+        <p>
+          A <em>spread</em> \(A\) gives slab operators \(A_d (w)\) for words
+          \(w\) in a time slab of width \(d\) (V.1).
+        </p>
+      </li>
+      <li>
+        <p>
+          A differential plan \(P\) consists of linear maps \(\iota_{d, e} :
+          F_d \to F_e\) for \(d \leqslant e\) and derivative maps
+          \(\partial_{d, a} : F_d \to F_{d + 1}\). Its inclusions are
+          <em>compatible with a table</em> \(Q\) if replacing any tag \((d,
+          v)\) by \((e, \iota_{d, e} v)\) leaves \(Q (x ; v)\) unchanged at
+          every non-coincident configuration, with arbitrary other tags. Its
+          derivatives are compatible with \(Q\) if inserting \(\partial_{d, a}
+          v\) differentiates the corresponding correlation in that slot and
+          coordinate. Writing \(C_d\) for label conjugation and \(M_d (s)\)
+          for a signed coordinate symmetry, \(P\) is <em>oriented</em> if its
+          inclusions commute with \(C_d, M_d (s)\), its derivatives commute
+          with conjugation, and
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle M_{d + 1} (s) \partial_{d, b} = \sum_a s_{ab} 
+      \hspace{0.17em} \partial_{d, a}
+M_d (s) .\)
+    </center>
+    <p>
+      The induced star satisfies \(J \text{pin}_d v = \text{pin}_d (M_d (r_0)
+      C_d v)\), where \(r_0\) is time reflection.
+    </p>
+    <p>
+      <em>Continuations and boundary families.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A <strong>continuation</strong> \(F\) is a family of maps \(F_n (z ;
+          \vec{x})\), \(z \in \mathbb{C}^n\), \(\vec{x} \in
+          (\mathbb{R}^3)^n\), each multilinear on \(\mathcal{F}^n\). We write
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(F^y_n (x) = F_n (x^0 + iy ; \vec{x})\), with real times
+              \(x^0_k\) and heights \(y_k\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\psi_v (y ; f) = \int F^y_n (x) (v) f (x)  \hspace{0.17em}
+              dx\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          A <strong>boundary family</strong> \(W\) is a family of multilinear
+          maps \(W_n : \mathcal{F}^n \to \mathcal{S}' (\mathbb{R}^{4 n})\).
+        </p>
+        <ul>
+          <li>
+            <p>
+              For a word \(b = ((u_1, f_1), \ldots, (u_n, f_n))\), with \(u_k
+              \in \mathcal{F}\) and \(f_k \in \mathcal{S} (\mathbb{R}^4)\), we
+              set \(W (b) = W_n (u)  (f_1 \otimes \ldots \otimes f_n)\).
+            </p>
+          </li>
+          <li>
+            <p>
+              For an antilinear map \(J\) on \(\mathcal{F}\) we set \(b^{\ast}
+              = ((Ju_n, \bar{f}_n), \ldots, (Ju_1, \bar{f}_1))\) and \(\langle
+              b, c \rangle_W = W (b^{\ast} c)\).
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      The thirty reconstruction statements are conditional results for
+      arbitrary tables, OS data and continuations. VIII.1 applies them to the
+      mixed limit table and to a selected phase (&sect;4.8).
+    </p>
+    <p>
+      <strong>Proposition V.2.1 (the reconstruction bundle).</strong> The
+      statements A16 and C01&ndash;C29 (V.2.2&ndash;V.2.8) hold
+      simultaneously. Each retains its own hypotheses. <em>Status:</em>
+      theorem. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L182-L212"><tt class="verbatim">Integrated.reconstructionArcs</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Arena.lean#L15-L45"><tt class="verbatim">Bid.Arcs</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition V.2.2 (strict-time continuation;
+      C01&ndash;C03).</strong> For the tables \(S, T\), the OS chamber \(V\)
+      with Hilbert space \(\mathcal{H}\), a differential plan \(P\) and a
+      spread \(A\), assume the slab hypotheses (H):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(S\) and \(T\) satisfy the Euclidean hierarchy;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(T\) respects \(S\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the inclusions of \(P\) are compatible with \(S\) and \(T\), and its
+          derivatives with \(T\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the spread \(A\) obeys the slab bound (SB) (&sect;2), is smooth in
+          the insertion positions on every valid slab, and differentiating an
+          insertion replaces its label by the corresponding derivative under
+          \(P\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      Then:
+    </p>
+    <p>
+      (a) (C01) There are linear maps \(B_p : \mathcal{F} \to \mathcal{B}
+      (\mathcal{H})\), \(p \geqslant 0\), such that:
+    </p>
+    <ul>
+      <li>
+        <p>
+          for \(p > 0\), \(B_p (\text{pin}_d v)\) is the slab operator of
+          width \(2 p\) of the one-point word made of the representative of
+          \(v\) placed at \((\vec{0}, p)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          for every \(u \in \mathcal{F}\) there are \(C > 0\) and \(a \in
+          \mathbb{N}\) with \(\|B_p (u)\| \leqslant C \hspace{0.17em} p^{-
+          a}\) for \(0 < p < 1\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (b) (C02) Let \(B\) be such a family. Put
+    </p>
+    <center>
+      \(\displaystyle G_p (w, \vec{a}) = e^{- (\text{Im} \hspace{0.17em} w - 2
+      p) H} 
+\hspace{0.17em} e^{i \hspace{0.17em} \text{Re} \hspace{0.17em}
+      w
+\hspace{0.17em} H}  \hspace{0.17em} U (\vec{a}),\)
+    </center>
+    <center>
+      \(\displaystyle M_p (z ; \vec{x}) (v) = \left\langle \Omega,
+      \hspace{0.17em} B_p (v_1)
+\hspace{0.17em} G_p (z_2 - z_1, \vec{x}_2 -
+      \vec{x}_1) \hspace{0.17em} B_p
+(v_2) \cdots G_p (z_n - z_{n - 1},
+      \vec{x}_n - \vec{x}_{n - 1})
+\hspace{0.17em} B_p (v_n) \Omega
+      \right\rangle .\)
+    </center>
+    <p>
+      For \(n = 0\) set \(M_p = \| \Omega \|^2\). Call \(p\)
+      <em>admissible</em> for \(z\) if \(0 < p < 1\) and \(\text{Im} (z_j -
+      z_i) > 4 p\) for \(i < j\). Then:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(M_p = M_q\) whenever \(p\) and \(q\) are both admissible for
+          \(z\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(M_p (iy ; \vec{x}) (\text{pin} \hspace{0.17em} v) = T ((\vec{x}_k,
+          y_k)_k ; v)\) for \(y \in E_n\) and \(p\) admissible.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (c) (C03, from (b) alone) There is a continuation \(F\) with \(F_n (z ;
+      \vec{x}) = M_p (z ; \vec{x})\) for \(z \in \Sigma_n\) and every
+      admissible \(p\), satisfying:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (SC) for each fixed label tuple \(v\), \((z, \vec{x}) \mapsto F_n (z
+          ; \vec{x}) (v)\) is continuous on \(\Sigma_n \times
+          (\mathbb{R}^3)^n\) and holomorphic in \(z \in \Sigma_n\), and \(F_n
+          (iy ; \vec{x}) (\text{pin} \hspace{0.17em} v) = T ((\vec{x}_k,
+          y_k)_k ; v)\) for \(y \in E_n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (PG) for all \(n\) and \(v\) there are \(m \in \mathbb{N}\) and \(C
+          \geqslant 0\) with \(\lvert F^y_n (x) (v) \rvert \leqslant C
+          \hspace{0.17em} k^{- m}\) for all \(x\), all \(k \in (0, 1]\), and
+          all \(y\) with \(y_j - y_i \geqslant k\) for \(i < j\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. The derivative and spatial regularity
+      hypotheses remain part of the stated input package. <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C01.lean#L99-L117"><tt class="verbatim">C01.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C02.lean#L168-L177"><tt class="verbatim">C02.answer</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C03.lean#L245-L248"><tt class="verbatim">C03.answer</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Statements <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L37-L38"><tt class="verbatim">Bid.C01</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L47-L48"><tt class="verbatim">Bid.C02</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L56-L57"><tt class="verbatim">Bid.C03</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hypothesis and conclusion structures: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L23-L30"><tt class="verbatim">Pantry</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L33-L35"><tt class="verbatim">Piece</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L40-L45"><tt class="verbatim">Slice</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L50-L54"><tt class="verbatim">Direct</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compatibility definitions: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L58-L60"><tt class="verbatim">DiffPlan.Inclusions</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Differential.lean#L66-L72"><tt class="verbatim">DiffPlan.Orientation</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Definitions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L19-L20"><tt class="verbatim">Small</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L49-L51"><tt class="verbatim">Small.matrix</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L62-L63"><tt class="verbatim">Small.rated</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L66-L67"><tt class="verbatim">Small.Defined</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L57-L58"><tt class="verbatim">Waves</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L71-L77"><tt class="verbatim">Waves.Region</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L72-L73"><tt class="verbatim">Waves.Breathes</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.2.3 (Cauchy&ndash;Riemann identities and tempered
+      boundary values; C04).</strong> Let \(F\) satisfy (SC) and (PG).
+    </p>
+    <p>
+      (a) (C04) Three properties hold:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (I) \(x \mapsto F^y_n (x) (v) f (x)\) is integrable for \(y \in
+          E_n\) and \(f \in \mathcal{S} (\mathbb{R}^{4 n})\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (HC) \(y \mapsto \psi_v (y ; f)\) is continuous on \(E_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (CR) For \(a \in \mathbb{R}^n\) and \(y + sa \in E_n\),
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \tfrac{d}{dt} \psi_v (y + ta ; f) |_{t = s} = \psi_v
+      \left( y + sa ; - i
+\hspace{0.17em} \partial_{\underline{a}} f \right),
+      \qquad
+\partial_{\underline{a}} = \sum_k a_k  \hspace{0.17em} \partial /
+      \partial
+x^0_k .\)
+    </center>
+    <p>
+      (b) If \(F\) satisfies (I), (HC), (CR) and (PG), there is a boundary
+      family \(W\) with (BV): the integrands defining \(\psi_v (y ; f)\) are
+      integrable for \(y \in E_n\), and \(\psi_v (y ; f) \to W_n (v) (f)\) as
+      \(y \to 0\) within \(E_n\), for all \(n\), \(v\) and \(f\). In
+      particular, the radial boundary limit (BV\(_{\text{ray}}\)) holds:
+      \(\psi_v (\varepsilon u ; f) \to W_n (v) (f)\) as \(\varepsilon
+      \downarrow 0\) for each \(u \in E_n\).
+    </p>
+    <p>
+      <em>Status:</em> theorem. Part (b) lives in Shift/Breath and Shift/Osc,
+      which are filed under VI.1. It is used through <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Theatre.lean#L29-L31"><tt class="verbatim">Show.Rhythm.opens</tt></a>
+      (VIII.1). The boundary family is an output of the reconstruction.
+      <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C04.lean#L221-L222"><tt class="verbatim">C04.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L59-L60"><tt class="verbatim">Bid.C04</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L83-L84"><tt class="verbatim">Waves.Bounds</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L80-L81"><tt class="verbatim">Waves.Lines</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L86"><tt class="verbatim">Waves.Along</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Osc.lean#L83-L86"><tt class="verbatim">Waves.jointly</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L96-L100"><tt class="verbatim">Waves.NonTangentialFree</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L89-L93"><tt class="verbatim">Waves.Opens</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L102-L112"><tt class="verbatim">Waves.exposed</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.2.4 (Laplace identity and spectral support; C05,
+      C06).</strong> Let \(F\) satisfy (SC), (PG), (CR) and (HC), and have
+      boundary family \(W\) (BV).
+    </p>
+    <p>
+      (a) (C05; Laplace identity (L)) For \(y \in E_n\) and compactly
+      supported \(f \in \mathcal{S} (\mathbb{R}^{4 n})\),
+    </p>
+    <center>
+      \(\displaystyle W_n (v) (\hat{f}) = \psi_v (y ; \widehat{e^{\langle
+      \underline{y}, \cdot
+\rangle} f}) .\)
+    </center>
+    <p>
+      (b) (C06, from (SC), (PG), (I) and (a)) \(\mathcal{F}W_n (v)\) is
+      supported in
+    </p>
+    <center>
+      \(\displaystyle \mathcal{P}_n = \left\{ p : \left. \sum_k y_k p^0_k
+      \geqslant 0 \text{ for
+every nondecreasing } y \right\} = \left\{ p :
+      \sum_k p^0_k = 0, \sum_{k
+\geqslant j} p^0_k \geqslant 0 \forall j
+      \right\} . \right.\)
+    </center>
+    <p>
+      (c) (Lorentz covariance) If \(W\) also satisfies (Cov) (V.2.5), then
+      \(\mathcal{F}W_n (v)\) is supported in
+    </p>
+    <center>
+      \(\displaystyle \mathcal{V}_n = \bigcap_{\Lambda \in
+      \mathcal{L}^{\uparrow}_+}
+\tilde{\Lambda}^{- 1} \mathcal{P}_n,\)
+    </center>
+    <p>
+      where \(\tilde{\Lambda} = \textsf{r} \Lambda \textsf{r}\) is the dual
+      action (\(\textsf{r}\) reverses the spatial components). Every \(p \in
+      \mathcal{V}_n\) has \(\sum_k p_k = 0\) and \(\sum_{k \geqslant j} p_k
+      \in \bar{V}_+\) for all \(j\). This is the cone-support hypothesis of
+      C14&ndash;C16 and C19.
+    </p>
+    <p>
+      <em>Status:</em> theorem. (SC) is not used in C05 or C06, and (I) is not
+      used in C06. <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C05.lean#L205-L230"><tt class="verbatim">C05.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C06.lean#L136-L157"><tt class="verbatim">C06.answer</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Statements <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L62-L63"><tt class="verbatim">Bid.C05</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L65-L66"><tt class="verbatim">Bid.C06</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L101-L102"><tt class="verbatim">Waves.during</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L106"><tt class="verbatim">Surface.cone_tests</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Closing.lean#L20"><tt class="verbatim">half</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Closing.lean#L23"><tt class="verbatim">coneM</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Closing.lean#L106-L121"><tt class="verbatim">tents</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L39"><tt class="verbatim">Bid.cones</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.2.5 (Poincar&eacute; covariance; A16, C07, C08,
+      C09, C28).</strong>
+    </p>
+    <p>
+      <em>Data.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          A rotation structure \(R\) on \(S\) (VI.1): an action of \(O (4)\)
+          on the \(F_d\), with Lie action \(\rho\) of \(\mathfrak{so} (4)\).
+          It is subject to Euclidean covariance (the functions \(T (x ; v)\)
+          are \(O (4)\)-covariant) and the rotation laws of VI.1.
+        </p>
+      </li>
+      <li>
+        <p>
+          A spin structure \(K\): representations \(K (\Lambda)\) of
+          \(\mathcal{L}^{\uparrow}_+\) on \(\mathcal{F}\) and on each \(F_d\),
+          with spin compatibility with \(R\), relative to the real structure
+          of \(S\), which consists of:
+        </p>
+        <ul>
+          <li>
+            <p>
+              compatibility with \(\text{pin}_d\);
+            </p>
+          </li>
+          <li>
+            <p>
+              the representation property and continuity on each
+              finite-dimensional level;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\frac{d}{dt} K_d (\Lambda_a (t)) |_{t = 0} = - i \rho (e_0
+              \wedge e_a)\);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(K = R\) on spatial rotations;
+            </p>
+          </li>
+          <li>
+            <p>
+              commutation with the reflection adjoint.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      (a) (A16) \(\mathcal{L}^{\uparrow}_+\) is generated, as an abstract
+      group, by the spatial rotations and the coordinate boosts.
+    </p>
+    <p>
+      (b) (C08, no hypotheses) For all \(n\) and \(f \in \mathcal{S}
+      (\mathbb{R}^{4 n})\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(g \mapsto g_{\ast} f\) is continuous from \(\mathcal{P}\) into
+          \(\mathcal{S} (\mathbb{R}^{4 n})\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(t^{- 1}  (\Lambda_a (t)_{\ast} f - f) \to - D_a f\) in
+          \(\mathcal{S}\) as \(t \to 0\), where \(D_a = \sum_k (x^a_k
+          \partial_{x^0_k} + x^0_k \partial_{x^a_k})\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (c) (C07) Assume \(S\) and \(T\) satisfy the hierarchy, the inclusions
+      of \(P\) are compatible with \(S\), \(T\) respects \(S\), and Euclidean
+      covariance, the rotation laws of VI.1 and spin compatibility hold. Then
+      every \(F\) with (SC), (PG), (I), (CR) and (HC) satisfies the boost
+      identity (B\(_y\)): for all \(y \in E_n\), tags \(v\), spatial axes
+      \(a\) and \(f \in \mathcal{S} (\mathbb{R}^{4 n})\),
+    </p>
+    <center>
+      \(\displaystyle \sum_{k = 1}^n \psi_{v^{(k)}} (y ; f) = \psi_v (y ;
+      D_{a, y} f), \qquad D_{a,
+y} = \sum_k \left( x^a_k  \hspace{0.17em}
+      \partial_{x^0_k} + (x^0_k + iy_k)
+\hspace{0.17em} \partial_{x^a_k}
+      \right) .\)
+    </center>
+    <p>
+      Here \(v^{(k)}\) is \(v\) with \(v_k\) replaced by \(- i \rho (e_0
+      \wedge e_a) v_k\). Among the table, plan and spin inputs, the boost
+      argument uses the Euclidean hierarchy and rotation data.
+    </p>
+    <p>
+      (d) (C09) Assume A16, C08 and the same table, plan, rotation and spin
+      hypotheses as in (c). If \(F\) satisfies (SC), (PG) and (B\(_y\)) and
+      has boundary family \(W\) (BV), then \(W\) satisfies (Cov):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(W_n (v) (f (\cdot - a)) = W_n (v) (f)\) for \(a \in
+          \mathbb{R}^4\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(W_n  (K (\Lambda) v)  (\Lambda_{\ast} f) = W_n (v) (f)\) for all
+          \(\Lambda \in \mathcal{L}^{\uparrow}_+\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (e) (C28) Assume C08, \(S\) symmetric, the inclusions of \(P\)
+      compatible with \(S\), spin compatibility, and \(J\) the induced star.
+      Let \(g = (a, \Lambda)\) act on words letterwise by \((u, f) \mapsto (K
+      (\Lambda) u, g_{\ast} f)\). Then (Cov) implies:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (invariance of the word Gram form) \(\langle g \cdot b, g \cdot c
+          \rangle_W = \langle b, c \rangle_W\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (continuity of word matrix elements) \(g \mapsto \langle b, g \cdot
+          c \rangle_W\) is continuous.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L91-L101"><tt class="verbatim">A16.answer</tt></a> (statement <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L116"><tt
+          class="verbatim">Bid.A16</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Angular.lean#L114-L115"><tt class="verbatim">beamGens</tt></a>).
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C07.lean#L53-L66"><tt class="verbatim">C07.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C08.lean#L285-L286"><tt class="verbatim">C08.answer</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C09.lean#L403-L442"><tt class="verbatim">C09.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C28.lean#L134-L143"><tt class="verbatim">C28.answer</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Statements <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L95-L97"><tt class="verbatim">Bid.C07</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L99-L101"><tt class="verbatim">Bid.C08</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L103-L106"><tt class="verbatim">Bid.C09</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L50-L52"><tt class="verbatim">Bid.C28</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Definitions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L92-L93"><tt class="verbatim">Boosty</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L84-L85"><tt class="verbatim">inclined</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L87-L88"><tt class="verbatim">kick</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Closing.lean#L83-L85"><tt class="verbatim">Urs</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L26-L35"><tt class="verbatim">Spins.Descends</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Motion.lean#L23-L24"><tt class="verbatim">Surface.Transforms</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Motion.lean#L26-L27"><tt class="verbatim">Surface.Strong</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Rotation laws: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Stress.lean#L31-L42"><tt class="verbatim">Table.Rotation.Laws</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.2.6 (Fourier&ndash;Laplace continuation in the
+      forward tube; C10&ndash;C16).</strong>
+    </p>
+    <p>
+      <em>Definitions.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Tube and cones:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(V^+_n = \{\eta \in \mathbb{R}^{4 n} : \eta_{k + 1} - \eta_k
+              \in V_+, 1
+\leqslant k < n\}\) (the open imaginary-part cone);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\bar{V}^+_n\) is the analogue with \(\bar{V}_+\) (the closed
+              imaginary-part cone);
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\mathcal{T}_n = \{z \in \mathbb{C}^{4 n} : \text{Im}
+              \hspace{0.17em} z \in
+V^+_n \}\) (the tube). This is the forward
+              tube in absolute coordinates; there is no condition on
+              \(\text{Im} \hspace{0.17em} z_1\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          A <em>cutoff</em> \(\chi_n\) is a real smooth function whose
+          derivatives are all polynomially bounded, equal to \(1\) on the
+          \(1\)-neighbourhood of \(\mathcal{V}_n\), with closed support
+          contained in its open \(3\)-neighbourhood.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Fourier&ndash;Laplace continuation:</em>
+        </p>
+      </li>
+    </ul>
+    <center>
+      \(\displaystyle \mathcal{W}_n (v) (z) = (2 \pi)^{- 4 n}  \hspace{0.17em}
+      (\mathcal{F}W_n (v)) 
+(e^{i \langle \cdot, z \rangle} \chi_n), \qquad z
+      \in \mathcal{T}_n .\)
+    </center>
+    <ul>
+      <li>
+        <p>
+          <em>Partial boundary values:</em> \(W_n (v) [\eta] (f) =
+          (\mathcal{F}W_n (v))  \left( e^{- \langle \eta, \cdot
+\rangle}
+          \chi_n  \hspace{0.17em} \check{f} \right)\), formally \(W_n (v) 
+          (\cdot + i \eta)\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Statements.</em>
+    </p>
+    <p>
+      (a) (C10, cone duality) For \(p \in \mathcal{V}_n\) and \(\eta \in
+      \bar{V}^+_n\), \(\langle p, \eta \rangle \geqslant 0\). For \(\eta \in
+      V^+_n\) there is \(c > 0\) with \(\langle p, u \rangle \geqslant c
+      \lvert p \rvert\) for all \(p \in \mathcal{V}_n\) and all \(u\) near
+      \(\eta\).
+    </p>
+    <p>
+      (b) (C11) Cutoffs exist.
+    </p>
+    <p>
+      (c) (C12) Given (a), every cutoff satisfies the damping properties (D):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(e^{- \langle \eta, \cdot \rangle} \chi_n\) has temperate growth
+          for \(\eta \in \bar{V}^+_n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\eta \mapsto e^{- \langle \eta, \cdot \rangle} \chi_n f\) is
+          continuous from \(\bar{V}^+_n\) into \(\mathcal{S}\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (d) (C13) Given (a), \(\mathcal{W}_n (v)\) is holomorphic on
+      \(\mathcal{T}_n\).
+    </p>
+    <p>
+      (e) (C14, the integral representation) Given (c), for \(\eta \in V^+_n\)
+      the identity \(W_n (v) [\eta] (f) = \int \mathcal{W}_n (v)  (x + i \eta)
+      f (x) 
+\hspace{0.17em} dx\) holds, with integrable integrand.
+    </p>
+    <p>
+      (f) (C15) Suppose:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (c) holds and \(\text{supp} \mathcal{F}W \subseteq \mathcal{V}_n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          (d) and (e) hold;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(F\) satisfies (SC), (PG), (I) and the Laplace identity V.2.4(a).
+        </p>
+        <p>
+          Then \(\mathcal{W}_n (v)  (x + i \underline{y}) = F^y_n (x) (v)\)
+          for all \(y \in E_n\) and \(x \in \mathbb{R}^{4 n}\). Together with
+          (d) and (e) this is (TC).
+        </p>
+      </li>
+    </ul>
+    <p>
+      (g) (C16) Given \(\text{supp} \mathcal{F}W \subseteq \mathcal{V}_n\) and
+      (Cov), \(\mathcal{W}_n (v) (z) =\mathcal{W}_n  (K (\Lambda) v)  (\Lambda
+      z)\) for \(z \in \mathcal{T}_n\) and \(\Lambda \in
+      \mathcal{L}^{\uparrow}_+\), with \(\Lambda\) acting on real and
+      imaginary parts.
+    </p>
+    <p>
+      <em>Status:</em> theorem. Several listed hypotheses are not used
+      (&sect;5). <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C10.lean#L71"><tt class="verbatim">C10</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C11.lean#L57-L100"><tt class="verbatim">C11</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C12.lean#L150-L169"><tt class="verbatim">C12</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C13.lean#L127-L132"><tt class="verbatim">C13</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C14.lean#L257-L260"><tt class="verbatim">C14</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C15.lean#L120-L131"><tt class="verbatim">C15</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C16.lean#L75-L91"><tt class="verbatim">C16</tt></a> (all answer theorems).
+        </p>
+      </li>
+      <li>
+        <p>
+          Statements <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L20"><tt class="verbatim">Bid.C10</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L22"><tt class="verbatim">C11</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L24"><tt class="verbatim">C12</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L27-L29"><tt class="verbatim">C13</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L41-L42"><tt class="verbatim">C14</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L44-L46"><tt class="verbatim">C15</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L53-L54"><tt class="verbatim">C16</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Definitions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L16-L18"><tt class="verbatim">Wide</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L33-L37"><tt class="verbatim">Income</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L50-L51"><tt class="verbatim">wave_turn</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L60-L64"><tt class="verbatim">Blanket</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L70-L72"><tt class="verbatim">Blanket.Modified</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L78-L80"><tt class="verbatim">Blanket.partialD</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L109-L111"><tt class="verbatim">Surface.Aurora</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L116"><tt class="verbatim">Aurora.emit</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L118-L124"><tt class="verbatim">Aurora.FullBody</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L45"><tt class="verbatim">tube</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Closing.lean#L70"><tt class="verbatim">shores</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Closing.lean#L71"><tt class="verbatim">fields</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.2.7 (locality; C17&ndash;C21, C27).</strong>
+    </p>
+    <p>
+      <em>Setting.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          Let \(n \geqslant 2\) and let \(Q = (i, i + 1)\) be an adjacent
+          pair. \(s\) is the transposition of \(i\) and \(i + 1\), and
+          \(\sigma\) swaps slots \(i\) and \(i + 1\) of real, imaginary or
+          complex configurations.
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Gamma_Q = \{x : x_{i + 1} - x_i \text{ spacelike} \}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          A height profile \(y\) is a <em>spectator profile</em> for \(Q\) if
+          \(y_i = y_{i + 1}\) and \(y_k < y_l\) for all other pairs \(k < l\).
+          Then \(\underline{y}\) and \(\sigma \underline{y}\) lie in
+          \(\bar{V}^+_n\), and for every real \(x\) the point \(x + i
+          \underline{y}\) lies in the closures of \(\mathcal{T}_n\) and of
+          \(\sigma^{- 1} \mathcal{T}_n\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\Lambda_e (\zeta)\) is the complexified boost of rapidity \(\zeta
+          \in \mathbb{C}\) along a unit spatial direction \(e\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Statements.</em>
+    </p>
+    <p>
+      (a) (C17) There are spectator profiles \(y_m \to 0\) with the following
+      property. For every \(m\) and every \(x \in \Gamma_Q\) there are a unit
+      direction \(e\), \(t > 0\), and neighbourhoods \(U_{\text{o}},
+      U_{\text{t}}\) of \(x + i \underline{y_m}\) such that, for every \(b \in
+      [0, t]\):
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\Lambda_e  (ib) w \in \mathcal{T}_n\) for all \(w \in U_{\text{o}}
+          \cap \mathcal{T}_n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\sigma \Lambda_e  (- ib) w \in \mathcal{T}_n\) for all \(w \in
+          U_{\text{t}} \cap \sigma^{- 1} \mathcal{T}_n\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the same holds at \(b = t\) for \(w = x + i \underline{y_m}\)
+          itself.
+        </p>
+        <p>
+          The profiles are \(y_m = (m + 1)^{- 1} d\), where \(d_k = k - 1\)
+          except that \(d_{i + 1} = i - 1\). Thus the entries at \(i\) and \(i
+          + 1\) agree; all later entries keep their original values.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (b) (C18) Under spin compatibility, \(t \mapsto K_d (\Lambda_e (t))\)
+      extends to an entire function of \(t \in \mathbb{C}\), for each \(d\)
+      and \(e\).
+    </p>
+    <p>
+      (c) (C19) Assume (TC), cone support V.2.4(c), spin compatibility, \(S\)
+      symmetric, the inclusions of \(P\) compatible with \(S\), (b), and the
+      real covariance V.2.6(g). Let \(v\) be labels, \(Q\) a pair, and \(y\) a
+      spectator profile admitting the paths of (a). Then every \(x \in
+      \Gamma_Q\) carries two germs:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(g^{\text{o}}_x\), holomorphic near \(x + i \underline{y}\) and
+          equal to \(\mathcal{W}_n (v)\) on \(\mathcal{T}_n\) near that point;
+        </p>
+      </li>
+      <li>
+        <p>
+          \(g^{\text{t}}_x\), equal to \(\mathcal{W}_n  (v \circ s) \circ
+          \sigma\) on \(\sigma^{- 1} \mathcal{T}_n\) near that point.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (d) (C20) Assume \(S\) and \(T\) symmetric, the inclusions of \(P\)
+      compatible with \(S\), \(T\) smooth, \(T\) respects \(S\), (SC) and
+      (TC). For any such germs and any \(x \in \Gamma_Q\) with all \(x^0_k =
+      0\), \(g^{\text{o}}_x = g^{\text{t}}_x\) near \(x + i \underline{y}\).
+    </p>
+    <p>
+      (e) (C21) Assume (D) and (TC). Each \(x \in \Gamma_Q\) has a radius \(r
+      > 0\) such that, for compactly supported \(f\) with support in \(B (x,
+      r)\):
+    </p>
+    <center>
+      \(\displaystyle W_n (v) [\underline{y}] (f) = \int g^{\text{o}}_x  (\xi
+      + i \underline{y}) f
+(\xi)  \hspace{0.17em} d \xi, \qquad W_n  (v \circ
+      s) [\sigma \underline{y}] 
+(f \circ \sigma) = \int g^{\text{t}}_x  (\xi
+      + i \underline{y}) f (\xi) 
+\hspace{0.17em} d \xi .\)
+    </center>
+    <p>
+      (f) (Boundary exchange) Suppose:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\text{supp} \mathcal{F}W_n (u) \subseteq \mathcal{V}_n\) for all
+          \(u\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the cutoff satisfies (D);
+        </p>
+      </li>
+      <li>
+        <p>
+          for a sequence of spectator profiles \(y_m \to 0\) there are germs
+          satisfying (d) and (e).
+        </p>
+        <p>
+          Then \(W_n (v) (f) = W_n  (v \circ s)  (f \circ \sigma)\) for every
+          \(f \in \mathcal{S}\) with \(\text{supp} f \subset \Gamma_Q\). When
+          this holds for every arity, label tuple and adjacent pair, \(W\)
+          satisfies <em>joint locality</em>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      (g) (C27) Joint locality implies <em>word locality</em>: \(W (a
+      \hspace{0.17em} (u, f) (u', g) \hspace{0.17em} c) = W (a
+      \hspace{0.17em}
+(u', g) (u, f) \hspace{0.17em} c)\) for all words \(a\),
+      \(c\), labels \(u\), \(u'\), and tests \(f\), \(g\) such that
+      \(\text{supp} f - \text{supp} g\) consists of spacelike vectors.
+    </p>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C17.lean#L277-L282"><tt class="verbatim">C17.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C18.lean#L58-L79"><tt class="verbatim">C18.answer</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C19.lean#L213-L226"><tt class="verbatim">C19.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C20.lean#L242-L307"><tt class="verbatim">C20.answer</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C21.lean#L66-L87"><tt class="verbatim">C21.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C27.lean#L87-L92"><tt class="verbatim">C27.answer</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Statements <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L68-L69"><tt class="verbatim">Bid.C17</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L75-L76"><tt class="verbatim">C18</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L78-L81"><tt class="verbatim">C19</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L84-L86"><tt class="verbatim">C20</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L89-L90"><tt class="verbatim">C21</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L48"><tt class="verbatim">C27</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Path definitions: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L57-L60"><tt class="verbatim">augment</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L63-L66"><tt
+          class="verbatim">travelable</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Tar.lean#L72-L73"><tt class="verbatim">Weighty</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Pair definitions: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Swap.lean#L19-L22"><tt class="verbatim">NearPair</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Swap.lean#L49"><tt
+          class="verbatim">gap</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Swap.lean#L53"><tt class="verbatim">spectator</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Swap.lean#L56-L61"><tt class="verbatim">Fleck</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Germ definitions: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L33-L36"><tt class="verbatim">Panes</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L40-L41"><tt
+          class="verbatim">sameGround</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L62-L66"><tt class="verbatim">Forms</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Locality lemmas: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L43-L56"><tt class="verbatim">Panes.reaches</tt></a>, <a
+          href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L68-L90"><tt class="verbatim">Panes.forgets</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L92-L112"><tt class="verbatim">NearPair.actor</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L115-L116"><tt class="verbatim">Actor</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Stems.lean#L33-L34"><tt class="verbatim">Surface.Regional</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.2.8 (real-time vectors, Gram limits, nulls;
+      C22&ndash;C26, C29).</strong>
+    </p>
+    <p>
+      <em>Heated vectors.</em> For \(n \geqslant 1\), take \(v \in
+      \mathcal{F}^n\), heights \(y \in E_n\) with positive entries, \(p \in
+      (0, 1)\) satisfying \(4 p < y_k\) and \(4 p < y_j - y_i\) for \(i < j\),
+      and real points \(r \in \mathbb{R}^{4 n}\). Set \(z_k = r^0_k + iy_k\).
+      The heated vector is
+    </p>
+    <center>
+      \(\displaystyle \Psi_p (v ; y ; r) = e^{- (y_1 - p) H} e^{ir^0_1 H} U
+      (\vec{r}_1) 
+\hspace{0.17em} B_p (v_1)  \hspace{0.17em} G_p (z_2 - z_1,
+      \vec{r}_2 -
+\vec{r}_1)  \hspace{0.17em} B_p (v_2) \cdots G_p (z_n - z_{n
+      - 1}, \vec{r}_n -
+\vec{r}_{n - 1})  \hspace{0.17em} B_p (v_n) \Omega .\)
+    </center>
+    <p>
+      For \(n = 0\) set \(\Psi_p = \Omega\). For a word \(b = ((u_1, f_1),
+      \ldots, (u_n, f_n))\) and \(t > 0\), the heat-cup vector is
+    </p>
+    <center>
+      \(\displaystyle \Phi_t (b) = \int f_1 (x_1) \cdots f_n (x_n) 
+      \hspace{0.17em} \Psi_{p (t)} (u
+; (t, 2 t, \ldots, nt) ; x) 
+      \hspace{0.17em} dx, \qquad p (t) = \min (t, 1) /
+8.\)
+    </center>
+    <p>
+      (a) (C22, the pointwise Gram identity) Assume (H), \(J\) the induced
+      star, the outputs of V.2.2(a)&ndash;(c), the orientation of \(P\), and
+      \(T\) respects \(S\). Take \(x \in E_n\) and \(y \in E_m\) with positive
+      entries, and widths \(t\), \(u\) admissible with all heights exceeding
+      \(4 t\) (resp. \(4 u\)). Then
+    </p>
+    <center>
+      \(\displaystyle \langle \Psi_t (v ; x ; r), \Psi_u (w ; y ; q) \rangle =
+      F^h_{n + m} (\varrho)
+\hspace{0.17em} (Jv_n, \ldots, Jv_1, w_1, \ldots,
+      w_m),\)
+    </center>
+    <p>
+      with \(h = (- x_n, \ldots, - x_1, y_1, \ldots, y_m)\) and \(\varrho =
+      (r_n, \ldots, r_1, q_1, \ldots, q_m)\).
+    </p>
+    <p>
+      (b) (C23, integrability and translation covariance of heat cups) Assume
+      (H), the slab-insertion properties V.2.2(a), and spin compatibility. For
+      every word \(b\) and \(t > 0\), the integrand of \(\Phi_t (b)\) is
+      Bochner integrable, and \(\Phi_t  (g \cdot b) = U (a) \Phi_t (b)\) for
+      translations \(g = (a, 1)\), where \(U (a)\) is the unitary translation
+      of \(\mathcal{H}\).
+    </p>
+    <p>
+      (c) (C24, the heat-cup Gram limit) Assume (H), (SC), (BV), integrability
+      and translation covariance of heat cups and the pointwise Gram identity.
+      Then \(\langle \Phi_s (b), \Phi_{s'} (c) \rangle \to \langle b, c
+      \rangle_W\) as \((s, s') \to (0^+, 0^+)\) independently.
+    </p>
+    <p>
+      (d) (C25) For every \(n \geqslant 0\), tensor products span a dense
+      subspace of \(\mathcal{S} (\mathbb{R}^{4 n})\).
+    </p>
+    <p>
+      (e) (C26, label faithfulness) Assume C25, \(N_d (T) = N_d (S)\) for all
+      \(d\), the hierarchies for \(S, T\), compatibility of the inclusions of
+      \(P\) with both tables, (SC) and (TC). A label \(u \in \mathcal{F}\)
+      with \(W (a \hspace{0.17em} (u, f) \hspace{0.17em} c) = 0\) for all
+      words \(a\), \(c\) and all \(f\) is zero. This concerns single labels,
+      not words.
+    </p>
+    <p>
+      (f) (C29, no hypotheses) For every boundary family \(W\), every
+      antilinear map \(J\), all words \(a, c\) and all labels \(u, u'\), the
+      following hold:
+    </p>
+    <ul>
+      <li>
+        <p>
+          (word bilinearity) \((u, f) \mapsto W (a \hspace{0.17em} (u, f)
+          \hspace{0.17em} c)\) is bilinear;
+        </p>
+      </li>
+      <li>
+        <p>
+          (continuity in the two tests) \((f, g) \mapsto \langle (u, f) a,
+          (u', g) c \rangle_W\) is continuous on \(\mathcal{S}
+          (\mathbb{R}^4)^2\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Status:</em> theorem. <em>Lean:</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C22.lean#L348-L354"><tt class="verbatim">C22.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C23.lean#L218-L220"><tt class="verbatim">C23.answer</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C24.lean#L146-L153"><tt class="verbatim">C24.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C25.lean#L135-L138"><tt class="verbatim">C25.answer</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C26.lean#L77-L92"><tt class="verbatim">C26.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C29.lean#L110"><tt class="verbatim">C29.answer</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Statements <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L29-L31"><tt class="verbatim">Bid.C22</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L33-L34"><tt class="verbatim">C23</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L36-L38"><tt class="verbatim">C24</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L42"><tt class="verbatim">C25</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L44-L46"><tt class="verbatim">C26</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L54"><tt class="verbatim">C29</tt></a>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Definitions <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L19-L22"><tt class="verbatim">Hull</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Grow.lean#L24-L27"><tt class="verbatim">Roof</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L53-L56"><tt class="verbatim">Small.shot</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L92-L93"><tt class="verbatim">Small.heatCup</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L96-L100"><tt class="verbatim">Small.Lamp</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L97"><tt class="verbatim">Surface.kernel</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Stems.lean#L38"><tt class="verbatim">Persists</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Stems.lean#L26-L27"><tt class="verbatim">Symbol</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Stems.lean#L29-L30"><tt class="verbatim">Cam</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <strong>Proposition V.2.9 (the target: a Wightman structure realizing
+      \(W\)).</strong>
+    </p>
+    <p>
+      A <em>Wightman structure</em> consists of:
+    </p>
+    <ul>
+      <li>
+        <p>
+          families \(K (\Lambda)\) of linear automorphisms of \(\mathcal{F}\)
+          and of each \(F_d\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a field system: a Hilbert space \(\mathcal{H}_W\), a subspace
+          \(\mathcal{D}\), a vacuum \(\Omega_W \in \mathcal{D}\), and fields
+          \(\varphi (u, f) \in \text{End} (\mathcal{D})\), bilinear in \((u,
+          f) \in \mathcal{F} \times \mathcal{S} (\mathbb{R}^4)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          an antilinear map \(J : \mathcal{F} \to \mathcal{F}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a unitary, strongly continuous representation \(U\) of
+          \(\mathcal{P}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          a projection-valued measure \(\textsf{E}\) on \(\mathbb{R}^4\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      It <em>realizes</em> \(W\) if:
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(J\) is the induced star and \(K\) satisfies spin compatibility;
+        </p>
+      </li>
+      <li>
+        <p>
+          totality and temperedness: \(\| \Omega_W \| = 1\); \(\mathcal{D}\)
+          is dense and equals the span of the word vectors \(\varphi (b)
+          \Omega_W\); \(f \mapsto \varphi (u, f) \psi\) is continuous;
+        </p>
+      </li>
+      <li>
+        <p>
+          the adjoint identity: \(\langle \varphi (u, f) \psi, \chi \rangle =
+          \langle \psi, \varphi (Ju,
+\bar{f}) \chi \rangle\) on
+          \(\mathcal{D}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          vacuum expectations: \(\langle \Omega_W, \varphi (b) \Omega_W
+          \rangle = W (b)\);
+        </p>
+      </li>
+      <li>
+        <p>
+          local commutativity: \([\varphi (u, f), \varphi (u', g)] = 0\) on
+          \(\mathcal{D}\) when \(\text{supp} f - \text{supp} g\) is spacelike;
+        </p>
+      </li>
+      <li>
+        <p>
+          field faithfulness: for \(u \ne 0\) some \(\varphi (u, f) \ne 0\);
+        </p>
+      </li>
+      <li>
+        <p>
+          covariance: \(U (g)\) preserves \(\mathcal{D}\) and fixes
+          \(\Omega_W\), and \(U (g) \varphi (u, f) \psi = \varphi (K (\Lambda)
+          u, g_{\ast} f) U (g) \psi\);
+        </p>
+      </li>
+      <li>
+        <p>
+          \(\textsf{E}\) is the spectral measure of the translations and
+          vanishes off \(\bar{V}_+\);
+        </p>
+      </li>
+      <li>
+        <p>
+          every translation-invariant vector is a multiple of \(\Omega_W\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      The <em>field axioms without vacuum uniqueness</em> (VIII.1) are the
+      same list without the last clause. <em>Status:</em> definition (a
+      specification). It is produced in VIII.1 by the construction of V.2.10.
+      Consequence: <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L62-L70"><tt class="verbatim">Fields.general</tt></a> and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L82-L84"><tt
+      class="verbatim">Fields.sees</tt></a> show that a realization has Gram form
+      \(\langle \varphi (b) \Omega_W, \varphi (c) \Omega_W \rangle = \langle
+      b, c
+\rangle_W\), so \(W\) is positive on words. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L117-L122"><tt
+      class="verbatim">Wightman</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L124-L135"><tt class="verbatim">Wightman.Realizes</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L22-L26"><tt class="verbatim">Fields</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L41-L45"><tt class="verbatim">Fields.Total</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L111-L115"><tt class="verbatim">Symmetries</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L92-L97"><tt class="verbatim">Action</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Core.lean#L34-L44"><tt class="verbatim">FieldCore</tt></a>.
+    </p>
+    <p>
+      <strong>Proposition V.2.10 (field realization of \(W\)).</strong> Fix
+      rotation data \(R\) and a real structure on \(S\). Let \(J\) be the
+      induced involutive star and assume spin compatibility. Let \(W\) satisfy
+      word bilinearity, continuity in the two tests, word locality, label
+      faithfulness, continuity of word matrix elements and invariance of the
+      word Gram form. Suppose vectors \(\Phi_s (b) \in \mathcal{H}\), \(s >
+      0\), satisfy the Gram limit V.2.8(c), \(\Phi_s (\varnothing) \to
+      \Omega\) as \(s \downarrow 0\), and, for every word \(b\) and
+      translation \(a\), \(\Phi_s  (a \cdot b) = U (a) \Phi_s (b)\) for all
+      sufficiently small \(s > 0\). Assume \(T\) satisfies the normalized,
+      unital, permutation-symmetric Euclidean laws. Then there is a Wightman
+      structure satisfying every clause of V.2.9 except possibly vacuum
+      uniqueness. If the common fixed vectors of all \(e^{- tH}\), \(t > 0\),
+      are multiples of \(\Omega\), it realizes \(W\). <em>Status:</em>
+      theorem. The route used by the main theorem is <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L167-L184"><tt class="verbatim">Next.BOUNDARY.establishing</tt></a>
+      followed by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L217-L221"><tt class="verbatim">Compatible.vacuum</tt></a> (VIII.1). <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Lo.lean#L85-L95"><tt class="verbatim">Boundary.harvest</tt></a> states the same in one lemma
+      and is used only by an alternative route. The ingredients are in
+      &sect;4.8.
+    </p>
+    <p>
+      <em>Not reconstruction.</em> Integrated.lean also proves three
+      ultraviolet bundles, and the folders Overlay and Vac are ultraviolet
+      material; they belong to Part III (III.6, III.10&ndash;III.13):
+    </p>
+    <ul>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L216-L219"><tt class="verbatim">source_sections</tt></a> (G01&ndash;G07);
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L222-L225"><tt class="verbatim">pressure_grants</tt></a> (E01&ndash;E09, given
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Energy.lean#L148"><tt class="verbatim">EBare</tt></a>). The energy hypothesis is proved
+          by <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Bare.lean#L64-L120"><tt class="verbatim">Next.Fluctuations.bare</tt></a>;
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Integrated.lean#L229-L232"><tt class="verbatim">stationary_scene</tt></a> (E02, F01&ndash;F04).
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-2"><a id="2-what-it-uses"></a>2. What it uses<span style="margin-left: 1em"></span></h2>
+    <p>
+      <strong>Inputs from other units.</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>The Euclidean hierarchy</strong> (IV.1; for each phase,
+          V.1): <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Euclid/Words.lean#L141-L148"><tt class="verbatim">Table.Hierarchy</tt></a>. It consists of
+          permutation symmetry, normalization, the unit-insertion law,
+          compatibility with signed symmetries and conjugation, translation
+          homogeneity, reflection positivity on words and on smeared joint
+          tests, smoothness off coincidences, and capped polynomial bounds
+          near collisions. Its uses include:
+        </p>
+        <ul>
+          <li>
+            <p>
+              permutation symmetry of \(S\) and \(T\) (C02, C20, C22, C26);
+            </p>
+          </li>
+          <li>
+            <p>
+              smoothness of \(T\) off coincidences (C07, C20, C26);
+            </p>
+          </li>
+          <li>
+            <p>
+              translation homogeneity of \(T\) (C02, C09);
+            </p>
+          </li>
+          <li>
+            <p>
+              the reflection adjoint on labels (the star \(J\));
+            </p>
+          </li>
+          <li>
+            <p>
+              the null spaces (null-space compatibility, C26).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>The OS space and the slab operators</strong> (V.1, the
+          B-items; files YM/OS, YM/Heat).
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57-L61"><tt class="verbatim">OS.Chamber</tt></a> provides:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  the GNS space with vacuum \(\Omega\);
+                </p>
+              </li>
+              <li>
+                <p>
+                  the semigroup \(e^{- tH}\) and its holomorphic extension
+                  \(e^{- \zeta H}\), a contraction for \(\text{Re}
+                  \hspace{0.17em} \zeta > 0\), with the semigroup law and
+                  \(e^{- tH} \Omega = \Omega\) (Heat/Rows, Heat/Extend);
+                </p>
+              </li>
+              <li>
+                <p>
+                  spatial translations;
+                </p>
+              </li>
+              <li>
+                <p>
+                  a unitary space-time translation group whose spectral
+                  measure lies in \(\{p^0 \geqslant 0\}\);
+                </p>
+              </li>
+              <li>
+                <p>
+                  the ground space, i.e. the invariant vectors.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Slabs.lean#L101-L104"><tt class="verbatim">OS.Spread</tt></a>: slab operators \(A_d
+              (w)\) acting on GNS vectors by concatenation of words.
+            </p>
+          </li>
+          <li>
+            <p>
+              The laws <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Slabs.lean#L153-L162"><tt class="verbatim">Spread.Laws</tt></a>. Among them is
+              the slab bound (SB), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Slabs.lean#L111-L113"><tt class="verbatim">AllCopy</tt></a>: for
+              each degree bound \(D\) and representative bound \(R\) there are
+              \(C > 0\) and \(a \in \mathbb{N}\) such that
+            </p>
+            <center>
+              \(\displaystyle \|A_d (w)\| \leqslant C^{\lvert w \rvert} 
+              (\lvert w \rvert / r)^{a \lvert w
+\rvert}\)
+            </center>
+            <p>
+              for every word \(w\) whose labels have degree at most \(D\) and
+              representative norm at most \(R\), in a slab of width \(d\),
+              with pairwise distances in the maximum norm and distances from
+              both time boundaries at least \(r \in (0, 1]\). This is the only
+              quantitative input of the unit; it gives the bound \(p^{- a}\)
+              of C01.
+            </p>
+          </li>
+          <li>
+            <p>
+              VIII.1 obtains (H) from the phase data, both for the mixed table
+              \(S = T\) and for the selected phase.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Rotation, spin and star data</strong> (VI.1).
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(R\) with Euclidean covariance and rotation laws
+              (A10&ndash;A15).
+            </p>
+          </li>
+          <li>
+            <p>
+              \(K\) with spin compatibility (A16&ndash;A17).
+            </p>
+          </li>
+          <li>
+            <p>
+              A16 itself, whose proof <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean"><tt class="verbatim">Work/A16</tt></a> is
+              a field of the bundle.
+            </p>
+          </li>
+          <li>
+            <p>
+              The induced star \(J\) (the induced-star identity, from the
+              orientation of the differential plan).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>The label structures</strong> of I.1 and II.1: the gauge
+          group, the register, the quotient labels, \(\text{pin}\), and the
+          common level of finitely many labels.
+        </p>
+      </li>
+    </ol>
+    <p>
+      <strong>Standard mathematics.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <em>Osterwalder&ndash;Schrader reconstruction:</em>
+          Osterwalder&ndash;Schrader, <em>Axioms for Euclidean Green's
+          functions</em> I, II, CMP 31 (1973), 42 (1975); Glimm&ndash;Jaffe,
+          <em>Quantum Physics</em>, Ch. 6 and 19.
+        </p>
+        <ul>
+          <li>
+            <p>
+              Here the continuation is built from operators on the OS space,
+              so the Laplace-transform estimates of OS II are not needed.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Boundary values of holomorphic functions of polynomial growth as
+          distributions of finite order:</em> H&ouml;rmander, <em>ALPDO
+          I</em>, Thm. 3.1.15; Vladimirov, <em>Methods of the Theory of
+          Generalized Functions</em>; Streater&ndash;Wightman, Thm. 2-10.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Fourier&ndash;Laplace transforms of distributions with support
+          in a cone, and holomorphy in tubes:</em> Reed&ndash;Simon II, Thm.
+          IX.16; Streater&ndash;Wightman, Thm. 2-6.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Locality:</em> Jost points and the complex Lorentz group (Jost,
+          <em>The General Theory of Quantized Fields</em>;
+          Streater&ndash;Wightman, Thms. 2-11, 2-12). Locality from the
+          permutation symmetry of the Schwinger functions follows OS I.
+        </p>
+        <ul>
+          <li>
+            <p>
+              A holomorphic germ is determined by its restriction to a maximal
+              totally real subspace (elementary, by power series).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <em>Hilbert-space tools:</em> the Kolmogorov (GNS) construction;
+          Riesz&ndash;Markov; Stone&ndash;Weierstrass; the spectral measure of
+          a continuous unitary representation of \(\mathbb{R}^4\)
+          (Stone&ndash;Naimark&ndash;Ambrose&ndash;Godement); Reed&ndash;Simon
+          I, Ch. VII&ndash;VIII.
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Other standard facts:</em>
+        </p>
+        <ul>
+          <li>
+            <p>
+              density of tensor products in \(\mathcal{S} (\mathbb{R}^{4 n})\)
+              (Reed&ndash;Simon I, &sect;V.3);
+            </p>
+          </li>
+          <li>
+            <p>
+              continuous one-parameter groups in finite dimension are
+              exponentials;
+            </p>
+          </li>
+          <li>
+            <p>
+              generation of \(\mathcal{L}^{\uparrow}_+\) by rotations and
+              boosts.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <strong>Imported constants and assumptions.</strong>
+    </p>
+    <ul>
+      <li>
+        <p>
+          There are no numerical constants beyond conventions: the width \(p <
+          1\), gaps \(> 4 p\), and the choice \(p = \min (k, 1) / 8\). The
+          exponents \(a\) and constants \(C\) of C01 are those of (SB) (V.1).
+        </p>
+      </li>
+      <li>
+        <p>
+          The hypotheses not discharged here are:
+        </p>
+        <ul>
+          <li>
+            <p>
+              (H);
+            </p>
+          </li>
+          <li>
+            <p>
+              the data \(R\), \(K\), \(J\) with their properties;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(N_d (T) = N_d (S)\) for every \(d\);
+            </p>
+          </li>
+          <li>
+            <p>
+              one-dimensionality of the heat-fixed space.
+            </p>
+          </li>
+        </ul>
+        <p>
+          VIII.1 supplies the table, slab and symmetry data from V.1 and VI.1.
+          One-dimensionality of the heat-fixed space is supplied for the
+          selected phase.
+        </p>
+      </li>
+      <li>
+        <p>
+          The boundary family \(W\), (BV) and cone support are produced by
+          V.2.3(b) and V.2.4(c) from the outputs of C03, C04, C06 and C09.
+        </p>
+      </li>
+    </ul>
+    <h2 id="auto-3"><a id="3-strategy"></a>3. Strategy<span style="margin-left: 1em"></span></h2>
+    <p>
+      The slab bound controls a field insertion \(B_p (v)\) between two heat
+      factors. The relation \(B_{p + u} = e^{- uH} B_p e^{- uH}\) makes
+      products of these insertions independent of the admissible width. Their
+      vacuum matrix elements give a continuation to strictly ordered imaginary
+      times, with polynomial growth as the time differences shrink.
+      Cauchy&ndash;Riemann identities and Taylor's formula along \((0, 1,
+      \ldots, n - 1)\) then give tempered boundary values for arbitrary
+      approaches through ordered heights. A Laplace identity yields total
+      energy zero and nonnegative suffix energies.
+    </p>
+    <p>
+      Euclidean covariance gives Poincar&eacute; covariance of the boundary
+      family: translations and spatial rotations pass through a one-variable
+      identity theorem; infinitesimal rotations in a time&ndash;space plane
+      give the boost identity, which is integrated along the real boost
+      groups. Lorentz covariance improves the spectral support to
+      \(\mathcal{V}_n\). Fourier&ndash;Laplace transformation extends the
+      continuation to the forward tube. Locality follows from two holomorphic
+      germs near each spacelike adjacent pair: imaginary boosts construct the
+      germs, Euclidean permutation symmetry identifies their jets on the Wick
+      slice, and continuation along a rescaling of real times propagates their
+      agreement. Partial boundary values then give exchange of adjacent
+      spacelike fields.
+    </p>
+    <p>
+      Finally, inner products of heated OS vectors equal the continuation at a
+      glued, reflected configuration. Their limit gives positivity of the word
+      kernel and an isometric embedding of its Kolmogorov space into the OS
+      Hilbert space. Left multiplication defines the fields on the common word
+      domain. The embedding intertwines translations, transferring positive
+      energy; Lorentz covariance gives the forward-cone spectrum condition. A
+      one-dimensional OS heat-fixed space gives vacuum uniqueness. These are
+      the operator and local-germ forms of Osterwalder&ndash;Schrader
+      reconstruction used here.
+    </p>
+    <h2 id="auto-4"><a id="4-steps"></a>4. Steps<span style="margin-left: 1em"></span></h2>
+    <h3 id="auto-5"><a id="41-tools"></a>4.1 Tools<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.2.a (Kolmogorov).</strong> Let \(K\) be a positive
+      semidefinite kernel on a set \(X\). There are a Hilbert space and
+      vectors \((\psi_x)_{x \in X}\) with \(\langle \psi_x, \psi_y \rangle = K
+      (x, y)\) and dense span. <em>Proof sketch.</em> Complete the finitely
+      supported functions modulo the null space of \(\sum \bar{f} (x) g (y) K
+      (x, y)\). <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Hilbert/Kolmogorov.lean#L67-L92"><tt class="verbatim">Kernel.host</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Hilbert/Kolmogorov.lean#L34-L38"><tt class="verbatim">Kernel.Gram</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.b (projection-valued measure).</strong> Let \(X\) be a
+      compact Hausdorff space and \(A : C (X) \to \mathcal{B} (\mathcal{H})\)
+      a unital complex \(\ast\)-algebra homomorphism. There is a strongly
+      countably additive projection-valued measure on the Borel sets of \(X\)
+      representing \(A\). <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          For each \(\psi\), the positive functional \(f \mapsto \langle \psi,
+          A (f) \psi \rangle\) gives a Riesz&ndash;Markov measure
+          \(\mu_{\psi}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(f \mapsto A (f) \psi\) extends to an isometry \(L^2 (\mu_{\psi})
+          \to \mathcal{H}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          \(E (s) \psi\) is the image of \(1_s\); for disjoint Borel sets, the
+          corresponding indicator sums converge in \(L^2 (\mu_{\psi})\),
+          giving strong countable additivity.
+        </p>
+      </li>
+    </ol>
+    <p>
+      It is used (V.1, SNAG/Escape) on the one-point compactification of
+      \(\mathbb{R}^4\) to build the spectral measure of the translations.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Compact/PVM.lean#L51-L62"><tt class="verbatim">Spectral.Rep.ships</tt></a>
+      <em>(proof read for additivity; Compact/Borel statement only)</em>.
+    </p>
+    <p>
+      <strong>Lemma V.2.c (Schwartz calculus; tensor density, C25).</strong>
+    </p>
+    <ol>
+      <li>
+        <p>
+          Let \(f_{\lambda}, g \in \mathcal{S} (\mathbb{R}^d)\). If every jet
+          of \(f_{\lambda}\) converges locally uniformly to the corresponding
+          jet of \(g\), and every Schwartz seminorm of \(f_{\lambda}\) is
+          eventually bounded uniformly in \(\lambda\), then \(f_{\lambda} \to
+          g\) in \(\mathcal{S}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Let \(K\) be compact metric, \(\mu\) a finite Borel measure, and \(u
+          \mapsto f_u\) continuous from \(K\) into \(\mathcal{S}
+          (\mathbb{R}^d)\). If \(g \in \mathcal{S}\) satisfies \(g (x) =
+          \int_K f_u (x)  \hspace{0.17em} d \mu (u)\), then the sums \(\sum_j
+          \mu (E_j) f_{u_j}\) over finite measurable partitions, with \(u_j
+          \in E_j\) and \(\max_j \text{diam} (E_j) \to 0\), converge to \(g\)
+          in \(\mathcal{S}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          The linear span of tensor products is dense in \(\mathcal{S}
+          (\mathbb{R}^{4 n})\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      <em>Proof sketch.</em> For 3:
+    </p>
+    <ul>
+      <li>
+        <p>
+          reduce to compactly supported \(v\);
+        </p>
+      </li>
+      <li>
+        <p>
+          choose a product cutoff equal to \(1\) on the support;
+        </p>
+      </li>
+      <li>
+        <p>
+          replace \(\hat{v}\) by compactly supported cutoffs \(\hat{v}_N \to
+          \hat{v}\) in \(\mathcal{S}\);
+        </p>
+      </li>
+      <li>
+        <p>
+          the fixed product cutoff times \((2 \pi)^{- 4 n}  \int \hat{v}_N
+          (\xi) e^{i \langle \xi, \cdot \rangle} 
+\hspace{0.17em} d \xi\)
+          converges to \(v\) by Fourier inversion;
+        </p>
+      </li>
+      <li>
+        <p>
+          approximate each compact integral by quadrature sums of products of
+          cutoff plane waves, using 2. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spark/Limit.lean#L28-L51"><tt class="verbatim">Spark.ready</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Spark/Pile.lean#L77-L114"><tt class="verbatim">Spark.records</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C25.lean#L109-L124"><tt class="verbatim">C25.compact_mem</tt></a>,
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C25.lean#L85-L107"><tt class="verbatim">C25.cut_port_mem</tt></a>.
+        </p>
+      </li>
+    </ul>
+    <h3 id="auto-6"><a id="42-the-strict-time-continuation"></a>4.2 The strict-time continuation<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.2.d (slab insertions; C01).</strong> As in V.2.2(a).
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Construction.</strong> For each degree, \(B_p\) is defined
+          on representatives by the one-point slab operator.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Linearity and descent to quotient labels.</strong> An
+          operator on \(\mathcal{H}\) is determined by its matrix elements
+          between GNS vectors. These matrix elements are Schwinger functions
+          of \(T\) on the word <em>reflected word, centre insertion, raised
+          word</em>; they are linear in the inserted label and vanish on
+          \(S\)-null labels because \(T\) respects \(S\). The degrees are
+          glued using compatibility with the inclusions. For \(p = 0\) the map
+          is set to \(0\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Bound.</strong> (SB) applies to a word of length 1 in a slab
+          of width \(2 p\) with buffer \(r = p \leqslant 1\) and gives \(\|B_p
+          (\text{pin}_d w)\| \leqslant C (1 / p)^a\). The constants depend on
+          the degree and on the norm of the representative.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C01.lean#L71-L80"><tt class="verbatim">C01.single</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C01.lean#L51-L57"><tt
+      class="verbatim">C01.inner_raw</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C01.lean#L91-L97"><tt class="verbatim">C01.at_width</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C01.lean#L99-L117"><tt class="verbatim">C01.answer</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.e (Euclidean values and width independence;
+      C02).</strong> As in V.2.2(b). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Euclidean values.</strong> At imaginary times each factor
+          \(G_p\) is the heat semigroup at a positive real time. By induction
+          from the right, the vector \(B_p (v_k) G_p \cdots B_p (v_n) \Omega\)
+          is the GNS vector of a positive-time Euclidean word. At the end,
+          \(\langle \Omega, \text{vector} \rangle\) is the Schwinger function,
+          and translation invariance removes the offset.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Width independence.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              First, \(B_{p + u} = e^{- uH} B_p e^{- uH}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Second, \(G_p (w) = e^{- uH} G_{p + u} (w) e^{- uH}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              The factors \(e^{- uH}\) telescope, and \(e^{- uH} \Omega =
+              \Omega\) removes the last one.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      Only gaps \(> 2 p\) are needed; the factor \(4\) in
+      &quot;admissible&quot; is slack. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C02.lean#L68-L97"><tt class="verbatim">C02.train_pure</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C02.lean#L118-L128"><tt class="verbatim">C02.pad_bar</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C02.lean#L156-L166"><tt class="verbatim">C02.matrix_pad</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.f (holomorphy and polynomial growth; C03).</strong> As
+      in V.2.2(c). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Definition.</strong> \(F_n (z) = M_p (z)\) with \(p = \min
+          (k, 1) / 8\), where \(k > 0\) is any lower bound for the
+          imaginary-time differences when \(n \geqslant 2\); take \(k = 1\)
+          for \(n = 0, 1\). By V.2.e this does not depend on the admissible
+          \(p\), and admissibility is an open condition.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Holomorphy and continuity.</strong> These follow from those
+          of \(\zeta \mapsto e^{- \zeta H}\) in norm, combined with strong
+          continuity of \(U\), through the finite product.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Growth.</strong> For \(0 < k \leqslant 1\), take \(p = k /
+          8\). The factors \(G_p\) are contractions, so \(\lvert F \rvert
+          \leqslant \| \Omega \|^2  \prod_j \|B_p (v_j)\| \leqslant \|
+\Omega
+          \|^2 \left( \prod_j C_j 8^{a_j} \right) k^{- \sum_j a_j}\). This
+          gives (PG) with \(m = \sum a_k\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C03.lean#L218-L226"><tt class="verbatim">C03.defined_exists</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C03.lean#L228-L243"><tt
+      class="verbatim">C03.defined_region</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C03.lean#L200-L216"><tt class="verbatim">C03.defined_power</tt></a>.
+    </p>
+    <h3 id="auto-7"><a id="43-boundary-values-and-spectral-support"></a>4.3 Boundary values and spectral support<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.2.g (C04).</strong> As in V.2.3(a). <em>Proof
+      sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          (PG) gives a bound on \(F^y\) that is uniform in \(x\) and locally
+          uniform in \(y \in E_n\); this yields integrability and continuity
+          by dominated convergence.
+        </p>
+      </li>
+      <li>
+        <p>
+          On each one-variable slice \(w \mapsto F (\cdot + w
+          \underline{a})\), Cauchy&ndash;Riemann gives \(\partial_t F (y + ta)
+          = i \hspace{0.17em} \partial_{\underline{a}} F\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Cauchy estimates on discs of radius uniform in \(x\) allow
+          differentiation under the integral.
+        </p>
+      </li>
+      <li>
+        <p>
+          Integration by parts moves \(\partial_{\underline{a}}\) onto \(f\).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C04.lean#L131-L144"><tt class="verbatim">C04.cr_height</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C04.lean#L146-L171"><tt
+      class="verbatim">C04.deriv_bound_near</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C04.lean#L173-L219"><tt class="verbatim">C04.lines</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.h (boundary values).</strong> As in V.2.3(b). For
+      every nondecreasing \(y\), including \(y = 0\), the boundary value is
+      given by an explicit formula. Let \(\varrho = (0, 1, \ldots, n - 1)\)
+      and \(D = - i \partial_{\underline{\varrho}}\), and let \(m\) be the
+      exponent of (PG). Then
+    </p>
+    <center>
+      \(\displaystyle W^y_n (v) (f) = \sum_{k = 0}^m \frac{(- 1)^k}{k!} 
+      \hspace{0.17em} \psi_v (y +
+\varrho ; D^k f) - \int_0^1 \frac{(-
+      s)^m}{m!}  \hspace{0.17em} \psi_v (y + s
+\varrho ; D^{m + 1} f) 
+      \hspace{0.17em} ds.\)
+    </center>
+    <p>
+      <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          For \(y \in E_n\), Taylor's formula with integral remainder along
+          \(t \mapsto y + t \varrho\) (by (CR)) shows \(W^y = \psi (y ;
+          \cdot)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          For nondecreasing \(y\) the profile \(y + s \varrho\) has all gaps
+          \(\geqslant s\). So (PG) bounds the remainder integrand by \(C
+          \|D^{m + 1} f\|_{L^1} / m!\), uniformly in \(y\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence:
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(y \mapsto W^y (f)\) is continuous on the closed set of
+              nondecreasing heights, by dominated convergence;
+            </p>
+          </li>
+          <li>
+            <p>
+              \(\lvert W^y (f) \rvert\) is bounded by finitely many \(L^1\)
+              norms of \(D^k f\), so \(W^y\) is tempered.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          Multilinearity in \(v\) follows from uniqueness of limits. At \(y =
+          0\) this gives (BV).
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Breath.lean#L27-L28"><tt class="verbatim">Waves.desired</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Breath.lean#L50-L66"><tt
+      class="verbatim">Waves.meant</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Breath.lean#L78-L101"><tt class="verbatim">Waves.maintains</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Osc.lean#L27-L36"><tt class="verbatim">Waves.cost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Osc.lean#L44-L80"><tt class="verbatim">Waves.seeks</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.i (Laplace identity; C05).</strong> As in V.2.4(a).
+      <em>Proof sketch.</em> Put \(A (s) = \psi_v (sy ; \widehat{e^{s \langle
+      \underline{y}, \cdot \rangle} f})\) for \(s > 0\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>\(A\) is constant.</strong> By (CR) along \(y\), and since
+          \(\frac{d}{ds} \widehat{e^{s \langle \underline{y}, \cdot \rangle}
+          f} = i
+\hspace{0.17em} \partial_{\underline{y}} \widehat{e^{s
+          \langle \underline{y},
+\cdot \rangle} f}\) in \(\mathcal{S}\) (here
+          compact support is needed), \(A' (s) = 0\). The product rule is
+          justified by the uniform bound \(\lvert \psi_{y'} (g) \rvert
+          \leqslant \text{toll} (g)\) of V.2.h.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The limit.</strong> As \(s \to 0^+\), \(A (s) \to W_n (v)
+          (\hat{f})\), by the radial limit and the same bound.
+        </p>
+      </li>
+    </ol>
+    <p>
+      Only the radial limit is used. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C05.lean#L182-L201"><tt class="verbatim">C05.hasDerivAt_zero_psi</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C05.lean#L157-L177"><tt class="verbatim">C05.tendsto_psi</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.j (support in \(\mathcal{P}_n\); C06).</strong> As in
+      V.2.4(b). <em>Proof sketch.</em> Let \(y\) be nondecreasing and \(f\)
+      compactly supported in \(\{p : \langle \underline{y}, p \rangle < -
+      1\}\).
+    </p>
+    <ol>
+      <li>
+        <p>
+          Apply V.2.i at the ordered heights \(Y (t) = ty + \varrho\), whose
+          gaps are all \(\geqslant 1\).
+        </p>
+      </li>
+      <li>
+        <p>
+          (PG) with \(k = 1\) gives \(\lvert \psi_{Y (t)} (\hat{g}) \rvert
+          \leqslant C \| \hat{g} \|_{L^1}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          Absorb \(e^{\langle \underline{\varrho}, \cdot \rangle}\) into the
+          compact test. Every seminorm of the remaining factor \(e^{t \langle
+          \underline{y}, \cdot \rangle}\) times that test is bounded by a
+          polynomial in \(t\) times \(e^{- t}\), and tends to zero.
+        </p>
+      </li>
+      <li>
+        <p>
+          Hence \(W (\hat{f}) = 0\). Rescaling \(y\) removes the \(- 1\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      Constant profiles of both signs force \(\sum_k p^0_k = 0\).
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C06.lean#L101-L134"><tt class="verbatim">C06.patch</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C06.lean#L38-L86"><tt
+      class="verbatim">C06.lift_falls</tt></a>.
+    </p>
+    <h3 id="auto-8"><a id="44-poincar&Atilde;&#x013E;-covariance"></a>4.4 Poincar&eacute; covariance<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.2.k (Poincar&eacute; action on \(\mathcal{S}\);
+      C08).</strong> As in V.2.5(b). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Continuity.</strong> The seminorm estimate \(p_{i, k}  (f
+          \circ (A (\cdot - b))) \leqslant (\|A^{- 1} \|+ \lvert b
+\rvert)^i
+          \|A\|^k 2^i \max_{(i', k') \leqslant (i, k)} p_{i', k'} (f)\)
+          combines with locally uniform convergence of jets (V.2.c, item 1).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Derivative.</strong> The pointwise derivative in \(t\) of
+          \(\Lambda_a (t)_{\ast} f\) is \(- \Lambda_a (t)_{\ast} D_a f\). The
+          slope error is written as \(\int_0^1 (\cdot)  \hspace{0.17em} du\)
+          (fundamental theorem of calculus) and controlled in \(\mathcal{S}\)
+          by the continuity just proved.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C08.lean#L31-L59"><tt class="verbatim">C08.size_affine_le</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C08.lean#L179-L185"><tt
+      class="verbatim">C08.continuous_gpush</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C08.lean#L127-L161"><tt class="verbatim">C08.probe_slope_of_pointwise</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.l (boost identity at strict heights; C07).</strong> As
+      in V.2.5(c). <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Euclidean input.</strong> Differentiating the \(O (4)\)
+          covariance of \(T\) along \(\exp (s \hspace{0.17em} e_0 \wedge
+          e_a)\) at a non-coincident configuration gives the rotation Ward
+          identity: the derivative of \(T (x ; v)\) along the rotation field
+          equals \(- \sum_k T (x ; \ldots, \rho (e_0 \wedge e_a) v_k,
+          \ldots)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The analytic function \(E (z)\).</strong> Fix \(f\) with
+          compact support and introduce a complex parameter \(z\) and the
+          times \(z \hspace{0.17em} x^0_k + iy_k\). Let \(E (z)\) be the
+          integral of
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle F \cdot \left( \sum_k [x^a_k \partial_{x^0_k} + z
+      (zx^0_k + iy_k)
+\partial_{x^a_k}] f \right) - z \sum_k F (v^{(k)}) f.\)
+    </center>
+    <p>
+      The times stay strictly ordered on \(\text{supp} f\) for \(z\) in a
+      convex open set containing \(\mathbb{R}\), and \(E\) is holomorphic
+      there. 3. <strong>\(E\) vanishes on a segment of the imaginary
+      axis.</strong> At \(z = iw\), \(w > 0\) small, the configuration is
+      Euclidean, with times \(y_k + wx^0_k\). There the vector field is \(w\)
+      times the pull-back of the \((0, a)\)-rotation field, and \(F\) is the
+      Schwinger function. By step 1 the integrand is the divergence of the
+      compactly supported vector field \(fT\) times the divergence-free
+      rotation field, so \(E (iw) = 0\). 4. <strong>Conclusion.</strong> The
+      identity theorem gives \(E (1) = 0\), which is (B\(_y\)) for compactly
+      supported \(f\). Density (cutoffs) and the continuity of \(f \mapsto
+      \psi (y ; f)\) (V.2.h at fixed \(y\)) give all \(f\).
+    </p>
+    <p>
+      The term \(iy_k \partial_{x^a_k}\) is the imaginary part of the complex
+      time multiplying the spatial derivative. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C07/Euclid.lean#L104-L125"><tt
+      class="verbatim">C07.oriented_differential</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C07/Integrate.lean#L47-L75"><tt class="verbatim">C07.integral_orbit</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C07/Integrate.lean#L126-L162"><tt class="verbatim">C07.error_imag</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C07/Continue.lean#L128-L148"><tt class="verbatim">C07.error_one</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C07/Continue.lean#L150-L170"><tt class="verbatim">C07.compact_boost</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C07.lean#L53-L66"><tt class="verbatim">C07.answer</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.m (real Poincar&eacute; covariance; C09,
+      A16).</strong> As in V.2.5(a), (d). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Translations by \(a = (\vec{a}, a^0)\).</strong> For fixed
+          \(y \in E_n\), \(F^y_n  (x + a) = F^y_n (x)\). This follows from a
+          one-variable identity theorem in \(c\) for the times \(i
+          \hspace{0.17em} \text{Im} \hspace{0.17em} z_k + c (\text{Re}
+          \hspace{0.17em}
+z_k + a^0)\): at \(c = ib\) the times are imaginary,
+          and Euclidean translation invariance by \((\vec{a}, ba^0)\) applies.
+          Change variables and let \(y \to 0\) (BV).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Spatial rotations.</strong> The same argument applies, using
+          \(O (3) \subset O (4)\) covariance and \(K = R\) on rotations.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Boosts.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              Passing (B\(_y\)) to \(y \to 0\) removes the term \(\sum iy_k
+              \partial_{x^a_k}\) and gives \(\sum_k W (v^{(k)}) (f) = W (v) 
+              (D_a f)\).
+            </p>
+          </li>
+          <li>
+            <p>
+              The function \(h (t) = W_n  (K (\Lambda_a (t)) v)  (\Lambda_a
+              (t)_{\ast} f)\) has derivative \(0\) at \(t = 0\), by C08(b),
+              the boost derivative, and finite-dimensional expansion of the
+              labels.
+            </p>
+          </li>
+          <li>
+            <p>
+              By the group law \(h'\) vanishes everywhere, so \(h\) is
+              constant.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>The Lorentz group.</strong> The \(\Lambda\) for which
+          covariance holds form a subgroup containing the rotations and the
+          coordinate boosts. A16 makes it all of \(\mathcal{L}^{\uparrow}_+\).
+          The proof of A16 is purely group-theoretic: up to three boosts bring
+          a future unit vector to rest, and its stabilizer consists of
+          rotations.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C09.lean#L33-L115"><tt class="verbatim">C09.time_compare</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C09.lean#L123-L148"><tt
+      class="verbatim">C09.restricted_translation</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C09.lean#L168-L199"><tt class="verbatim">C09.restricted_spatial</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C09.lean#L242-L279"><tt class="verbatim">C09.boost_corner</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C09.lean#L374-L399"><tt class="verbatim">C09.boost_invariant</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/A16.lean#L91-L101"><tt class="verbatim">A16.answer</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.n (word covariance and cone support; C28).</strong> As
+      in V.2.5(e) and V.2.4(c). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Gram invariance.</strong> The induced star commutes with the
+          letterwise action by spin compatibility. Pushed tensor tests are
+          \(g_{\ast}\) of the tensor test; then apply (Cov).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Continuity.</strong> Use C08(b, first part), continuity of
+          \(\Lambda \mapsto K (\Lambda)\) on a finite-dimensional level, and
+          continuity of \(W_n (v)\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Lorentz improvement of spectral support.</strong> The
+          Fourier transform intertwines \(\Lambda\) with \(\tilde{\Lambda}\),
+          so covariance carries the support condition \(\mathcal{P}_n\) to
+          \(\tilde{\Lambda}^{- 1} \mathcal{P}_n\) for every \(\Lambda\). The
+          properties of \(\mathcal{V}_n\) follow from half-space support
+          applied to step profiles and to constant profiles.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C28.lean#L134-L143"><tt class="verbatim">C28.answer</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Closing.lean#L106-L121"><tt
+      class="verbatim">tents</tt></a>.
+    </p>
+    <h3 id="auto-9"><a id="45-continuation-to-the-full-tube"></a>4.5 Continuation to the full tube<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.2.o (cone geometry, cutoff, damping;
+      C10&ndash;C12).</strong> As in V.2.6(a)&ndash;(c). <em>Proof
+      sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>C10.</strong> Summation by parts gives \(\langle p, \eta
+          \rangle = \sum_k \langle P_{k + 1}, \eta_{k + 1} - \eta_k
+\rangle\),
+          where \(P_j = \sum_{l \geqslant j} p_l\) and \(P_1 = 0\). Each term
+          is \(\geqslant 0\) because \(\bar{V}_+\) is self-dual for the
+          Euclidean pairing. For the local bound: if \(B (\eta, r) \subset
+          V^+_n\) and \(p \ne 0\), then for \(u \in B (\eta, r / 2)\) the
+          point \(u - \tfrac{r}{2} p / \lvert p \rvert\) lies in
+          \(\bar{V}^+_n\), so \(\langle p, u \rangle \geqslant \tfrac{r}{2}
+          \lvert p \rvert\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>C11.</strong> Take \(\chi_n\) = (a bump of integral \(1\)
+          and outer radius \(1 / 2\)) \(\ast\) (indicator of the open
+          \(2\)-neighbourhood of \(\mathcal{V}_n\)).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>C12.</strong> By C10, \(- \langle \eta, p \rangle \leqslant
+          3 \lvert \eta \rvert\) on the \(3\)-neighbourhood. Leibniz bounds
+          then hold uniformly for bounded \(\eta \in \bar{V}^+_n\), and
+          continuity into \(\mathcal{S}\) follows by V.2.c, item 1.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C10.lean#L25-L35"><tt class="verbatim">C10.telescope</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C10.lean#L48-L69"><tt
+      class="verbatim">C10.cone_bound</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C11.lean#L57-L100"><tt class="verbatim">C11.answer</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C12.lean#L68-L76"><tt class="verbatim">C12.cone_estimate</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C12.lean#L84-L108"><tt class="verbatim">C12.attenuate_estimate</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.p (holomorphy in the tube; C13).</strong> As in
+      V.2.6(d). <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Exponential reserve.</strong> For \(z \in \mathcal{T}_n\),
+          on \(\text{supp} \chi_n\) one has \(\text{Re} \hspace{0.17em} (i
+          \langle p, z \rangle) = - \langle p, \text{Im}
+\hspace{0.17em} z
+          \rangle \leqslant A - c \lvert p \rvert\), by C10 and distance
+          \(\leqslant 3\). So \(e^{i \langle \cdot, z \rangle} \chi_n\) has
+          finite seminorms weighted by \(e^{c \lvert p \rvert / 2}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Differentiability.</strong> Write \(L_z (p) = e^{i \langle
+          p, z \rangle} \chi_n (p)\). For each Schwartz seminorm \(q\),
+          exponential decay gives \(q (L_{z + h} - L_z - i \langle \cdot, h
+          \rangle L_z) \leqslant C_q |h|^2\) for all sufficiently small \(h\).
+          Thus \(z \mapsto L_z\) is complex Fr&eacute;chet differentiable into
+          \(\mathcal{S}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Analyticity.</strong> Compose with the continuous functional
+          \(\mathcal{F}W\). Complex differentiability on an open set gives
+          analyticity.
+        </p>
+      </li>
+    </ol>
+    <p>
+      The argument applies to every Schwartz test with the prescribed
+      exponential form; C13 asserts the existence of such tests and the
+      resulting holomorphy. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C13.lean#L61-L89"><tt class="verbatim">C13.lens_reserve</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C13.lean#L113-L125"><tt class="verbatim">C13.analytic_interior</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C13/Decay.lean#L93-L123"><tt class="verbatim">ExpReserve.of_cut</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C13/Variation.lean#L150-L193"><tt class="verbatim">hasFDerivAt_shift</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.q (partial boundary values as integrals; agreement
+      with \(F\); C14, C15).</strong> As in V.2.6(e), (f). <em>Proof
+      sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>C14.</strong> For real \(x\) the Fourier&ndash;Laplace test
+          at \(x + i \eta\) is the modulation \(e^{i \langle \cdot, x \rangle}
+          g\), with \(g = e^{- \langle \eta, \cdot \rangle} \chi_n\). Hence
+          \(\int \mathcal{W}_n (v)  (x + i \eta) f (x)  \hspace{0.17em} dx
+          =
+(\mathcal{F}W)  (g \check{f})\). The distribution is moved inside
+          the \(x\)-integral via Riemann sums in \(\mathcal{S}\), first for
+          compactly supported \(f\), then by density. Integrability comes from
+          the polynomial growth of \(x \mapsto \mathcal{W} (x + i \eta)\).
+          Cone support is not needed.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>C15.</strong>
+        </p>
+        <ol>
+          <li>
+            <p>
+              Since \(\underline{y} \in V^+_n\) and \(\text{supp} \mathcal{F}W
+              \subseteq \mathcal{V}_n\), the multipliers \(e^{- \langle
+              \underline{y}, \cdot \rangle} \chi_n\) and \(e^{- \langle
+              \underline{y}, \cdot \rangle}\) agree near the support.
+            </p>
+          </li>
+          <li>
+            <p>
+              So V.2.i gives \(W_n (v) [\underline{y}] = \psi_v (y ; \cdot)\)
+              on compactly supported tests, hence on all tests (\(\psi (y ;
+              \cdot)\) is tempered by (I) and (PG)).
+            </p>
+          </li>
+          <li>
+            <p>
+              With C14, \(\int \mathcal{W} (x + i \underline{y}) f = \int F^y
+              (x) f\) for all \(f\). Both integrands are continuous, so they
+              are equal.
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C14.lean#L133-L141"><tt class="verbatim">C14.modulation_eq</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C14.lean#L233-L253"><tt
+      class="verbatim">C14.emit_integral</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C15.lean#L60-L74"><tt class="verbatim">C15.blanketed_eq</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C15.lean#L83-L99"><tt class="verbatim">C15.partialD_psi</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.r (Lorentz covariance in the tube; C16).</strong> As
+      in V.2.6(g). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          \(\mathcal{V}_n\) is invariant under the dual action.
+        </p>
+      </li>
+      <li>
+        <p>
+          The Fourier&ndash;Laplace test at \(\Lambda z\), composed with
+          \(\tilde{\Lambda}\), differs from the lens at \(z\) only away from
+          \(\mathcal{V}_n\): both cutoffs equal \(1\) there, and the phases
+          agree by duality.
+        </p>
+      </li>
+      <li>
+        <p>
+          Cone support, the intertwining of \(\mathcal{F}\) with \(\Lambda\)
+          and \(\tilde{\Lambda}\), and (Cov) conclude.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C16.lean#L45-L73"><tt class="verbatim">C16.lens_support</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C16.lean#L75-L91"><tt
+      class="verbatim">C16.answer</tt></a>.
+    </p>
+    <h3 id="auto-10"><a id="46-locality"></a>4.6 Locality<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.2.s (imaginary boosts at a spectator profile;
+      C17).</strong> As in V.2.7(a). <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Spectator profiles.</strong> The profiles \(y_m = d / (m +
+          1)\) are spectator profiles. Monotone heights give \(\underline{y_m}
+          \in \bar{V}^+_n\), and \(\sigma\) fixes \(\underline{y_m}\). The
+          closure statements follow by approaching through strictly ordered
+          heights.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Choice of direction.</strong> Let \(\xi = x_{i + 1} - x_i\)
+          be spacelike, so \(\vec{\xi} \ne 0\), and take \(e = \vec{\xi} /
+          \lvert \vec{\xi} \rvert\). Then
+        </p>
+      </li>
+    </ol>
+    <center>
+      \(\displaystyle \text{Im} (\Lambda_e (ib) w)_k = \text{Im}
+      \hspace{0.17em} w_k + \sin b \cdot
+c_e (\text{Re} \hspace{0.17em} w_k) +
+      (\cos b - 1)  \hspace{0.17em} s_e
+(\text{Im} \hspace{0.17em} w_k),\)
+    </center>
+    <p>
+      with \(c_e (\vec{X}, t) = (te, e \cdot \vec{X})\) and \(s_e (\vec{X}, t)
+      = ((e \cdot \vec{X}) e, t)\). 3. <strong>The pair difference.</strong>
+      Its imaginary part is \(0\) at \(b = 0\), and \(c_e (\xi) = (\xi^0 e,
+      \lvert \vec{\xi} \rvert) \in V_+\) exactly because \(\lvert \xi^0 \rvert
+      < \lvert \vec{\xi} \rvert\) (the Jost condition). So the difference
+      enters \(V_+\) for small \(b > 0\). 4. <strong>The other consecutive
+      differences.</strong> They are already in \(V_+\) and stay there by
+      continuity, uniformly near the base point. 5. <strong>The swapped
+      tube.</strong> After the swap the pair difference is \(- \xi\), and the
+      opposite rapidity \(- ib\) compensates.
+    </p>
+    <p>
+      For \(n = 2\) the profile is identically \(0\), so the germs sit at real
+      points. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C17.lean#L247-L275"><tt class="verbatim">C17.height_path</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C17.lean#L44-L77"><tt class="verbatim">C17.fleck_of_spectator</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C17.lean#L79-L92"><tt class="verbatim">C17.choose_direction</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C17.lean#L126-L171"><tt class="verbatim">C17.enters</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C17.lean#L173-L241"><tt class="verbatim">C17.local_paths</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.t (complexified labels; the two germs; C18,
+      C19).</strong> As in V.2.7(b), (c). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>C18.</strong> A continuous one-parameter group on a
+          finite-dimensional space is \(e^{tX}\) (via \(\int_0^t\) and
+          invertibility for small \(t\)), and \(e^{\zeta X}\) is entire.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>C19.</strong>
+        </p>
+        <ol>
+          <li>
+            <p>
+              Put all labels at one level \(d\) and write \(K_{d, e} (\zeta)\)
+              for the entire extension from C18. Define the germ at \(x + i
+              \underline{y}\) by \(w \mapsto \mathcal{W}_n  (\text{pin}_d
+              K_{d, e} (it) v)  (\Lambda_e (it) w)\). It is holomorphic near
+              \(x + i \underline{y}\) because \(\Lambda_e  (it)  (x + i
+              \underline{y}) \in \mathcal{T}_n\) and \(\Lambda_e  (it)\) is
+              complex linear.
+            </p>
+          </li>
+          <li>
+            <p>
+              Fix \(w \in \mathcal{T}_n\) near the point. The function \(\zeta
+              \mapsto \mathcal{W}_n  (\text{pin}_d K_{d, e} (\zeta) v) 
+              (\Lambda_e
+(\zeta) w)\) is holomorphic near the segment \(i [0,
+              t]\), by the path conditions, and constant for real \(\zeta\),
+              by V.2.6(g).
+            </p>
+          </li>
+          <li>
+            <p>
+              The identity theorem makes it constant on the segment, so the
+              germ equals \(\mathcal{W}_n (v)\) on \(\mathcal{T}_n\) near \(x
+              + i \underline{y}\).
+            </p>
+          </li>
+          <li>
+            <p>
+              The tilted germ uses \(- it\), the labels \(v \circ s\), and
+              \(\sigma\).
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C18.lean#L12-L44"><tt class="verbatim">C18.eq_exponential</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C18.lean#L46-L54"><tt
+      class="verbatim">C18.entire</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C19.lean#L161-L211"><tt class="verbatim">C19.paneAlong</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.u (agreement at Euclidean points; C20).</strong> As in
+      V.2.7(d). <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>The Wick slice.</strong> Let \(M (\vec{x}, \tau) = (\vec{x},
+          i \tau)\). Its complex span is \(\mathbb{C}^{4 n}\). If \(x\) has
+          zero times, then \(M (\vec{x}, y) = x + i \underline{y}\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The original germ.</strong> On the open set of strictly
+          ordered \(\tau\), \(M\) maps into \(\mathcal{T}_n\), and
+          \(g^{\text{o}} \circ M =\mathcal{W} \circ M = F\) at imaginary
+          times. That equals the Schwinger function \(T ((\vec{x}_k, \tau_k) ;
+          v)\) (V.2.6(f), (SC)).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The tilted germ.</strong> On the swapped-ordered set,
+          \(g^{\text{t}} \circ M\) equals the same Schwinger function, by
+          permutation symmetry of \(T\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Smoothness at the base point.</strong> The point \((\vec{x},
+          y)\) is non-coincident: the pair has equal times but \(\vec{x}_i \ne
+          \vec{x}_{i + 1}\) by spacelikeness. So \(T\) is smooth there.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Jets.</strong> Both open sets accumulate at \((\vec{x},
+          y)\). Hence all real jets of \(g^{\text{o}} \circ M\) and
+          \(g^{\text{t}} \circ M\) at that point equal those of \(T\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Conclusion.</strong> Real jets on a slice that spans over
+          \(\mathbb{C}\) determine all complex derivatives, so \(g^{\text{o}}
+          = g^{\text{t}}\) near \(x + i \underline{y}\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      No Schwarz reflection and no edge-of-the-wedge theorem are used.
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C20.lean#L34-L46"><tt class="verbatim">C20.jets_on_open_side</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C20.lean#L67-L87"><tt class="verbatim">C20.complex_germ</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C20.lean#L230-L240"><tt class="verbatim">C20.emit_table</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.v (local realization and exchange; C21).</strong> As
+      in V.2.7(e), (f). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>C21.</strong> As \(\eta \to \underline{y}\) within
+          \(V^+_n\), \(\int \mathcal{W} (\xi + i \eta) f (\xi) 
+          \hspace{0.17em} d \xi \to W
+[\underline{y}] (f)\), by C14 and
+          continuity of \(\eta \mapsto W [\eta]\) on \(\bar{V}^+_n\). Near \(x
+          + i \underline{y}\) the germ is bounded and equals \(\mathcal{W}\)
+          on \(\mathcal{T}_n\), so dominated convergence gives the integral of
+          the germ. The swapped case is the same after a change of variables.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Propagation.</strong> For \(x \in \Gamma_Q\), the path \(x
+          \mapsto (\vec{x}, tx^0)\), \(t \in [0, 1]\), stays in \(\Gamma_Q\).
+          Agreement of the two germs is an open and closed condition along
+          this path, so it passes from the zero-time point to \(x\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Local equality.</strong> On a small ball around each point
+          of \(\Gamma_Q\) both partial boundary values are integrals of the
+          same germ, so their difference vanishes on \(\Gamma_Q\).
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Exchange.</strong> Let \(m \to \infty\). Then \(W
+          [\underline{y_m}] \to W [0] = W\), by continuity in \(\eta\) and
+          because \(\chi_n = 1\) near \(\mathcal{V}_n\), and similarly on the
+          swapped side.
+        </p>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C21.lean#L15-L56"><tt class="verbatim">C21.realize</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L43-L56"><tt
+      class="verbatim">Panes.reaches</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L68-L90"><tt class="verbatim">Panes.forgets</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L92-L112"><tt class="verbatim">NearPair.actor</tt></a>; <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Swap.lean#L101-L130"><tt class="verbatim">Pane.propagate</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L85-L96"><tt class="verbatim">Blanket.flatD</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.w (locality for words; C27).</strong> As in V.2.7(g).
+      <em>Proof sketch.</em> If \(\text{supp} f - \text{supp} g\) is
+      spacelike, the tensor test of the word \(a \hspace{0.17em} (u, f) (u',
+      g)  \hspace{0.17em} c\) is supported in \(\Gamma_Q\), with \(Q\) the
+      slots of \((u, f)\) and \((u', g)\). Composing with \(\sigma\) swaps the
+      two factors. Joint locality applies to all Schwartz tests supported in
+      \(\Gamma_Q\), so no density argument is needed. The pair may be at any
+      position in a word of any length \(\geqslant 2\). <em>Lean:</em> <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C27.lean#L12-L19"><tt class="verbatim">C27.coordinate_tsupport</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C27.lean#L28-L39"><tt class="verbatim">C27.exchange</tt></a>.
+    </p>
+    <h3 id="auto-11"><a id="47-real-time-vectors-gram-limits-nulls"></a>4.7 Real-time vectors, Gram limits, nulls<span style="margin-left: 1em"></span></h3>
+    <p>
+      <strong>Lemma V.2.x (Gram form of heated vectors; C22).</strong> As in
+      V.2.8(a). <em>Proof sketch.</em>
+    </p>
+    <ol>
+      <li>
+        <p>
+          <strong>Imaginary times.</strong> At imaginary times each heated
+          vector is the GNS vector of a positive-time Euclidean word.
+        </p>
+        <ul>
+          <li>
+            <p>
+              Their inner product is the reflection-positive form, i.e. the
+              Schwinger function of <em>reflected first word, second
+              word</em>: times negated, order reversed, labels starred.
+            </p>
+          </li>
+          <li>
+            <p>
+              By (SC) this is \(F\) at \(i \cdot h\). Here the star \(J\)
+              appears because it is the induced reflection adjoint, and
+              null-space compatibility is used.
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Continuation in real times.</strong> Introduce one complex
+          parameter \(c\) and the times \(iy_k + c \hspace{0.17em} r^0_k\).
+          Both sides are holomorphic on a strip \(\lvert \text{Im}
+          \hspace{0.17em} c \rvert < \delta\); the left side is
+          antiholomorphic in the first slot, handled by conjugation.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Conclusion.</strong> The two sides agree at \(c = i \tau\)
+          for small \(\tau\), hence at \(c = 1\).
+        </p>
+      </li>
+    </ol>
+    <p>
+      The width formula of C03 is not used. <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C22.lean#L70-L107"><tt class="verbatim">C22.euclideanRef</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C22.lean#L170-L192"><tt class="verbatim">C22.onImag</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C22.lean#L274-L336"><tt class="verbatim">C22.pointJoined</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.y (heat cups and their Gram limit; C23, C24).</strong>
+      As in V.2.8(b), (c). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>C23.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              \(x \mapsto \Psi (\cdot ; x)\) is continuous and bounded by \(\|
+              \Omega \|  \prod \|B_p (v_k)\|\), since the propagators are
+              contractions. So the integrand is Bochner integrable.
+            </p>
+          </li>
+          <li>
+            <p>
+              Translation covariance comes from the difference structure of
+              \(\Psi\) and \(U (a) \Omega = \Omega\).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>C24.</strong>
+        </p>
+        <ol>
+          <li>
+            <p>
+              By the pointwise Gram identity and Fubini, \(\langle \Phi_s (b),
+              \Phi_{s'} (c) \rangle\) is the integral of \(F\) at heights \(h
+              = (- ns, \ldots, - s, s', \ldots, ms')\) against the test
+              \(f_b^{\ast} \otimes f_c\).
+            </p>
+          </li>
+          <li>
+            <p>
+              As \((s, s') \to 0\), \(h \to 0\) within \(E_{n + m}\) along a
+              two-parameter family with no fixed direction. The unrestricted
+              boundary limit applies to this family, whose two scales vary
+              independently.
+            </p>
+          </li>
+          <li>
+            <p>
+              (BV) gives the limit \(W (b^{\ast} c)\).
+            </p>
+          </li>
+        </ol>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C23.lean#L53-L83"><tt class="verbatim">C23.shot_control</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C23.lean#L207-L216"><tt
+      class="verbatim">C23.heatCup_shift</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C24.lean#L61-L73"><tt class="verbatim">C24.toward</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C24.lean#L118-L144"><tt class="verbatim">C24.integrated</tt></a>.
+    </p>
+    <p>
+      <strong>Lemma V.2.z (nulls; word insertion; C26, C29).</strong> As in
+      V.2.8(e), (f). <em>Proof sketch.</em>
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>C26.</strong> Let \(u = \text{pin}_d [w]\) be a marker.
+        </p>
+        <ol>
+          <li>
+            <p>
+              By C25, every \(W_n (\ldots, u, \ldots)\) vanishes as a
+              distribution.
+            </p>
+          </li>
+          <li>
+            <p>
+              By V.2.6(f), \(F^y = 0\) for ordered \(y\), so the Schwinger
+              functions with \(w\) in some slot vanish at time-ordered
+              non-coincident points.
+            </p>
+          </li>
+          <li>
+            <p>
+              Symmetry and continuity give vanishing at all non-coincident
+              points. So \(w \in N_d (T) = N_d (S)\), and \(u = 0\).
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          <strong>C29.</strong>
+        </p>
+        <ul>
+          <li>
+            <p>
+              word bilinearity is the multilinearity of \(W_n\) composed with
+              that of \(\otimes\).
+            </p>
+          </li>
+          <li>
+            <p>
+              continuity in the two tests follows from continuity of \(W_n
+              (v)\), of \((f_1, \ldots, f_n) \mapsto \otimes f_k\), and of
+              conjugation.
+            </p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <em>Lean:</em> <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C26.lean#L23-L38"><tt class="verbatim">C26.marker_on_joint</tt></a>, <a
+      href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C26.lean#L40-L51"><tt class="verbatim">C26.strict_zero</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C26.lean#L55-L75"><tt class="verbatim">C26.read_zero</tt></a>,
+      <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C29.lean#L110"><tt class="verbatim">C29.answer</tt></a>.
+    </p>
+    <h3 id="auto-12"><a id="48-assembly-viii1-and-the-field-realization"></a>4.8 Assembly (VIII.1) and the field realization<span
+    style="margin-left: 1em"></span></h3>
+    <p>
+      The reconstruction is assembled in <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean"><tt class="verbatim">Next/BOUNDARY/Stage.lean</tt></a>,
+      in this order.
+    </p>
+    <ol>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L39-L44"><tt class="verbatim">rhythm</tt></a> chains C01 &rarr; C02 &rarr; C03
+          &rarr; C04.
+        </p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Theatre.lean#L29-L31"><tt class="verbatim">Rhythm.opens</tt></a> (V.2.h) produces
+              \(W\).
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L52-L78"><tt class="verbatim">at_contour</tt></a> shows that any
+              prescribed continuation&ndash;boundary pair for \(T\) satisfies
+              (BV).
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L82-L90"><tt class="verbatim">illuminated</tt></a> applies C07, C09 (with A16
+          and C08), C05 and C06. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L92"><tt class="verbatim">spectra</tt></a> uses
+          Lorentz improvement of spectral support to get cone support.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L94-L95"><tt class="verbatim">blankets</tt></a> (C10, C12), <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L97-L99"><tt
+          class="verbatim">visible</tt></a> (C13) and <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L101-L111"><tt class="verbatim">neon_any</tt></a>
+          (C13&ndash;C15) give (TC). <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Unique.lean#L187-L203"><tt class="verbatim">emit_eq</tt></a>
+          shows that the continuation on \(\mathcal{T}_n\) does not depend on
+          the cutoff.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L122-L138"><tt class="verbatim">windows</tt></a> combines C17, C19 (with C18 and
+          C16), C20 and C21. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Org/Theatre.lean#L64-L67"><tt class="verbatim">Show.uses</tt></a> then gets
+          joint locality from the boundary exchange lemma and Lorentz
+          improvement of spectral support.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L142-L162"><tt class="verbatim">revealing</tt></a> applies C22, C26 with C25,
+          and C24 with C23.
+        </p>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L167-L184"><tt class="verbatim">establishing</tt></a> applies C28, C29 and C27,
+          then builds the field system (step 7).
+        </p>
+      </li>
+      <li>
+        <p>
+          The field system is built (V.2.10) in the following order.
+        </p>
+        <ol>
+          <li>
+            <p>
+              The heat cups converge: the two-variable Gram limit makes \(s
+              \mapsto \Phi_s (b)\) Cauchy (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Lo.lean#L19-L31"><tt class="verbatim">norms_kernel</tt></a>,
+              <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Lo.lean#L55-L60"><tt class="verbatim">Cups.out</tt></a>). The limit vectors
+              \(\Phi_0 (b)\) satisfy \(\langle \Phi_0 (b), \Phi_0 (c) \rangle
+              = \langle b, c \rangle_W\) and \(\Phi_0 (\varnothing) =
+              \Omega\).
+            </p>
+          </li>
+          <li>
+            <p>
+              Hence \(\langle \cdot, \cdot \rangle_W\) is positive (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Lo.lean#L66-L71"><tt
+              class="verbatim">Outfield.safe</tt></a>), and V.2.a gives its Kolmogorov
+              space.
+            </p>
+          </li>
+          <li>
+            <p>
+              Fields act by left multiplication of words. The identity
+              \(\langle (u, f) b, c \rangle_W = \langle b, (Ju, \bar{f}) c
+              \rangle_W\) shows that a null linear combination of words
+              remains null after left multiplication, so the fields are well
+              defined (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Stems.lean#L120-L137"><tt class="verbatim">Soil.starter</tt></a>).
+            </p>
+          </li>
+          <li>
+            <p>
+              The same identity gives the formal adjoint. The other properties
+              of \(W\) give the remaining clauses of V.2.9: temperedness
+              (continuity in the two tests); local commutativity (word
+              locality); field faithfulness (label faithfulness).
+            </p>
+          </li>
+          <li>
+            <p>
+              A unitary representation \(U\) of \(\mathcal{P}\) is defined by
+              \(U (g) [b] = [g \cdot b]\), using invariance of the word Gram
+              form and continuity of word matrix elements (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Motion.lean#L72-L87"><tt class="verbatim">Soil.mobilize</tt></a>).
+            </p>
+          </li>
+          <li>
+            <p>
+              \([b] \mapsto \Phi_0 (b)\) is an isometry into \(\mathcal{H}\)
+              that intertwines translations and sends the vacuum to \(\Omega\)
+              (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Motion.lean#L31-L53"><tt class="verbatim">universal_embed</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Lo.lean#L76-L82"><tt
+              class="verbatim">Outfield.daylight</tt></a>).
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Spectrum condition</strong> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Spectrum.lean#L108-L114"><tt class="verbatim">Action.spectrum</tt></a>).
+              The isometric intertwiner identifies each scalar spectral
+              measure with that of its image in \(\mathcal{H}\), by equality
+              of characteristic functions. These measures are supported in
+              \(\{p^0 \geqslant 0\}\) by positivity of \(H\). Lorentz
+              covariance of \(U\) upgrades this to support in \(\bar{V}_+\).
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Vacuum uniqueness</strong> (<a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Spectrum.lean#L116-L121"><tt class="verbatim">Action.only</tt></a>).
+              Under one-dimensionality of the heat-fixed space, an invariant
+              vector is mapped to the ground space of \(\mathcal{H}\), which
+              is \(\mathbb{C} \Omega\).
+            </p>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <p>
+          <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L217-L221"><tt class="verbatim">Compatible.vacuum</tt></a> adds uniqueness for
+          the selected phase. <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/BOUNDARY/Stage.lean#L247-L255"><tt class="verbatim">after_materializes</tt></a>
+          runs the chain for the mixed table (\(S = T\), without vacuum
+          uniqueness) and for the selected phase.
+        </p>
+      </li>
+    </ol>
+    <h2 id="auto-13"><a id="5-where-the-difficulty-lies"></a>5. Where the difficulty lies<span style="margin-left: 1em"></span></h2>
+    <p>
+      The boost argument must control moving labels and tests without imposing
+      a topology on the full label union. All labels are first placed in one
+      finite-dimensional level; Schwartz estimates then justify the derivative
+      and its boundary limit. The locality argument needs equality of complete
+      jets on the Wick slice. Equality of values at zero real times would not
+      determine the two germs. Smoothness of the Euclidean correlations at
+      non-coincident configurations, including equal pair times, supplies
+      those jets.
+    </p>
+    <p>
+      The Taylor formula in V.2.h gives a bound uniform over all nondecreasing
+      heights. This uniformity permits varying tests in the Laplace identity
+      and independent heating scales in the Gram limit. Positivity of the word
+      kernel then suffices for the field construction; surjectivity of the
+      embedding into the OS space is not required.
+    </p>
+    <p>
+      Several formal hypotheses are stronger than the corresponding proof
+      needs. The slab-insertion construction uses the slab bound but not the
+      derivative laws of the spread. C05 and C06 use the tested identities and
+      growth bound without Euclidean root values. C14 uses the damping
+      properties without spectral support; C16 uses spectral support and
+      Lorentz covariance without agreement with the strict-time continuation.
+      These distinctions do not remove the hypotheses from the statements
+      above.
+    </p>
+    <p>
+      The pairing is Euclidean, so momenta transform by \(\tilde{\Lambda} =
+      \textsf{r} \Lambda \textsf{r}\). The tube uses absolute coordinates and
+      imposes no condition on its first imaginary point. For \(n = 1\), it is
+      \(\mathbb{C}^4\) and \(\mathcal{V}_1 = \{0\}\). The polynomial bound is
+      per label tuple, with no uniformity in the arity. The chosen value \(B_0
+      = 0\) is outside the admissible widths. The Laplace identity is stated
+      on compactly supported tests.
+    </p>
+    <h2 id="auto-14"><a id="6-notation"></a>6. Notation<span style="margin-left: 1em"></span></h2>
+    <table style="width: 100%">
+      <tbody><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>object</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>code name</strong></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-top: 1px solid; border-bottom: 1px solid"><strong>proposed notation</strong></td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">OS Hilbert space of \(T\), time axis</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L57-L61"><tt class="verbatim">OS.Chamber</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{H}\), \(\Omega\), \(H\), \(U (\vec{a})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">slab operators of a spread; slab bound</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Slabs.lean#L101-L104"><tt class="verbatim">OS.Spread</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Slabs.lean#L111-L113"><tt class="verbatim">AllCopy</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(A_d (w)\); (SB)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">hypothesis package of C01</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Corners.lean#L23-L30"><tt class="verbatim">Bid.Pantry</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(H)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">labels of \(S\); tags; insertion</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">S.Union</tt>, <tt class="verbatim">S.Tag</tt>, <tt class="verbatim">pin</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{F}\), \((d, v)\), \(\text{pin}_d\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Euclidean function of \(T\) on labels of \(S\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">S.useAt T</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(T (x ; v)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">single insertions between heat factors</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L19-L20"><tt class="verbatim">Small</tt></a> (<tt class="verbatim">bar</tt>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(B_p (v)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">propagator between insertions</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L33"><tt class="verbatim">Small.rip</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(G_p (w, \vec{a})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">strict-time matrix element</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Tall.lean#L49-L51"><tt class="verbatim">Small.matrix</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(M_p (z ; \vec{x})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">ordered heights; strict region</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L27"><tt class="verbatim">east</tt></a>, <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L28"><tt class="verbatim">strict</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(E_n\), \(\Sigma_n\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">heights placed as times</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L24"><tt class="verbatim">dawn</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\underline{y}\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">continuation; restriction; smearing</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L57-L58"><tt class="verbatim">Waves</tt></a>, <tt class="verbatim">restricted</tt>,
+        <a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Ridge.lean#L75-L76"><tt class="verbatim">psi</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(F_n\), \(F^y_n\), \(\psi_v (y ; f)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">strict continuation; integrability; height continuity;
+        Cauchy&ndash;Riemann</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Region</tt>, <tt class="verbatim">Bounds</tt>, <tt class="verbatim">Along</tt>,
+        <tt class="verbatim">Lines</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(SC), (I), (HC), (CR)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">polynomial growth in the inverse time separation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Breathes</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(PG)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">boundary family (Wightman functions)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Boundary/Contour.lean#L54-L55"><tt class="verbatim">Surface</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(W_n (v)\); \(W (b)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">boundary-value hypotheses</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Opens</tt>, <tt class="verbatim">NonTangentialFree</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(BV\(_{\text{ray}}\)), (BV)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Laplace identity; half-space support</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">during</tt>, <tt class="verbatim">cone_tests</tt>, <tt
+        class="verbatim">half</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(L); \(\mathcal{P}_n\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Wightman spectral set</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">coneM</tt>, <tt class="verbatim">cones</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{V}_n\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">imaginary-part cones; tube</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">fields</tt>, <tt class="verbatim">shores</tt>, <tt class="verbatim">tube</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(V^+_n\), \(\bar{V}^+_n\), \(\mathcal{T}_n\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">cutoff; damping properties; partial boundary value</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Blanket</tt>, <tt class="verbatim">Modified</tt>, <tt
+        class="verbatim">partialD</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\chi_n\); (D); \(W_n (v) [\eta]\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Fourier&ndash;Laplace continuation</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Sol.lean#L116"><tt class="verbatim">Aurora.emit</tt></a>, <tt class="verbatim">FullBody</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{W}_n (v) (z)\); (TC)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">rotation structure; spin structure</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Rotation</tt> (\(R\), <tt class="verbatim">lie</tt>), <a
+        href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L22-L24"><tt class="verbatim">Spins</tt></a> (<tt class="verbatim">rail</tt>, <tt class="verbatim">shell</tt>)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(R\), \(\rho\); \(K (\Lambda)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">boost identity; Poincar&eacute; covariance</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">Boosty</tt>; <tt class="verbatim">Urs</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(B\(_y\)); (Cov)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">induced star; word star; kernel</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Star.lean#L37"><tt class="verbatim">StarOp</tt></a>, <tt class="verbatim">rev</tt>,
+        <tt class="verbatim">kernel</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(J\); \(b^{\ast}\); \(\langle b, c \rangle_W\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">adjacent pair; spacelike set; swap</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Swap.lean#L19-L22"><tt class="verbatim">NearPair</tt></a>, <tt class="verbatim">gap</tt>,
+        <tt class="verbatim">switch</tt>/<tt class="verbatim">name</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(Q = (i, i + 1)\), \(\Gamma_Q\), \(\sigma\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">spectator profile; complex boost</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">spectator</tt>/<tt class="verbatim">Fleck</tt>; <tt class="verbatim">augment</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(y\); \(\Lambda_e (\zeta)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">germs at a spacelike pair</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Shift/Exchange.lean#L33-L36"><tt class="verbatim">Panes</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(g^{\text{o}}_x\), \(g^{\text{t}}_x\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">heated vector; heat cup</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><tt class="verbatim">shot</tt>, <tt class="verbatim">heatCup</tt></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\Psi_p (v ; y ; r)\); \(\Phi_t (b)\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">reconstructed theory</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/System.lean#L117-L122"><tt class="verbatim">Boundary.Wightman</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\((\mathcal{H}_W, \mathcal{D}, \Omega_W, \varphi, J, U,
+        \textsf{E})\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">Kolmogorov space of \(\langle \cdot, \cdot \rangle_W\)</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Fields/Stems.lean#L20"><tt class="verbatim">Soil</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">\(\mathcal{H}_W\)</td>
+      </tr><tr>
+        <td style="border-right: 1px solid; border-bottom: 1px solid; border-left: 1px solid">the bundle</td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid"><a href="https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Bid/Arena.lean#L15-L45"><tt class="verbatim">Bid.Arcs</tt></a></td>
+        <td style="border-right: 1px solid; border-bottom: 1px solid">(A16), (C01)&ndash;(C29)</td>
+      </tr></tbody>
+    </table>
+    <h2 id="auto-15"><a id="7-what-remains-unexplained"></a>7. What remains unexplained<span style="margin-left: 1em"></span></h2>
+    <ol>
+      <li>
+        <p>
+          <strong>Upstream slab estimate.</strong> The constants in (SB) are
+          independent of the slab width and word length for fixed degree bound
+          \(D\) and representative bound \(R\); they may depend on \(D, R\).
+          VIII.1 obtains the mixed and selected slab laws from the phase-data
+          package. The upstream proof of those laws, beyond their use in
+          reconstruction, is outside this check.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Imported analytic results.</strong> The holomorphic
+          heat-semigroup construction and the OS translation spectral measure
+          are used by their stated properties. The construction of the
+          compact-model Borel functional calculus, and the estimates
+          underlying complex differentiation of the Fourier&ndash;Laplace
+          tests, have not been checked in full. Their exact uses are
+          identified in V.2.b, V.2.f and V.2.p.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Location of the arguments.</strong> The boundary-value
+          construction, the spectral-support improvement and the germ exchange
+          lemmas are filed under VI.1; the field realization and application
+          to phase data are filed under VIII.1. They belong with the
+          reconstruction argument in a written proof.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Vacuum uniqueness.</strong> The construction for the mixed
+          table supplies the field axioms without vacuum uniqueness. The
+          selected phase has uniqueness because its OS heat-fixed space is
+          one-dimensional. No uniqueness assertion for the mixed table follows
+          here.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>References.</strong> The bibliographic pointers in &sect;2
+          identify the relevant standard methods; their theorem numbering has
+          not been verified.
+        </p>
+      </li>
+    </ol>
+    <div class="ym-unit-nav">
+      <a class="ym-prev" href="V-1.html">&larr; V.1 Decomposition of the limit into phases
+      (notes)</a><span class="ym-part"><a href="../units.html#part-v-phases-and-reconstruction">Part V</a><font class="ym-sep">&middot;</font><a
+      href="../units/V-2.html">Unit outline</a></span><a class="ym-next" href="V-3.html">V.3 Reconstruction for
+      every phase and the reconstructed theory (notes) &rarr;</a>
+    </div>
+  </body>
+</html>
