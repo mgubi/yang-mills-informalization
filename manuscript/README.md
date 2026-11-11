@@ -29,23 +29,23 @@ The process by which it is written and checked is described in [How this manuscr
 |---|---|---|---|
 | Part I | 1. Introduction | 1 | being written (introduction and abstract) |
 | | 2. Wilson theory | 2 | reviewed; revised after an independent reading |
-| | 3. Renormalization | 7 | reviewed; revised after an independent reading |
+| | 3. Renormalization | 8 | reviewed; revised after an independent reading |
 | | 4. The continuum limit | 4 | reviewed; revised after an independent reading |
 | | 5. Stress and rotations | 2 | reviewed; revised after an independent reading |
-| | 6. Phases and reconstruction | 4 | reviewed; revised after an independent reading |
-| | 7. Trace and products | 3 | reviewed; revised after an independent reading |
-| | 8. Main theorems | 4 | reviewed; Theorem B restated as a five-clause theorem |
+| | 6. Phases and reconstruction | 3 | reviewed; revised after an independent reading |
+| | 7. Trace and products | 4 | reviewed; revised after an independent reading |
+| | 8. Main theorems | 3 | reviewed; Theorem B restated as a five-clause theorem |
 | | 9. Constants and order of choice | 3 | reviewed |
 | Part II | 10. Local polynomial fields | 8 | reviewed |
-| | 11. Gauges and block integration | 26 | reviewed |
+| | 11. Gauges and block integration | 25 | reviewed |
 | | 12. Path actions and the coupling reset | 11 | reviewed; final minor fixes under way |
 | | 13. Activities and the inductive step | 30 | reviewed |
 | | 14. Trajectories, marked fields and ultraviolet convergence | 34 | reviewed |
 | | 15. Infinite volume and field calculus | 7 | reviewed; final minor fixes under way |
 | | 16. Free fields, Ward identities and rotations | 18 | reviewed |
-| | 17. Slabs, phases and reconstruction | 12 | reviewed |
+| | 17. Slabs, phases and reconstruction | 14 | reviewed |
 | | 18. The trace law and non-free comparisons | 13 | reviewed |
-| | 19. Products and contact subtractions | 19 | reviewed |
+| | 19. Products and contact subtractions | 21 | reviewed |
 
 **Next:** the introduction; a consistency pass across sections (cross-references between Part I and Part II, and every
 result one section takes from another); then an independent review of the whole manuscript, and the changes it leads to.
