@@ -1,37 +1,614 @@
 \section{Free fields, Ward identities and rotations}\label{sec:partII-G}
 
-\emph{This section is under construction.}
+The stress tensor is determined by its action on local fields. Conservation alone leaves its scale and sign undetermined. We first compare the mixed correlations with the Maxwell correlations of Definition~\ref{def:D11}. This comparison identifies a one-dimensional space of conserved tensors. Integrating a member of that space over a small shell gives local translation and angular charges. We then identify these charges with the derivatives and rotation generators of the fields.
+
+Lemmas~\ref{lem:G2.1}, \ref{lem:G3.2} and~\ref{lem:G3.3} prove, respectively, Proposition~\ref{prop:MC}, Theorem~\ref{prop:ST} and Proposition~\ref{prop:SC}. The free calculation in Lemma~\ref{lem:G1.1} also supplies the positivity used by Lemma~\ref{lem:E2-free-tests}. Its proof is independent of the interacting quotient and hence of Section~\ref{sec:partII-F}.
+
+Two issues require more than convergence at fixed separated points. The lattice comparison must control tests uniformly in their supremum norm, including near configurations with a shared coordinate. We remove narrow strips around these configurations, using two different scales for the bound on the kernel and its variation. Later, conservation removes the inner boundaries in the angular identity, but does not by itself remove the boundary at infinity. An anisotropic cutoff, reflection positivity and a low-energy estimate remove that boundary for collinear configurations. Analyticity of one-insertion vectors then extends the identity to arbitrary separated configurations.
+
+Except in the free calculation, fix the table, volume refinement, quotient fields and calculus of Definitions~\ref{def:D09}, \ref{def:D10}, \ref{def:D11} and Lemmas~\ref{lem:F1}, \ref{lem:F2}, \ref{lem:F3}. Subsequences below change only comparison radii. Write $\jmath_{d,e}$ for the inclusions and $\partial_a$ for field differentiation. The coordinate Hilbert spaces used to remove the exterior boundary are those of Lemma~\ref{lem:H-G3}; their construction uses coordinate reflections and precedes the use of continuous rotations.
 
 \subsection{Free fields}\label{sec:partII-G.1}
 
+Put $z=x-y$ and $\mathsf h_{ab}(z)=\partial_a\partial_b\Gamma(z)$. The curvature covariance in Definition~\ref{def:D11} is
+\begin{equation}\label{eq:G-curvature}
+C_{ab,ij}(z)=-\delta_{bj}\mathsf h_{ai}+\delta_{bi}\mathsf h_{aj}
+ +\delta_{aj}\mathsf h_{bi}-\delta_{ai}\mathsf h_{bj},\qquad
+\mathsf h_{ab}=\frac{8z_az_b-2\delta_{ab}|z|^2}{4\pi^2|z|^6}.
+\end{equation}
+Different colours have zero covariance. Set
+\begin{equation}\label{eq:G-free-tensor}
+\begin{aligned}
+Q_{ab,ij}&=\sum_\alpha:F_{ab}^\alpha F_{ij}^\alpha:,
+\qquad P_{ab}=\sum_cQ_{ac,bc},\qquad Q_{\rm tot}=\sum_aP_{aa},\\
+\maxwellstress_{ab}&=-P_{ab}+\tfrac14\delta_{ab}Q_{\rm tot},
+\qquad \curvaturesquare=\tfrac14Q_{\rm tot}.
+\end{aligned}
+\end{equation}
+The minus sign is fixed by the shell convention in Definition~\ref{def:D13}.
+
+For the coordinate reflection $s_a$, strict reflected positivity means
+\begin{equation*}
+\maxwellcorr_2(R^{\rm Max}(s_a)\bar u,u;s_ax,x)>0
+\qquad(u\in\maxwellspace{d}\setminus\{0\},\ x=te_a,\ t>0).
+\end{equation*}
+Write $\mathsf L^{\rm Max}(K)$ for the derivative at zero of $R^{\rm Max}(e^{tK})$. The two free shell normalizations, with the fluxes of Definition~\ref{def:D13}, are
+\begin{equation}\label{eq:G-free-shells}
+\mathcal P_b^{T^{\rm Max}}=S^{\rm Max}((\partial_b^{\rm Max}u)(x_0),\boldsymbol v(x)),\qquad
+\mathcal Y_K^{T^{\rm Max}}=S^{\rm Max}((\mathsf L^{\rm Max}(K)u)(x_0),\boldsymbol v(x)).
+\end{equation}
+
+The next lemma gives both the nondegeneracy of free correlation tests and the normalization used in the interacting comparison. Its proof follows immediately below.
 \begin{lemma}[Free positivity and stress]\label{lem:G1.1}
-To be stated here.
+The Maxwell table satisfies E1--E7, the field calculus and $O(4)$ covariance. Every nonzero on-shell invariant Wick polynomial has a strictly positive reflected two-point Gram value at distinct reflected points. For simple~$\g$, its centered real symmetric $\hypercubic$-tensorial conserved degree-four tensors form the line of~$\maxwellstress$, normalized by both shell laws, and
+\begin{equation*}
+\maxwellcorr_2(\curvaturesquare,\curvaturesquare;x,y)
+=\frac{3\dimG}{\pi^4|x-y|^8}\qquad(x\ne y).
+\end{equation*}
 \end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D11}; no interacting input is needed. Wick correlations sum pairings between different insertion sites. Formula~\eqref{eq:G-curvature} satisfies Bianchi and $\sum_a\partial_a C_{ab,ij}=0$ off zero, so these correlations descend to the on-shell quotient. It also gives permutation symmetry, reality, units, translations and orthogonal covariance. Each differentiated contraction is homogeneous of a fixed negative degree and bounded on the unit sphere. A finite product of these bounds proves E6--E7. Differentiating the pairings proves the derivative law; inclusions retain the same polynomial.
+
+Here is the nondegeneracy calculation, including the equations imposed on jets. Let $\mathcal H_j$ be the real space of $\g$-valued homogeneous polynomial two-forms of degree~$j$ satisfying $df=\delta f=0$. Its Frobenius inner product identifies it with the dual of the order-$j$ on-shell curvature jets. Use Taylor coefficients $D^j/j!$ and the inner product summing both ordered form indices and ordered derivative indices; $p(\partial)$ denotes contraction with this normalized derivative. For $z\ne0$, put $I(z)=z/|z|^2$ and $\mathcal R_z=I_4-2zz^{\mathsf t}/|z|^2$. Define $R_p(y)$ to be the covariance of $F(y)$ with the jet probe~$p$ at zero. Then
+\begin{equation}\label{eq:G-kelvin}
+R_p(y)=s_j|y|^{-4}(\mathcal R_y\otimes\mathcal R_y)p(I(y)),
+\qquad s_j=\frac{(j+1)(j+2)(-2)^j}{\pi^2}.
+\end{equation}
+Indeed $p(\partial)\Gamma=(-2)^j|y|^{-2j}p(y)\Gamma$; induction proves this identity, since traces of the coefficient tensor vanish by harmonicity. In taking the two curls, terms containing $\sum_a\partial_ap_{ab}$ and $\partial_ap_{bc}+\partial_bp_{ca}+\partial_cp_{ab}$ vanish. The remaining radial derivatives use $\sum_a y_a\partial_ap=jp$ and $\partial_a|y|^{-2j-2}=-(2j+2)y_a|y|^{-2j-4}$. They give
+\begin{equation*}
+s_0=2/\pi^2,\qquad (j+1)s_{j+1}=-2(j+3)s_j,
+\end{equation*}
+which yields the coefficient in~\eqref{eq:G-kelvin}.
+
+For towers $p=(p_j)$ and $q=(q_j)$, let $B_z(p,q)$ be their two-site covariance at separation~$z$, with $\mathcal R_z$ acting on all tensor indices of the second probe. This is the reflected jet pairing at $\pm z/2$. Define the triangular map~$\sigma_z$ by replacing a single order-$j$ probe~$p$ with the tower whose order-$k$ component is $(s_j/s_k)T_k[p(\cdot-I(z))]$, $k\le j$, where $T_k$ denotes the homogeneous Taylor term at zero. Its generated field is the right side of~\eqref{eq:G-kelvin} with $p(I(y)-I(z))$. Since $DI(z)=|z|^{-2}\mathcal R_z$, its Taylor terms at~$z$ below~$j$ vanish, and its top term is $s_j|z|^{-2j-4}\mathcal R_zp$. Symmetry removes the entries above the diagonal as well. Thus
+\begin{equation}\label{eq:G-pivots}
+B_z(\sigma_zp,\sigma_zq)
+ =\sum_j\frac{(j+1)(j+2)2^j}{\pi^2|z|^{2j+4}}
+ \langle p_j,q_j\rangle.
+\end{equation}
+Evaluating the second order-$j$ probe supplies $(-1)^j$, since its positional derivatives are opposite to derivatives of the separation. This cancels the sign in~$s_j$; reflection acts on all its tensor indices as specified above. All pivots are positive. In coordinates diagonalizing this form, Wick pairing between two sites gives
+$\langle X^\mu,X^\nu\rangle=\mathbf1_{\mu=\nu}\mu!\prod_i b_i^{\mu_i}$, with $b_i>0$. Every polynomial uses a finite tower, proving strict positivity.
+
+For several positive-side sites the reflected curvature covariance is positive semidefinite: spatial Fourier transformation of~$\Gamma$ gives $e^{-|p|(t+s)}/(2|p|)$, and its two curls, with reflection of the form indices, give the sum of squares of the two transverse polarizations. Jet derivatives differentiate these same factors. Include the contractions within each positive-side word in its Fock vector. Its reflected pairing is then the symmetric Fock pairing of this positive semidefinite form; hence finite sums of words have nonnegative squared norm. On compact separated supports every pairing is continuous and bounded, so integration gives E5 and point evaluation gives E4.
+
+For the stress line, simplicity makes every invariant linear colour form zero and every invariant bilinear form a multiple of the fixed metric. Through weight four, only the unit and the quadratics~$Q$ remain. Sign changes and permutations therefore give the following basis of centered real symmetric tensors:
+\begin{equation*}
+\mathcal A_{ab}=\delta_{ab}P_{aa},\qquad
+\mathcal B_{ab}=\delta_{ab}(Q_{\rm tot}-2P_{aa}),\qquad
+\mathcal D_{ab}=(1-\delta_{ab})P_{ab}.
+\end{equation*}
+Sign parity reduces the corresponding degree-five vectors to contractions of $F\partial F$ with the free index~$b$. The equations remove $\sum_d\partial_dF_{dc}$; Bianchi gives $2\sum_{c,d}F_{cd}\partial_cF_{bd}=\sum_{c,d}F_{cd}\partial_bF_{cd}$. The two remaining sums are
+\begin{equation*}
+\sum_c:F_{bc}\partial_bF_{bc}: =\tfrac12\partial_bP_{bb},\qquad
+\sum_{c<d,\ c,d\ne b}:F_{cd}\partial_bF_{cd}: =\tfrac14\partial_b(Q_{\rm tot}-2P_{bb}),
+\end{equation*}
+with colour sums understood. Test the first divergence component at~$e_1$ against $Q_{12,12}(0)$ and $Q_{23,23}(0)$, dividing by $\dimG/(4\pi^2)^2$. For example, $S^{\rm Max}_2(P_{11}(te_1),Q_{12,12}(0))=2\dimG/(\pi^4t^8)$, whose derivative gives the first entry below. Differentiating~\eqref{eq:G-curvature} in the other entries gives
+\begin{equation}\label{eq:G-divergence-matrix}
+\begin{pmatrix}-256&0&128\\0&-512&-128\end{pmatrix}.
+\end{equation}
+A further test of $\mathcal D_{12}$ against $Q_{13,23}$ gives $-16$ and gives zero for $\mathcal A,\mathcal B$. The three tensors are independent, the vector space has dimension two, and divergence is onto. Its kernel is the line of $\tfrac12\mathcal A-\tfrac14\mathcal B+\mathcal D=-\maxwellstress$.
+
+To compute its charge, polarize the tensor~$\maxwellstress$ between a smooth Maxwell wave~$f$ and the field generated by a probe at~$x_0$. Replace $\Gamma$ by $\Gamma_\varepsilon$ with $-\Delta\Gamma_\varepsilon=\rho_\varepsilon$, where $\rho_\varepsilon$ is a smooth approximate identity. For a probe $F_{ij}$ the divergence of its generated field is $\delta_{bj}\partial_i\rho_\varepsilon-\delta_{bi}\partial_j\rho_\varepsilon$. 
+
+\begin{samepage}
+Write $g$ for the generated field and polarize~$\maxwellstress$ as $t_{ab}=-\sum_c(f_{ac}g_{bc}+g_{ac}f_{bc})+\tfrac12\delta_{ab}\sum_{i,j}f_{ij}g_{ij}$. Bianchi cancels its derivative terms to give $\sum_a\partial_at_{ab}=-\sum_c f_{bc}\sum_a\partial_ag_{ac}$. Hence the minus sign of the shell integral gives $\int\chi v_b\partial_at_{ab}=-\int\chi v_b f_{bc}(\delta_{cj}\partial_i\rho_\varepsilon-\delta_{ci}\partial_j\rho_\varepsilon)$. A second integration by parts gives
+\begin{equation*}
+\partial_i(v_bf_{bj})(x_0)-\partial_j(v_bf_{bi})(x_0)
+ =(\mathcal L_vf)_{ij}(x_0).
+\end{equation*}
+\end{samepage}
+There is no derivative of~$\chi$ at~$x_0$. The contraction with~$Dv$ vanishes by symmetry. For $v=K(\cdot-x_0)$ the last expression is $\sum_c(K_{ci}f_{cj}+K_{cj}f_{ic})(x_0)$, the generator of the free action on curvature; for constant~$v$ it is $v\cdot\nabla f$. Higher probes follow by differentiating in~$x_0$ on the compact shell. In a Wick contraction, two stress legs ending at~$x_0$ have zero shell: dilation by~$2$ multiplies it by $2^{3+p-8-j-l}\ne1$, for probe orders~$j,l$ and weight degree $p=0,1$. Two legs ending outside have zero shell by conservation. The remaining contractions give the polynomial derivation~$\mathcal L_v$, proving~\eqref{eq:G-free-shells}.
+
+Finally, at~$z=re_1$ the six unordered curvature components have diagonal covariances $\pm(\pi^2r^4)^{-1}$. Since $\curvaturesquare=\tfrac12\sum_{a<b,\alpha}: (F_{ab}^\alpha)^2:$, its two-point Wick sum is $\tfrac14\cdot2\cdot6\dimG/(\pi^4r^8)$. Orthogonal covariance gives the asserted formula for every~$z\ne0$.
+\end{proof}
+
+The next two lemmas concern only the invariant polynomial algebra of Definition~\ref{def:D11}, realized by the Taylor sections of Lemma~\ref{lem:A1}. A curvature jet of order~$j$ has weight~$j+2$. Let $\mathfrak P$ be the complex polynomial algebra on all on-shell jets, and $\mathfrak P_{\le j}$ its subalgebra using orders at most~$j$. The invariant polynomials of weight at most~$d$ identify with~$\maxwellspace{d}$. For a fixed spectator degree~$d$, put
+\begin{equation*}
+\mathfrak N_d=\{P\in\mathfrak P:S^{\rm Max}(P(0),u_1(x_1),\ldots,u_n(x_n))=0
+\text{ for all }n,u_i\in\maxwellspace{d},(0,x)\in\Conf{n+1}\}.
+\end{equation*}
+All polynomials in this display are Wick ordered at their own site. The degree of~$P$ is unrestricted. Bounded spectator degree will suffice to detect it.
+
+
+Let $\mathcal C_d$ be the real space of complex linear tuples $P_a:\maxwellspace{d}\to\maxwellspace{d+1}$ which commute with conjugation, kill the unit, are vector-covariant under~$\hypercubic$, and send $\maxwellspace{e}$ into~$\maxwellspace{e+1}$ for $e\le d$. For $P\in\mathcal C_d$, its Ward sum is
+\begin{equation*}
+\mathcal E_b(P;\boldsymbol u,x)=\sum_i S_n^{\rm Max}(u_1,\ldots,P_bu_i,\ldots,u_n;x).
+\end{equation*}
+The following lemma identifies its kernel using only finitely many tests on lines. Its proof first obtains a bounded spectator degree that detects arbitrarily high output jets.
+\begin{lemma}[Finite vector Ward tests]\label{lem:G1-vector}
+For all sufficiently large~$d$, finitely many positional derivatives of $\mathcal E_b(P;\boldsymbol u,x)$, with $u_i\in\maxwellspace{d}$ and~$x$ on a coordinate line perpendicular to~$e_b$, define a real linear map~$\mathcal T_d$ such that
+\begin{equation}\label{eq:G-free-tests}
+\ker\mathcal T_d=\R\partial^{\rm Max}\quad\text{in }\mathcal C_d.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D11} and Lemma~\ref{lem:G1.1}.
+
+We first establish detection with one bounded spectator degree:
+\begin{equation}\label{eq:G-detection}
+\mathfrak N_{d_0}\cap\mathfrak P^{G}=\{0\}
+\qquad\text{for some }d_0.
+\end{equation}
+Here $\mathfrak P^G$ is the invariant subalgebra. Fix a jet order~$j$. The algebra~$\mathfrak P_{\le j}$ is a polynomial algebra on finitely many variables, hence Noetherian by the Hilbert basis theorem~\cite[Lemma~10.31.1]{Stacks2026}. Its ideal generated by invariant polynomials of positive ordinary polynomial degree therefore has finitely many invariant, ordinary-homogeneous generators~$f_\alpha$. Averaging coefficients over the compact gauge group and taking homogeneous components shows, inductively in ordinary degree, that every invariant ordinary-homogeneous polynomial is a sum of products of invariant homogeneous polynomials of weight at most some~$b_j$. Indeed write $P=\sum a_\alpha f_\alpha$, keep only terms of total degree~$\deg P$, and replace $a_\alpha$ by its gauge average; their degrees are smaller. This proves the assertion by induction, including constants.
+
+These products detect every invariant $P\in\mathfrak P_{\le j}$. Suppose otherwise and take its lowest nonzero ordinary-homogeneous part~$P_r$. Split a product of homogeneous factors of total ordinary degree~$r$ into distinct nearby spectator sites. Every leg of~$P$ must pair with a spectator leg. Since its lowest ordinary degree is~$r$, all terms with internal spectator contractions, or with higher-degree parts of~$P$, vanish identically. Wick's rule, as the spectator sites coalesce, therefore gives the two-site pairing of~$P_r$ with their ordinary product. Each factor has weight at most~$b_j$, so the assumed annihilation makes the limit zero. Choose the product sum to be the reflection of the complex conjugation of~$P_r$, using the preceding generation result. Lemma~\ref{lem:G1.1} makes this pairing strictly positive. Induction on~$r$ proves $P=0$.
+
+We now use induction on the weight bound of~$P$ to remove the restriction on jet order. Put $g=\dimG$ and choose $d_0\ge\max\{b_g,2g+5\}$. In a real colour basis, write $X_{j,\alpha}(p)$ for the jet coordinate tested by a scalar order-$j$ probe~$p$. For scalar probes~$p,q$ of orders $k,l$, the invariant quadratic $\sum_\alpha:X_{k,\alpha}(p)X_{l,\alpha}(q):$ has weight~$k+l+4$. Its collision with a polynomial using jets through order~$j$ has, in the coefficient where just the order-$k$ leg contracts at that order, the polynomial
+\begin{equation}\label{eq:G-collision}
+\sum_\alpha X_{l,\alpha}(q)\sum_\mu
+C_{k,j}(p,e_\mu;z)\frac{\partial P}{\partial X_{j,\alpha}(e_\mu)}.
+\end{equation}
+Here $(e_\mu)$ is a basis of order-$j$ probes, and $C_{k,j}$ is their differentiated curvature covariance. The extraction distinguishes harmonic poles from products of poles, rather than comparing the weights of their remaining polynomials. Put $r=4+k+j$. After testing against fixed exterior spectators, the term~\eqref{eq:G-collision} is harmonic and homogeneous of degree~$-r$ in~$z$; multiplication by $|z|^{2(r-1)}$ makes it real analytic at zero. Taylor expansion of the other terms at each singular order gives homogeneous functions which become real analytic after multiplication by $|z|^{2(r-2)}$ at order~$r$. In particular, a double contraction is a product of poles of orders $r_1,r_2\ge2$: its product is cleared by $|z|^{2(r_1+r_2-2)}$. Taylor terms preserve this two-power improvement. The contraction of the order-$l$ leg alone has order at most $4+l+j<r$.
+
+A harmonic homogeneous function~$K$ of degree~$-r$, $r\ge2$, cannot have the latter improvement unless it is zero. Indeed, in four dimensions,
+\begin{equation*}
+\Delta(|z|^{2s}K)=4s(s+1-r)|z|^{2s-2}K.
+\end{equation*}
+If $|z|^{2(r-2)}K$ extends analytically, successive Laplacians show that~$K$ itself extends analytically; negative homogeneity then makes it zero. Expand the collision through any order exceeding $8+k+l+2j$. If $P\in\mathfrak N_{d_0}$, its correlation with the quadratic test and any further bounded-degree spectators is identically zero. Comparing successive radial homogeneities in this finite expansion makes its order-$r$ harmonic pole zero by the preceding argument. Thus~\eqref{eq:G-collision} belongs to~$\mathfrak N_{d_0}$. This conclusion uses only $l<k$ and $k+l+4\le d_0$, without a weight induction. The induction is used next to make this extracted polynomial zero.
+
+Take $k=g+1$ and $l=0,\ldots,g-1$. For each~$l$ choose a probe~$q_l$ and a jet value~$v_l$ with $q_l(v_l)=1$. The matrix $(X_{l,\alpha}(q_l))_{l,\alpha}$ has nonzero polynomial determinant: assign~$v_l$ to colour~$l$ and zero to the other colours in order~$l$, making this matrix the identity. For $j>g$ the polynomial~\eqref{eq:G-collision} replaces an order-$j$ jet by an order-$l$ jet, so its weight is strictly smaller. The induction hypothesis therefore makes it zero. Multiplication by the transposed cofactor matrix, in the polynomial domain, shows that every one-colour contraction in~\eqref{eq:G-collision} vanishes. As $z,p$ vary, the forms $C_{k,j}(p,\cdot;z)$ span the dual of the order-$j$ jets. Their common annihilator generates a Maxwell wave whose order-$k$ jets vanish everywhere. That wave is a polynomial of degree below~$k$; its negative homogeneity makes it zero. Formula~\eqref{eq:G-kelvin} then makes the probe zero. Hence every order-$j$ partial derivative of~$P$ vanishes. Starting above~$g$ and descending removes all these jet orders. The case of orders at most~$g$ was proved above with spectator bound~$b_g$. This closes the induction on weight and proves~\eqref{eq:G-detection}.
+
+Free correlations are real analytic off the diagonals by~\eqref{eq:G-curvature}. If all the stated jets vanish, every Ward sum vanishes near each testing line. For any separated configuration choose distinct ordered line coordinates respecting the strict order of its coordinates in that axis. The straight segment to that line configuration stays separated: strict inequalities persist, and coordinate ties are separated by the line coordinates. Analytic continuation along this segment gives $\mathcal E_b=0$ on all of~$\Conf{n}$.
+
+We first determine~$P$ on weight four. Let $V_j$ be the scalar on-shell order-$j$ jet space and set $\kappa_{ij}(p,q;z)=C_{i,j}(p,q;z)$ in one colour. For $p\in V_0^*$ put $U(p)=\sum_\alpha:X_{0,\alpha}(p)^2:$. Simplicity, the filtration and inversion parity force $P_bU(p)$ to be a colour contraction of one order-zero and one order-one jet. Represent it by a linear map~$A_p:V_0\to V_1^*$. In the Ward identity of $U(p),U(q),U(w)$, let the first two points coalesce along~$tu$ and multiply by~$t^5$. The term with $P_b$ at the distant point tends to zero. The remaining two triangular Wick contractions give, for every $X\in V_0$,
+\begin{equation*}
+\kappa_{10}(A_pX,q;u)\,q(X)
+=\kappa_{10}(A_qX,p;u)\,p(X).
+\end{equation*}
+To obtain arbitrary~$X$, choose the distant probe~$w$ using the invertible order-zero covariance~\eqref{eq:G-kelvin}. A common nonzero coefficient in the two surviving terms cancels. If $p(X)=0$, choose $q(X)\ne0$; varying $q,u$ makes $A_pX=0$, again by~\eqref{eq:G-kelvin}. Thus $A_pX=p(X)f_bp$. The same displayed identity and nondegeneracy show that $f_b:V_0^*\to V_1^*$ is real linear and
+\begin{equation*}
+\kappa_{10}(f_bp,q;u)=\kappa_{10}(f_bq,p;u).
+\end{equation*}
+
+Here is the signed-covariant calculation of~$f$. Write $e^{ij}$ for the curvature coordinate and $\partial_he^{ij}$ for its first jet. For $f_1e^{12}$, sign parity permits only $\partial_1e^{12},\partial_3e^{23},\partial_4e^{24}$; interchange of axes~$3,4$ and $\sum_i\partial_ie^{i2}=0$ reduce their span to $\R\partial_1e^{12}$. For $f_1e^{23}$ the candidates are $\partial_1e^{23},\partial_2e^{13},\partial_3e^{12}$; antisymmetrizing axes~$2,3$ and Bianchi reduce them to $\R\partial_1e^{23}$. Permutations leave two constants. They agree because
+\begin{equation*}
+\kappa_{10}(\partial_1e^{12},e^{23};e_1+e_3)
+=-\frac{1}{2\pi^2}\ne0,
+\end{equation*}
+as follows by differentiating~\eqref{eq:G-curvature}. Therefore $f_b=\kappa\partial_b$ with one real~$\kappa$. Since $\partial_bU(p)$ has two identical terms, $P_b=c\partial_b$ on weight four, with $c=\kappa/2$.
+
+Set $Q_b=P_b-c\partial_b$. Translation invariance makes its Ward sums zero, and it kills every free stress component. Insert a free stress shell for the dilation field $v(y)=y-x_0$ into such a sum. The term where $Q_b$ acts on the stress is zero. Evaluate all other shell terms by the polarized calculation in Lemma~\ref{lem:G1.1}, now with this~$v$. The extra derivative of~$v$ contracts with the trace of the free stress, which is zero by~\eqref{eq:G-free-tensor}. Choose the shell to surround only the distinguished point, so its Ward sum has just that slot. The local Lie derivative of a two-form under dilation is $y\cdot\nabla+2$; differentiating its jets gives the weight operator $\mathcal H X_{j,\alpha}=(j+2)X_{j,\alpha}$; subtraction of the Ward sum with the distinguished label~$\mathcal H u$ shows that $[\mathcal H,Q_b]u\in\mathfrak N_d$. For $d\ge d_0$ Equation~\eqref{eq:G-detection} removes this polynomial. Thus $Q_b$ preserves each homogeneous weight. Inversion acts there by~$(-1)^{\rm weight}$, whereas vector covariance makes $Q_b$ odd under inversion. It follows that $Q_bu=-Q_bu$, hence $Q_b=0$.
+
+Conversely translation invariance annihilates every test on~$\partial^{\rm Max}$. Finally the real domain~$\mathcal C_d$ is finite-dimensional. Successively choose a test nonzero on the current kernel modulo this line. Each choice lowers its dimension, so finitely many tests have precisely the asserted kernel.
+\end{proof}
+
+Let $\mathcal B_d$ consist of alternating real-bilinear families $\Delta:\mathfrak{so}(4)^2\to\operatorname{End}_{\C}\maxwellspace{d}$ which commute with conjugation, kill the unit, preserve every lower-degree subspace, and satisfy
+\begin{equation*}
+R^{\rm Max}(h)\Delta(K,L)=\Delta(hKh^{-1},hLh^{-1})R^{\rm Max}(h)
+\qquad(h\in\hypercubic,\ \det h=1).
+\end{equation*}
+The next result will remove the defect in the rotation commutator.
+\begin{lemma}[Finite internal Ward tests]\label{lem:G1-internal}
+For every $d\ge4$, finitely many sums
+\begin{equation}\label{eq:G-erasure-test}
+\sum_i S_n^{\rm Max}(u_1,\ldots,\Delta(K,L)u_i,\ldots,u_n;x),
+\qquad u_i\in\maxwellspace{d},\quad x\in\Conf{n},
+\end{equation}
+separate~$\mathcal B_d$.
+\end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D11} and Lemma~\ref{lem:G1.1}. Suppose all these sums vanish and fix $\mathsf Z=\Delta(K,L)$. On the weight-four space let $b_x(u,v)=S_2^{\rm Max}(u,v;x,0)$. The order-zero Kelvin formula and Wick's rule give, for $|x|=|y|\ne0$,
+\begin{equation*}
+b_x(u,v)=b_y(R^{\rm Max}(\mathcal R_y\mathcal R_x)u,v).
+\end{equation*}
+Both $\mathsf Z$ and the orthogonal action preserve this space. Applying $b_x(\mathsf Zu,v)+b_x(u,\mathsf Zv)=0$ at~$x$ and~$y$, then using nondegeneracy of~$b_y$, shows that~$\mathsf Z$ commutes with $R^{\rm Max}(\mathcal R_y\mathcal R_x)$ there. In particular it commutes with every coordinate quarter turn.
+
+Combine this with the signed covariance of~$\Delta$. For each weight-four~$u$, the alternating bilinear function $(K,L)\mapsto\Delta(K,L)u$ is invariant under the action of coordinate quarter turns on both arguments. Such a function is zero. Indeed in the plane basis $K_{ab}=E_{ba}-E_{ab}$, overlapping distinct planes have opposite sign under a determinant-one diagonal sign change, and disjoint planes are interchanged by an even permutation; invariance and alternation kill both cases. Thus~$\mathsf Z$ vanishes on weight four, including the stress.
+
+Insert a free angular stress shell into its Ward sum, as in the dilation argument of Lemma~\ref{lem:G1-vector}. The shell surrounds only the distinguished point. Subtracting the Ward sum with its angularly differentiated label gives $[\mathsf L^{\rm Max}(M),\mathsf Z]u\in\mathfrak N_d$. This polynomial has weight at most~$d$, so strict two-point positivity in Lemma~\ref{lem:G1.1} already makes it zero. Hence $\mathsf Z$ commutes with all infinitesimal rotations. Differentiating $e^{t\mathsf L(M)}\mathsf Z-\mathsf Ze^{t\mathsf L(M)}$ proves commutation with coordinate quarter turns in every degree. Repeating the preceding alternating-plane argument gives $\Delta=0$ in all degrees. Finite-dimensionality selects a finite separating subfamily, by successively reducing the common kernel.
+\end{proof}
+
+\subsection{Lattice inputs}\label{sec:G-lattice}
+
+The insertions are those of Definition~\ref{def:D08}; their coefficient polynomials are constructed in Definition~\ref{def:D19} and Lemma~\ref{lem:A1}. We use the inverse coefficient estimate of Lemma~\ref{lem:E-marked-step}, the corrected sources and normalized integral of Lemmas~\ref{lem:E-Gaussian-sources} and~\ref{lem:E-source-integral}, and the backward matching estimate~\eqref{eq:E-backward-match}. The positional bound is Lemma~\ref{lem:E-displacement}. The precise normalizations used below are~\eqref{eq:G-lift-bound}, \eqref{eq:G-source-root} and~\eqref{eq:G-annular-cost}; the marked local format is Lemma~\ref{lem:E2.2a}. Roots always mean Definition~\ref{def:D27}. Cutoff limits have the order~\eqref{eq:E2-tails}, followed by the fixed extraction of Lemma~\ref{lem:F1}.
+
+Fix arity and degree bounds $n\ge2,D\ge1$ and $R\ge1$. A basis word means a list of members of fixed real bases of $\maxwellspace{d}$, $d\le D$. Put
+\begin{equation*}
+K_{R,m}=\{x:|x|\le R,\ \sepinf(x)\ge R^{-1}\},\qquad
+E_\sigma=\{x:|x_i^a-x_j^a|>\sigma\ (i\ne j,\ a=1,\ldots,4)\}.
+\end{equation*}
+Choose the construction's exponent triple for a degree horizon containing~$n,D$, and denote its exponents by $\alpha,\beta,\gamma>0$ and~$\zeta<0$. They satisfy
+\begin{equation}\label{eq:G-exponents}
+\beta+6<\alpha,\quad \gamma+5<\alpha+\zeta,\quad
+(\alpha-\beta)Dn+\zeta<0,\quad
+(\alpha-\gamma)Dn-\alpha-\zeta<0.
+\end{equation}
+The choice is explicit: with $h_{\max}=\max(n,D)$, take $v=7h_{\max}(h_{\max}+2)+1$, $w=6+v$, $\alpha=17+h_{\max}+v+wh_{\max}(h_{\max}+2)+w$, $\beta=\alpha-7$, $\gamma=\alpha-w$ and $\zeta=-v$. The first two inequalities place the root cells; the last two will remove coordinate coincidence strips. Write $M_k=\cutoffsize_k$ and set
+\begin{equation}\label{eq:G-balance}
+r_k=a_kM_k^\alpha,\qquad \mathfrak s_k=M_k^{-\alpha},\qquad
+\sigma_k=M_k^\zeta,\qquad
+\mathfrak a_k\le CM_k^{(\alpha-\beta)D},\quad \mathfrak b_k\le CM_k^{(\alpha-\gamma)D}.
+\end{equation}
+In particular $r_k\mathfrak s_k=a_k$: the normalized grid is the physical construction grid. For an ordered coefficient cluster limit $c_{k,d}:\maxwellspace{d}\to V_d$ of the lifts in Lemma~\ref{lem:G-lattice}, define
+\begin{equation*}
+Q_k(\boldsymbol u;x)=S_m(\pi_{d_i}c_{k,d_i}u_i;r_kx),
+\end{equation*}
+where $\pi_d:V_d\to F_d$ is the quotient of Definition~\ref{def:D10}.
+
+The following comparison uses one coefficient family for every word within the fixed bounds. Its constants may depend on these bounds, the word and the construction. Its estimates hold for every coefficient cluster limit, rather than for one specially chosen limit.
+\begin{lemma}[Lattice comparison at small radii]\label{lem:G-lattice}
+There are arbitrarily large levels~$k$, real $\hypercubic$-equivariant lifts $\Lambda_{k,N,p,d}:\maxwellspace{d}\to V_d$ preserving the degree-zero unit, and $\varepsilon_k\to0$ such that every ordered coefficient cluster limit of these lifts satisfies, for every basis word with $m\le n$,
+\begin{equation}\label{eq:G-lattice-input}
+\begin{aligned}
+|Q_k|&\le \mathfrak a_k^m &&\text{on }K_{R,m},\\
+\|\nabla Q_k\|&\le4m \mathfrak b_k^m/\sigma_k &&\text{on }K_{2R,m}\cap E_{4\sigma_k},\\
+|Q_k-S_m^{\rm Max}|&\le\varepsilon_k
+&&\text{on }(\mathfrak s_k\Z)^{4m}\cap K_{2R,m}\cap E_0.
+\end{aligned}
+\end{equation}
+At fixed~$k$ the lifts are bounded on ordered tails.
+\end{lemma}
+\begin{proof}
+Choose a real $\hypercubic$-equivariant polynomial representative map $\iota_d^{\rm free}$ for the on-shell quotient, using the Taylor sections of Lemma~\ref{lem:A1} and averaging a real splitting over~$\hypercubic$. Let $\mathsf C_{k,N,p,d}$ be the marked coefficient readout after the finite Gaussian contraction correction of Lemma~\ref{lem:E-source-polynomial}. Write $\delta_t^{\rm wt}$ for multiplication of a weight-$j$ monomial by~$t^j$; the factor-count scaling~$\factorscale_t$ is Definition~\ref{def:D08}. Abbreviate the actual coupling by $b_{N,p,k}=\beta_{N,p,k}$. The Gaussian field divided by the small-field threshold has scale
+\begin{equation*}
+\vartheta_{k,N,p}=(t_k\sqrt{b_{N,p,k}})^{-1},\qquad
+0<\vartheta_{k,N,p}^{-1}\le2M_k.
+\end{equation*}
+The inequality follows from $t_k=M_k/\sqrt{\refbeta_k}$ and $b_{N,p,k}\le2\refbeta_k$. Here $t_k$ is the small-field threshold of Part~I. Solve
+\begin{equation}\label{eq:G-lift-bound}
+\mathsf C_{k,N,p,d}\Lambda_{k,N,p,d}u
+=\factorscale_{\vartheta_{k,N,p}^{-1}}\delta_{M_k^\alpha}^{\rm wt}\iota_d^{\rm free}u,
+\qquad |v|_1\le K_{k,d}a_k^d|\mathsf C_{k,N,p,d}v|_1.
+\end{equation}
+Here $K_{k,d}$ is independent of~$N,p$ at fixed~$k$. To obtain the second inequality, iterate the inverse estimate of Lemma~\ref{lem:E-marked-step} from $r(d)$ to~$k$ and apply the coefficient comparison in the proof of Lemma~\ref{lem:E-source-polynomial}; its relative readout error is less than~$1/4$, so its inverse costs at most~$2$. One may take $K_{k,d}$ bounded by twice the product of the finitely many column and block factors up to~$k$, enlarged by the fixed basis norms. The readout is injective, hence invertible on its finite coefficient space. Its unit, conjugation and signed laws give these laws for the inverse. The displayed upper bound on~$\vartheta^{-1}$ bounds the right side at fixed~$k$, proving boundedness of the lifts on cutoff tails.
+
+Here is the all-arity estimate. Write $I_i=O_{N,p}^{(d_i)}(\Lambda_{k,N,p,d_i}u_i,r_kx_i/a_N)$ at compatible lattice points. For a subset~$J$ put $G_J=S_{|J|}^{\rm Max}((u_i)_{i\in J};(x_i)_{i\in J})$ and define
+\begin{equation*}
+R_\varnothing=1,\qquad
+R_I=\prod_{i\in I}I_i-\sum_{\varnothing\ne J\subseteq I}G_JR_{I\setminus J}.
+\end{equation*}
+This subtracts the full continuum Gaussian moment on every subset of slots. For exact continuum Gaussian variables its nonempty coefficients have expectation zero, by induction on~$|I|$. The contraction correction and the $\vartheta$-normalized equation~\eqref{eq:G-lift-bound} identify the leading Gaussian correlations with these continuum moments at the normalized grid points, as calculated in Lemma~\ref{lem:E-source-polynomial}. Covariance, Taylor and localization errors remain in the regular and forced source terms.
+
+Here is the root estimate for the whole reflected array. Use the interval~\eqref{eq:E-window} with exponent~$\alpha$ and terminal level~$k$. Denote its width level by $w_\alpha(k)=k-h_k(\alpha)-v_k$ and its centered tiling by $\mathcal C^{\rm tile}_{w_\alpha(k)}(0)$, as in Definition~\ref{def:D27}. Put $q_k=\log M_k/(16n)$. Give each marked slot amplitude $e^{2q_k}$. This amplitude is at most $M_k^{1/16}$ because $n\ge2$. The weighted mode norm in the proof of Lemma~\ref{lem:E-replication} multiplies amplitudes over subsets, so coefficient extraction for a nonempty~$I$ contributes $e^{-2q_k|I|}$ in each reflected cell. The corrected-source iteration of Lemma~\ref{lem:E-Gaussian-sources} keeps this radius on the selected comparison intervals. For the arity bound~$n$, work in $\C[z_1,\ldots,z_m]/(z_i^2)$ and multiply by the reciprocal of the continuum free moment polynomial. Its coefficient of~$z_I$ is exactly the recursion defining~$R_I$. Compute the finite Gaussian contractions on every subset; the remaining source modes have zero leading Gaussian coefficient. In the source iteration, collect their absolute weighted norms. Terms linear in these modes cost the finite stage constant; every other connected term contains at least two residual modes and is bounded by their squared norm times a fixed power of~$M_k$. This is the submultiplicative mode-norm calculation in Lemma~\ref{lem:E-replication}. The covariance and localization errors in Lemma~\ref{lem:E-source-polynomial} are chosen below the corresponding finite source tolerance at entry, as in~\eqref{eq:E-source-iteration}. The induction of Lemma~\ref{lem:E-Gaussian-sources} therefore applies to the full finite set of modes. Its sums are rooted at a mark and do not count the replicated cells.
+
+The remaining cost is the normalized positive integral. Formula~\eqref{eq:E-positive-ratio} bounds its logarithm per cell by the stage constant~$Q_{J_k}^{\rm cmp}$ of~\eqref{eq:E-comparison-cost}, with the maximum number~$n$ of marks in place of two. This replaces only the finite source-amplitude contribution by at most~$n$; include it in that stage constant. The comparison request in Lemma~\ref{lem:E1.1} imposes $Q_{J_k}^{\rm cmp}\le q_k$ after these finite constants have been fixed. This is possible by increasing its entry level, since $\log M_k\to\infty$ within a fixed stage. Taking the root over the reflected cells gives
+\begin{equation}\label{eq:G-source-root}
+\|R_I\|_{\mathcal C^{\rm tile}_{w_\alpha(k)}(0)}
+\le e^{q_k-2q_k|I|}\le M_k^{-1/(16n)}
+\qquad(\varnothing\ne I\subseteq\{1,\ldots,m\}).
+\end{equation}
+The smallness here comes from the corrected density at large coupling: its source terms remain bounded at an increasing amplitude, while the unmarked normalization grows more slowly than that amplitude. The estimate applies to the complete reflected array, before absolute values are taken, and requires no independence of its insertions.
+
+The source stencils are interior. Distinct coordinate differences at normalized grid points are at least $\mathfrak s_k$, so their physical differences are at least~$a_k$. The reading map assigns the corresponding level-$k$ sites without rounding, and the interval margin~\eqref{eq:E-window-geometry} contains the inspected stencils and their reflected copies. Expanding the recursion, applying the chessboard inequality~\eqref{eq:E-chess} to each~$R_I$, and bounding the free submoments on~$K_{2R,m}$ gives $C_{R,\boldsymbol u}M_k^{-1/(16n)}$. This proves the last line of~\eqref{eq:G-lattice-input}.
+
+Two further root levels bound the same insertions between grid points. At its own normalization, the singleton source comparison just proved gives a root at most $1+|S_1^{\rm Max}(u)|$ by the triangle inequality with the unit. For exponent~$\beta$, changing normalization to~$M_k^\alpha$ multiplies a weight-$j$ coefficient by $M_k^{(\alpha-\beta)j}$. The finite coefficient sum therefore gives $\mathfrak a_k\le CM_k^{(\alpha-\beta)D}$. The same calculation at exponent~$\gamma$ gives $\mathfrak b_k\le CM_k^{(\alpha-\gamma)D}$. Include every reflected basis label and its image under conjugation in these finite maxima.
+
+The two interval lengths of~\eqref{eq:E-window} give, with the stage block ratio denoted by~$L$,
+\begin{equation}\label{eq:G-root-sides}
+\frac{a_{w_b(k)}}{a_k}=L^{h_k(b)+v_k}
+\le L^2M_k^{b+2}B_k^{10}\le M_k^{b+5}
+\qquad(b=\beta,\gamma).
+\end{equation}
+The last inequality holds after the stage entry: $L$ is fixed there and $B_k=M_k^{o(1)}$. In particular the $\beta$ cell is at most $a_kM_k^{\beta+6}=o(r_k)$, and the $\gamma$ cell is $o(r_k\sigma_k)$ by~\eqref{eq:G-exponents}. The chessboard inequality with the first roots bounds separated continuum moments by~$\mathfrak a_k^m$. The second cells fit between points of $E_{4\sigma_k}$; applying Lemma~\ref{lem:E-displacement} with margin $r_k\sigma_k$ gives $4m\mathfrak b_k^m/\sigma_k$ after rescaling positions. These choices use the same coefficient readout and lifts; only their weight normalization changes. The finite comparison requests are included simultaneously in Lemma~\ref{lem:E1.1}, and their cutoff tails can be intersected.
+
+Finally take any convergent coefficient subfilter of these bounded lifts in the ordered limit. Lemma~\ref{lem:F1} passes the moment estimates to the fixed table; the difference bound passes by Proposition~\ref{prop:FC} and Lemma~\ref{lem:F2}. This proves all three inequalities for every coefficient cluster limit. No extraction of the table or volume sequence is made here.
+\end{proof}
+
+For the shell estimate take $p\in\{0,1\}$, $A\in F_d$, $B\in F_4$ and $D=d+1-p$. A grid test is a separated configuration $(0,x_i)$ on $a_j\Z^4$ for some level~$j$, generic in each coordinate, with a fixed spectator list~$\boldsymbol B_i$. Define its response functional and marked response by
+\begin{equation*}
+\mathcal L_i(v)=S(v(0),\boldsymbol B_i(x_i)),\qquad
+\mathfrak h_i(y)=S(B(y),A(0),\boldsymbol B_i(x_i)).
+\end{equation*}
+Finite collections may use different grids. The union of all these configurations is dense. The estimate below supplies the degree bound needed to represent a shrinking shell by a field.
+\begin{lemma}[Annular annihilator estimate]\label{lem:G-annular}
+For every fixed finite list of grid tests and coefficients $g_i\in\C$ with $\sum_i g_i\mathcal L_i=0$ on~$F_D$, there are $\rho_l\downarrow0$ such that
+\begin{equation}\label{eq:G-annular-input}
+\sup_{1/4\le|z|\le2}\left|\sum_i g_i\rho_l^{3+p}\mathfrak h_i(\rho_lz)\right|\longrightarrow0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D08}, \ref{def:D10}, the local sections of Lemma~\ref{lem:A1}, Lemmas~\ref{lem:E2.2}, \ref{lem:E2.2a}, \ref{lem:E2.3}, \ref{lem:E2.4}, together with Proposition~\ref{prop:FC} and Lemma~\ref{lem:F2}. Put $h=3+p$, so $D+h=d+4$. Write $s_m=\log(a_m^{-1})$. Use the support radius $B_m=\lceil(\log\refbeta_m)^2\rceil$ of Part~I and take $\rho_m=128B_{m+1}^2a_{m+1}$. Its logarithmic rate is $\log\rho_m=-s_m+o(s_m)$.
+
+Fix a centered cell around the distinguished point, small enough to be disjoint from all spectator stencils, and a finer stopping level at which its replicated source estimate applies. Choose a slightly finer level~$j(m)$ with
+\begin{equation*}
+\frac{s_{j(m)}}{s_m}\longrightarrow t=1+\frac1{64(d+12)}.
+\end{equation*}
+Such levels exist since $s_{m+1}/s_m\to1$, by Lemma~\ref{lem:E1.1}. At a grid point $y\in a_{j(m)}\Z^4$ with $\rho_m/16<|y|<4\rho_m$, choose representatives $a\in V_d,b\in V_4$ for~$A,B$, block their two marked insertions at~$y,0$ together, and retain the Taylor terms of weight at most~$D$. Their coefficient vector~$c_{N,p}(y)\in V_D$ is chosen by inverting the marked coefficient map. The exact difference is
+\begin{equation*}
+\rho_m^h O_{N,p}^{(4)}(b,y/a_N)O_{N,p}^{(d)}(a,0)
+ -O_{N,p}^{(D)}(c_{N,p}(y),0).
+\end{equation*}
+Estimate this difference in the root of the fixed cell. We give the quantitative marked calculation, with the powers that determine its smallness. Let $u_{m,1},u_{m,2}$ be the available amplitudes of the degree-$d$ and rescaled degree-four marks at level~$j(m)$. The one-mark bounds, including the factor~$\rho_m^h$, give
+\begin{equation*}
+\log u_{m,1}=(-dt+o(1))s_m,\qquad
+\log u_{m,2}=(-4t+h+o(1))s_m.
+\end{equation*}
+The support weights, coefficient columns and threshold powers have logarithm~$o(s_m)$ by~\eqref{eq:E-marker-scales} and~\eqref{eq:E-log-cost}. Transporting each of the two sources to level~$m+1$ adds the four-dimensional volume factor $(a_{j(m)}/a_{m+1})^4$ to its available amplitude. Thus the joint amplitude~$v_m$, and the dimensionless coefficient bound~$e_m$ of its Taylor remainder, satisfy
+\begin{equation}\label{eq:G-annular-cost}
+\begin{aligned}
+\log v_m&=[-D-(d+12)(t-1)+o(1)]s_m,\\
+e_m&\le\exp\{[(d+12)(t-1)+o(1)]s_m\}.
+\end{aligned}
+\end{equation}
+Indeed the two transported exponents sum to $-(d+4)t+h+8(1-t)=-D-(d+12)(t-1)$. Taylor extraction costs the reciprocal joint amplitude times~$a_{m+1}^D$, which cancels the~$D$ term and gives the second line. This is the two-mark use of the source representation~\eqref{eq:E-source-form}, retaining its forced terms and their eligibility tests.
+
+The matched remainder gains $e^{(s_m-s_{k_0})/8}$ in its inverse bound, where $k_0$ is the fixed stopping level: it is the product of the factors $\ell_i^{1/8}$ in~\eqref{eq:E-backward-match}. Put $c_m=e^{s_m/32}$. We require the residual root to be $O(c_m^{-1})$, so multiply its source by~$c_m$ before applying that bound. Its size is then at most
+\begin{equation*}
+c_me_me^{-(s_m-s_{k_0})/8}
+\le\exp\{[-5/64+o(1)]s_m\},\qquad
+\frac1{32}+(d+12)(t-1)-\frac18=-\frac5{64}.
+\end{equation*}
+It eventually fits every fixed source allowance at~$k_0$. The normalized replicated-source estimate, Lemma~\ref{lem:E-replication}, consequently bounds the unamplified residual root by~$2C/c_m$. The inverse coefficient estimate~\eqref{eq:G-lift-bound}, applied in degree~$D$ at the fixed stopping level, also bounds~$c_{N,p}(y)$ on cutoff tails for each fixed~$m,y$. Interior support follows from $32\rho_m\to0$ and the support diameter $a_{m+1}(B_{m+1}^2+1+2048B_{m+1}^2)\to0$; both fit the fixed centered cell.
+
+Pass to a coefficient cluster limit~$c(y)$ and project it to~$F_D$. Applying the chessboard inequality~\eqref{eq:E-chess} to the residual and the fixed exterior stencils gives, simultaneously for the finite tests,
+\begin{equation*}
+|\rho_m^h\mathfrak h_i(y)-\mathcal L_i(\pi_Dc(y))|\le C_i c_m^{-1}.
+\end{equation*}
+The same coefficient vector is used for every spectator. Multiplication by~$g_i$ and summation cancels the response term exactly. Consequently the sum in~\eqref{eq:G-annular-input} is $O(c_m^{-1})$ at all grid points of this enlarged annulus whose four coordinates are nonzero.
+
+We interpolate across the excluded coordinate planes. Let $f_m(y)=\sum_i g_i\rho_m^h\mathfrak h_i(y)$. For a derivative order~$q$, Proposition~\ref{prop:FC} replaces the moving label by one of degree $4+q$. The centered and reflected root bounds of Lemmas~\ref{lem:E2.3} and~\ref{lem:E-replication}, with~\eqref{eq:E-chess}, bound a field of fixed degree~$e$ by $\exp[(e+2+o(1))s_m]$. This uses the one-insertion bound with exponent loss two; its constant depends on that field but has logarithm~$o(s_m)$. The finitely many later levels required for the fixed spectator word have logarithmic scale $s_m+o(s_m)$, by Lemma~\ref{lem:E1.1}. Choose degree bounds~$e_{ij}$ for its spectator labels and put $C_0=8+d+\max_i\sum_j(e_{ij}+2)$. Multiplying these root bounds, and using $\rho_m^h\le1$, gives
+\begin{equation}\label{eq:G-annular-derivatives}
+|\partial_a^q f_m(y)|\le \exp[(q+C_0+o(1))s_m]
+\qquad(\rho_m/16<|y|<4\rho_m),
+\end{equation}
+where $C_0$ depends on the fields and spectators, independently of~$q$. Choose $q$ so $q(t-1)>C_0$. Since $a_{j(m)}=\exp[-(t+o(1))s_m]$, all the $q$th derivatives along grid-sized coordinate segments tend to zero. Choose $2^q$ nonzero grid coordinates, separated by at least one normalized mesh, within distance $4(2^q+2)a_{j(m)}$ in each axis. On an interval of that fixed normalized length, repeated mean value estimates bound a function by a constant times its values at these nodes plus its $q$th derivative: pair adjacent nodes to bound the derivative at intermediate points, repeat~$q$ times, and integrate back. Apply this to the real and imaginary parts in each of the four axes. The constant depends on~$q$, not~$m$.
+
+These segments stay in the enlarged annulus because $4(2^q+2)a_{j(m)}=o(\rho_m)$. Values with all four coordinates on the nonzero grid tend to zero by the preceding cancellation; the derivative remainders tend to zero by the choice of~$q$. Four successive interpolations therefore give $\sup_{\rho_m/4\le|y|\le2\rho_m}|f_m(y)|\to0$. Select a decreasing subsequence of~$\rho_m$. The choices may depend on the fixed tests and~$g$, which is precisely the asserted order of quantifiers.
+\end{proof}
 
 \subsection{Free comparison and the conserved line}\label{sec:partII-G.2}
 
+The next argument converts Lemma~\ref{lem:G-lattice} into the stable comparison of Part I. Its proof also explains why no volume refinement is needed.
 \begin{lemma}[Stable weak comparison]\label{lem:G2.1}
-To be stated here.
+The fixed family has the scaling sequence and estimate of Proposition~\ref{prop:MC}. At every fixed degree horizon its frames eventually preserve exactly conjugation, $\hypercubic$ actions, units and inclusions.
 \end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D09}, \ref{def:D10}, \ref{def:D11}, \ref{def:D12}, Lemmas~\ref{lem:F1}, \ref{lem:F2}, \ref{lem:G1.1} and \ref{lem:G-lattice}. The set $K_{R,m}\setminus E_{8\sigma_k}$ has volume at most $C_{m,R}\sigma_k$: it lies in finitely many strips about coordinate coincidence hyperplanes. Its contribution to a tested difference is at most
+$C_{m,R}\|f\|_\infty(\mathfrak a_k^m+\|\maxwellcorr_m\|_{K_{R,m}})\sigma_k$.
+Outside these strips, rounding to the grid moves a point by at most $4m\mathfrak s_k$. Eventually $4m\mathfrak s_k\le\sigma_k$, so the segment remains in $K_{2R,m}\cap E_{4\sigma_k}$. The mean value bound and the free modulus of continuity~$\varpi$ give total tested error at most
+\begin{equation}\label{eq:G-tested-error}
+C_{m,R}\|f\|_\infty
+ \bigl[\varepsilon_k+(\mathfrak a_k^m+\|\maxwellcorr_m\|_{K_{R,m}})\sigma_k
+       +\mathfrak b_k^m\mathfrak s_k/\sigma_k+\varpi(4m\mathfrak s_k)\bigr].
+\end{equation}
+Every term tends to zero by the strict exponent inequalities. Expand arbitrary fields in the finitely many basis words; their coefficient sums are bounded by a constant times the product of their norms.
 
+At a fixed comparison level the lifts are bounded in a finite-dimensional space. Take a convergent subfilter in the ordered cutoff limit and project to~$F_d$. Ordered convergence holds also for convergent coefficients, by multilinearity. This proves~\eqref{eq:G-tested-error} for linear maps $U_{k,d}:\maxwellspace{d}\to F_d$. Every subfilter uses the same table, by Lemma~\ref{lem:F1}; the bounds apply to all its coefficient cluster limits by Lemma~\ref{lem:G-lattice}.
+
+Choose successively arity, degree and radius bounds tending to infinity, tolerances tending to zero, and strictly decreasing radii tending to zero. The latter is possible because $\log M_k=o(\log a_k^{-1})$ by~\eqref{eq:E-marker-scales} and the running law~\eqref{eq:E-running}, whence $a_kM_k^\alpha\to0$ for every fixed~$\alpha$. This selects one sequence before any fixed field list. To impose inclusions exactly, choose real $\hypercubic$ equivariant left inverses $L_d$ of the free inclusions~$i_d$, by averaging an inner product over the finite group. Replace the maps recursively by
+\begin{equation}\label{eq:G-correct-frames}
+\widetilde U_{k,0}=U_{k,0},\qquad
+\widetilde U_{k,d+1}=\jmath_{d,d+1}\widetilde U_{k,d}L_d
+ +U_{k,d+1}(I-i_dL_d).
+\end{equation}
+Expansion into the two summands preserves the comparison, since free and interacting inclusions preserve correlations. It also preserves reality and signed covariance; the degree-zero unit now gives all units. Strict free positivity supplies finitely many separating tested correlations in each degree. Their matrices converge, so a nonzero full-rank minor makes $\widetilde U_{k,d}$ eventually injective. Proposition~\ref{prop:FC} makes it an isomorphism. Fill the finitely many earlier indices in each degree with any of these isomorphisms. This changes no eventual assertion.
+
+Uniformity of~\eqref{eq:G-tested-error} over the supremum-norm unit ball of tests gives local $L^1$ convergence by smooth approximation to the phase of the difference. This proves Proposition~\ref{prop:MC} for the single sequence of Definition~\ref{def:D12}.
+\end{proof}
+
+We record a consequence needed before identifying the current. For the stable frames of Lemma~\ref{lem:G2.1}, put
+\begin{equation}\label{eq:G-derivative-limit}
+\mathsf d_{k,a}=r_k(\scaleframe{k}{d+1})^{-1}\partial_a\scaleframe{k}{d}.
+\end{equation}
+Then $\mathsf d_{k,a}\to\partial_a^{\rm Max}$ in operator norm. To prove this, choose finitely many tested free responses injective on~$\maxwellspace{d+1}$. Their interacting matrices converge to this injective matrix by Lemma~\ref{lem:G2.1}. Testing $\mathsf d_{k,a}u$ gives, by integration by parts, minus the correlation tested against $\partial_{x_0^a}f$. These values converge to the tests of $\partial_a^{\rm Max}u$. An injective finite matrix has a bounded left inverse on all sufficiently small perturbations, proving the limit on a basis and hence in operator norm.
+
+The chain rule and~\eqref{eq:G-derivative-limit} make every positional derivative converge locally in~$L^1$, also for convergent free label lists. For a compactly supported smooth difference~$g$ and $M>4n+j$, integration by parts gives
+\begin{equation*}
+|\widehat g(p)|\le C_M(1+|p|)^{-M}\sum_{|\alpha|\le M}\|\partial^\alpha g\|_{L^1}.
+\end{equation*}
+Fourier inversion~\cite[Theorem~8.26]{Folland1999} applies since both $g$ and $\widehat g$ are integrable. Multiplying by~$p$ through order~$j$ and integrating proves uniform convergence of those derivatives on a smaller compact set. Consequently
+\begin{equation}\label{eq:G-smooth}
+S_n(\scaleframe{k}{d_i}u_{k,i};r_k\,\cdot\,)
+ \longrightarrow\maxwellcorr_n(u_i;\cdot)
+ \quad\text{in }C^\infty_{\rm loc}(\Conf{n})\quad(u_{k,i}\to u_i).
+\end{equation}
+
+\begin{samepage}
+The rank calculation~\eqref{eq:G-divergence-matrix} now transfers to the mixed fields. The following proof also chooses the sign of one fixed current.
 \begin{lemma}[Conserved line]\label{lem:G2.2}
-To be stated here.
+The real space of centered real symmetric $\hypercubic$-tensorial tensors $J_{ab}\in F_4$ with $\sum_a\partial_aJ_{ab}=0$ is one-dimensional. For some nonzero~$J$, a refinement of the sequence of Proposition~\ref{prop:MC} and positive~$\xi_k$,
+\begin{equation*}
+(\scaleframe{k}{4})^{-1}(\xi_k^{-1}r_k^4J_{ab})
+ \longrightarrow\maxwellstress_{ab}
+\end{equation*}
+componentwise.
 \end{lemma}
+\end{samepage}
+\begin{proof}
+Use Definitions~\ref{def:D10}, \ref{def:D11}, \ref{def:D12}, Lemmas~\ref{lem:F2}, \ref{lem:G1.1}, \ref{lem:G2.1} and~\eqref{eq:G-derivative-limit}. Transport a free tensor by~$\scaleframe{k}{4}$ and subtract its mixed one-point value times the unit. On centered tensors this is a real isomorphism~$C_k$; the inverse transports back and subtracts the free expectation. Unit preservation makes the two composites identities. Let~$V_k$ be transport by~$\scaleframe{k}{5}$ on real covariant vectors. Then
+\begin{equation*}
+V_k^{-1}(r_k\operatorname{div})C_k
+ \longrightarrow\operatorname{div}^{\rm Max}.
+\end{equation*}
+The centering term disappears since derivatives kill the unit. Composition with a right inverse of free divergence tends to the identity, so mixed divergence is onto. The domain and target dimensions are three and two by these isomorphisms and~\eqref{eq:G-divergence-matrix}; its kernel is a real line.
 
+Choose a nonzero~$B$ on this line and set
+$\xi_k=\|(\scaleframe{k}{4})^{-1}(r_k^4B)\|/\|\maxwellstress\|$, with norms on whole tensors. The normalized preimages have a convergent subsequence on this sphere. Stability preserves symmetry, reality and signed tensoriality. Equation~\eqref{eq:G-smooth} at arity one gives centering of the limit, and~\eqref{eq:G-derivative-limit} gives zero free divergence. Lemma~\ref{lem:G1.1} makes the limit $\maxwellstress$ or $-\maxwellstress$. Choose $J=B$ or $-B$ once to obtain the stated limit with positive~$\xi_k$.
+\end{proof}
+
+The shell estimate in Lemma~\ref{lem:G-annular} now applies to each component of the current.
+
+The resulting fields represent both fluxes of Definition~\ref{def:D13}. The proof combines that estimate with finite-dimensional duality, conservation, translation covariance and continuity of separated responses.
 \begin{lemma}[Raw shell charges]\label{lem:G2.3}
-To be stated here.
+For the chosen~$J$ there are complex linear maps $\mathsf p_b:F_d\to F_{d+1}$ and $\mathsf Y_K:F_d\to F_d$, the latter real linear in~$K$, such that, for every allowed cutoff, field, spectator list and separated configuration,
+\begin{equation*}
+\mathcal P_b^J=S((\mathsf p_bA)(x_0),\boldsymbol B(x)),\qquad
+\mathcal Y_K^J=S((\mathsf Y_KA)(x_0),\boldsymbol B(x)).
+\end{equation*}
 \end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D10}, \ref{def:D13}, Lemma~\ref{lem:F2}, Lemma~\ref{lem:G2.2} and Lemma~\ref{lem:G-annular}. More generally use a constant Killing field~$v$ ($p=0$) or $v(y)=Ky$ ($p=1$). Shell independence follows by integration by parts: the divergence vanishes, and $\sum_{a,b}(\partial_av_b)J_{ab}=0$ by symmetry.
+
+Fix finitely many grid response tests~$\mathcal L_i$ as in Lemma~\ref{lem:G-annular}, and coefficients~$g_i$ annihilating~$F_D$, where $D=d+1-p$. Shrink a common window to $\chi(y/\rho_l)$, with $\chi=1$ near zero and $\nabla\chi$ supported in $1/2\le|y|\le1$. Changing variables gives the sum of their fluxes as
+\begin{equation*}
+-\sum_{a,b}\int(\partial_a\chi)(z)v_b(z)
+ \sum_i g_i\rho_l^{3+p}
+ S(J_{ab}(\rho_lz),A(0),\boldsymbol B_i(x_i))\,dz.
+\end{equation*}
+It is independent of~$l$ and tends to zero by~\eqref{eq:G-annular-input}. Thus every linear relation between the response tests is also a relation between their flux values. Finite-dimensional duality gives a field in~$F_D$ matching these finitely many values: the annihilator of the image of the response matrix annihilates the flux vector.
+
+Choose a finite separating family of grid tests. Such a family exists because the common kernel of all separated responses is zero, grid configurations are dense, and responses are continuous. A field matching this family is unique. Adjoin any additional grid test and apply the preceding finite-dimensional argument; uniqueness makes the same field match it. Continuity of the responses and of shell integrals, with the window fixed locally, extends the identity to all separated configurations with distinguished point zero. Translation covariance then moves that point to arbitrary~$x_0$. Linearity of the integral and injectivity of responses give complex linearity in~$A$ and real linearity in~$K$. Taking $v=e_b$ and $v=K(\cdot-x_0)$ proves exactly the two asserted raw shell laws.
+\end{proof}
 
 \subsection{Ward identities and rotations}\label{sec:partII-G.3}
 
+Write $\boldsymbol q=(A_i(x_i))_i$ and define the angular sum
+\begin{equation}\label{eq:G-angular}
+\mathcal W_K[Y,p](\boldsymbol q;x)=\sum_i\left[
+ S(\ldots,Y_KA_i,\ldots;x)+\sum_b(Kx_i)_bS(\ldots,p_bA_i,\ldots;x)\right].
+\end{equation}
+The coordinate spectral representation of Lemma~\ref{lem:H-G3} uses a reflection Hilbert space~$\mathcal H_\mu^{\rm OS}$ and positive generator~$H_\mu^{\rm OS}$ for each coordinate axis~$\mu$. Here $\mathsf T_\perp(y)$ is the unitary translation by~$y$, $y^\mu=0$, on this space. For a point field or finite collinear word~$U$, write~$U_t$ for its vector after translating it into the positive half-space by~$t$. Its positive spectral measure~$\nu_\mu^U$ is specified by
+\begin{equation*}
+\langle U_t,e^{-sH_\mu^{\rm OS}}\mathsf T_\perp(y)U_t\rangle
+=\int e^{-(2t+s)\epsilon}e^{ip\cdot y}\,d\nu_\mu^U(\epsilon,p).
+\end{equation*}
+Here $t$ is larger than the fixed extent of the word; the point-field measures are allowed to have infinite total mass before this damping. The damped moments are~\eqref{eq:H-coordinate-moments}, and mixed spectral Cauchy--Schwarz is~\eqref{eq:H-coordinate-CS}. Positive-time analyticity is supplied by the coordinate construction preceding Lemma~\ref{lem:H-G3}. These results use coordinate reflection positivity, E1--E7, Proposition~\ref{prop:FC} and the reflected-word bound of Lemma~\ref{lem:F4}; conservation enters the tensor estimates, and continuous rotations are not used.
+
+Fix distinct axes~$a,b$ and a line axis~$l$. Choose even $\eta\in C_c^\infty(\R)$ equal to one on~$[-1,1]$ and put $\ell(t)=t\eta(t)$. Choose an even nonnegative $\psi\in C_c^\infty(\R)$ equal to one on~$[-1,1]$; it will dominate the spatial Fourier factors on the momentum box. Set $\omega_j=-100$ for $j=a,b$, $\omega_l=-150$ if $l\notin\{a,b\}$, and $\omega_j=-300$ otherwise. For $\lambda=e^k$, $k\in\N$, $k\to\infty$, put
+\begin{equation*}
+\mathcal K_\lambda(p)=\prod_{j\ne\mu}w_j^{-1}\psi(p_j/w_j),\qquad
+I_\mu(U;\upsilon)=\int_{\epsilon\le1}\frac{\mathcal K_\lambda(p)}{\epsilon+\lambda^\upsilon}\,d\nu_\mu^U,
+\quad w_j=\lambda^{1+\omega_j}.
+\end{equation*}
+For a word~$B$ on~$\R e_l$ projected to odd parity in axes~$a,b$ and even parity in the other axes, Lemma~\ref{lem:H-G3} gives, for every $\delta>0$,
+\begin{equation}\label{eq:G-spectral-input}
+I_\mu(B;-3000)=O(\lambda^u),\quad
+u=\begin{cases}1,&\mu=l,\\-\omega_l,&\mu\ne l,\end{cases}
+\qquad I_\mu(J_{\mu b};\omega_\mu)=O_\delta(\lambda^\delta)
+\quad(\mu\ne b).
+\end{equation}
+For the diagonal component it gives, with $W=\lambda^{-99}$,
+\begin{equation}\label{eq:G-mass-input}
+\int_{\epsilon\le1}\frac{EW^4}{(\epsilon+W)^4}\mathcal K_\lambda(p)\,d\nu_\mu^{J_{\mu\mu}}
+=O_\delta(\lambda^\delta W^4).
+\end{equation}
+Constants may depend on the fields, configuration, axes, profiles and~$\delta$, independently of~$\lambda$. These bounds include~$\epsilon=0$. The zeroth damped moment and $\mathcal K_\lambda\le C\lambda^{900}$ imply $I_\mu(J_{\mu\mu};0)=O(\lambda^{900})$. For the Fourier--Laplace test integrals used below, the final paragraph of the proof of Lemma~\ref{lem:H-G3} bounds the integral over $\{\epsilon>1\}\cup\{\exists j\ne\mu:|p_j|>w_j\}$ by $C_M\lambda^{-M}$ for every fixed~$M$, after any fixed polynomial prefactor.
+
+The free vector and internal tests are those of Lemmas~\ref{lem:G1-vector} and~\ref{lem:G1-internal}.
+
+
+
+The coordinate bounds remove the angular boundary at infinity before continuous rotations are known. The proof below uses an anisotropic cutoff so that each reflected column gains an inverse power of its largest spatial extent.
+\begin{lemma}[Collinear angular identity]\label{lem:G-collinear-flux}
+For every separated configuration~$x$ on a coordinate line, every field list~$\boldsymbol q$ and every $K\in\mathfrak{so}(4)$, the raw charges satisfy
+\begin{equation}\label{eq:G-collinear}
+\mathcal W_K[\mathsf Y,\mathsf p](\boldsymbol q;x)=0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D13}, Proposition~\ref{prop:FC}, Lemma~\ref{lem:G2.3} and the coordinate construction and estimates of Lemma~\ref{lem:H-G3}.
+Use the spectral estimates~\eqref{eq:G-spectral-input}, \eqref{eq:G-mass-input} from Lemma~\ref{lem:H-G3}. It suffices to treat $K=E_{ba}-E_{ab}$, $a\ne b$. With the profiles fixed above, set
+\begin{equation*}
+f_{ab}(y)=\lambda^{100}\ell(\lambda^{-100}y_a)
+ \prod_{j\ne a}\ell'(\lambda^{\omega_j}y_j),\qquad
+V_b=f_{ab},\quad V_a=-f_{ba},\quad V_j=0\ (j\ne a,b).
+\end{equation*}
+The vector field~$V$ equals~$Ky$ near every insertion for large~$\lambda$. Disjoint windows and conservation give
+$\mathcal W_K=-\int\sum_{\mu,b}\partial_\mu V_b\,S(J_{\mu b}(y),\boldsymbol q)\,dy$.
+The two terms with $\mu=a,b$ cancel exactly, because $\partial_af_{ab}=\partial_bf_{ba}$ and $J_{ab}=J_{ba}$.
+
+Consider the $V_b$ terms with $\mu\ne a$. Reflecting the integration variable in each axis, including the tensor signs, replaces the spectator word by its odd projection in~$a,b$ and its even projections in the other axes. If the line axis is reflected, positions on that line are reflected too; the projection is a finite linear combination of collinear words. Lemma~\ref{lem:H-G3} applies to each such combination. The differentiated profile is supported where $|y_\mu|\ge\lambda^{-\omega_\mu}$. Its Laplace transform therefore has the factor $e^{-\epsilon/\lambda^{\omega_\mu}}$. For each of the three spatial factors $f_j=\ell$ or~$\ell'$, Fourier scaling gives, on $|p_j|\le w_j$,
+\begin{equation*}
+|\widehat{f_j(\lambda^{\omega_j}\,\cdot\,)}(p_j)|
+\le\lambda^{-\omega_j}\|f_j\|_{L^1}
+\le C\lambda w_j^{-1}\psi(p_j/w_j).
+\end{equation*}
+Their product gives $\lambda^3\mathcal K_\lambda$; the remaining time integral contributes the displayed $\lambda^{\omega_\mu}$ below. For the off-diagonal component, $e^{-t}\le(1+t)^{-1}$ and spectral Cauchy--Schwarz bound the integral, before the prefactor~$\lambda^{100}$, by
+\begin{equation*}
+C\lambda^{3+\omega_\mu}\,[I_\mu(B;-3000)I_\mu(J_{\mu b};\omega_\mu)]^{1/2}.
+\end{equation*}
+Take $\delta=1$. For this off-diagonal term $\mu\notin\{a,b\}$. Thus if $\mu=l$ then $\omega_\mu=-150$ and $u=1$; otherwise $\omega_\mu=-300$ and $u\le150$. The exponents are at most $-146$ and $-221.5$, respectively.
+
+If $\mu=b$, split at $\epsilon=\lambda^{-3000}$. Above this value use
+$e^{-\epsilon/\lambda^{-100}}\le4[W/(\epsilon+W)]^2$ and~\eqref{eq:G-mass-input}; Cauchy--Schwarz gives exponent at most
+$3+(150+1-396)/2=-119.5$.
+Below it, $\epsilon+\lambda^{-3000}\le2\lambda^{-3000}$ supplies a factor $\lambda^{-1500}$ in Cauchy--Schwarz. The crude bound $I_\mu(J_{\mu\mu};0)=O(\lambda^{900})$ then gives exponent at most $3-1500+(150+900)/2=-972$.
+The complementary integration region is $O(\lambda^{-M})$ by the final paragraph of the proof of Lemma~\ref{lem:H-G3}, with $M>201$. The $V_a$ terms are identical after exchanging~$a,b$, since $\omega_a=\omega_b$; this includes their diagonal component~$J_{aa}$. All remaining terms are consequently $O(\lambda^{-101})$ before the prefactor, and $O(\lambda^{-1})$ after it. The angular sum is independent of~$\lambda$, so it is zero. Linearity in~$K$ proves~\eqref{eq:G-collinear}.
+\end{proof}
+
+\begin{samepage}
+For a finite-dimensional rotation action write $\mathsf L_d(K)=\left.\frac{d}{dt}R_d(e^{tK})\right|_{t=0}$ for its generator. The shell charges can now be identified without assuming rotation covariance. The proof first fixes their common scale and then constructs an actual orthogonal-group action.
 \begin{lemma}[Rotation and charge identification]\label{lem:G3.1}
-To be stated here.
+There are $c_\star\in\R\setminus\{0\}$ and continuous complex linear $O(4)$ representations $R_d$ extending~$\hypercubic$, fixing units and commuting with conjugation and inclusions, with
+\begin{equation*}
+\mathsf p_b=c_\star\partial_b,\qquad
+\mathsf Y_K=c_\star\mathsf L_d(K),\qquad
+R_{d+1}(h)\partial_a=\sum_i h_{ia}\partial_iR_d(h).
+\end{equation*}
+For every~$d$, an isomorphism $\mathcal V_d:\maxwellspace{d}\to F_d$ intertwines the free and interacting $O(4)$ actions.
 \end{lemma}
+\end{samepage}
+\begin{proof}
+Use Definitions~\ref{def:D10}, \ref{def:D11}, \ref{def:D12}, \ref{def:D13}, Lemma~\ref{lem:F2} and Lemmas~\ref{lem:G1.1}, \ref{lem:G1-vector}, \ref{lem:G1-internal}, \ref{lem:G2.1}, \ref{lem:G2.2}, \ref{lem:G2.3}. Fix a window and move its distinguished point. Differentiating its two shell identities under the compact integral gives
+\begin{equation}\label{eq:G-shell-commutators}
+\partial_b\mathsf p_a=\mathsf p_a\partial_b,\qquad
+\partial_b\mathsf Y_K+\sum_iK_{ib}\mathsf p_i
+ =\mathsf Y_K\partial_b.
+\end{equation}
+The derivative of $K(y-x_0)$ gives the second term. Testing the unit, applying conjugation or a signed permutation, and including a field show, respectively, that the charges kill units, are real, have vector or angular covariance, and respect inclusions. Injectivity of responses turns these tested identities into field identities.
 
+Lemma~\ref{lem:G-collinear-flux} gives~\eqref{eq:G-collinear} for the raw charges.
+
+Translate a collinear configuration by~$e_l$ in~\eqref{eq:G-collinear}, with $K=E_{bl}-E_{lb}$. Subtraction gives $\sum_iS(\ldots,\mathsf p_bA_i,\ldots;x)=0$ for $b\ne l$. Equation~\eqref{eq:G-shell-commutators} gives every positional jet of these identities. Translation invariance gives the same identities for~$\partial$.
+
+Apply the finite free vector tests~\eqref{eq:G-free-tests} to the transported mixed vector maps. Their test matrices converge by~\eqref{eq:G-smooth}. Adjoin a real functional nonzero on~$\partial^{\rm Max}$; the resulting free matrix is injective and remains so under small perturbations. The mixed kernel therefore has dimension at most one. It contains both~$\mathsf p$ and~$\partial$, so $\mathsf p=c_d\partial$ in every sufficiently large degree. Inclusions and nonzero free differentiation make the constants equal and give the identity also in lower degrees. Rescale the two shell laws by~$r_k/\xi_k$ and~$1/\xi_k$, respectively. Changing variables $y=r_kz$ and using~\eqref{eq:G-smooth} yields
+\begin{equation}\label{eq:G-charge-limits}
+\frac{r_k}{\xi_k}(\scaleframe{k}{d+1})^{-1}\mathsf p_a\scaleframe{k}{d}
+ \to\partial_a^{\rm Max},\qquad
+\xi_k^{-1}(\scaleframe{k}{d})^{-1}\mathsf Y_K\scaleframe{k}{d}
+ \to\mathsf L_d^{\rm Max}(K).
+\end{equation}
+Finite separating tests recover these operator limits from the shell integrals. In particular $c_\star=c_d\ne0$ and $c_\star/\xi_k\to1$. Put $\mathsf D_K=c_\star^{-1}\mathsf Y_K$. Then~\eqref{eq:G-shell-commutators} reads $\partial_b\mathsf D_K+\sum_iK_{ib}\partial_i=\mathsf D_K\partial_b$.
+
+We next extend the collinear identity. Its angular sum has derivatives of the same form, by this commutator. Hence all its jets vanish on a line. In a coordinate plane write $\Phi_{u,v}(t,s)=S(u(te_a+se_b),v(0))$ and $(\varrho,\theta)$ for polar coordinates. Put $\Psi_{u,v}(t,s)=S((e^{-\theta \mathsf D_K}u)(\varrho e_a),(e^{-\theta \mathsf D_K}v)(0))$. For positive separation the axial function is a matrix coefficient of $e^{-tH_a^{\rm OS}}$ in~$\mathcal H_a^{\rm OS}$, after fixed positive-time damping of its end vectors. The coordinate construction preceding Lemma~\ref{lem:H-G3} gives its analyticity, so~$\Psi$ is analytic. The angular equation holds for~$\Psi$, and $\mathcal F=\Phi-\Psi$ vanishes on the axis. Its angular jets give the recurrence
+\begin{equation*}
+t\partial_s^{m+1}\mathcal F_{u,v}(t,0)
+=-\partial_s^m(\mathcal F_{\mathsf D_Ku,v}+\mathcal F_{u,\mathsf D_Kv})(t,0)
+ +m\partial_t\partial_s^{m-1}\mathcal F_{u,v}(t,0).
+\end{equation*}
+For $m=0$ omit the last term. Induction, for all labels at once, gives every transverse Taylor coefficient of~$\mathcal F$ equal to zero. In a reflection Hilbert space let $v(s)$ be a one-insertion vector translated transversely. Its Gram kernel depends on $s'-s$ and has just these analytic Taylor coefficients. On a compact positive axial interval choose $\rho>0$ inside a common complex analyticity neighbourhood of the finitely many matrix entries of~$\Psi$. Cauchy estimates for its Gram kernel give
+$\|v^{(m)}(s)\|^2\le C\rho^{-2m}(2m)!\le C(2/\rho)^{2m}(m!)^2$.
+Taylor's remainder proves transverse analyticity, uniformly in~$s$. Pairing with a fixed exterior word proves analyticity whenever the moving insertion is earliest or latest in some coordinate.
+
+Move one point at a time along coordinate segments while keeping it extreme in another coordinate. Every configuration with distinct first coordinates can be joined this way to a configuration on the first axis: move an extreme point beyond the others in the second coordinate, then beyond them in the first, then set its remaining coordinates to zero; repeat. Along each segment the angular sum is analytic and all its jets vanish at the endpoint. It vanishes along the segment. Such configurations are dense, so continuity proves the global angular identity.
+
+Its commutator gives $[\mathsf D_K,\mathsf D_L]=\mathsf D_{[K,L]}$. To justify this inference, its defect has vanishing correlation sums, is real, alternating in~$K,L$, covariant under signed permutations of determinant one, kills the unit, and preserves the filtration. The finite free tests of~\eqref{eq:G-erasure-test} are injective on this defect space. Their injectivity transfers by~\eqref{eq:G-smooth}; pulling the mixed defect back by the stable frames therefore makes it zero in sufficiently large degree. Injective inclusions give the same conclusion in all lower degrees.
+
+We now construct the representation. Let $C_i=\mathsf L_d^{\rm Max}(K_i)$ and $\mathsf B_{k,i}=(\scaleframe{k}{d})^{-1}\mathsf D_{K_i}\scaleframe{k}{d}$ for the six plane generators. By~\eqref{eq:G-charge-limits}, $\mathsf \mathfrak b_k\to C$. On endomorphisms put $\Omega(B,C)=\sum_i(B_i\,\cdot-\,\cdot\,C_i)^2$. An invariant inner product makes $\Omega(C,C)$ self-adjoint, with kernel the common commutant. A real polynomial~$z$, with $z(0)=1$, gives its kernel projection $P=z(\Omega(C,C))$. The operators $z(\Omega(\mathsf \mathfrak b_k,C))$ commute with the relative generators: expanding the commutator with the sum of squares cancels the antisymmetric structure constants in pairs. To correct them, iterate $\varphi(t)=3t^2-2t^3$. The identities $\varphi(t)-t=(1-2t)(t^2-t)$ and
+$\varphi(t)^2-\varphi(t)=(4(t^2-t)-3)(t^2-t)^2$ show that, near~$P$, the errors square and the displacements have a convergent geometric sum. The limits are projections $P_k\to P$, each commuting with its relative generators $\mathsf B_{k,i}\,\cdot-\,\cdot\,C_i$. The bracket identity just proved makes the relative generators a Lie-algebra representation; the compressed operators therefore satisfy the same plane commutator relations and tend to zero. Their maximum norm~$m_k$ satisfies $m_k\le2m_k^2$, so they vanish eventually. Thus $f_k=P_k(I)\to I$ is invertible and $\mathsf B_{k,i}f_k=f_kC_i$. All operations preserve the real signed commutant. Set $\mathcal V_d=\scaleframe{k}{d}f_k$ for one sufficiently large~$k$, and
+\begin{equation*}
+R_d(h)=\mathcal V_d R_d^{\rm Max}(h)\mathcal V_d^{-1}.
+\end{equation*}
+This is continuous, real and extends the signed action, with generator~$\mathsf D$. The global angular identity makes $S(R(e^{tK})A;e^{tK}x)$ constant. Plane rotations and coordinate reflections generate~$O(4)$, proving full covariance. Covariance, unit deletion, inclusion and differentiation then imply the unit, inclusion and vector laws by injectivity of responses. This proves all assertions, with $\mathsf L=\mathsf D$ and the same~$c_\star$ in every degree.
+\end{proof}
+
+Put $J_0=c_\star^{-1}J$ and define, with probability Haar measure on~$O(4)$,
+\begin{equation}\label{eq:G-average}
+T_{ab}=\int_{O(4)}\sum_{i,j}h_{ai}h_{bj}R_4(h)(J_0)_{ij}\,dh.
+\end{equation}
+This average imposes exact tensor covariance while retaining the normalized shell actions. The following proof establishes Theorem~\ref{prop:ST} for this~$T$.
 \begin{lemma}[Covariance and normalized tensor]\label{lem:G3.2}
-To be stated here.
+For every field list, $x\in\Conf{n}$ and $h\in O(4)$, the table and the tensor~$T$ defined in~\eqref{eq:G-average} satisfy
+\begin{equation*}
+S_n(R_{d_i}(h)A_i;hx)=S_n(\boldsymbol A;x),\qquad
+R_4(h)T_{ab}=\sum_{i,j}h_{ia}h_{jb}T_{ij}.
+\end{equation*}
+The tensor is real, symmetric and conserved and has both normalized shell laws of Theorem~\ref{prop:ST}.
 \end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D13} and Lemmas~\ref{lem:G2.3}, \ref{lem:G3.1}. Covariance was obtained at the end of the preceding proof. This is a finite-dimensional integral of a continuous function on a compact group. Haar invariance gives the displayed tensor law. Reality and symmetry pass through the integral, and the vector law for derivatives gives conservation. Changing variables $y=hz$ in each transformed shell, and using covariance, gives the translation and angular actions $\partial_b$ and $\mathsf L_d(K)$; for the latter use $R(h)\mathsf L(h^{-1}Kh)=\mathsf L(K)R(h)$. Integration preserves both identities. The positional derivative law in Proposition~\ref{prop:FC} identifies the translation action with $\partial_{x_0^b}S$. Thus~\eqref{eq:G-average} proves precisely Theorem~\ref{prop:ST}, as well as the lemma. The tensor is centered: covariance gives $S_1(R_4(h)J_{ij})=S_1(J_{ij})=0$ in every integrand.
+\end{proof}
 
+Finally the charge normalization removes the factors~$\xi_k$ from stress insertions. No new choice depending on the arity or derivative order is needed.
 \begin{lemma}[Transported infinitesimal actions]\label{lem:G3.3}
-To be stated here.
+Along the single stable sequence of Proposition~\ref{prop:SC}, for every fixed $d,a,K$,
+\begin{equation*}
+r_k(\scaleframe{k}{d+1})^{-1}\partial_a\scaleframe{k}{d}
+ \longrightarrow\partial_a^{\rm Max},\qquad
+(\scaleframe{k}{d})^{-1}\mathsf L_d(K)\scaleframe{k}{d}
+ \longrightarrow\mathsf L_d^{\rm Max}(K)
+\end{equation*}
+in operator norm. Proposition~\ref{prop:SC} holds for every fixed arity, free list, subset of stress slots, component choices, derivative order and separated compact set.
 \end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D12}, \ref{def:D13}, Lemmas~\ref{lem:G2.1}, \ref{lem:G2.2}, \ref{lem:G3.1}, \ref{lem:G3.2} and~\eqref{eq:G-smooth}. The derivative limit is~\eqref{eq:G-derivative-limit}; the rotation limit follows from~\eqref{eq:G-charge-limits} and $\xi_k/c_\star\to1$.
+
+The centered tensor~$T$ is signed-tensorial and conserved, so Lemma~\ref{lem:G2.2} gives $J=cT$ for a real~$c$. It is nonzero: otherwise its translation shell would force $\partial_a=0$ in degree four, contradicting~\eqref{eq:G-derivative-limit} and nonzero free differentiation of a quadratic curvature polynomial. Comparing translation shells gives $c=c_\star$. Consequently
+\begin{equation*}
+(\scaleframe{k}{4})^{-1}(r_k^4T_{ab})
+ =\frac{\xi_k}{c_\star}
+   (\scaleframe{k}{4})^{-1}(\xi_k^{-1}r_k^4J_{ab})
+ \longrightarrow\maxwellstress_{ab}.
+\end{equation*}
+Use these convergent free preimages in any chosen stress slots and use the fixed free labels in the others. Equation~\eqref{eq:G-smooth} gives convergence of every positional derivative, uniformly on every separated compact set. The derivative there differentiates $x\mapsto S(\boldsymbol A_k;r_kx)$, so all chain-rule factors are included. This is exactly Proposition~\ref{prop:SC}, for the fixed tensor~\eqref{eq:G-average}. The sequence is the refinement already chosen in Lemma~\ref{lem:G2.2}; each fixed arity, degree and derivative order is covered on a tail of that single sequence.
+\end{proof}
