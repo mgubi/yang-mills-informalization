@@ -65,10 +65,10 @@ All outlines are available. The status links below explain the three review roun
 |---|---|---|
 | [**VII.1**](units/VII-1.md) | How is the free Maxwell comparison theory built? | [edited](../method.md#unit-outline-status) |
 | [**VII.2**](units/VII-2.md) | How does the trace two-point law exclude specified free-field profiles? | [checked](../method.md#unit-outline-status) |
-| [**VII.3**](units/VII-3.md) | How are free Gram positivity and degree-four rigidity proved? | [checked](../method.md#unit-outline-status) |
+| [**VII.3**](units/VII-3.md) | How are free Gram positivity and degree-four rigidity proved? | [edited](../method.md#unit-outline-status) |
 | [**VII.4**](units/VII-4.md) | What OPE remainder bounds and contact extensions are constructed? | [checked](../method.md#unit-outline-status) |
 | [**VII.5**](units/VII-5.md) | What leading logarithmic law does the running coupling satisfy? | [edited](../method.md#unit-outline-status) |
-| [**VII.6**](units/VII-6.md) | How are scaling sequences and fixed-field estimates related? | [draft](../method.md#unit-outline-status) |
+| [**VII.6**](units/VII-6.md) | How are scaling sequences and fixed-field estimates related? | [checked](../method.md#unit-outline-status) |
 
 ## Part VIII. Assembly of the main theorem
 
