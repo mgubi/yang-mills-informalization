@@ -41,7 +41,7 @@ The process by which it is written and checked is described in [How this manuscr
 | | 12. Path actions and the coupling reset | 11 | reviewed; final fixes applied |
 | | 13. Activities and the inductive step | 30 | reviewed |
 | | 14. Trajectories, marked fields and ultraviolet convergence | 34 | reviewed |
-| | 15. Infinite volume and field calculus | 7 | reviewed; final minor fixes under way |
+| | 15. Infinite volume and field calculus | 7 | reviewed; final fixes applied |
 | | 16. Free fields, Ward identities and rotations | 18 | reviewed |
 | | 17. Slabs, phases and reconstruction | 14 | reviewed |
 | | 18. The trace law and non-free comparisons | 13 | reviewed |
