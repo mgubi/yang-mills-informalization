@@ -37,7 +37,10 @@ The process by which it is written and checked is described in [How this manuscr
 | Part II | 12. Path actions and the coupling reset | reviewed; with the project lead for reading |
 | | 15. Infinite volume and field calculus | reviewed; with the project lead for reading |
 | | 10. Local polynomial fields | reviewed; integrated |
-| | 11, 13, 14, 16–19 | being written (full review cycle under way) |
+| | 11. Gauges and block integration | reviewed; integrated |
+| | 13. Activities and the inductive step | reviewed; integrated |
+| | 14. Trajectories, marked fields and ultraviolet convergence | reviewed; integrated |
+| | 16–19 | being written (full review cycle under way) |
 
 "Reviewed" means the full cycle of the [process](PROCESS.md) has run: owner, fresh-reader and truth reviews, re-check and
 delivery review. A section is marked *checked* only after the project lead's reading and any changes it leads to.

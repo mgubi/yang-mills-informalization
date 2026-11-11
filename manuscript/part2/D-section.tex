@@ -1,85 +1,490 @@
 \section{Activities and the inductive step}\label{sec:partII-D}
 
-\emph{This section is under construction.}
+An exact block integral contains interactions on arbitrarily large supports. We express them as a sum of regular activities and a disjoint-support sum of forced activities. Regular terms are smooth where their supports are healthy; forced terms retain configurations with flagged plaquettes. Their norms serve different purposes: derivatives are required of the first family, whereas the second is estimated uniformly over configurations. The estimates and exact density identity enter Theorem~\ref{prop:RG}. The Wilson representation satisfies Theorem~\ref{prop:RG} with the same classes and supplies the initial curve of Theorem~\ref{prop:MT}.
+
+The first difficulty is to estimate products under one Gaussian law. Lemmas~\ref{lem:B-D1} and~\ref{lem:B-D2} supply the local energy and simultaneous integration bounds. Connected components then separate the ordinary interactions from those attached to flags. Their initial regular bound is too large for iteration. We improve it by subtracting the flat value of a finite connected sum and evaluating that sum on five reflected tori. A fourth difference cancels the boundary terms exactly.
+
+We next remove the affine Hessian of each regular term. Lattice symmetry reduces the sum of these Hessians to one curvature-square coefficient. Changing its health masks creates further local terms, which are included in the forced sum. This gives the exact density before the scalar estimate of Lemma~\ref{lem:C8}. The last part constructs one recursion on continuous curves and proves its weighted analytic estimates. Section~\ref{sec:partII-E} uses these estimates for endpoint tuning and the full fixed-volume limit. The Wilson initial condition is proved at the end.
+
+Throughout, the group and trace metric are those of Definition~\ref{def:D01}. Scales, flags, path actions and densities are those of Section~\ref{sec:renormalization} and Definitions~\ref{def:D06}, \ref{def:D22}--\ref{def:D23}. At a step $m+1\to m$ put $j=J_{m+1}$, $\Lambda=\Lambda_{L_pD_m}$, $t=t_m$, $B=B_m$ and $\sigma=\sigma_{J_m}$. Set $h_X(U)=\mathbf1\{X\cap\flags_m(U)=\varnothing\}$. Constants may depend on the fixed stage data and, when indicated, on the chosen ratio, but are independent of the volume.
+
+\subsection*{Local terms and their norms}
+
+Locality on $X$ means dependence only on links with both endpoints in $X$. Write $\xi_o(y)$ for the centered lift of $y-o$ to $\Z^4$. All lattice distances in this section use the maximum norm. Set $N_R(X)=\{y:\operatorname{dist}(y,X)\le R\}$ and $N_R(o)=N_R(\{o\})$. A link internal to $X$ has both endpoints in $X$. The nonwrapping condition is $10\operatorname{dist}(y,o)<L_pD_m$ for every $y\in X$; it permits local affine tests without crossing a choice of lift.
 
 \begin{definition}[Regular activities]\label{def:D24}
-To be stated here.
-\end{definition}
-
-\begin{definition}[Forced activities]\label{def:D25}
-To be stated here.
-\end{definition}
-
-\begin{lemma}[Activity bounds and covariance]\label{lem:D1}
-For every representation in the chosen classes, both activity families are countable and equivariant under translations and $\hypercubic$, including supports, anchors, inventories and tests. The nonnegative majorants of Definitions~\ref{def:D05a}--\ref{def:D05b} have convergent weighted series and satisfy
+A regular activity is a Borel real gauge-invariant function $E_i$, local on $X_i$ and anchored at $o_i\in X_i$. It satisfies $E_i(1)=0$ and is $C^{\mathfrak q_{J_m}}$ in exponential left-link increments on healthy configurations, with all ordered derivatives. On nonwrapping supports the Hessian of $A\mapsto E_i(\exp A)$ at zero vanishes on every pair of affine directions
 \begin{equation*}
-\mathcal E_m\le\epsilon_m^{\rm reg},\qquad\mathcal K_m\le\epsilon_m^{\rm for}\,.
+A_{(y,a)}=u_a+\sum_c \xi_{o_i}(y)^cv_{ac},\qquad u_a,v_{ac}\in\g\,.
 \end{equation*}
-\end{lemma}
-The proof of Lemma~\ref{lem:D1} is deferred to this section's activity estimates.
+Here $(\exp A)_e=\exp(A_e)$. This removes the affine quadratic contribution from the error.
+\end{definition}
 
-\begin{lemma}[Specified recursion]\label{lem:D2}
-To be stated here.
-\end{lemma}
+For forced terms the inventory specifies exactly the flags inside the support. Additional tests distinguish local alternatives with the same support and inventory.
+
+\begin{samepage}
+\begin{definition}[Forced activities]\label{def:D25}
+For $\varnothing\ne I_i\subset Y_i$, set
+\begin{equation*}
+\mathcal E_i=\{U:Y_i\cap\flags_m(U)=I_i\}\cap\mathcal E_i^{\rm extra}\,.
+\end{equation*}
+A forced activity is a Borel real gauge-invariant function $K_i$ vanishing off $\mathcal E_i$. Both $K_i$ and its Borel gauge-invariant extra test depend only on internal links and flags in $Y_i$. These conditions restrict the forced sum to the prescribed large-field inventory.
+\end{definition}
+\end{samepage}
+
+We use the ordered derivative seminorm and weighted sums of Definitions~\ref{def:D05a}--\ref{def:D05b}. Regular sums are bounded at their anchors; forced sums are bounded at every site of their supports. For a function $f$ on $Z$ anchored at $o$, $\|f\|_{m,Z}$ denotes the seminorm of Definition~\ref{def:D05a} with that support and anchor.
+
+Continuity concerns the coefficients at fixed addresses. Health sets remain fixed as the curve parameter varies.
 
 \begin{definition}[Continuity of representations]\label{def:D25a}
-A curve has fixed activity addresses and tests, and continuous coupling and vacuum scalar. At $u_0$, the regular derivatives of $E_i(u)-E_i(u_0)$ and forced values of $K_i(u)-K_i(u_0)$ have nonnegative majorants $e_i(u),k_i(u)$ in the sense of Definition~\ref{def:D05a}, with
+A continuous curve has fixed activity addresses and tests, and continuous coupling and vacuum scalar. At each $u_0$, differences of regular derivatives and forced values admit nonnegative majorants $e_i(u),k_i(u)$ in the sense of Definition~\ref{def:D05a}, with
 \begin{equation*}
-\sum_i e^{\sigma_{J_m}\cover_{B_m}(X_i)}e_i(u)
-+\sum_i e^{\sigma_{J_m}\cover_{B_m}(Y_i)}k_i(u)\longrightarrow0
+\sum_i e^{\sigma\cover_B(X_i)}e_i(u)
++\sum_i e^{\sigma\cover_B(Y_i)}k_i(u)\longrightarrow0
 \quad(u\to u_0)\,.
 \end{equation*}
-Both sums run over all addresses. This gives continuity for coupling tuning without differentiating flag boundaries.
+Both sums run over all addresses. This is continuity for coupling tuning, with no derivative of a flag indicator.
 \end{definition}
 
-The initial activities retain the difference between the Wilson energy and the clipped path action, including configurations with flagged plaquettes.
-\begin{lemma}[Wilson initialization]\label{lem:D3}
-For every $N,p$, there is a continuous curve $\beta\mapsto\rho^{\rm W}_\beta\in\mathcal I_{N,p}$ on $\mathfrak B_N$ with coupling $\beta$, vacuum scalar zero, and
-\begin{equation*}
-\density\rho^{\rm W}_\beta=e^{-\beta E^{\rm W}_{L_pD_N}}\,.
-\end{equation*}
-Together with the same classes and relation, this curve satisfies Theorem~\ref{prop:RG}.
-\end{lemma}
-The proof of Lemma~\ref{lem:D3} is deferred to this section's Wilson initialization.
+At fixed volume these sums control the density. Summing regular bounds over anchors gives $\sum_i\|E_i\|_m\le|\Lambda|\mathcal E_m$. Each forced support is nonempty, so summing forced bounds over sites gives $\sum_i\sup|K_i|\le|\Lambda|\mathcal K_m$. The absolute sum over all finite selections is at most $\prod_i(1+\sup|K_i|)\le\exp(\sum_i\sup|K_i|)$. Restricting to disjoint supports and exact coverage preserves this bound. Thus the density sums of Definition~\ref{def:D06} converge. No volume-independent bound on the full density follows.
 
-Fix the constructed path arrays and an input curve $\rho'_u$ of Theorem~\ref{prop:RG}. Use the regular and forced norms of Definitions~\ref{def:D05a}--\ref{def:D05b}. Set
+\subsection{The local expansion}
+
+Fix a compact parameter interval and a continuous input curve $\rho'_u$ in the sense of Definition~\ref{def:D25a}. Its prescribed path satisfies Lemmas~\ref{lem:C1}--\ref{lem:C2}; its regular and forced families satisfy Definitions~\ref{def:D24}--\ref{def:D25} and the caps of Definitions~\ref{def:D05a}--\ref{def:D05b}; and $\beta'_u\in\mathfrak B_{m+1}$. Write
 \begin{equation*}
 \mathcal H_u=\blockmap{m}_{\beta'_u}\density\rho'_u,
 \qquad \pathaction_{N,m}(\beta,U)=\beta\mathsf K_m^{\rm kin}(U)+\mathcal L_m(U)\,.
 \end{equation*}
-Let $\mathsf K_{2,m}^{\rm kin}$ be the direct and row part of $\mathsf K_m^{\rm kin}$, with the cubic and quartic atoms omitted; this is a nonlinear function of the links. The next expansion is needed only when $\flags_m(U)=\varnothing$.
+The direct and row part of $\mathsf K_m^{\rm kin}$ is denoted by $\mathsf K_{2,m}^{\rm kin}$; it remains nonlinear in the links. The coefficient $\alpha_{N,m}$ is the quadratic coefficient of the determinant comparison in Section~\ref{sec:partII-C}. It is independent of the curve parameter and the period.
+
+For $a<b$ define the clover curvature at $o$ by
+\begin{equation*}
+C_{ab}(U,o)=\frac14\sum_{\varepsilon,\eta=\pm1}\varepsilon\eta\,
+\operatorname{proj}_{\g}\frac{U_{o;\varepsilon a,\eta b}-U_{o;\varepsilon a,\eta b}^{-1}}2\,.
+\end{equation*}
+The loop starts at $o$, takes steps $\varepsilon e_a,\eta e_b,-\varepsilon e_a,-\eta e_b$, and returns to $o$. Thus each term transforms by the adjoint action at $o$ and uses links within distance two. For an affine field as in Definition~\ref{def:D24}, differentiating the four link factors gives
+\begin{equation}\label{eq:D-clover-linear}
+\left.\frac d{dz}\right|_{z=0}C_{ab}(e^{zA},o)=v_{ba}-v_{ab}\,.
+\end{equation}
+Each inverse contributes the negative link field; the four orientations have the same signed curl.
+
+Expand each row square into pairs of its slots. Together with the direct plaquette terms these give a countable family $\lambda$. Let $r_\lambda$ be its unclipped quadratic curvature function, including its coefficient, and $c_\lambda$ the same function with each curvature replaced by the clover curvature of its orientation at the anchor. Let $L_\lambda$ be its actual clipped or health-tested contribution. A direct term has $r_\lambda=c_{\rm dir}\wilsonterm(U_\square)$ and $c_\lambda=c_{\rm dir}|C_q|^2/2$. A row pair has coefficient $r_{\alpha i}r_{\alpha k}/2$ multiplying its two curvature factors. Include translations and the $\hypercubic$ average, with weight $|\hypercubic|^{-1}$, in the addresses.
+
+Choose $Z_\lambda$ to contain the slot footprints and the radius-$B$ neighborhood of the anchor needed to decide the relaxed health test. Queries outside that neighborhood are automatic once $t\exp((B-2)/R_{J_m}^{\rm rel})\ge2$, since chords are at most two. Lemmas~\ref{lem:C1}--\ref{lem:C2} give absolute convergence and
+\begin{align}\label{eq:D-low-sums}
+\mathsf K_m^{\rm kin}&=\sum_\lambda L_\lambda+\mathcal A_m,
+&\mathcal Q_m&=\sum_\lambda h_{Z_\lambda}r_\lambda,\notag\\
+\sum_\lambda h_{\{o_\lambda\}}c_\lambda
+&=\frac12\sum_o h_{\{o\}}\sum_q|C_q(U,o)|^2\,.
+\end{align}
+Here $\mathcal A_m$ is the cubic and quartic sum. A signed image in these formulas uses the pulled-back anchor, support and clover; the final equality follows from the coefficient identity of Lemma~\ref{lem:C2} and reindexing orientations. On $Z_\lambda$ healthy, $L_\lambda=r_\lambda$; without flags, $\mathcal Q_m=\mathsf K_{2,m}^{\rm kin}$.
+
+The local integral is expanded before any regular term is normalized. Its elementary factors are the remainders of the stationary action, the determinant and covariance ratios, the Haar Jacobian, the incoming activities, and the failures of the fluctuation and chart tests. For a factor $F_a$, write $W_a=F_a-1$ when its unperturbed value is one. For an incoming forced factor use $W_a=K_a$ directly. The support includes every field, flag and covariance window read by the factor. We join two factors when these complete supports intersect. A molecule is a finite connected selection in this graph, with pairwise disjoint incoming forced supports. It retains the union of those supports and inventories.
+
+For an ordinary molecule $M$ on a healthy output support, its integrated weight and an absolute derivative majorant are
+\begin{equation}\label{eq:D-seed-required}
+z_M(U)=\int\prod_{a\in M}W_a(U,\zeta)\,d\nu(\zeta),
+\qquad
+\int g_M\,d\nu\le P_j(\refbeta_m)(1+s_M)^{d_j}
+\prod_{a\in M}f_a\,.
+\end{equation}
+Here $\nu$ is the single sector Gaussian/Haar law of Lemma~\ref{lem:B-D2}, $g_M$ majorizes the product and its required ordered derivatives, and $f_a$ are that lemma's factor bounds. The integer $s_M$ counts the retained local positions and paths. The function $P_j$ has subpower growth after the ratio has been fixed. The formula is used only on compatible sectors; their sum retains the exact allocation indicators. Terms whose reads meet an output flag component remain attached to that component and have a nonempty forced inventory. The ordinary connected integrals are taken on the complement, where their read supports are disjoint from the output flags. Components with empty inventory are used in the regular logarithm on their healthy supports.
+
+We first give the connected identity with its initial estimates. The stronger regular estimate needed for subtraction is obtained in Lemma~\ref{lem:D-preliminary}.
+\begin{samepage}
+\begin{lemma}[Connected local expansion]\label{lem:D-connected}
+For every input curve above, the block integral has fixed countable local addresses and an absolutely convergent connected expansion on all configurations. Its regular terms have an anchored derivative bound of order $\refbeta_{m+1}^{-7/16}$ at exponent $\sigma+3$. Its forced terms have a site bound
+\begin{equation*}
+C_j\exp\{-r_j\beta'_u t_{m+1}^2\}
+\end{equation*}
+at exponent $\sigma+2$, with $r_j>0$. The families are equivariant and continuous at fixed addresses in the corresponding weighted norms.
+\end{lemma}
+\end{samepage}
+\begin{proof}
+Use the kernel and density of Definitions~\ref{def:D04}, \ref{def:D06}, the path bounds of Lemma~\ref{lem:C1}, the local energy of Lemma~\ref{lem:B-D1}, and the simultaneous majorant and disjoint-support factorization of Lemma~\ref{lem:B-D2}. Expand finite products first. Fubini's theorem applies to each term by~\eqref{eq:D-seed-required}. Disjoint complete supports use disjoint Gaussian marginal blocks and Haar variables, so their integrals multiply. This gives a gas of the connected weights $z_M$. Overlapping factors are always integrated together.
+
+Put $\mathfrak b=\refbeta_{m+1}$ and $g=(\beta'_u)^{-1/2}$. For a healthy local chart write its link logarithm as $m_Y+gz$; the mean is $O(t_{m+1})$ by Lemma~\ref{lem:B-D2}. The following bounds include the prescribed finite number of ordered derivatives. A factor $P_j(\mathfrak b)$ below absorbs fixed powers of $B$, $\cutoffsize_{m+1}$ and the read count after the ratio is fixed:
+\begin{equation}\label{eq:D-factor-rates}
+\begin{array}{c|c}
+\text{factor}&\text{integrated majorant}\\\hline
+\text{stationary-action remainder}&P_j\beta'_u g^3\le P'_j\mathfrak b^{-1/2}\\
+\text{centered determinant remainder}&P_j(t_{m+1}+g)\le P'_j\mathfrak b^{-1/2}\\
+\text{Gaussian-density and stationarity residuals}&P_j\mathfrak b^{c_j^{\rm res}}e^{-c_j^{\rm tail}B}\\
+\text{Haar-Jacobian remainder}&P_j(t_{m+1}+g)^2\\
+\text{incoming regular sum}&P_j\epsilon_{m+1}^{\rm reg}\\
+\text{incoming forced component}&P_j\epsilon_{m+1}^{\rm for}\\
+\text{warning}&M_w\mathfrak b^{-1/2}
+\end{array}
+\end{equation}
+For the first row, Taylor's formula after the stationary quadratic part starts with $\beta'_u(m_Y+gz)^3$; substituting $m_Y=O(g\cutoffsize_{m+1})$ gives the displayed bound. For the determinant, subtract its flat value and the quadratic term already assigned to $\alpha_{N,m}\mathcal Q_m$. The inverse identity bounds the remaining variation by $P_j(t_{m+1}+g)$. The covariance and stationary residuals are exponentially small by Lemma~\ref{lem:B-D2}; their rescaling costs only the displayed fixed power. The chart density has value one and zero first derivative at zero, giving its quadratic bound. Incoming sums retain their own allowances. Chart-test failures, fine-plaquette and mismatch failures, and tag or inventory departures are precisely the warning factors of Lemma~\ref{lem:B-D2}.
+
+Choose its warning exponent $\tau_w=1/2$, so $\varepsilon_w=\mathfrak b^{-1/2}$. This choice is allowed by the simultaneous-event proof there: with at most $C_jB^4$ warnings sharing a coordinate, its Gaussian tail exponent per warning is bounded below by $c_j^{\rm res}(t_{m+1}/g)^2/B^4$. Thus
+\begin{equation*}
+\frac{(t_{m+1}/g)^2}{B^4\log\mathfrak b}\longrightarrow\infty\,.
+\end{equation*}
+It eventually exceeds the fixed exponent required for $\Pr(E_{w_1}\cap\cdots\cap E_{w_r})\le\mathfrak b^{-r}$, including the coordinate-choice multiplicity. The fixed amplitudes $M_w$ enter $P_j$. All rows of~\eqref{eq:D-factor-rates} are consequently at most a subpower factor times $\mathfrak b^{-1/2}$. Choose that factor at most $C_j\mathfrak b^{1/32}$, then raise the threshold until $C_j\mathfrak b^{-1/32}\le1$. This gives $\mathfrak b^{-7/16}$, with $1/32$ of the power available before the last threshold choice. Path lengths are summed with the exponential bounds of Lemma~\ref{lem:C1}. Every fixed polynomial in the number of retained positions is bounded by $C_{j,\eta}e^{\eta s_M}$; choose $\eta$ from the unused support exponent. These choices precede the coupling threshold.
+
+A compulsory component is a connected component of the selected seed neighbourhoods in the allocation sector of Lemma~\ref{lem:B-D1}. Its seed selection $A=(A_f,A_n,A_c)$ consists of the selected fine plaquettes, mismatch edges and coarse flags defined there. Write $\kappa_B$ for that lemma's constant. It retains $\exp(-\kappa_B\beta'_u t_{m+1}^2|A|)$ before integration. Choose the exponent in the present lemma with $0<r_j<\kappa_B$. Keep all reads meeting this component in its local factor, estimated in supremum norm with this energy bound. Its frozen Haar integrals are probability integrals. The surrounding ordinary factors have supports disjoint from the output flags, so Lemma~\ref{lem:B-D2} applies to their common Gaussian integral. The polynomial factor in~\eqref{eq:D-seed-required}, the local sector multiplicity, and a fixed number of derivatives use a fixed part of the retained exponent. A simultaneous set of $r$ warning addresses contributes $\varepsilon_{\rm w}^{2r}$ to the Gaussian probability in Lemma~\ref{lem:B-D2}; Cauchy--Schwarz leaves $\varepsilon_{\rm w}^r$ after the other factors have been estimated under that same law. Thus a warning still has its own factor in $\prod f_a$. This is necessary when distinct warnings share Gaussian coordinates.
+
+To sum connected molecules, root at a specified site and order the children of a spanning tree by their first support intersection. A support requiring $n$ radius-$B$ balls has at most $(2B+1)^4n$ sites. If $v_a$ is the resulting factor majorant at a site, the attachment sum is bounded by $n(2B+1)^4\sup_x\sum_{a:x\in Z_a}v_a$. The coupling threshold makes this quantity at most $\eta n$, with $\eta$ smaller than the reserved exponent. Summing $k$ children contributes the exponential series $1/k!$; iteration gives the rooted bound by $v_a e^{\eta n_a}$. This proves absolute summability, including all sectors and all differentiated terms. The same argument with a prescribed forced seed retains one factor $\exp(-r_j\beta'_u t_{m+1}^2)$ and gives the claimed site bound. Increasing the fine support exponent before choosing the ratio leaves the output exponents $\sigma+3$ and $\sigma+2$.
+
+Write $\Xi(z)=\sum_{\mathcal M}\prod_{M\in\mathcal M}z_M$, where $\mathcal M$ runs over finite selections with disjoint supports, including the empty selection. This is the ordinary hard-core gas. Its logarithm has the connected coefficients
+\begin{equation}\label{eq:D-cluster}
+\log\Xi(z)=\sum_{n\ge1}\frac1{n!}
+\sum_{M_1,\ldots,M_n}\phi^T(M_1,\ldots,M_n)
+\prod_{h=1}^nz_{M_h},\qquad
+\phi^T=\sum_{\Gamma\ \text{connected}}\prod_{\{h,k\}\in\Gamma}
+[-\mathbf1_{Z_{M_h}\cap Z_{M_k}\ne\varnothing}]\,.
+\end{equation}
+The graph in this formula has vertex set $\{1,\ldots,n\}$, and the one-vertex coefficient is one. Apply~\cite[Theorem~1, equations~(3)--(4)]{Ueltschi2004} to the counting measure with masses $z_M$ and interaction $\zeta(M,M')=-\mathbf1_{Z_M\cap Z_{M'}\ne\varnothing}$. Its hypotheses are $|1+\zeta|\le1$, finite total variation, finite exponential mass, and
+\begin{equation*}
+\sum_{M':Z_{M'}\cap Z_M\ne\varnothing}|z_{M'}|e^{\mathfrak w(M')}\le \mathfrak w(M),
+\qquad \mathfrak w(M)=\eta\cover_B(Z_M)\,.
+\end{equation*}
+The rooted estimate just proved verifies the last condition. At fixed volume the site sum gives finite total exponential mass. Equation~\eqref{eq:D-cluster} and its rooted estimate therefore apply. Keep the components joined to forced molecules as coefficients of the exact-cover sum; take the logarithm only of the remaining ordinary gas. Expanding and regrouping finite selections proves this separation. Absolute convergence then proves the identity for the full integral. The deterministic part is exactly $\beta'_u\mathsf K_m^{\rm kin}+\mathcal L_m+\alpha_{N,m}\mathcal Q_m$: the stationary terms and one-loop quadratic term are those of Lemmas~\ref{lem:C4}--\ref{lem:C7}, with the masks in~\eqref{eq:D-low-sums} retained.
+
+For two inputs at fixed addresses, telescope each product with one difference factor. Lemma~\ref{lem:B-D2} bounds that marked factor by its own difference norm, including changes of the mean and covariance. The tree estimate uses the same strict attachment margin for the unmarked factors. It bounds the weighted sum of the differences by a constant times the input weighted discrepancy plus the coupling discrepancy. The constant may depend on this fixed volume. For a merely continuous curve this proves continuity locally; compactness and a finite covering give fixed addresses over the whole interval. Translation and signed permutations transport complete read supports, factors and sectors. Their finite average and the induced reindexing of connected selections prove the claimed equivariance.
+\end{proof}
+
+The terms linear in an incoming regular activity must be treated separately from products of small factors. Their supports can be large, so they are not replaced by auxiliary tori. The function $E_i$ and its derivative norm in this paragraph are at level $m+1$. For such an address $i$, let $T_i$ be its contribution to the negative connected logarithm. The local Gaussian substitution of Lemma~\ref{lem:B-D2}, restricted to the windows incident to $X_i$, reconstructs a fine configuration $U_i^0(V,z)$. With the same inner chart protector $\Gamma_i$, define
+\begin{equation*}
+P_i(V)=\frac1{|\mathcal T_i|}\sum_{\theta\in\mathcal T_i}
+\operatorname{Ext}_{Y_i}\int\Gamma_{i,\theta}(z)
+ E_i\bigl(U_{i,\theta}^0(V,z)\bigr)\,d\gamma_{C_{i,\theta}(V)}(z),
+\qquad R_i=T_i-P_i\,.
+\end{equation*}
+Here $\mathcal T_i$ is the finite set of rooted frames and tags in that local substitution. The operator $\operatorname{Ext}_{Y_i}$ extends the function from the healthy domain by its local Borel representative; on that domain it changes no value. The coarse support $Y_i$ contains the projected fine support and every incident window. This principal Gaussian average retains the incoming function itself.
+
+\begin{lemma}[Inherited regular terms]\label{lem:D-inherited}
+The functions $P_i,R_i$ are regular before flat-value and Hessian subtraction, on the same fixed coarse addresses as $T_i$. At exponent $\sigma+3$ their anchored derivative sums satisfy
+\begin{equation*}
+\mathcal E(P)\le\frac{V_j}{\ell_m}\epsilon_{m+1}^{\rm reg},\qquad
+\mathcal E(R)\le \omega_{j,\ell_m}^{\rm inh}(\refbeta_m)\epsilon_{m+1}^{\rm reg},
+\end{equation*}
+where $V_j$ is fixed before the ratio and $\omega_{j,\ell}^{\rm inh}$ has scale rate $-1/2$. The identity $T_i=P_i+R_i$ and the corresponding weighted comparisons hold on the entire input curve.
+\end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06}, Lemmas~\ref{lem:B-D2}, \ref{lem:C1}--\ref{lem:C2} and~\ref{lem:D-connected}. For the principal average use the same normalized directions as in the incoming norm. The linear background lifts a unit coarse curl to fine curvature of size $O(\ell_m^{-2})$. Replace the background on $X_i$ by its affine part at the anchor. In the Taylor formula for $E_i$ the constant and first derivative vanish; its Hessian on two such affine fields vanishes by Definition~\ref{def:D24}. Every surviving background term therefore has either three curvature factors or one spatial remainder. The third-order integral remainder has the product of its three normalized direction sizes. The spatial remainder is bounded by the first difference of the prediction kernel and supplies one further inverse ratio. In the normalized curvature directions, the linear prediction $\mathsf P$ and its affine approximation $\mathsf P_{\rm aff}$ satisfy
+\begin{equation*}
+\|\mathsf P\|\le C_j\ell_m^{-2},\qquad
+\|\mathsf P-\mathsf P_{\rm aff}\|\le C_j\ell_m^{-3}\,.
+\end{equation*}
+Indeed each discrete derivative of the rescaled prediction kernel contributes $\ell_m^{-1}$, and its exponential row sum is bounded by Lemma~\ref{lem:B-D2}. For the Hessian remainder use one difference and one undifferenced direction; for the cubic remainder use three directions. Thus their factors before the anchor sum are
+\begin{equation*}
+(\ell_m^{-2})^3=\ell_m^{-6},\qquad
+\ell_m^{-3}\ell_m^{-2}=\ell_m^{-5}\,.
+\end{equation*}
+
+If the fine support wraps, or is too large for the affine replacement, its connected cover contains at least $c\ell_m$ fine radius-$B_{m+1}$ balls: its diameter is at least a fixed fraction of the fine period or of the enlarged coarse neighborhood. Reserve half of its incoming support exponent. The resulting $e^{-c\sigma_{J_{m+1}}\ell_m}$ bounds the polynomial anchor count and yields the same inverse-ratio estimate without an affine test. For the remaining supports there are $\ell_m^4$ fine anchors over a coarse anchor. Three curvature factors give $\ell_m^{-6}$, and the spatial-remainder terms give at least $\ell_m^{-5}$ after the kernel sums. Multiplying by the anchor count gives at most $C_j\ell_m^{-1}$. Powers of the fine support diameter from the Taylor formula and derivative placements are bounded by its covering weight. The support compression gives
+\begin{equation*}
+(\sigma+3)\cover_{B_m}(Y_i)
+\le C_j+\tfrac12\sigma_{J_{m+1}}\cover_{B_{m+1}}(X_i)\,;
+\end{equation*}
+the remaining half of the incoming exponent bounds those diameter powers and the possible coarse anchors. This is why the fine support exponent and its compression condition are chosen before the ratio. Gaussian terms in the average have additional factors $g/t_{m+1}$; their fixed moments and the chart tails tend to zero uniformly after the ratio is fixed. Increase the coupling threshold until their total is bounded by another $C_j/\ell_m$ times the incoming sum. This proves the principal estimate, with $V_j$ independent of the eventual ratio.
+
+For $\cover_{B_m}(Y_i)\le B_m$, compare the actual local integral with this principal Gaussian average before integrating. Subtract their means, covariances and transported kernels using the inverse difference identity, and telescope the remaining factor product with one marked difference. The inverse difference identity $C^{-1}-\widetilde C^{-1}=C^{-1}(\widetilde C-C)\widetilde C^{-1}$ puts a reconstruction difference in one factor. Taylor's formula for the link exponential makes that factor at most $P_j(\mathfrak b)(t_{m+1}+g)$ in each of the requested normalized derivatives; stationarity and window residuals contribute $P_j(\mathfrak b)g^{-c_j}e^{-c'_jB}$. Consequently their common bound is
+\begin{equation*}
+P_j(\mathfrak b)\{t_{m+1}+g+g^{-c_j}e^{-c'_jB}\}
+=\mathfrak b^{-1/2+o(1)},\qquad \mathfrak b=\refbeta_{m+1}\,.
+\end{equation*} A second occurrence of the incoming activity has bound $C_j(\epsilon_{m+1}^{\rm reg})^2$, which is also bounded by a scale-rate-$-1/2$ factor times $\epsilon_{m+1}^{\rm reg}$. In every term of the difference, one of these factors is retained before the common Gaussian majorant is applied. Lemma~\ref{lem:B-D2} bounds its remaining moments by a fixed polynomial in the read count and $B$. Summing with the unused incoming support exponent gives a function $\omega_{j,\ell}^{\rm inh}$ of rate $-1/2$. This proves the remainder estimate in its weighted norm, rather than only a pointwise comparison of integrals. For the remaining supports use the unrefined bound for $T_i$ from Lemma~\ref{lem:D-connected} and the same Gaussian majorant for $P_i$. Support compression implies that the incoming covering number is at least $cB_m-C_j$. Retaining a further fixed part of its exponent gives an extra $e^{-cB_m}$ in the weighted sum, for some $c>0$ fixed before the coupling threshold. Since $B_m\ge(\log\refbeta_m)^2$, this factor, times any fixed polynomial in $B_m$, is bounded by $\refbeta_m^{-1/2}$ after the threshold is raised. This supplies the stated remainder bound on large supports without extending the local comparison beyond its domain.
+
+Local Gaussian marginals read only $Y_i$. A gauge transformation acts orthogonally on their colour coordinates and leaves $\Gamma_i$ invariant; changing Gaussian variables proves gauge invariance of $P_i$. The frame average transports the support and anchor under lattice symmetries. The local extension preserves these identities, measurability and the healthy derivatives. The same properties hold for $R_i$ by subtraction. For a parameter difference use that incoming difference in the displayed integral and in the marked comparison. The covariance score and protected-coordinate change are those of Lemma~\ref{lem:B-D2}, so the same weighted estimates give continuity at fixed addresses. Finally choose the ratio so $V_j/\ell_m$ is less than the prescribed pre-ratio fraction, and then the threshold so $\omega_{j,\ell_m}^{\rm inh}$ is less than that fraction.
+\end{proof}
+
+The initial regular estimate does not fit $\epsilon_m^{\rm reg}=\refbeta_m^{-11/10}$. The following localization gives the additional power. We describe the finite-period cancellation because an estimate of each separate local term would miss it.
+
+Write $f_a^0$ for a regular summand of the negative logarithm in~\eqref{eq:D-cluster}, including its coefficient. Keep the inherited terms of Lemma~\ref{lem:D-inherited} separately. Select finitely many of the remaining terms not estimated by~\eqref{eq:D-height-gain} below, and all short path terms selected at this truncation. Give an ordinary term the shares $p_{xa}=\mathbf1_{X_a}(x)/|X_a|$, and a path term the share $\mathbf1_{\{o_a\}}(x)$. Put $F_x=\sum_{a\ {\rm selected}}p_{xa}f_a^0$. The remaining terms form $f^{\rm tail}$. Let $R$ contain every complete read support of this finite sum relative to a site receiving a nonzero share. Its radius is a stage multiple of $B$. Set $w=4R+100(1+B)$, $e=w+5$, and let $\Lambda_i$ have side $2(w+i)$, $0\le i\le4$. A configuration on $\Lambda$ gives a configuration $V_{i,x}$ on $\Lambda_i$ by repeated reflection of its cube about $x$. The direction of a reflected link is reversed when necessary. Put
+\begin{equation}\label{eq:D-five-weights}
+\lambda_i=\frac{(-1)^i\binom4i}{2^4\,4!},\qquad
+G_x(V)=\sum_{i=0}^4\lambda_i\sum_{y\in\Lambda_i}F^{(i)}_y(V_{i,x})\,.
+\end{equation}
+Here $F^{(i)}$ is the same finite local formula on the auxiliary torus, with its value at $1$ subtracted at each site. This operation recovers a local function from bounds on the total auxiliary action.
+
+\begin{lemma}[Finite-period localization]\label{lem:D-localization}
+For a finite local connected sum with complete read radius $R$, the function $G_x$ in~\eqref{eq:D-five-weights} is local on $N_e(x)$. Its redistribution has the exact form
+\begin{equation*}
+\sum_a h_{X_a}f_a^0
+=c|\Lambda|+\sum_a h_{X_a}f_a^{\rm tail}
++\sum_xh_{N_e(x)}G_x+\sum_xL_x\,.
+\end{equation*}
+Each $L_x$ reads links and flags in $N_{2e}(x)$ and vanishes when that set is healthy. The estimates in the proof give $G_x$ the additional regular smallness.
+\end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D04}--\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C7}, and~\ref{lem:D-connected}. Give each connected summand equal shares at the sites of its complete support; give each path term to its anchor. These shares sum to one. Let $F_x$ be the resulting finite sum at $x$, and let $f^{\rm tail}$ be the terms not selected. Define
+\begin{equation}\label{eq:D-mask-localization}
+L_x=\sum_{a\ \text{selected}}p_{xa}h_{X_a}f_a^0-F_x(1)
+-\sum_{i=0}^4\lambda_i\sum_{y\in\Lambda_i}
+ h_{N_e(x-\widetilde y)}F^{(i)}_y(V_{i,x-\widetilde y}),
+\qquad c=F_0(1)\,.
+\end{equation}
+The coefficients $p_{xa}$ are the shares, and $\widetilde y$ is the integer representative used in the reflection. Summing over $x$ and changing $x$ to $x-\widetilde y$ gives exactly the asserted identity. Translation symmetry makes $F_x(1)$ independent of $x$.
+
+We verify the vanishing of $L_x$ on a healthy $N_{2e}(x)$. The complete read supports then lie in that set, every mask in~\eqref{eq:D-mask-localization} is one, and every reflected configuration occurring there is healthy. Classify a point of $\Lambda_i$ by its distance, through $R$, from each reflection face. In the $y$-summand of~\eqref{eq:D-mask-localization} the reflection cube is centred at $x-\widetilde y$, so its site $y$ corresponds to $x$. For a fixed class the local formula is therefore independent of $i$. In one coordinate the number of points in an interior class is $2(w-2R+1)+2i$; for a specified boundary class it is a fixed integer. Consequently each class has a multiplicity polynomial in $i$ of degree at most four. Its degree is four only when all four coordinates are interior. The identity
+\begin{equation*}
+\sum_{i=0}^4(-1)^i\binom4i i^k=0\quad(0\le k<4),
+\qquad
+\sum_{i=0}^4(-1)^i\binom4i i^4=4!
+\end{equation*}
+cancels every boundary class and retains the interior class with coefficient $2^4 4!/(2^4 4!)=1$. Locality and gauge invariance identify its value with $F_x(V)-F_x(1)$. This proves $L_x=0$. It also proves its stated read support: the largest displacement is at most $w+4<e$, and each mask reads a further radius $e$.
+
+Here are the quantitative estimates on the sum before this localization. Put $\mathfrak b=\refbeta_{m+1}$ and $\mathfrak h=\mathfrak b^{3/8}$. In the convergent connected sums multiply every ordinary molecule weight by $\mathfrak h$. The rooted attachment parameter still tends to zero, since $\mathfrak h \mathfrak b^{-7/16}=\mathfrak b^{-1/16}$. A term with at least three ordinary factors gains $\mathfrak h^{-3}$ upon restoring its original weights. A term with a retained large-field overlap has the same gain because its suppression is at least $\mathfrak h^{-3}$. The sum after multiplication has size at most a subpower factor times $\mathfrak h \mathfrak b^{-7/16}$. Thus the terms in these two classes have bound
+\begin{equation}\label{eq:D-height-gain}
+P_j(\mathfrak b)\mathfrak h^{-3}(\mathfrak h \mathfrak b^{-7/16})=P_j(\mathfrak b)\mathfrak b^{-19/16}
+\le \mathfrak b^{-23/20}
+\end{equation}
+after the coupling threshold is raised. The reserve is $19/16-23/20=3/80$. This estimate also bounds fixed ordered derivatives: their placement polynomial was included before the rooted sum.
+
+First retain the inherited terms using Lemma~\ref{lem:D-inherited}; their principal sum is made smaller than a prescribed multiple of $H_j$ by choosing the ratio, and their comparison remainder by raising the threshold. Among all other connected terms retain also those whose total support size reaches the truncation radius: their support decay is at most $\mathfrak h^{-3}$ after the threshold is raised, so the estimate in~\eqref{eq:D-height-gain} applies to them. The remaining terms have at most two elementary factors, no seed component and bounded complete read radius. They are the finite connected contributions and path terms of length at most $B$ to which the reflected-period construction is applied, together with a summable truncation tail. Truncation on the countable connected addresses makes the latter arbitrarily small in the weighted norm at fixed volume. Long paths have an additional factor $e^{-w^{\rm path}_{J_m}B/4}$ by Lemma~\ref{lem:C1}; it converts their $\mathfrak b^{-7/16}$ bound to $\mathfrak b^{-23/20}$. For the finite sum use the stationary integral on each $\Lambda_i$. Subtract its flat value and the classical cubic, quartic and quadratic one-loop terms of Lemmas~\ref{lem:C4}--\ref{lem:C7}. Differentiation of its logarithm gives connected expectations under the common Gaussian law. For the terms not involving incoming errors, write the normalized local integral as $\mathbb E\exp(V_3+V_4+V_{\ge5})$, after the stationary action and its Gaussian determinant have been extracted. The subscripts refer to the Taylor degree in the link chart. Gaussian parity removes a lone odd cubic term. The fourth-order stationary terms are already in the classical path action, and the field-dependent quadratic part of the determinant is already in $\alpha\mathcal Q_m$ and the quadratic loop atoms. Subtracting the value at $1$ removes the remaining vacuum terms. Expanding $\log\mathbb E e^V$ through two factors gives $\mathbb EV+\frac12(\mathbb EV^2-(\mathbb EV)^2)$; its remaining terms have at least three factors. In normalized fluctuation coordinates each nonquadratic factor starts at order $\mathfrak b^{-1/2}$. The common Gaussian majorant bounds the last terms by $P_j(\mathfrak b)\mathfrak b^{-3/2}$. In the one- and two-factor terms that remain after the stated cancellations, Taylor's integral remainder and the healthy field bound give
+\begin{equation*}
+P_j(\mathfrak b)\{\mathfrak b^{-3/2}+\mathfrak b\,t_m^5+\mathfrak b^{-1}t_m+t_m^3+e^{-c_jB}\}
+\le \mathfrak b^{-23/20}\,.
+\end{equation*}
+Every radius and chart loss is included in the subpower factor. Each of the four power terms has exponent at most $-3/2$ before that factor; the path exponential decreases faster than any fixed power. Terms involving incoming errors are divided into the finite sum and its tail above; those with at least three ordinary factors or a large-field overlap obey~\eqref{eq:D-height-gain}. Lemma~\ref{lem:B-D2} bounds these terms simultaneously, so the derivative bound for the centered total auxiliary sum is
+\begin{equation}\label{eq:D-aux-bound}
+C_j \mathfrak b^{-23/20}+2|\Lambda_i|\{C_j \mathfrak b^{-23/20}+\varepsilon_{\rm tr}\}\,.
+\end{equation}
+Here $\varepsilon_{\rm tr}>0$ is the chosen truncation error. The first term is the centered local integral; the two volume terms bound the omitted regular sum at the field and at $1$. Approaching a boundary point of the healthy domain by radial contraction preserves these estimates, so they hold on the closed domain used in Definition~\ref{def:D05a}.
+
+A direction of that definition, restricted to $N_e(x)$ and reflected, is bounded by $2t(1+e)^{\varpi_{J_m}}$. Rescaling each of at most $\mathfrak q_{J_m}$ directions in~\eqref{eq:D-aux-bound} therefore gives
+\begin{equation*}
+\|G_x\|_{m,N_e(x)}\le
+2^{\mathfrak q_{J_m}}(1+e)^{\varpi_{J_m}\mathfrak q_{J_m}}
+\sum_{i=0}^4|\lambda_i|
+ [C_j \mathfrak b^{-23/20}+2|\Lambda_i|(C_j \mathfrak b^{-23/20}+\varepsilon_{\rm tr})]\,.
+\end{equation*}
+All the factors outside the negative powers are fixed powers of $1+B$. Also $\cover_B(N_e(x))$ is bounded by a stage constant. The regular bound divided by $\epsilon_m^{\rm reg}$ tends to zero, since $23/20>11/10$. Finally,~\eqref{eq:D-mask-localization} and the uncentered $\mathfrak b^{-7/16}$ bound give $\sup|L_x|\le P_j(\mathfrak b)\mathfrak b^{-7/16}$, with the same polynomial read radius. These logarithmic corrections tend to zero in the site norm at exponent $\sigma+2$ and vanish on healthy supports. This proves all the estimates claimed for the localization.
+\end{proof}
+
+To specify the small coefficient, let $C_j^{\rm sub}$, $C_j^{\rm low}$ and $C_j^{\rm high}$ be the operator bounds for local subtraction, low path replacement and the part of high path replacement proportional to $H_j$. These are the three linear operations in the following subsections; they are fixed from the output derivative norm and path bounds. Put $C_j^0=C_j^{\rm sub}+C_j^{\rm low}+C_j^{\rm high}$. These constants use only derivative orders, direction powers, support exponents, and the output path bounds. For a prescribed $0<\theta\le1$, choose before the ratios
+\begin{equation*}
+c_j=\frac1{64(1+C_j^0)},\qquad H_j=\theta c_j\epsilon_m^{\rm reg}\,.
+\end{equation*}
+The next assertion concerns the very same block integral and the masks of~\eqref{eq:D-low-sums}.
+\begin{lemma}[Preparatory activities]\label{lem:D-preliminary}
+For every input curve above, fixed local families $f_{i,u},k_{i,u}$ and a continuous scalar $\tau_u$ satisfy~\eqref{eq:D-early}--\eqref{eq:D-preliminary-forced}. They are equivariant and continuous in the weighted norms with exponents $\sigma+3$ and $\sigma+1$, respectively. The regular functions have the regularity of Definition~\ref{def:D24} before flat-value and Hessian subtraction; the forced functions satisfy Definition~\ref{def:D25}. Restricting the interval preserves the identities and estimates.
+\end{lemma}
+\begin{align}\label{eq:D-early}
+\mathcal H_u(U)&=e^{\tau_u|\Lambda|-\beta'_u\mathsf K_m^{\rm kin}(U)-\mathcal L_m(U)
+-\alpha_{N,m}\mathcal Q_m(U)-\sum_i h_{X_i}(U)f_{i,u}(U)}\mathcal F_u^0(U),\\
+\sup_x\sum_{o_i=x}e^{(\sigma+3)\cover_B(X_i)}\mathfrak e_{i,u}&\le H_j,
+\qquad \mathfrak e_{i,u}\ge\|f_{i,u}\|_{m,X_i},\label{eq:D-early-bound}\\
+\sup_x\sum_{i:x\in Y_i}e^{(\sigma+1)\cover_B(Y_i)}\mathfrak k_{i,u}&\le e^{-\kappa_j^{\rm pre}(\cutoffsize_{m+1})^2},
+\qquad \mathfrak k_{i,u}\ge\sup_U|k_{i,u}(U)|\,.
+\label{eq:D-preliminary-forced}
+\end{align}
+Here $\kappa_j^{\rm pre}>0$ is fixed after the ratio, and $\mathcal F_u^0$ is the disjoint-support exact-cover sum of Definition~\ref{def:D06}, formed from $k_{i,u}$.
+\begin{proof}
+Use Definitions~\ref{def:D04}--\ref{def:D06}, Lemmas~\ref{lem:B-D1}, \ref{lem:B-D2}, \ref{lem:C1}--\ref{lem:C7}, \ref{lem:D-connected} and~\ref{lem:D-localization}. First choose the ratio so that the inherited principal terms of Lemma~\ref{lem:D-inherited} use at most $H_j/32$, and then raise the threshold so that their comparison remainders use at most $H_j/32$. Bound the terms retained in~\eqref{eq:D-height-gain} and the long paths together by $H_j/16$. The localization bound is $o(H_j)$ with the stronger support exponent. This fixes a coupling threshold independent of the period.
+
+Next choose one finite truncation on the whole parameter interval. For each parameter, summability gives a tail smaller than a prescribed $\varepsilon_{\rm tr}$. Weighted continuity gives a neighborhood on which that same tail is smaller than $2\varepsilon_{\rm tr}$. Finitely many such neighborhoods cover the interval; take the union of their finite address sets and include their symmetry images. Increasing the truncation preserves the tail bound. Choose the tail bound to be at most $H_j/16$. The regular terms outside the finite sum then have total at most $(1/16+2/16)H_j$. Choose $\varepsilon_{\rm tr}$ so that the two localization errors in~\eqref{eq:D-aux-bound}, including the direction and support losses, have total at most $12H_j/16$. The resulting bound is $15H_j/16<H_j$.
+
+The change in the scalar is $\tau_u^{\rm old}-F_0(1)$, with the sign fixed by~\eqref{eq:D-mask-localization}. Multiply the preliminary forced sum by $\exp(-\sum_xL_x)$. Expand each $e^{-L_x}$ about one and collect intersecting supports, as in the first paragraph of the proof of Lemma~\ref{lem:D-fusion}. The logarithmic factors vanish unless their supports contain flags, so each resulting connected component still contains a forced term. Their site bound at exponent $\sigma+2$ is a subpower factor times $\mathfrak b^{-7/16}$, whereas each forced component retains $C_j e^{-r_j\beta'_u t_{m+1}^2}$. Choose a smaller positive $r'_j<r_j$. The site attachment parameter tends to zero and the remaining exponential gives
+\begin{equation*}
+C'_j e^{-r'_j\beta'_u t_{m+1}^2}
+\le e^{-\kappa_j^{\rm pre}(\cutoffsize_{m+1})^2}
+\end{equation*}
+for some $\kappa_j^{\rm pre}>0$, since $\beta'_u\ge\refbeta_{m+1}/2$. One extra support power is used in this collection, leaving $\sigma+1$. The rooted-tree induction written in Lemma~\ref{lem:D-fusion} proves the asserted site bound and absolute convergence. No scalar depends on the output configuration, and all identities hold also when a chord is exactly at a threshold.
+
+For continuity, the truncation and all reflected tori are now fixed. Finite linear combinations preserve the weighted comparison from Lemma~\ref{lem:D-connected}. A difference of forced products has one marked difference factor; the rooted sum has the same strict attachment margin. Dominated convergence proves the weighted comparison after the collection. Flat evaluation gives continuity of the scalar. The support enlargement, inventories and conjunctions of tests are fixed. The same constructions commute with translations and signed permutations by reindexing. Every assertion is pointwise in the interval parameter or a convergence assertion within the interval, so restriction to a closed subinterval preserves it.
+\end{proof}
+
+
+The preparatory regular sum is $E_u^{\rm pre}=\sum_i f_{i,u}$ on the healthy domain. Its weighted bound is the anchored sum of Definition~\ref{def:D05b}, before flat-value and Hessian subtraction. The next identity supplies the scalar reset.
 
 \begin{lemma}[Pre-reset expansion]\label{lem:D4}
-There is a preparatory regular family with sum $E_u^{\rm pre}$ and weighted bound $c_{\rm pre}\epsilon_m^{\rm reg}/4$, such that
+For every input curve above and every $u$, there is a preparatory regular family with sum $E_u^{\rm pre}$ and weighted bound $\epsilon_m^{\rm reg}$ such that, when $\flags_m(U)=\varnothing$,
 \begin{equation*}
 \mathcal H_u(U)=\exp\{\tau_u|\Lambda|-\beta'_u\mathsf K_m^{\rm kin}(U)
--\alpha_{N,m}\mathsf K_{2,m}^{\rm kin}(U)-\mathcal L_m(U)-E_u^{\rm pre}(U)\}
+-\alpha_{N,m}\mathsf K_{2,m}^{\rm kin}(U)-\mathcal L_m(U)-E_u^{\rm pre}(U)\}\,.
 \end{equation*}
-whenever $\flags_m(U)=\varnothing$. Here $c_{\rm pre}\ge4$ depends only on the fixed stage. In particular, $\mathcal H_u(1),\mathcal H_u(U)>0$ on this set; no vanishing at $1$ is imposed on $E_u^{\rm pre}$.
+In particular $\mathcal H_u(1),\mathcal H_u(U)>0$ on this set.
 \end{lemma}
-The proof of Lemma~\ref{lem:D4} is deferred to this section's preparatory connected expansion.
 
-Write $E_u^{\rm sum}$ for the final regular sum and $\mathcal F_u$ for the final disjoint-support forced sum in Definition~\ref{def:D06}. They are held fixed as a trial correction $d$ varies. Define
+\begin{proof}
+Use Definition~\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, and~\eqref{eq:D-early}--\eqref{eq:D-early-bound}. Set $E_u^{\rm pre}=\sum_i f_{i,u}$ on configurations without flags. Every health mask is one, and nonempty forced inventories give $\mathcal F_u^0=1$. Equation~\eqref{eq:D-low-sums} gives $\mathcal Q_m=\mathsf K_{2,m}^{\rm kin}$. Dropping the extra three support powers gives the stated bound, since $\theta c_j\le1/64$. Absolute convergence makes the exponent finite and real, proving positivity, including at $1$. 
+\end{proof}
+
+\subsection{Local quadratic subtraction}
+
+The subtraction is local and uses no bound on the eventual coupling correction. We use the clover curvature of~\eqref{eq:D-clover-linear} for the local quadratic subtraction.
+
+For a preliminary $f$ on $X$ anchored at $o$, put $Z=X\cup N_2(o)$. For $q=(a,b)$ and $T\in\g$, set $A^{q,T}_{(y,c)}=\mathbf1_{c=b}\xi_o(y)^aT$, and fix a unit vector $T_*\in\g$. Define
+\begin{align*}
+q_f(q,r)&=D^2[f(\exp\cdot)](0)[A^{q,T_*},A^{r,T_*}],\\
+Q_f(U)&=\frac12\sum_{q,r}q_f(q,r)\langle C_q(U,o),C_r(U,o)\rangle_{\g}\,.
+\end{align*}
+Set $q_f=0$ when $Z$ wraps. The matrix extracts the response to constant curls; its color independence is proved below. Define the regular remainder and the discrepancy of masks by
+\begin{align}\label{eq:D-local-split}
+R_f&=f-f(1)-Q_f,\notag\\
+\zeta_f&=\mathbf1_{Z\ {\rm unhealthy}}\{f(1)+h_{\{o\}}Q_f-h_Xf\}\,.
+\end{align}
+The following identity is checked before any activities are summed.
+
+\begin{lemma}[Local subtraction]\label{lem:D-local-subtraction}
+For every preliminary regular $f$,
 \begin{equation*}
-q_{u,d}(U)=e^{-(\beta'_u+\alpha_{N,m}+d)\mathsf K_m^{\rm kin}(U)
--\mathcal L_m(U)-E_u^{\rm sum}(U)}\mathcal F_u(U)\,.
+h_Xf=f(1)+h_{\{o\}}Q_f-\zeta_f+h_ZR_f\,.
 \end{equation*}
-The next identity fixes the entire density before the scalar estimate of Lemma~\ref{lem:C8} is used.
+The function $R_f$ is regular on $Z$, vanishes at $1$, and has zero affine Hessian when $Z$ is nonwrapping. The Borel gauge-invariant function $\zeta_f$ depends only on internal links and flags in $Z$ and vanishes when $Z$ is healthy.
+\end{lemma}
 
+\begin{proof}
+Use Definitions~\ref{def:D01}, \ref{def:D05a}, \ref{def:D24} and the clover formula. The first derivative of $f$ at the flat field vanishes: constant gauge transformations make its coefficient on each internal link an adjoint-invariant vector of $\g$, hence a central vector, which is zero. Differentiating local gauge invariance again makes its Hessian annihilate an infinitesimal gradient in either argument. On a nonwrapping support an affine field with zero curl is a local gradient. Its constant and symmetric linear parts are differences of a quadratic site field, with a constant adjustment for the discrete difference. Multiply this site field by a periodic cutoff equal to one on $Z$. The internal links read by $f$ are unchanged. The second differentiation of gauge invariance uses $Df(1)=0$, as proved above, so no second derivative of the gauge orbit remains. Hence the affine Hessian depends only on the constant curls.
+
+For each pair of orientations its color form is an invariant bilinear form. Represent it by an operator on $\g$ using the trace inner product. The operator commutes with the adjoint action. Its self-adjoint part has ideal eigenspaces, so simplicity makes it scalar. Its skew-adjoint part $J$ commutes with infinitesimal adjoint actions, giving
+\begin{equation*}
+[JX,Y]=J[X,Y]=[X,JY]\,.
+\end{equation*}
+Thus $\operatorname{ad}(JX)=J\operatorname{ad}(X)$ is both self-adjoint, as a product of commuting skew-adjoint operators, and skew-adjoint. It is zero, and $JX$ is central. Hence $J=0$. The color coefficient is therefore the one obtained by testing $T_*$.
+
+The side satisfies $L_pD_m\ge100(B_m+1)>20$, which permits the clover loops and affine tests without degeneracies. Equation~\eqref{eq:D-clover-linear} identifies the affine Hessian of $Q_f$ with that of $f$. Subtracting gives zero diagonal affine Hessian for $R_f$; polarization gives zero on pairs. The value and first derivative of $R_f$ vanish at $1$. If $Z$ wraps, no Hessian cancellation is required. The clover polynomial is smooth, Borel, gauge invariant and local on $N_2(o)$, which gives the other regularity assertions on $Z$.
+
+All indicators in $\zeta_f$ read flags in $Z$. If $Z$ is healthy, every mask in the identity is one and $\zeta_f=0$; the identity reduces to the definition of $R_f$. If $Z$ is unhealthy, $h_ZR_f=0$ and the definition of $\zeta_f$ gives the identity directly. This proves the equality on every configuration and the stated locality and cancellations.
+\end{proof}
+
+The same subtraction has a quantitative bound. If $a_f$ majorizes $f$, the diagonal tests $tA^{q,T_*}$ and their half-sum are permitted directions in Definition~\ref{def:D05a}. They give
+\begin{equation}\label{eq:D-projection-bound}
+t^2|q_f(q,q)|\le a_f,\qquad t^2|q_f(q,r)|\le3a_f\,.
+\end{equation}
+Indeed four times the half-sum's diagonal Hessian is $t^2(q_f(q,q)+q_f(r,r)+2q_f(q,r))$. Its absolute value and the two diagonal bounds give the second estimate. Product differentiation of the four-link formula bounds every permitted derivative of $C_q$ by $C_jt$ at a healthy anchor. For order zero this follows from the plaquette chord bound; at positive order the direction factors supply $t$, and all undifferentiated group matrices are bounded. Hence
+\begin{equation}\label{eq:D-remainder-bound}
+\|R_f\|_{m,Z}+\sup_U|\zeta_f(U)|\le C_j a_f\,.
+\end{equation}
+For $\zeta_f$, the terms $Q_f$ and $f$ occur only under their own health indicators, so the estimates still apply when $Z$ is unhealthy.
+
+Enlargement costs at most $\cover_B(Z)\le\cover_B(X)+1$: one radius-$B$ ball centered at $o\in X$ contains $N_2(o)$ and meets the original connected cover. Also $\operatorname{dist}(x,o)\le C B\cover_B(Z)$ for $x\in Z$, by following the connected cover. For a support of covering number $n$ through $x$, its anchor lies within distance $C Bn$ of $x$, giving at most $C(1+B)^4(1+n)^4$ possible anchors. The inequality $(1+n)^4\le C e^n$ converts exponent $\sigma+3$ at the anchor to exponent $\sigma+1$ at a site: one support power bounds this polynomial and one remains unused. At exponent $\sigma$ the enlargement itself costs only a stage constant. Without these extra powers the conversion would leave a polynomial in $n$ at the original exponent.
+
+Sum $q_{f_{i,u}}$ at each anchor. Translation covariance makes the result independent of the anchor. Reflection in an axis belonging to exactly one of two distinct orientations changes the sign of the off-diagonal entry, so that entry is zero. Permuting axes identifies the diagonal entries. Thus a single real $\Delta_u$ satisfies
+\begin{align}\label{eq:D-isotropy}
+\sum_{o_i=o}q_{f_{i,u}}(q,r)&=\Delta_u\delta_{qr},\notag\\
+\sum_i h_{\{o_i\}}Q_{f_{i,u}}
+&=\frac{\Delta_u}2\sum_o h_{\{o\}}\sum_q|C_q(U,o)|^2\,.
+\end{align}
+The coefficient sums converge absolutely by~\eqref{eq:D-projection-bound}, and $t^2|\Delta_u|\le H_j$. This estimates the subtractions; the bound $|\Delta_u|\le1$ is obtained in the proof of Lemma~\ref{lem:C8}.
+
+\subsection{Forced fusion and the activity bounds}
+
+Put $\alpha=\alpha_{N,m}$. The additional regular functions and logarithmic corrections are
+\begin{align}\label{eq:D-kinetic-split}
+e_{\lambda,u}&=\Delta_u(c_\lambda-r_\lambda),\notag\\
+\ell_{\lambda,u}&=(\alpha+\Delta_u)(L_\lambda-h_{Z_\lambda}r_\lambda)
++\Delta_u(h_{Z_\lambda}-h_{\{o_\lambda\}})c_\lambda\,.
+\end{align}
+The regular function is used with mask $h_{Z_\lambda}$. Its affine Hessian vanishes because its two terms have the same constant-curl response. Add also the regular cubic and quartic functions $-(\alpha+\Delta_u)\mathfrak a_i^{(k)}$, with their prescribed masks; they have zero Hessian because $k\ge3$. Every $\ell_{\lambda,u}$ vanishes on healthy $Z_\lambda$.
+
+Write the logarithmic corrections $\zeta_{f_{i,u}}$ and $\ell_{\lambda,u}$ as $\ell_a$ on nonempty supports $Z_a$. A connected selection $P$ consists of preliminary forced labels and logarithmic labels, contains at least one forced label, and has pairwise disjoint preliminary forced supports. Connected means connected in the graph joining intersecting supports. Its support $Y_P$ is the union of all supports, including logarithmic supports; its inventory $I_P$ is the union of the preliminary forced inventories. Define
+\begin{equation}\label{eq:D-fused-term}
+K_P(U)=\mathbf1_{\{Y_P\cap\flags_m(U)=I_P\}}
+\prod_{i\in P_{\rm for}}k_{i,u}(U)
+\prod_{a\in P_{\rm log}}(e^{\ell_a(U)}-1)\,.
+\end{equation}
+The extra test is the conjunction of the preliminary forced tests. Selections and tests are fixed as $u$ varies.
+
+\begin{lemma}[Forced fusion]\label{lem:D-fusion}
+Suppose $\sum_a\sup_U|\ell_a(U)|<\infty$. For $\kappa_{\rm fus},\gamma\ge0$ assume nonnegative $v_a$ for all forced and logarithmic labels with
+\begin{equation*}
+|k_i|\le e^{-\kappa_{\rm fus}}v_i,\quad |e^{\ell_a}-1|\le v_a,\quad
+\sup_x\sum_{a:x\in Z_a}e^{(\sigma+1)\cover_B(Z_a)}v_a\le\gamma,
+\quad(2B+1)^4\gamma\le1\,.
+\end{equation*}
+Then the exact-cover gas of~\eqref{eq:D-fused-term} equals $\mathcal F_u^0\exp(\sum_a\ell_a)$ and its forced norm of Definition~\ref{def:D05b} is at most $e^{-\kappa_{\rm fus}}(e^\gamma-1)$.
+\end{lemma}
+
+\begin{proof}
+Use Definition~\ref{def:D06} and the inventories of Definition~\ref{def:D25}. Expand $\exp(\sum_a\ell_a)=\prod_a(1+(e^{\ell_a}-1))$. Decompose a finite selection, together with a selection from $\mathcal F_u^0$, into support-overlap components. A nonzero logarithmic factor meets a flag. Exact coverage assigns that flag to a preliminary forced label, whose support meets the logarithmic support. Every component therefore contains a forced label. Their union supports are disjoint; their union inventories cover all flags. Conversely the components recover the original selection uniquely. The eligibility indicator in~\eqref{eq:D-fused-term} equals one on any such nonzero product: another component cannot supply a flag in $Y_P$, since its support is disjoint. This proves the identity for finite expansions.
+
+For the absolute bound retain $e^{-\kappa_{\rm fus}}$ from one forced label per connected selection. Apply the rooted-tree bound to the remaining $v_a$. The total weight of labels meeting a support $Z$ is at most $|Z|\gamma\le\cover_B(Z)$, using the extra exponent in the hypothesis. Successive attachments are therefore paid by that exponent. More explicitly, put $\mathfrak v_i=v_i e^{\sigma\cover_B(Z_i)}$ and let $T_i^{(n)}$ sum rooted trees of height at most $n$, permitting repeated labels. The exponential formula for their unordered branches is
+\begin{equation*}
+T_i^{(0)}=\mathfrak v_i,\qquad T_i^{(n+1)}=\mathfrak v_i\exp\left(\sum_{k:Z_k\cap Z_i\ne\varnothing}T_k^{(n)}\right)\,.
+\end{equation*}
+The hypothesis gives $T_i^{(n)}\le \mathfrak v_i e^{\cover_B(Z_i)}$ by induction. The sum of these upper bounds over roots whose supports contain a fixed site is at most $\gamma$. Every connected selection has a spanning tree and an eligible root, so its sum is at most $\gamma\le e^\gamma-1$. The covering number is subadditive on intersecting unions, which retains $e^{\sigma\cover_B(Y_P)}$ in this comparison. Restoring $e^{-\kappa_{\rm fus}}$ gives the claimed bound. The resulting summable envelope justifies passage from finite expansions to the infinite identity.
+\end{proof}
+
+Let $E_u^{\rm sum}$ be the masked sum of the $R_{f_{i,u}}$, the $e_{\lambda,u}$, and the cubic and quartic corrections. Let $\mathcal F_u$ be the fused gas. Hold these functions fixed while a trial parameter $\vartheta$ varies, and put
+\begin{equation*}
+q_{u,\vartheta}=e^{-(\beta'_u+\alpha_{N,m}+\vartheta)\mathsf K_m^{\rm kin}-\mathcal L_m-E_u^{\rm sum}}\mathcal F_u\,.
+\end{equation*}
+The output representation is the following single list: regular addresses $(Z_i,o_i)$ with functions $R_{f_{i,u}}$, addresses $(Z_\lambda,o_\lambda)$ with functions $e_{\lambda,u}$, the cubic and quartic addresses of Definition~\ref{def:D22} with functions $-(\alpha+\Delta_u)\mathfrak a_i^{(k)}$, and forced addresses $(Y_P,I_P,\mathcal E_P^{\rm extra})$ with functions $K_P$. Each regular function carries its own health mask. We prove the inequalities
+\begin{equation}\label{eq:D-fusion-small}
+e^{-\kappa_{\rm fus}}(e^\gamma-1)\le\epsilon_m^{\rm for},\qquad
+\mathcal E_m\le\epsilon_m^{\rm reg}\,.
+\end{equation}
+in Lemma~\ref{lem:D1} before using them for the density identity. They impose no condition on the trial coupling.
+
+\begin{lemma}[Activity bounds and covariance]\label{lem:D1}
+For every coarse output constructed above and every Wilson representation of Lemma~\ref{lem:D3}, both activity families are countable and equivariant under translations and $\hypercubic$, including supports, anchors, inventories and tests. There exist nonnegative majorants as in Definitions~\ref{def:D05a}--\ref{def:D05b} whose weighted series converge and which satisfy
+\begin{equation*}
+\mathcal E_m\le\epsilon_m^{\rm reg},\qquad
+\mathcal K_m\le\epsilon_m^{\rm for}\,.
+\end{equation*}
+\end{lemma}
+The proof follows; the Wilson case is treated in the proof of Lemma~\ref{lem:D3}. Lemma~\ref{lem:D2} extends these conclusions to all the chosen classes.
+
+
+\begin{proof}[Proof for a coarse output]
+Use Definitions~\ref{def:D05a}--\ref{def:D05b}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, \ref{lem:D-preliminary}, \ref{lem:D-local-subtraction} and~\ref{lem:D-fusion}. Equation~\eqref{eq:D-remainder-bound} controls each subtracted function. The low regular terms cost $C_jH_j$, since $t^2|\Delta_u|\le H_j$. The high terms cost $C_j(|\alpha|t^3+H_j)$: each has at least three curvature factors, and $|\Delta_u|t^3\le H_jt\le H_j$. A derivative of a word of length $l$ costs a fixed power of $1+l$, by the product rule and the allowed spatial growth of the directions. The support obeys $\cover_B(Z_\lambda)\le C+l/B$. Raise the threshold until $\sigma/B\le w^{\rm path}_{J_m}/4$. A quarter of the path exponent then bounds the support weight, and another quarter bounds this polynomial, since $\sup_{l\ge0}(1+l)^ke^{-wl/2}<\infty$. Summing Lemma~\ref{lem:C1} gives the previously defined constant $C_j^0$ and a constant $C_j^1$ with
+\begin{equation*}
+\mathcal E_m\le C_j^0H_j+C_j^1|\alpha|t^3\,.
+\end{equation*}
+The constant $c_j=[64(1+C_j^0)]^{-1}$ was chosen before the ratios in Lemma~\ref{lem:D-preliminary}. After the ratio is fixed, Lemma~\ref{lem:C7} bounds $|\alpha|$; raise the entry threshold until $C_j^1|\alpha|t^3\le\epsilon_m^{\rm reg}/2048$. This is possible because $t^3/\epsilon_m^{\rm reg}=\refbeta_m^{-2/5}(\cutoffsize_m)^3\to0$. Take $\theta\le1/32$ before the ratio. Since $C_j^0c_j\le1/64$, the sum is at most $\epsilon_m^{\rm reg}/1024$. The same argument allows any prescribed smaller coefficient by choosing $\theta$ first and raising the threshold for the second term.
+
+For the logarithmic corrections, conversion from anchored sums to site sums costs at most $C_j(1+B)^4$, after the extra support powers pay the powers of the covering number. The local subtraction costs $C_jH_j$. The low terms in~\eqref{eq:D-kinetic-split} cost
+\begin{equation*}
+C_j(1+B)^4\{(|\alpha|+H_j/t^2)t+H_j\}=:m_j\,.
+\end{equation*}
+The linear clipped tail is bounded by $2c_{\rm lin}t$ times its coefficient, since chords are at most two. For a failed relaxed health test, the remote threshold supplies $e^{l/R_{J_m}^{\rm rel}}$ in a path of length $l$. It is paid by the path decay because $R_{J_m}^{\rm rel}w_{J_m}^{\rm path}\ge12$. The common-anchor clover term costs $|\Delta_u|t^2\le H_j$. These estimates give exactly the displayed bound, including unhealthy configurations. Since $H_j/t=O_j(\refbeta_m^{-3/5}/\cutoffsize_m)$ and $|\alpha|$ is fixed after the ratio, $(1+B)^4m_j\to0$.
+
+Let $\kappa_{\rm fus}=\kappa_j^{\rm pre}(\cutoffsize_{m+1})^2/2$. The majorants in~\eqref{eq:D-preliminary-forced}, multiplied by $e^{\kappa_{\rm fus}}$, have rooted total at most $e^{-\kappa_{\rm fus}}$. For each logarithm use $|e^{\ell_a}-1|\le2|\ell_a|$ once its individual majorant is at most $\log2$; this follows by increasing the entry threshold until $m_j\le\log2$. Their rooted total is at most $2m_j$. Increase the entry threshold so that $(2B+1)^4\gamma\le1/2$ for $\gamma=e^{-\kappa_{\rm fus}}+2m_j$. Lemma~\ref{lem:D-fusion} applies. Increase the threshold further so that $\gamma\le1$ and $e^{-\kappa_{\rm fus}}(e^\gamma-1)\le\epsilon_m^{\rm for}/1024$. Indeed $e^\gamma-1\le2\gamma$ and $\kappa_{\rm fus}\gg(\cutoffsize_m)^{1/5}$. This proves the forced inequality and summability in~\eqref{eq:D-fusion-small}.
+
+Every address is a finite combination of countable preliminary and path addresses, so the families are countable. Subtraction and path replacement transport the entire address under translations. Signed permutations transform the curvature orientations with their signs; the finite group average includes every transformed term. These permutations act on supports, anchors and functions. On a connected selection they also transform the union inventory and conjunction of tests. Equation~\eqref{eq:D-fused-term} therefore has the required covariance. For an inverse link, $(e^{zA}U)^{-1}=e^{-z\operatorname{Ad}_{U^{-1}}A}U^{-1}$. Differentiating this identity repeatedly gives only finitely many product-rule terms through order $\mathfrak q_{J_m}$; the adjoint-invariant norm bounds them by a constant depending on that order. This proves the complete address covariance and the convergent weighted bounds for a coarse output. The Wilson start is established below; induction in Lemma~\ref{lem:D2} then gives the class assertion.
+\end{proof}
+
+The identity below fixes the whole density before the scalar estimate of Lemma~\ref{lem:C8}. Its proof uses the bounds just established.
 \begin{lemma}[Exact density representation]\label{lem:D5}
-The final activities satisfy Lemma~\ref{lem:D1}, vanish at the flat field in their regular part, and are independent of $d$. For every $u$ there is $\Delta_u\in\R$ such that
+The final activities satisfy Lemma~\ref{lem:D1}, vanish at the flat field in their regular part, and are independent of $\vartheta$. For every $u$ there is $\Delta_u\in\R$ such that
 \begin{equation*}
 q_{u,\Delta_u}(U)=\frac{\mathcal H_u(U)}{\mathcal H_u(1)}
 \qquad\text{for every }U\,.
 \end{equation*}
-Moreover, $\mathcal F_u(U)=1$ when $\flags_m(U)=\varnothing$. No bound on $\Delta_u$ is assumed here.
+Moreover $\mathcal F_u(U)=1$ when $\flags_m(U)=\varnothing$. 
 \end{lemma}
-The proof of Lemma~\ref{lem:D5} is deferred to this section's exact activity identities; it uses no conclusion of Lemma~\ref{lem:C8}.
 
-The scalar equation also uses continuity along the input curve, without differentiating a flag boundary.
+\begin{proof}
+Use Definition~\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, \ref{lem:D-local-subtraction}, \ref{lem:D-fusion}, and~\eqref{eq:D-early}--\eqref{eq:D-early-bound}, including~\eqref{eq:D-fusion-small}. Choose $\Delta_u$ by~\eqref{eq:D-isotropy} and put $c_u=\sum_i f_{i,u}(1)$. Local subtraction gives
+\begin{equation*}
+\sum_i h_{X_i}f_{i,u}=c_u+\frac{\Delta_u}2\sum_o h_{\{o\}}\sum_q|C_q|^2
+-\sum_i \zeta_{f_{i,u}}+\sum_i h_{Z_i}R_{f_{i,u}}\,.
+\end{equation*}
+All sums converge absolutely. For each low term~\eqref{eq:D-kinetic-split} gives
+\begin{equation*}
+\begin{aligned}
+&(\alpha+\Delta_u)L_\lambda+\Delta_u h_{Z_\lambda}(c_\lambda-r_\lambda)-\ell_{\lambda,u}\\
+&\qquad=\alpha h_{Z_\lambda}r_\lambda+\Delta_u h_{\{o_\lambda\}}c_\lambda\,.
+\end{aligned}
+\end{equation*}
+Sum and apply~\eqref{eq:D-low-sums}. The high corrections cancel $(\alpha+\Delta_u)\mathcal A_m$. Thus the exponent in~\eqref{eq:D-early} becomes
+\begin{equation*}
+\begin{aligned}
+&(\tau_u-c_u/|\Lambda|)|\Lambda|
+-(\beta'_u+\alpha+\Delta_u)\mathsf K_m^{\rm kin}-\mathcal L_m-E_u^{\rm sum}\\
+&\qquad+\sum_i \zeta_{f_{i,u}}+\sum_\lambda\ell_{\lambda,u}\,.
+\end{aligned}
+\end{equation*}
+Lemma~\ref{lem:D-fusion} incorporates the last two sums into $\mathcal F_u$. Hence, on every configuration,
+\begin{equation}\label{eq:D-unnormalized}
+\mathcal H_u(U)=e^{(\tau_u-c_u/|\Lambda|)|\Lambda|}q_{u,\Delta_u}(U)\,.
+\end{equation}
+At $1$ all path and final regular terms vanish. The only exact-cover forced selection is empty, so $q_{u,\vartheta}(1)=1$ for every $\vartheta$. Equation~\eqref{eq:D-unnormalized} proves the quotient identity and positivity of its denominator. The same empty-selection argument gives $\mathcal F_u=1$ whenever there are no flags.
+
+The regular cancellations were proved in Lemma~\ref{lem:D-local-subtraction} and after~\eqref{eq:D-kinetic-split}; the weighted bounds are those of Lemma~\ref{lem:D1}. The value $\Delta_u$ used in the activity construction is already fixed by the preliminary functions. The trial variable $\vartheta$ occurs only in the exponential defining $q_{u,\vartheta}$. This proves the exact identity without using Lemma~\ref{lem:C8} or its reset estimate.
+\end{proof}
+
+\subsection{Continuity at fixed volume}
+
+The scalar reset needs continuity of the integral and both final sums. The next deduction uses the weighted comparison in Lemma~\ref{lem:D-preliminary}.
 
 \begin{lemma}[Continuity of the activity sums]\label{lem:D6}
-For the input curves of Theorem~\ref{prop:RG}, the final activity families have fixed addresses and are continuous in the weighted sense of Definition~\ref{def:D25a}. For every fixed configuration $U$,
+For input curves of Theorem~\ref{prop:RG}, the final activity families have fixed addresses and are continuous in the weighted sense of Definition~\ref{def:D25a}. For every fixed configuration $U$,
 \begin{equation*}
 u\longmapsto\mathcal H_u(U),\qquad
 u\longmapsto E_u^{\rm sum}(U),\qquad
@@ -87,4 +492,451 @@ u\longmapsto\mathcal F_u(U)
 \end{equation*}
 are continuous.
 \end{lemma}
-The proof of Lemma~\ref{lem:D6} is deferred to this section's continuity estimates.
+
+\begin{proof}
+Use Definitions~\ref{def:D04}, \ref{def:D06}, \ref{def:D25a}, Lemmas~\ref{lem:C1}, \ref{lem:D-local-subtraction}, \ref{lem:D-fusion}, and Lemma~\ref{lem:D-preliminary}. The maps $f\mapsto f(1),q_f,R_f,\zeta_f$ are linear on functions with fixed address. Equation~\eqref{eq:D-projection-bound} applied to a difference bounds its projection coefficients by its derivative majorant divided by $t^2$. Weighted preliminary continuity therefore gives continuity of $c_u$, $\Delta_u$, and the subtracted regular and logarithmic series. The low and high corrections are linear in $\Delta_u$, with fixed summable path coefficients, so they retain this continuity. Every mask is a fixed function of $U$.
+
+For fusion each coefficient is a finite product and hence continuous in supremum norm. To justify summing weighted differences, work first along subsequences with one summable majorant. Given $u_n\to u_0$, pass to a subsequence whose total weighted preliminary discrepancies are at most $2^{-n}\varepsilon$. Add their nonnegative majorants to those at $u_0$; the extra mass is at most $\varepsilon$. The margin $(2B+1)^4\gamma\le1/2$ arranged in the proof of Lemma~\ref{lem:D1} permits this addition for small $\varepsilon$. Lemma~\ref{lem:D-fusion} gives one summable envelope for the fused coefficients along this subsequence. Dominated convergence gives convergence of their weighted differences. If the original sequence failed to converge, a subsequence with discrepancies bounded away from zero would admit such a further subsequence, a contradiction. This proves weighted continuity without assuming a common envelope on an arbitrary neighborhood. Constants here may depend on the fixed volume.
+
+For the pointwise gas, put $M_i=\max(\sup|K_{i,u}|,\sup|K_{i,u_0}|)$. Telescoping finite products and summing selections gives
+\begin{equation*}
+|\mathcal F_u(U)-\mathcal F_{u_0}(U)|
+\le e^{\sum_iM_i}\sum_i\sup|K_{i,u}-K_{i,u_0}|\,.
+\end{equation*}
+The restrictions on exact coverage use fixed inventories. Weighted continuity makes the right side tend to zero. The regular sum is continuous by the analogous sum of order-zero differences. The same bounds give continuity in $u$, uniform in $U$, for the input density at fixed volume, since its path action is affine in the continuous coupling.
+
+Finally the kernel of Definition~\ref{def:D04} is uniformly bounded on a compact coupling interval at this volume. The tag masses sum to one; its single-link normalizing integrals are positive and continuous in the coupling, and its link factors are bounded on the compact group. Dominated convergence against product probability Haar measure gives continuity of $\mathcal H_u(U)$. This proves all three pointwise continuities and weighted continuity, by Lemma~\ref{lem:D-preliminary}.
+\end{proof}
+
+\subsection{The specified recursion}
+
+A choice of output for one representation does not determine a step on every continuous input curve. We choose the local construction for an entire curve, including its truncation, auxiliary tori, tree gauge and address identifications, and then allow restrictions of that choice. The estimates used to repeat the step are the following explicit ones. At level $m$ the path is the fixed $\pathaction_{N,m}$ of Definition~\ref{def:D22}, with the bounds of Lemmas~\ref{lem:C1}--\ref{lem:C2}. The activity functions satisfy Definitions~\ref{def:D24}--\ref{def:D25} and Lemma~\ref{lem:D1}. At an adjacent pair the output is exactly the functions in Lemma~\ref{lem:D5}, its scalar is $|\Lambda|^{-1}\log\mathcal H(1)$, and its correction obeys
+\begin{equation}\label{eq:D-retained}
+t_m^2|\Delta|\le H_j,\qquad
+\mathcal E_m\le\epsilon_m^{\rm reg}/1024,\qquad
+\mathcal K_m\le\epsilon_m^{\rm for}/1024,\qquad
+|\Delta|\le1\,.
+\end{equation}
+The first three bounds precede the scalar reset; the last is obtained in the proof of Lemma~\ref{lem:C8}. The stronger preparatory bounds, fixed tests, and whole-interval comparison of Lemma~\ref{lem:D-preliminary} are retained with the step. The input coupling belongs to $\mathfrak B_{m+1}$; no output-band condition is imposed. These are the continuation conditions used here.
+
+Define $\mathcal I_{N,p}=\{\rho^{\rm W}_\beta:\beta\in\mathfrak B_N\}$ by the Wilson construction of Lemma~\ref{lem:D3}, and put $\mathcal A_{N,N,p}=\mathcal I_{N,p}$. Inductively downwards, let $\mathcal A_{N,m,p}$ contain all outputs of the construction on continuous curves in $\mathcal A_{N,m+1,p}$ with coupling in $\mathfrak B_{m+1}$, retaining their restrictions to closed subintervals and their fixed address identifications. Define $\mathcal R_{N,m,p}$ to consist of the output--input pairs from these same curves and restrictions. The analytic construction below fixes these choices simultaneously on the common address spaces; its single step map and its restrictions are used for the selected recursion and endpoint tuning. Thus an adjacent pair always uses the actual input density and its own coupling in the kernel.
+
+The following statement fixes these choices for the later trajectory argument. Its proof also shows that it applies to every admitted continuous curve, including curves assembled from previously retained outputs.
+\begin{lemma}[Specified recursion]\label{lem:D2}
+For fixed $G,\blockpenalty$, the classes just defined consist of representations satisfying Lemmas~\ref{lem:C1}--\ref{lem:D1}, with
+\begin{equation*}
+\mathcal I_{N,p}\subset\mathcal A_{N,N,p},\qquad
+\mathcal R_{N,m,p}\subset\mathcal A_{N,m,p}\times\mathcal A_{N,m+1,p}\,.
+\end{equation*}
+Its trajectories are exactly the tuples satisfying
+\begin{equation*}
+\rho_m\in\mathcal A_{N,m,p}\ (0\le m\le N),\quad
+\rho_N\in\mathcal I_{N,p},\quad
+(\rho_m,\rho_{m+1})\in\mathcal R_{N,m,p}\ (m<N)\,.
+\end{equation*}
+With these classes, Theorem~\ref{prop:RG} holds and every member satisfies the activity bounds in~\eqref{eq:D-retained}.
+\end{lemma}
+\begin{proof}
+Use Definition~\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, \ref{lem:C8}, \ref{lem:D-preliminary}, and~\ref{lem:D1}, \ref{lem:D4}--\ref{lem:D6}. The Wilson construction at the end supplies the initial curve and both caps. At a step, Lemma~\ref{lem:D-preliminary} uses only the prescribed paths, the local regularity and forced eligibility, the bounds and the weighted continuity of its input. The proof does not require that the input curve coincide with an earlier chosen curve. In particular its common truncation is chosen afresh on the entire compact interval from these hypotheses. Local subtraction, path replacement and fusion preserve the read supports, gauge invariance, cancellations and countability. Lemma~\ref{lem:D1} proves their numerical bounds, and Lemma~\ref{lem:D6} proves weighted continuity on the interval.
+
+The normalized identity of Lemma~\ref{lem:D5} and the reset of Lemma~\ref{lem:C8} identify the same $\Delta$. Its proof identifies $\Delta$ with the continuous scalar root and gives $|\Delta|\le1$; its statement gives the drift in Theorem~\ref{prop:RG}. Defining the vacuum scalar by flat evaluation gives the exact integral, since the normalized representation is one at $1$. Hence~\eqref{eq:D-retained} is inherited by the outputs and the prescribed paths are unchanged. Finite induction gives the classes just described.
+
+Restriction preserves every estimate, all supports and tests, and each curve choice. Its weighted continuity is continuity in the relative topology of the smaller interval, so it is preserved as well. Declare a step selected on a larger interval and its restriction to be the same choice. Other input curves are treated by the preceding construction, rather than by pointwise ancestry. This proves readiness on every continuous input curve in the classes. The displayed trajectory conditions are exactly the resulting finite recursion. Section~\ref{sec:partII-E} uses its closure under restriction for shooting; Lemma~\ref{lem:D-E1} below supplies the weighted analytic estimates for the selected recursion. The Wilson identity and the final one-step assembly are proved after those estimates.
+\end{proof}
+
+\subsection{Weighted analytic estimates}
+
+We compare cutoffs using activity functions on fixed domains. At level $m$ and period $p$, put all regular addresses into one countable list and all forced addresses into a second list. A missing term has coefficient zero. The lists contain every finite support, anchor and inventory used above, and every finite conjunction of their eligibility tests. The output of a fusion is indexed by its finite selection, so the lists are closed under the construction. Keep the same permutations for translations and signed permutations. This identifies different cutoffs without changing their health domains.
+
+For a difference $A=(E,K)$ of activity families set
+\begin{equation}\label{eq:D-common-norm}
+\|A\|_{m,p}=\max\left\{
+\frac{\sup_x\sum_{o_i=x}e^{\sigma_{J_m}\cover_{B_m}(X_i)}\|E_i\|_m}{\epsilon_m^{\rm reg}},
+\frac{\sup_x\sum_{x\in Y_i}e^{\sigma_{J_m}\cover_{B_m}(Y_i)}\sup_U|K_i(U)|}{\epsilon_m^{\rm for}}
+\right\}\,.
+\end{equation}
+The seminorms in this formula are the least majorants in Definitions~\ref{def:D05a}--\ref{def:D05b}. Quotient by zero seminorm and complete the space with the prescribed local cancellations, eligibility and permutations. Denote the resulting real Banach space by $\mathcal X_{m,p}$. This retains regular derivatives on healthy configurations and forced values on every configuration. The vacuum scalar is excluded.
+
+The coupling coordinate must allow relative changes of $\beta$ while keeping a uniform analytic radius. Define
+\begin{equation}\label{eq:D-coupling-coordinate}
+\chi_m=\refbeta_m^{-1/32},\quad
+b_m=\chi_m\refbeta_m,\quad
+x_m=\chi_m^{-1}\sqrt{\beta_m/\refbeta_m},\quad
+\beta_m=\refbeta_m(\chi_mx_m)^2\,.
+\end{equation}
+Thus $b_m$ converts a change of $x_m$ into a change of $\beta_m$, up to the factor $2\chi_m x_m$. Monotonicity gives $b_m\ge\chi_0\refbeta_0>0$. Raise the entry threshold so $\bar\beta\ge2^{224}$; then $\chi_m\le1/128$. In the following paragraphs write $b_*=\chi_0\refbeta_0$, $g_*=1/128$ and $\lambda_*=1/16$.
+
+Let $F_{N,m}$ denote the selected activity map and $\mathcal D_{N,m}$ its scalar correction, so that
+\begin{equation*}
+A_m=F_{N,m}(x_{m+1},A_{m+1}),\qquad
+\beta_m=\beta_{m+1}+\alpha_{N,m}+\mathcal D_{N,m}(x_{m+1},A_{m+1})\,.
+\end{equation*}
+The top map is denoted by $F_N^{\rm W}(x_N)$. The maps are constructed for $\|A\|\le1$ and $33/40\le\chi_mx\le47/40$. We use expansions centred in the smaller domain
+\begin{equation}\label{eq:D-analytic-domain}
+\|A\|\le1/8,\qquad 17/20\le\chi_mx\le23/20\,.
+\end{equation}
+A ball of radius $1/4$ about such a centre stays in the larger domain: its activity norm is at most $3/8$, and the change of $\chi_mx$ is at most $1/512<1/40$. For a retained history with $|\beta_0-\bar\beta|\le\bar\beta/4$, summing the drift and the error bound in Section~\ref{sec:constants} gives $|\beta_m-\refbeta_m|\le\refbeta_m/4$. Its square root therefore lies in $[17/20,23/20]$. Every activity in the history, including the Wilson start, has norm at most $1/1024$ by the proofs of Lemmas~\ref{lem:D1} and~\ref{lem:D3}. Thus the entire history lies in~\eqref{eq:D-analytic-domain}.
+
+For a finite stencil with real coefficients $c_\nu$ and nodes $s_\nu\in[-1,1]$, define
+\begin{equation}\label{eq:D-real-stencil}
+\mathfrak s(c,s;\rho)=\sup_{k\ge0}\left|\sum_\nu c_\nu(s_\nu/\rho)^k\right|\,,\qquad \rho>1\,.
+\end{equation}
+We apply it along $(x(s),A(s))=(x+sv,A_0+sA_1)$, with $|v|\le1$ and $\|A_0+sA_1\|\le1$ for $|s|\le1$. Supports, health tests and local function domains are fixed along the line. Write $F(s)=F_{N,m}(x(s),A(s))$ and $\mathcal D(s)=\mathcal D_{N,m}(x(s),A(s))$. Let $\mathcal N_{\rm pre}$ be the anchored regular norm at exponent $\sigma+3$, before division by $\epsilon_m^{\rm reg}$ and before subtraction. Let $\mathcal N_{\rm for}$ be the corresponding forced site norm at exponent $\sigma+1$.
+
+The coupling varies through a square of an affine function. The next estimate controls that dependence at a radius growing with the reference coupling; a bound at one fixed field-derivative order would not suffice.
+\begin{lemma}[Coupling-line stencils]\label{lem:D-coupling-stencil}
+Put $\mathfrak b=\refbeta_{m+1}$ and $\mathfrak R=\mathfrak b^{1/256}$. For the lines above centred in $33/40\le\chi_{m+1}x\le47/40$, the preparatory families satisfy
+\begin{align*}
+\mathcal N_{\rm pre}\left(\sum_\nu c_\nu f(s_\nu)\right)
+&\le\mathfrak b^{-1/4}\mathfrak s(c,s;\mathfrak R/2),\\
+\mathcal N_{\rm for}\left(\sum_\nu c_\nu k(s_\nu)\right)
+&\le C_j e^{-\kappa_j^{\rm pre}(\cutoffsize_{m+1})^2}\mathfrak s(c,s;\mathfrak R/4).
+\end{align*}
+For any prescribed $\theta_{\rm W}>0$, the Wilson map satisfies the analogous normalized estimate with radius $\mathfrak R$ and bound $4\theta_{\rm W}$ after the entry threshold is raised.
+\end{lemma}
+The proof keeps physical fields fixed and then applies the connected and localization operations.
+\begin{proof}
+Use Definitions~\ref{def:D04}--\ref{def:D06}, Lemmas~\ref{lem:B-D1}, \ref{lem:B-D2}, \ref{lem:C1}--\ref{lem:C7}, \ref{lem:D-connected} and~\ref{lem:D-localization}. Put $\upsilon=\mathfrak b^{-1/128}$ and raise the threshold until
+\begin{equation}\label{eq:D-coupling-aperture}
+128\mathfrak R\chi_{m+1}\le\upsilon\le1\,.
+\end{equation}
+This is possible since $1/256-1/32+1/128=-5/256<0$. Set $\zeta=\chi_{m+1}x$ and $L=\zeta-6\mathfrak R\chi_{m+1}$. For $|s|\le6\mathfrak R$,
+\begin{equation*}
+\beta(s)=\mathfrak b L^2\left(\frac{\zeta}{L}+\frac{\chi_{m+1}v}{L}s\right)^2,
+\qquad \frac34\le\chi_{m+1}(x+sv)\le\frac43\,.
+\end{equation*}
+The displayed margins follow from~\eqref{eq:D-coupling-aperture} and $33/40\le\zeta\le47/40$. In particular the real couplings lie in $\mathfrak B_{m+1}$. The relative scale change is at most a fixed multiple of $\upsilon$.
+
+To estimate parameter coefficients, use physical link variables in each sector integral. All flag, allocation, tag and chart tests are then independent of $s$: their thresholds are $t_{m+1}$ and the prescribed stage constants, not $\beta(s)^{-1/2}$. Old measurable forced functions occur as $K_0+sK_1$ at the same physical links. Gaussian rescaling is used to estimate the coefficients, after these functions have been held fixed. Thus parameter coefficients do not differentiate their field arguments or any test.
+
+Here is the coefficient bound for this change of Gaussian scale. For a positive local precision matrix $\mathsf A$ and affine source $\mathsf b_0$, put $m_0=-\mathsf A^{-1}\mathsf b_0$ and $Q(a)=\langle a-m_0,\mathsf A(a-m_0)\rangle/2$. This is the centred quadratic energy in the sector Gaussian density. The parameter occurs through $\beta(s)Q$, its normalizing determinant, and the local stationary corrections. Expand the inverse by
+\begin{equation*}
+(\mathsf A+H)^{-1}=\sum_{n\ge0}(-\mathsf A^{-1}H)^n\mathsf A^{-1},\qquad
+\log\det(I+H)=\sum_{n\ge1}\frac{(-1)^{n+1}}n\operatorname{Tr}H^n\,.
+\end{equation*}
+In these formulas $H$ denotes, respectively, the precision perturbation and its dimensionless version. The inverse bound and exponential Schur sums of Lemma~\ref{lem:B-D2}, together with~\eqref{eq:D-coupling-aperture}, make their radius-$\mathfrak R$ coefficient sums less than a fixed constant. For the Gaussian density, expansion of its exponential is dominated by $e^{c|z|^2}$ with $c$ smaller than half its precision lower bound. Indeed the coefficient of $|z|^2$ changes by $O(\mathfrak R\chi_{m+1})$. Integrating this majorant bounds every parameter degree at once. The local number of coordinates is a fixed power of $1+B$; hence its additional loss is bounded because $(1+B)^C\mathfrak R\chi_{m+1}\to0$. The same Neumann series solves each stationary correction with the uniformly bounded inverse. Ordered field derivatives only add the fixed read polynomials already present in Lemma~\ref{lem:B-D2}.
+
+Each incoming factor is affine in $s$. For a regular occurrence its exponential has radius-$\mathfrak R$ majorant $\exp(\mathfrak R\|E_1\|)$; for a forced occurrence the majorant is $|K_0|+\mathfrak R|K_1|$. Products use Cauchy products of coefficients. Reserve the support powers before summing these expressions. The initial small factor in~\eqref{eq:D-factor-rates} loses at most one factor $\mathfrak R$ for an incoming affine occurrence; the change of Gaussian scale has the bounded sums just proved. Thus the weighted attachment parameter is bounded by
+\begin{equation*}
+P_j(\mathfrak b)\mathfrak R\mathfrak b^{-7/16}
+=P_j(\mathfrak b)\mathfrak b^{-111/256}\longrightarrow0\,.
+\end{equation*}
+The connected logarithm therefore has an absolutely summable parameter series by the same rooted estimate as in Lemma~\ref{lem:D-connected}. A forced component retains a smaller fixed portion of the energy in Lemma~\ref{lem:B-D1}; coefficient multiplication and sector counting use the rest. Its coefficient majorant is $C_je^{-\kappa_j^{\rm pre}(\cutoffsize_{m+1})^2}$.
+
+Apply the five reflected tori of Lemma~\ref{lem:D-localization} to these same parameter coefficients. A stencil commutes with their finite linear combinations. The direction rescaling, auxiliary volumes, support conversion and flat subtraction cost a subpower factor. The resulting regular coefficient sum has bound $P_j(\mathfrak b)\mathfrak b^{-3/8}$: the preceding attachment bound is smaller, since $111/256>3/8$. Raise the threshold until this is at most $\mathfrak b^{-1/4}$. The regular logarithm and the forced collection may use radii $\mathfrak R/2$ and $\mathfrak R/4$, respectively; their Cauchy products then have geometric reserve. Multiplying degree $n$ by $\sum_\nu c_\nu s_\nu^n$ proves the asserted stencil bounds.
+
+For the Wilson map use the formulas in the proof of Lemma~\ref{lem:D3}. Its regular term is $\beta(s)$ times a fixed fifth-order remainder. Its radius-$\mathfrak R$ coefficient sum is at most $C_j\mathfrak b t_N^5/\epsilon_N^{\rm reg}$, which tends to zero. For a forced charge $d_I\ge0$, write $\beta(s)=\beta(0)+b_1s+b_2s^2$. Its exponential has coefficient sum at most
+\begin{equation*}
+\exp\{-\beta(0)d_I+(|b_1|\mathfrak R+|b_2|\mathfrak R^2)d_I\}
+\le e^{-\beta(0)d_I/2}
+\end{equation*}
+by~\eqref{eq:D-coupling-aperture}. The inventory count in that proof is still summable with this half exponent. Both normalized coefficient sums can be made at most $\theta_{\rm W}$; enlarging the bound to $4\theta_{\rm W}$ gives the stated estimate. All bounds were taken before the period was counted, so they are uniform in the period.
+\end{proof}
+
+We now reduce the growing radius to one fixed radius chosen before the ratios. Choose $\rho>1$, and then positive $\delta_{\rm map}\le g_*/2$ and $\eta_{\rm par}\le\delta_{\rm map}$. Put $\varphi_m=\eta_{\rm par}H_{J_{m+1}}/t_m^2$ and $\varrho_m=2\varphi_m$; here $H_{J_{m+1}}=\theta c_{J_{m+1}}\epsilon_m^{\rm reg}$ is the coefficient for this step. The small fraction $\theta$ is chosen below before the ratios.
+\begin{lemma}[Real parameter estimates]\label{lem:D-real-lines}
+For every line specified above, the selected local maps satisfy
+\begin{equation}\label{eq:D-stencil-bound}
+\left\|\sum_\nu c_\nu F(s_\nu)\right\|\le\delta_{\rm map}\mathfrak s(c,s;\rho/2),\qquad
+\left|\sum_\nu c_\nu\mathcal D(s_\nu)\right|\le\varphi_m\mathfrak s(c,s;\rho),
+\end{equation}
+with $\sum_{i<m}\varrho_i\le g_*b_m$. The radius $\rho$ can be arbitrarily large. The Wilson map satisfies the first estimate with the same $\delta_{\rm map}$.
+\end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06} and Lemmas~\ref{lem:D-preliminary}, \ref{lem:D1} and~\ref{lem:D-coupling-stencil}. Recover the regular line coefficients from the latter's stencil bound by finite differences at zero, as in Lemma~\ref{lem:D-stencil-recovery} below. Put $\mathfrak Q=\mathfrak b^{1/256}/2$. Split after degree $300$ and interpolate the finite part at $301$ fixed distinct points of $[-1,1]$. The norm of this finite interpolation matrix gives a constant $L_\rho$ independent of the coupling and volume. The radius-$\rho$ coefficient sum is bounded by
+\begin{equation*}
+L_\rho H_j+(1+L_\rho)(\rho/\mathfrak Q)^{301}\mathfrak b^{-1/4}\,.
+\end{equation*}
+For the tail each degree $n\ge301$ contributes $(\rho/\mathfrak Q)^n$; its geometric denominator is bounded once $\mathfrak Q\ge2\rho$. The tail has rate
+\begin{equation*}
+-301/256-1/4=-365/256<-11/10\,.
+\end{equation*}
+Apply Lemma~\ref{lem:D-preliminary} with the smaller real-interval target $H_j^{\rm aux}=\eta_{\rm par}H_j/[4(1+L_\rho)]$, while retaining $H_j$ as its stated upper bound. This changes no identity. Choose this fraction before the ratio, and raise the threshold until the tail is at most $\eta_{\rm par}H_j/4$. The radius-$\rho$ bound is then at most $\eta_{\rm par}H_j/2$. Projection by~\eqref{eq:D-projection-bound} gives a scalar bound at most $\eta_{\rm par}H_j/t_m^2$. The scalar reset in the proof of Lemma~\ref{lem:C8} is exactly this extracted coefficient.
+
+For the regular output, apply its three linear conversions with total bound $C_j^0$. Choose $\theta$ so the radius-$\rho$ preparatory contribution is at most $\epsilon_m^{\rm reg}/1024$ after this conversion, and raise the threshold so the high path term contributes at most another $\epsilon_m^{\rm reg}/1024$. Explicitly it suffices to choose the real-interval coefficient so that $C_j^0 L_\rho\theta c_j\le1/2048$ and then to use the tail reserve just proved. For the forced output, retain its coefficient majorant from Lemma~\ref{lem:D-coupling-stencil}; subtraction adds logarithmic factors with the bounds in the proof of Lemma~\ref{lem:D1}. At fixed $\rho$, their radius-$\rho$ sums have the same small attachment parameter, with a constant depending on $\rho$. Fusion therefore gives
+\begin{equation*}
+\mathcal K_m(K)_{\rho/2}
+\le C_{j,\rho}\exp\{-\kappa_j^{\rm out}(\cutoffsize_{m+1})^2\}
+\le\epsilon_m^{\rm for}/1024
+\end{equation*}
+for a smaller $\kappa_j^{\rm out}>0$ and a larger threshold. Here $\mathcal K_m$ is the forced norm at the output exponent $\sigma$, and the subscript denotes the parameter coefficient sum at that radius. The exponent $\sigma+1$ of the preparatory bound supplies the extra power used in fusion. The maximum norm~\eqref{eq:D-common-norm} is thus at most $1/512$, and can be made smaller than the prescribed $\delta_{\rm map}$. This derives both the order-zero bound and the full stencil bound. For Wilson choose $4\theta_{\rm W}\le\delta_{\rm map}$ in Lemma~\ref{lem:D-coupling-stencil} and reduce its radius to $\rho/2$.
+
+Since $\theta\le1$ and $c_j\le1/64$, the scalar normalization gives
+\begin{equation*}
+\varrho_m\le(\eta_{\rm par}/32)\refbeta_m^{-1/10},\qquad
+\sum_{i<m}\varrho_i\le C_G\eta_{\rm par}\refbeta_m^{9/10}\,.
+\end{equation*}
+The second inequality follows by comparison with an integral, since the reference-coupling increments have a fixed positive lower bound. Divide by $b_m=\refbeta_m^{31/32}$ and raise the entry threshold until $C_G\eta_{\rm par}\bar\beta^{-11/160}\le g_*$. This proves the weighted scalar bound.
+\end{proof}
+
+Uniform line estimates at nearby centres control mixed finite differences. This supplies the multilinear coefficients for the endpoint equations. Let $X,Y$ be real normed spaces, with $Y$ complete, and let $f$ be defined near $x\in X$. Suppose that for all centres $x'$ in a neighbourhood of $x$, all $\|w\|\le r$ and all stencils in~\eqref{eq:D-real-stencil},
+\begin{equation*}
+\left\|\sum_\nu c_\nu f(x'+s_\nu w)\right\|
+\le C\mathfrak s(c,s;R),\qquad r>0,\quad R>1\,.
+\end{equation*}
+The domain contains all the indicated real segments.
+\begin{lemma}[Recovery from real stencils]\label{lem:D-stencil-recovery}
+Under these hypotheses there are continuous symmetric multilinear maps $T_k:X^k\to Y$ such that
+\begin{equation*}
+f(x+h)=\sum_{k\ge0}T_k(h,\ldots,h),\qquad
+\|T_k\|\le2C\left(\frac{4e}{rR}\right)^k
+\end{equation*}
+whenever $\|h\|\le r$ and $4e\|h\|<rR$. The coefficients extend with the same bounds to the completion of $X$.
+\end{lemma}
+\begin{proof}
+Associate to a stencil the sequence $(\sum_\nu c_\nu(s_\nu/R)^k)_{k\ge0}$ with supremum norm. The assumed inequality defines a bounded linear map, of norm at most $C$, from their span to $Y$. Extend it to the closure. The $k$th coordinate vector lies in that closure: the $k$th finite difference at $0$, divided by $k! (a/R)^k$, has zero moments below $k$, moment one at $k$, and higher moments tending uniformly to zero as its mesh $a\to0$. To see the uniformity, split the higher moments at any fixed order and use $|ja/R|^n\le(ka/R)^n$ for the remaining tail. Evaluation on a single point then gives the exact line series. Its coefficient sum at radius $R/2$ is at most $2C$. Uniqueness follows by successively dividing a vanishing series by its first possible power.
+
+Write $P_k(h)$ for the coefficient of $s^k$ in $f(x+sh)$. Rescaling $s$ gives $P_k(ah)=a^kP_k(h)$ and
+\begin{equation*}
+\|P_k(h)\|\le2C\left(\frac{2\|h\|}{rR}\right)^k\,.
+\end{equation*}
+We must prove the polynomial identity in the direction $h$. Put $\delta_hg(a)=g(a+h)-g(a)$. Uniform line remainders at nearby centres imply
+\begin{equation*}
+\delta_{sh}^{\,n}f(x+sa)=O(s^n)\quad(s\to0).
+\end{equation*}
+Indeed insert the line series at $x+sa$ into the $n$th forward difference. The coefficients below degree $n$ cancel by $\sum_{j=0}^n(-1)^{n-j}\binom nj j^k=0$ for $k<n$; the uniformly bounded tail is $O(s^n)$.
+
+For $h_0,\ldots,h_{n-1}$ and $T\subset\{0,\ldots,n-1\}$ set
+\begin{equation*}
+v_T=\sum_{i\in T}\frac{h_i}{n-i},\qquad
+w_T=-\sum_{i\in T}\frac{i h_i}{n-i}.
+\end{equation*}
+There is the exact mixed-difference identity
+\begin{equation}\label{eq:D-mixed-difference}
+\delta_{sh_0}\cdots\delta_{sh_{n-1}}f(x+sa)
+=\sum_T(-1)^{n-|T|}\delta_{sv_T}^{\,n}f(x+s(a+w_T))\,.
+\end{equation}
+Expand the right side as a sum over its $n+1$ forward-difference points. At the point indexed by $j<n$, pairing sets $T$ differing by the index $i=j$ cancels the terms, since that index has coefficient $(j-i)/(n-i)=0$. At $j=n$ the coefficient of each $h_i$ is one, leaving precisely the left side. Hence every mixed $n$th difference above is $O(s^n)$.
+
+Expand each of its finitely many values in its line series at $x$ and compare powers of $s$. It follows that
+\begin{equation*}
+\delta_{h_0}\cdots\delta_{h_{n-1}}P_k(a)=0\qquad(k<n).
+\end{equation*}
+For $n=k+1$ this makes the $k$th difference of $P_k$ independent of its base point. Define
+\begin{equation*}
+T_k(h_1,\ldots,h_k)=\frac1{k!}
+\delta_{h_1}\cdots\delta_{h_k}P_k(0).
+\end{equation*}
+The identity $\delta_{u+v}=\delta_u+\delta_v+\delta_u\delta_v$ proves additivity in each slot, since the extra $(k+1)$st difference vanishes. The displayed bound on $P_k$ makes these additive maps locally bounded, hence continuous and real linear in each slot. The operators commute, giving symmetry. Homogeneity gives $\delta_h^kP_k(0)=k!P_k(h)$, so their diagonal is the original line coefficient.
+
+There are $2^k$ terms in this polarization sum, and the argument in each has norm at most $k$ on unit directions. Thus $k^k/k!\le e^k$ gives the stated operator bound. The diagonal series equals $f(x+h)$ by the line recovery; the norm bound proves its convergence on the stated domain. Continuous multilinear maps extend uniquely through the dense inclusion into the completion, with unchanged norm.
+\end{proof}
+
+The real parameter estimate yields norm-convergent multilinear expansions in the common completed spaces. The strict path reserve also permits their comparison across cutoffs.
+\begin{lemma}[Local analytic estimates]\label{lem:D-analytic-step}
+At every point of the real domain above, the centered maps $F_{N,m}$, $\mathcal D_{N,m}$ and $F_N^{\rm W}$ have convergent real multilinear expansions on the ball of radius $1/4$. Their degree-$k$ coefficients, $k\ge1$, have norms at most $g_*$, $\varrho_m$ and $g_*$, respectively, where $\varrho_m\ge0$ is independent of $N,p$ and
+\begin{equation*}
+\sum_{i<m}\varrho_i\le g_*b_m\,.
+\end{equation*}
+At fixed $m,p$ these maps are compatible with cutoff limits in the common spaces, including the prescribed paths with a strictly larger path exponent.
+\end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06} and Lemmas~\ref{lem:D-real-lines} and~\ref{lem:D-stencil-recovery}. The larger real domain preceding~\eqref{eq:D-analytic-domain} supplies the neighbouring centres required in the recovery lemma. Apply it with $r=1/4$ and $R=\rho/2$ for the activity map, and $R=\rho$ for the scalar correction. Their coefficient bounds are respectively
+\begin{equation*}
+2\delta_{\rm map}(32e/\rho)^k,\qquad
+2\varphi_m(16e/\rho)^k\,.
+\end{equation*}
+Choose $\rho\ge128e$ before the ratios. Since $2\delta_{\rm map}\le g_*$ and $2\varphi_m=\varrho_m$, these are the asserted bounds. The same argument applies to Wilson. Completion preserves each coefficient, its norm and its diagonal identity. The fixed permutation subspace preserves equivariance.
+
+For cutoff compatibility, compare first the quadratic rows and then the cubic, quartic and quadratic loop kernels in that order. The free block-averaged forms converge by Lemma~\ref{lem:B3}; its uniform inverse bound and the resolvent identity give convergence of the rows. In each subsequent comparison fix these rows and all preceding kernels. Let $\mathcal V_a$ be the affine coefficient space for the kernel of the current degree, with its prescribed symmetries and cancellation identities. Divide its weighted coefficient norm by the stage allowance. The corresponding coefficient map, denoted $\mathcal T_m^a$, obeys
+\begin{equation}\label{eq:D-affine-kernel}
+\mathcal T_m^a(K+\lambda(H-K))
+=\mathcal T_m^a(K)+\lambda(\mathcal T_m^a(H)-\mathcal T_m^a(K))\,.
+\end{equation}
+For the cubic coefficient this follows by retaining degree three in the stationary substitution: it is linear in the incoming cubic kernel. At degree four, terms quadratic in the cubic kernel are fixed, and the incoming quartic kernel occurs once. The quadratic loop coefficient is affine in its incoming loop kernel, with the preceding classical kernels fixed. These are the degree extractions in Lemmas~\ref{lem:C4}--\ref{lem:C7}.
+
+Take the ratio threshold of Lemma~\ref{lem:C4} for the enlarged input path bound $64A_{J_{m+1}}^{\rm path}$, and, for the enlarged quadratic loop bound $64\Lambda_{m+1}^{\rm loop}\le128\Lambda_m^{\rm loop}$, the threshold in the proof of Lemmas~\ref{lem:C1}--\ref{lem:C2} with $C_j^{\rm pb}\ell^{-2}\le1/256$, so that $\tfrac12\Lambda_m^{\rm loop}+\tfrac1{256}\cdot128\Lambda_m^{\rm loop}=\Lambda_m^{\rm loop}$. These choices precede the coupling threshold. With the preceding kernels fixed, the coefficient constructions then accept normalized input size $64$ and give normalized output size at most one. The enlarged input must still belong to $\mathcal V_a$ and satisfy these bounds. For admitted inputs $K,H$ of normalized size at most one put $\delta_K=\|H-K\|$. If $\delta_K>0$, the extrapolated input $K_* =K+(32/\delta_K)(H-K)$ belongs to the same affine space and has norm at most $33<64$. Its linear cancellation and symmetry conditions hold because their homogeneous differences form a linear subspace. Hence its stage bound applies. Equation~\eqref{eq:D-affine-kernel} gives
+\begin{equation*}
+\frac{32}{\delta_K}\|\mathcal T_m^a(H)-\mathcal T_m^a(K)\|
+\le\|\mathcal T_m^a(K_*)\|+\|\mathcal T_m^a(K)\|\le2\,.
+\end{equation*}
+The output difference is at most $\delta_K/16\le\delta_K/4$; at $\delta_K=0$ it is zero by the same affine identity. This calculation concerns one kernel, with all preceding kernels fixed.
+
+For two cutoffs, the change of those fixed preceding kernels contributes an error $e_{N,N',i}$ tending to zero at each fixed level $i$, once their preceding comparisons have been made. The normalized difference of the current kernels therefore satisfies $\delta_i\le\delta_{i+1}/4+e_{N,N',i}$. Truncate this coefficient recursion at level $k$, retaining any admitted terminal kernel there. Its terminal difference is at most two, and iteration gives
+\begin{equation*}
+\delta_m\le2(1/4)^{k-m}
++\sum_{i=m}^{k-1}(1/4)^{i-m}e_{N,N',i}\,.
+\end{equation*}
+At fixed $k$ the sum tends to zero; then $k\to\infty$ proves the Cauchy property, successively for each degree.
+
+Retain now finitely many addresses and finite path lengths. Window covariances and means on these sets converge with their derivatives by the uniform inverse bound and the resolvent identity. Stationary corrections use this same inverse, and determinant differences are integrals of traces of resolvent differences. Lemmas~\ref{lem:C4}--\ref{lem:C7} express the path coefficients by these kernels. Their exponential estimates hold at an exponent $w'$ strictly larger than the output exponent $w$. A tail of length at least $l$ at exponent $w$ is bounded by its uniform $w'$ norm times $e^{-(w'-w)l}$. Thus finite-coefficient convergence and uniformly small tails prove path convergence with a strict reserve.
+
+For the connected weights, subtract the two local integrals using the same coordinates and covariance interpolation as in Lemma~\ref{lem:B-D2}. A finite collection converges by dominated convergence. The rooted estimates bound the discarded collections uniformly. Localization uses only five fixed auxiliary tori, finite linear combinations and such uniformly bounded tails. Subtraction is linear, and fusion has a strict attachment margin. Consequently input coordinates converging in~\eqref{eq:D-common-norm} and converging normalized couplings give outputs and corrections converging in the same common spaces. This proves the compatibility assertion.
+\end{proof}
+
+For two histories at the same $N,p$, let $x_m,A_m$ and $x'_m,A'_m$ be these coordinates and set
+\begin{equation}\label{eq:D-history-distance}
+\mathfrak d=\max_{0\le m\le N}\max\{|x'_m-x_m|,\|A'_m-A_m\|_{m,p}\},
+\qquad \delta=\beta'_0-\beta_0\,.
+\end{equation}
+The parameter series below belong to $\mathcal S(X)=\{\sum_{k\ge0}z^kX_k:\sum_k\|X_k\|<\infty\}$, with norm $\sum_k\|X_k\|$. Evaluation has norm at most one for real $|z|\le1$. This space is complete, and its Cauchy product is bounded by the product of the norms.
+
+For the series equations fix a history reaching $\bar\beta$ and set $z_m=\chi_mx_m$. Write $u_m$ for the perturbation of $x_m$, $W_m$ for that of $A_m$, and $\mathfrak e$ for the endpoint series. For any map $F$ let $\widehat F$ be its centered series. The simultaneous equations are
+\begin{align}\label{eq:D-series-map}
+W_N&=\widehat F_N^{\rm W}(u_N),\notag\\
+W_m&=\widehat F_{N,m}(u_{m+1},W_{m+1})\quad(m<N),\notag\\
+u_m&=(2z_m)^{-1}\left[b_m^{-1}
+\left(\mathfrak e-\sum_{i<m}\widehat{\mathcal D}_{N,i}(u_{i+1},W_{i+1})\right)-\chi_m u_m^2\right]\,.
+\end{align}
+The last line is obtained by expanding the square in~\eqref{eq:D-coupling-coordinate}; it retains its quadratic term.
+
+These right sides define a map on the product of the spaces $\mathcal S(\R)$ and $\mathcal S(\mathcal X_{m,p})$, with the maximum of their series norms. The real endpoint interval is
+\begin{equation*}
+\mathfrak J=[\bar\beta-\lambda_*b_*/4,\bar\beta+\lambda_*b_*/4]\,.
+\end{equation*}
+
+The following is the estimate used by Section~\ref{sec:partII-E}. It applies to the selected step maps, their actual Wilson initial family and the same fixed address spaces.
+\begin{lemma}[Analytic endpoint equations]\label{lem:D-E1}
+The histories above satisfy
+\begin{equation*}
+\mathfrak d\le |\delta|/b_*+8g_*\mathfrak d\,.
+\end{equation*}
+For $\|\mathfrak e\|_{\mathcal S(\R)}\le\lambda_*b_*/4$, equations~\eqref{eq:D-series-map} preserve the closed radius-$\lambda_*$ ball in the product of the spaces $\mathcal S(\R)$ and $\mathcal S(\mathcal X_{m,p})$ and contract by at most $1/2$. Their unique solution evaluates to the selected real recursion. At fixed $m,p$, its scalar couplings and activity coordinates converge along the full cutoff sequence for every convergent real endpoint sequence in $\mathfrak J$.
+\end{lemma}
+The maximum estimate and the series contraction are proved next; the cutoff conclusion is proved in Lemma~\ref{lem:D-fixed-level}.
+\begin{proof}[Proof of the comparison and series assertions]
+Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06}, Lemmas~\ref{lem:C8}, \ref{lem:D2} and~\ref{lem:D-analytic-step}. The latter's centered expansions give
+\begin{align}\label{eq:D-local-lipschitz}
+\|A'_m-A_m\|&\le8g_*\max\{|x'_{m+1}-x_{m+1}|,\|A'_{m+1}-A_{m+1}\|\},\notag\\
+|\mathcal D'_{N,m}-\mathcal D_{N,m}|&\le4\varrho_m\max\{|x'_{m+1}-x_{m+1}|,\|A'_{m+1}-A_{m+1}\|\}\,.
+\end{align}
+For distances at most $1/4$ these follow by subtracting the series and summing $k(1/4)^{k-1}$. For larger distances the separate bounds $\|A_m\|\le g_*/2$ and $|\mathcal D_{N,m}|\le \varrho_m/2$ give the displayed, weaker constants. The Wilson top map has the first bound as well.
+
+Write $z_m=\chi_mx_m$ and $z'_m=\chi_mx'_m$ in this proof. Both are in $[17/20,23/20]$. Equation~\eqref{eq:D-coupling-coordinate} gives the exact identity
+\begin{equation*}
+\beta'_m-\beta_m=b_m(x'_m-x_m)(z'_m+z_m)\,.
+\end{equation*}
+Summing the scalar recursion from the endpoint cancels $\alpha_{N,i}$ between the two histories, and hence
+\begin{equation*}
+b_m|x'_m-x_m|\le|\delta|+\sum_{i<m}|\mathcal D'_{N,i}-\mathcal D_{N,i}|
+\le|\delta|+4g_*b_m \mathfrak d\,.
+\end{equation*}
+Take the maximum together with the activity estimates and use $b_m\ge b_*$. This proves the asserted inequality before absorbing its last term. In particular $\delta=0$ gives $\mathfrak d=0$, and otherwise $\mathfrak d\le2|\delta|/b_*$. Thus real evaluation can be identified by uniqueness.
+
+
+On the product ball of radius $\lambda_*$ the series pair $(u_m,W_m)$ has norm at most $2\lambda_*<1/4$. A centered series with coefficients bounded by $c$ consequently has norm at most $c/2$, and the difference of its two evaluations is bounded by $2c$ times the difference of its arguments. For the scalar prefix the latter gives $4\sum_{i<m}\varrho_i$ times the product distance, because the two coordinates contribute at most twice that distance. Also
+\begin{equation*}
+\|u_m^2-v_m^2\|\le2\lambda_*\|u_m-v_m\|\,.
+\end{equation*}
+Since $2z_m\ge1$ and $\chi_m\le1$, the scalar part of~\eqref{eq:D-series-map} has norm at most
+\begin{equation*}
+\lambda_*/4+g_*+\lambda_*^2<\lambda_*
+\end{equation*}
+and Lipschitz constant at most $4g_*+2\lambda_*=5/32<1/2$. The activity part has norm at most $g_*/2<\lambda_*$ and Lipschitz constant at most $4g_*<1/2$. Thus the map preserves the closed ball and contracts there. Starting at zero, its successive differences are bounded by a geometric series with ratio $1/2$; completeness gives its unique fixed point. 
+
+Evaluation commutes with sums, products and each absolutely convergent multilinear series. It turns the fixed point into the real recursion and Wilson start. The comparison already proved identifies it with the selected history. The endpoint width $\lambda_*b_*/4$ is smaller than the real shooting width: $b_*=\chi_0\bar\beta\le\bar\beta/128$. Hence the whole closed real interval stays in that shooting interval.
+\end{proof}
+
+Only the endpoint coupling is compact in the next argument; no compactness of a ball in the activity Banach space is used.
+\begin{lemma}[Scalar-free fixed-level limits]\label{lem:D-fixed-level}
+For fixed $p,m$, the selected scalar couplings and activity coordinates in $\mathcal X_{m,p}$ converge along every full cutoff sequence with convergent endpoints in the interval of Lemma~\ref{lem:D-E1}. The prescribed paths converge with the strict reserve of Lemma~\ref{lem:D-analytic-step}. The limits are independent of subsequences. No additive vacuum scalar is included.
+\end{lemma}
+\begin{proof}
+Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C8}, \ref{lem:D-analytic-step} and~\ref{lem:D-E1}. First extract a subsequence on which every scalar coordinate $x_i$ converges. Each fixed coordinate is in a compact real interval by $17/20\le\chi_i x_i\le23/20$; a diagonal selection gives the simultaneous subsequence.
+
+Fix a stopping index $k>m$. At level $k$ replace the activity coordinate by zero and run the same selected maps downward using the unchanged scalar coordinates. Write $A_m^{[k]}$ for the resulting coordinate. The first inequality in~\eqref{eq:D-local-lipschitz}, applied successively at equal scalar inputs, gives
+\begin{equation}\label{eq:D-truncated-orbit}
+\|A_m-A_m^{[k]}\|_{m,p}\le(8g_*)^{k-m}\,.
+\end{equation}
+The terminal difference is at most one. For fixed $k$ the truncated coordinates converge by a finite downward induction, using cutoff compatibility in Lemma~\ref{lem:D-analytic-step}. The geometric bound is uniform in the cutoff and tends to zero as $k\to\infty$. Given $\varepsilon>0$, choose $k$ to make both truncation errors smaller than $\varepsilon/3$, then choose the cutoffs so that the truncated difference is smaller than $\varepsilon/3$. Thus the actual activity coordinates are Cauchy in their common completed spaces on the extracted subsequence. The scalar corrections converge by the second inequality in~\eqref{eq:D-local-lipschitz} and cutoff compatibility.
+
+It remains to identify two possible subsequential limits. Denote them by $x_i,A_i,\mathcal D_i$ and $x'_i,A'_i,\mathcal D'_i$. Their common endpoint is $\beta_0$. Passing to the limit in the finite scalar recursion gives
+\begin{equation}\label{eq:D-limit-prefix}
+\beta_i-\beta'_i=-\sum_{j<i}(\mathcal D_j-\mathcal D'_j)\,.
+\end{equation}
+The limits of $\alpha_{N,j}$ cancel because the prescribed paths have one limit. Put
+\begin{equation*}
+\mathfrak d_\infty=\sup_{i\ge0}\max\{|x_i-x'_i|,\|A_i-A'_i\|_{i,p}\}\,.
+\end{equation*}
+This supremum is finite with bound $1/4$. Indeed the activity difference is at most $1/4$, and~\eqref{eq:D-limit-prefix} together with $|\mathcal D_j|,|\mathcal D'_j|\le \varrho_j/2$ gives $|x_i-x'_i|\le g_*$, after division by $b_i$ as in the previous proof. Passing the one-step estimates to the limit gives $\|A_i-A'_i\|\le8g_*\mathfrak d_\infty$. Equations~\eqref{eq:D-limit-prefix} and~\eqref{eq:D-local-lipschitz} give $|x_i-x'_i|\le4g_*\mathfrak d_\infty$. Hence $\mathfrak d_\infty\le8g_*\mathfrak d_\infty$, so $\mathfrak d_\infty=0$.
+
+Every subsequence therefore has a further subsequence with these same scalar and activity limits. If the full sequence failed to converge at some fixed level, a subsequence staying a positive distance from the limit would contradict the preceding construction. This proves full convergence. The continuous map $x\mapsto\refbeta_m(\chi_mx)^2$ gives convergence of $\beta_m$. The path assertion is already part of the cutoff comparison, with a strictly larger exponent than the one defining the local charts. None of these arguments compares the vacuum scalars, which disappear from the normalized activity and coupling equations.
+\end{proof}
+
+\subsection{The Wilson start}
+
+At the finest level the identity free form permits a local choice. Put $\delta_{\rm dir}=c_{{\rm dir},J_N}$ and $F(u)=\operatorname{proj}_{\g}(u-u^{-1})/2$. To define the quartic term, let $\psi$ be the local inverse of $X\mapsto F(e^X)$ at zero and set
+\begin{equation*}
+T_4(Y)=\frac1{4!}D^4[\wilsonterm(e^{\psi(\cdot)})](0)[Y,Y,Y,Y]\,.
+\end{equation*}
+The inverse exists since $DF(e^{\cdot})(0)=I$. This invariant quartic polynomial is chosen so that
+\begin{equation}\label{eq:D-Wilson-remainder}
+R(u)=\wilsonterm(u)-\tfrac12|F(u)|^2-T_4(F(u))
+\end{equation}
+has zero Taylor terms through degree four at $1$. This is the case $m=N$ in the proof of Lemma~\ref{lem:C4}. The path action of Definition~\ref{def:D22} at $m=N$ has row $\sqrt{1-\delta_{\rm dir}}\,F$, no cubic or loop terms, and quartic term $(1-\delta_{\rm dir})T_4(F)$ with its prescribed mask. These finite path sums satisfy Lemma~\ref{lem:C1}.
+
+The initial activities retain the difference between Wilson energy and this action also on flagged configurations. The following proof constructs the full curve. The same construction of the classes is used throughout.
+
+\begin{samepage}
+\begin{lemma}[Wilson initialization]\label{lem:D3}
+For every $N,p$ there is a continuous curve $\beta\mapsto\rho^{\rm W}_\beta\in\mathcal I_{N,p}$ on $\mathfrak B_N$, with coupling $\beta$, vacuum scalar zero, and
+\begin{equation*}
+\density\rho^{\rm W}_\beta=e^{-\beta E^{\rm W}_{L_pD_N}}\,.
+\end{equation*}
+The curve has the activity bounds of Lemma~\ref{lem:D1} and the continuity of Definition~\ref{def:D25a}.
+\end{lemma}
+\end{samepage}
+
+\begin{proof}[Proof of the initialization identity, bounds and continuity]
+Use Definitions~\ref{def:D01}, \ref{def:D06}, \ref{def:D24}--\ref{def:D25a}, and Lemmas~\ref{lem:C1}, \ref{lem:C2}, \ref{lem:C4}. Everything here is at level $N$: $j=J_N$, $t=t_N$, $B=B_N$ and $\sigma=\sigma_{J_N}$. For a plaquette $q$, write $\rho_q=\chord(U_q)$, $k_q^{\rm kin}=(1-\delta_{\rm dir})|F(U_q)|^2/2$, $h_q=h_{\operatorname{vertices}(q)}$, and $\chi_q$ for its relaxed health test. Define its unassigned action by
+\begin{equation*}
+\mathcal W_q(U)=\begin{cases}
+\wilsonterm(U_q)-c_{\rm lin}t\rho_q,&\rho_q>t,\\
+h_q k_q^{\rm kin}+(1-h_q)(1-\delta_{\rm dir})\wilsonterm(U_q)-\chi_q k_q^{\rm kin},&\rho_q\le t.
+\end{cases}
+\end{equation*}
+The relaxed health test $\chi_q=1$ implies $\rho_q\le t$. The identity $(u-u^{-1})/2=(u-1)(1+u^{-1})/2$ and contraction of the projection give $|F(u)|\le\chord(u)$. Together with $\chord(u)^2=2\wilsonterm(u)$ this gives $\mathcal W_q\ge0$. For $\rho_q>t$, $c_{\rm lin}<\delta_{\rm dir}/16\le1/16$ gives $\mathcal W_q\ge\rho_q^2/4\ge t^2/4$. Substitution in the two cases gives
+\begin{equation}\label{eq:D-start-identity}
+\wilsonterm(U_q)=L_q(U)+(1-\delta_{\rm dir})h_qT_4(F(U_q))
++(1-\delta_{\rm dir})h_qR(U_q)+\mathcal W_q(U)\,.
+\end{equation}
+Here $L_q$ is the direct clipped term plus the health-tested row square. The identity includes small plaquettes next to a flag and both sides of the clipping threshold.
+
+Take the regular activities $\beta(1-\delta_{\rm dir})R(U_q)$ on their plaquette supports, anchored at the starting vertex, with the signed average of the path action. They vanish at $1$ with their Hessians. Through the prescribed order their normalized healthy derivatives are bounded by $C_j\beta t^5$. To verify this without assuming small links, use the plaquette holonomy as one coordinate and the other three links as compact parameters. The remainder vanishes to order five in the holonomy chart. At derivative order $k\le5$, Taylor's formula leaves order $5-k$ and the direction factors supply $t^k$. For $k>5$, bounded derivatives and $t^k\le t^5$ give the same estimate. The four-link formula controls the remaining compact factors. There are finitely many plaquettes at each anchor, so the regular sum is at most $C_j\beta t^5$. On the top band,
+\begin{equation*}
+\frac{\refbeta_Nt_N^5}{\epsilon_N^{\rm reg}}
+=\refbeta_N^{-2/5}(\cutoffsize_N)^5\longrightarrow0\,.
+\end{equation*}
+Increasing the entry threshold gives the regular bound $\epsilon_N^{\rm reg}/1024$ uniformly in volume.
+
+Let $\mathfrak F=\flags_N(U)$. Join two flags when their radius-$2B$ neighborhoods overlap. For each nonempty connected inventory $I$ use $Y_I=N_{2B}(I)$ and
+\begin{equation*}
+K_I(U)=\mathbf1_{\{Y_I\cap \mathfrak F=I\}}e^{-\beta d_I(U)}\,.
+\end{equation*}
+The charge $d_I$ is the signed average of those $\mathcal W_q$ whose anchors lie within distance $B$ of $I$, in the coordinates of that signed image. Every nonzero $\mathcal W_q$ is assigned: a failure of the relaxed health test has a witnessing flag within this distance, since $t\exp((B-2)/R_{J_N}^{\rm rel})\ge2$. The other cases already meet a flag at a plaquette vertex. The anchors lie within $B$ of $I$, and each nonautomatic relaxed health test reads within $B-2$ of its anchor. Thus $N_{2B}(I)$ contains every link and flag used in the charge. Distinct actual components have disjoint supports, so each nonzero term is assigned once. Hence the sum of the component charges is the signed average of $\sum_q\mathcal W_q$.
+
+Every flag touches a plaquette with $\rho_q>t$, and a plaquette has at most four vertices. Retaining the identity orientation in the nonnegative signed average gives
+\begin{equation*}
+d_I(U)\ge\frac{t^2|I|}{16|\hypercubic|}\qquad(I\subset \mathfrak F)\,.
+\end{equation*}
+A nonzero exact-cover product of $K_I$ selects precisely the overlap components of $\mathfrak F$. Indeed any two flags in one selected connected inventory are connected in $\mathfrak F$. Conversely a flag joined to a selected inventory cannot lie in another selected inventory, since their radius-$2B$ supports would intersect. Exact coverage then forces every component to be selected. The actual components satisfy eligibility. Thus the forced sum has exactly one nonzero term, equal to the exponential of minus $\beta$ times the unassigned action. Equation~\eqref{eq:D-start-identity}, summed and averaged, proves the Wilson density identity for all configurations with scalar zero.
+
+For the forced norm, a connected inventory of $r$ sites is encoded by a rooted spanning walk of length at most $2(r-1)$ in the overlap graph. Each step has at most $C(1+B)^4$ choices, and $\cover_B(N_{2B}(I))\le5^4r$. Counting possible roots for a support through a specified site costs another $C(1+B)^4$. With $c=1/(16|\hypercubic|)$, the weighted sum is therefore bounded by
+\begin{equation*}
+C_j(1+B)^4\sum_{r\ge1}
+\left[C_j(1+B)^8e^{5^4\sigma-c\beta t^2}\right]^r\,.
+\end{equation*}
+The top band gives $\beta t^2\ge(\cutoffsize_N)^2/2$. This dominates both $\log(1+B)$ and the exponent in $\epsilon_N^{\rm for}$, so the geometric sum is eventually at most $\epsilon_N^{\rm for}/1024$, uniformly in volume. Both normalized bounds can be made arbitrarily smaller by increasing the entry threshold.
+
+Addresses and tests are independent of $\beta$. Regular differences have the same majorants with $\beta$ replaced by $|\beta-\beta_0|$. For the forced functions $d_I\ge0$ is bounded at fixed volume and
+\begin{equation*}
+|e^{-\beta d_I}-e^{-\beta_0d_I}|
+\le|\beta-\beta_0|\sup_Ud_I(U)\qquad(\beta,\beta_0\ge0)\,.
+\end{equation*}
+There are finitely many subsets of this torus, so the weighted difference sums tend to zero. Translations and signed permutations transport complete plaquette terms, component supports, inventories and tests. This gives covariance as well as continuity. We have proved the Wilson representation, both bounds, and its full continuous curve with scalar zero. The common one-step assertion follows from the assembly below.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{prop:RG}]
+Use Definitions~\ref{def:D04}, \ref{def:D06}, \ref{def:D25a}, and the classes of Lemma~\ref{lem:D2}. Lemmas~\ref{lem:D1}, \ref{lem:D4}--\ref{lem:D6} give the final functions and their exact normalized identity. Put
+\begin{equation*}
+v_u=|\Lambda|^{-1}\log\mathcal H_u(1),\qquad
+\beta_u=\beta'_u+\alpha_{N,m}+\Delta_u\,.
+\end{equation*}
+The denominator is positive by Lemma~\ref{lem:D4}. Lemma~\ref{lem:D6} gives continuity of $v_u$ and of the activity families. The proof of Lemma~\ref{lem:C8} identifies this same $\Delta_u$ with its continuous scalar root; its drift estimate gives
+\begin{equation*}
+\beta_u=\beta'_u-\slope\log\ell_m+e_u,\qquad
+|e_u|\le\omega_{J_{m+1}}^{\rm RG}\,.
+\end{equation*}
+Define $\rho_u$ by these scalars and the activities in Definition~\ref{def:D06}. Multiply the identity of Lemma~\ref{lem:D5} by $\mathcal H_u(1)$ to obtain $\density\rho_u(U)=\mathcal H_u(U)$ for every configuration. Lemma~\ref{lem:D1} gives the activity caps and Lemma~\ref{lem:D6} gives continuity. The retained conditions and the curve construction of Lemma~\ref{lem:D2} give $\rho_u\in\mathcal A_{N,m,p}$ and $(\rho_u,\rho'_u)\in\mathcal R_{N,m,p}$. The Wilson construction above supplies the common initial curve with scalar zero.
+\end{proof}
+
