@@ -40,7 +40,9 @@ The process by which it is written and checked is described in [How this manuscr
 | | 11. Gauges and block integration | reviewed; integrated |
 | | 13. Activities and the inductive step | reviewed; integrated |
 | | 14. Trajectories, marked fields and ultraviolet convergence | reviewed; integrated |
-| | 16–18 | being written (full review cycle under way) |
+| | 16. Free fields, Ward identities and rotations | final fixes under way |
+| | 17. Slabs, phases and reconstruction | reviewed; integrated |
+| | 18. The trace law and non-free comparisons | reviewed; integrated |
 | | 19. Products and contact subtractions | reviewed; integrated |
 
 "Reviewed" means the full cycle of the [process](PROCESS.md) has run: owner, fresh-reader and truth reviews, re-check and
