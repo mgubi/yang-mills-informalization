@@ -11,7 +11,7 @@ The reader we write for is a mathematician working in constructive field theory 
 - **Part I. The theorem and the architecture of its proof** (about 30 pages): the setting and notation, the main
   theorem, the principal statements on which the proof rests, each stated exactly with the idea of its
   proof, and the complete deduction of the main theorem from them.
-- **Part II. Proofs** (about 120 pages, sections A–J): the proofs of the principal propositions, with every estimate specific to the
+- **Part II. Proofs** (about 120 pages, Sections 10–19): the proofs of the principal propositions, with every estimate specific to the
   construction written out and standard results cited.
 
 The PDF is [`main.pdf`](main.pdf). It is updated as sections are written; until a section is marked *checked* below, it
@@ -32,9 +32,9 @@ The process by which it is written and checked is described in [How this manuscr
 | | 7. Trace and products | reviewed; with the project lead for reading |
 | | 8. Main theorems | reviewed; with the project lead for reading |
 | | 9. Constants and order of choice | reviewed; with the project lead for reading |
-| Part II | C. Path actions and the coupling reset | reviewed; with the project lead for reading |
-| | F. Infinite volume and field calculus | reviewed; with the project lead for reading |
-| | A, B, D, E, G, H, I, J | statements listed (including the inputs that C and F use), proofs not yet written |
+| Part II | 12. Path actions and the coupling reset | reviewed; with the project lead for reading |
+| | 15. Infinite volume and field calculus | reviewed; with the project lead for reading |
+| | 10, 11, 13, 14, 16–19 | statements listed (including the inputs that Sections 12 and 15 use), proofs not yet written |
 
 "Reviewed" means the full cycle of the [process](PROCESS.md) has run: owner, fresh-reader and truth reviews, re-check and
 delivery review. A section is marked *checked* only after the project lead's reading and any changes it leads to.

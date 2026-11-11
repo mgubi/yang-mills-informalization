@@ -13,7 +13,7 @@ It has two parts:
 
 - **Part I** (about 30 pages): the setting, the definitions, the main theorems, the principal statements on which the
   proof rests, each with the idea of its proof, and the complete deduction of the main theorems from them.
-- **Part II** (about 120 pages): the proofs, in ten sections lettered A–J.
+- **Part II** (about 120 pages): the proofs, in ten sections, numbered 10–19 after the nine sections of Part I.
 
 **The authority is the Lean.** The manuscript claims nothing the Lean does not prove. A statement may be weaker than its
 Lean counterpart, or stated in a more natural form, but never stronger. "The Lean" means the declarations that the main
@@ -136,8 +136,8 @@ Lean, so they cannot inherit its mistakes.
 9. **The project lead reads it.** Comments on level and length become binding style rules for the sections not yet
    written.
 
-Part II starts with two **pilot sections**, one on the ultraviolet side (§C, path actions and the coupling reset) and
-one on the infrared side (§F, infinite volume). They go through the whole cycle and are read by the project lead
+Part II starts with two **pilot sections**, one on the ultraviolet side (§12, path actions and the coupling reset) and
+one on the infrared side (§15, infinite volume). They go through the whole cycle and are read by the project lead
 before the other eight sections are written. Each later section then follows the same cycle.
 
 ## 7. Automatic checks
@@ -171,10 +171,10 @@ Examples from the first rounds. None of them would have been caught by compiling
 - **Theorem B was weaker than the Lean.** As first written, it said that hierarchy data exist, not that they are the
   objects constructed. Its owner rejected it on criterion (i). The repair changes the wording of a frozen statement, so
   it goes to the project lead under the drift protocol.
-- **A pilot section assumed what it had to prove.** The first draft of §F used two inputs, the correction estimate and a
+- **A pilot section assumed what it had to prove.** The first draft of §15 used two inputs, the correction estimate and a
   rank comparison, as hypotheses with no statement to cite. The mathematical review found the Lean declarations that
   prove them. The revision states them as labelled lemmas matching the Lean.
-- **A hypothesis was missing.** The first draft of §C omitted a bound on a kinetic constant that the Lean carries
+- **A hypothesis was missing.** The first draft of §12 omitted a bound on a kinetic constant that the Lean carries
   explicitly. Without it, one of the section's identities cannot hold. The bound now appears in the definition, in Part I
   and in the table of constants.
 - **The editor's own edits introduced errors**, and were caught in turn:
@@ -202,5 +202,5 @@ Examples from the first rounds. None of them would have been caught by compiling
 
 - **11 November 2026.** Statements first, in natural form, with the length limits of §4. This was adopted after the first
   drafts were rejected for their shape.
-- **11 November 2026.** Numbered items in Part II are referred to only by cross-reference, and Part II sections are
-  lettered A–J.
+- **11 November 2026.** Numbered items in Part II are referred to only by cross-reference. Part II sections are numbered
+  10–19, continuing the numbering of Part I.
