@@ -22,12 +22,14 @@ is a draft.
 | | section | status |
 |---|---|---|
 | Part I | 1. Introduction | not yet written |
-| | 2. Setting | not yet written |
-| | 3. The main theorem | not yet written |
-| | 4. The principal propositions | not yet written |
-| | 5. Proof of the main theorem | not yet written |
-| | 6. The constants and the order of their choice | not yet written |
-| Part II | A–I and appendix | not yet written |
+| | 2. Setting | drafted; under review |
+| | 3. The main theorem | drafted; under review |
+| | 4. The principal propositions | drafted; under review |
+| | 5. Proof of Theorems A and B | drafted; under review |
+| | 6. The constants and the order of their choice | drafted; under review |
+| Part II | C. Effective actions: the marginal flow | drafted (first part); under review |
+| | F. Infinite volume | drafted; under review |
+| | A, B, D, E, G–J and the appendix | not yet written |
 
 ## How it is written
 

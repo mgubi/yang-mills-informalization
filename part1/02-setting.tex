@@ -1,1 +1,339 @@
 \section{Setting}\label{sec:setting}
+
+Lattice observables are local functions of parallel transports; their limiting fields are distinguished by all separated correlations.
+
+The faithful unitary realization $G\subset U(n_G)$ is fixed, with $G$ closed and its real Lie algebra $\g$ simple and nonabelian; connectedness is not assumed. Throughout,
+\begin{equation}\label{eq:gauge-metric}
+\langle X,Y\rangle_\g=-n_G^{-1}\operatorname{Re}\tr(XY),\qquad \dimG=\dim_\R\g\,.
+\end{equation}
+Here $\N=\{0,1,\ldots\}$, coordinate indices run from $1$ to $4$, $|x|$ is Euclidean and $|x|_\infty=\max_a|x^a|$. The block-spin penalty is a fixed $\blockpenalty>0$. Time is the fourth coordinate: $t(x)=x^4$, $\vec x=(x^1,x^2,x^3)$, $\minksquare(x)=(x^4)^2-|\vec x|^2$ and $\forwardcone=\{\mathbf p:|\vec{\mathbf p}|\le\mathbf p^4\}$. Fourier phases use $e^{i\mathbf p\cdot x}$ with the Euclidean pairing; Hilbert inner products are antilinear in the first variable. Spacetime integrals use Lebesgue measure. We include arity zero: empty products are $1$, and empty sums and the maximum of an empty degree list are $0$.
+
+The ultraviolet index is $N$, the volume index is $p$ and the renormalization level is $0\le m\le N$; blocking decreases the level. Odd ratios $\ell_m\ge3$ determine $D_m=\prod_{i<m}\ell_i$, $a_m=D_m^{-1}$ and $s_m=\log D_m$. The level-$m$ torus has $L_pD_m$ sites per side. A constructed token is $(d,\mathbf c)$, its insertion is $O^{(d)}_{N,p}(\mathbf c,y)$, and Wilson expectation is $\langle\cdot\rangle_{N,p}$. A field is $(d,A)$, or $A$ when its degree is specified. We also write correlations as $S(A_1(x_1),\ldots,A_n(x_n))$; their values and derivatives concern separated points. Constants may depend on $G$, its fixed realization, $\blockpenalty$ and the fixed construction; every further dependence and uniformity is stated.
+\paragraph{The lattice theory.} The matrix realization fixes the Wilson action and the logarithmic coupling coefficient. Separated tests specify correlations away from coincidences.
+
+\begin{definition}[Gauge group and Casimir]\label{def:gauge-group}
+A gauge group is an integer $n_G\ge1$, a closed subgroup $G\subset U(n_G)$ and a real subspace $\g\subset M_{n_G}(\C)$ such that
+\begin{equation}\label{eq:lie-algebra}
+X\in\g\quad\Longleftrightarrow\quad \exp(tX)\in G\quad\hbox{for every }t\in\R\,.
+\end{equation}
+Simplicity means that $[\g,\g]\ne0$ and every real subspace $I_{\rm id}\subset\g$ with $[\g,I_{\rm id}]\subset I_{\rm id}$ is $0$ or $\g$. With the fixed inner product and an orthonormal basis $(e_\alpha^{\g})_{\alpha=1}^{\dimG}$, define
+\begin{equation}\label{eq:casimir}
+C_{\g}=-\dimG^{-1}\sum_\alpha\operatorname{tr}_{\g}(\operatorname{ad}(e_\alpha^{\g})^2),\qquad b_0=\frac{11C_{\g}}{48\pi^2},\qquad \kappa_G=\frac{11C_{\g}}{24\pi^2}\,.
+\end{equation}
+Also put $\operatorname{pr}(u)=1-n_G^{-1}\operatorname{Re}\operatorname{tr}u$ and $\operatorname{ch}(u)=n_G^{-1/2}\|u-\mathrm{Id}_{n_G}\|_{\mathrm F}$, so $\operatorname{ch}(u)^2=2\operatorname{pr}(u)$. The quantity $\operatorname{ch}(u)$ is the chord from $u$ to the identity.
+\end{definition}
+
+\begin{definition}[Configurations and tests]\label{def:configurations}
+For $n\ge0$, let $\mathrm{Conf}_n=\{x\in(\R^4)^n:x_i\ne x_j\ (i\ne j)\}$ and $\mathrm{Gen}_n=\{x:x_i^a\ne x_j^a\ (i\ne j,\ a=1,\ldots,4)\}$. Write $\operatorname{sep}_\infty(x)=\min_{i\ne j}|x_i-x_j|_\infty$, with value $+\infty$ if $n\le1$. A separated test is a globally smooth complex function with compact closed support contained in $\mathrm{Conf}_n$. Write $\mathcal S_n=\mathcal S(\R^{4n};\C)$ and $\mathcal S=\mathcal S_1$. For a side $L>0$, put
+\begin{equation}\label{eq:nohit}
+\mathrm{NoHit}_{L,n}=\{x:x_i-x_j\notin L\Z^4\ (i\ne j)\}\,.
+\end{equation}
+The group $H_4\subset O(4)$ consists of the signed permutation matrices. Its reflection in the $a$th coordinate is $\mathsf s_a^{\rm refl}$.
+\end{definition}
+
+\begin{definition}[Wilson lattice theory]\label{def:wilson-theory}
+For an integer $n_{\rm tor}\ge1$ put $\Lambda_{n_{\rm tor}}=(\Z/n_{\rm tor}\Z)^4$. A configuration assigns $U(y,a)\in G$ to each positive link $(y,a)$; a reversed link has inverse value. Define
+\begin{align}\label{eq:wilson-law}
+U_{y;ac}&=U(y,a)U(y+e_a,c)U(y+e_c,a)^{-1}U(y,c)^{-1},\\
+E^{\rm W}_{n_{\rm tor}}(U)&=\sum_{y\in\Lambda_{n_{\rm tor}}}\sum_{a<c}\operatorname{pr}(U_{y;ac}),\\
+\mu_{n_{\rm tor},\beta}(dU)&=Z_{n_{\rm tor},\beta}^{-1}e^{-\beta E^{\rm W}_{n_{\rm tor}}(U)}\prod_{y,a}dh(U(y,a))\,.
+\end{align}
+Here $dh$ is probability Haar measure on $G$ and $Z_{n_{\rm tor},\beta}$ is the integral of the numerator. A gauge transformation is $U^{\gamma_{\rm g}}(y,a)=\gamma_{\rm g}(y)U(y,a)\gamma_{\rm g}(y+e_a)^{-1}$. Lattice isometries act on links by transport, with inversion on reversed links. Let $r_{n_{\rm tor}}(j)$ be the representative of $j$ in $(-n_{\rm tor}/2,n_{\rm tor}/2]$.
+\end{definition}
+
+\begin{definition}[Wilson families and regularity]\label{def:wilson-family}
+A Wilson family consists of strictly increasing positive integer sequences $(L_p),(D_N)$, real numbers $\beta_{N,p}$, probability Haar measure on $G$, a set $\mathcal T$ and functions $I_{N,p}(v,y;U)\in\C$ for $v\in\mathcal T$ and $y\in\Lambda_{L_pD_N}$. Put $a_N=D_N^{-1}$, $\hat y=a_N(r_{L_pD_N}(y^a))_{a=1}^4$ and $\mu_{N,p}=\mu_{L_pD_N,\beta_{N,p}}$.
+
+The family is regular if:
+
+\begin{description}[font=\normalfont,leftmargin=3.8em,labelindent=0pt,nosep]
+\item[Reg1.] there is $b_*>0$ such that, for every $\varepsilon>0$, eventually in $N$, $|\beta_{N,p}/\log(1/a_N)-b_*|<\varepsilon$ for every $p$;
+\item[Reg2.] every $U\mapsto I_{N,p}(v,y;U)$ is continuous;
+\item[Reg3.] every such insertion is gauge invariant;
+\item[Reg4.] for each $v$ there is a finite $\Sigma_v\subset\Z^4$, independent of $N,p,y$, such that the insertion depends only on links with both ends in $y+(\Sigma_v\bmod L_pD_N)$.
+\end{description}
+\end{definition}
+
+\begin{definition}[Moments and ordered convergence]\label{def:ordered-convergence}
+For $v\in\mathcal T^n$, set
+\begin{equation}\label{eq:lattice-moments}
+\latmoment_{N,p}(v;y)=\int\prod_iI_{N,p}(v_i,y_i;U)\,d\mu_{N,p}(U),\qquad \latsmear_{N,p}(v;f)=a_N^{4n}\sum_{y\in\Lambda_{L_pD_N}^n}f(\hat y)\latmoment_{N,p}(v;y)\,.
+\end{equation}
+A separated test $f$ is $p$-admissible if its support is contained in $((-L_p/2,L_p/2)^4)^n$. For $\mathsf v:\N\to\N$, ordered convergence to kernels $K_n(v;x)$ along $\mathsf v$ means that for every $n$, token list $v$ and separated test $f$: $f$ is $\mathsf v(k)$-admissible eventually in $k$, and there are numbers $C_j^\infty(v;f)$ such that $\latsmear_{N,j}(v;f)\to C_j^\infty(v;f)$ along the full sequence $N\to\infty$ at every $f$-admissible $j$, and $C_{\mathsf v(k)}^\infty(v;f)\to\int fK_n(v;\cdot)$. No condition is imposed on $C_j^\infty(v;f)$ at inadmissible volumes.
+\end{definition}
+
+\paragraph{Local observables and blocking.} Local lattice functions represent polynomial curvature labels; their Taylor normalization and coefficient transfer to a reference level determine the renormalized insertions.
+
+\begin{definition}[Polynomial labels and local sections]\label{def:local-sections}
+Let $\mathcal J$ be the space of $\g$-valued connection jets in radial gauge, written $\mathcal A_a(x)=\sum_{k\ge0}\mathcal A_{k,a}(x)$, where $\mathcal A_{k,a}$ is homogeneous of polynomial degree $k+1$ and $\sum_ax^a\mathcal A_{k,a}(x)=0$. Give the coordinates of $\mathcal A_k$ bidegree $(k+2,1)$: the first entry is engineering weight and the second counts polynomial factors. Let $V_d$ be the complex polynomials in these coordinates of engineering weight at most $d$ invariant under simultaneous $\operatorname{Ad}(G)$. Fix a basis homogeneous in both degrees, the supremum coefficient norm, conjugation and the induced $H_4$ action. Equivalently these are invariant polynomials in curvature jets, with curvature weight $2$ and covariant differentiation adding $1$.
+
+A local section in degree $d$ is a linear map $\mathbf c\mapsto\localsection{d}[\mathbf c]$ to polynomials in the real and imaginary parts of link matrix entries on a fixed finite stencil $\Sigma_d\subset\Z^4$. It is gauge invariant, commutes with conjugation, is $H_4$ covariant and sends the polynomial unit to $1$. Its Taylor normalization is the following equality for every radial jet $\mathsf j$ and $0\le k\le d$:
+\begin{equation}\label{eq:local-taylor}
+\left.\frac{d^k}{dh_{\rm lat}^k}\localsection{d}[\mathbf c](U(h_{\rm lat},\mathsf j))\right|_{h_{\rm lat}=0}
+=\left.\frac{d^k}{dh_{\rm lat}^k}\mathbf c((h_{\rm lat}^{k'+2}\mathsf j_{k'})_{k'\ge0})\right|_{h_{\rm lat}=0}\,.
+\end{equation}
+Here $U(h_{\rm lat},\mathsf j)$ is parallel transport along the spacing-$h_{\rm lat}$ links of the radial polynomial potential through the required order, with transport equation $u'(t)=u(t)\mathcal A(t)$, $u(0)=1_G$.
+\end{definition}
+
+\begin{definition}[Constants and level data]\label{def:level-data}
+The fixed numerical data are kernel parameters; stage data indexed by $j\ge4$ (a derivative order $\mathfrak q_j\ge6$, a spatial power $\varpi_j\ge2$, support exponent $\sigma_j=100$, path width $w_j^{\rm path}>0$, path bound $A_j^{\rm path}>0$, column bound $C_j\ge1$, drift allowance $\omega_j^{\rm RG}\ge0$ and positive clipping constants); odd stage ratios $\ell^{\mathrm{st}}_j$; exponents $\theta_j$ with $0<\theta_{J_m}\le J_m^{-1}$; entry bounds; a reference coupling $\bar\beta>1$; and entry levels and minimum periods. The orders $\mathfrak q_j$ and powers $\varpi_j$ tend to infinity. Their order of choice is given in Section~\ref{sec:constants}. At each stage the numerical requirements of Part~II, §§B--E, G.2, I.1 and J are lower bounds on the stage ratio or on the entry level depending only on the data preceding it, and raising an entry level keeps all earlier requirements. Proposition~\ref{prop:U1} asserts the existence of one choice and one construction meeting these requirements, together with the represented densities, marked transfers and additional lattice estimates specified below; its constants are called admissible. Nothing is asserted for other choices satisfying the displayed conditions.
+
+A level system has $J_m\ge4$, $J_m\le J_{m+1}\le J_m+1$, $J_m\to\infty$, $\ell_m=\ell^{\mathrm{st}}_{J_{m+1}}$, and the spacings fixed above. The stage orders, powers and support exponents are nondecreasing along the levels; $\theta_j$ is antitone. Put
+\begin{align}\label{eq:level-scales}
+\hat\beta_m&=\bar\beta+\kappa_Gs_m,& \cutoffsize_m&=\exp((\log\log\hat\beta_m)^2),& t_m&=\hat\beta_m^{-1/2}\cutoffsize_m,\\
+B_m&=\lceil(\log\hat\beta_m)^2\rceil,& \epsilon_m^{\rm reg}&=\hat\beta_m^{-11/10},& \epsilon_m^{\rm for}&=e^{-(\cutoffsize_m)^{1/5}},\\
+\Lambda_m^{\mathrm{loop}}&=2(\cutoffsize_m)^{\theta_{J_m}},& \mathfrak B_m&=[\hat\beta_m/2,2\hat\beta_m]\,.
+\end{align}
+The entrance conditions are $\hat\beta_m>1$, $t_m\le1$, $L_pD_m\ge100(B_m+1)$, and $L_pD_{m+1}\ge100((J_{m+1}+3)\ell_m+1)$ for all $m,p$, together with
+\begin{equation}\label{eq:entry-bounds}
+\frac{\omega_{J_{m+1}}^{\rm RG}}{\log\ell_m}\le J_{m+1}^{-2},\qquad
+\frac{\log(1+A_j^{\rm path}+(w_j^{\rm path})^{-1}+C_j+R_j^{\rm rel}+\sigma_j)}{\log\ell_m}\le j^{-2},\quad j=J_{m+1}\,,
+\end{equation}
+where $R_j^{\rm rel}$ is the clipping relaxation length. The stage ratios are nondecreasing. The conditions $\log\ell_m\to\infty$ and $\log\ell_m/s_m\to0$ are required only as limits; the quotient at $m=0$ plays no role.
+\end{definition}
+
+\begin{definition}[Block-spin transformation]\label{def:block-spin}
+For each step of the fixed level system, let $\alpha_{\rm tag}$ range over the finite frame and predictor tags of the block-spin construction in Part~II, §B. Write $\lambda^{\rm tag}(U,\alpha_{\rm tag})$ for the product of their probability masses and $Q_e^{\rm pred}(U,\alpha_{\rm tag})\in G$ for the resulting predictor on coarse link $e$. The frame and predictor cutoffs are chosen so that their minimizing branches are unique and the eligible axial tags are nonempty. All choices are made once for the level system. Define
+\begin{align}\label{eq:block-kernel}
+\blockkernel{m}_\beta(U,V)&=\sum_{\alpha_{\rm tag}}\lambda^{\rm tag}(U,\alpha_{\rm tag})\prod_{e\text{ coarse}}\frac{e^{-\blockpenalty\beta\wilsonterm(V_eQ_e^{\rm pred}(U,\alpha_{\rm tag})^{-1})}}{\int_Ge^{-\blockpenalty\beta\wilsonterm(u)}\,dh(u)},\\
+(\blockmap{m}_\beta f)(V)&=\int\blockkernel{m}_\beta(U,V)f(U)\,dU,\qquad \int\blockkernel{m}_\beta(U,V)\,dV=1\,.
+\end{align}
+Here $dU,dV$ are product probability Haar measures.
+\end{definition}
+
+\begin{definition}[Representations and their admissible class]\label{def:representations}
+Distances in this definition use the unit-lattice sup metric. At level $m$, flag every site incident to a plaquette whose chord exceeds $t_m$, and call a support $X$ healthy when it contains no flagged site. A regular activity has a support $X_i$, anchor $o_i\in X_i$ and a Borel gauge-invariant real function $E_i^{\rm reg}$, local on $X_i$, smooth through order $\mathfrak q_{J_m}$ in exponential left-link increments on healthy configurations, with the corresponding ordered derivatives existing there. It vanishes at the trivial configuration. A support is nonwrapping at $o_i$ if $10\operatorname{dist}(x,o_i)$ is less than the torus side for every $x\in X_i$. On such a support the Hessian of $\mathcal A\mapsto E_i^{\rm reg}(\exp\mathcal A)$ at zero vanishes on every pair of affine directions $\dot{\mathcal A}_{(y,a)}=u_a+\sum_c r_{L_pD_m}(y-o_i)^cv_{ac}$, using the centered lift $r_{L_pD_m}$. A forced activity has a support $Y_i$, nonempty inventory $I_i\subset Y_i$ and a Borel gauge-invariant function $K_i^{\rm for}$, vanishing unless $Y_i\cap\flags_m(U)=I_i$ and a fixed Borel gauge-invariant test holds. Both $K_i^{\rm for}$ and that test take equal values on configurations agreeing on the links inside $Y_i$ and the flags in $Y_i$. Both activity families are countable and equivariant under translations and $H_4$, by permutations of their indices, including supports, anchors, inventories, tests and values.
+
+For a support $X$, let $\operatorname{cov}_{B_m}(X)$ be the minimum number of radius-$B_m$ lattice balls with connected union covering $X$. Let $\|E_i^{\rm reg}\|_m$ be the supremum of all ordered left derivatives through order $\mathfrak q_{J_m}$, over healthy configurations and directions satisfying $|\dot{\mathcal A}_e|\le t_m(1+\operatorname{dist}(e^-,o_i))^{\varpi_{J_m}}$. The activity bounds mean the existence of nonnegative majorants $e_i^{\rm maj}\ge\|E_i^{\rm reg}\|_m$, $k_i^{\rm maj}\ge\sup_U|K_i^{\rm for}(U)|$ such that, for every site $x$, the following series converge and satisfy
+\begin{equation}\label{eq:activity-bounds}
+\sum_{o_i=x}e^{\sigma_{J_m}\operatorname{cov}_{B_m}(X_i)}e_i^{\rm maj}\le\epsilon_m^{\rm reg},\qquad
+\sum_{x\in Y_i}e^{\sigma_{J_m}\operatorname{cov}_{B_m}(Y_i)}k_i^{\rm maj}\le\epsilon_m^{\rm for}\,.
+\end{equation}
+A representation $\rho=(\beta,v_{\rm vac},\pathaction,E^{\rm reg},K^{\rm for})$ has the fixed path action $\pathaction=\pathaction_{N,m}$ and density
+\begin{multline}\label{eq:represented-density}
+\density\rho(U)=\exp\left\{v_{\rm vac}|\Lambda_{L_pD_m}|-\pathaction(\beta,U)-\sum_i\mathbf1_{X_i\text{ healthy}}E_i^{\rm reg}(U)\right\}\\
+{}\cdot\sum_{\substack{\mathcal A_{\rm for}\subset\N\text{ finite}\\ Y_i\ (i\in\mathcal A_{\rm for})\text{ pairwise disjoint}\\ \bigcup_{i\in\mathcal A_{\rm for}}I_i=\flags_m(U)}}\prod_{i\in\mathcal A_{\rm for}}K_i^{\rm for}(U)\,.
+\end{multline}
+The path action and its arrays, with $c_{\rm dir}>16c_{\rm lin}>0$, are defined in Part~II, §§A--D, independently of $p$. For its transported curvature slots $\mathcal F_{\mathfrak p i}$, rows $\mathcal L_{\mathfrak p}^{\rm path}=\sum_i r_{\mathfrak p i}\mathcal F_{\mathfrak p i}$ and invariant $k$-linear atoms $\mathfrak a_i^{(k)}$, the bounds are
+\begin{equation}\label{eq:path-bounds}
+\sum_i|r_{\mathfrak p i}|e^{w_{J_m}^{\rm path}\operatorname{length}(\mathcal F_{\mathfrak p i})}\le A_{J_m}^{\rm path},\qquad
+\sum_i|\mathfrak a_i^{(k)}|e^{w_{J_m}^{\rm path}\operatorname{length}(\mathfrak a_i^{(k)})}\le
+\begin{cases}\Lambda_m^{\rm loop},&k=2,\\ A_{J_m}^{\rm path},&k=3,4.\end{cases}
+\end{equation}
+Slot length is path length plus four; atom length is the sum of its slot lengths, and atom magnitude is the sum of absolute coefficients in the fixed colour basis. If $s_{\mathfrak p\mathfrak q}$ sums the row coefficients of orientation $\mathfrak q$, kinetic normalization means $c_{\rm dir}\delta_{\mathfrak q\mathfrak r}+\sum_{\mathfrak p}s_{\mathfrak p\mathfrak q}s_{\mathfrak p\mathfrak r}=\delta_{\mathfrak q\mathfrak r}$. For each ordered pair of orientations and colour components, the sum of quadratic-atom coefficients and its first moments in the difference of slot offsets vanish, with absolute convergence.
+
+An admissibility datum consists, in addition, of subsets $\mathcal A_{N,m,p}$ of the representations just defined, initial subsets $\mathcal I_{N,p}\subset\mathcal A_{N,N,p}$, and relations $\mathcal R_{N,m,p}\subset\mathcal A_{N,m,p}\times\mathcal A_{N,m+1,p}$. An admissible representation means a member of $\mathcal A_{N,m,p}$. A trajectory of the specified recursion is a tuple $(\rho_m)_{0\le m\le N}$ with $\rho_N\in\mathcal I_{N,p}$ and $(\rho_m,\rho_{m+1})\in\mathcal R_{N,m,p}$ for every $m<N$. Proposition~\ref{prop:U1} asserts the existence of these subsets and relations with its continuation property, for members of the chosen subsets. The numerical activity bounds alone do not define membership.
+
+A curve has fixed regular and forced addresses. Its $\beta$ and $v_{\rm vac}$ are continuous, and, as the parameter tends to any point, the differences of its regular derivatives and forced functions admit majorants whose sums with the activity support weights in~\eqref{eq:activity-bounds} tend to zero, summed over all addresses. No continuity across flag boundaries is required.
+\end{definition}
+
+\begin{definition}[Renormalized insertions]\label{def:insertions}
+For each $d$ choose a reference level $\reflevel{d}$ with $J_{\reflevel{d}}\ge d+3$ and $\mathfrak q_{J_m}\ge d+1$, $\varpi_{J_m}\ge d$ for every $m\ge \reflevel{d}$. Choose invertible terminal coefficient maps $\mathsf Z_{N,p,d}:V_d\to V_d$ for all $N,p$. When $N\ge \reflevel{d}$ they are obtained by the linear transfer of a degree-$d$ marked density along the chosen trajectory, normalized so that the coefficient at level $\reflevel{d}$ of a terminal input $\mathbf v$ is $\mathsf Z_{N,p,d}\mathbf v$. Let $\factorscale_t$ multiply a basis vector of bidegree $(w,k)$ by $t^k$. Thus this diagonal scaling counts polynomial factors, not engineering weight. For every cutoff set
+\begin{equation}\label{eq:renormalized-insertion}
+O^{(d)}_{N,p}(\mathbf c,y;U)=a_N^{-d}\localsection{d}[\factorscale_{t_N^{-1}}\mathsf Z_{N,p,d}^{-1}\mathbf c](y;U)\,.
+\end{equation}
+For $N\ge \reflevel{d}$ the marked densities are linear in $\mathbf v$ and obey the exact equation $H^{\rm ins}_{N,p,m;d}=\ell_m^d\blockmap{m}_{\beta_{N,p,m+1}}H^{\rm ins}_{N,p,m+1;d}$ down to $\reflevel{d}$, with terminal density $a_N^d\operatorname{dens}\rho_{N,p,N}\,a_N^{-d}\localsection{d}[\factorscale_{t_N^{-1}}\mathbf v]$. This fixes the coefficient normalization, without an explicit formula for $\mathsf Z^{-1}$. At $N<\reflevel{d}$ no transfer normalization is required; the chosen maps still define the displayed insertion. The distinguished unit token in $V_d$ is $a_{\reflevel{d}}^d$ times the polynomial unit in coefficient coordinates. Denote it by $\mathbf u_d$; its insertion is $1$ for $N\ge \reflevel{d}$. This distinction is retained when passing to quotient units. The marked-density remainder norms are given in Part~II, §E.2.
+\end{definition}
+
+\begin{definition}[Chessboard roots and differences]\label{def:chessboard}
+For a tiling $\mathcal C^{\rm tile}$ of the fine torus into congruent cells, reflect a base-cell observable $F_{\rm cell}$ into every cell, applying conjugation on odd reflections, and denote these copies by $(F_{\rm cell})_C$. Its chessboard root is
+\begin{equation}\label{eq:chessboard-root}
+\|F_{\rm cell}\|_{\mathcal C^{\rm tile}}=\left|\left\langle\prod_{C\in\mathcal C^{\rm tile}}(F_{\rm cell})_C\right\rangle_{N,p}\right|^{1/|\mathcal C^{\rm tile}|}\,.
+\end{equation}
+Interior means dependence only on links with both ends strictly inside the base cell. The centered tiling $\mathcal C_m^{\rm tile}(y)$ has physical cell side $a_m$ and base cell centered at $y$. For a list $\boldsymbol l=((i_1,a_1),\ldots,(i_k,a_k))$ of slot-axis pairs put $\Delta_{\boldsymbol l}=\prod_{\alpha=1}^k a_N^{-1}(\tau_{i_\alpha,a_\alpha}-1)$, where $\tau_{i,a}$ shifts lattice slot $i$ forward by one link. Let $\partial_{\boldsymbol l}$ be the corresponding continuum derivative. Physical torus distance is $\min_{z\in L_p\Z^4}|\hat y-\hat y'+z|_\infty$.
+\end{definition}
+
+\paragraph{Euclidean fields and stress.} The all-spectator null space defines the fields, free Maxwell fields describe their short-distance comparison, and shell fluxes normalize the stress tensor.
+
+\begin{definition}[Euclidean tables and field spaces]\label{def:euclidean-table}
+A table $S$ assigns a complex multilinear function of $\mathbf c_i\in V_{d_i}$ to each list of degrees and points. Its Euclidean properties are:
+
+\begin{description}[font=\normalfont,leftmargin=3.8em,labelindent=0pt,nosep]
+\item[E1.] simultaneous permutation symmetry, $S_0=1$, and deletion of a distinguished unit slot $\mathbf u_d$.
+\item[E2.] $S(h\mathbf c;hx)=S(\mathbf c;x)$ for $h\in H_4$, and $S(\overline{\mathbf c};x)=\overline{S(\mathbf c;x)}$.
+\item[E3.] $S(\mathbf c;x+z)=S(\mathbf c;x)$ for every $z\in\R^4$.
+\item[E4.] for positive-side separated words $w_i$ and coefficients $a_i^{\rm RP}$, $\sum_{i,j}\overline{a_i^{\rm RP}}a_j^{\rm RP}S(\mathsf s_a^{\rm refl}w_i^*w_j)\ge0$ for each $a$. The star reverses the word and applies conjugation to its labels; $\mathsf s_a^{\rm refl}$ also acts on those labels.
+\item[E5.] the same inequality holds for finite sums of words smeared against joint smooth compactly supported tests on positive-side separated configurations. Every mixed pairing integral is absolutely integrable.
+\item[E6.] every kernel is smooth on $\mathrm{Conf}_n$.
+\item[E7.] for every $n,d_i,\mathbf c_i$ and positional derivative order $k$, there are $C\ge0$ and an integer $q_{\rm grow}\ge0$ such that $\|D^kS(\mathbf c;x)\|\le Cr^{-q_{\rm grow}}$ whenever $0<r\le1$ and $\operatorname{sep}_\infty(x)\ge r$.
+\end{description}
+For such a table, with $n\ge0$ and $\boldsymbol v$ any list of $n$ spectator tokens, define
+\begin{equation}\label{eq:field-quotient}
+\begin{split}
+\nullspace{d}(S)&=\{\mathbf c\in V_d:S(\mathbf c(x_0),\boldsymbol v(x))=0\text{ for every }n,\boldsymbol v\text{ and }(x_0,x)\in\Conf{n+1}\},\\
+F_d&=V_d/\nullspace{d}(S)\,.
+\end{split}
+\end{equation}
+Equip each finite-dimensional quotient with a norm. The response of $[\mathbf c]$ is the function of all spectator lists and separated configurations appearing in this formula. The response label space $\mathcal L$ is the linear span of all such responses. Inclusions $\jmath_{d,e}$, derivative maps $\partial_a$, conjugation and units on the quotients are the maps characterized by equality, differentiation, conjugation and deletion of slots in all correlations. Their existence and the directed-union property of $\mathcal L$ are conclusions of Proposition~\ref{prop:P5}. The quotient unit is $\unitfield{d}=[\mathbf u_d]$.
+\end{definition}
+
+\begin{definition}[Free Maxwell fields and frames]\label{def:maxwell}
+Let $\dimG$ independent real Euclidean Maxwell curvatures have potential covariance $\delta_{\alpha\beta}\delta_{ac}\Gamma(x-y)$, $\Gamma(x)=1/(4\pi^2|x|^2)$. Their curvature covariance is obtained by applying $\partial_a\mathcal A_c-\partial_c\mathcal A_a$ in each argument. The on-shell curvature jets satisfy antisymmetry, the linear Bianchi equations and $\sum_a\partial_aF_{ac}=0$. Let $\maxwellspace{d}$ be the space of $\operatorname{Ad}(G)$-invariant complex Wick polynomials in these jets of weight at most $d$, modulo these equations; $S^{\mathrm{Max}}$ is their separated Wick table. This defines its units, conjugation, inclusions, derivatives and $O(4)$ actions $R_d^{\mathrm{Max}}$. Normalize its stress $T^{\mathrm{Max}}$ by the translation shell identity of Definition~\ref{def:stress-laws}. Write $\curvaturesquare=\frac14\sum_{a,c,\alpha}:F^\alpha_{ac}F^\alpha_{ac}:$.
+
+A scaling sequence consists of positive radii $r_k\to0$ and complex linear isomorphisms $\scaleframe{k}{d}:\maxwellspace{d}\to F_d$. It is stable if, at each fixed degree horizon, eventually these maps preserve conjugation, $H_4$, units and inclusions exactly. Scaling dimensions are included in $\scaleframe{k}{d}$; an additional factor $r_k^{d}$ is not put on ordinary comparison slots.
+\end{definition}
+
+\begin{definition}[Words and slab operators]\label{def:os-spaces}
+A word is a finite ordered list of pairs $(x_i,\mathbf c_i)$, with distinct positions; it is positive in axis $a$ if every $x_i^a>0$. Quotient the complex span of positive words by the null space of the form $\langle w,v\rangle=S(\mathsf s_a^{\rm refl}w^*v)$ and complete. This is $\mathcal H^{\mathrm{OS}}_a$. The empty word is $\Omega_a^{\rm OS}$. Positive translation in direction $a$ induces the contraction semigroup $e^{-tH_a^{\rm OS}}$; put $\mathcal H^0_a=\ker H_a^{\rm OS}$ and let $P^0_a$ be its orthogonal projection.
+
+A slab word of width $h_{\rm sl}>0$ has $0<x_i^4<h_{\rm sl}$. It has buffer $r$ if $\operatorname{sep}_\infty(x)\ge r$ and $r\le x_i^4\le h_{\rm sl}-r$. For such a word $w$, let $A_wv=w\,\tau_{h_{\rm sl} e_4}v$ on positive words, and let $w^\dagger=\tau_{h_{\rm sl} e_4}\mathsf s_4^{\rm refl}w^*$. The repeated reflected word with exterior $w_{\rm ext}$ is $(A_{w^\dagger}A_w)^{n_{\rm rep}}w_{\rm ext}$. A slab operator is the bounded extension $\mathsf B_{h_{\rm sl}}(w)$ of $A_w$, when it exists. Its compression is $M^0(w)=P^0_4\mathsf B_{h_{\rm sl}}(w)|_{\mathcal H^0_4}$, after any translation placing the word in a slab. The existence and independence assertions are in Proposition~\ref{prop:P8}.
+\end{definition}
+
+\begin{definition}[Shell fluxes and stress laws]\label{def:stress-laws}
+For separated $x_0,x_1,\ldots,x_n$, let $\chi\in C_c^\infty(\R^4;\R)$ equal $1$ near $x_0$, with $x_i\notin\operatorname{supp}\chi$ for $i>0$. For a tensor $J_{ab}\in F_4$, $A\in F_d$, spectator list $\boldsymbol B$, and $K_{\rm rot}\in\mathfrak{so}(4)$, define
+\begin{align}\label{eq:shell-flux}
+\mathcal P_b^J(\chi;A,\boldsymbol B;x)&=-\sum_a\int\partial_a\chi(y)S(J_{ab}(y),A(x_0),\boldsymbol B(x))\,dy,\\
+\mathcal Y_{K_{\rm rot}}^J(\chi;A,\boldsymbol B;x)&=-\sum_{a,b}\int\partial_a\chi(y)(K_{\rm rot}(y-x_0))_bS(J_{ab}(y),A(x_0),\boldsymbol B(x))\,dy\,.
+\end{align}
+A conserved tensor is real, symmetric and satisfies $\sum_a\partial_aJ_{ab}=0$ in $F_5$. It is centered when each mixed one-point function is zero. It is $H_4$ tensorial when $hJ_{ab}=\sum_{i,j}h_{ia}h_{jb}J_{ij}$. Raw shell laws for $\mathsf p_b,\mathsf Y_{K_{\rm rot}}$ mean $\mathcal P_b^J=S((\mathsf p_bA)(x_0),\boldsymbol B(x))$ and $\mathcal Y_{K_{\rm rot}}^J=S((\mathsf Y_{K_{\rm rot}}A)(x_0),\boldsymbol B(x))$ for every such choice. For an $O(4)$ representation $R_d$, write $\mathsf L_d(K_{\rm rot})=\left.\frac d{dt}R_d(e^{tK_{\rm rot}})\right|_{t=0}$. The normalized stress laws use $\mathsf p_b=\partial_b$ and $\mathsf Y_{K_{\rm rot}}=\mathsf L_d(K_{\rm rot})$. These integrals avoid all insertion points.
+\end{definition}
+
+\paragraph{Relativistic reconstruction.} The reconstruction properties relate phase correlations and their complex-time continuation to relativistic fields on one common invariant domain.
+
+\begin{definition}[Relativistic data]\label{def:relativistic-data}
+A relativistic datum is a complex Hilbert space $\mathcal H$, a complex vector space $\mathcal L$, a complex linear subspace $\mathcal D\subset\mathcal H$, $\Omega\in\mathcal D$, fields $\Phi(\ell_{\rm lab},f):\mathcal D\to\mathcal D$ complex linear in both $\ell_{\rm lab}\in\mathcal L$ and $f\in\mathcal S$, an antilinear label map $\ell_{\rm lab}\mapsto\ell_{\rm lab}^*$, and strongly continuous unitary translations $\mathsf T(z_{\rm tr})$. It includes a Borel projection-valued measure $\mathsf E$ on $\R^4$, extended by zero to non-Borel subsets, with diagonal finite measures $\mu_\psi(A)=\langle\psi,\mathsf E(A)\psi\rangle$ for Borel $A$.
+
+It also includes a topological group $\mathcal P$ identified by a homeomorphism $\kappa_{\rm P}$ with $SO^+(1,3)\ltimes\R^4$, respecting identity and multiplication; write $\kappa_{\rm P}(\gamma)=(\Lambda_\gamma,z_\gamma)$. Here $\Lambda$ preserves $\mathsf m$, has determinant $1$, and maps $\overline V_+$ onto itself. There are strongly continuous unitaries $\mathsf U(\gamma)$ forming a representation, with $\mathsf U(1,z_{\rm tr})=\mathsf T(z_{\rm tr})$, and linear bijections $\rho_{\rm lab}(\gamma)$ of $\mathcal L$. Put $(\gamma\cdot f)(x)=f(\Lambda_\gamma^{-1}(x-z_\gamma))$. No continuity, finite-dimensionality, translation triviality or involution property is imposed on the label data in this definition.
+\end{definition}
+
+\begin{definition}[Wightman axioms]\label{def:wightman}
+The datum in Definition~\ref{def:relativistic-data} satisfies the following axioms.
+
+\begin{description}[font=\normalfont,leftmargin=3.8em,labelindent=0pt,nosep]
+\item[W0a.] $\langle\psi,\mathsf T(z_{\rm tr})\psi\rangle=\int e^{i\mathbf p\cdot z_{\rm tr}}\,d\mu_\psi(\mathbf p)$ for every $\psi,z_{\rm tr}$.
+\item[W0b.] $\mathsf E(\R^4\setminus\overline V_+)=0$.
+\item[W0c.] every vector fixed by all translations belongs to $\C\Omega$.
+\item[W1a–c.] $\|\Omega\|=1$, $\mathcal D$ is dense, and $\mathcal D$ equals the complex span of all $\Phi(\ell_{\rm lab,1},f_1)\cdots\Phi(\ell_{\rm lab,k},f_k)\Omega$, including $k=0$.
+\item[W1d.] for each $\ell_{\rm lab}$ and $\psi\in\mathcal D$, $f\mapsto\Phi(\ell_{\rm lab},f)\psi$ is continuous from $\mathcal S$ to $\mathcal H$ in norm.
+\item[W1e.] $\langle\Phi(\ell_{\rm lab},f)\psi,\chi\rangle=\langle\psi,\Phi(\ell_{\rm lab}^*,\bar f)\chi\rangle$ on $\mathcal D$.
+\item[W2a.] $\rho_{\rm lab}(1)=1$ and $\rho_{\rm lab}(\gamma\gamma')=\rho_{\rm lab}(\gamma)\rho_{\rm lab}(\gamma')$.
+\item[W2b–d.] $\mathsf U(\gamma)\mathcal D\subset\mathcal D$, $\mathsf U(\gamma)\Omega=\Omega$, and $\mathsf U(\gamma)\Phi(\ell_{\rm lab},f)\psi=\Phi(\rho_{\rm lab}(\gamma)\ell_{\rm lab},\gamma\cdot f)\mathsf U(\gamma)\psi$.
+\item[W3.] if every $x\in\operatorname{supp}f$ and $y\in\operatorname{supp}f'$ have $\mathsf m(x-y)<0$, then $[\Phi(\ell_{\rm lab},f),\Phi(\ell'_{\rm lab},f')]\psi=0$ for every $\ell_{\rm lab},\ell'_{\rm lab}$ and $\psi\in\mathcal D$.
+\end{description}
+\end{definition}
+
+\begin{definition}[Hierarchy data]\label{def:hierarchy}
+A hierarchy over a Wilson family is the following data, with no further conditions implicit:
+
+\begin{description}[font=\normalfont,leftmargin=3.8em,labelindent=0pt,nosep]
+\item[H1.] a relativistic datum as in Definition~\ref{def:relativistic-data};
+\item[H2.] finite-dimensional complex normed spaces $F_d$ and linear maps $\iota_d:F_d\to\mathcal L$; put $\mathbb F=\bigsqcup_{d\ge0}F_d$, $\deg(d,A)=d$, $\iota(d,A)=\iota_dA$;
+\item[H3.] a map $\pi_{\rm quo}:\mathcal T\to\mathbb F$;
+\item[H4.] a compact metric space $\phases$, a Borel measure $\nu$ and a point $\xi_*\in\phases$;
+\item[H5.] functions $S_n^\zeta:\mathbb F^n\times(\R^4)^n\to\C$ for $\zeta\in\phases\sqcup\{\mathrm{mix}\}$;
+\item[H6.] functions $\mathsf F_n:\mathbb F^n\times\C^n\times(\R^3)^n\to\C$;
+\item[H7.] finite sets $\channels{q}$, fields $O_{q,\lambda}\in F_q$ and functions $c_{q,\lambda}(\boldsymbol A;x,o)$ for every finite index set $I_{\rm cl}$, $\boldsymbol A\in\mathbb F^{I_{\rm cl}}$, $x\in(\R^4)^{I_{\rm cl}}$ and $o\in\R^4$;
+\item[H8.] a field $\Theta\in F_4$.
+\end{description}
+In particular this definition does not require inclusions among the $F_d$, a stress tensor, multilinearity of $S^\zeta$, or Euclidean axioms. Those are additional conclusions in Theorem~\ref{thm:B}.
+\end{definition}
+
+\begin{definition}[Reconstruction properties]\label{def:reconstruction}
+A hierarchy satisfies the reconstruction properties when all the following hold:
+
+\begin{enumerate}[label=\textup{R\arabic*.},leftmargin=3em,nosep]
+\item Its relativistic datum satisfies W0–W3.
+\item For every nonzero $\ell_{\rm lab}\in\mathcal L$, $\Phi(\ell_{\rm lab},f)\ne0$ for some $f\in\mathcal S$.
+\item Each $\iota_d$ is injective.
+\item $\Phi(\iota(a),f)\ne0$ for some $a\in\mathbb F$, $f\in\mathcal S$.
+\item Every $\ell_{\rm lab}\in\mathcal L$ equals $\iota_dA$ for some $d,A$.
+\item $\pi_{\rm quo}$ is surjective onto $\mathbb F$.
+\item $\nu(\phases)=1$.
+\item $\nu(O)>0$ for every nonempty open $O\subset\phases$.
+\item For every state $\zeta$, simultaneous permutation of field and position slots preserves $S_n^\zeta$ on $\mathrm{Conf}_n$.
+\item For every state $\zeta$ and field list $\boldsymbol A$, $S_n^\zeta(\boldsymbol A;\cdot)$ is smooth on $\mathrm{Conf}_n$.
+\item For every fixed $n$, $\boldsymbol A\in\mathbb F^n$ and $x\in\Conf{n}$, $\xi\mapsto S_n^\xi(\boldsymbol A;x)$ is continuous.
+\item $\int_\phases S_n^\xi(\boldsymbol A;x)\,d\nu(\xi)=S_n^{\mathrm{mix}}(\boldsymbol A;x)$ for all $n$, $\boldsymbol A\in\mathbb F^n$ and $x\in\Conf{n}$.
+\item At each fixed real spatial configuration, $\boldsymbol z_{\rm time}\mapsto\mathsf F_n(\boldsymbol A;\boldsymbol z_{\rm time},\vec x)$ is holomorphic on $\mathcal Z_n=\{\boldsymbol z_{\rm time}\in\C^n:\operatorname{Im}(\boldsymbol z_{\rm time})_1<\cdots<\operatorname{Im}(\boldsymbol z_{\rm time})_n\}$.
+\item If $t(x_1)<\cdots<t(x_n)$, then $\mathsf F_n(\boldsymbol A;(it(x_i))_i,(\vec x_i)_i)=S_n^{\xi_*}(\boldsymbol A;x)$.
+\item For every $n$, $\boldsymbol A\in\mathbb F^n$, real $h_1<\cdots<h_n$ and $f_i\in\mathcal S$, the limit below holds.
+\end{enumerate}
+
+The limit in R15 is
+\begin{equation}\label{eq:reconstruction-boundary}
+\lim_{r\downarrow0}\int\mathsf F_n(\boldsymbol A;(t(x_i)+irh_i)_i,(\vec x_i)_i)\prod_if_i(x_i)\,dx
+=\langle\Omega,\Phi(\iota(A_1),f_1)\cdots\Phi(\iota(A_n),f_n)\Omega\rangle\,.
+\end{equation}
+For this clause alone, use the convention that the integral of a nonintegrable function is zero; no separate integrability assertion at positive height is included. R13 concerns complex times with real spatial coordinates, and R15 concerns product tests.
+\end{definition}
+
+\paragraph{Products and comparison fields.} The OPE replaces a cluster by single fields, with coefficients independent of spectators and state. The trace test and comparison classes below specify the non-freeness conclusions.
+
+\begin{definition}[OPE geometry and remainders]\label{def:ope}
+For finite $I_{\rm cl},I_{\rm sp}$, $\boldsymbol A\in\mathbb F^{I_{\rm cl}}$, $\boldsymbol B\in\mathbb F^{I_{\rm sp}}$, write $|\boldsymbol A|_{\deg}=\sum_{i\in I_{\rm cl}}\deg A_i$ and concatenate the two lists in a fixed order in $S^\zeta(\boldsymbol A,x;\boldsymbol B,y)$. For $r>0$, $M_{\rm geo}\ge0$, $\eta>0$, a cluster $(x,o)$ satisfies $|x_i-o|\le M_{\rm geo}r$ and $|x_i-x_{i'}|\ge\eta r$ for $i\ne i'$. A spectator configuration is $\delta_{\rm sp}$-clear if $|o-y_j|\ge\delta_{\rm sp}$ and $|y_j-y_{j'}|\ge\delta_{\rm sp}$ for $j\ne j'$. Define
+\begin{equation}\label{eq:ope-remainder}
+\mathcal R_D^\zeta(\boldsymbol A,x;\boldsymbol B,y;o)=S^\zeta(\boldsymbol A,x;\boldsymbol B,y)-\sum_{q=0}^D\sum_{\lambda\in\channels{q}}c_{q,\lambda}(\boldsymbol A;x,o)S^\zeta(O_{q,\lambda}(o),\boldsymbol B(y))\,.
+\end{equation}
+The OPE property is precisely:
+
+\begin{description}[font=\normalfont,leftmargin=3.8em,labelindent=0pt,nosep]
+\item[O1.] for every $I_{\rm cl},\boldsymbol A,M_{\rm geo},\eta,\varepsilon,q,\lambda$ with $M_{\rm geo}\ge0$, $\eta,\varepsilon>0$, there is $r_0>0$ such that $|c_{q,\lambda}(\boldsymbol A;x,o)|\le r^{q-|\boldsymbol A|_{\deg}-\varepsilon}$ for every $0<r<r_0$ and every such cluster;
+\item[O2.] for every $I_{\rm cl},I_{\rm sp},\boldsymbol A,\boldsymbol B,M_{\rm geo},\eta,\delta_{\rm sp},\varepsilon,D$ with $M_{\rm geo}\ge0$, $\eta,\delta_{\rm sp},\varepsilon>0$, there is $r_1>0$ such that $|\mathcal R_D^\zeta|\le r^{D+1-|\boldsymbol A|_{\deg}-\varepsilon}$ for all $0<r<r_1$, every such cluster, every $\delta_{\rm sp}$-clear spectator configuration and every state $\zeta$.
+\end{description}
+Thus the thresholds precede positions and states. Coefficients are part of H7 and do not depend on spectators, state or truncation.
+\end{definition}
+
+\begin{definition}[Trace test and finite Wick profiles]\label{def:trace-test}
+A mode is $(m_{\rm sh},j_h,k_E,h_{\rm mom})$ with $m_{\rm sh}\ge0$, $j_h,k_E\in\N$ and continuous real $h_{\rm mom}$ on $\R^3$ satisfying $h_{\rm mom}(\lambda \mathbf k)=\lambda^{j_h}h_{\rm mom}(\mathbf k)$ for $\lambda>0$. Put
+\begin{equation}\label{eq:mode-kernel}
+K_{m_{\rm sh},k_E,h_{\rm mom}}(r)=\int_{\R^3}\frac{\omega_{m_{\rm sh}}(\mathbf k)^{k_E}h_{\rm mom}(\mathbf k)}{2\omega_{m_{\rm sh}}(\mathbf k)}e^{-r\omega_{m_{\rm sh}}(\mathbf k)}\,d\mathbf k,\qquad \omega_{m_{\rm sh}}(\mathbf k)=\sqrt{m_{\rm sh}^2+|\mathbf k|^2}\,.
+\end{equation}
+A finite Wick profile is any finite complex linear combination of finite products of these kernels. A mass-shell integrand is assigned value zero at $\mathbf k=0$ if its denominator vanishes; this changes no integral. Define $\tracetwopoint(r)=S_2^{\xi_*}(\Theta,\Theta;-re_4/2,re_4/2)$. The trace test is:
+
+\begin{description}[font=\normalfont,leftmargin=3.8em,labelindent=0pt,nosep]
+\item[T1.] $\langle\Omega,\Phi(\iota_4\Theta,f)\Omega\rangle=0$ for every $f\in\mathcal S$;
+\item[T2.] $\traceamplitude=3\dimG/\pi^4>0$;
+\item[T3.] $r^8\log^2(1/r)\tracetwopoint(r)\to \traceamplitude$ as $r\downarrow0$, in $\C$;
+\item[T4.] for every finite Wick profile $W_{\rm Wick}$ and every $\delta>0$, some $0<r<\delta$ has $\tracetwopoint(r)\ne W_{\rm Wick}(r)$.
+\end{description}
+\end{definition}
+
+\begin{definition}[Polynomial mass-shell comparisons]\label{def:polynomial-comparisons}
+For $m_{\rm sh}\ge0$ and a complex polynomial $P_{\rm mom}$ on $\R^4$, define the elementary momentum functional and its density by
+\begin{equation}\label{eq:momentum-functional}
+L_{m_{\rm sh},P_{\rm mom}}(\varphi)=\int_{\R^3}v_{m_{\rm sh},P_{\rm mom}}(\mathbf k)\varphi(\mathbf k,\omega_{m_{\rm sh}}(\mathbf k))\,d\mathbf k,\qquad v_{m_{\rm sh},P_{\rm mom}}(\mathbf k)=\frac{P_{\rm mom}(\mathbf k,\omega_{m_{\rm sh}}(\mathbf k))}{2\omega_{m_{\rm sh}}(\mathbf k)}\,.
+\end{equation}
+Finite polynomial comparison data on a set of generator labels assign a finite list $\mathcal M_{\rm pair}(\mathsf x,\mathsf y)$ of mass--polynomial pairs to each ordered pair of labels, and a complex number $c_{\rm pair}(u,u',\sigma)$ to each pair of words $u=(\mathsf x_1,\ldots,\mathsf x_{n_{\rm word}})$, $u'=(\mathsf y_1,\ldots,\mathsf y_{n_{\rm word}})$ and each permutation $\sigma$. Put
+\begin{multline}\label{eq:polynomial-pairing}
+\Pi^{\rm pair}(u,u';\varphi)=\sum_\sigma c_{\rm pair}(u,u',\sigma)\sum_{\substack{(m_i,P_i)\in\mathcal M_{\rm pair}(\mathsf x_i,\mathsf y_{\sigma i})\\1\le i\le n_{\rm word}}}\int_{(\R^3)^{n_{\rm word}}}\prod_i v_{m_i,P_i}(\mathbf k_i)\\
+{}\cdot\varphi\Big(\sum_i(\mathbf k_i,\omega_{m_i}(\mathbf k_i))\Big)\,d\boldsymbol k\,.
+\end{multline}
+For words of different lengths put $\Pi^{\rm pair}=0$. A polynomial field $\mathsf Q$ is a finite list of words $u_i$ with complex amplitudes $\alpha_i^{\rm pol}$. Empty words are allowed. For two polynomial fields put
+\begin{equation}\label{eq:polynomial-correlation}
+W^{\rm pol}(\mathsf Q,\mathsf Q';\varphi)=\sum_{i,j}\alpha_i^{\rm pol}{\alpha'_j}^{\rm pol}\Pi^{\rm pair}(u_i,u'_j;\varphi)\,.
+\end{equation}
+The Fourier convention is
+\begin{equation}\label{eq:relative-fourier}
+(\wavetransform\psi)(\mathbf p)=\int e^{i\mathbf p\cdot(y-x)}\psi(x,y)\,dx\,dy,\qquad \wavetransform(\bar f\otimes h)=\overline{\fourierplus{f}}\fourierplus{h},\quad \fourierplus{f}(\mathbf p)=\int e^{i\mathbf p\cdot x}f(x)\,dx\,.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Maxwell Fock comparisons]\label{def:fock-comparisons}
+Put $d\sigma(\mathbf k)=d^3\mathbf k/(2|\mathbf k|)$ and $\mathsf P^\perp_{ij}(\mathbf k)=\delta_{ij}-\mathbf k_i\mathbf k_j/|\mathbf k|^2$, assigning the density and projector value zero at $0$. For $n_{\rm col}$ colours put
+\begin{equation}\label{eq:fock-space}
+\mathcal K_{n_{\rm col}}=L^2(\R^3,d\sigma;\C^{n_{\rm col}}\otimes\C^3),\qquad \mathcal F_{n_{\rm col}}=\bigoplus_{k\ge0}\mathcal K_{n_{\rm col}}^{\otimes k}\,.
+\end{equation}
+Let $\mathcal F_{n_{\rm col}}^{\rm phys}$ be the symmetric subspace transverse in every momentum slot. Translations multiply a $k$-particle wave by $e^{iz_{\rm tr}\cdot\sum_j(\mathbf k_j,|\mathbf k_j|)}$. The vacuum $\Omega_0$ lies in sector zero. For a list $\boldsymbol h=(h_{\alpha,i})$ of Schwartz tests put
+\begin{equation}\label{eq:coherent-vector}
+v_{\boldsymbol h}(\alpha,i;\mathbf k)=|\mathbf k|\sum_j\mathsf P^\perp_{ij}(\mathbf k)\fourierplus{h_{\alpha,j}}(\mathbf k,|\mathbf k|),\qquad \mathcal E(\boldsymbol h)=e^{-\|v_{\boldsymbol h}\|^2/2}\bigoplus_{k\ge0}\frac{v_{\boldsymbol h}^{\otimes k}}{\sqrt{k!}}\,.
+\end{equation}
+A Fock comparison is a complex linear isometry $\mathsf I_{\rm F}:\mathcal H\to\mathcal F_{n_{\rm col}}$ with image in $\mathcal F_{n_{\rm col}}^{\rm phys}$, $\mathsf I_{\rm F}\Omega=\Omega_0$, and intertwining translations. Write $\psi_{\mathsf I_{\rm F}}(f)=\mathsf I_{\rm F}\Phi(\iota_4\Theta,f)\Omega$. For the averaged comparison, a probability space $(Z,\lambda_Z)$ and maps $P_z^{\rm av}:\mathcal F_{n_{\rm col}}\to\mathcal F_{n_{\rm col}}$ preserve inner products on pairs of physical vectors and fix $\mathsf I_{\rm F}\mathcal H$ pointwise. Linearity of $P_z^{\rm av}$ is not required. The scalar integrals use the convention of Definition~\ref{def:reconstruction}.
+\end{definition}
+
+\paragraph{Nested products and contacts.} Relative scales describe successive OPE expansions; contact extensions assign distributions across collision diagonals.
+
+\begin{definition}[Nested clusters and their rates]\label{def:nested-clusters}
+Let a finite rooted tree have leaves carrying fields $A_i$ and an internal root $o_{\rm root}$. Assign a position $z_v$ to every vertex and a positive scale $\varrho_v$ to every internal vertex, with $\varrho_{o_{\rm root}}=r$ and $\varrho_v\le\varrho_{\operatorname{par}(v)}$. At each internal $v$, every descendant position lies within $M_{\rm geo}\varrho_v$ of $z_v$, and positions belonging to different immediate child subtrees have distance at least $\eta\varrho_v$. These conditions apply recursively. Spectator clearance $\delta_{\rm sp}$ means distance at least $\delta_{\rm sp}$ from every tree position and between distinct spectators. Put $W_v=\sum_{i\text{ leaf below }v}\deg A_i$ and $q_v=\varrho_v/\varrho_{\operatorname{par}(v)}$. For truncations $\boldsymbol D=(D_v)$ define
+\begin{equation}\label{eq:nested-rates}
+\mathcal Q_{\varepsilon,q}(\varrho)=r^{q-W_{o_{\rm root}}-\varepsilon}\prod_{\substack{v\ne o_{\rm root}\\v\text{ internal}}}q_v^{-W_v-\varepsilon},\qquad \mathsf e_{\boldsymbol D}(\varrho)=\sum_{\substack{v\ne o_{\rm root}\\v\text{ internal}}}q_v^{D_v+1}\,.
+\end{equation}
+The direct coefficient $C^{\rm dir}_{q,\lambda}$ is $c_{q,\lambda}$ of all original leaves at $z_{o_{\rm root}}$. Its iterated version $C^{\rm it,\boldsymbol D}_{q,\lambda}$ replaces the fields below each proper internal vertex by their OPE through degree $D_v$, from the leaves upwards, multiplying child coefficients and summing over the intermediate channels. At the root it retains only channel $(q,\lambda)$. The root truncation is unused in this coefficient error. A tested root remainder in state $\zeta$ is $\mathcal R_q^\zeta$ for the original leaves at $z_{o_{\rm root}}$.
+\end{definition}
+
+\begin{definition}[Contact distributions]\label{def:contacts}
+A distribution on $\R^{4n}$ is a complex linear continuous functional on $C_c^\infty(\R^{4n})$. It has locally finite order if for every compact $K$ there are $q_K\in\N$ and $C_K<\infty$ such that
+\begin{equation}\label{eq:contact-order}
+|\mathfrak D(f)|\le C_K\max_{|\alpha|\le q_K}\|\partial^\alpha f\|_\infty
+\end{equation}
+for tests supported in $K$. A contact extension $\mathfrak D_{\boldsymbol A}^\zeta$ of $S^\zeta(\boldsymbol A;\cdot)$ is such a distribution equal to $\int fS^\zeta(\boldsymbol A;\cdot)$ on separated tests. The subtraction prescription is defined in Part~II, §J.2, using the field projections of the OPE.
+\end{definition}
