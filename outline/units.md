@@ -29,12 +29,12 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | **III.2** | [Choosing the constants: the order of choice and the RG schedule](units/III-2.md) | 18,156 | 55 | edited |
 | **III.3** | [Free lattice kernels and covariances](units/III-3.md) | 8,998 | 11 | edited |
 | **III.4** | [Gaussian integration: change of Gaussian sector, determinants, window law](units/III-4.md) | 37,956 | 141 | checked |
-| **III.5** | [Cluster expansion of the polymer gas](units/III-5.md) | 9,746 | 41 | checked |
+| **III.5** | [Cluster expansion of the polymer gas](units/III-5.md) | 9,746 | 41 | edited |
 | **III.6** | [The stationary branch: background field of the effective action](units/III-6.md) | 21,329 | 44 | edited |
 | **III.7** | [Matching the Wilson energy to fourth order](units/III-7.md) | 19,945 | 24 | checked |
-| **III.8** | [Connected activities and backward dependence cones](units/III-8.md) | 4,147 | 4 | draft |
+| **III.8** | [Connected activities and backward dependence cones](units/III-8.md) | 4,147 | 4 | checked |
 | **III.9** | [The marginal flow: the running coupling and its reset](units/III-9.md) | 7,215 | 17 | edited |
-| **III.10** | [One full nonlinear renormalization step: bounds on irrelevant terms](units/III-10.md) | 49,448 | 94 | draft |
+| **III.10** | [One full nonlinear renormalization step: bounds on irrelevant terms](units/III-10.md) | 49,448 | 94 | checked |
 | **III.11** | [Comparison with the free Gaussian measure: interacting rank and determinant budgets](units/III-11.md) | 42,556 | 67 | checked |
 | **III.12** | [Bounds uniform in the volume and convergence as the spacing tends to zero](units/III-12.md) | 18,973 | 34 | draft |
 | **III.13** | [Extension to all labels: one common Wilson family](units/III-13.md) | 22,100 | 31 | draft |
