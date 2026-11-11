@@ -18,13 +18,13 @@ The outline is a rough draft written by machines. Its purpose is to be checked, 
 
 The repository presents the same proof at five levels of detail. Each level links down to the next, and everything from level 3 down is linked to the exact lines of the Lean source. Start at the top and go down as far as you need.
 
-| level | | what you get | length |
-|---|---|---|---|
-| **1** | [**The main theorem**](statement.md) | What is proved: the Lean statement verbatim, a commentary in words, and the full statement in ordinary mathematics, with what is and is not claimed. | ~20 pages |
-| **2** | **The proof in one reading** *(in preparation)* | A high-level account of the whole proof: the strategy, the key mechanism of each part, what is new, where the difficulty lies. | ~10 pages |
-| **3** | [**The architecture**](outline/README.md) | The eight parts of the proof, from the lattice setting through the renormalization group to the identification as Yang–Mills; what each part hands to the next; the interface between the ultraviolet construction and the infinite-volume limit. | a few pages |
-| **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline**: the propositions it proves and what it uses, the strategy, the steps as lemmas with proof sketches, where the difficulty lies, and open points. Outlines are published as they pass review; the table of units shows which are ready. | 3–10 pages per unit |
-| **5** | **The Lean, linked** | On each unit's page, below the outline: its Lean source (work packages and chains of large results) and its key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines the main theorem uses. | – |
+| level | | what you get |
+|---|---|---|
+| **1** | [**The main theorem**](statement.md) | What is proved: the Lean statement verbatim, a commentary in words, and the full statement in ordinary mathematics, with what is and is not claimed. |
+| **2** | **The proof in one reading** *(in preparation)* | A high-level account of the whole proof: the strategy, the key mechanism of each part, what is new, where the difficulty lies. |
+| **3** | [**The architecture**](outline/README.md) | The eight parts of the proof, from the lattice setting through the renormalization group to the identification as Yang–Mills; what each part hands to the next; the interface between the ultraviolet construction and the infinite-volume limit. |
+| **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline**: the propositions it proves and what it uses, the strategy, the steps as lemmas with proof sketches, where the difficulty lies, and open points. Outlines are published as they pass review; the table of units shows which are ready. |
+| **5** | **The Lean, linked** | On each unit's page, below the outline: its Lean source (work packages and chains of large results) and its key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines the main theorem uses. |
 
 **Reference material**, used at every level:
 
