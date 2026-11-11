@@ -1,9 +1,24 @@
 STATUS: READY
 # Paper plan — dalmatian, 2026-11-11 UTC
 
+## Round 2 — controlling revision
+
+`feedback/round-1.md` overrides earlier architecture and house style. Revise the three pilots only; stop after reports/<name>-2.md. Part I is **The main theorem**; Part II remains **The construction**. Part I's first section is **The result**. All public definitions are gathered once in **Definitions**, before the explicit theorem. A separate **Strategy** section precedes the five principal propositions and their final deduction. No new Part II sections may be written in this round.
+
+| Part I input | Section | Target / cap |
+|---|---|---|
+| part1/01-introduction.tex | The result: accessible problem, contribution and whole-paper outline | 1 / 2 |
+| part1/02-setting.tex | Definitions: public lattice, observables, fields, reconstruction, OPE and trace | 8 / 11 |
+| part1/03-theorem.tex | The main theorem: explicit four conclusions, choices and nonclaims | 1 / 2 |
+| part1/05-strategy.tex | Strategy: five steps and their mathematical dependence | 1 / 2 |
+| part1/06-propositions.tex | The principal propositions: statements, intuitive proof ideas and deduction | 4 / 6 |
+| part1/04-constants.tex | Reserved later constants section; remains empty this round | 2 / 3 |
+
+Earlier Part I contents rows are superseded by this table; the Part II paths/ownership remain unchanged. Preserve all old reference labels while moving material. New public definition labels and property-item labels are announced in dalmatian's round-2 Requests. Each property item has its own label and every mention/range is linked. Every definition used directly by a statement is linked. Every ordinary mathematical quotient, inline or displayed, uses `\frac`; quotient spaces, lattice quotient groups and URLs retain their slash notation. Use lattice observable label rather than token, a finite set of sites rather than an unexplained stencil, and a test supported inside volume p rather than unexplained p-admissibility. These changes do not alter the mathematical contract. Part II cites Part I definitions and retains only construction-specific definitions.
+
 ## Scope and authority
 
-Canonical entry point: `paper/main.tex`. This round stops after one complete pilot section per agent and `reports/<name>-1.md`; no later drafting is authorized by this plan. Mathematical authority: the public contract in `statement.md`, checked against `/root/code/OpenAI-YM-20261028` at `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Source-exposition snapshot: `2668d7cdb485f3c18d743074efdcee9a18a2ca6a`, after `git pull --ff-only`. All source material outside `paper/` is read-only; no commits or pushes.
+Canonical entry point: `paper/main.tex`. Round 1 stopped after the three pilots; round 2 revises them under the feedback above and stops after `reports/<name>-2.md`. Mathematical authority: the public contract in `statement.md`, checked against `/root/code/OpenAI-YM-20261028` at `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Source-exposition snapshot: `2668d7cdb485f3c18d743074efdcee9a18a2ca6a`, after `git pull --ff-only`. All source material outside `paper/` is read-only; no commits or pushes.
 
 We prove the public theorem. Additional construction facts enter as tools with their own hypotheses; they are not silently added to the main theorem. In particular no claim of mass gap, uniqueness/universality, diagonal limits, full OPE convergence, or general exclusion of Gaussian composites is made. The alternative family of III.13 may not supply facts for the public family's proof without an explicit identification.
 
@@ -15,10 +30,6 @@ These are targets and caps for calibration, not measured claims about the eventu
 
 | Part | File under paper/ | Subject / exit result | Target / cap | Owner |
 |---|---|---|---|---|
-| I | part1/01-introduction.tex | Problem, contribution, provenance; write last | 3 / 4 | dalmatian |
-| I | part1/02-setting.tex | Construction notation beyond the public definitions | 3 / 4 | dalmatian |
-| I | part1/03-theorem.tex | **Pilot:** exact public theorem, definitions, five principal propositions, proof ideas, deduction | 14 / 20 | dalmatian |
-| I | part1/04-constants.tex | Acyclic parameter choices and uniformities | 2 / 3 | dalmatian |
 | II UV | part2/uv/01-lattice.tex | **Pilot:** lattice law and symmetries; local-label definitions if needed (I.1, II.1) | 8 / 10 | greyhound |
 | II UV | part2/uv/02-activities.tex | Local-label/section construction, nilpotent insertions, activity norms (II.1–II.2) | 7 / 9 | greyhound |
 | II UV | part2/uv/03-blocking.tex | Total normalized block kernel, gauge coordinates, stationary branch (III.1, III.3, III.6) | 14 / 18 | greyhound |
@@ -34,11 +45,10 @@ These are targets and caps for calibration, not measured claims about the eventu
 | II limit | part2/limit/06-trace.tex | Centering, flexible scales, all-radii law, finite Wick exclusion (VII.2–VII.3, VII.5–VII.6) | 10 / 14 | weimaraner |
 | II limit | part2/limit/07-products.tex | One OPE prescription, nested/integrated products, contacts, assembly (VII.4, VIII.1) | 13 / 18 | weimaraner |
 
-Target body approximately 194 pages; caps are local revision triggers, not an asserted total bound. Only the three pilot sections are written this round. An empty input is a reserved file, not a claim of completion. No appendices or extra reports without a reason tied to a principal result.
 
 ## Frozen principal statements
 
-The pilot defines all public objects and uses labels below. The five propositions assert **one joint construction**, with quantifier order
+The single Definitions section contains all public objects; the theorem and five propositions use the stable labels below. The five propositions assert **one joint construction**, with quantifier order
 
 `for each gauge group with simple real nonabelian Lie algebra, choose W; for every strictly increasing p, choose strictly increasing q and ONE hierarchy H; all later assertions hold for that same H`.
 
@@ -62,7 +72,7 @@ Source quotient maps identify token moments with field correlations only on sepa
 
 ## Notation and house style
 
-Canonical symbols/macros are in `notation.md` and `macros.tex`. Coordinates 1–4, time last; N cutoff, p volume index, k subsequence index, h a test only when locally declared; m the matrix size, mu,nu axis indices. Use W for the lattice family, T for token set only as calligraphic `\mathcal T`, F_d continuum fields, mathbb F their disjoint union, L calligraphic for relativistic labels, D calligraphic for domain, pi for token projection, iota for degree-label maps, X/nu/xi_* for phases, S^mix/S^xi for kernels, mathsf F_n for continuation, Theta for the trace-test field. Temporary construction symbols are introduced locally; do not change shared symbols without a request.
+Canonical symbols/macros are in `notation.md` and `macros.tex`. Coordinates 1–4, time last; N cutoff, p volume index, k subsequence index, h a test only when locally declared; m the matrix size, mu,nu axis indices. Use W for the lattice family, T for observable-label set only as calligraphic `\mathcal T`, F_d continuum fields, mathbb F their disjoint union, L calligraphic for relativistic labels, D calligraphic for domain, pi for observable-label projection, iota for degree-label maps, X/nu/xi_* for phases, S^mix/S^xi for kernels, mathsf F_n for continuation, Theta for the trace-test field. Temporary construction symbols are introduced locally; do not change shared symbols without a request.
 
 Style: article 11pt, Computer Modern, 1.05in margins, dark blue links RGB 0,0,114, sequential sections across parts. Short concrete titles. Each construction-specific estimate and its cancellation/uniformity is written out; standard algebra, compactness and geometric sums may be short or exactly cited. Define before use; proof ideas outside theorem environments; no code nicknames. Use `\gap{missing mathematical statement; source location}` visibly for unresolved proof/source edges. This explicit requirement overrides the writing skill's word ban for that marker. One sentence per source line is allowed by BRIEF. No blanket unverified literature citations; bibliography entries alone do not pay a proof input. Every numbered result and numbered display gets a pinned correspondence row in dalmatian's notes; other agents provide their rows in their own notes for later integration.
 
@@ -80,6 +90,10 @@ Reserve `prop:uv-inputs` in UV `07-observables.tex` for the precise centered/off
 
 Recheck both notes before each new section and before reporting. Shared macros and reserved inputs are installed. The pilot's deferred analytic work remains explicit even when the build is green.
 
-## Pilot checkpoint
+## Pilot checkpoint — round 1 (historical)
 
 Dalmatian's first section and report 1 are written. The pilot spans printed pages 2–11 and fits its 20-page allowance. All definitions and numbered assertions/displays have pinned correspondence rows in his notes; five deferred analytic proof markers remain. The shared build succeeds, with a separately reported overfull display in UV01. This READY status authorizes the two collaborators' assigned first sections, not drafting beyond the Phase 2 stopping boundary.
+
+## Round 2 checkpoint
+
+The revised Part I is ready for Amélie's review: The result; Definitions; the explicit four-clause theorem; Strategy; the five principal propositions with intuitive proof ideas and the deduction. Part I occupies printed pages 2–15, with the construction starting on page 16 in the inspected 31-page PDF. All 41 public property items and directly used definitions have linked targets; ordinary arithmetic fractions use frac. The required build is clean and the rendered Part I and adjacent construction opening have been read. No new Part II section has been drafted. Five analytic proofs remain explicitly deferred; the separate upstream input proposition is still PLANNED. The next action is report 2, followed by the mandatory stop. This status does not authorize further drafting.

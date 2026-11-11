@@ -1,6 +1,6 @@
 # Weimaraner: limit theory and identification
 
-Updated 2026-11-11 (UTC). Role: Part II, units IV.1–VIII.1. Phase 1 complete; PLAN is READY and its assignments are accepted. The sole Phase 2 pilot is `part2/limit/01-infinite-volume.tex`. Later proposals below are retained as planning context, not authorization to draft further sections.
+Updated 2026-11-11 (UTC). Role: Part II, units IV.1–VIII.1. Phase 1 and round 1 are complete. Round 2 revises only the same pilot under `feedback/round-1.md`; it overrides PLAN where they conflict. The sole pilot is `part2/limit/01-infinite-volume.tex`. Later proposals below are retained as planning context, not authorization to draft further sections.
 
 ## Authority and status
 
@@ -84,17 +84,25 @@ The current manuscript explicitly marks itself unfinished. Its generic/distinct/
 
 ### To dalmatian
 
+- 2026-11-11, round 2 integration: Your canonical `def:moments`, `def:tests`, `def:admissible`, `def:wilson-law`, `def:periodic`, `def:regular` and existing theorem labels are now installed and linked from limit01. Greyhound has preserved the requested concrete coefficient/insertion labels. No extra public definition is needed. Only construction-specific objects remain local.
+- 2026-11-11, round 2 source precision: I made the reflection tiling literally cubical, with one common even cell count and one seam kind, matching `YM/Cells/Tiling.lean:19–35`. The round-1 word “rectangular” was broader than that source contract; all uses in this pilot were already cubical. The reflected-product trace now writes `Tr((B_i^*B_i)^q)` explicitly, removing ambiguous parentheses. Neither change supplies a deferred ultraviolet input.
+
+- 2026-11-11, round 2 definitions coordination: Read `feedback/round-1.md` in full. I will remove the duplicate coefficient/token setup from limit01 and link its concrete coefficient spaces and insertions to `lem:uv-labels`, `eq:uv-label-action`, and `prop:uv-insertions`; the public family, moments, separated configurations, tests and ordered limit will link to Part I. Please preserve the existing `def:family`, `eq:smear`, `eq:conf`, `def:ordered` labels and provide explicit labels for the separated-test and fixed-volume admissibility definitions (proposed `def:separated-test`, `def:admissible-test`). I will adapt to your final labels before reporting.
+- 2026-11-11, round 2 scope: Only construction-specific reflection cells, coordinate-separated sets, approximation conditions and null functionals remain explained locally, following the feedback's allowance for construction-specific material in Part II. No new public field-space assumptions will enter Part I through my revision. All four local results will have a plain-language introduction and concise formula/list statements; all referred-to local list items will receive linked labels.
+
 - 2026-11-11: Please provide `PLAN.md` with `STATUS: READY`, the first owned filename, and shared macros/notation before Phase 2. Proposed first section: Infinite volume (IV.1). The raw extraction → derivative/smoothness → full-spacing order should remain visible.
 - 2026-11-11: Please interleave mixed OS/slab construction before Ward/rotation restoration, and phase decomposition after rotations. A literal IV–V–VI ordering would hide dependencies.
 - 2026-11-11: Please reserve a precise ultraviolet-input proposition containing the relay/rank and same-family fixed-volume statements, with proof locations in greyhound's part. An informal reference to “the RG bounds” will not suffice for the first limit section.
 
 ### To greyhound
 
+- 2026-11-11, round 2 coordination: I will reuse the coefficient spaces/signed action and concrete insertions by links to `lem:uv-labels`, `eq:uv-label-action`, `prop:uv-insertions`, without redefining them or using “token”/“stencil” in limit01. Please preserve these labels or record replacement labels in your Requests response. Public Wilson/test definitions will be linked to Part I. The three deferred same-family inputs stay explicit.
+
 - 2026-11-11: For the first limit section, please identify the specification, centered-root/cell, relay/null/rank and full-spacing fixed-volume results for the actual chosen construction family, with your intended statement labels and exact source locations. III.13's alternative coordinated family cannot silently substitute for it.
 - 2026-11-11: Please clarify which lattice shell, bounded-grid and slab-train estimates you plan to prove and which should be proved in my sections; no ownership transfer is assumed pending the shared plan.
 
 
-## Pilot correspondence and scope
+## Round 1 correspondence and scope (historical checkpoint)
 
 All paths below are relative to the pinned Lean checkout; `YM/` is included explicitly. These are manual statement/proof readings, not a fresh Lean build or independent kernel verification. All four numbered results and all nine numbered equations in the pilot are accounted for. Elementary transports (finite nets, dominated convergence, Fourier inversion, scalar uniqueness) are written in the section; the upstream producers remain marked.
 
@@ -130,10 +138,59 @@ Scott's principal P9(c) permits arbitrary finite sums of smeared words in its lo
 - 2026-11-11, to greyhound: Reflection positivity, finite folding/chessboard and the two-cell complex trace estimate are now proved at their first use in limit01. Please cross-reference these for the centered-root production; same-run centered/relay/rank/full-spacing producers remain with your part. Repeated-word/slab estimates are reserved for mixed OS preparation in limit03, before rotations.
 
 
-## Final pilot verification receipt
+## Round 1 verification receipt (historical checkpoint)
 
 - 2026-11-11 UTC: `latexmk -pdf -interaction=nonstopmode main.tex` in `paper/` succeeded. The final combined PDF has 23 pages; the pilot occupies pages 16–23, within its 12-page cap. No LaTeX warnings, unresolved references/citations, or overfull/underfull boxes remain in the inspected final log.
 - Rendered every pilot page to PNG with `pdftoppm`, then viewed all eight images at readable resolution, including the preceding UV text and following reference boundary. Checked equation widths, red deferred-input markers, source footnotes, theorem/proof flow, and page breaks. Temporary render images were removed afterward.
 - Manual source checks cover the four numbered results and nine numbered equations, with source correspondence above. No Lean/Lake process was run; no independent reviewer was used, as the brief forbids subagents. The three upstream mathematical inputs remain open in this manuscript.
 - Section SHA-256: `574f3005ea68b7803389a59628052f77f48ce741f58c87a3ddb85219d0f4d7c8`. Inspected PDF SHA-256: `ee7df3626a86d71f6470b3ead1f70c3430a65b0ada596916c301ae25a9943750`. The shared PDF may subsequently change when another owner rebuilds.
 - Wrote only the first limit section and report 1. Stopping here as instructed; no later section has been drafted.
+
+
+## Round 2 revision: reader-facing changes and mathematical preservation
+
+Read `feedback/round-1.md` in full; revised limit01 only. The writing skill was applied again within the brief's ownership and no-subagent restrictions. Read both collaborators' round-2 Requests and the new Part I definitions before finalizing cross-references.
+
+- The opening now explains why volume-independent estimates are needed and why compactness and derivative identification are different steps.
+- Duplicate setup for abstract observable labels and insertions is removed. The section links Part I's Wilson law, family, moments, separated tests, volume-support condition, periodic separation, ordered limit and intended hierarchy. Concrete `V_d`, actions, insertions, reference maps and units link to greyhound's construction rather than being defined twice.
+- “Token”, “stencil”, unexplained “admissibility” and “gentleness” are absent from the mathematical prose. The text explains reflected copies, folds, coordinate separation (with an example), the slice/slab kernels, coefficient growth and invisible coefficients before their use.
+- Each of the five local results has an explanatory introduction. The old long `prop:iv-smooth` is split into a three-item smooth-correlation/quotient proposition at the same label and a separate three-item `prop:iv-euclidean` containing its original symmetries, point/joint-test reflection positivity and derivative bounds. Nothing is inferred about phases or continuous rotations.
+- Every mentioned comparison/result item uses a reference. New list labels cover C1–C3 and all proposition subitems. All old mathematical labels remain. Ordinary fractions use `\frac` with braced arguments; the quotient space `V_d/N_d` retains the standard notation specified in the lead's round-2 house style.
+
+### Exact preservation check
+
+The old conclusion is distributed as follows: raw continuity and both common limits remain in `prop:iv-raw`; fixed operations and the backward derivative sign remain in `lem:iv-representatives`; smooth matching, null-space equality and compatible injective degree maps remain in `prop:iv-smooth`; normalization, units, permutation/translation/signed/conjugation identities, both forms of positivity and all positional derivative bounds now occur in `prop:iv-euclidean`. The full inner sequence at every supported fixed volume still precedes the retained outer sequence. Three visible deferred-input markers remain, with the same obligations.
+
+Two source/presentation corrections are explicit rather than silent: the reflection tiling now uses the actual cubical common-period/single-kind geometry, and the trace power is explicitly inside `Tr`. The former removes unused rectangular generality from round 1; the source and every actual pilot application use cubes. The old derivative-representative name `tau_(d,mu)` becomes `delta_(d,mu)` to distinguish it from greyhound's reference map `tau_(N,p,d)`. The coefficient cost now links and uses that reference map directly; the comparison itself is unchanged.
+
+### Round 2 source correspondence
+
+Pin reverified at `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Paths below are relative to the Lean checkout. This table accounts for all 22 numbered displays and five numbered results. New item labels are hyperlink targets for the same mathematical clauses, not additional formal claims. Round-1 source readings remain applicable; in this round I additionally reread the tiling structure, terminal coefficient estimate, smeared positivity proof and relevant proof fragments while checking the new formulas.
+
+| Current label(s) | Source and verified interpretation |
+|---|---|
+| `eq:iv-scales`, `eq:iv-gentle` | `YM/Lattice/Scale.lean:129–150`; the chosen family's odd blocks, period divisibility, nonnegative couplings and exact insertion identities are still deferred in marker 1, rather than inferred from public regularity. |
+| `eq:iv-root`, `lem:iv-reflection`, `eq:iv-lattice-rp`, `eq:iv-chessboard` | `YM/Cells/Tiling.lean:19–35,218–228`; `YM/Slice/Positive.lean:28–98`; `YM/Slice/Reflection.lean:98–end`; `YM/Cells/Flood.lean:41–end`; `YM/Cells/Chess.lean:32–end`. Reflected-copy notation `Theta_C F` replaces overloaded `F_C`; parity, interiority, even period and nonnegative coupling are retained. |
+| `eq:iv-centered` | `YM/Extraction/Center.lean:21–55`; reference level before cell scale, cutoff threshold after scale, all volumes. Same-family proof is still deferred. |
+| `eq:iv-coordinate-separated` | `YM/Extraction/Lipschitz.lean:107–115`; `YM/Dash/Regular.lean:16–19`; coordinate-generic and periodic coordinate-generic sets. Part I retains the weaker distinct/periodically distinct definitions. |
+| `prop:iv-raw`, `eq:iv-point-limits`, `eq:iv-auxiliary-limit` | `YM/Extraction/Held.lean:74–end`; `YM/Extraction/Lipschitz.lean:78–end`; `YM/Extraction/Integrate.lean:66–end`. Countable basis/compact extraction, all fixed periods, every joint separated test; continuous limits of asymptotically equicontinuous grid extensions. `YM/Extraction/Difference.lean` and `YM/Complex/Gaps.lean` supply the preceding dimension-free oscillation estimate. |
+| `eq:iv-projections`, `eq:iv-coefficient-cost`, `eq:iv-error-cells` | `YM/Dash/Limits.lean:53–69`; `YM/Bid/Drops.lean`; `YM/Work/D01.lean:66–end`. Operator-norm projection convergence; inverse terminal reference map; one error rate, all q/lower levels, finer cell before tail and both cell margins. These remain explicit assumptions. |
+| `eq:iv-null-functionals`, `eq:iv-rank-input` | `YM/Dash/Scope.lean`; `YM/Dash/Inert.lean:28–44`; `YM/Next/RANK/Beam.lean:153–end`; `YM/MergeProof/Powder.lean:19–end`. Every slot/test/other-label functional; additional dimension inequality, not a consequence of root bounds. |
+| `lem:iv-representatives`, `eq:iv-weak-identities` | `YM/Work/D02.lean:24–end`; `YM/Work/D03.lean:117–end`; `YM/Work/D04.lean`; `YM/Dash/Limits.lean:69–end`; `YM/Dash/Inert.lean:55–106`. Exact null detection, normalized remainder, all-test compact normalization, basiswise fixed maps and the minus sign from the backward test difference. |
+| `prop:iv-smooth`, `eq:iv-field-derivative` | `YM/Dash/Regular.lean:21–end`; `YM/Dash/Twist.lean`; `YM/Org/Input.lean:83–115`; `YM/Dash/Inert.lean:71–106`. Fourier gluing and quotient operations, retaining common extraction and all smearings. Pointwise nullity equals all-test nullity by smoothness and localized testing. |
+| `prop:iv-euclidean`, `eq:iv-os-form`, `eq:iv-os-smear`, `eq:iv-symmetries`, `eq:iv-os-positive` | `YM/Extraction/Harvest.lean:21–end`; `YM/Euclid/RPPeak.lean`; `YM/Work/D06.lean`. Conjugated first word and signed reflected labels give the correctly oriented positive Gram matrix; joint tests remain compactly supported in the positive separated configurations. |
+| `eq:iv-derivative-bound` | `YM/Work/D05.lean:26–end`; `YM/Work/B10.lean:21–end`; `YM/OS/Halves.lean:24–43`. Two first-crossing scales give the fourth power of r; raised-label lists and finite-dimensional norm bounds give all derivatives. The all-pairs separation condition includes empty/one-point lists without an undefined empty minimum. |
+| `eq:iv-full-limit` | `YM/FullVolume/Finale/Program.lean:117–128`; `HierarchyBridge.lean:44–57`; producer `YM/FullVolume/Fields/Filled.lean:30–56` remains deferred. Uniqueness removes only the spacing refinement, retaining one outer refinement for all data. |
+
+### Remaining mathematical inputs
+
+Exactly the original three obligations remain: (1) chosen-family scales/identities and centered roots, (2) same-family comparison/error/coefficient/rank estimates, (3) same-family full-spacing fixed-volume convergence. No paper proof of these was added by the editorial revision. The reserved `prop:uv-inputs` remains planned; no new decision is requested in order to review round 2.
+
+
+### Round 2 final verification and stop
+
+- Completed 2026-11-11 14:56:57 UTC. The exact prescribed build `latexmk -pdf -interaction=nonstopmode main.tex` in `paper/` exited 0. Its inspected log has no warnings/errors, undefined references/citations, or overfull/underfull boxes.
+- The checked combined PDF has 31 pages. The pilot touches pages 21–31 (11 pages, within its 12-page cap). Rendered and read the full section at readable resolution, including preceding UV text and the reference boundary. Rechecked page 25 after the final vocabulary repair; the later page breaks remain unchanged.
+- All 22 numbered display labels, five result labels and eleven item labels have been checked; all old mathematical labels survive, all owned reference targets exist, the ordinary-fraction scan is clean, and there are no unexpected control bytes or unexplained token/stencil/admissibility terms in mathematical prose. Literal source locators and the brief-required deferred-input markers are preserved.
+- Section SHA-256: `591d4b4622de0a298c88eb72298906702adb1cd325046a86e3843b05566ae3a5`. Checked combined-PDF SHA-256: `e9f63efb77ba9d0476da430f574694163aa226440801712fba2f36fda7dcea0c`. A temporary copy fixed the render snapshot during concurrent shared builds; temporary files were removed after inspection. Later builds by other owners can change the shared PDF.
+- No new Part II section, Lean/Lake process, subagent, commit, push, shared-file edit or source-file edit outside paper. The three original same-family ultraviolet obligations remain open. Report 2 records the completed revision; stopping as required.

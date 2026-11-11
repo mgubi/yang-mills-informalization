@@ -1,0 +1,423 @@
+\clearpage
+\section{Definitions}\label{sec:definitions}
+
+We begin with the finite-dimensional lattice model and the observables whose averages will converge.
+We then specify the continuum correlations, their decomposition into phases and the relativistic fields reconstructed from one phase.
+The last definitions give the two short-distance tests in the theorem.
+Throughout, $\N=\{0,1,\ldots\}$; empty products equal $1$, and correlation functions of order zero are included.
+
+\subsection{The lattice and its measure}\label{subsec:lattice-family}
+
+\begin{definition}[Gauge group]\label{def:gauge}
+A gauge group consists of an integer $m\ge1$, a closed subgroup $G\subset U(m)$ and a real linear subspace $\g\subset M_m(\C)$ such that
+\begin{equation}\label{eq:gauge}
+X\in\g\quad\Longleftrightarrow\quad \exp(sX)\in G\text{ for every }s\in\R\,.
+\end{equation}
+Its Lie algebra $\g$ is simple if $[X,Y]=XY-YX\ne0$ for some $X,Y\in\g$, and every real subspace $J\subset\g$ with $[\g,J]\subset J$ equals $0$ or $\g$.
+\end{definition}
+
+The matrices in $G$ will be the variables of the lattice model.
+The specified embedding in $U(m)$ fixes the trace used in its energy.
+We do not assume that $G$ is connected.
+
+\begin{definition}[Periodic lattice]\label{def:lattice}
+For $G$ as in Definition~\ref{def:gauge} and a positive integer $\ell$, let $\Lambda_\ell=(\Z/\ell\Z)^4$ and write $e_\mu$, $1\le\mu\le4$, for its coordinate unit vectors.
+A positive link $(y,\mu)$ joins $y$ to $y+e_\mu$.
+A link configuration is a map
+\begin{equation}\label{eq:link-configuration}
+U:\Lambda_\ell\times\{1,2,3,4\}\longrightarrow G\,.
+\end{equation}
+The value assigned to the reversed link is $U(y,\mu)^{-1}$.
+\end{definition}
+
+A link matrix describes parallel transport along one edge.
+Multiplying four of these matrices around an elementary square compares transport along its two coordinate paths.
+This product, the plaquette matrix, is the local quantity from which the Wilson energy is formed.
+
+\begin{definition}[Plaquettes and energy]\label{def:plaquette}
+For a configuration as in Definition~\ref{def:lattice}, set
+\begin{equation}\label{eq:wilson-energy}
+\begin{aligned}
+U_{y;\mu\nu}&=U(y,\mu)U(y+e_\mu,\nu)U(y+e_\nu,\mu)^{-1}U(y,\nu)^{-1},\\
+E_\ell(U)&=\sum_{y\in\Lambda_\ell}\sum_{\mu<\nu}
+\left(1-\frac{1}{m}\operatorname{Re}\tr U_{y;\mu\nu}\right)\,.
+\end{aligned}
+\end{equation}
+\end{definition}
+
+The energy counts each unordered pair of coordinate directions once.
+Each summand lies in $[0,2]$, so $0\le E_\ell\le12\ell^4$.
+The probability measure weights configurations according to this energy.
+
+\begin{definition}[Wilson measure]\label{def:wilson-law}
+Let $G$ be as in Definition~\ref{def:gauge} and let $h$ be normalized Haar measure on $G$.
+For $\beta\in\R$, the Wilson measure on the configurations of Definition~\ref{def:lattice} is
+\begin{equation}\label{eq:wilson-law}
+\begin{aligned}
+Z_{\ell,\beta}&=\int e^{-\beta E_\ell(U)}\prod_{y,\mu}h(dU(y,\mu)),\\
+\mu_{\ell,\beta}(dU)&=\frac{e^{-\beta E_\ell(U)}}{Z_{\ell,\beta}}\prod_{y,\mu}h(dU(y,\mu))\,.
+\end{aligned}
+\end{equation}
+\end{definition}
+
+The bound on $E_\ell$ makes $Z_{\ell,\beta}$ finite and strictly positive for every real $\beta$.
+Increasing $\beta$ gives greater relative weight to configurations with smaller energy.
+Changing coordinates in the internal matrix space independently at each site acts as follows.
+
+\begin{definition}[Gauge transformations]\label{def:gauge-transform}
+For configurations as in Definition~\ref{def:lattice} and $\gamma:\Lambda_\ell\to G$, define
+\begin{equation}\label{eq:gauge-transform}
+U^\gamma(y,\mu)=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1}\,.
+\end{equation}
+An observable $F$ on the configurations of Definition~\ref{def:lattice} is gauge invariant if $F(U^\gamma)=F(U)$ for every $U$ and $\gamma$.
+\end{definition}
+
+\subsection{Local observables and the continuum limit}\label{subsec:observables}
+
+An observable is a function of the link matrices; its expectation is a measurement in the finite lattice model.
+To pass to a field at a point, we use observables that depend on links near one site.
+Their coefficients may change as the lattice is refined.
+
+\begin{definition}[Lattice observable labels and insertions]\label{def:observables}
+Let $\mathcal T$ be a set of labels for lattice observables.
+An insertion of label $v\in\mathcal T$ at $y\in\Lambda_\ell$ is a complex-valued function $U\mapsto I(v,y;U)$ on link configurations (Definition~\ref{def:lattice}).
+For a finite set $\Sigma\subset\Z^4$, the insertion is supported on the links inside $y+(\Sigma\bmod\ell)$ if it takes the same value on any two configurations that agree on all links whose two endpoints belong to this set.
+\end{definition}
+
+At this stage a label only names an observable; it need not yet name a continuum field.
+The map relating the two kinds of labels will be part of the continuum data.
+We next choose the physical sizes of the lattices.
+The index $N$ refines the spacing and $p$ increases the volume.
+
+\begin{definition}[Wilson family]\label{def:family}
+For a gauge group (Definition~\ref{def:gauge}), a Wilson family $\W$ consists of strictly increasing positive integer sequences $(D_N)_{N\in\N}$ and $(L_p)_{p\in\N}$, real numbers $\beta_{N,p}$, normalized Haar measure $h$ on $G$, a label set $\mathcal T$, and insertions $I_{N,p}(v,y;U)$ as in Definition~\ref{def:observables} on $\Lambda_{L_pD_N}$.
+We write
+\begin{equation}\label{eq:physical-scales}
+a_N=\frac{1}{D_N},\qquad \ell_{N,p}=L_pD_N,\qquad
+\mu_{N,p}=\mu_{\ell_{N,p},\beta_{N,p}}\,.
+\end{equation}
+\end{definition}
+
+The lattice has $L_pD_N$ sites per side, separated by physical distance $a_N$; thus its physical side is $L_p$.
+Taking $N\to\infty$ at fixed $p$ refines the lattice without enlarging the box.
+Taking $p\to\infty$ enlarges the box.
+The family also specifies the observables whose averages are to have limits.
+
+\begin{definition}[Regularity]\label{def:regular}
+A Wilson family (Definition~\ref{def:family}) is regular if:
+\begin{enumerate}[label=\textup{Reg\arabic*.},ref=Reg\arabic*]
+\item\label{reg:1} There exists $b_*>0$ such that, for every $\varepsilon>0$, there exists $N_0$ with
+\begin{equation}\label{eq:running}
+\left|\frac{\beta_{N,p}}{\log\left(\frac{1}{a_N}\right)}-b_*\right|<\varepsilon
+\qquad(N\ge N_0,\ p\in\N)\,.
+\end{equation}
+\item\label{reg:2} Each $U\mapsto I_{N,p}(v,y;U)$ is continuous.
+\item\label{reg:3} Each insertion is gauge invariant in Definition~\ref{def:gauge-transform}.
+\item\label{reg:4} For every $v\in\mathcal T$, there exists a finite set $\Sigma_v\subset\Z^4$ such that every $I_{N,p}(v,y;\cdot)$ is supported on the links inside $y+(\Sigma_v\bmod\ell_{N,p})$ in Definition~\ref{def:observables}.
+\end{enumerate}
+\end{definition}
+
+The same finite set in~\ref{reg:4} works at every spacing, volume and site.
+Its diameter in physical units tends to zero with $a_N$.
+Condition~\ref{reg:1} is a logarithmic growth law for the bare inverse coupling, uniform in the volume; its positive slope is left unspecified here.
+
+\begin{definition}[Physical positions and moments]\label{def:moments}
+Let $r_\ell(j)$ be the representative of $j\in\Z/\ell\Z$ in
+$\left(-\frac{\ell}{2},\frac{\ell}{2}\right]$.
+The physical position of $y\in\Lambda_{\ell_{N,p}}$ is
+\begin{equation}\label{eq:physical-position}
+\hat y=a_N(r_{\ell_{N,p}}(y^\mu))_{\mu=1}^4\,.
+\end{equation}
+For a Wilson family (Definition~\ref{def:family}) and $v=(v_1,\ldots,v_n)\in\mathcal T^n$, define the moment and its smearing by a function $f$ by
+\begin{equation}\label{eq:smear}
+\begin{aligned}
+M_{N,p}(v;y)&=\int\prod_{i=1}^n I_{N,p}(v_i,y_i;U)\,\mu_{N,p}(dU),\\
+C_{N,p}(v;f)&=a_N^{4n}\sum_{y\in\Lambda_{\ell_{N,p}}^n}
+ f(\hat y_1,\ldots,\hat y_n)M_{N,p}(v;y)\,.
+\end{aligned}
+\end{equation}
+\end{definition}
+
+A correlation is an average of a product of observables.
+Smearing averages its spatial arguments against a test function, so the lattice sum can be compared with a continuum integral.
+We test only configurations of distinct points.
+
+\begin{definition}[Separated tests]\label{def:tests}\label{def:separated-test}
+For $n\in\N$, put
+\begin{equation}\label{eq:conf}
+\Conf n=\{x\in(\R^4)^n:x_i\ne x_j\text{ whenever }i\ne j\}\,.
+\end{equation}
+A separated test is a smooth function $f:(\R^4)^n\to\C$ whose closed support is compact and contained in $\Conf n$.
+\end{definition}
+
+Such a test vanishes near every coincidence of two points.
+It can depend jointly on all $n$ points and need not be a product of one-point tests.
+To compare a torus with Euclidean space, its support must also stay inside the physical box.
+
+\begin{definition}[Tests supported inside a volume]\label{def:admissible}\label{def:admissible-test}
+A separated test $f$ (Definition~\ref{def:tests}) is supported inside volume $p$ if
+\begin{equation}\label{eq:admissible}
+\supp f\subset
+\left(\left(-\frac{L_p}{2},\frac{L_p}{2}\right)^4\right)^n\,.
+\end{equation}
+\end{definition}
+
+\begin{definition}[Ordered limit]\label{def:ordered}
+For a Wilson family (Definition~\ref{def:family}), $P:\N\to\N$ and kernels $K_n(v;x)$, convergence along $P$ means the following.
+For every $n\in\N$, $v\in\mathcal T^n$ and separated test $f$ (Definition~\ref{def:tests}), the test is supported inside volume $P(k)$ eventually in $k$, and there exist $R_p\in\C$ such that
+\begin{equation}\label{eq:ordered}
+\begin{aligned}
+\lim_{N\to\infty}C_{N,p}(v;f)&=R_p
+&&\text{($f$ supported in volume $p$)},\\
+\lim_{k\to\infty}R_{P(k)}&=\int_{(\R^4)^n}f(x)K_n(v;x)\,dx\,.
+\end{aligned}
+\end{equation}
+\end{definition}
+
+Here the moments are those of Definition~\ref{def:moments} and the support condition is Definition~\ref{def:admissible}.
+The first limit uses the entire spacing sequence at every volume containing the test.
+The second limit enlarges the volume along $P$.
+At volumes not containing the support, $R_p$ is unconstrained.
+A strictly increasing $P$ contains each fixed compact test support eventually, since $L_{P(k)}\to\infty$.
+
+\begin{definition}[Periodic separation]\label{def:periodic}
+For a Wilson family (Definition~\ref{def:family}) and volume $p$, the periodically separated configurations are
+\begin{equation}\label{eq:periodic-separated}
+\{x\in(\R^4)^n:x_i-x_j\notin L_p\Z^4\text{ whenever }i\ne j\}\,.
+\end{equation}
+\end{definition}
+
+Distinct points can represent the same point of a torus if their difference is a period.
+This definition excludes those coincidences as well, and is used for fixed-volume correlation kernels.
+
+\subsection{The continuum objects}\label{subsec:continuum-objects}
+
+\begin{definition}[Spacetime and Schwartz tests]\label{def:spacetime}
+Write $x=(\vec x,t(x))\in\R^3\times\R$ for spacetime, with $t(x)=x^4$, Euclidean norm $|x|$ and
+\begin{equation}\label{eq:spacetime}
+\mathsf m(x)=t(x)^2-|\vec x|^2,
+\qquad \overline V_+=\{x:|\vec x|\le t(x)\}\,.
+\end{equation}
+A vector is spacelike if $\mathsf m(x)<0$.
+Let $\mathcal S=\Sch$, with its Schwartz topology.
+\end{definition}
+
+Hilbert inner products are antilinear in the first variable.
+The next definition lists the Hilbert space and fields before imposing their physical properties.
+A field is smeared against a Schwartz function because its value at a single point need not be an operator.
+
+\begin{definition}[Relativistic data]\label{def:relativistic}
+A relativistic datum consists of a complex Hilbert space $\mathcal H$, a complex vector space $\mathcal L$ of labels, a linear subspace $\mathcal D\subset\mathcal H$, a vector $\Omega\in\mathcal D$ and fields $\Phi(\ell,f):\mathcal D\to\mathcal D$ linear over $\C$ in $\ell\in\mathcal L$ and $f\in\mathcal S$ (Definition~\ref{def:spacetime}).
+It includes an antilinear map $\ell\mapsto\ell^*$, a strongly continuous unitary translation representation $T(b)$ and a projection-valued Borel measure $E$ on $\R^4$.
+Its diagonal finite measures satisfy $\mu_\psi(A)=\langle\psi,E(A)\psi\rangle$ on Borel sets.
+
+There is also a strongly continuous unitary representation $U$ of a topological group $\mathcal P$, identified by a homeomorphism $\kappa$ with the proper orthochronous Poincar\'e group.
+Writing $\kappa(g)=(\Lambda_g,b_g)$, this identification respects identity and the multiplication
+\begin{equation}\label{eq:poincare}
+(\Lambda,b)(\Lambda',b')=(\Lambda\Lambda',\Lambda b'+b)\,.
+\end{equation}
+Here $\Lambda$ is invertible, has determinant $1$, preserves $\mathsf m$ and maps $\overline V_+$ onto itself.
+Pure translations $\tau(b)=\kappa^{-1}(1,b)$ satisfy $U(\tau(b))=T(b)$.
+For each $g\in\mathcal P$ there is a complex linear bijection $\rho(g)$ of $\mathcal L$.
+The action on tests is $(g\cdot f)(x)=f(\Lambda_g^{-1}(x-b_g))$.
+\end{definition}
+
+A projection-valued Borel measure here is normalized by $E(\R^4)=1$, has $E(\varnothing)=0$, satisfies $E(A)E(B)=E(A\cap B)$ and $E(A)^*=E(A)$ on Borel sets, and is countably additive in the strong operator topology.
+One can assign arbitrary operators to non-Borel sets, which none of the assertions uses.
+The label map ${}^*$ is not required to be an involution.
+No continuity or finite-dimensionality condition on $\rho$ is included in the data.
+
+\begin{definition}[Wightman conditions]\label{def:wightman}
+The relativistic datum of Definition~\ref{def:relativistic} satisfies the following conditions, with spacetime and test functions as in Definition~\ref{def:spacetime} and $p\cdot b$ the Euclidean pairing.
+\begin{enumerate}[label=\textup{W\arabic*.},ref=W\arabic*,start=0]
+\item\label{wightman:0} For every $\psi\in\mathcal H$ and $b\in\R^4$,
+\begin{equation}\label{eq:spectrum}
+\langle\psi,T(b)\psi\rangle=\int e^{ip\cdot b}\,\mu_\psi(dp),
+\qquad E(\R^4\setminus\overline V_+)=0\,.
+\end{equation}
+Every vector fixed by all $T(b)$ belongs to $\C\Omega$.
+\item\label{wightman:1} The vacuum has norm one, $\mathcal D$ is dense, and
+\begin{equation}\label{eq:domain}
+\mathcal D=\Span_{\C}\{\Phi(\ell_1,f_1)\cdots\Phi(\ell_j,f_j)\Omega:j\in\N,\ \ell_i\in\mathcal L,\ f_i\in\mathcal S\}\,.
+\end{equation}
+For every $\ell\in\mathcal L$ and $\psi\in\mathcal D$, the map $f\mapsto\Phi(\ell,f)\psi$ is continuous from $\mathcal S$ into $\mathcal H$ in norm.
+For every $\ell,f$ and $\psi,\chi\in\mathcal D$,
+\begin{equation}\label{eq:adjoint}
+\langle\Phi(\ell,f)\psi,\chi\rangle=\langle\psi,\Phi(\ell^*,\bar f)\chi\rangle\,.
+\end{equation}
+\item\label{wightman:2} The maps $\rho$ form a representation: $\rho(1)=1$ and $\rho(gg')=\rho(g)\rho(g')$.
+For every $g\in\mathcal P$, $U(g)\mathcal D\subset\mathcal D$ and $U(g)\Omega=\Omega$.
+For every $g,\ell,f$ and $\psi\in\mathcal D$,
+\begin{equation}\label{eq:covariance}
+U(g)\Phi(\ell,f)\psi=\Phi(\rho(g)\ell,g\cdot f)U(g)\psi\,.
+\end{equation}
+\item\label{wightman:3} If $\mathsf m(x-y)<0$ for every $x\in\supp f$ and $y\in\supp f'$, then, for every $\ell,\ell'\in\mathcal L$ and $\psi\in\mathcal D$,
+\begin{equation}\label{eq:locality}
+\Phi(\ell,f)\Phi(\ell',f')\psi=\Phi(\ell',f')\Phi(\ell,f)\psi\,.
+\end{equation}
+\end{enumerate}
+\end{definition}
+
+The word span is the domain itself, and includes the vacuum as the empty word.
+The symmetry group is the Poincar\'e group itself rather than its double cover.
+The sign convention in~\eqref{eq:spectrum} is converted to the usual Minkowski pairing by reversing spatial momentum; the forward cone is unchanged.
+
+We collect the continuum objects in a hierarchy: a family of correlations, their phase decomposition, the relativistic fields, and the coefficients for local product expansions.
+The state $\mix$ denotes the average supplied by the lattice limit; a state $\xi\in X$ denotes one phase.
+
+\begin{definition}[Hierarchy]\label{def:hierarchy}
+A hierarchy over the Wilson family of Definition~\ref{def:family} consists of the following data.
+\begin{enumerate}[label=\textup{H\arabic*.},ref=H\arabic*]
+\item\label{hierarchy:1} A relativistic datum of Definition~\ref{def:relativistic}.
+\item\label{hierarchy:2} For every $d\in\N$, a finite-dimensional complex normed space $F_d$ and a complex linear map $\iota_d:F_d\to\mathcal L$.
+Set $\mathbb F=\bigsqcup_{d\in\N}F_d$, $\deg(d,A)=d$ and $\iota(d,A)=\iota_d A$.
+\item\label{hierarchy:3} A map $\pi:\mathcal T\to\mathbb F$, assigning a continuum field to each lattice observable label (Definition~\ref{def:observables}).
+\item\label{hierarchy:4} A compact metric space $X$, called the phase space, with a Borel measure $\nu$ and a selected point $\xi_*\in X$.
+\item\label{hierarchy:5} For every $n\in\N$ and $s\in X\sqcup\{\mix\}$, a correlation function $S^s(a;x)\in\C$ on $\mathbb F^n\times(\R^4)^n$.
+\item\label{hierarchy:6} For every $n\in\N$, a continuation $\mathsf F_n(a;z,\vec x)\in\C$ on $\mathbb F^n\times\C^n\times(\R^3)^n$.
+\item\label{hierarchy:7} For every $j\in\N$, a finite index set $\Ch j$ and fields $O_{j,\kappa}\in F_j$.
+For every finite index set $I$, $a\in\mathbb F^I$ and $\kappa\in\Ch j$, there is a coefficient function $c_{j,\kappa}(a;x,o)$ on $(\R^4)^I\times\R^4$.
+\item\label{hierarchy:8} An element $\Theta\in F_4$.
+\end{enumerate}
+\end{definition}
+
+The degree is an index used in the product estimates below.
+The definition imposes no inclusions between different $F_d$, no prescribed curvature interpretation and no compatibility of the $\iota_d$ across degrees.
+The functions $S^s$ are defined even on collision diagonals, but the conclusions constrain them only at separated points.
+
+\subsection{Reconstruction and phases}\label{subsec:reconstruction}
+
+The mixture will be the limit of lattice moments.
+The point $\xi_*$ instead selects the Euclidean correlations that continue to the relativistic fields.
+These two roles are related by a phase average, not by identifying the two states.
+
+\begin{definition}[Reconstruction properties]\label{def:reconstructed}
+A hierarchy of Definition~\ref{def:hierarchy} has the reconstruction properties if the following hold.
+Here $s\in X\sqcup\{\mix\}$, $n\in\N$ and $a\in\mathbb F^n$.
+\begin{enumerate}[label=\textup{R\arabic*.},ref=R\arabic*]
+\item\label{recon:1} Its relativistic datum satisfies \ref{wightman:0}--\ref{wightman:3}.
+\item\label{recon:2} For every nonzero $\ell\in\mathcal L$, there exists $f\in\mathcal S$ with $\Phi(\ell,f)\ne0$.
+\item\label{recon:3} Each $\iota_d$ is injective.
+\item\label{recon:4} Some $a\in\mathbb F$ and $f\in\mathcal S$ satisfy $\Phi(\iota(a),f)\ne0$.
+\item\label{recon:5} The map $a\mapsto\iota(a)$ from $\mathbb F$ onto $\mathcal L$ is surjective.
+\item\label{recon:6} The map $\pi:\mathcal T\to\mathbb F$ is surjective.
+\item\label{recon:7} The measure $\nu$ has total mass one.
+\item\label{recon:8} Every nonempty open subset of $X$ has positive $\nu$-measure.
+\item\label{recon:9} For every state $s$, order $n$, list $a\in\mathbb F^n$, $x\in\Conf n$ and permutation $\sigma$,
+\begin{equation}\label{eq:permutation}
+S^s((a_{\sigma(i)})_i;(x_{\sigma(i)})_i)=S^s(a;x)\,.
+\end{equation}
+\item\label{recon:10} For every $s,n,a$, the function $S^s(a;\cdot)$ is smooth on $\Conf n$.
+\item\label{recon:11} For every $n,a$ and $x\in\Conf n$, the function $\xi\mapsto S^\xi(a;x)$ is continuous.
+\item\label{recon:12} For every $n,a$ and $x\in\Conf n$,
+\begin{equation}\label{eq:mixture}
+\int_X S^\xi(a;x)\,\nu(d\xi)=S^\mix(a;x)\,.
+\end{equation}
+\item\label{recon:13} For every $n,a$ and fixed real spatial configuration $\vec x$, the function $z\mapsto\mathsf F_n(a;z,\vec x)$ is holomorphic on
+\begin{equation}\label{eq:tube}
+\mathcal Z_n=\{z\in\C^n:\operatorname{Im}z_1<\cdots<\operatorname{Im}z_n\}\,.
+\end{equation}
+\item\label{recon:14} For every $n,a$ and real configuration $x$ with $t(x_1)<\cdots<t(x_n)$,
+\begin{equation}\label{eq:euclidean-root}
+\mathsf F_n(a;(it(x_i))_i,(\vec x_i)_i)=S^{\xi_*}(a;x)\,.
+\end{equation}
+\item\label{recon:15} For every $n,a$, real heights $h_1<\cdots<h_n$ and tests $f_1,\ldots,f_n\in\mathcal S$,
+\begin{multline}\label{eq:boundary}
+\lim_{r\downarrow0}\int_{(\R^4)^n}\mathsf F_n(a;(t(x_i)+irh_i)_i,(\vec x_i)_i)\prod_{i=1}^n f_i(x_i)\,dx\\
+=\langle\Omega,\Phi(\iota(a_1),f_1)\cdots\Phi(\iota(a_n),f_n)\Omega\rangle\,.
+\end{multline}
+\end{enumerate}
+\end{definition}
+
+In~\eqref{eq:boundary} we retain the formal source's convention that the integral of a nonintegrable function is zero.
+No separate positive-height integrability assertion is part of \ref{recon:15}.
+The integrals in the lattice limit and~\eqref{eq:mixture} are ordinary absolutely convergent integrals, by compact support and smoothness in the first case and by phase continuity and compactness in the second.
+
+\subsection{Products and the trace test}\label{subsec:products}
+
+The product expansion replaces a cluster by finitely many single fields at its center.
+Fields whose positions remain away from the cluster are called spectators.
+One choice of coefficients must work with every list of such fields and in every state.
+The threshold on the cluster radius, however, may depend on the fixed spectator fields.
+
+\begin{definition}[Cluster geometry]\label{def:cluster}
+For a hierarchy (Definition~\ref{def:hierarchy}) and finite index sets $I,J$, write $S^s(a,x;b,y)$ for the correlation on the concatenated lists, enumerated in one fixed order on $I\sqcup J$.
+For $r>0$, $M\ge0$ and $\eta>0$, call $(x,o)$ an $(r,M,\eta)$-cluster if
+\begin{equation}\label{eq:cluster}
+|x_i-o|\le Mr\quad(i\in I),
+\qquad |x_i-x_{i'}|\ge\eta r\quad(i\ne i')\,.
+\end{equation}
+For $c>0$, call $y$ $c$-clear of $o$ if
+\begin{equation}\label{eq:clear}
+|o-y_j|\ge c\quad(j\in J),
+\qquad |y_j-y_{j'}|\ge c\quad(j\ne j')\,.
+\end{equation}
+Set $w(a)=\sum_{i\in I}\deg a_i$.
+\end{definition}
+
+\begin{definition}[Operator product expansion]\label{def:ope}
+For a hierarchy (Definition~\ref{def:hierarchy}), the OPE property consists of the following estimates on clusters and distant points as in Definition~\ref{def:cluster}.
+\begin{enumerate}[label=\textup{O\arabic*.},ref=O\arabic*]
+\item\label{ope:1} For every finite $I$, $a\in\mathbb F^I$, $M\ge0$, $\eta,\varepsilon>0$, $j\in\N$ and $\kappa\in\Ch j$, there exists $\delta>0$ such that, for every $0<r<\delta$ and every $(r,M,\eta)$-cluster,
+\begin{equation}\label{eq:ope-coefficient}
+|c_{j,\kappa}(a;x,o)|\le r^{j-w(a)-\varepsilon}\,.
+\end{equation}
+\item\label{ope:2} For every finite $I,J$, $a\in\mathbb F^I$, $b\in\mathbb F^J$, $M\ge0$, $\eta,c,\varepsilon>0$ and $D\in\N$, there exists $\delta>0$ such that, for every $0<r<\delta$, every $(r,M,\eta)$-cluster, every $c$-clear spectator configuration and every $s\in X\sqcup\{\mix\}$,
+\begin{equation}\label{eq:ope-remainder}
+\left|S^s(a,x;b,y)-\sum_{j=0}^D\sum_{\kappa\in\Ch j}
+ c_{j,\kappa}(a;x,o)S^s((j,O_{j,\kappa}),o;b,y)\right|\le r^{D+1-w(a)-\varepsilon}\,.
+\end{equation}
+\end{enumerate}
+\end{definition}
+
+The coefficient functions are those already chosen in \ref{hierarchy:7}.
+They do not depend on spectators, state or truncation degree.
+Both estimates have constant $1$, with the dependence absorbed into $\delta$.
+For small enough $r$, $Mr<c$ ensures that all points in the tested correlations are separated.
+These are finite-truncation estimates; they assert neither an infinite convergent expansion nor uniqueness of its coefficients.
+
+\begin{definition}[The trace two-point function]\label{def:trace-pair}
+For the field $\Theta\in F_4$ of Definition~\ref{def:hierarchy}, set
+\begin{equation}\label{eq:trace-pair}
+G_\Theta(r)=S^{\xi_*}((4,\Theta),(4,\Theta);-\frac{r}{2}e_4,\frac{r}{2}e_4)\,.
+\end{equation}
+\end{definition}
+
+Free-field two-point functions are built from the energy $E_{\mathsf m}(p)$ of a particle with mass $\mathsf m$ and spatial momentum $p$.
+The following class allows finitely many masses and derivatives, and finite sums of products of the resulting kernels.
+It specifies exactly the comparisons excluded by the theorem.
+
+\begin{definition}[Finite Wick profiles]\label{def:wick}
+A mode consists of $\mathsf m\ge0$, integers $j,q\in\N$ and a continuous real function $h$ on $\R^3$ satisfying $h(\lambda p)=\lambda^jh(p)$ for every $\lambda>0$.
+Set
+\begin{equation}\label{eq:mode}
+E_{\mathsf m}(p)=\sqrt{\mathsf m^2+|p|^2},
+\qquad K_{\mathsf m,q,h}(r)=\int_{\R^3}\frac{E_{\mathsf m}(p)^qh(p)}{2E_{\mathsf m}(p)}e^{-rE_{\mathsf m}(p)}\,dp\,.
+\end{equation}
+The integrand can be assigned value zero at a zero denominator, a set of measure zero.
+A finite Wick profile is
+\begin{equation}\label{eq:wick}
+W(r)=\sum_{\alpha=1}^A c_\alpha\prod_{\beta=1}^{n_\alpha}
+ K_{\mathsf m_{\alpha\beta},q_{\alpha\beta},h_{\alpha\beta}}(r),
+\qquad c_\alpha\in\C,\quad A,n_\alpha\in\N\,.
+\end{equation}
+Empty products are allowed.
+\end{definition}
+
+\begin{definition}[Trace test]\label{def:trace}
+The hierarchy of Definition~\ref{def:hierarchy} passes the trace test if the following hold, with $G_\Theta$ as in Definition~\ref{def:trace-pair} and Wick profiles as in Definition~\ref{def:wick}.
+\begin{enumerate}[label=\textup{T\arabic*.},ref=T\arabic*]
+\item\label{trace:1} For every $f\in\mathcal S$, $\langle\Omega,\Phi(\iota_4\Theta,f)\Omega\rangle=0$.
+\item\label{trace:2} The number $A_G=\frac{3\dim_\R\g}{\pi^4}$ is positive.
+\item\label{trace:3} The following limit holds in $\C$ over all positive radii:
+\begin{equation}\label{eq:trace-law}
+\lim_{r\downarrow0}r^8\left(\log\frac{1}{r}\right)^2G_\Theta(r)=\frac{3\dim_\R\g}{\pi^4}\,.
+\end{equation}
+\item\label{trace:4} For every finite Wick profile $W$ and every $\delta>0$, there exists $r\in(0,\delta)$ with $G_\Theta(r)\ne W(r)$.
+\end{enumerate}
+\end{definition}
+
+The public trace test concerns the chosen degree-four field and the time axis.
+Its definition alone supplies no stress tensor.
+The construction identifies this field with a centered stress trace, as used in the proof of Proposition~\ref{prop:trace} below.
+

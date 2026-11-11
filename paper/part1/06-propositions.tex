@@ -1,0 +1,139 @@
+\section{The principal propositions}\label{subsec:principal}
+
+The five propositions below use the joint choices described in Section~\ref{sec:strategy}.
+Their complete proofs belong to Part~\ref{part:construction}; the explanations here give the ideas needed to follow the deduction of Theorem~\ref{thm:main}.
+
+\paragraph{Removing the lattice spacing.}
+At a fixed physical volume, increasing the number of sites must not change what the model looks like at a fixed larger distance.
+The coupling and the normalization of each observable are chosen to achieve this compatibility.
+The first proposition gives both one such choice and convergence along its entire spacing sequence.
+
+\begin{proposition}[Ultraviolet construction]\label{prop:uv}
+For every gauge group with simple $\g$ (Definition~\ref{def:gauge}), there exists a regular Wilson family $\W$ (Definitions~\ref{def:family} and~\ref{def:regular}) such that, for every $p,n\in\N$ and $v\in\mathcal T^n$, there exists a smooth kernel $K_{p,v}$ on the periodically separated set of Definition~\ref{def:periodic} with
+\begin{equation}\label{eq:fixed-volume}
+\lim_{N\to\infty}C_{N,p}(v;f)=\int f(x)K_{p,v}(x)\,dx
+\end{equation}
+for every separated test $f$ supported inside volume $p$ (Definitions~\ref{def:moments}, \ref{def:tests} and~\ref{def:admissible}).
+\end{proposition}
+
+\emph{Idea of the proof.}
+Replace the fine link variables by averaged variables at a larger spacing, keeping the integral of the probability density exactly the same.
+Where the fields are small, their fluctuations can be compared with a Gaussian integral.
+Where they are large, the energy suppresses their contribution; these configurations are estimated rather than discarded.
+Repeating this integration changes the coefficient multiplying the squared curvature.
+We account for that change in the coupling, instead of treating it as a small error.
+The resulting coupling grows logarithmically as the original spacing shrinks.
+
+We carry the local observables through the same integrations.
+Their normalization is fixed at a reference scale, so different cutoffs are compared there rather than at their different bare couplings.
+To prove convergence, stop the integration at an intermediate scale.
+At this fixed scale the effective correlations converge with the cutoff, while the remaining error is uniformly small when the intermediate scale is sufficiently fine.
+Choosing the intermediate scale first and the cutoffs second proves the Cauchy property.
+
+\gap{The later ultraviolet sections must prove the estimates for integrating small and large fields, identify the change of the actual effective coupling, and establish the fixed-scale Cauchy estimate with a uniformly small remaining error.
+The fixed-volume conclusion has been checked in the formal source; its analytic proof is still missing from this manuscript.\sourcefootnote{\nolinkurl{Construction.lean}, lines 15--40; \nolinkurl{HierarchyBridge.lean}, lines 16--26; \nolinkurl{YM/FullVolume/Profiles.lean}, lines 25--47.}}
+
+\paragraph{Enlarging the volume and separating phases.}
+The estimates for a fixed collection of observables must remain bounded when the surrounding box grows.
+They give compactness, but the limit can retain several possible vacuum states.
+The next proposition includes the separate argument that resolves this average into phases.
+
+\begin{proposition}[Continuum limit and phases]\label{prop:limit}
+For the jointly chosen family of Proposition~\ref{prop:uv} and every strictly increasing $p:\N\to\N$, there exist a strictly increasing $q:\N\to\N$ and hierarchy data (Definition~\ref{def:hierarchy}) satisfying the limit~\ref{main:1} and the phase and regularity conditions~\ref{recon:7}--\ref{recon:12} of Definition~\ref{def:reconstructed}.
+\end{proposition}
+
+\emph{Idea of the proof.}
+Reflection positivity bounds an average of several separated observables by averages of reflected copies of each individual observable.
+The ultraviolet estimates bound these individual averages independently of box size.
+A positive transfer operator controls changes in the correlations when their points move.
+Boundedness and equicontinuity then allow a subsequence to be selected for all finite label bases and all compact sets at once.
+Lattice summation by parts relates derivatives of the limits to insertions of higher degree and gives smoothness.
+The fixed-volume limits of Proposition~\ref{prop:uv} identify every inner limit, so only the volume subsequence remains to be chosen.
+
+The average state is split into phases by examining observables separated by a very long time.
+In the Hilbert space obtained from reflection positivity, long-time evolution removes the positive-energy part and retains the zero-energy vectors.
+Observables placed between these long evolutions act on that zero-energy space.
+Once rotations are established, exchanging a time direction with a spatial direction shows that these limiting operators commute.
+The spectral representation of their commutative algebra gives the compact phase space; the vacuum expectation gives its probability measure.
+This produces the mixture identity~\eqref{eq:mixture}.
+
+\gap{The infinite-volume argument still needs the same-family bounds for local observables and their derivative representatives from the ultraviolet sections.
+The later symmetry and phase sections must also prove that the contribution from a far-away stress integral tends to zero and that the long-time operators commute; neither follows from compactness alone.\sourcefootnote{\nolinkurl{YM/Extraction/Limits.lean}, lines 26--43; \nolinkurl{HierarchyBridge.lean}, lines 44--57 and 82--119; the phase representation is in \nolinkurl{YM/Phase/Mixture.lean}.}}
+
+\paragraph{Recovering relativistic fields.}
+Euclidean time evolution damps positive energies.
+Allowing time to become complex relates this damping to unitary time evolution, and hence to relativistic vacuum expectations.
+The estimates must hold as the imaginary time separations tend to zero, because the resulting fields are distributions.
+
+\begin{proposition}[Relativistic reconstruction]\label{prop:reconstruction}
+For the jointly chosen hierarchy of Proposition~\ref{prop:limit}, the selected theory satisfies~\ref{recon:1}--\ref{recon:6} and the continuation satisfies~\ref{recon:13}--\ref{recon:15} of Definition~\ref{def:reconstructed}, with the same fields and phase as in Definition~\ref{def:hierarchy}.
+\end{proposition}
+
+\emph{Idea of the proof.}
+First place Euclidean observables in thin, separated time intervals.
+Their bounds show that the continued correlations have distributional limits when the imaginary time separations disappear.
+Positivity turns these limits into inner products of field words applied to a vacuum.
+Completing this space gives the Hilbert space, and adding a letter to a word defines a field operator.
+
+Rotation identities continue to Lorentz transformations.
+Together with positivity of Euclidean energy, this confines energy and momentum to the forward cone.
+To prove locality, compare the two orders of neighboring fields at spacelike separated points: their analytic continuations agree on the Euclidean configurations and therefore give the same boundary values there.
+A label is discarded only if every correlation containing it vanishes.
+This quotient makes the remaining field labels faithful, while the unit supplies a nonzero field.
+
+\gap{The reconstruction section must prove the bounds as imaginary time separations vanish and justify the equality of the two analytic orderings at spacelike separation.
+The exact selected-phase and product-test conclusions have been checked in the formal source; these analytic arguments remain unwritten.\sourcefootnote{\nolinkurl{PublicTheory.lean}, lines 93--319; \nolinkurl{HierarchyBridge.lean}, lines 82--133; boundary and locality proofs are organized in \nolinkurl{YM/Work/C01.lean} through \nolinkurl{C29.lean}.}}
+
+\paragraph{Replacing a cluster by a single field.}
+A distant observation cannot resolve every detail of several nearby insertions.
+The operator product expansion expresses their effect through a finite list of fields at the cluster center.
+The coefficients must be independent of which distant observations are subsequently made.
+
+\begin{proposition}[Common operator product expansion]\label{prop:ope}
+The fields and coefficients in~\ref{hierarchy:7} of the jointly chosen hierarchy satisfy~\ref{ope:1}--\ref{ope:2} of Definition~\ref{def:ope}, for the clusters of Definition~\ref{def:cluster}.
+\end{proposition}
+
+\emph{Idea of the proof.}
+Average the clustered observables from their separation scale toward a larger scale, keeping track of which single local fields they produce.
+Retain the terms through degree $D$ and estimate everything else.
+The first omitted degree gives the power $D+1$ in the remainder.
+The arbitrarily small loss in that power accommodates logarithmic factors.
+A fixed collection of correlations with distant test fields determines the coefficients once, before any later spectator fields or phase are chosen.
+The error is bounded as an operator in the same commutative algebra that defines the phases, so its bound holds in every phase and in the average state.
+
+\gap{The product section must prove the local-product remainder estimate and show how the fixed coefficient choice gives an operator bound before evaluation in a phase.
+The quantifiers and both powers of the radius in~\ref{ope:1}--\ref{ope:2} have been checked; their analytic proof is still deferred.\sourcefootnote{\nolinkurl{ChallengeSpec.lean}, lines 58--80; \nolinkurl{HierarchyBridge.lean}, lines 68--80; \nolinkurl{YM/OPE/Orbits/Kernel.lean}, lines 62--77.}}
+
+\paragraph{Detecting the logarithmic correction.}
+The construction supplies a stress tensor and subtracts the selected vacuum expectation from its trace.
+Comparison at short distances identifies the leading two-point singularity of this centered field.
+The logarithmic correction to that singularity is incompatible with the finite free-field expressions in Definition~\ref{def:wick}.
+
+\begin{proposition}[Trace law and finite-profile exclusion]\label{prop:trace}
+The field $\Theta\in F_4$ of the jointly chosen hierarchy satisfies~\ref{trace:1}--\ref{trace:4} of Definition~\ref{def:trace} in the theory of Proposition~\ref{prop:reconstruction}, with the two-point function of Definition~\ref{def:trace-pair}.
+\end{proposition}
+
+\emph{Idea of the proof.}
+At small distances the fields can be compared, after adjusting their normalizations, with free Maxwell fields.
+The trace carries an additional inverse running coupling at each insertion.
+Since that coupling grows logarithmically, its two-point function acquires the inverse square logarithm in~\eqref{eq:trace-law}.
+The coefficient of the logarithmic growth enters both the running coupling and the trace normalization, and cancels from their ratio.
+The final amplitude by itself therefore does not check that coefficient.
+
+The comparison initially works at specially chosen scales.
+A positive spectral representation makes the two-point function decrease with the time separation, so its values at separations just above and below a requested one bound its value there.
+Every sequence of radii approaching zero has a subsequence where the comparison applies; thus a sequence contradicting the full limit cannot exist.
+Finite Wick profiles instead have expansions in integer powers of $r$ and nonnegative powers of $\log r$.
+Such expansions cannot have the positive inverse-logarithmic behavior in~\eqref{eq:trace-law}.
+
+\gap{The trace section must prove the stress normalization, comparison along subsequences of arbitrary radii, the spectral comparison between nearby separations, and the finite mass-shell expansion.
+The amplitude and the exact finite comparison class have been checked; these proofs remain to be supplied.\sourcefootnote{\nolinkurl{TraceBridge.lean}, lines 14--44; \nolinkurl{YM/TraceExtension/Verse/Cape.lean}, lines 53--88; \nolinkurl{YM/TraceExtension/Wick/Log.lean}, lines 96--108.}}
+
+\begin{proof}[Deduction of Theorem~\ref{thm:main} from the principal propositions]
+Fix the gauge group and choose the family of Proposition~\ref{prop:uv}, including its insertions and positive regularity slope.
+For a prescribed strictly increasing $p$, take the common $q$ and hierarchy of Proposition~\ref{prop:limit}.
+This gives~\ref{main:1} and~\ref{recon:7}--\ref{recon:12} on that refinement.
+Proposition~\ref{prop:reconstruction} supplies the remaining reconstruction properties, hence~\ref{main:2}.
+Propositions~\ref{prop:ope} and~\ref{prop:trace} give~\ref{main:3} and~\ref{main:4} for those same objects.
+\end{proof}
+

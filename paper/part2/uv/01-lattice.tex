@@ -1,66 +1,59 @@
 \section{Lattice fields}\label{sec:uv-lattice}
 
-The lattice measure and the local observables are fixed together, before any sequence of volumes is prescribed.
-This section proves the exact symmetries of the lattice law and defines the classical labels of local observables.
-The normalization of these polynomials has two stages: their Taylor coefficients reproduce classical fields, and their coefficients are subsequently changed by the renormalization transformation.
-Keeping these stages distinct will allow us to use one finite stencil at every cutoff.
-
-Throughout this section, $G\subset U(m)$ is the closed matrix group of the theorem, with real Lie algebra~$\g$.
-The arguments here do not require simplicity or connectedness.
-The Frobenius norm on matrices is denoted by~$\|\cdot\|_{\mathrm F}$.
+A lattice observable measures the field through a finite collection of nearby links.
+To compare the same observable at finer spacings, we must specify both the classical quantity it represents and how its coefficients change with scale.
+We first prove the exact symmetries of the Wilson measure, then describe these two normalizations.
+The lattice, plaquettes and measure are those of Definitions~\ref{def:lattice}, \ref{def:plaquette} and~\ref{def:wilson-law}; their definitions will not be repeated here.
+Throughout, the gauge group is as in Definition~\ref{def:gauge}, without a simplicity or connectedness assumption.
 
 \subsection{The Wilson measure}
 
-Only positive links are independent variables.
-For $\ell\ge1$, put $\Lambda_\ell=(\Z/\ell\Z)^4$ and assign $U(y,\mu)\in G$ to each link from~$y$ to~$y+e_\mu$.
-Transport on the reverse link is $U(y,\mu)^{-1}$.
-If $w$ is a lattice walk from~$x$ to~$z$, write $U(w)$ for the ordered product of its link variables.
-A gauge transformation $\gamma:\Lambda_\ell\to G$ acts by
-\begin{equation}\label{eq:uv-gauge}
- U^\gamma(y,\mu)=\gamma(y)U(y,\mu)\gamma(y+e_\mu)^{-1},
- \qquad U^\gamma(w)=\gamma(x)U(w)\gamma(z)^{-1}\,.
-\end{equation}
-The second identity follows by cancellation at the intermediate vertices, including for backward steps.
+The action depends on the transport around each elementary square, or plaquette, as explained in Definition~\ref{def:plaquette}.
+Conjugating that transport or reversing its direction leaves the action unchanged.
+This observation gives exact symmetries of the probability measure, before any limit is taken.
 
-For~$u\in G$, define
-\begin{equation}\label{eq:uv-chord}
- s(u)=1-\frac1m\operatorname{Re}\tr u,
- \qquad \chi(u)=\frac{\|u-1\|_{\mathrm F}}{\sqrt m}\,.
+Write~$U(w)$ for the ordered transport along a walk~$w$ from~$x$ to~$z$, using the link convention of Definition~\ref{def:lattice}.
+The gauge action of Definition~\ref{def:gauge-transform} gives
+\begin{equation}\label{eq:uv-gauge}
+ U^\gamma(w)=\gamma(x)U(w)\gamma(z)^{-1}\,.
 \end{equation}
-Unitarity and the trace identity for the Frobenius norm give
+The factors at intermediate vertices cancel, for forward and backward steps alike.
+For the estimates below, abbreviate the single-plaquette action and define its associated distance from the identity by
+\begin{equation}\label{eq:uv-chord}
+ s(u)=1-\frac{1}{m}\operatorname{Re}\tr u,
+ \qquad \chi(u)=\frac{\|u-1\|_{\mathrm F}}{\sqrt m}\qquad(u\in G),
+\end{equation}
+where~$\|\cdot\|_{\mathrm F}$ is the Frobenius norm.
+Unitarity gives
 \begin{equation}\label{eq:uv-chord-square}
  \chi(u)^2=2s(u),\qquad 0\le s(u)\le2,\qquad
  \chi(uv)\le\chi(u)+\chi(v)\,.
 \end{equation}
-Indeed, $\|u-1\|_{\mathrm F}^2=2m-2\operatorname{Re}\tr u$, and $\|u-1\|_{\mathrm F}\le2\sqrt m$.
-For the last inequality write $uv-1=(u-1)+u(v-1)$ and use invariance of the Frobenius norm under unitary multiplication.
+Indeed, $\|u-1\|_{\mathrm F}^2=2m-2\operatorname{Re}\tr u$ and~$\|u-1\|_{\mathrm F}\le2\sqrt m$.
+For the last inequality, write~$uv-1=(u-1)+u(v-1)$ and use invariance of the Frobenius norm under unitary multiplication.
 Both~$s$ and~$\chi$ are continuous and invariant under conjugation and inversion.
 
-Let~$dh$ be probability Haar measure on~$G$, and let~$d\eta_\ell$ be its product over the~$4\ell^4$ positive links.
-Write
-\begin{equation}\label{eq:uv-wilson}
- \begin{aligned}
- U_{y;\mu\nu}
- &=U(y,\mu)U(y+e_\mu,\nu)U(y+e_\nu,\mu)^{-1}U(y,\nu)^{-1},\\
- E_\ell(U)&=\sum_{y\in\Lambda_\ell}\sum_{\mu<\nu}s(U_{y;\mu\nu}),\\
- Z_\ell(\beta)&=\int e^{-\beta E_\ell(U)}\,d\eta_\ell(U)\,.
- \end{aligned}
-\end{equation}
-Each site and increasing axis pair contributes once, including when the periodic side is small.
-There is no further factor in this definition of the energy.
+The coordinate symmetries we use are the permutations and reversals of the four lattice axes.
+They act on link configurations by transporting each link along its image.
 
+\begin{definition}[Coordinate symmetries]\label{def:uv-symmetries}
 Let~$H_4$ be the group of signed permutation matrices.
-For~$A(y)=hy+z$, with~$h\in H_4$ and~$z\in\Lambda_\ell$, the pullback~$A^*U$ assigns to a positive link its image transport, using the inverse variable if the image direction is negative.
+For~$A(y)=hy+z$, with~$h\in H_4$ and~$z\in\Lambda_\ell$, the pullback~$A^*U$ reads the transport along the image of each positive link.
+A reversed image uses the inverse variable, with its initial vertex shifted accordingly.
+The lattice and link conventions are those of Definition~\ref{def:lattice}.
+\end{definition}
+
+Write~$\mathcal U_\ell$ for the configuration space of Definition~\ref{def:lattice}, and~$B_b(\mathcal U_\ell;\C)$ for its bounded Borel complex functions.
+The following proposition justifies ordinary expectations of local polynomials and the changes of variables used throughout the construction.
 
 \begin{proposition}[The lattice law]\label{prop:uv-law}
-For every~$\ell\ge1$ and~$\beta\in\R$, the measure
+For~$\ell\ge1$ and~$\beta\in\R$, the measure of Definition~\ref{def:wilson-law} satisfies
 \begin{equation}\label{eq:uv-law}
- d\mu_{\ell,\beta}(U)=Z_\ell(\beta)^{-1}e^{-\beta E_\ell(U)}\,d\eta_\ell(U)
+ \mu_{\ell,\beta}(\mathcal U_\ell)=1,\qquad
+ C(\mathcal U_\ell;\C)\cup B_b(\mathcal U_\ell;\C)
+ \subseteq L^1(\mu_{\ell,\beta})\,.
 \end{equation}
-is a Borel probability measure on the compact configuration space.
-Every continuous complex function and every bounded Borel complex function is integrable.
-Every gauge transformation and every affine signed permutation~$A$ preserve this measure.
-Consequently, for every integrable complex~$F$,
+For every gauge transformation~$\gamma$ of Definition~\ref{def:gauge-transform}, coordinate symmetry~$A$ of Definition~\ref{def:uv-symmetries}, and~$F\in L^1(\mu_{\ell,\beta})$,
 \begin{equation}\label{eq:uv-expectation-symmetry}
  \int F(U^\gamma)\,d\mu_{\ell,\beta}(U)
  =\int F(U)\,d\mu_{\ell,\beta}(U)
@@ -69,23 +62,20 @@ Consequently, for every integrable complex~$F$,
 \end{proposition}
 
 \begin{proof}
-The group~$G$ is compact, as a closed subgroup of the compact unitary group.
-Thus the finite product of link spaces is compact.
-The energy is continuous and satisfies~$0\le E_\ell\le12\ell^4$, by~\eqref{eq:uv-chord-square} and the six increasing axis pairs.
-The density is therefore bounded above and bounded below by a positive constant, for every real~$\beta$.
-Its integral~$Z_\ell(\beta)$ is finite and positive, and division by that integral proves normalization.
-Continuous functions on the compact configuration space are bounded; the integrability assertions follow.
+The closed subgroup~$G\subset U(m)$ is compact, so~$\mathcal U_\ell$ is compact.
+The energy in~\eqref{eq:wilson-energy} is continuous and satisfies~$0\le E_\ell\le12\ell^4$, by~\eqref{eq:uv-chord-square} and the six increasing axis pairs.
+For every real~$\beta$, the unnormalized density in~\eqref{eq:wilson-law} is bounded above and bounded below by a positive constant.
+Its integral is therefore finite and positive, and division by this integral proves normalization.
+Continuity on the compact configuration space implies boundedness, which proves both integrability assertions.
 
 Probability Haar measure on a compact group is invariant under right translations and inversion as well as left translations.
-For example, the image of Haar measure under a fixed right translation is again left invariant with total mass one, so Haar uniqueness gives equality.
-Inversion then exchanges left and right invariance and also preserves the normalization.
+For example, its image under a fixed right translation is again left invariant with total mass one, so Haar uniqueness gives equality.
+Inversion exchanges left and right invariance and preserves the normalization.
 Each gauge transformation acts on a link by fixed left and right multiplications.
-It preserves product Haar measure, while~\eqref{eq:uv-gauge} makes every plaquette transform by conjugation at its initial vertex.
-Hence it preserves~$E_\ell$ and the density in~\eqref{eq:uv-law}.
+It preserves product Haar measure, while~\eqref{eq:uv-gauge} conjugates every plaquette transport at its initial vertex.
+Hence it preserves the energy and the density in~\eqref{eq:wilson-law}.
 
-An affine signed permutation permutes the positive-link indices and inverts selected link variables.
-The shift of the initial vertex on a reversed link is included in this permutation.
-It therefore preserves product Haar measure.
+An affine signed permutation permutes the positive-link indices and inverts selected variables, so it also preserves product Haar measure.
 The image of an elementary square is another elementary square; changing its initial corner conjugates its transport, and reversing its circulation inverts it.
 To check the indices, write~$he_\mu=\sigma_\mu e_{\pi(\mu)}$, with~$\sigma_\mu\in\{-1,1\}$.
 The image square has its positive-axis base at
@@ -95,150 +85,212 @@ The image square has its positive-axis base at
 \end{equation*}
 and its axis pair is the increasing rearrangement of~$\{\pi(\mu),\pi(\nu)\}$.
 The axis pairs are permuted, and for each pair the site map is an affine bijection.
-Thus the face indices are permuted, including on a periodic lattice of side one or two.
+Thus the face indices are permuted even when the periodic side is one or two.
 Conjugation and inversion invariance of~$s$ give invariance of~$E_\ell$.
-Changing variables in~\eqref{eq:uv-law} proves~\eqref{eq:uv-expectation-symmetry}.
+Changing variables in~\eqref{eq:wilson-law} proves~\eqref{eq:uv-expectation-symmetry}.
 \end{proof}
 
 \subsection{Classical labels}
 
-The local polynomial labels describe a connection in radial gauge near one point.
-They are defined before imposing field equations or taking a continuum limit.
-For~$j\ge0$, let~$\mathcal A_j$ be the real vector space of homogeneous polynomial one-forms of degree~$j+1$ with values in~$\g$, satisfying
+We now choose concrete classical quantities for the lattice observable labels of Definition~\ref{def:observables}.
+A connection near the origin is described in radial gauge: its component in the radial direction vanishes.
+Its Taylor coefficients then satisfy a linear constraint, degree by degree.
+The constant coefficient vanishes: a constant one-form with zero contraction against every radial vector must be zero.
+A polynomial in finitely many such coefficients describes a classical local observable; invariance under simultaneous conjugation removes the choice of gauge at the origin.
+
+\begin{definition}[Classical labels]\label{def:uv-labels}
+For~$\g$ of Definition~\ref{def:gauge} and~$j\ge0$, let~$\mathcal A_j$ be the real space of homogeneous polynomial one-forms of degree~$j+1$, with values in~$\g$, satisfying
 \begin{equation}\label{eq:uv-radial}
  \sum_{\mu=1}^4 z^\mu A_{j,\mu}(z)=0\qquad(z\in\R^4)\,.
 \end{equation}
-Equivalently, each component is the diagonal evaluation of a symmetric~$(j+1)$-linear map, with the same constraint.
-These are Taylor coefficients, so their definition includes the factorial normalization of a Taylor polynomial.
-Let~$J=(A_j)_{j\ge0}$ denote a sequence of such coefficients.
-Choose real coordinates on each~$\mathcal A_j$, give every coordinate weight~$j+2$, and let~$V_d$ be the complex polynomials of total weight at most~$d$ invariant under simultaneous conjugation by~$G$.
+A real jet is a sequence~$J=(A_j)_{j\ge0}$ with~$A_j\in\mathcal A_j$.
+Choose real coordinates on each~$\mathcal A_j$, assigning weight~$j+2$ to each coordinate.
+Let~$V_d$ be the space of complex polynomials in these coordinates, of total weight at most~$d$, invariant under simultaneous conjugation by~$G$.
+\end{definition}
 
-The ordinary polynomial degree will count factors, separately from weight.
-An orthogonal matrix acts on one-forms by
+The coefficients in Definition~\ref{def:uv-labels} are Taylor coefficients, with the factorial normalization, rather than derivative values.
+Equivalently, they are diagonal evaluations of symmetric~$(j+1)$-linear maps.
+The weight~$j+2$ records the scaling of a link integral: the polynomial one-form contributes~$j+1$ powers of length and integration contributes one more.
+Weights add under multiplication.
+We also count the number of factors in a monomial, its ordinary polynomial degree; the two gradings will serve different purposes.
+
+An orthogonal matrix~$h$ acts on these one-forms and on their invariant polynomials by
 \begin{equation}\label{eq:uv-label-action}
  (T_hA_j)_\mu(z)=\sum_\nu h_{\mu\nu}A_{j,\nu}(h^{-1}z),
  \qquad (h\cdot v)(J)=v(T_{h^{-1}}J)\,.
 \end{equation}
-The action preserves the radial condition and commutes with conjugation by~$G$.
-Complex conjugation of polynomial coefficients is denoted by~$v\mapsto\bar v$.
+This action preserves~\eqref{eq:uv-radial} and commutes with conjugation by~$G$.
+Coefficient conjugation is denoted by~$v\mapsto\bar v$; a real polynomial has~$\bar v=v$.
+Let~$V_d^{w,f}$ be the subspace homogeneous of weight~$w$ and factor number~$f$.
+
+The weight bound leaves only finitely many coordinates and monomials.
+We can therefore choose one finite basis at each degree, retaining the basis elements already chosen at lower degrees.
+Real homogeneous bases make conjugation and the two gradings explicit.
 
 \begin{lemma}[Finite label spaces]\label{lem:uv-labels}
-For every~$d\ge0$, the space~$V_d$ is finite dimensional and its elements are determined by their values on real jets.
-It contains~$1$ and is naturally included in~$V_{d+1}$.
-The decomposition by weight and factor number preserves~$V_d$, and its components are preserved by~$O(4)$ and complex conjugation.
-There exist bases in all degrees, nested as sets of polynomials, consisting of real polynomials homogeneous in both gradings and containing~$1$.
+For the spaces of Definition~\ref{def:uv-labels}, evaluation on real jets is injective, and
+\begin{equation}\label{eq:uv-label-grading}
+ \dim_\C V_d<\infty,\qquad 1\in V_d\subseteq V_{d+1},\qquad
+ V_d=\bigoplus_{\substack{0\le w\le d\\0\le f\le w}}V_d^{w,f}\,.
+\end{equation}
+Each summand is preserved by~\eqref{eq:uv-label-action} and coefficient conjugation.
+There are nested real bases, homogeneous in both gradings and containing~$1$.
 \end{lemma}
 
 \begin{proof}
 Only coordinates with~$j+2\le d$ can occur in a monomial of weight at most~$d$.
 There are finitely many such coordinates, and the exponent of each is bounded by~$d$.
-Thus finitely many monomials span all polynomials under consideration, and their invariant subspace is finite dimensional.
+Thus finitely many monomials span the polynomials under consideration, and their invariant subspace is finite dimensional.
 A complex polynomial vanishing on every real jet vanishes identically, by the one-variable polynomial identity theorem applied successively in these finitely many real coordinates.
 
 Conjugation by~$G$ acts linearly within each~$\mathcal A_j$.
-It therefore preserves both weight and factor number, so comparison of homogeneous components of the invariance identity shows that every component remains invariant.
-The same observation applies to~\eqref{eq:uv-label-action}.
-All these real linear changes commute with coefficient conjugation.
+It preserves weight and factor number, so comparison of homogeneous components of the invariance identity shows that each component remains invariant.
+Every coordinate has weight at least two; in particular the factor number cannot exceed the weight, giving the index range in~\eqref{eq:uv-label-grading}.
+The same linearity argument applies to~\eqref{eq:uv-label-action}, and these real linear changes commute with coefficient conjugation.
 Each invariant homogeneous component is the complex span of its real polynomials, by decomposition into real and imaginary coefficient parts.
-Choose a real basis in each component, starting with the basis~$\{1\}$ of the component with no factors, and retain previous choices as~$d$ increases.
+Choose a real basis in each component, beginning with~$\{1\}$ for the constant component, and retain these choices as~$d$ increases.
 \end{proof}
 
-Fix such bases and write~$b_{d,i}$ for their elements, with weights~$w_{d,i}$ and factor numbers~$f_{d,i}$; take~$b_{d,0}=1$.
-We identify a polynomial with its coefficient vector in this basis when applying linear maps to labels.
-The finite-dimensional continuum spaces~$F_d$ in the theorem will be quotients of labels after a limiting correlation table has been obtained.
-No such quotient is taken here.
+Fix the bases of Lemma~\ref{lem:uv-labels}, writing~$b_{d,i}$ for their elements and~$(w_{d,i},f_{d,i})$ for their two grades, with~$b_{d,0}=1$.
+We identify each polynomial with its coefficient vector when applying a linear map to~$V_d$.
+The continuum spaces~$F_d$ of Definition~\ref{def:hierarchy} will arise only after a limiting correlation table and its null relations have been obtained.
+The spaces~$V_d$ still contain all classical labels, before these relations are imposed.
 
 \subsection{Local representatives}
 
-A classical label is a polynomial on Taylor coefficients; the lattice insertion must instead be a function of finitely many links.
-We specify the normalization relating the two before constructing such representatives in the next section.
+A polynomial in Taylor coefficients is not yet a lattice observable.
+We seek a polynomial in nearby link matrices whose Taylor expansion, when tested on a classical connection, recovers the chosen label.
+This is the purpose of a local section.
+Its existence is a separate construction; here we state its normalization precisely.
 
-For a finite set~$\Sigma\subset\Z^4$, a function is local on~$\Sigma$ if it depends only on positive links whose two endpoints lie in~$\Sigma$.
-A polynomial on these links means a polynomial in their matrix entries and conjugate entries.
-It is continuous, since the coordinate functions are continuous.
-At~$o\in\Lambda_\ell$, place a cover function by substituting~$U(o+[x]_\ell,\mu)$ for every cover link~$(x,\mu)$.
-This substitution is meaningful even if the stencil wraps around the torus or distinct cover links become the same torus link.
+On~$\Z^4$, the gauge action of Definition~\ref{def:gauge-transform} and the coordinate pullbacks of Definition~\ref{def:uv-symmetries} use the same formulas as on a torus.
+Polynomial functions on a finite set of links can then be evaluated on any periodic lattice.
 
-To state the classical normalization, truncate a real jet~$J$ to weights at most~$d$ and write~$A^J_\mu=\sum_{j+2\le d}A_{j,\mu}$.
-For a spacing parameter~$\varepsilon\in\R$, define its link transport by
+\begin{definition}[Local polynomial functions]\label{def:uv-polynomials}
+For a finite set~$\Sigma\subset\Z^4$, let~$\mathcal P(\Sigma)$ be the polynomial functions of matrix entries and conjugate entries of links with both endpoints in~$\Sigma$.
+At~$o\in\Lambda_\ell$, evaluate such a polynomial by substituting
+\begin{equation}\label{eq:uv-placement}
+ U(x,\mu)\longmapsto U(o+[x]_\ell,\mu)\,.
+\end{equation}
+The link conventions are those of Definition~\ref{def:lattice}.
+\end{definition}
+
+This implements the finite-site locality requirement~\ref{reg:4} of Definition~\ref{def:regular}.
+The substitution is meaningful even when distinct cover links become the same torus link.
+
+To test the classical normalization, truncate a real jet of Definition~\ref{def:uv-labels} to weights at most~$d$ and set~$A^J_\mu=\sum_{j+2\le d}A_{j,\mu}$.
+For a spacing parameter~$\varepsilon\in\R$, take the transport
 \begin{equation}\label{eq:uv-link-ode}
  \frac{d}{dt}u(t)=u(t)\varepsilon A_\mu^J(\varepsilon(x+te_\mu)),\qquad
  u(0)=1,\qquad U_{J,\varepsilon}(x,\mu)=u(1)\,.
 \end{equation}
-This convention fixes the order of multiplication in the link transport.
-For completeness, successive integration gives a normally convergent series on compact parameter sets: the term with~$r$ integrations is bounded by~$M^r/r!$ if the coefficient matrix is bounded by~$M$ on~$[0,1]$.
+Successive integration gives a normally convergent series on compact parameter sets: the term with~$r$ integrations is bounded by~$\frac{M^r}{r!}$ if the coefficient matrix is bounded by~$M$ on~$[0,1]$.
 The series solves the equation, and iteration of the integral equation proves uniqueness.
 In particular, the endpoint is real analytic in~$\varepsilon$ near~$0$, for each fixed real jet.
 Approximating the coefficient by step functions gives convergent products of exponentials from~$\g$; their limits lie in the closed group~$G$.
-Thus these are actual group-valued transports.
+Thus~\eqref{eq:uv-link-ode} gives actual group-valued links, with the transport convention of Definition~\ref{def:lattice}.
+
+The section must preserve the exact lattice symmetries and the constant observable.
+Its classical normalization requires equality of Taylor coefficients through the degree being represented.
+These are the conditions in the next definition.
 
 \begin{definition}[Normalized local section]\label{def:uv-sections}
-A normalized local section in degree~$d$ consists of a finite~$H_4$-invariant set~$\Sigma_d\subset\Z^4$ containing~$0$ and a complex linear map~$v\mapsto P_d[v]$ to polynomials on links with both endpoints in~$\Sigma_d$.
-Every~$P_d[v]$ is gauge invariant, and
-\begin{equation}\label{eq:uv-section-symmetry}
- P_d[1]=1,\qquad P_d[\bar v](U)=\overline{P_d[v](U)},\qquad
- P_d[v](h^*U)=P_d[h\cdot v](U)\quad(h\in H_4)\,.
+A normalized local section in degree~$d$ is a finite set~$\Sigma_d\subset\Z^4$ and a complex linear map~$P_d:V_d\to\mathcal P(\Sigma_d)$, with polynomial functions as in Definition~\ref{def:uv-polynomials}, such that
+\begin{equation}\label{eq:uv-section-support}
+ 0\in\Sigma_d,\qquad h\Sigma_d=\Sigma_d\quad(h\in H_4),
 \end{equation}
-For every real jet~$J$ and every~$0\le k\le d$, the section satisfies
+and, for all~$v\in V_d$, link configurations~$U$ on~$\Z^4$, $\gamma:\Z^4\to G$ and~$h\in H_4$,
+\begin{equation}\label{eq:uv-section-symmetry}
+ \begin{aligned}
+ P_d[v](U^\gamma)&=P_d[v](U), & P_d[1]&=1,\\
+ P_d[\bar v](U)&=\overline{P_d[v](U)}, &
+ P_d[v](h^*U)&=P_d[h\cdot v](U)\,.
+ \end{aligned}
+\end{equation}
+For every real jet~$J$ and~$0\le k\le d$, it also satisfies
 \begin{equation}\label{eq:uv-section-taylor}
  \left.\frac{d^k}{d\varepsilon^k}P_d[v](U_{J,\varepsilon})\right|_{\varepsilon=0}
  =\left.\frac{d^k}{d\varepsilon^k}v(\operatorname{sc}_\varepsilon J)\right|_{\varepsilon=0},
  \qquad (\operatorname{sc}_\varepsilon J)_j=\varepsilon^{j+2}A_j\,.
 \end{equation}
+Here~$V_d$, its real jets and its action are as in Definition~\ref{def:uv-labels} and~\eqref{eq:uv-label-action}; $H_4$ and its pullbacks are from Definition~\ref{def:uv-symmetries}, and the test links are~\eqref{eq:uv-link-ode}.
 \end{definition}
 
-The Taylor identity is an equality of classical coefficients at zero spacing, not an equality of observables at nonzero spacing.
-No compatibility of~$P_d$ and~$P_{d+1}$ is imposed here.
-Existence of these sections, with the derivative bounds needed for blocking, is a separate construction.
-The conditions above alone do not assert it.
+The Taylor identity imposes no equality at nonzero spacing.
+No compatibility of~$P_d$ and~$P_{d+1}$ is required.
+The existence proof must also give derivative estimates for the later blocking argument; Definition~\ref{def:uv-sections} does not assert those estimates.
 
 \subsection{Renormalized insertions}
 
-To define a renormalized insertion, one needs an invertible linear map on the entire finite-dimensional label space.
-It may mix different weights up to~$d$, including the constant label.
-We specify here how this map enters the lattice observable; its construction and estimates belong to the subsequent ultraviolet sections.
+As shorter scales are integrated out, the coefficients of an observable change and different classical labels can mix.
+We normalize the observable by its coefficients at one reference level~$r(d)$, chosen independently of cutoff and volume.
+The inverse of the coefficient transfer then determines which fine-lattice polynomial represents a prescribed reference label.
+This describes a particular choice of the insertions in Definition~\ref{def:observables}, not an additional condition on that definition.
 
-Let~$\theta_N>0$ be the finest-level small-field threshold, and let~$S_t$ multiply the basis polynomial~$b_{d,i}$ by~$t^{f_{d,i}}$.
-For an invertible complex linear map~$\tau_{N,p,d}$ on~$V_d$, define
+Use~$a_N,N,p$ from Definition~\ref{def:family}, the basis from Lemma~\ref{lem:uv-labels}, and a local section from Definition~\ref{def:uv-sections}.
+Let~$\theta_N>0$ be the threshold that will distinguish small plaquette distances~$\chi$ in the later estimates.
+Define the linear factor scaling by~$S_t b_{d,i}=t^{f_{d,i}}b_{d,i}$.
+For an invertible complex linear map~$\tau_{N,p,d}:V_d\to V_d$, the candidate insertion is
 \begin{equation}\label{eq:uv-insertion}
  I_{N,p}((d,v),o;U)
- =a_N^{-d}P_d[S_{\theta_N^{-1}}\tau_{N,p,d}^{-1}v](o;U)\,.
+ =\frac{1}{a_N^d}P_d\!\left[S_{\theta_N^{-1}}\tau_{N,p,d}^{-1}v\right](o;U),
 \end{equation}
-The map~$\tau_{N,p,d}$ reads the running coefficients at a reference level~$r(d)$ fixed independently of~$N,p$.
-More precisely, if~$x_m(v)$ are the linear coefficient maps for an insertion transported from level~$N$, their endpoint conditions are
+with placement~\eqref{eq:uv-placement}.
+Thus a label with~$f$ factors is multiplied by~$\frac{1}{\theta_N^f}$; the prefactor~$\frac{1}{a_N^d}$ supplies the physical degree normalization.
+
+For~$N\ge r(d)$, let~$x_j:V_d\to V_d$ be complex linear maps from coefficients at the finest level~$N$ to coefficients at level~$j$, for~$r(d)\le j\le N$.
+The conditions that make~$\tau_{N,p,d}$ a reference transfer are
 \begin{equation}\label{eq:uv-reference-coordinates}
  x_N(v)=v,\qquad x_{r(d)}(v)=\tau_{N,p,d}v,\qquad
- x_m(a_N^d1)=a_m^d1\quad(r(d)\le m\le N)\,.
+ x_j(a_N^d1)=a_j^d1\quad(r(d)\le j\le N)\,.
 \end{equation}
-These conditions concern coefficients of the inserted density, rather than pointwise values of the coarse observable.
+These equalities fix how coefficients are normalized between levels; they assert no pointwise identity between observables on different lattices.
+Reality and signed-permutation covariance require
+\begin{equation}\label{eq:uv-transfer-symmetry}
+ \tau_{N,p,d}\bar v=\overline{\tau_{N,p,d}v},\qquad
+ \tau_{N,p,d}(h\cdot v)=h\cdot(\tau_{N,p,d}v)\quad(h\in H_4)\,.
+\end{equation}
+
+The locality of the resulting insertion follows from its polynomial formula, even on a torus smaller than the chosen set of sites.
+The unit normalization is different: it uses the reference-transfer conditions and therefore applies only beyond the reference level.
+The following proposition separates these two conclusions.
 
 \begin{proposition}[Locality of the insertions]\label{prop:uv-insertions}
-Given normalized local sections, positive thresholds and invertible maps as in~\eqref{eq:uv-insertion}, the insertions are complex linear in~$v$, continuous, gauge invariant and local on~$o+[\Sigma_d]_\ell$, for~$\ell=L_pD_N$.
-They satisfy the literal translation identity
+Let~$P_d$ satisfy Definition~\ref{def:uv-sections}, $\theta_N>0$ and~$\tau_{N,p,d}\in\mathrm{GL}_\C(V_d)$.
+For all~$N,p$, the map~$v\mapsto I_{N,p}((d,v),o;\cdot)$ in~\eqref{eq:uv-insertion} is complex linear and satisfies~\ref{reg:2}--\ref{reg:4} of Definition~\ref{def:regular}, with finite set~$\Sigma_d$.
+Moreover,
 \begin{equation}\label{eq:uv-insertion-translation}
  I_{N,p}((d,v),o;U(\cdot+z))=I_{N,p}((d,v),o+z;U)\,.
 \end{equation}
-If~$N\ge r(d)$, the maps~$\tau_{N,p,d}$ commute with conjugation and~$H_4$, and~\eqref{eq:uv-reference-coordinates} holds, then the insertions respect reality and, for~$A(o)=ho+z$,
+If~$N\ge r(d)$ and~\eqref{eq:uv-reference-coordinates}--\eqref{eq:uv-transfer-symmetry} hold, then
 \begin{equation}\label{eq:uv-insertion-covariance}
- I_{N,p}((d,h\cdot v),A(o);U)=I_{N,p}((d,v),o;A^*U),
- \qquad I_{N,p}((d,a_{r(d)}^d1),o;U)=1\,.
+ \begin{aligned}
+ I_{N,p}((d,\bar v),o;U)&=\overline{I_{N,p}((d,v),o;U)},\\
+ I_{N,p}((d,h\cdot v),A(o);U)&=I_{N,p}((d,v),o;A^*U),\\
+ I_{N,p}((d,a_{r(d)}^d1),o;U)&=1,\qquad
+ x_{r(d)}(\tau_{N,p,d}^{-1}v)=v
+ \end{aligned}
 \end{equation}
-Their running coefficients at level~$r(d)$, with terminal input~$\tau_{N,p,d}^{-1}v$, equal~$v$.
+for~$A(o)=ho+z$, $h\in H_4$, as in Definition~\ref{def:uv-symmetries}.
 \end{proposition}
 
 \begin{proof}
-Every assertion in the first sentence follows by composition of the linear coefficient maps with the polynomial section of Definition~\ref{def:uv-sections}.
-Periodic placement reads only links with both endpoints in the image of~$\Sigma_d$; identifying distinct cover vertices does not enlarge this set.
+The coefficient changes in~\eqref{eq:uv-insertion} are complex linear.
+A polynomial in link entries and their conjugates is continuous, and the section is gauge invariant by~\eqref{eq:uv-section-symmetry}; this proves~\ref{reg:2} and~\ref{reg:3}.
+Placement~\eqref{eq:uv-placement} reads only links with both endpoints in~$o+[\Sigma_d]_{L_pD_N}$, proving~\ref{reg:4}.
+Identifying distinct cover vertices does not enlarge that set.
 Translating the placement proves~\eqref{eq:uv-insertion-translation}.
-Factor scaling commutes with conjugation and with~$H_4$, since these actions preserve factor number.
-Their commutation with~$\tau_{N,p,d}$ and~\eqref{eq:uv-section-symmetry} give reality and affine covariance.
-The reference endpoint and unit condition yield~$\tau_{N,p,d}(a_N^d1)=a_{r(d)}^d1$.
-Since~$S_t1=1$ and~$P_d[1]=1$, substitution in~\eqref{eq:uv-insertion} proves its unit identity.
-Finally, $x_{r(d)}(\tau_{N,p,d}^{-1}v)=v$ by~\eqref{eq:uv-reference-coordinates}.
+
+Factor scaling commutes with coefficient conjugation and~$H_4$, since both actions preserve factor number by Lemma~\ref{lem:uv-labels}.
+Together with~\eqref{eq:uv-transfer-symmetry} and~\eqref{eq:uv-section-symmetry}, this gives the first two identities in~\eqref{eq:uv-insertion-covariance}.
+The endpoint and unit conditions~\eqref{eq:uv-reference-coordinates} yield~$\tau_{N,p,d}(a_N^d1)=a_{r(d)}^d1$.
+Since~$S_t1=1$ and~$P_d[1]=1$, substitution in~\eqref{eq:uv-insertion} gives the unit identity.
+The remaining identity follows by applying the reference endpoint condition to~$\tau_{N,p,d}^{-1}v$.
 \end{proof}
 
-For the token set~$\mathcal T=\bigsqcup_dV_d$, Proposition~\ref{prop:uv-insertions} supplies, under its hypotheses, the continuity, gauge invariance and finite-stencil assertions Reg2--Reg4.
-They hold at every cutoff; the additional reference normalization is asserted only once~$N\ge r(d)$.
-With integrability supplied by Proposition~\ref{prop:uv-law}, the lattice moments and smeared moments in Part~I are therefore ordinary normalized integrals of these polynomial observables.
+Choose the lattice observable labels in Definition~\ref{def:observables} to be~$\mathcal T=\bigsqcup_dV_d$.
+Under the hypotheses of Proposition~\ref{prop:uv-insertions}, the requirements~\ref{reg:2}--\ref{reg:4} are satisfied at every cutoff; the reference unit is~$a_{r(d)}^d1$.
+Proposition~\ref{prop:uv-law} makes every lattice moment in~\eqref{eq:smear} an integral of a continuous, hence integrable, product of observables.
+The running-coupling condition~\ref{reg:1} and convergence of these moments require the later ultraviolet arguments.
 
-\gap{The existence of normalized local sections with their required derivative bounds, and the same-family construction of the invertible transfer maps satisfying~\eqref{eq:uv-reference-coordinates}, remain to be proved in the later ultraviolet sections. The local insertion proposition is conditional on these inputs.\sourcefootnote{Local sections: \texttt{YM/Integrated.lean}, lines 214--219. Transfer conditions: \texttt{YM/Source/Insertion.lean}, lines 89--114; same-family application: \texttt{YM/FullVolume/Cross.lean}, lines 30--71}}
+\gap{Two construction steps are still missing from the manuscript: producing the normalized polynomial sections of Definition~\ref{def:uv-sections} with the derivative bounds needed for blocking, and producing invertible coefficient transfers satisfying~\eqref{eq:uv-reference-coordinates}--\eqref{eq:uv-transfer-symmetry} for the same Wilson family. Proposition~\ref{prop:uv-insertions} assumes these inputs. Their source locations are recorded below; their paper proofs belong to later ultraviolet sections.\sourcefootnote{Local sections: \texttt{YM/Integrated.lean}, lines 214--219. Transfer conditions: \texttt{YM/Source/Insertion.lean}, lines 89--114; same-family application: \texttt{YM/FullVolume/Cross.lean}, lines 30--71}}
