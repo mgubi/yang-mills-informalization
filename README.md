@@ -117,4 +117,4 @@ Corrections are welcome.
 
 ## License
 
-The text and data in this repository are licensed under [CC BY 4.0](LICENSE). The Lean source it describes is © OpenAI and released under the Apache License 2.0; see the [source repository](https://github.com/yang-mills-group/OpenAI-YM-20261028).
+This repository is licensed under the [Apache License 2.0](LICENSE). The Lean source it describes is © OpenAI, also released under the Apache License 2.0; see the [source repository](https://github.com/yang-mills-group/OpenAI-YM-20261028).
