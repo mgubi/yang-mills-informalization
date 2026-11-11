@@ -56,7 +56,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **V.1** | [Decomposition of the limit into phases](units/V-1.md) | 5,713 | 18 | checked |
+| **V.1** | [Decomposition of the limit into phases](units/V-1.md) | 5,713 | 18 | edited |
 | **V.2** | [Osterwalder-Schrader reconstruction of a Wightman theory](units/V-2.md) | 6,456 | 19 | draft |
 | **V.3** | [Reconstruction for every phase and the reconstructed theory](units/V-3.md) | 4,056 | 14 | checked |
 
