@@ -34,7 +34,7 @@ env:
 
 jobs:
   site:
-    runs-on: ubuntu-24.04   # apt on the 26.04 image is broken
+    runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -63,14 +63,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # libraries the AppImage does not bundle (libEGL.so.1 and friends)
-          pkgs="libegl1 libopengl0 libgl1 libxkbcommon0 libfontconfig1"
-          opts="-o Acquire::Retries=3 -o Acquire::http::Timeout=30"
-          for i in 1 2 3; do
-            sudo apt-get $opts update -qq || true
-            timeout 600 sudo apt-get $opts install -y -qq --no-install-recommends $pkgs >/dev/null && break
-            [[ $i == 3 ]] && exit 1; sleep 20
-          done
+          # Libraries the AppImage does not bundle (libEGL.so.1 and friends), taken
+          # from conda-forge: the Ubuntu package mirrors are often unreachable from
+          # the runners. Only these libraries are put on the library path.
+          mkdir -p "$RUNNER_TEMP/mamba" "$RUNNER_TEMP/extra-libs"
+          curl -fsSL -o "$RUNNER_TEMP/mamba/micromamba" \
+            https://github.com/mamba-org/micromamba-releases/releases/latest/download/micromamba-linux-64
+          chmod +x "$RUNNER_TEMP/mamba/micromamba"
+          MAMBA_ROOT_PREFIX="$RUNNER_TEMP/mamba/root" "$RUNNER_TEMP/mamba/micromamba" create -y -q \
+            -p "$RUNNER_TEMP/mamba/env" -c conda-forge libegl libopengl libgl libglx libxkbcommon >/dev/null
+          cp -a "$RUNNER_TEMP"/mamba/env/lib/lib{EGL,OpenGL,GL,GLX,GLdispatch,xkbcommon}*.so* "$RUNNER_TEMP/extra-libs/"
+          echo "LD_LIBRARY_PATH=$RUNNER_TEMP/extra-libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" >> "$GITHUB_ENV"
+          export LD_LIBRARY_PATH="$RUNNER_TEMP/extra-libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           mkdir -p "$RUNNER_TEMP/texmacs" && cd "$RUNNER_TEMP/texmacs"
           gh release download "$TEXMACS_RELEASE" -R mgubi/texmacs -p "$TEXMACS_ASSET"
           chmod +x "$TEXMACS_ASSET"
