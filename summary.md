@@ -2,6 +2,34 @@
 
 > **Level 2 of the [five levels](README.md#the-proof-at-five-levels-of-detail): the proof in one reading.** Written by an AI model from the [unit outlines](outline/units.md), then checked against the outlines and the Lean and edited by a second model. It will be revised as the unit outlines are completed.
 
+<!-- toc -->
+**Contents**
+
+- [The theorem](#the-theorem)
+- [The strategy](#the-strategy)
+- [Part I. The lattice theory](#part-i-the-lattice-theory)
+- [Part II. Fields, insertions and polymer activities](#part-ii-fields-insertions-and-polymer-activities)
+- [Part III. The ultraviolet construction](#part-iii-the-ultraviolet-construction)
+  - [The block-spin step and the background field](#the-block-spin-step-and-the-background-field)
+  - [Gaussian integration and the cluster expansion](#gaussian-integration-and-the-cluster-expansion)
+  - [Large fields and one nonlinear step](#large-fields-and-one-nonlinear-step)
+  - [The marginal coupling and the schedule](#the-marginal-coupling-and-the-schedule)
+  - [Renormalized observables, uniformly in the volume](#renormalized-observables-uniformly-in-the-volume)
+  - [Convergence at fixed volume and the construction run](#convergence-at-fixed-volume-and-the-construction-run)
+- [Part IV. Infinite volume](#part-iv-infinite-volume)
+- [Part V. Phases and relativistic reconstruction](#part-v-phases-and-relativistic-reconstruction)
+- [Part VI. Ward identities, rotations and the stress tensor](#part-vi-ward-identities-rotations-and-the-stress-tensor)
+- [Part VII. Identification as Yang–Mills theory](#part-vii-identification-as-yangmills-theory)
+  - [Free Maxwell fields at short distance](#free-maxwell-fields-at-short-distance)
+  - [Running coupling](#running-coupling)
+  - [The trace law and nonfreeness](#the-trace-law-and-nonfreeness)
+  - [Operator product expansion and contact extensions](#operator-product-expansion-and-contact-extensions)
+- [Part VIII. Assembly](#part-viii-assembly)
+- [Relation to earlier work, and where the difficulty lies](#relation-to-earlier-work-and-where-the-difficulty-lies)
+- [Steps whose informal account is incomplete](#steps-whose-informal-account-is-incomplete)
+- [Reading guide](#reading-guide)
+<!-- /toc -->
+
 ## The theorem
 
 Let $G\subset U(m)$ be a closed subgroup whose Lie algebra $\mathfrak g$ is simple and nonabelian, for instance $SU(N)$ with $N\ge2$; $G$ need not be connected. The main theorem is `YangMills.jointExistence`; its precise statement is in [statement.md](statement.md). It asserts that there is one family of Wilson lattice gauge theories for $G$ on four-dimensional tori, consisting of:
