@@ -26,7 +26,7 @@ The repository presents the same proof at five levels of detail. Each level link
 | **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline**: the propositions it proves and what it uses, the strategy, the steps as lemmas with proof sketches, where the difficulty lies, and open points. Outlines are published as they pass review; the table of units shows which are ready. |
 | **5** | **The Lean, linked** | On each unit's page, below the outline: its Lean source (work packages and chains of large results) and its key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines the main theorem uses. |
 
-**The full proof.** A complete manuscript is being written in public in [**yang-mills-manuscript**](https://github.com/scottnarmstrong/yang-mills-manuscript): Part I, the theorem and the architecture of its proof (about 40 pages), and Part II, the proofs (about 150 pages). Sections appear as they are drafted and are revised as they are checked against the Lean.
+**The full proof (under construction).** A complete manuscript is being written in public in [**yang-mills-manuscript**](https://github.com/scottnarmstrong/yang-mills-manuscript): Part I, the theorem and the architecture of its proof (about 40 pages), and Part II, the proofs (about 150 pages). Sections appear as they are drafted and are revised as they are checked against the Lean.
 
 **Reference material**, used at every level:
 
