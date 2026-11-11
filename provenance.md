@@ -5,6 +5,8 @@
 > It identifies the closest antecedents among the sources read, not borrowing or priority.
 > It has not been reviewed by the authors of the works it discusses.
 
+Revised on 11 November 2026 after reading Bałaban’s five 1985 papers on averaging, regular gauge configurations, background propagators, three-dimensional stability and the variational problem; Magnen–Rivasseau–Sénéor on YM4 with an infrared cutoff; Seiler’s constructive gauge-theory notes; Gawędzki–Kupiainen on massless lattice φ⁴₄; Brydges–Yau on gradient perturbations; Osterwalder–Schrader I and II; Collins–Duncan–Joglekar on trace anomalies; and Wilson’s 1969 OPE paper (relevant parts, as specified in [§7](#7-bibliography-and-source-access)); see [§8 for what changed](#8-changes-after-the-second-reading).
+
 **Contents**
 
 - [Main conclusions](#1-main-conclusions)
@@ -14,6 +16,7 @@
 - [What appears new, and what is routine](#5-what-appears-new-and-what-is-routine)
 - [Open questions and limits](#6-open-questions-limits-and-priorities-for-expert-checking)
 - [Bibliography and source access](#7-bibliography-and-source-access)
+- [Changes after the second reading](#8-changes-after-the-second-reading)
 
 **Source keys.** Full publication details and reading limits are in [§7](#7-bibliography-and-source-access). NLSM means nonlinear sigma model; RG means renormalization group; UV means ultraviolet.
 
@@ -25,6 +28,7 @@
 | N4 | OpenAI, *An Isolated Particle Pole for the Two-Dimensional O(3) Spin Field* (2026) |
 | N5 | OpenAI, *Exact mass asymptotics for the two-dimensional O(4) lattice model* (2026) |
 | N6 | OpenAI, *The Critical Spin Field of the Planar XY Model* (2026) |
+| B-Average; B-Gauge; B-Back; B-UV3; B-Var | Bałaban, averaging, regular configurations/gauge fixing, background propagators, three-dimensional stability and variational backgrounds (1985) |
 | B-Green; B-Prop-I, B-Prop-II | Bałaban, lattice Green's functions and gauge propagators (1983–1984) |
 | B-RG-I, B-RG-II | Bałaban, *Renormalization Group Approach to Lattice Gauge Field Theories* (1987–1988) |
 | B-Conv; B-Large-I, B-Large-II | Bałaban, convergent gauge expansions and large-field renormalization (1988–1989) |
@@ -35,40 +39,40 @@
 | Bry; Cam | Brydges, cluster expansions (1986); Cammarota, polymer convergence and decay (1982) |
 | Abbott82; GW73; P73 | Abbott, background-field method (1982); Gross–Wilczek and Politzer, asymptotic freedom (1973) |
 | FILS78; OSe78 | Fröhlich–Israel–Lieb–Simon, reflection positivity; Osterwalder–Seiler, lattice gauge theory (1978) |
+| GK85 | Gawędzki–Kupiainen, massless lattice φ⁴₄ and infrared asymptotic freedom (1985) |
+| Seiler82 | Seiler, constructive gauge theory and statistical mechanics (1982), read in part |
 | BBS19; BY90 | Bauerschmidt–Brydges–Slade, RG method (2019); Brydges–Yau, gradient perturbations (1990) |
 | Fed87; MRS93 | Federbush, lattice–continuum duality (1987); Magnen–Rivasseau–Sénéor, YM4 with an infrared cutoff (1993) |
 | OS73, OS75 | Osterwalder–Schrader, Euclidean reconstruction (1973, 1975) |
 | CDJ77 | Collins–Duncan–Joglekar, trace and dilatation anomalies (1977) |
 | W69; Z73; BF00 | Wilson, operator products (1969); Zimmermann, short-distance expansion (1973); Brunetti–Fredenhagen, distribution extension (2000) |
-| Wilson74; Seiler82; Glimm–Jaffe87 | Background references: lattice gauge theory, constructive gauge theory and functional-integral QFT |
+| Wilson74; Glimm–Jaffe87 | Background references: lattice gauge theory and functional-integral QFT |
 
 ## 1. Main conclusions
 
-Are the ideas closer to Balaban's programme or to OpenAI's recent papers on two-dimensional sigma models?
+**N2 remains the closest inspected match for the particular ultraviolet density representation; the gauge analytic core has stronger direct antecedents in Bałaban, and several apparently distinctive polymer devices are already in Gawędzki–Kupiainen.**
+The match to *Sharp mass bounds for the two-dimensional O(4) model* (N2), with developments in the canonical O(3) paper (N3), concerns a conjunction of formulas. It does not establish that the proof's ideas as a whole are closer to the NLSM papers.
+The five 1985 gauge papers directly supply nonlinear averages, controlled changes of gauge, analytic stationary backgrounds and regular background propagators. Magnen–Rivasseau–Sénéor supplies a further substantial four-dimensional gauge UV construction.
+Neither those antecedents nor the NLSM comparison supplies the exact stated all-composite, phase, stress and OPE endpoint. The converse description, “essentially Balaban, with the remainder just formalization,” is also unsupported.
+Confidence is high in the individual formula matches and older antecedents, medium in ranking the closest complete representation, and low in claims of worldwide novelty.
 
-**The detailed ultraviolet engine is closest to the sigma-model papers; the proof as a whole has mixed antecedents.**
-The closest inspected formulation of that engine is *Sharp mass bounds for the two-dimensional O(4) model* (N2), with developments in the canonical O(3) paper (N3).
-The evidence is a conjunction of specific constructions, not the generic presence of renormalization, Gaussian integration or polymers.
-The converse claim—“essentially Balaban, with the remainder just formalization”—also fails against the inspected sources.
-Balaban supplies much of the programme and several gauge-specific mechanisms, but neither the particular retained-density implementation nor the complete stated continuum endpoint is contained in his cited gauge series.
-
-Four observations support this conclusion.
+Four observations determine this verdict.
 
 1. **The exact density format is unusually close to N2.**
    The clipped kinetic term, masked square, regular errors with subtraction conditions, compulsory covering inventories, fixed reference thresholds, window inverse columns and exact reset occur together in N2 §5, pp.38–55.
    The corresponding objects occur in [`YM/RG/PathActions.lean:210–242`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/PathActions.lean#L210-L242), [`YM/RG/Activities.lean:42–129`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L42-L129), [`YM/RG/History.lean:63–85`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L63-L85), [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean:65–74`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L65-L74) and [`YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean:71–95`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L71-L95).
-   This is evidence of the **same specific devices**, substantially adapted to gauge variables.
+   The conjunction is a close match, substantially adapted to gauge variables. Mandatory covering and selective exponentiation alone are older: GK85 p.212 Eq.(4.8) and pp.218–221 Eqs.(5.28)–(5.53) already separate bad-region polymers from the regular exponential.
 2. **Several tempting NLSM attributions are actually older.**
    Balaban already has symmetric nonlinear group averages and normalized gauge kernels, B-RG-I pp.252–254, Eqs.(0.4)–(0.15), as well as marginal Maxwell extraction, pp.258,292–297.
    The relevant Lean counterparts are [`YM/RG/Patch.lean:102–179`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L102-L179) and [`YM/RG/Activities.lean:70–75`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L70-L75).
-   Gaussian square completion, cluster bounds and safe ordering of constants have still broader antecedents.
+   B-Gauge Theorem 2 p.83 and B-Var Theorem 1 p.279, Proposition 6 pp.295–296 directly establish controlled gauge changes and analytic stationary backgrounds. B-Back Theorems 3.1–3.4 pp.397–400 gives regular-background propagators. Compare [`YM/PCalc/Chart.lean:78–100`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L78-L100) and [`YM/Work/F04.lean:62–86`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F04.lean#L62-L86). GK85 p.222 and BY90 pp.360–363 also make the older order of constants and analytic RG control explicit.
 3. **The gauge comparison and continuum identification require separate treatment.**
    The determinant budget at [`YM/Next/RANK/Determinant.lean:240–274`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274) cancels gauge-dependent volume powers; it is not N3 §7's rough-region filling argument.
    The Ward/Maxwell/phase/trace route in [`YM/Next/ROTATIONS/Route.lean:114–123`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L114-L123), [`YM/Phase/Mixture.lean:65–86`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Phase/Mixture.lean#L65-L86) and [`YM/TraceExtension/Verse/Cape.lean:53–88`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Cape.lean#L53-L88) differs from N3 §§10–11,15.
-   Much of reconstruction is standard; several combinations and uniform estimates are plausible new contributions.
+   MRS93 §VI pp.368–369 already controls background-dependent gauge/ghost determinant normalization; the exact torus cancellation remains unmatched in the passages read, not established as novel. Much of reconstruction is standard under the corrected OS75 hypotheses; the potential contributions are narrower combinations and uniform estimates.
 4. **The endpoints differ on both sides.**
    B-Large-II, Theorem 1, p.355, expressly assumes small effective couplings and leaves physical observables for further work, p.356.
-   N3 Theorems 1.1–1.2, pp.5–7, assert a canonical massive limit.
+   MRS93 p.327 states a fixed-IR ultraviolet Schwinger-function limit and Slavnov identities, while expressly leaving a fully detailed proof unwritten; p.329 excludes the construction there of renormalized physical composite observables. N3 Theorems 1.1–1.2, pp.5–7, assert a canonical massive limit.
    [`ChallengeSpec.lean:177–188`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L177-L188) instead permits a volume subsequence and does **not** assert a positive mass gap.
    Unique vacuum in each phase is not a mass-gap statement: compare [`PublicTheory.lean:270–278`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicTheory.lean#L270-L278) with [`YM/EveryPhase/Decay.lean:173–192`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Decay.lean#L173-L192).
 
@@ -298,15 +302,14 @@ The pertinent sources span 1983–1989; they are not a single theorem that can b
 B-Prop-I §A, pp.18–20, Eqs.(1.8)–(1.17), gives contour averages and their linear versions after axial fixing.
 B-RG-I pp.252–254, Eqs.(0.4)–(0.15), uses route symmetrization, analytic nonlinear group means and gauge-invariant kernels.
 The mean respects inversion, permutation, left/right multiplication and linearization.
-Thus neither symmetry averaging nor a soft normalized kernel is a distinctive innovation of N2.
+B-Average pp.19–20 Eqs.(10)–(15), Proposition 3 p.36 and Proposition 7 p.43 directly develop nonlinear averages, quadratic remainders and analytic background dependence. B-Gauge Theorem 2 p.83 and Proposition 7 p.100 establish controlled axial/Landau gauge transfer and its inverse. Thus nonlinear averaging, gauge reconciliation and regular slices are older mechanisms; neither symmetry averaging nor a soft normalized kernel distinguishes N2 by itself.
 B-Prop-I §C, pp.20–26, changes to a divergence-gauge formulation with projection operators to obtain regular propagators.
 The Lean comparison is [`YM/RG/Patch.lean:102–179`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L102-L179), [`YM/RG/Block.lean:49–72`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L49-L72), and [`YM/PCalc/Chart.lean:52–67`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L52-L67); the formulas and division of gauge roles differ.
 
 **Variational problem and backgrounds.**
 The nonlinear stationary background is built from a linear lift plus corrections satisfying local analytic equations.
 B-RG-II §1, pp.2–3, Eqs.(1.2)–(1.5), recalls those equations and localizes their propagators.
-The original gauge variational paper is cited there but missing from the 24 works listed in §7.3.
-B-N-Var is a directly available related spin-model source, not a substitute for reading that gauge paper.
+B-Var directly supplies the gauge comparison: Theorem 1 p.279 gives the unique small critical orbit and regularity; Proposition 6 pp.295–296 gives the analytic small solution; Proposition 9 p.309 gives dependence on coarse averages and external background, with localized derivative bounds (190), p.308. Its fixed-average constrained problem differs from the Lean soft-kernel problem. The derivative calculations preceding (189) are expressly omitted on p.308; this is a comparison of stated mechanisms, not certification of those estimates.
 [`YM/PCalc/Chart.lean:78–100`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L78-L100) and [`YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean:24–43`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean#L24-L43), [`YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean:80–92`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean#L80-L92) implement the corresponding task for the actual soft-block tree chart.
 
 **Propagators and random walks.**
@@ -314,7 +317,7 @@ B-Green §2, pp.574–585, patches local inverses by generalized random-walk exp
 B-Prop-I §F, pp.35–40, applies regularity/locality estimates to gauge propagators.
 B-Prop-II handles irregular domains and restrictions at several scales; see p.229 and Eq.(2.86), p.238.
 The traced Lean free rows instead arise from analytic symbols, Laurent coefficients and finite-period Fourier identities, [`YM/Work/F07.lean:34–81`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07.lean#L34-L81), [`YM/Work/F07.lean:109–112`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F07.lean#L109-L112).
-This is a difference of implementation and required geometry: Balaban himself uses Fourier and Laurent formulas elsewhere.
+B-Back Theorems 3.1–3.4 pp.397–400 supplies exponential decay, derivative/Hölder regularity and analytic background dependence; p.399 makes the constants independent of the admissible domain sequence. The difference is implementation and required geometry: Balaban himself uses Fourier and Laurent formulas elsewhere.
 
 **Small/large fields and localization.**
 B-Conv §2, pp.254–262, represents complete densities by nested region histories with coupling-dependent cutoffs.
@@ -351,6 +354,8 @@ Its stage schedule allows increasing orders and factors rather than simply fixin
 The source pairs establishing these differences are given in components 04–08 and 16–17.
 They are departures from particular formulas, not evidence that localized integration, gauge symmetry or large-field control is new.
 
+**Gaussian coordinates and Haar corrections.** B-UV3 pp.260–262, Eqs.(17)–(24), linearizes the nonlinear average, retains its Jacobian and the even Haar density, and separates Gaussian and nonlinear terms. Equation (63), p.272, localizes logarithmic determinants. Compare [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ratio.lean:96–105`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ratio.lean#L96-L105) and [`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Sector.lean:54–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Sector.lean#L54-L71). These are direct older gauge antecedents. B-UV3 Theorem 1 p.257 is three dimensional and superrenormalizable; it does not supply the four-dimensional marginal coefficient transfer in [`YM/Next/STATIONARY/Level/Transition.lean:153–178`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L153-L178).
+
 ### 2.3 Balaban's N-vector work, Dimock and common constructive tools
 
 A Balaban-versus-NLSM opposition is historically misleading if “Balaban” means only his gauge papers.
@@ -368,13 +373,14 @@ The bibliography also includes a Higgs lower-bound paper and Cammarota's polymer
 
 Dimock I–III explain the Balaban-style small-field, large-field and convergence architecture for scalar $\varphi^4$ in three dimensions.
 They are excellent sources for Gaussian normalization, domains and quantifier order, but cannot supply missing non-Abelian identities.
-D-I PDF p.10, Eqs.(74),(78), exhibits determinant normalization; D-II PDF p.29 states a hierarchy of choices.
-D-III PDF p.33, Theorem 2 and Corollary 1, establishes partition-function stability and remarks that correlations require further work.
+D-I preprint p.10, Eqs.(74),(78), exhibits determinant normalization; D-II preprint p.29 states a hierarchy of choices.
+D-III preprint p.33, Theorem 2 and Corollary 1, establishes partition-function stability and remarks that correlations require further work.
 
 Bry §§3–4, pp.138–148, supplies older tree bounds and interpolation formulas common to both programmes.
 B-RG-I pp.250–251 explicitly credits Gawędzki–Kupiainen's analytic effective-action viewpoint.
-That attribution was read in Balaban; the underlying Gawędzki–Kupiainen papers were not independently reread here.
-The distinction is therefore between that historical pointer and the directly matched formulas in B-RG-I and N2.
+GK85 supplies a direct comparison. Its §4 p.212 Eq.(4.8) requires disjoint polymers to cover the bad region, with each touching a bad component; §5 pp.218–221 exponentiates the outside components and restores the same density class after marginal extraction. These are specific older antecedents for [`YM/RG/Activities.lean:42–55`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L42-L55), [`YM/RG/Activities.lean:113–129`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L113-L129) and [`YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean:71–95`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L71-L95), beyond generic polymer language. Its result is infrared asymptotic freedom of positive-coupling scalar lattice φ⁴₄, not a gauge UV theorem.
+
+BY90 pp.353–356, Eqs.(1.7)–(1.10), uses an exact disjoint-set polymer exponential/logarithm, explicitly distinguishing its algebra from GK's hybrid small/large-field representation. Theorems A/B pp.360–363 extract local constant and quadratic gradient terms, shift the covariance and control regulator losses; Theorem B′ pp.383–384 treats complex covariances. Its analytic norm already sums derivatives of all orders, p.359 Eq.(1.13). The Lean's masked, compulsory-inventory density is not literally BY's whole gas. These older constructions reduce the independent NLSM evidentiary weight of exact reblocking, analytic families, marginal subtraction and all-derivative control.
 
 ## 3. Component-by-component provenance
 
@@ -403,7 +409,7 @@ A weighted degree makes each bounded-degree space finite dimensional and support
 
 **Evidence.** [`YM/Labels/Jet.lean:19–39`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Jet.lean#L19-L39) gives derivative weight and radial constraints.
 [`YM/Labels/Polynomial.lean:60–112`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L60-L112) gives degree, finite dimensionality, invariant space and labels.
-The closest broad precedent is the local composite-operator framework of Wilson 1969 and Zimmermann 1973, discussed under §7 with abstract-only access.
+The closest broad precedent is the local composite-operator framework: W69 §II pp.1500–1501 explicitly includes composite fields and is read in part; Z73 remains abstract-only, as specified in §7. MRS93 p.329 distinguishes such renormalized physical composites from its elementary gauge-fixed field insertions.
 N3 §9.1, p.75, instead introduces complex sources for a particular spin field, not this gauge-jet algebra.
 B-RG-I §4, pp.281–291, uses gauge Taylor identities but does not supply the all-label construction shown here.
 
@@ -441,6 +447,8 @@ Fed87, pp.18–20, also describes near-identity group averaging; its result is c
 The **specific total tagged construction** is the close N2 match; normalized kernels or nonlinear means alone are not.
 Link transport between independently chosen frames is the substantive gauge adaptation missing from the spin formula.
 
+B-Average pp.19–20 Eqs.(10)–(15), Proposition 3 p.36 and Proposition 7 p.43 directly strengthen the nonlinear analytic-average antecedent. They concern a local logarithmic average; [`YM/RG/Patch.lean:169–179`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Patch.lean#L169-L179) supplies the different total minimizing/fallback predictor. Confidence remains high in this concrete distinction, medium in the relative attribution of the whole observation.
+
 ### 05. Symmetric frame selection and integration gauges — [III.1](outline/units/III-1.md) (b)
 
 **Function and size.** Also within [III.1](outline/units/III-1.md).
@@ -453,9 +461,9 @@ Keeping these roles distinct matters: a minimizing observation frame is not auto
 B-RG-I pp.253–254, Eqs.(0.11),(0.14), symmetrizes axial fixing and uses exponential gauge factors.
 B-Prop-I §C, pp.20–26, Eqs.(1.22)–(1.47), performs a different divergence-gauge change with projections.
 
-**Classification.** ADAPTED-BALABAN 60%, STANDARD 20%, candidate-NEW synchronization 20%; medium confidence.
-The gauge purpose and symmetry requirements are old; the minimizing/fallback construction and separate tree geometry differ.
-No literal use of Balaban's full axial-to-divergence-gauge sequence was established in this traced route.
+**Classification.** Predominantly ADAPTED-BALABAN and STANDARD for controlled gauge transfer, with a specialized observation/forest implementation; high confidence in the older mechanism, medium in the implementation comparison.
+B-Gauge Theorem 2 p.83, Eqs.(1.36)–(1.39), gives a unique small axial-to-Landau transformation with regularity bounds; Proposition 7 p.100, Eqs.(1.139)–(1.145), gives the reverse correspondence. Generic “gauge synchronization” should therefore not carry candidate-new credit.
+The narrower distinction is reconciling this particular minimizing/fallback observation with an independently chosen bounded-height forest. [`YM/Tree/Pines.lean:7–12`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L7-L12), [`YM/Tree/Pines.lean:24–29`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Tree/Pines.lean#L24-L29) separates them; [`YM/Work/F04/Choices.lean:78–86`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F04/Choices.lean#L78-L86) compares tested germs under the branch hypotheses. No literal use of Balaban's complete gauge-change sequence is established by these passages.
 
 ### 06. Reference schedule, constant order and terminal shooting — [III.2](outline/units/III-2.md)
 
@@ -474,6 +482,8 @@ N2 fixes a block factor and finite order; Lean lets factors/orders grow under on
 The threshold monitor is $e^{(\log\log\beta)^2}$, not N2's fixed power of $\log H$.
 Neither shooting by continuity nor ordering constants is itself new.
 
+GK85 p.211 Eq.(4.1) uses the numerical reference $n_0+n$ for small-field domains, p.221 Eq.(6.2) bounds the running coupling by inverse-reference envelopes, p.222 orders the constants, and p.246 uses nested intervals to tune the critical mass. MRS93 p.330 Eqs.(II.11)–(II.12) distinguishes tentative and exact effective couplings. BY90 pp.360–363 controls successive regulator losses with fixed block size. Thus reference envelopes, tuning intervals and constant schedules are older. N2 is closest to the particular terminal-coupling arrangement, while Lean's increasing stages and common gauge-composite obligations remain a specialized extension. Confidence in that closest-source ranking is medium; none of the older scalar couplings has the gauge beta-function normalization.
+
 ### 07. Free quadratic action, covariances and localized rows — [III.3](outline/units/III-3.md)
 
 **Function and size.** 8,966 lines.
@@ -491,6 +501,8 @@ N2 §4, pp.34–38, gives scalar block precisions and covariances, a useful but 
 The Lean's translation-invariant row construction is Fourier/Laurent based, with sector restrictions handled later.
 Balaban also uses Fourier and Laurent methods; the difference is the construction's organization and domains, not possession of Fourier analysis.
 
+The direct regular-background antecedent is B-Back Theorems 3.1–3.3 pp.397–399 and Theorem 3.4 p.400: exponential decay, derivative/Hölder bounds and analytic continuation, with constants independent of admissible nested domains (p.399). This directly supports the Balaban background-regularity attribution; it leaves the Fourier/Laurent versus domain-local random-walk organization distinct.
+
 ### 08. Sector change and localized Gaussian covariance — [III.4](outline/units/III-4.md) (a)
 
 **Function and size.** Within [III.4](outline/units/III-4.md)'s 37,825 lines.
@@ -507,6 +519,8 @@ The symmetrized matrix is **not** asserted to be the true principal inverse; the
 Gauge null directions, active non-tree links and regions held fixed require new model-specific estimates.
 N3's ambient normal scalar completion, pp.42–44, differs from the inactive-coordinate padding in [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Completion.lean:34–45`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Completion.lean#L34-L45), [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Completion.lean:149–180`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Completion.lean#L149-L180).
 
+B-UV3 pp.260–262, Eqs.(17)–(24), supplies a direct older nonlinear-coordinate change, Jacobian and Gaussian fluctuation decomposition. It strengthens the Balaban part of the comparison. The close N2 match is specifically the separate inverse-window columns and their symmetrization with a retained defect, not Gaussian change of variables or background expansion in isolation.
+
 ### 09. Local determinant ratios, Jacobians and joint Gaussian bounds — [III.4](outline/units/III-4.md) (b)
 
 **Function and size.** Also within [III.4](outline/units/III-4.md).
@@ -517,11 +531,13 @@ The Haar chart contributes an even, quadratic-order Jacobian correction.
 [`YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Arc.lean:121–166`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Arc.lean#L121-L166), [`YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Arc.lean:176–201`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/ANNULUS_RATIO_INSERTIONS/Arc.lean#L176-L201) combines quadratic loads, polynomial insertions and rarity under a common law.
 [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ratio.lean:96–105`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ratio.lean#L96-L105), [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ratio.lean:125–145`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Ratio.lean#L125-L145) establishes the quadratic Jacobian error.
 N2 p.44, Eqs.(5.19)–(5.21), Lemma 5.3, pp.47–48, and Appendix D provide the closest combined formulation.
-B-Large-II pp.356–358, Eqs.(1.2),(1.10), already retains determinant normalization; D-I PDF p.10, Eqs.(74),(78), displays the familiar determinant factor.
+B-Large-II pp.356–358, Eqs.(1.2),(1.10), already retains determinant normalization; D-I preprint p.10, Eqs.(74),(78), displays the familiar determinant factor.
 
 **Classification.** ADAPTED-NLSM 45%, STANDARD 40%, ADAPTED-BALABAN 15%; medium-high confidence.
 The same-Gaussian treatment of overlapping factors is the specific affinity; ordinary determinant calculus and Haar inversion symmetry are standard.
 Treating overlapping factors as independent would lose the actual content of the comparison.
+
+B-UV3 p.260 explicitly identifies the Haar density as analytic, positive and even; p.261 Eqs.(19)–(22) retains the nonlinear Jacobian, and p.272 Eq.(63) localizes the log determinant. These are direct gauge antecedents for the Jacobian and determinant pieces. BY90 Theorem B p.362 and §8 pp.378–381 also bounds Gaussian integration of interacting local functionals collectively. The N2 affinity remains the particular inserted-factor estimates in its retained-density setting, not a claim that joint Gaussian control first appeared there.
 
 ### 10. Absolute polymer sums and connected logarithms — [III.5](outline/units/III-5.md)
 
@@ -539,6 +555,8 @@ B-RG-II §2, pp.11–22, and N2 §5.4, p.49, both use this general constructive 
 Counting the whole unit as exclusively Balaban or exclusively NLSM would confuse use of a method with its origin.
 The special exact inventory algebra belongs to the surrounding representation, not to the tree inequality itself.
 
+BY90 pp.354–355 Eqs.(1.7)–(1.9) gives the disjoint-set algebra and finite polymer exponential/logarithm; pp.364–366 Eqs.(2.1)–(2.10) gives relevant-term extraction and connected reblocking. GK85 p.218 Eq.(5.28) gives the connected-graph exponentiation in a hybrid representation. These direct older formulas reinforce the STANDARD/ADAPTED-OTHER classification; BY's algebraic logarithm should not be conflated with an ordinary convergent logarithm on every field configuration.
+
 ### 11. Stationary nonlinear background with a uniform radius — [III.6](outline/units/III-6.md)
 
 **Function and size.** 19,698 lines.
@@ -547,12 +565,12 @@ The subsequent estimates make its analytic radius and inverse-Hessian control us
 
 **Evidence.** [`YM/PCalc/Chart.lean:78–100`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L78-L100) defines the tested action, critical branch and Hessian condition.
 [`YM/Work/F04.lean:62–86`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F04.lean#L62-L86) constructs the local branch by an implicit-function argument.
-[`YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean:24–43`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean#L24-L43), [`YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean:80–92`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean#L80-L92) bounds an inverse without a spurious volume factor from changing norms.
+[`YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean:24–43`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean#L24-L43), [`YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean:80–92`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/STATIONARY_UNIFORM/ImplicitRadius.lean#L80-L92) prices an inverse without a spurious volume factor from changing norms.
 B-RG-II §1, pp.2–3, Eqs.(1.2)–(1.5), recalls the nonlinear background equations and their propagator dependence.
-B-N-Var, pp.607–642, supplies a related N-vector variational construction; the original gauge variational paper is unavailable.
+B-Var Theorem 1 p.279, Proposition 6 pp.295–296 and Proposition 9 p.309 directly supply the gauge antecedent: a unique small critical orbit, an analytic stationary solution, and regularity/localized dependence on the background. Equation (190), p.308, states derivative decay, although its preceding detailed derivative calculation is omitted there.
 N2 §5.2, pp.42–44, uses a localized affine Gaussian shift with an explicit residual; this is a related but weaker role than solving nonlinear stationarity.
 
-**Classification.** ADAPTED-BALABAN 55%, STANDARD analytic tools 25%, specialized adaptation 20%; high confidence on role, medium on full genealogy.
+**Classification.** Predominantly ADAPTED-BALABAN with STANDARD analytic tools and a specialized soft-kernel implementation; high confidence in the direct local-branch and regularity antecedent. Generic analytic stationary branches and background regularity are established older mechanisms.
 The branch is for a soft penalty on tree-chart variables, not literally Balaban's constrained minimizer on nested irregular domains.
 The implicit-function theorem alone is routine; uniformity in the appropriate norms is the substantive work.
 
@@ -571,6 +589,8 @@ N2 Eq.(5.7), p.40, and Eq.(5.40), p.54, impose the later activity-class affine-H
 **Classification.** ADAPTED-BALABAN 55%, STANDARD gauge power counting 25%, ADAPTED-NLSM format 20%; high confidence.
 Zero affine Hessian is not a distinctive NLSM invention: the gauge-specific subtraction has a direct Balaban antecedent.
 The exact path-based retained format still requires a separate preservation proof in Lean.
+
+B-Var §G pp.305–307, Eqs.(174)–(180), expands the stationary background around its linear lift; B-UV3 p.261 Eq.(19) separates quadratic and higher action terms. These strengthen the background-Taylor antecedent. Neither alone identifies the four-dimensional marginal coefficient: B-RG-I §§4–5 remains the direct gauge symmetry/marginal comparator for [`YM/Next/STATIONARY/Level/Transition.lean:86–93`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L86-L93).
 
 ### 13. Numerical one-loop slope and constructive matching — [III.7](outline/units/III-7.md) (b)
 
@@ -591,6 +611,8 @@ The usual beta-function coefficient $b_0=11C_A/(48\pi^2)$ is not new physics.
 Lean's $\kappa_G=2b_0=11C_A/(24\pi^2)$ is the corresponding slope for the inverse-square coupling; these conventions must not be confused.
 Completing its uniform linkage to this particular exact transformation is a substantial constructive obligation; a complete mathematical verification of that linkage remains outside the scope of this comparison.
 
+MRS93 p.376 also describes one-/two-loop flow calculations with next-order remainder control and higher-order truncation of gauge changes; §VIII pp.376–378 ties coupling relations to Slavnov identities. This is an older four-dimensional gauge marginal-control programme. It does not identify the matrices or normalization of the particular Lean transfer at [`YM/Next/STATIONARY/Level/Transition.lean:153–178`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L153-L178); that bridge remains a separate technical question.
+
 ### 14. Connected activities, compulsory inventories and complete supports — [III.8](outline/units/III-8.md)
 
 **Function and size.** 4,103 lines.
@@ -603,8 +625,8 @@ N2 Eqs.(5.7)–(5.10), pp.40–41, §5.4, p.49, and Appendix C have the closest 
 B-RG-II pp.2–4, Eqs.(1.2)–(1.8), and B-N-Loc-I §§2–4 already localize nonlinear background dependence.
 B-N-II p.676 explicitly demands that local outputs depend only on local inputs.
 
-**Classification.** ADAPTED-NLSM 50%, ADAPTED-BALABAN 25%, STANDARD support logic 25%; high confidence in the format, medium in precise allocation.
-Mandatory equality of covered inventories is stronger evidence than the word “polymer”.
+**Classification.** Mixed ADAPTED-OTHER (GK), ADAPTED-BALABAN and ADAPTED-NLSM, with STANDARD support logic. High confidence in the specific older covering device; medium in N2 as the closest complete format.
+GK85 p.212 Eq.(4.8) already sums disjoint supports covering the bad region, each meeting it in a nonempty union of components. Its pp.218–221, especially p.219 Eqs.(5.34)–(5.39), groups components touching that region and exponentiates the outside sum. Mandatory coverage and this selective reassembly therefore cannot independently distinguish N2. Lean adds explicit inventory labels, eligibility predicates and exact read supports; the complete clipped/masked/tagged format remains closer to N2.
 Complete read supports are an exact independence requirement, not a new principle of locality.
 Gauge routes, frames and windows enlarge those supports beyond spin-field arguments.
 
@@ -619,8 +641,8 @@ Exact density equality is stronger than matching two test values.
 N2 pp.54–55, Eqs.(5.40)–(5.42), removes constant/affine terms and sends mask-complement corrections into the compulsory gas.
 B-RG-I pp.258–259, Eqs.(0.28)–(0.30), and B-N-II §§4–5, pp.698–718, supply older marginal extraction and renormalization conditions.
 
-**Classification.** ADAPTED-NLSM 50%, ADAPTED-BALABAN 30%, STANDARD scalar normalization 20%; high confidence.
-The NLSM affinity is the exact retained-format reset, not the invention of a running coupling.
+**Classification.** Mixed older constructive RG and ADAPTED-NLSM for the particular mask-complement reset; high confidence in exact-format matches, medium in closest-source ranking.
+GK85 pp.218–221, Eqs.(5.32)–(5.53), already removes Taylor terms, reassembles the bad-region density and restores the original interaction class with new coupling and wave-function normalization. BY90 pp.360–361 Eqs.(1.17)–(1.23) and pp.364–366 Eqs.(2.1)–(2.10) gives another exact extraction/reblocking identity. Exact density restoration itself is older; the N2 affinity is the specific redistribution of clipped/masked action terms into the regular and compulsory classes.
 [`YM/RG/History.lean:25–33`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L25-L33) explicitly treats this as an action-representation coordinate rather than an independently defined observable coupling.
 
 ### 16. Energy per seed and protection of rough sectors — [III.10](outline/units/III-10.md) (a)
@@ -639,6 +661,8 @@ YM seeds include bad plaquettes and incompatible coarse bonds, not just large sp
 The super-polylogarithmic monitor and gauge chart costs change the quantitative balance.
 Balaban's separate aged-region R replacement was not identified as a literal transformation in these interfaces.
 
+MRS93 p.376 supplies another older protection mechanism: asymmetric corridors toward lower frequencies distribute a large-field saving over additional boxes and compensate high/low coupling costs. GK85 p.222 Eq.(6.5) retains bad-region energy and entropy in the inductive bound. These strengthen older ancestry of protected rare-region reserves; the Lean inventory/support geometry and its particular reserve schedule remain distinct.
+
 ### 17. Nonlinear contraction and bounds on irrelevant terms — [III.10](outline/units/III-10.md) (b)
 
 **Function and size.** Also within [III.10](outline/units/III-10.md).
@@ -655,6 +679,8 @@ B-RG-I p.258, Eqs.(0.28)–(0.30), and B-RG-II §2 provide older summable irrele
 The same representation does not make the gauge estimates automatic: cubic vertices, gauge degeneracy, color and four-dimensional marginality must be handled.
 The inspected interfaces support architectural attribution; they do not constitute a line-by-line proof of every closure inequality.
 
+GK85 §§6,9 pp.221–222,233–237 and BY90 Theorems A/B pp.360–363 already close local analytic activity classes after marginal extraction and bound regulator losses. MRS93 §§VI–VII pp.368–376 treats gauge background determinants, protected large fields and coupling-flow remainders. Thus closing a gauge RG with a marginal direction is not a defensible broad novelty claim; only the controlled realization of this particular retained transformation remains a candidate, with medium-low novelty confidence.
+
 ### 18. Volume-uniform normalization and cancellation of gauge powers — [III.11](outline/units/III-11.md) (a)
 
 **Function and size.** Within [III.11](outline/units/III-11.md)'s 42,556 lines.
@@ -668,9 +694,13 @@ The unrooted estimate still has an exponential volume cost; the uniform statemen
 B-Large-II pp.356–359, Eqs.(1.1)–(1.10), has determinant-sensitive local normalization ratios, an older general task.
 N3 Proposition 7.1 and Lemmas 7.3–7.4, pp.61–65, instead compare through rough-region fillings against a positive reference law.
 
-**Classification.** STANDARD integration/normalization 45%, ADAPTED-BALABAN general strategy 20%, candidate-NEW gauge estimate 35%; medium confidence.
+**Classification.** STANDARD integration with substantial ADAPTED-BALABAN/ADAPTED-OTHER normalization antecedents; high confidence in the older general task, low confidence in novelty of the particular torus estimate.
 **No specific NLSM adaptation is established for this cancellation proof.**
-These different mechanisms rule out attributing all of [III.11](outline/units/III-11.md) to N3 merely because both contain integrated comparison estimates.
+The direct source check rules out assigning all of [III.11](outline/units/III-11.md) to N3 merely because both contain integrated comparison estimates.
+
+MRS93 p.368 Eq.(VI.1) combines the gauge/ghost determinant ratio, counterterms and background action; Lemma VI.1 p.369, Eq.(VI.5), bounds the combined large-field dressing factor by one for its stabilizing cutoff. It explicitly explains why a cruder per-volume bound would not suffice. This substantially strengthens ADAPTED-OTHER antecedents for the normalization problem. Seiler82 pp.118–121 instead treats matter determinants in a prescribed regular external gauge field; the four-dimensional statement is explicitly Quasi-Theorem 6.10, not a pure-gauge measure result.
+
+The exact $3V+1$ versus $3V-3$ sweep/root estimate is unmatched in the targeted passages, but remains a low-confidence novelty candidate. The first count is ordinary spanning-tree arithmetic; possible substantive novelty lies in the uniform numerator/lower-bound estimates and their use for composite insertions.
 
 ### 19. Interacting/free rank and finite detector comparison — [III.11](outline/units/III-11.md) (b)
 
@@ -687,6 +717,8 @@ B-RG-I §4, pp.281–291, controls gauge Taylor constraints, without the continu
 The potentially new content is the set of uniform inputs and their coherent use, not the elementary fact that invertibility survives small perturbations.
 A deeper comparison with constructive composite-operator literature is a priority before claiming originality across the literature.
 
+MRS93 §VIII pp.377–378 supplies an arbitrary-order gauge-fixed elementary-source hierarchy, but p.329 explicitly leaves construction of renormalized physical composite operators outside the paper. It therefore strengthens the old source-analysis context without supplying the Maxwell equation-quotient and simultaneous finite-detector comparison at [`YM/MergeProof/Powder.lean:19–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L71). The latter remains a bounded candidate; neither all insertions nor rank stability alone is new.
+
 ### 20. Reflection positivity, chessboard roots and derivative budgets — [III.12](outline/units/III-12.md) (a)
 
 **Function and size.** Within [III.12](outline/units/III-12.md)'s 18,944 lines.
@@ -701,6 +733,8 @@ N3 Lemma 7.3, p.62, uses chessboard exponential moments for kinetic rows; N2 §�
 **Classification.** STANDARD/ADAPTED-OTHER 65%, ADAPTED-NLSM source-estimate affinity 15%, candidate-NEW all-label derivative application 20%; high confidence in the base inequality, medium in the adaptation.
 The same positivity principle has different downstream uses.
 Here a root bound and derivative control must not be relabelled a full transfer-gap estimate.
+
+Seiler82 §2a pp.14–16 directly proves lattice-gauge reflection positivity (Theorem 2.1), the quotient Hilbert-space construction and transfer contraction, then states the chessboard inequality (Theorem 2.2). Its displayed chessboard formulation uses local matter functions and refers the gauge-field extension to another source. This directly strengthens the older lattice-gauge setting; the general chessboard comparison also rests on FILS. Osterwalder–Seiler 1978 remains unavailable in full.
 
 ### 21. Fixed-volume convergence and analytic tuning — [III.12](outline/units/III-12.md) (b)
 
@@ -719,6 +753,8 @@ N3 §§12–15, pp.95–120, goes further by removing bare-offset ambiguity with
 Lean's fixed-volume full-mesh convergence does not imply a unique infinite-volume limit.
 The N3 inclined-block and incommensurable-period mechanism has not been identified as the tuning mechanism here.
 
+MRS93 pp.327–330 already states a fixed-IR ultraviolet Schwinger-function limit and compares tentative/exact coupling schedules. BY90 p.364 proves analyticity under RG iteration and of the pressure. These strengthen the older construction/analyticity context, without supplying the Lean tuned composite full-mesh Cauchy statement. Seiler82 pp.100–101 distinguishes existence of scaling limits from independence of the chosen physical normalization; neither fixed-volume convergence nor analytic tuning alone establishes universality.
+
 ### 22. Extension to all labels and all finite orders — [III.13](outline/units/III-13.md)
 
 **Function and size.** 22,077 lines.
@@ -735,6 +771,8 @@ Neither cited source supplies this exact common gauge-composite hierarchy with t
 The enlarged gauge-composite spaces, growing derivative/degree requirements and simultaneous OPE/stress comparisons are substantive.
 The order “choose one trajectory, then all spin moments” already occurs in N3 Theorem 1.2, p.6, and §9.1, pp.75–76; that quantifier order alone is not new.
 This is a leading location for new constructive work whose detailed priority still needs a wider literature comparison.
+
+MRS93 p.329 explicitly excludes renormalized physical composite-operator construction, while its §VIII pp.377–378 does treat arbitrary elementary field insertions. BY90 p.359 Eq.(1.13) already controls all variational derivative orders in an analytic norm. The surviving candidate is therefore the simultaneous gauge-composite quotient/rank/stress/OPE construction, not “all insertions,” “all derivatives,” or one common trajectory in isolation.
 
 ### 23. Iteration and selection of one construction with uniform bounds — [III.14](outline/units/III-14.md)
 
@@ -769,6 +807,8 @@ Actual source transfer is a separate interface, [`YM/Source/Insertion.lean:26–
 [III.16](outline/units/III-16.md): STANDARD analytic tools about 90%, specialized packaging 10%; medium-high confidence.
 Cauchy's inequality, product derivative bounds and positive-operator trace estimates should not be credited as new NLSM or Yang–Mills ideas.
 The construction-specific work is obtaining the correct dimension- and volume-uniform hypotheses for those tools.
+
+GK85 pp.218–221 supplies an older selective reassembly setting, and BY90 pp.359–363 already tracks derivative norms through Gaussian integration. MRS93 §VIII pp.377–378 gives elementary source identities, with physical composite renormalization explicitly excluded at p.329. These comparisons reinforce the distinction between standard derivative/source operations and the Lean-specific quantitative bounds for all gauge composites.
 
 ### 25. [IV.1](outline/units/IV-1.md) — Infinite-volume extraction and Euclidean hierarchy
 
@@ -831,13 +871,13 @@ The reconstruction theorems have explicit hypotheses; the assembly discharges th
 [`ChallengeSpec.lean:135–143`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L135-L143) makes analytic continuation, its Euclidean root, and distributional boundary convergence explicit.
 [`PublicTheory.lean:270–319`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicTheory.lean#L270-L319) lists the resulting spectrum, unique-vacuum, domain, covariance and locality clauses.
 
-**Closest antecedents.** OS73 §4, pp.90ff., and the corrected OS75 §IV.1, pp.287–288, are the primary conceptual sources.
+**Closest antecedents.** OS73 §4 p.90 gives the null quotient, Hilbert completion, contraction semigroup and boundary-value route. Its originally announced sufficiency theorem cannot be cited without the correction: OS75 p.282 identifies OS73 Lemma 8.8 as false. OS75 §III p.285 uses a stronger distribution topology; §IV.1 p.287 Eq.(4.1) gives the useful sufficient linear-growth condition, with one fixed seminorm slope and factorial bounds in field order. Its §IV.2 pp.288–289 separates analytic continuation from the stronger estimates needed for tempered boundary values.
 N3 Proposition 11.3, pp.90–91, applies the corrected theorem, checking a factorial/linear growth estimate.
 That NLSM application is not the origin of reconstruction: it is another use of the same older theorem.
 
 **Classification:** predominantly STANDARD/ADAPTED-OTHER (Osterwalder–Schrader), high confidence.
 The technical adaptation is to a graded gauge-invariant field algebra with all finite-degree labels and to phase-dependent tables, rather than a three-component scalar spin field.
-No line-by-line equivalence of growth hypotheses to OS75 is claimed here; that would require a separate comparison of the hypotheses and conclusions and full original-paper access.
+The cited passages do not establish equivalence of the graded Lean growth/topology hypotheses with OS75 Eq.(4.1). [`YM/Work/C01.lean:99–117`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C01.lean#L99-L117) supplies a controlled vector family, not that displayed joint Schwartz bound by itself. The remaining issue is a separate theorem/domain comparison, not lack of access. A direct reconstruction may prove boundary estimates by another route; no gap follows from this unresolved correspondence.
 
 **Rough mechanism split:** STANDARD/ADAPTED-OTHER 95%, specialized implementation 5%.
 
@@ -864,6 +904,8 @@ This is a comparison at the level of a general method with N3, with a materially
 It supplies counterevidence to the idea that the Yang–Mills continuum construction is simply the NLSM mass-gap proof with another target manifold.
 
 **Rough mechanism split:** STANDARD spectral tools 65%, candidate-NEW phase-uniform organization 35%.
+
+OS75 p.283, Remark 5, already permits extension to denumerably many spinor fields; going beyond one scalar is not a new reconstruction principle. OS73 p.89 also distinguishes exponential clustering and a mass gap. The potential contribution here is the particular phase-uniform input estimates, notably [`YM/EveryPhase/Light.lean:221–232`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/EveryPhase/Light.lean#L221-L232), not reconstruction applied to several fields or a family by itself. Confidence in that specific corpus-relative extension remains medium.
 
 ### 29. [VI.1](outline/units/VI-1.md) (a) — Ward identities and full rotation covariance
 
@@ -965,13 +1007,13 @@ An asymptotic first obtained along admissible scaling systems is promoted to eve
 [`YM/TraceExtension/Verse/Cape.lean:77–88`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Cape.lean#L77-L88), [`outside`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Cape.lean#L77-L88), argues by a bad sequence of radii and the ability to fit a subsequence to a scaling system.
 The public numerical conclusion is [`ChallengeSpec.lean:172–174`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L172-L174): $3\dim\mathfrak g/\pi^4$ after multiplication by $r^8\log^2(1/r)$.
 
-**Closest antecedents.** CDJ77, p.438 abstract, gives the older perturbative trace/dilatation anomaly in non-Abelian gauge theory.
-The anomaly's existence and relation to running are therefore ADAPTED-OTHER/STANDARD physics, not new principles.
+**Closest antecedents.** CDJ77 §§II–IV pp.439–445 gives the renormalized normal-product/operator-mixing trace law, formulated in terms of beta functions and anomalous dimensions beyond a one-loop slogan. Its full Eq.(3.19), p.443, retains gauge-fixing, ghost and equation-of-motion operators; the simpler full-trace Eq.(3.21) is stated for on-shell nonzero-momentum matrix elements. Section IV extends the operator relation to arbitrary momentum.
+The beta-function trace mechanism is therefore a detailed older antecedent. It does not by itself yield a constructed positive Euclidean hierarchy or the all-radii two-point limit. Identifying coefficients requires fixing the coupling inside the curvature, stress sign and normal-product convention; no off-shell equality or numerical convention match is inferred merely from the familiar formula.
 N3 §§11.3 and 15.2–15.3 concern a fourth cumulant and canonical normalization, not a four-dimensional stress-trace ultraviolet law.
 Promoting controlled subsequences to a full limit is a standard logical argument; the hard construction-specific input is the uniformity allowing all prescribed radius sequences.
 
 **Classification:** old trace-anomaly principle + candidate-NEW constructive realization and all-radii control; medium confidence.
-The one-loop coefficient and its matching to the full gauge-fixed determinant have not been independently verified here.
+The correspondence is high-confidence for the older trace mechanism and the difference in stated endpoint, medium for the specific constructive novelty candidate. The one-loop coefficient and its matching to the full gauge-fixed determinant remain unaudited in full.
 Nor should the cancellation in the final amplitude be treated as a numerical cross-check of that coefficient.
 
 **Rough mechanism split:** STANDARD/ADAPTED-OTHER anomaly and limit principles 40%, candidate-NEW constructive realization 60%.
@@ -1012,12 +1054,12 @@ For each fixed spectator word the bounds are uniform in phase and allowed specta
 [`YM/OPE/Orbits/Kernel.lean:73–77`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L73-L77) constructs one reader before demands by selecting a prescription once.
 [`ChallengeSpec.lean:70–80`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L70-L80) gives the public coefficient/remainder inequalities, with the quantifiers for spectators and states visible.
 
-**Closest antecedents.** Wilson, *Non-Lagrangian Models of Current Algebra* (1969), p.1499 abstract, proposes short-distance operator products as local fields times singular coefficient functions.
+**Closest antecedents.** W69 §II pp.1500–1501 Eq.(2.2) already proposes a weak OPE between fixed states, with finitely many terms at each finite order, powers and logarithms, elementary or composite fields, and extensions to multiple products. Its coefficient functions do not depend on the external states. Thus finite-order organization, composites and common coefficients are older ideas, not candidate innovations of this construction.
 Zimmermann, *Normal products and the short distance expansion in the perturbation theory of renormalizable interactions* (1973), pp.570–601, publisher abstract, proves Wilson's expansion in perturbation theory for two scalar fields.
-Those provide the concept; they do not supply this nonperturbative Yang–Mills construction, the phase-uniform bounds, or this detector prescription.
+These are substantial conceptual antecedents; neither supplies the displayed nonperturbative Yang–Mills hierarchy and its quantitative power-with-slack bounds, uniform over allowed positions and phases for each fixed spectator word. Zimmermann's full paper remains unavailable; only its abstract is used. Wilson's common coefficients alone are not evidence of novelty in the Lean detector prescription.
 The inspected N3 §§9–11 renormalize the spin sources and their moments, with no corresponding all-composite, all-phase OPE statement in those sections or its main theorem.
 
-**Classification:** ADAPTED-OTHER for the OPE principle; candidate-NEW for the constructive implementation and simultaneous state/spectator control; medium confidence.
+**Classification:** ADAPTED-OTHER for the finite-order weak/composite OPE framework, high confidence; candidate-NEW only for the constructed hierarchy's quantitative estimates and compatibility, medium confidence relative to the corpus and low for worldwide novelty.
 Do not call the existence of an OPE itself a new idea.
 Do not claim perturbative coefficient matching, convergence in truncation order, or uniqueness of the prescription.
 
@@ -1045,6 +1087,8 @@ This is not persuasive evidence of NLSM ancestry: the pertinent older distributi
 Existence of an extension is weaker than identification of a unique physical product at coincidence.
 
 **Rough mechanism split:** STANDARD/ADAPTED-OTHER extension mechanism 80%, specialized input/organization 20%.
+
+OS73 §3 p.89, Remark 1, already distinguishes separated Euclidean data from coincidence values: reconstruction does not determine the latter. This conceptual distinction, read with OS75's corrected setting, reinforces the scope limit; it is not a source for the whole forest-subtraction proof. W69's discussion of composite and time-ordered products likewise does not identify a unique physical contact extension here.
 
 ### 37. [VII.5](outline/units/VII-5.md) — Leading-log coupling asymptotics
 
@@ -1128,19 +1172,18 @@ The full internal package should not be confused with the exact list of conclusi
 Thus **the NLSM resemblance is strongest before the infrared endpoint, and weakens where the two theories are identified**.
 The absence of a gap assertion is not a proof of gaplessness.
 
-A further older comparator is Magnen–Rivasseau–Sénéor, *Construction of YM4 with an infrared cutoff* (1993), pp.325–383.
-The publisher abstract describes SU(2) Schwinger functions in a fixed infrared setting and trivial topological sector, using regularized axial gauge, local background-dependent gauges and symmetry-restoring counterterms.
-This is relevant prior constructive Yang–Mills work beyond a vacuum stability estimate.
-Only the abstract was accessible, so no detailed Lean mechanism is attributed to that paper.
-Its fixed infrared cutoff differs from the phase/volume-extraction target in [`ChallengeSpec.lean:177–188`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L177-L188).
-It is a priority check that should be completed before claiming that any broad “construction of Yang–Mills correlations” idea is new.
+MRS93 is a substantial direct four-dimensional gauge UV comparator. Its pp.325–327,352–355 uses regularized axial gauge, local background-dependent gauges and boson/ghost propagators, stabilizing cutoffs and symmetry-restoring counterterms for SU(2) in the trivial topological sector. Section VI pp.368–374 controls large-field determinant dressing; §§VII–VIII pp.374–378 treats coupling-flow remainders and Slavnov identities.
+
+Its stated ultraviolet limit consists of gauge-fixed elementary Schwinger functions with a fixed infrared cutoff, p.327. That page expressly leaves a fully detailed proof unwritten and OS positivity as additional work. Page 329 explicitly excludes construction there of the renormalized physical composite operators; arbitrary elementary insertions in §VIII are not the same task. These limits are stronger evidence than a search failing to find an observable theorem. Compare the common composite/phase/OPE family at [`Construction.lean:15–31`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L31) and the volume-refinement target at [`ChallengeSpec.lean:177–188`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L177-L188).
+
+Seiler82 §5a pp.99–103 distinguishes a scaling-limit programme from its realization: the displayed pure YM loop limit is two dimensional, and the stability discussion is three dimensional. His external-field matter determinants in §6b pp.118–121 do not constitute a four-dimensional gauge-field construction. Neither older source should be described as lacking a continuum discussion; neither supplies the stated Lean endpoint.
 
 ### 4.2 Reflection positivity and chessboard estimates
 
 FILS78 §4, preprint pp.33–36, already proves abstract and torus chessboard inequalities.
-Osterwalder–Seiler's 1978 abstract establishes the lattice-gauge reflection/transfer setting; its strong-coupling construction is not a continuum weak-coupling theorem.
+Seiler82 §2a pp.14–16 supplies direct lattice-gauge reflection positivity and the transfer construction, Theorem 2.1. Theorem 2.2 states a chessboard bound for local matter functions and refers the gauge-field extension onward; FILS supplies the general dissemination principle. Osterwalder–Seiler 1978 remains unavailable in full: its abstract gives the reflection/transfer and strong-coupling setting, not a continuum weak-coupling theorem.
 The Lean's basic dissemination and seminorm statement, [`YM/Cells/Certificate.lean:14–24`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L14-L24), belongs to that older tradition.
-Its gauge-law proof is consumed directly from [`Slice.reflected_positive`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Slice/Reflection.lean#L98-L114).
+Its gauge-law proof is consumed directly from `Slice.reflected_positive`.
 
 N2 uses positivity for rectangular doubling and a spectral-gap conclusion, §§2,9.
 N3 uses both kinetic-row exponential moments, Lemma 7.3, p.62, and later massive reconstruction.
@@ -1152,7 +1195,7 @@ The word “reflection positivity” alone provides no evidence that the mass-ga
 
 B-RG-I's gauge identities control Taylor coefficients of effective actions, §§4–5.
 B-Corr and B-N-Corr show that correlation analysis belongs to the wider Balaban programme.
-It would be wrong to infer an NLSM origin merely because the Lean has observables.
+It would be wrong to infer an NLSM origin merely because the Lean has observables. MRS93 §VIII pp.377–378 treats arbitrary elementary gauge-fixed field insertions and Slavnov identities; p.329 explicitly leaves renormalized physical composite-operator construction outside the paper. This is a direct older source-analysis comparison, with a sharply different composite endpoint.
 
 N3 §9.1–9.2, pp.75–80, carries independent spin sources and normalizes their linear response through the flow.
 The Lean shares exact source passage and retained supports: [`YM/Source/Insertion.lean:26–68`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L26-L68) defines the inserted coefficient and [`YM/Source/Insertion.lean:89–110`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Source/Insertion.lean#L89-L110) requires its exact push along the same unmarked history.
@@ -1161,8 +1204,8 @@ Its observable target is wider: all finite-degree gauge-invariant composite labe
 [`YM/Labels/Polynomial.lean:60–112`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Labels/Polynomial.lean#L60-L112), [`YM/MergeProof/Powder.lean:19–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L71) and [`YM/OPE/Orbits/Kernel.lean:62–77`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L62-L77) show these added obligations.
 The source-propagation strategy is shared; the common all-label closure and identification are not supplied by the cited spin-source sections.
 
-An OPE is an older organizing idea, Wilson 1969 and Zimmermann 1973.
-The potential contribution is a nonperturbative finite-order remainder with common coefficients for all spectator words and bounds uniform in phase and allowed positions for each fixed word.
+W69 §II pp.1500–1501 Eq.(2.2) already includes weak finite-order expansions, composite fields, multiple products and coefficients independent of external states. Z73 remains an abstract-only perturbative comparator.
+The potential contribution is the nonperturbative quantitative remainder for this constructed hierarchy, with bounds uniform in phase and allowed positions for each fixed word, together with the common composite-field identifications. Common coefficients and finite-order organization alone are not new ideas.
 The eventual radius threshold can depend on the spectator word; this is not one bound uniform over all such words.
 Likewise collision extension uses old Taylor-subtraction mathematics, BF00 §5.2, Eqs.(36)–(39).
 It does not automatically add contact Ward identities or physical time-ordered products; [`YM/Contacts/Solstice/Result.lean:3–6`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Solstice/Result.lean#L3-L6) explicitly limits the claim.
@@ -1185,9 +1228,11 @@ Finally, the internal coefficient is a coordinate in the action representation.
 N3's canonical normalization by susceptibility/second-moment length, Theorem 1.1, pp.5–6, is a different statement.
 The Lean's successful-recursion tuning uniqueness is not a claim that every possible regulator gives the same continuum theory.
 
+GK85 §9 pp.233–237, especially Eq.(9.36), supplies an older controlled local-marginal extraction with inverse-coupling increments; §12 p.246 tunes the scalar critical mass by nested intervals. BY90 pp.360–363 Eqs.(1.17)–(1.31) extracts constant/quadratic terms and shifts the covariance exactly. MRS93 p.330 Eqs.(II.11)–(II.12) compares tentative and exact gauge-coupling schedules; p.376 explains perturbative orders and remainder control. These strengthen the older RG attribution without identifying the Lean gauge coefficient. GK's positive scalar coupling is infrared asymptotically free, BY's quadratic gradient matrix has a different role, and neither can be substituted numerically for the gauge running coordinate.
+
 ### 4.5 Order of constants and schedule growth
 
-A correct order of choices is common constructive analysis: D-II Theorem 3.1, PDF p.29, and B-N-II Theorem 1, p.680, are explicit examples.
+A correct order of choices is common constructive analysis: D-II Theorem 3.1, preprint p.29, and B-N-II Theorem 1, p.680, are explicit examples.
 N2 p.55, Eq.(5.43), chooses leading uniform constants before block size, later coefficient caps and logarithmic powers, then a large coupling threshold.
 The Lean similarly distinguishes pre-block choices from later waits, [`YM/RG/History.lean:43–61`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L43-L61) and [`YM/Next/FLUCTUATIONS/Grants.lean:32–36`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/FLUCTUATIONS/Grants.lean#L32-L36).
 
@@ -1196,6 +1241,8 @@ What changes is the demand for one sequence serving unboundedly many finite orde
 [`YM/FullVolume/Sluggish.lean:13–19`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L13-L19), [`YM/FullVolume/Sluggish.lean:37–38`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/FullVolume/Sluggish.lean#L37-L38) distinguishes eventual mesh statements uniform in all periods from a merely fixed-period bound.
 This quantified extension is meaningful.
 The existence of many parameters, however, is not evidence for many new ideas, nor proof that the dependency order has been verified throughout.
+
+GK85 p.222 explicitly orders the block factor, locality scale, norm constants and final small-coupling threshold; its numerical reference envelope is already in p.211 Eq.(4.1) and p.221 Eq.(6.2). BY90 Theorems A/B pp.360–363 orders norm choices and controls cumulative regulator losses, with an all-derivative analytic norm at p.359 Eq.(1.13). MRS93 p.330 also separates tentative from exact running parameters. These direct antecedents rule out novelty of reference schedules, safe constant order or all-derivative control in isolation. The narrower Lean question is compatibility of growing stages with all gauge-composite, rank, stress and OPE demands.
 
 ### 4.6 Correlations, full mesh limits and volume limits
 
@@ -1209,6 +1256,8 @@ Dominated convergence and diagonal compactness are standard.
 [`YM/Extraction/Integrate.lean:115–153`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L115-L153) explicitly uses a dominated-convergence theorem.
 The substantial constructive input is uniform control of the renormalized observables before that theorem is applied.
 A large number of Lean lines devoted to passing limits is not evidence that the limiting procedure itself originated in 2026.
+
+MRS93 p.327 supplies an older fixed-IR UV limit with a different field/gauge scope and stated proof-detail limitations. Seiler82 pp.100–101 separates scaling-limit existence, independence of physical normalization and Euclidean invariance, warning that the independence claim need not hold. The Lean quantifiers at [`PublicWilson.lean:83–90`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicWilson.lean#L83-L90) and [`ChallengeSpec.lean:184–188`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L184-L188) should therefore be compared individually, rather than treated as one generic “continuum limit.”
 
 ### 4.7 Rotation restoration, phases and nonfreeness
 
@@ -1231,42 +1280,34 @@ The continuous-mass generalized-free case is expressly outside the exclusion at 
 
 ### 5.1 Ranked candidates for substantive new work
 
-This is a ranking of **well-located contributions needing further priority checking**, not a certification that no predecessor exists.
-A result can be new even though its organizing idea is old.
-Conversely a larger theorem endpoint does not make every lemma used to reach it new.
+This ranks **bounded candidates for substantive constructive work**, not established priority. The strongest evidence concerns the precise estimates and their compatibility; the organizing physical principles are older. Generic gauge synchronization, analytic stationary branches and background regularity have direct older antecedents.
 
-1. **The constructive integration of a gauge RG with one all-composite hierarchy and its identifications.**
-   [`YM/SharpGram/Assembly/Flowers.lean:75–130`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130), [`YM/MergeProof/Powder.lean:19–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L71) and [`Construction.lean:15–31`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L31) serve one family with all finite labels, free comparison, stress, phases and OPE.
-   B-Large-II pp.355–356 stops before this observable construction; N3 §§9–11 concerns the spin field and a different massive endpoint.
-   The strongest candidate is this simultaneous constructive realization, not the abstract wish to construct a QFT.
-   Confidence: medium for novelty relative to the sources read; low for priority across the literature without MRS and composite-field literature read in full.
-2. **Volume-uniform gauge normalization and detector/rank estimates supporting that hierarchy.**
-   [`YM/Next/RANK/Determinant.lean:240–274`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274) cancels extensive powers using a torus plaquette sweep and Haar-shell lower bound.
-   [`YM/MergeProof/Powder.lean:48–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L48-L71) then participates in interacting/free rank control.
-   N3 §§7,9 uses different rough-region and spin-source estimates; B-Large-II §1 has related normalization problems without the exact displayed count.
-   Confidence: medium-low for historical novelty; Seiler's lattice-gauge estimates are a particularly important unchecked comparator.
-3. **Closing the exact N2-style density engine for four-dimensional gauge variables with controlled marginal matching.**
-   The explicit blocks and activity format are at [`YM/RG/Block.lean:39–79`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L39-L79), [`YM/RG/Activities.lean:42–129`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L42-L129); the controlled slope reaches the transition at [`YM/Next/STATIONARY/Level/Transition.lean:153–178`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L153-L178).
-   N2 §5 supplies a close scalar/spin implementation; B-RG-I §§4–5 supplies the gauge marginal programme; Abbott82 §3.3 supplies the standard coefficient.
-   What may be new is the completed combination of estimates for this exact transformation, not any of those constituent ideas.
-   Confidence: medium within the sources read; the full determinant-comparison proof still needs separate technical verification.
-4. **Stress-driven restoration of rotations with an exterior-flux argument without an assumed gap.**
-   [`YM/Next/ROTATIONS/Yard.lean:49–77`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L49-L77), [`YM/Next/ROTATIONS/Yard.lean:105–114`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L105-L114), [`YM/Next/ROTATIONS/Route.lean:49–67`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L49-L67) and [`YM/Ward/Walk.lean:60–84`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L60-L84) give the concrete route.
-   N3 §§10–11 instead relies on inclined regulators and massive estimates; B-Large-II's stated endpoint has no such continuum rotation construction.
-   Confidence: medium relative to those sources, low for priority over the wider Euclidean/algebraic-QFT literature.
-5. **A controlled all-radii trace law used as a nonfree witness.**
-   [`YM/TraceExtension/Verse/Cape.lean:53–88`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Cape.lean#L53-L88) and [`YM/TraceExtension/Wick/Refute.lean:75–105`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L75-L105) turn scaling information into the public inverse-log trace asymptotic and exclusion.
-   CDJ77 establishes the older anomaly principle; N3 §11.3 uses a different cumulant witness.
-   Confidence: medium for the specific constructive realization, low for first use of trace anomalies to diagnose interaction.
-6. **One finite-order OPE system with common coefficients across phases and spectator words.**
-   [`YM/OPE/Orbits/Kernel.lean:52–77`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L77) chooses a common prescription and supplies finite-horizon estimates, uniform in phase and allowed positions for each fixed spectator word.
-   Wilson 1969 and Zimmermann 1973 are older OPE antecedents; N3's cited source chapters do not give this all-composite statement.
-   Confidence: medium for the extension relative to these sources, low for an exhaustive priority claim.
-   This does not assert convergence in OPE order, a unique prescription, or identified perturbative coefficients.
+1. **One renormalized gauge-composite hierarchy with simultaneous identifications**.
+   [`YM/SharpGram/Assembly/Flowers.lean:75–130`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130), [`YM/MergeProof/Powder.lean:19–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L19-L71) and [`Construction.lean:15–31`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L31) combine finite composite labels, Maxwell quotient/rank, stress, phases and OPE on one family.
+   MRS93 p.329 expressly excludes the physical composite-operator construction, although §VIII pp.377–378 includes arbitrary elementary field insertions; B-Large-II pp.355–356 leaves gauge observables for later work; N3 §§9–11 has the narrower spin-field hierarchy and different massive endpoint.
+   **Confidence: medium** for this specific corpus-relative extension, low for worldwide novelty. Neither “one family” nor “all insertions” alone distinguishes it; broader constructive composite-field literature remains incompletely compared.
+2. **Stress-driven restoration of rotations with exterior-flux control without an assumed gap**.
+   [`YM/Next/ROTATIONS/Yard.lean:49–77`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L49-L77), [`YM/Next/ROTATIONS/Yard.lean:105–114`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L105-L114), [`YM/Next/ROTATIONS/Route.lean:49–67`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Route.lean#L49-L67) and [`YM/Ward/Walk.lean:60–84`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Ward/Walk.lean#L60-L84) give the route.
+   N3 §§10–11 uses inclined regulators and massive estimates; MRS93 p.327 leaves the full OS setting outside its fixed-IR endpoint; Seiler82 p.101 presents Euclidean invariance as a requirement, not this construction.
+   **Confidence: medium** within the corpus, low for priority over wider Euclidean/algebraic-QFT literature. The full exterior-flux argument still requires separate verification.
+3. **A constructive all-radii trace two-point law and its specified nonfree exclusion**.
+   [`YM/TraceExtension/Verse/Cape.lean:53–88`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Cape.lean#L53-L88), [`ChallengeSpec.lean:168–175`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L168-L175) and [`YM/TraceExtension/Wick/Refute.lean:75–105`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Wick/Refute.lean#L75-L105) are the precise targets.
+   CDJ77 pp.442–445, Eqs.(3.19)–(3.21), gives a detailed older beta-function/operator-mixing trace law, including the distinction between the full relation and its on-shell simplification. N3 §11.3 uses a spin cumulant instead.
+   **Confidence: medium** for the specific constructive realization, low for novelty of its physical prediction or of using a trace anomaly to detect interaction. The coefficient/stress matching remains a separate technical obligation.
+4. **Quantitative finite-order OPE bounds on the common hierarchy, uniform over phases and allowed spectator positions for each fixed word**.
+   [`YM/OPE/Orbits/Kernel.lean:52–77`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OPE/Orbits/Kernel.lean#L52-L77) and [`ChallengeSpec.lean:70–80`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L70-L80) give the common prescription and power-with-slack bounds.
+   W69 §II pp.1500–1501 Eq.(2.2) already has finite-order weak/composite expansions and state-independent coefficients. Z73's full text remains unavailable; its abstract gives a perturbative scalar comparison. MRS93 p.329 does not supply the physical composite construction.
+   **Confidence: medium** for the quantitative corpus-relative extension, low for worldwide novelty. Common coefficients, composites and finite-order truncation alone are not new; neither uniqueness nor convergence in OPE order is asserted.
+5. **Controlled realization of the particular tagged, clipped/masked, compulsory-inventory gauge density transformation**.
+   [`YM/RG/Block.lean:39–79`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Block.lean#L39-L79), [`YM/RG/Activities.lean:42–129`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L42-L129), [`YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean:65–74`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SectorNext/GAUSSIAN_SECTOR_CHANGE/Windows.lean#L65-L74) and [`YM/Next/STATIONARY/Level/Transition.lean:153–178`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L153-L178) locate the combination.
+   N2 §5 pp.38–55 is the closest complete formula comparison; GK85 p.212 Eq.(4.8) and pp.218–221 already supplies compulsory covering and exact reassembly; B-Var pp.279,295–296 and B-RG-I §§4–5 supplies the gauge background/marginal programme; MRS93 §§VI–VIII pp.368–378 supplies another four-dimensional gauge stability/flow construction.
+   **Confidence: medium-low** for novelty of the exact combination. A different representation is not by itself a new estimate, and the full stationary determinant bridge has not been verified. The broad idea of closing a gauge RG with controlled marginal flow is an older antecedent.
+6. **The particular finite-torus normalization estimate and its use with composite detectors**.
+   [`YM/Next/RANK/Determinant.lean:240–274`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274) compares exponents $3V+1$ and $3V-3$; [`YM/Next/RANK/Stamp.lean:131–167`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Stamp.lean#L131-L167) converts the residual global power into a cell-root cost; [`YM/MergeProof/Powder.lean:48–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/MergeProof/Powder.lean#L48-L71) separately supplies detector/rank data.
+   MRS93 p.368 Eq.(VI.1), Lemma VI.1 p.369 and B-Large-II pp.356–359 are substantial normalization antecedents. Seiler82 pp.118–121 concerns external-field matter determinants, not this pure-gauge count. N3 §§7,9 uses different rough-region and spin-source comparisons.
+   **Confidence: low** for novelty of the torus estimate, medium for the specific combined detector application relative to the sources read. The first exponent is ordinary spanning-tree counting; the exact sweep and uniform hypotheses remain unmatched, not proved historically new.
 
-No item in this list is established as a new **physical principle**.
-The best-supported potential novelty is rigorous control and compatibility of difficult existing structures in a new setting.
-Formalization itself supplies explicit dependency and quantifier management, but a line of formal code is not automatically a new mathematical idea.
+No item is established as a new physical principle. Potential novelty lies in rigorous quantitative control and compatibility in the stated setting. Source-level formalization makes dependencies and quantifiers explicit; code length does not measure mathematical originality.
 
 ### 5.2 Routine or established ingredients that should receive ordinary credit
 
@@ -1274,16 +1315,18 @@ Formalization itself supplies explicit dependency and quantifier management, but
 |---|---|---|
 | Wilson lattice law and Haar invariance | [`YM/Wilson/Law.lean:55–99`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Wilson/Law.lean#L55-L99) | B-RG-I p.252 Eq.(0.2), directly read; Wilson 1974 historical reference |
 | Gaussian conditioning and Schur complements | [`YM/PREC/TreeMatch.lean:76–103`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PREC/TreeMatch.lean#L76-L103) | B-Prop-I pp.26–29, directly read |
-| Log determinants and inverse expansions | [`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Sector.lean:54–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Sector.lean#L54-L71) | B-Large-II pp.356–358 and N2 p.44; ordinary finite-dimensional identities |
+| Log determinants and inverse expansions | [`YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Sector.lean:54–71`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/RELATIVE_LOGDET_TRACE/Sector.lean#L54-L71) | B-UV3 p.272 Eq.(63), B-Large-II pp.356–358; MRS93 pp.368–369 adds background-dependent stability; N2 p.44 gives the closer retained defect format |
 | Connected graph/tree and cluster bounds | [`YM/Push/ABSOLUTE_SUMS/Clusters.lean:224–243`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Clusters.lean#L224-L243) | Bry §3, pp.138–143; Cam §3, pp.525–528 |
 | Marginal subtraction by symmetry | [`YM/RG/Activities.lean:70–75`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L70-L75) | B-RG-I §5, pp.292–297; BBS19 §5.2, preprint p.72, for a different model's localization operator |
 | Gauge one-loop coefficient | [`YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean:326–338`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/OneLoop/MomentumIntegral.lean#L326-L338) | Abbott82 §3.3 p.48, Eqs.(3.3.1)–(3.3.5), directly read |
-| Chessboard dissemination | [`YM/Cells/Certificate.lean:14–24`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L14-L24) | FILS78 §4, preprint pp.33–36, directly read |
-| Reflection-positive Hilbert reconstruction | [`YM/OS/Dynamics.lean:63–107`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L63-L107) | OS73 §4 p.90, indexed primary extract; OS75 corrected theorem, partial access |
+| Chessboard dissemination | [`YM/Cells/Certificate.lean:14–24`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L14-L24) | FILS78 §4, preprint pp.33–36; Seiler82 pp.14–16 for gauge RP and the displayed matter chessboard version |
+| Reflection-positive Hilbert reconstruction | [`YM/OS/Dynamics.lean:63–107`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/OS/Dynamics.lean#L63-L107) | OS73 §4 p.90 for the mechanism; corrected OS75 §IV.1 pp.287–288, Eq.(4.1), directly read in part; exact Lean hypothesis equivalence unresolved |
 | Wick reference calculations | [`YM/Next/MAXWELL/System.lean:106–179`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/MAXWELL/System.lean#L106-L179) | Standard free-field theory; not attributed to a particular recent paper |
 | Dominated convergence | [`YM/Extraction/Integrate.lean:115–153`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Extraction/Integrate.lean#L115-L153) | Standard integration theory; theorem explicitly invoked in Lean |
 | Taylor subtraction at diagonals | [`YM/Contacts/Normal/Subtractions.lean:54–83`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Contacts/Normal/Subtractions.lean#L54-L83) | BF00 §5.2, Eqs.(36)–(39), and §6.4, directly read |
 | Stability of finite-dimensional rank | [`YM/Next/RANK/Matrices.lean:63–86`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Matrices.lean#L63-L86) | Standard linear algebra; the comparison estimates, not this implication, carry the constructive content |
+
+Other directly matched older devices are compulsory bad-region covering (GK85 p.212 Eq.(4.8) versus [`YM/RG/Activities.lean:113–129`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L113-L129)), analytic stationary gauge backgrounds (B-Var Proposition 6 pp.295–296 versus [`YM/Work/F04.lean:62–86`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F04.lean#L62-L86)), and exact local marginal extraction/reblocking (BY90 pp.360–366 versus [`YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean:71–95`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L71-L95)). Their gauge-specific estimates still require work; their general mechanisms are established antecedents.
 
 ## 6. Open questions, limits and priorities for expert checking
 
@@ -1293,47 +1336,37 @@ The source reading is selective: it does not cover every line of Lean or every p
 
 Full texts of all six OpenAI preprints and the 24 works in §7.3 were available. The reading covered introductions, theorem statements, overall structure and the technical passages cited here, with particular attention to N2 §5 and N3's comparison and continuum sections. This is selective full-text reading, not a claim that every paper or proof was read in full. Human rewrites and assessments are not evidence for the provenance claims, and the papers' own claims of originality are not treated as established historical facts.
 
-The other sources were read in the parts specified in §7.4, or only as abstracts or primary indexed extracts. The background references in §7.5 were not directly read. None of these access levels amounts to independent human endorsement of the comparisons.
+The additional sources, including the five 1985 Bałaban gauge papers, MRS93, GK85, BY90, Seiler82, OS73/OS75, CDJ77 and W69, were read in the parts specified in §7.4. Full-text availability does not mean that every page or proof was read. Seiler's geometric appendix was available but not substantively used. OSe78 and Z73 remain available only as previously accessed abstracts. The background references in §7.5 were not directly read. None of these access levels amounts to independent human endorsement of the comparisons.
 
 ### 6.2 Missing or incompletely accessed literature
 
-Five foundational Balaban gauge papers are unavailable: averaging operations, background-field propagators, regular configuration spaces/gauge fixing, the gauge variational problem, and three-dimensional ultraviolet stability.
-Their exact citations are listed in §7 from B-RG-I's bibliography.
-Descriptions through B-RG-II are checked accounts within the series, not replacements for reading those originals.
-This particularly limits novelty claims about gauge synchronization, local stationary branches and background regularity.
+The five 1985 Bałaban gauge papers, MRS93, GK85, BY90, Seiler82, OS73/OS75, CDJ77 and W69 are available in full text. Relevant sections were read in part, with exact extents in §7. Availability is not a claim to have checked every proof. The old access-based uncertainty about whether Bałaban treated analytic stationary backgrounds and regular gauge transfer is resolved; exact theorem equivalence with the Lean implementation is not.
 
-OS73/OS75 were available only through primary indexed extracts and the discussion in N3; their complete texts were unavailable.
-CDJ77, Wilson's OPE paper and Zimmermann's short-distance paper were abstract-only.
-MRS93 and BY90 were abstract-only for this comparison.
-Their statements of scope can be used, but their inaccessible proof mechanisms cannot be credited or excluded in detail.
-The bibliography distinguishes these limits of access.
+**Still unavailable in full:** Osterwalder–Seiler, *Annals of Physics* 110 (1978), 440–471, and Zimmermann, *Annals of Physics* 77 (1973), 570–601. Their previously accessed abstracts remain the evidence limit. Seiler's exposition does not silently upgrade access to the Osterwalder–Seiler original.
 
-The wider comparison remains incomplete for Gawędzki–Kupiainen, Brydges–Dimock–Hurd, Feldman–Magnen–Rivasseau–Sénéor, Seiler's detailed gauge estimates and older algebraic-QFT phase decompositions.
-Balaban's references identify some historical debts, but those are not independent readings of the cited papers.
-Polyakov, Hasenfratz, Zinn-Justin and Lüscher are useful literature leads, not evidence of transfer to this Lean source in the absence of a matched result.
-No attribution to their methods is made merely from expert familiarity with their subject matter.
-The precise missing comparisons are more valuable than a list of famous names attached to generic similarities.
+Reading remains incomplete for the broader Gawędzki–Kupiainen corpus beyond GK85, Brydges–Dimock–Hurd, Feldman–Magnen–Rivasseau–Sénéor, modern rigorous composite/OPE constructions, and older algebraic-QFT phase decompositions. Seiler's cited gauge-fixing and gauge-chessboard extensions also remain incompletely followed. The targeted determinant passages do not establish a predecessor or priority for the exact torus sweep.
+
+MRS93 pp.326–327 explicitly presents an account short of a fully detailed convergence proof; B-Var p.308 omits detailed derivative calculations; Seiler82 p.121 explicitly labels its four-dimensional external-field determinant statement a Quasi-Theorem. Those qualifications are part of the sources' scope. They neither erase the antecedent ideas nor certify the Lean estimates. Polyakov, Hasenfratz, Zinn-Justin and Lüscher remain literature leads unless a specific result is directly matched.
 
 ### 6.3 Highest-value unresolved technical comparisons
 
 1. **The stationary determinant bridge.**
    Follow every premise from the blocked joint Hessian through [`pole_reduced`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L153-L178) to the auxiliary vector/ghost calculation, [`YM/Next/STATIONARY/Level/Transition.lean:153–178`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/STATIONARY/Level/Transition.lean#L153-L178).
-   The interfaces and the coefficient calculation support the comparison, but not every estimate supplying that bridge has been examined.
+   The cited interfaces and coefficient calculation support the comparison; not every estimate supplying that bridge has been examined.
 2. **The complete nonlinear large-field step.**
    Compare Balaban's aged-region R ratios, B-Large-I Eqs.(0.2)–(0.6), against every actual Lean seed reorganization, not only the final activity interface.
    A related replacement hidden upstream would narrow the stated organizational difference.
 3. **Gauge normalization priority.**
-   Search Seiler and finite-volume gauge-construction literature for the specific torus $3V+1$ versus $3V-3$ cancellation in [`YM/Next/RANK/Determinant.lean:240–274`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274).
-   Its absence from N3 is established; novelty across the literature is not.
+   Compare the specific torus `3V+1` versus `3V−3` sweep in [`YM/Next/RANK/Determinant.lean:240–274`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274) with further finite-volume gauge literature and Seiler's references. MRS93 §VI already supplies substantive background determinant stability; Seiler82 §6b treats a different external-field matter problem. No exact match was found in the targeted passages; worldwide novelty is not established.
 4. **All-label uniformity and quantifier order.**
    Check that the intended estimates survive the growing orders in [`YM/SharpGram/Assembly/Flowers.lean:75–130`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130) and the pre-block order of constants.
    Source similarity does not settle that mathematical obligation.
 5. **Exterior flux and phase theory.**
    Read all upstream spectral estimates used by [`YM/Next/ROTATIONS/Yard.lean:49–77`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/ROTATIONS/Yard.lean#L49-L77), and compare the train-commutation phase argument with older Euclidean extremal-state methods.
 6. **Reconstruction and contacts.**
-   Compare exact Lean domains/growth hypotheses with the full corrected OS theorem, and keep the separate contact extension within its stated scope.
+   Compare the exact graded Lean domains and joint distributional boundary estimates with OS75 §III p.285 and §IV.1 p.287 Eq.(4.1). The conceptual mechanism is settled; theorem equivalence is not. Keep the separate contact extension within its stated scope.
 7. **Trace normalization and physical interpretation.**
-   Check the stress normalization and anomaly normalization beyond CDJ77's abstract, including the relation between the internal running coordinate and any physical renormalization scheme.
+   Check the stress normalization and field/coupling conventions against CDJ77 pp.442–445 Eqs.(3.19)–(3.21), including gauge/ghost/equation-of-motion terms and the on-shell simplification. Matching the internal running coordinate and renormalized composite normalization to a physical scheme remains unresolved.
 8. **Causal provenance.**
    Draft histories, author testimony and generation records would be needed to decide which sources actually influenced the authors.
    Mathematical matching alone cannot answer that historical question.
@@ -1457,62 +1490,76 @@ Full texts of these 24 works were available; introductions, theorem statements a
   **Directly read:** preprint §4 pp.33–36, Theorems 4.1–4.3, abstract/torus chessboard inequalities; this pagination is not journal pagination.
 - **BBS19.** Roland Bauerschmidt, David C. Brydges and Gordon Slade, *Introduction to a Renormalisation Group Method*, Lecture Notes in Mathematics **2242**, Springer, 2019.
   [Primary preprint](https://arxiv.org/abs/1907.05474), [book DOI](https://doi.org/10.1007/978-981-32-9593-3).
-  **Directly read:** §5.2, preprint p.72, Definition 5.2.2 and Eq.(5.2.10), polynomial localization; §8.3 pp.122–123, Proposition 8.3.1, surviving-interval critical trajectory. This is general constructive RG, not a gauge theorem.
+  **Directly read:** §5.2, preprint p.72, Definition 5.2.2 and Eq.(5.2.10), polynomial localization; §8.3 pp.122–123, Proposition 8.3.1, surviving-interval critical trajectory.
 - **Fed87.** Paul Federbush, “A phase cell approach to Yang–Mills theory. VI. Non-Abelian lattice-continuum duality,” *Annales de l'Institut Henri Poincaré, Physique théorique* **47** (1987), 17–23.
   [Primary Numdam PDF](https://www.numdam.org/article/AIHPA_1987__47_1_17_0.pdf).
   **Directly read:** pp.18–20, group averaging and Theorems 1–2 on compatible smooth potentials/action convergence; this is classical, not a quantum existence theorem.
 - **MRS93.** Jacques Magnen, Vincent Rivasseau and Roland Sénéor, “Construction of YM4 with an infrared cutoff,” *Communications in Mathematical Physics* **155** (1993), 325–383.
   [Publisher record and abstract](https://link.springer.com/article/10.1007/BF02097397).
-  **Abstract only:** SU(2), infrared cutoff, trivial topological sector, regularized axial gauge and symmetry identities; no detailed proof-method attribution made.
+  **Read in part from the full text:** pp.325–331,352–355,368–369,373–378 and selected expansion/determinant passages. Direct comparisons concern fixed-IR gauge-fixed Schwinger functions, background-dependent normalization, Eqs.(VI.1)/(VI.5), coupling-flow remainders and Slavnov identities. Physical composite construction is expressly excluded at p.329; full proof detail is expressly deferred at pp.326–327. Other technical estimates were not read in full.
 - **BY90.** David C. Brydges and Horng-Tzer Yau, “Grad phi perturbations of massless Gaussian fields,” *Communications in Mathematical Physics* **129** (1990), 351–392.
   [Publisher record and abstract](https://link.springer.com/article/10.1007/BF02096987).
-  **Abstract only:** analytic RG for weak approximately local perturbations and dipole-gas pressure.
-  This is a relevant older analytic/polymer comparator, not a verified source of a particular Lean lemma.
+  **Read in part from the full text:** §§1–2 pp.351–367; real Gaussian integration pp.378–379,381; regulator and complex-covariance statements pp.381–384. Exact disjoint-set algebra, relevant extraction, regulator losses, analytic norms and Theorem B′ were compared directly. Remaining technical estimates and appendix not read in full.
 - **OSe78.** Konrad Osterwalder and Erhard Seiler, “Gauge Field Theories on a Lattice,” *Annals of Physics* **110** (1978), 440–471.
   [Publisher DOI](https://doi.org/10.1016/0003-4916(78)90039-8).
-  **Abstract only:** positivity/transfer structure and strong-coupling results; not used as evidence for a weak-coupling continuum construction.
+  **Full text still unavailable; previously accessed abstract only:** positivity/transfer structure and strong-coupling results; not evidence for a weak-coupling continuum construction. Seiler82 is a separately read exposition, not access to this original.
 - **OS73.** Konrad Osterwalder and Robert Schrader, “Axioms for Euclidean Green's Functions,” *Communications in Mathematical Physics* **31** (1973), 83–112.
   [DOI](https://doi.org/10.1007/BF01645738).
-  **Primary indexed extract:** §4 p.90, reflection Hilbert space, semigroup and analytic continuation; the complete text was unavailable.
+  **Read in part from the full text:** introduction, §3 pp.87–89, §4 p.90 and §4.1 pp.92–93, with selected continuation passages. The original sufficiency claim requires the OS75 correction; OS73 Lemma 8.8 cannot be used as originally stated.
 - **OS75.** Konrad Osterwalder and Robert Schrader, with an appendix by Stephen Summers, “Axioms for Euclidean Green's Functions II,” *Communications in Mathematical Physics* **42** (1975), 281–305.
   [Primary PDF endpoint](https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-42/issue-3/Axioms-for-Euclidean-Greens-functions-II-with-an-Appendix-by/cmp/1103899050.pdf), [DOI](https://doi.org/10.1007/BF01608978).
-  **Primary indexed contents/introduction:** corrected reconstruction §IV.1 pp.287–288; the complete text was unavailable. N3 p.91 was directly read for its application and growth check.
+  **Read in part from the full text:** introduction pp.281–283, §III pp.285–286, §IV.1–2 pp.287–289, including growth conditions (4.1)–(4.2) and boundary-value qualifications. The induction proofs and Summers appendix were not read in full. N3 p.91 provides a separate application.
 - **CDJ77.** John C. Collins, Anthony Duncan and Satish D. Joglekar, “Trace and dilatation anomalies in gauge theories,” *Physical Review D* **16** (1977), 438–449.
   [Primary publisher abstract](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.16.438).
-  **Abstract only, p.438:** non-Abelian trace anomaly; detailed convention-dependent normalization was not verified here.
+  **Read in part from the full text:** introduction and §§II–IV pp.439–445, especially (3.19)–(3.21) and the arbitrary-momentum argument. Section V and appendix were not read in full. The operator-mixing/gauge qualifications were read; numerical identification with the Lean stress/coupling convention remains unresolved.
 - **GW73.** David J. Gross and Frank Wilczek, “Ultraviolet Behavior of Non-Abelian Gauge Theories,” *Physical Review Letters* **30** (1973), 1343–1346.
   [Primary paper](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.30.1343).
   **Partial primary text:** opening pp.1343–1344, Eqs.(1)–(3), UV running; Abbott82 supplies the directly checked numerical coefficient comparison.
 - **P73.** H. David Politzer, “Reliable Perturbative Results for Strong Interactions?”, *Physical Review Letters* **30** (1973), 1346–1349.
   [Primary paper](https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.30.1346).
-  **Directly read:** pp.1346–1348, especially p.1347 Eqs.(4),(6) and p.1348 leading flow; the numerical fractions were not independently verified; Abbott82 is the source for the coefficient comparison.
+  **Directly read:** pp.1346–1348, especially p.1347 Eqs.(4),(6) and p.1348 leading flow; OCR of numerical fractions was not trusted.
 - **W69.** Kenneth G. Wilson, “Non-Lagrangian Models of Current Algebra,” *Physical Review* **179** (1969), 1499–1512.
   [Primary publisher abstract](https://journals.aps.org/pr/abstract/10.1103/PhysRev.179.1499).
-  **Abstract only, p.1499:** short-distance products expanded in local fields with singular coefficients; no detailed remainder theorem inferred from the abstract.
+  **Read in part from the full text:** introduction, §II pp.1500–1501 Eq.(2.2) and beginning of §III. Finite-order weak expansions, composite fields, multiple products and state-independent coefficients are explicit. Later phenomenological applications were not fully read; no nonperturbative YM remainder theorem is inferred.
 - **Z73.** Wolfhart Zimmermann, “Normal products and the short distance expansion in the perturbation theory of renormalizable interactions,” *Annals of Physics* **77** (1973), 570–601.
   [Publisher abstract](https://www.sciencedirect.com/science/article/abs/pii/0003491673904302).
-  **Abstract only:** perturbative scalar normal products and a two-field Wilson expansion.
+  **Full text still unavailable; previously accessed abstract only:** perturbative scalar normal products and a two-field Wilson expansion.
   This is distinct from his other composite-operator paper on pp.536–569 in the same volume.
 - **BF00.** Romeo Brunetti and Klaus Fredenhagen, “Microlocal Analysis and Interacting Quantum Field Theories: Renormalization on Physical Backgrounds,” *Communications in Mathematical Physics* **208** (2000), 623–661.
   [Primary preprint](https://arxiv.org/abs/math-ph/9903028), [journal DOI](https://doi.org/10.1007/s002200050004).
-  **Directly read:** §5.2, preprint pp.23–25, Theorems 5.2–5.3 and Eqs.(36)–(39); §6.4, Theorem 6.9, normal-direction extension. The matched device is distribution extension, not the entire causal/microlocal construction.
+  **Directly read:** §5.2, preprint pp.23–25, Theorems 5.2–5.3 and Eqs.(36)–(39); §6.4, Theorem 6.9, normal-direction extension.
+
+The following sources supplement the 24 works in §7.3. All are **read in part**; no complete proof verification is implied.
+
+- **B-Average.** Tadeusz Bałaban, “Averaging Operations for Lattice Gauge Theories,” *Communications in Mathematical Physics* **98** (1985), 17–51. [DOI](https://doi.org/10.1007/BF01211042). Read pp.18–20,33–39,42–45, especially nonlinear averages and Propositions 3–4,6–7.
+- **B-Gauge.** Tadeusz Bałaban, “Spaces of Regular Gauge Field Configurations on a Lattice and Gauge Fixing Conditions,” *Communications in Mathematical Physics* **99** (1985), 75–102. [DOI](https://doi.org/10.1007/BF01466594). Read pp.75–84,94–101, especially Theorem 2 and Proposition 7.
+- **B-Back.** Tadeusz Bałaban, “Propagators for Lattice Gauge Theories in a Background Field,” *Communications in Mathematical Physics* **99** (1985), 389–434. [DOI](https://doi.org/10.1007/BF01240355). Read pp.389–400,408–410,416–420, especially Theorems 3.1–3.4 and generalized random walks.
+- **B-UV3.** Tadeusz Bałaban, “Ultraviolet Stability of Three-Dimensional Lattice Pure Gauge Field Theories,” *Communications in Mathematical Physics* **102** (1985), 255–275. [DOI](https://doi.org/10.1007/BF01229380). Read pp.255–265,270–273; Gaussian/nonlinear change, Jacobian, Haar factor and determinant localization.
+- **B-Var.** Tadeusz Bałaban, “The Variational Problem and Background Fields in Renormalization Group Method for Lattice Gauge Theories,” *Communications in Mathematical Physics* **102** (1985), 277–309. [DOI](https://doi.org/10.1007/BF01229381). Read pp.277–286,292–300,305–309, especially Theorem 1 and Propositions 6,9; omitted calculations at p.308 are noted.
+- **GK85.** Krzysztof Gawędzki and Antti Kupiainen, “Massless Lattice φ⁴₄ Theory: Rigorous Control of a Renormalizable Asymptotically Free Model,” *Communications in Mathematical Physics* **99** (1985), 197–252. [DOI](https://doi.org/10.1007/BF01212281). Read pp.197–201,207–213,217–222,233–234,236–237,245–246: compulsory covering, selective reassembly, marginal extraction, constant order and critical mass tuning. This is scalar **infrared** asymptotic freedom.
+- **Seiler82.** Erhard Seiler, *Gauge Theories as a Problem of Constructive Quantum Field Theory and Statistical Mechanics*, Lecture Notes in Physics **159**, Springer, 1982. Introduction, lattice and continuum parts and geometric appendix available. Read contents and introductory framework, §2a pp.12–16 and beginning §2b pp.16–17, §5a pp.99–103, selected §6b pp.118–121 and §6c–d p.130 onward. The appendix was available but not substantively used; later continuum chapters were not read in full. Theorems 2.1–2.2 supply reflection positivity/chessboard context; §6b concerns matter determinants in external fields and explicitly labels its four-dimensional statement Quasi-Theorem 6.10. No matching pure-gauge torus count was located.
 
 ### 7.5 Background references and unread originals
 
 - **Wilson74 — established background; not directly read.** Kenneth G. Wilson, “Confinement of quarks,” *Physical Review D* **10** (1974), 2445–2459.
-  The gauge-link/plaquette lattice formulation is the background result cited; no unverified equation number is supplied.
-  The directly read evidence for its use in this tradition is B-RG-I p.252, Eq.(0.2), which credits Wilson.
-- **Seiler82 — unread literature lead.** Erhard Seiler, *Gauge Theories as a Problem of Constructive Quantum Field Theory and Statistical Mechanics*, Lecture Notes in Physics **159**, Springer, 1982.
-  No particular section was read or used to assign a Lean mechanism; its lattice-gauge normalization estimates should be checked before strengthening component 18's novelty claim.
-- **Glimm–Jaffe87 — established background; not directly read.** James Glimm and Arthur Jaffe, *Quantum Physics: A Functional Integral Point of View*, second edition, Springer, 1987.
-  Standard free-field/constructive-QFT background; no specific unread theorem or chapter is offered as evidence for a distinctive correspondence.
+  The gauge-link/plaquette lattice formulation is the background result cited; no unverified equation number is supplied. Directly read evidence for its use in this tradition is B-RG-I p.252 Eq.(0.2), which credits Wilson.
+- **Glimm–Jaffe87 — established background; not directly read.** James Glimm and Arthur Jaffe, *Quantum Physics: A Functional Integral Point of View*, second edition, Springer, 1987. No specific unread theorem or chapter is evidence for a distinctive correspondence.
 
-The following five exact references were read in B-RG-I's bibliography, p.299, but their full texts were absent from the sources available and not obtained:
+Seiler82 and the five 1985 Bałaban gauge papers are directly read sources in §7.4. Osterwalder–Seiler 1978 and Zimmermann 1973 remain unavailable in full, with abstract-only entries there. Names listed in §6 as further literature comparisons are not additional sources silently used here. Direct reading, partial reading, abstract-only access and background knowledge must remain distinguishable.
 
-1. Tadeusz Bałaban, “Averaging Operations for Lattice Gauge Theories,” *Communications in Mathematical Physics* **98** (1985), 17–51.
-2. Tadeusz Bałaban, “Propagators for Lattice Gauge Theories in a Background Field,” *Communications in Mathematical Physics* **99** (1985), 389–434.
-3. Tadeusz Bałaban, “Spaces of Regular Gauge Field Configurations on a Lattice and Gauge Fixing Conditions,” *Communications in Mathematical Physics* **99** (1985), 75–102.
-4. Tadeusz Bałaban, “The Variational Problem and Background Fields in Renormalization Group Method for Lattice Gauge Theories,” *Communications in Mathematical Physics* **102** (1985), 277–309.
-5. Tadeusz Bałaban, “Ultraviolet Stability of Three-Dimensional Lattice Pure Gauge Field Theories,” *Communications in Mathematical Physics* **102** (1985), 255–275.
+## 8. Changes after the second reading
 
-The authors named in §6 as subjects for further comparison are not additional sources for the claims above. Directly read passages, partial extracts, abstracts and background knowledge provide different levels of support.
+The additional literature narrows the attribution to the NLSM papers and several novelty candidates. The particular N2 density-format comparison survives; the broader gauge and polymer mechanisms have stronger direct older antecedents.
+
+1. **Gauge backgrounds and gauge changes.** B-Gauge Theorem 2 p.83, B-Var Theorem 1 p.279 and Proposition 6 pp.295–296, and B-Back Theorems 3.1–3.4 pp.397–400 directly supply controlled gauge transfer, analytic stationary branches and regular background propagators. These lose generic novelty credit. The soft-kernel/tree-selector implementation remains different: [`YM/PCalc/Chart.lean:78–100`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/PCalc/Chart.lean#L78-L100), [`YM/Work/F04.lean:62–86`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/F04.lean#L62-L86) ([III.1](outline/units/III-1.md), [III.3](outline/units/III-3.md), [III.6](outline/units/III-6.md)). B-UV3 pp.260–262,272 also strengthens the older gauge Jacobian/Gaussian antecedent for [III.4](outline/units/III-4.md); B-Var pp.305–307 strengthens the background-Taylor comparison in [III.7](outline/units/III-7.md).
+2. **Compulsory polymers and exact resets.** GK85 p.212 Eq.(4.8) already requires a cover of the bad region; pp.218–221 selectively exponentiates outside components and restores the density after extraction. BY90 pp.354–366 supplies another exact polymer algebra. Compulsory coverage and restoration are therefore weaker independent evidence for NLSM ancestry than previously stated. Compare [`YM/RG/Activities.lean:113–129`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/Activities.lean#L113-L129) and [`YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean:71–95`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/AnalyticBridge/VERIFIED_RESET_STEP/Evaluation.lean#L71-L95) ([III.8](outline/units/III-8.md)–[III.9](outline/units/III-9.md)). N2 remains the closest full clipped/masked/tagged/window/reset combination, with medium confidence in that ranking.
+3. **Schedules, analyticity and all orders.** GK85 pp.211,221–222,246, BY90 pp.359–364,383–384 and MRS93 p.330 directly establish older reference envelopes, parameter order, analytic RG and derivative control. The narrower question is the common growing-stage gauge-composite construction, [`YM/RG/History.lean:43–118`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/RG/History.lean#L43-L118) and [`YM/SharpGram/Assembly/Flowers.lean:75–130`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/SharpGram/Assembly/Flowers.lean#L75-L130) ([III.2](outline/units/III-2.md), [III.13](outline/units/III-13.md)). These are not new principles individually.
+4. **Gauge UV closure and observables.** MRS93 §§VI–VIII pp.368–378 becomes a substantial technical comparator. Its p.327 states a fixed-IR elementary Schwinger-function endpoint, leaves full proof detail unwritten and OS positivity for additional work; p.329 explicitly excludes physical composite-operator construction. The leading candidate remains the narrower simultaneous composite/rank/stress/phase/OPE hierarchy at [`Construction.lean:15–31`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/Construction.lean#L15-L31). General four-dimensional gauge RG closure loses novelty weight; old candidate 3 moves to rank 5.
+5. **Normalization and chessboard bounds.** MRS93 p.368 Eq.(VI.1), Lemma VI.1 p.369 gives strong background-determinant precedent. Seiler82 pp.118–121 treats a different external-field matter determinant. The exact torus count/root estimate at [`YM/Next/RANK/Determinant.lean:240–274`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Next/RANK/Determinant.lean#L240-L274) remains unmatched, with low novelty confidence; old candidate 2 moves to rank 6. Seiler82 pp.14–16 directly supports the older gauge reflection-positivity setting and displayed matter chessboard theorem for comparison with [`YM/Cells/Certificate.lean:14–24`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Cells/Certificate.lean#L14-L24) ([III.11](outline/units/III-11.md)–[III.12](outline/units/III-12.md)).
+6. **Reconstruction.** OS75 p.282 identifies the false OS73 lemma; §IV.1 p.287 Eq.(4.1) supplies the corrected sufficient growth condition. Reconstruction remains an older mechanism. Exact graded growth/topology equivalence with [`YM/Work/C01.lean:99–117`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Work/C01.lean#L99-L117) and [`ChallengeSpec.lean:135–143`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L135-L143) is still unsettled ([V.2](outline/units/V-2.md)–[V.3](outline/units/V-3.md)); access is no longer the obstacle.
+7. **Trace law.** CDJ77 pp.442–445 Eqs.(3.19)–(3.21) supplies the detailed beta-function/operator-mixing antecedent and the on-shell qualification. The candidate concerns constructive all-radii control and the specified exclusion, [`YM/TraceExtension/Verse/Cape.lean:53–88`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/TraceExtension/Verse/Cape.lean#L53-L88), not a new anomaly principle ([VII.2](outline/units/VII-2.md)). Convention and stress/coefficient matching remain unsettled.
+8. **OPE and contacts.** W69 §II pp.1500–1501 already includes finite-order weak/composite expansions and state-independent coefficients. The candidate is narrowed to the quantitative estimates and compatibility at [`ChallengeSpec.lean:70–80`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L70-L80); common coefficients and composite fields alone are older ideas ([VII.4](outline/units/VII-4.md)). OS73 p.89 also distinguishes reconstruction from the undetermined coincidence values, consistent with the limited extension at [`ContactSpec.lean:10–14`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ContactSpec.lean#L10-L14).
+
+The rotation, trace and OPE candidates move upward because the broader normalization and gauge-closure claims are demoted; their higher ranks do not certify their proofs. The source-size counts, absence of a public mass-gap assertion, and stated OPE/contact limitations are unchanged. No conclusion about borrowing or worldwide priority follows.
+
+All additional source families were read in relevant parts, with the limits stated in §7; Seiler's geometric appendix was available but not substantively used. **Osterwalder–Seiler 1978 and Zimmermann 1973 remain unavailable in full.** The stationary determinant bridge, all-order uniformity, exact torus antecedent, reconstruction hypotheses, trace normalization and wider composite/phase literature remain open comparisons.

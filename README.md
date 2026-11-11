@@ -10,9 +10,12 @@ This repository is an attempt to make that proof readable. Using AI agents, we:
 
 1. **map** the proof: we compute its dependency graph from the main theorem down, and divide it into eight parts and thirty-two units;
 2. **outline** it in natural language, at several levels of detail, from a short account of the whole proof down to an outline of each unit with every statement linked to the Lean;
-3. later, **write** a natural-language account of the proof on that skeleton.
+3. **write** a complete natural-language account of the proof on that skeleton: a [manuscript](https://github.com/scottnarmstrong/yang-mills-manuscript), being written in public (under construction).
 
 The outline is a rough draft written by machines. Its purpose is to be checked, corrected and rewritten by people.
+
+> ### [Where do the ideas come from?](provenance.md)
+> A component-by-component analysis of which parts of the proof follow Balaban's programme for lattice gauge theories, which follow OpenAI's 2026 papers on two-dimensional sigma models, which come from other constructive work (Gawędzki–Kupiainen, Brydges–Yau, Magnen–Rivasseau–Sénéor), which are standard, and which appear new, with the evidence on both sides. **[Read the analysis →](provenance.md)**
 
 ## The proof at five levels of detail
 
