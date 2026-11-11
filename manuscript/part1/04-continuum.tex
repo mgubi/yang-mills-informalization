@@ -1,6 +1,6 @@
 \section{The continuum limit}\label{sec:continuum}
 
-We first remove the lattice spacing at each fixed volume, then let the volume increase along one refinement. Throughout, the Wilson family and insertions are those of Section~\ref{sec:renormalization}; they are fixed before any volume sequence is prescribed. Constants may depend on the fixed group, its realization, the penalty and the construction choices of Appendix~\ref{sec:constants}. Additional dependence is stated below.
+We first remove the lattice spacing at each fixed volume, then let the volume increase along one refinement. Throughout, the Wilson family and insertions are those of Section~\ref{sec:renormalization}; all couplings $\beta_{N,p}$ and insertion maps are chosen before the increasing sequence of volume indices is prescribed. Constants may depend on the fixed group, its realization, the penalty and the construction choices of Section~\ref{sec:constants}. Additional dependence is stated below.
 
 For positions in~$(\R^4)^n$, set
 \begin{align*}
@@ -10,46 +10,50 @@ For positions in~$(\R^4)^n$, set
 \end{align*}
 The last domain excludes collisions on a torus of physical side~$L$. A separated test is a smooth function on~$(\R^4)^n$ with compact closed support in~$\Conf{n}$. It is $p$-admissible if its support lies in~$((-L_p/2,L_p/2)^4)^n$. Write $\sepinf(x)=\min_{i\ne j}|x_i-x_j|_\infty$, with value~$+\infty$ for $n\le1$.
 
-For a finite list~$\boldsymbol l$ of slot--axis pairs, define
+For a finite list~$\boldsymbol l$ of pairs $(i,a)\in\{1,\ldots,n\}\times\{1,\ldots,4\}$, define
 \begin{equation*}
 \Delta_{\boldsymbol l}=\prod_{(i,a)\in\boldsymbol l}a_N^{-1}(\tau_{i,a}-1),\qquad
 \partial_{\boldsymbol l}=\prod_{(i,a)\in\boldsymbol l}\partial_{x_i^a}\,.
 \end{equation*}
-Here $\tau_{i,a}$ shifts slot~$i$ forward by one lattice link. These differences measure derivatives in physical units. Torus separation is the minimum, over distinct slots, of $\min_{z\in L_p\Z^4}|\hat y_i-\hat y_j+z|_\infty$.
+Here $\tau_{i,a}$ shifts slot~$i$ forward by one lattice link. These differences measure derivatives in physical units. Torus separation is the minimum, over distinct slots, of $\min_{z\in L_p\Z^4}|\hat y_i-\hat y_j+z|_\infty$, with value~$+\infty$ for $n\le1$. An element $v_i=(d_i,c_i)\in\mathcal T$ retains both the polynomial label and its degree; we call it a token.
 
-The local estimates give bounds independent of the volume. They control compactness for every fixed list of fields and derivatives.
+Marked transfers along the trajectories of Theorem~\ref{prop:MT} give bounds independent of the volume. They control compactness for each fixed list of fields and derivatives.
 \begin{proposition}[Uniform difference bounds]\label{prop:UB}
-For every arity~$n$, token list~$v$, finite difference list~$\boldsymbol l$ and $r>0$, there are $B(n,v,\boldsymbol l,r)\ge0$ and $N_0(n,v,\boldsymbol l,r)$ such that, for every $N\ge N_0$, every~$p$ and every lattice tuple of torus separation at least~$r$,
+For every $v\in\mathcal T^n$, finite difference list~$\boldsymbol l$ and $r>0$, there are $B(v,\boldsymbol l,r)\ge0$ and $N_0(v,\boldsymbol l,r)$ such that, for every $N\ge N_0$, every~$p$ and every lattice tuple of torus separation at least~$r$,
 \begin{equation*}
 |\Delta_{\boldsymbol l}\latmoment_{N,p}(v;y)|\le B\,.
 \end{equation*}
 \end{proposition}
-The proof is in Section~\ref{sec:partII-E}, II.E.2.2--E.2.4. Marked transfers control insertion coefficients and remainders; the centered chessboard estimate then bounds correlations. An intermediate scale below the prescribed separation also permits finite differences. The chessboard constant in II.E.2.3 precedes that scale, although its cutoff threshold may depend on it. UB's bound and cutoff threshold are independent of~$p$.
+The proof is in Section~\ref{sec:partII-E}, \ref{lem:E2.2}--\ref{lem:E2.4}. Marked transfers control insertion coefficients and remainders. The chessboard estimate reflects an insertion into neighbouring blocks and bounds a mixed correlation by the product of the resulting reflected moments. Choosing an intermediate level whose physical blocks fit below the prescribed separation permits its use for the differentiated insertions. The reflected-moment constant in \ref{lem:E2.3} is chosen before that level, although its cutoff threshold may depend on it. No common bound or cutoff threshold is asserted over unbounded labels or difference orders.
 
-Analytic tuning to the common endpoint gives convergence along the full ultraviolet sequence. At a fixed volume, the limiting kernel is smooth even where two positions share some coordinates.
+The common endpoint can be varied analytically. More precisely, \ref{lem:E1.3} supplies a width $w_{\rm tun}>0$, independent of~$N,p$, such that for each $s\in[-1,1]$ exactly one bare coupling $\beta_{N,p}(s)$ within the specified recursion reaches $\bar\beta+w_{\rm tun}s$ at level zero. It equals $\beta_{N,p}$ at $s=0$ and extends holomorphically to $|s|<1$.
+
+This tuning gives convergence along the full ultraviolet sequence. The limiting kernel is periodic in each position and smooth away from periodic collisions, including configurations where positions share some coordinates.
 \begin{theorem}[Fixed-volume limit]\label{prop:UV}\label{thm:UV}
-For every $p,n,v$, there is $f_{p,v}\in C^\infty(\NoHit{L_p}{n})$ such that, for every finite~$\boldsymbol l$ and every $p$-admissible separated test~$f$,
+For every $p,n$ and $v\in\mathcal T^n$, there is $M^{\rm UV}_{p,v}\in C^\infty(\NoHit{L_p}{n})$ such that, for every finite~$\boldsymbol l$ and every $p$-admissible separated test~$f$,
 \begin{equation*}
-\lim_{N\to\infty}a_N^{4n}\sum_y f(\hat y)\Delta_{\boldsymbol l}\latmoment_{N,p}(v;y)
-=\int f(x)\partial_{\boldsymbol l}f_{p,v}(x)\,dx\,.
+\lim_{N\to\infty}a_N^{4n}\sum_{y\in\Lambda_{L_pD_N}^n}f(\hat y)\Delta_{\boldsymbol l}\latmoment_{N,p}(v;y)
+=\int f(x)\partial_{\boldsymbol l}M^{\rm UV}_{p,v}(x)\,dx\,.
 \end{equation*}
 \end{theorem}
-The proof is in Section~\ref{sec:partII-E}, II.E.3.1--E.3.2. At a fixed intermediate level, the normalized correlations are Cauchy as the cutoff increases. On common lattice configurations, comparison with the original correlations has an error tending to zero exponentially in~$B_m$. First choose~$m$, then the cutoffs. UB extends the resulting convergence from a dense set and identifies its derivatives. The proof also gives convergence at moving interpolated points on the periodic domain and integrability of the displayed integrand. Its thresholds may depend on~$p$.
+For $\boldsymbol l=\varnothing$, the left side is $\lim_N\latsmear_{N,p}(v;f)$. Thus the inner limits in Definition~\ref{def:D09} below exist at every admissible volume. Admissibility places the test support inside~$\NoHit{L_p}{n}$, so the displayed integrand is compactly supported and integrable.
 
-The following definition keeps the order of limits explicit. Write $C_p^\infty(v;f)$ for a fixed-volume smeared limit.
+The proof is in Section~\ref{sec:partII-E}, \ref{lem:E3.1}--\ref{lem:E3.2}. At a fixed intermediate level, the vacuum scalar cancels between the correlation numerator and its partition function. Analytic tuning and the fixed-level transfer estimates make the normalized integrals of the transferred insertions Cauchy as~$N$ increases. For insertion sites obtained by repeated blocking from common finer sites, comparison with the original correlations has error bounded by a constant times~$e^{-B_m/64}$. First choose the intermediate level~$m$, then take both cutoffs large; the triangle inequality gives the Cauchy property for the original correlations. UB extends convergence from the dense set of these sites and identifies every derivative. \ref{lem:E3.2} also treats multilinear interpolants evaluated at any sequence $x_N\to x\in\NoHit{L_p}{n}$, including when the points cross a boundary of the chosen fundamental cell. Thresholds may depend on~$p$.
+
+The following definition keeps the order of limits explicit. Write $C_p^{\rm UV}(v;f)$ for a fixed-volume smeared limit.
 \begin{definition}[Ordered convergence]\label{def:D09}
-A Wilson family converges to~$K$ along~$\mathsf v$ if, for every $n,v$ and separated test~$f$, the test is eventually $\mathsf v(k)$-admissible and there are numbers $C_p^\infty(v;f)$ with
+A Wilson family converges to~$K$ along~$P:\N\to\N$ if, for every $n,v$ and separated test~$f$, the test is eventually $P(k)$-admissible and there are numbers $C_p^{\rm UV}(v;f)$ with
 \begin{align*}
-\latsmear_{N,p}(v;f)&\longrightarrow C_p^\infty(v;f)\quad(N\to\infty)
+\latsmear_{N,p}(v;f)&\longrightarrow C_p^{\rm UV}(v;f)\quad(N\to\infty)
 &&\text{at every admissible }p,\\
-C_{\mathsf v(k)}^\infty(v;f)&\longrightarrow\int f(x)K_n(v;x)\,dx\,.
+C_{P(k)}^{\rm UV}(v;f)&\longrightarrow\int f(x)K_n(v;x)\,dx\,.
 \end{align*}
 Values at inadmissible volumes are unrestricted.
 \end{definition}
 
-We specify the Euclidean conditions for the multilinear table~$S$ to be constructed. Units, conjugation and the signed permutation action are inherited from the polynomial labels.
+A table assigns to each degree list $(d_i)_{i=1}^n$ and $x\in\Conf{n}$ a complex multilinear function $S_n(c;x)$ of $c_i\in V_{d_i}$. For $v_i=(d_i,c_i)$ write also $S_n(v;x)$, and for the word $w=(v_i(x_i))_{i=1}^n$ write $S(w)$. Conjugation and the signed permutation action are those of the polynomial labels; a unit slot carries the distinguished coefficient $\mathbf u_d=a_{\reflevel{d}}^d\mathbf1$ of Definition~\ref{def:D08}. The following conditions specify the Euclidean properties of the table to be constructed.
 \begin{definition}[E1--E3. Euclidean symmetries]\label{def:E1-E3}
-E1 is simultaneous permutation symmetry, $S_0=1$ and deletion of a unit slot. E2 is
+E1 is simultaneous permutation symmetry, $S_0=1$ and deletion of a slot carrying~$\mathbf u_d$. E2 is
 \begin{equation*}
 S_n(hc;hx)=S_n(c;x)\quad(h\in\hypercubic),\qquad
 S_n(\bar c;x)=\overline{S_n(c;x)}\,.
@@ -57,13 +61,13 @@ S_n(\bar c;x)=\overline{S_n(c;x)}\,.
 E3 is translation invariance.
 \end{definition}
 
-A word is a finite list of labels at separated positions; it is positive-side for axis~$a$ when all its positions have positive $a$th coordinate. The product of words concatenates their lists, so reflection positivity tests a correlation with one reflected group of insertions.
+A word is positive-side for axis~$a$ when all its positions have positive $a$th coordinate. The product of words concatenates their lists, so reflection positivity tests a correlation with one reflected group of insertions.
 \begin{definition}[E4--E5. Reflection positivity]\label{def:E4-E5}
 E4 requires, for every axis~$a$, positive-side separated words~$w_i$ and complex coefficients~$z_i$,
 \begin{equation*}
-\sum_{i,j}\bar z_i z_jS(\theta_aw_i^*w_j)\ge0\,.
+\sum_{i,j}\bar z_i z_jS(\mathsf s_a^{\rm refl}w_i^*w_j)\ge0\,.
 \end{equation*}
-The star reverses the word and applies conjugation to its labels; $\theta_a$ reflects positions and acts on labels. E5 requires the same positivity for finite sums of words smeared against joint smooth compactly supported tests on positive-side separated configurations, and absolute integrability of every mixed pairing.
+The star reverses the word and applies conjugation to its labels; $\mathsf s_a^{\rm refl}$ reflects positions and acts on labels through~$\hypercubic$. E5 requires the same positivity for finite sums of words smeared against joint smooth compactly supported tests on positive-side separated configurations, and absolute integrability of every mixed pairing.
 \end{definition}
 
 For a fixed label list, $D_x^k$ denotes the $k$th Fr\'echet derivative in the positions, with the product Euclidean norm. The next bound controls approach to collision sets uniformly over translations and over configurations with large diameter.
@@ -78,14 +82,9 @@ E6 is smoothness on~$\Conf{n}$. E7 requires, for each $n,d_i,c_i,k$, constants $
 One volume refinement will serve every field and all subsequent constructions.
 \nopagebreak
 \begin{theorem}[Infinite-volume limit]\label{prop:IV}\label{thm:IV}
-For every strictly increasing $\mathsf p:\N\to\N$, there are a strictly increasing~$\mathsf q$ and a multilinear table~$S$ such that the Wilson family converges to~$S$ along $\mathsf v=\mathsf p\circ\mathsf q$ in the sense of Definition~\ref{def:D09}:
-\begin{equation*}
-\lim_{k\to\infty}\lim_{N\to\infty}\latsmear_{N,\mathsf v(k)}(v;f)
-=\int f(x)S_n(v;x)\,dx\,.
-\end{equation*}
-The table satisfies E1--E7.
+For every strictly increasing $\mathsf p:\N\to\N$, there are a strictly increasing $\mathsf q:\N\to\N$ and a multilinear table~$S$ such that the Wilson family converges to~$S$ along $P=\mathsf p\circ\mathsf q$ in the sense of Definition~\ref{def:D09}. The table satisfies E1--E7.
 \end{theorem}
-The proof is in Section~\ref{sec:partII-F}, II.F.1--F.3. The extraction first gives volume limits on~$\Gen{n}$; the difference bounds extend them smoothly to~$\Conf{n}$. Uniqueness identifies each extracted fixed-volume kernel with~$f_{p,v}$, retaining UV's full inner limit at every admissible volume. Reflection positivity passes from Wilson expectations to finite sums and then to joint smeared words. Fix this refinement and its table~$S$ from now on.
+The proof is in Section~\ref{sec:partII-F}, \ref{lem:F1}--\ref{lem:F3}. The extraction first gives volume limits on~$\Gen{n}$; the corrected difference estimates of \ref{lem:F3} extend them smoothly to~$\Conf{n}$ (E6) and give the power bounds E7. Uniqueness identifies each extracted fixed-volume kernel with~$M^{\rm UV}_{p,v}$, retaining UV's full inner limit at every admissible volume. Lattice reflection positivity for finite sums of smeared words passes to the limit, giving E5; E4 follows from E5 together with E1 and E6. The same extraction fixes the corrected coefficient maps of \ref{lem:F2}, which adjust labels of different degrees so their correlations agree or differ by a positional derivative. Ordered convergence to~$S$ persists along every further volume refinement. No uniqueness of the infinite-volume limit is asserted; fix $\mathsf p$, its refinement~$\mathsf q$ and the resulting table~$S$ from now on.
 
 Write $v(x)=(v_1(x_1),\ldots,v_n(x_n))$ for a spectator word. Two polynomial labels represent the same observable when no separated correlation distinguishes them.
 \begin{definition}[Observable fields]\label{def:D10}
@@ -93,13 +92,13 @@ Set
 \begin{align*}
 \nullspace{d}(S)&=\bigl\{c\in V_d:S_{n+1}(c(x_0),v(x))=0\\
 &\hspace{7em}\text{for every }n,v\text{ and }x\in\Conf{n+1}\bigr\},\\
-F_d&=V_d/\nullspace{d}(S),\qquad \overline{[c]}=[\bar c],\\
+F_d&=V_d/\nullspace{d}(S),\qquad \overline{[c]}=[\bar c],\qquad h[c]=[hc]\quad(h\in\hypercubic),\\
 \iota_d[c](v;x)&=S_{n+1}(c(x_0),v(x)),\qquad
 \mathcal L=\operatorname{span}\bigcup_d\iota_dF_d\,.
 \end{align*}
 The maps~$\iota_d$ give the responses to all spectators. Choose conjugation-invariant quotient norms.
 \end{definition}
-Permutation symmetry makes correlations independent of representatives in every slot. The unit field is $\unitfield{d}=[a_{\reflevel{d}}^d\mathbf1]$, with the normalization of Definition~\ref{def:D08}.
+E2 makes $\nullspace{d}(S)$ invariant under conjugation and~$\hypercubic$, so both displayed actions on~$F_d$ are well defined. Permutation symmetry makes correlations independent of representatives in every slot: for $\boldsymbol A=([c_1],\ldots,[c_n])$, put $S_n(\boldsymbol A;x)=S_n(c;x)$. The unit field is $\unitfield{d}=[\mathbf u_d]$, with the normalization of Definition~\ref{def:D08}.
 
 To state the dimension of~$F_d$, introduce the free comparison space.
 \begin{definition}[Free Maxwell comparison]\label{def:D11}
@@ -109,16 +108,31 @@ For $\dimG$ independent colours, take
 =\delta_{\alpha\beta}\delta_{ab}\Gamma(x-y),\qquad
 \Gamma(x)=\frac1{4\pi^2|x|^2},\qquad F_{ab}=\partial_aA_b-\partial_bA_a\,.
 \end{equation*}
-Let $\maxwellspace{d}$ consist of $\operatorname{Ad}(G)$-invariant Wick polynomials in curvature jets of weight at most~$d$, modulo antisymmetry, the linear Bianchi identities and $\sum_a\partial_aF_{ab}=0$. Their separated Wick correlations are~$\maxwellcorr$.
+Let $\maxwellspace{d}$ consist of complex $\operatorname{Ad}(G)$-invariant Wick polynomials in curvature jets of weight at most~$d$, modulo antisymmetry, the linear Bianchi identities and $\sum_a\partial_aF_{ab}=0$. Their separated Wick correlations are~$\maxwellcorr$.
 \end{definition}
+The constant one is the Maxwell unit, coefficient conjugation gives its real structure, and inclusions retain the same polynomial at a larger weight bound. Free field differentiation is $\partial_a^{\rm Max}(:P:)=:\partial_aP:$ and the natural rotation action is $R_d^{\rm Max}(h)(:P:)=:hP:$, where the jet action is determined by
+\begin{equation*}
+hF_{ab}^\alpha=\sum_{i,j}h_{ia}h_{jb}F_{ij}^\alpha,\qquad
+h\partial_a=\sum_i h_{ia}\partial_i h\quad(h\in O(4))\,.
+\end{equation*}
+These operations preserve the defining relations and give the structures used in the comparison below.
 
-The quotient fields admit inclusions and differentiation that preserve their correlations, and have the Maxwell dimensions.
+The quotient fields admit inclusions that preserve correlations and derivatives that act as positional derivatives. Their dimensions equal those of the Maxwell spaces.
 \begin{proposition}[Field calculus]\label{prop:FC}
-For all $d\le e$, there are injective compatible inclusions $\jmath_{d,e}:F_d\to F_e$ and linear maps $\partial_a:F_d\to F_{d+1}$, with
+For the table~$S$ of Theorem~\ref{prop:IV}, there are complex linear maps $\jmath_{d,e}:F_d\to F_e$ for $d\le e$ and $\partial_a:F_d\to F_{d+1}$ for every $d,a$ such that, for every $A\in F_d$,
 \begin{gather*}
-\dim F_d=\dim\maxwellspace{d},\qquad \mathcal L=\bigcup_d\iota_dF_d,\\
-\partial_{x_i^a}S_n(A;x)=S_n(A_1,\ldots,\partial_aA_i,\ldots,A_n;x)\,.
+\iota_e\circ\jmath_{d,e}=\iota_d,\qquad
+\iota_{d+1}(\partial_aA)=\partial_{x_0^a}\iota_d(A),\\
+\dim_\C F_d=\dim_\C\maxwellspace{d}\,.
 \end{gather*}
 \end{proposition}
-The proof is in Section~\ref{sec:partII-F}, II.F.2. It constructs the corrected coefficient maps on the refinement already chosen for IV, preserves units and correlations, and proves compatibility with conjugation and the discrete symmetries. Every quotient field has a token representative.
+The proof is in Section~\ref{sec:partII-F}, \ref{lem:F2}, using the corrected coefficient maps chosen with~$S$. Each $\iota_d$ is injective by Definition~\ref{def:D10}, so the inclusions are unique and injective, compose as $\jmath_{e,f}\jmath_{d,e}=\jmath_{d,f}$ and satisfy $\jmath_{d,d}=\mathrm{id}$. By E1 they carry $\unitfield{d}$ to~$\unitfield{e}$. Their images are nested, hence $\mathcal L=\bigcup_d\iota_dF_d$. These inclusions are characterized by correlations; they are not defined by the polynomial embedding $V_d\subset V_e$, since $(d,c)$ and $(e,c)$ have different insertion normalizations.
 
+Permutation symmetry gives, for every arity~$n$, degree list $(d_i)$, $\boldsymbol A\in\prod_{i=1}^nF_{d_i}$, $x\in\Conf{n}$, slot~$i$ and axis~$a$,
+\begin{equation*}
+\partial_{x_i^a}S_n(\boldsymbol A;x)=S_n(A_1,\ldots,\partial_aA_i,\ldots,A_n;x)\,.
+\end{equation*}
+E2 and the injectivity of the response maps imply that inclusions and derivatives commute with conjugation, that inclusions commute with~$\hypercubic$, and that
+\begin{equation*}
+h\partial_a=\sum_bh_{ba}\partial_bh\qquad(h\in\hypercubic)\,.
+\end{equation*}

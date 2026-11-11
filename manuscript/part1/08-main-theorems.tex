@@ -1,54 +1,73 @@
 \section{Main theorems}\label{sec:main-theorems}
 
-The existence theorem concerns one lattice family, chosen before the volume sequence. We first specify its continuum conclusion; the field calculus and stress tensor established above are additional properties of the construction.
+The existence theorem concerns one Wilson family~$\mathcal W$, chosen before any prescribed volume sequence. Its tokens $v\in\mathcal T$ label the lattice insertions. We first specify its continuum conclusion; the field calculus and stress tensor established above are additional properties of the construction.
 
-\begin{definition}[Hierarchy data]\label{def:Q0}
-For a Wilson family~$\mathcal W$ with token set~$\mathcal T$, hierarchy data consist of:
+\begin{definition}[Q0. Hierarchy data]\label{def:Q0}
+Hierarchy data over~$\mathcal W$ consist of:
 \begin{itemize}[nosep]
 \item complex Hilbert and vector spaces~$\mathcal H,\mathcal L$, and the relativistic data of Definitions~\ref{def:D14a}--\ref{def:D14b};
 \item finite-dimensional complex normed spaces~$F_d$, linear maps~$\iota_d:F_d\to\mathcal L$, and $\pi_{\rm quo}:\mathcal T\to\mathbb F$, where $\mathbb F=\bigsqcup_dF_d$;
 \item a compact metric space~$\phases$, a Borel measure~$\nu$ and $\xi_*\in\phases$;
 \item functions $S_n^\zeta:\mathbb F^n\times(\R^4)^n\to\C$ for $\zeta\in\phases\sqcup\{\mathrm{mix}\}$, and $\mathsf F_n:\mathbb F^n\times\C^n\times(\R^3)^n\to\C$;
-\item finite sets~$\channels{j}$, fields~$O_{j,\lambda}\in F_j$, and coefficient functions $c_{j,\lambda}:\mathbb F^I\times(\R^4)^I\times\R^4\to\C$ for every finite index set~$I$;
+\item finite sets~$\channels{j}$, fields~$O_{j,\lambda}\in F_j$, and coefficients $c_{j,\lambda}:\mathbb F^{I_{\rm cl}}\times(\R^4)^{I_{\rm cl}}\times\R^4\to\C$ for every finite index set~$I_{\rm cl}$;
 \item an element~$\Theta\in F_4$.
 \end{itemize}
-No further condition is part of these data.
 \end{definition}
 
-Put $\deg(d,A)=d$ and $\iota(d,A)=\iota_dA$. Here the spaces and maps are arbitrary: no response realization, stress interpretation, multilinearity or channel basis property is implicit. Correlations are defined at all positions; the axioms constrain their separated values.
+No further condition is part of Q0. Put $\deg(d,A)=d$ and $\iota(d,A)=\iota_dA$. Here the spaces and maps are arbitrary: no response realization, stress interpretation, multilinearity or channel basis property is implicit. Correlations are defined at all positions; the axioms constrain their separated values.
 
-\begin{definition}[Regular lattice approximation]\label{def:Q1}
+In Q2--Q6, all cited definitions and formulas are read with these hierarchy data. In definitions indexed by a phase, read $\Omega_{\xi_*}$, $\Phi_{\xi_*}$ and $\mathsf F_n^{\xi_*}$ as the $\Omega$, $\Phi$ and $\mathsf F_n$ of these data.
+
+\begin{definition}[Q1. Regular Wilson family]\label{def:Q1}
 A Wilson family is regular if its insertions are continuous and gauge invariant, each token~$v$ has a finite stencil~$\Sigma_v\subset\Z^4$ valid for every~$N,p,y$, and some~$b_*>0$ satisfies
 \begin{equation*}
 \forall\varepsilon>0\ \exists N_0\ \forall N\ge N_0\ \forall p:\quad
 \left|\frac{\beta_{N,p}}{\log(1/a_N)}-b_*\right|<\varepsilon\,.
 \end{equation*}
-Only links with both ends in~$y+\Sigma_v$ modulo the torus are read. The continuum approximation is Definition~\ref{def:D09} with $K_n(v;x)=S_n^{\rm mix}(\pi_{\rm quo}(v_1),\ldots,\pi_{\rm quo}(v_n);x)$.
+Only links with both ends in~$y+\Sigma_v$ modulo the torus are read.
 \end{definition}
 
 The relativistic axioms Q2 are Definition~\ref{def:Q2}. The following conditions specify the labels, phase average and selected continuation.
 
-\begin{definition}[Labels and phases]\label{def:Q3}
-Every nonzero~$\ell\in\mathcal L$ has $\Phi(\ell,f)\ne0$ for some~$f\in\mathcal S$. Each~$\iota_d$ is injective, their images cover~$\mathcal L$, $\pi_{\rm quo}$ is onto, and some~$\Phi(\iota(a),f)$ is nonzero. The measure~$\nu$ is a probability measure of full support. Each~$S_n^\zeta$ is simultaneously permutation symmetric and smooth on~$\Conf{n}$. For every fixed separated field configuration,
+\begin{definition}[Q3. Labels and phases]\label{def:Q3}
+Every nonzero~$\ell\in\mathcal L$ has $\Phi(\ell,f)\ne0$ for some~$f\in\mathcal S$. Each~$\iota_d$ is injective, their images cover~$\mathcal L$, $\pi_{\rm quo}$ is onto, and $\Phi(\iota(A),f)\ne0$ for some~$A\in\mathbb F$, $f\in\mathcal S$. The measure~$\nu$ is a probability measure of full support. Each~$S_n^\zeta$ is simultaneously permutation symmetric and smooth on~$\Conf{n}$. For every $n$, $\boldsymbol A\in\mathbb F^n$ and $x\in\Conf{n}$,
 \begin{equation*}
-\xi\longmapsto S_n^\xi(a;x)\text{ is continuous},\qquad
-S_n^{\rm mix}(a;x)=\int_{\phases}S_n^\xi(a;x)\,d\nu(\xi)\,.
+\xi\longmapsto S_n^\xi(\boldsymbol A;x)\text{ is continuous},\qquad
+S_n^{\rm mix}(\boldsymbol A;x)=\int_{\phases}S_n^\xi(\boldsymbol A;x)\,d\nu(\xi)\,.
 \end{equation*}
 \end{definition}
 
-\begin{definition}[Selected continuation]\label{def:Q4}
-The functions~$\mathsf F_n$ satisfy the ordered-time continuation condition of Definition~\ref{def:D15} and the boundary condition of Definition~\ref{def:D14f} at~$\xi_*$. In those definitions write $\mathsf F_n^{\xi_*}=\mathsf F_n$.
+\begin{definition}[Q4. Selected continuation]\label{def:Q4}
+The functions~$\mathsf F_n$ satisfy the ordered-time continuation condition of Definition~\ref{def:D15} and the boundary condition of Definition~\ref{def:D14f} at~$\xi_*$, using the relativistic datum and the maps~$\iota_d$ of the hierarchy data.
 \end{definition}
 
-\begin{definition}[Products]\label{def:Q5}
-The single coefficient system of Definition~\ref{def:D18} satisfies both inequalities of Theorem~\ref{prop:OP} with its quantifier order: the coefficient threshold depends on $I,a,M,\eta,\varepsilon,j,\lambda$; the remainder threshold depends on $I,J,a,B,M,\eta,\delta,\varepsilon,D$. Both precede positions and states. Coefficients have no spectator, state or truncation argument.
+\begin{definition}[Q5. Products]\label{def:Q5}
+For the channels, fields, coefficients and tables~$S^\zeta$ of Q0, form~$\mathcal R_D^\zeta$ by Definition~\ref{def:D18}. These coefficients and remainders satisfy the two inequalities of Theorem~\ref{prop:OP}: the coefficient threshold depends on $I_{\rm cl},\boldsymbol A,M_{\rm geo},\eta,\varepsilon,j,\lambda$; the remainder threshold depends on $I_{\rm cl},I_{\rm sp},\boldsymbol A,\boldsymbol B,M_{\rm geo},\eta,\delta_{\rm sp},\varepsilon,D$. Both precede positions and states. Coefficients have no spectator, state or truncation argument.
 \end{definition}
 
-\begin{definition}[Trace test]\label{def:Q6}
-For the chosen~$\Theta\in F_4$, define~$\tracetwopoint$ and~$\traceamplitude$ by the last two formulas of Definition~\ref{def:D16}. Its vacuum expectation vanishes for every Schwartz smearing, $\traceamplitude>0$, the full-radius limit of Theorem~\ref{prop:TR} holds in~$\C$, and the finite-profile exclusion of Proposition~\ref{prop:NF} holds.
+\begin{definition}[Q6. Trace test]\label{def:Q6}
+For the chosen~$\Theta\in F_4$, put
+\begin{equation*}
+\tracetwopoint(r)=S_2^{\xi_*}(\Theta,\Theta;-re_4/2,re_4/2),\qquad
+\traceamplitude=\frac{3\dimG}{\pi^4}\,.
+\end{equation*}
+Require
+\begin{equation*}
+\langle\Omega,\Phi(\iota_4\Theta,f)\Omega\rangle=0\qquad(f\in\mathcal S)\,,
+\end{equation*}
+and
+\begin{equation*}
+\lim_{r\downarrow0}r^8\log^2(1/r)\tracetwopoint(r)=\traceamplitude>0
+\quad\text{in }\C\,,
+\end{equation*}
+and require the finite-profile exclusion of Proposition~\ref{prop:NF}.
 \end{definition}
 
-These conditions state the exact existence conclusion. In particular, Q6 places a condition on a degree-four field without requiring a stress-tensor interpretation.
+For the lattice limit, $S^{\rm mix}\circ\pi_{\rm quo}$ denotes the kernels
+\begin{equation*}
+K_n(v;x)=S_n^{\rm mix}(\pi_{\rm quo}(v_1),\ldots,\pi_{\rm quo}(v_n);x)\,.
+\end{equation*}
+Q2--Q4 describe a relativistic theory continued from one phase; Q5 controls products, and Q6's inverse logarithm excludes every finite Wick profile. In Theorem~\ref{thm:A}, Q6 places a condition on a degree-four field without requiring a stress-tensor interpretation.
 
 \begin{maintheorem}[Existence]\label{thm:A}
 For every gauge group of Definition~\ref{def:D01}, there is a regular \textup{(Q1)} Wilson family~$\mathcal W$ such that, for every strictly increasing~$\mathsf p:\N\to\N$, there are a strictly increasing~$\mathsf q$ and hierarchy data over~$\mathcal W$ \textup{(Q0)} satisfying \textup{Q2--Q6}, with
@@ -59,34 +78,52 @@ For every gauge group of Definition~\ref{def:D01}, there is a regular \textup{(Q
 \end{equation*}
 \end{maintheorem}
 
-The deduction below proves Theorem~\ref{thm:A} from the construction theorem. The latter retains the field calculus and quantitative estimates; subsidiary results are identified by their letter and number in Sections~\ref{sec:partII-A}--\ref{sec:partII-J}.
+Step~\ref{step:deduction-conclusion} below deduces Theorem~\ref{thm:A} from Theorem~\ref{thm:B}.
+
+In the construction theorem, the constructed hierarchy means the following Q0 data. Its spaces $F_d=V_d/\nullspace{d}(S)$, response labels~$\mathcal L$ and maps~$\iota_d$ are those of Definition~\ref{def:D10}, and
+\begin{equation*}
+\pi_{\rm quo}(d,\mathbf c)=(d,[\mathbf c])\,.
+\end{equation*}
+Its mixture and phase tables are the quotient correlations of~$S$ and Theorem~\ref{prop:PH} on~$\Conf{n}$, extended arbitrarily on collision diagonals. Its phase space, measure and selected point are those of that phase decomposition, with~$\xi_*$ chosen as in \ref{lem:H1.3}. Its relativistic data and continuation~$\mathsf F_n$ come from Theorem~\ref{prop:RC} at~$\xi_*$. Its~$\Theta$ is the centered trace of the tensor in Theorem~\ref{prop:ST}, as in Definition~\ref{def:D16}; its channels, fields and coefficients are those constructed in Section~\ref{sec:partII-J}, \ref{lem:J1.1}.
+
+The conclusions B1--B6 retain the following properties of these objects. The tags name the preceding results; the letter-and-number references in Theorem~\ref{thm:B} specify the additional conclusions in Part~II.
+\begin{description}[leftmargin=2.8em]
+\item[B1.] The kernel, spacings, divisible periods, Taylor and reference normalizations and specified recursion are those fixed above. MT (Theorem~\ref{prop:MT}) gives the trajectories and uniform running slope. Endpoint tuning in \ref{lem:E1.3} gives a width $w_{\rm tun}>0$, independent of $N,p$: the bare coupling reaching $\bar\beta+w_{\rm tun}s$ is unique within the specified recursion for $-1\le s\le1$ and extends holomorphically to $|s|<1$.
+\item[B2.] UV (Theorem~\ref{prop:UV}) and \ref{lem:E3.1}--\ref{lem:E3.2} give the full fixed-volume limit, including derivatives, interpolation at moving positions and smearing.
+\item[B3.] IV (Theorem~\ref{prop:IV}) and FC (Proposition~\ref{prop:FC}) give the quotient calculus and Maxwell dimensions. MC (Proposition~\ref{prop:MC}) and SC (Proposition~\ref{prop:SC}) give the ordinary and differentiated comparisons. ST (Theorem~\ref{prop:ST}) with \ref{lem:G3.1}--\ref{lem:G3.2}, and PH (Theorem~\ref{prop:PH}), give the mixed and phase Euclidean, rotation and stress laws, with~$\Theta$ identified as above.
+\item[B4.] RC (Theorem~\ref{prop:RC}) reconstructs every phase, with the OS comparison maps, ground-space and weak-commutant conclusions. \ref{lem:H2.1}--\ref{lem:H2.4} also give low-energy bounds, continuation of the stress tensor and phase averages of joint distributions.
+\item[B5.] TR (Theorem~\ref{prop:TR}) and NF (Proposition~\ref{prop:NF}) give the full-radius law and finite-profile exclusion. Sections~\ref{sec:partII-I.1} and~\ref{sec:partII-I}.2 also give the centering identity, unique spectral measure, high-energy limits and polynomial mass-shell and Fock countertests.
+\item[B6.] OP (Theorem~\ref{prop:OP}) and \ref{lem:J1.1}--\ref{lem:J1.6} give one product prescription with separated, integrated and nested estimates. CT (Theorem~\ref{prop:CT}) and \ref{lem:J2.1}--\ref{lem:J2.3} give contact extensions, real bases and subtraction scales. Both use the same original fields and correlation functionals, with separate contact projections, separating functionals and clearance.
+\end{description}
+
+The next theorem realizes Theorem~\ref{thm:A}'s hierarchy by these quotient fields, with~$\Theta$ the centered trace of a normalized stress tensor and with every phase reconstructed.
 
 \begin{maintheorem}[Construction]\label{thm:B}
-For every gauge group of Definition~\ref{def:D01} and~$\blockpenalty>0$, there is one regular Wilson family~$\mathcal W$, given by Definitions~\ref{def:D04} and~\ref{def:D08} along \hyperref[prop:MT]{MT}, satisfying \textup{E.1.1--E.1.3, A.1, E.2.1--E.2.1a (B1)}, and \textup{UV, E.3.1--E.3.2 (B2)}.
-For every strictly increasing~$\mathsf p$, there are a strictly increasing~$\mathsf q$, the table~$S$ of \textup{IV} and hierarchy data over~$\mathcal W$ satisfying \textup{Q2--Q6}, with $\mathcal W\to S^{\rm mix}\circ\pi_{\rm quo}$ along~$\mathsf p\circ\mathsf q$ \textup{(Definition~\ref{def:D09})}. The fields~$F_d=V_d/\nullspace{d}(S)$ and tensor~\textup{ST} obey \textup{FC, F.2--F.3, \hyperref[prop:MC]{MC}, \hyperref[prop:SC]{SC}, G.2.1--G.3.3, H.1.3 (B3)}; its phases~\textup{PH} obey \textup{RC, H.2.1--H.2.4 (B4)}; its centered trace \textup{(Definition~\ref{def:D16})} obeys \textup{TR, \hyperref[prop:NF]{NF}, I.1.1--I.2.4 (B5)}; its prescription~\textup{J.1.1} obeys \textup{OP, J.1.1--J.1.6, \hyperref[prop:CT]{CT}, J.2.1--J.2.3 (B6)}.
+For every gauge group of Definition~\ref{def:D01} and~$\blockpenalty>0$, there is one regular Wilson family~$\mathcal W$, given by Definitions~\ref{def:D04} and~\ref{def:D08}, satisfying \textup{MT, \ref{lem:E1.1}--\ref{lem:E1.3}, \ref{lem:A1}, \ref{lem:E2.1}--\ref{lem:E2.1a} (B1)}, and \textup{UV, \ref{lem:E3.1}--\ref{lem:E3.2} (B2)}.
+For every strictly increasing~$\mathsf p$, there are a strictly increasing~$\mathsf q$, a table~$S$ as in \textup{IV} and a constructed hierarchy over~$\mathcal W$ for this~$S$, satisfying \textup{Q2--Q6}, with $\mathcal W\to S^{\rm mix}\circ\pi_{\rm quo}$ along~$\mathsf p\circ\mathsf q$ \textup{(Definition~\ref{def:D09})}. Its table, fields and tensor obey \textup{IV, FC, \ref{lem:F2}--\ref{lem:F3}, MC, ST, SC, PH, \ref{lem:G2.1}--\ref{lem:G2.3}, \ref{lem:G3.1}--\ref{lem:G3.3}, \ref{lem:H1.3} (B3)}; its phase theories obey \textup{RC, \ref{lem:H2.1}--\ref{lem:H2.4} (B4)}; its~$\Theta$ obeys \textup{TR, NF, \ref{lem:I1.1}--\ref{lem:I1.3}, \ref{lem:I2.1}--\ref{lem:I2.4} (B5)}; its product and contact constructions obey \textup{OP, \ref{lem:J1.1}--\ref{lem:J1.6}, CT, \ref{lem:J2.1}--\ref{lem:J2.3} (B6)}, with the same underlying prescription.
 \end{maintheorem}
 
-The proof follows in ten steps. The degree-four position normalization and general collision-subspace estimates remain at their proof locations outside these conclusions. Restriction of the full ultraviolet limit also gives the spacing-subsequence version.
+Steps~\ref{step:deduction-choice}--\ref{step:deduction-products} below prove Theorem~\ref{thm:B}. Additional position-space normalization results for degree-four fields are given with \ref{lem:I1.3}, and estimates along general collision subspaces with \ref{lem:J2.3}; these are separate from the conclusions above. Restricting the full ultraviolet limit also gives convergence along every spacing subsequence.
 
 \begin{proof}[Deduction of Theorems~\ref{thm:A} and~\ref{thm:B}]
-\begin{enumerate}[label=\textup{\arabic*.},itemsep=0.25em]
-\item\label{step:deduction-choice} Fix~$G$ and~$\blockpenalty>0$. Appendix~\ref{sec:constants} and Sections~\ref{sec:partII-A}--\ref{sec:partII-E} supply the common choices, admissible classes, recursion and later lattice estimates. Wilson initialization \textup{D.3} starts the induction; Theorem~\ref{prop:RG} advances it; Theorem~\ref{prop:MT} and \textup{E.1.3} tune trajectories to the common endpoint. These choices precede any volume request.
+\begin{enumerate}[label=\textup{\arabic*.},ref=\arabic*,itemsep=0.25em]
+\item\label{step:deduction-choice} Fix~$G$ and~$\blockpenalty>0$. Section~\ref{sec:constants} and Sections~\ref{sec:partII-A}--\ref{sec:partII-E} supply the common choices, admissible classes, recursion and later lattice estimates. Wilson initialization \textup{D.3} starts the induction; Theorem~\ref{prop:RG} advances it; Theorem~\ref{prop:MT} and \textup{E.1.3} tune trajectories to the common endpoint. These choices precede any prescribed volume sequence.
 
-\item\label{step:deduction-family} Fix the local sections, reference levels and terminal maps on those trajectories. Definition~\ref{def:D08} defines every insertion, including below its reference level. Polynomial stencil dependence gives continuity, gauge invariance and tokenwise locality. Taking~$m=N$ in Theorem~\ref{prop:MT} gives Q1 with~$b_*=\slope>0$. This fixes the regular Wilson family.
+\item\label{step:deduction-family} Fix the local sections, reference levels and terminal maps on those trajectories. Definition~\ref{def:D08} defines every insertion, including below its reference level. The gauge-invariant local sections are polynomial in the link entries on their stencils; the terminal coefficient maps preserve continuity, gauge invariance and tokenwise locality. Taking~$m=N$ in Theorem~\ref{prop:MT} gives Q1 with~$b_*=\slope>0$. This fixes the regular Wilson family.
 
-\item\label{step:deduction-uv} Proposition~\ref{prop:UB} and fixed-volume comparison with analytic tuning give Theorem~\ref{prop:UV} and \textup{E.3.1--E.3.2}, for every volume and fixed field/difference request. Thus each admissible test has a full inner limit before volume extraction.
+\item\label{step:deduction-uv} Proposition~\ref{prop:UB} and fixed-volume comparison with analytic tuning give Theorem~\ref{prop:UV} and \textup{E.3.1--\ref{sec:partII-E.3}.2}, for every volume and fixed field/difference request. Thus each admissible test has a full inner limit before volume extraction.
 
-\item\label{step:deduction-volume} Given any strictly increasing~$\mathsf p$, Theorem~\ref{prop:IV} chooses~$\mathsf q,S$, including the refinement for corrected coefficient maps. In Section~\ref{sec:partII-F}, \textup{F.1} identifies the extracted volume kernels with the full kernels by uniqueness of limits. Since~$L_{\mathsf p(\mathsf q(k))}\to\infty$, every compact support eventually fits. This proves the approximation of Definition~\ref{def:D09}, without a spacing refinement.
+\item\label{step:deduction-volume} Given any strictly increasing~$\mathsf p$, Theorem~\ref{prop:IV} chooses~$\mathsf q,S$ with the convergence of Definition~\ref{def:D09} along~$\mathsf p\circ\mathsf q$ and E1--E7. The same extraction fixes the corrected coefficient maps.
 
-\item\label{step:deduction-stress} Define~$F_d=V_d/\nullspace{d}(S)$ and~$\mathcal L$ by Definition~\ref{def:D10}. Proposition~\ref{prop:FC} and \textup{F.2} give inclusions, derivatives, dimensions and the response realization. Proposition~\ref{prop:MC} and the current lemmas of Section~\ref{sec:partII-G} give the conserved line; Theorem~\ref{prop:ST} gives its normalized tensor and rotations; Proposition~\ref{prop:SC} gives the differentiated comparison. The volume refinement is unchanged.
+\item\label{step:deduction-stress} Define~$F_d=V_d/\nullspace{d}(S)$ and~$\mathcal L$ by Definition~\ref{def:D10}. Proposition~\ref{prop:FC} and \textup{F.2} give inclusions, derivatives, dimensions and the response realization. Proposition~\ref{prop:MC} and \textup{G.2.2--\ref{sec:partII-G.2}.3} give the conserved line and charge maps; \textup{G.3.1--\ref{sec:partII-G.3}.2} give the representations~$R_d$ and full covariance, and Theorem~\ref{prop:ST} gives the normalized tensor; Proposition~\ref{prop:SC} gives the differentiated comparison. The volume refinement is unchanged.
 
-\item\label{step:deduction-phase} Theorem~\ref{prop:PH} and \textup{H.1.1--H.1.3} of Section~\ref{sec:partII-H} construct~$\phases,\nu,S^\xi$ on the same quotient spaces. Choose~$\xi_*$ from the full-measure set with one-dimensional time-axis OS ground space. Theorem~\ref{prop:RC} reconstructs every character simultaneously; \textup{H.2.1--H.2.4} retain this selected theory and give \textup{B4}.
+\item\label{step:deduction-phase} Theorem~\ref{prop:PH} and \textup{H.1.1--\ref{sec:partII-H.1}.3} of Section~\ref{sec:partII-H} construct~$\phases,\nu,S^\xi$ on the same quotient spaces. Choose~$\xi_*$ from the full-measure set with one-dimensional time-axis OS ground space. This selection precedes reconstruction and uses only that ground-space property. Theorem~\ref{prop:RC} reconstructs every character simultaneously; \textup{H.2.1--\ref{sec:partII-H.2}.4} retain this selected theory and give \textup{B4}.
 
-\item\label{step:deduction-hierarchy} Set~$\pi_{\rm quo}(d,\mathbf c)=(d,[\mathbf c])$. Representatives make this map onto. Every response lies in one~$\iota_dF_d$, and each~$\iota_d$ is injective. The unit response is nonzero since its one-point function is one; faithfulness gives a nonzero acting field. The Euclidean symmetry and smoothness conditions and Theorem~\ref{prop:PH} give Q3; reconstruction gives Q2 and Q4. These identifications use the all-spectator quotient.
+\item\label{step:deduction-hierarchy} Set~$\pi_{\rm quo}(d,\mathbf c)=(d,[\mathbf c])$. Representatives make this map onto. Every response lies in one~$\iota_dF_d$, and each~$\iota_d$ is injective. The unit response is nonzero since its one-point function is one; faithfulness gives a nonzero acting field. Extend the quotient mixture and phase correlations arbitrarily off~$\Conf{n}$. Separated tests vanish on collision diagonals, so these extensions do not affect Definition~\ref{def:D09}. On~$\Conf{n}$, $S_n^{\rm mix}(\pi_{\rm quo}v;x)=S_n(v;x)$ by the representative independence after Definition~\ref{def:D10}, so Theorem~\ref{prop:IV} gives the convergence in Theorem~\ref{thm:A}. Faithfulness in Theorem~\ref{prop:RC} and the preceding facts give the label clauses of Q3; E1, E6 and Theorem~\ref{prop:PH} give its phase clauses; reconstruction gives Q2 and Q4. These identifications use the all-spectator quotient.
 
-\item\label{step:deduction-trace} Center the trace of this tensor in this selected phase. Theorem~\ref{prop:TR} and \textup{I.1.1--I.1.3} of Section~\ref{sec:partII-I} give its operator identity, full-radius asymptotic and unique spectral measure. Proposition~\ref{prop:NF} gives Q6's finite-profile exclusion; \textup{I.2.2--I.2.4} give the additional countertests in \textup{B5}, with~$\xi_*$ unchanged.
+\item\label{step:deduction-trace} Center the trace of this tensor in this selected phase. Theorem~\ref{prop:TR} gives Q6's vacuum-centering, amplitude and full-radius clauses; \textup{I.1.1--\ref{sec:partII-I.1}.3} of Section~\ref{sec:partII-I} give the operator identity and the unique spectral measure. Proposition~\ref{prop:NF} gives Q6's finite-profile exclusion; \textup{I.2.2--\ref{sec:partII-I.2}.4} give the additional countertests in \textup{B5}, with~$\xi_*$ unchanged.
 
-\item\label{step:deduction-products} Choose the prescription of \textup{J.1.1} once. Theorem~\ref{prop:OP} gives Q5; \textup{J.1.3--J.1.6} give the integrated and nested bounds in \textup{B6}. Theorem~\ref{prop:CT} and \textup{J.2.1--J.2.3} of Section~\ref{sec:partII-J} use the same underlying prescription, with separate contact projections, functionals and clearance, to give the extensions, real bases and subtraction scales. This uses its own lattice estimates.
+\item\label{step:deduction-products} Choose the prescription of \textup{J.1.1} once. Theorem~\ref{prop:OP} gives Q5; \textup{J.1.3--\ref{sec:partII-J.1}.6} give the integrated and nested bounds in \textup{B6}. Theorem~\ref{prop:CT} and \textup{J.2.1--\ref{sec:partII-J.2}.3} of Section~\ref{sec:partII-J} use the same underlying prescription, with separate contact projections, functionals and clearance, to give the extensions, real bases and subtraction scales. This uses its own lattice estimates.
 
 \item\label{step:deduction-conclusion} Steps 1--9 give \textup{B1--B6} on the same family, table, quotient fields, tensor, phases and selected theory. Retain Q1--Q6 and set~$\blockpenalty=1$. Their quantifier order, lattice approximation, reconstruction, products and trace test give Theorem~\ref{thm:A}.
 \end{enumerate}

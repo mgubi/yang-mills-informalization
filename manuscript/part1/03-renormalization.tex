@@ -1,8 +1,8 @@
 \section{Renormalization}\label{sec:renormalization}
 
-Blocking integrates one scale against a probability kernel. A curvature action and two activity families describe the new density. The inductive step controls these coordinates and the coupling; the multiscale theorem chooses the bare coupling to reach one prescribed endpoint.
+Blocking integrates one scale against a probability kernel. A curvature action, a vacuum scalar and two activity families describe the new density. The inductive step controls these coordinates and the coupling; the multiscale theorem chooses the bare coupling to reach one prescribed endpoint.
 
-Fix $\blockpenalty>0$. Throughout we use the common choices of Sections~\ref{sec:partII-A}--\ref{sec:partII-E}, made once for this group realization and penalty in the order of Section~\ref{sec:constants}. Their existence is proved with Propositions~\ref{prop:RG} and~\ref{prop:MT}. Constants may depend on these choices; further dependence is stated where it occurs.
+Fix $\blockpenalty>0$. Throughout we use the common choices of Sections~\ref{sec:partII-A}--\ref{sec:partII-E}, made once for this group realization and penalty in the order of Section~\ref{sec:constants}. Their existence is proved with Theorems~\ref{prop:RG} and~\ref{prop:MT}. Constants may depend on these choices; further dependence is stated where it occurs.
 
 \subsection{Scales and the block map}
 
@@ -10,9 +10,9 @@ Levels decrease under blocking. With odd ratios $\ell_m\ge3$, set
 \begin{equation}\label{eq:I12-levels}
 D_0=1,\qquad D_{m+1}=\ell_mD_m,\qquad a_m=D_m^{-1},\qquad s_m=\log D_m\,.
 \end{equation}
-The level-$m$ torus has side $L_pD_m$ in lattice units and side $L_p$ in physical units. Starting at cutoff~$N$, the number of completed steps is $k=N-m$; the step $m+1\to m$ advances this induction from $k$ to $k+1$.
+The level-$m$ torus has side $L_pD_m$ in lattice units and side $L_p$ in physical units. Starting at cutoff~$N$, blocking successively reaches levels $N-1,\ldots,0$.
 
-The stage $J_m$ records the available derivative order and bounds. The stages satisfy $4\le J_m\le J_{m+1}\le J_m+1$ and $J_m\to\infty$. Fix the reference endpoint $\bar\beta>1$ and define
+The stage $J_m$ records the available derivative order and bounds. The stages satisfy $4\le J_m\le J_{m+1}\le J_m+1$ and $J_m\to\infty$. Choose the reference endpoint $\bar\beta$ sufficiently large, as in row~7 of Section~\ref{sec:constants}; in particular $\bar\beta>1$. Define
 \begin{align}\label{eq:I12-scales}
 \refbeta_m&=\bar\beta+\slope s_m,&
 \cutoffsize_m&=\exp\bigl((\log\log\refbeta_m)^2\bigr),&
@@ -29,7 +29,20 @@ The allowed coupling interval is
 \end{equation*}
 At stage~$j$, write $\mathfrak q_j$ for the derivative order, $\varpi_j$ for the spatial power, $\sigma_j$ for the support exponent and $\omega_j^{\rm RG}\ge0$ for the coupling drift bound. Their choices and growth conditions are in Section~\ref{sec:constants}.
 
-At a step $m+1\to m$, the fine links $U$ and coarse links $V$ lie on $\Lambda_{L_pD_{m+1}}$ and $\Lambda_{L_pD_m}$. Put $j=J_{m+1}$ and $\ell=\ell_m$. On patches of radius $(j+3)\ell$, symmetric frames express fine straight connectors in the patch frames. Their averages, with the alternative connector choices needed outside the minimizing branch, give group-valued predictors $Q_e^{\rm pred}(U,\alpha_{\rm tag})$. The finite tag list $\alpha_{\rm tag}$ specifies these frame and predictor choices. Its product probability mass is $\lambda^{\rm tag}(U,\alpha_{\rm tag})$; the exact frame and predictor formulas are given in Section~\ref{sec:partII-B}, Definitions~\ref{def:D20a}--\ref{def:D21}.
+At a step $m+1\to m$, the fine links $U$ and coarse links $V$ lie on $\Lambda_{L_pD_{m+1}}$ and $\Lambda_{L_pD_m}$. Put $j=J_{m+1}$ and $\ell=\ell_m$. Write $\mathbb B_R=\{-R,\ldots,R\}^4$. In a patch of radius $(j+3)\ell$ about the fine site $\ell y$, let $h_{y,z}$ be the chosen frame at offset~$z$. For a coarse edge $e=(y,a)$ the framed straight connector is
+\begin{equation}\label{eq:I12-framed-connector}
+Y_{e,z}=h_{y,z}\left(\prod_{r=0}^{\ell-1}U(\ell y+z+re_a,a)\right)h_{y+e_a,z}^{-1}\,.
+\end{equation}
+This compares the fine transport between the two coarse endpoints in their chosen frames. The averaging weights and the predictor on its minimizing branch are
+\begin{equation}\label{eq:I12-predictor}
+w_z^{\rm av}=\bigl(\operatorname{Unif}(\mathbb B_{(\ell-1)/2})\bigr)^{*j}(z),\qquad
+Q_e^{\rm pred}=\operatorname*{argmin}_{u\in G}\sum_z w_z^{\rm av}\wilsonterm(Y_{e,z}u^{-1})\,.
+\end{equation}
+Here $\operatorname{Unif}$ is uniform probability mass and $*j$ denotes $j$-fold convolution. This branch is used when the displayed minimum is below the fixed predictor cutoff; otherwise a tag selects $Y_{e,z}$ with mass $w_z^{\rm av}$. Symmetric minimizing frames and the alternative axial frames are specified in Section~\ref{sec:partII-B}, Definitions~\ref{def:D20a}--\ref{def:D21}. The finite tag list $\alpha_{\rm tag}$ specifies all frame and predictor choices. Their product mass satisfies
+\begin{equation}\label{eq:I12-tag-mass}
+\lambda^{\rm tag}(U,\alpha_{\rm tag})\ge0,\qquad
+\sum_{\alpha_{\rm tag}}\lambda^{\rm tag}(U,\alpha_{\rm tag})=1\,.
+\end{equation}
 
 \begin{definition}[Exact block map]\label{def:D04}
 For fine links $U$ and coarse links $V$, define
@@ -52,9 +65,44 @@ The branch choices, measurability and symmetry properties of this kernel are pro
 
 \subsection{The density and its norms}
 
-At level~$m$, write $\Lambda=\Lambda_{L_pD_m}$. Let $\flags_m(U)$ be the sites incident to a plaquette whose chord exceeds~$t_m$. A support is healthy if it avoids this set. A regular activity $E_i^{\rm reg}$ has a site support $X_i$ and an anchor $o_i\in X_i$. A forced activity $K_i^{\rm for}$ has a support $Y_i$ and a nonempty inventory $I_i\subset Y_i$ of flagged sites. Its value vanishes unless $Y_i\cap\flags_m(U)=I_i$ and its fixed local extra test holds. The activity families are countable.
+At level~$m$, write $\Lambda=\Lambda_{L_pD_m}$. Let $\flags_m(U)$ be the sites incident to a plaquette whose chord exceeds~$t_m$. A support is healthy if it avoids this set. A regular activity $E_i^{\rm reg}$ has a site support $X_i$ and an anchor $o_i\in X_i$. A forced activity $K_i^{\rm for}$ has a support $Y_i$ and a nonempty inventory $I_i\subset Y_i$ of flagged sites. Its eligibility event is
+\begin{equation}\label{eq:I12-forced-eligibility}
+\mathcal E_i^{\rm elig}=\{U:Y_i\cap\flags_m(U)=I_i\}\cap\mathcal E_i^{\rm extra},\qquad
+K_i^{\rm for}(U)=0\quad(U\notin\mathcal E_i^{\rm elig})\,.
+\end{equation}
+The first test specifies exactly which sites of $Y_i$ are flagged. The extra event $\mathcal E_i^{\rm extra}$ is a fixed Borel gauge-invariant test supplied with that activity; it reads only links with both endpoints in $Y_i$ and the flags in $Y_i$. It restricts which local configurations can contribute that forced term. The activity families are countable.
 
-The scalar $v_{\rm vac}$ records the vacuum term. The fixed action $\pathaction_{N,m}(\beta,U)$ is the clipped curvature action of Section~\ref{sec:partII-C}, Definitions~\ref{def:D22}--\ref{def:D23}; its path arrays are independent of~$p$. It retains the quadratic, cubic and quartic curvature terms, with $\beta$ the running kinetic coefficient. Write $\beta(\rho)$ for this coefficient in a representation~$\rho$.
+The path action separates the kinetic coefficient from the quadratic corrections generated by integration. For the fixed level data, write $c_{\rm dir}>16c_{\rm lin}>0$ for the clipping constants and $R_{J_m}^{\rm rel}>0$ for the relaxation length. Distances use the unit-lattice sup metric. Set
+\begin{align}\label{eq:I12-clipping}
+\operatorname{clip}_{t}(r)&=
+\begin{cases}c_{\rm dir}r^2/2,&r\le t,\\c_{\rm lin}tr,&r>t,\end{cases}\notag\\
+\chi^{\rm hlth}_{m,x}(U)&=\mathbf1\!\left\{
+\chord(U_{y;ab})\le t_m e^{\operatorname{dist}(x,y)/R_{J_m}^{\rm rel}}
+\text{ for every }y,a<b\right\}\,.
+\end{align}
+The clip keeps a positive linear penalty beyond the small-field threshold, while $\chi^{\rm hlth}_{m,x}$ switches off a quadratic row when a plaquette violates the threshold prescribed by its distance from $x$. For each plaquette orientation $\mathfrak p=(a,b)$, let $\mathcal F_{\mathfrak p i}(U,x)$ be a curvature $\operatorname{proj}_{\g}(U_\square-U_\square^{-1})/2$, transported along a specified finite path to~$x$, and put
+\begin{equation*}
+\mathcal L_{\mathfrak p}^{\rm path}(U,x)=\sum_i r_{\mathfrak p i}\mathcal F_{\mathfrak p i}(U,x)\,.
+\end{equation*}
+The projection is orthogonal for the trace metric of Definition~\ref{def:D01}. Let $\mathfrak a_i^{(q)}(U,x)$, $q=2,3,4$, denote the fixed real invariant $q$-linear expressions in transported curvatures, multiplied by the health indicator of their combined site supports. Then
+\begin{align}\label{eq:I12-path-action}
+(\pathaction)^{\rm raw}_{N,m}(\beta,U)
+&=\beta\sum_{x,\mathfrak p}\left[
+\operatorname{clip}_{t_m}(\chord(U_{x;\mathfrak p}))
++\tfrac12\chi^{\rm hlth}_{m,x}(U)|\mathcal L_{\mathfrak p}^{\rm path}(U,x)|^2\right]\notag\\
+&\quad+\beta\sum_{x,i}(\mathfrak a_i^{(3)}+\mathfrak a_i^{(4)})(U,x)
++\sum_{x,i}\mathfrak a_i^{(2)}(U,x),\\
+\pathaction_{N,m}(\beta,U)
+&=|\hypercubic|^{-1}\sum_{h\in\hypercubic}(\pathaction)^{\rm raw}_{N,m}(\beta,h^*U)\,.\notag
+\end{align}
+Here $x\in\Lambda$ and $i\in\N$; $h^*U$ is the link transport by the lattice isometry~$h$. The path coefficients and multilinear expressions are independent of~$p$. Their absolutely convergent series and the clipping restrictions are given in Section~\ref{sec:partII-C}, Definitions~\ref{def:D22}--\ref{def:D23} and \ref{lem:C1}. In particular the action is affine in~$\beta$; its last quadratic sum is independent of~$\beta$.
+
+For these fixed path actions and thresholds, a \emph{representation} at level~$m$ is the datum
+\begin{equation}\label{eq:I12-representation}
+\rho=\bigl(\beta,v_{\rm vac},(X_i,o_i,E_i^{\rm reg})_i,
+(Y_i,I_i,\mathcal E_i^{\rm extra},K_i^{\rm for})_i\bigr)\,.
+\end{equation}
+The scalar $v_{\rm vac}$ is its vacuum term, and $\beta(\rho)=\beta$ its running kinetic coefficient. These coordinates describe the integrated density below.
 
 \begin{definition}[Effective density]\label{def:D06}
 For regular activities $(X_i,o_i,E_i^{\rm reg})$ and forced activities $(Y_i,I_i,K_i^{\rm for})$, define
@@ -72,7 +120,7 @@ The sum covers every flagged site; each inventory is a nonempty subset of its su
 
 If there are no flagged sites, only the empty family occurs and the forced sum equals one. When flags are present, their exact coverage and the disjointness of the supports assign each flagged site to precisely one selected forced term. Regular activities enter only on healthy supports. Their local regularity and cancellations, and the restrictions on forced activities, are specified in Section~\ref{sec:partII-D}, Definitions~\ref{def:D24}--\ref{def:D25}.
 
-Distances below use the unit-lattice sup metric. For a link $e$, let $e^-$ be its initial site. The left derivative $D^L_{\dot{\mathcal A}}$ differentiates the increments $U_e\mapsto e^{t\dot{\mathcal A}_e}U_e$, with $\dot{\mathcal A}_e\in\g$ and norm from Definition~\ref{def:D01}.
+For a link $e$, let $e^-$ be its initial site. The left derivative $D^L_{\dot{\mathcal A}}$ differentiates the increments $U_e\mapsto e^{t\dot{\mathcal A}_e}U_e$, with $\dot{\mathcal A}_e\in\g$ and norm from Definition~\ref{def:D01}.
 
 \begin{definition}[Local derivative seminorm]\label{def:D05a}
 For a regular activity anchored at $o_i$, set
@@ -103,30 +151,30 @@ The chosen admissible classes $\mathcal A_{N,m,p}$, initial classes $\mathcal I_
 \begin{equation*}
 \mathcal R_{N,m,p}\subset\mathcal A_{N,m,p}\times\mathcal A_{N,m+1,p}
 \end{equation*}
-are constructed in Section~\ref{sec:partII-D}, D.2. Their members have the density of Definition~\ref{def:D06}, and their membership retains the continuation conditions of that construction. For every member, D.1 supplies majorants with convergent weighted sums satisfying
+are constructed in Section~\ref{sec:partII-D}, \ref{lem:D2}. They retain the Wilson initial representations, the coarse representations produced by the inductive assembly, and the estimates needed to continue that assembly and perform endpoint tuning. For every member, \ref{lem:D1} supplies majorants with convergent weighted sums satisfying
 \begin{equation}\label{eq:I12-activity-caps}
 \mathcal E_m\le\epsilon_m^{\rm reg},\qquad \mathcal K_m\le\epsilon_m^{\rm for}\,.
 \end{equation}
-These inequalities are properties of the chosen classes; membership also requires the retained continuation conditions.
+These inequalities are properties of the chosen classes; the classes also retain the restrictions imposed by the inductive assembly. The relation $\mathcal R_{N,m,p}$ records its permitted adjacent pairs. The density identity and drift bound below hold for the pairs produced by RG and for the trajectories chosen in MT.
 
-Along a continuous curve, supports, anchors, inventories and extra tests are fixed, and the coupling and vacuum scalar are continuous. Differences of regular derivatives on healthy configurations and of forced values admit majorants whose weighted sums over all addresses tend to zero as the parameter approaches any point. This is the continuity of Definition~\ref{def:D25a} in Section~\ref{sec:partII-D}; flag boundaries are not differentiated.
+Along a continuous curve, supports, anchors, inventories and extra tests are fixed, and the coupling and vacuum scalar are continuous. Differences of regular derivatives on healthy configurations and of forced values admit majorants whose weighted sums over all addresses tend to zero as the parameter approaches any point. The weights are those of Definition~\ref{def:D05b} at the level of the representation, including $t_m$ in the derivative seminorm. Thus the input and output curves below use levels $m+1$ and $m$, respectively. This is the continuity of Definition~\ref{def:D25a} in Section~\ref{sec:partII-D}: regular derivatives are measured on the healthy domain, and forced terms are compared in supremum norm on all configurations. No derivative of a flag indicator is taken.
 
 \subsection{The inductive step}
 
 Exact integration removes one scale. Extracting its marginal curvature-square term into the coupling leaves a bounded drift error and returns a density in the next admissible class.
 
-\begin{proposition}[One step]\label{prop:RG}
-For every $N,p$, $m<N$, compact real interval $[u_0,u_1]$ and continuous $\rho'_u\in\mathcal A_{N,m+1,p}$ with $\beta'_u=\beta(\rho'_u)\in\mathfrak B_{m+1}$, there is a continuous $\rho_u\in\mathcal A_{N,m,p}$ with $(\rho_u,\rho'_u)\in\mathcal R_{N,m,p}$ and
+\begin{theorem}[One step]\label{prop:RG}
+For every $N,p$, $m<N$, reals $u_0\le u_1$ and continuous $\rho'_u\in\mathcal A_{N,m+1,p}$ with $\beta'_u=\beta(\rho'_u)\in\mathfrak B_{m+1}$ for all $u\in[u_0,u_1]$, there is a continuous $\rho_u\in\mathcal A_{N,m,p}$ with $(\rho_u,\rho'_u)\in\mathcal R_{N,m,p}$ and, for every $u\in[u_0,u_1]$ and coarse configuration $V$,
 \begin{align*}
-\density\rho_u&=\blockmap{m}_{\beta'_u}\density\rho'_u,\\
+\density\rho_u(V)&=(\blockmap{m}_{\beta'_u}\density\rho'_u)(V),\\
 \beta(\rho_u)&=\beta'_u-\slope\log\ell_m+e_u,
 \qquad |e_u|\le\omega_{J_{m+1}}^{\rm RG}\,.
 \end{align*}
-\end{proposition}
+\end{theorem}
 
-The proof occupies Sections~\ref{sec:partII-B}--\ref{sec:partII-D}, ending with D.3. Symmetric gauge fixing and the stationary background give the small-field integration; the large-field lower bound controls the forced terms. Fourth-order Wilson matching and the scalar coupling reset identify the displayed drift in Section~\ref{sec:partII-C}. Section~\ref{sec:partII-D} assembles the activities with the bounds~\eqref{eq:I12-activity-caps}.
+The proof occupies Sections~\ref{sec:partII-B}--\ref{sec:partII-D}, ending with \ref{lem:D3}. Symmetric gauge fixing and the stationary background give the small-field integration; the large-field lower bound controls the forced terms. The Gaussian determinant and the Haar-coordinate Jacobian contribute to the one-loop action. Its quadratic curvature coefficient changes the inverse coupling by $-\slope\log\ell_m$, up to the displayed error. Fourth-order Wilson matching fixes the remaining local terms, and the scalar coupling reset absorbs the residual kinetic contribution in Section~\ref{sec:partII-C}. Section~\ref{sec:partII-D} assembles the activities with the bounds~\eqref{eq:I12-activity-caps}.
 
-The constants $\omega_j^{\rm RG}$ depend on the stage and the fixed construction. RG imposes a band condition only on the input coupling. The trajectories of MT below also have their output couplings in the appropriate bands. Section~\ref{sec:partII-D}, D.3 supplies the continuous initial curve
+For the fixed construction, $\omega_j^{\rm RG}$ depends only on the stage; it is independent of $N,p$, the interval and the curve. Since $\refbeta_m=\refbeta_{m+1}-\slope\log\ell_m$, a step changes $\beta-\refbeta$ by $e_u$ only. RG imposes a band condition only on the input coupling. The trajectories of MT below also have their output couplings in the appropriate bands. Section~\ref{sec:partII-D}, \ref{lem:D3} supplies the continuous initial curve
 \begin{equation}\label{eq:I12-Wilson-initialization}
 \beta\longmapsto\rho^{\rm W}_\beta\in\mathcal I_{N,p},\qquad
 \beta(\rho^{\rm W}_\beta)=\beta,\qquad
@@ -142,10 +190,10 @@ A trajectory is a tuple $\rho_{N,p,m}\in\mathcal A_{N,m,p}$, $0\le m\le N$, sati
 \rho_{N,p,N}\in\mathcal I_{N,p},\qquad
 (\rho_{N,p,m},\rho_{N,p,m+1})\in\mathcal R_{N,m,p}\quad(m<N)\,.
 \end{equation*}
-Write $\beta_{N,p,m}=\beta(\rho_{N,p,m})$. Shooting through the coupling bands selects a bare coupling whose trajectory ends at the common value~$\bar\beta$. This fixes the bare family before any volume sequence is prescribed.
+Write $\beta_{N,p,m}=\beta(\rho_{N,p,m})$; here $m$ is the final index, whereas it is the middle index of $\mathcal A_{N,m,p}$ and $\mathcal R_{N,m,p}$. To select the bare coupling, start with the continuous Wilson curve across $\mathfrak B_N$ and apply RG. At the step $m+1\to m$, the drift bound makes the endpoint output couplings bracket $[\bar\beta+(\slope/2)s_m,\bar\beta+2\slope s_m]\subset\mathfrak B_m$. The intermediate value theorem gives a closed parameter subinterval whose endpoint couplings are the ends of this interval and whose couplings remain within it. Repeating this restriction reaches $\bar\beta$ at level zero. This is the shooting argument. It chooses the couplings for all $N,p$ before an increasing sequence of volume indices $\mathsf p:\N\to\N$ is prescribed.
 
-\begin{proposition}[Multiscale trajectory]\label{prop:MT}
-For every $N,p$, there are a bare coupling $\beta_{N,p}$ and a trajectory with $\rho_{N,p,N}=\rho^{\rm W}_{\beta_{N,p}}\in\mathcal I_{N,p}$ such that
+\begin{theorem}[Multiscale trajectory]\label{prop:MT}
+There are bare couplings $\beta_{N,p}$ and trajectories $(\rho_{N,p,m})_{m=0}^N$, for all $N,p\in\N$, with $\rho_{N,p,N}=\rho^{\rm W}_{\beta_{N,p}}$ and $\beta_{N,p,N}=\beta_{N,p}$, satisfying
 \begin{gather*}
 \beta_{N,p,0}=\bar\beta,\qquad \beta_{N,p,m}\in\mathfrak B_m\quad(0\le m\le N),\\
 \density\rho_{N,p,m}=\blockmap{m}_{\beta_{N,p,m+1}}\density\rho_{N,p,m+1}\quad(m<N)\,.
@@ -155,21 +203,29 @@ For every $\varepsilon>0$, some $m_0(\varepsilon)$ satisfies
 |\beta_{N,p,m}-\slope s_m|\le\varepsilon s_m
 \qquad(N\ge m\ge m_0,\ p\in\N)\,.
 \end{equation*}
-\end{proposition}
+\end{theorem}
 
-The proof is in Section~\ref{sec:partII-E}, E.1.1--E.1.2. The exact drift bound of RG holds on every adjacent pair, and all trajectory integrals equal $Z_{L_pD_N,\beta_{N,p}}$ by~\eqref{eq:I12-partition-preservation} and the Wilson start. The path arrays remain independent of~$p$.
+The proof is the shooting argument of Section~\ref{sec:partII-E}, \ref{sec:partII-E.1}, with \ref{lem:E1.1}--\ref{lem:E1.2}. Fix this family of trajectories for all subsequent constructions. The exact drift bound of RG holds on every adjacent pair of these trajectories, and all their integrals equal $Z_{L_pD_N,\beta_{N,p}}$ by~\eqref{eq:I12-partition-preservation} and the Wilson start. The path arrays remain independent of~$p$.
 
 The running law follows by summing the drift from the fixed endpoint:
 \begin{equation}\label{eq:I12-drift-sum}
 |\beta_{N,p,m}-\refbeta_m|\le\sum_{i=0}^{m-1}\omega_{J_{i+1}}^{\rm RG}\,.
 \end{equation}
-The choices in Section~\ref{sec:constants} give $\omega_{J_{i+1}}^{\rm RG}/\log\ell_i\le J_{i+1}^{-2}$. Since $J_i\to\infty$ and $s_m=\sum_{i<m}\log\ell_i\to\infty$, the right side of~\eqref{eq:I12-drift-sum} is $o(s_m)$: split the sum at a fixed level, then bound the tail by $\sup_{i\ge i_0}J_{i+1}^{-2}$ times~$s_m$. The finite initial sum and $\bar\beta$ disappear after division by~$s_m$, uniformly in~$N\ge m$ and~$p$.
+Row~5 of Section~\ref{sec:constants} bounds the sum by $(\slope/4)s_m$, which also places the trajectory couplings in $\mathfrak B_m$. Its stronger bound $\omega_{J_{i+1}}^{\rm RG}/\log\ell_i\le J_{i+1}^{-2}$ makes the sum $o(s_m)$: split at a fixed level, then bound the tail by $\sup_{i\ge i_0}J_{i+1}^{-2}$ times~$s_m$. Since $J_i\to\infty$ and $s_m\to\infty$, the finite initial sum and $\bar\beta$ disappear after division by~$s_m$, uniformly in~$N\ge m$ and~$p$.
 
-The same level choices give $\log\ell_m\to\infty$ and $\log\ell_m/s_m\to0$. The physical periods $L_p$ are strictly increasing multiples of four, and every positive integer divides $L_p$ for infinitely many~$p$. Analytic endpoint tuning, used for the full ultraviolet limit, is proved in Section~\ref{sec:partII-E}, E.1.3.
+The same level choices give $\log\ell_m\to\infty$ and $\log\ell_m/s_m\to0$. The physical periods $L_p$ are strictly increasing multiples of four, and every positive integer divides $L_p$ for infinitely many~$p$.
+
+Endpoint tuning varies the prescribed coupling at level zero. Section~\ref{sec:partII-E}, \ref{lem:E1.3} proves that there is a width $w_{\rm tun}>0$, independent of $N,p$, such that the unique bare coupling $\beta_{N,p}(s)$ within the specified recursion that reaches $\bar\beta+w_{\rm tun}s$ satisfies $\beta_{N,p}(0)=\beta_{N,p}$ and extends to a function $b_{N,p}$, holomorphic on $|z|<1$, with
+\begin{equation}\label{eq:I12-endpoint-tuning}
+b_{N,p}(s)=\beta_{N,p}(s)\qquad(-1<s<1)\,.
+\end{equation}
+The real endpoint parameter ranges over $s\in[-1,1]$. This analyticity is used in the full ultraviolet limit; it does not assert a common analyticity width for all correlation functions.
 
 \subsection{Local fields}
 
 Local fields are normalized along the same trajectories. Their polynomial labels specify the continuum Taylor coefficients, while transfer to a fixed reference level determines the insertion at the fine cutoff.
+
+The labels use radial, or Fock--Schwinger, gauge: the condition in the next definition sets the radial component of the connection to zero.
 
 \begin{definition}[Polynomial labels]\label{def:D07}
 Let $\mathcal J$ consist of formal $\g$-valued arrays $\mathcal A_a(x)=\sum_{k\ge0}\mathcal A_{k,a}(x)$, with $\mathcal A_{k,a}$ homogeneous of degree $k+1$ and
@@ -180,13 +236,25 @@ V_d=\C[\mathcal J]^{\operatorname{Ad}(G)}_{\mathrm{weight}\le d}\,.
 Each coordinate of $\mathcal A_k$ has bidegree $(k+2,1)$: engineering weight and number of polynomial factors. Fix bihomogeneous bases, the supremum coefficient norm, conjugation and the induced $\hypercubic$ action. These labels describe invariant curvature polynomials; curvature has weight two and a covariant derivative adds one.
 \end{definition}
 
-Write $\mathbf1$ for the constant polynomial one. Section~\ref{sec:partII-A}, A.1 constructs a local section $\localsection{d}[\mathbf c](y;U)$, linear in $\mathbf c\in V_d$ and polynomial in the real and imaginary parts of link matrix entries on a fixed finite stencil $\Sigma_d\subset\Z^4$. It is gauge invariant, commutes with conjugation, is $\hypercubic$ covariant, and sends the polynomial unit to one. Its Taylor normalization is stated there.
+Write $\mathbf1$ for the constant polynomial one. Section~\ref{sec:partII-A}, \ref{lem:A1} constructs a local section $\localsection{d}[\mathbf c](y;U)$, linear in $\mathbf c\in V_d$ and polynomial in the real and imaginary parts of link matrix entries on a fixed finite stencil $\Sigma_d\subset\Z^4$. It is gauge invariant, commutes with complex conjugation, is $\hypercubic$ covariant, and sends the polynomial unit to one.
 
-Choose the reference level $\reflevel{d}$ with $J_{\reflevel{d}}\ge d+3$ and $\mathfrak q_{J_m}\ge d+1$, $\varpi_{J_m}\ge d$ for $m\ge\reflevel{d}$, as in Section~\ref{sec:partII-E}, E.2.1. For a basis vector $b_{d,i}$ of bidegree $(w_i,k_i)$ define the factor-count scaling by
+Its Taylor normalization compares lattice holonomies with a smooth connection jet. For $\mathsf j=(\mathcal A_k)_k\in\mathcal J$, put $\mathcal A^{\le d}=\sum_{k+2\le d}\mathcal A_k$ and let $U(h_{\rm lat},\mathsf j)$ be its test holonomies at spacing $h_{\rm lat}$. On a positive link $(y,a)$, with $y\in\Z^4$, these are defined by
+\begin{equation*}
+U(h_{\rm lat},\mathsf j)(y,a)=u(1),\qquad
+u'(t)=u(t)h_{\rm lat}\mathcal A_a^{\le d}(h_{\rm lat}(y+te_a)),\qquad u(0)=1_G\,.
+\end{equation*}
+The jet dilation is $\operatorname{sc}_{h_{\rm lat}}\mathsf j=(h_{\rm lat}^{k+2}\mathcal A_k)_k$. For every $\mathbf c\in V_d$ and $0\le q\le d$, \ref{lem:A1} proves
+\begin{equation}\label{eq:I12-section-Taylor}
+\left.\frac{d^q}{dh_{\rm lat}^q}\localsection{d}[\mathbf c](0;U(h_{\rm lat},\mathsf j))\right|_{h_{\rm lat}=0}
+=\left.\frac{d^q}{dh_{\rm lat}^q}\mathbf c(\operatorname{sc}_{h_{\rm lat}}\mathsf j)\right|_{h_{\rm lat}=0}\,.
+\end{equation}
+Thus a homogeneous label of engineering weight $w$ specifies the coefficient at order $h_{\rm lat}^w$ in this expansion.
+
+Choose the reference level $\reflevel{d}$ with $J_{\reflevel{d}}\ge d+3$ and $\mathfrak q_{J_m}\ge d+1$, $\varpi_{J_m}\ge d$ for $m\ge\reflevel{d}$, as in Section~\ref{sec:partII-E}, \ref{lem:E2.1}. For a basis vector $b_{d,i}$ of bidegree $(w_i,k_i)$ define the factor-count scaling by
 \begin{equation*}
 \factorscale_t b_{d,i}=t^{k_i}b_{d,i}\,.
 \end{equation*}
-For $N\ge\reflevel{d}$ and terminal input $\mathbf v\in V_d$, the marked density at the origin is initialized and evolved by
+This rescales each polynomial factor in units of the small-field threshold. For $N\ge\reflevel{d}$ and terminal input $\mathbf v\in V_d$, the marked density at the origin is initialized and evolved by
 \begin{align}\label{eq:I12-marked-evolution}
 H^{\rm ins}_{N,p,N;d}(\mathbf v;U)
 &=\density\rho_{N,p,N}(U)\,
@@ -196,7 +264,25 @@ H^{\rm ins}_{N,p,m;d}(\mathbf v)
 H^{\rm ins}_{N,p,m+1;d}(\mathbf v)
 \quad(\reflevel{d}\le m<N)\,.
 \end{align}
-Its representation by a local section and regular and forced remainders gives a coefficient vector $\mathbf x_m(\mathbf v)$. The transfer construction in Section~\ref{sec:partII-E}, E.2.1 supplies the invertible terminal map
+For fixed $N,p,d$, the transfer construction chooses coefficient vectors $\mathbf x_m(\mathbf v)$ and regular and forced remainders $R_{m,i}^{\rm reg}(\mathbf v)$ and $Q_{m,i}^{\rm for}(\mathbf v)$. All are linear in~$\mathbf v$. Write $\mathbf x_m=x_{m,0}\mathbf1+\mathbf x_m^\circ$, and abbreviate $\rho_{N,p,m}$ by $\rho_m$. The regular remainders have supports $Z_{m,i}$ containing the origin. Define their sum and the forced remainder by
+\begin{align}\label{eq:I12-marked-remainders}
+\mathcal R_m^{\rm reg}(\mathbf v;U)
+&=\sum_i\mathbf1_{Z_{m,i}\ {\rm healthy}}R_{m,i}^{\rm reg}(\mathbf v;U),\notag\\
+\mathcal R_m^{\rm for}(\mathbf v;U)
+&=e^{v_{\rm vac}|\Lambda|-\pathaction_{N,m}(\beta(\rho_m),U)
+-\sum_i\mathbf1_{X_i\ {\rm healthy}}E_i^{\rm reg}(U)}\notag\\
+&\quad\cdot\sum_{\mathcal A_{\rm for}\ {\rm eligible}}\sum_{i\in\mathcal A_{\rm for}}
+Q_{m,i}^{\rm for}(\mathbf v;U)\prod_{j\in\mathcal A_{\rm for}\setminus\{i\}}K_j^{\rm for}(U)\,.
+\end{align}
+All unmarked quantities in this formula are taken from $\rho_m$, and eligibility is the disjointness and exact flag coverage in Definition~\ref{def:D06}. The marked density has the exact decomposition
+\begin{multline}\label{eq:I12-marked-representation}
+H^{\rm ins}_{N,p,m;d}(\mathbf v;U)=\density\rho_m(U)\left[
+x_{m,0}(\mathbf v)+\mathbf1_{\Sigma_d\ {\rm healthy}}
+\localsection{d}[\factorscale_{t_m^{-1}}\mathbf x_m^\circ(\mathbf v)](0;U)\right]\\
++\density\rho_m(U)\mathcal R_m^{\rm reg}(\mathbf v;U)
++\mathcal R_m^{\rm for}(\mathbf v;U)\,.
+\end{multline}
+Here the stencil $\Sigma_d$ is placed at the origin on the level-$m$ torus. If $10\operatorname{dist}(x,0)<L_pD_m$ for every $x\in Z_{m,i}$, the regular remainder $R_{m,i}^{\rm reg}$ has zero radial-jet Taylor coefficients through order~$d$; the forced remainders vanish outside their unmarked eligibility events. Their format and bounds are proved in Section~\ref{sec:partII-E}, \ref{lem:E2.2}--\ref{lem:E2.2a}. We use the fixed decomposition selected there. It supplies the invertible terminal map of \ref{lem:E2.1}:
 \begin{equation*}
 \mathbf x_N(\mathbf v)=\mathbf v,\qquad
 \mathbf x_{\reflevel{d}}(\mathbf v)=\mathsf Z_{N,p,d}\mathbf v\,.
@@ -212,6 +298,8 @@ I_{N,p}((d,\mathbf c),y;U)=O^{(d)}_{N,p}(\mathbf c,y;U)
 This fixes the insertion along the trajectory. Its distinguished unit coefficient is $\mathbf u_d=a_{\reflevel{d}}^d\mathbf1$, whose insertion equals one for $N\ge\reflevel{d}$. The scaling $\factorscale_t$ counts factors, not engineering weight.
 \end{definition}
 
-The inverse terminal map makes the transferred coefficient equal to the prescribed~$\mathbf c$ at the reference level. The unit identity follows from $\mathbf x_m(a_N^d\mathbf1)=a_m^d\mathbf1$, proved with the transfer symmetries in Section~\ref{sec:partII-E}, E.2.1a. In particular the unit coefficient retains the reference-spacing factor even in a degree-labelled space containing the constant polynomial.
+The inverse terminal map makes the transferred coefficient equal to the prescribed~$\mathbf c$ at the reference level. Thus $\mathbf c$ is specified at the fixed physical scale $a_{\reflevel{d}}$, in that level's lattice units. The factor $\ell_m^d=(a_m/a_{m+1})^d$ uses the degree label of the whole space $V_d$; the terminal map allows mixing between its engineering weights. The factor $a_N^{-d}$ converts the normalized lattice insertion to physical units.
+
+The unit identity follows from $\mathbf x_m(a_N^d\mathbf1)=a_m^d\mathbf1$, proved with the transfer symmetries in Section~\ref{sec:partII-E}, \ref{lem:E2.1a}. This explains why the coefficient giving the constant insertion is $a_{\reflevel{d}}^d\mathbf1$, even though $V_d$ also contains polynomials of lower engineering weight.
 
 The bare couplings of MT and these insertions now specify one Wilson family. Each insertion is continuous, gauge invariant and local on its fixed stencil. MT at $m=N$ gives the volume-uniform asymptotic slope $\slope>0$. These are the lattice inputs to the continuum limits.
