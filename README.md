@@ -2,6 +2,8 @@
 
 **A map of OpenAI's Lean proof of the construction of four-dimensional Yang–Mills theory, and a natural-language outline built from it.**
 
+This repository is maintained by Scott Armstrong (CNRS and Sorbonne Université; Courant Institute, New York University). Source: [github.com/scottnarmstrong/yang-mills-informalization](https://github.com/scottnarmstrong/yang-mills-informalization). For reading on screen, an HTML version generated automatically from this repository by Massimiliano Gubinelli is at [mgubi.github.io/yang-mills-informalization](https://mgubi.github.io/yang-mills-informalization/).
+
 In October 2026 OpenAI announced a proof, formalized in Lean 4, that four-dimensional quantum Yang–Mills theory can be constructed as a scaling limit of Wilson lattice gauge theory. On 11 November 2026 the Lean source ([`OpenAI-YM-20261028`](https://github.com/yang-mills-group/OpenAI-YM-20261028)) was released.
 
 The source is about one million lines of Lean in 9,477 files. No informal proof accompanies it. The code uses arbitrary nicknames for its objects (`Treasury`, `Jewel`, `Sheet`, `sails`…), and its folders record the history of its development rather than its mathematical structure.
@@ -134,6 +136,8 @@ The archive is 2.2 GB, in two parts, and unpacks to 8.8 GB. The [release notes](
 ## How to cite
 
 Use the metadata in [CITATION.cff](CITATION.cff). Include the revision of this repository you consulted, the unit and result identifiers when relevant, and the fixed Lean source commit [`3456e5e75cf8d4cd558955a5c7638fba2d68f464`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464). The citation describes this map and outline; cite the Lean source separately when referring to the formal proof.
+
+Scott Armstrong is supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme, grant agreement No. 101200828.
 
 ## License
 
