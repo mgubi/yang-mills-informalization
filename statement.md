@@ -159,8 +159,8 @@ We say that $\mathfrak g$ is *simple* if
 
 *Nonstandard features.* (a) $G$ need not be connected. Any closed subgroup of $U(m)$ whose Lie algebra is simple is allowed, for example $O(3)\subset U(3)$; only the identity component of $G$ is a compact simple Lie group. (b) The theorem is formulated for a group given in a fixed faithful unitary representation, not for an abstract compact group.
 
-*Inner product and Casimir constant (used by the construction only).* On $\mathfrak g$ put $\langle X,Y\rangle_{\mathfrak g}:=-\tfrac1m\operatorname{Re}\operatorname{tr}(XY)$. This is a positive definite, $\operatorname{Ad}(G)$-invariant inner product. The Casimir constant is
-$$C_{\mathfrak g}:=-\frac{1}{\dim_{\mathbb R}\mathfrak g}\sum_{i}\operatorname{tr}_{\mathfrak g}\big(\operatorname{ad}(e_i)^2\big),$$
+*Inner product and Casimir constant (used by the construction only).* On $\mathfrak g$ put $\langle X,Y\rangle_{\mathfrak g}:=-\tfrac1m\mathrm{Re}\mathrm{tr}(XY)$. This is a positive definite, $\mathrm{Ad}(G)$-invariant inner product. The Casimir constant is
+$$C_{\mathfrak g}:=-\frac{1}{\dim_{\mathbb R}\mathfrak g}\sum_{i}\mathrm{tr}_{\mathfrak g}\big(\mathrm{ad}(e_i)^2\big),$$
 where $(e_i)$ is a $\langle\cdot,\cdot\rangle_{\mathfrak g}$-orthonormal basis of $\mathfrak g$. Equivalently, the Killing form of $\mathfrak g$ equals $-C_{\mathfrak g}\langle\cdot,\cdot\rangle_{\mathfrak g}$. Put $b_0:=11C_{\mathfrak g}/(48\pi^2)$. For $G=SU(N)\subset U(N)$ one finds $C_{\mathfrak g}=2N^2$. With this inner product the lattice coupling $\beta$ of Definition 1.4 corresponds to $1/g_0^2$ in the formal action $\frac{1}{2g_0^2}\int\sum_{\mu<\nu}\|F_{\mu\nu}\|_{\mathfrak g}^2$ [Assessment, §§3–4]. Neither $\langle\cdot,\cdot\rangle_{\mathfrak g}$ nor $C_{\mathfrak g}$ occurs in the main theorem; only $\dim_{\mathbb R}\mathfrak g$ does (in the trace test, Definition 1.16).
 
 #### Spacetime and test functions
@@ -171,7 +171,7 @@ where $(e_i)$ is a $\langle\cdot,\cdot\rangle_{\mathfrak g}$-orthonormal basis o
 2. *Configurations.* For $n\in\mathbb N$, $(\mathbb R^4)^n$ carries the Euclidean norm $(\sum_i|x_i|^2)^{1/2}$ and Lebesgue measure $dx$. A point is $x=(x_1,\dots,x_n)$ with $x_i\in\mathbb R^4$, and $x_i^a$ is the $a$-th coordinate of $x_i$. The set of *separated configurations* is the open set
 $$\mathrm{Conf}_n:=\{x\in(\mathbb R^4)^n:\ x_i\neq x_j\text{ for all }i\neq j\}.$$
 3. *Schwartz functions.* $\mathcal S:=\mathcal S(\mathbb R^4;\mathbb C)$ with its Fréchet topology. For $f\in\mathcal S$, $\bar f$ is the pointwise complex conjugate.
-4. *Separated test functions.* $C^\infty_c(\mathrm{Conf}_n)$ is the space of $C^\infty$ functions $f\colon(\mathbb R^4)^n\to\mathbb C$ whose closed support $\operatorname{supp}f$ is compact and contained in $\mathrm{Conf}_n$.
+4. *Separated test functions.* $C^\infty_c(\mathrm{Conf}_n)$ is the space of $C^\infty$ functions $f\colon(\mathbb R^4)^n\to\mathbb C$ whose closed support $\mathrm{supp}f$ is compact and contained in $\mathrm{Conf}_n$.
 
 *Nonstandard features.* The separated test functions are joint functions of all $n$ points, not products of one-point test functions. They vanish in a neighbourhood of every coincidence $x_i=x_j$; no statement in the main theorem concerns coincident points.
 
@@ -184,7 +184,7 @@ $$\mathrm{Conf}_n:=\{x\in(\mathbb R^4)^n:\ x_i\neq x_j\text{ for all }i\neq j\}.
 3. The *plaquette variable* at $y$ in the plane $(\mu,\nu)$ is
 $$U_{y;\mu\nu}:=U(y,\mu)\,U(y+e_\mu,\nu)\,U(y+e_\nu,\mu)^{-1}\,U(y,\nu)^{-1}\in G,$$
 and the *Wilson energy* is
-$$E_\ell(U):=\sum_{y\in\Lambda_\ell}\ \sum_{1\le\mu<\nu\le4}\Big(1-\tfrac1m\operatorname{Re}\operatorname{tr}U_{y;\mu\nu}\Big).$$
+$$E_\ell(U):=\sum_{y\in\Lambda_\ell}\ \sum_{1\le\mu<\nu\le4}\Big(1-\tfrac1m\mathrm{Re}\mathrm{tr}U_{y;\mu\nu}\Big).$$
 4. A *gauge transformation* $\gamma\colon\Lambda_\ell\to G$ acts by $(U^\gamma)(y,\mu):=\gamma(y)\,U(y,\mu)\,\gamma(y+e_\mu)^{-1}$.
 5. For $j\in\mathbb Z/\ell\mathbb Z$, $r_\ell(j)\in\mathbb Z$ is the unique representative of $j$ in $(-\ell/2,\ell/2]$.
 
@@ -194,7 +194,7 @@ $$E_\ell(U):=\sum_{y\in\Lambda_\ell}\ \sum_{1\le\mu<\nu\le4}\Big(1-\tfrac1m\oper
 $$\mu_{\ell,\beta,h}(dU):=Z^{-1}\,e^{-\beta E_\ell(U)}\prod_{(y,\mu)}h\big(dU(y,\mu)\big),\qquad Z:=\int e^{-\beta E_\ell(U)}\prod_{(y,\mu)}h\big(dU(y,\mu)\big).$$
 ($Z$ is finite and positive because $0\le E_\ell\le 12\ell^4$.)
 
-*What it encodes.* With the inner product of Definition 1.1, $\beta=1/g_0^2$ is the inverse squared bare coupling [Assessment, §4]. Other conventions differ by factors of $m$; for example $\beta=m\,\beta'$ when the energy is written $\beta'\sum(m-\operatorname{Re}\operatorname{tr}U_{y;\mu\nu})$ [Assessment, §11].
+*What it encodes.* With the inner product of Definition 1.1, $\beta=1/g_0^2$ is the inverse squared bare coupling [Assessment, §4]. Other conventions differ by factors of $m$; for example $\beta=m\,\beta'$ when the energy is written $\beta'\sum(m-\mathrm{Re}\mathrm{tr}U_{y;\mu\nu})$ [Assessment, §11].
 
 **Definition 1.5 (Wilson family).** A *Wilson family* $\mathcal W$ for a gauge group $(m,G,\mathfrak g)$ consists of:
 
@@ -232,9 +232,9 @@ $$\Big|\frac{\beta_{N,p}}{\log(1/a_N)}-b_*\Big|<\varepsilon\qquad\text{for all }
 $$M_{N,p}(v;y):=\int\prod_{i=1}^nI_{N,p}(v_i,y_i;U)\,\mu_{N,p}(dU).$$
 2. For $f\in C^\infty_c(\mathrm{Conf}_n)$, the *smeared moment* is
 $$C_{N,p}(v;f):=a_N^{4n}\sum_{y\in\Lambda_{N,p}^n}f(\hat y_1,\dots,\hat y_n)\,M_{N,p}(v;y).$$
-3. $f\in C^\infty_c(\mathrm{Conf}_n)$ is *$p$-admissible* if $\operatorname{supp}f\subset\{x\in(\mathbb R^4)^n:\ -L_p/2<x_i^a<L_p/2\text{ for all }i,a\}$.
+3. $f\in C^\infty_c(\mathrm{Conf}_n)$ is *$p$-admissible* if $\mathrm{supp}f\subset\{x\in(\mathbb R^4)^n:\ -L_p/2<x_i^a<L_p/2\text{ for all }i,a\}$.
 
-*What it encodes.* $C_{N,p}(v;f)$ is the Riemann sum, at spacing $a_N$, of the test function against the $n$-point function of the insertions, in the physical units of the box. The sum runs over all ordered $n$-tuples of sites. A tuple with a repeated site is mapped to a non-separated configuration, where $f$ vanishes, so it contributes nothing. For a $p$-admissible test, $\operatorname{supp}f$ lies in $\big((-L_p/2,L_p/2)^4\big)^n$, and $(-L_p/2,L_p/2)^4$ lies inside the fundamental domain $(-L_p/2,L_p/2]^4$ of the torus, so no periodic image of $\operatorname{supp}f$ enters.
+*What it encodes.* $C_{N,p}(v;f)$ is the Riemann sum, at spacing $a_N$, of the test function against the $n$-point function of the insertions, in the physical units of the box. The sum runs over all ordered $n$-tuples of sites. A tuple with a repeated site is mapped to a non-separated configuration, where $f$ vanishes, so it contributes nothing. For a $p$-admissible test, $\mathrm{supp}f$ lies in $\big((-L_p/2,L_p/2)^4\big)^n$, and $(-L_p/2,L_p/2)^4$ lies inside the fundamental domain $(-L_p/2,L_p/2]^4$ of the torus, so no periodic image of $\mathrm{supp}f$ enters.
 
 **Definition 1.8 (Ordered convergence along a volume sequence).** Let $\mathcal W$ be a Wilson family, let $P\colon\mathbb N\to\mathbb N$, and let $K=(K_n(v;\cdot))$ be a family of functions $K_n(v;\cdot)\colon(\mathbb R^4)^n\to\mathbb C$, indexed by $n\in\mathbb N$ and $v\in\mathcal T^n$. We say that *$\mathcal W$ converges along $P$ to $K$* if for every $n\in\mathbb N$, every $v\in\mathcal T^n$ and every $f\in C^\infty_c(\mathrm{Conf}_n)$:
 
@@ -272,7 +272,7 @@ $$(g\cdot f)(x):=f\big(\Lambda_g^{-1}(x-b_g)\big).$$
 * **(W1) Domain, temperedness, adjoint, cyclicity.**
     * (W1a) $\|\Omega\|=1$.
     * (W1b) $D$ is dense in $\mathcal H$.
-    * (W1c) $D=\operatorname{span}_{\mathbb C}\{\Phi(\ell_1,f_1)\cdots\Phi(\ell_k,f_k)\Omega:\ k\ge0,\ \ell_i\in\mathcal L,\ f_i\in\mathcal S\}$, where the empty product gives $\Omega$.
+    * (W1c) $D=\mathrm{span}_{\mathbb C}\{\Phi(\ell_1,f_1)\cdots\Phi(\ell_k,f_k)\Omega:\ k\ge0,\ \ell_i\in\mathcal L,\ f_i\in\mathcal S\}$, where the empty product gives $\Omega$.
     * (W1d) For each $\ell\in\mathcal L$ and $\psi\in D$, the map $\mathcal S\to\mathcal H$, $f\mapsto\Phi(\ell,f)\psi$, is continuous.
     * (W1e) $\langle\Phi(\ell,f)\psi,\chi\rangle=\langle\psi,\Phi(\ell^*,\bar f)\chi\rangle$ for all $\ell\in\mathcal L$, $f\in\mathcal S$ and $\psi,\chi\in D$.
 * **(W2) Poincaré covariance.**
@@ -280,7 +280,7 @@ $$(g\cdot f)(x):=f\big(\Lambda_g^{-1}(x-b_g)\big).$$
     * (W2b) $U(g)D\subset D$ for every $g$.
     * (W2c) $U(g)\Omega=\Omega$ for every $g$.
     * (W2d) $U(g)\Phi(\ell,f)\psi=\Phi(\rho(g)\ell,\ g\cdot f)\,U(g)\psi$ for all $g,\ell,f$ and $\psi\in D$.
-* **(W3) Locality.** If $\mathsf m(x-y)<0$ for all $x\in\operatorname{supp}f$ and $y\in\operatorname{supp}f'$, then $\Phi(\ell,f)\Phi(\ell',f')\psi=\Phi(\ell',f')\Phi(\ell,f)\psi$ for all $\ell,\ell'\in\mathcal L$ and $\psi\in D$.
+* **(W3) Locality.** If $\mathsf m(x-y)<0$ for all $x\in\mathrm{supp}f$ and $y\in\mathrm{supp}f'$, then $\Phi(\ell,f)\Phi(\ell',f')\psi=\Phi(\ell',f')\Phi(\ell,f)\psi$ for all $\ell,\ell'\in\mathcal L$ and $\psi\in D$.
 
 *What it encodes.* The Gårding–Wightman axioms for a family of bosonic fields labelled by $\mathcal L$, in the following form.
 
@@ -328,7 +328,7 @@ $$S^s(a_{\sigma(1)},\dots,a_{\sigma(n)};x_{\sigma(1)},\dots,x_{\sigma(n)})=S^s(a
 * **(R11) Continuity in the phase.** For all $n$, $a$ and $x\in\mathrm{Conf}_n$, the function $\xi\mapsto S^\xi(a;x)$ is continuous on $X$.
 * **(R12) Phase decomposition.** For all $n$, $a$ and $x\in\mathrm{Conf}_n$: $\displaystyle\int_XS^\xi(a;x)\,\nu(d\xi)=S^{\mathrm{mix}}(a;x)$.
 * **(R13) Analyticity in the times.** For all $n$, $a$ and $\vec x\in(\mathbb R^3)^n$, the function $z\mapsto\mathsf F_n(a;z,\vec x)$ is holomorphic on the ordered tube
-$$\mathcal Z_n:=\{z\in\mathbb C^n:\ \operatorname{Im}z_1<\operatorname{Im}z_2<\dots<\operatorname{Im}z_n\}.$$
+$$\mathcal Z_n:=\{z\in\mathbb C^n:\ \mathrm{Im}z_1<\mathrm{Im}z_2<\dots<\mathrm{Im}z_n\}.$$
 * **(R14) Euclidean points.** For all $n$, $a$ and $x\in(\mathbb R^4)^n$ with $t(x_1)<\dots<t(x_n)$:
 $$\mathsf F_n\big(a;\ (i\,t(x_1),\dots,i\,t(x_n)),\ (\vec x_1,\dots,\vec x_n)\big)=S^{\xi_*}(a;x).$$
 * **(R15) Boundary values.** For all $n$, $a$, real numbers $h_1<\dots<h_n$ and $f_1,\dots,f_n\in\mathcal S$, as $r\to0^+$,
@@ -338,7 +338,7 @@ $$\int_{(\mathbb R^4)^n}\mathsf F_n\big(a;\ (t(x_k)+i\,r\,h_k)_{k=1}^n,\ (\vec x
 
 *Remarks.*
 1. Only the selected phase $\xi_*$ carries a relativistic theory in the main theorem. Other phases enter only through (R9)–(R12).
-2. For fixed $\vec x$, the purely imaginary points $\{z\in\mathcal Z_n:\operatorname{Re}z=0\}$ form a totally real submanifold of maximal dimension in the connected open set $\mathcal Z_n$. By the identity theorem, (R13) and (R14) determine $\mathsf F_n(a;\cdot,\vec x)$ from $S^{\xi_*}$; through (R15) the vacuum expectation values of $\mathfrak W$ on product test functions are then determined by $S^{\xi_*}$. (This is a consequence, not a separate clause.)
+2. For fixed $\vec x$, the purely imaginary points $\{z\in\mathcal Z_n:\mathrm{Re}z=0\}$ form a totally real submanifold of maximal dimension in the connected open set $\mathcal Z_n$. By the identity theorem, (R13) and (R14) determine $\mathsf F_n(a;\cdot,\vec x)$ from $S^{\xi_*}$; through (R15) the vacuum expectation values of $\mathfrak W$ on product test functions are then determined by $S^{\xi_*}$. (This is a consequence, not a separate clause.)
 3. (R4) prevents (R2) from holding vacuously, for instance with $\mathcal L=\{0\}$.
 4. In (R15) the formal statement does not separately assert that the integrand is integrable for small $r>0$. In (P1) and (R12) integrability follows from (R10) and from (R11) with (R7), respectively.
 5. No Euclidean covariance, reflection positivity or cluster property of any $S^s$ is asserted.
