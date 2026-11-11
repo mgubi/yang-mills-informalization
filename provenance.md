@@ -17,36 +17,9 @@ Revised on 11 November 2026 after reading Bałaban’s five 1985 papers on avera
 - [Open questions and limits](#6-open-questions-limits-and-priorities-for-expert-checking)
 - [Bibliography and source access](#7-bibliography-and-source-access)
 - [Changes after the second reading](#8-changes-after-the-second-reading)
+- [Source keys](#source-keys)
 
-**Source keys.** Full publication details and reading limits are in [§7](#7-bibliography-and-source-access). NLSM means nonlinear sigma model; RG means renormalization group; UV means ultraviolet.
-
-| Key | Source |
-|---|---|
-| N1 | OpenAI, *Exponential decay in two-dimensional classical O(n) models* (2026) |
-| N2 | OpenAI, *Sharp mass bounds for the two-dimensional O(4) model* (2026) |
-| N3 | OpenAI, *The canonical massive continuum limit of the two-dimensional O(3) model* (2026) |
-| N4 | OpenAI, *An Isolated Particle Pole for the Two-Dimensional O(3) Spin Field* (2026) |
-| N5 | OpenAI, *Exact mass asymptotics for the two-dimensional O(4) lattice model* (2026) |
-| N6 | OpenAI, *The Critical Spin Field of the Planar XY Model* (2026) |
-| B-Average; B-Gauge; B-Back; B-UV3; B-Var | Bałaban, averaging, regular configurations/gauge fixing, background propagators, three-dimensional stability and variational backgrounds (1985) |
-| B-Green; B-Prop-I, B-Prop-II | Bałaban, lattice Green's functions and gauge propagators (1983–1984) |
-| B-RG-I, B-RG-II | Bałaban, *Renormalization Group Approach to Lattice Gauge Field Theories* (1987–1988) |
-| B-Conv; B-Large-I, B-Large-II | Bałaban, convergent gauge expansions and large-field renormalization (1988–1989) |
-| B-Higgs | Bałaban, finite-volume Higgs lower bound (1982) |
-| B-N-I, B-N-II, B-N-III; B-N-Var; B-N-Loc-I, B-N-Loc-II; B-N-Large; B-Spin | Bałaban, N-vector RG, variational, localization and large-field works (1995–1998) |
-| B-N-Corr; B-Corr | Bałaban and O'Carroll, N-vector correlations (1999) and effective-action correlation methods (1997) |
-| D-I, D-II, D-III | Dimock, *The Renormalization Group According to Balaban* (2013–2014) |
-| Bry; Cam | Brydges, cluster expansions (1986); Cammarota, polymer convergence and decay (1982) |
-| Abbott82; GW73; P73 | Abbott, background-field method (1982); Gross–Wilczek and Politzer, asymptotic freedom (1973) |
-| FILS78; OSe78 | Fröhlich–Israel–Lieb–Simon, reflection positivity; Osterwalder–Seiler, lattice gauge theory (1978) |
-| GK85 | Gawędzki–Kupiainen, massless lattice φ⁴₄ and infrared asymptotic freedom (1985) |
-| Seiler82 | Seiler, constructive gauge theory and statistical mechanics (1982), read in part |
-| BBS19; BY90 | Bauerschmidt–Brydges–Slade, RG method (2019); Brydges–Yau, gradient perturbations (1990) |
-| Fed87; MRS93 | Federbush, lattice–continuum duality (1987); Magnen–Rivasseau–Sénéor, YM4 with an infrared cutoff (1993) |
-| OS73, OS75 | Osterwalder–Schrader, Euclidean reconstruction (1973, 1975) |
-| CDJ77 | Collins–Duncan–Joglekar, trace and dilatation anomalies (1977) |
-| W69; Z73; BF00 | Wilson, operator products (1969); Zimmermann, short-distance expansion (1973); Brunetti–Fredenhagen, distribution extension (2000) |
-| Wilson74; Glimm–Jaffe87 | Background references: lattice gauge theory and functional-integral QFT |
+Short keys such as B-RG-I (Bałaban's papers), N2 (OpenAI's O(4) paper) or GK85 are listed in the [source keys](#source-keys) at the end; full publication details and reading limits are in [§7](#7-bibliography-and-source-access).
 
 ## 1. Main conclusions
 
@@ -1563,3 +1536,35 @@ The additional literature narrows the attribution to the NLSM papers and several
 The rotation, trace and OPE candidates move upward because the broader normalization and gauge-closure claims are demoted; their higher ranks do not certify their proofs. The source-size counts, absence of a public mass-gap assertion, and stated OPE/contact limitations are unchanged. No conclusion about borrowing or worldwide priority follows.
 
 All additional source families were read in relevant parts, with the limits stated in §7; Seiler's geometric appendix was available but not substantively used. **Osterwalder–Seiler 1978 and Zimmermann 1973 remain unavailable in full.** The stationary determinant bridge, all-order uniformity, exact torus antecedent, reconstruction hypotheses, trace normalization and wider composite/phase literature remain open comparisons.
+
+## Source keys
+
+Full publication details and reading limits are in [§7](#7-bibliography-and-source-access). NLSM means nonlinear sigma model; RG means renormalization group; UV means ultraviolet.
+
+| Key | Source |
+|---|---|
+| N1 | OpenAI, *Exponential decay in two-dimensional classical O(n) models* (2026) |
+| N2 | OpenAI, *Sharp mass bounds for the two-dimensional O(4) model* (2026) |
+| N3 | OpenAI, *The canonical massive continuum limit of the two-dimensional O(3) model* (2026) |
+| N4 | OpenAI, *An Isolated Particle Pole for the Two-Dimensional O(3) Spin Field* (2026) |
+| N5 | OpenAI, *Exact mass asymptotics for the two-dimensional O(4) lattice model* (2026) |
+| N6 | OpenAI, *The Critical Spin Field of the Planar XY Model* (2026) |
+| B-Average; B-Gauge; B-Back; B-UV3; B-Var | Bałaban, averaging, regular configurations/gauge fixing, background propagators, three-dimensional stability and variational backgrounds (1985) |
+| B-Green; B-Prop-I, B-Prop-II | Bałaban, lattice Green's functions and gauge propagators (1983–1984) |
+| B-RG-I, B-RG-II | Bałaban, *Renormalization Group Approach to Lattice Gauge Field Theories* (1987–1988) |
+| B-Conv; B-Large-I, B-Large-II | Bałaban, convergent gauge expansions and large-field renormalization (1988–1989) |
+| B-Higgs | Bałaban, finite-volume Higgs lower bound (1982) |
+| B-N-I, B-N-II, B-N-III; B-N-Var; B-N-Loc-I, B-N-Loc-II; B-N-Large; B-Spin | Bałaban, N-vector RG, variational, localization and large-field works (1995–1998) |
+| B-N-Corr; B-Corr | Bałaban and O'Carroll, N-vector correlations (1999) and effective-action correlation methods (1997) |
+| D-I, D-II, D-III | Dimock, *The Renormalization Group According to Balaban* (2013–2014) |
+| Bry; Cam | Brydges, cluster expansions (1986); Cammarota, polymer convergence and decay (1982) |
+| Abbott82; GW73; P73 | Abbott, background-field method (1982); Gross–Wilczek and Politzer, asymptotic freedom (1973) |
+| FILS78; OSe78 | Fröhlich–Israel–Lieb–Simon, reflection positivity; Osterwalder–Seiler, lattice gauge theory (1978) |
+| GK85 | Gawędzki–Kupiainen, massless lattice φ⁴₄ and infrared asymptotic freedom (1985) |
+| Seiler82 | Seiler, constructive gauge theory and statistical mechanics (1982), read in part |
+| BBS19; BY90 | Bauerschmidt–Brydges–Slade, RG method (2019); Brydges–Yau, gradient perturbations (1990) |
+| Fed87; MRS93 | Federbush, lattice–continuum duality (1987); Magnen–Rivasseau–Sénéor, YM4 with an infrared cutoff (1993) |
+| OS73, OS75 | Osterwalder–Schrader, Euclidean reconstruction (1973, 1975) |
+| CDJ77 | Collins–Duncan–Joglekar, trace and dilatation anomalies (1977) |
+| W69; Z73; BF00 | Wilson, operator products (1969); Zimmermann, short-distance expansion (1973); Brunetti–Fredenhagen, distribution extension (2000) |
+| Wilson74; Glimm–Jaffe87 | Background references: lattice gauge theory and functional-integral QFT |
