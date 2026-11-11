@@ -9,45 +9,37 @@ The source is about one million lines of Lean in 9,477 files. No informal proof 
 This repository is an attempt to make that proof readable. Using AI agents, we:
 
 1. **map** the proof: we compute its dependency graph from the main theorem down, and divide it into eight parts and thirty-two units;
-2. **outline** it in natural language: plain-language statements of its key results, a glossary of its nicknames, and the interfaces between its parts;
+2. **outline** it in natural language, at several levels of detail, from a short account of the whole proof down to an outline of each unit with every statement linked to the Lean;
 3. later, **write** a natural-language account of the proof on that skeleton.
 
 The outline is a rough draft written by machines. Its purpose is to be checked, corrected and rewritten by people.
 
-## Start here
+## The proof at five levels of detail
 
-### [The main theorem →](statement.md)
+The repository presents the same proof at five levels of detail. Each level links down to the next, and everything from level 3 down is linked to the exact lines of the Lean source. Start at the top and go down as far as you need.
 
-The exact statement. It gives:
-- the Lean theorem and the definitions at its core, verbatim;
-- a commentary on what it says in words;
-- the full statement in ordinary mathematics, definition by definition, with what is and is not claimed and a comparison with the Wightman, Osterwalder–Schrader and Jaffe–Witten formulations;
-- every item linked to its Lean lines.
+| level | | what you get | length |
+|---|---|---|---|
+| **1** | [**The main theorem**](statement.md) | What is proved: the Lean statement verbatim, a commentary in words, and the full statement in ordinary mathematics, with what is and is not claimed. | ~20 pages |
+| **2** | **The proof in one reading** *(in preparation)* | A high-level account of the whole proof: the strategy, the key mechanism of each part, what is new, where the difficulty lies. | ~10 pages |
+| **3** | [**The architecture**](outline/README.md) | The eight parts of the proof, from the lattice setting through the renormalization group to the identification as Yang–Mills; what each part hands to the next; the interface between the ultraviolet construction and the infinite-volume limit. | a few pages |
+| **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline**: the propositions it proves and what it uses, the strategy, the steps as lemmas with proof sketches, where the difficulty lies, and open points. Outlines are published as they pass review; the table of units shows which are ready. | 3–10 pages per unit |
+| **5** | **The Lean, linked** | On each unit's page, below the outline: its Lean source (work packages and chains of large results) and its key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines the main theorem uses. | – |
 
-### [Overview of the proof →](outline/README.md)
-
-How the proof is organised:
-- its eight parts, from the lattice setting through the renormalization group to the identification as Yang–Mills;
-- what each part hands to the next;
-- the short interface between the ultraviolet construction and the infinite-volume limit.
-
-### [The detailed map: the units of the proof →](outline/units.md)
-
-The 413,000 lines that the main theorem uses, divided into thirty-two units: mathematically coherent pieces of the proof, grouped by the eight parts. Every unit has its own page with:
-- its Lean source (folders and chains of large results), linked;
-- the units it builds on and the units that use it;
-- its key statements in plain language, **each linked to its exact lines in the Lean source**.
-
-As the outline of each unit is written and checked, it appears on the same page.
-
-### Also here
+**Reference material**, used at every level:
 
 | | |
 |---|---|
-| [**The work items**](outline/work-items.md) | The code's own decomposition of the limit theory into about one hundred stated obligations, each with what it proves. |
 | [**Glossary**](glossary.md) | The code's nicknames (`Treasury`, `Jewel`, `Sheet`, …) translated into mathematics. |
-| [**How the map was made**](method.md) | Method, checks against OpenAI's compiled record, and how far each product can be trusted. |
-| [**Data**](data/) | Tables of the units, the unit of every declaration, and the 989 key statements, with links. |
+| [**The work items**](outline/work-items.md) | The code's own decomposition of the limit theory into about one hundred stated obligations, each with what it proves. |
+| [**How this was made**](method.md) | Method, checks against OpenAI's compiled record, the review rounds, and how far each level can be trusted. |
+| [**Data**](data/) | Tables of the units, the unit of every declaration, and the key statements, with links. |
+
+**How the levels were produced.**
+- *Levels 1 and 3:* written by AI agents from the Lean and checked against it clause by clause.
+- *Level 4, the unit outlines:* each drafted by one model (Claude Sonnet), then checked against the Lean and rewritten by a second (Claude Opus), then edited by a third (GPT).
+- *Level 2:* written from the unit outlines by one model and edited by another.
+- *Level 5:* the dependency graph is computed from the source and checked against OpenAI's own compiled record.
 
 All links to Lean point to the fixed commit [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464) of the released source.
 
