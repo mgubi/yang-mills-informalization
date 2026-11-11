@@ -69,7 +69,7 @@ Each outline has a place in a three-round review. All outlines are published; th
 
 The second round found dropped hypotheses and overbroad statements in the first two units. It also found that the coupling's one-loop coefficient is computed in the proof, where the draft had described it as assumed. The labels record review of exposition; a draft outline does not mean the linked formal result is unproved.
 
-The summary was written from the outlines by a GPT model and edited by Claude Opus. It is revised as the outlines improve. Human mathematical judgment remains needed to assess whether these explanations give a satisfactory account of the construction; the manuscript being written in public is [under construction](https://github.com/scottnarmstrong/yang-mills-manuscript).
+The summary was written from the outlines by a GPT model and edited by Claude Opus. It is revised as the outlines improve. Human mathematical judgment remains needed to assess whether these explanations give a satisfactory account of the construction; the manuscript being written in public is [under construction](manuscript/).
 
 ## Published evidence and tools
 
