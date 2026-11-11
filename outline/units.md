@@ -37,7 +37,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | **III.10** | [One full nonlinear renormalization step: bounds on irrelevant terms](units/III-10.md) | 49,448 | 94 | edited |
 | **III.11** | [Comparison with the free Gaussian measure: interacting rank and determinant budgets](units/III-11.md) | 42,556 | 67 | edited |
 | **III.12** | [Bounds uniform in the volume and convergence as the spacing tends to zero](units/III-12.md) | 18,973 | 34 | edited |
-| **III.13** | [Extension to all labels: one common Wilson family](units/III-13.md) | 22,100 | 31 | checked |
+| **III.13** | [Extension to all labels: one common Wilson family](units/III-13.md) | 22,100 | 31 | edited |
 | **III.14** | [The construction run: flat representations and the ultraviolet rate](units/III-14.md) | 14,290 | 49 | checked |
 | **III.15** | [Cost accounting for observables and the remainder comparison](units/III-15.md) | 7,382 | 13 | checked |
 | **III.16** | [Analytic toolkit](units/III-16.md) | 4,013 | 4 | checked |
