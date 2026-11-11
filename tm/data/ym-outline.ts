@@ -110,6 +110,20 @@
 
   <\active*>
     <\src-comment>
+      A prominent link (from the README of the manuscript to the manuscript).
+    </src-comment>
+  </active*>
+
+  <assign|ym-manuscript-link|<\macro|body>
+    <\padded>
+      <strong|<arg|body>>
+    </padded>
+  </macro>>
+
+  <assign|tmhtml-ym-manuscript-link|<macro|body|<html-div-class|ym-callout|<arg|body>>>>
+
+  <\active*>
+    <\src-comment>
       Collapsible blocks (\<less\>details\<gtr\> in the Markdown): open in
       TeXmacs, a details element in HTML.
     </src-comment>

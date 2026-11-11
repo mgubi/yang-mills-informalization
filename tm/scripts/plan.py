@@ -8,7 +8,9 @@ The record (tm/.build-state.json, written only after a successful build)
 holds, for every page:
   in        fingerprint of everything the .tm is made from: the page as
             patched by prep.py (so link targets resolved against the other
-            pages are included) and the navigation data the page uses;
+            pages are included) and the navigation data the page uses; for
+            the manuscript (manuscript/main.tm), the output of tex_prep.py
+            (main.tex with every \\input file, its metadata, references.bib);
   tm        hash of the installed .tm;
   html      hash of the installed .html, and html_from the hash of the .tm
             it was exported from;
@@ -41,7 +43,8 @@ def file_sha(path):
 
 def tools_hash(here, tm_bin, max_html):
     h = hashlib.sha256()
-    files = [os.path.join(here, 'build.sh'), os.path.join(here, 'ym-outline.ts')]
+    files = [os.path.join(here, 'build.sh'), os.path.join(here, 'ym-outline.ts'),
+             os.path.join(here, 'ym-manuscript.ts')]
     for d in ('resources', 'scripts'):
         for root, ds, fs in os.walk(os.path.join(here, d)):
             ds[:] = sorted(x for x in ds if x != '__pycache__')
@@ -71,6 +74,15 @@ def fingerprints(mddir):
         if p.startswith(('outline/units/', 'outline/notes/')):
             ctx['units'] = units_ctx
         out[p] = sha(md + b'\0' + json.dumps(ctx, sort_keys=True).encode())
+    # the LaTeX manuscript (tex_prep.py output: the flattened source, its
+    # metadata and the bibliography database)
+    tex = os.path.join(mddir, 'tex')
+    if data.get('manuscript') and os.path.exists(os.path.join(tex, 'main.tex')):
+        h = hashlib.sha256()
+        for f in ('main.tex', 'meta.json', 'references.bib'):
+            h.update(f.encode() + b'\0' + (file_sha(os.path.join(tex, f)) or '-').encode())
+        ctx = {'page': data['manuscript'], 'pages': page_set}
+        out[data['manuscript']] = sha(h.hexdigest().encode() + json.dumps(ctx, sort_keys=True).encode())
     return out
 
 

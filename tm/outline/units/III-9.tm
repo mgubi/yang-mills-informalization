@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> III.8 Connected activities and backward
@@ -1030,13 +1030,13 @@
     <associate|k-iii-9-1|<tuple|10|12>>
     <associate|k-iii-9-10|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-9-11|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
-    <associate|k-iii-9-12|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
+    <associate|k-iii-9-12|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-9-13|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-9-14|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-9-15|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-9-16|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-9-17|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
-    <associate|k-iii-9-2|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
+    <associate|k-iii-9-2|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-9-3|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-9-4|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-9-5|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>

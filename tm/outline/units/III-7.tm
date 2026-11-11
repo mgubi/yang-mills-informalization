@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> III.6 The stationary branch: background
@@ -1048,7 +1048,7 @@
 
 <\references>
   <\collection>
-    <associate|1-what-this-unit-proves|<tuple|1|1>>
+    <associate|1-what-this-unit-proves|<tuple|1|2>>
     <associate|2-what-it-uses|<tuple|2|5>>
     <associate|3-strategy|<tuple|3|5>>
     <associate|4-steps|<tuple|4|5>>
@@ -1056,7 +1056,7 @@
     <associate|6-notation|<tuple|6|6>>
     <associate|7-what-remains-unexplained|<tuple|7|6>>
     <associate|additional-source-locations|<tuple|9.1|7>>
-    <associate|auto-1|<tuple|1|1>>
+    <associate|auto-1|<tuple|1|2>>
     <associate|auto-10|<tuple|9.1|7>>
     <associate|auto-11|<tuple|10|11>>
     <associate|auto-2|<tuple|2|5>>
@@ -1065,14 +1065,14 @@
     <associate|auto-5|<tuple|5|6>>
     <associate|auto-6|<tuple|6|6>>
     <associate|auto-7|<tuple|7|6>>
-    <associate|auto-8|<tuple|8|6>>
+    <associate|auto-8|<tuple|8|7>>
     <associate|auto-9|<tuple|9|7>>
-    <associate|code-dependencies|<tuple|8|6>>
+    <associate|code-dependencies|<tuple|8|7>>
     <associate|iii7-matching-the-wilson-energy-to-fourth-order|<tuple|?|1>>
-    <associate|k-iii-7-1|<tuple|10|11>>
+    <associate|k-iii-7-1|<tuple|10|12>>
     <associate|k-iii-7-10|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
-    <associate|k-iii-7-11|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
-    <associate|k-iii-7-12|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
+    <associate|k-iii-7-11|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
+    <associate|k-iii-7-12|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-7-13|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-7-14|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-7-15|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
@@ -1080,10 +1080,10 @@
     <associate|k-iii-7-17|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-7-18|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-7-19|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
-    <associate|k-iii-7-2|<tuple|<with|mode|<quote|math>|<rigid|->>|11>>
+    <associate|k-iii-7-2|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
     <associate|k-iii-7-20|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
-    <associate|k-iii-7-21|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
-    <associate|k-iii-7-22|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
+    <associate|k-iii-7-21|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
+    <associate|k-iii-7-22|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-7-23|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-7-24|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-7-3|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
@@ -1096,7 +1096,7 @@
     <associate|key-statements|<tuple|10|11>>
     <associate|lean-source|<tuple|9|7>>
     <associate|unit-difficulty|<tuple|6|6>>
-    <associate|unit-inputs|<tuple|<with|mode|<quote|math>|<rigid|->>|4>>
+    <associate|unit-inputs|<tuple|<with|mode|<quote|math>|<rigid|->>|5>>
     <associate|unit-limitations|<tuple|6|6>>
     <associate|unit-notation|<tuple|5|6>>
     <associate|unit-results|<tuple|?|1>>

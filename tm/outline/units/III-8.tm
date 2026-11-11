@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> III.7 Matching the Wilson energy to
@@ -893,7 +893,7 @@
     <associate|1-what-this-unit-proves|<tuple|1|2>>
     <associate|2-what-it-uses|<tuple|2|4>>
     <associate|3-strategy|<tuple|3|4>>
-    <associate|4-steps|<tuple|4|4>>
+    <associate|4-steps|<tuple|4|5>>
     <associate|5-where-the-difficulty-lies|<tuple|5|5>>
     <associate|6-notation|<tuple|6|5>>
     <associate|7-what-remains-unexplained|<tuple|7|5>>
@@ -907,7 +907,7 @@
     <associate|auto-3|<tuple|1.2|3>>
     <associate|auto-4|<tuple|2|4>>
     <associate|auto-5|<tuple|3|4>>
-    <associate|auto-6|<tuple|4|4>>
+    <associate|auto-6|<tuple|4|5>>
     <associate|auto-7|<tuple|5|5>>
     <associate|auto-8|<tuple|6|5>>
     <associate|auto-9|<tuple|7|5>>
@@ -925,7 +925,7 @@
     <associate|unit-inputs|<tuple|1.2|4>>
     <associate|unit-limitations|<tuple|6|5>>
     <associate|unit-notation|<tuple|5|5>>
-    <associate|unit-results|<tuple|?|1>>
+    <associate|unit-results|<tuple|?|2>>
     <associate|unit-steps|<tuple|3|4>>
     <associate|unit-strategy|<tuple|<with|mode|<quote|math>|<rigid|->>|4>>
   </collection>

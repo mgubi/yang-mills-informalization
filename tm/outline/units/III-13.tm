@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> III.12 Bounds uniform in the volume and
@@ -1204,10 +1204,10 @@
     <associate|auto-9|<tuple|9|7>>
     <associate|code-dependencies|<tuple|8|7>>
     <associate|iii13-alternative-construction-one-wilson-family-for-all-labels|<tuple|?|1>>
-    <associate|k-iii-13-1|<tuple|10|12>>
-    <associate|k-iii-13-10|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
-    <associate|k-iii-13-11|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
-    <associate|k-iii-13-12|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
+    <associate|k-iii-13-1|<tuple|10|13>>
+    <associate|k-iii-13-10|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
+    <associate|k-iii-13-11|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
+    <associate|k-iii-13-12|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-13-13|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-13-14|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-13-15|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
@@ -1215,9 +1215,9 @@
     <associate|k-iii-13-17|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-13-18|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
     <associate|k-iii-13-19|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
-    <associate|k-iii-13-2|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
-    <associate|k-iii-13-20|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
-    <associate|k-iii-13-21|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
+    <associate|k-iii-13-2|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
+    <associate|k-iii-13-20|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
+    <associate|k-iii-13-21|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-iii-13-22|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-iii-13-23|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-iii-13-24|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
@@ -1225,9 +1225,9 @@
     <associate|k-iii-13-26|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-iii-13-27|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-iii-13-28|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
-    <associate|k-iii-13-29|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
+    <associate|k-iii-13-29|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-iii-13-3|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
-    <associate|k-iii-13-30|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
+    <associate|k-iii-13-30|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-iii-13-31|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-iii-13-4|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-13-5|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>

@@ -33,9 +33,14 @@ import json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import stree
 
-PAGES, RAW, OUT = sys.argv[1:4]
-data = json.load(open(PAGES, encoding='utf-8'))
-pages, units = data['pages'], data['units']
+# set by load(); the module is also imported by tex_post.py (navigation)
+data, pages, units, RAW, OUT = {}, {}, [], None, None
+
+
+def load(pages_json):
+    global data, pages, units
+    data = json.load(open(pages_json, encoding='utf-8'))
+    pages, units = data['pages'], data['units']
 
 warnings = []
 CUR = ['']   # page being processed, for the warnings
@@ -371,7 +376,8 @@ def rel(frm, to):
 
 NAV = [('index.tm', 'Home'), ('statement.tm', 'The theorem'),
        ('summary.tm', 'The proof in one reading'), ('outline/index.tm', 'Architecture'),
-       ('outline/units.tm', 'Units'), ('glossary.tm', 'Glossary'), ('faq.tm', 'FAQ'),
+       ('outline/units.tm', 'Units'), ('manuscript/index.tm', 'Manuscript'),
+       ('glossary.tm', 'Glossary'), ('faq.tm', 'FAQ'),
        ('outline/work-items.tm', 'Work items'), ('data/index.tm', 'Data'),
        ('method.tm', 'Method'), ('provenance.tm', 'Provenance'), ('CHANGELOG.tm', 'Changes')]
 
@@ -458,6 +464,11 @@ def process(page, meta):
     if nsec >= 4:
         toc = [['table-of-contents', 'toc', ['document', '']]]
     bottom = [ub] if ub else []
+    if page == 'manuscript/index.tm' and data.get('manuscript'):
+        # the README of the LaTeX manuscript: link to its TeXmacs version
+        link = ['ym-manuscript-link', ['hlink', cork('Read the manuscript (HTML version, converted from the LaTeX source)'),
+                                       rel(page, data['manuscript'])]]
+        first = first + [link]
     doc[1:] = top + first + toc + rest + bottom
     # the package is copied next to the documents of every folder (a
     # relative path such as ../../ym-outline is not resolved by TeXmacs)
@@ -473,14 +484,22 @@ def process(page, meta):
     stree.dump(tree, os.path.join(OUT, flat(page)))
 
 
-# optional 4th argument: a file listing the pages to process (default: all)
-only = set(open(sys.argv[4]).read().split()) if len(sys.argv) > 4 else None
-os.makedirs(OUT, exist_ok=True)
-done = 0
-for page, meta in pages.items():
-    if only is None or page in only:
-        process(page, meta)
-        done += 1
-for w in warnings:
-    print('post: warning:', w)
-print(f'post: {done} documents')
+def main():
+    global RAW, OUT
+    load(sys.argv[1])
+    RAW, OUT = sys.argv[2], sys.argv[3]
+    # optional 4th argument: a file listing the pages to process (default: all)
+    only = set(open(sys.argv[4]).read().split()) if len(sys.argv) > 4 else None
+    os.makedirs(OUT, exist_ok=True)
+    done = 0
+    for page, meta in pages.items():
+        if only is None or page in only:
+            process(page, meta)
+            done += 1
+    for w in warnings:
+        print('post: warning:', w)
+    print(f'post: {done} documents')
+
+
+if __name__ == '__main__':
+    main()

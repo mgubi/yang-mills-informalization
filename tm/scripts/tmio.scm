@@ -72,10 +72,13 @@
                  (display* "YM-DONE " out "\n")))))
 
 ;; Tags of the documents that their style does not define (conversion
-;; errors would show up here as red macro names).
+;; errors would show up here as red macro names). Macros assigned in the
+;; document itself (the preamble of the manuscript) count as defined.
 (define (ym-collect-tags s acc)
   (when (pair? s)
     (if (symbol? (car s)) (ahash-set! acc (car s) #t))
+    (if (and (eq? (car s) 'assign) (pair? (cdr s)) (string? (cadr s)))
+        (ahash-set! acc (string->symbol (string-append "@def:" (cadr s))) #t))
     (for-each (lambda (x) (ym-collect-tags x acc)) (cdr s))))
 
 (define (ym-tagcheck-all f)
@@ -86,6 +89,13 @@
                  (ym-collect-tags (tree->stree (buffer-tree)) acc)
                  (for-each (lambda (kv)
                              (let ((n (symbol->string (car kv))))
-                               (if (not (style-has? n))
+                               (if (and (not (style-has? n)) (not (string-starts? n "@def:")) (not (ahash-ref acc (string->symbol (string-append "@def:" n)))))
                                    (display* "YM-UNDEF " in " " n "\n"))))
                            (ahash-table->list acc))))))
+
+;; LaTeX -> stree (the manuscript)
+(define (ym-import-latex-all f)
+  (ym-each f (lambda (in out)
+               (let ((t (tree-import (string->url in) "latex")))
+                 (call-with-output-file out
+                   (lambda (p) (ym-write-stree (tree->stree t) p)))))))

@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<ym-nav-here|Home><ym-nav-sep><hlink|The
   theorem|statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
+  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Manuscript|manuscript/index.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
   items|outline/work-items.tm><ym-nav-sep><hlink|Data|data/index.tm><ym-nav-sep><hlink|Method|method.tm><ym-nav-sep><hlink|Provenance|provenance.tm><ym-nav-sep><hlink|Changes|CHANGELOG.tm>>
 
   <ym-title|Yang\UMills informalization><label|yangmills-informalization>
@@ -81,8 +81,8 @@
     each unit with every statement linked to the Lean;
 
     <item><strong|write> a complete natural-language account of the proof on
-    that skeleton: a <hlink|manuscript|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>,
-    being written in public (under construction).
+    that skeleton: a <hlink|manuscript|manuscript/index.tm>, being written in
+    public (under construction).
   </enumerate>
 
   The outline is a rough draft written by machines. Its purpose is to be
@@ -129,12 +129,12 @@
   plain language, each linked to its exact lines. In all, 989 key statements
   cover the 413,000 lines of source attributed to the
   units.>>|<row|<cell|<strong|5>>|<cell|<hlink|<strong|The full
-  proof>|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>
-  <em|(under construction)>>|<cell|A complete manuscript: Part I, the theorem
-  and the architecture of its proof (about 35 pages), and Part II, the proofs
-  (about 150 pages), written for a mathematician in constructive field theory
-  or probability. Sections appear as they are written and are revised as they
-  are checked against the Lean.>>>>>
+  proof>|manuscript/index.tm> <em|(under construction)>>|<cell|A complete
+  manuscript: Part I, the theorem and the architecture of its proof (about 35
+  pages), and Part II, the proofs (about 150 pages), written for a
+  mathematician in constructive field theory or probability. Sections appear
+  as they are written and are revised as they are checked against the
+  Lean.>>>>>
 
   <strong|All in one PDF.> Levels 2\U4 \V the proof in one reading, the
   architecture and the thirty-two unit outlines \V as a single

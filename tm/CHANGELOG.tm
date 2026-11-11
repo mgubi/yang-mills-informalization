@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|index.tm><ym-nav-sep><hlink|The
   theorem|statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
+  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Manuscript|manuscript/index.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
   items|outline/work-items.tm><ym-nav-sep><hlink|Data|data/index.tm><ym-nav-sep><hlink|Method|method.tm><ym-nav-sep><hlink|Provenance|provenance.tm><ym-nav-sep><ym-nav-here|Changes>>
 
   <ym-title|Changes><label|changes>
@@ -19,9 +19,8 @@
 
   <\itemize-minus>
     <item><strong|The manuscript joins this repository.> It is now in
-    <hlink|manuscript/|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>,
-    as level 5, the full proof (under construction); the separate repository
-    is archived.
+    <hlink|manuscript/|manuscript/index.tm>, as level 5, the full proof
+    (under construction); the separate repository is archived.
 
     <item><strong|Outlines condensed.> Each unit page now shows an outline of
     three to ten pages, condensed from the unit's detailed notes and checked
@@ -76,8 +75,8 @@
     loading these files from rebuilding and replaying the formal proof.
 
     <item><strong|Manuscript started in public.> A complete account is being
-    written at <hlink|manuscript/|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>.
-    It is under construction.
+    written at <hlink|manuscript/|manuscript/index.tm>. It is under
+    construction.
 
     <item><strong|Reader-review corrections.> Added a
     <hlink|clause-to-explanation guide|statement.tm#clause-to-explanation-guide>,

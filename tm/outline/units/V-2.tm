@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> V.1 Decomposition of the limit into
@@ -1089,21 +1089,21 @@
 
 <\references>
   <\collection>
-    <associate|1-what-this-unit-proves|<tuple|1|1>>
-    <associate|2-what-it-uses|<tuple|2|3>>
+    <associate|1-what-this-unit-proves|<tuple|1|2>>
+    <associate|2-what-it-uses|<tuple|2|4>>
     <associate|3-strategy|<tuple|3|4>>
     <associate|4-steps|<tuple|4|4>>
-    <associate|5-where-the-difficulty-lies|<tuple|5|4>>
+    <associate|5-where-the-difficulty-lies|<tuple|5|5>>
     <associate|6-notation|<tuple|6|5>>
     <associate|7-what-remains-unexplained|<tuple|7|5>>
     <associate|additional-source-locations|<tuple|9.1|6>>
-    <associate|auto-1|<tuple|1|1>>
+    <associate|auto-1|<tuple|1|2>>
     <associate|auto-10|<tuple|9.1|6>>
     <associate|auto-11|<tuple|10|14>>
-    <associate|auto-2|<tuple|2|3>>
+    <associate|auto-2|<tuple|2|4>>
     <associate|auto-3|<tuple|3|4>>
     <associate|auto-4|<tuple|4|4>>
-    <associate|auto-5|<tuple|5|4>>
+    <associate|auto-5|<tuple|5|5>>
     <associate|auto-6|<tuple|6|5>>
     <associate|auto-7|<tuple|7|5>>
     <associate|auto-8|<tuple|8|5>>
@@ -1113,16 +1113,16 @@
     <associate|k-v-2-10|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-v-2-11|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-v-2-12|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
-    <associate|k-v-2-13|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
-    <associate|k-v-2-14|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
+    <associate|k-v-2-13|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
+    <associate|k-v-2-14|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-v-2-15|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-v-2-16|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-v-2-17|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-v-2-18|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-v-2-19|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-v-2-2|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
-    <associate|k-v-2-3|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
-    <associate|k-v-2-4|<tuple|<with|mode|<quote|math>|<rigid|->>|14>>
+    <associate|k-v-2-3|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
+    <associate|k-v-2-4|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-v-2-5|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-v-2-6|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
     <associate|k-v-2-7|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
@@ -1131,10 +1131,10 @@
     <associate|key-statements|<tuple|10|14>>
     <associate|lean-source|<tuple|9|5>>
     <associate|unit-difficulty|<tuple|7|4>>
-    <associate|unit-inputs|<tuple|1|3>>
+    <associate|unit-inputs|<tuple|1|4>>
     <associate|unit-limitations|<tuple|6|5>>
-    <associate|unit-notation|<tuple|5|4>>
-    <associate|unit-results|<tuple|?|1>>
+    <associate|unit-notation|<tuple|5|5>>
+    <associate|unit-results|<tuple|?|2>>
     <associate|unit-steps|<tuple|3|4>>
     <associate|unit-strategy|<tuple|<with|mode|<quote|math>|<rigid|->>|4>>
     <associate|v2-osterwalder-schrader-reconstruction-of-a-wightman-theory|<tuple|?|1>>

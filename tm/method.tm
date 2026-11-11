@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|index.tm><ym-nav-sep><hlink|The
   theorem|statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
+  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Manuscript|manuscript/index.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
   items|outline/work-items.tm><ym-nav-sep><hlink|Data|data/index.tm><ym-nav-sep><ym-nav-here|Method><ym-nav-sep><hlink|Provenance|provenance.tm><ym-nav-sep><hlink|Changes|CHANGELOG.tm>>
 
   <ym-title|How the map was made><label|how-the-map-was-made>
@@ -254,7 +254,7 @@
   Claude Opus. It is revised as the outlines improve. Human mathematical
   judgment remains needed to assess whether these explanations give a
   satisfactory account of the construction; the manuscript being written in
-  public is <hlink|under construction|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>.
+  public is <hlink|under construction|manuscript/index.tm>.
 
   <section|Published evidence and tools><label|published-evidence-and-tools>
 

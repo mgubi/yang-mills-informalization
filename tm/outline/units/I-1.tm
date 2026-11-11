@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav||<hlink|Part I|../units.tm#part-i-setting><ym-nav-sep><hlink|Detailed
@@ -1131,7 +1131,7 @@
     <associate|i1-lattice-symmetries-gauge-groups-and-the-wilson-measure|<tuple|?|1>>
     <associate|k-i-1-1|<tuple|10|15>>
     <associate|k-i-1-2|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
-    <associate|k-i-1-3|<tuple|<with|mode|<quote|math>|<rigid|->>|15>>
+    <associate|k-i-1-3|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-i-1-4|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-i-1-5|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>
     <associate|k-i-1-6|<tuple|<with|mode|<quote|math>|<rigid|->>|16>>

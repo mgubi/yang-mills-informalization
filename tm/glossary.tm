@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|index.tm><ym-nav-sep><hlink|The
   theorem|statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><ym-nav-here|Glossary><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
+  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Manuscript|manuscript/index.tm><ym-nav-sep><ym-nav-here|Glossary><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
   items|outline/work-items.tm><ym-nav-sep><hlink|Data|data/index.tm><ym-nav-sep><hlink|Method|method.tm><ym-nav-sep><hlink|Provenance|provenance.tm><ym-nav-sep><hlink|Changes|CHANGELOG.tm>>
 
   <ym-title|Glossary of the Lean names><label|glossary-of-the-lean-names>

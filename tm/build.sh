@@ -105,6 +105,10 @@ mkdir -p "$stage"
 # --- 1. Markdown -> patched Markdown (links, anchors); plan -----------------
 if [[ $mode != html ]]; then
   python3 "$scripts/prep.py" "$repo" "$B/md"
+  # the LaTeX manuscript: flattened and patched (tex_prep.py)
+  if [[ -f "$repo/manuscript/main.tex" ]]; then
+    python3 "$scripts/tex_prep.py" "$repo" "$B/md/tex"
+  fi
 else
   mkdir -p "$B/md"
 fi
@@ -121,18 +125,31 @@ fi
 (( ${#pages[@]} )) || { echo "no pages found" >&2; exit 1; }
 
 # --- 2-4. Markdown -> .tm for the pages to convert --------------------------
+manuscript=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("manuscript") or "")' "$B/md/pages.json" 2>/dev/null || true)
 if (( ${#convert[@]} )); then
   mkdir -p "$B/raw" "$B/post"
-  : > "$B/import.lst"; : > "$B/undump.lst"
+  : > "$B/import.lst"; : > "$B/undump.lst"; : > "$B/latex.lst"
   for t in "${convert[@]}"; do
     f=${t//\//__}; f=${f%.tm}.scm
-    printf '%s\t%s\n' "$B/md/${t%.tm}.md" "$B/raw/$f" >> "$B/import.lst"
+    if [[ $t == "$manuscript" ]]; then
+      printf '%s\t%s\n' "$B/md/tex/main.tex" "$B/raw/$f" >> "$B/latex.lst"
+    else
+      printf '%s\t%s\n' "$B/md/${t%.tm}.md" "$B/raw/$f" >> "$B/import.lst"
+    fi
     printf '%s\t%s\n' "$B/post/$f" "$stage/$t" >> "$B/undump.lst"
     mkdir -p "$stage/$(dir_of "$t")"
   done
-  echo "import: ${#convert[@]} pages"
-  tm_run "$B/import.log" "(ym-import-all \"$B/import.lst\")"
-  python3 "$scripts/post.py" "$B/md/pages.json" "$B/raw" "$B/post" "$B/plan/convert.lst"
+  if [[ -s "$B/import.lst" ]]; then
+    echo "import: $(wc -l < "$B/import.lst" | tr -d ' ') pages"
+    tm_run "$B/import.log" "(ym-import-all \"$B/import.lst\")"
+    python3 "$scripts/post.py" "$B/md/pages.json" "$B/raw" "$B/post" "$B/plan/convert.lst"
+  fi
+  if [[ -s "$B/latex.lst" ]]; then
+    echo "import: the LaTeX manuscript"
+    tm_run "$B/latex.log" "(ym-import-latex-all \"$B/latex.lst\")"
+    f=${manuscript//\//__}; f=${f%.tm}.scm
+    python3 "$scripts/tex_post.py" "$B/md/pages.json" "$B/md/tex" "$B/raw/$f" "$B/post/$f" "$manuscript"
+  fi
   tm_run "$B/undump.log" "(ym-undump-all \"$B/undump.lst\")"
   for t in "${convert[@]}"; do
     [[ -s "$stage/$t" ]] || { echo "document not written: $t" >&2; exit 1; }
@@ -149,14 +166,22 @@ work=()
 while IFS= read -r l; do [[ -n $l ]] && work+=("$l"); done < <(printf '%s\n' ${convert[@]+"${convert[@]}"} ${export_[@]+"${export_[@]}"} | awk '!seen[$0]++')
 # the style package next to the documents of every folder (TeXmacs does not
 # resolve relative paths such as ../../ym-outline in the style tuple)
-for p in ${work[@]+"${work[@]}"}; do cp "$here/ym-outline.ts" "$stage/$(dir_of "$p")/"; done
+for p in ${work[@]+"${work[@]}"}; do
+  cp "$here/ym-outline.ts" "$here/ym-manuscript.ts" "$stage/$(dir_of "$p")/"
+done
+# the bibliography database next to the manuscript, if it has a bibliography
+[[ -z $manuscript && -f "$here/manuscript/main.tm" ]] && manuscript=manuscript/main.tm
+bib=$B/md/tex/references.bib; [[ -f $bib ]] || bib=$repo/manuscript/references.bib
+if [[ -n $manuscript && -f "$stage/$manuscript" && -f $bib ]] && grep -aq '<bibliography' "$stage/$manuscript"; then
+  cp "$bib" "$stage/$(dir_of "$manuscript")/references.bib"
+fi
 
 # check: tags that the style does not define (primitives excepted)
 if (( ${#convert[@]} )); then
   : > "$B/check.lst"
   for p in "${convert[@]}"; do printf '%s\t-\n' "$stage/$p" >> "$B/check.lst"; done
   tm_run "$B/check.log" "(ym-tagcheck-all \"$B/check.lst\")"
-  prims='arg|around|around\*|assign|big|cell|concat|cwith|datoms|document|frac|htab|long-arrow|macro|mid|next-line|no-break|repeat|row|rprime|rsub|rsup|space|sqrt|table|tformat|twith|vspace|vspace\*|with|wide|wide\*|left|right|tabular|lsub|lsup|rsup|neg|tree|op|line-break|new-line|image|tuple|value|if|equal|unequal|or|and|not|merge|quote|compound|hlink|label|reference|move|resize|hspace|surround'
+  prims='arg|around|around\*|assign|big|cell|concat|cwith|datoms|document|frac|htab|long-arrow|macro|mid|next-line|no-break|repeat|row|rprime|rsub|rsup|space|sqrt|table|tformat|twith|vspace|vspace\*|with|wide|wide\*|left|right|tabular|lsub|lsup|rsup|neg|tree|op|line-break|new-line|image|tuple|value|if|equal|unequal|or|and|not|merge|quote|compound|hlink|label|reference|move|resize|hspace|surround|new-page|page-break|no-page-break'
   undef=$(grep -a '^YM-UNDEF' "$B/check.log" | grep -avE " ($prims)\$" || true)
   if [[ -n "$undef" ]]; then echo "warning: undefined tags:"; printf '%s\n' "$undef" | sed "s|$stage/||"; fi
 fi
@@ -184,7 +209,7 @@ if (( ${#work[@]} )); then
 fi
 if [[ $kind == full && $mode != html ]]; then
   # every generated document and every copy of the style in a subfolder
-  find "$here" -mindepth 2 \( -name '*.tm' -o -name 'ym-outline.ts' \) \
+  find "$here" -mindepth 2 \( -name '*.tm' -o -name 'ym-outline.ts' -o -name 'ym-manuscript.ts' \) \
        -not -path "$here/html/*" -not -path "$here/scripts/*" -not -path "$here/resources/*" -delete
   rm -f "$here"/*.tm
 fi
@@ -194,7 +219,7 @@ fi
 # a copy of the style next to the documents of every folder
 while IFS= read -r d; do
   [[ -z $d || $d == . ]] && continue
-  mkdir -p "$here/$d"; cp "$here/ym-outline.ts" "$here/$d/ym-outline.ts"
+  mkdir -p "$here/$d"; cp "$here/ym-outline.ts" "$here/ym-manuscript.ts" "$here/$d/"
 done < <(for p in "${pages[@]}"; do dir_of "$p"; done | sort -u)
 for p in ${work[@]+"${work[@]}"}; do
   mkdir -p "$here/$(dir_of "$p")"; cp "$stage/$p" "$here/$p"

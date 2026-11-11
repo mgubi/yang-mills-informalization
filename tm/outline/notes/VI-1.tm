@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> V.3 Reconstruction for every phase and
@@ -2257,35 +2257,35 @@
     <associate|3-strategy|<tuple|3|10>>
     <associate|4-steps|<tuple|4|11>>
     <associate|41-local-structure-of-the-raw-shell-maps-a01a03|<tuple|4.1|11>>
-    <associate|410-free-field-stress-algebra|<tuple|4.10|23>>
+    <associate|410-free-field-stress-algebra|<tuple|4.10|24>>
     <associate|42-the-collinear-ward-identity|<tuple|4.2|12>>
-    <associate|43-normalisation-pcpartial-a04a06|<tuple|4.3|14>>
+    <associate|43-normalisation-pcpartial-a04a06|<tuple|4.3|15>>
     <associate|44-continuation-off-the-line|<tuple|4.4|16>>
-    <associate|45-brackets-a07-a08|<tuple|4.5|18>>
-    <associate|46-descent-of-the-free-rotation-action-a09a12|<tuple|4.6|19>>
-    <associate|47-integration-to-o4-a13-a14|<tuple|4.7|21>>
+    <associate|45-brackets-a07-a08|<tuple|4.5|19>>
+    <associate|46-descent-of-the-free-rotation-action-a09a12|<tuple|4.6|20>>
+    <associate|47-integration-to-o4-a13-a14|<tuple|4.7|22>>
     <associate|48-the-averaged-stress-tensor-a15|<tuple|4.8|22>>
-    <associate|49-lorentz-group-and-assembly|<tuple|4.9|22>>
-    <associate|5-where-the-difficulty-lies|<tuple|5|23>>
-    <associate|6-notation|<tuple|6|24>>
-    <associate|7-what-remains-unexplained|<tuple|7|25>>
+    <associate|49-lorentz-group-and-assembly|<tuple|4.9|23>>
+    <associate|5-where-the-difficulty-lies|<tuple|5|24>>
+    <associate|6-notation|<tuple|6|25>>
+    <associate|7-what-remains-unexplained|<tuple|7|26>>
     <associate|auto-1|<tuple|1|3>>
-    <associate|auto-10|<tuple|4.6|19>>
-    <associate|auto-11|<tuple|4.7|21>>
+    <associate|auto-10|<tuple|4.6|20>>
+    <associate|auto-11|<tuple|4.7|22>>
     <associate|auto-12|<tuple|4.8|22>>
-    <associate|auto-13|<tuple|4.9|22>>
-    <associate|auto-14|<tuple|4.10|23>>
-    <associate|auto-15|<tuple|5|23>>
-    <associate|auto-16|<tuple|6|24>>
-    <associate|auto-17|<tuple|7|25>>
+    <associate|auto-13|<tuple|4.9|23>>
+    <associate|auto-14|<tuple|4.10|24>>
+    <associate|auto-15|<tuple|5|24>>
+    <associate|auto-16|<tuple|6|25>>
+    <associate|auto-17|<tuple|7|26>>
     <associate|auto-2|<tuple|2|8>>
     <associate|auto-3|<tuple|3|10>>
     <associate|auto-4|<tuple|4|11>>
     <associate|auto-5|<tuple|4.1|11>>
     <associate|auto-6|<tuple|4.2|12>>
-    <associate|auto-7|<tuple|4.3|14>>
+    <associate|auto-7|<tuple|4.3|15>>
     <associate|auto-8|<tuple|4.4|16>>
-    <associate|auto-9|<tuple|4.5|18>>
+    <associate|auto-9|<tuple|4.5|19>>
     <associate|vi1-ward-identities-the-rotation-action-and-the-conserved-stress-tensor--detailed-notes|<tuple|?|1>>
   </collection>
 </references>

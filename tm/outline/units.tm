@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../index.tm><ym-nav-sep><hlink|The
   theorem|../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../summary.tm><ym-nav-sep><hlink|Architecture|index.tm><ym-nav-sep><ym-nav-here|Units><ym-nav-sep><hlink|Glossary|../glossary.tm><ym-nav-sep><hlink|FAQ|../faq.tm><ym-nav-sep><hlink|Work
+  reading|../summary.tm><ym-nav-sep><hlink|Architecture|index.tm><ym-nav-sep><ym-nav-here|Units><ym-nav-sep><hlink|Manuscript|../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../glossary.tm><ym-nav-sep><hlink|FAQ|../faq.tm><ym-nav-sep><hlink|Work
   items|work-items.tm><ym-nav-sep><hlink|Data|../data/index.tm><ym-nav-sep><hlink|Method|../method.tm><ym-nav-sep><hlink|Provenance|../provenance.tm><ym-nav-sep><hlink|Changes|../CHANGELOG.tm>>
 
   <ym-title|The detailed map: the units of the
@@ -185,8 +185,8 @@
 
 <\references>
   <\collection>
-    <associate|auto-1|<tuple|1|1>>
-    <associate|auto-2|<tuple|2|1>>
+    <associate|auto-1|<tuple|1|2>>
+    <associate|auto-2|<tuple|2|2>>
     <associate|auto-3|<tuple|3|2>>
     <associate|auto-4|<tuple|4|3>>
     <associate|auto-5|<tuple|5|3>>
@@ -194,8 +194,8 @@
     <associate|auto-7|<tuple|7|3>>
     <associate|auto-8|<tuple|8|3>>
     <associate|auto-9|<tuple|9|3>>
-    <associate|part-i-setting|<tuple|1|1>>
-    <associate|part-ii-data-of-the-construction|<tuple|2|1>>
+    <associate|part-i-setting|<tuple|1|2>>
+    <associate|part-ii-data-of-the-construction|<tuple|2|2>>
     <associate|part-iii-ultraviolet-construction-renormalization-group|<tuple|3|2>>
     <associate|part-iv-infinite-volume|<tuple|4|3>>
     <associate|part-v-phases-and-reconstruction|<tuple|5|3>>

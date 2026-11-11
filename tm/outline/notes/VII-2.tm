@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> VII.1 Free Maxwell fields for the
@@ -1844,12 +1844,12 @@
     <associate|44-from-the-slope-to-the-coefficient-of-the-trace|<tuple|4.4|13>>
     <associate|45-the-short-distance-law|<tuple|4.5|15>>
     <associate|46-exclusions|<tuple|4.6|16>>
-    <associate|5-where-the-difficulty-lies|<tuple|5|18>>
+    <associate|5-where-the-difficulty-lies|<tuple|5|17>>
     <associate|6-notation|<tuple|6|19>>
     <associate|7-what-remains-unexplained|<tuple|7|20>>
     <associate|auto-1|<tuple|1|2>>
     <associate|auto-10|<tuple|4.6|16>>
-    <associate|auto-11|<tuple|5|18>>
+    <associate|auto-11|<tuple|5|17>>
     <associate|auto-12|<tuple|6|19>>
     <associate|auto-13|<tuple|7|20>>
     <associate|auto-2|<tuple|2|8>>

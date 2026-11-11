@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> III.4 Gaussian integration: change of
@@ -1214,7 +1214,7 @@
 
 <\references>
   <\collection>
-    <associate|1-what-this-unit-proves|<tuple|1|1>>
+    <associate|1-what-this-unit-proves|<tuple|1|2>>
     <associate|2-what-it-uses|<tuple|2|4>>
     <associate|3-strategy|<tuple|3|4>>
     <associate|4-steps|<tuple|4|4>>
@@ -1222,7 +1222,7 @@
     <associate|6-notation|<tuple|6|5>>
     <associate|7-what-remains-unexplained|<tuple|7|5>>
     <associate|additional-source-locations|<tuple|9.1|6>>
-    <associate|auto-1|<tuple|1|1>>
+    <associate|auto-1|<tuple|1|2>>
     <associate|auto-10|<tuple|9.1|6>>
     <associate|auto-11|<tuple|10|12>>
     <associate|auto-2|<tuple|2|4>>

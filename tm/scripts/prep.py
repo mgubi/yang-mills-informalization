@@ -4,7 +4,7 @@
     prep.py REPO OUTDIR
 
 Reads the Markdown collection of REPO (every *.md that git tracks or would
-track, i.e. untracked but not ignored, except under manuscript/ and tm/) (never modifies it) and writes a
+track, i.e. untracked but not ignored, except under tm/) (never modifies it) and writes a
 patched copy of every page to OUTDIR, at the path of its TeXmacs document
 (README.md -> index.md, so that the HTML export gives index.html), together
 with OUTDIR/manifest.tsv (source, target) and OUTDIR/pages.json (titles and
@@ -29,9 +29,10 @@ import json, os, re, subprocess, sys
 REPO = os.path.abspath(sys.argv[1])
 OUT = os.path.abspath(sys.argv[2])
 
-# pages that are not converted (LaTeX manuscript, this folder): links to
-# them go to GitHub like links to any other file of the repository
-EXCLUDE = ('manuscript/', 'tm/')
+# Markdown files that are not pages (this folder); the LaTeX manuscript
+# itself is converted by tex_prep.py / tex_post.py into manuscript/main.tm
+EXCLUDE = ('tm/',)
+MANUSCRIPT = 'manuscript/main.tex'
 
 
 def collection():
@@ -214,7 +215,9 @@ def main():
                           'title': meta[f]['title'], 'file': f,
                           'notes': n if n in meta else None})
 
-    json.dump({'pages': meta, 'units': units, 'repo': url, 'branch': branch},
+    manuscript = 'manuscript/main.tm' if os.path.exists(os.path.join(REPO, MANUSCRIPT)) else None
+    json.dump({'pages': meta, 'units': units, 'repo': url, 'branch': branch,
+               'manuscript': manuscript},
               open(os.path.join(OUT, 'pages.json'), 'w', encoding='utf-8'), indent=1,
               ensure_ascii=False)
     with open(os.path.join(OUT, 'manifest.tsv'), 'w') as f:

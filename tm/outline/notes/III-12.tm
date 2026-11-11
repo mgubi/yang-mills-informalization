@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> III.11 Interacting rank, Gaussian
@@ -1555,22 +1555,22 @@
     <associate|41-calculus-of-the-chessboard-budget|<tuple|4.1|9>>
     <associate|42-detectors-rank-detection-and-the-closure-lemma|<tuple|4.2|10>>
     <associate|43-differences-of-primaries-iii122|<tuple|4.3|12>>
-    <associate|44-observable-transfer-and-coupling-dependence|<tuple|4.4|13>>
+    <associate|44-observable-transfer-and-coupling-dependence|<tuple|4.4|12>>
     <associate|45-convergence-in-the-mesh|<tuple|4.5|14>>
     <associate|5-where-the-difficulty-lies|<tuple|5|16>>
     <associate|6-notation|<tuple|6|17>>
-    <associate|7-what-remains-unexplained|<tuple|7|18>>
+    <associate|7-what-remains-unexplained|<tuple|7|17>>
     <associate|auto-1|<tuple|1|2>>
     <associate|auto-10|<tuple|5|16>>
     <associate|auto-11|<tuple|6|17>>
-    <associate|auto-12|<tuple|7|18>>
+    <associate|auto-12|<tuple|7|17>>
     <associate|auto-2|<tuple|2|6>>
     <associate|auto-3|<tuple|3|8>>
     <associate|auto-4|<tuple|4|9>>
     <associate|auto-5|<tuple|4.1|9>>
     <associate|auto-6|<tuple|4.2|10>>
     <associate|auto-7|<tuple|4.3|12>>
-    <associate|auto-8|<tuple|4.4|13>>
+    <associate|auto-8|<tuple|4.4|12>>
     <associate|auto-9|<tuple|4.5|14>>
     <associate|iii12-bounds-uniform-in-the-volume-and-convergence-as-the-spacing-tends-to-zero--detailed-notes|<tuple|?|1>>
   </collection>

@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|index.tm><ym-nav-sep><hlink|The
   theorem|statement.tm><ym-nav-sep><ym-nav-here|The proof in one
-  reading><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
+  reading><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Manuscript|manuscript/index.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
   items|outline/work-items.tm><ym-nav-sep><hlink|Data|data/index.tm><ym-nav-sep><hlink|Method|method.tm><ym-nav-sep><hlink|Provenance|provenance.tm><ym-nav-sep><hlink|Changes|CHANGELOG.tm>>
 
   <ym-title|OpenAI's construction of four-dimensional quantum Yang\UMills
@@ -2240,19 +2240,19 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|2>>
-    <associate|auto-10|<tuple|5.5|14>>
+    <associate|auto-10|<tuple|5.5|15>>
     <associate|auto-11|<tuple|5.6|16>>
     <associate|auto-12|<tuple|6|17>>
-    <associate|auto-13|<tuple|7|18>>
+    <associate|auto-13|<tuple|7|19>>
     <associate|auto-14|<tuple|8|21>>
-    <associate|auto-15|<tuple|9|22>>
-    <associate|auto-16|<tuple|9.1|22>>
-    <associate|auto-17|<tuple|9.2|23>>
-    <associate|auto-18|<tuple|9.3|23>>
+    <associate|auto-15|<tuple|9|23>>
+    <associate|auto-16|<tuple|9.1|23>>
+    <associate|auto-17|<tuple|9.2|24>>
+    <associate|auto-18|<tuple|9.3|24>>
     <associate|auto-19|<tuple|9.4|25>>
     <associate|auto-2|<tuple|2|5>>
     <associate|auto-20|<tuple|10|26>>
-    <associate|auto-21|<tuple|11|26>>
+    <associate|auto-21|<tuple|11|27>>
     <associate|auto-22|<tuple|12|28>>
     <associate|auto-23|<tuple|13|29>>
     <associate|auto-3|<tuple|3|7>>
@@ -2260,32 +2260,32 @@
     <associate|auto-5|<tuple|5|9>>
     <associate|auto-6|<tuple|5.1|9>>
     <associate|auto-7|<tuple|5.2|11>>
-    <associate|auto-8|<tuple|5.3|11>>
-    <associate|auto-9|<tuple|5.4|12>>
+    <associate|auto-8|<tuple|5.3|12>>
+    <associate|auto-9|<tuple|5.4|13>>
     <associate|convergence-at-fixed-volume-and-the-construction-run|<tuple|5.6|16>>
-    <associate|free-maxwell-fields-at-short-distance|<tuple|9.1|22>>
+    <associate|free-maxwell-fields-at-short-distance|<tuple|9.1|23>>
     <associate|gaussian-integration-and-the-cluster-expansion|<tuple|5.2|11>>
-    <associate|large-fields-and-one-nonlinear-step|<tuple|5.3|11>>
+    <associate|large-fields-and-one-nonlinear-step|<tuple|5.3|12>>
     <associate|openais-construction-of-four-dimensional-quantum-yangmills-theory-an-overview-of-the-proof|<tuple|?|1>>
     <associate|operator-product-expansion-and-contact-extensions|<tuple|9.4|25>>
     <associate|part-i-the-lattice-theory|<tuple|3|7>>
     <associate|part-ii-fields-insertions-and-polymer-activities|<tuple|4|8>>
     <associate|part-iii-the-ultraviolet-construction|<tuple|5|9>>
     <associate|part-iv-infinite-volume|<tuple|6|17>>
-    <associate|part-v-phases-and-relativistic-reconstruction|<tuple|7|18>>
+    <associate|part-v-phases-and-relativistic-reconstruction|<tuple|7|19>>
     <associate|part-vi-ward-identities-rotations-and-the-stress-tensor|<tuple|8|21>>
-    <associate|part-vii-identification-as-yangmills-theory|<tuple|9|22>>
+    <associate|part-vii-identification-as-yangmills-theory|<tuple|9|23>>
     <associate|part-viii-assembly|<tuple|10|26>>
     <associate|reading-guide|<tuple|13|29>>
-    <associate|relation-to-earlier-work-and-where-the-difficulty-lies|<tuple|11|26>>
-    <associate|renormalized-observables-uniformly-in-the-volume|<tuple|5.5|14>>
-    <associate|running-coupling|<tuple|9.2|23>>
+    <associate|relation-to-earlier-work-and-where-the-difficulty-lies|<tuple|11|27>>
+    <associate|renormalized-observables-uniformly-in-the-volume|<tuple|5.5|15>>
+    <associate|running-coupling|<tuple|9.2|24>>
     <associate|steps-whose-informal-account-is-incomplete|<tuple|12|28>>
     <associate|the-block-spin-step-and-the-background-field|<tuple|5.1|9>>
-    <associate|the-marginal-coupling-and-the-schedule|<tuple|5.4|12>>
+    <associate|the-marginal-coupling-and-the-schedule|<tuple|5.4|13>>
     <associate|the-strategy|<tuple|2|5>>
     <associate|the-theorem|<tuple|1|2>>
-    <associate|the-trace-law-and-nonfreeness|<tuple|9.3|23>>
+    <associate|the-trace-law-and-nonfreeness|<tuple|9.3|24>>
   </collection>
 </references>
 

@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> III.2 Choosing the constants: the order
@@ -955,9 +955,9 @@
     <associate|auto-5|<tuple|5|5>>
     <associate|auto-6|<tuple|6|5>>
     <associate|auto-7|<tuple|7|5>>
-    <associate|auto-8|<tuple|8|5>>
-    <associate|auto-9|<tuple|9|5>>
-    <associate|code-dependencies|<tuple|8|5>>
+    <associate|auto-8|<tuple|8|6>>
+    <associate|auto-9|<tuple|9|6>>
+    <associate|code-dependencies|<tuple|8|6>>
     <associate|iii3-free-lattice-kernels-and-covariances|<tuple|?|1>>
     <associate|k-iii-3-1|<tuple|10|12>>
     <associate|k-iii-3-10|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
@@ -966,17 +966,17 @@
     <associate|k-iii-3-3|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
     <associate|k-iii-3-4|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
     <associate|k-iii-3-5|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
-    <associate|k-iii-3-6|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
-    <associate|k-iii-3-7|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
-    <associate|k-iii-3-8|<tuple|<with|mode|<quote|math>|<rigid|->>|12>>
+    <associate|k-iii-3-6|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
+    <associate|k-iii-3-7|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
+    <associate|k-iii-3-8|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|k-iii-3-9|<tuple|<with|mode|<quote|math>|<rigid|->>|13>>
     <associate|key-statements|<tuple|10|12>>
-    <associate|lean-source|<tuple|9|5>>
+    <associate|lean-source|<tuple|9|6>>
     <associate|unit-difficulty|<tuple|6|5>>
     <associate|unit-inputs|<tuple|1|4>>
     <associate|unit-limitations|<tuple|6|5>>
     <associate|unit-notation|<tuple|5|5>>
-    <associate|unit-results|<tuple|?|1>>
+    <associate|unit-results|<tuple|?|2>>
     <associate|unit-steps|<tuple|3|4>>
     <associate|unit-strategy|<tuple|<with|mode|<quote|math>|<rigid|->>|4>>
   </collection>

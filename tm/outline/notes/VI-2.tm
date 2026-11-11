@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|../../index.tm><ym-nav-sep><hlink|The
   theorem|../../statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
+  reading|../../summary.tm><ym-nav-sep><hlink|Architecture|../index.tm><ym-nav-sep><hlink|Units|../units.tm><ym-nav-sep><hlink|Manuscript|../../manuscript/index.tm><ym-nav-sep><hlink|Glossary|../../glossary.tm><ym-nav-sep><hlink|FAQ|../../faq.tm><ym-nav-sep><hlink|Work
   items|../work-items.tm><ym-nav-sep><hlink|Data|../../data/index.tm><ym-nav-sep><hlink|Method|../../method.tm><ym-nav-sep><hlink|Provenance|../../provenance.tm><ym-nav-sep><hlink|Changes|../../CHANGELOG.tm>>
 
   <ym-unit-nav|<hlink|\<leftarrow\> VI.1 Ward identities, the rotation action
@@ -1550,9 +1550,9 @@
     <associate|4-steps|<tuple|4|9>>
     <associate|41-the-free-table|<tuple|4.1|9>>
     <associate|42-the-local-ward-charge|<tuple|4.2|10>>
-    <associate|43-the-free-stress-line-and-the-ward-constant|<tuple|4.3|12>>
+    <associate|43-the-free-stress-line-and-the-ward-constant|<tuple|4.3|11>>
     <associate|44-the-remaining-maxwell-data|<tuple|4.4|13>>
-    <associate|45-comparison-with-the-wilson-limit|<tuple|4.5|14>>
+    <associate|45-comparison-with-the-wilson-limit|<tuple|4.5|13>>
     <associate|5-where-the-difficulty-lies|<tuple|5|16>>
     <associate|6-notation|<tuple|6|17>>
     <associate|7-what-remains-unexplained|<tuple|7|17>>
@@ -1565,9 +1565,9 @@
     <associate|auto-4|<tuple|4|9>>
     <associate|auto-5|<tuple|4.1|9>>
     <associate|auto-6|<tuple|4.2|10>>
-    <associate|auto-7|<tuple|4.3|12>>
+    <associate|auto-7|<tuple|4.3|11>>
     <associate|auto-8|<tuple|4.4|13>>
-    <associate|auto-9|<tuple|4.5|14>>
+    <associate|auto-9|<tuple|4.5|13>>
     <associate|vi2-the-free-maxwell-stress-tensor-and-the-local-ward-charge--detailed-notes|<tuple|?|1>>
   </collection>
 </references>

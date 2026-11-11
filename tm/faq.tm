@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|index.tm><ym-nav-sep><hlink|The
   theorem|statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><ym-nav-here|FAQ><ym-nav-sep><hlink|Work
+  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Manuscript|manuscript/index.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><ym-nav-here|FAQ><ym-nav-sep><hlink|Work
   items|outline/work-items.tm><ym-nav-sep><hlink|Data|data/index.tm><ym-nav-sep><hlink|Method|method.tm><ym-nav-sep><hlink|Provenance|provenance.tm><ym-nav-sep><hlink|Changes|CHANGELOG.tm>>
 
   <ym-title|Questions about the result and the
@@ -132,11 +132,11 @@
   These descriptions are not a systematic literature comparison or a claim of
   priority for each ingredient. This repository's contribution is an
   explanatory map of the released formal proof; the <hlink|full
-  manuscript|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>
-  is under construction. For a component-by-component account of which parts
-  of the proof follow Balaban's programme, which follow OpenAI's 2026 papers
-  on two-dimensional sigma models, which are standard and which appear new,
-  see <hlink|Where the ideas come from|provenance.tm>.
+  manuscript|manuscript/index.tm> is under construction. For a
+  component-by-component account of which parts of the proof follow Balaban's
+  programme, which follow OpenAI's 2026 papers on two-dimensional sigma
+  models, which are standard and which appear new, see <hlink|Where the ideas
+  come from|provenance.tm>.
 
   <section|Why is there only a subsequence of
   volumes?><label|why-is-there-only-a-subsequence-of-volumes>
@@ -319,29 +319,29 @@
     <associate|auto-10|<tuple|10|3>>
     <associate|auto-11|<tuple|11|3>>
     <associate|auto-12|<tuple|12|3>>
-    <associate|auto-13|<tuple|13|3>>
+    <associate|auto-13|<tuple|13|4>>
     <associate|auto-14|<tuple|14|4>>
     <associate|auto-15|<tuple|15|4>>
     <associate|auto-16|<tuple|16|4>>
-    <associate|auto-2|<tuple|2|1>>
+    <associate|auto-2|<tuple|2|2>>
     <associate|auto-3|<tuple|3|2>>
     <associate|auto-4|<tuple|4|2>>
     <associate|auto-5|<tuple|5|2>>
     <associate|auto-6|<tuple|6|2>>
-    <associate|auto-7|<tuple|7|2>>
+    <associate|auto-7|<tuple|7|3>>
     <associate|auto-8|<tuple|8|3>>
     <associate|auto-9|<tuple|9|3>>
-    <associate|does-the-dependency-graph-verify-the-explanations|<tuple|13|3>>
+    <associate|does-the-dependency-graph-verify-the-explanations|<tuple|13|4>>
     <associate|does-the-ope-agree-with-perturbation-theory-to-all-orders|<tuple|9|3>>
     <associate|does-this-prove-a-mass-gap|<tuple|1|1>>
     <associate|how-can-i-check-the-result-myself|<tuple|14|4>>
     <associate|how-do-i-report-a-mismatch-or-cite-what-i-read|<tuple|15|4>>
     <associate|how-much-should-i-trust-an-edited-outline|<tuple|12|3>>
     <associate|is-the-english-statement-faithful-to-the-lean|<tuple|11|3>>
-    <associate|is-this-a-solution-of-the-clay-millennium-problem|<tuple|2|1>>
+    <associate|is-this-a-solution-of-the-clay-millennium-problem|<tuple|2|2>>
     <associate|questions-about-the-result-and-the-evidence|<tuple|?|1>>
     <associate|what-each-check-establishes|<tuple|16|4>>
-    <associate|what-exactly-does-not-free-mean|<tuple|7|2>>
+    <associate|what-exactly-does-not-free-mean|<tuple|7|3>>
     <associate|what-is-new-here|<tuple|4|2>>
     <associate|what-makes-the-constructed-theory-yangmills|<tuple|3|2>>
     <associate|what-was-checked-by-lean-and-what-by-people-or-ai|<tuple|10|3>>

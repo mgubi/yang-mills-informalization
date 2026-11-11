@@ -5,7 +5,7 @@
 <\body>
   <ym-nav|<hlink|Home|index.tm><ym-nav-sep><hlink|The
   theorem|statement.tm><ym-nav-sep><hlink|The proof in one
-  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
+  reading|summary.tm><ym-nav-sep><hlink|Architecture|outline/index.tm><ym-nav-sep><hlink|Units|outline/units.tm><ym-nav-sep><hlink|Manuscript|manuscript/index.tm><ym-nav-sep><hlink|Glossary|glossary.tm><ym-nav-sep><hlink|FAQ|faq.tm><ym-nav-sep><hlink|Work
   items|outline/work-items.tm><ym-nav-sep><hlink|Data|data/index.tm><ym-nav-sep><hlink|Method|method.tm><ym-nav-sep><ym-nav-here|Provenance><ym-nav-sep><hlink|Changes|CHANGELOG.tm>>
 
   <ym-title|Where the ideas come from><label|where-the-ideas-come-from>
@@ -3621,13 +3621,13 @@
     <associate|30-vi1-b--exterior-flux-at-infinity|<tuple|3.30|29>>
     <associate|31-vi2--maxwell-reference-theory-and-stress-normalization|<tuple|3.31|29>>
     <associate|32-vii1--short-distance-freeness-and-finite-detector-systems|<tuple|3.32|30>>
-    <associate|33-vii2--trace-anomaly-and-the-all-radii-asymptotic|<tuple|3.33|30>>
+    <associate|33-vii2--trace-anomaly-and-the-all-radii-asymptotic|<tuple|3.33|31>>
     <associate|34-vii3--nonfreeness|<tuple|3.34|31>>
     <associate|35-vii4-a--separated-ope|<tuple|3.35|32>>
     <associate|36-vii4-b--contact-extensions|<tuple|3.36|33>>
-    <associate|37-vii5--leading-log-coupling-asymptotics|<tuple|3.37|33>>
+    <associate|37-vii5--leading-log-coupling-asymptotics|<tuple|3.37|34>>
     <associate|38-vii6--flexible-scaling-and-arbitrary-radius-sequences|<tuple|3.38|34>>
-    <associate|39-viii1--common-witness-assembly|<tuple|3.39|34>>
+    <associate|39-viii1--common-witness-assembly|<tuple|3.39|35>>
     <associate|4-cross-cutting-comparisons|<tuple|4|35>>
     <associate|41-where-the-ultraviolet-construction-ends|<tuple|4.1|35>>
     <associate|42-reflection-positivity-and-chessboard-estimates|<tuple|4.2|36>>
@@ -3690,14 +3690,14 @@
     <associate|auto-44|<tuple|3.30|29>>
     <associate|auto-45|<tuple|3.31|29>>
     <associate|auto-46|<tuple|3.32|30>>
-    <associate|auto-47|<tuple|3.33|30>>
+    <associate|auto-47|<tuple|3.33|31>>
     <associate|auto-48|<tuple|3.34|31>>
     <associate|auto-49|<tuple|3.35|32>>
     <associate|auto-5|<tuple|2.1|7>>
     <associate|auto-50|<tuple|3.36|33>>
-    <associate|auto-51|<tuple|3.37|33>>
+    <associate|auto-51|<tuple|3.37|34>>
     <associate|auto-52|<tuple|3.38|34>>
-    <associate|auto-53|<tuple|3.39|34>>
+    <associate|auto-53|<tuple|3.39|35>>
     <associate|auto-54|<tuple|4|35>>
     <associate|auto-55|<tuple|4.1|35>>
     <associate|auto-56|<tuple|4.2|36>>
