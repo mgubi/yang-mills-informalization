@@ -3,7 +3,7 @@
 # The fork receives no events when the upstream main branch changes, so the
 # workflow polls it: every hour it merges upstream main into texmacs-site and,
 # if anything changed since the last published build, rebuilds tm/ with
-# TeXmacs Upsilon, commits the regenerated documents to texmacs-site and
+# TeXmacs Upsilon (Linux AppImage), commits the regenerated documents to texmacs-site and
 # publishes tm/html to gh-pages (tm/publish.sh). It also runs on pushes to
 # texmacs-site and by hand (Actions tab, "Run workflow").
 name: TeXmacs site
@@ -30,11 +30,11 @@ concurrency:
 env:
   UPSTREAM: https://github.com/scottnarmstrong/yang-mills-informalization.git
   TEXMACS_RELEASE: upsilon-latest
-  TEXMACS_ASSET: texmacs-qt-macos-arm64.zip
+  TEXMACS_ASSET: texmacs-upsilon-qt-x86_64.AppImage
 
 jobs:
   site:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -63,12 +63,17 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq zsh rsync libegl1 libopengl0 libgl1 libxkbcommon0 \
+            libfontconfig1 libfreetype6 libglib2.0-0 libdbus-1-3 >/dev/null
           mkdir -p "$RUNNER_TEMP/texmacs" && cd "$RUNNER_TEMP/texmacs"
           gh release download "$TEXMACS_RELEASE" -R mgubi/texmacs -p "$TEXMACS_ASSET"
-          ditto -x -k "$TEXMACS_ASSET" .
-          bin=$(find "$PWD" -path '*.app/Contents/MacOS/TeXmacs' -type f | head -1)
-          [[ -x "$bin" ]] || { echo "TeXmacs binary not found in $TEXMACS_ASSET"; exit 1; }
+          chmod +x "$TEXMACS_ASSET"
+          ./"$TEXMACS_ASSET" --appimage-extract >/dev/null   # no FUSE on runners
+          bin=$PWD/squashfs-root/AppRun
+          [[ -x "$bin" ]] || { echo "AppRun not found in $TEXMACS_ASSET"; exit 1; }
           echo "TEXMACS_BIN=$bin" >> "$GITHUB_ENV"
+          QT_QPA_PLATFORM=offscreen timeout 120 "$bin" -headless -x '(begin (display "TEXMACS-OK") (newline) (quit-TeXmacs))' 2>&1 | tail -5
           git clone --quiet --depth 1 --filter=blob:none --sparse https://github.com/mgubi/mgubi.github.io.git "$RUNNER_TEMP/web"
           git -C "$RUNNER_TEMP/web" sparse-checkout set plugins/max-html
           echo "MAX_HTML_DIR=$RUNNER_TEMP/web/plugins/max-html" >> "$GITHUB_ENV"
