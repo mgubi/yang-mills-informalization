@@ -16,6 +16,14 @@ The outline is a rough draft written by machines. Its purpose is to be checked, 
 
 ## Start here
 
+### [The main theorem →](statement.md)
+
+The exact statement. It gives:
+- the Lean theorem and the definitions at its core, verbatim;
+- a commentary on what it says in words;
+- the full statement in ordinary mathematics, definition by definition, with what is and is not claimed and a comparison with the Wightman, Osterwalder–Schrader and Jaffe–Witten formulations;
+- every item linked to its Lean lines.
+
 ### [Overview of the proof →](outline/README.md)
 
 How the proof is organised:
