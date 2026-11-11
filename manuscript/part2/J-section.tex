@@ -1,75 +1,744 @@
 \section{Products and contact subtractions}\label{sec:partII-J}
 
-\emph{This section is under construction.}
+A cluster of separated insertions can be replaced, to any prescribed degree, by a finite sum of fields at one point. The coefficients must be chosen before the exterior insertions and the phase. We construct them from finitely many correlations of the mixed table, impose the rotation and reality laws by averaging, and remove the lower degrees successively. Theorem~\ref{prop:OP} follows from this construction. Lemmas~\ref{lem:J1.3}--\ref{lem:J1.6} give its integrated and nested forms, used in Theorem~\ref{thm:B}.
+
+The lattice estimate uses the signed local and graded quotient bounds of Lemmas~\ref{lem:J-signed-local} and~\ref{lem:J-graded-quotient}. Blocking loses marker weights when insertion points approach one another. Grouping nearby markers bounds this loss by a power of the ratio of insertion and fusion scales. Taylor subtraction and coefficient transport produce one field and a small remainder. Reflection positivity converts its chessboard root into a norm bound in the commutative compression algebra, valid in every phase. Derivative induction removes the grid restriction; tree induction allows several clusters to shrink independently.
+
+For contacts, a pointwise bound away from collisions is insufficient. We subtract normal Taylor jets of the test function, with a different order for each retained field degree. Partial collisions require the same operation inside each smaller cluster. The resulting finite recursion gives the distribution in Theorem~\ref{prop:CT}; its absolute convergence follows by summing normal shells. The contact projections have their own probes and clearances, while using the same original fields and correlation table as the product expansion.
+
+Throughout, the lattice insertions and quotient fields are those of Definitions~\ref{def:D08} and~\ref{def:D10}; inclusions and derivatives are those of Lemma~\ref{lem:F2}. We use the rotations of Lemma~\ref{lem:G3.2}, the centered bounds of Lemma~\ref{lem:E2.3}, and the compression algebra~$\mathfrak A_0$ and phase tables of Lemmas~\ref{lem:H1.2}--\ref{lem:H1.3}. Write $|\boldsymbol A|_{\deg}=\sum_i\deg A_i$ and $\zeta\in\phases\sqcup\{\mathrm{mix}\}$, as in Definition~\ref{def:D18}.
+
+\subsection*{Inputs from the marked expansion and the quotient}
+
+We first establish two estimates needed when the field to be extracted varies with the cutoff. Throughout this subsection, a local marked expression has the form of Definition~\ref{def:D26} and the regularity, zero radial jets and forced supports of Lemma~\ref{lem:E2.2a}. Write
+\begin{equation*}
+\mu(x)=\sum_\alpha|x_\alpha|,\qquad x^\circ=x-x_0\mathbf1,
+\qquad \mathfrak r_i=\mathcal E_i+\widetilde\epsilon_i^{-1/2}\mathcal K_i\,.
+\end{equation*}
+The last quantity is the weighted remainder mass of Lemma~\ref{lem:E2.2}. Fix an output degree~$t$. The diagonal rescaling $(\mathsf d_i x)_\alpha=\ell_i^{t-\deg\alpha}x_\alpha$ accounts for the engineering degrees inside~$V_t$. Put $C_i=C_{J_i}$ in this subsection. The normalized columns of Lemma~\ref{lem:E2.1} are denoted by~$\mathcal H_i(b)$, their coefficient maps by~$\mathsf X_i$, and their remainder bounds are $C_i\mu((\mathsf X_i b)^\circ)$ by Lemma~\ref{lem:E2.2}.
+
+Let $K_j\ge1$ be the nondecreasing stage bound of item~\ref{it:E-columns} in Lemma~\ref{lem:E1.1}. The degree rescaling above is the map $\mathsf S_L$ in the proof of Lemma~\ref{lem:E-marked-step}. For an input coefficient~$v$ and remainder mass~$q$, its averaged marked estimate gives an output coefficient~$u$ and remainder mass~$r$ with
+\begin{equation}\label{eq:J-marked-recall}
+\begin{aligned}
+\mu(u-M_i\mathsf d_iv)&\le\epsilon_i[\mu(v^\circ)+q],\\
+r&\le K_{J_{i+1}}\mu((\mathsf d_iv)^\circ)+\epsilon_iq,\qquad\epsilon_i=\ell_i^{-3/8}.
+\end{aligned}
+\end{equation}
+Here $M_i$ is the leading polynomial map, fixes the unit, preserves the nonconstant subspace, and satisfies $\|M_i^{\pm1}\|\le K_{J_{i+1}}$. These estimates follow from~\eqref{eq:E-atom-estimates} and the symmetry averaging in that proof.
+
+Write $C_l=C_{J_l}$. In the threshold order of Section~\ref{sec:constants}, the construction chooses
+\begin{equation}\label{eq:J-stage-room}
+\begin{aligned}
+64K_{J_l+1}^2&\le C_l,&
+10^5K_{J_{l+1}+1}^6(1+C_{l+1})^2&\le\ell_l^{1/8},&
+1+2C_l&\le\ell_l^{1/40}.
+\end{aligned}
+\end{equation}
+The column choice imposes the first inequality; the ratio choice imposes the other two. Stage growth gives $J_{l+1}\le J_l+1$.
+
+The following estimate retains the signed difference produced by subtracting a column. For a continuation on~$[k_*,m]$, let $x_l,r_l$ be its coefficients and remainder bounds. Write $q_{\rm fin}$ for the combined coefficient and remainder bound of the original expression at~$m$, before the affine column subtraction.
+
+\begin{lemma}[Signed local continuation]\label{lem:J-signed-local}
+At sufficiently late levels, normalized columns plus a zero-coefficient remainder admit an affine coarse continuation satisfying~\eqref{eq:J-marked-recall} and
+\begin{equation*}
+H_i=\ell_i^t\blockmap{i}_{\beta_{N,p,i+1}}H_{i+1}\,.
+\end{equation*}
+If $x_{k_*}=0$, then, for $k_*\le l\le m$,
+\begin{equation*}
+r_l+\mu(x_l)\le4(1+C_m)q_{\rm fin}(a_m/a_l)^{1/8},\qquad
+r_m\le2(1+C_m)q_{\rm fin}\,.
+\end{equation*}
+\end{lemma}
+The proof derives the interval bound from the signed one-step inequalities.
+
+\begin{proof}\label{proof:J-signed-start}
+We use the marked integration of Lemma~\ref{lem:E-marked-step} and~\eqref{eq:E-atom-estimates}, obtained from Lemmas~\ref{lem:D-connected}, \ref{lem:D4} and~\ref{lem:D5}, the local format of Lemma~\ref{lem:E2.2a}, and the normalized columns of Lemmas~\ref{lem:E2.1}--\ref{lem:E2.2}, with the insertion normalization of Definition~\ref{def:D08}.
+
+Let~$R$ have coefficient zero and remainder bound~$q_0$. Its regular terms have zero radial jets through~$t$; its forced terms retain their eligibility events. In the marked integration of Lemma~\ref{lem:E-marked-step}, the former gain an inverse block factor before the connected sums, and the latter keep half the forced suppression. The stage constants precede the ratio and its entry threshold, so both resulting bounds $C_j/\ell_i+o_{\widehat\beta_i}(1)$ are at most~$\eta_i=\ell_i^{-2/5}$. Apply~\eqref{eq:E-atom-estimates} with zero primary coefficient. Sum the regular masses~$g_a$ and forced masses $k_b/\widetilde\epsilon_{i+1}^{1/2}$ before taking the output norm. Their sum is at most~$q_0$, so the output coefficient and remainder are each at most~$\eta_iq_0$. Summability in Lemma~\ref{lem:D-connected} justifies termwise integration and retains the exact density identity. The last inequality of~\eqref{eq:J-stage-room} gives $(1+2C_i)\eta_i\le\epsilon_i$. If~$Z$ denotes the resulting local expression and~$z$ its coefficient, then
+\begin{equation*}
+H(Z)=\ell_i^t\blockmap{i}_{\beta_{N,p,i+1}}H(R),\qquad
+\mu(z)\le\eta_iq_0,\qquad\mathfrak r_i(Z)\le\eta_iq_0\,.
+\end{equation*}
+
+Write the fine affine family as $\mathcal H_{i+1}(a+b)+R$, with~$b$ the free parameter. Set $c=\mathsf X_i^{-1}z$ and replace it at the coarse level by
+\begin{equation*}
+\mathcal H_i(a+c+b)+R',\qquad
+R'=Z-\mathcal H_i(c)\,.
+\end{equation*}
+The coefficient of~$R'$ is zero, and $\mathfrak r_i(R')\le(1+C_i)\eta_iq_0$.
+Linearity of the column density gives
+$H(\mathcal H_i(a+c+b))+H(R')=H(\mathcal H_i(a+b))+H(Z)$.
+Together with the exact column identity of Lemma~\ref{lem:E2.1}, this proves the asserted density identity for every~$b$, including all forced terms. The supports remain fixed in~$b$ by Lemma~\ref{lem:E2.2}.
+
+For the column alone use~\eqref{eq:J-marked-recall}, with fine remainder bound~$q_{\rm col}$. Adding~$Z$ changes the coefficient by at most~$\eta_iq_0$. For the remainder, recentering costs at most~$C_i\eta_iq_0$, and shifting the column parameter costs at most another~$C_i\eta_iq_0$. The total extra cost is $(1+2C_i)\eta_iq_0\le\epsilon_iq_0$. With~$q=q_{\rm col}+q_0$, these are the asserted bounds. Repeating this construction from the fine end to the chosen coarse end produces the affine family on the whole interval.
+
+For later use put $U=\mu(u)$, $Y=\mu(\mathsf d_iv)$, $K=K_{J_{i+1}}$ and retain~$r,q$ for the remainder bounds. Applying~$M_i^{-1}$ and using $\mu(v^\circ)\le Y$ gives
+\begin{equation}\label{eq:J-signed-input}
+Y\le K[U+\epsilon_i(Y+q)],\qquad r\le KY+\epsilon_iq\,.
+\end{equation}
+For an interval~$[k_*,m]$, choose the free affine parameter to cancel its coefficient at~$k_*$; this uses the invertibility of~$\mathsf X_{k_*}$. The signed residual then starts with coefficient zero. In step~$l$ put~$K=K_{J_{l+1}}$ and, in~\eqref{eq:J-signed-input}, put $A_l=32(1+C_l)^2$ and induct from~$k_*$ toward~$m$. Equation~\eqref{eq:J-stage-room} implies
+\begin{equation*}
+A_l\ge4K^2,\quad4K\epsilon_l\le1,\quad
+4KA_{l+1}\epsilon_l\le1,\quad
+(4K^2+1)\ell_l^{1/8}\epsilon_l\le1.
+\end{equation*}
+From $A_lU\le r\le KY+\epsilon_lq$ and $A_l\ge4K^2$ obtain $4KU\le Y+\epsilon_lq$. Substitution into~\eqref{eq:J-signed-input} gives $Y\le4K\epsilon_lq$. Thus $A_{l+1}\mu(x_{l+1})\le q$, since $\mu(x_{l+1})\le Y$, and $\ell_l^{1/8}r\le q$. Iteration gives the discount~$(a_m/a_{k_*})^{1/8}$. At the finest level the affine subtraction has $r_m\le(1+C_m)q_{\rm fin}+C_m\mu(x_m)$. The cone gives $2C_m\mu(x_m)\le r_m$, hence $r_m\le2(1+C_m)q_{\rm fin}$ and $r_m+\mu(x_m)\le4(1+C_m)q_{\rm fin}$. Applying the iterated discount between any~$l$ and~$m$ proves the interval bound.
+\label{proof:J-signed-end}
+\end{proof}
+
+The next estimate recovers the output-degree power after passing to the quotient. Fix any norm on~$F_t$. Put $r_t=\reflevel{t}$ and $\|v\|_m=\mu(x_m(v))$, where $x_m(v)=x_{N,p,m;t}(v)$ is the transferred coefficient of Definition~\ref{def:D08}. A refinement below is a nontrivial refinement of the ordered cutoff limits~\eqref{eq:E2-tails}; it may depend on the cluster geometry.
+
+\begin{lemma}[Graded quotient bound]\label{lem:J-graded-quotient}
+For $0\le i\le t$ there are positive~$C_{t,i}(m)$, independent of the refinement and label family, with $\log C_{t,i}(m)/s_m\to0$. If labels~$v_{N,p}\in V_t$ converge in~$V_t$ to~$v$ on such a refinement and eventually $\|v_{N,p}\|_m\le\epsilon_{\rm bd}$, then
+\begin{equation}\label{eq:J-graded-input}
+\operatorname{dist}_{F_t}([v],\jmath_{i-1,t}F_{i-1})
+\le C_{t,i}(m)a_m^{-(t-i)}\epsilon_{\rm bd}\,.
+\end{equation}
+Here $[v]\in F_t$ is the class of~$v$, $F_{-1}=0$, and $m$ is sufficiently large.
+\end{lemma}
+
+\begin{proof}\label{proof:J-graded-start}
+We use the triangular comparison in Lemma~\ref{lem:E-marked-step} and the marked bounds of Lemma~\ref{lem:E2.2}, and the physical quotient of Definition~\ref{def:D10} with the corrected inclusions of Lemma~\ref{lem:F2}. The leading polynomial matching reads the prescribed engineering jets of the local sections of Lemma~\ref{lem:A1}. A basis section has no lower engineering jet, and its jet in its own degree is its specified basis polynomial. Consequently, for the leading map,
+\begin{equation*}
+(M_l)_{\alpha\beta}=0\quad
+(\alpha\ne\beta,\ \deg\alpha\le\deg\beta).
+\end{equation*}
+The diagonal entries are the nonzero fine-to-coarse normalization factors. The full coefficient map differs from this leading map by the marked error. Write~$P$ for coordinate projection onto engineering degrees at most~$i-1$, first assuming~$i>0$. The leading map~$M_l$ and its inverse preserve~$\ker P$: triangularity gives preservation by~$M_l$, and injectivity on this finite-dimensional subspace gives preservation by its inverse. Consequently $\mu(Px)\le K_{J_{l+1}}\mu(PM_lx)$.
+The degree rescaling expands~$Px$ by at least~$\ell_l^{t-i+1}$, whereas it expands~$x-Px$ by at most~$\ell_l^{t-i}$. The marked error is bounded by $\epsilon_l\mu(x^\circ)$.
+
+The two resulting estimates are
+\begin{align*}
+\mu(x_{l+1})\le C_{l+1}\mu(Px_{l+1})
+&\ \Longrightarrow\ 
+\begin{cases}
+\mu(x_l)\le C_l\mu(Px_l),\\
+\ell_l^{t-i+1}\mu(Px_{l+1})\le C_{l+1}\mu(Px_l),
+\end{cases}\\
+Px_{l+1}=0&\ \Longrightarrow\ 
+\mu(x_l)\le C_{l+1}\ell_l^{t-i}\mu(x_{l+1})\,.
+\end{align*}
+To obtain the first line, put $Y=\mu(P\mathsf d_lx_{l+1})$. The low-cone hypothesis and $C_{l+1}\le\ell_l$ give $\mu(\mathsf d_lx_{l+1})\le2Y$. Applying the inverse leading map to the low coordinates and using $2K_{J_{l+1}}\epsilon_l(1+C_{l+1})\le1$ gives $Y\le2K_{J_{l+1}}\mu(Px_l)$. The full coefficient is at most $3K_{J_{l+1}}Y$, so $64K_{J_{l+1}}^2\le C_l,C_{l+1}$ gives both conclusions. In the second line use $\mu(\mathsf d_lx_{l+1})\le\ell_l^{t-i}\mu(x_{l+1})$ and $K_{J_{l+1}}+1\le C_{l+1}$. These numerical inequalities follow from~\eqref{eq:J-stage-room}.
+
+At the bare level take the plane~$PV_t$. Its transported image remains in the low cone by the first line. The map from this plane to its low coordinates at any level is injective by its expansion bound, hence onto~$PV_t$. Subtracting a transported vector with the same low coordinates at level~$m$ therefore leaves zero low coordinates and increases the full size by at most~$1+C_m$. Repeat the subtraction at every next coarser level, applying the second line between subtractions. This gives a vector~$y_{N,p}$ in the transported bare low plane with
+\begin{equation*}
+\|v_{N,p}-y_{N,p}\|
+\le G_m(1+C_m)(a_{r_t}/a_m)^{t-i}\epsilon_{\rm bd},
+\qquad G_m=\prod_{l<m}(1+C_l)C_{l+1}\,.
+\end{equation*}
+Allowing a fixed norm-equivalence factor, put $\mathcal J_m=\prod_{l<m}C_{l+1}$. The first-line expansion, iterated from the bare level, shows that bounded vectors~$y_{N,p}$ in this plane have bare coefficients bounded by $a_N^{t-i+1}e^{o(s_N)}$. Multiplying the same polynomial by $a_N^{i-1}$ instead of~$a_N^t$ therefore gives a degree-$(i-1)$ local observable with subpower healthy derivative and all-configuration supremum bounds. Its stencil is unchanged. To match this observable to the selected lower-degree insertions, apply Lemma~\ref{lem:E-local-comparison}: it gives admissible degree-$(i-1)$ coefficients~$c_{N,p}$ whose insertions differ from these observables by a small error. Lemma~\ref{lem:F1b} removes that error in every separated spectator test.
+
+To pass to a physical lower field, let $\Pi_{N,p}$ be the equation projections of Lemma~\ref{lem:E2.6}. The normalized equation remainder
+\begin{equation*}
+\frac{c_{N,p}-\Pi_{N,p}c_{N,p}}{1+\|\Pi_{N,p}c_{N,p}\|}
+\end{equation*}
+remains admissible: its first term is a bounded scalar multiple of~$c_{N,p}$ and its second is bounded. Lemma~\ref{lem:E2.7} and Lemma~\ref{lem:F1b} make every separated spectator test of it tend to zero. Take a simultaneous cluster point~$(\lambda,z)$ of
+$((1+\|\Pi c\|)^{-1},\Pi c/(1+\|\Pi c\|))$ on a further refinement. The projection convergence~\eqref{eq:F-projections} gives $\Pi_{i-1}z=z$ and $\lambda+\|z\|=1$. If~$y$ is a limit of the bounded labels~$y_{N,p}$, every spectator functional has limit $L(z)=\lambda L(y)$. If $\lambda=0$, the all-spectator identity and~\eqref{eq:F-dimension} put~$z$ in~$\ker\Pi_{i-1}$, contradicting $\|z\|=1$. Thus $z/\lambda\in V_{i-1}$ has exactly the limiting correlations of~$y$. The corrected inclusions of Lemma~\ref{lem:F2} and the all-spectator definition of the null space now give $[y]\in\jmath_{i-1,t}F_{i-1}$. Boundedness of~$y_{N,p}$ follows from the displayed distance bound and convergence of~$v_{N,p}$. If these bounds hold only on the chosen refinement, set~$y_{N,p}=0$ off the set where they hold; this extends the bounded plane family to the original tails without changing its limit. Passing to this limit proves the distance estimate.
+
+For~$i=0$ no plane is removed. Iterating the reverse coefficient estimate of Lemma~\ref{lem:E2.2} gives $\|v\|\le \mathcal J_m(a_{r_t}/a_m)^t\epsilon_{\rm bd}$ and hence the same bound in~$F_t$. Finally $\log \mathcal J_m=o(s_m)$ by row~5 of Section~\ref{sec:constants} and Lemma~\ref{lem:E1.1}. Since $C_l\ge2$, $G_mC_m\le (\mathcal J_m)^3C_0$. Thus $\log G_m=o(s_m)$ as well. Fixed reference-spacing and quotient-norm factors are absorbed in~$C_{t,i}(m)$. No estimate depends on the refinement used to take the limits.
+\label{proof:J-graded-end}
+\end{proof}
+
 
 \subsection{Products and nested clusters}\label{sec:partII-J.1}
 
+A probe word is a fixed finite list of fields at distinct nonzero points. Correlating a field at the origin against such a word gives a linear functional on~$F_j$. The intersection of the kernels of all these functionals is zero, by the definition of~$\nullspace{j}$. Finite dimensionality therefore permits a finite separating collection.
+
+Choose the probe functionals recursively. Given biorthogonal fields~$u_\alpha$ and probe functionals~$\ell_\alpha$ below degree~$j$, continue each~$\ell_\alpha$ to~$F_j$ by the same correlation formula; inclusions preserve that formula by Lemma~\ref{lem:F2}. The retraction
+\begin{equation*}
+\mathsf t_jA=\sum_{\deg\alpha<j}\ell_\alpha(A)\jmath_{\deg\alpha,j-1}u_\alpha,
+\qquad\mathsf t_j\jmath_{j-1,j}=1
+\end{equation*}
+allows a section~$s$ of the new quotient to be replaced by $s-\jmath\mathsf t_js$. Lift a quotient basis with this section and realize its dual by finite combinations of probe functionals, which span~$F_j^*$. The enlarged system is biorthogonal. In particular~$\ell_\alpha$ vanishes on~$\jmath F_{\deg\alpha-1}$. For $j=0$ take $u_0=\mathbf1$. Let~$\mathcal P_j$ be the union of the finite probe sets used through degree~$j$, with index~$\beta$. Write $\ell_\alpha(A)=\sum_\beta m_{\alpha\beta}S(A(0),B_{j,\beta})$ in this finite collection.
+
 \begin{definition}[Finite correlation projection]\label{def:D31}
-To be stated here.
+Define the decoder on arbitrary data by
+\begin{equation*}
+D_j(y)=\sum_{\deg\alpha\le j}\left(\sum_{\beta\in\mathcal P_j}m_{\alpha\beta}y_\beta\right)\jmath_{\deg\alpha,j}u_\alpha\,.
+\end{equation*}
+It satisfies $D_j((S(A(0),B_{j,\beta}))_\beta)=A$ for~$A\in F_j$.
+For a word~$w$ separated from these probes, set
+\begin{equation*}
+P_j^{\rm raw}w=D_j\big((S(w,B_{j,\beta}))_{\beta\in\mathcal P_j}\big)\,.
+\end{equation*}
+This extracts a field from finitely many correlations using the fixed biorthogonal coordinates.
 \end{definition}
+
+Here and below a word is a finite product of labelled insertions; sums of words are read linearly. Rotations act on every position and label, and conjugation acts on labels and scalar coefficients. Translation of a word by~$u$ is denoted by~$\tau_u$.
 
 \begin{definition}[Symmetric projection]\label{def:D32}
-To be stated here.
+When every rotation of~$w$ is separated from every probe in~$\mathcal P_j$, set
+\begin{equation*}
+A_jw=\int_{O(4)}R_j(h)P_j^{\rm raw}(h^{-1}w)\,dh,\qquad
+B_jw=\tfrac12\big(A_jw+\overline{A_j\bar w}\big)\,.
+\end{equation*}
+The Haar measure has mass one. Outside this domain set both maps to zero. At center~$o$, apply these formulas to~$\tau_{-o}w$. These averages impose rotation covariance and reality.
 \end{definition}
+
+Let~$I_qA=A(0)$ for~$A\in F_q$. The inclusions~$\jmath_{i,j}$ identify the same field in different degrees.
 
 \begin{definition}[OPE coefficients]\label{def:D33}
-To be stated here.
+Put $L_{i,q}=B_iI_q$ and define
+\begin{equation*}
+Q_0=1,\qquad Q_j=1-\sum_{i<j}\jmath_{i,j}Q_iL_{i,j},\qquad
+E_j=\bigcap_{i<j}\ker(Q_iL_{i,j})\,.
+\end{equation*}
+For the chosen real basis~$(O_{j,\lambda})_{\lambda\in\channels{j}}$ of~$E_j$, let~$\omega_{j,\lambda}:E_j\to\C$ be its coordinate functionals and set
+\begin{equation*}
+c_{j,\lambda}(\boldsymbol A;x,o)
+=\omega_{j,\lambda}\!\left(Q_jB_j\!\left[\prod_i A_i(x_i-o)\right]\right)\,.
+\end{equation*}
+The recursion removes lower degrees before reading coordinates and is independent of arity and truncation.
 \end{definition}
+
+The following splitting makes the coefficients a single choice for all later estimates. The proof uses the biorthogonal choices just made.
 
 \begin{lemma}[One channel prescription]\label{lem:J1.1}
-To be stated here.
+The real fields~$O_{j,\lambda}$ form complex bases of conjugation-invariant complements:
+\begin{equation*}
+F_j=\jmath_{j-1,j}F_{j-1}\oplus E_j,\qquad
+E_j=\operatorname{span}_{\C}\{O_{j,\lambda}:\lambda\in\channels{j}\},\qquad F_{-1}=0\,.
+\end{equation*}
+The degree-zero vector spans the unit line and need not equal the unit. All coefficients are fixed before spectators, states and truncations.
 \end{lemma}
+
+\begin{proof}
+Use the field calculus of Lemma~\ref{lem:F2} and the preceding biorthogonal construction. Its reconstruction formula fixes every field of~$F_j$. Continuing an old functional means using the same finite correlations, since $\iota_j\jmath_{q,j}=\iota_q$; no extension of a functional is chosen arbitrarily.
+
+For~$i\ge q$, this reconstruction and the rotation and reality laws give~$L_{i,q}=\jmath_{q,i}$. Also $L_{i,j}\jmath_{q,j}=L_{i,q}$ for~$i<q\le j$: both sides evaluate the same single-field word before averaging. For all~$q\le j$, induction in~$j$ now gives
+\begin{equation}\label{eq:J-cuts}
+Q_jL_{j,q}=0\ (q<j),\qquad
+\sum_{i\le j}\jmath_{i,j}Q_iL_{i,q}=\jmath_{q,j}\,.
+\end{equation}
+For~$q=j$ the second identity is the recursion; for~$q<j$, compose that recursion with~$\jmath_{q,j}$ and use the compatibility just proved and the induction hypothesis. In the same induction assume $Q_kF_k\subset E_k$ and $Q_k=1$ on~$E_k$ for~$k<j$. Applying~$Q_iL_{i,j}$ to~$Q_jA$ then cancels its matching~$i$ term; terms with~$k<i$ vanish because the~$i$ cut kills lower fields, and terms with~$i<k<j$ vanish because~$Q_kA\in E_k$. Thus~$Q_jF_j\subset E_j$. On~$E_j$, the defining sum for~$Q_j$ is zero, so~$Q_j=1$. Its kernel is exactly~$\jmath F_{j-1}$ by~\eqref{eq:J-cuts}. Haar invariance and simultaneous input and output conjugation show that every cut intertwines rotations and conjugation. Thus~$E_j$ is invariant under both. Its fixed real subspace spans it, since $v=(v+\bar v)/2+i(v-\bar v)/(2i)$; a real basis is also a complex basis. This proves the stated splitting and the simultaneous choice.
+\end{proof}
+
+For $T\to\infty$ write $f\preccurlyeq e^{bT}$ when, for every~$\tau>0$, there is~$T_0$ such that for every~$T\ge T_0$ an ordered cutoff tail gives $\|f\|\le e^{(b+\tau)T}$, uniformly in the cutoff and volume on that tail. Products add exponents and finite sums take their maximum. Factors of exponent zero are called subpower. A level~$k$ has height~$b$ when~$s_k/T\to b$; thus $a_k=e^{-bT+o(T)}$. Lemma~\ref{lem:E1.1} supplies these levels by taking the first with $s_k\ge bT$, or $s_k\ge\sqrt T$ if~$b=0$.
+
+Introduce one square-zero variable for each insertion in each reflected cell. A live marker is one distinct insertion group; its positive weight multiplies every coefficient containing it. If $F_{X,A}$ is a coefficient with support~$X$ and marker set~$A$, its weighted majorant is
+\begin{equation*}
+\sum_{X,A}e^{\sigma\cover(X)}\|F_{X,A}\|\prod_{\iota\in A}w_\iota\,.
+\end{equation*}
+Here $\|F_{X,A}\|$ is the regular derivative or forced majorant of Definitions~\ref{def:D05a}--\ref{def:D05b}; at a support ball use its anchored sum. A grouped coefficient carries the product of its live marker weights, denoted by~$\omega$.
+
+For the marked expansion put
+\begin{equation*}
+\delta_l^{\rm mark}=\widehat\beta_{l+1}^{-2},\qquad
+\phi_l=\widehat\beta_{l+1}^{-1},\qquad
+\Xi_l=\exp\sqrt{\widehat\beta_{l+1}},\qquad
+z_{t,l}=\widehat\beta_l^{-\nu_t}.
+\end{equation*}
+The fixed integer~$\nu_t$ bounds the local degree-$t$ polynomial losses, and $z_{t,l}C_l\le1$ at entry. The four factors pay respectively for support enlargement, regular transport, Taylor extraction and insertion normalization. Their logarithms and~$\log C_l$ are $o(s_l)$. For an initial weight~$\varpi>0$ at~$k_*$ define its later weights by
+\begin{equation*}
+\varpi_{k_*}=\varpi,\qquad \varpi_{l+1}=\phi_l\varpi_l\quad(l\ge k_*).
+\end{equation*}
+The marked entry choices require $\phi_l\ell_l^{t+1}z_{t,l}\le z_{t,l+1}$ for $l\ge r_t$. This follows the zero-jet regular remainder through the integration.
+
+Write $\mathfrak b_l$ for the support radius $B_l$ of Section~\ref{sec:constants}. Fix a reflected cell at level~$k$ and choose
+\begin{equation*}
+k_*=\min\{l\ge k:\mathfrak b_l^2\le a_k/a_l\},\qquad
+\mathcal S_k=\exp\{(a_k/a_{k_*})^4\mathsf v_{k_*}+5\},
+\end{equation*}
+where $\mathsf v_l=q_l$ is the per-site logarithmic bound~\eqref{eq:E-vacuum-majorant}. These quantities ensure that the marked stencils fit in the cell and bound its density normalization.
+
+For a grouped coefficient at level~$m+1$ of weight~$\omega>0$, put
+\begin{equation*}
+q_m=4\Xi_ma_{m+1}^t/\omega,\qquad \mathfrak E_m=8(1+C_m)q_m\,.
+\end{equation*}
+The terminal weight~$\varpi$ must satisfy
+\begin{equation}\label{eq:J-marked-weights}
+\begin{aligned}
+\varpi(a_m/a_{k_*})^{t+1}z_{t,m}/z_{t,k_*}
+ &\le\delta_m^{\rm mark}\omega/(16\Xi_m),\\
+32(1+C_m)\varpi\,a_{k_*}^{-t}\mathfrak E_m(a_m/a_{k_*})^{1/8}
+ &\le z_{t,k_*}/2.
+\end{aligned}
+\end{equation}
+These conditions pay for extraction at~$m$ and for the continued residual, respectively.
+
+\begin{lemma}[Marked extraction and insertion costs]\label{lem:J-marked-costs}
+A grouped coefficient of weight~$\omega$ has a degree-$t$ local extraction with coefficient and remainder each at most~$q_m$. With $k_*$ as above, sufficiently late, and whenever~\eqref{eq:J-marked-weights} holds, the matched field has coefficient size at most~$2\mathfrak E_m$. Its interior reflected remainder in the level-$k$ cell has root at most~$2\mathcal S_k/\varpi$.
+\end{lemma}
+
+\begin{proof}\label{proof:J-costs-start}
+We use the norms and insertions of Definitions~\ref{def:D05a}--\ref{def:D05b} and~\ref{def:D08}, the marked integration of Lemma~\ref{lem:E-marked-step}, its convergent majorants from Lemmas~\ref{lem:D-connected} and~\ref{lem:D1}, and the local format of Lemma~\ref{lem:E2.2a}. Divide a grouped coefficient by its available weight~$\omega$. Extract its radial polynomial through~$t$ and write the regular complement by the integral Taylor formula. The finite derivative sums, coefficient conversion and remainder constants are at most~$\Xi_m$ after the entry levels have been chosen: their logarithms are bounded by stage constants and powers of~$\log\widehat\beta_{m+1}$, whereas $\log \Xi_m=\sqrt{\widehat\beta_{m+1}}$. Multiplication by~$a_{m+1}^t$ gives~$q_m$. The factor four bounds the polynomial and complement separately. Forced terms keep their original majorants and the forced weight of Definition~\ref{def:D26}.
+
+The combined cost is at most~$2q_m$. Subtract the column matching the continuation at~$k_*$. Lemma~\ref{lem:J-signed-local} gives, for $k_*\le l\le m$,
+\begin{equation*}
+\mathfrak r_l+\mu(x_l)\le
+\mathfrak E_m(a_m/a_l)^{1/8},\qquad
+\mu(x_m^{\rm field})\le2\mathfrak E_m.
+\end{equation*}
+The factor $4(1+C_m)$ multiplying~$2q_m$ includes the finest residual and coefficient together. The entry requirement $\phi_l\ell_l^{t+1}z_{t,l}\le z_{t,l+1}$ gives the regular zero-jet gain: iterating $\varpi_{l+1}=\phi_l\varpi_l$ yields $\varpi_m\le\varpi(a_m/a_{k_*})^{t+1}z_{t,m}/z_{t,k_*}$.
+The first condition of~\eqref{eq:J-marked-weights} permits extraction at~$m$. For the second, the level-$l$ ratio of required to permitted residual weight is bounded by its level-$k_*$ value times $(a_l/a_{k_*})^{7/8}\le1$: use $\varpi_l\le\varpi(a_l/a_{k_*})^{t+1}z_{t,l}/z_{t,k_*}$, the residual bound $\mathfrak E_m(a_m/a_l)^{1/8}$ and divide by $z_{t,l}$. Thus the condition at~$k_*$ permits the signed residual and compensating columns throughout the interval. Their density identities are exact by Lemma~\ref{lem:J-signed-local}.
+
+In the square-zero variables defined above, a marked polynomial is measured by the sum of the absolute coefficients times the product of their assigned weights. Consequently the coefficient with one residual per cell is at most~$\varpi^{-1}$ per cell times that sum. Summing the unmarked majorants and dividing by the two positive density normalizations bounds the integral per cell by~$\mathcal S_k$. The singleton, forced-profile, connected regular and eligible forced sums contribute at most $2,1,1,1$ per cell, giving the additive constant five. Apply this to the original local difference and the correction representing its column, and use the root triangle inequality, obtained by expanding the reflected product and applying~\eqref{eq:F-chess} to each term. This gives~$2\mathcal S_k/\varpi$.
+
+To verify that~$k_*$ has the required height, let $\Phi_l=\max(1,\mathsf v_l)$ bound the normalization cost. The entry choices satisfy
+\begin{equation}\label{eq:J-entrance}
+\mathfrak b_{l+1}^2\le2\mathfrak b_l^2,\qquad
+(\ell_l\mathfrak b_l^2)^4\Phi_{l+1}=o(s_{l+1}).
+\end{equation}
+The level~$k_*$ exists since $a_l\mathfrak b_l^2$ decreases by at least~$2/3$ at each step. If $k_*=k$, the spacing ratio is one. Otherwise $k_*=l+1$, and minimality gives $a_k/a_{k_*}\le\ell_l\mathfrak b_l^2$. Therefore $(a_k/a_{k_*})^4\mathsf v_{k_*}=o(s_{k_*})$. Also
+$0\le s_{k_*}-s_k=\log(a_k/a_{k_*})\le(a_k/a_{k_*})^4\Phi_{k_*}=o(s_{k_*})$.
+This proves $s_{k_*}/s_k\to1$ and $\log\mathcal S_k=o(s_{k_*})$. At height zero it still gives $\log\mathcal S_k=o(T)$. Finally~$\log \Xi_m=o(s_m)$ follows from $\widehat\beta_m=\bar\beta+\kappa_Gs_m$ and $s_{m+1}/s_m\to1$. The other displayed functions are fixed powers of~$\widehat\beta$ or the subpower column cost of Lemma~\ref{lem:E1.1}.
+\label{proof:J-costs-end}
+\end{proof}
+
+Fix nonempty lattice labels~$v_\iota\in V_{d_\iota}$, let~$n_{\rm cl}$ be their number and put~$W=\sum_\iota d_\iota$. Choose levels~$k,m,j$ of heights $0\le b<a<c$. The input points lie on the spacing-$a_j$ grid, in the centered level-$(m+1)$ block $[-a_{m+1}/2,a_{m+1}/2)^4$, and their separation is at least~$\mathfrak b_j^2a_j$, with the support radius~$\mathfrak b_j$ defined above. The configurations belong to~$\Gen{n_{\rm cl}}$, and all stencils are interior to the level-$k$ cell. These conditions hold eventually for clusters of extent $e^{-xT+o(T)}$ and reciprocal separation at most $e^{xT+o(T)}$, where $a<x<c$. The chosen~$k_*$ has height~$b$ by~\eqref{eq:J-entrance}.
+
+\begin{lemma}[Lattice cluster replacement]\label{lem:J-lattice}
+For every output degree~$t$, the preceding configurations admit labels~$v_{N,p}^{\rm out}\in V_t$ on an ordered cutoff tail such that, with $\mathcal Z=Wc+4n_{\rm cl}(c-a)$,
+\begin{align*}
+\|v_{N,p}^{\rm out}\|_m&\preccurlyeq e^{(\mathcal Z-ta)T},\\
+\left\|\prod_\iota O_{N,p}(v_\iota,x_\iota)-O_{N,p}(v_{N,p}^{\rm out},0)\right\|_{\mathcal T_k(0)}
+&\preccurlyeq e^{[\mathcal Z-(t+1/16)(a-b)]T}.
+\end{align*}
+The difference is interior. The bounds are uniform in cutoff and volume on that tail.
+\end{lemma}
+
+\begin{proof}\label{proof:J-lattice-start}
+Use Definition~\ref{def:D26}, Lemmas~\ref{lem:E2.2}--\ref{lem:E2.2a}, and Lemmas~\ref{lem:J-signed-local} and~\ref{lem:J-marked-costs}. In the square-zero variables defined above, the coefficient of their product in $\density\rho_N\prod_\iota(1+z_\iota O_{N,p}(v_\iota,x_\iota))$ is the product insertion times the density. Until level~$j$ the stencils are disjoint, so their marked integrations are separate.
+
+Moving a marker to its representative through at most~$h$ cover balls gives
+\begin{equation}\label{eq:J-support-move}
+\cover(X\cup\{y_\iota:\iota\in A\})\le\cover(X)+h|A|.
+\end{equation}
+If at most~$\mathfrak n$ representatives occupy a ball, shrinking each affected weight by $\eta e^{-\sigma h}$ gives the original term times~$\eta^{|A|}$. In the anchored sum, terms incident on the old ball use its original majorant; any new incidence can be assigned to an old marker on the joining path. There are at most~$n_{\rm cl}$ old markers for each new representative and~$\mathfrak n$ representatives. Taking $\eta\le[(1+\mathfrak n)n_{\rm cl}]^{-1}$ pays for these assignments. Unmarked terms keep their supports. Hence the enlarged weighted series is bounded by the original majorant series of Lemma~\ref{lem:D1}.
+
+Keep a maximal $\mathfrak b_l^2$-separated set of representatives at each level, retaining the distinguished one at the origin, and attach each discarded point to a retained neighbor. A fusion decreases the number of groups, so there are at most~$n_{\rm cl}-1$ fusions. The joining-cover bound can be taken as
+$h_l=16[1+\ell_l(\mathfrak b_l+\mathfrak b_{l+1}+1)^2]^4$.
+The entry choices give $(\sigma_{J_{l+1}}+1)h_l=o(s_l)$ and subpower occupancy. Choose one~$\alpha_j\le1$ below all the resulting enlargement allowances for~$m\le l<j$. It is subpower: the logarithm of the running minimum is bounded by the maximum logarithmic cost; split this maximum into a fixed initial segment and a tail bounded by~$\tau s_j$, then send~$\tau$ to zero. This uses the entrance requirement on~$h_l$ in rows~6--7 of Section~\ref{sec:constants} and Lemma~\ref{lem:E1.1}. The factor~$[(1+\mathfrak n)n_{\rm cl}]^{-1}$ above is included in this allowance~$\alpha_j/8$.
+
+Between fusions the one-mark integration costs at most~$6\ell_l\le\ell_l^4$ in each weight. This is a bound on the marked regular and forced masses: for an incoming majorant~$\mathcal L$, the rooted integration and local subtraction of Lemmas~\ref{lem:D-connected} and~\ref{lem:D5} give $2(p_l+\ell_l\mathcal L)+f_l$, where the stage choices give $2p_l\le\mathcal L$ and $2f_l\le\mathcal L$. Thus the output is at most $(2\ell_l+3/2)\mathcal L\le6\ell_l\mathcal L$. With~$g$ groups remaining, their product weight at level~$l$ is consequently at least
+\begin{equation}\label{eq:J-marker-weights}
+(a_j/a_l)^{4n_{\rm cl}}(\alpha_j/8)^{n_{\rm cl}(n_{\rm cl}-g)}\prod_\iota w_\iota.
+\end{equation}
+Indeed a separated step multiplies the weight by~$\ell_l^{-4g}\ge\ell_l^{-4n_{\rm cl}}$. A fusion to~$g'<g$ uses at most~$n_{\rm cl}$ factors~$\alpha_j/8$, whereas $n_{\rm cl}(g-g')\ge n_{\rm cl}$.
+
+At~$m+1$ all representatives have the same ancestor. The initial normalized-field weights can be chosen with $\prod_\iota w_\iota=e^{-WcT+o(T)}$ by Lemma~\ref{lem:E2.2}. Thus~\eqref{eq:J-marker-weights} gives $\omega=e^{-ZT+o(T)}$ and $\mathfrak E_m=e^{(\mathcal Z-ta)T+o(T)}$. Choose
+\begin{equation}\label{eq:J-terminal-weight}
+\varpi=\exp\{[(t+1/16)(a-b)-\mathcal Z]T\}.
+\end{equation}
+The second condition of~\eqref{eq:J-marked-weights} has exponent $-(a-b)/16<0$; the first has exponent $-\mathcal Z-15(a-b)/16$, strictly below the exponent~$-\mathcal Z$ of its right side. Both therefore hold, including every subpower factor. Lemma~\ref{lem:J-marked-costs} gives the coefficient bound~$2\mathfrak E_m$ and root bound~$2\mathcal S_k/\varpi$ asserted here. All enlargements fit the prescribed cell margin. Reflection and conjugation preserve the majorants, so the same calculation applies to all cells and all cutoffs on the common tail.
+\label{proof:J-lattice-end}
+\end{proof}
+
+
+We next state the bounds when the exterior distances also shrink. Write $w=\prod_i A_i(x_i)$, $W=|\boldsymbol A|_{\deg}$ and $V=|\boldsymbol B|_{\deg}$. As $T\to\infty$, suppose the cluster lies within $e^{-\alpha T+o(T)}$ of~$o$, its pairwise distances are at least $e^{-\alpha T-o(T)}$, and $\alpha>0$. Exterior points are at distance at least $e^{-\beta T-o(T)}$ from every cluster point and~$o$, and mutually at least $e^{-\upsilon T-o(T)}$ apart, where $0\le\beta<\alpha$ and $\upsilon\ge\beta$. The field lists are fixed, or range over fixed compact sets of coefficients. For the raw decoder, let $\lambda_{i,\kappa}^{\rm raw}$ be its biorthogonal coordinates and $A_h$ its truncation through degree~$h$. Write $\mathcal R_D^{\rm raw}$ for the resulting tested remainder in~$\mathfrak A_0$.
+
+The following estimates retain the exterior distance powers needed for nested clusters and contacts.
+\begin{samepage}
+\begin{lemma}[Power-separated estimates]\label{lem:J-power-separated}
+For every $i,D\ge0$ and $j\le h$, the stated geometry paths satisfy
+\begin{align}
+\lambda_{i,\kappa}^{\rm raw}&\preccurlyeq e^{(W-i)\alpha T},&
+\mathcal R_D^{\rm raw}&\preccurlyeq e^{[W\alpha-(D+1)(\alpha-\beta)+V\upsilon]T},\label{eq:J-raw-rates}\\
+Q_jB_jw-Q_jL_{j,h}A_h&\preccurlyeq e^{(W-h-1)\alpha T}.&&\label{eq:J-average-error}
+\end{align}
+The final coefficients and tested remainder of Definition~\ref{def:D33} obey the same respective bounds, in norm before state evaluation.
+\end{lemma}
+\end{samepage}
+The proof converts lattice roots to algebra norms, removes the grid restriction by derivative descent, and then averages the decoder.
+
+\begin{proof}\label{proof:J-power-start}
+We use Lemma~\ref{lem:J-lattice}, the derivative calculus of Lemma~\ref{lem:F2}, the root bounds of Lemmas~\ref{lem:E2.3} and~\ref{lem:F1a}, and the compression limit of Lemma~\ref{lem:H1.2}. Write~$W=|\boldsymbol A|_{\deg}$, $V=|\boldsymbol B|_{\deg}$ and~$n_{\rm cl}=|I_{\rm cl}|$.
+
+First convert roots into algebra norms. If a lattice difference has centered root at most~$h$, and exterior insertions have roots at most~$h_l$, apply~\eqref{eq:F-chess} and Lemma~\ref{lem:F1a} to~$2n$ widely translated copies, alternately conjugated. Put the difference in a coarse cell and the exterior insertions in finer disjoint cells. Their stencils fit by Lemma~\ref{lem:F1a}; the bound is~$(h\prod_lh_l)^{2n}$. For the positive time-axis OS Hamiltonian, let~$E$ be its spectral resolution. Then
+\begin{equation*}
+\|(e^{-tH_4^{\rm OS}}-P_4^0)\psi\|^2
+=\int_{(0,\infty)}e^{-2t\lambda}\,d\langle E_\lambda\psi,\psi\rangle\longrightarrow0\,.
+\end{equation*}
+Inserting this strong limit between bounded slabs in the compression construction of Lemma~\ref{lem:H1.2} identifies the limit of these translated copies with the moment of~$(U^*U)^n$. The ordered limits and then infinite translation separation give
+\begin{equation}\label{eq:J-moments}
+\int_{\phases}|\xi(U)|^{2n}\,d\nu(\xi)
+\le(h\prod_lh_l)^{2n}\,.
+\end{equation}
+Here~$U$ is the corresponding difference in~$\mathfrak A_0$. If~$|\xi(U)|>h\prod_lh_l$ anywhere, continuity and the full support of~$\nu$ in Theorem~\ref{prop:PH} give an open set of positive measure where it exceeds this bound by a fixed factor. Letting~$n\to\infty$ contradicts~\eqref{eq:J-moments}. Thus~$\|U\|\le h\prod_lh_l$. The same argument bounds a word by its insertion roots, giving crude exponent~$W\alpha+V\upsilon$ on the stated geometries.
+
+We give the sharper calculation first for the generic grid configurations defined above in a cluster of height~$\alpha>0$. Choose $0<b<a<\alpha<c$, with exterior distance exponent~$\beta<b$, and set~$\mathcal Z=Wc+4n_{\rm cl}(c-a)$. Apply Lemma~\ref{lem:J-lattice} with an auxiliary degree~$t\ge D$. For each fixed cluster geometry the output coefficients are bounded at fixed~$m$; the reverse transfer inequality of Lemma~\ref{lem:E2.2} bounds them also at the reference level. Along a refinement of the ordered cutoff tails they converge to a field~$A^{\rm out}\in F_t$. The preceding norm argument bounds the replacement error by exponent
+\begin{equation*}
+\mathcal Z-(t+1/16)(a-b)+V\upsilon\,.
+\end{equation*}
+Testing the same difference against the fixed probes bounds the raw coordinate errors. Reference-level coefficient convergence and Lemma~\ref{lem:J-graded-quotient} apply on this geometry-dependent refinement. The degree-$i$ raw coordinate annihilates~$F_{i-1}$ by the biorthogonality before Definition~\ref{def:D31}, and is a fixed bounded functional on the quotient. With~$\epsilon_{\rm bd}\preccurlyeq e^{(\mathcal Z-ta)T}$, \eqref{eq:J-graded-input} therefore bounds that coordinate by exponent~$\mathcal Z-ia$.
+
+Choose~$t$ large enough that $(t+1/16)(a-b)\ge(D+1)a$ and also large enough for every coefficient being tested. Exact reconstruction of~$A^{\rm out}$ by the prescription separates the degrees~$i\le D$ from~$D<i\le t$. An omitted degree contributes at most
+\begin{equation*}
+\mathcal Z-ia+i\beta+V\upsilon\le \mathcal Z-(D+1)(a-\beta)+V\upsilon\,.
+\end{equation*}
+The low-degree coordinate errors satisfy the same bound, by the chosen auxiliary horizon. We have therefore proved grid exponents~$\mathcal Z-ia$ for raw degree-$i$ coordinates and~$\mathcal Z-(D+1)(a-\beta)+V\upsilon$ for the raw remainder.
+
+Run the crude, grid and derivative bounds uniformly over all characters~$\xi\in\phases$. The algebra~$\mathfrak A_0$ is commutative, so $\|U\|=\sup_\xi|\xi(U)|$. To remove the grid restriction, consider these character evaluations for every input label list and every positional derivative. A derivative replaces its input label by a field of degree one higher, by Lemma~\ref{lem:F2}. For suitable constants~$c_0,d_0$ independent of the input degrees, the crude bound has exponent~$\alpha W+c_0$ and the grid bound exponent~$cW+d_0$. At all~$W$ with~$(c-\alpha)W\ge c_0-d_0$, the crude bound already proves the grid exponent at arbitrary points. Descend in~$W$. Move the configuration by~$O(a_j)$ to generic level-$j$ grid points; the intervening segment remains separated at exponent~$\alpha$. The induction hypothesis bounds its derivative by~$c(W+1)+d_0$, and multiplication by~$a_j=e^{-cT+o(T)}$ gives~$cW+d_0$ for the change. This proves the descent for every slot and axis.
+
+Now let~$a\uparrow \alpha$ and~$c\downarrow \alpha$, keeping~$\beta<b<a$. Translation moves the origin to~$o$. This proves~\eqref{eq:J-raw-rates} for arbitrary configurations. The remainder estimate is in~$\mathfrak A_0$, and empty clusters give zero remainder.
+
+Finally transfer these estimates to Definition~\ref{def:D33}. Let~$A_h\in F_h$ be the raw truncation at an auxiliary degree~$h$. In every rotated probe correlation, the difference between the cluster and~$A_h(0)$ has exponent~$(W-h-1)\alpha$. The marked norm bounds and multilinearity make~\eqref{eq:J-raw-rates} uniform on compact coefficient sets, hence on the rotation orbit. Haar averaging, conjugation and the fixed maps~$Q_j$ preserve the exponent. This proves~\eqref{eq:J-average-error}. With~$h=j$, all lower raw modes vanish under~$Q_jL_{j,j}$ by~\eqref{eq:J-cuts}; the remaining modes have exponent~$(W-j)\alpha$. With~$h=D$, use~\eqref{eq:J-cuts} to reconstruct~$A_D$, and telescope the raw remainder with the errors~\eqref{eq:J-average-error} for~$j\le D$. Testing an error in~$F_j$ costs~$j\beta+V\upsilon$, so their largest exponent is~$W\alpha-(D+1)(\alpha-\beta)+V\upsilon$.
+\label{proof:J-power-end}
+\end{proof}
+
+The lattice replacement gives two small-radius estimates with different fixed data. For the coefficient fix~$\boldsymbol A,M_{\rm geo},\eta,\varepsilon,j,\lambda$; for the remainder fix~$\boldsymbol A,\boldsymbol B,M_{\rm geo},\eta,\delta_{\rm sp},\varepsilon,D$. The parameters~$M_{\rm geo}$ are nonnegative and the separation and error parameters are positive, as in Definition~\ref{def:D18}.
+
+For the algebra-valued remainder put
+\begin{equation*}
+\mathcal R_D=\widehat{\prod_i A_i(x_i)\prod_l B_l(y_l)}
+-\sum_{j\le D,\,\lambda\in\channels{j}}c_{j,\lambda}\,
+ \widehat{O_{j,\lambda}(o)\prod_l B_l(y_l)}.
+\end{equation*}
+Here~$\widehat w=M^0(w)$ is the compressed separated word of Definition~\ref{def:D14} and Lemma~\ref{lem:H1.2}, and its characters and vacuum state give the phase and mixed remainders of Definition~\ref{def:D18}.
 
 \begin{lemma}[Separated estimates]\label{lem:J1.2}
-To be stated here.
+There are thresholds~$r_0$ for the coefficient bound and~$r_1$ for the remainder bound, preceding positions and states, such that
+\begin{equation*}
+|c_{j,\lambda}(\boldsymbol A;x,o)|\le r^{j-|\boldsymbol A|_{\deg}-\varepsilon},\qquad
+|\mathcal R_D^\zeta|\le r^{D+1-|\boldsymbol A|_{\deg}-\varepsilon}
+\end{equation*}
+on the respective admissible configurations for~$0<r<r_0$ or~$0<r<r_1$. The second bound also holds in~$\mathfrak A_0$ before state evaluation.
 \end{lemma}
 
+\begin{proof}\label{proof:J1.2-start}
+Apply Lemma~\ref{lem:J-power-separated} to Definition~\ref{def:D18}. Set $T=-\log r$, $\alpha=1$ and $\beta=\upsilon=0$. Every admissible geometry has these bounds on extent and reciprocal distances. If either claimed threshold failed, choose violating configurations at radii tending to zero. The estimates just proved along that sequence, with loss~$\varepsilon/2$, eventually contradict the violation with loss~$\varepsilon$. Constants and subpower factors are absorbed by~$r^{\varepsilon/2}$. Taking~$M_{\rm geo}r<\delta_{\rm sp}/2$ also ensures separation. Character evaluation and the mixed vacuum are contractions on~$\mathfrak A_0$. This proves both estimates with coefficient one and the stated separate dependencies.
+\label{proof:J1.2-end}
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{prop:OP}]
+Lemma~\ref{lem:J1.1} gives the fields and coefficients of Definition~\ref{def:D18} before spectators, state indices or truncation. Lemma~\ref{lem:J1.2} gives its coefficient bound and its remainder bound with their respective thresholds. These are exactly the two assertions of Theorem~\ref{prop:OP}.
+\end{proof}
+
+Integration requires bounds for the full and truncated expressions individually. Fix the two field lists, $M_{\rm geo}\ge0$, $\eta,\delta_{\rm sp},\varepsilon>0$, $D\in\N$, a measurable space~$Z$ and~$B_0\ge0$. Write~$\vartheta_Z$ for the complex integration weight.
+
+\begin{samepage}
 \begin{lemma}[Integrated separated estimate]\label{lem:J1.3}
-To be stated here.
+Some~$r_0>0$ works for all smaller radii, measures~$\lambda_Z$, integrable weights with~$\int|\vartheta_Z|\,d\lambda_Z\le B_0$, and almost-everywhere measurable geometry and phase maps admissible on~$\{\vartheta_Z\ne0\}$:
+\begin{equation*}
+\left|\int_Z\vartheta_Z\mathcal R_D^{\xi(z)}\,d\lambda_Z\right|
+\le B_0r^{D+1-|\boldsymbol A|_{\deg}-\varepsilon}\,.
+\end{equation*}
+The weighted full and truncated expressions are integrable. The same conclusion holds for the mixed state.
 \end{lemma}
+\end{samepage}
 
+\begin{proof}
+Use Definition~\ref{def:D18}, Lemma~\ref{lem:J1.2}, and the phase continuity of Lemma~\ref{lem:H1.3}. The root argument in Lemma~\ref{lem:J-power-separated} also bounds the full correlation uniformly over these configurations and states for each fixed~$r$. The finite truncated sum is the full expression minus the uniformly bounded remainder, so it too is uniformly bounded. Separate continuity in geometry and phase gives joint measurability by rounding the geometry in its open domain to a countable dense set and passing to the pointwise limit. The coefficients are smooth where their rotated probes are clear; reducing~$r_0$ puts all admissible geometries there. Their compositions are measurable, and multiplication by~$\vartheta_Z$ gives integrable majorants. Integrate the remainder bound against~$|\vartheta_Z|$. 
+\end{proof}
+
+A nested configuration retains leaf positions and internal centers, so it also describes partially replaced words. Call an internal vertex other than the root proper, and fix its truncation~$D_v\in\N$.
+
+\begin{samepage}
 \begin{definition}[Nested geometry and rates]\label{def:D34}
-To be stated here.
+Give each vertex~$v$ of a finite rooted tree a position~$z_v$, each leaf a field~$A_i$, and each internal vertex a scale~$\varrho_v>0$. Its root~$o_{\rm root}$ is internal. Require $\varrho_{o_{\rm root}}=r$, $\varrho_v\le\varrho_{\operatorname{par}(v)}$, $|z_u-z_v|\le M_{\rm geo}\varrho_v$ for every descendant~$u$, and $|z_u-z_{u'}|\ge\eta\varrho_v$ for positions in different child subtrees. Put
+\begin{align*}
+W_v&=\sum_{i\text{ below }v}\deg A_i,&q_v&=\varrho_v/\varrho_{\operatorname{par}(v)},\\
+\mathcal Q_{\varepsilon,q}(\varrho)&=r^{q-W_{o_{\rm root}}-\varepsilon}
+\prod_{v\ne o_{\rm root}\text{ internal}}q_v^{-W_v-\varepsilon},&
+\mathsf e_{\boldsymbol D}(\varrho)&=\sum_{v\ne o_{\rm root}\text{ internal}}q_v^{D_v+1}\,.
+\end{align*}
 \end{definition}
+\end{samepage}
+Spectators are~$\delta_{\rm sp}$-clear of every tree position and each other.
 
+The recursion retains every leaf, including those above a neighboring truncation.
+
+\begin{samepage}
 \begin{definition}[Iterated coefficient]\label{def:D35}
-To be stated here.
+A leaf contributes its field and coefficient one. At a proper internal vertex~$v$, replace its children by
+\begin{equation*}
+\sum_{j\le D_v}\sum_{\lambda\in\channels{j}}
+ c_{j,\lambda}(\text{child fields};\text{child centers},z_v)O_{j,\lambda},
+\end{equation*}
+multiplying their coefficients and summing. At the root retain only~$(q,\lambda)$, giving~$C^{\rm it,\boldsymbol D}_{q,\lambda}$. The direct coefficient is $C^{\rm dir}_{q,\lambda}=c_{q,\lambda}(\boldsymbol A;z_{\rm leaves},z_{o_{\rm root}})$. This compares successive and direct expansion.
 \end{definition}
+\end{samepage}
+
+Fix the tree, leaf list, output~$(q,\lambda)$, proper-vertex truncations, $M_{\rm geo}\ge0$ and~$\eta,\varepsilon>0$. No lower bound on the ratios~$q_v$ is imposed.
 
 \begin{lemma}[Nested coefficient estimate]\label{lem:J1.4}
-To be stated here.
+There is~$r_0>0$ such that all geometries of Definition~\ref{def:D34} with~$0<r<r_0$ satisfy
+\begin{equation*}
+|C^{\rm dir}_{q,\lambda}|\le\mathcal Q_{\varepsilon,q},\qquad
+|C^{\rm dir}_{q,\lambda}-C^{\rm it,\boldsymbol D}_{q,\lambda}|
+\le\mathcal Q_{\varepsilon,q}\mathsf e_{\boldsymbol D}\,.
+\end{equation*}
+Both expressions are smooth in neighborhoods of these geometries.
 \end{lemma}
+
+\begin{proof}\label{proof:J1.4-start}
+Use Definitions~\ref{def:D33}, \ref{def:D34} and~\ref{def:D35} and Lemma~\ref{lem:J-power-separated}. Along any sequence of admissible radii and scales tending to the root collision, put $T=\sum_{v\text{ internal}}\log(1/\varrho_v)$. Eventually every summand is positive. After a subsequence, $\log(1/\varrho_v)/T\to a_v\ge0$, with~$\sum_va_v=1$ and~$a_v\ge a_{\operatorname{par}(v)}$. Set
+\begin{equation*}
+\mathcal B=W_{o_{\rm root}}a_{o_{\rm root}}
++\sum_{v\ne o_{\rm root}\text{ internal}}W_v(a_v-a_{\operatorname{par}(v)})\,.
+\end{equation*}
+We prove by induction on the tree that a direct output of degree~$q$ has exponent~$\mathcal B-qa_{o_{\rm root}}$, and its error against the prescribed finite iteration has that exponent minus $\gamma=\min_{v\ne o_{\rm root}\text{ internal}}(D_v+1)(a_v-a_{\operatorname{par}(v)})$.
+With no proper internal vertices the two coefficients coincide exactly.
+
+First flatten the edges~$u\to v$ with~$a_u=a_v$: combine their grouping before making any field replacement. The word at~$v$ then consists of original leaves in this equal-height component and outputs from strictly finer children; its distinct positions are separated at exponent~$a_v$ by the tree geometry. For a child with~$a_u>a_v$, expand to an auxiliary horizon~$H_u$. The remainder exponent has the improvement~$(H_u+1)(a_u-a_v)$ by~\eqref{eq:J-raw-rates}. Choose the children in a fixed order, choosing~$H_u$ only after the outputs already used as exterior fields are fixed. Each improvement tends to infinity with~$H_u$, whereas the exterior degree in that step is fixed. It can therefore exceed any prescribed error exponent. The identity
+\begin{equation}\label{eq:J-telescope}
+\prod_{i=1}^nX_i-\prod_{i=1}^nY_i
+=\sum_{i=1}^n\left(\prod_{h<i}Y_h\right)(X_i-Y_i)
+                    \left(\prod_{h>i}X_h\right)
+\end{equation}
+justifies these successive replacements in every correlation and in every probe defining a coefficient. It is an identity of separated expressions, with their scalar coefficient factors retained.
+
+For a fixed collection of child outputs~$j_u$, the child exponents include~$-j_ua_u$, and the parent coefficient contributes~$j_ua_v$. Their sum contains~$-j_u(a_u-a_v)$; the remaining leaf weights telescope to~$\mathcal B-qa_{o_{\rm root}}$. Nonnegative output degrees therefore never increase this exponent. If the root height is zero, apply the crude estimate to this root word of child outputs; its finitely many field degrees cost exponent zero, while their coefficients already carry the child contributions to~$\mathcal B$. This proves the direct bound, by the preceding arbitrary-accuracy replacements and the induction hypothesis. Remove auxiliary outputs above~$D_u$. Each discarded term has at least one~$j_u\ge D_u+1$ and thus gains at least~$\gamma$. Replacing the remaining direct child coefficients by their iterated coefficients uses~\eqref{eq:J-telescope} again and gains~$\gamma$ from one child error. If~$\gamma=0$, the direct and iterated bounds themselves give the error exponent. If~$\gamma>0$, every proper internal scale increase is positive and the auxiliary horizons can be chosen to make the preceding replacement errors smaller than this exponent. This proves the induction for the difference, with one improvement rather than a product of improvements.
+
+The logarithmic exponent of~$\mathcal Q_{\varepsilon,q}$ is
+\begin{equation*}
+\mathcal B-qa_{o_{\rm root}}+\varepsilon A_*,\qquad
+A_*=a_{o_{\rm root}}+\sum_{v\ne o_{\rm root}\text{ internal}}(a_v-a_{\operatorname{par}(v)})>0\,.
+\end{equation*}
+Positivity follows because~$\sum_va_v=1$: if every displayed nonnegative term vanished, every~$a_v$ would vanish. The exponent of~$\mathsf e_{\boldsymbol D}$ is~$-\gamma$. Thus the estimates with loss~$\varepsilon/2$ imply the displayed bounds with loss~$\varepsilon$ and coefficient one along this sequence. A sequence of violations would have the subsequence just treated, a contradiction. This proves a threshold uniform in the scale vector, even when some scales decrease faster than every power of~$r$. All positions stay separated and, for small~$r$, clear of every finite rotated probe family used in the recursion. The averaging integrands are smooth on an open neighborhood with that clearance; their derivatives are bounded on compact neighborhoods times~$O(4)$. Differentiating the finite sums and Haar integrals proves smoothness.
+\label{proof:J1.4-end}
+\end{proof}
+
+For tested products, retain the original leaves at the root; only the degree of its output is truncated. Fix additionally the root truncation~$m\in\N$, a spectator list~$\boldsymbol B$ and~$\delta_{\rm sp}>0$.
 
 \begin{lemma}[Nested tested estimate]\label{lem:J1.5}
-To be stated here.
+For some~$r_0>0$, every smaller radius, admissible nested geometry, admissible spectator configuration and state index~$\zeta$ satisfy
+\begin{equation*}
+|\mathcal R_m^\zeta(\boldsymbol A,z_{\rm leaves};\boldsymbol B,y;z_{o_{\rm root}})|
+\le\mathcal Q_{\varepsilon,m+1}(\varrho)\,.
+\end{equation*}
+The same bound holds in the norm of~$\mathfrak A_0$ before evaluation in a character or the mixed vacuum.
 \end{lemma}
 
+\begin{proof}
+Use Definition~\ref{def:D18} and the tree induction in Lemma~\ref{lem:J1.4}. Keep the spectators in every replacement. Their reciprocal distances from every tree position and from one another have exponent zero. They therefore add no term to~$\mathcal B$. After the arbitrary-accuracy child replacements, the root remainder estimate of Lemma~\ref{lem:J-power-separated}, has exponent~$\mathcal B-(m+1)a_{o_{\rm root}}$. When~$a_{o_{\rm root}}=0$, apply the crude bound to the root word of child outputs after these replacements. The child coefficient powers already account for~$\mathcal B$; the finitely many root output fields and the spectators cost exponent zero. The positive quantity~$\varepsilon A_*$ used above again absorbs all finite sums and subpower factors. The contradiction argument is unchanged. The norm estimate follows from~\eqref{eq:J-moments}; applying a character or the mixed vacuum proves the scalar bounds with the same threshold.
+\end{proof}
+
+Fix now the data of Lemma~\ref{lem:J1.4} or~\ref{lem:J1.5}, a measurable parameter space and~$B_0\ge0$. A scale vector~$\varrho$ in the following statement is fixed throughout each integral.
+
 \begin{lemma}[Integrated nested estimates]\label{lem:J1.6}
-To be stated here.
+A threshold preceding the measure, weight, scale vector and measurable geometry maps gives the respective integral bounds
+\begin{equation*}
+B_0\mathcal Q_{\varepsilon,q},\qquad
+B_0\mathcal Q_{\varepsilon,q}\mathsf e_{\boldsymbol D},\qquad
+B_0\mathcal Q_{\varepsilon,m+1}
+\end{equation*}
+for integrable weights of absolute integral at most~$B_0$ and geometries admissible almost everywhere where the weight is nonzero. The weighted compared expressions are integrable. The tested bound permits a measurable phase map or the mixed state.
 \end{lemma}
+
+\begin{proof}
+For fixed~$\varrho$, Lemma~\ref{lem:J1.4} bounds the direct coefficient and its difference from the iterated coefficient, hence also the latter. Lemma~\ref{lem:J1.5} bounds the tested difference; the root argument~\eqref{eq:J-moments} bounds the full word for these fixed positive separations and hence its truncated expression. Smoothness and the joint measurability argument of Lemma~\ref{lem:J1.3} give measurability. Multiply these constant bounds by the absolute value of the weight and integrate, as in Lemma~\ref{lem:J1.3}. The thresholds are independent of~$\varrho$, although the majorants depend on this fixed vector.
+\end{proof}
 
 \subsection{Contact subtractions}\label{sec:partII-J.2}
 
+We work with finite sums of field words, identifying~$A(x)$ with~$(\jmath_{d,e}A)(x)$ and imposing linearity in~$A$. Their product is concatenation. The correlation of a word is read only at distinct positions; elsewhere give it value zero. This convention is used inside the algebraic formulas below, before any integration. The underlying prescription and its fields are those fixed in Lemma~\ref{lem:J1.1}; the finite probes chosen next are independent of its OPE probes.
+
 \begin{definition}[Contact detector projection]\label{def:D36}
-To be stated here.
+Choose contact probes and decoders as in Definition~\ref{def:D31}. Choose~$a_q^{\rm ct}>0$ with every probe point at distance at least~$2a_q^{\rm ct}$ from zero. For a word~$w$, set
+\begin{equation*}
+K_qw=\mathbf1_{\{\text{all positions of }w\text{ lie in }\overline B(0,a_q^{\rm ct})\}}w\,.
+\end{equation*}
+Apply the averaging and reality formula of Definition~\ref{def:D32} to this clipped word with the contact probes; extend linearly to sums, obtaining~$B_q^{\rm ct}$. This extracts contact fields on a fixed region clear of its probes.
 \end{definition}
 
+For contact expressions~$I_qA=A(0)$ still denotes a single field. Unlike the domain restriction in Definition~\ref{def:D32}, clipping here acts on each monomial before summing it.
+
+\begin{samepage}
 \begin{definition}[Coherent contact projections]\label{def:D37}
-To be stated here.
+With~$j_q=\jmath_{q,q+1}$, set
+\begin{equation*}
+P_0=B_0^{\rm ct},\qquad
+P_{q+1}=j_qP_q+B_{q+1}^{\rm ct}-j_qP_qI_{q+1}B_{q+1}^{\rm ct},\qquad
+P_{\le q}^{\rm ct}(o)w=P_q(\tau_{-o}w)\,.
+\end{equation*}
+The last term removes the component already measured at lower degrees. In particular, $P_{\le q}^{\rm ct}(o)[A(o)]=A$ for~$A\in F_q$.
 \end{definition}
+\end{samepage}
 
 \begin{definition}[Contact grades and clearance]\label{def:D38}
-To be stated here.
+The exact-degree components and common clearance are
+\begin{align*}
+P_{=0}^{\rm ct}(o)w&=B_0^{\rm ct}(\tau_{-o}w),\\
+P_{=q}^{\rm ct}(o)w&=(1-\jmath_{q-1,q}P_{q-1}I_q)B_q^{\rm ct}(\tau_{-o}w)\quad(q>0),\\
+\delta_q^{\rm pres}&=\min_{0\le d\le q}a_d^{\rm ct}\,.
+\end{align*}
+These give the graded contact subtractions and their common range of separated evaluation.
 \end{definition}
 
+The projections are defined before any test function or state. Their strata, rather than the OPE strata, provide the real bases used in the contact construction.
+
 \begin{lemma}[Real bases and scales]\label{lem:J2.1}
-To be stated here.
+The contact projections are covariant under translations, $O(4)$ and conjugation. Their filtered strata have real bases, with the unit in degree zero. There are positive subtraction scales~$\delta_j^{\rm ct}$ such that
+\begin{equation*}
+\delta_j^{\rm ct}\to0,\qquad 4\delta_{j+1}^{\rm ct}<\delta_j^{\rm ct},\qquad
+2(j+1)\delta_j^{\rm ct}\le\delta_j^{\rm pres}\,.
+\end{equation*}
 \end{lemma}
+
+\begin{proof}
+Use the inclusions, rotations and conjugation of Part I, as in Lemma~\ref{lem:J1.1}. A ball centered at zero is rotation invariant. Haar invariance proves rotation covariance of~$B_q^{\rm ct}$, and its reality formula proves conjugation covariance. These maps fix~$A(0)$: before averaging the decoder returns~$R_q(h^{-1})A$, and after multiplication by~$R_q(h)$ it returns~$A$. Define~$T_q=P_qI_{q+1}:F_{q+1}\to F_q$. The recursion gives
+\begin{equation}\label{eq:J-contact-split}
+P_qI_q=1,\qquad T_qj_q=1,\qquad T_qP_{q+1}=P_q,\qquad
+P_{\le q}^{\rm ct}(o)=\sum_{d\le q}\jmath_{d,q}P_{=d}^{\rm ct}(o)\,.
+\end{equation}
+For the third identity, apply~$T_q$ to the recursion and cancel~$T_qB_{q+1}^{\rm ct}$; the fourth follows by iteration. Thus the degree-$q$ stratum is~$\ker T_{q-1}$ for~$q>0$, and~$F_0$ for~$q=0$. Each is invariant under conjugation and rotations. Lemma~\ref{lem:J1.1} gives real bases; choose the unit in~$F_0$. Covariance passes through the recursion, with translations following from $\tau_{-(o+u)}\tau_u=\tau_{-o}$.
+
+Put~$g_j=\min(2^{-j},\delta_j^{\rm pres}/[2(j+1)])$, and choose
+\begin{equation*}
+\delta_0^{\rm ct}=g_0,\qquad
+\delta_{j+1}^{\rm ct}=\min(\delta_j^{\rm ct}/8,g_{j+1})\,.
+\end{equation*}
+Positivity and the three inequalities follow directly. These scales can also be bounded by any prescribed positive sequence by including it in~$g_j$. Lemma~\ref{lem:J2.2} uses only the single length~$s_*$ below; the scales~$\delta_j^{\rm ct}$ are recorded for Theorem~\ref{thm:B}.
+\end{proof}
+
+We give the finite subtraction formula before proving its convergence. Fix~$\boldsymbol A\in\mathbb F^n$, put~$d_i=\deg A_i$, $W=\sum_id_i$, and choose
+\begin{equation*}
+B_* =\min(1,\delta_W^{\rm pres}),\qquad s_*=B_*/4\,.
+\end{equation*}
+Expand each input in the contact stratum bases using~\eqref{eq:J-contact-split}, retaining its original degree tag~$d_i$ in every subtraction order. For~$h\subset\{1,\ldots,n\}$, $|h|\ge2$, let~$\Delta_h$ be its collision diagonal, $x_h^\perp$ the orthogonal component normal to~$\Delta_h$, and~$\bar x_h=|h|^{-1}\sum_{i\in h}x_i$. Thus~$x_h^\perp$ has entries~$x_i-\bar x_h$ on~$h$ and zero elsewhere. Write
+\begin{equation*}
+d_h=\sum_{i\in h}d_i,\qquad q_h=4(|h|-1),\qquad L_h=\max(0,d_h+1-q_h)\,.
+\end{equation*}
+Choose a smooth radial cutoff~$\chi$ equal to one on the unit ball and zero outside the ball of radius two. The normal Taylor operator is
+\begin{equation}\label{eq:J-normal-Taylor}
+(\mathsf T_{h,k}^{\perp}f)(x)=\chi(x_h^\perp/s_*)
+\sum_{l=0}^k\frac1{l!}D^lf(x-x_h^\perp)[x_h^\perp,\ldots,x_h^\perp]\,.
+\end{equation}
+It subtracts only normal variables, leaving the centroid and all exterior variables as parameters.
+
+An expression~$F\otimes U$ means the field expression~$F(x)$ multiplied by~$(Uf)(x)$ when tested against~$f$. Products compose the test operators. On a monomial write~$F=F_hF_{h^c}$ for its factors in and outside~$h$. Let~$\mathsf R_{h,w}$ replace the subword of~$F(x)$ on~$h$ by the field~$P_{=w}^{\rm ct}(\bar x_h)F_h(x)$ at~$\bar x_h$, leaving its test operator unchanged. Define recursively
+\begin{align}\label{eq:J-contact-recursion}
+\mathcal C_{\{i\}}^{\rm ct}&=A_i(x_i)\otimes1,&
+\Pi_h^{\rm punct}&=\sum_{\substack{\pi\text{ partition of }h\\|\pi|\ge2}}
+                         \prod_{b\in\pi}\mathcal C_b^{\rm ct},\\
+\mathcal C_h^{\rm ct}&=-\sum_{w<L_h}\mathsf R_{h,w}\Pi_h^{\rm punct}\,
+                         \mathsf T_{h,L_h-1-w}^{\perp},&
+\Pi_h^{\rm full}&=\Pi_h^{\rm punct}+\mathcal C_h^{\rm ct}\quad(|h|\ge2)\,.\notag
+\end{align}
+Singleton and empty full expressions are respectively~$A_i(x_i)\otimes1$ and the unit. In a nested term, the parent Taylor operator acts first on the test and the child operators act afterwards. Operators on disjoint slot sets commute. The recursion terminates because every child has fewer slots; expanding it gives forests of disjoint or nested collision subsets.
+
+Before summing shells we need estimates for complete signed expressions after child subtractions. Normalize $T\to\infty$ so that all separation heights lie in~$[0,1]$, and fix a finite set~$\mathcal P$ of position paths. A finite separated sum of cost~$c$ at height~$s$ has terms
+\begin{equation*}
+a(T)\prod_\iota A_\iota(x_\iota(T)),\qquad
+|a|\preccurlyeq e^{(c-s\sum_\iota\deg A_\iota)T},\qquad
+|x_\iota-x_{\iota'}|\ge e^{-sT-o(T)}\quad(\iota\ne\iota'),
+\end{equation*}
+with $x_\iota\in\mathcal P$. This definition permits different terms to use overlapping subsets of~$\mathcal P$.
+
+Write $\mathcal U\in\mathcal A_s(c)$ if it has a finite height-one representation of some finite cost and satisfies the following approximation property. For every $L>0$, there is a finite separated sum~$g$ of cost~$c$ at height~$s$, using~$\mathcal P$, such that for every $d\in\R$ and every exterior finite separated sum~$f$ of cost~$d$ at height~$1$,
+\begin{equation}\label{eq:J-layer-precision}
+\big|S^\zeta((\mathcal U-g)f)\big|\preccurlyeq e^{(-L+d)T}.
+\end{equation}
+Every exterior path must be at distance at least $e^{-sT-o(T)}$ from every path in~$\mathcal P$. The bound permits any varying character~$\zeta(T)$ and the mixed state. Thus exterior internal separations are measured at height one, while its distance from~$\mathcal P$ is measured at height~$s$. Scalar factors of rate~$b$ change the cost to~$c+b$.
+
+Suppose the paths in~$\mathcal P$ lie within $e^{-sT+o(T)}$ and within~$2s_*$ of a center~$o\in\mathcal P$. For contact projections assume $2s_*\le a_w^{\rm ct}$. Write $I_q^oA=A(o)$ for insertion at this center. These fixed-distance requirements ensure that the contact probes are clear; the exponential distances determine the rates.
+
+\begin{lemma}[Signed layer transfer]\label{lem:J-signed-layer}
+For $0\le u\le s\le1$ and $\mathcal U\in\mathcal A_s(c)$, every clear contact degree~$w$ satisfies
+\begin{equation*}
+P_{=w}^{\rm ct}(o)\mathcal U\preccurlyeq e^{(c-ws)T},\qquad
+ \mathcal U-I_w^oP_{\le w}^{\rm ct}(o)\mathcal U\in
+ \mathcal A_u\bigl(c-(w+1)(s-u)\bigr).
+\end{equation*}
+Separated products add their costs; finite signed sums take their maximum. Coarsening from~$s$ to~$u$ without subtracting retains cost~$c$.
+\end{lemma}
+The proof orders the approximation precisions before applying the projections.
+
+\begin{proof}\label{proof:J-layer-start}
+For the fields of Definition~\ref{def:D10}, use Lemma~\ref{lem:J-power-separated}, including its uniformity on compact label sets, the telescope~\eqref{eq:J-telescope}, and the exact contact identities~\eqref{eq:J-contact-split}.
+
+First check products, which explains the strength of the approximation property. Let~$\mathcal U,\mathcal V$ have costs~$c,d$ and a separation at height~$s$. Suppose a height-one representation of~$\mathcal V$ has cost~$b$. Choose an approximant~$g$ to~$\mathcal U$ of precision~$L+b$. Its own height-one representation has some finite cost~$b'$. Next choose an approximant~$g'$ to~$\mathcal V$ of precision~$L+b'$. Then
+\begin{equation*}
+\mathcal U\mathcal V-gg\prime=(\mathcal U-g)\mathcal V+g(\mathcal V-g\prime)
+\end{equation*}
+has precision~$L$ against every permitted exterior sum. The product~$gg\prime$ has cost~$c+d$, since its word positions are separated at height~$s$ and its scalar coefficient rates add. Iterate in a fixed order for more factors. Addition and subtraction follow by taking the maximum cost and making every approximation as accurate as required.
+
+For~$u<s$, expand a finite separated approximant to~$\mathcal U$ at~$o$ to an auxiliary degree~$H$. Applied to each term, \eqref{eq:J-raw-rates} gives output fields~$A_d(o)$ whose coefficient rates are at most~$c-ds$, and an error at exterior height~$u$ of rate at most $c-(H+1)(s-u)$. Increasing~$H$ gives any specified precision. The original approximation error permits these farther exterior tests. This gives an arbitrarily accurate single-point sum~$g$ at~$o$, of cost at most~$c$ at height~$u$. If $u=s$, retain the original approximant. This proves coarsening.
+
+For $s>0$, approximate with exterior height zero. A contact probe of total degree~$p$ costs at most~$p$ at height one; raise the precision by~$p$. Compactness of~$O(4)$ makes this uniform over rotated and conjugated probes, so averaging preserves arbitrary precision. On a degree-$d$ field the degree-$w$ contact row is zero for~$d<w$ and is a fixed linear map for~$d\ge w$. Its rate is at most $c-ds\le c-ws$, proving the row bound. At~$s=0$ test directly against the fixed clear probes: their positions have height zero and add no exponent. The same conclusion follows.
+
+For the residual, use $u<s$ and the single-point sum~$g$ just constructed. Every field of degree~$d\le w$ cancels exactly under $1-I_w^oP_{\le w}^{\rm ct}$. For~$d\ge w+1$ its coefficient rate at the outgoing height is~$c-ds$. Viewed at height~$u$, its cost is at most $c-d(s-u)\le c-(w+1)(s-u)$.
+The lower fields produced by its contact projection obey the same inequality, since their degrees are at most~$d$. Thus $g-I_w^oP_{\le w}^{\rm ct}g$ has the required cost. The exact error is $(\mathcal U-g)-I_w^oP_{\le w}^{\rm ct}(\mathcal U-g)$.
+The first term has arbitrary precision by choice of~$H$; the finite probes defining the second cost only finitely many additional exponents. Choose the precision to pay for them and for the requested exterior test. This proves the residual's approximation property. Its finite height-one representation follows from the initial one and the finite probe formulas. At~$u=s$ the row bound makes the projected finite sum have cost~$c$ at height~$s$, so subtraction retains that cost directly.
+\label{proof:J-layer-end}
+\end{proof}
+
 
 \begin{lemma}[Contact extension]\label{lem:J2.2}
-To be stated here.
+For every state~$\zeta$, arity~$n$ and field list~$\boldsymbol A$, the normal subtractions~\eqref{eq:J-contact-recursion} with the contact projections, bases and scales fixed above define a complex linear continuous functional $\mathfrak D_{\boldsymbol A}^\zeta$ on~$C_c^\infty(\R^{4n})$. For every~$f\in C_c^\infty(\Conf{n})$,
+\begin{equation*}
+\mathfrak D_{\boldsymbol A}^\zeta(f)=\int f(x)S_n^\zeta(\boldsymbol A;x)\,dx\,.
+\end{equation*}
 \end{lemma}
 
+\begin{proof}\label{proof:J2.2-start}
+Use the original fields of Definition~\ref{def:D10}, the contact projections of Definitions~\ref{def:D36}--\ref{def:D38}, and the lattice-derived estimates of Lemma~\ref{lem:J-power-separated}. We prove absolute integrability of the complete subtracted expression on every compact set, with a finite test seminorm.
+
+At a group~$h$, reorganize the full expression as
+\begin{equation}\label{eq:J-contact-arms}
+\left(1-\sum_{w<L_h}\mathsf R_{h,w}\right)\Pi_h^{\rm punct}f
++\sum_{w<L_h}\mathsf R_{h,w}\Pi_h^{\rm punct}
+                  (1-\mathsf T_{h,L_h-1-w}^{\perp})f\,.
+\end{equation}
+These are identities of field expressions with test operators; individual unsubtracted summands need not be integrable. Every nonzero Taylor term lies within~$2s_*\le B_*$ of its diagonal, so all its field projections have their required contact clearance. If~$L_h=0$, no projection is subtracted and $q_h-d_h\ge1$ already gives integrability. For~$L_h>0$, \eqref{eq:J-contact-split} removes every degree below~$L_h$ from the first arm. We apply Lemma~\ref{lem:J-signed-layer} to the punctured expression, including the child subtractions. Here is the induction invariant: after fixing the child arms and their test operators, the field expression belongs to~$\mathcal A_s(c)$ at its outgoing height; a projected arm of degree~$w$ has coefficient rate~$c-ws$, and a residual arm through~$w$ has cost $c-(w+1)(s-u)$ at a parent height~$u$. Singleton fields start this invariant. Products over separated partition blocks preserve it by the product clause of Lemma~\ref{lem:J-signed-layer}; its projection and residual clauses give the next arms, and its coarsening clause handles equal heights. Keep every child Taylor operator attached to its arm throughout these operations. Each derivative expansion has finitely many scalar test factors of finite rate. The scalar-factor and product clauses of Lemma~\ref{lem:J-signed-layer} include these in the approximation cost and retain the invariant for each differentiated arm.
+
+Rescale the patch so all scales are at most one. Fix its finite collision tree, write $\rho_b$ for its scales and $R=\rho_{\operatorname{par}(h)}$, and set
+\begin{equation*}
+T=\log(1/\rho_{\min}),\quad s_b=\log(1/\rho_b)/T,\quad u=\log(1/R)/T,\quad\rho_{\min}=\min_b\rho_b\,.
+\end{equation*}
+After a subsequence these heights converge in~$[0,1]$, with $s_h\ge u$. Retain the child size factor $\mathcal H_h=\prod_{b\text{ proper below }h}(\rho_b/\rho_{\operatorname{par}(b)})^{-d_b}$.
+Before child gains, the incoming cost is $c=d_hs_h+\sum_{b\text{ proper below }h}d_b(s_b-s_{\operatorname{par}(b)})$.
+Lemma~\ref{lem:J-signed-layer} gives a degree-$w$ row of rate~$c-ws_h$, and a residual through degree~$L_h-1$ of cost $c-L_h(s_h-u)$. Thus, after retaining~$\mathcal H_h$ and the outer field costs, their physical size bounds are respectively
+\begin{equation}\label{eq:J-sector-rates}
+C_\tau\mathcal H_h\rho_h^{w-d_h}\rho_{\min}^{-\tau},\qquad
+C_\tau\mathcal H_h\rho_h^{-d_h}(\rho_h/R)^{L_h}\rho_{\min}^{-\tau}.
+\end{equation}
+With one unresolved scale, $\rho_{\min}=\rho_h=\rho$, giving the row bound $C_\tau\rho^{w-d_h-\tau}$ and residual gain $(\rho/R)^{L_h}$. With several scales, retain the loss at~$\rho_{\min}$ and the child gains; the induction below distributes the loss between ancestors and descendants. If these estimates failed uniformly in a sector, choose a violating sequence and take the convergent height vector just described. The signed invariant, including equal heights, gives the rates with loss~$\tau/2$, contradicting the violation with loss~$\tau$. This proves~\eqref{eq:J-sector-rates} uniformly over the sector.
+
+Taylor's integral remainder gives, on a shell~$|x_h^\perp|\asymp\rho$ within the subtraction range,
+\begin{equation*}
+(1-\mathsf T_{h,L_h-1-w}^{\perp})f
+=O\!\left(\rho^{L_h-w}\max_{|\alpha|\le L_h-w}\|\partial^\alpha f\|_\infty\right)\,.
+\end{equation*}
+Including normal volume, every term of~\eqref{eq:J-contact-arms} therefore gains~$\rho^{q_h+L_h-d_h-\tau}$, whose exponent is at least~$1-\tau$.
+
+Partial collisions on a normal shell require a further induction. Induct on~$|h|-|\pi|$, where~$\pi$ is the currently separated partition. The case of singleton blocks is a separated correlation against a smooth compactly supported test, bounded by Lemma~\ref{lem:F3} and~\eqref{eq:J-moments}. For a nonsingleton block, cut its normal coordinate into dyadic shells and rescale to~$1/2\le|x_h^\perp|\le2$. At any point of this compact annulus its equality classes form a proper partition. The centroids of nonempty subgroups contained in different classes are distinct there. There are finitely many such subgroups; continuity gives a neighborhood where their distances have a common positive lower bound. A finite smooth partition of unity on the annulus thus gives sectors with all subsequent subgroup centroids separated. Within a sector apply the induction hypothesis to this strictly finer partition. On overlaps the resulting expressions agree: a group crossing two sectors' separated blocks has a Taylor jet on a diagonal disjoint from the localized test support, and contributes zero. The subdivision therefore preserves the full expression and its ordered test operators.
+
+For the shell estimate, let~$a>0$ be the shell radius divided by its parent scale. The rescaled Taylor remainder through order~$k$ obeys
+\begin{equation}\label{eq:J-shell-Taylor}
+\|(1-\mathsf T_{h,k}^{\perp})f\|_{C^l\text{ on the rescaled shell}}
+\le C\|f\|_{C^{l+k+1}}
+\begin{cases}a^{k+1},&a\le1,\\a^k,&a>1.\end{cases}
+\end{equation}
+For~$a\le1$, differentiate the integral Taylor remainder, including the cutoff; for~$a>1$, use the bounded test and the degree-$k$ polynomial. The cutoff derivatives have fixed bounds at the parent scale. For a projected component~$w$, use Lemma~\ref{lem:J-signed-layer} to transfer the signed field expression and put~$k=L_h-1-w$. Its volume and coefficient power~$a^{q_h+w-d_h}$ times the Taylor factor is at most~$a$ when~$a\le1$, and at most~$1$ when~$a>1$. Indeed~$q_h+w-d_h+k=0$ whenever~$w<L_h$. For the unprojected remainder the power is~$q_h+L_h-d_h\ge1$; its support restricts~$a$ above by a fixed geometric constant. Thus, for every~$0<\theta\le1$, the combined estimate is at most~$C a^\theta$.
+
+Choose~$\gamma>0$ with~$(3^{|h|-|\pi|}+1)\gamma\le1$. At a finer partition with~$d'$ remaining splits, the just-proved signed invariant remains valid for every projected and residual arm. Allocate loss~$3^{d'}\gamma$ to its coefficient and test estimates. One split strictly decreases the remaining number of splits, and~$3^{d'+1}\gamma\ge2\cdot3^{d'}\gamma+\gamma$ leaves a factor~$a^\gamma$ after the preceding estimate. To see that this is uniform in the parent scale~$R$, combine the child loss~$\rho^{-\tau}$ with its ratio improvement by
+\begin{equation*}
+(\rho/R)^{\gamma+\tau}\rho^{-\tau}
+=\rho^\gamma R^{-(\gamma+\tau)}\,.
+\end{equation*}
+The last factor is charged to the parent's allocated loss. Finite sector sums change only the constant. For shells~$\rho\asymp2^{-j}$, the bound is consequently~$C2^{-j\gamma}$ times a fixed test seminorm. Summing this geometric series completes the induction, and gives absolute convergence also for iterated choices of disjoint shells.
+
+Finally cover a given compact set by neighborhoods of the equality classes at each of its points. The same separation argument gives finitely many patches, including patches outside the total-collision subtraction range. On these patches the recursion reduces to the product of the full expressions in the separated classes: any crossing Taylor term has zero jet. A smooth partition of unity and the Leibniz rule combine their bounds. Each descent costs at most~$W+2$ derivatives by~\eqref{eq:J-shell-Taylor}; there are at most~$n$ descents. We obtain
+\begin{equation}\label{eq:J-contact-order}
+\int\left|\left\langle\Pi_{\{1,\ldots,n\}}^{\rm full}f
+                    \right\rangle_\zeta(x)\right|\,dx
+\le C_K\max_{|\alpha|\le(W+2)n}\|\partial^\alpha f\|_\infty
+\quad(\operatorname{supp}f\subset K)\,.
+\end{equation}
+Define $\mathfrak D_{\boldsymbol A}^\zeta(f)$ by this integral. Absolute convergence preserves complex linearity;~\eqref{eq:J-contact-order} proves distribution continuity.
+
+For separated~$f$, every normal jet on a collision diagonal vanishes. Each nontrivial term of~\eqref{eq:J-contact-recursion} has a largest Taylor operator acting first; disjoint operators commute. Only $f(x)\prod_iA_i(x_i)$ remains, proving the restriction also for empty and singleton lists.
+\label{proof:J2.2-end}
+\end{proof}
+
+The compact estimate gives the local distribution order.
+
 \begin{lemma}[Local distribution order]\label{lem:J2.3}
-To be stated here.
+For every fixed~$\zeta,\boldsymbol A$ and compact~$K\subset\R^{4n}$, there are~$q_K\in\N$ and~$C_K<\infty$ such that
+\begin{equation*}
+|\mathfrak D_{\boldsymbol A}^\zeta(f)|
+\le C_K\max_{|\alpha|\le q_K}\|\partial^\alpha f\|_\infty
+\qquad(\operatorname{supp}f\subset K)\,.
+\end{equation*}
 \end{lemma}
+
+\begin{proof}
+By~\eqref{eq:J-contact-order} and the integral triangle inequality, take~$q_K=(2+|\boldsymbol A|_{\deg})n$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{prop:CT}]
+Definitions~\ref{def:D36}--\ref{def:D38} fix the contact projections on the prescription of Lemma~\ref{lem:J1.1}. Lemma~\ref{lem:J2.1} gives the bases and scales; Lemma~\ref{lem:J2.2} gives the extension, and Lemma~\ref{lem:J2.3} its local order.
+\end{proof}
+
+The conclusions of Theorem~\ref{prop:CT} assert neither uniqueness, positivity of the extension nor contact Ward identities. Estimates along general collision subspaces are not stated here and are not used in Theorem~\ref{thm:B}.
