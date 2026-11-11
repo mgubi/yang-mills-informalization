@@ -1,6 +1,6 @@
 # Data dictionary
 
-These tables describe the [unit map](../outline/units.md) of the Lean source at commit [`3456e5e75cf8d4cd558955a5c7638fba2d68f464`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464). **Data version: 2026-11-11-r2.** The version identifies this documented table format and census; it is separate from the source commit and from the review status of an outline.
+These tables describe the [unit map](../outline/units.md) of the Lean source at commit [`3456e5e75cf8d4cd558955a5c7638fba2d68f464`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464). **Data version: 2026-11-11-r3.** The version identifies this documented table format and census; it is separate from the source commit and from the review status of an outline.
 
 Every file in this directory:
 
@@ -22,7 +22,7 @@ The following quantities count different objects:
 | Compiled used rows | 74,171 | Database rows with `used=1`, including repeated names. |
 | Compiled used declarations | 74,093 | **Distinct names** with `used=1`, reached from the seventeen roots below. |
 | OpenAI's owner-attributed used declarations | 74,115 | Used and headline constants in the released usage record, after attribution to owning declarations. |
-| Source-allocation assignments | 77,099 | Distinct names in `declaration-units.tsv`; this is an inherited allocation, not the compiled used set. |
+| Source-allocation assignments | 74,204 | Distinct names in `declaration-units.tsv`: the declarations reached from the roots when every auxiliary constant is attributed to the nearest enclosing project declaration with a source range (74,203 names; this attribution differs from the one behind the 74,093 above), plus one selected statement head outside them. |
 | Line-counted declarations | 58,552 | Canonical declarations with a positive attributed line count, summed in `units.tsv`. |
 | Attributed source lines | 413,085 | Sum of `units.tsv.lines` under the allocation's counting convention. |
 | Selected key statements | 989 | Rows in `key-statements.tsv`, also the sum of `units.tsv.key_statements`. |
@@ -40,7 +40,7 @@ WHERE used = 1;
 
 The graph and [OpenAI's usage record](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/verification/declaration-usage.tsv) agree to within **50 of about 74,000** owner-attributed declarations: their intersection has 74,079 names; 14 occur only in the graph and 36 only in the record. The symmetric difference is 50, although the totals differ by 22. Most of the 36 are constructors reached through recursors; the 14 arise through shared auxiliary constants. This checks reached-name sets, not every edge, mathematical necessity, or the English account.
 
-The allocation and the compiled used set intersect in **73,669** names. There are **3,430** assigned names outside that used set and **424** compiled-used names without an assignment. Unit code-reference lists therefore do not cover the entire compiled graph. The allocation, its line weights and the statement selection were retained from the earlier source-text map when references were replaced by compiled references. They were not recomputed from `used=1` for this data version. Accordingly, “77,099 declarations used by the main theorem” and “413,085 compiled-used lines” are not descriptions of these tables.
+In data version r2 the allocation was inherited from the earlier source-text map: it had 77,099 names, of which 3,430 lay outside the compiled used set, and 424 compiled-used names had no assignment. In r3, `declaration-units.tsv` is restricted to the compiled used set and covers all of it (see [below](#declaration-unitstsv)). The line weights in `units.tsv` and the statement selection are still those of the source-text map; `units.tsv` (lines, declarations and code references) has not been recomputed for r3. The 438 newly allocated declarations change none of its code-reference lists. Accordingly, “413,085 compiled-used lines” is not a description of these tables.
 
 For example, I.1 has 595 line-counted declarations but 1,136 assigned names; III.13 has 3,224 line-counted declarations but 4,212 assigned names. These are not competing estimates of the same quantity.
 
@@ -107,14 +107,21 @@ If a revised outline changes a citation range, the page retains previously publi
 
 ## declaration-units.tsv
 
-Produced from the retained source-allocation table, split and merged into the 32 mathematical units using source-group membership, module-prefix rules and construction-family defaults. Rows are sorted by full declaration name. There is one row per distinct assigned name, with no restriction to current `used=1` names.
+Rows are the declarations reached from the seventeen roots in the compiled graph, with generated auxiliary constants attributed to their owning declarations (74,203 names), plus the selected statement head `YM.Extra.Iteration.extend`, which these roots do not reach. Rows are sorted by full declaration name. Private declarations appear under their compiled names, `_private.<module>.0.<name>`.
+
+Units are assigned as follows:
+
+1. The allocation of data version r2 is kept wherever it names the declaration (69,170 names), including under the plain name of a private declaration (4,596 names). That allocation was produced from the source-text map, split and merged into the 32 mathematical units using source-group membership, module-prefix rules and construction-family defaults.
+2. A declaration without such an allocation receives the unit most common among allocated declarations of its Lean module (288 names), or else of the nearest enclosing module prefix (146 names). Ties are broken by the units of its neighbours in the compiled graph (4 names). On private declarations, whose r2 unit is known, this rule reproduces the r2 unit in 95% of cases.
+
+Compared with r2, 3,393 names were removed: 1,269 that are not compiled declarations (artefacts of the source-text map, such as section variables) and 2,124 compiled declarations not reached from the roots.
 
 | Column | Type / unit | Definition |
 |---|---|---|
 | `declaration` | Lean name | Full declaration name, including its namespace. Unique within this table. Derived or folded names are retained; these are project declarations, not just theorem statements. |
 | `unit` | Identifier | The single allocation unit; a foreign key to `units.tsv.unit`. |
 
-This table has 77,099 rows and 77,099 distinct declaration names. It has no usage flag, canonical-owner column, mathematical-necessity flag or review status. In particular, allocating a declaration to III.13 does not say that the alternative Wilson family is used by `YangMills.constructed`.
+This table has 74,204 rows and 74,204 distinct declaration names. It has no usage flag, canonical-owner column, mathematical-necessity flag or review status. In particular, allocating a declaration to III.13 does not say that the alternative Wilson family is used by `YangMills.constructed`.
 
 ## key-statements.tsv
 
