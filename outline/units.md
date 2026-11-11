@@ -16,7 +16,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **II.1** | [Field labels and their lattice representatives](units/II-1.md) | 10,805 | 35 | draft |
+| **II.1** | [Field labels and their lattice representatives](units/II-1.md) | 10,805 | 35 | checked |
 | **II.2** | [Polymer activities, norms, the Wilson family, the construction record, reflection-positive cells](units/II-2.md) | 3,691 | 1 | draft |
 
 ## Part III. Ultraviolet construction (renormalization group)
@@ -25,7 +25,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **III.1** | [The block-spin step and the symmetric gauge fixing](units/III-1.md) | 4,219 | 30 | in preparation |
+| **III.1** | [The block-spin step and the symmetric gauge fixing](units/III-1.md) | 4,219 | 30 | draft |
 | **III.2** | [Choosing the constants: the order of choice and the RG schedule](units/III-2.md) | 18,156 | 55 | draft |
 | **III.3** | [Free lattice kernels and covariances](units/III-3.md) | 8,998 | 11 | draft |
 | **III.4** | [Gaussian integration: change of Gaussian sector, determinants, window law](units/III-4.md) | 37,956 | 141 | draft |
@@ -33,7 +33,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 | **III.6** | [The stationary branch: background field of the effective action](units/III-6.md) | 21,329 | 44 | draft |
 | **III.7** | [Matching the Wilson energy to fourth order](units/III-7.md) | 19,945 | 24 | draft |
 | **III.8** | [Connected activities and backward dependence cones](units/III-8.md) | 4,147 | 4 | draft |
-| **III.9** | [The marginal flow: the running coupling and its reset](units/III-9.md) | 7,215 | 17 | checked |
+| **III.9** | [The marginal flow: the running coupling and its reset](units/III-9.md) | 7,215 | 17 | edited |
 | **III.10** | [One full nonlinear renormalization step: bounds on irrelevant terms](units/III-10.md) | 49,448 | 94 | draft |
 | **III.11** | [Comparison with the free Gaussian measure: interacting rank and determinant budgets](units/III-11.md) | 42,556 | 67 | draft |
 | **III.12** | [Bounds uniform in the volume and convergence as the spacing tends to zero](units/III-12.md) | 18,973 | 34 | draft |
@@ -75,7 +75,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 
 | unit | | lines | key statements | outline |
 |---|---|---|---|---|
-| **VII.1** | [Short distances: convergence to free Maxwell fields](units/VII-1.md) | 8,117 | 16 | in preparation |
+| **VII.1** | [Short distances: convergence to free Maxwell fields](units/VII-1.md) | 8,117 | 16 | draft |
 | **VII.2** | [The trace of the stress tensor and the trace anomaly](units/VII-2.md) | 20,681 | 42 | draft |
 | **VII.3** | [The theory is not free: Gram positivity and exclusion of free-field profiles](units/VII-3.md) | 3,325 | 8 | draft |
 | **VII.4** | [Operator product expansion and contact extensions](units/VII-4.md) | 10,243 | 18 | draft |
