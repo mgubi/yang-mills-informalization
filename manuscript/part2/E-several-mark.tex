@@ -13,15 +13,15 @@ Thus its normalized $z_I$ integral is the cutoff moment of the corresponding phy
 \end{equation}
 Here $\Phi_m$ is the unmarked exponent, $f_{i,m}$ and $k_{i,m,Y}$ are the complete one-insertion exponential and forced terms, including their physical spacing factors. The polynomials $H_{m,X}$ and $K^{\ge2}_{m,Y}$ contain only modes $z_I$ with $|I|\ge2$. Their support contains every anchor indexed by a nonzero mode. The regular terms include their health masks, and each forced term retains its eligibility test. Formula~\eqref{eq:E-source-form} distinguishes the exact multiple-source density from the one obtained by keeping only its unmarked and singleton data.
 
-The next estimate controls one insertion in every reflected cell. Its normalization cost is proportional to the number of marks and to the number of coarse sites, rather than to the number of fine sites.
+The next estimate controls one insertion in every reflected cell. Its normalization cost is proportional to the number of marks and to the number of coarse sites, rather than to the number of fine sites. We also use it for a residual observable~$E$ with an exact source representation. Call $wE$ admitted at level~$k$ when its weighted singleton exponential bound is at most~$3$, its forced singleton bound is at most~$1$, and the connected regular and forced bounds contribute at most one each per mark, with the original eligibility tests. The source evolution up to~$k$ must retain these allowances. This condition concerns the complete source, including its forced terms.
 \begin{lemma}[Replicated source bound]\label{lem:E-replication}
-For every $d$ and bounded coefficient ball there are radii $\mathfrak r_k>0$, independent of~$p$, such that, for $m\ge r(d)$, $k\ge m$ and $B_k^2\le a_m/a_k$, eventually in~$N>k$, uniformly in~$p$,
+For every $d$ and bounded coefficient ball there are radii $\mathfrak r_k>0$, independent of~$p$, such that, for $r(d)\le m\le k$ with $B_k^2\le a_m/a_k$, eventually uniformly in~$p$,
 \begin{equation*}
- \left|\left\langle\prod_{C\in\mathcal C^{\rm tile}_m}(O(c))_C\right\rangle_{N,p}\right|
  \mathfrak r_k^{|\mathcal C^{\rm tile}_m|}
+ \left|\left\langle\prod_{C\in\mathcal C^{\rm tile}_m}(O(c))_C\right\rangle_{N,p}\right|
  \le e^{|\Lambda_{n_{p,k}}|q_k+6|\mathcal C^{\rm tile}_m|}.
 \end{equation*}
-For every $\eta>0$, eventually $6-\log\mathfrak r_k\le(d+\eta)s_k$.
+For every $\eta>0$, eventually $6-\log\mathfrak r_k\le(d+\eta)s_k$. The same integral bound holds with $O(c),\mathfrak r_k$ replaced by $E,w$ whenever $wE$ is admitted at~$k$.
 \end{lemma}
 \begin{proof}
 Use Definitions~\ref{def:D05a}--\ref{def:D08}, Lemmas~\ref{lem:E1.1}, \ref{lem:E-marked-step} and~\ref{lem:E2.2a}, and the expansion in Lemma~\ref{lem:D-connected}. Enlarge the fixed coefficient radius to include its signed and conjugated images. Put
@@ -31,13 +31,13 @@ Use Definitions~\ref{def:D05a}--\ref{def:D08}, Lemmas~\ref{lem:E1.1}, \ref{lem:E
 \end{equation*}
 where $R'>0$ depends on the coefficient ball and $w_d$ is a fixed nonnegative integer large enough for its finite polynomial evaluations and forced counterparts. The transport inequality of Lemma~\ref{lem:E2.2}, iterated from $r(d)$, bounds the level-$k$ coefficients by the product in $E_k$. Threshold powers introduce only a fixed power of $\widehat\beta_k$; enlarging $w_d$ includes them. Hence multiplying every mark by $\mathfrak r_k$ bounds its full singleton size by the positive source allowance $\widehat\beta_k^{-w_d}\le1$.
 
-For the local expansion, give a mode $z_I$ the weight $\prod_{i\in I}w_i$, with $w_i>0$. The resulting coefficient norm is submultiplicative: multiplication sums over disjoint splittings of~$I$, exactly the splittings in the product of the two weighted norms. The expansion of Lemma~\ref{lem:D-connected} therefore applies coefficientwise. Its connected terms with at least two marks have the additional support estimate
+For the local expansion, give a mode $z_I$ the weight $\prod_{i\in I}w_i$, with $w_i>0$. The resulting coefficient norm is submultiplicative: multiplication sums over disjoint splittings of~$I$, exactly the splittings in the product of the two weighted norms. The coefficientwise rooted clause of Lemma~\ref{lem:D-connected} therefore applies in this norm. Its connected terms with at least two marks have the additional support estimate
 \begin{equation}\label{eq:E-marked-cover}
  B_k|I|\le64\cover_{B_k}(X),\qquad |I|\ge2,
 \end{equation}
-when distinct anchors are separated by $B_k^2$. To verify it, take a minimal cover by $M$ radius-$B_k$ balls with connected union. Join their centers by a tree with edges of length at most $2B_k+1$. Its doubled traversal has length at most $6B_k(M-1)$. Assign each anchor to one covering center. Distinct anchors have distinct centers, and the distance between any two assigned centers is at least $B_k^2-2B_k$. Visit these centers in their cyclic order in the traversal. The triangle inequality gives $|I|(B_k^2-2B_k)\le6B_k(M-1)$. For $B_k\ge8$ this implies the stated bound, with room in the constant. The argument uses the periodic max-distance and needs no nonwrapping assumption. This is the marked covering estimate used in the support norm of Lemma~\ref{lem:D-connected}.
+when distinct anchors are separated by $B_k^2$. To verify it, take a minimal cover by $M$ radius-$B_k$ balls with connected union. Join their centers by a tree with edges of length at most $2B_k+1$. Its doubled traversal has length at most $6B_k(M-1)$. Assign each anchor to one covering center. Distinct anchors have distinct centers, and the distance between any two assigned centers is at least $B_k^2-2B_k$. Visit these centers in their cyclic order in the traversal. The triangle inequality gives $|I|(B_k^2-2B_k)\le6B_k(M-1)$. For $B_k\ge8$ this implies the stated bound, with room in the constant. The argument uses the periodic max-distance and needs no nonwrapping assumption. This is the marked covering estimate.
 
-It permits each source weight to be enlarged by $e^{\delta B_k/64}$ when $\delta$ units of the support exponent are removed. Singleton terms are bounded directly by their one-mark norms. Taylor's product rule introduces at most the factorial of the derivative order; the stage column constant was chosen above this factorial. With $j=J_{k+1}$, Lemma~\ref{lem:D-connected} supplies the rooted derivative bound at support exponent $\sigma_{J_k}+3$ and the forced bound $C_j e^{-r_j\beta_{N,p,k+1}t_{k+1}^2}$ at exponent $\sigma_{J_k}+2$. Multiplying by a mode weight changes only the marked letter in its tree sum. Item~\ref{it:E-columns} pays the derivative factorial. The weighted sums therefore retain those bounds; decreasing the final exponent from $100$ to any value in $[98,100]$ only decreases the sums. The forced normalization uses half the suppression, leaving the other half for the marked derivative and attachment losses. Their spatial anchor is always one of the marks; a nonzero mode is assigned only to a support containing all its marked anchors. This proves the support assertion in~\eqref{eq:E-source-form}, as well as its absolute convergence. Restricting the set of marks commutes with the construction, since every operation takes disjoint unions of their modes.
+It permits each source weight to be enlarged by $e^{\delta B_k/64}$ when $\delta$ units of the support exponent are removed. Singleton terms are bounded directly by their one-mark norms. Taylor's product rule introduces at most the factorial of the derivative order; the stage column constant was chosen above this factorial. With $j=J_{k+1}$, the rooted clause of Lemma~\ref{lem:D-connected} supplies the derivative bound at support exponent $\sigma_{J_k}+3$ and the forced bound $C_j e^{-r_j\beta_{N,p,k+1}t_{k+1}^2}$ at exponent $\sigma_{J_k}+2$. Multiplying by a mode weight changes only the marked letter in its tree sum. Item~\ref{it:E-columns} pays the derivative factorial. The weighted sums therefore retain those bounds; decreasing the final exponent from $100$ to any value in $[98,100]$ only decreases the sums. The forced normalization uses half the suppression, leaving the other half for the marked derivative and attachment losses. Their spatial anchor is always one of the marks; a nonzero mode is assigned only to a support containing all its marked anchors. This proves the support assertion in~\eqref{eq:E-source-form}, as well as its absolute convergence. Restricting the set of marks commutes with the construction, since every operation takes disjoint unions of their modes.
 
 The reflected anchors at level~$k$ are the embedded sites of the level-$m$ torus. They have spacing $a_m/a_k\ge B_k^2$. Their parents agree under each subsequent block map. The inequality persists at all finer levels because $B_{i+1}^2\le2B_i^2$ and $\ell_i\ge3$. Occupancy is therefore one at every such level. These are precisely the conditions needed for the preceding weighted sums; the number of marks does not enter their local bounds.
 
@@ -46,7 +46,12 @@ At the stopping level, the weighted supremum of each complete singleton exponent
  \mathfrak r_k^{|I_0|}\left|\left\langle\prod_{i\in I_0}F_i\right\rangle_{N,p}\right|
  \le\exp\{|\Lambda_{n_{p,k}}|q_k+(3+1+2)|I_0|\}.
 \end{equation*}
-Exact integration preserves these normalized coefficients, proving the first assertion. The ratio of site and cell counts is $(a_m/a_k)^4$.
+Exact integration preserves these normalized coefficients, proving the first assertion. The ratio of site and cell counts is $(a_m/a_k)^4$. For a residual source admitted at radius~$w$, the same coefficient extraction uses $w$ in place of~$\mathfrak r_k$; only the bounds $3+1+2$ and the unmarked ratio enter this calculation. Taking the cell root gives
+\begin{equation}\label{eq:E-residual-root}
+ \|E\|_{\mathcal C^{\rm tile}_m}
+ \le w^{-1}\exp\{(a_m/a_k)^4q_k+6\}.
+\end{equation}
+In particular $w=cw_0$ gives a bound $C_{m,k,w_0}/c$, uniformly in the cutoff and period. This proves the residual clause, without requiring $E$ to be a primary insertion.
 
 Finally~\eqref{eq:E-log-cost}, summed as in~\eqref{eq:E-running}, gives
 \begin{equation*}
