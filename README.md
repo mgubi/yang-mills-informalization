@@ -22,13 +22,13 @@ is a draft.
 | | section | status |
 |---|---|---|
 | Part I | 1. Introduction | not yet written |
-| | 2. Setting | revised after review; final check |
-| | 3. The main theorem | revised after review; final check |
-| | 4. The principal propositions | revised after review; final check |
-| | 5. Proof of Theorems A and B | revised after review; final check |
-| | 6. The constants and the order of their choice | revised after review; final check |
-| Part II | C. Effective actions: the marginal flow | revised after review (first part); final check |
-| | F. Infinite volume | revised after review; final check |
+| | 2. Setting | checked |
+| | 3. The main theorem | checked |
+| | 4. The principal propositions | checked |
+| | 5. Proof of Theorems A and B | checked |
+| | 6. The constants and the order of their choice | checked |
+| Part II | C. Effective actions: the marginal flow | checked (first part) |
+| | F. Infinite volume | checked |
 | | A, B, D, E, G–J and the appendix | not yet written |
 
 ## How it is written
