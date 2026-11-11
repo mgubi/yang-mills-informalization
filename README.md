@@ -51,12 +51,10 @@ The maps, chapter structure, glossary and links collected here are meant as inpu
 
 For every compact matrix group G whose Lie algebra is simple and nonabelian (for instance SU(N), N ≥ 2), the Lean proof constructs the following.
 
-- **A family of lattice theories.** A family of Wilson lattice gauge theories on four-dimensional tori, with lattice spacings a → 0 and couplings β obeying the asymptotic-freedom law
-  β / log(1/a) → 11 C_G / (24π²),
-  where C_G is the Casimir constant.
+- **A family of lattice theories.** A family of Wilson lattice gauge theories on four-dimensional tori, with lattice spacings a → 0 and couplings β with β / log(1/a) converging to a positive constant. The public statement leaves the constant unspecified. The construction gives the asymptotic-freedom value 11 C_G / (24π²), where C_G is the Casimir constant.
 - **Local observables.** Renormalized lattice versions of all gauge-invariant local polynomials in the curvature and its covariant derivatives.
 - **Limits.** Their correlation functions converge: first as the lattice spacing tends to zero at fixed volume, along the whole sequence of spacings; then as the volume tends to infinity, along a subsequence that may be extracted from any given sequence of volumes.
-- **A quantum field theory on ℝ⁴.** The limits are smooth Euclidean correlation functions on ℝ⁴ away from coincident points. They decompose into *phases*. Each phase reconstructs to a relativistic quantum field theory in Minkowski space satisfying Wightman-type axioms: unique vacuum, positive energy, Poincaré covariance, locality.
+- **A quantum field theory on ℝ⁴.** The limits are smooth Euclidean correlation functions on ℝ⁴ away from coincident points. They decompose into *phases*. A selected phase (in the detailed theorem, every phase) reconstructs to a relativistic quantum field theory in Minkowski space satisfying Wightman-type axioms: unique vacuum, positive energy, Poincaré covariance, locality.
 - **Short-distance structure.** The theory has an operator product expansion with error bounds. The trace of its stress tensor has the short-distance law 3 dim(g)/(π⁴ r⁸ log²(1/r)), the *trace anomaly*. This shows the theory is not free: no finite combination of free-field profiles reproduces it.
 
 **Not claimed:** uniqueness or subsequence-independence of the infinite-volume limit, clustering of the full limit, a mass gap, or agreement with perturbation theory to all orders.
