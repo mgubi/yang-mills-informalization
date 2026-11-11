@@ -27,7 +27,7 @@ The process by which it is written and checked is described in [How this manuscr
 
 | | section | pages | status |
 |---|---|---|---|
-| Part I | 1. Introduction | 7 | written; under review (with the abstract) |
+| Part I | 1. Introduction | 7 | reviewed; revised (with the abstract) |
 | | 2. Wilson theory | 2 | reviewed; revised after an independent reading |
 | | 3. Renormalization | 8 | reviewed; revised after an independent reading |
 | | 4. The continuum limit | 4 | reviewed; revised after an independent reading |
