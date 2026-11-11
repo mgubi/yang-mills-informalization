@@ -1,6 +1,6 @@
 # The construction of four-dimensional quantum Yang–Mills theory
 
-> 🚧 **Under construction.** This manuscript is being written. Most sections do not exist yet, and those that do may change substantially until they are marked *checked* in the [status table](#status). Do not cite it as a finished proof.
+> 🚧 **Under construction: first draft nearly complete.** Every section of Parts I and II is written and has been through its review cycle; the introduction is being written and a consistency pass and a full independent review are under way. Sections may still change until they are marked *checked* in the [status table](#status). Do not cite it as a finished proof.
 
 A manuscript, written in public, giving a complete mathematical proof of the result formalized in OpenAI's Lean proof
 of the construction of four-dimensional quantum Yang–Mills theory
@@ -13,7 +13,7 @@ formalization into a human-readable monograph.
 - **Part I. The theorem and the architecture of its proof** (about 30 pages): the setting and notation, the main
   theorem, the principal statements on which the proof rests, each stated exactly with the idea of its
   proof, and the complete deduction of the main theorem from them.
-- **Part II. Proofs** (about 120 pages, Sections 10–19): the proofs of the principal propositions, with every estimate specific to the
+- **Part II. Proofs** (about 180 pages, Sections 10–19): the proofs of the principal propositions, with every estimate specific to the
   construction written out and standard results cited.
 
 The PDF is [`main.pdf`](main.pdf). It is updated as sections are written; until a section is marked *checked* below, it
@@ -23,27 +23,32 @@ The process by which it is written and checked is described in [How this manuscr
 
 ## Status
 
-| | section | status |
-|---|---|---|
-| Part I | 1. Introduction | to be written last |
-| | 2. Wilson theory | reviewed; with the project lead for reading |
-| | 3. Renormalization | reviewed; with the project lead for reading |
-| | 4. The continuum limit | reviewed; with the project lead for reading |
-| | 5. Stress and rotations | reviewed; with the project lead for reading |
-| | 6. Phases and reconstruction | reviewed; with the project lead for reading |
-| | 7. Trace and products | reviewed; with the project lead for reading |
-| | 8. Main theorems | reviewed; with the project lead for reading |
-| | 9. Constants and order of choice | reviewed; with the project lead for reading |
-| Part II | 12. Path actions and the coupling reset | reviewed; with the project lead for reading |
-| | 15. Infinite volume and field calculus | reviewed; with the project lead for reading |
-| | 10. Local polynomial fields | reviewed; integrated |
-| | 11. Gauges and block integration | reviewed; integrated |
-| | 13. Activities and the inductive step | reviewed; integrated |
-| | 14. Trajectories, marked fields and ultraviolet convergence | reviewed; integrated |
-| | 16. Free fields, Ward identities and rotations | reviewed; integrated |
-| | 17. Slabs, phases and reconstruction | reviewed; integrated |
-| | 18. The trace law and non-free comparisons | reviewed; integrated |
-| | 19. Products and contact subtractions | reviewed; integrated |
+*Updated 11 November 2026, 21:00. The PDF has 212 pages.*
+
+| | section | pages | status |
+|---|---|---|---|
+| Part I | 1. Introduction | 1 | being written (introduction and abstract) |
+| | 2. Wilson theory | 2 | reviewed; revised after an independent reading |
+| | 3. Renormalization | 7 | reviewed; revised after an independent reading |
+| | 4. The continuum limit | 4 | reviewed; revised after an independent reading |
+| | 5. Stress and rotations | 2 | reviewed; revised after an independent reading |
+| | 6. Phases and reconstruction | 4 | reviewed; revised after an independent reading |
+| | 7. Trace and products | 3 | reviewed; revised after an independent reading |
+| | 8. Main theorems | 4 | reviewed; Theorem B restated as a five-clause theorem |
+| | 9. Constants and order of choice | 3 | reviewed |
+| Part II | 10. Local polynomial fields | 8 | reviewed |
+| | 11. Gauges and block integration | 26 | reviewed |
+| | 12. Path actions and the coupling reset | 11 | reviewed; final minor fixes under way |
+| | 13. Activities and the inductive step | 30 | reviewed |
+| | 14. Trajectories, marked fields and ultraviolet convergence | 34 | reviewed |
+| | 15. Infinite volume and field calculus | 7 | reviewed; final minor fixes under way |
+| | 16. Free fields, Ward identities and rotations | 18 | reviewed |
+| | 17. Slabs, phases and reconstruction | 12 | reviewed |
+| | 18. The trace law and non-free comparisons | 13 | reviewed |
+| | 19. Products and contact subtractions | 19 | reviewed |
+
+**Next:** the introduction; a consistency pass across sections (cross-references between Part I and Part II, and every
+result one section takes from another); then an independent review of the whole manuscript, and the changes it leads to.
 
 "Reviewed" means the full cycle of the [process](PROCESS.md) has run: owner, fresh-reader and truth reviews, re-check and
 delivery review. A section is marked *checked* only after the project lead's reading and any changes it leads to.
