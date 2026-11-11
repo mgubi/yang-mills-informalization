@@ -32,9 +32,9 @@ The process by which it is written and checked is described in [How this manuscr
 | | 7. Trace and products | reviewed; with the project lead for reading |
 | | 8. Main theorems | reviewed; with the project lead for reading |
 | | 9. Constants and order of choice | reviewed; with the project lead for reading |
-| Part II | C. Path actions and the coupling reset | pilot: revised after review; under re-check |
-| | F. Infinite volume and field calculus | pilot: revised after review; under re-check |
-| | A, B, D, E, G, H, I, J | statements listed, proofs not yet written |
+| Part II | C. Path actions and the coupling reset | reviewed; with the project lead for reading |
+| | F. Infinite volume and field calculus | reviewed; with the project lead for reading |
+| | A, B, D, E, G, H, I, J | statements listed (including the inputs that C and F use), proofs not yet written |
 
 "Reviewed" means the full cycle of the [process](PROCESS.md) has run: owner, fresh-reader and truth reviews, re-check and
 delivery review. A section is marked *checked* only after the project lead's reading and any changes it leads to.
