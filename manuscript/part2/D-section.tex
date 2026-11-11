@@ -6,7 +6,7 @@ The first difficulty is to estimate products under one Gaussian law. Lemmas~\ref
 
 We next remove the affine Hessian of each regular term. Lattice symmetry reduces the sum of these Hessians to one curvature-square coefficient. Changing its health masks creates further local terms, which are included in the forced sum. This gives the exact density before the scalar estimate of Lemma~\ref{lem:C8}. The last part constructs one recursion on continuous curves and proves its weighted analytic estimates. Section~\ref{sec:partII-E} uses these estimates for endpoint tuning and the full fixed-volume limit. The Wilson initial condition is proved at the end.
 
-Throughout, the group and trace metric are those of Definition~\ref{def:D01}. Scales, flags, path actions and densities are those of Section~\ref{sec:renormalization} and Definitions~\ref{def:D06}, \ref{def:D22}--\ref{def:D23}. At a step $m+1\to m$ put $j=J_{m+1}$, $\Lambda=\Lambda_{L_pD_m}$, $t=t_m$, $B=B_m$ and $\sigma=\sigma_{J_m}$. Set $h_X(U)=\mathbf1\{X\cap\flags_m(U)=\varnothing\}$. Constants may depend on the fixed stage data and, when indicated, on the chosen ratio, but are independent of the volume.
+Throughout, the group and trace metric are those of Definition~\ref{def:D01}. Scales, flags, path actions and densities are those of Section~\ref{sec:renormalization} and Definitions~\ref{def:D06}, \ref{def:D22}--\ref{def:D23}. At a step $m+1\to m$ put $j=J_{m+1}$, $\Lambda=\Lambda_{L_pD_m}$, $t=t_m$, $B=B_m$ and $\sigma=\sigma_{J_m}$. Set $h_X(U)=\mathbf1\{X\cap\flags_m(U)=\varnothing\}$. Constants may depend on the fixed stage data and, when indicated, on the chosen ratio, but are independent of the volume. Here $C_j$ is a generic stage constant; the column bounds $C_j$ of row~4 enter only from Section~\ref{sec:partII-E.2} on.
 
 \subsection*{Local terms and their norms}
 
@@ -31,6 +31,8 @@ For $\varnothing\ne I_i\subset Y_i$, set
 A forced activity is a Borel real gauge-invariant function $K_i$ vanishing off $\mathcal E_i$. Both $K_i$ and its Borel gauge-invariant extra test depend only on internal links and flags in $Y_i$. These conditions restrict the forced sum to the prescribed large-field inventory.
 \end{definition}
 \end{samepage}
+
+The address of a regular activity is the pair $(X_i,o_i)$; that of a forced activity is the triple $(Y_i,I_i,\mathcal E_i^{\rm extra})$, and its eligibility indicator is $\mathbf1_{\mathcal E_i}$.
 
 We use the ordered derivative seminorm and weighted sums of Definitions~\ref{def:D05a}--\ref{def:D05b}. Regular sums are bounded at their anchors; forced sums are bounded at every site of their supports. For a function $f$ on $Z$ anchored at $o$, $\|f\|_{m,Z}$ denotes the seminorm of Definition~\ref{def:D05a} with that support and anchor.
 
@@ -79,11 +81,7 @@ Choose $Z_\lambda$ to contain the slot footprints and the radius-$B$ neighborhoo
 \end{align}
 Here $\mathcal A_m$ is the cubic and quartic sum. A signed image in these formulas uses the pulled-back anchor, support and clover; the final equality follows from the coefficient identity of Lemma~\ref{lem:C2} and reindexing orientations. On $Z_\lambda$ healthy, $L_\lambda=r_\lambda$; without flags, $\mathcal Q_m=\mathsf K_{2,m}^{\rm kin}$.
 
-The local integral is expanded before any regular term is normalized. Its elementary factors are the remainders of the stationary action, the determinant and covariance ratios, the Haar Jacobian, the incoming activities, and the failures of the fluctuation and chart tests. For a factor $F_a$, write $W_a=F_a-1$ when its unperturbed value is one. For an incoming forced factor use $W_a=K_a$ directly. The support includes every field, flag and covariance window read by the factor. We join two factors when these complete supports intersect. A molecule is a finite connected selection in this graph, with pairwise disjoint incoming forced supports and compatible seed neighbourhoods in the sense of Lemma~\ref{lem:B-D2}. Each incoming inventory $I_i$ must be covered by the corners of its selected fine plaquettes:
-\begin{equation*}
-I_i\subset\bigcup_{p\in A_f(M)}\operatorname{corners}(p)\,.
-\end{equation*}
-The selection retains these supports and inventories. Ordinary molecules also have complete read supports disjoint from output flags.
+The local integral is expanded before any regular term is normalized. Its elementary factors are the remainders of the stationary action, the variation $\mathrm e^{-[\mathcal L_{m+1}(U)-\mathcal L_{m+1}(U_v)]}$ of the inherited loop action about the stationary configuration, the determinant and covariance ratios, the Haar Jacobian, the incoming activities, and the failures of the fluctuation and chart tests. For a factor $F_a$, write $W_a=F_a-1$ when its unperturbed value is one. For an incoming forced factor use $W_a=K_a$ directly. The support includes every field, flag and covariance window read by the factor. We join two factors when their complete read supports, as defined before Lemma~\ref{lem:B-D2}, intersect. A molecule here is a molecule in that sense whose product has pairwise disjoint incoming forced supports, satisfies the inventory coverage $I_i\subset\bigcup_{p\in A_f(M)}\operatorname{corners}(p)$ and the component compatibility there. The selection retains these supports and inventories. An ordinary molecule also satisfies the last admitted condition: its complete read supports avoid the output flags.
 
 For an ordinary molecule $M$ on a healthy output support, its integrated weight and an absolute derivative majorant are
 \begin{equation}\label{eq:D-seed-required}
@@ -94,7 +92,7 @@ z_M(U)=\int\prod_{a\in M}W_a(U,\zeta)\,d\nu(\zeta),
 \end{equation}
 Here $\nu$ is the single sector Gaussian/Haar law of Lemma~\ref{lem:B-D2}, $g_M$ majorizes the product and its required ordered derivatives, and $f_a$ are that lemma's factor bounds. The integer $s_M$ is the sum of the numbers of radius-$B$ blocks covering the complete read supports, including retained path lengths in the same units. The function $P_j$ has subpower growth after the ratio has been fixed. The formula is used only on compatible sectors; their sum retains the exact allocation indicators. Terms whose reads meet an output flag component remain attached to that component and have a nonempty forced inventory. The ordinary connected integrals are taken on the complement, where their read supports are disjoint from the output flags. Components with empty inventory are used in the regular logarithm on their healthy supports.
 
-We first give the connected identity with its initial estimates. Write $\mathcal E_\tau$ and $\mathcal K_\tau$ for the anchored regular and forced site sums at support exponent $\tau$. For an extra factor $W_0$ on complete support $Z_0$, let $n_0=\cover_B(Z_0)$ and let $v_0$ bound its integrated majorant, including its support weight and required derivatives, with any retained forced seed suppression kept separately. Its rooted sum contains each connected term with one distinguished occurrence of $W_0$, counted once; the other factors have nonnegative majorants $v_a$ on their complete supports $Z_a$, including the reserved support weights. Denote its absolute regular sum at $\sigma+3$ by $\mathcal R_{\rm reg}(W_0)$ and its forced sum at $\sigma+2$ by $\mathcal R_{\rm for}(W_0)$. For a retained energy exponent $r_j>0$, set
+We first give the connected identity with its initial estimates. Write $\mathcal E_\tau$ and $\mathcal K_\tau$ for the anchored regular and forced site sums at support exponent $\tau$. For an extra factor $W_0$ on complete read support $Z_0$, let $n_0=\cover_B(Z_0)$ and let $v_0$ bound its integrated majorant, including its support weight and required derivatives, with any retained forced seed suppression kept separately. Its rooted sum contains each connected term with one distinguished occurrence of $W_0$, counted once; the other factors have nonnegative majorants $v_a$ on their complete read supports $Z_a$, including the reserved support weights. Denote its absolute regular sum at $\sigma+3$ by $\mathcal R_{\rm reg}(W_0)$ and its forced sum at $\sigma+2$ by $\mathcal R_{\rm for}(W_0)$. For a retained energy exponent $r_j>0$, set
 \begin{equation*}
 \mathcal R(W_0)=\max\{\mathcal R_{\rm reg}(W_0),
  e^{r_j\beta'_u t_{m+1}^2}\mathcal R_{\rm for}(W_0)\}\,.
@@ -102,21 +100,22 @@ We first give the connected identity with its initial estimates. Write $\mathcal
 For coefficient-valued factors we use the same majorants in a commutative coefficient algebra with a submultiplicative weighted norm. This includes complex coefficients and finite commuting nilpotent marks. The stronger regular estimate needed for subtraction is obtained in Lemma~\ref{lem:D-preliminary}.
 \begin{samepage}
 \begin{lemma}[Connected local expansion]\label{lem:D-connected}
-The block integral has an absolutely convergent connected expansion on all configurations. For $W_0$ above, assume
+For every such curve, there are $C_j,r_j,\eta>0$, depending only on stage and ratio, $\tau_u^{\rm old}\in\R$ and families on fixed countable addresses, equivariant and continuous in weighted norms: $f_a^0$ local on $X_a$, regular before flat-value and Hessian subtraction, and forced $k_{i,u}^{\rm con}$. With forced exact-cover sum $\mathcal F_u^{\rm con}$, on all configurations,
 \begin{equation*}
-(2B+1)^4\sup_x\sum_{a:x\in Z_a}v_a\le\eta.
+\mathcal H_u=\exp\!\left\{\tau_u^{\rm old}|\Lambda|-\beta'_u\mathsf K_m^{\rm kin}
+-\mathcal L_m-\alpha_{N,m}\mathcal Q_m-\sum_a h_{X_a}f_a^0\right\}\mathcal F_u^{\rm con}.
 \end{equation*}
-Then
+Absolute convergence holds;
 \begin{equation*}
 \mathcal E_{\sigma+3}\le C_j\refbeta_{m+1}^{-7/16},\qquad
-\mathcal K_{\sigma+2}\le C_je^{-r_j\beta'_u t_{m+1}^2},\qquad
-\mathcal R(W_0)\le v_0e^{\eta n_0}\,.
+\mathcal K_{\sigma+2}\le C_je^{-r_j\beta'_u t_{m+1}^2}.
 \end{equation*}
-Here $C_j,r_j,\eta>0$ depend only on the stage data and ratio. The bounds hold coefficientwise and persist with all support exponents lowered by two. Addresses are fixed and countable; the families are equivariant and continuous in the weighted norms.
+For every $W_0$, if $(2B+1)^4\sup_x\sum_{a:x\in Z_a}v_a\le\eta$, then $\mathcal R(W_0)\le v_0e^{\eta n_0}$.
+Bounds hold coefficientwise and with support exponents lowered by two.
 \end{lemma}
 \end{samepage}
 \begin{proof}
-Use the kernel and density of Definitions~\ref{def:D04}, \ref{def:D06}, the path bounds of Lemma~\ref{lem:C1}, the local energy of Lemma~\ref{lem:B-D1}, and the simultaneous majorant and disjoint-support factorization of Lemma~\ref{lem:B-D2}. Expand finite products first. Fubini's theorem applies to each term by~\eqref{eq:D-seed-required}. Disjoint complete supports use disjoint Gaussian marginal blocks and Haar variables, so their integrals multiply. This gives a gas of the connected weights $z_M$. Overlapping factors are always integrated together.
+Use the kernel and density of Definitions~\ref{def:D04}, \ref{def:D06}, the path bounds of Lemma~\ref{lem:C1}, the local energy of Lemma~\ref{lem:B-D1}, and the simultaneous majorant and disjoint-support factorization of Lemma~\ref{lem:B-D2}. Expand finite products first. Fubini's theorem applies to each term by~\eqref{eq:D-seed-required}. Disjoint complete read supports use disjoint Gaussian marginal blocks and Haar variables, so their integrals multiply. This gives a gas of the connected weights $z_M$. Overlapping factors are always integrated together.
 
 Put $\mathfrak b=\refbeta_{m+1}$ and $g=(\beta'_u)^{-1/2}$. For a healthy local chart write its link logarithm as $m_Y+gz$; the mean is $O(t_{m+1})$ by Lemma~\ref{lem:B-windows}. The following bounds include the prescribed finite number of ordered derivatives. A factor $P_j(\mathfrak b)$ below absorbs fixed powers of $B$ and $\cutoffsize_{m+1}$ after the ratio is fixed; read-count powers remain in $(1+s_M)^{d_j}$ as in~\eqref{eq:D-seed-required}:
 \begin{equation}\label{eq:D-factor-rates}
@@ -126,14 +125,19 @@ Put $\mathfrak b=\refbeta_{m+1}$ and $g=(\beta'_u)^{-1/2}$. For a healthy local 
 \text{centered determinant remainder}&P_j(t_{m+1}+g)\le P'_j\mathfrak b^{-1/2}\\
 \text{Gaussian-density and stationarity residuals}&P_j\mathfrak b^{c_j^{\rm res}}e^{-c_j^{\rm tail}B}\\
 \text{Haar-Jacobian remainder}&P_j(t_{m+1}+g)^2\\
+\text{inherited loop variation}&P_j\Lambda_{m+1}^{\rm loop}(t_{m+1}+g)g\le P'_j\mathfrak b^{-1/2}\\
 \text{incoming regular sum}&P_j\epsilon_{m+1}^{\rm reg}\\
 \text{incoming forced component}&P_j\epsilon_{m+1}^{\rm for}\\
 \text{warning}&M_w\mathfrak b^{-1/2}
 \end{array}
 \end{equation}
-For the first row, Taylor's formula after the stationary quadratic part starts with $\beta'_u(m_Y+gz)^3$; substituting $m_Y=O(g\cutoffsize_{m+1})$ gives the displayed bound. For the determinant, subtract its flat value and the quadratic term already assigned to $\alpha_{N,m}\mathcal Q_m$. The inverse identity bounds the remaining variation by $P_j(t_{m+1}+g)$. The covariance and stationary residuals are exponentially small by Lemma~\ref{lem:B-windows}; their rescaling costs only the displayed fixed power. The chart density has value one and zero first derivative at zero, giving its quadratic bound. Incoming sums retain their own allowances. Chart-test failures, fine-plaquette and mismatch failures, and tag or inventory departures are precisely the warning factors of Lemma~\ref{lem:B-D2}.
+For the first row, Taylor's formula after the stationary quadratic part starts with $\beta'_u(m_Y+gz)^3$; substituting $m_Y=O(g\cutoffsize_{m+1})$ gives the displayed bound. For the determinant, subtract its flat value and the quadratic term already assigned to $\alpha_{N,m}\mathcal Q_m$. The inverse identity bounds the remaining variation by $P_j(t_{m+1}+g)$. The covariance and stationary residuals are exponentially small by Lemma~\ref{lem:B-windows}; their rescaling costs only the displayed fixed power. The chart density has value one and zero first derivative at zero, giving its quadratic bound. The inherited loop action is quadratic in slot curvatures with weighted coefficient sum at most $\Lambda_{m+1}^{\rm loop}$ by Lemma~\ref{lem:C1}; on the chart each slot is $O(t_{m+1}+g|z|)$ and moves by $O(g|z|)$, which gives its row. Incoming sums retain their own allowances. Chart-test failures, fine-plaquette and mismatch failures, and tag or inventory departures are precisely the warning factors of Lemma~\ref{lem:B-D2}.
 
-Lemma~\ref{lem:B-D2} permits every fixed warning exponent $\tau_w>0$. Take $\tau_w=1/2$, so $\varepsilon_w=\mathfrak b^{-1/2}$ and the simultaneous probability bound is $\varepsilon_w^{2r}=\mathfrak b^{-r}$ for $r$ distinct warning addresses, including the coordinate-choice multiplicity. The fixed amplitudes $M_w$ enter $P_j$. All rows of~\eqref{eq:D-factor-rates} are consequently at most a subpower factor times $\mathfrak b^{-1/2}$. Choose that factor at most $C_j\mathfrak b^{1/32}$, then raise the threshold until $C_j\mathfrak b^{-1/32}\le1$. This gives $\mathfrak b^{-7/16}$, with $1/32$ of the power available before the last threshold choice. Path lengths are summed with the exponential bounds of Lemma~\ref{lem:C1}. Every fixed polynomial in $1+s_M$ is bounded by $C_{j,\eta}e^{\eta s_M}$; choose $\eta$ from the unused support exponent. These choices precede the coupling threshold.
+Lemma~\ref{lem:B-D2} permits every fixed warning exponent $\tau_w>0$. Take $\tau_w=1/2$, so $\varepsilon_w=\mathfrak b^{-1/2}$ and the simultaneous probability bound is $\varepsilon_w^{2r}=\mathfrak b^{-r}$ for $r$ distinct warning addresses, including the coordinate-choice multiplicity. The linear Chernoff bound there gives each warning the exponent $c_j(t_{m+1}/g)/B^4$ for some $c_j>0$. Since $t_{m+1}/g\ge\cutoffsize_{m+1}/\sqrt2$,
+\begin{equation*}
+\frac{t_{m+1}/g}{B^4\log\mathfrak b}\longrightarrow\infty\,.
+\end{equation*}
+The fixed amplitudes $M_w$ enter $P_j$. All rows of~\eqref{eq:D-factor-rates} are consequently at most a subpower factor times $\mathfrak b^{-1/2}$. Choose that factor at most $C_j\mathfrak b^{1/32}$, then raise the threshold until $C_j\mathfrak b^{-1/32}\le1$. This gives $\mathfrak b^{-7/16}$, with $1/32$ of the power available before the last threshold choice. Path lengths are summed with the exponential bounds of Lemma~\ref{lem:C1}. Every fixed polynomial in $1+s_M$ is bounded by $C_{j,\eta}e^{\eta s_M}$; choose $\eta$ from the unused support exponent. These choices precede the coupling threshold.
 
 A compulsory component is a connected component of the selected seed neighbourhoods in the allocation sector of Lemma~\ref{lem:B-D1}. Its seed selection $A=(A_f,A_n,A_c)$ consists of the selected fine plaquettes, mismatch edges and coarse flags defined there. Write $\kappa_B$ for that lemma's constant. It retains $\exp(-\kappa_B\beta'_u t_{m+1}^2|A|)$ before integration. Fix the retained exponent $0<\kappa'_B<\kappa_B$ in the compulsory-component bound of Lemma~\ref{lem:B-D2}, and then choose $0<r_j<\kappa'_B$. When $A_c\ne\varnothing$, keep all reads meeting this component in its local factor and apply that bound. Old measurable factors use their supremum envelopes, while the Gaussian variables are integrated. The frozen Haar integrals are probability integrals. After adjoining every seed component met by the reads, $A_c=\varnothing$ means that these reads avoid output flags; apply the ordinary molecule bound of the same lemma. With $F_A$ denoting this component product, its integrable majorant satisfies
 \begin{equation*}
@@ -166,7 +170,7 @@ For two inputs at fixed addresses, telescope each product with one difference fa
 =\left(\frac{\beta_2}{\beta_1}\right)^{d/2}
  e^{-(\beta_2-\beta_1)Q(a)}\,.
 \end{equation*}
-Its derivative in $\beta_2$ is the same ratio times $d/(2\beta_2)-Q(a)$. On a small relative coupling interval its absolute value is dominated by a polynomial times a Gaussian exponential with precision strictly below that of the base law. Square completion bounds its integral. Mean and precision changes are treated by the inverse difference identity and the Schur bounds of Lemma~\ref{lem:B-windows}; their density derivatives are again polynomial Gaussian scores. No old measurable factor is differentiated in this comparison. The tree bound with the same attachment margin controls the weighted discrepancy by a constant times the input activity and coupling discrepancies; this constant may depend on the fixed volume. Continuity holds locally and, by a finite covering of the compact interval, on fixed addresses throughout. Translation and signed permutations transport complete supports, factors and sectors; their finite average gives equivariance.
+Its derivative in $\beta_2$ is the same ratio times $d/(2\beta_2)-Q(a)$. On a small relative coupling interval its absolute value is dominated by a polynomial times a Gaussian exponential with precision strictly below that of the base law. Square completion bounds its integral. Mean and precision changes are treated by the inverse difference identity and the Schur bounds of Lemma~\ref{lem:B-windows}; their density derivatives are again polynomial Gaussian scores. No old measurable factor is differentiated in this comparison. The tree bound with the same attachment margin controls the weighted discrepancy by a constant times the input activity and coupling discrepancies; this constant may depend on the fixed volume. Continuity holds locally and, by a finite covering of the compact interval, on fixed addresses throughout. Translation and signed permutations transport complete read supports, factors and sectors; their finite average gives equivariance.
 \end{proof}
 
 The terms linear in an incoming regular activity must be treated separately from products of small factors. Their supports can be large, so they are not replaced by auxiliary tori. The function $E_i$ and its derivative norm in this paragraph are at level $m+1$. For such an address $i$, let $T_i$ be its contribution to the negative connected logarithm. The local Gaussian substitution of Lemma~\ref{lem:B-D2}, restricted to the windows incident to $X_i$, reconstructs a fine configuration $U_i^0(V,z)$. With the same inner chart protector $\Gamma_i$, define
@@ -187,7 +191,7 @@ The functions $P_i,R_i$ are regular before flat-value and Hessian subtraction, o
 where $V_j$ is fixed before the ratio and $\omega_{j,\ell}^{\rm inh}$ has scale rate $-1/2$. The identity $T_i=P_i+R_i$ and the corresponding weighted comparisons hold on the entire input curve.
 \end{lemma}
 \begin{proof}
-Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06}, Lemmas~\ref{lem:B-D2}, \ref{lem:C1}--\ref{lem:C2} and~\ref{lem:D-connected}. For the principal average use the same normalized directions as in the incoming norm. The linear background lifts a unit coarse curl to fine curvature of size $O(\ell_m^{-2})$. Replace the background on $X_i$ by its affine part at the anchor. In the Taylor formula for $E_i$ the constant and first derivative vanish; its Hessian on two such affine fields vanishes by Definition~\ref{def:D24}. Every surviving background term therefore has either three curvature factors or one spatial remainder. The third-order integral remainder has the product of its three normalized direction sizes. The spatial remainder is bounded by the first difference of the prediction kernel and supplies one further inverse ratio. In the normalized curvature directions, the linear prediction $\mathsf P$ and its affine approximation $\mathsf P_{\rm aff}$ satisfy
+Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06}, Lemmas~\ref{lem:B-D2}, \ref{lem:C1}--\ref{lem:C2} and~\ref{lem:D-connected}. For the principal average use the same normalized directions as in the incoming norm. The linear background lifts a unit coarse curl to fine curvature of size $O(\ell_m^{-2})$. Replace the background on $X_i$ by its affine part at the anchor. In the Taylor formula for $E_i$ the constant vanishes by Definition~\ref{def:D24}. The first derivative also vanishes: invariance under constant gauge transformations makes its coefficient on each link an $\operatorname{Ad}(G)$-invariant vector of $\g$, which is zero since $\g$ is simple and nonabelian (Definition~\ref{def:D01}). Its Hessian on two such affine fields vanishes by Definition~\ref{def:D24}. Since $E_i$ is gauge invariant, evaluate it in the radial gauge at its fine anchor; at fine distance $\rho\le\ell_m$ the lifted field is then at most $C_j\ell_m^{-2}(t_m/t_{m+1})$ times a permitted fine direction, using $\varpi_{J_{m+1}}\ge\varpi_{J_m}\ge2$. Every surviving background term therefore has either three curvature factors or one spatial remainder. The third-order integral remainder has the product of its three normalized direction sizes. The spatial remainder is bounded by the first difference of the prediction kernel and supplies one further inverse ratio. In the normalized curvature directions, the linear prediction $\mathsf P$ and its affine approximation $\mathsf P_{\rm aff}$ satisfy
 \begin{equation*}
 \|\mathsf P\|\le C_j\ell_m^{-2},\qquad
 \|\mathsf P-\mathsf P_{\rm aff}\|\le C_j\ell_m^{-3}\,.
@@ -204,12 +208,40 @@ Here the parent of a fine link is its coarse block. The distance is between the 
 \ell_m^{-3}\ell_m^{-2}=\ell_m^{-5}\,.
 \end{equation*}
 
-If the fine support wraps, or is too large for the affine replacement, its connected cover contains at least $c\ell_m$ fine radius-$B_{m+1}$ balls: its diameter is at least a fixed fraction of the fine period or of the enlarged coarse neighborhood. Reserve half of its incoming support exponent. The resulting $e^{-c\sigma_{J_{m+1}}\ell_m}$ bounds the polynomial anchor count and yields the same inverse-ratio estimate without an affine test. For the remaining supports there are $\ell_m^4$ fine anchors over a coarse anchor. Three curvature factors give $\ell_m^{-6}$, and the spatial-remainder terms give at least $\ell_m^{-5}$ after the kernel sums. Multiplying by the anchor count gives at most $C_j\ell_m^{-1}$. Powers of the fine support diameter from the Taylor formula and derivative placements are bounded by its covering weight. The support compression gives
+For every support extending beyond the radius $\ell_m$, use the incoming covering number
+$d_i=\cover_{B_{m+1}}(X_i)$, rather than infer a large covering number from that radius alone. Split at $d_i^3<\ell_m$. In this class $3d_i\le\ell_m$; together with $B_{m+1}\le2B_m$, this bounds the inspected fine radius by $6(1+B_m)\ell_m$. The support is nonwrapping because the coarse side is at least $100(1+B_m)$. Perform the radial Taylor expansion on this whole support. In the incoming weighted direction norm, each differentiated lifted potential decomposes into a constant part, an affine part and a remainder with respective bounds
+\begin{equation*}
+C\ell_m^{-1},\qquad C\ell_m^{-2},\qquad C\ell_m^{-3}.
+\end{equation*}
+Here $C$ is bounded by a stage constant plus the normalized nonlinear and fluctuation errors. After the ratio is fixed these errors are made at most one by the entry choice: their bounds are fixed powers of $\ell_m,B_m$ times $t_{m+1}+g/t_{m+1}$, which tends to zero. The spatial weights are retained in this decomposition, using $\varpi_{J_{m+1}}\ge\varpi_{J_m}\ge2$ from row~4 of Table~\ref{tab:constant-choices}.
+
+Assign weights one, two and three to the three parts. In the local radial-gauge expansion, a site gauge removes the weight-one part of the potential and produces terms of weight at least two; commutators of constant parts first occur at weight two. Thus the first possible curvature has weight two. The terms through weight four are therefore a constant, linear terms in curvature and its spatial derivatives, and a quadratic curvature term. The first is zero by flat normalization, the second is zero by constant colour invariance, and the last is zero by the affine Hessian condition. Equivalently, multilinearity after the three-part decomposition cancels every selection of total weight at most four. A selection of larger weight has at least five inverse powers of $\ell_m$. Taylor's integral formula along the healthy radial segment gives the same gain at the evaluation field: integrate the next derivative from the flat field, repeating up to the available order $\mathfrak q_{J_m}\ge6$. The ordered chain rule has only stage-dependent many placements. The common Gaussian majorant of Lemma~\ref{lem:B-D2} bounds their moments.
+
+For the complementary class $d_i^3\ge\ell_m$, including winding supports, apply the derivative bound without an affine subtraction. Its direction and read-count losses are polynomial in $1+d_i$. Both cases are expressed by
+\begin{equation*}
+\delta_\ell(d)=
+\begin{cases}\ell^{-5},&d^3<\ell,\\1,&d^3\ge\ell,\end{cases}
+\qquad
+\delta_\ell(d)\le\ell^{-5}(1+d)^{15}.
+\end{equation*}
+Indeed $\ell^5\le d^{15}$ in the second case. After the entry choice absorbs factors polynomial in $B_m$, if $a_i$ is an incoming derivative majorant, the integrated principal bound is at most
+$C_j a_i\delta_{\ell_m}(d_i)(1+d_i)^{q_j}$, for a fixed integer $q_j$; the polynomial comes from the ordered chain rule and the Gaussian moments just described. No estimate $d_i\ge c\ell_m$ is needed.
+
+For support compression, fix an integer $r$ with
+$Y_i\subset N_{rB_m}(\operatorname{parent}(X_i))$ and put $T_r=(2r+13)^4$.
+Choose the ratio to satisfy
+\begin{equation*}
+20(\sigma+3)T_r\le\ell_m\sigma_{J_{m+1}}.
+\end{equation*}
+Together with $B_{m+1}\le2B_m$, this leaves half the incoming exponent:
 \begin{equation*}
 (\sigma+3)\cover_{B_m}(Y_i)
-\le C_j+\tfrac12\sigma_{J_{m+1}}\cover_{B_{m+1}}(X_i)\,;
+\le (\sigma+3)T_r+\tfrac12\sigma_{J_{m+1}}d_i.
 \end{equation*}
-the remaining half of the incoming exponent bounds those diameter powers and the possible coarse anchors. This is why the fine support exponent and its compression condition are chosen before the ratio. Gaussian terms in the average have additional factors $g/t_{m+1}$; their fixed moments and the chart tails tend to zero uniformly after the ratio is fixed. Increase the coupling threshold until their total is bounded by another $C_j/\ell_m$ times the incoming sum. This proves the principal estimate, with $V_j$ independent of the eventual ratio.
+The remaining half bounds $(1+d_i)^{q_j+15}$, since
+$\sup_{d\ge0}(1+d)^{q_j+15}e^{-\sigma_{J_{m+1}}d/2}<\infty$.
+There are $\ell_m^4$ fine anchors above a coarse anchor. Multiplying their count by the per-address factor $\ell_m^{-5}$ proves the bound $V_j/\ell_m$, with $V_j$ fixed before the ratio.
+
 
 For $\cover_{B_m}(Y_i)\le B_m$, compare the actual local integral with this principal Gaussian average before integrating. Subtract their means, covariances and transported kernels using the inverse difference identity, and telescope the remaining factor product with one marked difference. The inverse difference identity $C^{-1}-\widetilde C^{-1}=C^{-1}(\widetilde C-C)\widetilde C^{-1}$ puts a reconstruction difference in one factor. Taylor's formula for the link exponential makes that factor at most $P_j(\mathfrak b)(t_{m+1}+g)$ in each of the requested normalized derivatives; stationarity and window residuals contribute $P_j(\mathfrak b)g^{-c_j}e^{-c'_jB}$. Consequently their common bound is
 \begin{equation*}
@@ -222,13 +254,14 @@ Local Gaussian marginals read only $Y_i$. A gauge transformation acts orthogonal
 
 The initial regular estimate does not fit $\epsilon_m^{\rm reg}=\refbeta_m^{-11/10}$. The following localization gives the additional power. We describe the finite-period cancellation because an estimate of each separate local term would miss it.
 
-Write $f_a^0$ for a regular summand of the negative logarithm in~\eqref{eq:D-cluster}, including its coefficient. Keep the inherited terms of Lemma~\ref{lem:D-inherited} separately. Select finitely many of the remaining terms not estimated by~\eqref{eq:D-height-gain} below, and all short path terms selected at this truncation. Give an ordinary term the shares $p_{xa}=\mathbf1_{X_a}(x)/|X_a|$, and a path term the share $\mathbf1_{\{o_a\}}(x)$. Put $F_x=\sum_{a\ {\rm selected}}p_{xa}f_a^0$. The remaining terms form $f^{\rm tail}$. Let $R$ contain every complete read support of this finite sum relative to a site receiving a nonzero share. Its radius is a stage multiple of $B$. Set $w=4R+100(1+B)$, $e=w+5$, and let $\Lambda_i$ have side $2(w+i)$, $0\le i\le4$. A configuration on $\Lambda$ gives a configuration $V_{i,x}$ on $\Lambda_i$ by repeated reflection of its cube about $x$. The direction of a reflected link is reversed when necessary. Put
+Write $f_a^0$ for a regular summand of the negative logarithm in~\eqref{eq:D-cluster}, including its coefficient. Keep the inherited terms of Lemma~\ref{lem:D-inherited} separately. Call a remaining term eligible if it is a connected term with at most two molecules of at most two elementary factors each, every path atom having length at most $B$, with no incoming activity factor or seed component, or a path term of length at most $B$. Such terms have complete read radius at most a fixed stage multiple of $B$. Eligible terms read only the prescribed path, the coupling and the addresses, not the values of the incoming activities. Fix an exhaustion of the eligible addresses by finite sets invariant under translations and signed permutations, and select the eligible terms in one of these sets. Its index and the truncation error $\varepsilon_{\rm tr}$ are fixed in the proof of Lemma~\ref{lem:D-preliminary}. Give an ordinary term the shares $p_{xa}=\mathbf1_{X_a}(x)/|X_a|$, and a path term the share $\mathbf1_{\{o_a\}}(x)$. Put $F_x=\sum_{a\ {\rm selected}}p_{xa}f_a^0$. The remaining terms form $f^{\rm tail}$. Let $R$ contain every complete read support of this finite sum relative to a site receiving a nonzero share. Its radius is a stage multiple of $B$. Set $w=4R+100(1+B)$, $e=w+5$, and let $\Lambda_i$ have side $2(w+i)$, $0\le i\le4$. A configuration on $\Lambda$ gives a configuration $V_{i,x}$ on $\Lambda_i$ by repeated reflection of its cube about $x$. The direction of a reflected link is reversed when necessary. Put
 \begin{equation}\label{eq:D-five-weights}
 \lambda_i=\frac{(-1)^i\binom4i}{2^4\,4!},\qquad
 G_x(V)=\sum_{i=0}^4\lambda_i\sum_{y\in\Lambda_i}F^{(i)}_y(V_{i,x})\,.
 \end{equation}
 Here $F^{(i)}$ is the same finite local formula on the auxiliary torus, with its value at $1$ subtracted at each site. This operation recovers a local function from bounds on the total auxiliary action.
 
+For the estimates below put $\mathfrak b=\refbeta_{m+1}$; $P_j$ has subpower growth.
 \begin{lemma}[Finite-period localization]\label{lem:D-localization}
 For a finite local connected sum with complete read radius $R$, the function $G_x$ in~\eqref{eq:D-five-weights} is local on $N_e(x)$. Its redistribution has the exact form
 \begin{equation*}
@@ -236,10 +269,13 @@ For a finite local connected sum with complete read radius $R$, the function $G_
 =c|\Lambda|+\sum_a h_{X_a}f_a^{\rm tail}
 +\sum_xh_{N_e(x)}G_x+\sum_xL_x\,.
 \end{equation*}
-Each $L_x$ reads links and flags in $N_{2e}(x)$ and vanishes when that set is healthy. The estimates in the proof give $G_x$ the additional regular smallness.
+Each $L_x$ reads links and flags in $N_{2e}(x)$ and vanishes when that set is healthy. \begin{equation*}
+\|G_x\|_{m,N_e(x)}\le P_j(\mathfrak b)(\mathfrak b^{-23/20}+\varepsilon_{\rm tr}),
+\qquad \sup|L_x|\le P_j(\mathfrak b)\mathfrak b^{-7/16}.
+\end{equation*}
 \end{lemma}
 \begin{proof}
-Use Definitions~\ref{def:D04}--\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C7}, and~\ref{lem:D-connected}. Give each connected summand equal shares at the sites of its complete support; give each path term to its anchor. These shares sum to one. Let $F_x$ be the resulting finite sum at $x$, and let $f^{\rm tail}$ be the terms not selected. Define
+Use Definitions~\ref{def:D04}--\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C7}, and~\ref{lem:D-connected}. Give each connected summand equal shares at the sites of its complete read support; give each path term to its anchor. These shares sum to one. Let $F_x$ be the resulting finite sum at $x$, and let $f^{\rm tail}$ be the terms not selected. Define
 \begin{equation}\label{eq:D-mask-localization}
 L_x=\sum_{a\ \text{selected}}p_{xa}h_{X_a}f_a^0-F_x(1)
 -\sum_{i=0}^4\lambda_i\sum_{y\in\Lambda_i}
@@ -247,6 +283,23 @@ L_x=\sum_{a\ \text{selected}}p_{xa}h_{X_a}f_a^0-F_x(1)
 \qquad c=F_0(1)\,.
 \end{equation}
 The coefficients $p_{xa}$ are the shares, and $\widetilde y$ is the integer representative used in the reflection. Summing over $x$ and changing $x$ to $x-\widetilde y$ gives exactly the asserted identity. Translation symmetry makes $F_x(1)$ independent of $x$.
+
+Use the polynomial period requirement in row 7 of Section~\ref{sec:constants}, in addition to $100(B+1)\le L_pD_m$. Write $n=L_pD_m$ and let $b$ be the fixed neighbourhood constant in the eligibility radius. The radius in the local construction is
+\begin{equation*}
+R=18\{bB+6B+3+B\}+8+2B.
+\end{equation*}
+Thus $e=4R+100(1+B)+5$ is affine in $B$, with positive coefficients. Put $a_b=2e|_{B=1}$. The chosen stage has integers $v_j^{\rm per},h_j^{\rm per}$ with $v_j^{\rm per}\ge a_b$, $h_j^{\rm per}\ge1$ and
+\begin{equation*}
+n\ge v_j^{\rm per}(1+B_m+B_{m+1})^{h_j^{\rm per}}.
+\end{equation*}
+These are the minimum-period choices made after the ratios. Since $B\ge1$,
+\begin{equation*}
+2e\le a_bB<a_b(1+B_m+B_{m+1})^{h_j^{\rm per}}\le n,
+\qquad 4R+16<n.
+\end{equation*}
+The reflection cubes, whose side is at most $2(w+4)<2e$, therefore embed, as does every radius-$R$ read set. The larger health set $N_{2e}(x)$ is a set on the original torus and need not embed; the argument uses only its containment of the queried links and flags.
+
+For the local comparison, suppose that the field is healthy on the radius-$R$ neighbourhood. Translate its cube to $[0,2R]^4$. On integer representatives $0\le k<n$, fold each coordinate by $q(k)=k$ for $k\le2R$, $q(k)=4R-k$ for $2R<k\le4R$, and $q(k)=0$ thereafter. Pull back links along this map, reversing them on decreasing edges and setting them to the identity on collapsed edges. A plaquette becomes a plaquette of the original cube, with possible reversal and conjugation, or has identity holonomy. The field is therefore globally healthy and agrees with the original field on the cube. The bound $4R<n$ permits the construction without a divisibility assumption on $n$. Locality then permits this replacement when comparing the common local formulas on different periods.
 
 We verify the vanishing of $L_x$ on a healthy $N_{2e}(x)$. The complete read supports then lie in that set, every mask in~\eqref{eq:D-mask-localization} is one, and every reflected configuration occurring there is healthy. Classify a point of $\Lambda_i$ by its distance, through $R$, from each reflection face. In the $y$-summand of~\eqref{eq:D-mask-localization} the reflection cube is centred at $x-\widetilde y$, so its site $y$ corresponds to $x$. For a fixed class the local formula is therefore independent of $i$. In one coordinate the number of points in an interior class is $2(w-2R+1)+2i$; for a specified boundary class it is a fixed integer. Consequently each class has a multiplicity polynomial in $i$ of degree at most four. Its degree is four only when all four coordinates are interior. The identity
 \begin{equation*}
@@ -256,19 +309,19 @@ We verify the vanishing of $L_x$ on a healthy $N_{2e}(x)$. The complete read sup
 \end{equation*}
 cancels every boundary class and retains the interior class with coefficient $2^4 4!/(2^4 4!)=1$. Locality and gauge invariance identify its value with $F_x(V)-F_x(1)$. This proves $L_x=0$. It also proves its stated read support: the largest displacement is at most $w+4<e$, and each mask reads a further radius $e$.
 
-Here are the quantitative estimates on the sum before this localization. Put $\mathfrak b=\refbeta_{m+1}$ and $\mathfrak h=\mathfrak b^{3/8}$. In the convergent connected sums multiply every ordinary molecule weight by $\mathfrak h$. The rooted attachment parameter still tends to zero, since $\mathfrak h \mathfrak b^{-7/16}=\mathfrak b^{-1/16}$. A term with at least three ordinary factors gains $\mathfrak h^{-3}$ upon restoring its original weights. A term with a retained large-field overlap has the same gain because its suppression is at least $\mathfrak h^{-3}$. The sum after multiplication has size at most a subpower factor times $\mathfrak h \mathfrak b^{-7/16}$. Thus the terms in these two classes have bound
+Here are the quantitative estimates on the sum before this localization. Put $\mathfrak b=\refbeta_{m+1}$ and $\mathfrak h=\mathfrak b^{3/8}$. In the convergent connected sums multiply the majorant of each ordinary elementary factor by $\mathfrak h$. The rooted attachment parameter still tends to zero, since $\mathfrak h \mathfrak b^{-7/16}=\mathfrak b^{-1/16}$. A term with at least three such factors across its molecules gains $\mathfrak h^{-3}$ upon restoring its original weights. A term with a retained large-field overlap has the same gain because its suppression is at least $\mathfrak h^{-3}$. The sum after multiplication has size at most a subpower factor times $\mathfrak h \mathfrak b^{-7/16}$. Thus the terms in these two classes have bound
 \begin{equation}\label{eq:D-height-gain}
 P_j(\mathfrak b)\mathfrak h^{-3}(\mathfrak h \mathfrak b^{-7/16})=P_j(\mathfrak b)\mathfrak b^{-19/16}
 \le \mathfrak b^{-23/20}
 \end{equation}
 after the coupling threshold is raised. The reserve is $19/16-23/20=3/80$. This estimate also bounds fixed ordered derivatives: their placement polynomial was included before the rooted sum.
 
-First retain the inherited terms using Lemma~\ref{lem:D-inherited}; their principal sum is made smaller than a prescribed multiple of $H_j$ by choosing the ratio, and their comparison remainder by raising the threshold. Among all other connected terms retain also those whose total support size reaches the truncation radius: their support decay is at most $\mathfrak h^{-3}$ after the threshold is raised, so the estimate in~\eqref{eq:D-height-gain} applies to them. The remaining terms have at most two elementary factors, no seed component and bounded complete read radius. They are the finite connected contributions and path terms of length at most $B$ to which the reflected-period construction is applied, together with a summable truncation tail. Truncation on the countable connected addresses makes the latter arbitrarily small in the weighted norm at fixed volume. Long paths have an additional factor $e^{-w^{\rm path}_{J_m}B/4}$ by Lemma~\ref{lem:C1}; it converts their $\mathfrak b^{-7/16}$ bound to $\mathfrak b^{-23/20}$. For the finite sum use the stationary integral on each $\Lambda_i$. Their sides $2(w+i)$ satisfy $2(w+i)\ge100(B+1)$. The entry choice $B\ge j+4$ also gives $\ell_m\,2(w+i)\ge100((j+3)\ell_m+1)$ for their fine periods. Thus the coarse-period form of Lemmas~\ref{lem:B-D1}--\ref{lem:B-D2} applies, without requiring these auxiliary periods to belong to the chosen physical-volume sequence. Subtract its flat value and the classical cubic, quartic and quadratic one-loop terms of Lemmas~\ref{lem:C4}--\ref{lem:C7}. Differentiation of its logarithm gives connected expectations under the common Gaussian law. For the terms not involving incoming errors, write the normalized local integral as $\mathbb E\exp(V_3+V_4+V_{\ge5})$, after the stationary action and its Gaussian determinant have been extracted. The subscripts refer to the Taylor degree in the link chart. Gaussian parity removes a lone odd cubic term. The fourth-order stationary terms are already in the classical path action, and the field-dependent quadratic part of the determinant is already in $\alpha\mathcal Q_m$ and the quadratic loop atoms. Subtracting the value at $1$ removes the remaining vacuum terms. Expanding $\log\mathbb E e^V$ through two factors gives $\mathbb EV+\frac12(\mathbb EV^2-(\mathbb EV)^2)$; its remaining terms have at least three factors. In normalized fluctuation coordinates each nonquadratic factor starts at order $\mathfrak b^{-1/2}$. The common Gaussian majorant bounds the last terms by $P_j(\mathfrak b)\mathfrak b^{-3/2}$. In the one- and two-factor terms that remain after the stated cancellations, Taylor's integral remainder and the healthy field bound give
+First retain the inherited terms using Lemma~\ref{lem:D-inherited}; their principal sum is made smaller than a prescribed multiple of $H_j$ by choosing the ratio, and their comparison remainder by raising the threshold. Among all other connected terms retain also those whose total support size exceeds the eligibility radius: their support decay is at most $\mathfrak h^{-3}$ after the threshold is raised, so the estimate in~\eqref{eq:D-height-gain} applies to them. A term with an incoming regular factor and at least one further factor is not eligible. The rooted estimate in the proof of Lemma~\ref{lem:D-connected}, with $W_0$ that factor and at least one attached factor, bounds these terms by $P_j(\mathfrak b)\epsilon_{m+1}^{\rm reg}\mathfrak b^{-1/2}\le\mathfrak b^{-23/20}$. The remaining terms are eligible: the selected connected contributions and path terms of length at most $B$, to which the reflected-period construction is applied, and the eligible tail, of weighted norm at most $\varepsilon_{\rm tr}$. Long paths have an additional factor $e^{-w^{\rm path}_{J_m}B/4}$ by Lemma~\ref{lem:C1}; it converts their $\mathfrak b^{-7/16}$ bound to $\mathfrak b^{-23/20}$. Eligible connected terms with three or four elementary factors already obey~\eqref{eq:D-height-gain}; the remaining connected terms have at most two. For the finite sum use the stationary integral on each $\Lambda_i$. Their sides $2(w+i)$ satisfy $2(w+i)\ge100(B+1)$. The entry choice $B\ge j+4$ also gives $\ell_m\,2(w+i)\ge100((j+3)\ell_m+1)$ for their fine periods. Thus the coarse-period form of Lemmas~\ref{lem:B-D1}--\ref{lem:B-D2} applies, without requiring these auxiliary periods to belong to the chosen physical-volume sequence. Subtract its flat value and the classical cubic, quartic and quadratic one-loop terms of Lemmas~\ref{lem:C4}--\ref{lem:C7}. Differentiation of its logarithm gives connected expectations under the common Gaussian law. For the terms not involving incoming errors, write the normalized local integral as $\mathbb E\exp(V_3+V_4+V_{\ge5})$, after the stationary action and its Gaussian determinant have been extracted. The subscripts refer to the Taylor degree in the link chart. Gaussian parity removes a lone odd cubic term. The fourth-order stationary terms are already in the classical path action, and the field-dependent quadratic part of the determinant is already in $\alpha\mathcal Q_m$ and the quadratic loop atoms. Subtracting the value at $1$ removes the remaining vacuum terms. Expanding $\log\mathbb E e^V$ through two factors gives $\mathbb EV+\frac12(\mathbb EV^2-(\mathbb EV)^2)$; its remaining terms have at least three factors. In normalized fluctuation coordinates each nonquadratic factor starts at order $\mathfrak b^{-1/2}$. The common Gaussian majorant bounds the last terms by $P_j(\mathfrak b)\mathfrak b^{-3/2}$. In the one- and two-factor terms that remain after the stated cancellations, Taylor's integral remainder and the healthy field bound give
 \begin{equation*}
 P_j(\mathfrak b)\{\mathfrak b^{-3/2}+\mathfrak b\,t_m^5+\mathfrak b^{-1}t_m+t_m^3+e^{-c_jB}\}
 \le \mathfrak b^{-23/20}\,.
 \end{equation*}
-Every radius and chart loss is included in the subpower factor. Each of the four power terms has exponent at most $-3/2$ before that factor; the path exponential decreases faster than any fixed power. Terms involving incoming errors are divided into the finite sum and its tail above; those with at least three ordinary factors or a large-field overlap obey~\eqref{eq:D-height-gain}. Lemma~\ref{lem:B-D2} bounds these terms simultaneously, so the derivative bound for the centered total auxiliary sum is
+Every radius and chart loss is included in the subpower factor. Each of the four power terms has exponent at most $-3/2$ before that factor; the path exponential decreases faster than any fixed power. Terms involving incoming activities are not eligible; apart from the inherited terms they obey~\eqref{eq:D-height-gain} or the bound $P_j(\mathfrak b)\epsilon_{m+1}^{\rm reg}\mathfrak b^{-1/2}$ above. Lemma~\ref{lem:B-D2} bounds these terms simultaneously, so the derivative bound for the centered total auxiliary sum is
 \begin{equation}\label{eq:D-aux-bound}
 C_j \mathfrak b^{-23/20}+2|\Lambda_i|\{C_j \mathfrak b^{-23/20}+\varepsilon_{\rm tr}\}\,.
 \end{equation}
@@ -288,7 +341,7 @@ To specify the small coefficient, let $C_j^{\rm sub}$, $C_j^{\rm low}$ and $C_j^
 \begin{equation*}
 c_j=\frac1{64(1+C_j^0)},\qquad H_j=\theta c_j\epsilon_m^{\rm reg}\,.
 \end{equation*}
-The next assertion concerns the very same block integral and the masks of~\eqref{eq:D-low-sums}.
+The quantity $H_j$ depends on $m$ through $\epsilon_m^{\rm reg}$. The next assertion concerns the very same block integral and the masks of~\eqref{eq:D-low-sums}.
 \begin{lemma}[Preparatory activities]\label{lem:D-preliminary}
 For every input curve above, fixed local families $f_{i,u},k_{i,u}$ and a continuous scalar $\tau_u$ satisfy~\eqref{eq:D-early}--\eqref{eq:D-preliminary-forced}. They are equivariant and continuous in the weighted norms with exponents $\sigma+3$ and $\sigma+1$, respectively. The regular functions have the regularity of Definition~\ref{def:D24} before flat-value and Hessian subtraction; the forced functions satisfy Definition~\ref{def:D25}. Restricting the interval preserves the identities and estimates.
 \end{lemma}
@@ -305,7 +358,7 @@ Here $\kappa_j^{\rm pre}>0$ is fixed after the ratio, and $\mathcal F_u^0$ is th
 \begin{proof}
 Use Definitions~\ref{def:D04}--\ref{def:D06}, Lemmas~\ref{lem:B-D1}, \ref{lem:B-D2}, \ref{lem:C1}--\ref{lem:C7}, \ref{lem:D-connected} and~\ref{lem:D-localization}. First choose the ratio so that the inherited principal terms of Lemma~\ref{lem:D-inherited} use at most $H_j/32$, and then raise the threshold so that their comparison remainders use at most $H_j/32$. Bound the terms retained in~\eqref{eq:D-height-gain} and the long paths together by $H_j/16$. The localization bound is $o(H_j)$ with the stronger support exponent. This fixes a coupling threshold independent of the period.
 
-Next choose one finite truncation on the whole parameter interval. For each parameter, summability gives a tail smaller than a prescribed $\varepsilon_{\rm tr}$. Weighted continuity gives a neighborhood on which that same tail is smaller than $2\varepsilon_{\rm tr}$. Finitely many such neighborhoods cover the interval; take the union of their finite address sets and include their symmetry images. Increasing the truncation preserves the tail bound. Choose the tail bound to be at most $H_j/16$. The regular terms outside the finite sum then have total at most $(1/16+2/16)H_j$. Choose $\varepsilon_{\rm tr}$ so that the two localization errors in~\eqref{eq:D-aux-bound}, including the direction and support losses, have total at most $12H_j/16$. The resulting bound is $15H_j/16<H_j$.
+Next fix the truncation index. The eligible tail reads only the prescribed path, the coupling and the incoming addresses. For each coupling in $\mathfrak B_{m+1}$ summability gives a tail smaller than $\varepsilon_{\rm tr}/2$; weighted continuity in the coupling gives a neighbourhood on which the same tail is smaller than $\varepsilon_{\rm tr}$. Finitely many neighbourhoods cover the compact $\mathfrak B_{m+1}$; take the largest index. This index depends only on the incoming address lists, so it serves every admitted input with these lists. Increasing the index preserves the tail bound. Choose the tail bound to be at most $H_j/16$. The regular terms outside the finite sum then have total at most $(1/16+2/16)H_j$. Choose $\varepsilon_{\rm tr}$ so that the two localization errors in~\eqref{eq:D-aux-bound}, including the direction and support losses, have total at most $12H_j/16$. The resulting bound is $15H_j/16<H_j$.
 
 The change in the scalar is $\tau_u^{\rm old}-F_0(1)$, with the sign fixed by~\eqref{eq:D-mask-localization}. Multiply the preliminary forced sum by $\exp(-\sum_xL_x)$. Expand each $e^{-L_x}$ about one and collect intersecting supports, as in the first paragraph of the proof of Lemma~\ref{lem:D-fusion}. The logarithmic factors vanish unless their supports contain flags, so each resulting connected component still contains a forced term. Their site bound at exponent $\sigma+2$ is a subpower factor times $\mathfrak b^{-7/16}$, whereas each forced component retains $C_j e^{-r_j\beta'_u t_{m+1}^2}$. Choose a smaller positive $r'_j<r_j$. The site attachment parameter tends to zero and the remaining exponential gives
 \begin{equation*}
@@ -389,7 +442,7 @@ Sum $q_{f_{i,u}}$ at each anchor. Translation covariance makes the result indepe
 \sum_i h_{\{o_i\}}Q_{f_{i,u}}
 &=\frac{\Delta_u}2\sum_o h_{\{o\}}\sum_q|C_q(U,o)|^2\,.
 \end{align}
-The coefficient sums converge absolutely by~\eqref{eq:D-projection-bound}, and $t^2|\Delta_u|\le H_j$. This estimates the subtractions; the bound $|\Delta_u|\le1$ is obtained in the proof of Lemma~\ref{lem:C8}.
+The coefficient sums converge absolutely by~\eqref{eq:D-projection-bound}, and $t^2|\Delta_u|\le H_j$. This estimates the subtractions, and already gives $|\Delta_u|\le H_j/t_m^2=\theta c_j\refbeta_m^{-1/10}(\cutoffsize_m)^{-2}<1$. Lemma~\ref{lem:C8} obtains $|\Delta_u|\le1$ from a test configuration, which also identifies $\Delta_u$ as the unique root of the scalar equation.
 
 \subsection{Forced fusion and the activity bounds}
 
@@ -539,7 +592,7 @@ Finally the kernel of Definition~\ref{def:D04} is uniformly bounded on a compact
 
 \subsection{The specified recursion}
 
-A choice of output for one representation does not determine a step on every continuous input curve. We choose the local construction for an entire curve, including its truncation, auxiliary tori, tree gauge and address identifications, and then allow restrictions of that choice. The estimates used to repeat the step are the following explicit ones. At level $m$ the path is the fixed $\pathaction_{N,m}$ of Definition~\ref{def:D22}, with the bounds of Lemmas~\ref{lem:C1}--\ref{lem:C2}. The activity functions satisfy Definitions~\ref{def:D24}--\ref{def:D25} and Lemma~\ref{lem:D1}. At an adjacent pair the output is exactly the functions in Lemma~\ref{lem:D5}, its scalar is $|\Lambda|^{-1}\log\mathcal H(1)$, and its correction obeys
+A choice of output for one representation does not determine a step on every continuous input curve. We choose the local construction for an entire curve, including its tree gauge and address identifications (the truncation index and auxiliary tori depend only on the incoming address lists), and then allow restrictions of that choice. The estimates used to repeat the step are the following explicit ones. At level $m$ the path is the fixed $\pathaction_{N,m}$ of Definition~\ref{def:D23}, with the bounds of Lemmas~\ref{lem:C1}--\ref{lem:C2}. The activity functions satisfy Definitions~\ref{def:D24}--\ref{def:D25} and Lemma~\ref{lem:D1}. At an adjacent pair the output is exactly the functions in Lemma~\ref{lem:D5}, its scalar is $|\Lambda|^{-1}\log\mathcal H(1)$, and its correction obeys
 \begin{equation}\label{eq:D-retained}
 t_m^2|\Delta|\le H_j,\qquad
 \mathcal E_m\le\epsilon_m^{\rm reg}/1024,\qquad
@@ -566,7 +619,7 @@ Its trajectories are exactly the tuples satisfying
 With these classes, Theorem~\ref{prop:RG} holds and every member satisfies the activity bounds in~\eqref{eq:D-retained}.
 \end{lemma}
 \begin{proof}
-Use Definition~\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, \ref{lem:C8}, \ref{lem:D-preliminary}, and~\ref{lem:D1}, \ref{lem:D4}--\ref{lem:D6}. The Wilson construction at the end supplies the initial curve and both caps. At a step, Lemma~\ref{lem:D-preliminary} uses only the prescribed paths, the local regularity and forced eligibility, the bounds and the weighted continuity of its input. The proof does not require that the input curve coincide with an earlier chosen curve. In particular its common truncation is chosen afresh on the entire compact interval from these hypotheses. Local subtraction, path replacement and fusion preserve the read supports, gauge invariance, cancellations and countability. Lemma~\ref{lem:D1} proves their numerical bounds, and Lemma~\ref{lem:D6} proves weighted continuity on the interval.
+Use Definition~\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, \ref{lem:C8}, \ref{lem:D-preliminary}, and~\ref{lem:D1}, \ref{lem:D4}--\ref{lem:D6}. The Wilson construction at the end supplies the initial curve and both caps. At a step, Lemma~\ref{lem:D-preliminary} uses only the prescribed paths, the local regularity and forced eligibility, the bounds and the weighted continuity of its input. The proof does not require that the input curve coincide with an earlier chosen curve. Its truncation index depends only on the incoming address lists, so the same selection serves every admitted input curve with these lists. Local subtraction, path replacement and fusion preserve the read supports, gauge invariance, cancellations and countability. Lemma~\ref{lem:D1} proves their numerical bounds, and Lemma~\ref{lem:D6} proves weighted continuity on the interval.
 
 The normalized identity of Lemma~\ref{lem:D5} and the reset of Lemma~\ref{lem:C8} identify the same $\Delta$. Its proof identifies $\Delta$ with the continuous scalar root and gives $|\Delta|\le1$; its statement gives the drift in Theorem~\ref{prop:RG}. Defining the vacuum scalar by flat evaluation gives the exact integral, since the normalized representation is one at $1$. Hence~\eqref{eq:D-retained} is inherited by the outputs and the prescribed paths are unchanged. Finite induction gives the classes just described.
 
@@ -593,14 +646,14 @@ b_m=\chi_m\refbeta_m,\quad
 x_m=\chi_m^{-1}\sqrt{\beta_m/\refbeta_m},\quad
 \beta_m=\refbeta_m(\chi_mx_m)^2\,.
 \end{equation}
-Thus $b_m$ converts a change of $x_m$ into a change of $\beta_m$, up to the factor $2\chi_m x_m$. Monotonicity gives $b_m\ge\chi_0\refbeta_0>0$. Raise the entry threshold so $\bar\beta\ge2^{224}$; then $\chi_m\le1/128$. In the following paragraphs write $b_*=\chi_0\refbeta_0$, $g_*=1/128$ and $\lambda_*=1/16$.
+Thus $b_m$ converts a change of $x_m$ into a change of $\beta_m$, up to the factor $2\chi_m x_m$. Monotonicity gives $b_m\ge\chi_0\refbeta_0>0$. Row~7 of Table~\ref{tab:constant-choices} gives $\bar\beta\ge2^{224}$; then $\chi_m\le1/128$. In the following paragraphs write $b_*=\chi_0\refbeta_0$, $g_*=1/128$ and $\lambda_*=1/16$.
 
 Let $F_{N,m}$ denote the selected activity map and $\mathcal D_{N,m}$ its scalar correction, so that
 \begin{equation*}
 A_m=F_{N,m}(x_{m+1},A_{m+1}),\qquad
 \beta_m=\beta_{m+1}+\alpha_{N,m}+\mathcal D_{N,m}(x_{m+1},A_{m+1})\,.
 \end{equation*}
-The top map is denoted by $F_N^{\rm W}(x_N)$. The maps are constructed for $\|A\|\le1$ and $33/40\le\chi_mx\le47/40$. We use expansions centred in the smaller domain
+The top map is denoted by $F_N^{\rm W}(x_N)$. The maps are constructed for $\|A\|\le1$ and $33/40\le\chi_mx\le47/40$. All inputs in this domain have the common address lists, so the truncation index and auxiliary tori of Lemma~\ref{lem:D-preliminary} are the same at every point. Hence $F_{N,m}$ and $\mathcal D_{N,m}$ are single-valued, and their restriction to a line is the construction on that line. We use expansions centred in the smaller domain
 \begin{equation}\label{eq:D-analytic-domain}
 \|A\|\le1/8,\qquad 17/20\le\chi_mx\le23/20\,.
 \end{equation}
@@ -767,9 +820,7 @@ Use Definitions~\ref{def:D05a}, \ref{def:D05b}, \ref{def:D06} and Lemmas~\ref{le
 \end{equation*}
 Choose $\rho\ge128e$ before the ratios. Since $2\delta_{\rm map}\le g_*$ and $2\varphi_m=\varrho_m$, these are the asserted bounds. The same argument applies to Wilson. Completion preserves each coefficient, its norm and its diagonal identity. The fixed permutation subspace preserves equivariance.
 
-For cutoff compatibility, compare first the quadratic rows and then the cubic, quartic and quadratic loop kernels in that order. We first establish convergence of the free forms from~\eqref{eq:B-cov-recursion}, using the exponential bounds of Lemma~\ref{lem:B2}. Fix a level $m$ and a nonzero real momentum $p$. Put $D_{m,k}=\prod_{i=m}^{m+k-1}\ell_i$. Each factor in the accumulated averaging filter differs from one by at most $C_p(J_{m+1}+k+1)/D_{m,k}$. Since $D_{m,k}\ge2^k$, these differences are summable and the filter product converges. In the iterated covariance formula, the principal alias then converges because $D_{m,k}(e^{ip_a/D_{m,k}}-1)\to ip_a$. Lift the other aliases to $z\in\Z^4$. Their absolute contributions are bounded by $C_{j,p}\prod_a(1+|z_a|)^{-2}$, by the averaging-filter bounds used in Lemma~\ref{lem:B2}. This is summable, so dominated convergence applies to the alias sum. The noise added at depth $k$ is bounded by $C_{j,p}D_{m,k}^{-2}$ and hence has a convergent sum. The diagonal covariances therefore converge at $p\ne0$.
-
-The formulas preceding Lemma~\ref{lem:B2} express the free two-form metric and its inverse in these covariances. Their denominators stay positive at each nonzero real momentum by that lemma's lower bounds, so these symbols converge there. Uniform exponential coefficient bounds give subsequential coefficient limits and uniformly small tails in every strictly smaller exponential weight. Every such limit has the same Fourier transform off zero by the preceding calculation; continuity identifies it also at zero. Uniqueness of Fourier coefficients therefore makes the full sequence converge. The positive square roots converge as well: any subsequential limit is positive and squares to the limiting metric minus the direct term, so uniqueness of the positive square root identifies it. The resolvent identity and the uniform inverse bound of Lemma~\ref{lem:B-windows} give convergence of the remaining fixed-window inverses. In each subsequent comparison fix these rows and all preceding kernels. Let $\mathcal V_a$ be the affine coefficient space for the kernel of the current degree, with its prescribed symmetries and cancellation identities. Divide its weighted coefficient norm by the stage allowance. The corresponding coefficient map, denoted $\mathcal T_m^a$, obeys
+For cutoff compatibility, compare first the quadratic rows and then the cubic, quartic and quadratic loop kernels in that order. The free forms, their row factors and the kernels $W_0$, $T$ converge by Lemma~\ref{lem:B2}; placing the coefficients of $\rho_{N,m}$ on coordinate paths (Section~\ref{sec:partII-C}) gives convergence of the quadratic rows. The resolvent identity and the uniform inverse bound of Lemma~\ref{lem:B-windows} give convergence of the remaining fixed-window inverses. In each subsequent comparison fix these rows and all preceding kernels. Let $\mathcal V_a$ be the affine coefficient space for the kernel of the current degree, with its prescribed symmetries and cancellation identities. Divide its weighted coefficient norm by the stage allowance. The corresponding coefficient map, denoted $\mathcal T_m^a$, obeys
 \begin{equation}\label{eq:D-affine-kernel}
 \mathcal T_m^a(K+\lambda(H-K))
 =\mathcal T_m^a(K)+\lambda(\mathcal T_m^a(H)-\mathcal T_m^a(K))\,.
@@ -896,7 +947,7 @@ The inverse exists since $DF(e^{\cdot})(0)=I$. This invariant quartic polynomial
 \begin{equation}\label{eq:D-Wilson-remainder}
 R(u)=\wilsonterm(u)-\tfrac12|F(u)|^2-T_4(F(u))
 \end{equation}
-has zero Taylor terms through degree four at $1$. This is the case $m=N$ in the proof of Lemma~\ref{lem:C4}. The path action of Definition~\ref{def:D22} at $m=N$ has row $\sqrt{1-\delta_{\rm dir}}\,F$, no cubic or loop terms, and quartic term $(1-\delta_{\rm dir})T_4(F)$ with its prescribed mask. These finite path sums satisfy Lemma~\ref{lem:C1}.
+has zero Taylor terms through degree four at $1$. This is the case $m=N$ in the proof of Lemma~\ref{lem:C4}. The path action of Definition~\ref{def:D23} at $m=N$ has row $\sqrt{1-\delta_{\rm dir}}\,F$, no cubic or loop terms, and quartic term $(1-\delta_{\rm dir})T_4(F)$ with its prescribed mask. These finite path sums satisfy Lemma~\ref{lem:C1}.
 
 The initial activities retain the difference between Wilson energy and this action also on flagged configurations. The following proof constructs the full curve. The same construction of the classes is used throughout.
 

@@ -71,7 +71,8 @@ Uniformly over the prescribed compact position set, arbitrarily late intervals a
 \begin{equation*}
  \alpha_t=\exp(\log\cutoffsize_t/(8n)).
 \end{equation*}
-At this radius its regular and forced source sums are each at most one, with scalar source bound at most one per cell. The assertion is eventual in~$N$, uniformly in~$p$.
+At this radius its regular and forced source sums are each at most one, with scalar source bound at most one per cell.
+For each such interval there is $N_0$ such that the assertion holds for all $N\ge N_0$ and all~$p$.
 \end{lemma}
 Its proof iterates the middle-level error over the second part of the interval.
 \begin{proof}
@@ -81,10 +82,10 @@ Use Definitions~\ref{def:D04}, \ref{def:D05a}, Lemmas~\ref{lem:D-connected}, \re
 We now bound the loss over all steps; their number grows with~$t$. Use~\eqref{eq:E-source-initial}. Increasing the fixed power $q_{\rm der}$ includes the finite Taylor and rounding bounds above. The source radius contributes at most $\alpha_t^n=\mathcal M^{1/8}$ to any mode in one cell. Enlarge $\mathcal C_j$ to include all per-step finite polynomial and support constants. From~\eqref{eq:E-log-cost} and the two ceilings in~\eqref{eq:E-window}, on sufficiently late intervals with fixed~$b$,
 \begin{equation}\label{eq:E-source-loss}
  \mathcal C_j^{h_t(b)+v_t+2}
- \le\mathcal M^{(b+3)/j^2}B_t^{10/j^2}
+ \le\mathcal M^{(b+6)/j^2}B_t^{10/j^2}
  \le\mathcal M^{1/64}.
 \end{equation}
-Indeed $\log B_t=2\log\log\widehat\beta_t+o(1)$ and $\log\mathcal M=(\log\log\widehat\beta_t)^2$, so $B_t=\mathcal M^{o(1)}$. The constant factors from the ceilings fit in the extra $\mathcal M^{1/j^2}$; the final inequality holds at all sufficiently large stages for each fixed~$b$.
+Indeed $\log B_t=2\log\log\widehat\beta_t+o(1)$ and $\log\mathcal M=(\log\log\widehat\beta_t)^2$, so $B_t=\mathcal M^{o(1)}$. The two ceilings and the $+2$ contribute at most $L^{4/j^2}\le\mathcal M^{4/j^2}$, since $\ell^{\rm st}_{J_t}\le\cutoffsize_t$ by row~6 of Table~\ref{tab:constant-choices}; the final inequality holds at all sufficiently large stages for each fixed~$b$.
 
 We use the following one-step source estimate. For the fixed lifts of Lemma~\ref{lem:E-source-polynomial}, let $S_i$ majorize the corrected singleton terms, and $P_i$ the corrected terms with at least two marks, in the weighted regular norm at radius~$\alpha_t$, including their scalar terms per cell. Use the same quantities for the forced norm after division by its positive source allowance, and take the larger values. For $k\le i<l$, the connected product expansion gives
 \begin{align}\label{eq:E-source-step}
@@ -108,8 +109,9 @@ The support margin in~\eqref{eq:E-window-geometry} makes every replicated inspec
 \end{proof}
 
 The remaining normalization uses the complete positive unmarked density. In particular it cannot discard the forced sum or replace it by its healthy part.
+\begin{samepage}
 \begin{lemma}[Normalized source integral]\label{lem:E-source-integral}
-For the corrected sources of Lemma~\ref{lem:E-Gaussian-sources}, put $u_t=\log\cutoffsize_t/(16n)$. Eventually on its intervals, uniformly in~$p$, for every nonempty mode~$I$,
+For the corrected sources of Lemma~\ref{lem:E-Gaussian-sources}, put $u_t=\log\cutoffsize_t/(16n)$. For each such interval there is $N_0$ such that, for all $N\ge N_0$ and all~$p$, for every nonempty mode~$I$,
 \begin{equation*}
  \left|\left\langle\prod_{C\in\mathcal C^{\rm tile}_k}(\mathfrak c_I)_C\right\rangle_{N,p}\right|
  \le e^{|\mathcal C^{\rm tile}_k|q_t^{\rm cmp}}
@@ -117,6 +119,7 @@ For the corrected sources of Lemma~\ref{lem:E-Gaussian-sources}, put $u_t=\log\c
  \qquad q_t^{\rm cmp}\le u_t.
 \end{equation*}
 \end{lemma}
+\end{samepage}
 \begin{proof}
 Use Definition~\ref{def:D06} and positivity of $\density P$, which follows from the density identity of Theorem~\ref{prop:RG}, the positive Wilson start and the probability kernels of Lemma~\ref{lem:B1}, and Lemma~\ref{lem:E-Gaussian-sources}. Let $P$ be the unmarked representation at the width level~$k$, $V=|\Lambda_{n_{p,k}}|=|\mathcal C^{\rm tile}_k|$, $g=\beta(P)^{-1/2}$, $H_{\rm path}=A_{J_k}^{\rm path}$, and let $\delta,\Lambda^{\rm loop}$ bound its regular and loop terms. The admissibility inequalities give $0<g\le t_k$, $\delta\le1$, $\Lambda^{\rm loop}\le\Lambda_k^{\rm loop}$ and $\beta(P)\le4\widehat\beta_k$.
 
@@ -169,3 +172,5 @@ $\widehat\beta_kt_k^3\le1$, $\widehat\beta_kt_k^4\le1$ and $\Lambda_k^{\rm loop}
 \end{equation}
 for each arity admitted at stage~$j$. It bounds the exponent per cell in~\eqref{eq:E-positive-ratio}. All its quantities are fixed before the entry to stage~$j$. Item~\ref{it:E-entries} in Lemma~\ref{lem:E1.1} requires $Q_j^{\rm cmp}\le\log\cutoffsize_t/(16n)$ on the chosen intervals. This proves $q_t^{\rm cmp}\le u_t$ and the asserted coefficient estimate. In particular the volume appears only through the number of cells, so the cutoff threshold is independent of~$p$.
 \end{proof}
+
+\paragraph{Window hypotheses.} The proofs of Lemmas~\ref{lem:E-source-polynomial}--\ref{lem:E-source-integral} use the interval only through these properties of its levels $k<l<t$, with $\mathcal M=\cutoffsize_t$: (W1) $\log(a_l/a_t)\ge(b+2)\log\mathcal M$, $\log(a_k/a_l)\ge10\log B_t$, and $\widehat\beta_i\in[\widehat\beta_t/2,\widehat\beta_t]$ for $k\le i\le t$; (W2) $\prod_{k\le i\le t}\mathcal C_{J_i}\le\mathcal M^{1/64}$; (W3) every level of $[k,t]$ is past the entries of item~\ref{it:E-entries} for the finitely many requests, and $Q^{\rm cmp}_{J_k}\le\log\mathcal M/(16n)$. Under (W1)--(W3) the three lemmas hold with $\mathcal C_j^{h_t(b)+2}$ replaced by $\prod_{l\le i\le t}\mathcal C_{J_i}$; the interval need not lie in one stage.

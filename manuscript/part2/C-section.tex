@@ -84,7 +84,7 @@ The joint proof is given after Lemma~\ref{lem:C7}.
 
 \subsection*{Fourth-order matching}\label{subsec:C-matching}
 
-Near the flat field all health indicators equal one. By $\chord^2=2\wilsonterm$ from Definition~\ref{def:D01}, the leading analytic action is obtained from Definition~\ref{def:D23} by replacing the clipped term by $c_{\rm dir}\wilsonterm$ and omitting the indicators and loop atoms. Denote this action, without its factor~$\beta$, by $\mathsf S_{N,m}$. Its prescribed quadratic part is
+Near the flat field all health indicators equal one. By $\chord^2=2\wilsonterm$ from~\eqref{eq:I12-price-chord}, the leading analytic action is obtained from Definition~\ref{def:D23} by replacing the clipped term by $c_{\rm dir}\wilsonterm$ and omitting the indicators and loop atoms. Denote this action, without its factor~$\beta$, by $\mathsf S_{N,m}$. Its prescribed quadratic part is
 \begin{equation*}
 \frac12\langle d_1a,\mathsf H_{N,m}d_1a\rangle,
 \qquad \mathsf H_{N,m}=c_{{\rm dir},J_m}I+\rho_{N,m}^*\rho_{N,m},
@@ -190,7 +190,7 @@ For a quadratic Taylor kernel $Y$, including the Taylor factor~$1/2!$, define
 \alpha_b(Y)=2\operatorname{Re}[t^2]Y_{(2,b),(2,b)}(te_1),\qquad
 \alpha_{N,m}=\alpha_b(Y^{\rm blk}_{N,m})\,.
 \end{equation*}
-The kernel $Y^{\rm blk}_{N,m}$ is the infinite-volume quadratic kernel of $\mathsf T$. Its periodic evaluation has a small finite-period error retained in the activities. The prescribed kinetic kernel has $\alpha_b=1$. Simplicity makes $\alpha_{N,m}$ independent of~$b$, as shown in the proof of Lemma~\ref{lem:C2}; by construction it is independent of~$p$ and~$\beta'$.
+The kernel $Y^{\rm blk}_{N,m}$ is the infinite-volume quadratic kernel of $\mathsf T$. The prescribed kinetic kernel has $\alpha_b=1$. Simplicity makes $\alpha_{N,m}$ independent of~$b$, as shown in the proof of Lemma~\ref{lem:C2}; by construction it is independent of~$p$ and~$\beta'$.
 
 Let $\mathsf J$ be the left-coordinate Hessian of the joint fine action and block penalty, including the coarse frame. Let $R$ insert infinitesimal gauge transformations and $Q$ the axial slice. For $\mu>0$, put
 \begin{equation*}
@@ -249,27 +249,62 @@ The constant is independent of $N,p,\ell$.
 \begin{proof}
 Use Lemmas~\ref{lem:C2}, \ref{lem:C5} and Lemmas~\ref{lem:B3}, \ref{lem:B5}--\ref{lem:B7}. The input arrays satisfy Lemma~\ref{lem:C2} by~$(I_{m+1})$. The full completed Hessian contains a contact term: the second derivative of the predictor multiplied by the first derivative of the penalty. Along the free interpolation, write $\mathsf a(\xi)$ for this penalty derivative and $\mathsf b(\xi)$ for the mixed fine/frame trace. Lemma~\ref{lem:B6} gives $\mathsf a(\xi)=O(|\xi|^2)$ and $\mathsf b(\xi)=O(|\xi|)$. The change in the tested entry on removing the contact term consists of $\mathsf a\mathsf b$, its reflected counterpart, and a term quadratic in~$\mathsf a$, with bounded analytic factors. It is $O(|\xi|^3)+O(|\xi|^4)$ and has zero~$\alpha_b$.
 
-For the remaining comparison, let $D$ denote external field differentiation. Differentiate the logarithm and use the resolvent identity:
+First put both operators on the same space. At one coarse momentum let $\mathcal V_f$ be the fine-link fibre and $\mathcal V_0$ the coarse-frame fibre, of dimension~$\dimG$. Let $P:\mathcal V_f\oplus\mathcal V_0\to\mathcal V_f$ and $Z:\mathcal V_f\oplus\mathcal V_0\to\mathcal V_0$ be the coordinate projections. With $A_0=\mathsf A+d_Ud_U^*+\mathsf M_\mu$, set
 \begin{equation*}
-D^2\log\det A_0=\tr(A_0^{-1}D^2A_0-A_0^{-1}DA_0\,A_0^{-1}DA_0),\qquad
-A_0^{-1}-A_1^{-1}=A_0^{-1}(A_1-A_0)A_1^{-1}\,.
+\widetilde A_0=P^*A_0P+Z^*Z=
+\begin{pmatrix}A_0&0\\0&I\end{pmatrix},\qquad
+\det\widetilde A_0=\det A_0\,.
 \end{equation*}
-The difference consists of the block penalty, coarse-frame terms and regulator terms. The block penalty factors through the coarse links and the frame terms through the coarse frame variables: their dimensions per block are $4\dimG$ and $\dimG$. Lemma~\ref{lem:B7} bounds the resulting products in the block-scaled operator norms. Its trace is therefore bounded by that dimension times the norm, independently of~$\ell$.
+Thus adjoining the frame identity leaves the auxiliary determinant unchanged. Let $A_1$ be the contact-removed $\mathsf C_\mu$ on this joint space. The frame part enters the comparison only through the joint-space difference $\Theta=A_1-\widetilde A_0$ below.
 
-For the regulator put $P_\mu=\mu^2(\Delta_U+\mu^2I)^{-1}$. At zero background and coarse momentum $\xi\in[-\pi,\pi]^4$, its fibre is diagonal in the $\ell^4$ aliases $k_z=(\xi+2\pi z)/\ell$, where $z$ ranges over centered representatives of $(\Z/\ell\Z)^4$. These lie in the fine momentum cube. Since $|q(k)|\ge2|k|_\infty/\pi$, $|\xi+2\pi z|_\infty\ge\pi|z|_\infty$ and $\mu=\ell^{-1}$,
+Let $H$ be the differential of the logarithm of the framed predictor discrepancy, and $B$ its coarse-link penalty Hessian. These are the two factors in the second-derivative chain rule after removal of the contact term. Put $E=d_U^*P$ and $K=\mathfrak m_\mu X$. Let $J_a$ select direction~$a$ from fine links, so $\mathsf M_\mu=\sum_aJ_a^*\mathfrak m_\mu J_a$. The two joint operators are
+\begin{align*}
+A_1&=P^*\mathsf AP+H^*BH+(E+K)^*(E+K),\\
+\widetilde A_0&=P^*\mathsf AP+E^*E+
+ P^*\Bigl(\sum_aJ_a^*\mathfrak m_\mu J_a\Bigr)P+Z^*Z.
+\end{align*}
+Consequently their difference is the identity
+\begin{equation*}
+\Theta=A_1-\widetilde A_0
+=H^*BH-Z^*Z+E^*K+K^*E+K^*K
+-P^*\Bigl(\sum_aJ_a^*\mathfrak m_\mu J_a\Bigr)P\,.
+\end{equation*}
+The fine Hessians cancel exactly. The first term factors through coarse links, the second through coarse frames. For compatible maps $V,W$ through a coarse space of dimension~$r$,
+\begin{equation*}
+\|VW\|_1\le r\|V\|\|W\|,\qquad
+|\tr_{\rm joint}(VW)|=|\tr_{\rm coarse}(WV)|\le r\|W\|\|V\|\,.
+\end{equation*}
+Here $r=4\dimG$ or $\dimG$, independently of~$\ell$. Differentiating these factorizations through order two preserves the intermediate coarse spaces. Lemma~\ref{lem:B7} bounds their factors in the mutually dual block norms.
+
+The remaining terms keep a regulator factor. Put $P_\mu=\mu^2(\Delta_U+\mu^2I)^{-1}$. At zero background its eigenvalues at the fine aliases $k_z=(\xi+2\pi z)/\ell$ satisfy
 \begin{equation*}
 \frac{\mu^2}{|q(k_z)|^2+\mu^2}\le\frac C{1+|z|^2},\qquad
-\tr_{\rm fibre}|P_\mu^3|\le C\sum_{z\in\Z^4}(1+|z|^2)^{-3}<\infty\,.
+\|P_\mu^3\|_1\le C\sum_{z\in\Z^4}(1+|z|^2)^{-3}<\infty\,.
 \end{equation*}
-Here $C$ includes the component count, at most $4\dimG$; the trace is at one coarse momentum, with no sum over coarse sites. The same bounds hold on a fixed smaller complex strip in coarse momentum. In $P_\mu^9=(P_\mu^3)^3$, two derivatives leave at least one undifferentiated cube. A regulator insertion has the prefactor~$\mu^2$, paired with an inverse bounded in block units by $C\mu^{-2}$. Lemma~\ref{lem:B7} supplies these bounds through two field insertions for the inverse and $P_\mu$. Thus the two powers cancel before taking the trace. Put the undifferentiated cube in trace norm and all other factors in operator norm; $|\tr XY|\le\tr|X|\,\|Y\|$ gives a uniform bound~$C_*$ for the analytic difference kernel on a strip of width~$\zeta_*>0$.
+Indeed $|q(k)|\ge2|k|_\infty/\pi$ on the fine momentum cube and $|\xi+2\pi z|_\infty\ge\pi|z|_\infty$ for centered aliases and real $\xi\in[-\pi,\pi]^4$. Lemma~\ref{lem:B7} gives the same trace bound on a smaller complex strip and bounds $D^rP_\mu$ for $r\le2$. Every regulator is $\mu^2P_\mu^9=\mu^2(P_\mu^3)^3$. Two field derivatives leave one cube undifferentiated. Put that cube in trace norm and the other factors in operator norm. The bounds on $\mu^2D^r(A^{-1})$ in that lemma cancel the inverse scale before taking a trace. Applied to the displayed factors of~$\Theta$, these estimates give a constant~$B_*$ for its trace norm through two field insertions, in the dual block norms. It depends only on the fixed stage bounds. At each coarse momentum these bounds sum the fine aliases without a factor~$\ell^4$.
 
-To extract the coefficient, restrict its tested entry to $\xi=te_1$. On a circle $|t|=\zeta_*/2$, the analytic bound gives $|[t^2]g|\le4C_*/\zeta_*^2$; hence $|\alpha_b(g)|\le8C_*/\zeta_*^2$. This gives $d_{\rm cmp}$. The estimate applies after the zero-coefficient contact term has been removed.
+For the logarithmic determinant, write $R_1=A_1^{-1}$ and $R_0=\widetilde A_0^{-1}$. The inverse identity is
+\begin{equation*}
+R_1-R_0=-R_1\Theta R_0\,.
+\end{equation*}
+Let $F_*$ bound the inverses in the compatible block norms, and let $A_*$ bound the two operators through two normalized field insertions, as supplied by Lemma~\ref{lem:B7} and the vertex bounds of Lemma~\ref{lem:B5}. Set $D_*=F_*^2B_*$ and $E_*=D_*A_*+F_*B_*$. For normalized directions $v,w$, the logarithmic Hessian is
+\begin{equation*}
+\tr\bigl(R_iD_{vw}A_i-R_iD_vA_iR_iD_wA_i\bigr)\,.
+\end{equation*}
+The difference of the first products has trace norm at most~$E_*$. For the second, first subtract $R_1D_vA_1-R_0D_vA_0$, then the remaining inverse, then $D_wA_1-D_wA_0$. This bounds the whole logarithmic-Hessian difference:
+\begin{equation*}
+\left|D_vD_w\bigl(\log\det A_1-\log\det\widetilde A_0\bigr)\right|
+\le E_*+E_*F_*A_*+F_*A_*D_*A_*+F_*^2A_*B_*\,.
+\end{equation*}
+All products use one trace-norm factor and bounded operator factors; cyclically moving factors identifies the required dual norms. The common ghost determinant cancels. Including the Taylor factors gives a bound~$C_*$ for the analytic difference kernel on a strip of width~$\zeta_*>0$, both independent of~$\ell$. The inherited loop kernel has order four by~$(I_{m+1})$; pullback by the analytic $W_0$ preserves that order, so its $\alpha_b$ is zero. The contact term has already been treated above.
+
+Restrict the tested entry $g$ of the difference to $\xi=te_1$. Cauchy's coefficient inequality on $|t|=\zeta_*/2$ gives $|[t^2]g|\le4C_*/\zeta_*^2$ and hence $|\alpha_b(g)|\le8C_*/\zeta_*^2$. This gives~$d_{\rm cmp}$.
 
 Finally, folding the auxiliary operator into coarse momentum does not alter~$\alpha_b$. The symbol of the weights $w^{\rm av}$ in~\eqref{eq:I12-predictor} vanishes at every nonzero alias to order at least two in each external leg. These aliases contribute $O(|\xi|^4)$. The zero alias in the tested entry is
 \begin{equation*}
 \ell^4\ell^{-2}Y_\mu(\xi/\ell)+O(|\xi|^3)\,.
 \end{equation*}
-The factors are the cell volume and $\ell^{-1}$ per interpolated field. Extracting the quadratic coefficient supplies another~$\ell^{-2}$, so $\ell^4\ell^{-2}\ell^{-2}=1$. This proves the comparison. For a period of side~$n$, Fourier coefficients at nonzero multiples of~$n$ give an error in each quadratic coefficient tested on Fourier basis modes bounded by $C_\ell|\Lambda|e^{-c_\ell n}$. The Fourier basis modes here have unit amplitude at every site, so the bound includes the volume factor; the preparatory expansion of Lemma~\ref{lem:D4} retains it in the activities.
+The factors are the cell volume and $\ell^{-1}$ per interpolated field. Extracting the quadratic coefficient supplies another~$\ell^{-2}$, so $\ell^4\ell^{-2}\ell^{-2}=1$. This proves the comparison.
 \end{proof}
 
 \subsection*{The logarithmic coefficient}\label{subsec:C-coefficient}
@@ -379,13 +414,13 @@ as $\refbeta_m\to\infty$ with $\ell_m$ fixed. The descent starts with zero loops
 
 \subsection*{The scalar reset}\label{subsec:C-reset}
 
-Use Definitions~\ref{def:D06}, \ref{def:D05a}--\ref{def:D05b} and Lemmas~\ref{lem:C1}--\ref{lem:C2}. Write $\pathaction_{N,m}(\beta,U)=\beta\mathsf K^{\rm kin}_m(U)+\mathcal L_m(U)$. Here $\mathsf K^{\rm kin}_m$ contains the clipped term, row squares, and cubic and quartic atoms; $\mathcal L_m$ contains the quadratic atoms, with the hypercubic average in both. For an input curve $\rho'_u$ of Theorem~\ref{prop:RG}, put $\mathcal H_u=\blockmap{m}_{\beta'_u}\density\rho'_u$ and $b_u=\beta'_u+\alpha_{N,m}$. Lemma~\ref{lem:D5} supplies regular and forced sums $E_u^{\rm sum},\mathcal F_u$, independent of $d$, with trial density
+Use Definitions~\ref{def:D06}, \ref{def:D05a}--\ref{def:D05b} and Lemmas~\ref{lem:C1}--\ref{lem:C2}. Write $\pathaction_{N,m}(\beta,U)=\beta\mathsf K^{\rm kin}_m(U)+\mathcal L_m(U)$. Here $\mathsf K^{\rm kin}_m$ contains the clipped term, row squares, and cubic and quartic atoms; $\mathcal L_m$ contains the quadratic atoms, with the hypercubic average in both. For an input curve $\rho'_u$ of Theorem~\ref{prop:RG}, put $\mathcal H_u=\blockmap{m}_{\beta'_u}\density\rho'_u$ and $b_u=\beta'_u+\alpha_{N,m}$. Lemma~\ref{lem:D5} supplies regular and forced sums $E_u^{\rm sum},\mathcal F_u$, independent of $\vartheta$, with trial density
 \begin{equation*}
-q_{u,d}(U)=e^{-(b_u+d)\mathsf K^{\rm kin}_m(U)-\mathcal L_m(U)-E_u^{\rm sum}(U)}\mathcal F_u(U)\,.
+q_{u,\vartheta}(U)=e^{-(b_u+\vartheta)\mathsf K^{\rm kin}_m(U)-\mathcal L_m(U)-E_u^{\rm sum}(U)}\mathcal F_u(U)\,.
 \end{equation*}
-The flat-field normalizations give $q_{u,d}(1)=1$. Fix $r_{\rm res}=1$ before $\omega_j^{\rm RG}\ge d_j+1$ as in Section~\ref{sec:constants}.
+The flat-field normalizations give $q_{u,\vartheta}(1)=1$. Fix $r_{\rm res}=1$ before $\omega_j^{\rm RG}\ge d_j+1$ as in Section~\ref{sec:constants}.
 
-Lemma~\ref{lem:D4} gives a preparatory sum $E_u^{\rm pre}$ with bound $c_{\rm pre}\epsilon_m^{\rm reg}/4$, for a stage constant $c_{\rm pre}\ge4$. Lemmas~\ref{lem:D1}, \ref{lem:D5} give the final bound~\eqref{eq:I12-activity-caps} and $q_{u,\Delta_u}=\mathcal H_u/\mathcal H_u(1)$ for some real $\Delta_u$. The estimate below proves $|\Delta_u|\le1$; that bound is no input to the identity.
+Lemma~\ref{lem:D4} gives a preparatory sum $E_u^{\rm pre}$ with bound $c_{\rm pre}\epsilon_m^{\rm reg}/4$, for a stage constant $c_{\rm pre}\ge4$. Lemmas~\ref{lem:D1}, \ref{lem:D5} give the final bound~\eqref{eq:I12-activity-caps} and $q_{u,\Delta_u}=\mathcal H_u/\mathcal H_u(1)$ for some real $\Delta_u$. The estimate below proves $|\Delta_u|\le1$ by a test configuration; the same bound also follows from $t_m^2|\Delta_u|\le H_j$ after~\eqref{eq:D-isotropy}. Neither bound is an input to the identity.
 
 The remaining scalar correction can be read from a single configuration with a definite kinetic energy. 
 
@@ -438,11 +473,11 @@ For the final regular sum, Lemma~\ref{lem:D1} and~\eqref{eq:I12-activity-caps} g
 \le|\Lambda|\mathcal E_m\le|\Lambda|\varepsilon\,.
 \end{equation*}
 
-Since the activity families are fixed as $d$ varies, the scalar discrepancy is affine:
+Since the activity families are fixed as $\vartheta$ varies, the scalar discrepancy is affine:
 \begin{align*}
-f(u,d)&=(b_u+d)K_{\rm pr}+\mathcal L_m(V)+E_u^{\rm sum}(V)
+f(u,\vartheta)&=(b_u+\vartheta)K_{\rm pr}+\mathcal L_m(V)+E_u^{\rm sum}(V)
 -\log\frac{\mathcal H_u(1)}{\mathcal H_u(V)}\\
-&=f(u,0)+dK_{\rm pr}\,.
+&=f(u,0)+\vartheta K_{\rm pr}\,.
 \end{align*}
 Since $V$ has no flagged sites, $\mathcal F_u(V)=1$. Evaluating the exact identity of Lemma~\ref{lem:D5} at $V$ gives $f(u,\Delta_u)=0$. As $K_{\rm pr}>0$, this determines
 \begin{equation*}

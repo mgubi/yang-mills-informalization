@@ -1,4 +1,8 @@
-The following step retains the complete inserted density while reexpressing its remainders in the new polynomial coordinate. The inverse estimate is essential: a bound in the original bare coordinate would accumulate at every step. For $m\ge r(d)$, write $u=L_mx$ for the extracted polynomial coordinate and $T_m$ for its leading Gaussian coefficient map before degree rescaling.
+The following step retains the complete inserted density while reexpressing its remainders in the new polynomial coordinate. The inverse estimate is essential: a bound in the original bare coordinate would accumulate at every step. For $m\ge r(d)$, write $u=L_mx$ for the extracted polynomial coordinate. Write $(w_i,k_i)$ for the engineering weight and factor count of~$b_{d,i}$. For a coarse radial jet~$\mathsf j$, let $U^{W_0}(\mathsf j)$ be the fine stencil configuration obtained by exponentiating the free interpolation~$W_0$ of Lemma~\ref{lem:B3} of the coarse potential of~$\mathsf j$. Here the coarse potential is the degree-$d$ Taylor polynomial, in the jet coordinates, of the coarse-link logarithms. Let $\mathsf R^{\rm lead}_mb_{d,i}$ be the label whose derivatives in~$h_{\rm lat}$ at zero through order~$d$ along $\operatorname{sc}_{h_{\rm lat}}\mathsf j$ agree with those of $P_d[b_{d,i}](0;U^{W_0}(\operatorname{sc}_{h_{\rm lat}}\mathsf j))$, and put $(\mathsf D^{\rm eng}_Lx)_i=L^{w_i}x_i$. The leading map is
+\begin{equation*}
+ T_m=\factorscale_{t_m}\mathsf R^{\rm lead}_m\mathsf D^{\rm eng}_{\ell_m}(\factorscale_{t_{m+1}})^{-1}.
+\end{equation*}
+Taylor matching gives $(\mathsf R^{\rm lead}_m)_{bi}=\delta_{bi}\ell_m^{-w_i}$ for $w_b\le w_i$ and $=0$ for $k_b<k_i$; Lemma~\ref{lem:B3} gives $|(\mathsf R^{\rm lead}_m)_{bi}|\le C\ell_m^{-w_i}$, $C$ depending only on $d$ and the stage. The threshold formula in row~9 of Section~\ref{sec:constants} and the entry choices of Lemma~\ref{lem:E1.1} give $0<t_m\le1$ and $\tfrac12\le t_m/t_{m+1}\le2$. Hence $(T_m)_{ii}=(t_m/t_{m+1})^{k_i}$, and back substitution in increasing weight bounds $T_m^{\pm1}$ uniformly in $N$, $p$ and $m$ within a stage.
 \begin{lemma}[One marked step]\label{lem:E-marked-step}
 The coefficient map $L_m$ is invertible. Its leading map $T_m$ sends each basis vector to its own and higher weights, with nonzero diagonal. Moreover,
 \begin{gather*}
@@ -21,7 +25,7 @@ $1+z(x_0+\mathbf1_{\Sigma_d\ {\rm healthy}}P_d[\factorscale_{t_{m+1}^{-1}}x^\cir
 \end{equation*}
 Root its connected support at this distinguished factor. The sums over all other factors are bounded by the rooted clause of Lemma~\ref{lem:D-connected}; there is no sum over possible translates of the marked anchor. Absolute convergence justifies the displayed extraction and integration term by term. A regular mark has its derivative majorant $e_i$; a forced mark has its amplitude majorant $k_i$. The latter retains its original eligibility event, so the large-field estimate used in the forced expansion still applies.
 
-The three contributions to a basis input are bounded as follows. Denote by $T_m$ the invertible leading coefficient change from the local Gaussian polynomial calculation, and by $\mathsf S_L$ the diagonal map
+The three contributions to a basis input are bounded as follows. Let $T_m$ be the leading map defined before the lemma, and $\mathsf S_L$ the diagonal map
 \begin{equation*}
  (\mathsf S_Lx)_i=L^{d-w_i}x_i,
  \qquad 0\le w_i\le d,
