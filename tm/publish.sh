@@ -42,6 +42,7 @@ fi
 find "$work/site" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 rsync -a "$html/" "$work/site/"
 touch "$work/site/.nojekyll"   # serve files as they are, no Jekyll processing
+print -r -- "$src" > "$work/site/.source-commit"   # read by the CI workflow
 
 cd "$work/site"
 git add -A
