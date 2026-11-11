@@ -58,7 +58,7 @@ Finally, ultraviolet comparison identifies the field content and leading Maxwell
 
 ## Part I. The finite lattice theory
 
-*Unit: [I.1 — Lattice, symmetries, gauge groups and the Wilson measure](../units/I.1.md).*
+*Unit: [I.1 — Lattice, symmetries, gauge groups and the Wilson measure](outline/units/I-1.md).*
 
 On a periodic lattice, a configuration assigns $U_e\in G$ to each oriented edge, with $U_{e^{-1}}=U_e^{-1}$. If $U_\square$ is the ordered plaquette product, the starting probability measure is
 
@@ -77,7 +77,7 @@ This is Wilson's lattice regularization with the geometric preparation needed fo
 
 ## Part II. Which fields are being constructed?
 
-*Units: [II.1 — Field labels and their lattice representatives](../units/II.1.md); [II.2 — Polymer activities, norms, the Wilson family, the construction record, reflection-positive cells](../units/II.2.md).*
+*Units: [II.1 — Field labels and their lattice representatives](outline/units/II-1.md); [II.2 — Polymer activities, norms, the Wilson family, the construction record, reflection-positive cells](outline/units/II-2.md).*
 
 A local classical label is a gauge-invariant polynomial in curvature and covariant curvature derivatives. Curvature has engineering degree two, each derivative adds one, and multiplication adds degrees. At each degree bound $d$ these expressions form a finite-dimensional space $V_d$. Finite samples of plaquette holonomies recover the required curvature jets near the trivial connection. An inverse Taylor construction, followed by symmetry averaging, produces a gauge-invariant lattice polynomial for each label. Its stencil is fixed in lattice units, independently of spacing and volume, and its expansion on smooth connections agrees with the classical expression to the required order.
 
@@ -93,7 +93,7 @@ The eventual field space is $F_d=V_d/N_d$, where $N_d$ consists of labels invisi
 
 ### Blocking, gauges and local Gaussian integration
 
-*Units: [III.1 — The block-spin step and the symmetric gauge fixing](../units/III.1.md); [III.3 — Free lattice kernels and covariances](../units/III.3.md); [III.4 — Gaussian integration: change of Gaussian sector, determinants, window law](../units/III.4.md); [III.6 — The stationary branch: background field of the effective action](../units/III.6.md).*
+*Units: [III.1 — The block-spin step and the symmetric gauge fixing](outline/units/III-1.md); [III.3 — Free lattice kernels and covariances](outline/units/III-3.md); [III.4 — Gaussian integration: change of Gaussian sector, determinants, window law](outline/units/III-4.md); [III.6 — The stationary branch: background field of the effective action](outline/units/III-6.md).*
 
 Each block transformation is an exact positive Markov kernel of total mass one. It relates fine links to coarse links through a local predictor and a penalty. Auxiliary choices of trees and charts are averaged compatibly with lattice symmetries. In the small-curvature region an intrinsic minimizing construction provides the gauge and background. Elsewhere, eligible local tree gauges still permit an exact decomposition. One never assumes that all configurations admit the small-field description.
 
@@ -105,7 +105,7 @@ Changing from Haar variables to Gaussian coordinates keeps the Jacobians, determ
 
 ### Connected expansions and the large-field problem
 
-*Units: [III.5 — Cluster expansion of the polymer gas](../units/III.5.md); [III.8 — Connected activities and backward dependence cones](../units/III.8.md); [III.10 — One full nonlinear renormalization step: bounds on irrelevant terms](../units/III.10.md).*
+*Units: [III.5 — Cluster expansion of the polymer gas](outline/units/III-5.md); [III.8 — Connected activities and backward dependence cones](outline/units/III-8.md); [III.10 — One full nonlinear renormalization step: bounds on irrelevant terms](outline/units/III-10.md).*
 
 Gaussian integration produces interactions between polymers. A connected cluster expansion writes the logarithm of the partition function as a sum of connected terms, bounded by tree estimates of the Brydges type. The relevant smallness condition is local summability through a site. The vacuum logarithm may be extensive, but deleting or changing a region $Y$ changes it by at most $C|Y|$. Ratios defining local correlations therefore remain controlled as the volume increases.
 
@@ -124,7 +124,7 @@ The outcome is a full nonlinear step: after extracting the marginal and vacuum t
 
 ### The marginal term and the schedule
 
-*Units: [III.7 — Matching the Wilson energy to fourth order](../units/III.7.md); [III.9 — The marginal flow: the running coupling and its reset](../units/III.9.md); [III.2 — Choosing the constants: the order of choice and the RG schedule](../units/III.2.md).*
+*Units: [III.7 — Matching the Wilson energy to fourth order](outline/units/III-7.md); [III.9 — The marginal flow: the running coupling and its reset](outline/units/III-9.md); [III.2 — Choosing the constants: the order of choice and the RG schedule](outline/units/III-2.md).*
 
 Gauge invariance, lattice symmetry and simplicity leave one marginal curvature-squared term. The classical action is matched through fourth order, using local algebraic lifts that express admissible jets in curvature variables. The Gaussian determinant supplies its one-loop correction. For a block ratio $L$, the marginal change is
 
@@ -153,7 +153,7 @@ uniformly in $N\ge m$ and $p$. The long stages also make every fixed field degre
 
 ### From action bounds to bounds on fields
 
-*Units: [III.11 — Comparison with the free Gaussian measure: interacting rank and determinant budgets](../units/III.11.md); [III.15 — Cost accounting for observables and the remainder comparison](../units/III.15.md); [III.16 — Analytic toolkit](../units/III.16.md).*
+*Units: [III.11 — Comparison with the free Gaussian measure: interacting rank and determinant budgets](outline/units/III-11.md); [III.15 — Cost accounting for observables and the remainder comparison](outline/units/III-15.md); [III.16 — Analytic toolkit](outline/units/III-16.md).*
 
 For a local observable, an estimate that loses a fixed power of the coupling at every lattice site is useless. Gauge counting prevents this loss. On a connected cell with $c$ sites, the tree-gauge count has $3c+1$ remaining link variables, while $3c-3$ plaquette variables can be integrated with an energy bound. The resulting mismatch is four color variables, rather than a number proportional to $c$. In coupling notation this leaves a factor of the form $g^{-4\dim\mathfrak g}$, which can be paid locally. These determinant budgets are distinct from the one-loop determinant calculation.
 
@@ -165,7 +165,7 @@ Among the analytic tools, one deserves emphasis: trace Hölder inequalities and 
 
 ### One family, with an actual continuum limit
 
-*Units: [III.12 — Bounds uniform in the volume and convergence as the spacing tends to zero](../units/III.12.md); [III.13 — Extension to all labels: one common Wilson family](../units/III.13.md); [III.14 — The construction run: flat representations and the ultraviolet rate](../units/III.14.md).*
+*Units: [III.12 — Bounds uniform in the volume and convergence as the spacing tends to zero](outline/units/III-12.md); [III.13 — Extension to all labels: one common Wilson family](outline/units/III-13.md); [III.14 — The construction run: flat representations and the ultraviolet rate](outline/units/III-14.md).*
 
 The observable estimates have the scaling expected from engineering dimension, allowing an arbitrarily small power loss. For a degree-$d$ insertion observed at scale $a_m$, a typical reflected root bound has size $A a_m^{-d-\varepsilon}$, uniformly over the physical period and all sufficiently fine starting lattices. Bounds for normalized difference quotients require a separate construction: a difference is represented by a higher-degree label plus a small remainder and a term invisible to separated correlations. They do not follow by differentiating a sup-norm bound.
 
@@ -177,7 +177,7 @@ All these estimates are arranged within the same schedule and insertion system f
 
 ## Part IV. Infinite volume and smooth Euclidean correlations
 
-*Unit: [IV.1 — Infinite volume: extraction of a subsequence and the Euclidean axioms of the limit](../units/IV.1.md).*
+*Unit: [IV.1 — Infinite volume: extraction of a subsequence and the Euclidean axioms of the limit](outline/units/IV-1.md).*
 
 The infinite-volume argument uses the reflection-positivity and chessboard methods associated with Fröhlich–Israel–Lieb–Simon and lattice gauge reflection positivity. A local product is reflected into a repeated pattern of cells. The corresponding root bounds from Part III control the original correlation independently of the number of cells. This gives local boundedness on separated configurations, without any clustering estimate.
 
@@ -191,7 +191,7 @@ This is the compactness route of constructive field theory, in the spirit of Gli
 
 ## Part V. Phases and relativistic reconstruction
 
-*Units: [V.1 — Decomposition of the limit into phases](../units/V.1.md); [V.2 — Osterwalder-Schrader reconstruction of a Wightman theory](../units/V.2.md); [V.3 — Reconstruction for every phase and the reconstructed theory](../units/V.3.md).*
+*Units: [V.1 — Decomposition of the limit into phases](outline/units/V-1.md); [V.2 — Osterwalder-Schrader reconstruction of a Wightman theory](outline/units/V-2.md); [V.3 — Reconstruction for every phase and the reconstructed theory](outline/units/V-3.md).*
 
 Reflection positivity first constructs an OS Hilbert space for the mixed hierarchy: positive-time field words have a semidefinite Gram form, and one quotients its null space and completes. Time translation gives a contraction semigroup $e^{-tH}$, $H\ge0$. There may be many zero-energy vectors. Assuming the vacuum is already unique here would assume precisely the clustering that has not been proved.
 
@@ -222,7 +222,7 @@ These bounds hold for $0<u\le1$ and $s\ge1$, with $M_A$ independent of the phase
 
 ## Part VI. Restoring rotations and constructing the stress tensor
 
-*Units: [VI.1 — Ward identities, the rotation action and the conserved stress tensor](../units/VI.1.md); [VI.2 — The free Maxwell stress tensor and the local Ward charge](../units/VI.2.md).*
+*Units: [VI.1 — Ward identities, the rotation action and the conserved stress tensor](outline/units/VI-1.md); [VI.2 — The free Maxwell stress tensor and the local Ward charge](outline/units/VI-2.md).*
 
 The lattice does not have continuous rotations, and translation-invariant continuum limits need not automatically acquire them. The proof constructs the symmetry through local stress fluxes. It needs an initial reflection-positive Hilbert space and free short-distance comparison, but not an already Poincaré-covariant interacting theory.
 
@@ -250,7 +250,7 @@ The classical ingredients are stress-tensor Ward identities, reflection positivi
 
 ### Maxwell behavior and asymptotic freedom
 
-*Units: [VII.1 — Short distances: convergence to free Maxwell fields](../units/VII.1.md); [VII.5 — Asymptotic freedom of the running coupling](../units/VII.5.md); [VII.6 — Scaling variants and fixed-field estimates](../units/VII.6.md).*
+*Units: [VII.1 — Short distances: convergence to free Maxwell fields](outline/units/VII-1.md); [VII.5 — Asymptotic freedom of the running coupling](outline/units/VII-5.md); [VII.6 — Scaling variants and fixed-field estimates](outline/units/VII-6.md).*
 
 The free reference theory consists of $\dim\mathfrak g$ Maxwell colors, with the gauge-invariant polynomial labels appropriate to $G$. Its lattice curvature covariances converge to derivatives of the continuum Green function away from collisions. Subtracting self-contractions and applying Wick recursion gives convergence of composite-field correlations and their derivatives. A strict reflected Gram-positivity argument identifies the null relations exactly with the free curvature equations and Bianchi relations. Finite sets of correlations therefore detect every nonzero quotient label.
 
@@ -270,7 +270,7 @@ uniformly over the allowed finer cutoffs and volumes. This is the leading logari
 
 ### The trace anomaly and the exclusion of free profiles
 
-*Units: [VII.2 — The trace of the stress tensor and the trace anomaly](../units/VII.2.md); [VII.3 — The theory is not free: Gram positivity and exclusion of free-field profiles](../units/VII.3.md).*
+*Units: [VII.2 — The trace of the stress tensor and the trace anomaly](outline/units/VII-2.md); [VII.3 — The theory is not free: Gram positivity and exclusion of free-field profiles](outline/units/VII-3.md).*
 
 Classically the four-dimensional stress tensor is traceless. Quantum mechanically, changing scale changes the coefficient of curvature squared. The proof follows this variation through the fine and coarse actions and through the normalization of the stress observable. Fourth-order matching and the marginal one-loop coefficient identify the leading trace insertion with a curvature-squared field suppressed by one inverse logarithm. This is a stronger calculation than ordinary leading Maxwell convergence: the latter would see only the vanishing classical trace.
 
@@ -296,7 +296,7 @@ Finite Wick polynomials in finitely many free fields give time-axis two-point pr
 
 ### The operator product expansion
 
-*Unit: [VII.4 — Operator product expansion and contact extensions](../units/VII.4.md).*
+*Unit: [VII.4 — Operator product expansion and contact extensions](outline/units/VII-4.md).*
 
 When several insertions occupy a small cluster, the RG replaces their joint effect on remote observables by a local field at the cluster center. Projection through degree $D$ leaves an irrelevant remainder with one additional degree of smallness. Finite remote detectors identify the projected field, and coherent choices on successive degree quotients give a single system of coefficient functions. The high-root and ground-algebra bounds make the remainder estimate valid for every character, not just for the mixed expectation.
 
@@ -321,7 +321,7 @@ The estimates extend to finite nested clusters and integrated versions. Taylor s
 
 ## Part VIII. Assembly of one theory
 
-*Unit: [VIII.1 — Assembly of the main theorem](../units/VIII.1.md).*
+*Unit: [VIII.1 — Assembly of the main theorem](outline/units/VIII-1.md).*
 
 The assembly fixes one ultraviolet construction before any extraction order is chosen. All refinements then refer to its original lattice insertions, couplings and field normalizations. The same limiting table supplies the differential fields, stress tensor, phase space, continuations, OPE and selected trace. Fixed-volume uniqueness identifies the full-mesh limits with the rows used by the extracted table. The phase theories realize the boundary values of those same correlations.
 
