@@ -72,7 +72,7 @@ jobs:
           chmod +x "$RUNNER_TEMP/mamba/micromamba"
           MAMBA_ROOT_PREFIX="$RUNNER_TEMP/mamba/root" "$RUNNER_TEMP/mamba/micromamba" create -y -q \
             -p "$RUNNER_TEMP/mamba/env" -c conda-forge libegl libopengl libgl libglx libxkbcommon >/dev/null
-          cp -a "$RUNNER_TEMP"/mamba/env/lib/lib{EGL,OpenGL,GL,GLX,GLdispatch,xkbcommon}*.so* "$RUNNER_TEMP/extra-libs/"
+          cp -a "$RUNNER_TEMP"/mamba/env/lib/{libEGL,libOpenGL,libGL,libGLX,libGLdispatch,libxkbcommon}.so* "$RUNNER_TEMP/extra-libs/"
           echo "LD_LIBRARY_PATH=$RUNNER_TEMP/extra-libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" >> "$GITHUB_ENV"
           export LD_LIBRARY_PATH="$RUNNER_TEMP/extra-libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
           mkdir -p "$RUNNER_TEMP/texmacs" && cd "$RUNNER_TEMP/texmacs"
@@ -90,6 +90,10 @@ jobs:
 
       - name: Build
         if: steps.merge.outputs.skip != 'true'
+        env:
+          # links to repository files point upstream (origin is the fork here)
+          YM_REPO_URL: https://github.com/scottnarmstrong/yang-mills-informalization
+          YM_REPO_BRANCH: main
         run: tm/build.sh --full
 
       - name: Commit regenerated documents
