@@ -12,7 +12,7 @@ This repository is an attempt to make that proof readable. Using AI agents, we:
 
 1. **map** the proof: we compute its dependency graph from the main theorem down, and divide it into eight parts and thirty-two units;
 2. **outline** it in natural language, at several levels of detail, from a short account of the whole proof down to an outline of each unit with every statement linked to the Lean;
-3. **write** a complete natural-language account of the proof on that skeleton: a [manuscript](manuscript/), written in public. **A first draft is now available** ([PDF](manuscript/main.pdf), 242 pages, draft of 11 November 2026); it is still being revised.
+3. **write** a complete natural-language account of the proof on that skeleton: a [manuscript](manuscript/), written in public. **A first draft is now available** ([PDF](manuscript/main.pdf), 241 pages, draft of 11 November 2026); it is still being revised.
 
 The outline is a rough draft written by machines. Its purpose is to be checked, corrected and rewritten by people.
 
@@ -20,7 +20,7 @@ The outline is a rough draft written by machines. Its purpose is to be checked, 
 > A component-by-component analysis of which parts of the proof follow Balaban's programme for lattice gauge theories, which follow OpenAI's 2026 papers on two-dimensional sigma models, which come from other constructive work (Gawędzki–Kupiainen, Brydges–Yau, Magnen–Rivasseau–Sénéor), which are standard, and which appear new, with the evidence on both sides. **[Read the analysis →](provenance.md)**
 
 > ### [The manuscript: first draft](manuscript/) · [how it is written](manuscript/PROCESS.md)
-> **A first draft of the full proof is now available** ([PDF](manuscript/main.pdf), 242 pages): Part I states the theorem and the architecture of its proof, Part II gives the proofs. It was written entirely by AI agents from the Lean code, and is still being revised. Statements are fixed first and kept short. Every statement is reviewed against the Lean by a separate reviewer, a fresh reader and a sentence-by-sentence truth check, and every finding is recorded with its decision. **[The process, what it has caught so far, and what it does not establish →](manuscript/PROCESS.md)**
+> **A first draft of the full proof is now available** ([PDF](manuscript/main.pdf), 241 pages): Part I states the theorem and the architecture of its proof, Part II gives the proofs. It was written entirely by AI agents from the Lean code, and is still being revised. Statements are fixed first and kept short. Every statement is reviewed against the Lean by a separate reviewer, a fresh reader and a sentence-by-sentence truth check, and every finding is recorded with its decision. **[The process, what it has caught so far, and what it does not establish →](manuscript/PROCESS.md)**
 
 ## The proof at five levels of detail
 

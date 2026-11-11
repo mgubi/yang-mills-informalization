@@ -22,7 +22,7 @@ The entry levels allow the ratios and stage constants to increase sufficiently s
 Q_j(b)=2(2+4A_j^{\rm path})+1+6(c_{{\rm dir},j}+(A_j^{\rm path})^2)
  +4\nu_G^{\rm mat}(\log16+\tfrac12\log b),\qquad q_m=Q_{J_m}(\widehat\beta_m).
 \end{equation}
-Here $A_j^{\rm path}$ is the path bound of Lemma~\ref{lem:C1}. For the unmarked density on $V$ sites write $\Phi_m=v_{{\rm vac},m}V-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\ {\rm healthy}}E_i^{\rm reg}$. To verify the normalization cost, put $\widehat g_m=\widehat\beta_m^{-1/2}$ at this level. The scalar-free unmarked exponent is at most $VE_m$, and its absolute forced sum is at most $e^{V\epsilon_m^{\rm for}}$, where the path bounds give $E_m\le2+4A_{J_m}^{\rm path}$. Restrict the denominator to links of chord at most $\widehat g_m/4$. There are no flags there, the forced sum is one, and its scalar-free exponent is at least $-V(E_m+6(c_{{\rm dir},J_m}+(A_{J_m}^{\rm path})^2))$. The elementary Haar-ball bound gives this set measure at least $(\widehat g_m/16)^{4V\nu_G^{\rm mat}}$. Thus
+Here $A_j^{\rm path}$ is the path bound of Lemma~\ref{lem:C1}. For the unmarked density on $V$ sites write $\Phi_m=v_{{\rm vac},m}V-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\,\mathrm{healthy}}E_i^{\rm reg}$. To verify the normalization cost, put $\widehat g_m=\widehat\beta_m^{-1/2}$ at this level. The scalar-free unmarked exponent is at most $VE_m$, and its absolute forced sum is at most $e^{V\epsilon_m^{\rm for}}$, where the path bounds give $E_m\le2+4A_{J_m}^{\rm path}$. Restrict the denominator to links of chord at most $\widehat g_m/4$. There are no flags there, the forced sum is one, and its scalar-free exponent is at least $-V(E_m+6(c_{{\rm dir},J_m}+(A_{J_m}^{\rm path})^2))$. The elementary Haar-ball bound gives this set measure at least $(\widehat g_m/16)^{4V\nu_G^{\rm mat}}$. Thus
 \begin{equation}\label{eq:E-vacuum-ratio}
 \begin{aligned}
  &\frac{\int e^{\Phi_m(U)}\sum_{\mathcal A}\prod_{Y\in\mathcal A}|K_{m,Y}(U)|\,dU}
@@ -216,9 +216,9 @@ These densities keep track of one insertion under exact integration. The formula
 A representation of the one-insertion density has the form
 \begin{align*}
 H_m(v)&=\density\rho_m\left[x_0+
-\mathbf1_{\Sigma_d\ {\rm healthy}}P_d[\factorscale_{t_m^{-1}}x_m(v)^\circ]
-+\sum_i\mathbf1_{Z_i\ {\rm healthy}}R_i\right]\\
-&\quad+e^{v_{{\rm vac},m}|\Lambda_{n_{p,m}}|-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\ {\rm healthy}}E_i^{\rm reg}}
+\mathbf1_{\Sigma_d\,\mathrm{healthy}}P_d[\factorscale_{t_m^{-1}}x_m(v)^\circ]
++\sum_i\mathbf1_{Z_i\,\mathrm{healthy}}R_i\right]\\
+&\quad+e^{v_{{\rm vac},m}|\Lambda_{n_{p,m}}|-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\,\mathrm{healthy}}E_i^{\rm reg}}
 \sum_{\mathcal A\ {\rm eligible}}\sum_{i\in\mathcal A}Q_i\prod_{j\in\mathcal A\setminus\{i\}}K_j^{\rm for}.
 \end{align*}
 Here $R_i,Q_i$ are the marked regular and forced remainders; eligibility is that of Definition~\ref{def:D06}. The section and footprint are translated to the anchor. The remainders restore the exact density in~\eqref{eq:E-marked-evolution}.
@@ -226,9 +226,12 @@ Here $R_i,Q_i$ are the marked regular and forced remainders; eligibility is that
 
 The marked regular norm below is anchored at the insertion site, taken to be zero; it is not anchored separately at each support. For selected majorants $e_i\ge\|R_i\|_m$, $k_i\ge\sup|Q_i|$, set
 \begin{equation}\label{eq:E-marked-mass}
-\mathcal E^{\rm mk}_m=\sum_i e^{\sigma_{J_m}\cover_{B_m}(Z_i)}e_i,
+\begin{aligned}
+\mathcal E^{\rm mk}_m&=\sum_i e^{\sigma_{J_m}\cover_{B_m}(Z_i)}e_i,
 \qquad \mathcal K^{\rm mk}_m=\sum_i e^{\sigma_{J_m}\cover_{B_m}(Y_i)}k_i,
-\qquad \|g_m\|_{\rm rem}=\mathcal E^{\rm mk}_m+(\epsilon_m^{\rm for})^{-1/2}\mathcal K^{\rm mk}_m.
+\\
+\|g_m\|_{\rm rem}&=\mathcal E^{\rm mk}_m+(\epsilon_m^{\rm for})^{-1/2}\mathcal K^{\rm mk}_m.
+\end{aligned}
 \end{equation}
 The derivative seminorm is Definition~\ref{def:D05a}. A coefficient graph at level~$m$ is a linear choice $x\mapsto g_m(x)=(R(x),Q(x))$ of such remainders, with the supports fixed and $\|g_m(x)\|_{\rm rem}\le C_{J_m}|x^\circ|_1$. Its purpose is to use the current polynomial coordinate to bound the entire inserted density.
 
@@ -249,7 +252,7 @@ At the cutoff,
 $H_N(v)=\density\rho_N\,P_d[\factorscale_{t_N^{-1}}v]$.
 \end{lemma}
 \begin{proof}
-Use Definitions~\ref{def:D04}, \ref{def:D08}, \ref{def:D26} and Lemma~\ref{lem:E-marked-step}. At level~$N$, split the unmasked section into its healthy part and its complement $f_v=\mathbf1_{\Sigma_d\ {\rm unhealthy}}P_d[\factorscale_{t_N^{-1}}v^\circ]$. For an eligible family~$\mathcal A$ let $\mathcal A_\Sigma$ be its forced terms whose supports meet~$\Sigma_d$. If $\mathcal A_\Sigma=\varnothing$, exact coverage leaves no flag in~$\Sigma_d$ and $f_v=0$. Otherwise replace $\mathcal A_\Sigma$ by one new marked forced address with support $\Sigma_d\cup\bigcup_{i\in\mathcal A_\Sigma}Y_i$, inventory $\bigcup_{i\in\mathcal A_\Sigma}I_i$, zero unmarked activity, and $Q=f_v\prod_{i\in\mathcal A_\Sigma}K_i^{\rm for}$ on the event that the flags in that support are exactly this inventory, $Q=0$ otherwise. An index of the new marked family records the cluster~$\mathcal A_\Sigma$, even when two clusters have the same support and inventory; retain all original forced factors in~$Q$. The remaining supports are disjoint from the merged support, since they avoid~$\Sigma_d$ and were disjoint from every merged support. This is a bijection between eligible families meeting~$\Sigma_d$ and eligible marked families containing one new address, so the forced sum restores $f_v\density\rho_N$ exactly. The regular remainder is zero and $x_N=v$.
+Use Definitions~\ref{def:D04}, \ref{def:D08}, \ref{def:D26} and Lemma~\ref{lem:E-marked-step}. At level~$N$, split the unmasked section into its healthy part and its complement $f_v=\mathbf1_{\Sigma_d\,\mathrm{unhealthy}}P_d[\factorscale_{t_N^{-1}}v^\circ]$. For an eligible family~$\mathcal A$ let $\mathcal A_\Sigma$ be its forced terms whose supports meet~$\Sigma_d$. If $\mathcal A_\Sigma=\varnothing$, exact coverage leaves no flag in~$\Sigma_d$ and $f_v=0$. Otherwise replace $\mathcal A_\Sigma$ by one new marked forced address with support $\Sigma_d\cup\bigcup_{i\in\mathcal A_\Sigma}Y_i$, inventory $\bigcup_{i\in\mathcal A_\Sigma}I_i$, zero unmarked activity, and $Q=f_v\prod_{i\in\mathcal A_\Sigma}K_i^{\rm for}$ on the event that the flags in that support are exactly this inventory, $Q=0$ otherwise. An index of the new marked family records the cluster~$\mathcal A_\Sigma$, even when two clusters have the same support and inventory; retain all original forced factors in~$Q$. The remaining supports are disjoint from the merged support, since they avoid~$\Sigma_d$ and were disjoint from every merged support. This is a bijection between eligible families meeting~$\Sigma_d$ and eligible marked families containing one new address, so the forced sum restores $f_v\density\rho_N$ exactly. The regular remainder is zero and $x_N=v$.
 
 The support weight of the merged address is at most $e^{\sigma_{J_N}\cover_{B_N}(\Sigma_d)}$ times the product of the old support weights: their connected covers all meet the stencil cover. The activity caps bound the sum of the weighted majorants of addresses meeting~$\Sigma_d$ by $|\Sigma_d|\epsilon_N^{\rm for}$. Dropping disjointness and summing their products over nonempty subsets gives at most $e^{|\Sigma_d|\epsilon_N^{\rm for}}-1$. By~\eqref{eq:A-global-bound}, $|f_v|\le C_dt_N^{-d}|v^\circ|_1$; with~\eqref{eq:I12-activity-caps} and $\cover_{B_N}(\Sigma_d)\le1$,
 \begin{equation*}
@@ -378,7 +381,7 @@ The exponent in the first line of~\eqref{eq:E-centered-input} is therefore at mo
 Finally the stencil of Definition~\ref{def:D08} has fixed lattice radius. For fixed~$m$ its physical radius tends to zero as $N\to\infty$, uniformly in~$p$. Translation covariance moves the centered calculation to any~$y$. This proves interiority and the bound, using precisely the expansion estimates~\eqref{eq:E-centered-input}.
 \end{proof}
 
-\subsubsection*{Equation and difference corrections}
+\paragraph{Equation and difference corrections.}
 The following estimates concern the insertions of Definition~\ref{def:D08}, with the terminal maps~$\mathsf Z_{N,p,d}$ of Lemma~\ref{lem:E2.1}. They will be used to identify the quotient fields in Section~\ref{sec:partII-F}. A statement holds on full cutoff tails if it holds for all $N\ge N_0$ and every~$p$. A nonnegative family $b_{N,p}$ has subpower growth when, for every $\varepsilon>0$, $b_{N,p}\le a_N^{-\varepsilon}$ on such a tail. A coefficient family is admissible if
 \begin{equation}\label{eq:F-subpower}
  \forall\varepsilon>0\ \exists N_0\ \forall N\ge N_0\ \forall p:
@@ -486,7 +489,7 @@ P_d[\factorscale_{t_N^{-1}}\mathsf Z_{N,p,d}^{-1}c](y+e_a)
 Its stencil is the union of one fixed stencil and its unit translate. It is continuous and local. Moving an ordered derivative anchor by one lattice site multiplies its spatial weight by at most a stage-dependent factor. The factor is at most $2^{\varpi_{J_N}}$ per derivative. The logarithmic condition $\varpi_{J_N}=o(s_N)$ in Lemma~\ref{lem:E1.1} makes each fixed product of these factors subpower. The other bounds are those in the preceding proof. Local matching in degree $d+1$ now supplies an admissible coefficient family and the same small residual. The inverse spacing has been removed before applying matching, so it causes no further loss in that residual. The four axes use translates of this one computation and their fixed spatial-weight bounds. This proves the corrected difference.
 \end{proof}
 
-\subsubsection*{Short-distance comparison}
+\paragraph{Short-distance comparison.}
 Fix~$d$ and a real basis $\mathfrak m_1=1,\mathfrak m_2,\ldots,\mathfrak m_{q_d}$ of~$\maxwellspace{d}$, where $q_d=\dim_\C\maxwellspace{d}$. Choose finitely many one- or two-point tests. In row~$i$, the first label is the variable~$\mathfrak m_j$; the optional second label is a fixed basis element. Let $y^i\in\Gen{n_i}$, $n_i\in\{1,2\}$, be the row's configuration. The free test matrix is
 \begin{equation}\label{eq:E2-free-matrix}
 \mathcal G_{ij}=\maxwellcorr_{n_i}(\mathfrak m_j,\text{ row }i\text{ spectator};y^i)\,.
@@ -555,7 +558,7 @@ Taking the $|\mathcal C^{\rm tile}|$-th root in~\eqref{eq:E-rank-input} gives
 Since $e^{\mathsf C^{\rm Max}}$ has coefficient $\mathcal G_J$ at $z_J$, multiplication by $e^{\mathsf C^{\rm Max}}$ shows that $\mathfrak c_I$ is exactly $R_I$ in~\eqref{eq:F-relative}. Choose successive admissible windows with both levels increasing, reading radii strictly decreasing to zero, and $e^{-u_t}$ decreasing to zero. The scale-selection windows in Lemma~\ref{lem:E1.1} allow these finitely many requests at each step. Call the resulting levels $k_\nu\le t_\nu$, radii $r_\nu$ and errors $\gamma_\nu=e^{-u_{t_\nu}}$. Rounding on the finer grid preserves genericity for each fixed trial once that grid is fine enough. Interior insertion supports imply interiority of every $R_I$, by its polynomial formula. This proves the relative-error assertion and the common choice of lifts for all rows.
 \end{proof}
 
-\subsubsection*{Volume-uniform difference bounds}
+\paragraph{Volume-uniform difference bounds.}
 
 All the preceding comparison lemmas hold on full cutoff tails, uniformly in~$p$. The local matching estimate also applies to any fixed iterated difference: after multiplying by $a_N^{d+h}$, a difference of order~$h$ is a finite sum of translates of the degree-$d$ section, with subpower derivative bounds. Matching in degree $d+h$ leaves a root error tending to zero at every fixed cell size, uniformly in~$p$.
 
@@ -601,7 +604,7 @@ Lemma~\ref{lem:E2.3} now bounds the roots of~$O^{(e)}(c^{\rm pr})$ at each fixed
 Distribute the differences in $\boldsymbol l$ among their indicated slots. A difference in slot~$i$ acts only on that insertion, so the resulting moment is exactly the expectation of the product of these differentiated insertions. Choose a fixed tiling side smaller than~$r$ and translate its boundaries away from all anchors. In each axis the excluded boundary strips occupy less than one full cell length if their widths are chosen below $a_m/[4(n+1)]$. For sufficiently large~$N$ a lattice translation with these margins exists. Distinct anchors occupy distinct cells, since their torus separation exceeds the cell side. The interior-root comparison, with a finer centered scale, bounds all the factors uniformly. Apply~\eqref{eq:E-chess} and put one in every unused cell. Their product gives the asserted~$B$. Empty difference lists and arities at most one obey the same argument. This proves the lemma and Proposition~\ref{prop:UB}.
 \end{proof}
 
-\subsubsection*{Bounded coarse insertions}
+\paragraph{Bounded coarse insertions.}
 
 \input{part2/E-bounded-real}
 
@@ -610,8 +613,8 @@ Distribute the differences in $\boldsymbol l$ among their indicated slots. A dif
 Fix~$p$. The normalized density at a fixed level is
 \begin{equation}\label{eq:E-normalized-density}
 \frac{\density\rho_{N,p,m}}{\int\density\rho_{N,p,m}}
-=\frac{e^{-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\ {\rm healthy}}E_i^{\rm reg}}\mathcal F_{N,p,m}}
-{\int e^{-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\ {\rm healthy}}E_i^{\rm reg}}\mathcal F_{N,p,m}}.
+=\frac{e^{-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\,\mathrm{healthy}}E_i^{\rm reg}}\mathcal F_{N,p,m}}
+{\int e^{-\pathaction_{N,m}-\sum_i\mathbf1_{X_i\,\mathrm{healthy}}E_i^{\rm reg}}\mathcal F_{N,p,m}}.
 \end{equation}
 Here $\mathcal F_{N,p,m}$ is the forced sum of Definition~\ref{def:D06}. The factor $e^{v_{{\rm vac},m}|\Lambda_{n_{p,m}}|}$ has canceled. This identity is needed because no convergence of that factor is proved or used.
 

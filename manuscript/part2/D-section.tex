@@ -8,7 +8,7 @@ We next remove the affine Hessian of each regular term. Lattice symmetry reduces
 
 Throughout, the group and trace metric are those of Definition~\ref{def:D01}. Scales, flags, path actions and densities are those of Section~\ref{sec:renormalization} and Definitions~\ref{def:D06}, \ref{def:D22}--\ref{def:D23}. At a step $m+1\to m$ put $j=J_{m+1}$, $\Lambda=\Lambda_{L_pD_m}$, $t=t_m$, $B=B_m$ and $\sigma=\sigma_{J_m}$. Set $h_X(U)=\mathbf1\{X\cap\flags_m(U)=\varnothing\}$. Constants may depend on the fixed stage data and, when indicated, on the chosen ratio, but are independent of the volume. Here $C_j$ is a generic stage constant; the column bounds $C_j$ of row~4 enter only from Section~\ref{sec:partII-E.2} on.
 
-\subsection*{Local terms and their norms}
+\paragraph{Local terms and their norms.}
 
 Locality on $X$ means dependence only on links with both endpoints in $X$. Write $\xi_o(y)$ for the centered lift of $y-o$ to $\Z^4$. All lattice distances in this section use the maximum norm. Set $N_R(X)=\{y:\operatorname{dist}(y,X)\le R\}$ and $N_R(o)=N_R(\{o\})$. A link internal to $X$ has both endpoints in $X$. The nonwrapping condition is $10\operatorname{dist}(y,o)<L_pD_m$ for every $y\in X$; it permits local affine tests without crossing a choice of lift.
 
@@ -72,7 +72,11 @@ Each inverse contributes the negative link field; the four orientations have the
 
 Expand each row square into pairs of its slots. Together with the direct plaquette terms these give a countable family $\lambda$. Let $r_\lambda$ be its unclipped quadratic curvature function, including its coefficient, and $c_\lambda$ the same function with each curvature replaced by the clover curvature of its orientation at the anchor. Let $L_\lambda$ be its actual clipped or health-tested contribution. A direct term has $r_\lambda=c_{\rm dir}\wilsonterm(U_\square)$ and $c_\lambda=c_{\rm dir}|C_q|^2/2$. A row pair has coefficient $r_{\alpha i}r_{\alpha k}/2$ multiplying its two curvature factors. Include translations and the $\hypercubic$ average, with weight $|\hypercubic|^{-1}$, in the addresses.
 
-Choose $Z_\lambda$ to contain the slot footprints and the radius-$B$ neighborhood of the anchor needed to decide the relaxed health test. Queries outside that neighborhood are automatic once $t\exp((B-2)/R_{J_m}^{\rm rel})\ge2$, since chords are at most two. Lemmas~\ref{lem:C1}--\ref{lem:C2} give absolute convergence and
+Choose $Z_\lambda$ to contain the slot footprints and the radius-$B$ neighborhood of the anchor needed to decide the relaxed health test. Queries outside that neighborhood are automatic once
+\begin{equation*}
+t\exp((B-2)/R_{J_m}^{\rm rel})\ge2\,,
+\end{equation*}
+since chords are at most two. Lemmas~\ref{lem:C1}--\ref{lem:C2} give absolute convergence and
 \begin{align}\label{eq:D-low-sums}
 \mathsf K_m^{\rm kin}&=\sum_\lambda L_\lambda+\mathcal A_m,
 &\mathcal Q_m&=\sum_\lambda h_{Z_\lambda}r_\lambda,\notag\\
@@ -150,11 +154,13 @@ To sum connected molecules, root at a specified site and order the children of a
 
 Write $\Xi(z)=\sum_{\mathcal M}\prod_{M\in\mathcal M}z_M$, where $\mathcal M$ runs over finite selections with disjoint supports, including the empty selection. This is the ordinary hard-core gas. Its logarithm has the connected coefficients
 \begin{equation}\label{eq:D-cluster}
-\log\Xi(z)=\sum_{n\ge1}\frac1{n!}
+\begin{aligned}
+\log\Xi(z)&=\sum_{n\ge1}\frac1{n!}
 \sum_{M_1,\ldots,M_n}\phi^T(M_1,\ldots,M_n)
-\prod_{h=1}^nz_{M_h},\qquad
-\phi^T=\sum_{\Gamma\ \text{connected}}\prod_{\{h,k\}\in\Gamma}
+\prod_{h=1}^nz_{M_h},\\
+\phi^T&=\sum_{\Gamma\ \text{connected}}\prod_{\{h,k\}\in\Gamma}
 [-\mathbf1_{Z_{M_h}\cap Z_{M_k}\ne\varnothing}]\,.
+\end{aligned}
 \end{equation}
 The graph in this formula has vertex set $\{1,\ldots,n\}$, and the one-vertex coefficient is one. Apply~\cite[Theorem~1, equations~(3)--(4)]{Ueltschi2004} to the counting measure with masses $z_M$ and interaction $\zeta(M,M')=-\mathbf1_{Z_M\cap Z_{M'}\ne\varnothing}$. Its hypotheses are $|1+\zeta|\le1$, finite total variation, finite exponential mass, and
 \begin{equation*}
@@ -335,9 +341,6 @@ To specify the small coefficient, let $C_j^{\rm sub}$, $C_j^{\rm low}$ and $C_j^
 c_j=\frac1{64(1+C_j^0)},\qquad H_j=\theta c_j\epsilon_m^{\rm reg}\,.
 \end{equation*}
 The quantity $H_j$ depends on $m$ through $\epsilon_m^{\rm reg}$. The next assertion concerns the very same block integral and the masks of~\eqref{eq:D-low-sums}.
-\begin{lemma}[Preparatory activities]\label{lem:D-preliminary}
-For every input curve above, fixed local families $f_{i,u},k_{i,u}$ and a continuous scalar $\tau_u$ satisfy~\eqref{eq:D-early}--\eqref{eq:D-preliminary-forced}. They are equivariant and continuous in the weighted norms with exponents $\sigma+3$ and $\sigma+1$, respectively. The regular functions have the regularity of Definition~\ref{def:D24} before flat-value and Hessian subtraction; the forced functions satisfy Definition~\ref{def:D25}. Restricting the interval preserves the identities and estimates.
-\end{lemma}
 \begin{align}\label{eq:D-early}
 \mathcal H_u(U)&=e^{\tau_u|\Lambda|-\beta'_u\mathsf K_m^{\rm kin}(U)-\mathcal L_m(U)
 -\alpha_{N,m}\mathcal Q_m(U)-\sum_i h_{X_i}(U)f_{i,u}(U)}\mathcal F_u^0(U),\\
@@ -347,6 +350,9 @@ For every input curve above, fixed local families $f_{i,u},k_{i,u}$ and a contin
 \qquad \mathfrak k_{i,u}\ge\sup_U|k_{i,u}(U)|\,.
 \label{eq:D-preliminary-forced}
 \end{align}
+\begin{lemma}[Preparatory activities]\label{lem:D-preliminary}
+For every input curve above, fixed local families $f_{i,u},k_{i,u}$ and a continuous scalar $\tau_u$ satisfy~\eqref{eq:D-early}--\eqref{eq:D-preliminary-forced}. They are equivariant and continuous in the weighted norms with exponents $\sigma+3$ and $\sigma+1$, respectively. The regular functions have the regularity of Definition~\ref{def:D24} before flat-value and Hessian subtraction; the forced functions satisfy Definition~\ref{def:D25}. Restricting the interval preserves the identities and estimates.
+\end{lemma}
 Here $\kappa_j^{\rm pre}>0$ is fixed after the ratio, and $\mathcal F_u^0$ is the disjoint-support exact-cover sum of Definition~\ref{def:D06}, formed from $k_{i,u}$.
 \begin{proof}
 Use Definitions~\ref{def:D04}--\ref{def:D06}, Lemmas~\ref{lem:B-D1}, \ref{lem:B-D2}, \ref{lem:C1}--\ref{lem:C7}, \ref{lem:D-connected} and~\ref{lem:D-localization}. First choose the ratio so that the inherited principal terms of Lemma~\ref{lem:D-inherited} use at most $H_j/32$, and then raise the threshold so that their comparison remainders use at most $H_j/32$. Bound the terms retained in~\eqref{eq:D-height-gain} and the long paths together by $H_j/16$. The localization bound is $o(H_j)$ with the stronger support exponent. This fixes a coupling threshold independent of the period.
@@ -391,7 +397,7 @@ Q_f(U)&=\frac12\sum_{q,r}q_f(q,r)\langle C_q(U,o),C_r(U,o)\rangle_{\g}\,.
 Set $q_f=0$ when $Z$ wraps. The matrix extracts the response to constant curls; its color independence is proved below. Define the regular remainder and the discrepancy of masks by
 \begin{align}\label{eq:D-local-split}
 R_f&=f-f(1)-Q_f,\notag\\
-\zeta_f&=\mathbf1_{Z\ {\rm unhealthy}}\{f(1)+h_{\{o\}}Q_f-h_Xf\}\,.
+\zeta_f&=\mathbf1_{Z\,\mathrm{unhealthy}}\{f(1)+h_{\{o\}}Q_f-h_Xf\}\,.
 \end{align}
 The following identity is checked before any activities are summed.
 
@@ -612,7 +618,7 @@ Its trajectories are exactly the tuples satisfying
 Every member satisfies the activity bounds in~\eqref{eq:D-retained}.
 \end{lemma}
 \begin{proof}
-Use Definition~\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, \ref{lem:C8}, \ref{lem:D-preliminary}, and~\ref{lem:D1}, \ref{lem:D4}--\ref{lem:D6}. The Wilson construction at the end supplies the initial curve and both caps. At a step, Lemma~\ref{lem:D-preliminary} uses only the prescribed paths, the local regularity and forced eligibility, the bounds and the weighted continuity of its input. The proof does not require that the input curve coincide with an earlier chosen curve. Its truncation index depends only on the incoming address lists, so the same selection serves every admitted input curve with these lists. Local subtraction, path replacement and fusion preserve the read supports, gauge invariance, cancellations and countability. Lemma~\ref{lem:D1} proves their numerical bounds, and Lemma~\ref{lem:D6} proves weighted continuity on the interval.
+Use Definition~\ref{def:D06}, Lemmas~\ref{lem:C1}--\ref{lem:C2}, \ref{lem:C8}, \ref{lem:D-preliminary}, and~\ref{lem:D4}--\ref{lem:D6}. The Wilson construction at the end supplies the initial curve and both caps. At a step, Lemma~\ref{lem:D-preliminary} uses only the prescribed paths, the local regularity and forced eligibility, the bounds and the weighted continuity of its input. The proof does not require that the input curve coincide with an earlier chosen curve. Its truncation index depends only on the incoming address lists, so the same selection serves every admitted input curve with these lists. Local subtraction, path replacement and fusion preserve the read supports, gauge invariance, cancellations and countability. Lemma~\ref{lem:D1} proves their numerical bounds, and Lemma~\ref{lem:D6} proves weighted continuity on the interval.
 
 The normalized identity of Lemma~\ref{lem:D5} and the reset of Lemma~\ref{lem:C8} identify the same $\Delta$. Its proof identifies $\Delta$ with the continuous scalar root and gives $|\Delta|\le1$; its statement gives the drift in Theorem~\ref{prop:RG}. Defining the vacuum scalar by flat evaluation gives the exact integral, since the normalized representation is one at $1$. Hence~\eqref{eq:D-retained} is inherited by the outputs and the prescribed paths are unchanged. Finite induction gives the classes just described.
 
@@ -626,8 +632,11 @@ We compare cutoffs using activity functions on fixed domains. At level $m$ and p
 For a difference $A=(E,K)$ of activity families set
 \begin{equation}\label{eq:D-common-norm}
 \|A\|_{m,p}=\max\left\{
-\frac{\sup_x\sum_{o_i=x}e^{\sigma_{J_m}\cover_{B_m}(X_i)}\|E_i\|_m}{\epsilon_m^{\rm reg}},
-\frac{\sup_x\sum_{x\in Y_i}e^{\sigma_{J_m}\cover_{B_m}(Y_i)}\sup_U|K_i(U)|}{\epsilon_m^{\rm for}}
+\begin{aligned}
+&
+\frac{\sup_x\sum_{o_i=x}e^{\sigma_{J_m}\cover_{B_m}(X_i)}\|E_i\|_m}{\epsilon_m^{\rm reg}},\\
+&\frac{\sup_x\sum_{x\in Y_i}e^{\sigma_{J_m}\cover_{B_m}(Y_i)}\sup_U|K_i(U)|}{\epsilon_m^{\rm for}}
+\end{aligned}
 \right\}\,.
 \end{equation}
 The seminorms in this formula are the least majorants in Definitions~\ref{def:D05a}--\ref{def:D05b}. Quotient by zero seminorm and complete the space with the prescribed local cancellations, eligibility and permutations. Denote the resulting real Banach space by $\mathcal X_{m,p}$. This retains regular derivatives on healthy configurations and forced values on every configuration. The vacuum scalar is excluded.
@@ -1004,7 +1013,7 @@ There are finitely many subsets of this torus, so the weighted difference sums t
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{prop:RG}]
-Use Definitions~\ref{def:D04}, \ref{def:D06}, \ref{def:D25a}, and the classes of Lemma~\ref{lem:D2}. Lemmas~\ref{lem:D1}, \ref{lem:D4}--\ref{lem:D6} give the final functions and their exact normalized identity. Put
+Use Definitions~\ref{def:D04}, \ref{def:D06}, \ref{def:D25a}, and the classes of Lemma~\ref{lem:D2}. Lemmas~\ref{lem:D4}--\ref{lem:D6} give the final functions and their exact normalized identity. Put
 \begin{equation*}
 v_u=|\Lambda|^{-1}\log\mathcal H_u(1),\qquad
 \beta_u=\beta'_u+\alpha_{N,m}+\Delta_u\,.
