@@ -27,7 +27,7 @@ The Lean proof, restricted to the 413,000 lines that the main theorem uses, divi
 |---|---|---|---|---|
 | **III.1** | [The block-spin step and the symmetric gauge fixing](units/III-1.md) | 4,219 | 30 | edited |
 | **III.2** | [Choosing the constants: the order of choice and the RG schedule](units/III-2.md) | 18,156 | 55 | edited |
-| **III.3** | [Free lattice kernels and covariances](units/III-3.md) | 8,998 | 11 | draft |
+| **III.3** | [Free lattice kernels and covariances](units/III-3.md) | 8,998 | 11 | checked |
 | **III.4** | [Gaussian integration: change of Gaussian sector, determinants, window law](units/III-4.md) | 37,956 | 141 | draft |
 | **III.5** | [Cluster expansion of the polymer gas](units/III-5.md) | 9,746 | 41 | draft |
 | **III.6** | [The stationary branch: background field of the effective action](units/III-6.md) | 21,329 | 44 | draft |
