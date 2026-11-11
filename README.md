@@ -34,8 +34,6 @@ For every compact matrix group G whose Lie algebra is simple and nonabelian (for
 
 **Not claimed:** uniqueness or subsequence-independence of the infinite-volume limit, clustering of the full limit, a mass gap, or agreement with perturbation theory to all orders.
 
-See the group's [assessment](https://github.com/yang-mills-group/YM/blob/main/docs/assessment-1.pdf) for a careful discussion. A precise statement, definition by definition and checked against the Lean, is in preparation.
-
 ## The proof at a glance
 
 Restricted to what the main theorem actually uses, the proof is about 413,000 lines of Lean (77,000 declarations). It falls into eight parts:
