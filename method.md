@@ -47,10 +47,10 @@ The graph of the 77,000 declarations the main theorem uses is far too large to r
 
 Each unit outline goes through three rounds:
 1. **Draft.** Claude Sonnet writes it from the unit's key statements, the Lean source and the interfaces, following a fixed template: propositions with their status and hypotheses, inputs, strategy, steps with proof sketches, difficulty, notation, open points.
-2. **Check and rewrite.** Claude Opus at high effort checks every numbered statement against the linked Lean declaration (hypotheses, quantifiers, conclusion), reads the proofs of the main steps, corrects errors and rewrites the exposition. On the first two units this round found several statements stated too broadly or with hypotheses dropped. It also found that the one-loop coefficient of the coupling flow is computed in the proof, where the draft had taken it to be assumed.
-3. **Edit.** GPT (Sol, high effort) verifies the mathematics again against the Lean and edits the text.
+2. **Check and rewrite.** Claude Opus checks every numbered statement against the linked Lean declaration (hypotheses, quantifiers, conclusion), reads the proofs of the main steps, corrects errors and rewrites the exposition. On the first two units this round found several statements stated too broadly or with hypotheses dropped. It also found that the one-loop coefficient of the coupling flow is computed in the proof, where the draft had taken it to be assumed.
+3. **Edit.** A GPT model verifies the mathematics again against the Lean and edits the text.
 
-The summary of the whole proof is written from the outlines by GPT (Astra) and edited by Claude Opus.
+The summary of the whole proof is written from the outlines by a GPT model and edited by Claude Opus.
 
 ## What to trust
 
