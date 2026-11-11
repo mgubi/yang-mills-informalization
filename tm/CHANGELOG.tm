@@ -19,19 +19,19 @@
 
   <\itemize-minus>
     <item><strong|The manuscript joins this repository.> It is now in
-    <hlink|manuscript/|https://github.com/mgubi/yang-mills-informalization/tree/main/manuscript>,
+    <hlink|manuscript/|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>,
     as level 5, the full proof (under construction); the separate repository
     is archived.
 
     <item><strong|Outlines condensed.> Each unit page now shows an outline of
     three to ten pages, condensed from the unit's detailed notes and checked
     against them sentence by sentence; the full notes are on a separate page
-    per unit and in their own <hlink|PDF|https://github.com/mgubi/yang-mills-informalization/blob/main/pdf/yang-mills-detailed-notes.pdf>.
+    per unit and in their own <hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/pdf/yang-mills-detailed-notes.pdf>.
 
     <item><strong|All unit outlines edited; one PDF.> All thirty-two outlines
     have been through the three review rounds. The summary, the architecture
     and the outlines are available as one
-    <hlink|PDF|https://github.com/mgubi/yang-mills-informalization/blob/main/pdf/yang-mills-outline.pdf>.
+    <hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/pdf/yang-mills-outline.pdf>.
 
     <item><strong|Where the ideas come from.> A <hlink|provenance
     analysis|provenance.tm>: which parts of the proof follow Balaban's
@@ -76,7 +76,7 @@
     loading these files from rebuilding and replaying the formal proof.
 
     <item><strong|Manuscript started in public.> A complete account is being
-    written at <hlink|manuscript/|https://github.com/mgubi/yang-mills-informalization/tree/main/manuscript>.
+    written at <hlink|manuscript/|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>.
     It is under construction.
 
     <item><strong|Reader-review corrections.> Added a
@@ -92,7 +92,7 @@
   </itemize-minus>
 
   <hlink|Repository|index.tm> <ym-middot> <hlink|Citation
-  metadata|https://github.com/mgubi/yang-mills-informalization/blob/main/CITATION.cff>
+  metadata|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/CITATION.cff>
   <ym-middot> <hlink|Report a correction|https://github.com/scottnarmstrong/yang-mills-informalization/issues>
 </body>
 

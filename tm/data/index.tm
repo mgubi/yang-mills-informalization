@@ -60,14 +60,14 @@
     <item><hlink|README.md|index.tm>: this dictionary, the census and the
     limits of the data.
 
-    <item><hlink|units.tsv|https://github.com/mgubi/yang-mills-informalization/blob/main/data/units.tsv>:
+    <item><hlink|units.tsv|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/units.tsv>:
     one row per unit, with source-allocation statistics and code-reference
     lists.
 
-    <item><hlink|declaration-units.tsv|https://github.com/mgubi/yang-mills-informalization/blob/main/data/declaration-units.tsv>:
+    <item><hlink|declaration-units.tsv|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/declaration-units.tsv>:
     one source-allocation unit for each listed declaration name.
 
-    <item><hlink|key-statements.tsv|https://github.com/mgubi/yang-mills-informalization/blob/main/data/key-statements.tsv>:
+    <item><hlink|key-statements.tsv|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/data/key-statements.tsv>:
     selected statements, their unit identifiers, pinned Lean links,
     importance labels and short summaries.
   </itemize-minus>

@@ -132,7 +132,7 @@
   These descriptions are not a systematic literature comparison or a claim of
   priority for each ingredient. This repository's contribution is an
   explanatory map of the released formal proof; the <hlink|full
-  manuscript|https://github.com/mgubi/yang-mills-informalization/tree/main/manuscript>
+  manuscript|https://github.com/scottnarmstrong/yang-mills-informalization/tree/main/manuscript>
   is under construction. For a component-by-component account of which parts
   of the proof follow Balaban's programme, which follow OpenAI's 2026 papers
   on two-dimensional sigma models, which are standard and which appear new,
@@ -269,7 +269,7 @@
   with the page and heading, the sentence in question, and a proposed
   correction or pinned Lean link. Include the repository revision and unit or
   result identifier so that the wording can be recovered after later edits.
-  Use <hlink|CITATION.cff|https://github.com/mgubi/yang-mills-informalization/blob/main/CITATION.cff>
+  Use <hlink|CITATION.cff|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/CITATION.cff>
   and the <hlink|citation guidance|index.tm#how-to-cite>; <hlink|change
   notes|CHANGELOG.tm> record reader-facing corrections.
 
