@@ -6,7 +6,9 @@ A manuscript, written in public, giving a complete mathematical proof of the res
 of the construction of four-dimensional quantum Yang–Mills theory
 ([source](https://github.com/yang-mills-group/OpenAI-YM-20261028), commit
 [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464)).
-The reader we write for is a mathematician working in constructive field theory or probability.
+The reader we write for is a mathematician working in constructive field theory or probability. It is written in collaboration with Martin Hairer's
+[humanise-yang-mills](https://github.com/hairer/humanise-yang-mills) project, a crowd-sourced effort to turn the Lean
+formalization into a human-readable monograph.
 
 - **Part I. The theorem and the architecture of its proof** (about 30 pages): the setting and notation, the main
   theorem, the principal statements on which the proof rests, each stated exactly with the idea of its

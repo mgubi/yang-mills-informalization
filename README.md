@@ -2,7 +2,7 @@
 
 **A map of OpenAI's Lean proof of the construction of four-dimensional Yang–Mills theory, and a natural-language outline built from it.**
 
-This repository is maintained by Scott Armstrong (CNRS and Sorbonne Université; Courant Institute, New York University). Source: [github.com/scottnarmstrong/yang-mills-informalization](https://github.com/scottnarmstrong/yang-mills-informalization). For reading on screen, an HTML version generated automatically from this repository by Massimiliano Gubinelli is at [mgubi.github.io/yang-mills-informalization](https://mgubi.github.io/yang-mills-informalization/).
+This repository is maintained by Scott Armstrong (CNRS and Sorbonne Université; Courant Institute, New York University), in collaboration with Martin Hairer's [**humanise-yang-mills**](https://github.com/hairer/humanise-yang-mills) project ([details below](#in-collaboration-with-humanise-yangmills)). Source: [github.com/scottnarmstrong/yang-mills-informalization](https://github.com/scottnarmstrong/yang-mills-informalization). For reading on screen, an HTML version generated automatically from this repository by Massimiliano Gubinelli is at [mgubi.github.io/yang-mills-informalization](https://mgubi.github.io/yang-mills-informalization/).
 
 In October 2026 OpenAI announced a proof, formalized in Lean 4, that four-dimensional quantum Yang–Mills theory can be constructed as a scaling limit of Wilson lattice gauge theory. On 11 November 2026 the Lean source ([`OpenAI-YM-20261028`](https://github.com/yang-mills-group/OpenAI-YM-20261028)) was released.
 
