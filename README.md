@@ -2,6 +2,8 @@
 
 **A map of OpenAI's Lean proof of the construction of four-dimensional Yang–Mills theory, and a natural-language outline built from it.**
 
+This repository is maintained by Scott Armstrong (CNRS and Sorbonne Université; Courant Institute, New York University), in collaboration with Martin Hairer's [**humanise-yang-mills**](https://github.com/hairer/humanise-yang-mills) project ([details below](#in-collaboration-with-humanise-yangmills)). Source: [github.com/scottnarmstrong/yang-mills-informalization](https://github.com/scottnarmstrong/yang-mills-informalization). For reading on screen, an HTML version generated automatically from this repository by Massimiliano Gubinelli is at [mgubi.github.io/yang-mills-informalization](https://mgubi.github.io/yang-mills-informalization/).
+
 In October 2026 OpenAI announced a proof, formalized in Lean 4, that four-dimensional quantum Yang–Mills theory can be constructed as a scaling limit of Wilson lattice gauge theory. On 11 November 2026 the Lean source ([`OpenAI-YM-20261028`](https://github.com/yang-mills-group/OpenAI-YM-20261028)) was released.
 
 The source is about one million lines of Lean in 9,477 files. No informal proof accompanies it. The code uses arbitrary nicknames for its objects (`Treasury`, `Jewel`, `Sheet`, `sails`…), and its folders record the history of its development rather than its mathematical structure.
@@ -17,6 +19,9 @@ The outline is a rough draft written by machines. Its purpose is to be checked, 
 > ### [Where do the ideas come from?](provenance.md)
 > A component-by-component analysis of which parts of the proof follow Balaban's programme for lattice gauge theories, which follow OpenAI's 2026 papers on two-dimensional sigma models, which come from other constructive work (Gawędzki–Kupiainen, Brydges–Yau, Magnen–Rivasseau–Sénéor), which are standard, and which appear new, with the evidence on both sides. **[Read the analysis →](provenance.md)**
 
+> ### [How the manuscript is being written](manuscript/PROCESS.md)
+> The full proof is being written in public by AI models under human direction. Statements are fixed first and kept short. Every statement is reviewed against the Lean by a separate reviewer, a fresh reader and a sentence-by-sentence truth check, and every finding is recorded with its decision. **[The process, what it has caught so far, and what it does not establish →](manuscript/PROCESS.md)**
+
 ## The proof at five levels of detail
 
 The repository presents the same proof at five levels of detail. Each level links down to the next, and everything from level 3 down is linked to the exact lines of the Lean source. Start at the top and go down as far as you need.
@@ -27,7 +32,7 @@ The repository presents the same proof at five levels of detail. Each level link
 | **2** | [**The proof in one reading**](summary.md) | A high-level account of the whole proof: the strategy, the key mechanism of each part, what is new, where the difficulty lies. |
 | **3** | [**The architecture**](outline/README.md) | The eight parts of the proof, from the lattice setting through the renormalization group to the identification as Yang–Mills; what each part hands to the next; the interface between the ultraviolet construction and the infinite-volume limit. |
 | **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline** (about three to ten pages: the propositions it proves, what it uses, the strategy, the main steps), a link to its **detailed notes** (the full account, with a proof sketch for every step), and its **Lean map**: the source and the key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines of source attributed to the units. |
-| **5** | [**The full proof**](manuscript/) *(under construction)* | A complete manuscript: Part I, the theorem and the architecture of its proof (about 35 pages), and Part II, the proofs (about 150 pages), written for a mathematician in constructive field theory or probability. Sections appear as they are written and are revised as they are checked against the Lean. |
+| **5** | [**The full proof**](manuscript/) *(under construction)* | A complete manuscript: Part I, the theorem and the architecture of its proof (about 30 pages), and Part II, the proofs (about 120 pages), written for a mathematician in constructive field theory or probability. Sections appear as they are written and are revised as they are checked against the Lean, by the process described in [how the manuscript is written](manuscript/PROCESS.md). |
 
 **All in one PDF.** Levels 2–4 — the proof in one reading, the architecture and the thirty-two unit outlines — as a single [PDF](pdf/yang-mills-outline.pdf) (164 pages; [LaTeX source](pdf/yang-mills-outline.tex)). The detailed notes of all units are a separate [PDF](pdf/yang-mills-detailed-notes.pdf) (595 pages). Links to the Lean point to the exact lines, as on the web pages.
 

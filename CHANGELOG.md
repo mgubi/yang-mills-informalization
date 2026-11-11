@@ -4,6 +4,7 @@ These notes record publications and corrections that affect readers' understandi
 
 ## 2026-11-11
 
+- **How the manuscript is written.** A detailed account of the writing process — statements first, roles, the review cycle, the records, what it has caught and what it does not establish — in [manuscript/PROCESS.md](manuscript/PROCESS.md), linked from this page and the manuscript page. Part I of the manuscript has completed its review cycle; the first two Part II sections (C and F) are drafted and under re-check.
 - **The manuscript joins this repository.** It is now in [manuscript/](manuscript/), as level 5, the full proof (under construction); the separate repository is archived.
 - **Outlines condensed.** Each unit page now shows an outline of three to ten pages, condensed from the unit's detailed notes and checked against them sentence by sentence; the full notes are on a separate page per unit and in their own [PDF](pdf/yang-mills-detailed-notes.pdf).
 - **All unit outlines edited; one PDF.** All thirty-two outlines have been through the three review rounds. The summary, the architecture and the outlines are available as one [PDF](pdf/yang-mills-outline.pdf).

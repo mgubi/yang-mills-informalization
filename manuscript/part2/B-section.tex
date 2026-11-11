@@ -2,18 +2,138 @@
 
 \emph{This section is under construction.}
 
+For $R=(j+3)\ell$, put $\mathbb B_R=\{-R,\ldots,R\}^4$. Let $T_U(y\to z;o)$ be the ordered link product along the route changing coordinates in the order $o\in S_4$.
 \begin{definition}[Axial frames]\label{def:D20a}
-To be stated here.
+The frame tagged by $(z,o)$, its normalization and its link coordinates are
+\begin{equation*}
+g_y^{z,o}=T_U(z\to y;o),\qquad h_y^{z,o}=(g_0^{z,o})^{-1}g_y^{z,o},\qquad
+U_{(y,a)}^{z,o}=g_y^{z,o}U(y,a)(g_{y+e_a}^{z,o})^{-1}\,.
+\end{equation*}
+These frames provide the finite alternatives for the symmetric gauge choice.
 \end{definition}
 
 \begin{definition}[Symmetric frame choice]\label{def:D20b}
-To be stated here.
+When every route transport in every origin-based axial gauge has chord below $\delta_{\rm fr}$, use the minimizer, with $h_0=1$, of
+\begin{equation*}
+\frac1{24|\mathbb B_R|^2}\sum_{y,z\in\mathbb B_R}\sum_{o\in S_4}
+\wilsonterm(h_yT_U(y\to z;o)h_z^{-1})\,.
+\end{equation*}
+Otherwise use normalized axial frames whose tags satisfy
+\begin{equation*}
+\sum_{e\ {\rm patch}}\chord(U_e^{z,o})\le a_{\rm ax}(2R+1)\sum_{\square\ {\rm patch}}\chord(U_\square)\,.
+\end{equation*}
+Tags have equal mass over all tags on the first branch and eligible tags on the second. This makes the choice symmetric.
 \end{definition}
 
 \begin{definition}[Coarse predictors]\label{def:D21}
-To be stated here.
+Let $w^{\rm av}=(\operatorname{Unif}(\mathbb B_{(\ell-1)/2}))^{*j}$ and let $Y_z$ be the framed straight connector of~\eqref{eq:I12-framed-connector}. Define
+\begin{equation*}
+Q^{\rm pred}=\operatorname*{argmin}_{u\in G}\sum_z w_z^{\rm av}\wilsonterm(Y_zu^{-1})
+\quad\text{if the minimum is below }\varepsilon_{\rm pred}\,.
+\end{equation*}
+Give predictor tags uniform mass on this branch. Otherwise set $Q^{\rm pred}=Y_z$ with tag mass $w_z^{\rm av}$. The product of frame and predictor masses is $\lambda^{\rm tag}(U,\alpha_{\rm tag})$. These choices define every summand of Definition~\ref{def:D04}.
 \end{definition}
 
 \begin{lemma}[Branches and normalization]\label{lem:B1}
-To be stated here.
+For the chosen frame and predictor cutoffs and axial factor $a_{\rm ax}\ge16$, every stated minimizer is unique on its branch, eligible axial tags are nonempty, and
+\begin{equation*}
+\sum_{\alpha_{\rm tag}}\lambda^{\rm tag}(U,\alpha_{\rm tag})=1,
+\qquad\int\blockkernel{m}_\beta(U,V)\,dV=1\,.
+\end{equation*}
 \end{lemma}
+The proof of Lemma~\ref{lem:B1} is deferred to this section's branch estimates.
+
+The following free forms fix the quadratic normalization used in Section~\ref{sec:partII-C}. For a link field $a$, write $d_1a$ for its lattice curl and $\mathcal Q_m a$ for the linearization of the predictor in~\eqref{eq:I12-predictor}. Set
+\begin{equation*}
+\mathsf S^{\rm free}_{N,m}(a)=\tfrac12\langle d_1a,\mathsf H_{N,m}d_1a\rangle\,.
+\end{equation*}
+Let $W_0$ be the free stationary interpolation and put $\mathsf K_{N,m}=d_1^*\mathsf H_{N,m}d_1$.
+
+\begin{lemma}[Free quadratic forms]\label{lem:B2}
+For the chosen histories, the free forms satisfy
+\begin{gather*}
+W_0^*\mathsf K_{N,m+1}W_0+\blockpenalty(\mathcal Q_mW_0-I)^*(\mathcal Q_mW_0-I)
+=\mathsf K_{N,m},\qquad \widehat{\mathsf H}_{N,m}(0)=I,\\
+\mathsf H_{N,m}\ge2\gamma_{J_m}I,\qquad
+\mathsf H_{N,m}-c_{{\rm dir},J_m}I=\rho_{N,m}^*\rho_{N,m}\,.
+\end{gather*}
+Here $\gamma_k>0$ is uniform over histories at stage~$k$, including the top and both incoming stages. For $c_{{\rm dir},k}\le\gamma_k$, the row factor is analytic on a fixed strip and has exponentially decaying coefficients, uniformly in $N,m,p$. At $m=N$ the free form is the identity on curls.
+\end{lemma}
+The proof of Lemma~\ref{lem:B2} is deferred to this section's free block integration.
+
+For the analytic stationary problem, $v$ is the coarse chart variable, $z$ the fine axial variable, and $S(v,z)$ the fine leading action plus the block penalty, with the common coupling factor removed. Put $\mathsf Q=D_z^2S(0,0)$ and $Wv=(v,Dz(0)v)$. For the inverse estimates, use weighted operator norms on a Bloch cell. Put $\mu=\ell^{-1}$ and $k_z(\xi)=(\xi+2\pi z)/\ell$, with $x,z\in\{0,\ldots,\ell-1\}^4$, and define
+\begin{gather*}
+q_a(k)=e^{ik_a}-1,\qquad
+h_z(\xi)=\bigl(\mu^2+\sum_a|q_a(\operatorname{Re}k_z(\xi))|^2\bigr)^{1/2},\\
+\mathcal U_\ell(\xi)_{xz}=\ell^{-2}e^{ik_z(\xi)\cdot x},\qquad
+T_\ell(\xi)=\mathcal U_\ell(\xi)\operatorname{diag}(h_z(\xi)^{-1})\mathcal U_\ell(0)^{-1}\,.
+\end{gather*}
+These weights measure one fine derivative. Use $T_\ell$ on fine link or site fields, the identity on coarse coordinates, direct sums on their products, and $T_\ell(-\xi)^{-T}$ on dual fields. Axial variables inherit the norm of their slice embedding. For an operator kernel set
+\begin{equation*}
+\|K\|_{\eta}^{\rm bl}=\sup\|T_{\rm out}(\xi_{\rm out})^{-1}K(\xi_{\rm out},\xi_{\rm in})T_{\rm in}(\xi_{\rm in})\|_{\rm op}\,.
+\end{equation*}
+The supremum ranges over momenta in $\mathcal S_\eta=\{\xi\in\C^4:|\operatorname{Im}\xi_a|<\eta\}$, with all shifted momenta also in that strip. For multilinear kernels use the corresponding tensor products. Field insertions are in normalized coarse directions. The entry norms in Lemma~\ref{lem:C4} are taken after these rescalings. The weights themselves need not be analytic.
+
+\begin{lemma}[Stationary interpolation]\label{lem:B3}
+Near zero there is an analytic stationary branch with
+\begin{equation*}
+D_zS(v,z(v))=0,\qquad z(0)=0,\qquad
+\mathsf Q\ge\nu_j I,\qquad
+\|\mathsf Q^{-1}\|_{\eta_j}^{\rm bl}+\|W\|_{\eta_j}^{\rm bl}\le E_j\,.
+\end{equation*}
+Here $\nu_j,\eta_j>0$ and $E_j<\infty$ are uniform in the volume; the coercivity constant $\nu_j$ is chosen after the ratio. The free interpolation is $Dz(0)$. The averaging symbol in~\eqref{eq:I12-predictor} vanishes to second order at every nonzero alias. The zero alias has the curvature normalization of Lemma~\ref{lem:B2}.
+\end{lemma}
+The proof of Lemma~\ref{lem:B3} is deferred to this section's stationary equation and inverse estimates.
+
+The Gaussian coordinates also determine the chart factor in the one-loop action. Let $U_v$ be the stationary configuration, $M(v)$ its axial Hessian, $s$ the map from axial increments to left increments, and $J_{\rm ax}$ the corresponding Haar-density ratio. Write $\Psi(U,h_{\rm fr})$ for the rooted minimizing frame, $R$ for infinitesimal gauge insertion and $Q$ for the axial slice. Define
+\begin{equation*}
+X=D_{w=0}[-\log(\Psi(U,h_{\rm fr})^{-1}\Psi(e^w(U,h_{\rm fr})))],
+\qquad \mathcal L_{m+1}=\sum_{x,i}\mathfrak a_i^{(2)}(\,\cdot\,,x)\,.
+\end{equation*}
+These coordinates permit comparison with a gauge-completed Hessian.
+
+\begin{lemma}[Gaussian coordinates]\label{lem:B4}
+Near zero, the one-loop action is
+\begin{equation*}
+\mathsf T(v)=\mathcal L_{m+1}(U_v)+\tfrac12\log\det M(v)-\log J_{\rm ax}(v),
+\qquad J_{\rm ax}=|\det Ds|>0\,.
+\end{equation*}
+The rooted-frame coordinates satisfy $XR=I$ and $\det(R,Q)^2=1$. The Hessian $M$ is positive, and $J_{\rm ax}(0)=1$.
+\end{lemma}
+The proof of Lemma~\ref{lem:B4} is deferred to this section's Gaussian change of coordinates.
+
+The bounds for the third and fourth vertices separate the Wilson part from the input-dependent correction. Let $V_r$ be the degree-$r$ Taylor kernel of the leading fine action minus the Wilson action, $r=2,3,4$. Let $C_3,C_4$ be the bounds after insertion of $W$ used in Lemma~\ref{lem:C4}.
+
+\begin{lemma}[Vertex bounds]\label{lem:B5}
+The kernels $V_2,V_3,V_4$ have momentum orders at least $3,2,1$. For $\ell$ above a threshold depending on the input path data,
+\begin{equation*}
+C_3\le a_3+\ell^{-1}a_3^\prime,\qquad
+C_4\le c_4+\ell^{-1}c_4^\prime\,.
+\end{equation*}
+The constants $a_3,c_4$ depend only on the preceding stage data; $a_3^\prime,c_4^\prime$ may depend on the input path bound. The mixed insertions in the stationary fourth derivative obey the same block-scaled bounds with the inverse constant~$E$ of Lemma~\ref{lem:C4}.
+\end{lemma}
+The proof of Lemma~\ref{lem:B5} is deferred to this section's block-scaled vertex estimates.
+
+Let $Y^{\rm con}$ be the difference between the quadratic one-loop kernel and the kernel with the predictor contact term removed. This term is the second derivative of the predictor multiplied by the first derivative of the penalty. The following orders explain why it does not alter the coupling coefficient.
+
+\begin{lemma}[Stationary Ward estimates]\label{lem:B6}
+Along the free interpolation, the first penalty derivative vanishes to momentum order two, and the mixed fine/frame trace in the contact correction vanishes to order one. The trace with two frame insertions is analytic. Consequently, near zero,
+\begin{equation*}
+Y^{\rm con}(\xi)=O(|\xi|^3)\,.
+\end{equation*}
+\end{lemma}
+The proof of Lemma~\ref{lem:B6} is deferred to this section's stationary gauge identities.
+
+Finally put $\mu=\ell^{-1}$, $\Delta_U=d_U^*d_U$ and $P_\mu=\mu^2(\Delta_U+\mu^2I)^{-1}$, with $d_U$ as in Section~\ref{sec:partII-C}. The inverse and insertions below are evaluated at zero background. Field differentiation inserts the free interpolated coarse field. Write $A_\mu$ for either the completed Hessian without its contact term or the folded auxiliary fine Hessian in that section.
+
+\begin{lemma}[Scaled inverse insertions]\label{lem:B7}
+There are $u_j\ge1$, $\eta_j>0$ and $C_j^{\rm ins}<\infty$, depending only on the fixed stage bounds, such that, for every odd $\ell\ge u_j$,
+\begin{gather*}
+\sup_{\xi\in\mathcal S_{\eta_j}}\|P_\mu(\xi)^3\|_1\le C_j^{\rm ins},\\
+\|D^rP_\mu\|_{\eta_j}^{\rm bl}
++\|\mu^2D^r(A_\mu^{-1})\|_{\eta_j}^{\rm bl}\le C_j^{\rm ins}
+\qquad(0\le r\le2)\,.
+\end{gather*}
+Here $\|\cdot\|_1$ is trace norm on a Bloch cell. The block-penalty and frame insertion products in the resolvent difference satisfy the same uniform operator bounds in block units.
+\end{lemma}
+The proof of Lemma~\ref{lem:B7} is deferred to this section's free inverse and insertion estimates.

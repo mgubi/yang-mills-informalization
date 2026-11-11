@@ -38,8 +38,13 @@ To be stated here.
 To be stated here.
 \end{lemma}
 
+Write $\langle F\rangle_{N,p}=\int F\,d\mu_{N,p}$. A bond tiling has cell boundaries through link midpoints. The reflected copies below place one bounded gauge-invariant observable in every cell.
 \begin{definition}[Chessboard root]\label{def:D27}
-To be stated here.
+For a tiling~$\mathcal T$ into congruent reflected cells and an observable~$F$ in its base cell, let~$(F)_C$ be its reflected copy in~$C$, conjugated on odd reflections. Set
+\begin{equation*}
+\|F\|_{\mathcal T}=\left|\left\langle\prod_{C\in\mathcal T}(F)_C\right\rangle_{N,p}\right|^{1/|\mathcal T|}\,.
+\end{equation*}
+Interior means dependence only on links with both endpoints strictly inside the base cell. The centered tiling~$\mathcal T_m(y)$ has physical cell side~$a_m$ and base cell centered at~$y$. This quantity converts reflected-product estimates into bounds on one insertion.
 \end{definition}
 
 \begin{lemma}[Centered bound]\label{lem:E2.3}
@@ -48,6 +53,111 @@ To be stated here.
 
 \begin{lemma}[Difference estimate]\label{lem:E2.4}
 To be stated here.
+\end{lemma}
+
+\paragraph{Corrections to marked insertions.}
+The following estimates concern the insertions of Definition~\ref{def:D08}, with the terminal maps~$\mathsf Z_{N,p,d}$ of Lemma~\ref{lem:E2.1}. They will be used to identify the quotient fields in Section~\ref{sec:partII-F}. Fix strictly increasing spacing and volume subsequences~$N=\mathsf n(j)$ and~$p=P(k)$. All the estimates below hold for every such choice and survive further refinements. Write
+\begin{equation}\label{eq:E2-tails}
+\operatorname*{olim} X_{N,p}=x
+\quad\Longleftrightarrow\quad
+\forall\varepsilon>0\ \exists k_0\ \forall k\ge k_0\ \exists j_0(k)\ \forall j\ge j_0(k):
+|X_{\mathsf n(j),P(k)}-x|<\varepsilon\,.
+\end{equation}
+For vectors use their fixed coefficient norm. An assertion holds eventually in this order with the same quantifiers after~$\varepsilon$ is omitted. A family~$c_{N,p}\in V_d$ is admissible when
+\begin{equation}\label{eq:F-subpower}
+\forall\varepsilon>0\ \exists k_0\ \forall k\ge k_0\ \exists j_0(k)\ \forall j\ge j_0(k):
+\|\mathsf Z_{\mathsf n(j),P(k),d}^{-1}c_{\mathsf n(j),P(k)}\|_\infty
+\le a_{\mathsf n(j)}^{-\varepsilon}\,.
+\end{equation}
+This permits the coefficient growth needed to correct a positional difference.
+
+We use the chessboard root and interior condition of Definition~\ref{def:D27}. Translates of a bond tiling are by lattice vectors. An anchor is the lattice site at which an insertion is placed. In a base cell of side~$a_k$, let~$z^a$ be its integer coordinate measured from the first site in direction~$a$, and put
+\begin{equation}\label{eq:E2-margin}
+M_{q,k,N}=\left\lfloor\frac{a_k}{8(q+1)a_N}\right\rfloor,
+\qquad M_{q,k,N}\le z^a,\quad z^a+M_{q,k,N}+1\le a_k/a_N\,.
+\end{equation}
+These inequalities specify a relative interior margin.
+
+\begin{definition}[Small errors]\label{def:E2-small}
+An observable family~$E_{N,p}(y)$ is small if some~$\eta_{N,p}\ge0$ with $\operatorname*{olim}\eta_{N,p}=0$ satisfies the following condition. For every arity~$q$ and lower level~$m$, there is $k\ge m$ such that, eventually in the order~\eqref{eq:E2-tails}, $k\le N$ and every translated bond tiling~$\mathcal T$ of side~$a_k$ and every base-cell anchor satisfying~\eqref{eq:E2-margin} obey
+\begin{equation*}
+E_{N,p}(y)\text{ is interior},\qquad
+\|E_{N,p}(y)\|_{\mathcal T}\le\eta_{N,p}\,.
+\end{equation*}
+\end{definition}
+The tolerance family is chosen before~$q,m,k$. This is stronger than smallness in just one centered cell.
+
+The equation projections separate the coefficient directions controlled by exact cutoff identities. The free equation space consists of polynomial labels that vanish on curvature jets satisfying the Maxwell equations. Its transported image is the kernel of the projections chosen below; the free quotient has dimension~$\dim_\C\maxwellspace{d}$. The projections and the equation observables in Lemmas~\ref{lem:E2.6}--\ref{lem:E2.7} are chosen together, before the spacing and volume subsequences.
+\begin{lemma}[Equation projections]\label{lem:E2.6}
+For every~$d$, there are complex linear idempotents $\Pi_{d,N,p}:V_d\to V_d$ and $C_d<\infty$ such that
+\begin{equation*}
+\|\Pi_{d,N,p}\|\le C_d,\qquad
+\dim V_d\le\dim\ker\Pi_{d,N,p}+\dim_\C\maxwellspace{d}\,.
+\end{equation*}
+These projections can be chosen so that Lemma~\ref{lem:E2.7} holds for every spacing and volume subsequence.
+\end{lemma}
+The proof is deferred to the marked-field estimates and the independent free equation count in this subsection.
+
+The next estimate converts a coefficient equation into an observable with exact separated moment identities.
+\begin{lemma}[Equation observables]\label{lem:E2.7}
+For these same projections, every admissible family~$c_{N,p}\in\ker\Pi_{d,N,p}$ admits a measurable observable family~$Z_{N,p}(y)$, bounded at each anchor and cutoff eventually in~\eqref{eq:E2-tails}, for which $O^{(d)}_{N,p}(c_{N,p},y)-Z_{N,p}(y)$ is small. For every fixed spectator list and~$\delta>0$, eventually in that order,
+\begin{equation*}
+\int Z_{N,p}(y_i)\prod_{h\ne i}O_{N,p}(v_h,y_h)\,d\mu_{N,p}=0
+\qquad(\operatorname{sep}_{\rm tor}(y)\ge\delta)\,.
+\end{equation*}
+\end{lemma}
+The proof is deferred to the local equation identities and marked comparison in this subsection; boundedness here is not uniform in the cutoffs. Each polynomial in the free equation space is a sum of terms with a linear equation factor. The local representatives are formed from combinations of Wilson action derivatives, with the remaining factors chosen independent of the varied link. Haar integration then gives zero against exterior spectators; linear combinations and gauge averaging retain that identity. At fixed positive separation, all spectator stencils eventually lie outside its fixed lattice neighbourhood.
+
+Changing the degree changes the insertion normalization. The next estimate corrects that change before taking limits.
+\begin{lemma}[Corrected inclusion]\label{lem:E2.8}
+For every $d\le e$ and $c\in V_d$, there is an admissible family~$b_{N,p}\in V_e$ such that
+\begin{equation*}
+O^{(e)}_{N,p}(b_{N,p},y)-O^{(d)}_{N,p}(c,y)
+\quad\text{is small}\,.
+\end{equation*}
+\end{lemma}
+The proof is deferred to the marked transport estimates in this subsection, including~$d=e$.
+
+The physical difference quotient requires a correction in the next degree.
+\begin{lemma}[Corrected difference]\label{lem:E2.9}
+For every degree~$d$, $c\in V_d$ and axis~$a$, there is an admissible family~$b_{N,p}\in V_{d+1}$ such that
+\begin{equation*}
+O^{(d+1)}_{N,p}(b_{N,p},y)
+-\frac{O^{(d)}_{N,p}(c,y+e_a)-O^{(d)}_{N,p}(c,y)}{a_N}
+\quad\text{is small}\,.
+\end{equation*}
+\end{lemma}
+The proof is deferred to the marked difference estimates in this subsection.
+
+\paragraph{Short-distance rank tests.}
+Fix~$d$ and a real basis $m_1=1,m_2,\ldots,m_{q_d}$ of~$\maxwellspace{d}$, where $q_d=\dim_\C\maxwellspace{d}$. Choose finitely many one- or two-point tests. In row~$i$, the first label is the variable~$m_j$; the optional second label is a fixed basis element. Let $y^i\in\Gen{n_i}$, $n_i\in\{1,2\}$, be the row's configuration. The free test matrix is
+\begin{equation}\label{eq:E2-free-matrix}
+\mathcal G_{ij}=\maxwellcorr_{n_i}(m_j,\text{ row }i\text{ spectator};y^i)\,.
+\end{equation}
+The next lemma supplies a finite family that distinguishes every free field of degree at most~$d$.
+\begin{lemma}[Free test rows]\label{lem:E2-free-tests}
+For every~$d$ and real basis~$m_1=1,m_2,\ldots,m_{q_d}$, there are finitely many one- or two-point rows at generic configurations, with every second label a basis element, for which the matrix~\eqref{eq:E2-free-matrix} has rank~$q_d$.
+\end{lemma}
+The proof uses only the Maxwell correlations of Definition~\ref{def:D11} and the free positivity in Lemma~\ref{lem:G1.1}, independently of Section~\ref{sec:partII-F}.
+\begin{proof}
+Let~$c\ne0$ in~$\maxwellspace{d}$. Lemma~\ref{lem:G1.1} gives a strictly positive reflected two-point value for~$c$ and the reflection of~$\bar c$. Expand that second label in the basis~$(m_j)$. At least one of the resulting two-point functionals is nonzero on~$c$. Smoothness of the free correlations, also in Lemma~\ref{lem:G1.1}, permits a perturbation of the pair to~$\Gen{2}$ preserving this nonzero value. Thus the common kernel of all permitted row functionals is zero. Starting with~$\maxwellspace{d}$, choose a row nonzero on a nonzero vector in the current common kernel. Each choice strictly lowers its dimension. After finitely many choices the common kernel is zero, so~$\mathcal G$ has rank~$q_d$.
+\end{proof}
+Fix such a family for the rank comparison below.
+
+For a trial~$\nu$, a common coefficient list~$b^\nu_{j,N,p}\in V_d$ and lattice-compatible configuration $x^{\nu,i}=r_\nu y^{\nu,i}$ define the row insertions $I_h=O^{(d)}_{N,p}(b^\nu_{j_h,N,p},x_h^{\nu,i}/a_N)$, with~$j_1=j$ and the spectator index fixed by row~$i$. Physical points are read modulo the lattice period. Let~$\mathcal G_J^\nu$ be the Maxwell moment of the labels~$(m_{j_h})_{h\in J}$ at~$(y_h^{\nu,i})_{h\in J}$, with $\mathcal G_\varnothing^\nu=1$. Define the relative errors by
+\begin{equation}\label{eq:F-relative}
+R_\varnothing=1,\qquad
+R_I=\prod_{h\in I}I_h-
+\sum_{\varnothing\ne J\subseteq I}\mathcal G_J^\nu R_{I\setminus J}\,.
+\end{equation}
+Only singleton and pair errors occur. The lifts~$b^\nu$ include the scale normalization, so~$I_h$ carries no additional power of~$r_\nu$.
+
+The following rank estimate is deferred to the short-distance analysis in this subsection. Each relative error is interior whenever its insertions are interior, since~\eqref{eq:F-relative} is a polynomial in those insertions.
+\begin{lemma}[Relative rank comparison]\label{lem:E2.10}
+For every such finite test family, there are $r_\nu\downarrow0$, $y^{\nu,i}\to y^i$, levels $k_\nu\le t_\nu$ tending to infinity, $\gamma_\nu\ge0$ tending to zero, and real lifts~$b^\nu_{j,N,p}$, bounded in~$N,p$ for fixed~$\nu$ and common to all rows. They satisfy $b^\nu_{1,N,p}=\mathbf u_d$. Each~$x^{\nu,i}$ is generic on the spacing-$a_{t_\nu}$ grid. Eventually in~$N$, uniformly in~$p$, all row insertions are interior to~$\mathcal T_{k_\nu}(0)$, and, for every nonempty~$I$,
+\begin{equation*}
+\|R_I\|_{\mathcal T_{k_\nu}(0)}\le\gamma_\nu\,.
+\end{equation*}
 \end{lemma}
 
 \subsection{Full ultraviolet convergence}\label{sec:partII-E.3}
