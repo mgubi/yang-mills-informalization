@@ -103,9 +103,26 @@ Two independent AI readers read every candidate statement and judged its importa
 | Dependency structure | Reliable: checked against OpenAI's compiled record. |
 | Units | Computed from the dependency graph, then cut along the mathematics. |
 | Plain-language summaries and glossary | AI-written; marked *certain*, *probable* or *tentative*. |
-| Precise statement of the main theorem | In preparation. |
+| Precise statement of the main theorem | [Published](statement.md): checked definition by definition against the Lean. |
+| Unit outlines | Published as they are written; each is marked *draft*, *checked* or *edited* and updated as it improves. |
 
 Corrections are welcome.
+
+## Compiled Lean files
+
+To load or check the Lean proof without compiling it (about two and a half hours on eight cores), download the compiled build of commit `3456e5e` from the [release `lean-build-3456e5e`](https://github.com/scottnarmstrong/yang-mills-informalization/releases/tag/lean-build-3456e5e), as with Mathlib's cache:
+
+```sh
+git clone https://github.com/yang-mills-group/OpenAI-YM-20261028 && cd OpenAI-YM-20261028
+git checkout 3456e5e75cf8d4cd558955a5c7638fba2d68f464
+lake exe cache get                                   # Mathlib, from the official cache
+gh release download lean-build-3456e5e -R scottnarmstrong/yang-mills-informalization -p 'ym-build-*' -p SHA256SUMS
+cat ym-build-3456e5e.tgz.part0 ym-build-3456e5e.tgz.part1 > ym-build-3456e5e.tgz && sha256sum -c SHA256SUMS
+lake unpack ym-build-3456e5e.tgz
+lake build WilsonReference WilsonConstruction        # all targets up to date: nothing is recompiled
+```
+
+The archive is 2.2 GB, in two parts, and unpacks to 8.8 GB. The [release notes](https://github.com/scottnarmstrong/yang-mills-informalization/releases/tag/lean-build-3456e5e) also give a download with `curl`.
 
 ## License
 
