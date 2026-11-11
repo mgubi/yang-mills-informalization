@@ -14,6 +14,33 @@ This repository is an attempt to make that proof readable. Using AI agents, we:
 
 The outline is a rough draft written by machines. Its purpose is to be checked, corrected and rewritten by people.
 
+## Start here
+
+### [Overview of the proof →](outline/README.md)
+
+How the proof is organised:
+- its eight parts, from the lattice setting through the renormalization group to the identification as Yang–Mills;
+- what each part hands to the next;
+- the short interface between the ultraviolet construction and the infinite-volume limit.
+
+### [The detailed map: forty chapters →](outline/chapters.md)
+
+The 413,000 lines that the main theorem uses, grouped into forty chapters in dependency order. Every chapter has its own page with:
+- a summary, and the chapters it builds on and those that use it;
+- its sections, which are the authors' work packages in the source;
+- its key statements in plain language, **each linked to its exact lines in the Lean source**.
+
+### Also here
+
+| | |
+|---|---|
+| [**The work items**](outline/work-items.md) | The code's own decomposition of the limit theory into about one hundred stated obligations, each with what it proves. |
+| [**Glossary**](glossary.md) | The code's nicknames (`Treasury`, `Jewel`, `Sheet`, …) translated into mathematics. |
+| [**How the map was made**](method.md) | Method, checks against OpenAI's compiled record, and how far each product can be trusted. |
+| [**Data**](data/) | Tables of chapters, sections and the 989 key statements, with links. |
+
+All links to Lean point to the fixed commit [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464) of the released source.
+
 ## In collaboration with *Humanise Yang–Mills*
 
 This project is carried out in collaboration with Martin Hairer's [**humanise-yang-mills**](https://github.com/hairer/humanise-yang-mills), a crowd-sourced effort to turn the Lean formalization into a human-readable monograph whose statements and arguments can be traced to a fixed version of the code.
@@ -55,22 +82,6 @@ Restricted to what the main theorem actually uses, the proof is about 413,000 li
 - at each fixed volume the kernels converge as the spacing tends to zero.
 
 Everything after that uses only these bounds and reflection positivity. Parts IV–VI are organised in the code itself as about seventy numbered *work items*, each stating one obligation and proving it in its own file. They are a ready-made skeleton for an exposition.
-
-Read the [overview of the proof](outline/README.md) for the logic and the interfaces, and the [forty chapters](outline/chapters.md) for the detailed map.
-
-## What is in this repository
-
-| | |
-|---|---|
-| [`outline/README.md`](outline/README.md) | The proof's architecture: the eight parts, what each hands to the next, and how the chapters fit together. |
-| [`outline/chapters.md`](outline/chapters.md) | The forty chapters in dependency order, with proposed titles and sizes. |
-| `outline/chapters/NN.md` | One page per chapter: summary, sections (the authors' work packages), and the key statements in plain language, each linked to its exact lines in the Lean source. |
-| [`outline/work-items.md`](outline/work-items.md) | The numbered work items of the limit theory, with what each proves. |
-| [`glossary.md`](glossary.md) | The code's nicknames translated into mathematics. |
-| [`method.md`](method.md) | How the map was made and how far it can be trusted. |
-| [`data/`](data/) | Tables: chapters, sections, and the 989 key statements with links. |
-
-All links to Lean point to the fixed commit [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464) of the released source.
 
 ## How the map was made
 
