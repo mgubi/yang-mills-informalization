@@ -32,6 +32,7 @@ The repository presents the same proof at five levels of detail. Each level link
 
 | | |
 |---|---|
+| [**Where the ideas come from**](provenance.md) | Which parts of the proof follow Balaban's programme, which follow OpenAI's 2026 papers on two-dimensional sigma models, which are standard, and which appear new; component by component, with the evidence on both sides. |
 | [**Glossary**](glossary.md) | The code's nicknames (`Treasury`, `Jewel`, `Sheet`, …) translated into mathematics. |
 | [**The work items**](outline/work-items.md) | The code's own decomposition of the limit theory into about one hundred stated obligations, each with what it proves. |
 | [**How this was made**](method.md) | Method, checks against OpenAI's compiled record, the review rounds, and how far each level can be trusted. |
