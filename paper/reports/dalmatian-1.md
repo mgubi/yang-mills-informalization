@@ -1,0 +1,13 @@
+# Dalmatian — report 1
+
+2026-11-11 UTC. **First-section boundary reached; stopped for Amélie's review.**
+
+**Written.** `PLAN.md` begins `STATUS: READY` and incorporates both collaborators' Phase 1 notes: section ownership, page allowances, five exact principal assertions, same-family interfaces, OS-before-rotations dependencies, notation and detail standard. Installed `main.tex`, `macros.tex` (visible `\gap`), bibliography, notation table and reserved inputs. Wrote `part1/03-theorem.tex`: all public definitions, exact main theorem, five jointly chosen principal propositions with proof ideas, and their deduction. It occupies printed pages 2–11, within its 20-page cap; the other Part I inputs remain empty.
+
+**Checked.** Verified Lean pin `3456e5e75cf8d4cd558955a5c7638fba2d68f464`. Read public definitions and the proof bodies in `Solution`, `Construction`, `WilsonBridge`, `HierarchyBridge`, `TraceBridge`, plus fixed-volume, phase and trace endpoints. Checked every public clause, quantifier order, full inner limit, stencil, label map, product-test boundary convention, spectator dependence and finite Wick class. Every numbered statement/display has a correspondence row in `notes/dalmatian.md`. This is source inspection, not a Lean rebuild or independent proof audit.
+
+**Five visible deferred-proof markers.** (1) Nonlinear step, actual one-loop attachment and tuned fixed-level convergence/tails. (2) Literal extraction/derivative inputs and the exterior-flux/phase-commutation argument. (3) Joint boundary estimates and spacelike gluing. (4) Marked cluster estimate and algebra-norm OPE remainder. (5) Stress/trace normalization, flexible-scale spectral sandwich and finite mass-shell expansion. Each marker gives source locators. They identify missing paper proofs, not a refutation of the Lean theorem.
+
+**Verification.** `latexmk -pdf -interaction=nonstopmode main.tex` succeeds. No missing references or duplicate labels; no control bytes or warnings from my section. Read the rendered pilot, including revised OPE and source-footnote pages. Current combined PDF is 25 pages; one 81.39pt overfull display remains at greyhound's `01-lattice.tex:48`, reported in my notes for its owner. Applied the mandated style reference; no HCP exemplar PDF was available for direct visual comparison.
+
+**Departure and decision.** Unlike Scott's larger two-theorem/thirteen-proposition presentation, this pilot has one public headline theorem and five jointly quantified assertions. Stronger construction results are introduced only where their proofs need them. Please calibrate this granularity and definition density before further drafting; authorship metadata remains undecided. The full paper and the five deferred analytic arguments are not complete.

@@ -1,0 +1,13 @@
+# Greyhound — report 1
+
+2026-11-11 UTC. Phase 2 pilot complete; stopping for review as BRIEF requires.
+
+**Written.** `part2/uv/01-lattice.tex`, “Lattice fields”: normalized Wilson law and exact gauge/affine signed symmetries for every real inverse coupling; radial Taylor labels, weight/factor gradings and nested real bases; the local-section normalization contract; and a conditional proposition deriving polynomial insertion locality, continuity, translation, reality, orientation and reference-unit normalization. Locality requires both link endpoints in the translated stencil, including after wrapping. The physical unit is `a_{r(d)}^d1`, not generally the raw label 1. The pilot occupies pages 11–16 of the combined PDF, below its ten-page cap.
+
+**Source checks.** Read declarations and relevant proof bodies at Lean commit `3456e5e75cf8d4cd558955a5c7638fba2d68f464`: `YM/Wilson/{Law,Symmetry}`, matrix-group and path/face geometry, label/grade/frame construction, link ODE and analytic germ, and `YM/Source/{Local,Insertion,Construction}`. All four numbered results/definitions and fifteen numbered displays have exact correspondence rows in `notes/greyhound.md`. Conditional consequences use only their stated inputs. No Lean build or independent review was performed.
+
+**One visible marker.** The closing `\gap` records the deferred existence of normalized sections with derivative bounds and the same-family invertible transfer maps with endpoint/unit conditions. Source locations are `YM/Integrated.lean:214–219`, `YM/Source/Insertion.lean:89–114` and `YM/FullVolume/Cross.lean:30–71`. These remain manuscript obligations; the conditional insertion proposition does not pay them. Root, relay/rank and fixed-volume convergence inputs are reserved for later sections and remain unproved here.
+
+**Exposition and decisions.** Relative to Scott’s setup, construction-specific notation is introduced alongside its use, and classical Taylor normalization is separated from running-coefficient normalization. The elementary law proof includes explicit face reindexing on small tori. No prose was copied. Following the READY plan, the full section/transfer construction is deferred. No new notation decision blocks this pilot; Amélie’s review precedes further drafting.
+
+**Validation.** Required `latexmk -pdf -interaction=nonstopmode main.tex` succeeded; the 23-page combined build has no warnings, missing references/citations or overfull/underfull boxes. Inspected every pilot page as a rendered image and reinspected pages 14–16 after final edits. Section SHA-256: `8fbf51d4b8d615aaba9ad05c345d0a4159e77b32ff8402a16608f4e334046f41`.
