@@ -514,7 +514,7 @@ The group checked separately, outside Theorem 2.1, that the selected-phase corre
 | Short-distance behaviour predicted by asymptotic freedom: stress tensor, OPE with the predicted singularities | (Reg1): logarithmic growth of the bare inverse coupling, slope unspecified. (O1)–(O2): finite-order OPE bounds, not matched to perturbation theory. (T3): leading law of the trace two-point function with the one-loop constant. The stress tensor appears only in the construction. |
 | Mass gap $\Delta>0$ | Not claimed |
 
-In summary, the formulation differs from the standard ones in four structural ways. (i) Euclidean statements concern separated configurations only. (ii) The relativistic fields are faithful, labelled by an abstract space built from the quotient spaces $F_d$. (iii) A phase decomposition with a selected phase replaces clustering and uniqueness of the vacuum. (iv) Limits are taken along construction-chosen lattice sequences and a subsequence of volumes.
+In summary, the formulation differs from the standard ones in four structural ways. (i) Euclidean statements concern separated configurations only. (ii) The relativistic fields are faithful, labelled by an abstract space built from the quotient spaces $F_d$. (iii) A phase decomposition replaces a clustering requirement on the mixed Euclidean limit; the selected phase's relativistic theory has a unique invariant vacuum. (iv) Limits are taken along construction-chosen lattice sequences and a subsequence of volumes.
 
 #### References
 

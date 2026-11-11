@@ -33,7 +33,7 @@ The statement is `YangMills.constructed` in [`Construction.lean`](https://github
 
 - Fix a simple compact matrix gauge group G and a number b > 0, a numerical parameter of the block-spin kernel (`KernelChoices.penalty`).
 - There is a Wilson family `C`: the whole renormalization-group construction, consisting of lattice spacings a_N, torus periods L_p, couplings β_{N,p}, and the renormalized lattice observables for every label. It is internally consistent (`C.Makes`) and satisfies [`YangMills.WilsonRegularity`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/ChallengeSpec.lean#L12): β_{N,p}/log(1/a_N) tends to a positive slope, the observables are continuous and gauge invariant, and each depends on a fixed finite stencil of links.
-- For every subsequence of volumes `p` (an `Extraction.Order`) there is a further subsequence `q`, and
+- For every pair `p` of mesh and volume subsequences (an `Extraction.Order`) there is a refinement `q` of both, and
   - a limit Euclidean theory `S`, the family of all n-point functions of all labels (a `Table`);
   - a record `F` (a `Final`) containing the data fixing the renormalization-group trajectory, the axioms of the limit, the field algebra (derivatives, rotations, stress tensor), the decomposition into phases and the Wightman reconstruction;
   - the same reconstruction for every phase (an `EveryPhase.Almanac`);

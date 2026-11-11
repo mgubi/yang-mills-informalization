@@ -23,7 +23,7 @@ The repository presents the same proof at five levels of detail. Each level link
 | **1** | [**The main theorem**](statement.md) | What is proved: the Lean statement verbatim, a commentary in words, and the full statement in ordinary mathematics, with what is and is not claimed. |
 | **2** | [**The proof in one reading**](summary.md) | A high-level account of the whole proof: the strategy, the key mechanism of each part, what is new, where the difficulty lies. |
 | **3** | [**The architecture**](outline/README.md) | The eight parts of the proof, from the lattice setting through the renormalization group to the identification as Yang–Mills; what each part hands to the next; the interface between the ultraviolet construction and the infinite-volume limit. |
-| **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline**: the propositions it proves and what it uses, the strategy, the steps as lemmas with proof sketches, where the difficulty lies, and open points. Outlines are published as they pass review; the table of units shows which are ready. |
+| **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline**: the propositions it proves and what it uses, the strategy, the steps as lemmas with proof sketches, where the difficulty lies, and open points. All 32 unit outlines are available. The table shows whether each is draft, checked or edited. |
 | **5** | **The Lean, linked** | On each unit's page, below the outline: its Lean source (work packages and chains of large results) and its key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines the main theorem uses. |
 
 **The full proof (under construction).** A complete manuscript is being written in public in [**yang-mills-manuscript**](https://github.com/scottnarmstrong/yang-mills-manuscript): Part I, the theorem and the architecture of its proof (about 40 pages), and Part II, the proofs (about 150 pages). Sections appear as they are drafted and are revised as they are checked against the Lean.
@@ -37,11 +37,7 @@ The repository presents the same proof at five levels of detail. Each level link
 | [**How this was made**](method.md) | Method, checks against OpenAI's compiled record, the review rounds, and how far each level can be trusted. |
 | [**Data**](data/) | Tables of the units, the unit of every declaration, and the key statements, with links. |
 
-**How the levels were produced.**
-- *Levels 1 and 3:* written by AI agents from the Lean and checked against it clause by clause.
-- *Level 4, the unit outlines:* each drafted by one model (Claude Sonnet), then checked against the Lean and rewritten by a second (Claude Opus), then edited by a third (GPT).
-- *Level 2:* written from the unit outlines by one model and edited by another.
-- *Level 5:* the dependency graph is computed from the compiled Lean and checked against OpenAI's own record.
+The exact statement and the unit outlines have different review scopes. Each unit displays its current status and remaining limitations. See [how the map was made and what was checked](method.md).
 
 All links to Lean point to the fixed commit [`3456e5e`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464) of the released source.
 
@@ -59,7 +55,7 @@ For every compact matrix group G whose Lie algebra is simple and nonabelian (for
 - **Local observables.** Renormalized lattice versions of all gauge-invariant local polynomials in the curvature and its covariant derivatives.
 - **Limits.** Their correlation functions converge: first as the lattice spacing tends to zero at fixed volume, along the whole sequence of spacings; then as the volume tends to infinity, along a subsequence that may be extracted from any given sequence of volumes.
 - **A quantum field theory on ℝ⁴.** The limits are smooth Euclidean correlation functions on ℝ⁴ away from coincident points. They decompose into *phases*. A selected phase (in the detailed theorem, every phase) reconstructs to a relativistic quantum field theory in Minkowski space satisfying Wightman-type axioms: unique vacuum, positive energy, Poincaré covariance, locality.
-- **Short-distance structure.** The theory has an operator product expansion with error bounds. The trace of its stress tensor has the short-distance law 3 dim(g)/(π⁴ r⁸ log²(1/r)), the *trace anomaly*. This shows the theory is not free: no finite combination of free-field profiles reproduces it.
+- **Short-distance structure.** The theory has an operator product expansion with error bounds. In the selected phase, the two-point correlation of the centered stress-tensor trace, at separation $r$ along the time axis, is asymptotic to $3\dim(\mathfrak g)/(\pi^4 r^8\log^2(1/r))$. This excludes the finite Wick-type free-field profiles specified in the [exact statement](statement.md).
 
 **Not claimed:** uniqueness or subsequence-independence of the infinite-volume limit, clustering of the full limit, a mass gap, or agreement with perturbation theory to all orders.
 
@@ -108,11 +104,11 @@ Two independent AI readers read every candidate statement and judged its importa
 | Precise statement of the main theorem | [Published](statement.md): checked definition by definition against the Lean. |
 | Unit outlines | Published as they are written; each is marked *draft*, *checked* or *edited* and updated as it improves. |
 
-Corrections are welcome.
+[Report a correction](https://github.com/scottnarmstrong/yang-mills-informalization/issues): include the page and heading, quote the sentence, and give a proposed correction or a Lean source link.
 
 ## Compiled Lean files
 
-To load or check the Lean proof without compiling it (about two and a half hours on eight cores), download the compiled build of commit `3456e5e` from the [release `lean-build-3456e5e`](https://github.com/scottnarmstrong/yang-mills-informalization/releases/tag/lean-build-3456e5e), as with Mathlib's cache:
+To load the pinned Lean source with precompiled project files, download the [compiled build of commit `3456e5e`](https://github.com/scottnarmstrong/yang-mills-informalization/releases/tag/lean-build-3456e5e). The commands below check the download checksum and reuse the compiled files; they do not rebuild the proof from source:
 
 ```sh
 git clone https://github.com/yang-mills-group/OpenAI-YM-20261028 && cd OpenAI-YM-20261028

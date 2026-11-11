@@ -6,7 +6,7 @@ It is read from the Lean statements and documentation and from the dependency gr
 
 ## The order of limits
 
-Everything is built on a single family of Wilson lattice gauge theories: tori of side L_p, lattice spacings a_N and couplings β_{N,p}, with β_{N,p}/log(1/a_N) → 11C_G/(24π²).
+The construction uses Wilson lattice theories on tori of side $L_p$, with lattice spacings $a_N$ and couplings $\beta_{N,p}$ satisfying $\beta_{N,p}/\log(1/a_N)\to 11C_G/(24\pi^2)$. The public theorem leaves the positive limiting constant unspecified; see the [exact statement](../statement.md).
 
 Correlations of renormalized local observables are first taken to the limit **N → ∞ at fixed volume**, along the whole sequence of spacings. They are then taken to the limit **p → ∞**, along a subsequence that may be extracted from any prescribed sequence of volumes. The public form of this statement is [`WilsonFamily.Converges`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/PublicWilson.lean#L85-L90).
 

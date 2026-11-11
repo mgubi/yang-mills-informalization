@@ -87,7 +87,7 @@ The lattice data are fixed before the volume sequence. The refinement and all co
 This overview describes the proof of the stronger statement.
 
 **What is not claimed.**
-- There is no mass gap; the spectral bounds proved in every phase are polynomial.
+- No mass gap is proved; the available spectral bounds in every phase are polynomial.
 - The infinite-volume limit is not shown to be unique or independent of the subsequence.
 - The phases are not shown to agree, and $X$ is not shown to be a point.
 - The mixed state is not shown to cluster.
@@ -505,7 +505,7 @@ It does not inherit continuous rotations, clustering or uniqueness.
 - a contraction semigroup $e^{-tH}$ with $H\ge0$;
 - a unitary representation of the spatial translations.
 
-The joint spectrum lies in a half-space, with no gap. The zero-energy space may be large. Its projection $\Pi$ is the strong limit of $e^{-tH}$ as $t\to\infty$.
+The joint spectrum lies in a half-space. No positive spectral gap is asserted. The zero-energy space may be large. Its projection $\Pi$ is the strong limit of $e^{-tH}$ as $t\to\infty$.
 
 **Thin slabs.** A word $w$ placed in a thin time slab defines an operator $B$ on the OS space. To bound it, consider the train $v_{n+1}=B^\ast Bv_n$, which contains $n$ reflected copies of $w$ and an arbitrary exterior word.
 - The lattice bounds give $\lVert v_n\rVert^2\le B_vA^{4n}$. Here $A$ is polynomial in the word data and in the inverse buffer width, and $B_v$ depends on the exterior word but not on $n$.
@@ -709,7 +709,7 @@ $$
 - Uniformity in the spectators comes from the train argument of Part V, in which the exterior word is paid once.
 - Uniformity in the state comes from bounding the error in the zero-energy algebra, whose norm dominates every character and the mixture.
 - The loss $\varepsilon$ absorbs logarithms. There is no logarithmic refinement, so the bound is weaker than the perturbative OPE.
-- The coefficients are not unique. Neither convergence as $D\to\infty$ nor agreement with perturbation theory is claimed.
+- Uniqueness of the coefficients is not asserted. Neither convergence as $D\to\infty$ nor agreement with perturbation theory is claimed.
 - Nested versions over finite trees of clusters, and integrated versions against measures of bounded variation, also hold.
 
 **Contact extensions.** These use Taylor subtractions over forests of collapsing clusters on dyadic shells. The OPE remainder makes the shell sums converge. For every state and every list of labels this gives a distribution of finite order on $(\mathbb R^4)^n$ that agrees with the correlation on $\mathrm{Conf}_n$. Not established: uniqueness, reflection positivity on overlapping supports, contact Ward identities, real-time products, and convergence of the lattice correlations on the diagonals.
@@ -780,7 +780,7 @@ The theorem is proved in Lean, and the conditional statements of the limit theor
 
 ## Reading guide
 
-The [exact statement](statement.md) separates the public theorem from the stronger construction. The [architecture](outline/README.md) describes what each part hands to the next. The ultraviolet interface analysis, the downstream interfaces and the discharge analysis show where the hypotheses of conditional statements are proved.
+The [exact statement](statement.md) separates the public theorem from the stronger construction. The [architecture](outline/README.md) describes what each part hands to the next. For the stated inputs and remaining gaps in this account, follow the relevant unit's “What it uses” and “What remains unexplained” sections. The [assembly unit](outline/units/VIII-1.md) describes how the construction is put together.
 
 | Question | Units to read |
 |---|---|
