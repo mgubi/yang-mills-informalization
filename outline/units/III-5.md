@@ -17,7 +17,7 @@ The unit consists of five packages. Two are general theory: (A) the cluster expa
 *Status:* theorem.
 *Lean:* [`Gas.exact_polynomial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L66-L145), with the coefficient identities [`Coef.recurrence`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Coef.lean#L129-L138) and [`Partition.partition`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Partition.lean#L219-L237).
 
-**Proposition III.5.2 (tree bound for the Ursell coefficient).** For every graph $T$ on a vertex set $\{\text{root}\}\cup\alpha$, $|\sum_{G\subseteq T\text{ connected spanning}}(-1)^{|G|}|\le\#\{\text{spanning trees of }T\}$, counted as parent functions $p:\alpha\to\alpha\cup\{\text{root}\}$ with decreasing rank and $\{p(i),i\}\in T$.
+**Proposition III.5.2 (tree bound for the Ursell coefficient).** For every graph $T$ on a vertex set $\{\text{root}\}\cup\alpha$, $|\sum_{G\subseteq T\text{ connected spanning}}(-1)^{|G|}|\le\sharp \{\text{spanning trees of }T\}$, counted as parent functions $p:\alpha\to\alpha\cup\{\text{root}\}$ with decreasing rank and $\{p(i),i\}\in T$.
 *Status:* theorem.
 *Lean:* [`Graph.pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Graph.lean#L113-L148).
 
@@ -126,7 +126,7 @@ The remaining three packages feed these estimates. The sector decomposition (`SE
 *Sketch:* $P(t)=\sum g_nt^n$ is a polynomial (degree $\le|\iota|$). Lemma 4.3 says $P'=L'P$ with $L(t)=\sum\ell_mt^{m+1}/(m+1)\cdot(m+1)$-type series, which converges for $t<q^{-1}$, a range containing $[0,1]$ because $q<1$. Uniqueness for the linear ODE gives $P=\exp L$ and one evaluates at $t=1$.
 *Lean:* [`Gas.exact_polynomial`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/FiniteLog.lean#L66-L145). *(statement and first lines of the proof read; the ODE argument is reconstructed from the docstring "evaluate the discrete coefficient recurrence as an ODE on a real interval")*
 
-**Lemma 4.5 (tree bound).** $|\phi^T(z)|\le\#\{p:\ p\text{ a spanning tree rooted at }z_{\mathrm{none}},\ p(i)\sim i\text{ in the overlap graph}\}$.
+**Lemma 4.5 (tree bound).** $|\phi^T(z)|\le\sharp \{p:\ p\text{ a spanning tree rooted at }z_{\mathrm{none}},\ p(i)\sim i\text{ in the overlap graph}\}$.
 *Sketch:* to each connected spanning subgraph attach its breadth-first tree with a fixed label order as tie-breaker (the "seed"). For a fixed tree $p$ the set of subgraphs with that seed is an interval $[\text{stem}(p),\text{allowed}(p)]$ in the Boolean lattice of edge sets. The alternating sum over a non-trivial interval is $0$ (flip one free edge), and over a point it is $\pm1$. This is the Penrose partition scheme. The Lean bounds by the count of all spanning trees, not only Penrose trees.
 *Lean:* [`Graph.pay`](https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/YM/Push/ABSOLUTE_SUMS/Graph.lean#L113-L148).
 

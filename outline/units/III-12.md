@@ -20,7 +20,7 @@ Throughout, $G$ is a simple compact gauge group, and "the family" is the Wilson 
 **Definitions used in the statements.**
 
 - A *trial* is a family of functions $F_{N,p}(x)$ on the gauge-field configurations of the lattice of level $N$ and period $p$, indexed by an offset $x$ (a site).
-- $F$ is *affordable at cost $u$* if the following holds. $F$ is local, i.e. supported in finitely many cover offsets. For every large block scale $m$, eventually in the mesh (that is, $N\ge N_0(m)$ for all $p$), the observable $F_{N,p}(0)$ is measurable in the cell of side $a_m$ centred at the origin. Its chessboard root $\big|\mathbb E_{\beta_{N,p}}[\prod_{\text{cells}}\text{reflected copies}]\big|^{1/\#\text{cells}}$ is at most $u(m,N,p)$.
+- $F$ is *affordable at cost $u$* if the following holds. $F$ is local, i.e. supported in finitely many cover offsets. For every large block scale $m$, eventually in the mesh (that is, $N\ge N_0(m)$ for all $p$), the observable $F_{N,p}(0)$ is measurable in the cell of side $a_m$ centred at the origin. Its chessboard root $\big|\mathbb E_{\beta_{N,p}}[\prod_{\text{cells}}\text{reflected copies}]\big|^{1/\sharp \text{cells}}$ is at most $u(m,N,p)$.
 - $F$ is *owed at cost $v$* if $u(m,N,p)=v(N,p)$ does not depend on $m$.
 - $F$ is *funded* if $u(m,N,p)=u(m)$ depends on $m$ only.
 - The $l$-fold *normalized difference* of $F$ along a list $l$ of lattice axes is $F\mapsto a_N^{-1}\big(F(\cdot+e_{\ell})-F\big)$ iterated.

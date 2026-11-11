@@ -334,7 +334,7 @@ and $\|\cdot\|_{\mathcal T}$ is subadditive. By (H1) this holds for every $(N,p)
 
 *Proof sketch.*
 
-- *Centred case.* If $o$ is the centre of a fine cell aligned with $\mathcal X$, the $\mathcal X$-copies of $I(u,o)$ are copies, in the fine centered tiling, of observables $I(gu,y)$ (by $H_4$-covariance and reality) sitting in distinct fine cells. The chessboard estimate in $\mathcal T_k$, with $1$ in the remaining cells, gives $\|I(u,o)\|_{\mathcal X}^{\#\mathcal X}\le A^{\#\mathcal X}$.
+- *Centred case.* If $o$ is the centre of a fine cell aligned with $\mathcal X$, the $\mathcal X$-copies of $I(u,o)$ are copies, in the fine centered tiling, of observables $I(gu,y)$ (by $H_4$-covariance and reality) sitting in distinct fine cells. The chessboard estimate in $\mathcal T_k$, with $1$ in the remaining cells, gives $\|I(u,o)\|_{\mathcal X}^{\sharp \mathcal X}\le A^{\sharp \mathcal X}$.
 
 - *Log-convexity.* Under unit translations, $\|F\|_{\mathcal X}^2\le\|F\circ\tau_{-e}\|_{\mathcal X}\,\|F\circ\tau_{e}\|_{\mathcal X}$. This follows from translation invariance and the chessboard estimate with alternating translates, since reversed cells see the opposite shift. A nonnegative log-convex sequence is bounded by its values at the endpoints.
 

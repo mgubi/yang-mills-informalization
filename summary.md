@@ -284,7 +284,7 @@ well above the Gaussian fluctuation scale $\hat\beta^{-1/2}$.
 **Energy lower bound.** For every store $A$ of seeds,
 
 $$
-\kappa\,t^2\,\#A\ \le\ \text{quadratic energy of the step integrand, after subtracting the stationary predictor}.
+\kappa\,t^2\,\sharp A\ \le\ \text{quadratic energy of the step integrand, after subtracting the stationary predictor}.
 $$
 
 The energy is a sum over five channels, one of which is the blocking penalty. The proof assigns charges to fine cells with bounded multiplicity, and controls the linearization defects on cells without seeds.
@@ -297,7 +297,7 @@ The decomposition into large-field sectors is exact: large-field sectors are int
 
 **One step.** The step takes inputs at level $m+1$: regular norms at most $\hat\beta^{-11/10}$, forced norms at most $e^{-P^{1/5}}$, and the coupling in the band $[\hat\beta/2,2\hat\beta]$. For $L$ large, and then $\hat\beta$ large, it produces:
 - site-summable budgets for the new regular activities;
-- the bound $\exp\big((C\,\mathrm{bill}^5-\beta\mu t^2)\#A\big)$ for each large-field packet, where $\mathrm{bill}=1+B+(\log\hat\beta)^2$;
+- the bound $\exp\big((C\,\mathrm{bill}^5-\beta\mu t^2)\sharp A\big)$ for each large-field packet, where $\mathrm{bill}=1+B+(\log\hat\beta)^2$;
 - bounds on the probabilities of the remaining catastrophic events.
 
 The marginal and vacuum terms are extracted, and the level-$m$ bounds restored, by the reset below.
@@ -367,7 +367,7 @@ Each degree $d$ has a reference level $r(d)$ at stage at least $d+3$. Beyond $r(
 **The chessboard root.** The quantity propagated for observables is the chessboard root. For a function $F$ of the links in one cell of a tiling of the torus by cells of side $a_m$,
 
 $$
-\lVert F\rVert_T=\Big|\,\mathbb E_{\beta_{N,p}}\Big[\prod_{\text{cells}}\text{reflected copies of }F\Big]\Big|^{1/\#\text{cells}} .
+\lVert F\rVert_T=\Big|\,\mathbb E_{\beta_{N,p}}\Big[\prod_{\text{cells}}\text{reflected copies of }F\Big]\Big|^{1/\sharp \text{cells}} .
 $$
 
 The main bound reads as follows. For every degree $d$, radius $R$ and $\varepsilon>0$ there is $A$ such that, for every $m\ge r(d)$, there is $N_0$ independent of $p$ with

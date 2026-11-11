@@ -578,7 +578,7 @@ as an identity on all configurations. The *line* coefficients satisfy $\sum_i\ma
 *Sketch:*
 
 - (a) Translations and diagonal axis reflections carry the centred tiling and all its cell copies to the corresponding centred tiling at the new anchor. Reindex the cells and use invariance of the Wilson measure. Conjugating every copy conjugates the expectation, leaving its absolute value unchanged.
-- (b) At offsets $o$ that are centres of the finer centred grid, apply the chessboard inequality for $T$. Each cell copy of $F_o$ is a reflected and translated copy of $F_0$ planted in a distinct finer cell, so the product of roots is $\le A^{\#\text{cells}}$ by (a).
+- (b) At offsets $o$ that are centres of the finer centred grid, apply the chessboard inequality for $T$. Each cell copy of $F_o$ is a reflected and translated copy of $F_0$ planted in a distinct finer cell, so the product of roots is $\le A^{\sharp \text{cells}}$ by (a).
 - (b), general offsets: bracket each coordinate between aligned corners, retaining the $2\times$-side margin for all intermediate positions. For literal translates $F_u$ along an axis the seam inequality gives $r_{u+1}^2\le r_ur_{u+2}$, where $r_u$ is the root test. A nonnegative sequence satisfying this inequality cannot exceed both endpoint bounds. Iterate over the four coordinates.
 - (c) The root test is subadditive under finite sums. Slowly varying coefficients cost $e^{\varepsilon s_N}$ with $\varepsilon<\gamma/2$, which leaves the rate $e^{-\gamma s_N/2}$.
 
