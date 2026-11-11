@@ -37,7 +37,7 @@ Each phase satisfies E1--E7 and has exactly the null spaces $\nullspace{d}(S^\xi
 
 The proof is in Section~\ref{sec:partII-H}, \ref{lem:H1.1}--\ref{lem:H1.3}. Two positive coordinate directions give opposite orders to the middle two of four widely separated words. Rotation covariance identifies the limits, and the positive translation semigroups converge to the ground projections; the resulting identity makes the compressed operators commute.
 
-For each phase apply Definition~\ref{def:D14} to $S^\xi$, obtaining $\mathcal H_{4,\xi}^{\rm OS}$, $H_{4,\xi}^{\rm OS}$ and $\Omega_\xi^{\rm OS}$. Fix $\xi_*$ in the full-measure set with one-dimensional time-axis OS ground space supplied by \ref{lem:H1.3}. This choice uses no trace condition. Theorem~\ref{prop:RC} will extend ground-space uniqueness to every phase.
+For each phase apply Definition~\ref{def:D14} to $S^\xi$, obtaining $\mathcal H_{4,\xi}^{\rm OS}$, $H_{4,\xi}^{\rm OS}$ and $\Omega_\xi^{\rm OS}$. Fix $\xi_*$ in the full-measure set with one-dimensional time-axis OS ground space supplied by \ref{lem:H1.3}. The selection uses the one-dimensional ground-space property. Theorem~\ref{prop:RC} will extend ground-space uniqueness to every phase.
 
 Write $\mathcal S_n=\mathcal S(\R^{4n};\C)$ and $\mathcal S=\mathcal S_1$. The following definitions specify the relativistic theory.
 
@@ -49,7 +49,7 @@ Take a complex Hilbert space $\mathcal H$, a complex vector space $\mathcal L$ o
 Take a topological group $\mathcal P$ with topological group isomorphism $\kappa_{\rm P}:\mathcal P\to SO^+(1,3)\ltimes\R^4$, writing $\kappa_{\rm P}(\gamma)=(\Lambda_\gamma,z_\gamma)$. Here $SO^+(1,3)$ preserves $\minksquare$, has determinant one and preserves $\forwardcone$. Include a strongly continuous unitary representation $\mathsf U$ with $\mathsf U(\kappa_{\rm P}^{-1}(1,z))=\mathsf T(z)$ and linear bijections $\rho_{\rm lab}(\gamma)$ of $\mathcal L$. Set $(\gamma\cdot f)(x)=f(\Lambda_\gamma^{-1}(x-z_\gamma))$.
 \end{definition}
 
-In group arguments we identify $\mathcal P$ with $SO^+(1,3)\ltimes\R^4$ through $\kappa_{\rm P}$. The antilinear label map need not be involutive. The label action has no additional continuity, dimension or translation restriction. The spectral relation is imposed next.
+In group arguments we identify $\mathcal P$ with $SO^+(1,3)\ltimes\R^4$ through $\kappa_{\rm P}$. The antilinear label map and label action are subject to W1 and W2 below. The spectral relation is imposed next.
 
 \begin{definition}[W0. Spectrum and vacuum]\label{def:W0}
 For every $\psi\in\mathcal H$ and $z\in\R^4$, require
@@ -78,7 +78,7 @@ Require $\rho_{\rm lab}(1)=1$ and $\rho_{\rm lab}(\gamma\gamma')=\rho_{\rm lab}(
 For $f,h\in\mathcal S$ with $\minksquare(x-y)<0$ for every $x\in\operatorname{supp}f$, $y\in\operatorname{supp}h$, require $[\Phi(\ell,f),\Phi(\ell',h)]\psi=0$ for all $\ell,\ell'\in\mathcal L$ and $\psi\in\mathcal D$.
 \end{definition}
 
-\begin{definition}[Q2. Wightman axioms]\label{def:Q2}
+\begin{definition}[Wightman axioms]\label{def:wightman}
 A relativistic datum of Definitions~\ref{def:D14a}--\ref{def:D14b} is a Wightman theory if it satisfies W0--W3.
 \end{definition}
 
@@ -105,8 +105,6 @@ For a phase $\xi$, a relativistic datum $(\mathcal H_\xi,\mathcal L,\mathcal D_\
 For this formula alone a nonintegrable function has integral zero.
 \end{definition}
 
-This boundary condition does not assert positive-height integrability, joint-test convergence or complex spatial analyticity.
-
 \begin{definition}[Ordered-time continuation]\label{def:D15}
 For a phase~$\xi$, put $\mathcal Z_n=\{z\in\C^n:\operatorname{Im}z_1<\cdots<\operatorname{Im}z_n\}$. A continuation~$\mathsf F_n^\xi$ is holomorphic there at each fixed real spatial configuration and satisfies
 \begin{equation*}
@@ -125,14 +123,14 @@ sending each smeared field-word vector to the norm limit of its heat-regularized
 Each character yields relativistic fields on the common response labels. The continuation and boundary condition specify their relation to the phase correlations.
 
 \begin{theorem}[RC. Reconstruction]\label{prop:RC}
-For every $\xi\in\phases$, there are a Wightman theory (Definition~\ref{def:Q2}) on $\mathcal L$, faithful in the sense of Definition~\ref{def:D14c}, and functions $\mathsf F_n^\xi$ satisfying Definitions~\ref{def:D15} and~\ref{def:D14f} with the response maps $\iota_d$ of Definition~\ref{def:D10}. Its OS comparison map $\mathsf J_\xi^{\rm OS}$ is onto, and
+For every $\xi\in\phases$, there are a faithful Wightman theory (Definition~\ref{def:wightman}) on $\mathcal L$ and functions $\mathsf F_n^\xi$ satisfying Definitions~\ref{def:D15} and~\ref{def:D14f} with the response maps $\iota_d$ of Definition~\ref{def:D10}. Its OS comparison map $\mathsf J_\xi^{\rm OS}$ is onto, and
 \begin{equation*}
 \ker H_\xi=\C\Omega_\xi,\qquad \ker H_{4,\xi}^{\rm OS}=\C\Omega_\xi^{\rm OS}\,.
 \end{equation*}
-Every bounded operator in the weak commutant of its fields (Definition~\ref{def:D14d}) is scalar.
+Every bounded operator in the weak commutant of its fields is scalar.
 \end{theorem}
 
-The proof is in Section~\ref{sec:partII-H}, \ref{lem:H2.1}--\ref{lem:H2.4}. Slab bounds control the analytic boundary values of these continuations. A low-energy bound uniform in $\xi$, continuity of the vacuum-subtracted heat pairings and full support of $\nu$ extend almost-everywhere ground-space uniqueness to every phase. Thus the earlier choice of $\xi_*$ remains valid. \ref{lem:H2.1}--\ref{lem:H2.4} also give joint Schwartz distributions, phase averages and stress continuation.
+Faithfulness and the bounded weak commutant have the meanings of Definitions~\ref{def:D14c} and~\ref{def:D14d}. The proof is in Section~\ref{sec:partII-H}, \ref{lem:H2.1}--\ref{lem:H2.4}. Slab bounds control the analytic boundary values of these continuations. A low-energy bound uniform in $\xi$, continuity of the vacuum-subtracted heat pairings and full support of $\nu$ extend almost-everywhere ground-space uniqueness to every phase. Thus the earlier choice of $\xi_*$ remains valid. \ref{lem:H2.1}--\ref{lem:H2.4} also give joint Schwartz distributions, phase averages and stress continuation.
 
 The reconstructed label maps are common to all phases. In \ref{lem:H2.1} the adjoint is induced by time reflection followed by conjugation:
 \begin{equation*}

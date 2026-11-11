@@ -6,11 +6,11 @@ Fix $\blockpenalty>0$. Throughout we use the common choices of Sections~\ref{sec
 
 \subsection{Scales and the block map}
 
-Levels decrease under blocking. With odd ratios $\ell_m\ge3$, set
+With odd ratios $\ell_m\ge3$, set
 \begin{equation}\label{eq:I12-levels}
 D_0=1,\qquad D_{m+1}=\ell_mD_m,\qquad a_m=D_m^{-1},\qquad s_m=\log D_m\,.
 \end{equation}
-The level-$m$ torus has side $L_pD_m$ in lattice units and side $L_p$ in physical units. Starting at cutoff~$N$, blocking successively reaches levels $N-1,\ldots,0$.
+Level~$m$ has spacing~$a_m$; blocking passes from level~$m+1$ to level~$m$. The level-$m$ torus has side $L_pD_m$ in lattice units and side $L_p$ in physical units. Starting at cutoff~$N$, blocking successively reaches levels $N-1,\ldots,0$.
 
 The stage $J_m$ records the available derivative order and bounds. The stages satisfy $4\le J_m\le J_{m+1}\le J_m+1$ and $J_m\to\infty$. Choose the reference endpoint $\bar\beta$ sufficiently large, as in row~7 of Section~\ref{sec:constants}; in particular $\bar\beta>1$. Define
 \begin{align}\label{eq:I12-scales}
@@ -157,7 +157,7 @@ are constructed in Section~\ref{sec:partII-D}, \ref{lem:D2}. They retain the Wil
 \end{equation}
 These inequalities are properties of the chosen classes; the classes also retain the restrictions imposed by the inductive assembly. The relation $\mathcal R_{N,m,p}$ records its permitted adjacent pairs. The density identity and drift bound below hold for the pairs produced by RG and for the trajectories chosen in MT.
 
-Along a continuous curve, supports, anchors, inventories and extra tests are fixed, and the coupling and vacuum scalar are continuous. Differences of regular derivatives on healthy configurations and of forced values admit majorants whose weighted sums over all addresses tend to zero as the parameter approaches any point. The weights are those of Definition~\ref{def:D05b} at the level of the representation, including $t_m$ in the derivative seminorm. Thus the input and output curves below use levels $m+1$ and $m$, respectively. This is the continuity of Definition~\ref{def:D25a} in Section~\ref{sec:partII-D}: regular derivatives are measured on the healthy domain, and forced terms are compared in supremum norm on all configurations. No derivative of a flag indicator is taken.
+Along a continuous curve, supports, anchors, inventories and extra tests are fixed, and the coupling and vacuum scalar are continuous. Differences of regular derivatives on healthy configurations and of forced values admit majorants whose weighted sums over all addresses tend to zero as the parameter approaches any point. The weights are those of Definition~\ref{def:D05b} at the level of the representation, including $t_m$ in the derivative seminorm. Thus the input and output curves below use levels $m+1$ and $m$, respectively. This is the continuity of Definition~\ref{def:D25a} in Section~\ref{sec:partII-D}: regular derivatives are measured on the healthy domain, and forced terms are compared in supremum norm on all configurations. The derivatives in this continuity condition act on regular activities on their healthy domains.
 
 \subsection{The inductive step}
 
@@ -172,9 +172,9 @@ For every $N,p$, $m<N$, reals $u_0\le u_1$ and continuous $\rho'_u\in\mathcal A_
 \end{align*}
 \end{theorem}
 
-The proof occupies Sections~\ref{sec:partII-B}--\ref{sec:partII-D}, ending with \ref{lem:D3}. Symmetric gauge fixing and the stationary background give the small-field integration; the large-field lower bound controls the forced terms. The Gaussian determinant and the Haar-coordinate Jacobian contribute to the one-loop action. Its quadratic curvature coefficient changes the inverse coupling by $-\slope\log\ell_m$, up to the displayed error. Fourth-order Wilson matching fixes the remaining local terms, and the scalar coupling reset absorbs the residual kinetic contribution in Section~\ref{sec:partII-C}. Section~\ref{sec:partII-D} assembles the activities with the bounds~\eqref{eq:I12-activity-caps}.
+The proof occupies Sections~\ref{sec:partII-B}--\ref{sec:partII-D}, ending with Lemma~\ref{lem:D3}. The density identity is exact; approximation enters the coupling drift and the activity estimates. Symmetric gauge fixing and the stationary background give the small-field integration; the large-field lower bound controls the forced terms. The one-loop action combines the inherited quadratic loop term, the fluctuation determinant and the Haar-coordinate Jacobian. Lemma~\ref{lem:C7} extracts its background curvature-square coefficient, giving the logarithmic change $-\slope\log\ell_m$ up to a stage-dependent bounded error. Fourth-order Wilson matching fixes the remaining local terms, and the scalar coupling reset absorbs the residual kinetic contribution in Section~\ref{sec:partII-C}. Section~\ref{sec:partII-D} assembles the activities with the bounds~\eqref{eq:I12-activity-caps}.
 
-For the fixed construction, $\omega_j^{\rm RG}$ depends only on the stage; it is independent of $N,p$, the interval and the curve. Since $\refbeta_m=\refbeta_{m+1}-\slope\log\ell_m$, a step changes $\beta-\refbeta$ by $e_u$ only. RG imposes a band condition only on the input coupling. The trajectories of MT below also have their output couplings in the appropriate bands. Section~\ref{sec:partII-D}, \ref{lem:D3} supplies the continuous initial curve
+For the fixed construction, $\omega_j^{\rm RG}$ depends only on the stage; it is independent of $N,p$, the interval and the curve. Since $\refbeta_m=\refbeta_{m+1}-\slope\log\ell_m$, a step changes $\beta-\refbeta$ by $e_u$ only. The input coupling lies in~$\mathfrak B_{m+1}$; the trajectories of MT below keep both input and output couplings in their respective bands. Section~\ref{sec:partII-D}, \ref{lem:D3} supplies the continuous initial curve
 \begin{equation}\label{eq:I12-Wilson-initialization}
 \beta\longmapsto\rho^{\rm W}_\beta\in\mathcal I_{N,p},\qquad
 \beta(\rho^{\rm W}_\beta)=\beta,\qquad
@@ -190,7 +190,7 @@ A trajectory is a tuple $\rho_{N,p,m}\in\mathcal A_{N,m,p}$, $0\le m\le N$, sati
 \rho_{N,p,N}\in\mathcal I_{N,p},\qquad
 (\rho_{N,p,m},\rho_{N,p,m+1})\in\mathcal R_{N,m,p}\quad(m<N)\,.
 \end{equation*}
-Write $\beta_{N,p,m}=\beta(\rho_{N,p,m})$; here $m$ is the final index, whereas it is the middle index of $\mathcal A_{N,m,p}$ and $\mathcal R_{N,m,p}$. To select the bare coupling, start with the continuous Wilson curve across $\mathfrak B_N$ and apply RG. At the step $m+1\to m$, the drift bound makes the endpoint output couplings bracket $[\bar\beta+(\slope/2)s_m,\bar\beta+2\slope s_m]\subset\mathfrak B_m$. The intermediate value theorem gives a closed parameter subinterval whose endpoint couplings are the ends of this interval and whose couplings remain within it. Repeating this restriction reaches $\bar\beta$ at level zero. This is the shooting argument. It chooses the couplings for all $N,p$ before an increasing sequence of volume indices $\mathsf p:\N\to\N$ is prescribed.
+Write $\beta_{N,p,m}=\beta(\rho_{N,p,m})$. To select the bare coupling, start with the continuous Wilson curve across $\mathfrak B_N$ and apply RG. At the step $m+1\to m$, the drift bound makes the endpoint output couplings bracket $[\bar\beta+(\slope/2)s_m,\bar\beta+2\slope s_m]\subset\mathfrak B_m$. The intermediate value theorem gives a closed parameter subinterval whose endpoint couplings are the ends of this interval and whose couplings remain within it. Repeating this restriction reaches $\bar\beta$ at level zero. This is the shooting argument. It chooses the couplings for all $N,p$ before an increasing sequence of volume indices $\mathsf p:\N\to\N$ is prescribed.
 
 \begin{theorem}[MT. Multiscale trajectory]\label{prop:MT}
 There are bare couplings $\beta_{N,p}$ and trajectories $(\rho_{N,p,m})_{m=0}^N$, for all $N,p\in\N$, with $\rho_{N,p,N}=\rho^{\rm W}_{\beta_{N,p}}$ and $\beta_{N,p,N}=\beta_{N,p}$, satisfying
@@ -215,11 +215,14 @@ Row~5 of Section~\ref{sec:constants} bounds the sum by $(\slope/4)s_m$, which al
 
 The same level choices give $\log\ell_m\to\infty$ and $\log\ell_m/s_m\to0$. The physical periods $L_p$ are strictly increasing multiples of four, and every positive integer divides $L_p$ for infinitely many~$p$.
 
-Endpoint tuning varies the prescribed coupling at level zero. Section~\ref{sec:partII-E}, \ref{lem:E1.3} proves that there is a width $w_{\rm tun}>0$, independent of $N,p$, such that the unique bare coupling $\beta_{N,p}(s)$ within the specified recursion that reaches $\bar\beta+w_{\rm tun}s$ satisfies $\beta_{N,p}(0)=\beta_{N,p}$ and extends to a function $b_{N,p}$, holomorphic on $|z|<1$, with
+Endpoint tuning varies the common level-zero coupling analytically, as needed for the full ultraviolet limit.
+\begin{proposition}[Endpoint tuning]\label{prop:endpoint-tuning}
+There is a width $w_{\rm tun}>0$, independent of~$N,p$, such that, for every~$N,p$ and $s\in[-1,1]$, a unique bare coupling~$\beta_{N,p}(s)$ within the specified recursion reaches $\bar\beta+w_{\rm tun}s$ at level zero. It satisfies $\beta_{N,p}(0)=\beta_{N,p}$ and has a holomorphic extension~$b_{N,p}$ to $|z|<1$ with
 \begin{equation}\label{eq:I12-endpoint-tuning}
 b_{N,p}(s)=\beta_{N,p}(s)\qquad(-1<s<1)\,.
 \end{equation}
-The real endpoint parameter ranges over $s\in[-1,1]$. This analyticity is used in the full ultraviolet limit; it does not assert a common analyticity width for all correlation functions.
+\end{proposition}
+The proof is in Section~\ref{sec:partII-E.1}, Lemma~\ref{lem:E1.3}.
 
 \subsection{Local fields}
 
