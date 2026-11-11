@@ -4,6 +4,7 @@ These notes record publications and corrections that affect readers' understandi
 
 ## 2026-11-11
 
+- **First draft of the manuscript.** The [manuscript](manuscript/) now has a complete first draft ([PDF](manuscript/main.pdf), 226 pages): Part I (theorem, principal statements, deduction) and Part II (all proofs, Sections 10–19), each section through its review cycle. Revisions continue.
 - **How the manuscript is written.** A detailed account of the writing process — statements first, roles, the review cycle, the records, what it has caught and what it does not establish — in [manuscript/PROCESS.md](manuscript/PROCESS.md), linked from this page and the manuscript page. Part I of the manuscript has completed its review cycle; the first two Part II sections (C and F) are drafted and under re-check.
 - **The manuscript joins this repository.** It is now in [manuscript/](manuscript/), as level 5, the full proof (under construction); the separate repository is archived.
 - **Outlines condensed.** Each unit page now shows an outline of three to ten pages, condensed from the unit's detailed notes and checked against them sentence by sentence; the full notes are on a separate page per unit and in their own [PDF](pdf/yang-mills-detailed-notes.pdf).
