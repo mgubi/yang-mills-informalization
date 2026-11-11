@@ -38,9 +38,9 @@ the paper claims nothing the Lean does not prove. Each section is drafted by one
 another, and edited before it is marked *checked*. The correspondence between the numbered statements and the Lean
 declarations will be published with the manuscript.
 
-For a shorter route into the proof, see the companion repository
-[**yang-mills-informalization**](https://github.com/scottnarmstrong/yang-mills-informalization), which presents it at five
-levels of detail, from the theorem in one page to outlines of its thirty-two units linked to the Lean. Corrections are
+For shorter routes into the proof, see the [rest of this repository](../README.md), which presents it at several levels
+of detail, from the theorem in one page to outlines of its thirty-two units linked to the Lean; this manuscript is the most
+detailed level. Corrections are
 welcome as issues.
 
 ## Building
@@ -49,4 +49,4 @@ welcome as issues.
 
 ## License
 
-[Apache License 2.0](LICENSE), as for the companion repository.
+[Apache License 2.0](../LICENSE), as for the rest of this repository.

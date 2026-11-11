@@ -10,7 +10,7 @@ This repository is an attempt to make that proof readable. Using AI agents, we:
 
 1. **map** the proof: we compute its dependency graph from the main theorem down, and divide it into eight parts and thirty-two units;
 2. **outline** it in natural language, at several levels of detail, from a short account of the whole proof down to an outline of each unit with every statement linked to the Lean;
-3. **write** a complete natural-language account of the proof on that skeleton: a [manuscript](https://github.com/scottnarmstrong/yang-mills-manuscript), being written in public (under construction).
+3. **write** a complete natural-language account of the proof on that skeleton: a [manuscript](manuscript/), being written in public (under construction).
 
 The outline is a rough draft written by machines. Its purpose is to be checked, corrected and rewritten by people.
 
@@ -26,12 +26,10 @@ The repository presents the same proof at five levels of detail. Each level link
 | **1** | [**The main theorem**](statement.md) | What is proved: the Lean statement verbatim, a commentary in words, and the full statement in ordinary mathematics, with what is and is not claimed. |
 | **2** | [**The proof in one reading**](summary.md) | A high-level account of the whole proof: the strategy, the key mechanism of each part, what is new, where the difficulty lies. |
 | **3** | [**The architecture**](outline/README.md) | The eight parts of the proof, from the lattice setting through the renormalization group to the identification as Yang–Mills; what each part hands to the next; the interface between the ultraviolet construction and the infinite-volume limit. |
-| **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline** (about three to ten pages: the propositions it proves, what it uses, the strategy, the main steps), and a link to its **detailed notes**, the full account with a proof sketch for every step. |
-| **5** | **The Lean, linked** | On each unit's page, below the outline: its Lean source (work packages and chains of large results) and its key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines of source attributed to the units (see the [data notes](data/README.md)). |
+| **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline** (about three to ten pages: the propositions it proves, what it uses, the strategy, the main steps), a link to its **detailed notes** (the full account, with a proof sketch for every step), and its **Lean map**: the source and the key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines of source attributed to the units. |
+| **5** | [**The full proof**](manuscript/) *(under construction)* | A complete manuscript: Part I, the theorem and the architecture of its proof (about 35 pages), and Part II, the proofs (about 150 pages), written for a mathematician in constructive field theory or probability. Sections appear as they are written and are revised as they are checked against the Lean. |
 
 **All in one PDF.** Levels 2–4 — the proof in one reading, the architecture and the thirty-two unit outlines — as a single [PDF](pdf/yang-mills-outline.pdf) (164 pages; [LaTeX source](pdf/yang-mills-outline.tex)). The detailed notes of all units are a separate [PDF](pdf/yang-mills-detailed-notes.pdf) (595 pages). Links to the Lean point to the exact lines, as on the web pages.
-
-**The full proof (under construction).** A complete manuscript is being written in public in [**yang-mills-manuscript**](https://github.com/scottnarmstrong/yang-mills-manuscript): Part I, the theorem and the architecture of its proof (about 40 pages), and Part II, the proofs (about 150 pages). Sections appear as they are drafted and are revised as they are checked against the Lean.
 
 **Reference material**, used at every level:
 

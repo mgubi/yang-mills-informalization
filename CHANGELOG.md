@@ -4,6 +4,7 @@ These notes record publications and corrections that affect readers' understandi
 
 ## 2026-11-11
 
+- **The manuscript joins this repository.** It is now in [manuscript/](manuscript/), as level 5, the full proof (under construction); the separate repository is archived.
 - **Outlines condensed.** Each unit page now shows an outline of three to ten pages, condensed from the unit's detailed notes and checked against them sentence by sentence; the full notes are on a separate page per unit and in their own [PDF](pdf/yang-mills-detailed-notes.pdf).
 - **All unit outlines edited; one PDF.** All thirty-two outlines have been through the three review rounds. The summary, the architecture and the outlines are available as one [PDF](pdf/yang-mills-outline.pdf).
 - **Where the ideas come from.** A [provenance analysis](provenance.md): which parts of the proof follow Balaban's programme, which follow OpenAI's 2026 papers on two-dimensional sigma models, which are standard, and which appear new.
@@ -13,7 +14,7 @@ These notes record publications and corrections that affect readers' understandi
 - **Unit outlines published.** All thirty-two [unit pages](outline/units.md) are available. Their review has three rounds: draft, comparison and rewriting against the Lean, then further mathematical checking and editing. The index shows the round reached by each unit; the local limitations remain part of the account.
 - **Dependency graph rebuilt from compiled Lean.** The graph now includes references in elaborated types and proofs, including implicit references missed by the earlier source-text graph. [Method and comparison scope](method.md#1-the-dependency-graph) distinguish the seventeen verification roots, unit allocation and mathematical prerequisites.
 - **Compiled build released.** The [compiled Lean release](https://github.com/scottnarmstrong/yang-mills-informalization/releases/tag/lean-build-3456e5e) provides project files for exploring the fixed source. [Build guidance](method.md#source-compilation-and-kernel-checking) separates loading these files from rebuilding and replaying the formal proof.
-- **Manuscript started in public.** A complete account is being written at [yang-mills-manuscript](https://github.com/scottnarmstrong/yang-mills-manuscript). It is under construction.
+- **Manuscript started in public.** A complete account is being written at [manuscript/](manuscript/). It is under construction.
 - **Reader-review corrections.** Added a [clause-to-explanation guide](statement.md#clause-to-explanation-guide), an [FAQ and evidence guide](faq.md), and [citation guidance](README.md#how-to-cite). Clarified that the trace asymptotic concerns a selected-phase two-point function on the time axis, and preserved the unique vacuum of the selected relativistic theory. Distinguished the main Wilson family from the alternative construction in III.13, updated the fixed-volume convergence explanation, and corrected the reference-coupling formula in the [glossary](glossary.md#ym-rg-calendar-hatbeta).
 
 [Repository](README.md) · [Citation metadata](CITATION.cff) · [Report a correction](https://github.com/scottnarmstrong/yang-mills-informalization/issues)
