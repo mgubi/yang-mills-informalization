@@ -23,7 +23,7 @@ The process by which it is written and checked is described in [How this manuscr
 
 ## Status
 
-*Updated 11 November 2026, 23:55. First draft, revised after an independent referee review of the whole manuscript, three rounds of cross-section checks and a typographic pass over every page: 241 pages.*
+*Updated 12 November 2026. First draft, revised after an independent referee review of the whole manuscript, three rounds of cross-section checks, a typographic pass and the project lead's rulings (an informal statement of the main result in §1; an index of notation): 245 pages.*
 
 | | section | pages | status |
 |---|---|---|---|
@@ -35,6 +35,7 @@ The process by which it is written and checked is described in [How this manuscr
 | | 6. Phases and reconstruction | 3 | reviewed; revised after an independent referee review |
 | | 7. Trace and products | 3 | reviewed; revised after an independent referee review |
 | | 8. Main theorems | 4 | reviewed; Theorem B restated as a five-clause theorem; revised after referee review |
+| | Index of notation | 2 | new |
 | | 9. Constants and order of choice | 4 | reviewed; revised after an independent referee review |
 | Part II | 10. Local polynomial fields | 8 | reviewed; revised after an independent referee review |
 | | 11. Gauges and block integration | 28 | reviewed; revised after an independent referee review |
