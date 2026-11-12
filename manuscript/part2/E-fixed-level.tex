@@ -1,12 +1,12 @@
-For a fixed finite token list and a separated common-grid configuration~$x$, let $o_{i,m}=x_i/a_m$ be its sites at all sufficiently fine levels. They are read modulo the period; their parents agree at consecutive levels. In~\eqref{eq:E-source-form}, form $\mathcal H^0_{N,p,m}$ by setting $H_{m,X}=K^{\ge2}_{m,Y}=0$, keeping the complete singleton functions $f_{i,m}$ and~$k_{i,m,Y}$. Define
+For a fixed finite insertion-label list and a separated common-grid configuration~$x$, let $o_{i,m}=x_i/a_m$ be its sites at all sufficiently fine levels. They are read modulo the period; their parents agree at consecutive levels. In~\eqref{eq:E-source-form}, form $\mathcal H^0_{N,p,m}$ by setting $H_{m,X}=K^{\ge2}_{m,Y}=0$, keeping the complete singleton functions $f_{i,m}$ and~$k_{i,m,Y}$. Define
 \begin{equation}\label{eq:E-coarse-integral}
  C_{N,p,m}(v;x)=
  \frac{\int[z_{\{1,\ldots,n\}}]\mathcal H^0_{N,p,m}(z;U)\,dU}
       {\int\density\rho_{N,p,m}\,dU}.
 \end{equation}
-The numerator is therefore specified by the unmarked representation and the one-mark families, rather than by a new choice of a several-insertion density. The difference from the exact source is estimated separately.
+The numerator is specified by the unmarked representation and the one-mark families alone. The difference from the exact source is the stopping error, estimated in Lemma~\ref{lem:E-stopping}.
 
-The first lemma compares different cutoffs at fixed volume and fixed level. It uses the convergence assertion for the unmarked recursion, rather than applying a same-cutoff uniqueness inequality to histories of different lengths.
+The first lemma treats one fixed coarse level. The unmarked trajectories converge at that level; contraction of the marked recursion then gives convergence of the singleton insertions.
 \begin{lemma}[Fixed-level marked convergence]\label{lem:E-fixed-level}
 For every fixed $p,v,x$ as above and every sufficiently fine fixed level~$m$, the scalar-free unmarked density and the complete singleton functions in~\eqref{eq:E-source-form} are Cauchy in their common function spaces as $N\to\infty$. Their normalized integrals satisfy
 \begin{equation}\label{eq:E-coarse-cauchy}
@@ -15,16 +15,20 @@ For every fixed $p,v,x$ as above and every sufficiently fine fixed level~$m$, th
 The scalar-free partition integral is bounded below by a positive constant depending on~$p,m$.
 \end{lemma}
 \begin{proof}
-Use Definitions~\ref{def:D06}, \ref{def:D08}, \ref{def:D25a} and Lemmas~\ref{lem:D-E1}, \ref{lem:D-fixed-level}, \ref{lem:E-marked-step}, \ref{lem:E2.2a}. Lemma~\ref{lem:D-E1} gives full-sequence convergence of the scalar couplings and scalar-free activities in fixed weighted spaces at each fixed~$p,m$. Lemma~\ref{lem:D-fixed-level} includes the prescribed paths with the strict reserve. Thus the cutoff-dependent path arrays converge in the same charts. The vacuum scalar is excluded, as in~\eqref{eq:E-normalized-density}.
+The three facts listed at the start of Section~\ref{sec:partII-E.3} are proved in turn. Lemma~\ref{lem:D-fixed-level} gives full-sequence convergence of the scalar couplings and scalar-free activities in fixed weighted spaces at each fixed~$p,m$, and includes the prescribed paths with the strict reserve. Thus the cutoff-dependent path arrays converge in the same charts. The vacuum scalar is excluded, as in~\eqref{eq:E-normalized-density}.
 
-Use $\kappa_i=(\epsilon_i^{\rm for})^{1/2}$ in the remainder norm, and normalize graph differences by $C_{J_i}$ and the coefficient sum. The graph bound of Lemma~\ref{lem:E-marked-step} bounds this distance between two admitted graphs by~$2$. The contraction in Lemma~\ref{lem:E-marked-step} reduces it by $1/2$ through a step on the same unmarked representation. For two different cutoffs, first compare both steps with a step on their limiting unmarked coordinates. The one-mark local integrals, their Taylor coefficients and the forced regrouping are continuous in these coordinates. To check this continuity, retain the common summable majorants in~\eqref{eq:E-atom-estimates}; each finite local integral is continuous in its coefficients and chart, and the remaining tails are bounded by these same summable majorants. The inverse coefficient maps are continuous because their inverses have the common bound already proved. Hence for each fixed $i$ the extra discrepancy $\delta_i(N,N')$ tends to zero as both cutoffs tend to infinity.
+Use $\kappa_i=(\epsilon_i^{\rm for})^{1/2}$ in the remainder norm~\eqref{eq:E-marked-mass}. For coefficient graphs $g,\widetilde g$ at level~$i$ put
+\begin{equation*}
+ \operatorname{dist}^{\rm gr}_i(g,\widetilde g)=\sup_{\mathbf x\ne0}\frac{\|g(\mathbf x)-\widetilde g(\mathbf x)\|_{\rm rem}}{C^{\rm col}_{J_i}|\mathbf x|_1},
+\end{equation*}
+and let $\operatorname{dist}^{\rm gr}_i(N,N')$ be this distance between the graphs selected at cutoffs $N,N'$, after the fixed-level identification of their unmarked coordinates. The graph bound in the definition of a coefficient graph gives $\operatorname{dist}^{\rm gr}_i\le2$; by Lemma~\ref{lem:E-marked-step}(iii), one step on a common unmarked representation halves it. For two different cutoffs, first compare both steps with a step on their limiting unmarked coordinates. The one-mark local integrals, their Taylor coefficients and the forced regrouping are continuous in these coordinates. To check this continuity, retain the common summable majorants in~\eqref{eq:E-atom-estimates}; each finite local integral is continuous in its coefficients and chart, and the remaining tails are bounded by these same summable majorants. The inverse coefficient maps are continuous because their inverses have the common bound already proved. Hence for each fixed $i$ the extra discrepancy $\delta_i(N,N')$ tends to zero as both cutoffs tend to infinity.
 
-Iterating from a remote fixed level~$h$ down to~$m$ gives the genuine cross-cutoff estimate
+Iterating from a remote fixed level~$h$ down to~$m$ gives the estimate
 \begin{equation}\label{eq:E-cross-cutoff}
- d_m(N,N')\le 2^{1-(h-m)}+
+ \operatorname{dist}^{\rm gr}_m(N,N')\le 2^{1-(h-m)}+
  \sum_{i=m}^{h-1}2^{-(i-m)}\delta_i(N,N').
 \end{equation}
-This estimate compares graphs after the fixed-level unmarked identification, not histories of the same length. First make $h-m$ large. For that fixed $h$, the sum tends to zero, proving the Cauchy property at~$m$. The finitely many coefficient maps between the reference level and~$m$ converge as well. Solving their fixed-dimensional linear systems therefore gives Cauchy polynomial coordinates for each fixed reference label. Substituting in the graph gives the complete singleton functions.
+First choose $h-m$ large enough to make the geometric term small. Keeping this $h$ fixed, let $N,N'\to\infty$; the finite sum of discrepancies then tends to zero. This proves the Cauchy property at level~$m$. The finitely many coefficient maps between the reference level and~$m$ converge as well. Solving their fixed-dimensional linear systems therefore gives Cauchy polynomial coordinates for each fixed reference label. Substituting in the graph gives the complete singleton functions.
 
 On the fixed finite torus, weighted convergence bounds the sums of the regular terms uniformly and bounds the forced terms after grouping identical supports and inventories. There are only finitely many such supports and inventories. The resulting scalar-free density and the singleton functions are uniformly Cauchy on their fixed health domains. The health threshold at level~$m$ is fixed; no moving indicator is being differentiated or replaced. Formula~\eqref{eq:E-source-form}, with its higher modes set to zero, is a finite polynomial in the grouped functions and their exponentials. Its scalar-free coefficients are consequently uniformly Cauchy and integrable against Haar probability measure.
 
@@ -40,17 +44,18 @@ For fixed $p,v,x$, there are $F_0<\infty$ and $m_0$ such that, for each $m\ge m_
 \end{equation}
 The constant $F_0$ is independent of $m,N$; the cutoff threshold may depend on~$m$.
 \end{lemma}
+Every mode with at least two marks has support covering number at least $B_m/64$, by Lemma~\ref{lem:E-cover}. All such modes can therefore be multiplied by a complex~$z$ with $|z|<e^{B_m/64}$, at the cost of two units of support exponent. The normalized integral $F_m(z)$ is then holomorphic and bounded by a constant $F_0$ fixed at a base level~$k_0$, independent of~$m$; $F_m(1)$ is the cutoff moment and $F_m(0)=C_{N,p,m}$, so Cauchy's estimate gives $|F_m(1)-F_m(0)|\le2F_0e^{-B_m/64}$.
 \begin{proof}
-Use Definitions~\ref{def:D06}, \ref{def:D08}, Lemmas~\ref{lem:E-replication}, \ref{lem:E-fixed-level}, and the exact source evolution~\eqref{eq:E-multiple-density}. Choose a base level~$k_0$ above the reference levels and the grid containing~$x$. At all sufficiently fine levels, distinct ancestral sites have separation at least $B_i^2$: their separation is a fixed positive physical number divided by~$a_i$, while $B_i^2$ grows only as a power of $\log\widehat\beta_i$. Their occupancy is one. Enlarge $k_0$ so these assertions and all required positive source allowances hold thereafter.
+The expansion is that of~\eqref{eq:E-source-form} for the exact source evolution~\eqref{eq:E-multiple-density}; the bounds at the base level come from Lemma~\ref{lem:E-replication} and the singleton bounds of Lemma~\ref{lem:E-fixed-level}. Choose a base level~$k_0$ above the reference levels and the grid containing~$x$. At all sufficiently fine levels, distinct ancestral sites have separation at least $B_i^2$: their separation is a fixed positive physical number divided by~$a_i$, while $B_i^2$ grows only as a power of $\log\widehat\beta_i$. Their occupancy is one. Enlarge $k_0$ so these assertions and all required positive source allowances hold thereafter.
 
-Choose positive weights $w_i$ at this base level so the weighted complete singleton sizes lie below those allowances. This choice is independent of~$N$: Lemma~\ref{lem:E-fixed-level} bounds each singleton uniformly along the fixed-level cutoff tail. Let $s_0^{\rm reg},s_0^{\rm for}$ bound the weighted regular singleton supremum and the sum of forced singleton suprema at~$k_0$. Set
+Choose mark weights $\mathsf w_i>0$ at this base level so the weighted complete singleton sizes lie below those allowances. This choice is independent of~$N$: Lemma~\ref{lem:E-fixed-level} bounds each singleton uniformly along the fixed-level cutoff tail. Let $s_0^{\rm reg},s_0^{\rm for}$ bound the weighted regular singleton supremum and the sum of forced singleton suprema at~$k_0$. Set
 \begin{equation}\label{eq:E-stopping-constant}
  F_0=\frac{\exp\{|\Lambda_{n_{p,k_0}}|q_{k_0}
-                      +n(s_0^{\rm reg}+s_0^{\rm for}+2)\}}{\prod_i w_i}.
+                      +n(s_0^{\rm reg}+s_0^{\rm for}+2)\}}{\prod_i\mathsf w_i}.
 \end{equation}
 The numerator is the normalized-integral bound of the several-mark expansion, now with these fixed base weights. It depends on the base level, not on the later stopping level.
 
-At level~$m>k_0$, every nonzero mode of $H_{m,X}$ or $K^{\ge2}_{m,Y}$ contains at least two marks and its support contains their anchors. The covering estimate~\eqref{eq:E-marked-cover} gives
+At level~$m>k_0$, every nonzero mode of $H_{m,X}$ or $K^{\ge2}_{m,Y}$ contains at least two marks and its support contains their anchors. The covering estimate of Lemma~\ref{lem:E-cover} gives
 \begin{equation*}
  \cover_{B_m}(X)\ge B_m/64.
 \end{equation*}
@@ -59,13 +64,13 @@ Multiply every one of these higher-mode functions by a common complex variable~$
  |z|e^{(\sigma-2)\cover_{B_m}(X)}
  \le e^{\sigma\cover_{B_m}(X)}.
 \end{equation*}
-Singleton functions are not multiplied by~$z$. The source representation therefore remains integrable on $|z|<e^{B_m/64}$, with its prescribed singleton functions, original forced eligibility tests and two fewer units of support exponent. Here $\sigma=\sigma_{J_m}=100$. For $s\ge0$ and $98\le\tau\le100$, $e^{\tau s}\le e^{100s}$, so every regular or forced weighted sum decreases when its exponent decreases. The coefficientwise rooted clause of Lemma~\ref{lem:D-connected} bounds the connected regular terms at exponent $\sigma+3$ and the forced terms at $\sigma+2$. The marked product factors are paid at the entry chosen in item~\ref{it:E-entries} of Lemma~\ref{lem:E1.1}. Applying these bounds in the weighted source norm of~\eqref{eq:E-source-form} leaves the two units used here, with final exponent $98$.
+Singleton functions are not multiplied by~$z$. The source representation therefore remains integrable on $|z|<e^{B_m/64}$, with its prescribed singleton functions, original forced eligibility tests and two fewer units of support exponent. Here $\sigma=\sigma_{J_m}=100$. For $s\ge0$ and $98\le\tau\le100$, $e^{\tau s}\le e^{100s}$, so every regular or forced weighted sum decreases when its exponent decreases. The coefficientwise rooted clause of Lemma~\ref{lem:D-connected} bounds the connected regular terms at exponent $\sigma+3$ and the forced terms at $\sigma+2$. The marked product factors are paid at the entry chosen in item~\ref{it:E-entries}. Applying these bounds in the weighted source norm of~\eqref{eq:E-source-form} leaves the two units used here, with final exponent $98$.
 
-Carry this modified density back to the same base level~$k_0$, using the rooted clause of Lemma~\ref{lem:D-connected} with all support exponents lowered by two, as permitted in its statement. Every nonzero mode contains only marks whose anchors lie in its support, so multiplying modes retains their positive weights without adding a mark outside that support. At the base level, the singleton exponential and forced factors contribute at most $n(s_0^{\rm reg}+s_0^{\rm for})$ to the logarithmic majorant; the remaining connected regular and forced sums contribute at most $2n$. Equation~\eqref{eq:E-vacuum-ratio} contributes $|\Lambda_{n_{p,k_0}}|q_{k_0}$. Coefficient extraction divides by $\prod_iw_i$, giving exactly~\eqref{eq:E-stopping-constant}. Absolute convergence on $|z|<e^{B_m/64}$ makes the normalized full-mode integral $F_m(z)$ holomorphic there, with
+Carry this modified density back to the same base level~$k_0$, using the rooted clause of Lemma~\ref{lem:D-connected} with all support exponents lowered by two, as permitted in its statement. Every nonzero mode contains only marks whose anchors lie in its support, so multiplying modes retains their positive weights without adding a mark outside that support. At the base level, the singleton exponential and forced factors contribute at most $n(s_0^{\rm reg}+s_0^{\rm for})$ to the logarithmic majorant; the remaining connected regular and forced sums contribute at most $2n$. Equation~\eqref{eq:E-vacuum-ratio} contributes $|\Lambda_{n_{p,k_0}}|q_{k_0}$. Coefficient extraction divides by $\prod_i\mathsf w_i$, giving exactly~\eqref{eq:E-stopping-constant}. Absolute convergence on $|z|<e^{B_m/64}$ makes the normalized full-mode integral $F_m(z)$ holomorphic there, with
 \begin{equation*}
  |F_m(z)|\le F_0.
 \end{equation*}
-At the base level this is precisely the bound~\eqref{eq:E-stopping-constant}. It avoids the level-$m$ volume factor that would arise from estimating the normalized integral only where it was stopped.
+This avoids the level-$m$ volume factor that would arise from estimating the normalized integral only where it was stopped.
 
 For $e^{B_m/64}>2$, the Cauchy derivative estimate on circles of radius $e^{B_m/64}/2$ centered on $[0,1]$ gives
 \begin{equation*}
