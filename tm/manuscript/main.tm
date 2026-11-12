@@ -3292,8 +3292,8 @@
 
       <item><math|S=<big|int><rsub|<phases>>S<rsup|\<xi\>>*<space|0.17em>d*\<nu\><around|(|\<xi\>|)>>
       with <math|\<nu\>> a fully supported probability measure on a compact
-      metric space; each<nbsp><math|S<rsup|\<xi\>>> continues a faithful
-      Wightman theory with unique vacuum.
+      metric space; each<nbsp><math|S<rsup|\<xi\>>> is the Euclidean
+      continuation of a faithful Wightman theory with unique vacuum.
 
       <item>A conserved stress tensor is normalized by its shell fluxes
       (Theorem<nbsp><reference|prop:ST>); in the selected
@@ -20152,7 +20152,12 @@
   <math|P<rsub|z>:\<cal-F\><rsub|n>\<to\>\<cal-F\><rsub|n>> preserve physical
   inner products and fix <math|U*\<cal-H\>> pointwise, without assuming
   linearity. Nonintegrable scalar functions have integral zero
-  (Definition<nbsp><reference|def:D14f>).
+  (Definition<nbsp><reference|def:D14f>). The maps <math|P<rsub|z>> model
+  transformations of the free comparison vectors that fix every embedded
+  interacting state in <math|U*\<cal-H\>>. Because physical inner products
+  are preserved, neither matrix element in Lemma<nbsp><reference|lem:I2.3>
+  changes, so the averaged inequality states that averaging these
+  transformations cannot restore the relative-locality identity.
 
   <\lemma>
     <dueto|Localized averaged countertest><label|lem:I2.4> For every such
@@ -22893,7 +22898,7 @@
     <associate|lem:I2.1|<tuple|18.7|237>>
     <associate|lem:I2.2|<tuple|18.9|238>>
     <associate|lem:I2.3|<tuple|18.12|239>>
-    <associate|lem:I2.4|<tuple|18.13|240>>
+    <associate|lem:I2.4|<tuple|18.13|241>>
     <associate|lem:J-graded-quotient|<tuple|19.2|244>>
     <associate|lem:J-lattice|<tuple|19.8|249>>
     <associate|lem:J-marked-costs|<tuple|19.7|248>>
