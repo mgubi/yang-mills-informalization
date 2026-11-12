@@ -72,8 +72,9 @@
 
   <section|Status><label|status>
 
-  <em|Updated 11 November 2026, 22:45. First draft, revised after an
-  independent referee review of the whole manuscript: 237 pages.>
+  <em|Updated 11 November 2026, 23:55. First draft, revised after an
+  independent referee review of the whole manuscript, three rounds of
+  cross-section checks and a typographic pass over every page: 241 pages.>
 
   <block|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|-1|1|-1|cell-hyphen|t>|<cwith|1|1|1|-1|cell-bborder|1ln>|<cwith|1|1|1|-1|cell-valign|bottom>|<table|<row|<cell|>|<cell|<strong|section>>|<cell|<strong|pages>>|<cell|<strong|status>>>|<row|<cell|Part
   I>|<cell|1. Introduction>|<cell|6>|<cell|reviewed; revised after an

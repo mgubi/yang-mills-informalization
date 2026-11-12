@@ -99,7 +99,7 @@
     that skeleton: a <hlink|manuscript|manuscript/index.tm>, written in
     public. <strong|A first draft is now available>
     (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
-    237 pages, draft of 11 November 2026); it is still being revised.
+    241 pages, draft of 11 November 2026); it is still being revised.
   </enumerate>
 
   The outline is a rough draft written by machines. Its purpose is to be
@@ -123,7 +123,7 @@
 
     <strong|A first draft of the full proof is now available>
     (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
-    237 pages): Part I states the theorem and the architecture of its proof,
+    241 pages): Part I states the theorem and the architecture of its proof,
     Part II gives the proofs. It was written entirely by AI agents from the
     Lean code, and is still being revised. Statements are fixed first and
     kept short. Every statement is reviewed against the Lean by a separate

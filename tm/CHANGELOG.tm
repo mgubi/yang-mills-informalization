@@ -18,6 +18,16 @@
   <section|2026-11-11><label|2026-11-11>
 
   <\itemize-minus>
+    <item><strong|Manuscript revised after an independent review.> Three
+    referees read the whole first draft; every suggestion was adjudicated
+    against the text and the Lean before being applied, and the changes were
+    checked (in the ultraviolet sections this filled gaps from the Lean: a
+    single-valued step map, convergence of the free forms, the leading map of
+    the marked expansion, the block-to-fine comparison, the torus
+    localization). Three rounds of cross-section checks matched every
+    citation between sections with the statement it cites; a typographic pass
+    covered every page. 241 pages.
+
     <item><strong|First draft of the manuscript.> The
     <hlink|manuscript|manuscript/index.tm> now has a complete first draft
     (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,

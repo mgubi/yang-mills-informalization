@@ -411,6 +411,18 @@
     <item><strong|11 November 2026.> Numbered items in Part II are referred
     to only by cross-reference. Part II sections are numbered 10\U19,
     continuing the numbering of Part I.
+
+    <item><strong|11 November 2026.> After the first draft: (1) a
+    <strong|cross-section check> compares every place where one section cites
+    another's result with what that result states, and mismatches are
+    repaired on both sides (three rounds, the last confirming all items
+    resolved); (2) an <strong|independent referee review> of the whole
+    manuscript (three referees, on Part I, Sections 10\U14 and Sections
+    15\U19); every suggestion is <strong|adjudicated> against the text and
+    the Lean (accept, accept modified, reject, or left to the project lead)
+    before writers apply it, and a confirmation review checks the applied
+    changes; (3) main theorems are measured too, and a statement may cite at
+    most four other results.
   </itemize-minus>
 </body>
 
