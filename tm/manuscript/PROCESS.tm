@@ -423,6 +423,15 @@
     before writers apply it, and a confirmation review checks the applied
     changes; (3) main theorems are measured too, and a statement may cite at
     most four other results.
+
+    <item><strong|12 November 2026.> Second draft: an editorial pass merging
+    two expert human reviews, six reviewer reports (four Opus at maximum
+    effort, two GPT-6 Astra) and a comparison with a collaborator's draft
+    into one plan, with page budgets per section (ceiling 265 pages);
+    confirmation reviews of every changed statement against the Lean and a
+    fresh reader asked to explain five mechanisms of the proof; targeted
+    re-checks before publication. The statement-to-declaration correspondence
+    is published as <verbatim|correspondence.tsv>.
   </itemize-minus>
 </body>
 

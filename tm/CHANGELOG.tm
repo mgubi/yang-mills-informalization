@@ -15,6 +15,27 @@
   records current outline statuses. All Lean references concern source commit
   <hlink|<verbatim|3456e5e75cf8d4cd558955a5c7638fba2d68f464>|https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464>.
 
+  <section|2026-11-12><label|2026-11-12>
+
+  <\itemize-minus>
+    <item><strong|Second draft of the manuscript (265 pages).> Revised after
+    two expert human reviews, six reviewer reports and a comparison with a
+    collaborator's draft. Part I is rebuilt: the result in plain words, the
+    definitions needed to state the theorem, <strong|Theorem B as the main
+    theorem> (p. 14), a strategy section (why the ultraviolet induction
+    closes, the order of limits, how rotations are recovered, the trace law,
+    the operator product expansion), then the principal statements with proof
+    ideas. The literal formal statement (Theorem A) and the formal-interface
+    conventions are in Section 8, at the end of Part I. Part II gained worked
+    examples (the curvature square; two-field OPE; nested collisions),
+    extracted lemmas for the decisive steps, and figures; the proof of the
+    one-mark step (Lemma 14.5 of the first draft) was corrected (wrapping
+    terms stay in the regular remainder, as in the Lean). Every changed
+    statement was checked against the Lean; the <hlink|correspondence
+    table|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/correspondence.tsv>
+    is published.
+  </itemize-minus>
+
   <section|2026-11-11><label|2026-11-11>
 
   <\itemize-minus>
@@ -128,8 +149,10 @@
 
 <\references>
   <\collection>
-    <associate|2026-11-11|<tuple|1|1>>
+    <associate|2026-11-11|<tuple|2|1>>
+    <associate|2026-11-12|<tuple|1|1>>
     <associate|auto-1|<tuple|1|1>>
+    <associate|auto-2|<tuple|2|1>>
     <associate|changes|<tuple|?|1>>
   </collection>
 </references>
@@ -137,9 +160,13 @@
 <\auxiliary>
   <\collection>
     <\associate|toc>
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-11>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-12>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-1><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-11>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-2><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
