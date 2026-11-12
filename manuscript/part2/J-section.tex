@@ -8,7 +8,7 @@ For contacts, a pointwise bound away from collisions is insufficient. We subtrac
 
 Throughout, the lattice insertions and quotient fields are those of Definitions~\ref{def:D08} and~\ref{def:D10}; inclusions and derivatives are those of Lemma~\ref{lem:F2}. We use the rotations of Lemma~\ref{lem:G3.2}, the centered bounds of Lemma~\ref{lem:E2.3}, and the compression algebra~$\mathfrak A_0$ and phase tables of Lemmas~\ref{lem:H1.2}--\ref{lem:H1.3}. Write $|\boldsymbol A|_{\deg}=\sum_i\deg A_i$ and $\zeta\in\phases\sqcup\{\mathrm{mix}\}$, as in Definition~\ref{def:D18}.
 
-\subsection*{Inputs from the marked expansion and the quotient}
+\paragraph{Inputs from the marked expansion and the quotient.}
 
 We first establish two estimates needed when the field to be extracted varies with the cutoff. Throughout this subsection, a local marked expression has the form of Definition~\ref{def:D26} and the regularity, zero radial jets and forced supports of Lemma~\ref{lem:E2.2a}. Write
 \begin{equation*}
@@ -17,7 +17,7 @@ We first establish two estimates needed when the field to be extracted varies wi
 \end{equation*}
 The last quantity is the weighted remainder mass of Lemma~\ref{lem:E2.2}. Fix an output degree~$t$. The diagonal rescaling $(\mathsf d_i x)_\alpha=\ell_i^{t-\deg\alpha}x_\alpha$ accounts for the engineering degrees inside~$V_t$. Put $C_i=C_{J_i}$ in this subsection. The normalized columns of Lemma~\ref{lem:E2.1} are denoted by~$\mathcal H_i(b)$, their coefficient maps by~$\mathsf X_i$, and their remainder bounds are $C_i\mu((\mathsf X_i b)^\circ)$ by Lemma~\ref{lem:E2.2}.
 
-Let $K_j\ge1$ be the nondecreasing stage bound of item~\ref{it:E-columns} in Lemma~\ref{lem:E1.1}. The degree rescaling above is the map $\mathsf S_L$ in the proof of Lemma~\ref{lem:E-marked-step}. For an input coefficient~$v$ and remainder mass~$q$, its averaged marked estimate gives an output coefficient~$u$ and remainder mass~$r$ with
+Let $K_j\ge1$ be the nondecreasing stage bound fixed before item~\ref{it:E-columns} in Lemma~\ref{lem:E1.1}. The degree rescaling above is the map $\mathsf S_L$ in the proof of Lemma~\ref{lem:E-marked-step}. For an input coefficient~$v$ and remainder mass~$q$, its averaged marked estimate gives an output coefficient~$u$ and remainder mass~$r$ with
 \begin{equation}\label{eq:J-marked-recall}
 \begin{aligned}
 \mu(u-M_i\mathsf d_iv)&\le\epsilon_i[\mu(v^\circ)+q],\\
@@ -50,9 +50,9 @@ r_m\le2(1+C_m)q_{\rm fin}\,.
 The proof derives the interval bound from the signed one-step inequalities.
 
 \begin{proof}\label{proof:J-signed-start}
-We use the marked integration of Lemma~\ref{lem:E-marked-step} and~\eqref{eq:E-atom-estimates}, obtained from Lemmas~\ref{lem:D-connected}, \ref{lem:D4} and~\ref{lem:D5}, the local format of Lemma~\ref{lem:E2.2a}, and the normalized columns of Lemmas~\ref{lem:E2.1}--\ref{lem:E2.2}, with the insertion normalization of Definition~\ref{def:D08}.
+We use the termwise remainder estimates and the Lipschitz bound in the proof of Lemma~\ref{lem:E-marked-step}, the local format of Lemma~\ref{lem:E2.2a}, and the normalized columns of Lemmas~\ref{lem:E2.1}--\ref{lem:E2.2}, with the insertion normalization of Definition~\ref{def:D08}.
 
-Let~$R$ have coefficient zero and remainder bound~$q_0$. Its regular terms have zero radial jets through~$t$; its forced terms retain their eligibility events. In the marked integration of Lemma~\ref{lem:E-marked-step}, the former gain an inverse block factor before the connected sums, and the latter keep half the forced suppression. The stage constants precede the ratio and its entry threshold, so both resulting bounds $C^{\rm loc}_{J_{i+1}}/\ell_i+o_{\widehat\beta_i}(1)$ are at most~$\eta_i=\ell_i^{-2/5}$. Apply~\eqref{eq:E-atom-estimates} with zero primary coefficient. Sum the regular masses~$g_a$ and forced masses $k_b/(\epsilon_{i+1}^{\rm for})^{1/2}$ before taking the output norm. Their sum is at most~$q_0$, so the output coefficient and remainder are each at most~$\eta_iq_0$. The rooted clause of Lemma~\ref{lem:D-connected}, in the coefficient norm, justifies termwise integration and retains the exact density identity. The last inequality of~\eqref{eq:J-stage-room} gives $(1+2C_i)\eta_i\le\epsilon_i$. If~$Z$ denotes the resulting local expression and~$z$ its coefficient, then
+Let~$R$ have coefficient zero and remainder bound~$q_0$. Its regular terms have zero radial jets through~$t$; its forced terms retain their eligibility events. In the marked integration of Lemma~\ref{lem:E-marked-step}, the former gain an inverse block factor before the connected sums, and the latter keep half the forced suppression. The stage constants precede the ratio and its entry threshold, so both resulting bounds $C^{\rm loc}_{J_{i+1}}/\ell_i+o_{\widehat\beta_i}(1)$ are at most~$\eta_i=\ell_i^{-2/5}$. Sum the regular masses~$g_a$ and forced masses $k_b/(\epsilon_{i+1}^{\rm for})^{1/2}$ before taking the output norm. Their sum is at most~$q_0$. The termwise bounds in that proof, or its Lipschitz estimate for the difference between a column plus~$R$ and the same column, therefore bound the output coefficient and remainder by~$\eta_iq_0$. The rooted clause of Lemma~\ref{lem:D-connected}, in the marker norm defined below, justifies termwise integration and retains the exact density identity. The last inequality of~\eqref{eq:J-stage-room} gives $(1+2C_i)\eta_i\le\epsilon_i$. If~$Z$ denotes the resulting local expression and~$z$ its coefficient, then
 \begin{equation*}
 H(Z)=\ell_i^t\blockmap{i}_{\beta_{N,p,i+1}}H(R),\qquad
 \mu(z)\le\eta_iq_0,\qquad\mathfrak r_i(Z)\le\eta_iq_0\,.
@@ -212,11 +212,19 @@ For~$q=j$ the second identity is the recursion; for~$q<j$, compose that recursio
 
 For $T\to\infty$ write $f\preccurlyeq e^{bT}$ when, for every~$\tau>0$, there is~$T_0$ such that for every~$T\ge T_0$ an ordered cutoff tail gives $\|f\|\le e^{(b+\tau)T}$, uniformly in the cutoff and volume on that tail. Products add exponents and finite sums take their maximum. Factors of exponent zero are called subpower. A level~$k$ has height~$b$ when~$s_k/T\to b$; thus $a_k=e^{-bT+o(T)}$. Lemma~\ref{lem:E1.1} supplies these levels by taking the first with $s_k\ge bT$, or $s_k\ge\sqrt T$ if~$b=0$.
 
-Introduce one square-zero variable for each insertion in each reflected cell. A live marker is one distinct insertion group; its positive weight multiplies every coefficient containing it. If $F_{X,A}$ is a coefficient with support~$X$ and marker set~$A$, its weighted majorant is
+Introduce commuting variables~$z_\iota^2=0$ for the insertions in the reflected cells. A live marker is one distinct insertion group of positive weight~$w_\iota$. In this finite scalar algebra put
+\begin{equation*}
+c=\sum_Ac_Az_A,\qquad z_A=\prod_{\iota\in A}z_\iota,\qquad
+\|c\|_{\rm mark}=\sum_A|c_A|\prod_{\iota\in A}w_\iota,
+\qquad c_A\in\C\,.
+\end{equation*}
+Disjoint marker splittings, multiplicativity of the weights and the triangle inequality give $\|cd\|_{\rm mark}\le\|c\|_{\rm mark}\|d\|_{\rm mark}$.
+
+If $F_{X,A}$ is a coefficient with support~$X$ and marker set~$A$, its weighted majorant is
 \begin{equation*}
 \sum_{X,A}e^{\sigma\cover(X)}\|F_{X,A}\|\prod_{\iota\in A}w_\iota\,.
 \end{equation*}
-Here $\|F_{X,A}\|$ is the regular derivative or forced majorant of Definitions~\ref{def:D05a}--\ref{def:D05b}; at a support ball use its anchored sum. Multiplication sums over disjoint marker splittings, so the weighted coefficient norm is submultiplicative. A grouped coefficient carries the product of its live marker weights, denoted by~$\omega$.
+Here $\|F_{X,A}\|$ is the derivative or forced majorant of Definitions~\ref{def:D05a}--\ref{def:D05b}; at a support ball use its anchored sum. The factors $e^{\sigma\cover(X)}\|F_{X,A}\|$ enter as~$v_a$ in Lemma~\ref{lem:D-connected}. Only the marker norm is used submultiplicatively. A grouped coefficient carries the product of its live marker weights, denoted by~$\omega$.
 
 For the marked expansion put
 \begin{equation*}
@@ -258,7 +266,7 @@ A grouped coefficient of weight~$\omega$ has a degree-$t$ local extraction with 
 \end{lemma}
 
 \begin{proof}\label{proof:J-costs-start}
-We use the norms and insertions of Definitions~\ref{def:D05a}--\ref{def:D05b} and~\ref{def:D08}, the marked integration of Lemma~\ref{lem:E-marked-step}, the rooted clause of Lemma~\ref{lem:D-connected} in the weighted coefficient norm, the majorants of Lemma~\ref{lem:D1}, and the local format of Lemma~\ref{lem:E2.2a}. Divide a grouped coefficient by its available weight~$\omega$. Extract its radial polynomial through~$t$ and write the regular complement by the integral Taylor formula. The finite derivative sums, coefficient conversion and remainder constants are at most~$\Xi_m$ after the entry levels have been chosen: their logarithms are bounded by stage constants and powers of~$\log\widehat\beta_{m+1}$, whereas $\log \Xi_m=\sqrt{\widehat\beta_{m+1}}$. Multiplication by~$a_{m+1}^t$ gives~$q_m$. The factor four bounds the polynomial and complement separately. Forced terms keep their original majorants and the forced normalization in~\eqref{eq:E-marked-mass}.
+We use the norms and insertions of Definitions~\ref{def:D05a}--\ref{def:D05b} and~\ref{def:D08}, the marked integration of Lemma~\ref{lem:E-marked-step}, the rooted clause of Lemma~\ref{lem:D-connected} in the marker norm, the majorants of Lemma~\ref{lem:D1}, and the local format of Lemma~\ref{lem:E2.2a}. Divide a grouped coefficient by its available weight~$\omega$. Extract its radial polynomial through~$t$ and write the regular complement by the integral Taylor formula. The finite derivative sums, coefficient conversion and remainder constants are at most~$\Xi_m$ after the entry levels have been chosen: their logarithms are bounded by stage constants and powers of~$\log\widehat\beta_{m+1}$, whereas $\log \Xi_m=\sqrt{\widehat\beta_{m+1}}$. Multiplication by~$a_{m+1}^t$ gives~$q_m$. The factor four bounds the polynomial and complement separately. Forced terms keep their original majorants and the forced normalization in~\eqref{eq:E-marked-mass}.
 
 The combined cost is at most~$2q_m$. Subtract the column matching the continuation at~$k_*$. Lemma~\ref{lem:J-signed-local} gives, for $k_*\le l\le m$,
 \begin{equation*}
@@ -307,16 +315,16 @@ Keep a maximal $\mathfrak b_l^2$-separated set of representatives at each level,
 $h_l=16[1+\ell_l(\mathfrak b_l+\mathfrak b_{l+1}+1)^2]^4$.
 The entry choices give $(\sigma_{J_{l+1}}+1)h_l=o(s_l)$ and subpower occupancy. Choose one~$\alpha_j\le1$ below all the resulting enlargement allowances for~$m\le l<j$. It is subpower: the logarithm of the running minimum is bounded by the maximum logarithmic cost; split this maximum into a fixed initial segment and a tail bounded by~$\tau s_j$, then send~$\tau$ to zero. This uses the entrance requirement on~$h_l$ in rows~6--7 of Section~\ref{sec:constants} and Lemma~\ref{lem:E1.1}. The factor~$[(1+\mathfrak n)n_{\rm cl}]^{-1}$ above is included in this allowance~$\alpha_j/8$.
 
-Between fusions the one-mark integration costs at most~$6\ell_l\le\ell_l^4$ in each weight. To derive this bound, let~$\mathcal L$ be an incoming marked majorant. Apply the rooted clause of Lemma~\ref{lem:D-connected} coefficientwise in the submultiplicative marker norm, with the marked factor fixed. Separate the transported regular terms into the zero-jet local integration remainder, of total weighted mass~$p_l$, and the retained incoming term.
+Between fusions the one-mark integration costs at most~$6\ell_l\le\ell_l^4$ in each weight. To derive this bound, let~$\mathcal L$ be an incoming marked majorant. Apply the rooted clause of Lemma~\ref{lem:D-connected} coefficientwise in the submultiplicative marker norm, with the marked factor fixed. Separate the transported regular terms into the zero-jet local integration remainder, of total weighted mass~$p_l$, and the incoming regular contribution carried without Taylor subtraction.
 
-For a retained fine support~$X$, let~$Y$ be its coarse support, including the incident windows. The support compression in the proof of Lemma~\ref{lem:D-inherited}, with the reserved coarse exponent~$\sigma_{J_l}+2$, gives a constant~$\gamma_l\ge0$ fixed by the stages before~$\ell_l$, such that
+Use the support conversion factor~$\mathcal A_l$ defined by~\eqref{eq:E-support-conversion}. For a fine support~$X$ of the unsubtracted incoming contribution, let~$Y$ be its coarse support, including the incident windows. The support conversion estimate there gives
 \begin{equation*}
 (\sigma_{J_l}+2)\cover_{\mathfrak b_l}(Y)
-\le\gamma_l+\tfrac12\sigma_{J_{l+1}}\cover_{\mathfrak b_{l+1}}(X)\,.
+\le\log\mathcal A_l+\tfrac12\sigma_{J_{l+1}}\cover_{\mathfrak b_{l+1}}(X)\,.
 \end{equation*}
-Define the support-weight conversion factor by~$\mathcal A_l=\exp(\gamma_l)$. Exponentiating this inequality bounds the retained incoming mass by~$\mathcal A_l\mathcal L$; the remaining half of the fine exponent is nonnegative. The ratio is chosen with~$\log\ell_l\ge\gamma_l$, so~$\mathcal A_l\le\ell_l$. This is a finite requirement at each stage, since~$\gamma_l$ is fixed before the ratio.
+Exponentiating bounds this incoming mass by~$\mathcal A_l\mathcal L$; the remaining half of the fine exponent is nonnegative. Item~\ref{it:E-graph} of Lemma~\ref{lem:E1.1} imposes~$\mathcal A_l\le\ell_l$.
 
-The combined regular mass is thus at most~$p_l+\mathcal A_l\mathcal L$. Splitting a complex marked term into its real and imaginary parts costs at most twice its majorant. For the forced terms, let~$f_l$ denote their total contribution after this splitting and the normalization in~\eqref{eq:E-marked-mass}; their eligibility tests remain attached. Apply~\eqref{eq:E-atom-estimates} only to the zero-jet local remainder: its regular part retains the Taylor gain, and its forced part retains half the forced suppression, as proved in Lemma~\ref{lem:E-marked-step}. The retained incoming term is bounded by support compression above. Raising the entry coupling gives~$2p_l\le\mathcal L$ and~$f_l\le\mathcal L$. Adding the two contributions gives
+The combined regular mass is thus at most~$p_l+\mathcal A_l\mathcal L$. Splitting a complex marked term into its real and imaginary parts costs at most twice its majorant. For the forced terms, let~$f_l$ denote their total contribution after this splitting and the normalization in~\eqref{eq:E-marked-mass}; their eligibility tests remain attached. Use the termwise bounds in the proof of Lemma~\ref{lem:E-marked-step} for the zero-jet local remainder: its regular part retains the Taylor gain, and its forced part retains half the forced suppression. The unsubtracted incoming contribution is bounded by the support conversion above; the $\eta r$ graph bound in that proof is not used for this contribution. Raising the entry coupling gives~$2p_l\le\mathcal L$ and~$f_l\le\mathcal L$. Adding the two contributions gives
 \begin{equation*}
 2(p_l+\mathcal A_l\mathcal L)+f_l
 \le(2\ell_l+2)\mathcal L\le6\ell_l\mathcal L.
@@ -348,7 +356,7 @@ Here $P_h^{\rm raw}$ is the projection of Definition~\ref{def:D31}, and $M^0$ is
 The following estimates retain the exterior distance powers needed for nested clusters and contacts.
 \begin{samepage}
 \begin{lemma}[Power-separated estimates]\label{lem:J-power-separated}
-For every $i,D\ge0$ and $j\le h$, geometry paths satisfying~(G) satisfy
+For every $i,D\ge0$ and $j\le h$, geometry paths obeying~(G) satisfy
 \begin{align}
 \lambda_{i,\kappa}^{\rm raw}&\preccurlyeq e^{(W-i)\alpha T},&
 \mathcal R_D^{\rm raw}&\preccurlyeq e^{[W\alpha-(D+1)(\alpha-\beta)+V\upsilon]T},\label{eq:J-raw-rates}\\
@@ -503,7 +511,7 @@ The logarithmic exponent of~$\mathcal Q_{\varepsilon,q}$ is
 \mathcal B-qa_{o_{\rm root}}+\varepsilon A_*,\qquad
 A_*=a_{o_{\rm root}}+\sum_{v\ne o_{\rm root}\text{ internal}}(a_v-a_{\operatorname{par}(v)})>0\,.
 \end{equation*}
-Positivity follows because~$\sum_va_v=1$: if every displayed nonnegative term vanished, every~$a_v$ would vanish. The exponent of~$\mathsf e_{\boldsymbol D}$ is~$-\gamma$. Thus the estimates with loss~$\varepsilon/2$ imply the displayed bounds with loss~$\varepsilon$ and coefficient one along this sequence. A sequence of violations would have the subsequence just treated, a contradiction. This proves a threshold uniform in the scale vector, even when some scales decrease faster than every power of~$r$. All positions stay separated and, for small~$r$, clear of every finite rotated probe family used in the recursion. The averaging integrands are smooth on an open neighborhood with that clearance; their derivatives are bounded on compact neighborhoods times~$O(4)$. Differentiating the finite sums and Haar integrals proves smoothness.
+Positivity follows because~$\sum_va_v=1$: if every displayed nonnegative term vanished, every~$a_v$ would vanish. The exponent of~$\mathsf e_{\boldsymbol D}$ is~$-\gamma$. Thus the estimates with loss~$\varepsilon/2$ imply the displayed bounds with loss~$\varepsilon$ and coefficient one along this sequence. A sequence of violations would have the subsequence just treated, a contradiction. This proves a threshold uniform in the scale vector, even when some scales decrease faster than every power of~$r$. All positions stay separated and, for small~$r$, clear of every finite rotated probe family used in the recursion. The averaging integrands are smooth on an open neighborhood with that clearance; their derivatives are bounded on compact neighborhoods times~$O(4)$. Differentiating the finite sums and Haar integrals proves smoothness.\qedhere
 \label{proof:J1.4-end}
 \end{proof}
 
