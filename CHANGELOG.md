@@ -2,6 +2,10 @@
 
 These notes record publications and corrections that affect readers' understanding of the result. The [unit index](outline/units.md) records current outline statuses. All Lean references concern source commit [`3456e5e75cf8d4cd558955a5c7638fba2d68f464`](https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464).
 
+## 2026-11-12
+
+- **Second draft of the manuscript (265 pages).** Revised after two expert human reviews, six reviewer reports and a comparison with a collaborator's draft. Part I is rebuilt: the result in plain words, the definitions needed to state the theorem, **Theorem B as the main theorem** (p. 12), a strategy section (why the ultraviolet induction closes, the order of limits, how rotations are recovered, the trace law, the operator product expansion), then the principal statements with proof ideas. The literal formal statement (Theorem A) and the formal-interface conventions are in Appendix A. Part II gained worked examples (the curvature square; two-field OPE; nested collisions), extracted lemmas for the decisive steps, and figures; the proof of the one-mark step (Lemma 14.5 of the first draft) was corrected (wrapping terms stay in the regular remainder, as in the Lean). Every changed statement was checked against the Lean; the [correspondence table](manuscript/correspondence.tsv) is published.
+
 ## 2026-11-11
 
 - **Manuscript revised after an independent review.** Three referees read the whole first draft; every suggestion was adjudicated against the text and the Lean before being applied, and the changes were checked (in the ultraviolet sections this filled gaps from the Lean: a single-valued step map, convergence of the free forms, the leading map of the marked expansion, the block-to-fine comparison, the torus localization). Three rounds of cross-section checks matched every citation between sections with the statement it cites; a typographic pass covered every page. 241 pages.

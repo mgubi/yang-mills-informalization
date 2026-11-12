@@ -1,521 +1,296 @@
-\section{Slabs, phases and reconstruction}\label{sec:partII-H}
+\section{Phases and reconstruction}\label{sec:partII-H}
 
-We prove the phase decomposition of Theorem~\ref{prop:PH} and the reconstruction of Theorem~\ref{prop:RC}, starting from the correlations of Theorem~\ref{prop:IV} and quotient fields of Proposition~\ref{prop:FC}. The phase construction uses the rotations of Lemmas~\ref{lem:G3.1} and~\ref{lem:G3.2} and the tensor of Theorem~\ref{prop:ST}. The rotation proof in Section~\ref{sec:partII-G.3} needs coordinate spectral estimates before continuous rotations are available. Lemma~\ref{lem:H-G3} supplies them; they are not used later in this section.
+We prove the phase decomposition of Theorem~\ref{prop:PH} and the reconstruction of Theorem~\ref{prop:RC}, starting from the correlations of Theorem~\ref{prop:IV}, the quotient fields of Proposition~\ref{prop:FC}, the slab operators of Lemma~\ref{lem:H1.1}, the rotations of Lemma~\ref{lem:G3.1} and the tensor of Theorem~\ref{prop:ST}. Three different objects appear, and only the first two are used here.
+\begin{center}
+\small
+\begin{tabular}{p{0.36\textwidth}p{0.55\textwidth}}
+\toprule
+object & role\\
+\midrule
+separated correlations $S^\xi_n$ of a phase & Euclidean correlations, with reflection positivity on positive-time words (Section~\ref{sec:partII-H.1})\\
+ordered-time continuations $\mathsf F^\xi_n$ and boundary distributions $W^\xi_n$ & construction of the tempered Wightman functions and the relativistic fields (Section~\ref{sec:partII-H.2})\\
+contact extensions of Theorem~\ref{prop:CT} & a specified Euclidean extension through collisions with controlled local order (Section~\ref{sec:partII-J}); not used in the reconstruction\\
+\bottomrule
+\end{tabular}
+\end{center}
+The reconstruction thus proceeds from separated Euclidean correlations and slab bounds; it does not require a positive Euclidean extension across collision diagonals.
 
-Reflection positivity enters at several stages. Repeated reflected insertions bound the operator that inserts a word into a time slab. Compressing these operators to zero energy gives a commutative algebra; its characters define the phases. A lattice variance inequality then makes each character invariant under reflection, and small chessboard roots preserve the rank of a finite family of field tests in every character. Neither conclusion follows from commutativity alone.
+We keep the words, reflections $\vartheta,\theta$, insertion rule and slab operators $\mathsf B_h(w)$ of Section~\ref{sec:G-coordinate}.
 
-Slab bounds control continuation to complex times and its boundary distributions. Vacuum uniqueness initially holds almost everywhere in the character space. Locality gives a phase-uniform low-energy estimate; continuity of heat pairings and full support remove the exceptional set. The selected phase is chosen by its Euclidean ground space before reconstruction, and retained throughout. The energy estimate is polynomial; no positive lower bound on nonzero energies is used.
+\subsection{Compression and phases}\label{sec:partII-H.1}
 
-Throughout, a word is $w=\prod_{i=1}^n A_i(x_i)$ with distinct points, and $\tau_z w=\prod_i A_i(x_i+z)$. Fix a norm $\|\cdot\|_{V_d}$ on each coefficient space. Token bounds refer to representatives in the spaces~$V_d$ of Definition~\ref{def:D08}; the resulting operators depend only on their classes in~$F_d$. Write $\vartheta w$ for linear time reflection, acting on labels by the hypercubic action of~$\mathsf s_4^{\rm refl}$, and put $\theta w=\vartheta\bar w$ with the order reversed. Thus $\theta$ is the antilinear reflection in the OS form of Definition~\ref{def:D14}.
+Put $P_0=P_4^0$ and $\Omega=\Omega_4^{\rm OS}$ in this subsection, and write $U_y$, $y^4=0$, for spatial translations on the OS space. Compression does the following. A long empty time interval removes the positive-energy components: $\mathsf B_{h+t}(w)=\mathsf B_h(w)e^{-tH_4^{\rm OS}}$ and $e^{-tH_4^{\rm OS}}\to P_0$. The surviving insertions $M^0(w)=P_0\mathsf B_h(w)|_{\ker H_4^{\rm OS}}$ commute (Lemma~\ref{lem:H1.2}), and a character of the algebra they generate assigns a compatible scalar to every compressed insertion; integrating over characters against the vacuum state gives the mixture formula. A phase is such a character, not a set of field configurations. Commutativity alone does not show that each character is reflection invariant, or that no field direction is lost in it: a lattice variance inequality gives the first, and the chessboard inequality preserves the rank of finite families of field tests (Lemma~\ref{lem:H1.3}).
 
-\subsection{Slabs and phases}\label{sec:partII-H.1}
-
-Put $E_t=e^{-tH_4^{\rm OS}}$, $P_0=P_4^0$ and $\Omega=\Omega_4^{\rm OS}$ in this subsection. Spatial translations on the OS space are denoted by~$U_y$, $y^4=0$. The insertion rule and buffer are those preceding Lemma~\ref{lem:F4}: $A_wv=w\,\tau_{h_{\rm sl}e_4}v$, and an $r$-buffered word in width~$h_{\rm sl}$ has mutual sup-distance at least~$r$ and times in $[r,h_{\rm sl}-r]$.
-
-Write $\partial_{i,a}w$ for the word with $A_i$ replaced by $\partial_aA_i$. The reflected-word bound eliminates the exterior-dependent constant when one takes arbitrarily high powers. This gives the bounded operators needed for compression. Below words are $r$-buffered, $d$ bounds degrees, $R$ bounds coefficient norms, and $h,k$ are admissible slab widths.
-\begin{lemma}[Slab operators]\label{lem:H1.1}
-For $d\in\N$, $R\ge0$, there are $C>0$, $Q\in\N$ such that each admitted length-$n$ word has a bounded insertion operator satisfying
-\begin{equation*}
-\|\mathsf B_{h_{\rm sl}}(w)\|\le C^n(n/r)^{Qn}\qquad(h_{\rm sl}>0,\ 0<r\le1)\,.
-\end{equation*}
-\begin{align}
-\mathsf B_h(w)^*&=\mathsf B_h(\tau_{he_4}\theta w),\qquad
-\mathsf B_h(w)\mathsf B_k(v)=\mathsf B_{h+k}(w\,\tau_{he_4}v),\label{eq:H-slab-laws}\\
-\partial_{x_i^a}\mathsf B_h(w)&=\mathsf B_h(\partial_{i,a}w).\label{eq:H-slab-derivative}
-\end{align}
-Derivatives are in operator norm; empty words give~$E_h$.
-\end{lemma}
-\begin{proof}
-Use Definition~\ref{def:D14}, Lemmas~\ref{lem:F3} and~\ref{lem:F4}, and replace~$R$ by $\max(1,R)$. The translation rule defines contractions: on the span of positive words,
-\begin{equation*}
-\|E_tv\|^2=\langle v,E_{2t}v\rangle\le\|v\|\,\|E_{2t}v\|\,.
-\end{equation*}
-E7 bounds the separated orbit; iteration gives $\|E_tv\|\le\|v\|$ and preserves null vectors. Translation invariance gives symmetry and commuting unitary spatial translations; Gram continuity gives strong continuity. Since $E_1\psi=0$ implies $E_{2^{-j}}\psi=0$, strong continuity excludes zero spectral mass. Spectral calculus~\cite[Theorem~2.5.1 and Proposition~4.2.3]{Landsman1998} defines $H_4^{\rm OS}=\int_{(0,1]}-\log v\,dP(v)$ from the spectral measure of~$E_1$. Positive roots and continuity give $E_t=e^{-tH_4^{\rm OS}}\to P_0$ strongly.
-
-For a nonempty word, Lemma~\ref{lem:F4} supplies a width~$s$ and $D=C_0^n(n/r)^{Qn}$. On the word span put $A=A_w$, $B=A_{w^\dagger}$, $T=BA$. The OS form gives $\langle Av,u\rangle=\langle v,Bu\rangle$; the reflected-word bound gives $\|T^jv\|\le K_vD^{2j}$. Thus $d_j=D^{-2j}\|T^jv\|$ is bounded and $d_j^2\le\|v\|d_{2j}$. Taking suprema yields $\sup_jd_j\le\|v\|$, hence $\|Av\|^2=\langle v,Tv\rangle\le D^2\|v\|^2$. The bounded extension is unique by density. Right multiplication by $E_{h_{\rm sl}-s}$ gives the required width.
-
-Positive-word matrix entries prove~\eqref{eq:H-slab-laws}. FC bounds differentiated-label operators in a smaller buffer. Twice integrating their matrix entries along segments gives an operator norm Taylor remainder; induction proves~\eqref{eq:H-slab-derivative} and norm smoothness.
-\end{proof}
-
-With $e_d$ as time, Lemma~\ref{lem:H1.1} gives $\mathcal H_d^{\rm OS}$, $E_t^{(d)}=e^{-tH_d^{\rm OS}}$ and commuting transverse translations $U_x^{(d)}$, $x^d=0$, using only coordinate reflection positivity and signed permutations. Their joint projection-valued measure $P_d$ is on $[0,\infty)\times\R^3$, with variables $(E,p)$: apply Gelfand theory to the commutative unital C$^*$-algebra generated by $E_1^{(d)}$ and the translation representation of $C_0(\R^3)$~\cite[Theorems~2.4.1, 3.7.11, equation~(3.89) and Proposition~4.2.3]{Landsman1998}, then take the logarithm of the heat coordinate.
-
-For a word combination~$U$, let $v_{d,u}(U)$ be its OS vector translated by~$ue_d$ into positive times. Undo its damping by
-\begin{equation}\label{eq:H-coordinate-measure}
-d\nu_d^U(E,p)=e^{2uE}\,d\langle v_{d,u}(U),P_d(E,p)v_{d,u}(U)\rangle .
-\end{equation}
-This is independent of~$u$ and finite on $E\le M$. Polarize to~$\nu_d^{UV}$ on integrable tests. For nonnegative integrable~$g_1,g_2$, spectral Cauchy--Schwarz gives
-\begin{equation}\label{eq:H-coordinate-CS}
-\left|\int f\,d\nu_d^{UV}\right|^2\le\int g_1\,d\nu_d^U\int g_2\,d\nu_d^V
-\quad\text{if }|f|^2\le g_1g_2.
-\end{equation}
-For $\vartheta_jU=\varepsilon_jU$, $\varepsilon_j\in\{1,-1\}$, ordinary conjugation gives, with $x^d=0$ and $t$ separating the words,
-\begin{equation*}
-S\bigl(\bar U^{\rm rev}\,\tau_{te_d+x}U\bigr)
-=\varepsilon_d\int e^{-tE+ip\cdot x}\,d\nu_d^U(E,p)\,.
-\end{equation*}
-Here the bar includes scalar conjugation. Both point fields and collinear words are represented.
-
-Opposite reflection signs compare coordinate spectra. Fix a set of axes $Q$ and a finite word combination~$U$ whose offsets have zero coordinates in~$Q$, with $\vartheta_jU=\varepsilon_jU$ for $j\in Q$. Assume that both signs occur. For even nonnegative $f_j\in C_c^\infty(\R)$, set $f_{j,v}(p)=v^{-1}f_j(p/v)$. The next estimate is used in Lemma~\ref{lem:H-G3}.
-\begin{lemma}[Opposite reflection signs]\label{lem:H-coordinate-signs}
-For every $i\in Q$, $q<0$, $\beta_j\le0$ and $\delta>0$,
-\begin{equation*}
-\int_{E\le1}\frac{\prod_{j\in Q\setminus\{i\}}f_{j,\lambda^{\beta_j}}(p_j)}{E+\lambda^q}\,d\nu_i^U
-=O_\delta(\lambda^\delta)\qquad(\lambda=e^s,\ s\in\N)\,.
-\end{equation*}
-Constants may depend on $U,Q,q,\beta,f,\delta$.
-\end{lemma}
-\begin{proof}
-Use Definitions~\ref{def:D10}, \ref{def:D14}, E1--E7 and the coordinate derivative law of Proposition~\ref{prop:FC}.
-
-For a placement of margin~$r>0$, E7 bounds the $2m$th transverse derivative of the reflected-pair correlation by $Cr^{-D}$. Its centered difference has spectral integrand $[2\sin(tp_j/2)/t]^{2m}e^{-2uE}$. The integral remainder formula and Fatou give
-\begin{equation}\label{eq:H-coordinate-moments}
-\int e^{-2uE}|p_j|^{2m}\,d\nu_d^U\le Cr^{-D}.
-\end{equation}
-Extra heat supplies energy powers. Thus for every admissible~$u$ and $m\in\N$,
-\begin{equation}\label{eq:H-all-moments}
-\int e^{-2uE}(1+E+|p|)^m\,d\nu_d^U<\infty\,.
-\end{equation} For offsets perpendicular to~$d$, take $u=t/2$, $r\asymp t$. Integrating $Ct^{-D}$ against $t^D\,dt$ on $(0,1)$ gives, enlarging~$D$,
-$\int(1+E)^{-D}|p_j|^{2m}\,d\nu_d^U<\infty$.
-
-Choose even $\sigma\ge0$ of integral one supported in $1\le|v|\le2$. For $a_j=j+2$, let $L_j$, $0\le j<m$, be the Lagrange basis polynomials of degree $m-1$ with $L_j(a_i^2)=\delta_{ij}$. For radius~$\varrho>0$, define the annular correction by
-\begin{equation*}
-\int\mathcal C_{m,\varrho}f(q)g(q)\,dq
-=\int\sigma(v)\int f(p)\sum_{j<m}L_j((p/(\varrho v))^2)g(\varrho va_j)\,dp\,dv.
-\end{equation*}
-This gives smooth annular profiles with moment coefficients containing $\varrho^{-2r}$. Since $\sum_jL_j(x)a_j^{2i}=x^i$ for $i<m$, one has $\int p^{2i}(f-\mathcal C_{m,\varrho}f)\,dp=0$ for $i<m$; for even~$f$ the residual has $2m$ vanishing moments. Put $\operatorname{Lap}f(E)=\int e^{-E|t|}\widehat f_+(t)\,dt$. Interpolating $(p^2+E^2)^{-1}$ gives its residual response
-\begin{equation}\label{eq:H-residual-response}
-\mathcal R_{m,\varrho}f(E)=2E\int\frac{f(p)}{p^2+E^2}\int\sigma(v)
-\prod_{j<m}\frac{(\varrho va_j)^2-p^2}{(\varrho va_j)^2+E^2}\,dv\,dp.
-\end{equation}
-At $E=0$ its value is $2\pi f(0)$. For $f\ge0$ supported in $[-\varrho,\varrho]$, all factors lie in $[0,1]$. For $\varrho\ge1$ with $\operatorname{supp}f_v\subset[-\varrho,\varrho]$, $f_v(p)=v^{-1}f(p/v)$ and sufficiently large~$m$, the moment bound gives
-\begin{equation}\label{eq:H-residual-cost}
-\int\mathcal R_{m,\varrho}f_v(E)|p_j|^{2r}\,d\nu_d^U\le C(v^{-1}+\varrho^D).
-\end{equation}
-Choose $m\ge D/2$ after the moment exponent~$D$. Indeed, let $f\ge0$ be even, supported in $[-1,1]$ and equal to one on $[-\tfrac12,\tfrac12]$, and let $0<v\le1\le\varrho$. Then
-\begin{align*}
-\frac{c_m}{E+v}&\le\mathcal R_{m,\varrho}f_v(E)\le2\pi\|f_v\|_\infty
-&& (0\le E\le1),\\
-\mathcal R_{m,\varrho}f_v(E)&\le C(\varrho/E)^D
-&& (E\ge1,\ m\ge D/2),
-\end{align*}
-with $C=C(m,D,\|f\|_{L^1})$. The upper bounds follow from $2E\int(p^2+E^2)^{-1}dp=2\pi$ and from bounding the product by $\prod_j(2\varrho a_j/E)^2$. For the lower bound, the product is at least $2^{-m}(1+E)^{-2m}$ for $|p|\le v$; integrate over $0<p<vE/(2(E+v))$. The value at zero follows by continuity.
-
-Thus $\mathcal R_{m,\varrho}f=\operatorname{Lap}(f-\mathcal C_{m,\varrho}f)$. For $i,j\in Q$, write $\operatorname{Resp}_i(g)=\int\operatorname{Lap}g_i(E)\prod_{j\in Q\setminus\{i\}}g_j(p_j)\,d\nu_i^U$.
-For $Q$ containing all axes, the same product test gives
-\begin{equation*}
-(2\pi)^{-3}\int S(\bar U^{\rm rev}\tau_xU)\prod_k\widehat g_{k,+}(x_k)\,dx
-=\varepsilon_i\operatorname{Resp}_i(g)=\varepsilon_j\operatorname{Resp}_j(g)\,.
-\end{equation*}
-Indeed $\int e^{ipx}\widehat g_+(x)\,dx=2\pi g(-p)=2\pi g(p)$ for the even profiles, whereas the time integral is $\operatorname{Lap}g(E)$. Both temporal profiles have the zero moments required at collisions. For smaller~$Q$, choose an even cutoff $h\in C_c^\infty(\R)$ equal to one near zero and put $g_k(p)=h(p/T)$ in omitted axes, then let $T\to\infty$ by~\eqref{eq:H-residual-cost}. Hence $\operatorname{Resp}_i(g)=-\operatorname{Resp}_j(g)$ when $\varepsilon_i=-\varepsilon_j$. Subtract annular corrections $a_i,a_j$ from the two head profiles. Positivity of the residual responses gives
-\begin{equation}\label{eq:H-sign-transfer}
-\operatorname{Resp}_i(g_i-a_i;g_{\ne i})\le
-\operatorname{Resp}_i(g_i-a_i;g_j\mapsto a_j)+\operatorname{Resp}_j(g_j-a_j;g_i\mapsto a_i).
-\end{equation}
-Expand the signed identity and discard $\operatorname{Resp}_j(g_j-a_j;g_{\ne j})\ge0$.
-
-Write $\lambda=e^t$, $t\in\N$; the index~$s$ below counts visits. We prove a stronger response bound by backward induction along a finite walk $i_0,\ldots,i_L$ in~$Q$ with opposite signs at consecutive visits. Choose the walk so that $i_0=i$, every axis occurs among $i_0,\ldots,i_{L-1}$, and $i_L$ has already occurred. Such a walk exists because both signs occur: insert an axis of the opposite sign between any two visits of the same sign. Put $V_s=\{i_0,\ldots,i_{s-1}\}$, the axes visited before step~$s$.
-
-Fix $K\ge0$ and $\delta>0$. The induction claim is that there is $a_s>0$ such that, for every fixed family of even nonnegative compactly supported profiles~$f_j$, every choice of exponents
-\begin{equation*}
-0\le\omega_j\le a_s\quad(j\in V_s),\qquad
--K\le\omega_j\le a_s\quad(j\in Q\setminus V_s),
-\end{equation*}
-and every $0\le\eta\le a_s$ with $\omega_{i_s}\le\eta$, fix $R_0\ge1$ so that the head profile is supported in $[-R_0\lambda^\eta,R_0\lambda^\eta]$. All sufficiently large subtraction orders~$m$ satisfy
-\begin{equation}\tag{$\mathrm H_s$}\label{eq:H-sign-induction}
-0\le\int\mathcal R_{m,R_0\lambda^\eta}f_{i_s,\lambda^{\omega_{i_s}}}(E)
-\prod_{j\in Q\setminus\{i_s\}}f_{j,\lambda^{\omega_j}}(p_j)\,d\nu_{i_s}^U
-\le C\lambda^\delta.
-\end{equation}
-The constant and the threshold in~$\lambda$ may depend on the fixed profiles, exponents, $R_0$ and~$m$. In particular, the claim includes nonpositive width exponents on all unvisited axes; allowing small positive exponents there permits subsequent visits.
-
-At $s=L$ every width is at least one, so all transverse profile suprema are bounded. Equation~\eqref{eq:H-residual-cost} with $r=0$ bounds the integral by $C(\lambda^{-\omega_{i_L}}+\lambda^{\eta D})$. Choose $a_LD<\delta$; the lower bound $\omega_{i_L}\ge0$ proves the terminal case of~\eqref{eq:H-sign-induction}.
-
-For the induction step put $i=i_s$, $j=i_{s+1}$ and $P=K|Q\setminus\{i,j\}|$. Make the choices in this order:
-\begin{enumerate}
-\item Take $\alpha'=a_{s+1}>0$ from the next case of~\eqref{eq:H-sign-induction}.
-\item Choose $r\in\N$ with $2r\alpha'>P+\max(K,\delta)+1$.
-\item Take the moment exponent~$D$ in~\eqref{eq:H-residual-cost} for $|p_j|^{2r}$. The subtraction orders will be taken above the required moment and collision orders.
-\item Choose $0<\alpha=a_s<\min(\alpha',\delta/(D+1))$.
-\end{enumerate}
-Correct the head~$i$ at radius $R_0\lambda^\eta$ and the next head~$j$ at radius $\lambda^{\alpha'}$. The correction in~$i$ is bounded in absolute value by a fixed even nonnegative annular profile of width~$\lambda^\eta$: its finitely many coefficients contain only factors $\lambda^{2r'(\omega_i-\eta)}\le1$. The second term of~\eqref{eq:H-sign-transfer} is therefore bounded by the next case of~\eqref{eq:H-sign-induction}, since the exponent in axis~$i$ has become nonnegative. In its first term, the correction in~$j$ is bounded by $C_r\lambda^{-2r\alpha'}|p_j|^{2r}$; its coefficients are bounded because $\omega_j<\alpha'$. The other transverse suprema cost at most~$\lambda^P$. Equation~\eqref{eq:H-residual-cost} thus bounds this first term by
-\begin{equation*}
-C\lambda^{P-2r\alpha'+\max(-\omega_i,\eta D)}
-\le C\lambda^{P-2r\alpha'+\max(K,\alpha D)}
-=O(\lambda^\delta).
-\end{equation*}
-Both residual responses are nonnegative. Applying~\eqref{eq:H-sign-transfer} with the positive annular majorants proves~\eqref{eq:H-sign-induction}; the finitely many terms may have different subtraction orders, each chosen large enough for the preceding integral identities.
-
-Apply~\eqref{eq:H-sign-induction} at $s=0$ with $K\ge\max(-q,\max_j(-\beta_j))$, $\omega_i=q$, $\omega_j=\beta_j$ for $j\ne i$, and $\eta=0$. Take the head profile $f_i$ to be the bump used in the lower response bound, and keep the given transverse profiles. On $E\le1$ the lower response bound makes the stated integral at most $c_m^{-1}$ times the integral in~\eqref{eq:H-sign-induction}. End on an already visited axis; all widths in~$Q$, including the head, are then at least one. The preceding upper and lower response bounds prove the claim.\qedhere
-
-
-\end{proof}
-
-Fix $a\ne b$, a line axis~$l$, and $\lambda=e^s$, $s\in\N$. Set $c_a=c_b=-100$, $c_l=-150$ when $l\notin\{a,b\}$, and $c_j=-300$ for $j\notin\{a,b,l\}$.
-For fixed even nonnegative $h\in C_c^\infty(\R)$ put
-\begin{equation*}
-w_j=\lambda^{1+c_j},\quad H_\lambda^{(d)}(p)=\prod_{j\ne d}w_j^{-1}h(p_j/w_j),\quad
-I_d(U;q)=\int_{E\le1}\frac{H_\lambda^{(d)}(p)}{E+\lambda^q}\,d\nu_d^U.
-\end{equation*}
-Set $B=2^{-4}\prod_j(1+\varepsilon_j\vartheta_j)U$ for a word combination~$U$ with offsets on $\R e_l$, $\varepsilon_a=\varepsilon_b=-1$ and the other signs positive. Let $J_{ij}\in F_4$ be real, symmetric, $\hypercubic$-tensorial and conserved: $\sum_j\partial_jJ_{jk}=0$ for every~$k$. The index $J_{db}$ in a measure denotes the one-point word $J_{db}(0)$. No Ward normalization is assumed.
-
-For the exterior estimate, consider tests $\Psi_\lambda(E,p)$ such that, for some fixed $K$ and every $L\ge0$,
-\begin{equation}\label{eq:H-scaled-tests}
-|\Psi_\lambda(E,p)|\le C_L\lambda^K e^{-\lambda^{-c_d}E}
-\prod_{j\ne d}(1+\lambda^{-c_j}|p_j|)^{-L}\,.
-\end{equation}
-Write $X_\lambda=\{E>1\}\cup\bigcup_{j\ne d}\{|p_j|>w_j\}$. The scaled Fourier--Laplace tests in Section~\ref{sec:partII-G.3}, with fixed polynomial prefactors, have this bound. All constants below may depend on the fixed words, tensor, profiles and exponents.
-
-These are the coordinate inputs to the rotation proof; their proof uses no result of Section~\ref{sec:partII-G}.
-\begin{lemma}[Coordinate spectral estimates]\label{lem:H-G3}
-For every projected collinear~$B$ and $\delta>0$,
-\begin{align*}
-I_d(B;-3000)&=O(\lambda^{\kappa_d}),&\kappa_d&=\begin{cases}1&d=l,\\-c_l&d\ne l,\end{cases}\\
-I_d(J_{db};c_d)&=O_\delta(\lambda^\delta)&&(d\ne b),\\
-\int_{E\le1}\frac{EW^4}{(E+W)^4}H_\lambda^{(d)}\,d\nu_d^{J_{dd}}&=O_\delta(\lambda^\delta W^4),&W&=\lambda^{-99}.
-\end{align*}
-The pairings obey~\eqref{eq:H-coordinate-CS} and~\eqref{eq:H-all-moments}; one-insertion heat matrix elements are holomorphic for $\operatorname{Re}t>0$. Moreover, for $M\ge0$,
-\begin{equation*}
-I_d(J_{dd};0)=O(\lambda^{900}),\qquad
-\int_{X_\lambda}\Psi_\lambda\,d\nu_d^{UV}=O_M(\lambda^{-M})\,.
-\end{equation*}
-\end{lemma}
-We prove the sign bounds first, then the diagonal estimate by conservation.
-\begin{proof}
-In direction~$l$, choose $2u$ separating the offsets and use
-$R_v(E)=\int e^{-E|t|}(1-\chi(t))\phi(vt)\,dt$, where $0\le\chi\le1$ is compactly supported and equals one on $[-2u,2u]$, and $\phi=\widehat{\sigma*\sigma}_+\ge0$, $\phi(0)=1$. It satisfies $C/(E+v)\le R_v(E)\le C'v^{-1}e^{-2uE}$ for $E\le1$ and small~$v$. For the lower bound integrate over $R<t<R+c/(E+v)$ beyond $\operatorname{supp}\chi$; for the upper bound drop $1-\chi$ and scale. The removed profile has bounded supremum. Finite moments~\eqref{eq:H-coordinate-moments} permit the induction~\eqref{eq:H-sign-transfer} through an opposite transverse sign. Taking $\delta=1$ in this sign-transfer argument gives $O(\lambda)$ when $d=l$. For $d\ne l$, omit the $l$ profile, apply Lemma~\ref{lem:H-coordinate-signs} on $Q=\{j:j\ne l\}$, and restore its supremum $O(\lambda^{-1-c_l})$. Both signs occur in~$Q$ for the specified parity. Taking $\delta=1$ gives $O(\lambda^{-c_l})$. The same lemma applied to the point word~$J_{db}$, $d\ne b$, gives the second estimate.
-
-It remains to treat the diagonal tensor. Write $C_{ab,cd}(x)=S(J_{ab}(0)J_{cd}(x))$, $x\ne0$. Choose $D_{\rm col}$ bounding the collision powers of these pairs and their first derivatives. For even $\chi=1$ near zero with compact support put $\Pi_{D_{\rm col}}f(t)=\chi(t)\sum_{r<D_{\rm col}}f^{(r)}(0)t^r/r!$, and define
-\begin{equation*}
-R^0_{ab,cd}(f)=\int C_{ab,cd}(x)\left[\prod_jf_j(x_j)-\prod_j\Pi_{D_{\rm col}}f_j(x_j)\right]dx.
-\end{equation*}
-Taylor vanishing gives integrability; a zero Taylor factor recovers the unsubtracted integral. Average under signed symmetries and pair exchange to obtain~$R$. Conservation makes $\sum_i\partial_iR_{ib,cd}$ a jet at zero. Inversion $x\mapsto-x$ makes~$R$ even, eliminating even divergence orders. To remove the linear orders, put $\chi_0(x)=\prod_j\chi(x_j)$ and $q_{ab,cd}=\sum_i R_{ib,cd}(\partial_i(x_a\chi_0))$, and replace the position extension by $R_{ab,cd}-q_{ab,cd}\delta_0$. Reflections kill coefficients unless indices occur in pairs; permuting them proves the pair symmetries. The subtraction preserves these and cancels linear divergence. The Fourier transform, still~$R$, has divergence polynomials with no terms below degree three. Write $F_{b,cd}=\sum_i p_iR_{ib,cd}$ for the Fourier divergence polynomial. Symmetry gives
-\begin{equation*}
-\sum_{j,k\ne d}p_jp_kR_{kd,jd}
-=\sum_{j\ne d}p_j(F_{d,jd}-p_dR_{dd,jd})
-=p_d^2R_{dd,dd}+\sum_{j\ne d}p_jF_{d,jd}-p_dF_{d,dd}\,.
-\end{equation*}
-Applying the same two contractions to the other index pair gives
-\begin{equation}\label{eq:H-tensor-responses}
-\begin{split}
-\mathcal Q_0&=R_{dd,dd},\\
-\mathcal Q_1&=\sum_{j,k\ne d}p_jp_kR_{kd,jd}=p_d^2\mathcal Q_0+D_1,\\
-\mathcal Q_2&=\sum_{j,k,r,s\ne d}p_jp_kp_rp_sR_{sk,rj}=p_d^2\mathcal Q_1+D_2.
-\end{split}
-\end{equation}
-Here multiplication by $p_j$ acts on the test, and $D_1,D_2$ are the polynomial remainders.
-
-We also need profiles that do not annihilate the remainders. On a fixed temporal annulus, Lemma~\ref{lem:H-coordinate-signs} and~\eqref{eq:H-coordinate-CS} bound each $R_{ab,cd}$ by $O_\delta(\lambda^\delta)$. For a diagonal entry, divide the annular profile by $p_d$ and move the derivative to the label, which then has both signs. Moment subtraction justifies this integration by parts at the collision. To remove the remaining zero-moment restrictions, expand one transverse profile into its residual and its fixed annular correction. For an odd profile~$f$ supported in $[-r_0,r_0]$, use $p^{-1}\mathcal C_{m,\varrho}(pf)$ as correction; for $f_v(p)=v^{-1}f(p/v)$, splitting at $E=v$ gives $\int_{|p|\le r_0v}|pf_v(p)|/(p^2+E^2)\,dp\le C/(E+v)$ from $|f(p)|\le C|p|$. The kernel factor $(1+E)^{-2m}$ makes the even lower bound dominate this residual, including zero. Equations~\eqref{eq:H-coordinate-CS} and~\eqref{eq:H-sign-transfer} control it. Each correction fixes one more transverse annulus with bounded coefficients $\lambda^{2r\beta}$, $\beta\le0$. Induction ends after at most three coordinates; finite Taylor terms are bounded on normalized shrinking profiles. 
-
-Since each transverse momentum costs at most~$W$, the fixed-annulus bounds for $\mathcal Q_0,\mathcal Q_1,\mathcal Q_2$ are respectively $O_\delta(\lambda^\delta)$, $O_\delta(\lambda^\delta W^2)$ and $O_\delta(\lambda^\delta W^4)$. The errors cost $O(W^4)$ and $O(W^6)$: divergence has degree at least three, and the contractions add one and three powers. Choose one subtraction order~$m$ above these degrees; its zero temporal moments annihilate the errors.
-
-Put $g_{v,r}(p)=v^{-1}(p/v)^{-2r}\sigma(p/v)$, so $p^2g_{v,r+1}=v^2g_{v,r}$. Keep the transverse profile~$H_\lambda^{(d)}$ fixed and set
-\begin{equation*}
-c_r(t)=W^{-2r}\operatorname{Re}\mathcal Q_r(g_{tW,r}),\qquad
-d_r=W^{-2r}\operatorname{Re}\mathcal Q_r\bigl((1-\mathcal C_{m,8})(g_{W,r}-g_{2W,r})\bigr).
-\end{equation*}
-Conservation gives $c_{r+1}(t)=t^2c_r(t)+O_\delta(\lambda^\delta W^2)$ for $t=1,2$, $r=0,1$. The correction of $g_{W,r}-g_{2W,r}$ has zero zeroth moment and other even moments $O(W^2)$, so the annular bounds give $d_r=c_r(1)-c_r(2)+O_\delta(\lambda^\delta W^2)$. Reflection positivity for~$J_{dd}$ makes the spectral representation of~$\mathcal Q_0$ positive. On corrected profiles it gives $d_0\ge0$, $d_1\le0$, $d_2\ge0$, since multiplication by $p_d^2$ becomes $-E^2$. Consequently $4d_0=5d_1-d_2+O_\delta(\lambda^\delta W^2)$ and $d_0=O_\delta(\lambda^\delta W^2)$.
-
-The response difference is nonnegative. Subtracting $(E^2+4W^2v^2)^{-1}$ from $(E^2+W^2v^2)^{-1}$ in~\eqref{eq:H-residual-response}, with $1\le|v|\le2$, bounds it below by $c_mEW^2/(E+W)^4$ for $0<E\le1$; both vanish at zero. Since the response difference and $H_\lambda^{(d)}$ are nonnegative,
-\begin{equation*}
-c_m\int_{E\le1}\frac{EW^2}{(E+W)^4}H_\lambda^{(d)}\,d\nu_d^{J_{dd}}
-\le d_0=O_\delta(\lambda^\delta W^2);
-\end{equation*}
-multiplying by $W^2/c_m$ gives the third estimate.
-
-
-On $E>1$,~\eqref{eq:H-scaled-tests} gives $C_M\lambda^{-M}e^{-t_0E}$ for fixed admissible~$t_0$. On $|p_j|>w_j$, the inequality $\lambda^{-c_j}|p_j|>\lambda$ gives arbitrary Schwartz gain. Integrate by~\eqref{eq:H-all-moments} and use~\eqref{eq:H-coordinate-CS} for mixed terms. Finiteness of $\nu_d^{J_{dd}}(E\le1)$ and $\|H_\lambda^{(d)}\|_\infty=O(\lambda^{897})$ give the crude bound. By Lemma~\ref{lem:H1.1}, a positively buffered insertion has matrix elements $\langle v,Ae^{-tH_d^{\rm OS}}u\rangle$ with bounded~$A$, holomorphic for $\operatorname{Re}t>0$ by spectral calculus.
-\end{proof}
-
-Rotations make spatial translations trivial at zero energy. Compression then removes slab width and placement.
+Rotations make spatial translations trivial at zero energy; compression then removes slab width and placement.
 \begin{lemma}[Compression algebra]\label{lem:H1.2}
-The operators $M^0(w)$ are independent of admissible slab width and placement. They generate a separable commutative unital C$^*$-algebra~$\mathfrak A_0$ on $\ker H_4^{\rm OS}$, with cyclic and separating vector~$\Omega$. Its spectrum~$\phases$ and vacuum measure~$\nu$ satisfy
+The operators $M^0(w)$ are independent of the slab width and placement. They generate a separable commutative unital C$^*$-algebra~$\mathfrak A_0$ on $\ker H_4^{\rm OS}$, with cyclic and separating vector~$\Omega$. Its character space~$\phases$ is compact metric, the vacuum state is given by a full-support probability measure~$\nu$, and
 \begin{equation*}
 S^\xi(w)=\xi(M^0(w)),\qquad S(w)=\int_{\phases}\xi(M^0(w))\,d\nu(\xi)\,.
 \end{equation*}
-The space~$\phases$ is compact metric and $\nu$ is a full-support probability measure.
 \end{lemma}
 \begin{proof}
-Use Definition~\ref{def:D14}, Lemmas~\ref{lem:H1.1} and~\ref{lem:G3.2}. For fixed words and large~$z^4$, the correlation is $\langle v,U_{\vec z}E_{z^4-c}v'\rangle$. Strong heat convergence makes fixed time shifts negligible, uniformly in~$\vec z$.
+For fixed words and large~$z^4$ the correlation is $\langle v,U_{\vec z}e^{-(z^4-c)H_4^{\rm OS}}v'\rangle$, and strong heat convergence makes fixed time shifts negligible, uniformly in~$\vec z$. Choose an orthogonal reflection~$K$ taking $y+e_4$ to $|y+e_4|e_4$. Since $\langle K(y+e_4),Ke_4\rangle=1$, the ray $tKe_4$ has positive time component. By the covariance of Lemma~\ref{lem:G3.1}, rotating the displacements $te_4+y+e_4$ and~$te_4$ makes their difference purely temporal, so their correlations become equal in the limit; removing the extra~$e_4$ gives $U_yP_0=P_0$ by density.
 
-Choose an orthogonal reflection~$K$ taking $y+e_4$ to $|y+e_4|e_4$. Since $\langle K(y+e_4),Ke_4\rangle=1$, its ray $tKe_4$ has positive time component. Rotating the displacements $te_4+y+e_4$ and~$te_4$ makes their difference purely temporal, so their correlations become equal in the limit. Removing the extra~$e_4$ as above gives $U_yP_0=P_0$ by density.
-
-The insertion identities $\mathsf B_{h+t}(w)=\mathsf B_h(w)E_t$ and $\mathsf B_{h+t}(\tau_{te_4}w)=E_t\mathsf B_h(w)$ give width and placement independence of $M^0(w)=P_0\mathsf B_h(w)|_{\ker H_4^{\rm OS}}$, and $M^0(w)\Omega=P_0[w]$, $\langle\Omega,M^0(w)\Omega\rangle=S(w)$.
-
-Successive use of~\eqref{eq:H-slab-laws} proves the cluster identity
+The identities $\mathsf B_{h+t}(w)=\mathsf B_h(w)e^{-tH_4^{\rm OS}}$ and $\mathsf B_{h+t}(\tau_{te_4}w)=e^{-tH_4^{\rm OS}}\mathsf B_h(w)$ give width and placement independence of $M^0(w)$, and $M^0(w)\Omega=P_0[w]$, $\langle\Omega,M^0(w)\Omega\rangle=S(w)$. Successive use of~\eqref{eq:H-slab-laws} proves the cluster identity
 \begin{equation}\label{eq:H-clusters}
 \lim_{j\to\infty}S\bigl(\tau_{z_1(j)}w_1\cdots\tau_{z_m(j)}w_m\bigr)
 =\langle\Omega,M^0(w_1)\cdots M^0(w_m)\Omega\rangle
 \end{equation}
-whenever $(z_{i+1}(j)-z_i(j))^4\to\infty$. In the induction, $\psi_j\to\psi$ and $t_j\to\infty$ imply $U_{y_j}E_{t_j}\psi_j\to P_0\psi$ for arbitrary~$y_j$, by contraction and spatial invariance on the ground space.
+whenever $(z_{i+1}(j)-z_i(j))^4\to\infty$; in the induction, $\psi_j\to\psi$ and $t_j\to\infty$ imply $U_{y_j}e^{-t_jH_4^{\rm OS}}\psi_j\to P_0\psi$ for arbitrary~$y_j$.
 
-Place four words at $0$, $j(e_4+2e_1)$, $j(2e_4+e_1)$ and $3j(e_4+e_1)$. Exchanging the first and fourth axes interchanges the two middle time orders. Covariance and~\eqref{eq:H-clusters} equate the resulting products after simultaneous rotation of their labels and points. A second application with all displacements along $e_4+e_1$ removes that simultaneous rotation. The middle factors therefore commute on the dense span $P_0[w]=M^0(w)\Omega$. This also gives cyclicity; the empty word gives the unit. If $a\Omega=0$, then $ab\Omega=0$ on this dense span, so $a=0$.
-
-Basis labels and dense countable position sets generate~$\mathfrak A_0$ by norm continuity. Gelfand theory and the vacuum state give its compact metric spectrum and probability measure~\cite[Theorems~2.4.1 and~2.8.2]{Landsman1998}. Separation gives full support: $\int|\xi(a)|^2d\nu=\|a\Omega\|^2$ vanishes only for $a=0$.
+Place four words at $0$, $j(e_4+2e_1)$, $j(2e_4+e_1)$ and $3j(e_4+e_1)$. Exchanging the first and fourth axes interchanges the two middle time orders. Covariance and~\eqref{eq:H-clusters} equate the resulting products after simultaneous rotation of their labels and points, and a second application with all displacements along $e_4+e_1$ removes that rotation. So the middle factors commute on the dense span $P_0[w]=M^0(w)\Omega$. This also gives cyclicity, and the empty word gives the unit. If $a\Omega=0$, then $ab\Omega=0$ on this span, so $a=0$. Basis labels and countable dense position sets generate~$\mathfrak A_0$ by norm continuity. Gelfand theory and the vacuum state give the compact metric spectrum and the probability measure~\cite[Theorems~2.4.1 and~2.8.2]{Landsman1998}; separation gives full support, since $\int|\xi(a)|^2d\nu=\|a\Omega\|^2$ vanishes only for $a=0$.
 \end{proof}
+
+Moment bounds in the vacuum state bound a compressed operator in every phase. This is the form in which lattice chessboard estimates enter here and in Sections~\ref{sec:partII-I}--\ref{sec:partII-J}.
+\begin{lemma}[Vacuum moments bound compressed operators]\label{lem:H-roots}
+Let $U\in\mathfrak A_0$ and $B\ge0$ satisfy $\langle\Omega,(U^*U)^n\Omega\rangle\le B^{2n}$ for every $n\in\N$. Then $\|U\|=\sup_{\xi\in\phases}|\xi(U)|\le B$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:H1.2}, $\langle\Omega,(U^*U)^n\Omega\rangle=\int|\xi(U)|^{2n}\,d\nu(\xi)$. If $|\xi_0(U)|>b>B$, continuity gives an open neighbourhood~$O$ of~$\xi_0$ on which $|\xi(U)|>b$, and full support gives $\nu(O)>0$. Then $\nu(O)b^{2n}\le B^{2n}$ for every~$n$, which is impossible. Gelfand theory identifies $\|U\|$ with $\sup_\xi|\xi(U)|$.
+\end{proof}
+The moment hypothesis comes from the lattice as follows. Let a lattice word difference be interior with centered chessboard seminorm at most~$B_0$ in one cell, multiplied by exterior insertions with centered chessboard seminorms at most $B_1,\ldots,B_L$ in disjoint finer cells, and let $U\in\mathfrak A_0$ be its compressed limit along the ordered limit. Apply~\eqref{eq:F-chess} to $2n$ widely translated copies, alternately conjugated; take the ordered limits and then infinite translation separation, using~\eqref{eq:H-clusters}; reflection identifies the alternating copies with adjoints. This gives $\langle\Omega,(U^*U)^n\Omega\rangle\le(B_0\prod_lB_l)^{2n}$, hence $\|U\|\le B_0\prod_lB_l$.
 
 A generic grid word has positions in $a_k\Z^4$ with pairwise distinct coordinates along each axis. For real coefficient representatives~$(d_i,c_i)$ write $\langle\cdot\rangle_{N,p}$ for the Wilson expectation of Section~\ref{sec:wilson}, and put $\mathcal O_{N,p}(w)=\prod_i O^{(d_i)}_{N,p}(c_i,x_i/a_N)$. The word differences used below are
 \begin{equation}\label{eq:H-real-approx}
 f_{j,N,p,T}=\mathcal O_{N,p}(\tau_{z_j(T)}w)-\mathcal O_{N,p}(\tau_{z_j(T)}\vartheta w),\qquad z_j(T)=Tja_k(1,1,1,1).
 \end{equation}
-For each degree bound and lower grid level~$m$, Lemma~\ref{lem:E2-bounded-real} chooses $k\ge m$ before~$w$; these are the cofinal grids used below. For $\varepsilon>0$ it supplies real $g_{j,N,p,T}$ and a finite $R_\varepsilon$, independent of $N,p,T,j$, such that $|g_{j,N,p,T}|\le R_\varepsilon$ eventually in the ordered cutoffs for each fixed~$T,j$. For each $i<j$ and sufficiently large~$T$, eventually in the ordered cutoffs,
-\begin{equation*}
-|\langle g_ig_j\rangle_{N,p}-\operatorname{Re}\langle f_if_j\rangle_{N,p}|\le\varepsilon\,.
-\end{equation*}
-The threshold may depend on $T,i,j$. Bounded~$g_i$ control the diagonal variance terms, for which $f_i^2$ has no uniform bound.
+For each degree bound and lower grid level~$m$, Lemma~\ref{lem:E2-bounded-real} chooses $k\ge m$ before~$w$; these are the cofinal grids used below. For $\varepsilon>0$ it supplies real $g_{j,N,p,T}$ and a finite $R_\varepsilon$, independent of $N,p,T,j$, with $|g_{j,N,p,T}|\le R_\varepsilon$ eventually in the ordered cutoffs for each fixed~$T,j$, and, for $i<j$ and large~$T$, eventually in the ordered cutoffs, $|\langle g_ig_j\rangle_{N,p}-\operatorname{Re}\langle f_if_j\rangle_{N,p}|\le\varepsilon$; the threshold may depend on $T,i,j$. Bounded~$g_i$ control the diagonal variance terms, for which $f_i^2$ has no uniform bound.
 
-Lattice variance gives characterwise reflection invariance; chessboard roots preserve the quotient fields.
 \begin{lemma}[Phase fields and selection]\label{lem:H1.3}
-For every $\xi\in\phases$, its table satisfies E1--E7, retains the inclusions, derivatives, conjugation, rotations and stress laws of the mixture, and
+For every $\xi\in\phases$, its table satisfies E1--E7, retains the inclusions, derivatives, conjugation, rotations and stress identities of the mixture, and
 \begin{equation*}
 \nullspace{d}(S^\xi)=\nullspace{d}(S)\qquad(d\in\N)\,.
 \end{equation*}
 Each separated value is continuous in~$\xi$. For $\nu$-almost every~$\xi$, the time-axis OS ground space is one-dimensional.
 \end{lemma}
 \begin{proof}
-We first prove the operator identities
+\emph{Reflection and rotation invariance.} We first prove
 \begin{equation}\label{eq:H-reflection}
 M^0(\vartheta w)=M^0(w),\qquad M^0(hw)=M^0(w)\quad(h\in O(4))\,.
 \end{equation}
-Use Lemma~\ref{lem:H1.2}, the point limits of Lemma~\ref{lem:E3.1} and~\eqref{eq:F-conf}. For a real grid word set $Z=M^0(w)-M^0(\vartheta w)$. Equation~\eqref{eq:H-slab-laws} gives $Z^*=-Z$, so $a=\langle\Omega,Z^2\Omega\rangle=-\|Z\Omega\|^2\le0$. Lattice variance gives
+For a real grid word set $Z=M^0(w)-M^0(\vartheta w)$. Equation~\eqref{eq:H-slab-laws} gives $Z^*=-Z$, so $a=\langle\Omega,Z^2\Omega\rangle=-\|Z\Omega\|^2\le0$. Lattice variance gives
 \begin{equation*}
 0\le\left\langle\left(\sum_{i=0}^qg_i\right)^2\right\rangle
 \le(q+1)R_\varepsilon^2+2\sum_{i<j}\left(\operatorname{Re}\langle f_if_j\rangle+\varepsilon\right)\,.
 \end{equation*}
-For fixed $q,T$, intersect the finitely many eventual sets for the bounds and pair estimates. Take the ordered cutoffs, then $T\to\infty$. Expand each pair into four separated moments; their signed sum tends to~$a$ by~\eqref{eq:H-clusters}. Thus $0\le(q+1)[R_\varepsilon^2+q(a+\varepsilon)]$. First $q\to\infty$, then $\varepsilon\downarrow0$, gives $a\ge0$. Separation of~$\Omega$ gives $Z=0$. Grid density, norm continuity and multilinearity give all words.
+For fixed $q,T$, intersect the finitely many eventual sets, take the ordered cutoffs, then $T\to\infty$. Each pair expands into four separated moments, whose signed sum tends to~$a$ by Lemma~\ref{lem:E3.1}, \eqref{eq:F-conf} and~\eqref{eq:H-clusters}. Thus $0\le(q+1)[R_\varepsilon^2+q(a+\varepsilon)]$; first $q\to\infty$, then $\varepsilon\downarrow0$, gives $a\ge0$, and separation of~$\Omega$ gives $Z=0$. Grid density, norm continuity and multilinearity give all words. For the second identity, the cluster identity gives simultaneous orthogonal invariance of two-factor vacuum entries along rays with positive time before and after rotation; such a ray exists unless time is reversed, when composition with~$\vartheta$ suffices. With $v=M^0(u)\Omega$ and $x=M^0(w)\Omega$, simultaneous invariance and time-reflection invariance give $\langle v,x\rangle=\langle g^{-1}v,\vartheta g^{-1}x\rangle=\langle v,g\vartheta g^{-1}x\rangle$. Density gives every hyperplane reflection, and an orthogonal map is a product of at most four reflections.
 
-The cluster identity gives simultaneous orthogonal invariance of two-factor vacuum entries along rays with positive time before and after rotation. Such a ray exists unless time is reversed, when composition with~$\vartheta$ suffices. Writing $v=M^0(u)\Omega$ and $x=M^0(w)\Omega$, simultaneous invariance and time-reflection invariance give $\langle v,x\rangle=\langle g^{-1}v,\vartheta g^{-1}x\rangle=\langle v,g\vartheta g^{-1}x\rangle$; transformations on vectors act on their words. Density gives every hyperplane reflection. Successively fixing basis images expresses an orthogonal map as at most four reflections, proving the second identity.
-
-Use also Definitions~\ref{def:D10}, \ref{def:D14}, FC and ST. Testing on positive words gives the permutation, unit and linearity identities and annihilates mixed null labels. Thus $\nullspace{d}(S)\subset\nullspace{d}(S^\xi)$. Character evaluation gives reality, covariance and smooth phase values, continuous in~$\xi$.
-
-For positive words~$w_i$ in a common slab set $Y_i=\mathsf B_h(w_i)|_{\ker H_4^{\rm OS}}$. Direct evaluation of the OS form gives
+\emph{Euclidean properties.} Testing on positive words gives the permutation, unit and linearity identities and annihilates mixed null labels, so $\nullspace{d}(S)\subset\nullspace{d}(S^\xi)$. Character evaluation gives reality, covariance and smooth phase values, continuous in~$\xi$. For positive words~$w_i$ in a common slab set $Y_i=\mathsf B_h(w_i)|_{\ker H_4^{\rm OS}}$; direct evaluation of the OS form gives
 \begin{equation*}
-M^0(\theta w_iw_j)=Y_i^*Y_j,\qquad
 \sum_{i,j}\bar c_ic_jM^0(\theta w_iw_j)=\left(\sum_i c_iY_i\right)^*\left(\sum_jc_jY_j\right)\ge0\,.
 \end{equation*}
-Spectral permanence and character evaluation preserve positivity~\cite[Theorems~2.5.1(1) and~2.6.4]{Landsman1998}; coordinate rotations give every axis. Complete this continuous positive Gram kernel. Integrating its vectors against compact positive-time joint tests expresses the smeared OS form as a norm square.
+Spectral permanence and character evaluation preserve positivity~\cite[Theorems~2.5.1(1) and~2.6.4]{Landsman1998}, and coordinate rotations give every axis; integrating the vectors of this positive Gram kernel against compact positive-time joint tests expresses the smeared OS form as a norm square. Inclusions and derivatives pass through $T\mapsto\xi(P_0T|_{\ker H_4^{\rm OS}})$. Put a stress shell and its insertions in one buffered slab; its weights vanish near collisions, so the operator integral exists, and testing against exterior positive words gives the identities of Theorem~\ref{prop:ST}, which character evaluation transfers to every phase. The bound $|S^\xi(w)|\le\|\mathsf B_h(w)\|$, also for derivative labels, gives E7 and separated-support integrability.
 
-Inclusions and derivatives pass through $T\mapsto\xi(P_0T|_{\ker H_4^{\rm OS}})$. Put a stress shell and its insertions in one buffered slab. Its weights vanish near collisions, so the operator integral exists. Testing against exterior positive words gives ST; character evaluation gives both phase shell laws. The bound $|S^\xi(w)|\le\|\mathsf B_h(w)\|$, also for derivative labels, gives E7 and separated-support integrability.
-
-For the reverse inclusion use the rows of Lemma~\ref{lem:E2-free-tests}, corrected lifts of Lemma~\ref{lem:E2.10} and coefficient limits of Lemma~\ref{lem:F2}. Each row of trial~$\ell$ consists of a singleton~$u$ and optional spectator~$v$, placed at the comparison points $r_\ell y^{\ell,i}$. Write $\mathcal G_I^\ell$ for the Maxwell moment of the corresponding row labels in slots~$I$ at the unscaled points~$y^{\ell,i}$. Set $s=\mathcal G^\ell_{\{u\}}$, $s'=\mathcal G^\ell_{\{v\}}$ and $c=\mathcal G^\ell_{\{u,v\}}-ss'$. Omit terms involving~$v$ in singleton rows. In~$\mathfrak A_0$ put
+\emph{Equal null spaces.} Use the rows of Lemma~\ref{lem:E2-free-tests}, corrected lifts of Lemma~\ref{lem:E2.10} and coefficient limits of Lemma~\ref{lem:F2}. Each row of trial~$\ell$ consists of a singleton~$u$ and optional spectator~$v$, placed at the comparison points $r_\ell y^{\ell,i}$. Write $\mathcal G_I^\ell$ for the Maxwell moment of the row labels in slots~$I$ at the unscaled points~$y^{\ell,i}$, and set $s=\mathcal G^\ell_{\{u\}}$, $s'=\mathcal G^\ell_{\{v\}}$ and $c=\mathcal G^\ell_{\{u,v\}}-ss'$, omitting terms with~$v$ in singleton rows. In~$\mathfrak A_0$ put
 \begin{equation*}
 \Delta_1=M^0(u)-s1,\quad\Delta_1'=M^0(v)-s'1,\quad
 \Delta_2=M^0(uv)-sM^0(v)-s'M^0(u)+(ss'-c)1\,.
 \end{equation*}
-Apply~\eqref{eq:F-chess} to $2j$ alternating conjugated copies of each polynomial in~\eqref{eq:F-relative}, translated by multiples of $a_{k_\ell}(1,1,1,1)$. Translating the periodic pattern and reality preserve the centered norm $\|\cdot\|_{\mathcal T}$ under signed images and conjugation. Large translations put the copies in distinct cells, with bound $(\gamma_\ell+\varepsilon)^{2j}$. Expand, take ordered coefficient and point limits, then~\eqref{eq:H-clusters}. Reflections identify the alternating copies with adjoints. Let $\varepsilon\downarrow0$ to obtain
+The polynomials of~\eqref{eq:F-relative} have centered chessboard seminorms at most $\gamma_\ell+\varepsilon$, preserved under signed images and conjugation by translating the periodic pattern; the lattice moment argument after Lemma~\ref{lem:H-roots}, followed by $\varepsilon\downarrow0$, gives
 \begin{equation}\label{eq:H-moments}
-\int_{\phases}|\xi(\Delta)|^{2j}\,d\nu(\xi)\le\gamma_\ell^{2j}\qquad(j\in\N)\,.
+\int_{\phases}|\xi(\Delta)|^{2j}\,d\nu(\xi)\le\gamma_\ell^{2j}\qquad(j\in\N)\,,
 \end{equation}
-A value $|\xi_0(\Delta)|>b>\gamma_\ell$ would give an open set~$O$ of positive measure with $\nu(O)b^{2j}\le\gamma_\ell^{2j}$ for all~$j$, contradicting~\eqref{eq:H-moments}. Thus $|\xi(\Delta_1)|,|\xi(\Delta_1')|,|\xi(\Delta_2)|\le\gamma_\ell$ in every phase. Expanding $\Delta_2$ gives $|\xi(M^0(uv))-ss'-c|\le\gamma_\ell(1+|s|+|s'|)$.
+and Lemma~\ref{lem:H-roots} gives $|\xi(\Delta_1)|,|\xi(\Delta_1')|,|\xi(\Delta_2)|\le\gamma_\ell$ in every phase. Expanding $\Delta_2$ gives $|\xi(M^0(uv))-ss'-c|\le\gamma_\ell(1+|s|+|s'|)$. Phase singleton and pair evaluations of the corrected lifts therefore converge to the injective free row map, whose positive minimum on the unit sphere makes them eventually injective. They factor through $V_d/\nullspace{d}(S^\xi)$; the first null inclusion and~\eqref{eq:F-dimension} bound its dimension above by $\dim\maxwellspace{d}$, and injectivity bounds it below. Thus the null spaces coincide.
 
-Phase singleton and pair evaluations of the corrected lifts converge to the injective free row map. Its positive minimum on the unit sphere makes these maps eventually injective. They factor through $V_d/\nullspace{d}(S^\xi)$. The first null inclusion and~\eqref{eq:F-dimension} bound its dimension above by $\dim\maxwellspace{d}$; injectivity bounds it below. Thus the null spaces coincide.
-
-Reflection positivity and E7 construct the phase heat semigroup as in Lemma~\ref{lem:H1.1}. Write $[b]_\xi$ for a positive-word class and $P_{0,\xi}^{\rm OS}$ for its ground projection. Strong heat convergence and the mixture identity give, by dominated convergence,
+\emph{Almost every ground space.} Reflection positivity and E7 construct the phase heat semigroup as in Lemma~\ref{lem:H1.1}. Write $[b]_\xi$ for a positive-word class and $P_{0,\xi}^{\rm OS}$ for its ground projection. Strong heat convergence and the mixture identity give, by dominated convergence,
 \begin{equation*}
 \int_{\phases}\|P_{0,\xi}^{\rm OS}[b]_\xi\|^2\,d\nu(\xi)
-=\|P_0[b]\|^2=\int_{\phases}|S^\xi(b)|^2\,d\nu(\xi)\,.
+=\|P_0[b]\|^2=\int_{\phases}|S^\xi(b)|^2\,d\nu(\xi)\,,
 \end{equation*}
-The heat entries decrease from their zero-time bounds. The integrands differ by $\|P_{0,\xi}^{\rm OS}[b]_\xi-S^\xi(b)\Omega_\xi^{\rm OS}\|^2$. It vanishes almost everywhere. Rational configurations and basis coefficients give a countable dense family in every phase OS space, by Gram continuity. Outside the union of its null sets the ground range is $\C\Omega_\xi^{\rm OS}$.
+the heat entries decreasing from their zero-time bounds. The integrands differ by $\|P_{0,\xi}^{\rm OS}[b]_\xi-S^\xi(b)\Omega_\xi^{\rm OS}\|^2$, which therefore vanishes almost everywhere. Rational configurations and basis coefficients give a countable dense family in every phase OS space, by Gram continuity; outside the union of its null sets the ground range is $\C\Omega_\xi^{\rm OS}$.
 \end{proof}
 
-Choose $\xi_*$ from the full-measure set in Lemma~\ref{lem:H1.3}. Only its ground-space dimension enters this choice.
-
-The slab bound passes to every phase with the same constants. The proof transfers the repeated insertion estimate through the character and applies the power argument of Lemma~\ref{lem:H1.1}.
+Choose $\xi_*$ from the full-measure set of Lemma~\ref{lem:H1.3}; only its ground-space dimension enters this choice, and it is retained throughout. The slab bound passes to every phase with the same constants, by transferring the repeated insertion estimate through the character and applying the power argument of Lemma~\ref{lem:H1.1}.
 \begin{corollary}[Phase slab operators]\label{cor:H-phase-slabs}\label{cor:H-phase-slab}
 For every $\xi\in\phases$ the operators $A_w$ extend to bounded $\mathsf B_h^\xi(w)$ on $\mathcal H_{4,\xi}^{\rm OS}$ with $\|\mathsf B_h^\xi(w)\|\le\|\mathsf B_h(w)\|$, satisfying~\eqref{eq:H-slab-laws} and~\eqref{eq:H-slab-derivative}.
 \end{corollary}
 \begin{proof}
-In the phase OS space put $v_j=(A_{w^\dagger}A_w)^jv$. The mixed-space map $Y(v_j)=\mathsf B(v_j)|_{\ker H_4^{\rm OS}}$ equals $(\mathsf B_h(w)^*\mathsf B_h(w))^jY(v)$. Hence
-\begin{equation*}
-\|[v_j]_\xi\|^2=\xi\bigl(Y(v_j)^*Y(v_j)\bigr)
-\le\|Y(v)\|^2\|\mathsf B_h(w)\|^{4j}\,.
-\end{equation*}
-The same power argument gives $\mathsf B_h^\xi(w)$ of norm at most $\|\mathsf B_h(w)\|$. The dense-vector argument gives its identities and norm derivatives, with the original constants.
+In the phase OS space put $v_j=(A_{w^\dagger}A_w)^jv$. The mixed-space map $Y(v_j)=\mathsf B(v_j)|_{\ker H_4^{\rm OS}}$ equals $(\mathsf B_h(w)^*\mathsf B_h(w))^jY(v)$, so $\|[v_j]_\xi\|^2=\xi(Y(v_j)^*Y(v_j))\le\|Y(v)\|^2\|\mathsf B_h(w)\|^{4j}$. The power argument gives $\mathsf B_h^\xi(w)$ of norm at most $\|\mathsf B_h(w)\|$, and the dense-vector argument gives its identities and norm derivatives.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{prop:PH}]
-Lemma~\ref{lem:H1.2} gives the spectrum, full-support probability measure and mixture formula. Lemma~\ref{lem:H1.3}, using Lemma~\ref{lem:E2-bounded-real}, gives E1--E7, equal null spaces, the common FC and ST identities and phase continuity. This proves Theorem~\ref{prop:PH}.
+Lemma~\ref{lem:H1.2} gives the character space, the full-support probability measure and the mixture formula. Lemma~\ref{lem:H1.3} gives E1--E7, equal null spaces, the common identities of Proposition~\ref{prop:FC} and Theorem~\ref{prop:ST}, covariance and phase continuity.
 \end{proof}
 
 \subsection{Reconstruction}\label{sec:partII-H.2}
 
-Use the response labels~$\mathcal L$ of Definition~\ref{def:D10}. With time reflection acting on labels through~$\hypercubic$, the star is
+Use the response labels~$\mathcal L$ of Definition~\ref{def:D10}. With time reflection acting on labels through~$R_d$, the star is
 \begin{equation}\label{eq:H-star}
-(\iota_dA)^*=\iota_d\bigl(\mathsf s_4^{\rm refl}\bar A\bigr)\,.
+(\iota_dA)^*=\iota_d\bigl(R_d(\mathsf s_4^{\rm refl})\overline A\bigr)\,.
 \end{equation}
-The boost generators $-i\mathsf L_d(K_{4i})$ and spatial rotations integrate on $SL(2,\C)$, the simply connected cover of $SO^+(1,3)$. A full spatial turn acts trivially, giving descent to $SO^+(1,3)$. Inclusions intertwine the actions; the time-reflection sign of $K_{4i}$ and antilinearity make~\eqref{eq:H-star} commute with boosts.
+The boost generators $-i\mathsf L_d(K_{4i})$ and the spatial rotations integrate to $SL(2,\C)$, the simply connected cover of $SO^+(1,3)$; a full spatial turn acts trivially, so the action descends to $SO^+(1,3)$. Inclusions intertwine the actions, and the time-reflection sign of $K_{4i}$ and antilinearity make the star~\eqref{eq:H-star} commute with boosts. Take $\mathcal P=SO^+(1,3)\ltimes\R^4$ itself in Definition~\ref{def:D14b}, and $\rho_{\rm lab}(\Lambda,z)$ the continued label action of~$\Lambda$. Let $\mathfrak B$ be the Borchers algebra of finite sequences $F=(F_0,F_1,\ldots)$, $F_n\in\mathcal L^{\otimes n}\otimes\mathcal S_n$; its product concatenates label tensors and tensors the tests, and its antilinear star reverses order, applies the star~\eqref{eq:H-star} to labels and complex conjugation to tests. For a phase write $U_y^\xi$ for spatial translation on~$\mathcal H_{4,\xi}^{\rm OS}$, and put
+\begin{equation*}
+\mathcal V_n=\Bigl\{p\in(\R^4)^n:\sum_jp_j=0,\quad \sum_{k=j}^np_k\in\forwardcone\ (j\ge2)\Bigr\}\,.
+\end{equation*}
 
-For $\mathcal P=SO^+(1,3)\ltimes\R^4$ take $\kappa_{\rm P}=\mathrm{id}$ and $\rho_{\rm lab}(\Lambda,z)$ the continued label action of~$\Lambda$. In the field-word algebra, multiply label tensors and joint Schwartz tests by concatenation and tensor product. Its antilinear star reverses order and applies label and test conjugation. Allow finite sequences.
+Fix a phase~$\xi$. The reconstruction follows the scheme of Osterwalder and Schrader~\cite{OsterwalderSchrader1973,OsterwalderSchrader1975}, with one change: in place of their growth condition, the slab bounds of Lemma~\ref{lem:H1.1} and Corollary~\ref{cor:H-phase-slab} give the strip bound~\eqref{eq:H-poly}, from which the boundary distributions are obtained directly. Lemma~\ref{lem:H2.1} constructs the continuation and the boundary distributions, with covariance, spectral support, positivity, continuity in~$\xi$ and the barycenter formula. Lemma~\ref{lem:H-locality} proves locality, Lemma~\ref{lem:H-fields} realizes the fields, Lemma~\ref{lem:H2.2} compares the Hilbert spaces, Lemma~\ref{lem:H2.3} proves the uniform low-energy bound and vacuum uniqueness, Lemma~\ref{lem:H-irreducible} proves irreducibility, and Lemma~\ref{lem:H2.4} continues the stress tensor.
 
-Fix a phase and write $\mathcal K_\xi=\mathcal H_{4,\xi}^{\rm OS}$, $E_t^\xi=e^{-tH_\xi^{\rm OS}}$ and $U_y^\xi$ for spatial translation. The next four proofs follow the statements: continuation, stress, then comparison and low energy. The last proof establishes surjectivity of $\mathsf J_\xi^{\rm OS}$, then the low-energy bound for the full zero-energy projection, then vacuum uniqueness, and finally irreducibility.
+The requirements of Theorem~\ref{prop:RC} come from three sources. Reflection positivity gives the OS spaces, their heat semigroups and the positivity of the boundary distributions. Slab growth gives bounded insertions, hence the strip bound, tempered boundary values and continuity in the phase. The rotations of Lemma~\ref{lem:G3.1}, continued to boosts, give Lorentz covariance and, through imaginary boosts, locality. Vacuum uniqueness first holds only for $\nu$-almost every phase (Lemma~\ref{lem:H1.3}). The low-energy estimate of Lemma~\ref{lem:H2.3} is uniform in the phase; with the continuity in~$\xi$ of the vacuum-subtracted heat pairings and the full support of~$\nu$, it removes the exceptional set. That estimate, $\mu_{A\Omega_\xi}\{0<E\le u\}\le M_Au^2$, is polynomial in the energy: no positive lower bound on nonzero energies (spectral gap) is used or proved.
 
 Positive-height operators give positive boundary distributions without a Euclidean extension across collisions.
-\begin{lemma}[Fields and boundary distributions]\label{lem:H2.1}
-For every $\xi\in\phases$, there is a faithful theory on~$\mathcal L$ satisfying W1--W3, the spectral condition of W0, and Definitions~\ref{def:D14f}--\ref{def:D15}. Its word-domain vacuum expectations extend to joint Schwartz distributions $W_n^\xi(A;\psi)$, and
-\begin{equation*}
-W^\xi(F^*F)\ge0
-\end{equation*}
-for every finite Schwartz test sequence~$F$ in the field-word algebra. The adjoint and Lorentz label maps are the common maps specified above.
+\begin{lemma}[Continuation and boundary distributions]\label{lem:H2.1}
+For every $\xi\in\phases$ and label list~$a$, the functions $\mathsf F^\xi_n(a;\cdot)$ of~\eqref{eq:H-continuation} satisfy Definition~\ref{def:D15}, and their boundary values in Definition~\ref{def:D14f} define joint Schwartz distributions $W^\xi_n(a;\psi)$, bounded by one Schwartz seminorm uniformly in~$\xi$. These are Poincar\'e covariant for the label action above, their Fourier transforms are supported in~$\mathcal V_n$, and $W^\xi(F^*F)\ge0$ for $F\in\mathfrak B$. Each $\xi\mapsto W^\xi_n(a;\psi)$ is continuous, and $\int_{\phases}W^\xi_n(a;\psi)\,d\nu(\xi)=W^{\rm mix}_n(a;\psi)$.
 \end{lemma}
-
-Surjectivity transfers vacuum uniqueness between the two Hilbert spaces.
-\begin{lemma}[OS comparison and irreducibility]\label{lem:H2.2}
-For every~$\xi$, there is a unique linear isometry $\mathsf J_\xi^{\rm OS}:\mathcal H_\xi\to\mathcal K_\xi$ with the boundary-word values specified before Theorem~\ref{prop:RC}. It is surjective, hence unitary, intertwines spatial translations and heat semigroups, and both zero-energy spaces are vacuum lines; in particular the theory of Lemma~\ref{lem:H2.1} satisfies W0. A bounded operator~$B$ is scalar if and only if, for every smeared field~$\Phi$ and $u,v\in\mathcal D_\xi$, one has $u\in\operatorname{Dom}\Phi^*$ and
-\begin{equation*}
-\langle\Phi^*u,Bv\rangle=\langle u,B\Phi v\rangle\,.
-\end{equation*}
-\end{lemma}
-
-Locality controls low energies uniformly in the phase; full support then extends vacuum uniqueness to every character.
-\begin{lemma}[Uniform low-energy bounds]\label{lem:H2.3}
-For every fixed finite complex combination~$A$ of field words smeared with compactly supported smooth tests, there are $M_A,M'_A\ge0$, depending on its words, labels and tests, such that for every~$\xi\in\phases$,
-\begin{align*}
-\mu_{A\Omega_\xi}(\{0<\mathbf p^4\le u\})&\le M_Au^2&&(0<u\le1),\\
-0\le\langle A\Omega_\xi,(e^{-sH_\xi}-P_{0,\xi})A\Omega_\xi\rangle&\le M'_As^{-2}&&(s\ge1).
-\end{align*}
-Here $P_{0,\xi}$ projects onto~$\C\Omega_\xi$.
-\end{lemma}
-
-For the charge law, set $\eta=\operatorname{diag}(-1,-1,-1,1)$, $\zeta_i=1$ for $i\le3$, $\zeta_4=-i$, and
-\begin{equation*}
-T^{\rm M}_{ab}=-\zeta_a\zeta_bT_{ab},\qquad
-T^{\rm M}_{ab}(f)=\Phi_\xi(\iota_4T^{\rm M}_{ab},f)\,.
-\end{equation*}
-
-Let $K(x)=k+Vx$, $V^{\mathsf T}\eta+\eta V=0$, and let $\Sigma_K$ be its infinitesimal Lorentz label action. For real $f\in C_c^\infty(\R)$ of integral one and $c\in C_c^\infty(\R^3)$, put $Q_K(f,c)=\sum_b T^{\rm M}_{4b}(K^b(c\otimes f))$.
-Suppose $m\in C_c^\infty(\R^4)$ and $c=1$ on a ball such that all $(y,s)$ over its complement, $s\in\operatorname{supp}f$, are spacelike to $\operatorname{supp}m$. Then the charge law is
-\begin{equation}\label{eq:H-charge}
-i[Q_K(f,c),\Phi_\xi(\iota_dA,m)]
-=\Phi_\xi(\Sigma_K\iota_dA,m)-\sum_a\Phi_\xi(\iota_dA,\partial_a(K^am))\,.
-\end{equation}
-
-A common polynomial bound permits boundary limits under the phase integral and continuation of local stress identities.
-\begin{lemma}[Phase dependence and continued stress]\label{lem:H2.4}
-For every $n$, label list~$A$ and $\psi\in\mathcal S_n$, the map $\xi\mapsto W_n^\xi(A;\psi)$ is continuous and
-\begin{equation*}
-\int_{\phases}W_n^\xi(A;\psi)\,d\nu(\xi)=W_n^{\rm mix}(A;\psi)\,,
-\end{equation*}
-where $W_n^{\rm mix}$ is the boundary distribution of the mixed continuation. In every phase~$T$ continues to a symmetric Hermitian conserved Lorentz tensor of operator-valued distributions, with the local charge law~\eqref{eq:H-charge} under its stated support hypothesis. The selected theory and continuation are those at~$\xi_*$.
-\end{lemma}
-
-\begin{proof}[Continuation and boundary distributions in Lemmas~\ref{lem:H2.1} and~\ref{lem:H2.4}]
-Use Definitions~\ref{def:D14a}--\ref{def:D15}, Lemmas~\ref{lem:H1.1}--\ref{lem:H1.3} and FC. Vacuum uniqueness follows in the comparison proof. For a label~$a$ put $B_{\xi,\epsilon}(a)=\mathsf B_{2\epsilon}^\xi(a(\epsilon e_4))$. Lemma~\ref{lem:H1.1} and Corollary~\ref{cor:H-phase-slab} give $\|B_{\xi,\epsilon}(a)\|\le C_a\epsilon^{-q_a}$, $0<\epsilon<1$, uniformly in~$\xi$. For $\operatorname{Im}z>2\epsilon$ set $G_{\xi,\epsilon}(z,y)=e^{-(\operatorname{Im}z-2\epsilon)H_\xi^{\rm OS}}e^{i\operatorname{Re}zH_\xi^{\rm OS}}U_y^\xi$.
-For $n\ge1$ set
+Here $W^{\rm mix}_n$ is the boundary distribution of the mixed continuation, defined below.
+\begin{proof}
+\emph{Positive imaginary times.} Write $e^{-tH_{4,\xi}^{\rm OS}}$ for the phase heat semigroup. For a label~$a$ put $B_{\xi,\epsilon}(a)=\mathsf B_{2\epsilon}^\xi(a(\epsilon e_4))$; Lemma~\ref{lem:H1.1} and Corollary~\ref{cor:H-phase-slab} give $\|B_{\xi,\epsilon}(a)\|\le C_a\epsilon^{-q_a}$ for $0<\epsilon<1$, uniformly in~$\xi$. For $\operatorname{Im}z>2\epsilon$ set $G_{\xi,\epsilon}(z,y)=e^{-(\operatorname{Im}z-2\epsilon)H_{4,\xi}^{\rm OS}}e^{i\operatorname{Re}zH_{4,\xi}^{\rm OS}}U_y^\xi$, and for $n\ge1$
 \begin{equation}\label{eq:H-continuation}
 \mathsf F_n^\xi(a;z,\vec x)=\langle\Omega_\xi^{\rm OS},B_{\xi,\epsilon}(a_1)
-\prod_{j=2}^n\bigl[G_{\xi,\epsilon}(z_j-z_{j-1},\vec x_j-\vec x_{j-1})B_{\xi,\epsilon}(a_j)\bigr]\Omega_\xi^{\rm OS}\rangle\,.
+\prod_{j=2}^n\bigl[G_{\xi,\epsilon}(z_j-z_{j-1},\vec x_j-\vec x_{j-1})B_{\xi,\epsilon}(a_j)\bigr]\Omega_\xi^{\rm OS}\rangle\,,
 \end{equation}
-Choose $0<\epsilon<1$ with $4\epsilon<\min_j\operatorname{Im}(z_{j+1}-z_j)$; set $\mathsf F_0^\xi=1$. At imaginary times the insertion rule gives~$S_n^\xi$ independently of~$\epsilon$; the identity theorem extends this agreement. It is holomorphic in time and continuous in space; extend by zero outside ordered times. Taking $\epsilon=\delta/8$ gives
+with $0<\epsilon<1$ and $4\epsilon<\min_j\operatorname{Im}(z_{j+1}-z_j)$; set $\mathsf F_0^\xi=1$. At imaginary times the insertion rule gives~$S_n^\xi$, independently of~$\epsilon$, and the identity theorem extends this agreement. The function is holomorphic in the times and continuous in space; extend it by zero outside ordered times. Taking $\epsilon=\delta/8$ gives, uniformly in~$x$ and~$\xi$,
 \begin{equation}\label{eq:H-poly}
 |\mathsf F_n^\xi(a;x^4+iy,\vec x)|\le C\delta^{-m}
-\quad\left(0<\delta\le1,\ y_{j+1}-y_j\ge\delta\right),
+\quad\left(0<\delta\le1,\ y_{j+1}-y_j\ge\delta\right).
 \end{equation}
-uniformly in~$x$ and~$\xi$.
 
-To construct the boundary, write $\psi_\xi(y;f)=\int\mathsf F_n^\xi(a;x^4+iy,\vec x)f(x)\,dx$, let $\rho_j=j$, and put $\mathcal A=-i\sum_j\rho_j\partial_{x_j^4}$. By~\eqref{eq:H-poly} and holomorphy, integration by parts gives $\partial_t\psi_\xi(y+t\rho;f)=\psi_\xi(y+t\rho;\mathcal A f)$. Repeated integration of this identity gives
+\emph{Boundary distributions.} Write $\phi_\xi(y;f)=\int\mathsf F_n^\xi(a;x^4+iy,\vec x)f(x)\,dx$ and $\mathcal G=-i\sum_jj\,\partial_{x_j^4}$. By~\eqref{eq:H-poly} and holomorphy, integration by parts gives $\partial_t\phi_\xi(y+t\varrho;f)=\phi_\xi(y+t\varrho;\mathcal Gf)$ with $\varrho_j=j$, and repeated integration gives
 \begin{equation}\label{eq:H-boundary}
-\psi_\xi(y;f)=\sum_{k=0}^m\frac{(-1)^k}{k!}\psi_\xi(y+\rho;\mathcal A^kf)
--\int_0^1\frac{(-t)^m}{m!}\psi_\xi(y+t\rho;\mathcal A^{m+1}f)\,dt\,.
+\phi_\xi(y;f)=\sum_{k=0}^m\frac{(-1)^k}{k!}\phi_\xi(y+\varrho;\mathcal G^kf)
+-\int_0^1\frac{(-t)^m}{m!}\phi_\xi(y+t\varrho;\mathcal G^{m+1}f)\,dt\,.
 \end{equation}
-The integrand is bounded by $C\|\mathcal A^{m+1}f\|_{L^1}/m!$, uniformly in~$y,\xi$. At $y=0$ this defines~$W_n^\xi$. Dominated convergence gives every ordered boundary limit and a common Schwartz seminorm bound.
+The integrand is bounded by $C\|\mathcal G^{m+1}f\|_{L^1}/m!$, uniformly in~$y,\xi$. At $y=0$ this defines~$W_n^\xi$, and dominated convergence gives every ordered boundary limit and a common Schwartz seminorm bound.
 
-The mixed operators of Lemma~\ref{lem:H1.1} define $\mathsf F^{\rm mix}$ by~\eqref{eq:H-continuation} and $W^{\rm mix}$ by~\eqref{eq:H-boundary}, with the same bound. The mixture formula at imaginary times extends to strict times by the identity theorem and integration of Cauchy's formula. For continuity, set $z_j=iy_j+\varsigma x_j^4$. The common strip bound gives a normal family in~$\varsigma$. If $\xi_\ell\to\xi$, each subsequential limit agrees on the imaginary segment by Lemma~\ref{lem:H1.3}, hence everywhere. Fubini and the common integrable bound in~\eqref{eq:H-boundary} give the distributional continuity and barycenter.
+\emph{Dependence on the phase.} The mixed operators of Lemma~\ref{lem:H1.1} define $\mathsf F^{\rm mix}$ by~\eqref{eq:H-continuation} and $W^{\rm mix}$ by~\eqref{eq:H-boundary}, with the same bound. The mixture formula at imaginary times extends to strict times by the identity theorem and integration of Cauchy's formula. For continuity set $z_j=iy_j+\varsigma x_j^4$; the common strip bound gives a normal family in~$\varsigma$, and if $\xi_\ell\to\xi$, each subsequential limit agrees on the imaginary segment by Lemma~\ref{lem:H1.3}, hence everywhere. Fubini and the common integrable bound in~\eqref{eq:H-boundary} give continuity of the distributions and the barycenter formula.
 
-Display the $j$th label in $\psi_\xi(y;f;\ldots,a_j,\ldots)$, keeping the others fixed. Differentiating Euclidean $(4,i)$ covariance and using the time Cauchy--Riemann identity gives
+\emph{Lorentz covariance.} Display the $j$th label in $\phi_\xi(y;f;\ldots,a_j,\ldots)$. Differentiating Euclidean $(4,i)$ covariance and using the time Cauchy--Riemann identity gives
 \begin{equation*}
-\sum_j\psi_\xi(y;f;\ldots,-i\mathsf L(K_{4i})a_j,\ldots)
-=\psi_\xi\left(y;\sum_j[x_j^i\partial_{x_j^4}+(x_j^4+iy_j)\partial_{x_j^i}]f\right)\,.
+\sum_j\phi_\xi(y;f;\ldots,-i\mathsf L(K_{4i})a_j,\ldots)
+=\phi_\xi\Bigl(y;\sum_j[x_j^i\partial_{x_j^4}+(x_j^4+iy_j)\partial_{x_j^i}]f\Bigr),
 \end{equation*}
-It holds first at imaginary times, then by holomorphy. At the boundary~\eqref{eq:H-boundary} removes~$y$. Along a real boost the derivative of simultaneously transformed labels and tests is therefore zero. Spatial rotations and translations retain their Euclidean identities, proving Poincar\'e covariance.
+first at imaginary times, then by holomorphy. At the boundary~\eqref{eq:H-boundary} removes~$y$, so along a real boost the derivative of simultaneously transformed labels and tests is zero. Spatial rotations and translations keep their Euclidean identities.
 
-Define $\widetilde W_n^\xi(b)=W_n^\xi(\widehat b_+(-\cdot))$. For compactly supported smooth frequency tests~$b$, differentiating the height and the exponential multiplier gives cancellation, hence
+\emph{Spectral support.} Define $\widetilde W_n^\xi(b)=W_n^\xi(\fourierplus{b}(-\cdot))$. For compactly supported smooth frequency tests~$b$, differentiating the height and the exponential multiplier gives cancellation, hence
 \begin{equation}\label{eq:H-Laplace}
-\widetilde W_n^\xi(b)=\psi_\xi\bigl(y;\widehat{e^{\sum_jy_jp_j^4}b}_+(-\cdot)\bigr)\,.
+\widetilde W_n^\xi(b)=\phi_\xi\bigl(y;\fourierplus{(e^{\sum_jy_jp_j^4}b)}(-\cdot)\bigr)\,,
 \end{equation}
-The boundary formula includes the zero endpoint. Sending ordered heights to infinity kills negative time-tail momenta. Translation and Lorentz covariance therefore give support in
-\begin{equation*}
-\mathcal V_n=\left\{p:\sum_jp_j=0,\quad \sum_{k=j}^np_k\in\forwardcone\ (j\ge2)\right\}\,.
-\end{equation*}
-Let $\chi=\mathbf1_{\{\operatorname{dist}(p,\mathcal V_n)<2\}}*\rho$, where $\rho$ is a nonnegative smooth unit-integral function supported in the unit ball. Then $\chi=1$ near~$\mathcal V_n$, has bounded derivatives, and vanishes at distance greater than three. For consecutive imaginary differences in the open forward cone define
-\begin{equation*}
-\mathcal W_n^\xi(z)=(2\pi)^{-4n}\widetilde W_n^\xi\left(\chi(p)e^{i\sum_jp_j\cdot z_j}\right)\,.
-\end{equation*}
-Put $q_j=\sum_{k=j}^np_k$. Then $\sum_jp_j\cdot\operatorname{Im}z_j=\sum_{j\ge2}q_j\cdot\operatorname{Im}(z_j-z_{j-1})\ge c|p|$ on~$\mathcal V_n$. On $\operatorname{supp}\chi$ this holds up to a bounded subtraction, giving a holomorphic Schwartz test. Equation~\eqref{eq:H-Laplace} identifies this with~\eqref{eq:H-continuation}. On the closed cone the damping multipliers act continuously on Schwartz tests. Thus joint tests admit continuous partial boundaries as any consecutive imaginary differences vanish. Set the arity-zero value to one.
+including the zero endpoint. Sending ordered heights to infinity kills negative time-tail momenta, and translation and Lorentz covariance give support in~$\mathcal V_n$.
 
-Tie the heights of two adjacent spacelike points, retaining strict height differences elsewhere. For their difference $(v,t)$, $|t|<|v|$, an imaginary boost along $v/|v|$ gives imaginary difference $\sin b\,(t\,v/|v|,|v|)$ in the forward cone for small $b>0$; all other differences stay in the cone. The opposite boost treats the exchanged order. Let $\rho_n^\vee$ act on label tensors, so $\mathcal W(\Lambda z)=\rho_n^\vee(\Lambda)\mathcal W(z)$. Define the two germs by
-\begin{equation*}
-G_\beta(z)=\rho_n^\vee(\Lambda_{i\beta})^{-1}\mathcal W(\Lambda_{i\beta}z),\qquad
-N_\beta=\{z:\Lambda_{i\beta}z\text{ lies in that order's tube}\}.
-\end{equation*}
-Choose the sign of~$\beta$ for that order. The cone inequalities make $N_\beta$ a neighbourhood of the tied point. Real covariance and the boost identity theorem identify $G_\beta$ with the tube function on overlap. This works along the path scaling real times to zero: spacelikeness and the other strict height margins persist. At zero real times, Euclidean permutation symmetry identifies every derivative on the totally real Wick slice, hence the germs. The overlap identities carry this equality through a finite chain covering the compact path. Letting the tied heights vanish gives equality on Schwartz tests supported in the spacelike set, proving locality.
-
-Apply the propagators and insertions in~\eqref{eq:H-continuation} to the vacuum, with an initial heat interval, and smear against a word test~$b$. Reflection and the insertion rule identify mixed-height Gram entries with $\mathsf F^\xi(b^*c)$. Their limits as both height lists vanish are $W^\xi(b^*c)$ by~\eqref{eq:H-boundary}. The vectors are therefore Cauchy; their limits $v_\xi(b)\in\mathcal K_\xi$ have this Gram form. The common seminorm bound and product-test density extend it to joint tests. Hence $W^\xi(F^*F)=\|\sum_b c_bv_\xi(b)\|^2\ge0$.
-
-Complete the word form modulo null vectors to obtain~$\mathcal H_\xi$, with $\Phi_\xi(a,f)[b]=[(a,f)b]$. For null~$x$, the inserted vector pairs with~$c$ as $\langle x,(a^*,\bar f)c\rangle=0$. Taking $c$ to be that vector preserves nullity and gives the adjoint law. Test continuity gives strongly continuous covariance unitaries. Translations integrate to a nondegenerate representation of $C^*(\R^4)=C_0(\R^4)$~\cite[Theorem~3.7.11 and equation~(3.89)]{Landsman1998}; its spectral measure comes from~\cite[Proposition~4.2.3]{Landsman1998}. The Fourier support puts its spectrum in~$\forwardcone$. Locality passes to the word domain. A zero-acting label has zero Euclidean correlations by~\eqref{eq:H-Laplace}, symmetry and continuity; Lemma~\ref{lem:H1.3} and response injectivity give faithfulness. Only vacuum uniqueness remains.
+\emph{Positivity.} Apply the propagators and insertions in~\eqref{eq:H-continuation} to the vacuum, with an initial heat interval, and smear against a word test~$b$. Reflection and the insertion rule identify mixed-height Gram entries with $\mathsf F^\xi(b^*c)$, whose limits as both height lists vanish are $W^\xi(b^*c)$ by~\eqref{eq:H-boundary}. The vectors are therefore Cauchy, and their limits $v_\xi(b)\in\mathcal H_{4,\xi}^{\rm OS}$ have this Gram form; the common seminorm bound and product-test density extend it to joint tests. Hence $W^\xi(F^*F)=\|\sum_b c_bv_\xi(b)\|^2\ge0$.
 \end{proof}
 
-\begin{proof}[Stress assertion of Lemma~\ref{lem:H2.4}]
-Use ST, Lemma~\ref{lem:H1.3} and the continuation. The factors give $T^{\rm M}_{44}=T_{44}$, $T^{\rm M}_{4i}=iT_{4i}$, $T^{\rm M}_{ij}=-T_{ij}$. Euclidean symmetry and~\eqref{eq:H-star} give symmetry and Hermiticity; differentiation and exponentiation of covariance give the Lorentz action. Continuing the derivative identity gives $\Phi_\xi(\iota_{d+1}\partial_a A,f)=-\zeta_a^{-1}\Phi_\xi(\iota_dA,\partial_af)$. Hence Euclidean conservation gives $\sum_a\eta_{aa}T^{\rm M}_{ab}(\partial_af)=0$ on the common word domain.
-
-For real~$c$, insert $c(y)h(t-t_0)$ into ST and integrate conservation on each side of~$t_0$. The $\nabla c$ term stays away from the distinguished point and remains bounded, so $\sum_b\int c(y)K_{\rm E}^b(y,t)T_{4b}(y,t)\,dy$ is Cauchy on each side. Its jump is $\Sigma_KA+\sum_bK_{\rm E}^b\partial_bA$, where $K_{\rm E}^b(y)=\zeta_bK^b(\vec y,iy^4)$.
-
-Continue this jump as follows. Fix strictly ordered heights~$y_j$ for all fields other than the current, including the distinguished field with index~$0$. For their real times~$t_j$ put $z_j(\varsigma)=iy_j+\varsigma t_j$, and place the current at $z_0(\varsigma)\pm i\varepsilon$. The center follows the distinguished time, retaining Euclidean separation~$\varepsilon>0$. Write
+Locality is the exchange of two adjacent spacelike points. For $1\le j<n$ let $s$ be the transposition of $j$ and $j+1$, write $x^s$ and $a^s$ for configurations and label lists with these entries exchanged, and put $\mathcal G_j=\{x\in(\R^4)^n:\minksquare(x_{j+1}-x_j)<0\}$.
+\begin{lemma}[Exchange of adjacent spacelike points]\label{lem:H-locality}
+For every $\xi\in\phases$, label list~$a$, $1\le j<n$ and $\psi\in\mathcal S_n$ supported in~$\mathcal G_j$,
 \begin{equation*}
-I_\varepsilon^\pm(\varsigma)=\sum_b\int c(x)K_{\rm E}^b(x,-iz_0(\varsigma)\pm\varepsilon)
-\,\mathsf F_{\pm}^\xi(\ldots,T_{4b}(x,z_0(\varsigma)\pm i\varepsilon),\ldots)\,dx,
+W^\xi_n(a;\psi)=W^\xi_n(a^s;\psi^s),\qquad \psi^s(x)=\psi(x^s).
 \end{equation*}
-where $\mathsf F_\pm$ inserts the current immediately after or before the distinguished field. Choose a common complex neighbourhood~$\mathcal U$ of $[0,1]$ preserving the other strict height differences. On $\operatorname{supp}\nabla c$ the spacelike germs bound the side integrals, uniformly for small~$\varepsilon$ and $\varsigma$ in compact $L\subset\mathcal U$. Conservation gives
+\end{lemma}
+The two orders give two holomorphic functions on two different tubes. Opposite imaginary boosts move a configuration with tied heights into the two tubes and so define two holomorphic germs at that configuration. At zero real times both germs restrict to the same Euclidean correlation, by permutation symmetry, so they coincide; the equality is carried to arbitrary real times, and partial boundary values give the claim.
+\begin{proof}
+\emph{The tube function.} Let $\mathcal T_n=\{w\in(\C^4)^n:\operatorname{Im}(w_{k+1}-w_k)\in\openforwardcone,\ k<n\}$, where $\openforwardcone$ is the interior of~$\forwardcone$. Let $\chi=\mathbf1_{\{\operatorname{dist}(p,\mathcal V_n)<2\}}*\varrho_1$ with $\varrho_1\ge0$ smooth, of unit integral and supported in the unit ball; then $\chi=1$ near~$\mathcal V_n$, has bounded derivatives, and vanishes at distance greater than three. For $w\in\mathcal T_n$ define
 \begin{equation*}
-\sup_{\varsigma\in L}|I_\varepsilon^\pm(\varsigma)-I_{\varepsilon'}^\pm(\varsigma)|\le C_L|\varepsilon-\varepsilon'|.
+\mathcal W_a(w)=(2\pi)^{-4n}\widetilde W_n^\xi\bigl(\chi(p)e^{i\sum_kp_k\cdot w_k}\bigr).
 \end{equation*}
-The limits are holomorphic. At small imaginary~$\varsigma$ the Euclidean calculation identifies their jump; the identity theorem extends it to $\varsigma=1$. Test against $m,f$ and take the continuous partial boundaries. Integration by parts differentiates $K^am$, giving~\eqref{eq:H-charge}. Schwartz cutoffs and the joint bounds extend from compact spectators. For complex~$c$, its imaginary part has charge commuting with the distinguished field by locality. Constant and rotational~$K$ give the required actions, retaining~$\xi_*$.
+With $q_k=\sum_{l\ge k}p_l$, one has $\sum_kp_k\cdot\operatorname{Im}w_k=\sum_{k\ge2}q_k\cdot\operatorname{Im}(w_k-w_{k-1})\ge c|p|$ on~$\mathcal V_n$, and up to a bounded subtraction on $\operatorname{supp}\chi$; so the test is a holomorphic family of Schwartz functions and $\mathcal W_a$ is holomorphic on~$\mathcal T_n$. By~\eqref{eq:H-Laplace}, $\mathcal W_a(w)=\mathsf F^\xi_n(a;w^4,\vec w)$ when the imaginary parts are purely temporal and strictly ordered; in particular $\mathcal W_a$ equals $S^\xi_n(a;\cdot)$ at ordered Euclidean points $w_k=(it_k,\vec x_k)$. For nondecreasing heights~$y$, the damping multipliers $e^{-\sum_ky_kp^4_k}=e^{-\sum_{k\ge2}(y_k-y_{k-1})q_k^4}$ are bounded with bounded derivatives on~$\mathcal V_n$, so they act continuously on Schwartz tests. This defines partial boundary distributions $W^\xi_{n,y}(a;\cdot)$, continuous in~$y$, equal to $W^\xi_n(a;\cdot)$ at $y=0$, and equal to $\int\mathcal W_a(x+iy)f(x)\,dx$ for strictly increasing~$y$. Here $x+iy$ means $(x_k^4+iy_k,\vec x_k)_k$.
+
+\emph{Complex boosts.} Real Lorentz covariance in Lemma~\ref{lem:H2.1} gives $\mathcal W_a(\Lambda w)=\rho_n^\vee(\Lambda)\mathcal W_a(w)$ for real~$\Lambda$ and $w\in\mathcal T_n$, where $\rho_n^\vee$ acts on label tensors. For a spatial unit vector~$e$ and rapidity~$\beta$, the label action of the boost $\Lambda_\beta$ along~$e$ is $\exp(-i\beta\sum_ie_i\mathsf L(K_{4i}))$ on finite-dimensional spaces, an entire function of~$\beta$. Hence the covariance identity holds for complex $\beta$, by the identity theorem in~$\beta$, whenever $\Lambda_{\beta'}w\in\mathcal T_n$ along a path from $0$ to~$\beta$.
+
+\emph{Two germs.} Fix heights with $y_j=y_{j+1}$ and $y_k<y_{k+1}$ for the other~$k$, and $x\in\mathcal G_j$, so $w_0=x+iy$ lies on the boundary of~$\mathcal T_n$. Write $x_{j+1}-x_j=(\tau,\vec v)$ with $|\tau|<|\vec v|$ and put $e=\vec v/|\vec v|$. The imaginary boost $\Lambda_{ib}$ along~$e$ gives this difference the imaginary part $\sin b\,(|\vec v|,\tau e)$, in time and space components, which lies in~$\openforwardcone$ for $0<b<\pi$; for small~$b$ the other differences stay in~$\openforwardcone$. So, for a small $b_0>0$ and a small neighbourhood~$N$ of~$w_0$, $\Lambda_{ib_0}w\in\mathcal T_n$ for $w\in N$, and $\Lambda_{ib}w\in\mathcal T_n$ for $0\le b\le b_0$ if moreover $w\in\mathcal T_n$; the opposite boost $\Lambda_{-ib}$ moves the exchanged configuration into~$\mathcal T_n$. Define, near~$w_0$,
+\begin{equation*}
+G_+(w)=\rho_n^\vee(\Lambda_{ib_0})^{-1}\mathcal W_a(\Lambda_{ib_0}w),\qquad
+G_-(w)=\rho_n^\vee(\Lambda_{-ib_0})^{-1}\mathcal W_{a^s}\bigl((\Lambda_{-ib_0}w)^s\bigr).
+\end{equation*}
+Both are holomorphic in a neighbourhood of~$w_0$. By the complex boost identity along $[0,b_0]$, $G_+=\mathcal W_a$ on the part of that neighbourhood in~$\mathcal T_n$, and $G_-(w)=\mathcal W_{a^s}(w^s)$ where $w^s\in\mathcal T_n$.
+
+\emph{The Wick slice.} Suppose first that all real times of~$x$ vanish. Then $w_0=(iy_k,\vec x_k)_k$ is a separated Euclidean configuration, since $\vec x_j\ne\vec x_{j+1}$. The Wick slice $\{(it_k,\vec x_k)\}$ is a real subspace of dimension $4n$ whose complex span is $(\C^4)^n$. Near~$w_0$ on the slice, points with $t_j<t_{j+1}$ lie in~$\mathcal T_n$, where $G_+=S^\xi_n(a;\cdot)$; points with $t_j>t_{j+1}$ have exchanged configuration in~$\mathcal T_n$, where $G_-=S^\xi_n(a^s;(\cdot)^s)=S^\xi_n(a;\cdot)$ by permutation symmetry. Since $S^\xi_n$ is smooth at~$w_0$, all jets of $G_+$ and $G_-$ along the slice at~$w_0$, computed as limits from these open half-spaces, equal those of $S^\xi_n(a;\cdot)$. Real jets along the slice are restrictions of complex jets, and the slice spans $(\C^4)^n$; so all complex derivatives of $G_+-G_-$ vanish at~$w_0$, and $G_+=G_-$ near~$w_0$.
+
+\emph{Propagation.} For general $x\in\mathcal G_j$ consider $x(t)=(tx_k^4,\vec x_k)_k$, $t\in[0,1]$; it stays in~$\mathcal G_j$, since $|t\tau|\le|\tau|<|\vec v|$, and the strict height margins persist. Along this compact path both germs are defined at every point. Two germs of the same kind at nearby points agree on the overlap of their domains, since both extend the same function from the open set $\mathcal T_n$ (respectively its exchanged image), which accumulates at each point. A finite chain of overlapping neighbourhoods carries $G_+=G_-$ from $t=0$ to $t=1$.
+
+\emph{Partial boundary values.} For $f$ supported in a small ball around $x\in\mathcal G_j$, the representation of $W^\xi_{n,y}$ by the tube function and continuity up to the tied heights give $W^\xi_{n,y}(a;f)=\int G_+(x'+iy)f(x')\,dx'$, and likewise $W^\xi_{n,y^s}(a^s;f^s)=\int G_-(x'+iy)f(x')\,dx'$. These agree, and a partition of unity gives $W^\xi_{n,y}(a;\psi)=W^\xi_{n,y^s}(a^s;\psi^s)$ for compactly supported $\psi$ with support in~$\mathcal G_j$; for general $\psi\in\mathcal S_n$ with support in~$\mathcal G_j$, multiply by cutoffs equal to one on growing balls, which converge in~$\mathcal S_n$ without enlarging the support. Let the heights tend to zero along such tied height lists; continuity of the partial boundary distributions gives the claim.
 \end{proof}
 
-\begin{proof}[Comparison and low energy: Lemmas~\ref{lem:H2.2} and~\ref{lem:H2.3}]
-Use Definitions~\ref{def:W0}--\ref{def:W3} and~\ref{def:D14d}, with Lemma~\ref{lem:H1.3}.
+\begin{lemma}[Relativistic fields]\label{lem:H-fields}
+For every $\xi\in\phases$, the boundary distributions of Lemma~\ref{lem:H2.1} define a faithful theory on~$\mathcal L$ satisfying W1--W3 and the spectral representation and spectral condition $\mathsf E(\R^4\setminus\forwardcone)=0$ of W0, with continuation the functions $\mathsf F^\xi_n$ of that lemma. Its adjoint and Lorentz label maps are the common maps specified above.
+\end{lemma}
+\begin{proof}
+Complete the form $W^\xi(F^*G)$ on~$\mathfrak B$ modulo null vectors to obtain~$\mathcal H_\xi$, with $\Phi_\xi(a,f)[b]=[(a,f)b]$. For null~$x$ the inserted vector pairs with~$c$ as $\langle x,(a^*,\bar f)c\rangle=0$; taking $c$ to be that vector preserves nullity and gives the adjoint law W1. Test continuity gives strongly continuous covariance unitaries, and Lemma~\ref{lem:H2.1} gives W2. Translations integrate to a nondegenerate representation of $C^*(\R^4)=C_0(\R^4)$~\cite[Theorem~3.7.11 and equation~(3.89)]{Landsman1998} with spectral measure from~\cite[Proposition~4.2.3]{Landsman1998}, and the Fourier support in~$\mathcal V_n$ puts the spectrum in~$\forwardcone$. Lemma~\ref{lem:H-locality}, applied to adjacent pairs inside vacuum expectations of words, gives W3 on the word domain. The boundary condition of Definition~\ref{def:D14f} is the definition of~$W^\xi_n$ in Lemma~\ref{lem:H2.1}. A label acting as zero has zero Euclidean correlations by~\eqref{eq:H-Laplace}, symmetry and continuity; Lemma~\ref{lem:H1.3} and injectivity of responses give faithfulness.
+\end{proof}
 
-The isometry $J=\mathsf J_\xi^{\rm OS}:[b]\mapsto v_\xi(b)$ takes vacuum to vacuum and intertwines spatial translations and heat: $Je^{-sH_\xi}=E_s^\xi J$ by~\eqref{eq:H-Laplace}. If two linear isometries have these boundary-word values, they agree on the dense word span and hence everywhere. After surjectivity, strong heat convergence identifies ground projections.
+Surjectivity of the comparison map transfers ground-space information between the two Hilbert spaces.
+\begin{lemma}[OS comparison]\label{lem:H2.2}
+For every~$\xi$, there is a unique linear isometry $\mathsf J_\xi^{\rm OS}:\mathcal H_\xi\to\mathcal H_{4,\xi}^{\rm OS}$ with the boundary-word values specified before Theorem~\ref{prop:RC}. It is surjective, hence unitary, and intertwines spatial translations and the heat semigroups: $\mathsf J_\xi^{\rm OS}e^{-sH_\xi}=e^{-sH_{4,\xi}^{\rm OS}}\mathsf J_\xi^{\rm OS}$ for $s\ge0$.
+\end{lemma}
+\begin{proof}
+The map $J:[b]\mapsto v_\xi(b)$ of Lemma~\ref{lem:H2.1} is an isometry taking vacuum to vacuum and intertwines spatial translations and heat by~\eqref{eq:H-Laplace}. Two linear isometries with these boundary-word values agree on the dense word span, hence everywhere. For compact frequency~$b$ let $f_y=\fourierplus{(e^{-\sum_jy_jp_j^4}b)}(-\cdot)$; by~\eqref{eq:H-Laplace} the norms and mixed pairing of its boundary-word image under~$J$ and the corresponding positive-height OS vector agree, so the two vectors coincide. Frequency-test density and closed range include every smeared positive-height vector, approximate identities give point vectors, and permutation and perturbation of equal times give all positive words. So $J$ is surjective.
+\end{proof}
 
-For compact frequency~$b$, let $f_y=\widehat{e^{-\sum_jy_jp_j^4}b}_+(-\cdot)$. Equation~\eqref{eq:H-Laplace} equates the norms and mixed pairing of its boundary-word image under~$J$ and the corresponding positive-height OS vector. They therefore agree. Frequency-test density and closed range include every smeared positive-height vector; approximate identities give point vectors. Permutation and perturbation of equal times give all positive words, proving surjectivity.
-
-We prove the low-energy estimate for compactly supported words, subtracting the full zero-energy projection $Q_\xi=\mathsf E_\xi(\{\mathbf p^4=0\})$. Let $A^\dagger$ be its word adjoint, reversing order and applying label and test conjugation, and put $\alpha_zA=\mathsf T_\xi(z)A\mathsf T_\xi(z)^*$. Bound all support times and spatial norms by~$r$. Set $R=4r+1$, $\mu=\mu_{A\Omega_\xi}$ and $\lambda=\mu_{A^\dagger\Omega_\xi}$. The common distribution bounds give $\mu(\R^4)+\lambda(\R^4)\le M$, uniformly in~$\xi$. Covariance and locality imply
+The low-energy estimate is the infrared input of the reconstruction. For a fixed compactly supported local word~$A$, locality makes a commutator vanish outside a bounded spatial region for bounded times. An odd time average turns this into a positive spectral weight comparable to the energy~$E$ near zero. A momentum cutoff at scale~$u$ costs~$u^3$ in three spatial dimensions, and the cone $|\vec p|\le E$ gives $u\,\mu\{u/2<E\le u\}\lesssim u^3$; dyadic summation gives~$u^2$.
+\begin{lemma}[Uniform low-energy bounds and vacuum uniqueness]\label{lem:H2.3}
+For every finite complex combination~$A$ of field words smeared with compactly supported smooth tests, there are $M_A,M'_A\ge0$, depending on its words, labels and tests, such that for every~$\xi\in\phases$,
+\begin{align*}
+\mu_{A\Omega_\xi}(\{0<\mathbf p^4\le u\})&\le M_Au^2&&(0<u\le1),\\
+0\le\langle A\Omega_\xi,(e^{-sH_\xi}-P_{0,\xi})A\Omega_\xi\rangle&\le M'_As^{-2}&&(s\ge1),
+\end{align*}
+where $P_{0,\xi}$ projects onto~$\C\Omega_\xi$. Moreover $\ker H_\xi=\C\Omega_\xi$ and $\ker H_{4,\xi}^{\rm OS}=\C\Omega_\xi^{\rm OS}$.
+\end{lemma}
+\begin{proof}
+\emph{The low-energy measure.} Let $Q_\xi=\mathsf E_\xi(\{\mathbf p^4=0\})$ be the full zero-energy projection. Let $A^*$ be the word adjoint, reversing order and applying the star~\eqref{eq:H-star} to labels and complex conjugation to tests, and put $\alpha_zA=\mathsf T_\xi(z)A\mathsf T_\xi(z)^*$. Bound all support times and spatial norms by~$r$ and set $R=4r+1$, $\mu=\mu_{A\Omega_\xi}$ and $\mu^*=\mu_{A^*\Omega_\xi}$. The common distribution bounds give $\mu(\R^4)+\mu^*(\R^4)\le M$, uniformly in~$\xi$. Covariance and locality give
 \begin{equation*}
-a(y,t)=\widehat\mu_+(y,t)-\widehat\lambda_+(-y,-t)
-=\langle\Omega_\xi,[A^\dagger,\alpha_{(y,t)}A]\Omega_\xi\rangle=0
-\quad(|y|>R,\ |t|\le1)\,.
+a(y,t)=\fourierplus{\mu}(y,t)-\fourierplus{\mu^*}(-y,-t)
+=\langle\Omega_\xi,[A^*,\alpha_{(y,t)}A]\Omega_\xi\rangle=0
+\quad(|y|>R,\ |t|\le1)\,,
 \end{equation*}
-Here $\widehat\mu_+(z)=\int e^{ip\cdot z}\,d\mu(p)$, and likewise for~$\lambda$. Write $E=p^4$ for energy. The time average $\bar a(y)=\int_0^1[a(y,t)-a(y,-t)]/(2i)\,dt$ is bounded by~$M$ and supported in~$\overline B_R$. It is the Fourier transform of two positive pushforwards: $\pi(E)d\mu$ under $p\mapsto\vec p$ and $\pi(E)d\lambda$ under $p\mapsto-\vec p$, where $\pi(E)=(1-\cos E)/E$, $\pi(0)=0$. On $0\le E\le1$, $\pi(E)\ge E/\pi$.
-
-Choose a smooth momentum bump $b_u$, equal to one on $B_u$, supported in~$B_{2u}$ and between zero and one. Its transform $\fourierplus{b_u}(-y)$ has absolute value at most $8|B_1|u^3$. Fourier inversion and positivity therefore give
+with $\fourierplus{\mu}(z)=\int e^{ip\cdot z}\,d\mu(p)$. Write $E=p^4$. The time average $\bar a(y)=\int_0^1[a(y,t)-a(y,-t)]/(2i)\,dt$ is bounded by~$M$ and supported in~$\overline B_R$. It is the Fourier transform of two positive measures, the pushforwards of $\varpi(E)\,d\mu$ under $p\mapsto\vec p$ and of $\varpi(E)\,d\mu^*$ under $p\mapsto-\vec p$, where $\varpi(E)=(1-\cos E)/E$, $\varpi(0)=0$; on $0\le E\le1$, $\varpi(E)\ge E/\pi$. Choose a smooth momentum bump $b_u$ with $0\le b_u\le1$, equal to one on $B_u$ and supported in~$B_{2u}$; $|\fourierplus{b_u}(-y)|\le8|B_1|u^3$. Since $|\vec p|\le E$ on the spectral cone, $b_u=1$ on the shell $\{u/2<E\le u\}$, and Fourier inversion and positivity give
 \begin{equation*}
 (2\pi)^3\frac{u}{2\pi}\,\mu(\{u/2<E\le u\})
 \le\left|\int\bar a(y)\fourierplus{b_u}(-y)\,dy\right|
 \le8|B_1||B_R|M u^3\,.
 \end{equation*}
-Here $|\vec p|\le E$ on the spectral cone makes $b_u=1$ on the indicated shell. Summing shells $u2^{-j}$ gives
+Summing the shells at $u2^{-j}$ gives
 \begin{equation}\label{eq:H-low}
 \mu(\{0<E\le u\})\le C R^3M u^2\qquad(0<u\le1)\,.
 \end{equation}
-For $u>1$ use the total mass bound. Since $e^{-sE}=\int_E^\infty se^{-st}\,dt$, Tonelli gives
+For $u>1$ use the total mass. Since $e^{-sE}=\int_E^\infty se^{-st}\,dt$, Tonelli gives
 \begin{equation}\label{eq:H-heat}
 0\le\langle A\Omega_\xi,(e^{-sH_\xi}-Q_\xi)A\Omega_\xi\rangle
 =\int_{E>0}e^{-sE}\,d\mu
 \le C_A s\int_0^\infty t^2e^{-st}\,dt=2C_As^{-2}\,.
 \end{equation}
 
-The heat pairing is continuous in~$\xi$:~\eqref{eq:H-boundary} gives continuous Schwartz frequency cutoffs, with error $Me^{-sN}$ outside radius~$2N$ on~$\forwardcone$. Subtract $|\langle\Omega_\xi,A\Omega_\xi\rangle|^2$. Almost-everywhere uniqueness and full support extend~\eqref{eq:H-heat} to this continuous pairing in every phase. Let $s\to\infty$ to obtain
-\begin{equation*}
-\|Q_\xi A\Omega_\xi\|^2=|\langle\Omega_\xi,A\Omega_\xi\rangle|^2\,.
-\end{equation*}
-Since $Q_\xi\Omega_\xi=\Omega_\xi$, density of compact word vectors gives $Q_\xi=P_{0,\xi}$. Surjectivity and heat intertwining give the OS vacuum line, completing W0.
+\emph{From almost every phase to every phase.} By Lemma~\ref{lem:H2.2}, $\mathsf J^{\rm OS}_\xi$ is unitary and intertwines heat, so it identifies $\ker H_\xi$ with $\ker H^{\rm OS}_\xi$; by Lemma~\ref{lem:H1.3} both are $\C\Omega_\xi$ for $\nu$-almost every~$\xi$, and there $Q_\xi=P_{0,\xi}$. The vacuum-subtracted heat pairing $\langle A\Omega_\xi,e^{-sH_\xi}A\Omega_\xi\rangle-|\langle\Omega_\xi,A\Omega_\xi\rangle|^2$ is continuous in~$\xi$: by~\eqref{eq:H-boundary} it is a continuous Schwartz pairing, with error $Me^{-sN}$ outside radius~$2N$ on~$\forwardcone$. It is bounded by $2C_As^{-2}$ for almost every~$\xi$, hence, by continuity and full support of~$\nu$, for every~$\xi$. Letting $s\to\infty$ gives $\|Q_\xi A\Omega_\xi\|^2=|\langle\Omega_\xi,A\Omega_\xi\rangle|^2$. Since $Q_\xi\Omega_\xi=\Omega_\xi$, density of compact word vectors gives $Q_\xi=P_{0,\xi}$, and~\eqref{eq:H-heat} becomes the second bound. Unitarity and heat intertwining give the OS vacuum line.
+\end{proof}
 
-For irreducibility, let $B$ satisfy the weak relation in Lemma~\ref{lem:H2.2}. The field adjoint law and iteration move words across matrix entries without requiring $B$ to preserve the domain. For a word~$A$, put $u=A\Omega_\xi$, $v=A^\dagger\Omega_\xi$ and, in the upper half-plane,
+\begin{lemma}[Irreducibility]\label{lem:H-irreducible}
+For every~$\xi$, a bounded operator~$B$ is scalar if and only if, for every smeared field~$\Phi$ and $u,v\in\mathcal D_\xi$, one has $u\in\operatorname{Dom}\Phi^*$ and $\langle\Phi^*u,Bv\rangle=\langle u,B\Phi v\rangle$.
+\end{lemma}
+\begin{proof}
+A scalar satisfies the relation by the adjoint law. Conversely, the adjoint law and iteration move words across matrix entries without requiring $B$ to preserve the domain. For a word~$A$ put $u=A\Omega_\xi$, $v=A^*\Omega_\xi$ and, in the upper half-plane,
 \begin{equation*}
 p(z)=\langle u,e^{izH_\xi}B\Omega_\xi\rangle,\qquad
 q(z)=\langle B^*\Omega_\xi,e^{izH_\xi}v\rangle\,.
 \end{equation*}
-These functions are bounded and continuous to the boundary, where covariance and the weak relation give $p(t)=q(-t)$. Morera and Liouville make their bounded pasted continuation constant. Hence $\langle u,e^{-sH_\xi}B\Omega_\xi\rangle=\langle u,B\Omega_\xi\rangle$. Heat convergence gives $B\Omega_\xi=b\Omega_\xi$. Moving words again gives $\langle A'\Omega_\xi,BA\Omega_\xi\rangle=b\langle A'\Omega_\xi,A\Omega_\xi\rangle$, so $B=b1$ by density. A scalar satisfies the relation by the adjoint law. This proves the equivalence in Lemma~\ref{lem:H2.2}.
+These are bounded and continuous to the boundary, where covariance and the weak relation give $p(t)=q(-t)$. Morera and Liouville make their bounded pasted continuation constant, so $\langle u,e^{-sH_\xi}B\Omega_\xi\rangle=\langle u,B\Omega_\xi\rangle$. Heat convergence and Lemma~\ref{lem:H2.3} give $B\Omega_\xi=b\Omega_\xi$. Moving words again gives $\langle A'\Omega_\xi,BA\Omega_\xi\rangle=b\langle A'\Omega_\xi,A\Omega_\xi\rangle$, so $B=b1$ by density.
+\end{proof}
+
+For the charge law set $\eta=\operatorname{diag}(-1,-1,-1,1)$, $\zeta_i=1$ for $i\le3$, $\zeta_4=-i$, and
+\begin{equation*}
+T^{\rm M}_{ab}=-\zeta_a\zeta_bT_{ab},\qquad
+T^{\rm M}_{ab}(f)=\Phi_\xi(\iota_4T^{\rm M}_{ab},f)\,.
+\end{equation*}
+Let $K(x)=k+Vx$ with $V^{\mathsf T}\eta+\eta V=0$, and let $\Sigma_K$ be its infinitesimal Lorentz label action. For real $f\in C_c^\infty(\R)$ of integral one and $c\in C_c^\infty(\R^3)$ put $Q_K(f,c)=\sum_b T^{\rm M}_{4b}(K^b(c\otimes f))$. Suppose $g\in C_c^\infty(\R^4)$, and $c=1$ on a ball such that all $(y,s)$ over its complement, $s\in\operatorname{supp}f$, are spacelike to $\operatorname{supp}g$. The charge law is
+\begin{equation}\label{eq:H-charge}
+i[Q_K(f,c),\Phi_\xi(\iota_dA,g)]
+=\Phi_\xi(\Sigma_K\iota_dA,g)-\sum_a\Phi_\xi(\iota_dA,\partial_a(K^ag))\,.
+\end{equation}
+
+A common polynomial bound permits the continuation of local stress identities.
+\begin{lemma}[Continued stress]\label{lem:H2.4}
+In every phase, $T$ continues to a symmetric Hermitian conserved Lorentz tensor of operator-valued distributions, with the local charge law~\eqref{eq:H-charge} under its support hypothesis.
+\end{lemma}
+\begin{proof}
+\emph{Tensor properties.} The factors give $T^{\rm M}_{44}=T_{44}$, $T^{\rm M}_{4i}=iT_{4i}$, $T^{\rm M}_{ij}=-T_{ij}$. Euclidean symmetry and~\eqref{eq:H-star} give symmetry and Hermiticity, and differentiation and exponentiation of covariance give the Lorentz action. Continuing the derivative identity gives $\Phi_\xi(\iota_{d+1}\partial_a A,f)=-\zeta_a^{-1}\Phi_\xi(\iota_dA,\partial_af)$, so Euclidean conservation gives $\sum_a\eta_{aa}T^{\rm M}_{ab}(\partial_af)=0$ on the common word domain.
+
+\emph{The Euclidean jump.} For real~$c$, insert $c(y)h(t-t_0)$ into the shell identities of Theorem~\ref{prop:ST}, transferred to the phase by Lemma~\ref{lem:H1.3}, and integrate conservation on each side of~$t_0$. The $\nabla c$ term stays away from the distinguished point and remains bounded, so $\sum_b\int c(y)K_{\rm E}^b(y,t)T_{4b}(y,t)\,dy$ is Cauchy on each side, with jump $\Sigma_KA+\sum_bK_{\rm E}^b\partial_bA$, where $K_{\rm E}^b(y)=\zeta_bK^b(\vec y,iy^4)$.
+
+\emph{Continuation of the jump.} Fix strictly ordered heights~$y_j$ for all fields other than the current, including the distinguished field with index~$0$. For their real times~$t_j$ put $z_j(\varsigma)=iy_j+\varsigma t_j$, and place the current at $z_0(\varsigma)\pm i\varepsilon$, retaining Euclidean separation~$\varepsilon>0$. Write
+\begin{equation*}
+I_\varepsilon^\pm(\varsigma)=\sum_b\int c(x)K_{\rm E}^b(x,-iz_0(\varsigma)\pm\varepsilon)
+\,\mathsf F_{\pm}^\xi(\ldots,T_{4b}(x,z_0(\varsigma)\pm i\varepsilon),\ldots)\,dx,
+\end{equation*}
+where $\mathsf F_\pm$ inserts the current immediately after or before the distinguished field. Choose a complex neighbourhood~$\mathcal U$ of $[0,1]$ preserving the other strict height differences. On $\operatorname{supp}\nabla c$ the spacelike germs of Lemma~\ref{lem:H-locality} bound the side integrals, uniformly for small~$\varepsilon$ and $\varsigma$ in compact $L\subset\mathcal U$, and conservation gives $\sup_{\varsigma\in L}|I_\varepsilon^\pm(\varsigma)-I_{\varepsilon'}^\pm(\varsigma)|\le C_L|\varepsilon-\varepsilon'|$. The limits are holomorphic; at small imaginary~$\varsigma$ the Euclidean calculation identifies their jump, and the identity theorem extends it to $\varsigma=1$. Test against $g,f$ and take the continuous partial boundaries; integration by parts differentiates $K^ag$, giving~\eqref{eq:H-charge}. Schwartz cutoffs and the joint bounds extend it from compact spectators. For complex~$c$, the charge of its imaginary part commutes with the distinguished field by locality. Constant and rotational~$K$ give the required actions.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{prop:RC}]
-Lemmas~\ref{lem:H2.1} and~\ref{lem:H2.2} prove the faithful W0--W3 theories, Definitions~\ref{def:D14f}--\ref{def:D15}, the unitary comparison, vacuum lines and scalar weak commutant required by Theorem~\ref{prop:RC}. Lemmas~\ref{lem:H2.3} and~\ref{lem:H2.4} supply the uniform rates, phase averages and continued stress, \mbox{retaining~$\xi_*$.\qedhere}
+Lemmas~\ref{lem:H2.1}, \ref{lem:H-locality} and~\ref{lem:H-fields} give, in every phase, a faithful theory satisfying W1--W3 and the spectral condition, with continuations satisfying Definitions~\ref{def:D15} and~\ref{def:D14f}. Lemma~\ref{lem:H2.2} gives the unitary comparison, Lemma~\ref{lem:H2.3} the vacuum lines and hence W0, and Lemma~\ref{lem:H-irreducible} the scalar weak commutant. Lemmas~\ref{lem:H2.3}--\ref{lem:H2.4} also give the uniform rates and the continued stress, at the retained phase~$\xi_*$ as at every other.
 \end{proof}

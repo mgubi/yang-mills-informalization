@@ -210,3 +210,4 @@ Examples from the first rounds. None of them would have been caught by compiling
   and Sections 15–19); every suggestion is **adjudicated** against the text and the Lean (accept, accept modified, reject, or left
   to the project lead) before writers apply it, and a confirmation review checks the applied changes; (3) main theorems are
   measured too, and a statement may cite at most four other results.
+- **12 November 2026.** Second draft: an editorial pass merging two expert human reviews, six reviewer reports (four Opus at maximum effort, two GPT-6 Astra) and a comparison with a collaborator's draft into one plan, with page budgets per section (ceiling 265 pages); confirmation reviews of every changed statement against the Lean and a fresh reader asked to explain five mechanisms of the proof; targeted re-checks before publication. The statement-to-declaration correspondence is published as `correspondence.tsv`.

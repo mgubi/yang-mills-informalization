@@ -1,67 +1,63 @@
 \section{Infinite volume and field calculus}\label{sec:partII-F}
 
-We pass from the fixed-volume kernels of Theorem~\ref{prop:UV} (UV) to correlations on~$\R^4$. The order of limits matters: the lattice spacing tends to zero at every fixed admissible volume, and only then does the volume increase. Lemma~\ref{lem:F1} uses Proposition~\ref{prop:UB} and Lemma~\ref{lem:E3.2} to choose the volume limit. Lemma~\ref{lem:F3} passes lattice reflection positivity to the limit and uses the centered bounds of Lemma~\ref{lem:E2.3} for the global power bound. For derivatives of that bound, Lemma~\ref{lem:F2} also uses Lemmas~\ref{lem:E2.6}--\ref{lem:E2.10}. Together these results prove Theorem~\ref{prop:IV} (IV). The same volume refinement supplies the coefficient maps needed for Proposition~\ref{prop:FC} (FC). Lemma~\ref{lem:F4} controls repeated insertions and will be used to construct the bounded slab operators in Lemma~\ref{lem:H1.1}.
+We pass from the fixed-volume kernels of Theorem~\ref{prop:UV} (fixed-volume limit) to correlations on~$\R^4$. The order of limits is that of Definition~\ref{def:D09} and Figure~\ref{fig:two-limits}: at every fixed admissible volume the spacing tends to zero along the full cutoff sequence; only then does the volume grow, along one refinement of the prescribed volume sequence that serves every field list, derivative and test. Section~\ref{sec:partII-F.1} extracts this volume limit, with all derivatives, from the uniform bounds of Proposition~\ref{prop:UB} (Lemma~\ref{lem:F1}). Section~\ref{sec:partII-F.2} bounds separated correlations cell by cell and shows that negligible errors vanish in them (Lemma~\ref{lem:F1b}). Section~\ref{sec:partII-F.3} identifies the quotient fields: it constructs coefficient maps for inclusions and positional derivatives and proves $\dim_\C F_d=\dim_\C\maxwellspace{d}$ (Lemma~\ref{lem:F2}, which proves Proposition~\ref{prop:FC}). Section~\ref{sec:partII-F.4} passes reflection positivity to the limit and proves the power bounds of E7 (Lemma~\ref{lem:F3}, which completes Theorem~\ref{prop:IV}). Section~\ref{sec:partII-F.5} bounds repeated reflected insertions, the input for the slab operators of Lemma~\ref{lem:H1.1}.
 
-There are two compactness arguments. The bounds of Proposition~\ref{prop:UB} (UB), including one additional difference, make the ultraviolet kernels and their derivatives equicontinuous on compact separated sets. A countable diagonal extraction therefore chooses the volume limit for all polynomial fields. Finite-dimensional compactness also retains certain corrected coefficient maps. These maps are needed because a positional difference changes the degree and the insertion normalization; the polynomial embedding between two coefficient spaces need not preserve correlations.
+The Wilson family and separated tests are those of Section~\ref{sec:continuum}, the insertion labels those of Section~\ref{sec:local-fields}, and the differences those of Section~\ref{sec:uv-limit}. Write $M_{p,v}=M^{\rm UV}_{p,v}$ and $\langle F\rangle_{N,p}=\int F\,d\mu_{N,p}$. Constants may depend on the fixed construction; further dependence is indicated.
 
-The identification of null coefficients is the additional difficulty. An approximation to a derivative may have unbounded coefficients. We normalize its projected part and use correlation tests to exclude a nonzero null vector in the range of the limiting projection. This produces one fixed coefficient vector that represents the derivative against every spectator. Finally, chessboard estimates give bounds uniform in the positions, including configurations of arbitrarily large diameter. For repeated words, two cell sizes keep the cost of the exterior independent of the number of repetitions.
+\subsection{Volume limits}\label{sec:partII-F.1}
 
-Throughout we use the Wilson family, tokens, differences and separated tests of Section~\ref{sec:continuum}. Write $f_{p,v}=M^{\rm UV}_{p,v}$ and $\langle F\rangle_{N,p}=\int F\,d\mu_{N,p}$. All constants below may depend on the fixed construction. Any further dependence is indicated.
-
-\subsection{Volume limits}
-
-Fix a strictly increasing~$\mathsf p:\N\to\N$. For each~$p,n,v$, let $S_v^{(p)}$ be the continuous restriction of~$f_{p,v}$ to the periodic generic domain
-\begin{equation*}
-\{x:x_i^a-x_j^a\notin L_p\Z\quad(i\ne j,\ a=1,\ldots,4)\}.
-\end{equation*}
-These restrictions retain the fixed-volume kernels required in IV. The next extraction chooses the limiting table and volume sequence together, with convergence of all derivatives.
-\begin{lemma}[Generic volume kernels]\label{lem:F1}
-There are a strictly increasing~$\mathsf q$ and a complex multilinear table~$S$. Put $P=\mathsf p\circ\mathsf q$. For every~$n,v,\boldsymbol l$,
+Fix a strictly increasing~$\mathsf p:\N\to\N$. Proposition~\ref{prop:UB} bounds the lattice kernels and their differences on separated sets, uniformly in the volume; one further difference makes these bounds equicontinuous.
+\begin{lemma}[Volume limits]\label{lem:F1}
+There are a strictly increasing~$\mathsf q$ and a complex multilinear table~$S$ such that, with $P=\mathsf p\circ\mathsf q$, for every~$n$, label list~$v$ and difference list~$\boldsymbol l$,
 \begin{equation}\label{eq:F-conf}
 S_n(v;\cdot)\in C^\infty(\Conf{n}),\qquad
-\partial_{\boldsymbol l}f_{P(k),v}\longrightarrow
+\partial_{\boldsymbol l}M_{P(k),v}\longrightarrow
 \partial_{\boldsymbol l}S_n(v;\cdot)
 \quad\text{locally uniformly on }\Conf{n}\,.
 \end{equation}
-Every compact $K\subset\Conf{n}$ eventually lies in~$\NoHit{L_{P(k)}}{n}$. For every separated test~$f$,
+Every compact $K\subset\Conf{n}$ eventually lies in~$\NoHit{L_{P(k)}}{n}$, and for every separated test~$f$,
 \begin{equation}\label{eq:F-ordered}
 C_{P(k)}^{\rm UV}(v;f)\longrightarrow\int f(x)S_n(v;x)\,dx.
 \end{equation}
-Both convergences persist under further refinement.
+Both convergences persist along every further refinement of~$\mathsf q$.
 \end{lemma}
-The proof below also gives eventual inclusion of every compact generic set in the periodic generic domains and uniform convergence of~$S_v^{(P(k))}$ there. After Lemma~\ref{lem:F2}, $P$ denotes its final refinement.
 \begin{proof}
-Fix a compact $K\subset\Conf{n}$ and a compact neighbourhood $K'$ contained in~$\Conf{n}$. For all sufficiently large~$p$, $K'$ lies in~$\NoHit{L_p}{n}$, and its torus separation has a positive lower bound $2r$ independent of~$p$. UB bounds $\Delta_{\boldsymbol l}\latmoment_{N,p}$ by $B(v,\boldsymbol l,r)$ on lattice tuples near~$K'$, for all sufficiently large~$N$, uniformly in~$p$. By Lemma~\ref{lem:E3.2}, the multilinear interpolants converge at each fixed~$p$ to $\partial_{\boldsymbol l}f_{p,v}$. Consequently
+Fix compact sets $K\subset K'\subset\Conf{n}$, with $K'$ a neighbourhood of~$K$. For large~$p$, $K'$ lies in~$\NoHit{L_p}{n}$ with torus separation at least some $2r>0$ independent of~$p$. Proposition~\ref{prop:UB} bounds $\Delta_{\boldsymbol l}\latmoment_{N,p}$ by $B(v,\boldsymbol l,r)$ near~$K'$ for large~$N$, uniformly in~$p$, and by Lemma~\ref{lem:E3.2} the multilinear interpolants converge at each fixed~$p$ to $\partial_{\boldsymbol l}M_{p,v}$. Hence
 \begin{equation}\label{eq:F-local}
-\sup_{p\ge p_0}\sup_{x\in K'}|\partial_{\boldsymbol l}f_{p,v}(x)|
-\le B(v,\boldsymbol l,r).
+\sup_{p\ge p_0}\sup_{x\in K'}|\partial_{\boldsymbol l}M_{p,v}(x)|
+\le B(v,\boldsymbol l,r),
 \end{equation}
-The ultraviolet threshold for taking this limit may depend on~$p$. One more derivative bounds variation along short segments in~$K'$, giving equicontinuity on~$K$.
+although the cutoff threshold may depend on~$p$. One more derivative gives equicontinuity on~$K$. Arzelà--Ascoli~\cite[Theorem~7.25]{Rudin1976} and a diagonal extraction over compact exhaustions of~$\Conf{n}$, arities, degree lists, basis coefficient lists and difference lists, a countable family, give~$\mathsf q$. Multilinearity extends the limits to every label list, and integration by parts against compactly supported tests identifies the limit of each derivative with the derivative of the limit. This proves~\eqref{eq:F-conf}.
 
-Apply Arzelà--Ascoli, in the form for a pointwise bounded equicontinuous sequence of continuous complex functions on a compact metric space~\cite[Theorem~7.25]{Rudin1976}. Diagonalize over compact exhaustions of~$\Conf{n}$, arities, degree lists, basis coefficient lists and derivative lists. These indices are countable. Starting from any prescribed strictly increasing~$\mathsf p$, we obtain a strictly increasing~$\mathsf q$ and $P=\mathsf p\circ\mathsf q$. Multilinearity extends the limits from basis lists to every token list. Integration by parts against a compactly supported test identifies the limit of each first derivative with the derivative of the limiting kernel. Repeating this for all derivative lists gives a smooth multilinear table~$S$, with local convergence of every derivative.
+A compact separated set has bounded diameter, so it eventually lies in~$\NoHit{L_{P(k)}}{n}$. Theorem~\ref{prop:UV} gives, at every admissible~$p$, the full inner limit $C_p^{\rm UV}(v;f)=\int f\,M_{p,v}$; the support of~$f$ is eventually admissible along~$P$, and local uniform convergence proves~\eqref{eq:F-ordered}. Both properties pass to subsequences.
+\end{proof}
+Lemma~\ref{lem:F2} refines~$\mathsf q$ once more without changing~$S$; from then on~$P$ denotes the final refinement. At each volume the kernel limits remain the full ultraviolet limits of Theorem~\ref{prop:UV}: no spacing subsequence enters~\eqref{eq:F-ordered}.
 
-A compact generic set has bounded diameter and a positive minimum coordinate separation, so it eventually lies in the displayed periodic generic domain. The asserted uniform convergence of~$S_v^{(P(k))}$ follows from the extraction. The same bounded-diameter argument puts every compact separated set in~$\NoHit{L_{P(k)}}{n}$ eventually. For every separated test~$f$, UV gives, at every admissible~$p$, the full inner limit $C_p^{\rm UV}(v;f)=\int f f_{p,v}$. Its support is eventually admissible along~$P$, and local uniform convergence proves~\eqref{eq:F-ordered}. Thus Definition~\ref{def:D09} holds. Both convergences persist on every further volume refinement.
+\paragraph{Symmetries of the limit.} Permutation symmetry, the empty correlation, deletion of the distinguished unit, conjugation and signed-permutation covariance hold on the lattice once~$N$ exceeds the reference levels (Definition~\ref{def:D08}, Lemma~\ref{lem:E2.1a}). Approximating separated configurations by lattice points, Lemma~\ref{lem:E3.2} and~\eqref{eq:F-conf} pass them to~$S$. For translations, approximate the translation vector on the same lattice; translation invariance and~\eqref{eq:F-local} give arbitrary real translations. This proves E1--E3, and~\eqref{eq:F-conf} gives E6.
+
+\subsection{Separated cells and negligible errors}\label{sec:partII-F.2}
+
+Chessboard seminorms, interior observables, signed images, aligned tilings, anchors and margins are those of Definition~\ref{def:D27} and of the paragraphs before Lemma~\ref{lem:F1a} and Definition~\ref{def:E2-small}. For observables $F_1,\ldots,F_n$ in distinct cells $C_1,\ldots,C_n$ of a translated bond tiling~$\mathcal T$, each interior to its cell, write $\|F_h\|_{\mathcal T}=\|G_h\|_{\mathcal T}$, where $G_h$ is the base-cell observable with $(G_h)_{C_h}=F_h$. The chessboard inequality~\eqref{eq:E-chess}, with the constant one in the remaining cells, gives
+\begin{equation}\label{eq:F-chess}
+\left|\left\langle\prod_{h=1}^nF_h\right\rangle_{N,p}\right|
+\le\prod_{h=1}^n\|F_h\|_{\mathcal T}\,.
+\end{equation}
+The seminorm measures the cost of repeating one observation throughout the box, so this bound is independent of the volume and of the distances between the cells.
+
+Separated anchors must therefore be placed in distinct cells, away from the boundaries. In each axis, the translations of a tiling of side~$a$ that bring one of~$n$ anchors within distance~$w$ of a cell boundary form, modulo~$a$, at most~$n$ intervals of total length~$2nw$. If $2nw<a$, some lattice translation avoids them once~$a_N$ is small. We call this the strip count. Anchors at torus sup-distance greater than~$a$ never share a cell.
+\begin{lemma}[Separated cells]\label{lem:F-cells}
+Let $m\le k$ and $n\ge1$ with $6na_k<a_m$, and suppose the insertions~$O_{N,p}(v_h,\cdot)$, $h\le n$, satisfy the hypothesis of Lemma~\ref{lem:F1a} at level~$k$ with a common bound~$B$. For all sufficiently large~$N$ and all anchors with pairwise torus sup-distance greater than~$a_m$,
+\begin{equation*}
+\left|\left\langle\prod_{h=1}^nO_{N,p}(v_h,y_h)\right\rangle_{N,p}\right|\le B^n.
+\end{equation*}
+\end{lemma}
+\begin{proof}
+The strip count with $a=a_m$ and $w=3a_k$ gives a tiling of side~$a_m$ with the anchors in distinct cells, at distance at least~$3a_k$ from their boundaries. Lemma~\ref{lem:F1a} bounds each seminorm by~$B$, and~\eqref{eq:F-chess} gives the claim.
 \end{proof}
 
-\paragraph{Symmetries of the limit.} We first prove E1--E3 and E6, using Definition~\ref{def:D08}, Lemmas~\ref{lem:E2.1a} and~\ref{lem:E3.2} and~\eqref{eq:F-conf}. Permutation symmetry, the empty correlation, deletion of the distinguished unit, conjugation and signed-permutation covariance hold on the lattice once~$N$ exceeds the finitely many reference levels. Approximate any fixed separated configuration by lattice points and use Lemma~\ref{lem:E3.2}, then~\eqref{eq:F-conf}. For translations, approximate the translation vector on the same lattice. Translation invariance and~\eqref{eq:F-local} pass the identity to arbitrary real translations. This proves E1--E3 independently of the coefficient corrections. Equation~\eqref{eq:F-conf} gives E6; multilinearity was retained in the extraction.
-
-\subsection{Interior roots and errors}
-
-We use the chessboard root of Definition~\ref{def:D27}. A signed image means the image under~$\hypercubic$; conjugation is also allowed. Bond tilings, anchors, margins and small errors are specified before Definition~\ref{def:E2-small}. We consider tilings at the construction levels. Two such tilings are aligned when their cells have the same coordinate axes and every coarse boundary is a fine boundary. Their side ratio is an odd integer, since the block ratios are odd.
-
-For interior functions in the base cell of a bond tiling~$\mathcal T$, the chessboard inequality reads
-\begin{equation}\label{eq:F-chess}
-\left|\left\langle\prod_{C\in\mathcal T}(F_C)_C\right\rangle_{N,p}\right|
-\le\prod_{C\in\mathcal T}\|F_C\|_{\mathcal T}\,.
-\end{equation}
-Apply the abstract chessboard theorem~\cite[Theorem~4.1]{FrohlichIsraelLiebSimon1978} axis by axis, on real vector spaces of complex observables, with reflection followed by conjugation. The functional has~$L_pD_k$ factors in each axis, an even number since~$4\mid L_p$. Lattice translation invariance gives cyclicity. Reflection positivity across every translated band cut gives the required Schwarz inequality. For the Wilson action this is Osterwalder--Schrader positivity on the periodic lattice~\cite[Theorem~2.1, pp.~14--15]{Seiler1982}, applied to a compact matrix gauge group, positive coupling, and observables supported on one side of the bond planes. Their boundaries pass through link midpoints, as required there.
-
-The centered root estimate also controls anchors near arbitrary separated configurations: this is the interior root bound, Lemma~\ref{lem:F1a} in Section~\ref{sec:partII-E}. Write $v=(d,c)$ for the insertion token.
-
-
-Small errors are defined by a root tolerance chosen before the cell scale. This order makes them negligible against each fixed spectator test.
+A negligible error has a tolerance chosen before the cell scale (Definition~\ref{def:E2-small}), and this order makes it vanish against each fixed list of spectators.
 \begin{lemma}[Vanishing errors]\label{lem:F1b}
-For every small error~$E$ of Definition~\ref{def:E2-small}, fixed token list~$v$, distinguished slot~$i$, and~$\delta>0$, there is $C(v,\delta)<\infty$ such that, eventually in~\eqref{eq:E2-tails},
+For every negligible error~$E$ of Definition~\ref{def:E2-small}, fixed label list~$v$, distinguished slot~$i$ and~$\delta>0$, there is $C(v,\delta)<\infty$ such that, eventually in~\eqref{eq:E2-tails},
 \begin{equation}\label{eq:F-small}
 \left|\left\langle E_{N,p}(y_i)\prod_{h\ne i}O_{N,p}(v_h,y_h)\right\rangle_{N,p}\right|
 \le C(v,\delta)\eta_{N,p}
@@ -69,167 +65,152 @@ For every small error~$E$ of Definition~\ref{def:E2-small}, fixed token list~$v$
 \end{equation}
 Consequently its smear against any fixed separated test tends to zero in that order.
 \end{lemma}
-The proof uses distinct cells for the error and each spectator.
+The error and the spectators receive distinct cells; the error pays its tolerance~$\eta_{N,p}$, and each spectator a constant.
 \begin{proof}
-Use Definition~\ref{def:D08}, the centered estimate of Lemma~\ref{lem:E2.3}, Definition~\ref{def:E2-small}, Lemma~\ref{lem:F1a} and~\eqref{eq:F-chess}. Let~$n$ be the arity, and take the arity parameter in~\eqref{eq:E2-margin} equal to~$n$. Take~$m$ with~$a_m<\delta$; the small-error condition gives~$k\ge m$. Here~$m$ only imposes a lower bound on~$k$; the tiling has side~$a_k$. Choose a finer spectator level~$k_{\rm sp}$ with~$3a_{k_{\rm sp}}\le a_k/[8(n+1)]$. Lemma~\ref{lem:E2.3} bounds all signed spectator roots and their images under conjugation there by a fixed constant.
-
-In each axis choose the translation of the level-$k$ tiling so that no boundary meets a strip of half-width~$a_k/[4(n+1)]$ around any anchor. The excluded length is at most~$n a_k/[2(n+1)]<a_k$, so such a lattice translation exists for sufficiently large~$N$. It supplies the integer margins~\eqref{eq:E2-margin}, including their extra lattice unit, and margin~$3a_{k_{\rm sp}}$ for spectators. Any pair of anchors differs in some coordinate by at least~$\delta>a_k$, so they occupy distinct cells. Apply Lemma~\ref{lem:F1a} to each spectator with its levels~$(m,k)$ equal to~$(k,k_{\rm sp})$ here;~\eqref{eq:F-chess} then gives~\eqref{eq:F-small}. On a compact test support, the number of lattice tuples multiplied by~$a_N^{4n}$ is bounded independently of~$N,p$. Multiplication by the test supremum therefore proves the smeared assertion.
+Let~$n$ be the arity. Take~$m$ with $a_m<\delta$, and let $k\ge m$ be the level that Definition~\ref{def:E2-small} assigns to the arity~$n$ and the lower level~$m$; the error tiling has side~$a_k$. Choose $k_{\rm sp}\ge k$, beyond the reference levels of the spectators, with $3a_{k_{\rm sp}}\le a_k/[8(n+1)]$. Lemma~\ref{lem:E2.3} bounds the centered seminorms of all signed and conjugated images of the spectators at level~$k_{\rm sp}$ by some~$B_{\rm sp}$. The strip count with $a=a_k$ and $w=a_k/[4(n+1)]$, and $\delta>a_k$, give a tiling of side~$a_k$ with the anchors in distinct cells at distance at least~$w$ from their boundaries. This margin contains the integer margin~\eqref{eq:E2-margin}, including its extra lattice unit, and exceeds~$3a_{k_{\rm sp}}$. Translating by a multiple of~$a_k$, we may take the error's cell to be the base cell. Definition~\ref{def:E2-small} bounds the seminorm of the error by~$\eta_{N,p}$, and Lemma~\ref{lem:F1a}, with tiling side~$a_k$ and centered level~$k_{\rm sp}$, bounds those of the spectators by~$B_{\rm sp}$. Now~\eqref{eq:F-chess} gives~\eqref{eq:F-small} with $C=B_{\rm sp}^{n-1}$. On a compact test support the number of lattice tuples times~$a_N^{4n}$ is bounded independently of~$N,p$, which proves the smeared assertion.
 \end{proof}
 
-\subsection{Corrected coefficients}
+\subsection{Quotient fields}\label{sec:partII-F.3}
 
-We now use the equation projections and corrections of Lemmas~\ref{lem:E2.6}--\ref{lem:E2.9}, and the relative rank comparison of Lemma~\ref{lem:E2.10}. The other inputs are Proposition~\ref{prop:UB}, Definitions~\ref{def:D08}, \ref{def:D10} and~\ref{def:D11}, Lemmas~\ref{lem:E2.1a}, \ref{lem:E2.2} and~\ref{lem:E2.3}, Lemma~\ref{lem:E3.2}, Lemmas~\ref{lem:F1}, \ref{lem:F1a} and~\ref{lem:F1b}, and E1--E3 established above. Lemma~\ref{lem:E2-free-tests} supplies the free test rows independently of the interacting arguments here. Auxiliary coefficient limits may use a common spacing subsequence~$\mathsf n$ at every~$p$; the full ultraviolet kernel limits remain those of UV.
-
-These estimates distinguish coefficients that vanish in every separated correlation. The next lemma constructs the maps asserted in FC and proves its dimension equality. The coefficient maps have types $\kappa_{d,e}:V_d\to V_e$ for $d\le e$ and $\tau_{d,a}:V_d\to V_{d+1}$. For a finite-dimensional real or complex coefficient space~$E$, a readout $R_{N,p}\in E$ records finitely many coefficients. It is bounded if $\|R_{N,p}\|\le B$ eventually in~\eqref{eq:E2-tails}, for some finite~$B$. Its cluster limits will retain auxiliary coefficients with the same table~$S$ and volume sequence~$P$.
-\begin{lemma}[Quotient compatibility]\label{lem:F2}
-A strictly increasing refinement of~$\mathsf q$ admits linear maps $\kappa_{d,e},\tau_{d,a}$ with
-\begin{equation}\label{eq:F-calculus}
-S(\kappa_{d,e}c,\ldots)=S(c,\ldots),\qquad
-S(\tau_{d,a}c,\ldots)=\partial_{x_0^a}S(c,\ldots).
-\end{equation}
-They induce $\jmath_{d,e},\partial_a$ of FC, and $\dim_\C F_d=\dim_\C\maxwellspace{d}$. Inclusions preserve correlations and units and compose compatibly. Both commute with conjugation, and
+Two labels represent the same field when every separated correlation gives the same answer for them (Definition~\ref{def:D10}). For a degree~$d$, a slot, fixed spectators~$v$ and a separated test~$f$, the one-slot functionals on~$V_d$ are
 \begin{equation*}
-h\partial_a=\sum_bh_{ba}\partial_bh\qquad(h\in\hypercubic).
+L_{N,p}(c)=\latsmear_{N,p}\bigl((d,c),v;f\bigr),\qquad
+L(c)=\int f(x_0,x)\,S_{n+1}\bigl(c(x_0),v(x)\bigr)\,dx_0\,dx.
 \end{equation*}
-Each $\iota_d$ is injective; every response lies in one $\iota_dF_d$; every field has a token representative. The unit is $\unitfield{d}=[a_{\reflevel{d}}^d\mathbf1]$. Bounded readouts converge along each ultrafilter containing the ordered tails.
+As $S$ is smooth, $\nullspace{d}(S)$ is the intersection of the kernels of all such~$L$: it consists exactly of the labels that no separated smear detects. Four inputs from Section~\ref{sec:partII-E.2} identify it, each with one task. (C1)~Lemma~\ref{lem:E2.8} represents a degree-$d$ insertion in a degree $e\ge d$, and (C2)~Lemma~\ref{lem:E2.9} its lattice difference quotient in degree~$d+1$, up to negligible errors. (C3)~Lemma~\ref{lem:E2.7} replaces a tame family in $\ker\Pi_{d,N,p}$ by observables with vanishing separated moments, up to a negligible error; \emph{tame} means the subpower bound~\eqref{eq:F-subpower}. (C4)~The free test rows of Lemma~\ref{lem:E2-free-tests} and the relative rank comparison of Lemma~\ref{lem:E2.10} keep the quotient from losing dimension. The families supplied by (C1)--(C3) may have unbounded coefficients; Lemma~\ref{lem:F-represent} turns them into fixed coefficient vectors.
+
+The coefficient limits are taken along a common spacing subsequence~$\mathsf n$ at every volume and a further volume refinement, in the order~\eqref{eq:E2-tails}. They do not affect the kernel limits, which at each admissible volume remain the full ultraviolet limits required by Definition~\ref{def:D09}. A family in a finite-dimensional space is \emph{bounded} if its norm is bounded eventually in~\eqref{eq:E2-tails}; an \emph{ordered limit point} of countably many bounded families is their joint limit along an ultrafilter containing the ordered tails. It exists by compactness, and families that converge along the ordered tails keep their limits, so passing to ordered limit points changes neither~$S$ nor~$P$.
+
+The next lemma, finite-dimensional linear algebra, converts approximate representatives, which need not be bounded, into one exact representative.
+\begin{lemma}[Representation of limits]\label{lem:F-represent}
+Let~$V$ be a finite-dimensional complex normed space and~$\mathcal F$ a proper filter on an index set. Let $\Pi_u,\Pi$ be idempotents on~$V$ with $\Pi_u\to\Pi$, and $L_{i,u},L_i$, $i\in I$, linear functionals with $L_{i,u}\to L_i$ and $\ker\Pi=\bigcap_i\ker L_i$. Suppose $x_u\in V$ satisfy, for every~$i$, along~$\mathcal F$,
+\begin{equation}\label{eq:F-normalized}
+L_{i,u}(x_u)\longrightarrow t_i,\qquad
+L_{i,u}\bigl((x_u-\Pi_ux_u)/(1+\|\Pi_ux_u\|)\bigr)\longrightarrow0.
+\end{equation}
+Then some $z\in V$ satisfies $\Pi z=z$ and $L_i(z)=t_i$ for every~$i$.
 \end{lemma}
-The proof below constructs the inclusions and derivatives asserted in FC, proves its dimension equality, and then derives the compatibility properties. E1--E3 are already available.
+The second condition makes the null part of~$x_u$ negligible relative to its retained part. If the retained parts~$\Pi_ux_u$ escaped to infinity, normalizing them would produce a unit vector in the range of~$\Pi$ annihilated by every~$L_i$: a null vector in the retained range, which $\ker\Pi=\bigcap_i\ker L_i$ excludes.
 \begin{proof}
-We use the inputs listed above. Bounded coefficient families satisfy~\eqref{eq:F-subpower}. In fact Lemma~\ref{lem:E2.2} bounds their inverse terminal coordinates by a fixed norm factor times $\prod_{m<N}C_{J_{m+1}}$, and the constant choices in Section~\ref{sec:constants} give $\log C_{J_{m+1}}\le J_{m+1}^{-2}\log\ell_m$. Split the sum at a fixed level. Its finite initial part is~$o(s_N)$, while its tail divided by~$s_N=\sum_{m<N}\log\ell_m$ is bounded by the largest~$J_{m+1}^{-2}$ in that tail. Sending the splitting level to infinity gives $\sum_{m<N}\log C_{J_{m+1}}=o(s_N)$. There are countably many projection matrices and comparison coefficient lists. The uniform bound in Lemma~\ref{lem:E2.6} gives convergent subsequences by finite-dimensional compactness. The same countable diagonal extraction retains every projection, each comparison lift and each coupling $\beta_{N,p,k}$, $k\in\N$, which lie in the bounded bands $\mathfrak B_k$ by Theorem~\ref{prop:MT}, first in~$N$ at every~$p$, then in volume, retaining~\eqref{eq:F-conf}. Thus, in operator norm,
+Put $b_u=(1+\|\Pi_ux_u\|)^{-1}$ and $z_u=b_u\Pi_ux_u$, so $b_u+\|z_u\|=1$ and $\Pi_uz_u=z_u$. The pairs $(b_u,z_u)$ have a cluster point~$(\lambda,z)$ along~$\mathcal F$ in $[0,1]\times\{\|z\|\le1\}$. As $L_{i,u}(z_u)=b_uL_{i,u}(x_u)-L_{i,u}(b_u(x_u-\Pi_ux_u))$,
+\begin{equation*}
+L_i(z_u)-b_ut_i=b_u\bigl(L_{i,u}(x_u)-t_i\bigr)-L_{i,u}\bigl(b_u(x_u-\Pi_ux_u)\bigr)+(L_i-L_{i,u})(z_u)\longrightarrow0,
+\end{equation*}
+and $\Pi z_u-z_u=(\Pi-\Pi_u)z_u\to0$. Hence $L_i(z)=\lambda t_i$, $\Pi z=z$ and $\lambda+\|z\|=1$. If $\lambda=0$, then $z\in\bigcap_i\ker L_i=\ker\Pi$, so $z=\Pi z=0$, contradicting $\|z\|=1$. Thus $\lambda>0$, and $z/\lambda$ has the required properties.
+\end{proof}
+
+\begin{lemma}[Corrected coefficient maps]\label{lem:F2}
+After a strictly increasing refinement of~$\mathsf q$, which does not change~$S$, there are complex linear maps $\hat\jmath_{d,e}:V_d\to V_e$ for $d\le e$ and $\hat\partial_{d,a}:V_d\to V_{d+1}$ such that, for every~$c\in V_d$, spectator word~$v(x)$ and $(x_0,x)\in\Conf{n+1}$,
+\begin{equation}\label{eq:F-calculus}
+\begin{gathered}
+S_{n+1}\bigl(\hat\jmath_{d,e}c(x_0),v(x)\bigr)=S_{n+1}\bigl(c(x_0),v(x)\bigr),\\
+S_{n+1}\bigl(\hat\partial_{d,a}c(x_0),v(x)\bigr)=\partial_{x_0^a}S_{n+1}\bigl(c(x_0),v(x)\bigr).
+\end{gathered}
+\end{equation}
+Moreover $\dim_\C F_d=\dim_\C\maxwellspace{d}$, and the induced maps $\jmath_{d,e}[c]=[\hat\jmath_{d,e}c]$ and $\partial_a[c]=[\hat\partial_{d,a}c]$ satisfy Proposition~\ref{prop:FC}.
+\end{lemma}
+The proof identifies the null space with the kernel of a limiting projection, then applies Lemma~\ref{lem:F-represent} to the families of (C1) and~(C2).
+\begin{proof}
+\emph{Limiting projections.} Bounded coefficient families are tame: Lemma~\ref{lem:E2.2} bounds their inverse terminal coordinates by a fixed factor times $\prod_{m<N}C^{\rm col}_{J_{m+1}}$, and $\log C^{\rm col}_{J_{m+1}}\le J_{m+1}^{-2}\log\ell_m$ (Appendix~\ref{sec:constants}) with $J_m\to\infty$ makes this product grow more slowly than every power of~$a_N^{-1}$. A countable diagonal extraction, first in~$N$ at every~$p$, then in the volume, retaining~\eqref{eq:F-conf}, makes the following converge: the projections of Lemma~\ref{lem:E2.6}, which are bounded by~$C^\Pi_d$, the comparison lifts of Lemma~\ref{lem:E2.10}, and the couplings $\beta_{N,p,k}\in\mathfrak B_k$, $k\in\N$, of Theorem~\ref{prop:MT}. In operator norm,
 \begin{equation}\label{eq:F-projections}
 \Pi_{d,\mathsf n(j),p}\longrightarrow\Pi_d^{(p)},\qquad
 \Pi_d^{(P(k))}\longrightarrow\Pi_d,\qquad
-\Pi_d^2=\Pi_d\,.
+\Pi_d^2=\Pi_d\,,
 \end{equation}
-Continuity of composition gives idempotence at both stages. For later use, the convergence also holds in the order~\eqref{eq:E2-tails}.
+and by~\eqref{eq:E2-tails} this iterated limit is an ordered limit.
 
-Let $L_{N,p}:V_d\to\C$ be any fixed one-slot smeared correlation map, with arbitrary fixed spectators and test. Its operator-norm limit is~$L$, by finite dimensionality and~\eqref{eq:F-ordered}. Apply Lemma~\ref{lem:E2.7} and~\eqref{eq:F-small} to $c-\Pi_{d,N,p}c$. This gives $L((1-\Pi_d)c)=0$ for every~$L$. Since~$S$ is smooth by~\eqref{eq:F-conf},
+\emph{The null space.} By finite dimensionality, the full fixed-volume limits and~\eqref{eq:F-ordered}, $L_{N,p}\to L$ in operator norm in the ordered limit. For fixed~$c$, the bounded family $c-\Pi_{d,N,p}c$ is tame and lies in $\ker\Pi_{d,N,p}$, so (C3) and Lemma~\ref{lem:F1b} give $L_{N,p}(c-\Pi_{d,N,p}c)\to0$. Thus $L((1-\Pi_d)c)=0$ for every~$L$:
 \begin{equation}\label{eq:F-null}
 \ker\Pi_d\subset\nullspace{d}(S).
 \end{equation}
-For the reverse dimension inequality, use the rank-$q_d$ free matrix~$\mathcal G$ of Lemma~\ref{lem:E2-free-tests} and the common lifts of Lemma~\ref{lem:E2.10}. Rearrange~\eqref{eq:F-relative} to isolate~$\mathcal G^\nu_I$. Every remaining term contains a nonempty~$R_J$; its expectation is bounded by~$\gamma_\nu$ using~\eqref{eq:F-chess}. Thus
+For the reverse inequality, use (C4). Rearranging~\eqref{eq:F-relative} isolates~$\mathcal G^\nu_I$; every other term contains a nonempty~$R_J$, whose expectation is at most its seminorm~$\gamma_\nu$ by~\eqref{eq:F-chess} with one occupied cell. Thus
 \begin{equation}\label{eq:F-rank}
-\left|\left\langle\prod_{h\in I}I_h\right\rangle-\mathcal G^\nu_I\right|
-\le\gamma_\nu\sum_{J\subsetneq I}|\mathcal G^\nu_J|.
+\left|\left\langle\prod_{h\in I}F^{\rm tst}_h\right\rangle_{N,p}-\mathcal G^\nu_I\right|
+\le\gamma_\nu\sum_{J\subsetneq I}|\mathcal G^\nu_J|,
 \end{equation}
-The finite sum stays bounded as $y^{\nu,i}\to y^i$. Pass through both coefficient and kernel limits. Each matrix entry is a fixed spectator functional on~$V_d$, applied to the limiting lift of~$m_j$. That functional vanishes on~$\nullspace{d}(S)$, so each matrix factors through~$F_d$ and has rank at most~$\dim F_d$. The matrices tend to~$\mathcal G$. A nonzero $q_d$-minor therefore gives $\dim F_d\ge q_d$. Ranks of converging idempotents are eventually constant: if $\|P-Q\|<1$, $P$ is injective on~$\operatorname{ran}Q$, and conversely. Passing the dimension inequality in Lemma~\ref{lem:E2.6} to~$\Pi_d$ using~\eqref{eq:F-projections} and using~\eqref{eq:F-null} now gives
+and the sum stays bounded as $y^{\nu,i}\to y^i$. Pass to the coefficient and kernel limits. Each entry of the resulting matrix is a fixed spectator functional, vanishing on~$\nullspace{d}(S)$, applied to the limiting lift of~$\mathfrak m_j$; so the matrix factors through~$F_d$ and has rank at most~$\dim F_d$. As $\nu\to\infty$ these matrices tend to the rank-$\dim_\C\maxwellspace{d}$ matrix~$\mathcal G$, so $\dim F_d\ge\dim_\C\maxwellspace{d}$. Ranks of converging idempotents are eventually constant (if $\|P-Q\|<1$, then $P$ is injective on $\operatorname{ran}Q$), so the dimension inequality of Lemma~\ref{lem:E2.6} passes to~$\Pi_d$, and with~\eqref{eq:F-null}, $\dim F_d\le\dim V_d-\dim\ker\Pi_d\le\dim_\C\maxwellspace{d}$. Hence
 \begin{equation}\label{eq:F-dimension}
-\nullspace{d}(S)=\ker\Pi_d,\qquad \dim_\C F_d=q_d.
+\nullspace{d}(S)=\ker\Pi_d,\qquad \dim_\C F_d=\dim_\C\maxwellspace{d}.
 \end{equation}
 
-For inclusion, Lemma~\ref{lem:E2.8} gives a corrected family that has target smeared limit~$\int fS(c,\ldots)$. For the corrected difference of Lemma~\ref{lem:E2.9}, torus summation by parts gives exactly
+\emph{Targets.} For the inclusion of $c\in V_d$, (C1) and Lemma~\ref{lem:F1b} give a tame family $w_{N,p}\in V_e$ whose one-slot functionals tend to $t_L=\int fS(c,\ldots)$. For the derivative in slot~$i$ and axis~$a$, (C2) gives $w_{N,p}\in V_{d+1}$, and torus summation by parts gives exactly
 \begin{equation}\label{eq:F-parts}
 a_N^{4n}\sum_y f(\hat y)\Delta_{i,a}\latmoment_{N,p}(v;y)
-=a_N^{4n}\sum_y\frac{f(\hat y-a_Ne_{i,a})-f(\hat y)}{a_N}\latmoment_{N,p}(v;y).
+=a_N^{4n}\sum_y\frac{f(\hat y-a_Ne_{i,a})-f(\hat y)}{a_N}\latmoment_{N,p}(v;y),
 \end{equation}
-Here $e_{i,a}$ is the coordinate vector in slot~$i$, axis~$a$. The backward quotient tends uniformly to~$-\partial_{i,a}f$; its residual is bounded by $a_N\|\partial_{i,a}^2f\|_\infty/2$. UB at order zero controls the residual sum on a fixed compact neighbourhood. Thus the derivative target is $-\int(\partial_{i,a}f)S(c,\ldots)$.
+with $e_{i,a}$ the coordinate vector of slot~$i$, axis~$a$. The backward quotient tends to~$-\partial_{i,a}f$ with residual at most $a_N\|\partial_{i,a}^2f\|_\infty/2$, which Proposition~\ref{prop:UB} at order zero controls, so the target is $t_L=-\int(\partial_{i,a}f)S(c,\ldots)$.
 
-For either corrected family~$w_{N,p}$ in its representing degree~$e$, write $\Pi=\Pi_{e,N,p}$. The normalized remainder $(w-\Pi w)/(1+\|\Pi w\|)$ is admissible and belongs to~$\ker\Pi$: its first term is a bounded scalar multiple of an admissible family, and its second term is bounded. Lemma~\ref{lem:E2.7} and Lemma~\ref{lem:F1b} give
-\begin{equation}\label{eq:F-normalized}
-L_{N,p}\bigl((w-\Pi w)/(1+\|\Pi w\|)\bigr)\longrightarrow0.
-\end{equation}
-The ordered tails
-\begin{equation*}
-\{(k,j):k\ge k_0,\ j\ge j_0(k)\}
-\end{equation*}
-form a filter base. An iterated limit $x_{k,j}\to x_k$ as $j\to\infty$, followed by $x_k\to x$, converges to~$x$ on this filter: given~$\varepsilon>0$, first make $\|x_k-x\|<\varepsilon/2$ for $k\ge k_0$, then make $\|x_{k,j}-x_k\|<\varepsilon/2$ for $j\ge j_0(k)$. Consequently~\eqref{eq:F-projections} and the fixed-volume kernel limits give $\Pi_{e,N,p}\to\Pi_e$ and $L_{N,p}\to L$ in norm on this filter, where $N=\mathsf n(j)$, $p=P(k)$. The corrected inclusion or difference and Lemma~\ref{lem:F1b} also give $L_{N,p}(w)\to t_L$, its target value, for every spectator test.
+\emph{Representation.} Apply Lemma~\ref{lem:F-represent} in~$V_e$, with~$\mathcal F$ the filter of ordered tails $\{(j,k):k\ge k_0,\ j\ge j_0(k)\}$, $\Pi_u=\Pi_{e,\mathsf n(j),P(k)}$ and the one-slot functionals of degree~$e$. They converge as shown above, and $\ker\Pi_e=\bigcap\ker L$ by~\eqref{eq:F-dimension}. With $\Pi=\Pi_{e,N,p}$, the family $(w-\Pi w)/(1+\|\Pi w\|)$ lies in $\ker\Pi$ and is tame, being a bounded multiple of~$w$ minus a family of norm at most one; (C3) and Lemma~\ref{lem:F1b} give the second condition of~\eqref{eq:F-normalized}. The lemma gives one vector representing the target against every spectator and test at once; no further subsequence is chosen for these uncountably many tests. Choose such vectors on a basis of~$V_d$ and extend linearly; \eqref{eq:F-conf} turns the distributional identities into~\eqref{eq:F-calculus}.
 
-Fix any ultrafilter~$\mathcal U$ containing the ordered tails. Every bounded readout lies eventually in a compact closed ball of its coefficient space and therefore has a unique limit along~$\mathcal U$. The same~$\mathcal U$ serves all readouts; continuous identities and closed inequalities valid eventually pass to their limits. The kernel and projection limits already established on the ordered tails persist along~$\mathcal U$, so neither~$S$ nor~$P$ changes.
-
-The pairs $((1+\|\Pi w\|)^{-1},\Pi w/(1+\|\Pi w\|))$ lie in the compact product of~$[0,1]$ and the closed unit ball of~$V_e$, so they converge along~$\mathcal U$ to some~$(\lambda,z)$. Set $b_{N,p}=(1+\|\Pi w\|)^{-1}$. Passing the identity $\Pi(b_{N,p}\Pi w)=b_{N,p}\Pi w$ and the norm identity to the limit gives $\Pi_ez=z$ and $\lambda+\|z\|=1$. The spectator limits and~\eqref{eq:F-normalized} hold along~$\mathcal U$, so
-\begin{equation*}
-\begin{aligned}
-L(z)&=\lim_{\mathcal U}b_{N,p}L_{N,p}(\Pi w)\\
-&=\lim_{\mathcal U}\bigl[b_{N,p}L_{N,p}(w)
--L_{N,p}\bigl(b_{N,p}(w-\Pi w)\bigr)\bigr]
-=\lambda t_L.
-\end{aligned}
-\end{equation*}
-If $\lambda=0$, then $L(z)=0$ for every spectator test, hence $z\in\nullspace{e}(S)=\ker\Pi_e$ by~\eqref{eq:F-dimension}. Together with $\Pi_ez=z$, this gives $z=0$, contradicting $\|z\|=1$. Thus $\lambda>0$, and $z/\lambda$ represents the target for all spectators simultaneously. Choose these representatives on a basis and extend linearly, obtaining $\kappa_{d,e}$ and~$\tau_{d,a}$ with~\eqref{eq:F-calculus}.
-Equation~\eqref{eq:F-conf} converts the distributional identities to pointwise identities.
-
-These maps preserve null coefficients, so they descend to~$\jmath_{d,e}$ and~$\partial_a$. A response vanishes precisely on~$\nullspace{d}(S)$; hence~$\iota_d$ is injective. Equality of responses gives injectivity, composition and uniqueness of inclusions. E1 and Lemma~\ref{lem:E2.1a} give preservation of~$[a_{\reflevel{d}}^d\mathbf1]$. Any finite sum of responses lies in the largest degree involved; quotient surjectivity gives token representatives. Finally E2, conjugation and the chain rule applied to $S(hc;hx)=S(c;x)$ give the asserted symmetry identities by injectivity of the response maps. The same comparison without differentiation gives $h\jmath_{d,e}=\jmath_{d,e}h$. Permuting the distinguished slot proves FC's positional identity in every slot. This proves FC and the lemma using Lemmas~\ref{lem:E2.6}--\ref{lem:E2.10}.
+\emph{Induced maps.} By~\eqref{eq:F-calculus}, $\hat\jmath_{d,e}$ and $\hat\partial_{d,a}$ carry $\nullspace{d}(S)$ into null spaces, so they descend to~$F_d$ and satisfy the identities of Proposition~\ref{prop:FC}; with~\eqref{eq:F-dimension} this proves that proposition. The further properties listed after it (injective responses, units, conjugation, $\hypercubic$ covariance, the positional identity in every slot) follow from these identities, E1 and E2, as explained there.
 \end{proof}
 
-\subsection{Euclidean properties}
+\paragraph{Example: the curvature square (continued).} Section~\ref{sec:A-example} follows the label $c_{F^2}\in V_4$ of $\frac14\sum_{a,b,\alpha}F^\alpha_{ab}F^\alpha_{ab}$ to its insertion; in degree four the quotient removes nothing. Every jet coordinate has weight at least two, and since~$\g$ is simple no nonzero $\operatorname{Ad}(G)$-invariant polynomial is linear in a $\g$-valued jet; so an element of~$V_4$ is a constant plus an invariant quadratic form in the lowest jet~$\mathcal A_0$, that is, in the curvature at the origin. The Maxwell equations do not constrain the curvature at one point, so no nonzero such polynomial vanishes on every Maxwell solution: the equation space~$\mathcal I_4$ of Lemma~\ref{lem:E2.6} is zero. That lemma gives $\Pi_{4,N,p}=1$, and~\eqref{eq:F-dimension} gives $\nullspace{4}(S)=0$. Distinct degree-four labels give distinct fields, and $[c_{F^2}]\ne0$ in~$F_4$. The quotient first acts on derivatives: the lattice difference quotient of the insertion of~$c_{F^2}$ is not a degree-five insertion, (C2) represents it by a tame family in~$V_5$, and Lemma~\ref{lem:F-represent} replaces that family by one vector, with $\partial_a[c_{F^2}]=[\hat\partial_{4,a}c_{F^2}]$. In degree five, $\mathcal I_5$ contains the invariant contraction $\sum_{a,b,c,\alpha}F^\alpha_{ab}\,\partial_cF^\alpha_{cb}$ of a curvature with the Maxwell expression. By Lemma~\ref{lem:E2.6} and~\eqref{eq:F-dimension}, $\nullspace{5}(S)=\ker\Pi_5$ is therefore nonzero, and $\hat\partial_{4,a}c_{F^2}$ is determined only modulo these limits of transported equation directions.
 
-The lattice symmetries and positivity pass through the ordered limits. The centered root estimate gives the additional control as separated points approach one another.
+\subsection{Euclidean properties}\label{sec:partII-F.4}
+
+Lattice symmetries and positivity pass through the ordered limits; Lemma~\ref{lem:F-cells} controls separated points as they approach one another, uniformly in their diameter.
 \begin{lemma}[Euclidean properties]\label{lem:F3}
-The table supplied by IV is complex multilinear and satisfies E1--E7, including joint-test reflection positivity, absolute integrability of its pairings, and bounds for every derivative order:
-\begin{equation*}
-\|D_x^\nu S_n(c;x)\|\le C(n,d,c,\nu)r^{-A(n,d,c,\nu)}
-\quad(0<r\le1,\ \sepinf(x)\ge r).
-\end{equation*}
+The table~$S$ of Lemma~\ref{lem:F1} satisfies E1--E7.
 \end{lemma}
-The proof below passes reflection positivity to the limit and proves the power bound; its positive derivative orders use~\eqref{eq:F-calculus}.
 \begin{proof}
-We use Definitions~\ref{def:D08} and~\ref{def:D10}, Lemmas~\ref{lem:E2.1a}, \ref{lem:E2.3} and~\ref{lem:E3.2}, equations~\eqref{eq:F-conf} and~\eqref{eq:F-chess}, Lemma~\ref{lem:F1a}, and the derivative maps~\eqref{eq:F-calculus} from Lemma~\ref{lem:F2}. E1--E3 and E6 were proved after Lemma~\ref{lem:F1}; only the positive derivative orders of E7 use the corrected maps.
+E1--E3 and E6 were proved after Lemma~\ref{lem:F1}; the positive derivative orders of E7 use~\eqref{eq:F-calculus}.
 
-We prove E5 and deduce E4. Fix finitely many joint smooth tests~$f_i$ with compact support on positive-side separated configurations in one axis. Their lattice smears~$F_i$ are supported strictly inside the positive half-torus for large~$p,N$: the support has positive distance from the reflection plane, and the physical radius of each fixed stencil tends to zero. Use the bond reflection~$x^a\mapsto a_N-x^a$, with planes~$x^a=a_N/2$ and~$x^a=(a_N+L_p)/2$. It is a lattice symmetry at every cutoff. For large~$p$, the supports also avoid a neighbourhood of the second plane~$x^a=L_p/2$; for large~$N$ their stencils avoid both actual bond planes. The periodic Wilson reflection positivity cited before~\eqref{eq:F-chess} gives
+\emph{Reflection positivity.} We prove E5 and deduce E4. Fix joint smooth tests~$f_i$ with compact support on positive-side separated configurations for an axis~$a$. Use the bond reflection~$x^a\mapsto a_N-x^a$, a lattice symmetry with planes~$x^a=a_N/2$ and~$x^a=(a_N+L_p)/2$. For large~$p,N$ the lattice smears~$F_i$ are supported strictly inside the positive half-torus, with stencils avoiding both planes, since the supports keep a positive distance from $x^a=0$ and the stencils have physical radius tending to zero. Periodic Wilson reflection positivity~\cite[Theorem~2.1, pp.~14--15]{Seiler1982} gives
 \begin{equation*}
-\sum_{i,j}\bar z_i z_j\langle\overline{F_i\circ\mathsf r_{a,N}}F_j\rangle_{N,p}\ge0.
+\sum_{i,j}\bar z_i z_j\langle\overline{F_i\circ\mathsf r_{a,N}}F_j\rangle_{N,p}\ge0,
 \end{equation*}
-Here~$\mathsf r_{a,N}$ maps a configuration to its reflected configuration. Insertion covariance reflects the positions and applies~$\mathsf s_a^{\rm refl}$ to their labels; conjugation acts on the labels in the first word. The reflected joint test converges, with all derivatives, to~$\bar f_i\otimes f_j$ with its first group reflected through~$x^a=0$. Its support is compact and separated, including across the reflection plane. All these supports lie in one compact separated set. UB at order zero bounds the difference between the moving tests and their limiting test by their uniform difference times a bounded weighted site count. It tends to zero. Apply Lemma~\ref{lem:E3.2} and~\eqref{eq:F-ordered} to the fixed limiting test in each entry. Smoothness bounds the kernel on the support, so every pairing is absolutely integrable. The limiting matrix is positive semidefinite. Concentrating normalized smooth bumps at prescribed positive-side words gives E4 by continuity. This works in every axis with its corresponding reflection.
+where~$\mathsf r_{a,N}$ reflects configurations. Insertion covariance reflects the positions and applies~$\mathsf s_a^{\rm refl}$ to the labels; conjugation acts on the labels of the first word. The reflected joint tests converge with all derivatives to~$\bar f_i\otimes f_j$ with the first group reflected through~$x^a=0$, and all supports lie in one compact separated set. Proposition~\ref{prop:UB} at order zero bounds the effect of the moving tests by their uniform difference times a bounded weighted site count. Lemma~\ref{lem:E3.2} and~\eqref{eq:F-ordered} then give a positive semidefinite limiting matrix; smoothness of~$S$ makes every pairing absolutely integrable. This is E5. Concentrating normalized bumps at positive-side words gives E4 by continuity.
 
-For the power bound first consider order zero and a nonempty token list. Put $d_{\rm pow}=1+\max_i d_i$. Lemma~\ref{lem:E2.3} with $\varepsilon=1$, for all the finitely many signed images and images under conjugation, bounds their centered roots by $C_{\rm ctr}a_k^{-d_{\rm pow}}$ for $k\ge k_0$. The constants $k_0,C_{\rm ctr}$ precede the choice of separation. The scale condition $\log\ell_u/s_u\to0$ in Lemma~\ref{lem:E1.1} gives
+\emph{Power bound at order zero.} Take a nonempty label list and put $d_{\rm pow}=1+\max_id_i$. Lemma~\ref{lem:E2.3} with $\varepsilon=1$, for the finitely many signed and conjugated images of the labels, gives $k_0$ and $C_{\rm ctr}$ such that their centered seminorms at levels $k\ge k_0$ are at most $C_{\rm ctr}a_k^{-d_{\rm pow}}$; these constants precede the separation. The block ratios grow slowly: $\log\ell_u/s_u\to0$ (Lemma~\ref{lem:E1.1}) gives $\ell_u\le a_u^{-1}$ eventually, so for some $c_{\rm mesh}>0$ and all~$u$
 \begin{equation}\label{eq:F-thickness}
 a_{u+1}\ge c_{\rm mesh}a_u^2.
 \end{equation}
-Indeed $\log\ell_u/\log a_u^{-1}\to0$ implies $\ell_u\le a_u^{-1}$ eventually; choose~$c_{\rm mesh}>0$ to include the remaining levels. The first $u\ge k_0$ with $a_u<\delta\le1$ consequently satisfies $a_u\ge c_{{\rm mesh},k_0}\delta^2$, including $u=k_0$.
-
-Choose the first $m\ge k_0$ with $a_m<r/2$, then the first $k\ge k_0$ with $a_k<a_m/[6(n+1)]$. Thus $k\ge m$ and $a_k\ge c'(n)r^4$, with $c'(n)>0$ also depending on~$k_0$. In each coordinate the boundary strips of half-width~$3a_k$ excluded by the~$n$ anchors have total length less than~$a_m$. Choose a translated tiling outside them. All anchors occupy distinct cells. Lemma~\ref{lem:F1a}, followed by~\eqref{eq:F-chess}, gives the lattice bound $(C_{\rm ctr}a_k^{-d_{\rm pow}})^n$. Passing to the limits by Lemma~\ref{lem:E3.2} and~\eqref{eq:F-conf}, with slightly smaller separation to accommodate lattice approximation, gives
+Thus the first $u\ge k_0$ with $a_u<\delta\le1$ satisfies $a_u\ge c_0\delta^2$, where $c_0=\min(c_{\rm mesh},a_{k_0})$: a discrete scale lies within a fixed power of any prescribed length. Fix $0<r\le1$ and~$x$ with $\sepinf(x)\ge r$. Choose the first $m\ge k_0$ with $a_m<r/2$, then the first $k\ge k_0$ with $a_k<a_m/[6(n+1)]$; then $k\ge m$ and $a_k\ge c'(n)r^4$. Lattice approximations of~$x$ in large volumes have torus separation greater than~$a_m$, so Lemma~\ref{lem:F-cells} bounds the lattice correlation by $(C_{\rm ctr}a_k^{-d_{\rm pow}})^n$. Lemma~\ref{lem:E3.2} and~\eqref{eq:F-conf} give
 \begin{equation}\label{eq:F-power}
-|S_n(v;x)|\le C(n,d,c)r^{-4d_{\rm pow}n}.
+|S_n(v;x)|\le C(n,d,c)r^{-4d_{\rm pow}n},
 \end{equation}
-All constants are independent of the positions and the volume.
+with constants independent of the positions and the volume. Each insertion costs its centered seminorm at a cell scale comparable to~$r^4$, and the chessboard bound makes the total independent of the diameter of~$x$.
 
-For higher orders use~\eqref{eq:F-calculus}: every coordinate derivative is a correlation with fixed, degree-raised tokens. At a fixed order there are finitely many such lists. Apply~\eqref{eq:F-power} to each, take the largest exponent, and bound the Fr\'echet operator norm by the sum of its coordinate coefficients in an orthonormal basis of~$\R^{4n}$. This proves E7 using Lemma~\ref{lem:F2} and hence Lemmas~\ref{lem:E2.6}--\ref{lem:E2.10}. For arity zero, $S_0=1$ and all positive-order derivatives vanish.
+\emph{Higher orders.} By~\eqref{eq:F-calculus}, every coordinate derivative is a correlation with fixed degree-raised labels, finitely many at each order. Apply~\eqref{eq:F-power} to each, take the largest exponent, and bound the Fr\'echet norm by the sum of the coordinate coefficients in an orthonormal basis of~$\R^{4n}$. This proves E7; for arity zero, $S_0=1$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{prop:IV}]
-Compose the volume refinements in Lemmas~\ref{lem:F1} and~\ref{lem:F2}. Equation~\eqref{eq:F-ordered} proves ordered convergence, retaining UV's full inner limit at every admissible volume. Lemma~\ref{lem:F3} proves E1--E7. The coefficient corrections do not change any kernel limit already obtained.
+Compose the volume refinements of Lemmas~\ref{lem:F1} and~\ref{lem:F2}. Equation~\eqref{eq:F-ordered} proves ordered convergence, with the full inner limit of Theorem~\ref{prop:UV} at every admissible volume, and Lemma~\ref{lem:F3} proves E1--E7. The coefficient corrections change no kernel limit.
 \end{proof}
 
-\subsection{Repeated reflected words}
+\subsection{Repeated reflected words}\label{sec:partII-F.5}
 
-Use the OS space of Definition~\ref{def:D14}. For any $s>0$ and word~$w$ with times in $(0,s)$, set
+Use the OS space of Definition~\ref{def:D14}. For a word~$w$, let~$w^*$ reverse it and apply conjugation to its labels, and let $\theta w=\mathsf s_4^{\rm refl}w^*$ be its antilinear OS reflection. For $s>0$ and a word~$w$ with times in $(0,s)$ set
 \begin{equation*}
 A_wv=w\,\tau_{se_4}v,\qquad
-w^\dagger=\tau_{se_4}\mathsf s_4^{\rm refl}w^*.
+w^\dagger=\tau_{se_4}\theta w;
 \end{equation*}
-Here $A_w$ initially acts on words; boundedness on OS classes is not assumed. A buffer~$r$ means pairwise sup-distance at least~$r$ and times in $[r,h_{\rm sl}-r]$ for a slab of width~$h_{\rm sl}$.
-
-Fix a degree bound~$d$ and coefficient bound~$R\ge0$, and put $Q=4(d+1)$. The next estimate bounds the growth of repeated insertion before taking any operator extension.
+$A_w$ acts on words, and boundedness on OS classes is not assumed. A word has buffer~$r$ in a slab of width~$h_{\rm sl}$ if its points have pairwise sup-distance at least~$r$ and times in $[r,h_{\rm sl}-r]$. Fix a degree bound~$d$ and a coefficient bound~$R\ge0$, and put $Q=4(d+1)$. The next estimate bounds repeated insertion before any operator extension.
 \begin{lemma}[Repeated reflected words]\label{lem:F4}
-There is $C_0=C_0(d,R)>0$ such that every nonempty length-$n$ word~$w$ with these bounds and buffer~$0<r\le1$ in a slab of width~$h_{\rm sl}$ admits $s=n_{\rm lat}a_k\in(0,h_{\rm sl}]$, $k,n_{\rm lat}\in\N$, for which~$w$ has buffer~$r/2$ in the slab of width~$s$. For every separated exterior word~$v$ with positive times,
+There is $C_0=C_0(d,R)>0$ such that every nonempty length-$n$ word~$w$ with these bounds and buffer~$0<r\le1$ in a slab of width~$h_{\rm sl}$ admits a width $0<s\le h_{\rm sl}$ in which~$w$ has buffer~$r/2$ and, for every separated exterior word~$v$ with positive times,
 \begin{equation*}
 \|[(A_{w^\dagger}A_w)^jv]\|_{\rm OS}^2
-\le B_v[C_0^n(n/r)^{Qn}]^{4j}\qquad(j\ge0).
+\le B_v[C_0^n(n/r)^{Qn}]^{4j}\qquad(j\ge0),
 \end{equation*}
-Here $B_v=B_v(w,r,s)<\infty$ is independent of~$j$.
+where $B_v=B_v(w,r,s)<\infty$ is independent of~$j$.
 \end{lemma}
-The operators in the statement use the chosen width~$s$. Its choice and the constants $C_0,Q$ precede~$v$.
+The operators use the chosen width~$s$, and~$s$, $C_0$ and~$Q$ precede~$v$. The main insertions occupy cells of a size chosen from~$r$ alone and the exterior insertions a finer aligned tiling, so the cost of the exterior does not grow with the number~$j$ of repetitions.
 \begin{proof}
-We use Definitions~\ref{def:D08} and~\ref{def:D14}, Lemmas~\ref{lem:E2.3} and~\ref{lem:E3.2}, Lemmas~\ref{lem:F1a} and~\ref{lem:F3}, and~\eqref{eq:F-chess}, \eqref{eq:F-conf} and~\eqref{eq:F-thickness}. Enlarge the coefficient ball to contain every signed image and image under conjugation in degrees at most~$d$. Lemma~\ref{lem:E2.3}, with $\varepsilon=1$, gives $k_*\in\N$ and $B_*>0$ such that all these centered roots at levels $k_{\rm w}\ge k_*$ are bounded by $B_* a_{k_{\rm w}}^{-d_{\rm pow}}$, where $d_{\rm pow}=d+1$. This choice precedes~$n,r,w$.
-
-Choose the first $m\ge k_*$ with $a_m<r/32$, and put $s=a_m\lfloor h_{\rm sl}/a_m\rfloor$. The word is nonempty with buffer~$r$, so $s>0$, $s\le h_{\rm sl}$, and it still contains~$w$ with buffer at least~$r/2$. Equation~\eqref{eq:F-thickness} gives $a_m\ge c_1r^2$. Fix $0<\alpha\le1$ with $20\alpha<c_1$, and choose the first $k_{\rm w}\ge k_*$ with $a_{k_{\rm w}}<\alpha(r/n)^2$. Then
+Enlarge the coefficient ball to contain all signed and conjugated images in degrees at most~$d$. Lemma~\ref{lem:E2.3} with $\varepsilon=1$ gives $k_*$ and $B_*>0$ such that their centered seminorms at levels $k_{\rm w}\ge k_*$ are at most $B_* a_{k_{\rm w}}^{-d_{\rm pow}}$, $d_{\rm pow}=d+1$; this precedes $n,r,w$. Choose the first $m\ge k_*$ with $a_m<r/32$ and put $s=a_m\lfloor h_{\rm sl}/a_m\rfloor$. As~$w$ is nonempty with buffer~$r$, $h_{\rm sl}\ge2r$, so $0<s\le h_{\rm sl}$ and $h_{\rm sl}-s<a_m$, and~$w$ has buffer~$r/2$ in width~$s$. By~\eqref{eq:F-thickness}, $a_m\ge c_1r^2$ with $c_1>0$ depending on~$k_*$. Fix $0<\alpha\le1$ with $20\alpha<c_1$, and choose the first $k_{\rm w}\ge k_*$ with $a_{k_{\rm w}}<\alpha(r/n)^2$. Then
 \begin{equation}\label{eq:F-repeat-scales}
 20na_{k_{\rm w}}<a_m,\qquad a_{k_{\rm w}}\ge c_2(r/n)^4,\qquad
 (B_*a_{k_{\rm w}}^{-d_{\rm pow}})^n\le (B_*c_2^{-d_{\rm pow}})^n(n/r)^{4d_{\rm pow}n}.
 \end{equation}
-These choices precede the exterior. In the statement take $k=m$ and $n_{\rm lat}=\lfloor h_{\rm sl}/a_m\rfloor$.
 
-Expanding the OS norm gives a correlation of $4jn$ main insertions and two copies of~$v$. The main insertions are mutually separated, and separated from the exterior, by at least~$r/2$. Translations by multiples of~$s$ do not change residues modulo~$a_m\Z^4$. Thus the main anchors have at most~$2n$ residue patterns, those of~$w$ and its reflection with conjugation, independently of~$j$.
+Expanding the OS norm gives a correlation of $4jn$ main insertions and two copies of~$v$. The main insertions are separated from one another and from the exterior by at least $r/2>a_m$. Translations by multiples of~$s$ preserve residues modulo~$a_m\Z^4$, so the main anchors have at most~$2n$ residue patterns, those of~$w$ and~$\theta w$, for every~$j$. For nonempty~$v$, let $t_{\min}>0$ be its minimum time and choose $m_{\rm v}\ge k_{\rm w}$ with $a_{m_{\rm v}}<2t_{\min}$ and $a_{m_{\rm v}}$ below every distance between distinct anchors of~$v$. The two exterior copies have times~$\pm(2js+t)$, $t$ a time of~$v$, so they are more than $2t_{\min}>a_{m_{\rm v}}$ apart for every~$j$. Choose $k_{\rm v}\ge m_{\rm v}$, beyond the exterior reference levels, with $12|v|a_{k_{\rm v}}<a_{m_{\rm v}}$, and let $X\ge0$ bound the centered seminorms of the exterior labels and their images at level~$k_{\rm v}$ (Lemma~\ref{lem:E2.3}). Neither $m_{\rm v}$ nor~$k_{\rm v}$ depends on~$j$.
 
-For nonempty~$v$, let $t_{\min}>0$ be its minimum time and choose $m_{\rm v}\ge k_{\rm w}$ with $a_{m_{\rm v}}<2t_{\min}$ and $a_{m_{\rm v}}$ smaller than every distance between distinct anchors of~$v$. The two exterior copies have times~$\pm(2js+t)$, where~$t$ is a time of~$v$. Their mutual distance is at least~$2t_{\min}>a_{m_{\rm v}}$, for every~$j$. Next choose $k_{\rm v}\ge m_{\rm v}$, beyond the exterior reference levels, with $12|v|a_{k_{\rm v}}<a_{m_{\rm v}}$. Lemma~\ref{lem:E2.3} gives a common finite bound~$X\ge0$ for all exterior roots and their images at level~$k_{\rm v}$. Both~$m_{\rm v},k_{\rm v}$ are independent of~$j$.
+The coarse tiling has side~$a_m$ and separates the main insertions; the fine tiling has side~$a_{m_{\rm v}}$, shares its origin and separates the exterior insertions. Their side ratio is odd, so coarse reflections preserve the fine grid and its interior margins. The strip count for the $2n$ main residues modulo~$a_m$ with $w=5a_{k_{\rm w}}$, possible by~\eqref{eq:F-repeat-scales}, keeps the main anchors at distance at least~$5a_{k_{\rm w}}$ from the coarse boundaries. A further translation by less than~$a_{m_{\rm v}}\le a_{k_{\rm w}}$ puts the $2|v|$ exterior anchors at distance at least~$3a_{k_{\rm v}}$ from the fine boundaries, since $12|v|a_{k_{\rm v}}<a_{m_{\rm v}}$, and leaves the main anchors margin at least~$3a_{k_{\rm w}}$. The main anchors occupy distinct coarse cells, none containing an exterior anchor.
 
-We apply the chessboard estimate at two cell sizes. In each axis, avoid strips of half-width~$5a_{k_{\rm w}}$ around the~$2n$ main residues modulo~$a_m$. This is possible by~\eqref{eq:F-repeat-scales}. Then change the translation by less than~$a_{m_{\rm v}}$ to place all~$2|v|$ exterior anchors at distance at least~$3a_{k_{\rm v}}$ from the finer boundaries; $12|v|a_{k_{\rm v}}<a_{m_{\rm v}}$ permits this. Since $a_{m_{\rm v}}\le a_{k_{\rm w}}$, the main anchors retain margin at least~$3a_{k_{\rm w}}$. Main insertions occupy distinct coarse cells, none containing an exterior anchor.
-
-Several exterior factors may occupy one coarse cell. Reflect their product into every coarse cell, and apply~\eqref{eq:F-chess} to the aligned tiling of side~$a_{m_{\rm v}}$. The fine and coarse tilings share an origin and have an odd integer side ratio. Coarse reflections preserve the fine grid and its interior margins. Within each reflected coarse cell, exterior anchors are separated by more than~$a_{m_{\rm v}}$ and so occupy distinct fine cells; across coarse boundaries their fine cells are disjoint. The uncentered estimate of Lemma~\ref{lem:F1a} bounds every factor by~$X$. If the coarse cell contains $n_C$ exterior factors, its root is therefore at most~$X^{n_C}$. Applying the coarse chessboard estimate now gives
+Apply~\eqref{eq:F-chess} to the coarse tiling, treating the product of the exterior factors in one coarse cell as one observable. Lemma~\ref{lem:F1a} bounds each main factor by $B_*a_{k_{\rm w}}^{-d_{\rm pow}}$. For a coarse cell with~$n_C$ exterior factors, reflect their product into every coarse cell; in each copy the exterior anchors are more than~$a_{m_{\rm v}}$ apart and occupy distinct fine cells, so~\eqref{eq:F-chess} for the fine tiling and Lemma~\ref{lem:F1a} bound the coarse seminorm of that product by~$X^{n_C}$. Therefore
 \begin{equation*}
 \|[(A_{w^\dagger}A_w)^jv]\|_{\rm OS}^2
 \le X^{2|v|}(B_*a_{k_{\rm w}}^{-d_{\rm pow}})^{4jn}.
 \end{equation*}
-For each fixed~$j$, take lattice approximations of all anchors, preserving these strict margins and separations, then apply Lemma~\ref{lem:E3.2} and~\eqref{eq:F-conf}. No cutoff threshold uniform in~$j$ is needed. The constants on the right are already independent of~$j$. Choose $B_v=\max(1,X^{2|v|})$, $C_0=B_*c_2^{-d_{\rm pow}}$, and $Q=4d_{\rm pow}$. Equation~\eqref{eq:F-repeat-scales} proves the assertion. For empty~$v$ omit its factors and take $B_v=1$.
+For each fixed~$j$, lattice approximations of the anchors preserving these strict margins, Lemma~\ref{lem:E3.2} and~\eqref{eq:F-conf} pass this bound to the limit; no cutoff threshold uniform in~$j$ is needed. Take $B_v=\max(1,X^{2|v|})$, $C_0=B_*c_2^{-d_{\rm pow}}$ and $Q=4d_{\rm pow}$, and use~\eqref{eq:F-repeat-scales}. For empty~$v$ omit its factors and take $B_v=1$.
 \end{proof}
-

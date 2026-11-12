@@ -12,15 +12,15 @@ This repository is an attempt to make that proof readable. Using AI agents, we:
 
 1. **map** the proof: we compute its dependency graph from the main theorem down, and divide it into eight parts and thirty-two units;
 2. **outline** it in natural language, at several levels of detail, from a short account of the whole proof down to an outline of each unit with every statement linked to the Lean;
-3. **write** a complete natural-language account of the proof on that skeleton: a [manuscript](manuscript/), written in public. **A first draft is now available** ([PDF](manuscript/main.pdf), 244 pages, draft of 11 November 2026); it is still being revised.
+3. **write** a complete natural-language account of the proof on that skeleton: a [manuscript](manuscript/), written in public. **A second draft is now available** ([PDF](manuscript/main.pdf), 265 pages, draft of 12 November 2026); it is still being revised.
 
 The outline is a rough draft written by machines. Its purpose is to be checked, corrected and rewritten by people.
 
 > ### [Where do the ideas come from?](provenance.md)
 > A component-by-component analysis of which parts of the proof follow Balaban's programme for lattice gauge theories, which follow OpenAI's 2026 papers on two-dimensional sigma models, which come from other constructive work (Gawędzki–Kupiainen, Brydges–Yau, Magnen–Rivasseau–Sénéor), which are standard, and which appear new, with the evidence on both sides. **[Read the analysis →](provenance.md)**
 
-> ### [The manuscript: first draft](manuscript/) · [how it is written](manuscript/PROCESS.md)
-> **A first draft of the full proof is now available** ([PDF](manuscript/main.pdf), 244 pages): Part I states the theorem and the architecture of its proof, Part II gives the proofs. It was written entirely by AI agents from the Lean code, and is still being revised. Statements are fixed first and kept short. Every statement is reviewed against the Lean by a separate reviewer, a fresh reader and a sentence-by-sentence truth check, and every finding is recorded with its decision. **[The process, what it has caught so far, and what it does not establish →](manuscript/PROCESS.md)**
+> ### [The manuscript: second draft](manuscript/) · [how it is written](manuscript/PROCESS.md)
+> **A second draft of the full proof is now available** ([PDF](manuscript/main.pdf), 265 pages): Part I states the theorem and the architecture of its proof, Part II gives the proofs. It was written entirely by AI agents from the Lean code, and is still being revised. Statements are fixed first and kept short. Every statement is reviewed against the Lean by a separate reviewer, a fresh reader and a sentence-by-sentence truth check, and every finding is recorded with its decision. **[The process, what it has caught so far, and what it does not establish →](manuscript/PROCESS.md)**
 
 ## The proof at five levels of detail
 
@@ -32,7 +32,7 @@ The repository presents the same proof at five levels of detail. Each level link
 | **2** | [**The proof in one reading**](summary.md) | A high-level account of the whole proof: the strategy, the key mechanism of each part, what is new, where the difficulty lies. |
 | **3** | [**The architecture**](outline/README.md) | The eight parts of the proof, from the lattice setting through the renormalization group to the identification as Yang–Mills; what each part hands to the next; the interface between the ultraviolet construction and the infinite-volume limit. |
 | **4** | [**The units**](outline/units.md) | The proof divided into thirty-two units, mathematically coherent pieces grouped by part. Each unit has its own page with its **outline** (about three to ten pages: the propositions it proves, what it uses, the strategy, the main steps), a link to its **detailed notes** (the full account, with a proof sketch for every step), and its **Lean map**: the source and the key statements in plain language, each linked to its exact lines. In all, 989 key statements cover the 413,000 lines of source attributed to the units. |
-| **5** | [**The full proof**](manuscript/) *(first draft)* | A complete manuscript ([PDF](manuscript/main.pdf), draft of 11 November 2026): Part I, the theorem and the architecture of its proof (about 35 pages), and Part II, the proofs (about 190 pages), written for a mathematician in constructive field theory or probability. Every section has been through its review cycle; revisions continue, by the process described in [how the manuscript is written](manuscript/PROCESS.md). |
+| **5** | [**The full proof**](manuscript/) *(second draft)* | A complete manuscript ([PDF](manuscript/main.pdf), draft of 11 November 2026): Part I, the theorem and the architecture of its proof (about 35 pages), and Part II, the proofs (about 190 pages), written for a mathematician in constructive field theory or probability. Every section has been through its review cycle; revisions continue, by the process described in [how the manuscript is written](manuscript/PROCESS.md). |
 
 **All in one PDF.** Levels 2–4 — the proof in one reading, the architecture and the thirty-two unit outlines — as a single [PDF](pdf/yang-mills-outline.pdf) (164 pages; [LaTeX source](pdf/yang-mills-outline.tex)). The detailed notes of all units are a separate [PDF](pdf/yang-mills-detailed-notes.pdf) (595 pages). Links to the Lean point to the exact lines, as on the web pages.
 

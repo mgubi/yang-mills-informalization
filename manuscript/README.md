@@ -1,6 +1,6 @@
 # The construction of four-dimensional quantum Yang–Mills theory
 
-> 📄 **First draft complete (11 November 2026).** Every section of Parts I and II is written and has been through its review cycle. An independent review of the whole manuscript is under way, and sections may still change until they are marked *checked* in the [status table](#status). Do not cite it as a finished proof.
+> 📄 **Second draft (12 November 2026), 265 pages.** Revised after expert and independent reviews; every section has been through its review cycle. Sections may still change until they are marked *checked*. Do not cite it as a finished proof.
 
 A manuscript, written in public, giving a complete mathematical proof of the result formalized in OpenAI's Lean proof
 of the construction of four-dimensional quantum Yang–Mills theory
@@ -10,10 +10,10 @@ The reader we write for is a mathematician working in constructive field theory 
 [humanise-yang-mills](https://github.com/hairer/humanise-yang-mills) project, a crowd-sourced effort to turn the Lean
 formalization into a human-readable monograph.
 
-- **Part I. The theorem and the architecture of its proof** (about 35 pages): the setting and notation, the main
+- **Part I. The theorem and the architecture of its proof** (about 40 pages, with the main theorem on p. 12): the setting and notation, the main
   theorem, the principal statements on which the proof rests, each stated exactly with the idea of its
   proof, and the complete deduction of the main theorem from them.
-- **Part II. Proofs** (about 190 pages, Sections 10–19): the proofs of the principal propositions, with every estimate specific to the
+- **Part II. Proofs** (about 220 pages, Sections 8–17): the proofs of the principal propositions, with every estimate specific to the
   construction written out and standard results cited.
 
 The PDF is [`main.pdf`](main.pdf). It is updated as sections are written; until a section is marked *checked* below, it
@@ -23,32 +23,32 @@ The process by which it is written and checked is described in [How this manuscr
 
 ## Status
 
-*Updated 12 November 2026. First draft, revised after an independent referee review of the whole manuscript, three rounds of cross-section checks, a typographic pass and the project lead's rulings (an informal statement of the main result in §1; an index of notation): 244 pages.*
+*Updated 12 November 2026. Second draft (265 pages): revised after two expert human reviews, six reviewer reports and an independent referee review; Part I rebuilt around the main theorem and the strategy of the proof; every change checked against the Lean.*
 
 | | section | pages | status |
 |---|---|---|---|
-| Part I | 1. Introduction | 6 | reviewed; revised after an independent referee review (with the abstract) |
-| | 2. Wilson theory | 2 | reviewed; revised after an independent referee review |
-| | 3. Renormalization | 8 | reviewed; revised after an independent referee review |
-| | 4. The continuum limit | 3 | reviewed; revised after an independent referee review |
-| | 5. Stress and rotations | 3 | reviewed; revised after an independent referee review |
-| | 6. Phases and reconstruction | 3 | reviewed; revised after an independent referee review |
-| | 7. Trace and products | 3 | reviewed; revised after an independent referee review |
-| | 8. Main theorems | 4 | reviewed; Theorem B restated as a five-clause theorem; revised after referee review |
-| | 9. Constants and order of choice | 4 | reviewed; revised after an independent referee review |
-| | Index of notation | 2 | new |
-| Part II | 10. Local polynomial fields | 8 | reviewed; revised after an independent referee review |
-| | 11. Gauges and block integration | 28 | reviewed; revised after an independent referee review |
-| | 12. Path actions and the coupling reset | 13 | reviewed; revised after an independent referee review |
-| | 13. Activities and the inductive step | 33 | reviewed; revised after an independent referee review |
-| | 14. Trajectories, marked fields and ultraviolet convergence | 37 | reviewed; revised after an independent referee review |
-| | 15. Infinite volume and field calculus | 8 | reviewed; revised after an independent referee review |
-| | 16. Free fields, Ward identities and rotations | 19 | reviewed; revised after an independent referee review |
-| | 17. Slabs, phases and reconstruction | 15 | reviewed; revised after an independent referee review |
-| | 18. The trace law and non-free comparisons | 14 | reviewed; revised after an independent referee review |
-| | 19. Products and contact subtractions | 24 | reviewed; revised after an independent referee review |
+| Part I | 1. The result | 3 | reviewed; revised |
+|  | 2. Definitions | 7 | reviewed; revised |
+|  | 3. The main theorem | 1 | reviewed; revised |
+|  | 4. Strategy of the proof | 6 | reviewed; revised |
+|  | 5. The renormalization group | 7 | reviewed; revised |
+|  | 6. The continuum limit, stress, phases, trace and products | 9 | reviewed; revised |
+|  | 7. Deduction of the main theorem | 1 | reviewed; revised |
+|  | Appendix A. Correspondence with the formal statement | 3 | reviewed; revised |
+|  | Appendix B. Constants and order of choice | 2 | reviewed; revised |
+|  | Index of notation | 2 | reviewed; revised |
+| Part II | 8. Local polynomial fields | 9 | reviewed; revised |
+|  | 9. Gauges and block integration | 35 | reviewed; revised |
+|  | 10. Path actions and the one-loop coupling | 11 | reviewed; revised |
+|  | 11. Activities and the inductive step | 38 | reviewed; revised |
+|  | 12. Trajectories, marked fields and ultraviolet convergence | 43 | reviewed; revised |
+|  | 13. Infinite volume and field calculus | 7 | reviewed; revised |
+|  | 14. Free fields, Ward identities and rotations | 26 | reviewed; revised |
+|  | 15. Phases and reconstruction | 10 | reviewed; revised |
+|  | 16. The trace law and non-free comparisons | 17 | reviewed; revised |
+|  | 17. Products and contact subtractions | 25 | reviewed; revised |
 
-**Next:** a final cross-section check; then the project lead's reading.
+The correspondence between the numbered statements and the Lean declarations is in [`correspondence.tsv`](correspondence.tsv): 3,232 rows, each Lean name checked to be a declaration the main theorem uses (a few rows record statements with no formal content).
 
 "Reviewed" means the full cycle of the [process](PROCESS.md) has run: owner, fresh-reader and truth reviews, re-check and
 delivery review. A section is marked *checked* only after the project lead's reading and any changes it leads to.
