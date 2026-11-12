@@ -243,6 +243,21 @@ if [[ $mode != tm ]]; then
     cp "$max_html/resources/max-html.css" "$max_html/resources/max-html.js" \
        "$here/resources/ym-outline.css" "$d/"
   done < <(find "$here/html" -type d)
+  # the home page names the upstream revision the site comes from:
+  # YM_SOURCE_COMMIT (set by CI), else the last upstream commit merged here
+  src=${YM_SOURCE_COMMIT:-}
+  if [[ -z $src ]]; then
+    for r in upstream/main origin/main; do
+      src=$(git -C "$repo" merge-base HEAD "$r" 2>/dev/null) && break
+    done
+  fi
+  [[ -n $src ]] || src=$(git -C "$repo" rev-parse HEAD)
+  src_url=${YM_REPO_URL:-https://github.com/scottnarmstrong/yang-mills-informalization}
+  src_url=${src_url%.git}; src_url=${src_url/#git@github.com:/https://github.com/}
+  if [[ -f $here/html/index.html ]]; then
+    python3 "$scripts/stamp.py" "$here/html/index.html" "$src_url" \
+      "$(git -C "$repo" rev-parse "$src")" "$(git -C "$repo" log -1 --format=%cs "$src")"
+  fi
 fi
 
 # --- 7. links of the whole site; record ------------------------------------

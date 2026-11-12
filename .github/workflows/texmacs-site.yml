@@ -94,7 +94,7 @@ jobs:
           # links to repository files point upstream (origin is the fork here)
           YM_REPO_URL: https://github.com/scottnarmstrong/yang-mills-informalization
           YM_REPO_BRANCH: main
-        run: tm/build.sh --full
+        run: YM_SOURCE_COMMIT=$(git rev-parse upstream/main) tm/build.sh --full
 
       - name: Commit regenerated documents
         if: steps.merge.outputs.skip != 'true'
