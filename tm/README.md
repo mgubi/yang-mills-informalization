@@ -94,6 +94,9 @@ succeeds.
 | `scripts/plan.py` | incremental builds: what to rebuild, and the record `.build-state.json` |
 | `scripts/linkcheck.py` | step 7: links and anchors of the whole site |
 | `scripts/labelcheck.py` | step 7: every `\label` of the manuscript has its anchor in the HTML |
+| `scripts/figures.py` | the TikZ pictures of the manuscript as SVG (see below) |
+| `scripts/install-tex.sh` | CI: TinyTeX with latex, dvisvgm, pgf, standalone, installed only when a picture must be compiled |
+| `manuscript/figures/fig-N.svg`, `manuscript/figures/figures.json` | generated: the pictures and the hashes of their sources (the cache) |
 | `.build-state.json` | generated: the record of the last build (git-ignored) |
 | `index.tm`, `statement.tm`, `faq.tm`, `provenance.tm`, `CHANGELOG.tm`, …, `data/index.tm`, `outline/units/*.tm`, `outline/notes/*.tm`, `manuscript/index.tm` | generated documents (every `README.md` becomes `index.tm`) |
 | `manuscript/main.tm` | generated: the LaTeX manuscript |
@@ -164,6 +167,28 @@ part with `hlink`s between the parts.
   undefined block, and the HTML export drops the whole content of an
   undefined block, statements and labels included. An unknown
   `\makeatletter` block stops the build.
+  `multicols` (the notation index) and `\begingroup`…`\endgroup` are
+  dropped together with the font sizes and paragraph spacing inside them:
+  the importer ignores the group, and a `\small` inside it ran to the end
+  of the document, where it turned the bibliography into an empty list.
+  `\equationalias{X}` right after a display becomes `\label{X}` inside
+  it; `\setcounter{maintheorem}{N}` (Theorem B stated before Theorem A)
+  becomes `<assign|maintheorem-nr|N>`; an equation that is one
+  `gathered` block becomes a `gather` whose last row carries the number
+  (LaTeX centres it vertically; the numbers are the same);
+  `\addcontentsline` right after a `\section*` is dropped (TeXmacs puts
+  unnumbered sections in the table of contents itself), elsewhere it stops
+  the build; `{\small \bibliography{…}}` loses its group.
+  References made to agree with LaTeX: numbered lists with an enumitem
+  format (`[label=(\roman*),ref=\roman*,start=4]`, whose options the
+  importer drops, so that they showed 1., 2., …) get their LaTeX item
+  labels (`\item[(iv)]`), and a `\label` in such an item the LaTeX
+  reference text (`<with|the-label|iv|<label|…>>`); a `\label` after a
+  `\paragraph` gets the number of the enclosing (sub)section, as in LaTeX;
+  a `\label` in a `\notag` row of an `align` (or in any but the last row
+  of a `multline`) moves to the next numbered row (amsmath's rule; TeXmacs bound it to the number before the display);
+  `\tag{T}` in an `equation` numbers it T without counting it
+  (`equation-nr` bound locally); `\tag` elsewhere stops the build.
 - TeXmacs Upsilon imports it (`ym-import-latex-all` in `tmio.scm`).
 - `tex_post.py` makes it native: the macros of `macros.tex` stay **macros**
   in the preamble of the document (`\DeclareMathOperator` names upright,
@@ -198,6 +223,22 @@ part with `hlink`s between the parts.
   marker `<ym-theorems-by-subsection>`; `\renewcommand{\thesection}{\Alph{section}}`
   (lettered sections, as before 11 November) still becomes
   `<ym-letter-sections>`.
+- Pictures (`figures.py`): every `tikzpicture` is cut out by `tex_prep.py`
+  (marker `\tmfigure{N}`; one alone in a display becomes a centred block)
+  and compiled as a standalone document with the macros, `\usetikzlibrary`
+  and colours of the preamble (`latex` + `dvisvgm --no-fonts`: glyphs as
+  paths, no fonts needed) into `manuscript/figures/fig-N.svg`, included as
+  `<image|figures/fig-N.svg|…>`. `\ref`s inside a picture are replaced by
+  numbers: before the import from the previous build's `main.tm`, after the
+  export from the one just typeset; a picture whose numbers changed is
+  compiled again, and an unknown label then stops the build. The exported
+  copies `main-K.svg` are replaced by links to `figures/fig-N.svg`. Each
+  picture is keyed by the hash of the document compiled
+  (`figures.json`), so the committed pictures are reused and TeX is needed
+  only for a new or changed one: locally TeX Live on the PATH, in CI
+  `install-tex.sh` (TinyTeX from its GitHub releases, packages from CTAN
+  with `tlmgr`), run on the first picture to compile. No TeX, or a picture
+  that does not compile, stops the build; so does a missing image.
 - `manuscript/README.md` is a page too (`manuscript/index`), with a link to
   the manuscript; links to `manuscript/` and `manuscript/README.md`
   resolve to it, links to `main.pdf` and the `.tex` files go to GitHub.

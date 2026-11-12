@@ -4,7 +4,7 @@
     linkcheck.py HTMLDIR OUT.json
 
 Every relative link must point to a page of the site and, if it has a
-fragment, to an element with that id. Writes the sorted list of broken links
+fragment, to an element with that id; every relative image must exist. Writes the sorted list of broken links
 ("page -> href") to OUT.json and prints a summary.
 """
 import glob, json, os, re, sys
@@ -14,7 +14,7 @@ from html.parser import HTMLParser
 class Page(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.ids, self.hrefs = set(), []
+        self.ids, self.hrefs, self.imgs = set(), [], []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -22,6 +22,8 @@ class Page(HTMLParser):
             self.ids.add(a['id'])
         if tag == 'a' and 'href' in a:
             self.hrefs.append(a['href'])
+        if tag == 'img' and 'src' in a:
+            self.imgs.append(a['src'])
 
 
 root, out = sys.argv[1], sys.argv[2]
@@ -40,6 +42,12 @@ for f, p in sorted(pages.items()):
         path, _, frag = h.partition('#')
         tgt = os.path.normpath(os.path.join(os.path.dirname(f), path)) if path else f
         if tgt not in pages or (frag and frag not in pages[tgt].ids):
+            broken.append(f'{f} -> {h}')
+    # images (the pictures of the manuscript): the file must exist
+    for h in p.imgs:
+        if re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', h):
+            continue
+        if not os.path.isfile(os.path.join(root, os.path.dirname(f), h)):
             broken.append(f'{f} -> {h}')
 broken = sorted(set(broken))
 json.dump(broken, open(out, 'w'), indent=0)

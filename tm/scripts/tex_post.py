@@ -276,6 +276,29 @@ def titles(x):
     return x
 
 
+def equation_tags(x):
+    """an equation with the marker <tmtag|T> (\\tag{T}, tex_prep.py): numbered
+    T, without counting it (equation-nr bound locally)"""
+    if not isinstance(x, list):
+        return x
+    x = [x[0]] + [equation_tags(k) for k in x[1:]]
+    if x[0] == 'equation':
+        found = []
+
+        def strip(y):
+            if isinstance(y, list):
+                if y[0] == 'tmtag':
+                    found.append(y[1] if len(y) == 2 else ['concat'] + y[1:])
+                    return None
+                return [y[0]] + [z for z in (strip(k) for k in y[1:]) if z is not None]
+            return y
+        x = strip(x)
+        if found:
+            return ['with', 'equation-nr', ['value', 'equation-nr'],
+                    'the-equation', ['macro', found[0]], x]
+    return x
+
+
 def rewrite(x):
     """markers, renamed macros, bibliography, <le> etc."""
     if isinstance(x, list) and x[0].startswith('tmrename'):
@@ -284,6 +307,21 @@ def rewrite(x):
         return SYM_RE.sub(lambda m: SYMS[m.group(0)], x)
     if len(x) == 1 and x[0] in MARKERS:
         return [MARKERS[x[0]]]
+    if x[0] == 'tmfigure' and len(x) == 2 and isinstance(x[1], str) and x[1].isdigit():
+        # a TikZ picture (tex_prep.py), rendered by figures.py next to the document
+        svg = os.path.join(TEXDIR, 'figures', f'fig-{x[1]}.svg')
+        head = open(svg, encoding='utf-8').read(2000)
+        w = re.search(r"width='([0-9.]+)pt'", head)
+        h = re.search(r"height='([0-9.]+)pt'", head)
+        if not (w and h):
+            raise SystemExit(f'tex_post: no size in {svg}')
+        return ['image', f'figures/fig-{x[1]}.svg', w.group(1) + 'pt', h.group(1) + 'pt', '', '']
+    if x[0] == 'tmitemlabel' and len(x) == 3 and isinstance(x[1], str):
+        # a \label in an item with an enumitem format: the LaTeX reference text
+        return ['with', 'the-label', x[2] if isinstance(x[2], str) else stree.text_of(x[2]), ['label', x[1]]]
+    if x[0] == 'tmsetmaintheorem' and len(x) == 2 and isinstance(x[1], str) and x[1].isdigit():
+        # \setcounter{maintheorem}{N}: the next main theorem is number N+1
+        return ['assign', 'maintheorem-nr', x[1]]
     if x[0] == 'bibliography' and len(x) >= 4:
         style = x[2] if isinstance(x[2], str) else ''
         x = list(x)
@@ -318,6 +356,9 @@ def main():
         kids.append(p)
     doc[1:] = kids
     doc = rewrite(doc)
+    doc = equation_tags(doc)
+    if '["tmtag"' in json.dumps(doc):
+        raise SystemExit('tex_post: \\tag outside an equation')
     doc = titles(doc)
     operator_macros(doc)
     doc = operator_spacing(doc)
@@ -331,6 +372,13 @@ def main():
             ['initial', ['collection',
                          ['associate', 'html-title',
                           post.cork(title) + ' \x15 Yang\x15Mills informalization']]]]
+    # the bibliography must survive the import (a font size running to the
+    # end of the document once turned it into an empty bib-list)
+    def has(x, tag):
+        return isinstance(x, list) and (x[0] == tag or any(has(k, tag) for k in x[1:]))
+    if '\\bibliography{' in open(os.path.join(TEXDIR, 'main.tex'), encoding='utf-8').read() \
+            and not has(doc, 'bibliography'):
+        raise SystemExit('tex_post: the \\bibliography of the source was lost in the import')
     stree.dump(tree, OUT)
     for w in warnings:
         print('tex_post: warning:', w)

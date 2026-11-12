@@ -110,6 +110,10 @@ if [[ $mode != html ]]; then
   # the LaTeX manuscript: flattened and patched (tex_prep.py)
   if [[ -f "$repo/manuscript/main.tex" ]]; then
     python3 "$scripts/tex_prep.py" "$repo" "$B/md/tex"
+    # its TikZ pictures as SVG (the committed ones reused, TeX only for new
+    # or changed pictures); references resolved from the previous build
+    python3 "$scripts/figures.py" render "$B/md/tex/meta.json" "$here/manuscript/main.tm" \
+      "$B/md/tex/figures" "$here/manuscript/figures"
   fi
 else
   mkdir -p "$B/md"
@@ -178,6 +182,15 @@ bib=$B/md/tex/references.bib; [[ -f $bib ]] || bib=$repo/manuscript/references.b
 if [[ -n $manuscript && -f "$stage/$manuscript" && -f $bib ]] && grep -aq 'bibliography|bib|' "$stage/$manuscript"; then
   cp "$bib" "$stage/$(dir_of "$manuscript")/references.bib"
 fi
+# the pictures next to the manuscript (figures/fig-N.svg)
+figs=""
+if [[ -n $manuscript && -f "$stage/$manuscript" ]]; then
+  figs=$stage/$(dir_of "$manuscript")/figures
+  rm -rf "$figs"
+  if [[ -d "$B/md/tex/figures" ]]; then cp -R "$B/md/tex/figures" "$figs"
+  elif [[ -d "$here/$(dir_of "$manuscript")/figures" ]]; then cp -R "$here/$(dir_of "$manuscript")/figures" "$figs"
+  fi
+fi
 
 # check: tags that the style does not define (primitives excepted)
 if (( ${#convert[@]} )); then
@@ -204,7 +217,17 @@ if (( ${#export_[@]} )); then
     printf '%s\t%s\n' "$stage/$p" "$html/${p%.tm}.html" >> "$B/html.lst"
   done
   echo "html: ${#export_[@]} pages"
+  if [[ -n $figs && -d $figs ]]; then rm -rf "$B/figsnap"; cp -R "$figs" "$B/figsnap"; fi
   tm_run "$B/html.log" "(ym-html-all \"$B/html.lst\")"
+  # pictures: references resolved again from the manuscript just typeset
+  # (recompiled if a number changed); the exported copies replaced by links
+  # to figures/fig-N.svg
+  if [[ -n $figs && -d $figs && -f "$html/${manuscript%.tm}.html" ]]; then
+    if [[ -f "$B/md/tex/meta.json" ]]; then
+      python3 "$scripts/figures.py" render "$B/md/tex/meta.json" "$stage/$manuscript" "$figs" "$figs" --strict
+    fi
+    python3 "$scripts/figures.py" html "$html/${manuscript%.tm}.html" "$B/figsnap" "$figs"
+  fi
   for p in "${export_[@]}"; do
     [[ -s "$html/${p%.tm}.html" ]] || { echo "missing $html/${p%.tm}.html" >&2; exit 1; }
   done
@@ -236,9 +259,15 @@ done < <(for p in "${pages[@]}"; do dir_of "$p"; done | sort -u)
 for p in ${work[@]+"${work[@]}"}; do
   mkdir -p "$here/$(dir_of "$p")"; cp "$stage/$p" "$here/$p"
 done
+if [[ -n $figs && -d $figs ]] && printf '%s\n' ${work[@]+"${work[@]}"} | grep -qx "$manuscript"; then
+  rm -rf "$here/$(dir_of "$manuscript")/figures"; cp -R "$figs" "$here/$(dir_of "$manuscript")/figures"
+fi
 if [[ $mode != tm ]]; then
   for p in ${export_[@]+"${export_[@]}"}; do
     mkdir -p "$here/html/$(dir_of "$p")"; cp "$html/${p%.tm}.html" "$here/html/${p%.tm}.html"
+    if [[ -d "$html/$(dir_of "$p")/figures" ]]; then
+      rm -rf "$here/html/$(dir_of "$p")/figures"; cp -R "$html/$(dir_of "$p")/figures" "$here/html/$(dir_of "$p")/figures"
+    fi
   done
   # stylesheets and scripts next to the pages of every folder
   while IFS= read -r d; do
@@ -296,7 +325,7 @@ print("\n".join(sorted(set(json.load(open(sys.argv[2]))) - old)))' "$state" "$br
   internal=$(python3 -c '
 import json, sys
 print("\n".join(b for b in json.load(open(sys.argv[1]))
-               if b.startswith("manuscript/main.html -> #") or b.startswith("manuscript/main.html -> main.html#")))' "$broken")
+               if b.startswith(("manuscript/main.html -> #", "manuscript/main.html -> main.html#", "manuscript/main.html -> figures/"))))' "$broken")
   if [[ -n "$internal" ]]; then
     echo "error: broken links inside the manuscript:" >&2
     printf '%s\n' "$internal" >&2

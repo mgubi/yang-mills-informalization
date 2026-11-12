@@ -94,6 +94,9 @@ jobs:
           # links to repository files point upstream (origin is the fork here)
           YM_REPO_URL: https://github.com/scottnarmstrong/yang-mills-informalization
           YM_REPO_BRANCH: main
+          # TeX (TinyTeX) is installed only if a TikZ picture of the
+          # manuscript is new or changed (tm/scripts/figures.py)
+          YM_TEX_INSTALL: ${{ github.workspace }}/tm/scripts/install-tex.sh
         run: YM_SOURCE_COMMIT=$(git rev-parse upstream/main) tm/build.sh --full
 
       - name: Commit regenerated documents
