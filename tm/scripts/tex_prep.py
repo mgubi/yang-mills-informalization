@@ -148,7 +148,7 @@ def check_numbering(s):
 PAGINATION = [r'\\begin\{samepage\}', r'\\end\{samepage\}',
               r'\\(?:no)?pagebreak(?:\[[0-4]\])?', r'\\(?:no)?linebreak(?:\[[0-4]\])?',
               r'\\clearpage\b', r'\\cleardoublepage\b', r'\\newpage\b',
-              r'\\needspace\{[^{}]*\}', r'\\enlargethispage\*?\{[^{}]*\}',
+              r'\\[Nn]eedspace\*?\{[^{}]*\}', r'\\enlargethispage\*?\{[^{}]*\}',
               r'\\allowdisplaybreaks(?:\[[0-4]\])?', r'\\displaybreak(?:\[[0-4]\])?',
               r'\\(?:small|med|big)break\b', r'\\filbreak\b', r'\\goodbreak\b']
 
