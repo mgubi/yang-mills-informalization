@@ -25186,66 +25186,66 @@
     <associate|auto-111|<tuple|1|135>>
     <associate|auto-112|<tuple|13.4|137>>
     <associate|auto-113|<tuple|13.5|138>>
-    <associate|auto-114|<tuple|13.6|141>>
+    <associate|auto-114|<tuple|13.6|140>>
     <associate|auto-115|<tuple|13.7|142>>
-    <associate|auto-116|<tuple|1|143>>
-    <associate|auto-117|<tuple|14|154>>
+    <associate|auto-116|<tuple|1|142>>
+    <associate|auto-117|<tuple|14|153>>
     <associate|auto-118|<tuple|14.1|154>>
-    <associate|auto-119|<tuple|14.2|161>>
+    <associate|auto-119|<tuple|14.2|160>>
     <associate|auto-12|<tuple|2.1|10>>
-    <associate|auto-120|<tuple|14.2.1|161>>
-    <associate|auto-121|<tuple|14.2.1.1|166>>
-    <associate|auto-122|<tuple|14.2.2|168>>
-    <associate|auto-123|<tuple|14.2.2.1|170>>
-    <associate|auto-124|<tuple|14.2.3|175>>
-    <associate|auto-125|<tuple|14.2.4|178>>
-    <associate|auto-126|<tuple|14.2.5|181>>
+    <associate|auto-120|<tuple|14.2.1|160>>
+    <associate|auto-121|<tuple|14.2.1.1|165>>
+    <associate|auto-122|<tuple|14.2.2|167>>
+    <associate|auto-123|<tuple|14.2.2.1|169>>
+    <associate|auto-124|<tuple|14.2.3|174>>
+    <associate|auto-125|<tuple|14.2.4|177>>
+    <associate|auto-126|<tuple|14.2.5|180>>
     <associate|auto-127|<tuple|14.2.5.1|182>>
     <associate|auto-128|<tuple|14.2.6|189>>
-    <associate|auto-129|<tuple|14.2.7|193>>
+    <associate|auto-129|<tuple|14.2.7|192>>
     <associate|auto-13|<tuple|2.2|11>>
-    <associate|auto-130|<tuple|14.3|196>>
-    <associate|auto-131|<tuple|15|201>>
+    <associate|auto-130|<tuple|14.3|195>>
+    <associate|auto-131|<tuple|15|200>>
     <associate|auto-132|<tuple|15.1|201>>
-    <associate|auto-133|<tuple|15.1.0.1|202>>
+    <associate|auto-133|<tuple|15.1.0.1|201>>
     <associate|auto-134|<tuple|15.2|202>>
-    <associate|auto-135|<tuple|15.3|204>>
-    <associate|auto-136|<tuple|15.3.0.1|206>>
+    <associate|auto-135|<tuple|15.3|203>>
+    <associate|auto-136|<tuple|15.3.0.1|205>>
     <associate|auto-137|<tuple|15.4|206>>
-    <associate|auto-138|<tuple|15.5|208>>
-    <associate|auto-139|<tuple|16|209>>
+    <associate|auto-138|<tuple|15.5|207>>
+    <associate|auto-139|<tuple|16|208>>
     <associate|auto-14|<tuple|1|12>>
-    <associate|auto-140|<tuple|16.1|210>>
-    <associate|auto-141|<tuple|8|213>>
-    <associate|auto-142|<tuple|16.2|217>>
-    <associate|auto-143|<tuple|16.3|222>>
-    <associate|auto-144|<tuple|16.4|225>>
-    <associate|auto-145|<tuple|16.5|231>>
-    <associate|auto-146|<tuple|17|236>>
-    <associate|auto-147|<tuple|17.1|237>>
-    <associate|auto-148|<tuple|17.2|241>>
-    <associate|auto-149|<tuple|18|248>>
+    <associate|auto-140|<tuple|16.1|209>>
+    <associate|auto-141|<tuple|8|212>>
+    <associate|auto-142|<tuple|16.2|216>>
+    <associate|auto-143|<tuple|16.3|221>>
+    <associate|auto-144|<tuple|16.4|224>>
+    <associate|auto-145|<tuple|16.5|230>>
+    <associate|auto-146|<tuple|17|235>>
+    <associate|auto-147|<tuple|17.1|236>>
+    <associate|auto-148|<tuple|17.2|240>>
+    <associate|auto-149|<tuple|18|247>>
     <associate|auto-15|<tuple|2.3|12>>
-    <associate|auto-150|<tuple|18.1|248>>
-    <associate|auto-151|<tuple|18.1.0.1|250>>
-    <associate|auto-152|<tuple|18.1.0.2|252>>
-    <associate|auto-153|<tuple|18.1.0.3|252>>
-    <associate|auto-154|<tuple|18.1.0.4|253>>
-    <associate|auto-155|<tuple|18.1.0.5|254>>
-    <associate|auto-156|<tuple|18.1.0.6|256>>
-    <associate|auto-157|<tuple|18.1.0.7|257>>
-    <associate|auto-158|<tuple|6|257>>
-    <associate|auto-159|<tuple|18.1.0.8|257>>
+    <associate|auto-150|<tuple|18.1|247>>
+    <associate|auto-151|<tuple|18.1.0.1|249>>
+    <associate|auto-152|<tuple|18.1.0.2|251>>
+    <associate|auto-153|<tuple|18.1.0.3|251>>
+    <associate|auto-154|<tuple|18.1.0.4|252>>
+    <associate|auto-155|<tuple|18.1.0.5|253>>
+    <associate|auto-156|<tuple|18.1.0.6|255>>
+    <associate|auto-157|<tuple|18.1.0.7|256>>
+    <associate|auto-158|<tuple|6|256>>
+    <associate|auto-159|<tuple|18.1.0.8|256>>
     <associate|auto-16|<tuple|2.4|14>>
-    <associate|auto-160|<tuple|9|262>>
-    <associate|auto-161|<tuple|18.2|263>>
-    <associate|auto-162|<tuple|19|267>>
-    <associate|auto-163|<tuple|19.0.0.1|268>>
-    <associate|auto-164|<tuple|19.1|272>>
-    <associate|auto-165|<tuple|10|277>>
+    <associate|auto-160|<tuple|9|261>>
+    <associate|auto-161|<tuple|18.2|262>>
+    <associate|auto-162|<tuple|19|266>>
+    <associate|auto-163|<tuple|19.0.0.1|267>>
+    <associate|auto-164|<tuple|19.1|271>>
+    <associate|auto-165|<tuple|10|276>>
     <associate|auto-166|<tuple|19.2|284>>
     <associate|auto-167|<tuple|11|287>>
-    <associate|auto-168|<tuple|19.22|292>>
+    <associate|auto-168|<tuple|19.22|291>>
     <associate|auto-17|<tuple|2.5|14>>
     <associate|auto-18|<tuple|1|15>>
     <associate|auto-19|<tuple|2.6|15>>
@@ -25297,18 +25297,18 @@
     <associate|auto-60|<tuple|10.1|53>>
     <associate|auto-61|<tuple|5|54>>
     <associate|auto-62|<tuple|10.2|54>>
-    <associate|auto-63|<tuple|10.3|57>>
-    <associate|auto-64|<tuple|10.4|58>>
+    <associate|auto-63|<tuple|10.3|56>>
+    <associate|auto-64|<tuple|10.4|57>>
     <associate|auto-65|<tuple|1|58>>
     <associate|auto-66|<tuple|2|58>>
     <associate|auto-67|<tuple|10.5|61>>
-    <associate|auto-68|<tuple|1|62>>
+    <associate|auto-68|<tuple|1|61>>
     <associate|auto-69|<tuple|2|62>>
     <associate|auto-7|<tuple|1|8>>
     <associate|auto-70|<tuple|3|62>>
     <associate|auto-71|<tuple|4|63>>
     <associate|auto-72|<tuple|11|63>>
-    <associate|auto-73|<tuple|5|64>>
+    <associate|auto-73|<tuple|5|63>>
     <associate|auto-74|<tuple|11.1|64>>
     <associate|auto-75|<tuple|6|64>>
     <associate|auto-76|<tuple|4|65>>
@@ -25337,10 +25337,10 @@
     <associate|auto-97|<tuple|12|100>>
     <associate|auto-98|<tuple|12.1|101>>
     <associate|auto-99|<tuple|12.2|102>>
-    <associate|bib-Abbott1982|<tuple|1|292>>
-    <associate|bib-Balaban1985Variational|<tuple|2|292>>
-    <associate|bib-Balaban1987RG|<tuple|3|292>>
-    <associate|bib-Balaban1989Large|<tuple|4|292>>
+    <associate|bib-Abbott1982|<tuple|1|291>>
+    <associate|bib-Balaban1985Variational|<tuple|2|291>>
+    <associate|bib-Balaban1987RG|<tuple|3|291>>
+    <associate|bib-Balaban1989Large|<tuple|4|291>>
     <associate|bib-BauerschmidtBrydgesSlade2015|<tuple|5|292>>
     <associate|bib-BauerschmidtBrydgesSlade2019|<tuple|6|292>>
     <associate|bib-BrunettiFredenhagen2000|<tuple|7|292>>
@@ -25362,20 +25362,20 @@
     <associate|bib-OpenAI2026O4|<tuple|22|292>>
     <associate|bib-OpenAI2026YM|<tuple|24|292>>
     <associate|bib-OsterwalderSchrader1973|<tuple|25|292>>
-    <associate|bib-OsterwalderSchrader1975|<tuple|26|293>>
-    <associate|bib-OsterwalderSeiler1978|<tuple|27|293>>
-    <associate|bib-Politzer1973|<tuple|28|293>>
-    <associate|bib-Rudin1976|<tuple|29|293>>
-    <associate|bib-Rudin1987|<tuple|30|293>>
-    <associate|bib-Seiler1982|<tuple|31|293>>
-    <associate|bib-Stacks2026|<tuple|33|293>>
-    <associate|bib-Teschl2012|<tuple|32|293>>
-    <associate|bib-Ueltschi2004|<tuple|34|293>>
-    <associate|bib-Wilson1969|<tuple|35|293>>
-    <associate|bib-Wilson1974|<tuple|36|293>>
-    <associate|cor:G-smooth|<tuple|16.9|223>>
-    <associate|cor:H-phase-slab|<tuple|17.4|240>>
-    <associate|cor:H-phase-slabs|<tuple|17.4|240>>
+    <associate|bib-OsterwalderSchrader1975|<tuple|26|292>>
+    <associate|bib-OsterwalderSeiler1978|<tuple|27|292>>
+    <associate|bib-Politzer1973|<tuple|28|292>>
+    <associate|bib-Rudin1976|<tuple|29|292>>
+    <associate|bib-Rudin1987|<tuple|30|292>>
+    <associate|bib-Seiler1982|<tuple|31|292>>
+    <associate|bib-Stacks2026|<tuple|33|292>>
+    <associate|bib-Teschl2012|<tuple|32|292>>
+    <associate|bib-Ueltschi2004|<tuple|34|292>>
+    <associate|bib-Wilson1969|<tuple|35|292>>
+    <associate|bib-Wilson1974|<tuple|36|292>>
+    <associate|cor:G-smooth|<tuple|16.9|222>>
+    <associate|cor:H-phase-slab|<tuple|17.4|239>>
+    <associate|cor:H-phase-slabs|<tuple|17.4|239>>
     <associate|def:B-selection|<tuple|11.11|87>>
     <associate|def:D01|<tuple|2.1|10>>
     <associate|def:D02|<tuple|2.3|10>>
@@ -25411,24 +25411,24 @@
     <associate|def:D24|<tuple|13.1|113>>
     <associate|def:D25|<tuple|13.2|113>>
     <associate|def:D25a|<tuple|13.3|114>>
-    <associate|def:D26|<tuple|14.5|162>>
-    <associate|def:D27|<tuple|14.10|168>>
-    <associate|def:D28|<tuple|18.11|264>>
+    <associate|def:D26|<tuple|14.5|161>>
+    <associate|def:D27|<tuple|14.10|167>>
+    <associate|def:D28|<tuple|18.11|263>>
     <associate|def:D29|<tuple|18.13|264>>
-    <associate|def:D30|<tuple|18.14|265>>
-    <associate|def:D31|<tuple|19.3|272>>
+    <associate|def:D30|<tuple|18.14|264>>
+    <associate|def:D31|<tuple|19.3|271>>
     <associate|def:D32|<tuple|19.4|272>>
-    <associate|def:D33|<tuple|19.5|273>>
+    <associate|def:D33|<tuple|19.5|272>>
     <associate|def:D34|<tuple|19.11|281>>
     <associate|def:D35|<tuple|19.12|281>>
     <associate|def:D36|<tuple|19.16|284>>
-    <associate|def:D37|<tuple|19.17|285>>
-    <associate|def:D38|<tuple|19.18|285>>
+    <associate|def:D37|<tuple|19.17|284>>
+    <associate|def:D38|<tuple|19.18|284>>
     <associate|def:E1-E3|<tuple|2.9|14>>
-    <associate|def:E2-small|<tuple|14.16|175>>
+    <associate|def:E2-small|<tuple|14.16|174>>
     <associate|def:E4-E5|<tuple|2.10|14>>
     <associate|def:E6-E7|<tuple|2.11|14>>
-    <associate|def:I-current|<tuple|18.4|253>>
+    <associate|def:I-current|<tuple|18.4|252>>
     <associate|def:Q0|<tuple|8.1|44>>
     <associate|def:Q1|<tuple|2.5|11>>
     <associate|def:Q2|<tuple|8.2|45>>
@@ -25472,188 +25472,188 @@
     <associate|eq:C-prereset|<tuple|13.21|136>>
     <associate|eq:C-slope|<tuple|12.4|110>>
     <associate|eq:D-Wilson-remainder|<tuple|13.22|138>>
-    <associate|eq:D-affine-kernel|<tuple|13.32|150>>
-    <associate|eq:D-analytic-domain|<tuple|13.27|144>>
+    <associate|eq:D-affine-kernel|<tuple|13.32|149>>
+    <associate|eq:D-analytic-domain|<tuple|13.27|143>>
     <associate|eq:D-aux-bound|<tuple|13.9|127>>
     <associate|eq:D-clover-linear|<tuple|13.1|115>>
     <associate|eq:D-cluster|<tuple|13.5|120>>
     <associate|eq:D-common-norm|<tuple|13.25|143>>
-    <associate|eq:D-coupling-aperture|<tuple|13.30|146>>
+    <associate|eq:D-coupling-aperture|<tuple|13.30|145>>
     <associate|eq:D-coupling-coordinate|<tuple|13.26|143>>
     <associate|eq:D-early|<tuple|13.10|128>>
     <associate|eq:D-early-bound|<tuple|13.11|128>>
     <associate|eq:D-factor-rates|<tuple|13.4|118>>
     <associate|eq:D-five-weights|<tuple|13.6|124>>
-    <associate|eq:D-fused-term|<tuple|13.18|132>>
-    <associate|eq:D-fusion-small|<tuple|13.19|133>>
+    <associate|eq:D-fused-term|<tuple|13.18|131>>
+    <associate|eq:D-fusion-small|<tuple|13.19|132>>
     <associate|eq:D-height-gain|<tuple|13.8|126>>
-    <associate|eq:D-history-distance|<tuple|13.33|151>>
+    <associate|eq:D-history-distance|<tuple|13.33|150>>
     <associate|eq:D-isotropy|<tuple|13.16|131>>
     <associate|eq:D-kinetic-split|<tuple|13.17|131>>
-    <associate|eq:D-limit-prefix|<tuple|13.37|153>>
-    <associate|eq:D-local-lipschitz|<tuple|13.35|152>>
-    <associate|eq:D-local-split|<tuple|13.13|130>>
+    <associate|eq:D-limit-prefix|<tuple|13.37|152>>
+    <associate|eq:D-local-lipschitz|<tuple|13.35|151>>
+    <associate|eq:D-local-split|<tuple|13.13|129>>
     <associate|eq:D-low-sums|<tuple|13.2|116>>
     <associate|eq:D-mask-localization|<tuple|13.7|125>>
-    <associate|eq:D-mixed-difference|<tuple|13.29|145>>
+    <associate|eq:D-mixed-difference|<tuple|13.29|144>>
     <associate|eq:D-preliminary-forced|<tuple|13.12|128>>
     <associate|eq:D-projection-bound|<tuple|13.14|130>>
-    <associate|eq:D-real-stencil|<tuple|13.28|144>>
-    <associate|eq:D-remainder-bound|<tuple|13.15|131>>
-    <associate|eq:D-retained|<tuple|13.24|141>>
+    <associate|eq:D-real-stencil|<tuple|13.28|143>>
+    <associate|eq:D-remainder-bound|<tuple|13.15|130>>
+    <associate|eq:D-retained|<tuple|13.24|140>>
     <associate|eq:D-seed-required|<tuple|13.3|116>>
-    <associate|eq:D-series-map|<tuple|13.34|151>>
+    <associate|eq:D-series-map|<tuple|13.34|150>>
     <associate|eq:D-start-identity|<tuple|13.23|139>>
-    <associate|eq:D-stencil-bound|<tuple|13.31|148>>
-    <associate|eq:D-truncated-orbit|<tuple|13.36|153>>
-    <associate|eq:D-unnormalized|<tuple|13.20|135>>
-    <associate|eq:E-Gaussian-entry|<tuple|14.10|157>>
+    <associate|eq:D-stencil-bound|<tuple|13.31|147>>
+    <associate|eq:D-truncated-orbit|<tuple|13.36|152>>
+    <associate|eq:D-unnormalized|<tuple|13.20|134>>
+    <associate|eq:E-Gaussian-entry|<tuple|14.10|156>>
     <associate|eq:E-Gaussian-polynomial|<tuple|14.43|184>>
-    <associate|eq:E-analytic-input|<tuple|14.14|161>>
-    <associate|eq:E-atom-estimates|<tuple|14.17|165>>
-    <associate|eq:E-attachment-allowance|<tuple|14.6|156>>
-    <associate|eq:E-backward-match|<tuple|14.33|177>>
-    <associate|eq:E-backward-match-level|<tuple|14.34|177>>
-    <associate|eq:E-bounded-error|<tuple|14.54|194>>
-    <associate|eq:E-centered-input|<tuple|14.26|174>>
-    <associate|eq:E-chess|<tuple|14.19|169>>
-    <associate|eq:E-coarse-cauchy|<tuple|14.59|197>>
+    <associate|eq:E-analytic-input|<tuple|14.14|160>>
+    <associate|eq:E-atom-estimates|<tuple|14.17|164>>
+    <associate|eq:E-attachment-allowance|<tuple|14.6|155>>
+    <associate|eq:E-backward-match|<tuple|14.33|176>>
+    <associate|eq:E-backward-match-level|<tuple|14.34|176>>
+    <associate|eq:E-bounded-error|<tuple|14.54|193>>
+    <associate|eq:E-centered-input|<tuple|14.26|173>>
+    <associate|eq:E-chess|<tuple|14.19|168>>
+    <associate|eq:E-coarse-cauchy|<tuple|14.59|196>>
     <associate|eq:E-coarse-integral|<tuple|14.58|196>>
-    <associate|eq:E-coarse-inversion|<tuple|14.53|194>>
+    <associate|eq:E-coarse-inversion|<tuple|14.53|193>>
     <associate|eq:E-comparison-cost|<tuple|14.48|188>>
-    <associate|eq:E-corrected-coefficients|<tuple|14.40|182>>
-    <associate|eq:E-cross-cutoff|<tuple|14.60|197>>
-    <associate|eq:E-detection|<tuple|14.52|192>>
-    <associate|eq:E-discrete-taylor|<tuple|14.63|200>>
-    <associate|eq:E-equation-comparison|<tuple|14.30|176>>
-    <associate|eq:E-equation-count|<tuple|14.36|179>>
-    <associate|eq:E-equation-section|<tuple|14.37|179>>
-    <associate|eq:E-first-open|<tuple|14.12|159>>
+    <associate|eq:E-corrected-coefficients|<tuple|14.40|181>>
+    <associate|eq:E-cross-cutoff|<tuple|14.60|196>>
+    <associate|eq:E-detection|<tuple|14.52|191>>
+    <associate|eq:E-discrete-taylor|<tuple|14.63|199>>
+    <associate|eq:E-equation-comparison|<tuple|14.30|175>>
+    <associate|eq:E-equation-count|<tuple|14.36|178>>
+    <associate|eq:E-equation-section|<tuple|14.37|178>>
+    <associate|eq:E-first-open|<tuple|14.12|158>>
     <associate|eq:E-graph-reserve|<tuple|14.8|156>>
     <associate|eq:E-inverse-spacing|<tuple|14.50|189>>
-    <associate|eq:E-local-error|<tuple|14.35|178>>
-    <associate|eq:E-local-start|<tuple|14.31|176>>
-    <associate|eq:E-log-cost|<tuple|14.11|158>>
-    <associate|eq:E-marked-cover|<tuple|14.24|170>>
-    <associate|eq:E-marked-evolution|<tuple|14.15|161>>
-    <associate|eq:E-marked-mass|<tuple|14.16|162>>
-    <associate|eq:E-marker-scales|<tuple|14.3|155>>
-    <associate|eq:E-match-cone|<tuple|14.32|177>>
-    <associate|eq:E-matching-choices|<tuple|14.9|157>>
-    <associate|eq:E-multiple-density|<tuple|14.22|170>>
-    <associate|eq:E-normalized-density|<tuple|14.57|196>>
+    <associate|eq:E-local-error|<tuple|14.35|177>>
+    <associate|eq:E-local-start|<tuple|14.31|175>>
+    <associate|eq:E-log-cost|<tuple|14.11|157>>
+    <associate|eq:E-marked-cover|<tuple|14.24|169>>
+    <associate|eq:E-marked-evolution|<tuple|14.15|160>>
+    <associate|eq:E-marked-mass|<tuple|14.16|161>>
+    <associate|eq:E-marker-scales|<tuple|14.3|154>>
+    <associate|eq:E-match-cone|<tuple|14.32|176>>
+    <associate|eq:E-matching-choices|<tuple|14.9|156>>
+    <associate|eq:E-multiple-density|<tuple|14.22|169>>
+    <associate|eq:E-normalized-density|<tuple|14.57|195>>
     <associate|eq:E-positive-ratio|<tuple|14.47|187>>
-    <associate|eq:E-rank-input|<tuple|14.49|189>>
-    <associate|eq:E-residual-root|<tuple|14.25|174>>
-    <associate|eq:E-running|<tuple|14.13|160>>
+    <associate|eq:E-rank-input|<tuple|14.49|188>>
+    <associate|eq:E-residual-root|<tuple|14.25|173>>
+    <associate|eq:E-running|<tuple|14.13|159>>
     <associate|eq:E-source-allowance-transport|<tuple|14.7|156>>
-    <associate|eq:E-source-form|<tuple|14.23|170>>
+    <associate|eq:E-source-form|<tuple|14.23|169>>
     <associate|eq:E-source-initial|<tuple|14.42|182>>
     <associate|eq:E-source-iteration|<tuple|14.46|186>>
-    <associate|eq:E-source-loss|<tuple|14.44|186>>
-    <associate|eq:E-source-step|<tuple|14.45|186>>
-    <associate|eq:E-stop-error|<tuple|14.61|198>>
+    <associate|eq:E-source-loss|<tuple|14.44|185>>
+    <associate|eq:E-source-step|<tuple|14.45|185>>
+    <associate|eq:E-stop-error|<tuple|14.61|197>>
     <associate|eq:E-stopping-constant|<tuple|14.62|198>>
-    <associate|eq:E-support-conversion|<tuple|14.5|156>>
-    <associate|eq:E-terminal-map|<tuple|14.18|166>>
-    <associate|eq:E-three-term|<tuple|14.56|196>>
+    <associate|eq:E-support-conversion|<tuple|14.5|155>>
+    <associate|eq:E-terminal-map|<tuple|14.18|165>>
+    <associate|eq:E-three-term|<tuple|14.56|195>>
     <associate|eq:E-trace-displacement|<tuple|14.51|190>>
     <associate|eq:E-vacuum-majorant|<tuple|14.1|154>>
-    <associate|eq:E-vacuum-ratio|<tuple|14.2|155>>
+    <associate|eq:E-vacuum-ratio|<tuple|14.2|154>>
     <associate|eq:E-window|<tuple|14.4|155>>
-    <associate|eq:E-window-geometry|<tuple|14.41|182>>
-    <associate|eq:E-word-error|<tuple|14.55|195>>
-    <associate|eq:E2-free-matrix|<tuple|14.38|181>>
-    <associate|eq:E2-margin|<tuple|14.29|175>>
-    <associate|eq:E2-tails|<tuple|14.28|175>>
-    <associate|eq:F-calculus|<tuple|15.7|205>>
+    <associate|eq:E-window-geometry|<tuple|14.41|181>>
+    <associate|eq:E-word-error|<tuple|14.55|194>>
+    <associate|eq:E2-free-matrix|<tuple|14.38|180>>
+    <associate|eq:E2-margin|<tuple|14.29|174>>
+    <associate|eq:E2-tails|<tuple|14.28|174>>
+    <associate|eq:F-calculus|<tuple|15.7|204>>
     <associate|eq:F-chess|<tuple|15.4|202>>
-    <associate|eq:F-conf|<tuple|15.1|202>>
+    <associate|eq:F-conf|<tuple|15.1|201>>
     <associate|eq:F-dimension|<tuple|15.11|205>>
-    <associate|eq:F-local|<tuple|15.3|202>>
-    <associate|eq:F-logconvex|<tuple|14.21|169>>
-    <associate|eq:F-normalized|<tuple|15.6|204>>
-    <associate|eq:F-null|<tuple|15.9|205>>
-    <associate|eq:F-ordered|<tuple|15.2|202>>
-    <associate|eq:F-parts|<tuple|15.12|206>>
-    <associate|eq:F-power|<tuple|15.14|207>>
-    <associate|eq:F-projections|<tuple|15.8|205>>
-    <associate|eq:F-rank|<tuple|15.10|205>>
-    <associate|eq:F-relative|<tuple|14.39|181>>
-    <associate|eq:F-repeat-scales|<tuple|15.15|208>>
-    <associate|eq:F-small|<tuple|15.5|203>>
-    <associate|eq:F-subpower|<tuple|14.27|175>>
-    <associate|eq:F-thickness|<tuple|15.13|207>>
-    <associate|eq:F-uncentered|<tuple|14.20|169>>
-    <associate|eq:G-angular|<tuple|16.38|231>>
-    <associate|eq:G-annular-cost|<tuple|16.19|221>>
-    <associate|eq:G-annular-derivatives|<tuple|16.20|222>>
-    <associate|eq:G-annular-input|<tuple|16.18|221>>
-    <associate|eq:G-average|<tuple|16.42|235>>
-    <associate|eq:G-balance|<tuple|16.12|217>>
-    <associate|eq:G-charge-limits|<tuple|16.41|234>>
-    <associate|eq:G-collinear|<tuple|16.39|232>>
-    <associate|eq:G-collision|<tuple|16.8|214>>
-    <associate|eq:G-correct-frames|<tuple|16.22|223>>
-    <associate|eq:G-curvature|<tuple|16.1|210>>
-    <associate|eq:G-derivative-limit|<tuple|16.23|223>>
-    <associate|eq:G-detection|<tuple|16.7|213>>
-    <associate|eq:G-divergence-matrix|<tuple|16.6|212>>
-    <associate|eq:G-erasure-test|<tuple|16.10|217>>
-    <associate|eq:G-exponents|<tuple|16.11|217>>
-    <associate|eq:G-free-shells|<tuple|16.3|210>>
-    <associate|eq:G-free-tensor|<tuple|16.2|210>>
-    <associate|eq:G-free-tests|<tuple|16.9|215>>
-    <associate|eq:G-kelvin|<tuple|16.4|211>>
-    <associate|eq:G-lattice-input|<tuple|16.13|218>>
-    <associate|eq:G-lift-bound|<tuple|16.15|218>>
-    <associate|eq:G-lift-equation|<tuple|16.14|218>>
-    <associate|eq:G-mass-input|<tuple|16.36|230>>
-    <associate|eq:G-pivots|<tuple|16.5|211>>
-    <associate|eq:G-root-sides|<tuple|16.17|220>>
-    <associate|eq:G-shell-commutators|<tuple|16.40|233>>
-    <associate|eq:G-smooth|<tuple|16.24|223>>
-    <associate|eq:G-source-root|<tuple|16.16|219>>
-    <associate|eq:G-spectral-input|<tuple|16.35|230>>
-    <associate|eq:G-tested-error|<tuple|16.21|222>>
-    <associate|eq:H-Laplace|<tuple|17.9|243>>
-    <associate|eq:H-all-moments|<tuple|16.30|227>>
-    <associate|eq:H-boundary|<tuple|17.8|242>>
-    <associate|eq:H-charge|<tuple|17.12|247>>
-    <associate|eq:H-clusters|<tuple|17.1|237>>
-    <associate|eq:H-continuation|<tuple|17.6|242>>
-    <associate|eq:H-coordinate-CS|<tuple|16.28|226>>
-    <associate|eq:H-coordinate-measure|<tuple|16.27|226>>
-    <associate|eq:H-coordinate-moments|<tuple|16.29|227>>
-    <associate|eq:H-heat|<tuple|17.11|246>>
-    <associate|eq:H-low|<tuple|17.10|246>>
-    <associate|eq:H-moments|<tuple|17.4|240>>
-    <associate|eq:H-poly|<tuple|17.7|242>>
-    <associate|eq:H-real-approx|<tuple|17.2|238>>
-    <associate|eq:H-reflection|<tuple|17.3|239>>
-    <associate|eq:H-residual-cost|<tuple|16.32|228>>
-    <associate|eq:H-residual-response|<tuple|16.31|228>>
-    <associate|eq:H-scaled-tests|<tuple|16.34|229>>
-    <associate|eq:H-sign-induction|<tuple|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|H>><rsub|s>|228>>
-    <associate|eq:H-sign-transfer|<tuple|16.33|228>>
-    <associate|eq:H-slab-derivative|<tuple|16.26|225>>
-    <associate|eq:H-slab-laws|<tuple|16.25|225>>
-    <associate|eq:H-star|<tuple|17.5|241>>
-    <associate|eq:H-tensor-responses|<tuple|16.37|230>>
-    <associate|eq:I-adjustable|<tuple|18.1|250>>
-    <associate|eq:I-coefficient|<tuple|18.10|261>>
-    <associate|eq:I-contact|<tuple|18.5|255>>
-    <associate|eq:I-divergence|<tuple|18.7|257>>
+    <associate|eq:F-local|<tuple|15.3|201>>
+    <associate|eq:F-logconvex|<tuple|14.21|168>>
+    <associate|eq:F-normalized|<tuple|15.6|203>>
+    <associate|eq:F-null|<tuple|15.9|204>>
+    <associate|eq:F-ordered|<tuple|15.2|201>>
+    <associate|eq:F-parts|<tuple|15.12|205>>
+    <associate|eq:F-power|<tuple|15.14|206>>
+    <associate|eq:F-projections|<tuple|15.8|204>>
+    <associate|eq:F-rank|<tuple|15.10|204>>
+    <associate|eq:F-relative|<tuple|14.39|180>>
+    <associate|eq:F-repeat-scales|<tuple|15.15|207>>
+    <associate|eq:F-small|<tuple|15.5|202>>
+    <associate|eq:F-subpower|<tuple|14.27|174>>
+    <associate|eq:F-thickness|<tuple|15.13|206>>
+    <associate|eq:F-uncentered|<tuple|14.20|168>>
+    <associate|eq:G-angular|<tuple|16.38|230>>
+    <associate|eq:G-annular-cost|<tuple|16.19|220>>
+    <associate|eq:G-annular-derivatives|<tuple|16.20|221>>
+    <associate|eq:G-annular-input|<tuple|16.18|220>>
+    <associate|eq:G-average|<tuple|16.42|234>>
+    <associate|eq:G-balance|<tuple|16.12|216>>
+    <associate|eq:G-charge-limits|<tuple|16.41|233>>
+    <associate|eq:G-collinear|<tuple|16.39|231>>
+    <associate|eq:G-collision|<tuple|16.8|213>>
+    <associate|eq:G-correct-frames|<tuple|16.22|222>>
+    <associate|eq:G-curvature|<tuple|16.1|209>>
+    <associate|eq:G-derivative-limit|<tuple|16.23|222>>
+    <associate|eq:G-detection|<tuple|16.7|212>>
+    <associate|eq:G-divergence-matrix|<tuple|16.6|211>>
+    <associate|eq:G-erasure-test|<tuple|16.10|216>>
+    <associate|eq:G-exponents|<tuple|16.11|216>>
+    <associate|eq:G-free-shells|<tuple|16.3|209>>
+    <associate|eq:G-free-tensor|<tuple|16.2|209>>
+    <associate|eq:G-free-tests|<tuple|16.9|214>>
+    <associate|eq:G-kelvin|<tuple|16.4|210>>
+    <associate|eq:G-lattice-input|<tuple|16.13|217>>
+    <associate|eq:G-lift-bound|<tuple|16.15|217>>
+    <associate|eq:G-lift-equation|<tuple|16.14|217>>
+    <associate|eq:G-mass-input|<tuple|16.36|229>>
+    <associate|eq:G-pivots|<tuple|16.5|210>>
+    <associate|eq:G-root-sides|<tuple|16.17|219>>
+    <associate|eq:G-shell-commutators|<tuple|16.40|232>>
+    <associate|eq:G-smooth|<tuple|16.24|222>>
+    <associate|eq:G-source-root|<tuple|16.16|218>>
+    <associate|eq:G-spectral-input|<tuple|16.35|229>>
+    <associate|eq:G-tested-error|<tuple|16.21|221>>
+    <associate|eq:H-Laplace|<tuple|17.9|242>>
+    <associate|eq:H-all-moments|<tuple|16.30|226>>
+    <associate|eq:H-boundary|<tuple|17.8|241>>
+    <associate|eq:H-charge|<tuple|17.12|246>>
+    <associate|eq:H-clusters|<tuple|17.1|236>>
+    <associate|eq:H-continuation|<tuple|17.6|241>>
+    <associate|eq:H-coordinate-CS|<tuple|16.28|225>>
+    <associate|eq:H-coordinate-measure|<tuple|16.27|225>>
+    <associate|eq:H-coordinate-moments|<tuple|16.29|226>>
+    <associate|eq:H-heat|<tuple|17.11|245>>
+    <associate|eq:H-low|<tuple|17.10|245>>
+    <associate|eq:H-moments|<tuple|17.4|239>>
+    <associate|eq:H-poly|<tuple|17.7|241>>
+    <associate|eq:H-real-approx|<tuple|17.2|237>>
+    <associate|eq:H-reflection|<tuple|17.3|238>>
+    <associate|eq:H-residual-cost|<tuple|16.32|227>>
+    <associate|eq:H-residual-response|<tuple|16.31|227>>
+    <associate|eq:H-scaled-tests|<tuple|16.34|228>>
+    <associate|eq:H-sign-induction|<tuple|<with|mode|<quote|text>|<with|font-family|<quote|rm>|font-shape|<quote|right>|H>><rsub|s>|227>>
+    <associate|eq:H-sign-transfer|<tuple|16.33|227>>
+    <associate|eq:H-slab-derivative|<tuple|16.26|224>>
+    <associate|eq:H-slab-laws|<tuple|16.25|224>>
+    <associate|eq:H-star|<tuple|17.5|240>>
+    <associate|eq:H-tensor-responses|<tuple|16.37|229>>
+    <associate|eq:I-adjustable|<tuple|18.1|249>>
+    <associate|eq:I-coefficient|<tuple|18.10|260>>
+    <associate|eq:I-contact|<tuple|18.5|254>>
+    <associate|eq:I-divergence|<tuple|18.7|256>>
     <associate|eq:I-doubling|<tuple|18.13|266>>
-    <associate|eq:I-five-pieces|<tuple|18.9|258>>
-    <associate|eq:I-reading|<tuple|18.2|250>>
-    <associate|eq:I-regulated-ward|<tuple|18.6|256>>
-    <associate|eq:I-remote|<tuple|18.12|266>>
-    <associate|eq:I-rho|<tuple|18.3|252>>
+    <associate|eq:I-five-pieces|<tuple|18.9|257>>
+    <associate|eq:I-reading|<tuple|18.2|249>>
+    <associate|eq:I-regulated-ward|<tuple|18.6|255>>
+    <associate|eq:I-remote|<tuple|18.12|265>>
+    <associate|eq:I-rho|<tuple|18.3|251>>
     <associate|eq:I-sector|<tuple|18.11|265>>
     <associate|eq:I-small-mass|<tuple|18.14|266>>
-    <associate|eq:I-tensor|<tuple|18.8|257>>
-    <associate|eq:I-transfer-map|<tuple|18.4|254>>
+    <associate|eq:I-tensor|<tuple|18.8|256>>
+    <associate|eq:I-transfer-map|<tuple|18.4|253>>
     <associate|eq:I12-Wilson-initialization|<tuple|5.13|29>>
     <associate|eq:I12-activity-caps|<tuple|5.12|28>>
     <associate|eq:I12-bare-slope|<tuple|1.2|6>>
@@ -25677,24 +25677,24 @@
     <associate|eq:I12-section-Taylor|<tuple|2.4|13>>
     <associate|eq:I12-tag-mass|<tuple|5.6|26>>
     <associate|eq:I12-test-holonomy|<tuple|2.3|13>>
-    <associate|eq:J-average-error|<tuple|19.12|279>>
+    <associate|eq:J-average-error|<tuple|19.12|278>>
     <associate|eq:J-contact-arms|<tuple|19.19|289>>
     <associate|eq:J-contact-order|<tuple|19.22|291>>
     <associate|eq:J-contact-recursion|<tuple|19.17|286>>
     <associate|eq:J-contact-split|<tuple|19.15|285>>
     <associate|eq:J-cuts|<tuple|19.5|273>>
-    <associate|eq:J-entrance|<tuple|19.7|276>>
-    <associate|eq:J-graded-input|<tuple|19.4|270>>
+    <associate|eq:J-entrance|<tuple|19.7|275>>
+    <associate|eq:J-graded-input|<tuple|19.4|269>>
     <associate|eq:J-layer-precision|<tuple|19.18|287>>
-    <associate|eq:J-marked-recall|<tuple|19.1|268>>
-    <associate|eq:J-marked-weights|<tuple|19.6|275>>
+    <associate|eq:J-marked-recall|<tuple|19.1|267>>
+    <associate|eq:J-marked-weights|<tuple|19.6|274>>
     <associate|eq:J-marker-weights|<tuple|19.9|278>>
     <associate|eq:J-moments|<tuple|19.13|279>>
-    <associate|eq:J-normal-Taylor|<tuple|19.16|286>>
-    <associate|eq:J-raw-rates|<tuple|19.11|279>>
-    <associate|eq:J-sector-rates|<tuple|19.20|290>>
+    <associate|eq:J-normal-Taylor|<tuple|19.16|285>>
+    <associate|eq:J-raw-rates|<tuple|19.11|278>>
+    <associate|eq:J-sector-rates|<tuple|19.20|289>>
     <associate|eq:J-shell-Taylor|<tuple|19.21|290>>
-    <associate|eq:J-signed-input|<tuple|19.3|270>>
+    <associate|eq:J-signed-input|<tuple|19.3|269>>
     <associate|eq:J-stage-room|<tuple|19.2|268>>
     <associate|eq:J-support-move|<tuple|19.8|277>>
     <associate|eq:J-telescope|<tuple|19.14|282>>
@@ -25707,10 +25707,10 @@
     <associate|fig:A-transported|<tuple|5|54>>
     <associate|fig:B-predictor|<tuple|6|64>>
     <associate|fig:D-five-tori|<tuple|7|124>>
-    <associate|fig:G-shell|<tuple|8|213>>
-    <associate|fig:I-squeeze|<tuple|9|262>>
+    <associate|fig:G-shell|<tuple|8|212>>
+    <associate|fig:I-squeeze|<tuple|9|261>>
     <associate|fig:J-forests|<tuple|11|287>>
-    <associate|fig:J-scales|<tuple|10|277>>
+    <associate|fig:J-scales|<tuple|10|276>>
     <associate|fig:covers|<tuple|4|28>>
     <associate|fig:dependency|<tuple|2|19>>
     <associate|fig:scales|<tuple|3|20>>
@@ -25720,13 +25720,13 @@
     <associate|it:B3|<tuple|iii|18>>
     <associate|it:B4|<tuple|iv|18>>
     <associate|it:B5|<tuple|v|18>>
-    <associate|it:E-birth|<tuple|6|157>>
+    <associate|it:E-birth|<tuple|6|156>>
     <associate|it:E-columns|<tuple|1|156>>
-    <associate|it:E-entries|<tuple|5|157>>
+    <associate|it:E-entries|<tuple|5|156>>
     <associate|it:E-graph|<tuple|2|156>>
-    <associate|it:E-log|<tuple|4|157>>
-    <associate|it:E-match|<tuple|3|157>>
-    <associate|it:E-ratio-log|<tuple|7|157>>
+    <associate|it:E-log|<tuple|4|156>>
+    <associate|it:E-match|<tuple|3|156>>
+    <associate|it:E-ratio-log|<tuple|7|156>>
     <associate|it:E1|<tuple|E1|14>>
     <associate|it:E2|<tuple|E2|14>>
     <associate|it:E3|<tuple|E3|14>>
@@ -25734,7 +25734,7 @@
     <associate|it:E5|<tuple|E5|14>>
     <associate|it:E6|<tuple|E6|14>>
     <associate|it:E7|<tuple|E7|14>>
-    <associate|lem:A-R4|<tuple|10.4|59>>
+    <associate|lem:A-R4|<tuple|10.4|58>>
     <associate|lem:A-bounds|<tuple|10.3|57>>
     <associate|lem:A1|<tuple|10.2|55>>
     <associate|lem:B-D1|<tuple|11.12|87>>
@@ -25754,142 +25754,142 @@
     <associate|lem:C5|<tuple|12.7|107>>
     <associate|lem:C6|<tuple|12.8|107>>
     <associate|lem:C7|<tuple|12.9|109>>
-    <associate|lem:C8|<tuple|13.14|136>>
+    <associate|lem:C8|<tuple|13.14|135>>
     <associate|lem:D-E1|<tuple|13.23|151>>
-    <associate|lem:D-analytic-step|<tuple|13.21|149>>
+    <associate|lem:D-analytic-step|<tuple|13.21|148>>
     <associate|lem:D-connected|<tuple|13.5|117>>
-    <associate|lem:D-coupling-stencil|<tuple|13.19|146>>
+    <associate|lem:D-coupling-stencil|<tuple|13.19|145>>
     <associate|lem:D-cutoff-continuity|<tuple|13.22|149>>
-    <associate|lem:D-fixed-level|<tuple|13.24|153>>
+    <associate|lem:D-fixed-level|<tuple|13.24|152>>
     <associate|lem:D-fusion|<tuple|13.11|132>>
     <associate|lem:D-inherited|<tuple|13.6|121>>
     <associate|lem:D-local-subtraction|<tuple|13.10|130>>
     <associate|lem:D-localization|<tuple|13.7|125>>
     <associate|lem:D-preliminary|<tuple|13.8|128>>
-    <associate|lem:D-real-lines|<tuple|13.20|148>>
+    <associate|lem:D-real-lines|<tuple|13.20|147>>
     <associate|lem:D-rooted|<tuple|13.4|117>>
     <associate|lem:D-stencil-recovery|<tuple|13.18|144>>
     <associate|lem:D1|<tuple|13.12|133>>
     <associate|lem:D2|<tuple|13.17|141>>
-    <associate|lem:D3|<tuple|13.16|139>>
+    <associate|lem:D3|<tuple|13.16|138>>
     <associate|lem:D4|<tuple|13.9|129>>
     <associate|lem:D5|<tuple|13.13|134>>
     <associate|lem:D6|<tuple|13.15|137>>
     <associate|lem:E-Gaussian-sources|<tuple|14.24|185>>
-    <associate|lem:E-coarse-bounded|<tuple|14.29|193>>
-    <associate|lem:E-cover|<tuple|14.12|170>>
-    <associate|lem:E-displacement|<tuple|14.27|190>>
-    <associate|lem:E-fixed-level|<tuple|14.31|197>>
-    <associate|lem:E-local-comparison|<tuple|14.17|176>>
-    <associate|lem:E-marked-step|<tuple|14.6|163>>
-    <associate|lem:E-normalization-cost|<tuple|14.1|155>>
-    <associate|lem:E-replication|<tuple|14.14|173>>
-    <associate|lem:E-source-attachments|<tuple|14.13|171>>
-    <associate|lem:E-source-integral|<tuple|14.25|187>>
-    <associate|lem:E-source-polynomial|<tuple|14.23|183>>
-    <associate|lem:E-stopping|<tuple|14.32|198>>
+    <associate|lem:E-coarse-bounded|<tuple|14.29|192>>
+    <associate|lem:E-cover|<tuple|14.12|169>>
+    <associate|lem:E-displacement|<tuple|14.27|189>>
+    <associate|lem:E-fixed-level|<tuple|14.31|196>>
+    <associate|lem:E-local-comparison|<tuple|14.17|175>>
+    <associate|lem:E-marked-step|<tuple|14.6|162>>
+    <associate|lem:E-normalization-cost|<tuple|14.1|154>>
+    <associate|lem:E-replication|<tuple|14.14|172>>
+    <associate|lem:E-source-attachments|<tuple|14.13|170>>
+    <associate|lem:E-source-integral|<tuple|14.25|186>>
+    <associate|lem:E-source-polynomial|<tuple|14.23|182>>
+    <associate|lem:E-stopping|<tuple|14.32|197>>
     <associate|lem:E1.1|<tuple|14.2|157>>
     <associate|lem:E1.2|<tuple|14.3|159>>
-    <associate|lem:E1.3|<tuple|14.4|160>>
-    <associate|lem:E2-bounded-real|<tuple|14.30|195>>
-    <associate|lem:E2-free-tests|<tuple|14.22|181>>
-    <associate|lem:E2.1|<tuple|14.7|166>>
-    <associate|lem:E2.10|<tuple|14.26|189>>
-    <associate|lem:E2.1a|<tuple|14.8|167>>
-    <associate|lem:E2.2|<tuple|14.7|166>>
-    <associate|lem:E2.2a|<tuple|14.9|168>>
-    <associate|lem:E2.3|<tuple|14.15|174>>
-    <associate|lem:E2.4|<tuple|14.28|191>>
-    <associate|lem:E2.6|<tuple|14.18|178>>
-    <associate|lem:E2.7|<tuple|14.19|179>>
-    <associate|lem:E2.8|<tuple|14.20|180>>
-    <associate|lem:E2.9|<tuple|14.21|180>>
+    <associate|lem:E1.3|<tuple|14.4|159>>
+    <associate|lem:E2-bounded-real|<tuple|14.30|194>>
+    <associate|lem:E2-free-tests|<tuple|14.22|180>>
+    <associate|lem:E2.1|<tuple|14.7|165>>
+    <associate|lem:E2.10|<tuple|14.26|188>>
+    <associate|lem:E2.1a|<tuple|14.8|166>>
+    <associate|lem:E2.2|<tuple|14.7|165>>
+    <associate|lem:E2.2a|<tuple|14.9|167>>
+    <associate|lem:E2.3|<tuple|14.15|173>>
+    <associate|lem:E2.4|<tuple|14.28|190>>
+    <associate|lem:E2.6|<tuple|14.18|177>>
+    <associate|lem:E2.7|<tuple|14.19|178>>
+    <associate|lem:E2.8|<tuple|14.20|179>>
+    <associate|lem:E2.9|<tuple|14.21|179>>
     <associate|lem:E3.1|<tuple|14.33|199>>
     <associate|lem:E3.2|<tuple|14.34|200>>
-    <associate|lem:F-cells|<tuple|15.2|203>>
-    <associate|lem:F-represent|<tuple|15.4|204>>
-    <associate|lem:F1|<tuple|15.1|202>>
-    <associate|lem:F1a|<tuple|14.11|169>>
-    <associate|lem:F1b|<tuple|15.3|203>>
-    <associate|lem:F2|<tuple|15.5|205>>
+    <associate|lem:F-cells|<tuple|15.2|202>>
+    <associate|lem:F-represent|<tuple|15.4|203>>
+    <associate|lem:F1|<tuple|15.1|201>>
+    <associate|lem:F1a|<tuple|14.11|168>>
+    <associate|lem:F1b|<tuple|15.3|202>>
+    <associate|lem:F2|<tuple|15.5|204>>
     <associate|lem:F3|<tuple|15.6|206>>
-    <associate|lem:F4|<tuple|15.7|208>>
-    <associate|lem:G-analytic|<tuple|16.16|233>>
-    <associate|lem:G-annular|<tuple|16.7|221>>
-    <associate|lem:G-collinear-flux|<tuple|16.15|232>>
-    <associate|lem:G-detection|<tuple|16.2|213>>
-    <associate|lem:G-lattice|<tuple|16.6|218>>
-    <associate|lem:G-planes|<tuple|16.4|216>>
-    <associate|lem:G1-internal|<tuple|16.5|217>>
-    <associate|lem:G1-vector|<tuple|16.3|215>>
+    <associate|lem:F4|<tuple|15.7|207>>
+    <associate|lem:G-analytic|<tuple|16.16|232>>
+    <associate|lem:G-annular|<tuple|16.7|220>>
+    <associate|lem:G-collinear-flux|<tuple|16.15|231>>
+    <associate|lem:G-detection|<tuple|16.2|212>>
+    <associate|lem:G-lattice|<tuple|16.6|217>>
+    <associate|lem:G-planes|<tuple|16.4|215>>
+    <associate|lem:G1-internal|<tuple|16.5|216>>
+    <associate|lem:G1-vector|<tuple|16.3|214>>
     <associate|lem:G1.1|<tuple|16.1|210>>
-    <associate|lem:G2.1|<tuple|16.8|222>>
-    <associate|lem:G2.2|<tuple|16.10|224>>
-    <associate|lem:G2.3|<tuple|16.11|224>>
-    <associate|lem:G3.1|<tuple|16.17|233>>
-    <associate|lem:G3.2|<tuple|16.18|235>>
-    <associate|lem:G3.3|<tuple|16.19|236>>
-    <associate|lem:H-G3|<tuple|16.14|230>>
-    <associate|lem:H-coordinate-signs|<tuple|16.13|227>>
-    <associate|lem:H-fields|<tuple|17.7|244>>
-    <associate|lem:H-irreducible|<tuple|17.10|246>>
-    <associate|lem:H-locality|<tuple|17.6|243>>
-    <associate|lem:H-roots|<tuple|17.2|238>>
-    <associate|lem:H1.1|<tuple|16.12|225>>
-    <associate|lem:H1.2|<tuple|17.1|237>>
-    <associate|lem:H1.3|<tuple|17.3|239>>
-    <associate|lem:H2.1|<tuple|17.5|241>>
-    <associate|lem:H2.2|<tuple|17.8|245>>
-    <associate|lem:H2.3|<tuple|17.9|245>>
-    <associate|lem:H2.4|<tuple|17.11|247>>
-    <associate|lem:I-radii|<tuple|18.3|250>>
-    <associate|lem:I-regulator|<tuple|18.5|254>>
-    <associate|lem:I-stability|<tuple|18.6|256>>
-    <associate|lem:I-transfer|<tuple|18.7|257>>
-    <associate|lem:I1.1|<tuple|18.1|249>>
-    <associate|lem:I1.2|<tuple|18.2|249>>
+    <associate|lem:G2.1|<tuple|16.8|221>>
+    <associate|lem:G2.2|<tuple|16.10|223>>
+    <associate|lem:G2.3|<tuple|16.11|223>>
+    <associate|lem:G3.1|<tuple|16.17|232>>
+    <associate|lem:G3.2|<tuple|16.18|234>>
+    <associate|lem:G3.3|<tuple|16.19|235>>
+    <associate|lem:H-G3|<tuple|16.14|229>>
+    <associate|lem:H-coordinate-signs|<tuple|16.13|226>>
+    <associate|lem:H-fields|<tuple|17.7|243>>
+    <associate|lem:H-irreducible|<tuple|17.10|245>>
+    <associate|lem:H-locality|<tuple|17.6|242>>
+    <associate|lem:H-roots|<tuple|17.2|237>>
+    <associate|lem:H1.1|<tuple|16.12|224>>
+    <associate|lem:H1.2|<tuple|17.1|236>>
+    <associate|lem:H1.3|<tuple|17.3|238>>
+    <associate|lem:H2.1|<tuple|17.5|240>>
+    <associate|lem:H2.2|<tuple|17.8|244>>
+    <associate|lem:H2.3|<tuple|17.9|244>>
+    <associate|lem:H2.4|<tuple|17.11|246>>
+    <associate|lem:I-radii|<tuple|18.3|249>>
+    <associate|lem:I-regulator|<tuple|18.5|253>>
+    <associate|lem:I-stability|<tuple|18.6|255>>
+    <associate|lem:I-transfer|<tuple|18.7|256>>
+    <associate|lem:I1.1|<tuple|18.1|248>>
+    <associate|lem:I1.2|<tuple|18.2|248>>
     <associate|lem:I1.3|<tuple|18.9|262>>
-    <associate|lem:I2.1|<tuple|18.10|263>>
-    <associate|lem:I2.2|<tuple|18.12|264>>
+    <associate|lem:I2.1|<tuple|18.10|262>>
+    <associate|lem:I2.2|<tuple|18.12|263>>
     <associate|lem:I2.3|<tuple|18.15|265>>
     <associate|lem:I2.4|<tuple|8.10|47>>
-    <associate|lem:J-graded-quotient|<tuple|19.2|270>>
-    <associate|lem:J-lattice|<tuple|19.8|277>>
+    <associate|lem:J-graded-quotient|<tuple|19.2|269>>
+    <associate|lem:J-lattice|<tuple|19.8|276>>
     <associate|lem:J-marked-costs|<tuple|19.7|275>>
-    <associate|lem:J-power-separated|<tuple|19.9|279>>
-    <associate|lem:J-signed-layer|<tuple|19.20|288>>
-    <associate|lem:J-signed-local|<tuple|19.1|269>>
-    <associate|lem:J1.1|<tuple|19.6|273>>
-    <associate|lem:J1.2|<tuple|19.10|281>>
-    <associate|lem:J1.3|<tuple|19.15|284>>
-    <associate|lem:J1.4|<tuple|19.13|282>>
+    <associate|lem:J-power-separated|<tuple|19.9|278>>
+    <associate|lem:J-signed-layer|<tuple|19.20|287>>
+    <associate|lem:J-signed-local|<tuple|19.1|268>>
+    <associate|lem:J1.1|<tuple|19.6|272>>
+    <associate|lem:J1.2|<tuple|19.10|280>>
+    <associate|lem:J1.3|<tuple|19.15|283>>
+    <associate|lem:J1.4|<tuple|19.13|281>>
     <associate|lem:J1.5|<tuple|19.14|283>>
-    <associate|lem:J1.6|<tuple|19.15|284>>
+    <associate|lem:J1.6|<tuple|19.15|283>>
     <associate|lem:J2.1|<tuple|19.19|285>>
     <associate|lem:J2.2|<tuple|19.21|289>>
     <associate|lem:J2.3|<tuple|19.21|289>>
     <associate|lem:five-torus|<tuple|4.1|21>>
-    <associate|proof:J-costs-end|<tuple|19.7|276>>
+    <associate|proof:J-costs-end|<tuple|19.7|275>>
     <associate|proof:J-costs-start|<tuple|19.7|275>>
-    <associate|proof:J-graded-end|<tuple|19.4|272>>
+    <associate|proof:J-graded-end|<tuple|19.4|271>>
     <associate|proof:J-graded-start|<tuple|19.4|270>>
     <associate|proof:J-lattice-end|<tuple|19.10|278>>
-    <associate|proof:J-lattice-start|<tuple|19.8|277>>
-    <associate|proof:J-layer-end|<tuple|19.20|289>>
+    <associate|proof:J-lattice-start|<tuple|19.8|276>>
+    <associate|proof:J-layer-end|<tuple|19.20|288>>
     <associate|proof:J-layer-start|<tuple|19.20|288>>
     <associate|proof:J-power-end|<tuple|19.13|280>>
     <associate|proof:J-power-start|<tuple|19.12|279>>
-    <associate|proof:J-signed-end|<tuple|19.3|270>>
-    <associate|proof:J-signed-start|<tuple|19.1|269>>
-    <associate|proof:J1.2-end|<tuple|19.10|281>>
-    <associate|proof:J1.2-start|<tuple|19.10|281>>
+    <associate|proof:J-signed-end|<tuple|19.3|269>>
+    <associate|proof:J-signed-start|<tuple|19.1|268>>
+    <associate|proof:J1.2-end|<tuple|19.10|280>>
+    <associate|proof:J1.2-start|<tuple|19.10|280>>
     <associate|proof:J1.4-end|<tuple|19.14|283>>
     <associate|proof:J1.4-start|<tuple|19.13|282>>
     <associate|proof:J2.2-end|<tuple|19.22|291>>
     <associate|proof:J2.2-start|<tuple|19.21|289>>
     <associate|prop:CT|<tuple|6.21|42>>
     <associate|prop:FC|<tuple|6.4|35>>
-    <associate|prop:I-coefficient|<tuple|18.8|261>>
+    <associate|prop:I-coefficient|<tuple|18.8|260>>
     <associate|prop:IV|<tuple|6.1|34>>
     <associate|prop:MC|<tuple|6.7|36>>
     <associate|prop:MT|<tuple|5.6|30>>
@@ -25912,13 +25912,13 @@
     <associate|rem:integral-zero|<tuple|8.9|46>>
     <associate|rem:nontriviality|<tuple|8.7|46>>
     <associate|rem:volume-choice|<tuple|6.2|34>>
-    <associate|sec:A-bounds|<tuple|10.3|57>>
-    <associate|sec:A-equations|<tuple|10.4|58>>
+    <associate|sec:A-bounds|<tuple|10.3|56>>
+    <associate|sec:A-equations|<tuple|10.4|57>>
     <associate|sec:A-example|<tuple|10.5|61>>
     <associate|sec:A-labels|<tuple|10.1|53>>
     <associate|sec:A-sections|<tuple|10.2|54>>
-    <associate|sec:G-coordinate|<tuple|16.4|225>>
-    <associate|sec:G-lattice|<tuple|16.2|217>>
+    <associate|sec:G-coordinate|<tuple|16.4|224>>
+    <associate|sec:G-lattice|<tuple|16.2|216>>
     <associate|sec:averaged-countertest|<tuple|8.3|47>>
     <associate|sec:block-map|<tuple|5.1|25>>
     <associate|sec:closes|<tuple|4.1|19>>
@@ -25948,35 +25948,35 @@
     <associate|sec:partII-B|<tuple|11|63>>
     <associate|sec:partII-C|<tuple|12|100>>
     <associate|sec:partII-D|<tuple|13|112>>
-    <associate|sec:partII-E|<tuple|14|154>>
+    <associate|sec:partII-E|<tuple|14|153>>
     <associate|sec:partII-E.1|<tuple|14.1|154>>
-    <associate|sec:partII-E.2|<tuple|14.2|161>>
-    <associate|sec:partII-E.2.1|<tuple|14.2.1|161>>
-    <associate|sec:partII-E.2.2|<tuple|14.2.2|168>>
-    <associate|sec:partII-E.2.3|<tuple|14.2.3|175>>
-    <associate|sec:partII-E.2.4|<tuple|14.2.4|178>>
-    <associate|sec:partII-E.2.5|<tuple|14.2.5|181>>
+    <associate|sec:partII-E.2|<tuple|14.2|160>>
+    <associate|sec:partII-E.2.1|<tuple|14.2.1|160>>
+    <associate|sec:partII-E.2.2|<tuple|14.2.2|167>>
+    <associate|sec:partII-E.2.3|<tuple|14.2.3|174>>
+    <associate|sec:partII-E.2.4|<tuple|14.2.4|177>>
+    <associate|sec:partII-E.2.5|<tuple|14.2.5|180>>
     <associate|sec:partII-E.2.6|<tuple|14.2.6|189>>
-    <associate|sec:partII-E.2.7|<tuple|14.2.7|193>>
-    <associate|sec:partII-E.3|<tuple|14.3|196>>
-    <associate|sec:partII-F|<tuple|15|201>>
+    <associate|sec:partII-E.2.7|<tuple|14.2.7|192>>
+    <associate|sec:partII-E.3|<tuple|14.3|195>>
+    <associate|sec:partII-F|<tuple|15|200>>
     <associate|sec:partII-F.1|<tuple|15.1|201>>
     <associate|sec:partII-F.2|<tuple|15.2|202>>
-    <associate|sec:partII-F.3|<tuple|15.3|204>>
+    <associate|sec:partII-F.3|<tuple|15.3|203>>
     <associate|sec:partII-F.4|<tuple|15.4|206>>
-    <associate|sec:partII-F.5|<tuple|15.5|208>>
-    <associate|sec:partII-G|<tuple|16|209>>
-    <associate|sec:partII-G.1|<tuple|16.1|210>>
-    <associate|sec:partII-G.2|<tuple|16.3|222>>
-    <associate|sec:partII-G.3|<tuple|16.5|231>>
-    <associate|sec:partII-H|<tuple|17|236>>
-    <associate|sec:partII-H.1|<tuple|17.1|237>>
-    <associate|sec:partII-H.2|<tuple|17.2|241>>
-    <associate|sec:partII-I|<tuple|18|248>>
-    <associate|sec:partII-I.1|<tuple|18.1|248>>
-    <associate|sec:partII-I.2|<tuple|18.2|263>>
-    <associate|sec:partII-J|<tuple|19|267>>
-    <associate|sec:partII-J.1|<tuple|19.1|272>>
+    <associate|sec:partII-F.5|<tuple|15.5|207>>
+    <associate|sec:partII-G|<tuple|16|208>>
+    <associate|sec:partII-G.1|<tuple|16.1|209>>
+    <associate|sec:partII-G.2|<tuple|16.3|221>>
+    <associate|sec:partII-G.3|<tuple|16.5|230>>
+    <associate|sec:partII-H|<tuple|17|235>>
+    <associate|sec:partII-H.1|<tuple|17.1|236>>
+    <associate|sec:partII-H.2|<tuple|17.2|240>>
+    <associate|sec:partII-I|<tuple|18|247>>
+    <associate|sec:partII-I.1|<tuple|18.1|247>>
+    <associate|sec:partII-I.2|<tuple|18.2|262>>
+    <associate|sec:partII-J|<tuple|19|266>>
+    <associate|sec:partII-J.1|<tuple|19.1|271>>
     <associate|sec:partII-J.2|<tuple|19.2|284>>
     <associate|sec:phases|<tuple|6.3|38>>
     <associate|sec:reading-guide|<tuple|1.3|9>>
@@ -26021,11 +26021,11 @@
     <associate|subsec:D-continuity|<tuple|13.4|137>>
     <associate|subsec:D-fusion|<tuple|13.3|131>>
     <associate|subsec:D-local|<tuple|13.1|115>>
-    <associate|subsec:D-recursion|<tuple|13.6|141>>
+    <associate|subsec:D-recursion|<tuple|13.6|140>>
     <associate|subsec:D-subtraction|<tuple|13.2|129>>
     <associate|tab:B-branches|<tuple|4|65>>
     <associate|tab:B-energy|<tuple|5|88>>
-    <associate|tab:I-orders|<tuple|6|257>>
+    <associate|tab:I-orders|<tuple|6|256>>
     <associate|tab:constant-choices|<tuple|3|48>>
     <associate|tab:earlier-work|<tuple|1|8>>
     <associate|tab:principal-results|<tuple|2|9>>
