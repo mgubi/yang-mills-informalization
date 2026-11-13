@@ -38,6 +38,10 @@ kpsewhich mathtools.sty >/dev/null || need+=(mathtools)
 kpsewhich amssymb.sty >/dev/null || need+=(amsfonts)
 [[ -x $bin/dvisvgm ]] || need+=(dvisvgm)
 if (( ${#need[@]} )); then
+  # the TinyTeX release can be older than its package repository, and tlmgr
+  # then refuses to install anything until it has updated itself
+  echo "install-tex: tlmgr update --self" >&2
+  tlmgr update --self >&2
   echo "install-tex: tlmgr install ${need[*]}" >&2
   tlmgr install "${need[@]}" >&2
 fi
