@@ -26347,36 +26347,36 @@
     <associate|auto-62|<tuple|10.1|56>>
     <associate|auto-63|<tuple|7|57>>
     <associate|auto-64|<tuple|10.2|57>>
-    <associate|auto-65|<tuple|10.3|60>>
-    <associate|auto-66|<tuple|10.4|61>>
+    <associate|auto-65|<tuple|10.3|59>>
+    <associate|auto-66|<tuple|10.4|60>>
     <associate|auto-67|<tuple|1|61>>
     <associate|auto-68|<tuple|2|61>>
     <associate|auto-69|<tuple|10.5|64>>
     <associate|auto-7|<tuple|1|8>>
-    <associate|auto-70|<tuple|1|65>>
+    <associate|auto-70|<tuple|1|64>>
     <associate|auto-71|<tuple|2|65>>
     <associate|auto-72|<tuple|3|65>>
-    <associate|auto-73|<tuple|4|66>>
+    <associate|auto-73|<tuple|4|65>>
     <associate|auto-74|<tuple|11|66>>
-    <associate|auto-75|<tuple|5|67>>
+    <associate|auto-75|<tuple|5|66>>
     <associate|auto-76|<tuple|11.1|67>>
     <associate|auto-77|<tuple|8|67>>
     <associate|auto-78|<tuple|4|68>>
     <associate|auto-79|<tuple|1|70>>
     <associate|auto-8|<tuple|1.3|9>>
-    <associate|auto-80|<tuple|11.2|71>>
+    <associate|auto-80|<tuple|11.2|70>>
     <associate|auto-81|<tuple|11.3|75>>
     <associate|auto-82|<tuple|1|75>>
-    <associate|auto-83|<tuple|9|76>>
-    <associate|auto-84|<tuple|2|77>>
-    <associate|auto-85|<tuple|3|80>>
-    <associate|auto-86|<tuple|11.4|81>>
-    <associate|auto-87|<tuple|1|81>>
+    <associate|auto-83|<tuple|9|75>>
+    <associate|auto-84|<tuple|2|76>>
+    <associate|auto-85|<tuple|3|79>>
+    <associate|auto-86|<tuple|11.4|80>>
+    <associate|auto-87|<tuple|1|80>>
     <associate|auto-88|<tuple|2|81>>
     <associate|auto-89|<tuple|3|81>>
     <associate|auto-9|<tuple|2|9>>
     <associate|auto-90|<tuple|4|82>>
-    <associate|auto-91|<tuple|5|85>>
+    <associate|auto-91|<tuple|5|84>>
     <associate|auto-92|<tuple|6|87>>
     <associate|auto-93|<tuple|11.5|88>>
     <associate|auto-94|<tuple|1|89>>
@@ -26452,7 +26452,7 @@
     <associate|def:D18|<tuple|2.19|18>>
     <associate|def:D19|<tuple|10.1|57>>
     <associate|def:D20a|<tuple|11.1|67>>
-    <associate|def:D20b|<tuple|11.2|68>>
+    <associate|def:D20b|<tuple|11.2|67>>
     <associate|def:D21|<tuple|11.3|68>>
     <associate|def:D22|<tuple|12.1|106>>
     <associate|def:D23|<tuple|12.2|106>>
@@ -26501,17 +26501,17 @@
     <associate|eq:A-section-bound|<tuple|10.5|60>>
     <associate|eq:B-Mr|<tuple|11.11|82>>
     <associate|eq:B-contact|<tuple|11.9|81>>
-    <associate|eq:B-cov-recursion|<tuple|11.2|71>>
-    <associate|eq:B-exterior-division|<tuple|11.4|72>>
+    <associate|eq:B-cov-recursion|<tuple|11.2|70>>
+    <associate|eq:B-exterior-division|<tuple|11.4|71>>
     <associate|eq:B-filter|<tuple|11.6|73>>
     <associate|eq:B-flat-rows|<tuple|11.13|89>>
-    <associate|eq:B-free-defect|<tuple|11.3|72>>
-    <associate|eq:B-free-limit|<tuple|11.5|73>>
+    <associate|eq:B-free-defect|<tuple|11.3|71>>
+    <associate|eq:B-free-limit|<tuple|11.5|72>>
     <associate|eq:B-global-rows|<tuple|11.14|90>>
-    <associate|eq:B-hessian-chain|<tuple|11.8|81>>
-    <associate|eq:B-mass-floor|<tuple|11.12|83>>
-    <associate|eq:B-one-loop-box|<tuple|11.10|82>>
-    <associate|eq:B-projection|<tuple|11.1|69>>
+    <associate|eq:B-hessian-chain|<tuple|11.8|80>>
+    <associate|eq:B-mass-floor|<tuple|11.12|82>>
+    <associate|eq:B-one-loop-box|<tuple|11.10|81>>
+    <associate|eq:B-projection|<tuple|11.1|68>>
     <associate|eq:B-weighted-interp|<tuple|11.7|79>>
     <associate|eq:B-window|<tuple|11.15|96>>
     <associate|eq:C-FP|<tuple|12.1|112>>
@@ -26758,7 +26758,7 @@
     <associate|eq:intro-wilson|<tuple|1.1|5>>
     <associate|fig:A-transported|<tuple|7|57>>
     <associate|fig:B-predictor|<tuple|8|67>>
-    <associate|fig:B-tree-gauge|<tuple|9|76>>
+    <associate|fig:B-tree-gauge|<tuple|9|75>>
     <associate|fig:B-window|<tuple|10|98>>
     <associate|fig:D-five-tori|<tuple|11|132>>
     <associate|fig:G-shell|<tuple|12|222>>
@@ -26792,16 +26792,16 @@
     <associate|it:E5|<tuple|E5|15>>
     <associate|it:E6|<tuple|E6|16>>
     <associate|it:E7|<tuple|E7|16>>
-    <associate|lem:A-R4|<tuple|10.4|62>>
+    <associate|lem:A-R4|<tuple|10.4|61>>
     <associate|lem:A-bounds|<tuple|10.3|60>>
     <associate|lem:A1|<tuple|10.2|58>>
     <associate|lem:B-D1|<tuple|11.12|91>>
     <associate|lem:B-D2|<tuple|11.14|101>>
     <associate|lem:B-windows|<tuple|11.13|96>>
-    <associate|lem:B1|<tuple|11.4|69>>
+    <associate|lem:B1|<tuple|11.4|68>>
     <associate|lem:B2|<tuple|11.5|72>>
     <associate|lem:B3|<tuple|11.6|77>>
-    <associate|lem:B4|<tuple|11.7|80>>
+    <associate|lem:B4|<tuple|11.7|79>>
     <associate|lem:B5|<tuple|11.9|85>>
     <associate|lem:B6|<tuple|11.10|87>>
     <associate|lem:B7|<tuple|11.8|82>>
@@ -26970,8 +26970,8 @@
     <associate|rem:integral-zero|<tuple|8.9|50>>
     <associate|rem:nontriviality|<tuple|8.7|49>>
     <associate|rem:volume-choice|<tuple|6.2|36>>
-    <associate|sec:A-bounds|<tuple|10.3|60>>
-    <associate|sec:A-equations|<tuple|10.4|61>>
+    <associate|sec:A-bounds|<tuple|10.3|59>>
+    <associate|sec:A-equations|<tuple|10.4|60>>
     <associate|sec:A-example|<tuple|10.5|64>>
     <associate|sec:A-labels|<tuple|10.1|56>>
     <associate|sec:A-sections|<tuple|10.2|57>>
@@ -27064,8 +27064,8 @@
     <associate|step:deduction-uv|<tuple|3|46>>
     <associate|step:deduction-volume|<tuple|4|46>>
     <associate|subsec:B-energy|<tuple|11.5|88>>
-    <associate|subsec:B-free|<tuple|11.2|71>>
-    <associate|subsec:B-inverse|<tuple|11.4|81>>
+    <associate|subsec:B-free|<tuple|11.2|70>>
+    <associate|subsec:B-inverse|<tuple|11.4|80>>
     <associate|subsec:B-kernel|<tuple|11.1|67>>
     <associate|subsec:B-sector|<tuple|11.6|95>>
     <associate|subsec:B-stationary|<tuple|11.3|75>>
