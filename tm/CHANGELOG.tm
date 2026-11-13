@@ -15,6 +15,30 @@
   records current outline statuses. All Lean references concern source commit
   <hlink|<verbatim|3456e5e75cf8d4cd558955a5c7638fba2d68f464>|https://github.com/yang-mills-group/OpenAI-YM-20261028/tree/3456e5e75cf8d4cd558955a5c7638fba2d68f464>.
 
+  <section|2026-11-13><label|2026-11-13>
+
+  <\itemize-minus>
+    <item><strong|Third draft of the manuscript (278 pages).> An exposition
+    pass on the second draft, driven by a handoff from reading experiments
+    with readers new to the construction. Part I now says on its first page
+    what kind of object the result is and states plainly what is not proved
+    (a unique zero-energy vector does not give a spectral gap); it defines
+    gauge changes, curvature, jets and the stress tensor by operations a
+    reader can perform, with a pure-gauge example, the block step as a joint
+    probability law, what a tag records, and the Gaussian comparison by its
+    covariance. Part II gained worked paths and tables at the passages
+    readers found hardest: from one protected sector to uniform closure of
+    the induction, the exterior angular estimate, the weighted Ward-transfer
+    error and the signed contact induction; also the identity behind
+    compression and products, figures for the four-word exchange and the
+    Hilbert spaces of reconstruction, and the variables and windows of the
+    block integral. The effective-density constant formerly called the
+    "vacuum scalar" is now the scalar normalization
+    <math|v<rsub|<math-up|sc>>>; "vacuum" refers only to the reconstructed
+    state. No statement changed. Every change was reviewed against the Lean
+    by a second model family.
+  </itemize-minus>
+
   <section|2026-11-12><label|2026-11-12>
 
   <\itemize-minus>
@@ -149,10 +173,12 @@
 
 <\references>
   <\collection>
-    <associate|2026-11-11|<tuple|2|1>>
-    <associate|2026-11-12|<tuple|1|1>>
+    <associate|2026-11-11|<tuple|3|1>>
+    <associate|2026-11-12|<tuple|2|1>>
+    <associate|2026-11-13|<tuple|1|1>>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-2|<tuple|2|1>>
+    <associate|auto-3|<tuple|3|1>>
     <associate|changes|<tuple|?|1>>
   </collection>
 </references>
@@ -160,13 +186,17 @@
 <\auxiliary>
   <\collection>
     <\associate|toc>
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-12>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-13>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-1><vspace|0.5fn>
 
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-11>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-12>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-2><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2026-11-11>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-3><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>

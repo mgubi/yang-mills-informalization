@@ -432,6 +432,13 @@
     fresh reader asked to explain five mechanisms of the proof; targeted
     re-checks before publication. The statement-to-declaration correspondence
     is published as <verbatim|correspondence.tsv>.
+
+    <item><strong|13 November 2026.> Third draft: an exposition pass on the
+    second draft from a handoff of reading experiments: six writers, one per
+    group of sections, each within a page allowance (ceiling 286 pages);
+    every new example, table and computation then checked by confirmation
+    reviewers of a different model family against the text and the Lean, with
+    a targeted re-check of the one item they required.
   </itemize-minus>
 </body>
 

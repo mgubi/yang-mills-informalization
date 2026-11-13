@@ -16,7 +16,7 @@
     <no-break><pageref|auto-1>>>
 
     <with|par-left|2tab|<with|font-size|0.92|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/index.tm>>|The
-    manuscript: second draft> <with|mode|math|\<cdot\>>
+    manuscript: third draft> <with|mode|math|\<cdot\>>
     <locus|<id|%1-3>|<link|hyperlink|<id|%1-3>|<url|manuscript/PROCESS.tm>>|how
     it is written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
     <no-break><pageref|auto-2>>>
@@ -97,9 +97,9 @@
 
     <item><strong|write> a complete natural-language account of the proof on
     that skeleton: a <hlink|manuscript|manuscript/index.tm>, written in
-    public. <strong|A second draft is now available>
+    public. <strong|A third draft is now available>
     (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
-    265 pages, draft of 12 November 2026); it is still being revised.
+    278 pages, draft of 13 November 2026); it is still being revised.
   </enumerate>
 
   The outline is a rough draft written by machines. Its purpose is to be
@@ -118,12 +118,12 @@
   </quotation>
 
   <\quotation>
-    <subsubsection|<hlink|The manuscript: second draft|manuscript/index.tm>
+    <subsubsection|<hlink|The manuscript: third draft|manuscript/index.tm>
     <ym-middot> <hlink|how it is written|manuscript/PROCESS.tm>>
 
-    <strong|A second draft of the full proof is now available>
+    <strong|A third draft of the full proof is now available>
     (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
-    265 pages): Part I states the theorem and the architecture of its proof,
+    278 pages): Part I states the theorem and the architecture of its proof,
     Part II gives the proofs. It was written entirely by AI agents from the
     Lean code, and is still being revised. Statements are fixed first and
     kept short. Every statement is reviewed against the Lean by a separate
@@ -162,11 +162,11 @@
   plain language, each linked to its exact lines. In all, 989 key statements
   cover the 413,000 lines of source attributed to the
   units.>>|<row|<cell|<strong|5>>|<cell|<hlink|<strong|The full
-  proof>|manuscript/index.tm> <em|(second draft)>>|<cell|A complete
-  manuscript (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
-  draft of 12 November 2026): Part I, the theorem and the architecture of its
-  proof (about 40 pages, main theorem on p. 14), and Part II, the proofs
-  (about 220 pages), written for a mathematician in constructive field theory
+  proof>|manuscript/index.tm> <em|(third draft)>>|<cell|A complete manuscript
+  (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/main.pdf>,
+  draft of 13 November 2026): Part I, the theorem and the architecture of its
+  proof (about 45 pages, main theorem on p. 15), and Part II, the proofs
+  (about 230 pages), written for a mathematician in constructive field theory
   or probability. Every section has been through its review cycle; revisions
   continue, by the process described in <hlink|how the manuscript is
   written|manuscript/PROCESS.tm>.>>>>>
@@ -469,7 +469,7 @@
       <no-break><pageref|auto-1>>>
 
       <with|par-left|<quote|2tab>|<with|font-size|<quote|0.92>|<locus|<id|%1-2>|<link|hyperlink|<id|%1-2>|<url|manuscript/index.tm>>|The
-      manuscript: second draft> <with|mode|<quote|math>|\<cdot\>>
+      manuscript: third draft> <with|mode|<quote|math>|\<cdot\>>
       <locus|<id|%1-3>|<link|hyperlink|<id|%1-3>|<url|manuscript/PROCESS.tm>>|how
       it is written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-2>>>

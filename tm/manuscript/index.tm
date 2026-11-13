@@ -33,7 +33,7 @@
   </table-of-contents>
 
   <\quotation>
-    \<emoji-page-facing-up\> <strong|Second draft (12 November 2026), 265
+    \<emoji-page-facing-up\> <strong|Third draft (13 November 2026), 278
     pages.> Revised after expert and independent reviews; every section has
     been through its review cycle. Sections may still change until they are
     marked <em|checked>. Do not cite it as a finished proof.
@@ -52,13 +52,13 @@
 
   <\itemize-minus>
     <item><strong|Part I. The theorem and the architecture of its proof>
-    (about 40 pages, with the main theorem on p. 14; Sections 8 and 9 give
+    (about 45 pages, with the main theorem on p. 15; Sections 8 and 9 give
     the exact formal statement and the constants): the setting and notation,
     the main theorem, the principal statements on which the proof rests, each
     stated exactly with the idea of its proof, and the complete deduction of
     the main theorem from them.
 
-    <item><strong|Part II. Proofs> (about 220 pages, Sections 10\U19): the
+    <item><strong|Part II. Proofs> (about 230 pages, Sections 10\U19): the
     proofs of the principal propositions, with every estimate specific to the
     construction written out and standard results cited.
   </itemize-minus>
@@ -72,41 +72,43 @@
 
   <section|Status><label|status>
 
-  <em|Updated 12 November 2026. Second draft (265 pages): revised after two
-  expert human reviews, six reviewer reports and an independent referee
-  review; Part I rebuilt around the main theorem and the strategy of the
-  proof; every change checked against the Lean.>
+  <em|Updated 13 November 2026. Third draft (278 pages): an exposition pass
+  after reading experiments, with examples, tables and figures at the hardest
+  passages. It builds on the second draft (12 November), which was revised
+  after two expert human reviews, six reviewer reports and an independent
+  referee review, with Part I rebuilt around the main theorem and the
+  strategy of the proof. Every change was checked against the Lean.>
 
   <block|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|-1|1|-1|cell-hyphen|t>|<cwith|1|1|1|-1|cell-bborder|1ln>|<cwith|1|1|1|-1|cell-valign|bottom>|<table|<row|<cell|>|<cell|<strong|section>>|<cell|<strong|pages>>|<cell|<strong|status>>>|<row|<cell|Part
-  I>|<cell|1. The result>|<cell|3>|<cell|reviewed;
+  I>|<cell|1. The result>|<cell|4>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|2. Definitions>|<cell|7>|<cell|reviewed;
-  revised>>|<row|<cell|>|<cell|3. The main theorem>|<cell|1>|<cell|reviewed;
+  revised>>|<row|<cell|>|<cell|3. The main theorem>|<cell|2>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|4. Strategy of the
   proof>|<cell|6>|<cell|reviewed; revised>>|<row|<cell|>|<cell|5. The
-  renormalization group>|<cell|8>|<cell|reviewed;
+  renormalization group>|<cell|9>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|6. The continuum limit, stress, phases, trace
-  and products>|<cell|8>|<cell|reviewed; revised>>|<row|<cell|>|<cell|7.
-  Deduction of the main theorem>|<cell|2>|<cell|reviewed;
+  and products>|<cell|9>|<cell|reviewed; revised>>|<row|<cell|>|<cell|7.
+  Deduction of the main theorem>|<cell|1>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|8. Correspondence with the formal
-  statement>|<cell|2>|<cell|reviewed; revised>>|<row|<cell|>|<cell|9.
-  Constants and order of choice>|<cell|3>|<cell|reviewed;
-  revised>>|<row|<cell|>|<cell|Index of notation>|<cell|1>|<cell|reviewed;
+  statement>|<cell|3>|<cell|reviewed; revised>>|<row|<cell|>|<cell|9.
+  Constants and order of choice>|<cell|2>|<cell|reviewed;
+  revised>>|<row|<cell|>|<cell|Index of notation>|<cell|2>|<cell|reviewed;
   revised>>|<row|<cell|Part II>|<cell|10. Local polynomial
-  fields>|<cell|10>|<cell|reviewed; revised>>|<row|<cell|>|<cell|11. Gauges
-  and block integration>|<cell|34>|<cell|reviewed;
+  fields>|<cell|9>|<cell|reviewed; revised>>|<row|<cell|>|<cell|11. Gauges
+  and block integration>|<cell|37>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|12. Path actions and the one-loop
   coupling>|<cell|11>|<cell|reviewed; revised>>|<row|<cell|>|<cell|13.
-  Activities and the inductive step>|<cell|38>|<cell|reviewed;
+  Activities and the inductive step>|<cell|40>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|14. Trajectories, marked fields and
-  ultraviolet convergence>|<cell|43>|<cell|reviewed;
+  ultraviolet convergence>|<cell|44>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|15. Infinite volume and field
-  calculus>|<cell|7>|<cell|reviewed; revised>>|<row|<cell|>|<cell|16. Free
-  fields, Ward identities and rotations>|<cell|26>|<cell|reviewed;
+  calculus>|<cell|8>|<cell|reviewed; revised>>|<row|<cell|>|<cell|16. Free
+  fields, Ward identities and rotations>|<cell|25>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|17. Phases and
-  reconstruction>|<cell|10>|<cell|reviewed; revised>>|<row|<cell|>|<cell|18.
-  The trace law and non-free comparisons>|<cell|17>|<cell|reviewed;
+  reconstruction>|<cell|12>|<cell|reviewed; revised>>|<row|<cell|>|<cell|18.
+  The trace law and non-free comparisons>|<cell|18>|<cell|reviewed;
   revised>>|<row|<cell|>|<cell|19. Products and contact
-  subtractions>|<cell|25>|<cell|reviewed; revised>>>>>
+  subtractions>|<cell|26>|<cell|reviewed; revised>>>>>
 
   The correspondence between the numbered statements and the Lean
   declarations is in <hlink|<verbatim|correspondence.tsv>|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/correspondence.tsv>:
