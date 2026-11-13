@@ -40,7 +40,18 @@ Z_{s,\beta}=\int e^{-\beta E_s^{\rm W}(U)}\prod_{y,a}dh(U(y,a))\,.
 \end{equation*}
 \end{definition}
 
-The integrand of $Z_{s,\beta}$ is continuous and strictly positive on the compact configuration space, so $0<Z_{s,\beta}<\infty$. A site gauge transformation $\gamma_{\rm g}:\Lambda_s\to G$ acts by $U^{\gamma_{\rm g}}(y,a)=\gamma_{\rm g}(y)U(y,a)\gamma_{\rm g}(y+e_a)^{-1}$; it changes each plaquette holonomy by conjugation at its base point, so the energy is gauge invariant, and invariance of Haar measure under left and right multiplication makes the measure gauge invariant. The measure is also invariant under the lattice isometries $x\mapsto hx+b$, $h\in\hypercubic$, which transport links and invert reversed ones (Section~\ref{sec:A-equations}).
+The integrand of $Z_{s,\beta}$ is continuous and strictly positive on the compact configuration space, so $0<Z_{s,\beta}<\infty$. The link variable $U(y,a)$ carries a row vector $\psi\in\C^{n_G}$ at~$y$ to $\psi U(y,a)$ at~$y+e_a$, and the ordered product along a nearest-neighbour path $y_0,\ldots,y_k$, with inverses on reversed links, carries row vectors from $y_0$ to~$y_k$. A site gauge transformation $\gamma_{\rm g}:\Lambda_s\to G$ changes the frame at each site, $\psi\mapsto\psi\gamma_{\rm g}(y)^{-1}$, and acts on links by $U^{\gamma_{\rm g}}(y,a)=\gamma_{\rm g}(y)U(y,a)\gamma_{\rm g}(y+e_a)^{-1}$. In the product along a path the intermediate factors $\gamma_{\rm g}(y_i)^{-1}\gamma_{\rm g}(y_i)$ cancel, so the product is multiplied by $\gamma_{\rm g}(y_0)$ on the left and $\gamma_{\rm g}(y_k)^{-1}$ on the right: only the endpoints remain. Around a plaquette the path closes:
+\begin{align*}
+U^{\gamma_{\rm g}}_{y;ab}
+&=\gamma_{\rm g}(y)U(y,a)\gamma_{\rm g}(y{+}e_a)^{-1}\cdot\gamma_{\rm g}(y{+}e_a)U(y{+}e_a,b)\gamma_{\rm g}(y{+}e_a{+}e_b)^{-1}\\
+&\quad\cdot\gamma_{\rm g}(y{+}e_a{+}e_b)U(y{+}e_b,a)^{-1}\gamma_{\rm g}(y{+}e_b)^{-1}\cdot\gamma_{\rm g}(y{+}e_b)U(y,b)^{-1}\gamma_{\rm g}(y)^{-1}
+=\gamma_{\rm g}(y)U_{y;ab}\gamma_{\rm g}(y)^{-1}.
+\end{align*}
+Hence the energy is gauge invariant, and invariance of Haar measure under left and right multiplication makes the measure gauge invariant. The size of a single link variable therefore carries no gauge-invariant information: the configuration $U(y,a)=\gamma_{\rm g}(y)\gamma_{\rm g}(y+e_a)^{-1}$, the transform of the identity configuration, has links far from~$1$ when $\gamma_{\rm g}$ varies rapidly, yet every plaquette holonomy equals~$1$. Fields are measured by gauge-invariant quantities such as plaquette chords. For a smooth $\g$-valued field $\mathcal A$ and links $U(y,a)=\exp(h_{\rm lat}\mathcal A_a(h_{\rm lat}y))$ at a small spacing~$h_{\rm lat}$, expansion to second order gives
+\begin{equation*}
+U_{y;ab}=1+h_{\rm lat}^2F_{ab}(h_{\rm lat}y)+O(h_{\rm lat}^3),\qquad F_{ab}=\partial_a\mathcal A_b-\partial_b\mathcal A_a+[\mathcal A_a,\mathcal A_b]\,:
+\end{equation*}
+the deviation of the plaquette holonomy from~$1$, divided by the enclosed area~$h_{\rm lat}^2$, tends to the curvature, and $\chord(U_{y;ab})=h_{\rm lat}^2|F_{ab}(h_{\rm lat}y)|_\g+O(h_{\rm lat}^3)$ in the norm of Definition~\ref{def:D01}. The measure is also invariant under the lattice isometries $x\mapsto hx+b$, $h\in\hypercubic$, which transport links and invert reversed ones (Section~\ref{sec:A-equations}).
 
 \subsection{Wilson families and their correlations}\label{sec:continuum}\label{sec:families}
 
@@ -108,7 +119,9 @@ The inner limit uses the full sequence of spacings at every volume containing th
 
 \subsection{Local fields}\label{sec:local-fields}
 
-Local fields are labelled by invariant polynomials in the Taylor coefficients of a connection. The labels use radial, or Fock--Schwinger, gauge, in which the radial component of the connection vanishes. In this gauge a smooth connection satisfies $\mathcal A_a(x)=\int_0^1t\,x^bF_{ba}(tx)\,dt$, so its homogeneous part of degree $k+1$ is determined by the $k$th Taylor coefficients of the curvature at the origin.
+Two examples orient this subsection. The unit label has the constant insertion one at every sufficiently fine cutoff. The curvature square $c_{F^2}=\frac14\sum_{a,b}\langle F_{ab},F_{ab}\rangle_\g$, the Yang--Mills density at a point, is read to leading order by the clover average $P^{\rm cl}=\frac14\sum_\square\wilsonterm(U_\square)$ over the $24$ plaquettes with a corner at the site: since $\wilsonterm=\frac12\chord^2$, the expansion of Section~\ref{sec:wilson} gives each of them $\frac12h_{\rm lat}^4|F_{ab}|_\g^2+O(h_{\rm lat}^5)$ for the links of a smooth field, so $P^{\rm cl}=h_{\rm lat}^4c_{F^2}+O(h_{\rm lat}^5)$ with $F$ taken at the site. The construction itself uses the local sections below, normalized by a linear map (Definition~\ref{def:D08}).
+
+In general, local fields are labelled by invariant polynomials in the Taylor coefficients of a connection. The labels use radial, or Fock--Schwinger, gauge, in which the radial component of the connection vanishes. In this gauge a smooth connection satisfies $\mathcal A_a(x)=\int_0^1t\,x^bF_{ba}(tx)\,dt$, so its homogeneous part of degree $k+1$ is determined by the $k$th Taylor coefficients of the curvature at the origin.
 
 \begin{definition}[Polynomial labels]\label{def:D07}
 Let $\mathcal J$ consist of formal $\g$-valued arrays $\mathcal A_a(x)=\sum_{k\ge0}\mathcal A_{k,a}(x)$, with $\mathcal A_{k,a}$ homogeneous of degree $k+1$ and $\sum_a x^a\mathcal A_{k,a}(x)=0$. A coordinate of $\mathcal A_k$ has bidegree $(k+2,1)$: engineering weight $k+2$ and factor count one. Put
@@ -118,7 +131,11 @@ V_d=\C[\mathcal J]^{\operatorname{Ad}(G)}_{\mathrm{weight}\le d}\,,
 with fixed bihomogeneous bases $b_{d,i}$ of bidegree $(w_i,k_i)$, the supremum coefficient norm, conjugation and the induced $\hypercubic$ action.
 \end{definition}
 
-Curvature has weight two and each derivative adds one; for instance the curvature square $\curvaturesquare=\frac14\sum_{a,b,\alpha}F^\alpha_{ab}F^\alpha_{ab}$ has a label of bidegree $(4,2)$. Three gradings play different roles below:
+For instance, at $d=4$ the retained part is $\mathcal A_0+\mathcal A_1+\mathcal A_2$: for a smooth connection in radial gauge, with the curvature and its derivatives taken at the origin and repeated indices summed,
+\begin{equation*}
+\mathcal A_a(x)=\tfrac12x^bF_{ba}+\tfrac13x^bx^c\partial_cF_{ba}+\tfrac18x^bx^cx^e\partial_c\partial_eF_{ba}+O(|x|^4)\,,
+\end{equation*}
+so the labels in~$V_4$ are invariant polynomials in the curvature and its first two derivatives at the origin. Curvature has weight two and each derivative adds one; for instance $c_{F^2}$ has bidegree $(4,2)$. Three gradings play different roles below:
 \begin{itemize}[nosep]
 \item the engineering weight $w$ fixes the power of the spacing in the Taylor normalization~\eqref{eq:I12-section-Taylor};
 \item the factor count $k$ fixes the scaling by the small-field threshold, through the operator $\factorcount b_{d,i}=k_ib_{d,i}$ and $t^{\factorcount}b_{d,i}=t^{k_i}b_{d,i}$;
@@ -136,7 +153,7 @@ and the jet dilation is $\operatorname{sc}_{h_{\rm lat}}\mathsf j=(h_{\rm lat}^{
 \left.\frac{d^q}{dh_{\rm lat}^q}\localsection{d}[\mathbf c](0;U(h_{\rm lat},\mathsf j))\right|_{h_{\rm lat}=0}
 =\left.\frac{d^q}{dh_{\rm lat}^q}\mathbf c(\operatorname{sc}_{h_{\rm lat}}\mathsf j)\right|_{h_{\rm lat}=0}\,.
 \end{equation}
-Equivalently, $\taylormap_d\localsection{d}[\mathbf c]=\mathbf c$: the local section is a right inverse of the Taylor map, which explains its name. A homogeneous label of weight $w$ specifies the coefficient of $h_{\rm lat}^w$.
+Equivalently, $\taylormap_d\localsection{d}[\mathbf c]=\mathbf c$: the local section is a right inverse of the Taylor map, which explains its name. A homogeneous label of weight $w$ specifies the coefficient of $h_{\rm lat}^w$; for example $\taylormap_4P^{\rm cl}=c_{F^2}$. Smooth connections enter only as test configurations that define and normalize lattice observables; the labels assert nothing about differentiability of a continuum field.
 
 An \emph{insertion label} is a pair $v=(d,\mathbf c)$ with $d\in\N$ and $\mathbf c\in V_d$; the set of insertion labels is $\mathcal T=\bigsqcup_dV_d$. The insertions of the construction are normalized at a fixed physical scale. Section~\ref{sec:renormalization} fixes, for each $d$, a reference level $\reflevel{d}$, the small-field threshold $t_N$ at the cutoff~\eqref{eq:I12-scales}, and, along the trajectories of Theorem~\ref{prop:MT}, an invertible linear map $\mathsf Z_{N,p,d}$ of $V_d$, the terminal map: it sends a coefficient vector given at the cutoff to the coefficient vector of the blocked insertion at level $\reflevel{d}$ (Section~\ref{sec:marked}). For $N<\reflevel{d}$ it is a fixed invertible map.
 
@@ -149,11 +166,23 @@ I_{N,p}((d,\mathbf c),y;U)=O^{(d)}_{N,p}(\mathbf c,y;U)
 The unit coefficient is $\mathbf u_d=a_{\reflevel{d}}^d\mathbf1$.
 \end{definition}
 
-The inverse terminal map makes the transferred coefficient equal to the prescribed $\mathbf c$ at the reference level, so $\mathbf c$ is specified at the fixed physical scale $a_{\reflevel{d}}$, in that level's lattice units; $t_N^{-\factorcount}$ measures each factor in units of the small-field threshold, and $a_N^{-d}$ converts to physical units. Because blocking can mix labels of different weight within $V_d$, the normalization is an invertible linear map of $V_d$ rather than a factor for each label. As a first check, the insertion of $\mathbf u_d$ is the constant one for $N\ge\reflevel{d}$: the terminal map sends $a_N^d\mathbf1$ to $a_{\reflevel{d}}^d\mathbf1$ (Lemma~\ref{lem:E2.1a}), $t_N^{-\factorcount}\mathbf1=\mathbf1$, and the section sends $\mathbf1$ to one. Part~II follows the curvature square through these maps (Section~\ref{sec:A-example}).
+The inverse terminal map makes the transferred coefficient equal to the prescribed $\mathbf c$ at the reference level, so $\mathbf c$ is specified at the fixed physical scale $a_{\reflevel{d}}$, in that level's lattice units; $t_N^{-\factorcount}$ measures each factor in units of the small-field threshold, and $a_N^{-d}$ converts to physical units. Because blocking can mix labels of different weight within $V_d$, the normalization is an invertible linear map of $V_d$ rather than a factor for each label. As a first check, the insertion of $\mathbf u_d$ is the constant one for $N\ge\reflevel{d}$: the terminal map sends $a_N^d\mathbf1$ to $a_{\reflevel{d}}^d\mathbf1$ (Lemma~\ref{lem:E2.1a}), $t_N^{-\factorcount}\mathbf1=\mathbf1$, and the section sends $\mathbf1$ to one. Part~II follows the curvature square through these maps (Section~\ref{sec:A-example}); the following table summarizes the data of a smeared correlation.
+\begin{center}\small
+\begin{tabular}{@{}p{0.22\textwidth}p{0.3\textwidth}p{0.4\textwidth}@{}}
+\toprule
+\raggedright Object & \raggedright Role & \raggedright Example\tabularnewline
+\midrule
+\raggedright label $v=(d,\mathbf c)\in\mathcal T$ & \raggedright the local measurement & \raggedright $(4,c_{F^2})$\tabularnewline
+\raggedright insertion $I_{N,p}(v,y;U)$ & \raggedright its cutoff recipe on the stencil $y+\Sigma_d$ & \raggedright $a_N^{-4}\bigl(\lambda_{N,p}t_N^{-2}\localsection{4}[c_{F^2}](y;U)+\mu_{N,p}\bigr)$ for $N\ge\reflevel{4}$\tabularnewline
+\raggedright separated test $f$ & \raggedright weights the positions in $\latsmear_{N,p}(v;f)$ & \raggedright $f_1(x_1)f_2(x_2)$, with $f_1,f_2$ of disjoint supports\tabularnewline
+\bottomrule
+\end{tabular}
+\end{center}
+Here $\lambda_{N,p}\ne0$ and $\mu_{N,p}$ are real; the multiple of the unit accounts for mixing of the curvature square with the constant under blocking. The trace of the holonomy around a fixed lattice loop is also continuous, gauge invariant and local on a finite stencil, but it is not thereby an insertion of the family constructed here, and no limit is asserted for loops of fixed physical size, whose stencils grow as $a_N\to0$.
 
 \subsection{Euclidean properties}\label{sec:euclidean-properties}
 
-A \emph{table}, or family of Schwinger functions, assigns to each degree list $(d_i)_{i=1}^n$ and $x\in\Conf{n}$ a complex multilinear function $S_n(c;x)$ of $c_i\in V_{d_i}$. For $v_i=(d_i,c_i)$ write $S_n(v;x)$, and for the word $w=(v_i(x_i))_{i=1}^n$ write $S(w)$; the product of words concatenates their lists. Conjugation and $\hypercubic$ act on labels as in Definition~\ref{def:D07}, and $h\in\hypercubic$ acts on positions linearly.
+A \emph{table}, or family of Schwinger functions, assigns to each degree list $(d_i)_{i=1}^n$ and $x\in\Conf{n}$ a complex multilinear function $S_n(c;x)$ of $c_i\in V_{d_i}$. For $v_i=(d_i,c_i)$ write $S_n(v;x)$, and for the word $w=(v_i(x_i))_{i=1}^n$ write $S(w)$; the product of words concatenates their lists. Conjugation and $\hypercubic$ act on labels as in Definition~\ref{def:D07}, and $h\in\hypercubic$ acts on positions linearly. Thus two insertion labels $v_1,v_2$ and two distinct points $x_1\ne x_2$ select one number $S_2(v;x_1,x_2)$, and a separated test~$f$ on~$(\R^4)^2$ selects the number $\int f(x)S_2(v;x)\,dx$. In the main theorem this number is the ordered limit~\eqref{eq:intro-ordered-limit}: the full cutoff limit at each fixed volume, then the volume limit along a refinement that may depend on the prescribed sequence~$\mathsf p$ and serves every label list and test. A table has no values on the collision diagonals. Values assigned there are invisible to separated tests (Step~\ref{step:deduction-hierarchy} of Section~\ref{sec:deduction}); a contact extension (Section~\ref{sec:short-distance-defs}) is instead a distribution on all of~$(\R^4)^n$ that agrees with the table on separated tests, and Theorem~\ref{prop:CT} constructs one.
 
 \begin{definition}[E1--E3. Euclidean symmetries]\label{def:E1-E3}
 For every $n$, degree list, $c$ and $x\in\Conf{n}$:

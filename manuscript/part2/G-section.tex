@@ -656,9 +656,9 @@ Write $\boldsymbol q=(A_i(x_i))_i$ and define the angular sum
 \mathrm{Ang}_K[\mathsf Y,\mathsf p](\boldsymbol q;x)=\sum_i\left[
  S(\ldots,\mathsf Y_KA_i,\ldots;x)+\sum_b(Kx_i)_bS(\ldots,\mathsf p_bA_i,\ldots;x)\right].
 \end{equation}
-It is the total angular flux of the raw charges of Lemma~\ref{lem:G2.3}. Fix distinct axes $a,b$, a line axis~$l$, and the exponents~$\omega_j$, profile~$\psi$ and weights~$\mathcal K_\lambda$ of Section~\ref{sec:G-coordinate}. For a word~$B$ on~$\R e_l$ projected to odd parity in $a,b$ and even parity in the other axes, Lemma~\ref{lem:H-G3} gives the sign estimates~\eqref{eq:G-spectral-input}, the diagonal bound~\eqref{eq:G-mass-input}, the crude bound $I_\mu(J_{\mu\mu};0)=O(\lambda^{900})$, and $O_M(\lambda^{-M})$ from the region~$X_\lambda$. These estimates use coordinate reflection positivity, signed permutations and conservation only; no continuous rotation enters them.
+It is the total angular flux of the raw charges of Lemma~\ref{lem:G2.3}. Fix distinct axes $a,b$, a line axis~$l$, and the exponents~$\omega_j$, profile~$\psi$ and weights~$\mathcal K_\lambda$ of Section~\ref{sec:G-coordinate}. For a word~$B$ on~$\R e_l$ projected to odd parity in $a,b$ and even parity in the other axes, Lemma~\ref{lem:H-G3} gives the sign estimates~\eqref{eq:G-spectral-input}, the diagonal bound~\eqref{eq:G-mass-input}, the crude bound $I_\mu(J_{\mu\mu};0)=O(\lambda^{900})$, and $O_M(\lambda^{-M})$ from the region~$X_\lambda$. These estimates use coordinate reflection positivity, signed permutations and conservation only; no continuous rotation enters them, and they precede the phase decomposition of Section~\ref{sec:partII-H}, which uses the rotations obtained here.
 
-The next lemma removes the angular boundary at infinity before continuous rotations are known. Its mechanism is as follows. The shell identities and conservation write the angular sum as the integral of the conserved tensor against the derivative of a vector field equal to~$Ky$ on a large box; the sum does not depend on the box, so it suffices that this integral tends to zero. No decay of correlations is assumed, so the smallness must come from positivity. After a translation the configuration lies on a line~$\R e_l$. A coordinate reflection in an axis other than~$l$ fixes every point of this line, and the reflection in~$l$ maps it to itself; so reflecting the integration variable replaces the spectator word by its parity projections, which are again combinations of words on the line, odd in~$a,b$ and even in the other axes. Such a word has positive spectral representations of opposite signs in two coordinate time axes, and Lemma~\ref{lem:H-coordinate-signs} turns this into a bound on its low-energy spectral mass; the diagonal components of the tensor are controlled by conservation instead (Lemma~\ref{lem:H-G3}). The box has the anisotropic extents $\lambda^{100}$, $\lambda^{150}$, $\lambda^{300}$ of Section~\ref{sec:G-coordinate}, chosen so that in each case of the proof these bounds give a power of~$\lambda$ below~$-101$, which beats the prefactor~$\lambda^{100}$.
+The next lemma removes the angular boundary at infinity before continuous rotations are known. Its mechanism is as follows. The shell identities and conservation write the angular sum as the integral of the conserved tensor against the derivative of a vector field equal to~$Ky$ on a large box; the sum does not depend on the box, so it suffices that this integral tends to zero. No decay of correlations is assumed, so the smallness must come from positivity. After a translation the configuration lies on a line~$\R e_l$. A coordinate reflection in an axis other than~$l$ fixes every point of this line, and the reflection in~$l$ maps it to itself; so reflecting the integration variable replaces the spectator word by its parity projections, which are again combinations of words on the line, odd in~$a,b$ and even in the other axes. Such a word has positive spectral representations of opposite signs in two coordinate time axes, and Lemma~\ref{lem:H-coordinate-signs} turns this into a bound on its low-energy spectral mass; the diagonal components of the tensor are controlled by conservation instead (Lemma~\ref{lem:H-G3}). The box has the large anisotropic extents $\lambda^{-\omega_j}$ of Section~\ref{sec:G-coordinate}. In the terms that survive two exact cancellations, differentiating the cutoff in the time axis~$\mu$ leaves a profile of bounded $L^1$ norm supported where $|y_\mu|\ge\lambda^{-\omega_\mu}$, whose Laplace transform gains the factor $\lambda^{\omega_\mu}/(E+\lambda^{\omega_\mu})$. On the momentum side the cutoff is concentrated where $|p_j|\lesssim\lambda^{\omega_j}$; the windows $|p_j|\le w_j=\lambda^{1+\omega_j}$ are wider by the factor~$\lambda$, so outside them every power of~$\lambda$ is gained. The exponents are chosen so that every term is $O(\lambda^{-101})$ before the prefactor~$\lambda^{100}$, the size of $|Ky|$ on the box.
 \begin{lemma}[Collinear angular identity]\label{lem:G-collinear-flux}
 For every separated configuration~$x$ on a coordinate line, every field list~$\boldsymbol q$ and every $K\in\mathfrak{so}(4)$, the raw charges satisfy
 \begin{equation}\label{eq:G-collinear}
@@ -666,35 +666,52 @@ For every separated configuration~$x$ on a coordinate line, every field list~$\b
 \end{equation}
 \end{lemma}
 \begin{proof}
-It suffices to treat $K=E_{ba}-E_{ab}$, $a\ne b$. Choose even $\eta\in C_c^\infty(\R)$ equal to one on~$[-1,1]$ and put $\ell(t)=t\eta(t)$. Set
+It suffices to treat $K=E_{ba}-E_{ab}$, $a\ne b$, for which $(Ky)_b=y_a$, $(Ky)_a=-y_b$ and the other components vanish. Choose even $\eta\in C_c^\infty(\R)$ equal to one on~$[-1,1]$ and put $\ell(t)=t\eta(t)$. Set
 \begin{equation*}
 f_{ab}(y)=\lambda^{100}\ell(\lambda^{-100}y_a)
  \prod_{j\ne a}\ell'(\lambda^{\omega_j}y_j),\qquad
 V_b=f_{ab},\quad V_a=-f_{ba},\quad V_j=0\ (j\ne a,b).
 \end{equation*}
-The vector field~$V$ equals~$Ky$ on the box $|y_a|,|y_b|\le\lambda^{100}$, $|y_l|\le\lambda^{150}$, $|y_j|\le\lambda^{300}$, hence near every insertion for large~$\lambda$. Disjoint shell cutoffs, the raw shell identities of Lemma~\ref{lem:G2.3} and conservation give $\mathrm{Ang}_K=-\int\sum_{\mu,b}\partial_\mu V_b\,S(J_{\mu b}(y),\boldsymbol q)\,dy$. The two terms with $\mu=a,b$ cancel exactly, because $\partial_af_{ab}=\partial_bf_{ba}$ and $J_{ab}=J_{ba}$. Since the sum is independent of~$\lambda$, it suffices to show that the remaining terms are $O(\lambda^{-101})$ before the prefactor~$\lambda^{100}$.
+The vector field~$V$ equals~$Ky$ on the box $|y_a|,|y_b|\le\lambda^{100}$, $|y_l|\le\lambda^{150}$, $|y_j|\le\lambda^{300}$, hence near every insertion for large~$\lambda$. Disjoint shell cutoffs, the raw shell identities of Lemma~\ref{lem:G2.3} and conservation give $\mathrm{Ang}_K=-\int\sum_{\mu,c}\partial_\mu V_c\,S(J_{\mu c}(y),\boldsymbol q)\,dy$.
 
-Consider the $V_b$ terms with $\mu\ne a$. Reflecting the integration variable in each axis, including the tensor signs, replaces the spectator word by its odd projection in~$a,b$ and its even projections in the other axes; if the line axis is reflected, the projection is a finite linear combination of collinear words, to which Lemma~\ref{lem:H-G3} applies. The differentiated profile is supported where $|y_\mu|\ge\lambda^{-\omega_\mu}$, so its Laplace transform has the factor $e^{-E/\lambda^{\omega_\mu}}$. For each of the three spatial factors $f_j=\ell$ or~$\ell'$, Fourier scaling gives, on $|p_j|\le w_j$,
+\emph{Two exact cancellations.} Only the columns $c=a,b$ occur, since $V_c=0$ otherwise. Since $\omega_a=\omega_b$, both $\partial_af_{ab}$ and $\partial_bf_{ba}$ equal $\prod_j\ell'(\lambda^{\omega_j}y_j)$, and $J_{ab}=J_{ba}$; so the term $\mu=a$ of the column~$b$ cancels the term $\mu=b$ of the column~$a$:
+\begin{equation}\label{eq:G-cancellations}
+\sum_{\mu,c}\partial_\mu V_c\,J_{\mu c}
+=\sum_{\mu\ne a}\partial_\mu f_{ab}\,J_{\mu b}-\sum_{\mu\ne b}\partial_\mu f_{ba}\,J_{\mu a}\,.
+\end{equation}
+These are identities for every~$\lambda$; no estimate enters them. The second sum is the first with $a,b$ exchanged, and $\omega_a=\omega_b$, so the bounds below for the first sum apply to it; this includes its diagonal component~$J_{aa}$. Since the angular sum is independent of~$\lambda$, it suffices to show that each term $\mu\ne a$ of the first sum is $O(\lambda^{-101})$ before the prefactor~$\lambda^{100}$.
+
+\emph{Spectral form of one term.} Fix $\mu\ne a$. Reflecting the integration variable in each axis, including the tensor signs, replaces the spectator word by its odd projection in~$a,b$ and its even projections in the other axes; if the line axis is reflected, the projection is a finite linear combination of collinear words. The term becomes a pairing against the measure $\nu_\mu^{B,J_{\mu b}}$, the polarization of the coordinate spectral measures~\eqref{eq:H-coordinate-measure} of~$B$ and~$J_{\mu b}$ in the time axis~$\mu$; it lives on $\{E\ge0\}$, including $E=0$. The hypotheses of Lemma~\ref{lem:H-G3} hold: $B$ is a combination of words on~$\R e_l$, odd in~$a,b$ and even in the other axes, and~$J$ is real, symmetric, $\hypercubic$-tensorial and conserved. The differentiated profile is supported where $|y_\mu|\ge\lambda^{-\omega_\mu}$, so its Laplace transform has the factor $e^{-E/\lambda^{\omega_\mu}}\le\lambda^{\omega_\mu}/(E+\lambda^{\omega_\mu})$. For each of the three spatial factors $f_j=\ell$ or~$\ell'$, Fourier scaling gives, on $|p_j|\le w_j$,
 \begin{equation*}
 |\widehat{f_j(\lambda^{\omega_j}\,\cdot\,)}(p_j)|
 \le\lambda^{-\omega_j}\|f_j\|_{L^1}
 \le C\lambda w_j^{-1}\psi(p_j/w_j).
 \end{equation*}
-Their product gives $\lambda^3\mathcal K_\lambda$, and the time integral contributes~$\lambda^{\omega_\mu}$. For an off-diagonal component, $e^{-t}\le(1+t)^{-1}$ and~\eqref{eq:H-coordinate-CS} bound the integral by $C\lambda^{3+\omega_\mu}[I_\mu(B;-3000)I_\mu(J_{\mu b};\omega_\mu)]^{1/2}$, with $\delta=1$. For $\mu=b$ split at $E=\lambda^{-3000}$. Above it use $e^{-E/\lambda^{-100}}\le4[W/(E+W)]^2$ and~\eqref{eq:G-mass-input}; below it $E+\lambda^{-3000}\le2\lambda^{-3000}$ supplies $\lambda^{-1500}$ in Cauchy--Schwarz, and the crude bound $I_\mu(J_{\mu\mu};0)=O(\lambda^{900})$ completes the estimate. The four cases give the following powers of~$\lambda$ before the prefactor:
+Their product gives $\lambda^3\mathcal K_\lambda$. For an off-diagonal component, \eqref{eq:H-coordinate-CS} bounds the integral over $E\le1$ and the windows by $C\lambda^{3+\omega_\mu}[I_\mu(B;-3000)I_\mu(J_{\mu b};\omega_\mu)]^{1/2}$, with $\delta=1$. For $\mu=b$ split at $E=\lambda^{-3000}$. Above it use $e^{-E/\lambda^{-100}}\le4[W/(E+W)]^2$ and~\eqref{eq:G-mass-input}; below it, where $E=0$ lies, $E+\lambda^{-3000}\le2\lambda^{-3000}$ supplies $\lambda^{-1500}$ in Cauchy--Schwarz, and the crude bound $I_\mu(J_{\mu\mu};0)=O(\lambda^{900})$ completes the estimate.
+
+\emph{One term in detail.} Take $a=1$, $b=2$, $l=3$, so $(\omega_1,\omega_2,\omega_3,\omega_4)=(-100,-100,-150,-300)$, and the term $\mu=3$, with component~$J_{32}$. Its four factors are the prefactor $\lambda^{100}$; the Fourier factors in the axes $1,2,4$, giving $\lambda^3\mathcal K_\lambda$; the Laplace factor $\lambda^{-150}/(E+\lambda^{-150})$ in the time axis~$3$; and the Cauchy--Schwarz factor $[I_3(B;-3000)\,I_3(J_{32};-150)]^{1/2}=O\bigl((\lambda\cdot\lambda)^{1/2}\bigr)$. Together:
+\begin{equation*}
+\lambda^{100}\cdot\lambda^{3}\cdot\lambda^{-150}\cdot\lambda^{(1+1)/2}=\lambda^{-46}.
+\end{equation*}
+This is one term of the estimate, not the whole of it; the table lists all of them.
+
+\emph{All terms.} The table lists the power of~$\lambda$ in each case, before and after the prefactor; the line-axis cost~$150$ is the largest value of~$\gamma_\mu$ in~\eqref{eq:G-spectral-input} for $\mu\ne l$.
 \begin{center}
 \small
-\begin{tabular}{ll}
+{\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llll}
 \toprule
-component and region & power of $\lambda$\\
+term and region & bounds used & before & after\\
 \midrule
-$\mu=l\notin\{a,b\}$ & $3-150+(1+1)/2=-146$\\
-$\mu\notin\{a,b,l\}$ & $3-300+(150+1)/2=-221.5$\\
-$\mu=b$, $E\ge\lambda^{-3000}$ & $3+(150+1-396)/2=-119.5$\\
-$\mu=b$, $E<\lambda^{-3000}$ & $3-1500+(150+900)/2=-972$\\
+$\mu=l\notin\{a,b\}$ & $\gamma_\mu=1$, $\delta=1$ & $3-150+(1+1)/2=-146$ & $-46$\\
+$\mu\notin\{a,b,l\}$ & $\gamma_\mu\le150$, $\delta=1$ & $3-300+(150+1)/2=-221.5$ & $-121.5$\\
+$\mu=b$, $E\ge\lambda^{-3000}$ & $\gamma_\mu\le150$, \eqref{eq:G-mass-input} & $3+(150+1-396)/2=-119.5$ & $-19.5$\\
+$\mu=b$, $E<\lambda^{-3000}$ & $\gamma_\mu\le150$, crude bound & $3-1500+(150+900)/2=-972$ & $-872$\\
+outside $E\le1$ and the windows & region~$X_\lambda$ & $-M$ & $100-M$\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{center}
-Every row is below $-101$. The region $X_\lambda$ is $O(\lambda^{-M})$ by Lemma~\ref{lem:H-G3}, with $M>201$, and the $V_a$ terms are identical after exchanging~$a,b$, since $\omega_a=\omega_b$; this includes their diagonal component~$J_{aa}$. So the angular sum is $O(\lambda^{-1})$, hence zero. Linearity in~$K$ proves~\eqref{eq:G-collinear}.
+Every row before the prefactor is at most~$-101$, the last for $M>201$. The angular sum is therefore $O(\lambda^{-1})$, which is more than needed: any negative power would do, since the sum is independent of~$\lambda$. So it is zero, and linearity in~$K$ proves~\eqref{eq:G-collinear}.
 \end{proof}
 
 To pass from lines to arbitrary configurations, the rotation argument needs analyticity of a vector-valued function, obtained from its Gram kernel.

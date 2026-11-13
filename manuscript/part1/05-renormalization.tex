@@ -31,7 +31,7 @@ w_z^{\rm av}=\bigl(\operatorname{Unif}(\mathbb B_{(\ell-1)/2})\bigr)^{*j}(z),\qq
 Q_e^{\rm pred}=\operatorname*{argmin}_{u\in G}\sum_z w_z^{\rm av}\wilsonterm(Y_{e,z}u^{-1})=\operatorname*{argmin}_{u\in G}\|\overline Y_e-u\|_{\rm F}\,.
 \end{gathered}
 \end{equation}
-The second form holds because $\wilsonterm(Yu^{-1})=(2n_G)^{-1}\|Y-u\|_{\rm F}^2$ for unitary $Y,u$: the predictor is the point of~$G$ nearest to the weighted average of the connectors, an average of group variables taken through the ambient matrices. On a good patch the connectors lie near one another, and this branch, on which the minimizer is unique, is used when the minimum lies below a fixed cutoff. Where the frame test or the predictor test fails, the kernel chooses at random, an axial frame from a finite list or a single connector $Y_{e,z}$ with probability $w^{\rm av}_z$; these branches complete the kernel on the remaining configurations (Section~\ref{sec:partII-B} gives the decision rules, summarized in Table~\ref{tab:B-branches} and Figure~\ref{fig:B-predictor}). All discrete choices form a tag $\alpha_{\rm tag}$, drawn with probabilities
+The second form holds because $\wilsonterm(Yu^{-1})=(2n_G)^{-1}\|Y-u\|_{\rm F}^2$ for unitary $Y,u$: the predictor is the point of~$G$ nearest to the weighted average of the connectors, an average of group variables taken through the ambient matrices. On a good patch the connectors lie near one another, and this branch, on which the minimizer is unique, is used when the minimum lies below a fixed cutoff. Where the frame test or the predictor test fails, the kernel chooses at random, an axial frame from a finite list or a single connector $Y_{e,z}$ with probability $w^{\rm av}_z$; these branches complete the kernel on the remaining configurations (Section~\ref{sec:partII-B} gives the decision rules, summarized in Table~\ref{tab:B-branches} and Figure~\ref{fig:B-predictor}). A tag $\alpha_{\rm tag}$ records these discrete choices and nothing else: for each coarse site a frame label $(z,o)$, an offset $z\in\mathbb B_{(j+3)\ell}$ and an order~$o$ of the four axes, and for each coarse edge an offset $z\in\mathbb B_{(j+3)\ell}$ selecting a connector; on the minimizing branches the label is drawn uniformly and does not affect the kernel. Tags are drawn with probabilities
 \begin{equation}\label{eq:I12-tag-mass}
 \lambda^{\rm tag}(U,\alpha_{\rm tag})\ge0,\qquad
 \sum_{\alpha_{\rm tag}}\lambda^{\rm tag}(U,\alpha_{\rm tag})=1\,.
@@ -55,9 +55,11 @@ For fixed $U$ and tag, right invariance of Haar measure makes each coarse factor
 \end{equation}
 the map integrates one scale exactly and keeps the partition integral. Branches, measurability and symmetries of the kernel are proved in Section~\ref{sec:partII-B}.
 
+Probabilistically, a block step is the following experiment. Let $U$ have law $f(U)\,dU/\int f$ for an integrable $f\ge0$ with $\int f>0$; draw a tag with probabilities $\lambda^{\rm tag}(U,\cdot)$; and put $V_e=R_eQ_e^{\rm pred}(U,\alpha_{\rm tag})$, where the $R_e$ have density $q_{\blockpenalty\beta}$ and are independent of each other and of $(U,\alpha_{\rm tag})$. The pair $(U,V)$ then has law $f(U)\blockkernel{m}_\beta(U,V)\,dU\,dV/\int f$, and by Fubini the law of~$V$ has density $\blockmap{m}_\beta f/\int f$ with respect to Haar measure. Exactness refers to this identity, which includes every branch of the kernel. It does not mean that the coarse density is again a Wilson density; Section~\ref{sec:density} gives the coordinates in which it is written.
+
 \subsection{The density and its norms}\label{sec:density}
 
-The density produced by the integrations records four things: the leading curvature action with its running coupling, the field-independent scalar accumulated so far, small local corrections on small-field supports, and the contributions of large-field regions. At level~$m$ write $\Lambda=\Lambda_{L_pD_m}$. The flagged sites $\flags_m(U)$, or large-field sites, are the sites incident to a plaquette whose chord exceeds~$t_m$; a support is healthy, or small-field in the sense of Ba\l{}aban, if it contains none. A regular activity $E_i^{\rm reg}$ is a Borel real gauge-invariant function, local on its support $X_i$, anchored at $o_i\in X_i$ and vanishing at the flat configuration; it is used only on healthy supports. A forced activity $K_i^{\rm for}$, one of the large-field polymer activities, is local on its support $Y_i$ and carries a nonempty inventory $I_i\subset Y_i$ of flagged sites; it vanishes off its eligibility event
+The density produced by the integrations records four things: the leading curvature action with its running coupling, the field-independent scalar accumulated so far, small local corrections on small-field supports, and the contributions of large-field regions. At level~$m$ write $\Lambda=\Lambda_{L_pD_m}$. The flagged sites $\flags_m(U)$, or large-field sites, are the sites incident to a plaquette whose chord exceeds~$t_m$; a support is healthy, or small-field in the sense of Ba\l{}aban, if it contains none. Flags are gauge invariant, because plaquette chords are: the transform of the identity configuration in Section~\ref{sec:wilson} has no flagged site, however far its links are from the identity. A regular activity $E_i^{\rm reg}$ is a Borel real gauge-invariant function, local on its support $X_i$, anchored at $o_i\in X_i$ and vanishing at the flat configuration; it is used only on healthy supports. A forced activity $K_i^{\rm for}$, one of the large-field polymer activities, is local on its support $Y_i$ and carries a nonempty inventory $I_i\subset Y_i$ of flagged sites; it vanishes off its eligibility event
 \begin{equation}\label{eq:I12-forced-eligibility}
 \mathcal E_i^{\rm elig}=\{U:Y_i\cap\flags_m(U)=I_i\}\cap\mathcal E_i^{\rm extra},\qquad
 K_i^{\rm for}(U)=0\quad(U\notin\mathcal E_i^{\rm elig})\,.
@@ -87,19 +89,23 @@ For each plaquette orientation $\mathfrak p=(a,b)$, let $\mathcal F_{\mathfrak p
 \pathaction_{N,m}(\beta,U)
 &=|\hypercubic|^{-1}\sum_{h\in\hypercubic}(\pathaction)^{\rm raw}_{N,m}(\beta,h^*U)\,,\notag
 \end{align}
-where $h^*U$ transports links by the lattice isometry~$h$. The path coefficients and multilinear expressions are independent of~$p$ (Definitions~\ref{def:D22}--\ref{def:D23}, Lemmas~\ref{lem:C1}--\ref{lem:C2}); the action is affine in~$\beta$, and its last sum does not depend on~$\beta$. The clip drops at $r=t$ from $c_{\rm dir}t^2/2$ to $c_{\rm lin}t^2$. Accordingly the density coordinates are Borel functions; derivatives are taken only on healthy configurations with the masks held fixed, so coupling derivatives never differentiate the flag boundary. The positive linear branch beyond the threshold is what the local large-field energy bound (Lemma~\ref{lem:B-D1}) uses.
+where $h^*U$ transports links by the lattice isometry~$h$. The path coefficients and multilinear expressions are independent of~$p$ (Definitions~\ref{def:D22}--\ref{def:D23}, Lemmas~\ref{lem:C1}--\ref{lem:C2}); the action is affine in~$\beta$,
+\begin{equation*}
+\pathaction_{N,m}(\beta,U)=\beta\,\partial_\beta\pathaction_{N,m}(U)+\pathaction_{N,m}(0,U)\,,
+\end{equation*}
+where, after the average over~$\hypercubic$, $\partial_\beta\pathaction_{N,m}$ collects the clipped plaquette terms, the row squares with their switches $\chi^{\rm rel}_{m,x}$ and the cubic and quartic terms, and $\pathaction_{N,m}(0,\cdot)$ the quadratic terms~$\mathfrak a_i^{(2)}$. The clip drops at $r=t$ from $c_{\rm dir}t^2/2$ to $c_{\rm lin}t^2$. Accordingly the density coordinates are Borel functions; derivatives are taken only on healthy configurations with the masks held fixed, so coupling derivatives never differentiate the flag boundary. The positive linear branch beyond the threshold is what the local large-field energy bound (Lemma~\ref{lem:B-D1}) uses.
 
 For these fixed path actions and thresholds, a \emph{representation} at level~$m$ is the datum
 \begin{equation}\label{eq:I12-representation}
-\rho=\bigl(\beta,v_{\rm vac},(X_i,o_i,E_i^{\rm reg})_i,
+\rho=\bigl(\beta,v_{\rm sc},(X_i,o_i,E_i^{\rm reg})_i,
 (Y_i,I_i,\mathcal E_i^{\rm extra},K_i^{\rm for})_i\bigr)\,,
 \end{equation}
-with vacuum scalar $v_{\rm vac}$ and running coupling $\beta(\rho)=\beta$. Let $\mathfrak F_m(U)$ be the set of finite $\mathfrak a\subset\N$ such that the supports $Y_i$, $i\in\mathfrak a$, are pairwise disjoint and $\bigcup_{i\in\mathfrak a}I_i=\flags_m(U)$: the exact covers of the flagged sites.
+with scalar normalization per site $v_{\rm sc}$ (a constant in the effective density, not the vacuum vector of Section~\ref{sec:phases}) and running coupling $\beta(\rho)=\beta$. The running coupling is thus a coordinate fixed by the choice of path action: the coefficient of the fixed function $\partial_\beta\pathaction_{N,m}$, whose quadratic part is normalized so that $\beta$ is the coefficient of the squared curvature at zero momentum at every level, while the quadratic terms~$\mathfrak a_i^{(2)}$ carry no curvature-square term (Lemma~\ref{lem:C2}). It is not read off from the whole density, which also contains $v_{\rm sc}$ and the activities. Let $\mathfrak F_m(U)$ be the set of finite $\mathfrak a\subset\N$ such that the supports $Y_i$, $i\in\mathfrak a$, are pairwise disjoint and $\bigcup_{i\in\mathfrak a}I_i=\flags_m(U)$: the exact covers of the flagged sites.
 
 \begin{definition}[Effective density]\label{def:D06}
 For a representation~$\rho$, put
 \begin{align*}
-\mathcal V_\rho(U)&=\pathaction_{N,m}(\beta,U)+\sum_i\mathbf1_{X_i\,\mathrm{healthy}}E_i^{\rm reg}(U)-v_{\rm vac}|\Lambda|,\\
+\mathcal V_\rho(U)&=\pathaction_{N,m}(\beta,U)+\sum_i\mathbf1_{X_i\,\mathrm{healthy}}E_i^{\rm reg}(U)-v_{\rm sc}|\Lambda|,\\
 \density\rho(U)&=e^{-\mathcal V_\rho(U)}\sum_{\mathfrak a\in\mathfrak F_m(U)}\prod_{i\in\mathfrak a}K_i^{\rm for}(U)\,.
 \end{align*}
 \end{definition}
@@ -147,6 +153,30 @@ For nonnegative majorants $e_i^{\rm maj}\ge\|E_i^{\rm reg}\|_m$ and $k_i^{\rm ma
 \end{equation*}
 \end{definition}
 
+The two sums are formed differently (Figure~\ref{fig:weighted-sums}). The regular sum at~$x$ counts the activities anchored at~$x$, whatever their supports, so each regular activity is counted once, at the site from which its derivative directions are weighted (Definition~\ref{def:D05a}). The forced sum at~$x$ counts every forced activity whose support contains~$x$, so the weight $e^{\sigma_{J_m}\cover_{B_m}(Y_i)}$ charges a large support at each of its sites; if $x$ is flagged, every activity that covers~$x$ in a term of Definition~\ref{def:D06} is counted there. Section~\ref{sec:partII-D} converts anchored bounds into containing-site bounds where needed, at the cost of the number of possible anchors of a support.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=0.5cm,y=0.5cm,font=\small]
+\foreach \dx/\lab in {0/{(a) regular sum at $x$},11/{(b) forced sum at $x$}}{
+ \begin{scope}[shift={(\dx,0)}]
+ \draw[gray!35,step=1] (0,0) grid (8,5);
+ \node at (4,-1) {\lab};
+ \end{scope}}
+\draw[thick,paperlink,rounded corners=2pt] (3.7,2.7) rectangle (7.3,4.3);
+\draw[thick,paperlink,rounded corners=2pt] (0.7,0.7) rectangle (4.3,3.3);
+\draw[thick,dashed,gray,rounded corners=2pt] (1.6,2.6) rectangle (4.4,5.4);
+\draw[thick,gray,fill=white] (2,5) circle (3.5pt);
+\node[gray,left=2pt] at (1.6,5) {$o_i$};
+\draw[thick,paperlink,rounded corners=2pt] (14.7,1.7) rectangle (18.3,4.3);
+\draw[thick,paperlink,rounded corners=2pt] (11.7,2.6) rectangle (15.4,5.4);
+\draw[thick,dashed,gray,rounded corners=2pt] (16.6,-0.4) rectangle (19.4,1.4);
+\foreach \p in {(17,2),(18,4),(12,5),(18,1)}{\node[red!70!black] at \p {$\times$};}
+\foreach \dx in {0,11}{\fill (\dx+4,3) circle (4pt); \node[below right=0pt] at (\dx+4,3) {$x$};}
+\end{tikzpicture}
+\caption{The weighted sums of Definition~\ref{def:D05b} at a site~$x$. (a) The regular sum counts the activities anchored at~$x$ (solid supports), whatever their extent; the dashed support contains~$x$ but is anchored at $o_i\ne x$ and is counted at~$o_i$. (b) The forced sum counts every activity whose support contains~$x$ (solid), whatever its inventory (crosses); overlapping supports both count, since the sum runs over activities, not covers. The dashed support does not contain~$x$.}\label{fig:weighted-sums}
+\end{figure}
+
 The induction keeps the bounds
 \begin{equation}\label{eq:I12-activity-caps}
 \mathcal E_m\le\epsilon_m^{\rm reg},\qquad \mathcal K_m\le\epsilon_m^{\rm for}\,.
@@ -158,7 +188,7 @@ These numerical bounds do not by themselves define the classes on which the step
 \density\rho^{\rm W}_\beta=e^{-\beta E^{\rm W}_{L_pD_N}}
 \quad(\beta\in\mathfrak B_N)\,,
 \end{equation}
-with vacuum scalar zero (Lemma~\ref{lem:D3}). The \emph{admissible classes} consist of everything reachable from it. Let $\mathcal I_{N,p}=\{\rho^{\rm W}_\beta:\beta\in\mathfrak B_N\}$ and $\mathcal A_{N,N,p}=\mathcal I_{N,p}$. For $m<N$, a representation at level~$m$ belongs to $\mathcal A_{N,m,p}$ if it is obtained from some $\rho'\in\mathcal A_{N,m+1,p}$ with coupling in~$\mathfrak B_{m+1}$ by one block step of Section~\ref{sec:partII-D}: its path is $\pathaction_{N,m}$, its activities are produced by local subtraction, path replacement and fusion, its coupling is that of~$\rho'$ plus the one-loop coefficient $\alpha_{N,m}$ of Lemma~\ref{lem:C7} and a correction bounded by the first inequality of~\eqref{eq:D-retained}, and its density is the block integral of the density of~$\rho'$ (the precise conditions precede Lemma~\ref{lem:D2}). Membership is a property of a single representation; in particular the classes contain the outputs of the step construction on continuous curves and their restrictions to closed subintervals. Let $\mathcal R_{N,m,p}\subset\mathcal A_{N,m,p}\times\mathcal A_{N,m+1,p}$ be the set of the corresponding output--input pairs. Every member satisfies Definitions~\ref{def:D24}--\ref{def:D25}, the path bounds of Lemmas~\ref{lem:C1}--\ref{lem:C2} and~\eqref{eq:I12-activity-caps} (Lemma~\ref{lem:D3} at the Wilson start, Lemmas~\ref{lem:D1} and~\ref{lem:D2} at later levels). A curve $u\mapsto\rho_u$ in $\mathcal A_{N,m,p}$ is continuous (Definition~\ref{def:D25a}) if its supports, anchors, inventories and extra tests do not depend on~$u$, its coupling and vacuum scalar are continuous, and, as $u\to u_0$, the differences of regular derivatives on healthy configurations and of forced values in supremum norm admit majorants whose weighted sums tend to zero.
+with scalar normalization zero (Lemma~\ref{lem:D3}). The \emph{admissible classes} consist of everything reachable from it. Let $\mathcal I_{N,p}=\{\rho^{\rm W}_\beta:\beta\in\mathfrak B_N\}$ and $\mathcal A_{N,N,p}=\mathcal I_{N,p}$. For $m<N$, a representation at level~$m$ belongs to $\mathcal A_{N,m,p}$ if it is obtained from some $\rho'\in\mathcal A_{N,m+1,p}$ with coupling in~$\mathfrak B_{m+1}$ by one block step of Section~\ref{sec:partII-D}: its path is $\pathaction_{N,m}$, its activities are produced by local subtraction, path replacement and fusion, its coupling is that of~$\rho'$ plus the one-loop coefficient $\alpha_{N,m}$ of Lemma~\ref{lem:C7} and a correction bounded by the first inequality of~\eqref{eq:D-retained}, and its density is the block integral of the density of~$\rho'$ (the precise conditions precede Lemma~\ref{lem:D2}). Membership is a property of a single representation; in particular the classes contain the outputs of the step construction on continuous curves and their restrictions to closed subintervals. Let $\mathcal R_{N,m,p}\subset\mathcal A_{N,m,p}\times\mathcal A_{N,m+1,p}$ be the set of the corresponding output--input pairs. Every member satisfies Definitions~\ref{def:D24}--\ref{def:D25}, the path bounds of Lemmas~\ref{lem:C1}--\ref{lem:C2} and~\eqref{eq:I12-activity-caps} (Lemma~\ref{lem:D3} at the Wilson start, Lemmas~\ref{lem:D1} and~\ref{lem:D2} at later levels). A curve $u\mapsto\rho_u$ in $\mathcal A_{N,m,p}$ is continuous (Definition~\ref{def:D25a}) if its supports, anchors, inventories and extra tests do not depend on~$u$, its coupling and scalar normalization are continuous, and, as $u\to u_0$, the differences of regular derivatives on healthy configurations and of forced values in supremum norm admit majorants whose weighted sums tend to zero.
 
 \subsection{The inductive step}\label{sec:inductive-step}
 
@@ -189,7 +219,23 @@ A trajectory is a tuple $\rho_{N,p,m}\in\mathcal A_{N,m,p}$, $0\le m\le N$, with
 \beta\le\bar\beta+\tfrac{\slope}2s_m-\tfrac{\slope}4\log\ell_m<\min\mathfrak T_m,\qquad
 \beta\ge\bar\beta+2\slope s_m+\tfrac{3\slope}4\log\ell_m>\max\mathfrak T_m\,.
 \end{equation*}
-The intermediate value theorem gives a closed subinterval whose couplings lie in $\mathfrak T_m$ and take its end values at its endpoints. After $N$ steps the level-zero coupling is $\bar\beta$. The couplings are chosen this way for all $N,p$ before any sequence of volume indices is prescribed.
+The intermediate value theorem gives a closed subinterval whose couplings lie in $\mathfrak T_m$ and take its end values at its endpoints. After $N$ steps the level-zero coupling is $\bar\beta$. The couplings are chosen this way for all $N,p$ before any sequence of volume indices is prescribed. Trajectories for different cutoffs thus share the coupling~$\bar\beta$ at level zero; their scalar normalizations and activities need not agree (Figure~\ref{fig:two-cutoffs}), and Proposition~\ref{prop:fixed-level} below compares them at a fixed level as the cutoff grows.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[x=0.95cm,y=1cm,>=Stealth,font=\small]
+\draw[dashed,gray] (6,-0.45) -- (6,1.6) node[above,font=\footnotesize] {level $m$};
+\foreach \i in {0,...,9}{\draw[->,gray!80] (\i+0.12,0) -- (\i+0.88,0);}
+\foreach \i in {3,...,9}{\draw[->,gray!80] (\i+0.12,1.1) -- (\i+0.88,1.1);}
+\foreach \i in {0,...,10}{\fill (\i,0) circle (1.6pt);}
+\foreach \i in {3,...,10}{\fill (\i,1.1) circle (1.6pt);}
+\node[left] at (2.9,1.1) {cutoff $N$: $\rho^{\rm W}_{\beta_{N,p}}$};
+\node[left] at (-0.1,0) {cutoff $N'$: $\rho^{\rm W}_{\beta_{N',p}}$};
+\node[right] at (10.1,1.1) {$\beta_{N,p,0}=\bar\beta$};
+\node[right] at (10.1,0) {$\beta_{N',p,0}=\bar\beta$};
+\end{tikzpicture}
+\caption{Trajectories for two cutoffs $N<N'$ at one volume, from the Wilson start at the cutoff (left) to level zero (right); each arrow is a block step, and levels are aligned vertically. Both reach the coupling~$\bar\beta$ at level zero; their scalar normalizations and activities need not agree. At a fixed level~$m$ (dashed), Proposition~\ref{prop:fixed-level} gives convergence of the couplings and activities as the cutoff tends to infinity.}\label{fig:two-cutoffs}
+\end{figure}
 
 \begin{theorem}[MT. Multiscale trajectory]\label{prop:MT}
 There are bare couplings $\beta_{N,p}$ and trajectories $(\rho_{N,p,m})_{m=0}^N$, for all $N,p\in\N$, with $\rho_{N,p,N}=\rho^{\rm W}_{\beta_{N,p}}$ and $\beta_{N,p,N}=\beta_{N,p}$, satisfying
@@ -213,7 +259,7 @@ Item~5 of Table~\ref{tab:constant-choices} bounds the sum by $(\slope/4)s_m$, wh
 \begin{proposition}[Fixed-level convergence]\label{prop:fixed-level}
 For fixed $p$ and $m$, as $N\to\infty$ along the full sequence, the couplings $\beta_{N,p,m}$ of
 Theorem~\ref{prop:MT} converge, and the activity coordinates of $\rho_{N,p,m}$ converge in the
-weighted spaces $\mathcal X_{m,p}$ of~\eqref{eq:D-common-norm}. No convergence of the vacuum scalars is asserted.
+weighted spaces $\mathcal X_{m,p}$ of~\eqref{eq:D-common-norm}. No convergence of the scalar normalizations is asserted.
 \end{proposition}
 
 \emph{Idea of the proof} (Lemmas~\ref{lem:D-cutoff-continuity} and~\ref{lem:D-fixed-level}). The argument uses geometric truncation, not compactness of a ball in an infinite-dimensional space. The scalar coordinates lie in fixed compact intervals, so a diagonal argument gives subsequential limits. At a fixed higher level $k$, replace the activity coordinate by zero and run the same maps down to level~$m$: the error is at most $(8g_*)^{k-m}$ with $g_*=1/128$, uniformly in the cutoff, while the truncated coordinates converge by the cutoff compatibility of finitely many step maps (Lemma~\ref{lem:D-cutoff-continuity}). Letting $k\to\infty$ gives the activity limits. Two limits have the same endpoint $\bar\beta$, and their distance $\mathfrak d_\infty$ satisfies $\mathfrak d_\infty\le8g_*\mathfrak d_\infty$, so they coincide.
