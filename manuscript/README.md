@@ -1,6 +1,6 @@
 # The construction of four-dimensional quantum Yang–Mills theory
 
-> 📄 **Second draft (revised 13 November 2026), 278 pages.** Revised after expert and independent reviews; every section has been through its review cycle. Sections may still change until they are marked *checked*. Do not cite it as a finished proof.
+> 📄 **Third draft (13 November 2026), 278 pages.** Revised after expert and independent reviews; every section has been through its review cycle. Sections may still change until they are marked *checked*. Do not cite it as a finished proof.
 
 A manuscript, written in public, giving a complete mathematical proof of the result formalized in OpenAI's Lean proof
 of the construction of four-dimensional quantum Yang–Mills theory
@@ -23,7 +23,7 @@ The process by which it is written and checked is described in [How this manuscr
 
 ## Status
 
-*Updated 13 November 2026. Second draft (278 pages): revised after two expert human reviews, six reviewer reports and an independent referee review, with Part I rebuilt around the main theorem and the strategy of the proof; then, on 13 November, an exposition pass after reading experiments (examples, tables and figures at the hardest passages). Every change was checked against the Lean.*
+*Updated 13 November 2026. Third draft (278 pages): an exposition pass after reading experiments, with examples, tables and figures at the hardest passages. It builds on the second draft (12 November), which was revised after two expert human reviews, six reviewer reports and an independent referee review, with Part I rebuilt around the main theorem and the strategy of the proof. Every change was checked against the Lean.*
 
 | | section | pages | status |
 |---|---|---|---|
