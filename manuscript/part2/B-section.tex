@@ -332,6 +332,41 @@ Set $a=W_0v$ and polarize. This is~(i). The empty history gives $\mathsf H^0=I$ 
 
 \subsection{The stationary background and Gaussian coordinates}\label{subsec:B-stationary}
 
+\paragraph{Tree gauge.} Given a spanning tree of a set of sites, rooted at~$x_0$, let $g_x$ be the ordered product of the links along the tree path from~$x_0$ to~$x$, and apply the gauge transformation $U(x,a)\mapsto g_xU(x,a)g_{x+e_a}^{-1}$. Every tree link becomes~$1$. The axial frames of Definition~\ref{def:D20a} are of this form, for the tree of coordinate routes in the order~$o$. Figure~\ref{fig:B-tree-gauge} shows one plaquette. With root~$y$ and tree links $(y,1)$, $(y+e_1,2)$, $(y,2)$, one has $g_y=1$, $g_{y+e_1}=U(y,1)$, $g_{y+e_1+e_2}=U(y,1)U(y+e_1,2)$ and $g_{y+e_2}=U(y,2)$, so the remaining link becomes
+\begin{equation*}
+g_{y+e_2}U(y+e_2,1)g_{y+e_1+e_2}^{-1}=U_{y;12}^{-1},\qquad
+U_{y;12}=U(y,1)U(y+e_1,2)U(y+e_2,1)^{-1}U(y,2)^{-1}.
+\end{equation*}
+Its chord is the plaquette chord, and a change of frame~$k$ at the root replaces it by $kU_{y;12}^{-1}k^{-1}$. In a larger block, every non-tree link inside the block becomes the holonomy of a closed loop, a product of conjugated plaquette holonomies of a lattice surface spanning that loop; its chord is at most the sum of their chords. Lemma~\ref{lem:B1} (axial branch) proves the summed form of this bound, and the coercivity step in the proof of Lemma~\ref{lem:B3} is its linearization. A link joining two blocks becomes a transport between the two block roots and is compared with the coarse link. The gauge choice therefore does not make the remaining links small: their size is that of the curvature and of the coarse field.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.15,>=Stealth,font=\small]
+\begin{scope}
+ \foreach \p/\n in {(0,0)/y,(2,0)/{y+e_1},(2,2)/{y+e_1+e_2},(0,2)/{y+e_2}}{\fill \p circle (1.5pt);}
+ \node[below left] at (0,0) {$y$};
+ \node[below right] at (2,0) {$y{+}e_1$};
+ \node[above right] at (2,2) {$y{+}e_1{+}e_2$};
+ \node[above left] at (0,2) {$y{+}e_2$};
+ \draw[->,thick] (0.08,0) -- (1.92,0) node[midway,below] {$U(y,1)$};
+ \draw[->,thick] (2,0.08) -- (2,1.92) node[midway,right] {$U(y{+}e_1,2)$};
+ \draw[->,thick] (0,0.08) -- (0,1.92) node[midway,left] {$U(y,2)$};
+ \draw[->,thick] (0.08,2) -- (1.92,2) node[midway,above] {$U(y{+}e_2,1)$};
+ \node at (1,-0.9) {(a) before};
+\end{scope}
+\begin{scope}[xshift=6.2cm]
+ \foreach \p in {(0,0),(2,0),(2,2),(0,2)}{\fill \p circle (1.5pt);}
+ \node[below left] at (0,0) {$y$};
+ \draw[line width=2.2pt,blue!60!black] (0,0) -- (2,0) node[midway,below] {$1$};
+ \draw[line width=2.2pt,blue!60!black] (2,0) -- (2,2) node[midway,right] {$1$};
+ \draw[line width=2.2pt,blue!60!black] (0,0) -- (0,2) node[midway,left] {$1$};
+ \draw[->,thick,red!70!black] (0.08,2) -- (1.92,2) node[midway,above] {$U_{y;12}^{-1}$};
+ \node at (1,-0.9) {(b) tree gauge};
+\end{scope}
+\end{tikzpicture}
+\caption{Tree gauge on one plaquette. After the gauge transformation the tree links (thick) equal~$1$, and the remaining link carries the inverse of the plaquette holonomy based at the root~$y$.}\label{fig:B-tree-gauge}
+\end{figure}
+
 In each block $\ell y+\mathbb B_{(\ell-1)/2}$ fix an axial spanning tree rooted at $\ell y$, and set its tree links to~$1$. (Section~\ref{subsec:B-energy} allows every rooted block-tree gauge.) The remaining logarithmic link coordinates form the axial field~$\psi$. For a fine edge $e=(x,a)$ put
 \begin{gather*}
 (\operatorname{rep}V)_e=\begin{cases}
@@ -492,7 +527,7 @@ for the joint left Hessian~$\mathsf J$.
 
 Gauge covariance of~$\Psi$ gives $X\mathcal R=I$. In tree-height order, each tree-edge row of~$(\mathcal R,\mathcal I)$ has its child gauge coordinate~$\pm I$ and earlier gauge coordinates; each coarse-frame row has its root gauge coordinate $-I$, and every free-edge slice column has its identity entry. Thus $\det(\mathcal R,\mathcal I)^2=1$. Positivity of $\mathsf Q(0)$ from Lemma~\ref{lem:B3} persists near zero.
 
-The Gaussian integral of the positive form $\frac\beta2\langle w,\mathsf Q(v)w\rangle$ equals $(2\pi/\beta)^{n/2}(\det\mathsf Q(v))^{-1/2}$. Multiplying by $J_{\rm ax}(v)\mathrm e^{-\mathcal L_{m+1}(U_v)}$ gives the displayed identity by the definition of~$\mathsf T$. The factors $J_*^{n_e}$ and $(2\pi/\beta)^{n/2}$ do not depend on~$v$; they enter the vacuum scalar.
+The Gaussian integral of the positive form $\frac\beta2\langle w,\mathsf Q(v)w\rangle$ equals $(2\pi/\beta)^{n/2}(\det\mathsf Q(v))^{-1/2}$. Multiplying by $J_{\rm ax}(v)\mathrm e^{-\mathcal L_{m+1}(U_v)}$ gives the displayed identity by the definition of~$\mathsf T$. The factors $J_*^{n_e}$ and $(2\pi/\beta)^{n/2}$ do not depend on~$v$; they enter the scalar normalization.
 \end{proof}
 
 \subsection{Inverse, vertex and Ward estimates}\label{subsec:B-inverse}
@@ -530,7 +565,7 @@ These operators give the one-loop action a single normalization. The second line
 &=\mathcal L_{m+1}(U_v)+\tfrac12\log\det\mathsf C_\mu(v)-\log\det\mathsf G_\mu(v).
 \end{aligned}}
 \end{equation}
-The factor $\tfrac12$ comes from the Gaussian integral; the Haar Jacobian converts the axial Hessian to left coordinates: $\det\mathsf Q=J_{\rm ax}^2\det(\mathcal I^*\mathsf J\mathcal I)$; the ghost determinant enters with power one because the gauge block of the completion contributes $(\det\mathsf G_\mu)^2$ to $\det\mathsf C_\mu$. The left side does not depend on~$\mu$. Field-independent factors, such as $(2\pi/\beta)^{n/2}$ and the Haar normalizations, form the vacuum scalar; they cancel from every normalized expectation, so the convergence of correlations does not require them to converge. Only the dependence of~$\mathsf T$ on~$v$ matters for correlations: Section~\ref{sec:partII-C} extracts the coupling coefficient from its quadratic kernel, and its higher Taylor terms enter the activities of Section~\ref{sec:partII-D}.
+The factor $\tfrac12$ comes from the Gaussian integral; the Haar Jacobian converts the axial Hessian to left coordinates: $\det\mathsf Q=J_{\rm ax}^2\det(\mathcal I^*\mathsf J\mathcal I)$; the ghost determinant enters with power one because the gauge block of the completion contributes $(\det\mathsf G_\mu)^2$ to $\det\mathsf C_\mu$. The left side does not depend on~$\mu$. Field-independent factors, such as $(2\pi/\beta)^{n/2}$ and the Haar normalizations, form the scalar normalization; they cancel from every normalized expectation, so the convergence of correlations does not require them to converge. Only the dependence of~$\mathsf T$ on~$v$ matters for correlations: Section~\ref{sec:partII-C} extracts the coupling coefficient from its quadratic kernel, and its higher Taylor terms enter the activities of Section~\ref{sec:partII-D}.
 
 \paragraph{Insertion bounds.} For weighted bounds use the nearest projection~$\pi$ from Lemma~\ref{lem:B1} and centred coarse frames: $c_y(U)=\pi(\sum_r w_r^{\rm av}h_{y,r}(U))$, $\widetilde h_{\rm fr}=h_{\rm fr}c(U)$. Pull back the joint quadratic forms by this change. Its tangent is triangular with identity diagonal, so it preserves determinants. Lemma~\ref{lem:C6} compares $\mathsf C^{\rm rem}_\mu$ with $\mathsf A^{\rm aux}_\mu$; derivatives are at zero in free interpolated coarse directions. Let $A_\mu$ denote either of these two operators.
 
@@ -767,24 +802,30 @@ Here $F(g)=P_\g(g-g^{-1})/2$, the ratio in $v_c$ is one at zero chord, and $\chi
 K^{\rm loc}_f(p)=\operatorname{clip}_{t_{\rm f}}(\chord(U_p))+\tfrac12\chi_p(U)|L_{f,R_*}(U,p)|^2,
 \quad K^{\rm loc}_c(p)=\operatorname{clip}_{t_{\rm c}}(\chord(V_p))+\tfrac12\chi_p(V)|L_{c,R_*}(V,p)|^2,
 \end{equation*}
-the clips and tests using the input and output coefficients, respectively. We split the local kinetic-energy difference into six terms. The fine and mismatch terms $E_f,E_n$ supply the energy of selected large-field tests. The coarse term $E_c$ compares the retained coarse energy with its clipped version, and $E_N$ is nonnegative. The terms $E_L$ and~$E_D$ measure the defects $\Phi^*X_f+\Phi_n^*Z-X_c$ and $I-\Phi^*\Phi-\Phi_n^*\Phi_n-\mathcal N^*\mathcal N$, which vanish in the flat untruncated identities. The six local energy terms are
+the clips and tests using the input and output coefficients, respectively. We split the local kinetic-energy difference into six terms, labelled on the right by what each accounts for:
 \begin{align*}
-E_f(p)&=K^{\rm loc}_f(p)+\tfrac12|\Phi v_c(p)|^2-\langle\Phi v_c(p),X_f(p)\rangle,\\
+E_f(p)&=K^{\rm loc}_f(p)+\tfrac12|\Phi v_c(p)|^2-\langle\Phi v_c(p),X_f(p)\rangle
+ &&\text{fine energy},\\
 E_n(e)&=\tfrac{\blockpenalty}2\chord(V_eQ_e^{-1})^2
- +\tfrac12|\Phi_nv_c(e)|^2-\langle\Phi_nv_c(e),Z(e)\rangle,\\
-E_c(p)&=\langle v_c(p),X_c(p)\rangle-\tfrac12|v_c(p)|^2-K^{\rm loc}_c(p),\\
-E_N(q)&=\tfrac12|\mathcal Nv_c(q)|^2,\\
-E_L(p)&=\langle v_c(p),\Phi^*X_f(p)+\Phi_n^*Z(p)-X_c(p)\rangle,\\
-E_D(p)&=\tfrac12\langle v_c(p),(I-\Phi^*\Phi-\Phi_n^*\Phi_n-\mathcal N^*\mathcal N)v_c(p)\rangle.
+ +\tfrac12|\Phi_nv_c(e)|^2-\langle\Phi_nv_c(e),Z(e)\rangle
+ &&\text{mismatch penalty},\\
+E_c(p)&=\langle v_c(p),X_c(p)\rangle-\tfrac12|v_c(p)|^2-K^{\rm loc}_c(p)
+ &&\text{coarse subtraction},\\
+E_N(q)&=\tfrac12|\mathcal Nv_c(q)|^2
+ &&\text{complement square},\\
+E_L(p)&=\langle v_c(p),\Phi^*X_f(p)+\Phi_n^*Z(p)-X_c(p)\rangle
+ &&\text{linear defect},\\
+E_D(p)&=\tfrac12\langle v_c(p),(I-\Phi^*\Phi-\Phi_n^*\Phi_n-\mathcal N^*\mathcal N)v_c(p)\rangle
+ &&\text{quadratic defect}.
 \end{align*}
-The index $q$ runs over the two-form complement and three-form components of~$N$. Summing over every anchor, the cross terms of $E_f,E_n,E_c$ cancel against~$E_L$, and the squares $\frac12|\Phi v_c|^2+\frac12|\Phi_nv_c|^2+\frac12|\mathcal Nv_c|^2-\frac12|v_c|^2$ cancel against~$E_D$:
+The fine and mismatch terms supply the energy of selected large-field tests, and $E_N\ge0$. The defects $E_L,E_D$ vanish when $\Phi,\Phi_n,\mathcal N$ are replaced by $M_f,M_n,N$ and the rows by their linearizations, by~\eqref{eq:B-flat-rows} and $M_f^*M_f+M_n^*M_n+N^*N=I$. The index $q$ runs over the two-form complement and three-form components of~$N$. Summing over every anchor, the cross terms of $E_f,E_n,E_c$ cancel against~$E_L$, and the squares $\frac12|\Phi v_c|^2+\frac12|\Phi_nv_c|^2+\frac12|\mathcal Nv_c|^2-\frac12|v_c|^2$ cancel against~$E_D$:
 \begin{equation}\label{eq:B-global-rows}
 \sum E_f+\sum E_n+\sum E_c+\sum E_N+\sum(E_L+E_D)
 =\sum K^{\rm loc}_f+\tfrac{\blockpenalty}2\sum_e\chord(V_eQ_e^{-1})^2-\sum K^{\rm loc}_c.
 \end{equation}
-The adjoints in this identity are those of the truncated transported matrices, not the flat matrices. The right side is the truncated clipped kinetic energy difference; the higher atoms and omitted tails are separate factors in Section~\ref{sec:partII-D}.
+The adjoints in this identity are those of the truncated transported matrices, not the flat matrices. The right side is the truncated clipped kinetic energy difference; the higher atoms and omitted tails are separate factors in Section~\ref{sec:partII-D}. The identity concerns the sum over all anchors. Lemma~\ref{lem:B-D1} bounds instead the sum of the six terms over the anchors near a selection; on such a partial sum the cross terms need not cancel and individual terms can be negative, so the defects $E_L,E_D$ must be estimated.
 
-\paragraph{Selections.} Fix a mismatch multiplier $W>0$, chosen after $\ell$ below, and write $n_e=\chord(V_eQ_e^{-1})$. The fine field is taken in the tree slice of a rooted block tree.
+\paragraph{Selections.} Fix a mismatch multiplier $W>0$, chosen after $\ell$ below, and write $n_e=\chord(V_eQ_e^{-1})$. The fine field is taken in the tree slice of a rooted block tree, that is, in the tree gauge of Figure~\ref{fig:B-tree-gauge} for a rooted spanning tree of each block.
 \begin{definition}[Selections and allocation sectors]\label{def:B-selection}
 A \emph{selection} $A=(A_f,A_n,A_c)$ consists of fine plaquettes, coarse mismatch edges and coarse sites; $|A|=|A_f|+|A_n|+|A_c|$. Its location consists of every projected plaquette corner, both endpoints of each edge, and its sites; $A^{[r]}$ is the radius-$r$ coarse neighbourhood of the location. The selection is \emph{consistent} with $(U,V)$ if every test meeting $A^{[5B]}$ obeys
 \begin{enumerate}[label=(\roman*)]
@@ -797,7 +838,7 @@ An \emph{allocation sector} fixes these selected tests, their assignment to conn
 
 Let $D$ select the fine or mismatch tests exceeding $t_{\rm hi}$, and let $\mathrm{Aff}$ be the set of output anchors within $4B/5$ of~$D$, the \emph{affected} anchors. Put $r^{\rm f}_p=\chord(U_p)$ for fine plaquettes and $r^{\rm c}_p=\chord(V_p)$ for coarse ones. All sums below are restricted to the local anchors defining~$\mathcal E_A$.
 
-The positive fine and mismatch terms absorb the losses of the signed terms. The order of choices in the next lemma is $\ell$, then $W$, then $\kappa$ and the coupling threshold.
+The positive fine and mismatch terms absorb the losses of the signed terms.
 \begin{lemma}[Local large-field energy]\label{lem:B-D1}
 Fix the stage path bounds, free interpolation and penalty. There is $\ell_0$ such that for every odd $\ell\ge\ell_0$ there is $W_*(\ell)$ such that for every $W\ge W_*(\ell)$ there are $\kappa>0$ and a coupling threshold with the following property. For $\refbeta_m$ above the threshold and every coarse period $n_{\rm tor}\ge100(B+1)$,
 \begin{equation*}
@@ -809,7 +850,7 @@ The proof gives $\kappa=a/2$ with
 \begin{equation*}
 a=\min(c_{{\rm lin},{\rm f}}/8,\,c_{{\rm dir},{\rm f}}/128,\,\blockpenalty/32,\,c_{{\rm dir},{\rm c}}/64),
 \end{equation*}
-so $\kappa$ does not in fact depend on $\ell$ or~$W$; only the coupling threshold does. Table~\ref{tab:B-energy} lists which positive energy pays for which loss. We first bound the fine, mismatch and coarse terms, then the signed terms near very large tests and in the remaining small-field region, and finally absorb the losses by choosing $\ell$, then~$W$, then the coupling threshold.
+so $\kappa$ does not in fact depend on $\ell$ or~$W$; only the coupling threshold does. Table~\ref{tab:B-energy} lists which positive energy pays for which loss. We first bound the fine, mismatch and coarse terms, the last in the three ranges $r^{\rm c}_p\le t_{\rm c}$, $t_{\rm c}<r^{\rm c}_p\le\delta$ and $r^{\rm c}_p>\delta$ for a small fixed~$\delta$; then the signed terms on the affected anchors~$\mathrm{Aff}$ and on the remaining small-field region; and finally absorb the losses by choosing $\ell$, then~$W$, then the coupling threshold.
 
 \begin{table}[ht]
 \centering\small
@@ -824,6 +865,8 @@ so $\kappa$ does not in fact depend on $\ell$ or~$W$; only the coupling threshol
 \raggedright coarse flag & \raggedright $\ge4at_{\rm f}^2$ per incident output plaquette with $t_{\rm c}<r^{\rm c}_p\le\delta$ & \raggedright its share $at_{\rm f}^2$; at most four flags per plaquette\tabularnewline
 \raggedright output plaquette, $r^{\rm c}_p>\delta$ & \raggedright none; $E_c\ge-c_{{\rm lin},{\rm c}}t_{\rm c}r^{\rm c}_p$ & \raggedright lies in $\mathrm{Aff}$; cancelled by the positive signed term there\tabularnewline
 \raggedright output plaquette, $r^{\rm c}_p\le t_{\rm c}$; signed terms off $\mathrm{Aff}$ & \raggedright none & \raggedright losses $Ct_{\rm c}^4$ per local anchor and $\frac a4t_{\rm f}^2$ per selected test (coupling large)\tabularnewline
+\midrule
+\multicolumn{3}{@{}p{0.95\textwidth}@{}}{Coupling threshold: $(4aK+Z_{\rm aff}B^4)t_{\rm f}^2\le at_{\rm f}t_{\rm hi}$ and $Ct_{\rm c}^4KB^4\le at_{\rm f}^2/4$. At least $at_{\rm f}^2|A|/2$ remains, so $\kappa=a/2$.}\\
 \bottomrule
 \end{tabular}
 \caption{Gains and losses in Lemma~\ref{lem:B-D1}. Every selected test is charged energy; no configuration is excluded. The losses are absorbed in the order listed: $\ell$, then~$W$, then the coupling threshold.}\label{tab:B-energy}
@@ -922,13 +965,13 @@ The limits stated at the beginning of this subsection justify both choices. At l
 
 We now specify the Gaussian law for simultaneous local integration. It differs from the law of Lemma~\ref{lem:B4}, whose covariance~$\mathsf Q(v)^{-1}$ defines the one-loop action. The sector law is the reference law under which products of local factors are estimated, and its covariance is built from the linearized retained square terms of an allocation sector. Lemma~\ref{lem:B-D2} uses no identity between the two covariances: the difference between the sector integrand and the reference law is carried exactly by the determinant and Gaussian-density correction factors listed before Lemma~\ref{lem:B-D2}.
 
-Fix the allocation, its actual block trees, the selected tests, all tags, and the frozen fine links~$Y$. Active coordinates are the remaining free-edge logarithms in the complement of the selected radius-$10B$ neighbourhoods. Linearize the retained fine and mismatch square terms at the block-constant lift of the coarse field, applying their actual cutoffs and stencils. Their stacked affine map is $a\mapsto\mathsf D a+b_Y$, so their quadratic energy is
+Fix the allocation, its actual block trees, the selected tests, all tags, and the frozen fine links~$Y$. The tree links equal~$1$ by the gauge choice of Section~\ref{subsec:B-stationary} and are not variables; the frozen links are free links, held fixed in the Gaussian calculation and integrated afterwards with Haar measure. Active coordinates are the remaining free-edge logarithms in the complement of the selected radius-$10B$ neighbourhoods. Linearize the retained fine and mismatch square terms at the block-constant lift of the coarse field, applying their actual cutoffs and stencils. Their stacked affine map is $a\mapsto\mathsf D a+b_Y$, so their quadratic energy is
 \begin{equation*}
 Q_Y(a)=\tfrac12|\mathsf D a+b_Y|^2,\qquad \mathsf A_Y=\mathsf D^*\mathsf D,\qquad f_Y=\mathsf D^*b_Y.
 \end{equation*}
 The stack includes the hypercubic average with its square-root normalization. A stencil for a term anchored at~$z$ contains every fine edge with projected distance at most $R_*+5+r_{\rm pred}$ from~$z$; $r_{\rm pred}$ is the maximum coarse distance read by a patch predictor. Stencils are thus fixed in advance and do not depend on the configuration.
 
-For an edge-coordinate $i$ write $E_i$ for the two endpoints projected to the coarse lattice. The change of sector and the differentiated local integral use, respectively, the symmetric windows
+Two windows are used, one for each calculation. The \emph{sector window} gives the reference law of the exact Gaussian change of variables in an allocation-sector integral; it uses the largest distance between projected endpoints and the threshold~$B/20$. The \emph{local window} gives the reference law of the differentiated local integral of Lemma~\ref{lem:B-D2}; it uses the smallest such distance and the threshold~$B$. For an edge-coordinate $i$ write $E_i$ for the two endpoints projected to the coarse lattice. The two symmetric windows are
 \begin{align*}
 \Omega_i^{\rm sec}&=\{i':\max_{u\in E_i,v\in E_{i'}}\operatorname{dist}(u,v)\le B/20\},\\
 \Omega_i^{\rm loc}&=\{i':\min_{u\in E_i,v\in E_{i'}}\operatorname{dist}(u,v)\le B\}.
@@ -938,7 +981,25 @@ Each window is restricted to the coordinates of its sector; unused coordinates m
 P_{i'i}=\mathbf1_{i'\in\Omega_i}(\mathsf A_Y|_{\Omega_i}^{-1})_{i'i},\qquad
 \Gamma=\tfrac12(P+P^*),\qquad m_Y=-P^*f_Y.
 \end{equation}
-Each column of $P$ inverts the precision only inside its window. Symmetrization gives the covariance~$\Gamma$, and $m_Y$ approximates the full Gaussian mean. The compressed columns make the covariance finite range: $\Gamma_{ii'}=0$ unless $i'\in\Omega_i$ or $i\in\Omega_{i'}$. Factors whose dependence sets contain their windows and are disjoint are therefore exactly independent (Lemma~\ref{lem:B-D2}(v)), and Lemma~\ref{lem:B-windows} shows that the cost relative to $\mathsf A_Y^{-1}$ is $O(e^{-cB})$. Both windows contain a radius-$B/60$ ball for large~$B$, since the two projected endpoints are at distance at most one. The following argument applies to both prescriptions, with their own retained affine terms and mean. The Schur norm of a kernel is the maximum of its absolute row and column sums.
+Table~\ref{tab:B-sector-law} lists the roles of these objects. The compressed columns make the covariance finite range: $\Gamma_{ii'}=0$ unless $i'\in\Omega_i$ or $i\in\Omega_{i'}$. Factors whose dependence sets contain their windows and are disjoint are therefore exactly independent (Lemma~\ref{lem:B-D2}(v)). For large~$B$ each window contains every coordinate within distance~$B/60$ of~$i$, since the two projected endpoints are at distance at most one; Lemma~\ref{lem:B-windows} uses only this property, so it applies to both prescriptions, with their own retained affine terms and mean. The Schur norm of a kernel is the maximum of its absolute row and column sums.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{0.2\textwidth}p{0.36\textwidth}p{0.36\textwidth}@{}}
+\toprule
+\raggedright Object & \raggedright Definition & \raggedright Role\tabularnewline
+\midrule
+\raggedright rows $\mathsf Da+b_Y$ & \raggedright retained fine and mismatch square terms, linearized & \raggedright quadratic energy $Q_Y(a)=\frac12|\mathsf Da+b_Y|^2$\tabularnewline
+\raggedright precision $\mathsf A_Y$ & \raggedright $\mathsf D^*\mathsf D$ & \raggedright coercive with exponential decay; its inverse is in general not finite range\tabularnewline
+\raggedright columns $Pe_i$ & \raggedright inverse of $\mathsf A_Y$ restricted to $\Omega_i$, zero outside & \raggedright solve $\mathsf A_YPe_i=e_i$ inside $\Omega_i$ (Figure~\ref{fig:B-window})\tabularnewline
+\raggedright covariance $\Gamma$ & \raggedright $\frac12(P+P^*)$ & \raggedright finite range; $\Gamma\ge cI$ by comparison with $\mathsf A_Y^{-1}$, not by symmetry\tabularnewline
+\raggedright mean $m_Y$ & \raggedright $-P^*f_Y$ & \raggedright approximates the minimizer $-\mathsf A_Y^{-1}f_Y$ of $Q_Y$\tabularnewline
+\midrule
+\multicolumn{3}{@{}p{0.95\textwidth}@{}}{The original integrand is not changed: the Gaussian substitution in Step~1 of the proof of Lemma~\ref{lem:B-D2} is exact for every mean and every positive covariance, and the differences from $\mathsf A_Y^{-1}$ and $-\mathsf A_Y^{-1}f_Y$ remain in its retained factor.}\\
+\bottomrule
+\end{tabular}
+\caption{The sector Gaussian law. Lemma~\ref{lem:B-windows} bounds the differences from the full inverse by $O(e^{-cB})$.}\label{tab:B-sector-law}
+\end{table}
 
 Fix a coarse root $o$ for the derivative directions. The coarse flag tests remain the correct ones at the base field. Derivatives hold the selected index sets, $Y$ and the tags fixed, and are taken in coarse directions of size at most $t_{\rm c}(1+\operatorname{dist}(o,e))^q$. Put $\upsilon_i=(1+\operatorname{dist}(o,i))^q$; each derivative moves one such factor to the coordinate~$i$. Assume $0<\beta\le2\refbeta_{m+1}$, a weaker hypothesis than $\beta\in\mathfrak B_{m+1}$ that suffices here, and put $g=\beta^{-1/2}$. All bounds below hold for sufficiently large~$\refbeta_m$.
 
@@ -965,7 +1026,7 @@ For large~$\refbeta_m$ the last coefficient is at most $1/2$, proving $\mathsf A
 
 \emph{Decay.} Exponential path coefficients bound the weighted row and column sums of $\mathsf D$. Products give the same Schur bound for $\mathsf A_Y$. By the Combes--Thomas argument, for sufficiently small fixed $\theta>0$ multiply the coordinates by $\mathrm e^{\theta\operatorname{dist}(i,\cdot)}$ on the left and by its inverse on the right. The resulting matrix differs from $\mathsf A_Y$ by at most $C\theta$ in operator norm: $|\mathrm e^{\theta d}-1|\le\theta d \mathrm e^{\theta d}$ is summable against the exponential coefficient bound. Choose $C\theta<c/2$. The inverse Neumann series now gives exponential row and column bounds for $\mathsf A_Y^{-1}$ and every principal compression, with constants independent of the number of coordinates.
 
-\emph{Windows.} A compressed inverse column solves $\mathsf A_YPe_i=e_i$ inside its window. Outside that window, its residual is a sum of products whose combined length crosses the boundary. Every window contains a radius-$B/60$ ball and there are only $C_{j,\ell}$ coordinates per coarse site. The exponential Schur bounds therefore give
+\emph{Windows.} A compressed inverse column solves $\mathsf A_YPe_i=e_i$ inside its window. Outside that window, its residual at~$i'$ is $\sum_{i''\in\Omega_i}(\mathsf A_Y)_{i'i''}P_{i''i}$, a sum of products whose combined length $\operatorname{dist}(i,i'')+\operatorname{dist}(i'',i')$ crosses the boundary (Figure~\ref{fig:B-window}). Every window contains the coordinates within $B/60$ of~$i$, and there are only $C_{j,\ell}$ coordinates per coarse site. The exponential Schur bounds therefore give $\|\mathsf A_YP-I\|_{\rm Schur}\le Ce^{-cB}$, and the identity $P-\mathsf A_Y^{-1}=\mathsf A_Y^{-1}(\mathsf A_YP-I)$ gives
 \begin{equation*}
 \|P-\mathsf A_Y^{-1}\|_{\rm Schur}\le Ce^{-cB},\qquad
 \|\Gamma-\mathsf A_Y^{-1}\|_{\rm Schur}\le Ce^{-cB}.
@@ -981,6 +1042,29 @@ Every differentiated product retains the exponentially small residual factor. Th
 \emph{Mean.} The affine source is formed from the same retained terms and from a bounded smooth extension of the frozen logarithms. Its derivatives are $O(t_{\rm f})$ with the same spatial weights. Multiplication by $P^*$ proves the mean bound. Subtracting the exact inverse solution gives $\mathsf A_Ym_Y+f_Y=(I-\mathsf A_YP^*)f_Y$, whose derivatives are $O(t_{\rm f}e^{-cB})$. Finally $g^{-1}\le C\refbeta_{m+1}^{1/2}$ and $B=\lceil(\log\refbeta_m)^2\rceil$; this fixed power is absorbed by decreasing $c$. The estimates refer to the actual $\mathsf A_Y,\Gamma,m_Y$ of~\eqref{eq:B-window} throughout.
 \end{proof}
 The windowed law thus costs only $e^{-cB}$ relative to the full Gaussian, and this bound persists through every fixed number of derivatives.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=0.9,>=Stealth,font=\small]
+ \fill[blue!8] (-3,0) rectangle (3,2.3);
+ \draw[blue!60!black,dashed] (-3,0) -- (-3,2.4) (3,0) -- (3,2.4);
+ \node[blue!60!black] at (2.1,2.05) {$\Omega_i$};
+ \draw[->] (-5.6,0) -- (5.8,0) node[right] {coordinates};
+ \draw[thick,domain=-3:3,samples=60] plot (\x,{1.8*exp(-1.3*abs(\x))});
+ \draw[thick] (-3,{1.8*exp(-3.9)}) -- (-3,0) (3,{1.8*exp(-3.9)}) -- (3,0);
+ \draw[thick] (-5.5,0) -- (-3,0) (3,0) -- (5.5,0);
+ \fill (0,0) circle (1.6pt) node[below] {$i$};
+ \node at (-1.1,1.45) {$Pe_i$};
+ \fill (2.4,0) circle (1.4pt) node[above left=-1pt] {$i''$};
+ \fill (3.6,0) circle (1.4pt) node[above] {$i'$};
+ \draw[->,red!70!black] (0,-0.05) .. controls (1.0,-0.9) and (1.9,-0.9) .. (2.35,-0.07);
+ \draw[->,red!70!black] (2.45,-0.07) .. controls (2.8,-0.8) and (3.3,-0.8) .. (3.55,-0.07);
+ \node[red!70!black] at (3.6,-1.05) {$(\mathsf A_Y)_{i'i''}$};
+ \node[red!70!black] at (1.2,-1.05) {$P_{i''i}$};
+ \draw[<->] (0,2.6) -- (3,2.6) node[midway,above] {$\ge B/60$};
+\end{tikzpicture}
+\caption{A compressed column. Inside the window $\Omega_i$, $\mathsf A_YPe_i=e_i$ exactly. At $i'\notin\Omega_i$ the residual is a sum of products $(\mathsf A_Y)_{i'i''}P_{i''i}$ with $i''\in\Omega_i$; each decays exponentially in $\operatorname{dist}(i,i'')+\operatorname{dist}(i'',i')\ge B/60$.}\label{fig:B-window}
+\end{figure}
 
 \paragraph{The differentiated local integral.}
 We state the local estimate for the finite products used in the expansion. In a fixed allocation sector, join selected large-field tests when their fixed enlarged neighbourhoods intersect; the connected components $A_\eta$ are the \emph{large-field components}. Write $A(M)$ for the union of the fine-plaquette, mismatch and coarse-site selections belonging to the components chosen in a product~$M$. Fix the support enlargement $h_{\rm loc}$ once for the local factors. Compatibility means that the radius-$h_{\rm loc}B$ neighbourhoods of the distinct chosen components are disjoint.
@@ -1021,7 +1105,24 @@ Each distinct address contributes once.
 \begin{equation*}
 d\nu=dH_F(Y)\,d\gamma_\Gamma(z).
 \end{equation*}
-Here $H_F$ is product Haar measure on the frozen tree-slice links and $\gamma_\Gamma$ is the centred Gaussian. Reference tags are independent uniform tags; their actual likelihoods are included among the factors. All estimates below are uniform in those tags. A finite set of Gaussian reads $I$ has marginal covariance $\Gamma_I=\Gamma[I,I]$. For a finite selection write its product as
+Here $H_F$ is product Haar measure on the frozen tree-slice links and $\gamma_\Gamma$ is the centred Gaussian. Reference tags are independent uniform tags; their actual likelihoods are included among the factors. All estimates below are uniform in those tags. Table~\ref{tab:B-variables} records which variables are fixed, integrated or changed.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{0.2\textwidth}p{0.34\textwidth}p{0.38\textwidth}@{}}
+\toprule
+\raggedright Variable & \raggedright In the Gaussian calculation & \raggedright Afterwards, or as $V$ varies\tabularnewline
+\midrule
+\raggedright tree links & \raggedright equal to $1$ by the gauge choice & \raggedright not variables\tabularnewline
+\raggedright sector data & \raggedright selected tests and block trees fixed & \raggedright fixed; derivatives keep the selected index sets\tabularnewline
+\raggedright tags & \raggedright fixed; reference law uniform & \raggedright summed; actual likelihoods are factors\tabularnewline
+\raggedright frozen links $Y$ & \raggedright fixed & \raggedright integrated under product Haar measure $H_F$\tabularnewline
+\raggedright active coordinates & \raggedright $u=m_Y+gz$, $z\sim\gamma_\Gamma$ & \raggedright replaced by $z_V$; protected physical links stay fixed\tabularnewline
+\raggedright coarse field & \raggedright base field $V_0$ & \raggedright differentiated at $V_0$\tabularnewline
+\bottomrule
+\end{tabular}
+\caption{Variables of the differentiated local integral.}\label{tab:B-variables}
+\end{table} A finite set of Gaussian reads $I$ has marginal covariance $\Gamma_I=\Gamma[I,I]$. For a finite selection write its product as
 \begin{equation*}
 F_M(V,Y,z)=\prod_{i\in M\setminus\mathcal J(M)}F_i(V,Y,z)
              \prod_{w\in\mathcal J(M)}W_w(V,Y,z),
@@ -1037,7 +1138,7 @@ Use a fixed smooth extension of this formula outside $|u(e)|<r_{\log}/2$, equal 
 \begin{equation*}
 \exp(u_V(e))(\operatorname{rep}V)_e=\exp(u(e))(\operatorname{rep}V_0)_e.
 \end{equation*}
-Every incoming measurable activity evaluated on those links is therefore constant under this differentiation. It is bounded by its supremum majorant and no field derivative is applied to it.
+Every incoming measurable activity evaluated on those links is therefore constant under this differentiation. It is bounded by its supremum majorant and no field derivative is applied to it. For example, if $V$ differs from $V_0$ only on the coarse link $(y,a)$, then $\operatorname{rep}V$ differs from $\operatorname{rep}V_0$ only on the fine edges from block~$y$ to block~$y+e_a$; on all other edges $u_V(e)=u(e)$ (inside the logarithm chart), while $z_V$ may also change on other coordinates through the mean~$m_Y(V)$; on those edges, $z_V(e)-z(e)=g^{-1}(m_Y(V_0)_e-m_Y(V)_e)$.
 
 The density of the changed marginal, relative to the base one on the union $I$ of all reads, is
 \begin{equation*}
@@ -1049,6 +1150,7 @@ Define the transported integrand by
 \begin{equation*}
 \widetilde F_M(V,Y,z)=\mathcal R_I(V,z)F_M(V,Y,z_V).
 \end{equation*}
+The Jacobian and the Gaussian density in~$\mathcal R_I$ depend on all the reads of the product together, not factor by factor; this is why the whole product is estimated in one integral under the common law.
 The next lemma bounds its ordered derivatives at $V_0$ under the same base law, including products containing incoming measurable forced activities. It is the second local input to Section~\ref{sec:partII-D}. Its bounds may depend on the fixed mismatch multiplier~$W$ and energy constant~$\kappa$ of Lemma~\ref{lem:B-D1}.
 
 For an admitted polymer put $A=A(M)$. For a large-field component with selection $A=(A_f,A_n,A_c)$ and $A_c\ne\varnothing$, let $F_A$ contain its full local sector factor and every read meeting it. Adjoin every large-field component met by those reads. In this value estimate only, replace the healthy-support condition within this component by the consistency condition of Definition~\ref{def:B-selection}. Retain the incoming-support disjointness and inventory incidence. The other factors attached to $F_A$ have the bounds $f_i$ above; their product excludes the component's selected-test suppression and cutoff remainders already included in that component. Fix $0<\kappa'_B<\kappa$ before the coupling threshold. Let $s_A$ count the radius-$B$ blocks of its complete read support, including retained path lengths in those units. The component itself is estimated in value; derivatives fall only on attached smooth factors and the common Gaussian density. Fix the orders $k,q$ and take odd $\ell$ above the stage-data threshold. A function has \emph{upper rate}~$r$ if it is at most $C_\epsilon\refbeta_{m+1}^{r+\epsilon}$ for every $\epsilon>0$ once $\refbeta_m$ is large. Write $P=P_{j,\ell,k,q}$, of upper rate zero, and $d=d_{j,\ell,k,q}$; the large-field component bound may also depend on $\kappa'_B$. Directions and sector parameters have the restrictions of Lemma~\ref{lem:B-windows}.
@@ -1080,7 +1182,7 @@ The window bounds of Lemma~\ref{lem:B-windows} control the Gaussian scores and e
  \exp\left\{\langle\eta_Y,z\rangle+\tfrac12\langle z,(\Gamma^{-1}-\mathsf A_Y)z\rangle\right\}\,d\gamma_\Gamma(z),\\
 \eta_Y={}&-g^{-1}(\mathsf A_Ym_Y+f_Y).
 \end{align*}
-Here $n$ counts active real coordinates; the Haar density and chart cutoffs are included in $F_Y$. Expansion of $Q_Y(m_Y+gz)$ proves the identity, including its determinant and residual linear term. The identity holds for either window prescription. The local expansion in Section~\ref{sec:partII-D} uses $\Omega^{\rm loc}$.
+Here $n$ counts active real coordinates; the Haar density and chart cutoffs are included in $F_Y$. Expansion of $Q_Y(m_Y+gz)$ proves the identity, including its determinant and residual linear term. The identity holds for every vector~$m_Y$ and every positive~$\Gamma$, in particular for either window prescription. The choices~\eqref{eq:B-window} only make the reference law finite range; the exponents of the retained factor vanish exactly when $m_Y=-\mathsf A_Y^{-1}f_Y$ and $\Gamma=\mathsf A_Y^{-1}$, and Step~4 estimates that factor. The local expansion in Section~\ref{sec:partII-D} uses $\Omega^{\rm loc}$.
 
 \emph{Step 2: scores.} For the common change of coordinates defined above, the first logarithmic derivative of the Gaussian density is
 \begin{equation*}
@@ -1117,18 +1219,27 @@ Diagonalization and square completion, with $-\log(1-u)\le2u$ for $0\le u\le1/2$
 Under this tilt the covariance is at most $2\Gamma$ and its mean is $(I-2\Gamma K)^{-1}(2\Gamma\eta_0)$. Polynomial moments are bounded by the preceding linear estimate; increasing the fixed constant in $\exp(C\Lambda_i)$ includes their mean contributions.
 Thus the differentiated factors and likelihood have, after removing the cutoff-remainder amplitudes, one $L^2$ majorant bounded by $P_{j,\ell,k,q}(\refbeta_m)(1+s_M)^d\prod a_i$.
 
-\emph{Step 5: cutoff remainders.} We next bound the simultaneous event defined above, including all derivative supports. Let $p_0$ bound the number of Gaussian coordinates per coarse site and $m_0$ the number of distinct cutoff-remainder addresses per site. These are fixed once the stage and ratio are fixed. For $r$ distinct addresses, choose one violating coordinate for each. There are at most $(p_0|\mathbb B_{2B}|)^r$ choices. A single coordinate can serve at most $m_0|\mathbb B_{2B}|$ addresses. The Schur bound gives covariance operator norm at most $M_0$. For a set $J$ of chosen distinct coordinates, Gaussian exponential moments and summation over signs give
+\emph{Step 5: cutoff remainders.} We next bound the simultaneous event defined above, including all derivative supports. Let $p_0$ bound the number of Gaussian coordinates per coarse site and $m_0$ the number of distinct cutoff-remainder addresses per site. These are fixed once the stage and ratio are fixed. For $r$ distinct addresses, choose one violating coordinate, a \emph{witness}, for each. There are at most $(p_0|\mathbb B_{2B}|)^r$ choices. Distinct addresses may share a witness, but a single coordinate can serve at most $m_0|\mathbb B_{2B}|$ addresses, so the set~$J$ of distinct witnesses satisfies
+\begin{equation*}
+r\le m_0|\mathbb B_{2B}|\,|J|,\qquad |J|\le r.
+\end{equation*}
+The Schur bound gives covariance operator norm at most $M_0$. The exponential Markov inequality for each signed sum $\sum_{i\in J}\pm z_i$, and summation over the $2^{|J|}$ signs, give
 \begin{equation*}
 \Pr\{|z_i|\ge T\ (i\in J)\}\le2^{|J|}\exp\{(M_0/2-T)|J|\}.
 \end{equation*}
-Take $T=\xi t_{\rm f}/(2g)$ and choose $H>0$ with $M_0/2+Hm_0|\mathbb B_{2B}|\le T$. The multiplicity bound gives
+Take $T=\xi t_{\rm f}/(2g)$ and choose $H>0$ with $M_0/2+Hm_0|\mathbb B_{2B}|\le T$. Then $(T-M_0/2)|J|\ge Hm_0|\mathbb B_{2B}||J|\ge Hr$: although witnesses are shared, the large deviations still gain $\mathrm e^{-H}$ per address. Summing over the witness choices gives
 \begin{equation*}
-\Pr(E_{\mathcal J(M)})\le
+\Pr(E_{\mathcal J(M)})\le(p_0|\mathbb B_{2B}|)^r\,2^r\mathrm e^{-Hr}=
 \bigl(2p_0|\mathbb B_{2B}|\mathrm e^{-H}\bigr)^r.
 \end{equation*}
 The factor $t_{\rm f}/g$ grows faster than every fixed power of $B$ and $\log\refbeta_{m+1}$. Consequently $H$ can exceed $2\tau_w\log\refbeta_{m+1}+\log(2p_0|\mathbb B_{2B}|)$, proving~(iv). A cutoff remainder is thus rare because its violating coordinate lies $t_{\rm f}/g\gg1$ standard deviations out.
 
-\emph{Step 6: the common majorant.} Take the finite sum of the absolute differentiated smooth expressions and scores, multiplied by the fixed incoming measurable envelopes, the cutoff-remainder amplitudes $\prod_wM_w$, and the simultaneous indicator. The product rule bounds every derivative through order $k$ by this same nonnegative function~$G_M$. Its integral is bounded by its polynomial $L^2$ bound times $\Pr(E_{\mathcal J(M)})^{1/2}$. This retains precisely $\varepsilon_w^r$ and proves~(i).
+\emph{Step 6: the common majorant.} Take the finite sum of the absolute differentiated smooth expressions and scores, multiplied by the fixed incoming measurable envelopes, the cutoff-remainder amplitudes $\prod_wM_w$, and the simultaneous indicator. The product rule bounds every derivative through order $k$ by this same nonnegative function~$G_M=G_M^0\mathbf 1_{E_{\mathcal J(M)}}$. By the Cauchy--Schwarz inequality, Step~4 and~(iv),
+\begin{equation*}
+\int G_M\,d\nu\le\|G_M^0\|_{L^2(\nu)}\Pr(E_{\mathcal J(M)})^{1/2}
+\le P(\refbeta_m)(1+s_M)^d\prod_{i\notin\mathcal J(M)}a_i\prod_{w\in\mathcal J(M)}M_w\,\varepsilon_w,
+\end{equation*}
+so the square root of the simultaneous bound leaves exactly one factor~$\varepsilon_w$ per address. Since $f_w=M_w\varepsilon_w$, this proves~(i).
 
 \emph{Step 7: selected-test suppression.} Distribute the local energy of Lemma~\ref{lem:B-D1} among the selected-test factors before differentiating. When $A_c=\varnothing$ the admitted support is healthy. The physical-link change holds the fine links and selected test indices fixed; differentiated test cutoffs retain the selected-test inequalities on their supports. The exponential energy is retained in each differentiated envelope. Annular affine errors have size $E(\refbeta_m)|A|$ with $E$ of upper rate $-3/2$, and the remaining per-test logarithmic corrections have a fixed-power bound $C_{j,\ell,k,q}(1+\log\refbeta_{m+1})^{d_0}|A|$. Derivatives of the smooth factors through order $k$ multiply this bound by fixed powers of $B$, $g^{-1}t_{\rm c}$ and the number of selected tests. Their logarithms per test are $o(\beta t_{\rm f}^2)$, since $\beta t_{\rm f}^2$ is comparable to $(\cutoffsize_{m+1})^2$, which exceeds every fixed power of $\log\refbeta_{m+1}$. Also $E(\refbeta_m)/t_{\rm f}^2\to0$. Increase the coupling threshold after fixing $\kappa'_B<\kappa$; absorption into $(\kappa-\kappa'_B)\beta t_{\rm f}^2|A|$ gives~(ii) through order $k$. The support factor $(1+s_M)^d$ remains outside this per-test estimate. The determinant and covariance corrections use the exponential bounds above. Integrating the independent frozen Haar variables and summing the finite tag probabilities preserve the bound.
 

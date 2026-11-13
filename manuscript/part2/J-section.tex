@@ -722,6 +722,22 @@ Write $\mathcal U\in\mathbb A_s(c)$ if it has a finite height-one representation
 \end{equation}
 Every exterior path must be at distance at least $e^{-sT-o(T)}$ from every path in~$\mathcal P$. The bound permits any varying character~$\zeta(T)$ and the mixed state. Scalar factors of rate~$b$ change the cost to~$c+b$.
 
+The precision~$L$ is relative to the exterior: against an exterior sum of cost~$c'$ the error is $e^{-LT}$ times the growth $e^{c'T}$ of that sum. A fixed absolute precision would not do, because exterior sums of every cost occur: in a product~$\mathcal U\mathcal V$, the factor~$\mathcal V$ belongs to the exterior of~$\mathcal U$.
+
+\paragraph{Two scales.} Consider a child cluster at separation~$\rho$ inside a parent region of size~$R$, with $\rho<R\le1$, and put
+\begin{equation*}
+T=\log(1/\rho),\qquad s=1,\qquad u=\frac{\log(1/R)}{T},
+\end{equation*}
+so that $e^{-sT}=\rho$, $e^{-uT}=R$ and $e^{-(s-u)T}=\rho/R$.
+A product of fields of total degree~$w$ at the cluster points, with bounded coefficient, is a separated sum of cost $c=w$ at height~$s$. The next lemma bounds its contact components and residuals; in these scales, and up to a subpower factor $\rho^{-o(1)}$, its conclusions read
+\begin{equation*}
+\begin{array}{lll}
+\text{degree-$q$ component at }o: & \text{rate } c-qs=w-q, & \text{size } \rho^{q-w},\\[2pt]
+\text{residual through degree }q,\text{ seen at height }u: & \text{cost } c-(q+1)(s-u), & \text{size } \rho^{-w}(\rho/R)^{q+1}.
+\end{array}
+\end{equation*}
+The residual cost follows by cancelling lower degrees. Expanding the cluster at~$o$ gives, up to an error of any prescribed precision, fields of degree~$d$ with coefficient rates $c-ds$. The contact identities~\eqref{eq:J-contact-split} remove exactly the degrees $d\le q$. A remaining field of degree $d\ge q+1$, and the fields of lower degree that its projection produces, carry the same coefficient rate; seen from height~$u$, they cost at most $c-d(s-u)\le c-(q+1)(s-u)$. In Lemma~\ref{lem:J2.2} the expression~$\mathcal U$ is a punctured expression whose child arms carry their test operators. The parent projection acts on the field word and leaves the child Taylor operators in place. The derivatives of these operators are scalar factors of finite rate, which add to the cost.
+
 Suppose the paths in~$\mathcal P$ lie within $e^{-sT+o(T)}$ and within~$2s_*$ of a center~$o\in\mathcal P$. For contact projections assume $2s_*\le \rho_q^{\rm ct}$. Write $I_q^oA=A(o)$ for insertion at this center. These fixed-distance requirements ensure that the contact probes are clear; the exponential distances determine the rates.
 
 \begin{lemma}[Signed layer transfer]\label{lem:J-signed-layer}
@@ -738,7 +754,7 @@ The projected degree-$q$ component thus costs $c$ less the Taylor gain~$qs$, and
 \begin{proof}\label{proof:J-layer-start}
 The proof orders the approximation precisions before applying the projections. Lemma~\ref{lem:J-power-separated}, including its uniformity on compact label sets, expands each approximating term at the center; the telescope~\eqref{eq:J-telescope} handles products; the exact contact identities~\eqref{eq:J-contact-split} give the cancellations.
 
-First check products, which explains the strength of the approximation property. Let~$\mathcal U,\mathcal V$ have costs~$c_1,c_2$ and a separation at height~$s$. Suppose a height-one representation of~$\mathcal V$ has cost~$b$. Choose an approximant~$g$ to~$\mathcal U$ of precision~$L+b$. Its own height-one representation has some finite cost~$b'$. Next choose an approximant~$g'$ to~$\mathcal V$ of precision~$L+b'$. Then
+First check products, which explains the strength of the approximation property. Let~$\mathcal U,\mathcal V$ have costs~$c_1,c_2$ and a separation at height~$s$. Suppose a height-one representation of~$\mathcal V$ has cost~$b$. Choose an approximant~$g$ to~$\mathcal U$ of precision~$L+b$. Its own height-one representation has some finite cost~$b'$. Next choose an approximant~$g'$ to~$\mathcal V$ of precision~$L+b'$. The order matters: the precision required of~$g'$ depends on the cost~$b'$ of~$g$, which is known only after~$g$ has been chosen. Then
 \begin{equation*}
 \mathcal U\mathcal V-gg'=(\mathcal U-g)\mathcal V+g(\mathcal V-g')
 \end{equation*}
@@ -797,7 +813,7 @@ Taylor's integral remainder gives, on a shell~$|x_h^\perp|\asymp\rho$ within the
 \end{equation*}
 Including normal volume, every term of~\eqref{eq:J-contact-arms} therefore gains~$\rho^{n^\perp_h+L_h-d_h-\varepsilon'}$, whose exponent is at least~$1-\varepsilon'$.
 
-\emph{Step 3: partial collisions and summable shell bounds.} Partial collisions on a normal shell require a further induction. Induct on~$|h|-|\pi|$, where~$\pi$ is the currently separated partition. The case of singleton blocks is a separated correlation against a smooth compactly supported test, bounded by Lemma~\ref{lem:F3} and~\eqref{eq:J-moments}. For a nonsingleton block, cut its normal coordinate into dyadic shells and rescale to~$1/2\le|x_h^\perp|\le2$. At any point of this compact annulus its equality classes form a proper partition. The centroids of nonempty subgroups contained in different classes are distinct there. There are finitely many such subgroups; continuity gives a neighborhood where their distances have a common positive lower bound. A finite smooth partition of unity on the annulus thus gives sectors with all subsequent subgroup centroids separated. Within a sector apply the induction hypothesis to this strictly finer partition. On overlaps the resulting expressions agree: a group crossing two sectors' separated blocks has a Taylor jet on a diagonal disjoint from the localized test support, and contributes zero. The subdivision therefore preserves the full expression and its ordered test operators.
+\emph{Step 3: partial collisions and summable shell bounds.} The count $\rho^{q-d_h}\cdot\rho^{L_h-q}\cdot\rho^4$ of the two-insertion example concerns one shell with no further collision. Steps~1 and~2 justify its coefficient size, up to the loss~$\rho^{-\varepsilon'}$, for the complete signed expression; the present step supplies the cover of partial collisions and the induction over them. Partial collisions on a normal shell require a further induction. Induct on~$|h|-|\pi|$, where~$\pi$ is the currently separated partition. The case of singleton blocks is a separated correlation against a smooth compactly supported test, bounded by Lemma~\ref{lem:F3} and~\eqref{eq:J-moments}. For a nonsingleton block, cut its normal coordinate into dyadic shells and rescale to~$1/2\le|x_h^\perp|\le2$. At any point of this compact annulus its equality classes form a proper partition. The centroids of nonempty subgroups contained in different classes are distinct there. There are finitely many such subgroups; continuity gives a neighborhood where their distances have a common positive lower bound. A finite smooth partition of unity on the annulus thus gives sectors with all subsequent subgroup centroids separated. Within a sector apply the induction hypothesis to this strictly finer partition. On overlaps the resulting expressions agree: a group crossing two sectors' separated blocks has a Taylor jet on a diagonal disjoint from the localized test support, and contributes zero. The subdivision therefore preserves the full expression and its ordered test operators.
 
 For the shell estimate, let~$a>0$ be the shell radius divided by its parent scale. The rescaled Taylor remainder through order~$k$ obeys
 \begin{equation}\label{eq:J-shell-Taylor}
@@ -819,9 +835,9 @@ Choose~$\gamma>0$ with~$(3^{|h|-|\pi|}+1)\gamma\le1$. At a finer partition with~
 Apply the preceding shell estimate with~$\varepsilon'=3^{d'}\gamma$ and~$\theta=\gamma+\varepsilon'\le1$. One split strictly decreases the remaining number of splits, and~$3^{d'+1}\gamma\ge2\cdot3^{d'}\gamma+\gamma$ leaves a factor~$a^\gamma$ after the preceding estimate. To see that this is uniform in the parent scale~$R$, combine the child loss~$\rho^{-\varepsilon'}$ with its ratio improvement by
 \begin{equation*}
 (\rho/R)^{\gamma+\varepsilon'}\rho^{-\varepsilon'}
-=\rho^\gamma R^{-(\gamma+\varepsilon')}\,.
+=(\rho/R)^{\gamma}R^{-\varepsilon'}\,.
 \end{equation*}
-The last factor is charged to the parent's allocated loss. Finite sector sums change only the constant. For shells~$\rho\asymp2^{-j}$, the bound is consequently~$C2^{-j\gamma}$ times a fixed test seminorm. Summing this geometric series completes the induction, and gives absolute convergence also for iterated choices of disjoint shells.
+The child keeps the ratio gain $(\rho/R)^\gamma$, and its loss now sits at the parent scale; this factor $R^{-\varepsilon'}$ is charged to the parent's allocated loss. Finite sector sums change only the constant. For shells~$\rho\asymp2^{-j}$, the bound is consequently~$C2^{-j\gamma}$ times a fixed test seminorm. Summing this geometric series completes the induction, and gives absolute convergence also for iterated choices of disjoint shells.
 
 \emph{Step 4: the distribution on an arbitrary compact set.} Cover a given compact set by neighborhoods of the equality classes at each of its points. The same separation argument gives finitely many patches, including patches outside the total-collision subtraction range. On these patches the recursion reduces to the product of the full expressions in the separated classes: any crossing Taylor term has zero jet. A smooth partition of unity and the Leibniz rule combine their bounds. Each descent costs at most~$W+2$ derivatives by~\eqref{eq:J-shell-Taylor}; there are at most~$n$ descents. We obtain
 \begin{equation}\label{eq:J-contact-order}

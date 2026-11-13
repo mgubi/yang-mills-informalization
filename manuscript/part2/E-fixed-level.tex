@@ -4,7 +4,18 @@ For a fixed finite insertion-label list and a separated common-grid configuratio
  \frac{\int[z_{\{1,\ldots,n\}}]\mathcal H^0_{N,p,m}(z;U)\,dU}
       {\int\density\rho_{N,p,m}\,dU}.
 \end{equation}
-The numerator is specified by the unmarked representation and the one-mark families alone. The difference from the exact source is the stopping error, estimated in Lemma~\ref{lem:E-stopping}.
+The numerator is specified by the unmarked representation and the one-mark families alone. Both integrands contain the factor $e^{v_{{\rm sc},m}|\Lambda_{n_{p,m}}|}$, the numerator through~$\Phi_m$, and it cancels as in~\eqref{eq:E-normalized-density}:
+\begin{equation}\label{eq:E-coarse-scalar-free}
+\begin{aligned}
+ C_{N,p,m}(v;x)&=
+ \frac{e^{v_{{\rm sc},m}|\Lambda_{n_{p,m}}|}\int[z_{\{1,\ldots,n\}}]e^{-v_{{\rm sc},m}|\Lambda_{n_{p,m}}|}\mathcal H^0_{N,p,m}\,dU}
+      {e^{v_{{\rm sc},m}|\Lambda_{n_{p,m}}|}\int e^{-v_{{\rm sc},m}|\Lambda_{n_{p,m}}|}\density\rho_{N,p,m}\,dU}
+ \\
+ &=\frac{\int[z_{\{1,\ldots,n\}}]e^{-v_{{\rm sc},m}|\Lambda_{n_{p,m}}|}\mathcal H^0_{N,p,m}\,dU}
+      {\int e^{-v_{{\rm sc},m}|\Lambda_{n_{p,m}}|}\density\rho_{N,p,m}\,dU}.
+\end{aligned}
+\end{equation}
+After the cancellation both integrands are scalar-free; they are formed from the scalar-free density and the singleton functions, whose convergence is proved below. The difference from the exact source is the stopping error, estimated in Lemma~\ref{lem:E-stopping}.
 
 The first lemma treats one fixed coarse level. The unmarked trajectories converge at that level; contraction of the marked recursion then gives convergence of the singleton insertions.
 \begin{lemma}[Fixed-level marked convergence]\label{lem:E-fixed-level}
@@ -15,7 +26,7 @@ For every fixed $p,v,x$ as above and every sufficiently fine fixed level~$m$, th
 The scalar-free partition integral is bounded below by a positive constant depending on~$p,m$.
 \end{lemma}
 \begin{proof}
-The three facts listed at the start of Section~\ref{sec:partII-E.3} are proved in turn. Lemma~\ref{lem:D-fixed-level} gives full-sequence convergence of the scalar couplings and scalar-free activities in fixed weighted spaces at each fixed~$p,m$, and includes the prescribed paths with the strict reserve. Thus the cutoff-dependent path arrays converge in the same charts. The vacuum scalar is excluded, as in~\eqref{eq:E-normalized-density}.
+The proof establishes the rows of Table~\ref{tab:E-fixed-level}. Lemma~\ref{lem:D-fixed-level} gives full-sequence convergence of the scalar couplings and scalar-free activities in fixed weighted spaces at each fixed~$p,m$, and includes the prescribed paths with the strict reserve. Thus the cutoff-dependent path arrays converge in the same charts. The scalar normalization is excluded, as in~\eqref{eq:E-normalized-density}.
 
 Use $\kappa_i=(\epsilon_i^{\rm for})^{1/2}$ in the remainder norm~\eqref{eq:E-marked-mass}. For coefficient graphs $g,\widetilde g$ at level~$i$ put
 \begin{equation*}
@@ -35,7 +46,20 @@ On the fixed finite torus, weighted convergence bounds the sums of the regular t
 The denominator has a common positive lower bound. Restrict to an axial tree gauge with all free links of chord at most $g/4$, choosing $g>0$ below every admitted $\beta_{N,p,m}^{-1/2}$ on the retained fixed-level tail. The forced sum on this set is one, and the scalar-free action is uniformly bounded above there. Its product Haar measure is positive. The same lower bound applies to all cutoffs on that tail. Dividing the Cauchy numerator integrals by these positive Cauchy denominators proves~\eqref{eq:E-coarse-cauchy}.
 \end{proof}
 
-The source density transfers exactly, but its singleton part does not: connected components with two or more marks remain. The next estimate bounds the effect of omitting all those components while keeping the bound independent of the stopping level.
+The source density transfers exactly, but its singleton part does not: connected components with two or more marks remain. Two marks show what the stopping removes and what it keeps. Write $H_{m,X}=z_1z_2h_X$ and $K^{\ge2}_{m,Y}=z_1z_2\kappa_Y$, put $K^{\mathcal B}=\prod_{Y\in\mathcal B}K_{m,Y}$, and suppress $m$ and~$U$ on the singleton functions. Since $z_1^2=z_2^2=0$, expanding the exponential and the product in~\eqref{eq:E-source-form} gives
+\begin{equation}\label{eq:E-two-mark}
+\begin{aligned}
+ [z_1z_2]\mathcal H_m={}&e^{\Phi_m}\sum_{\mathcal A}\Bigl[f_1f_2K^{\mathcal A}
+ +\sum_{Y\in\mathcal A}(f_1k_{2,Y}+f_2k_{1,Y})K^{\mathcal A\setminus\{Y\}}
+ +\sum_{Y\ne Y'}k_{1,Y}k_{2,Y'}K^{\mathcal A\setminus\{Y,Y'\}}\Bigr]
+ \\
+ &+e^{\Phi_m}\sum_{\mathcal A}\Bigl[\Bigl(\sum_Xh_X\Bigr)K^{\mathcal A}
+ +\sum_{Y\in\mathcal A}\kappa_YK^{\mathcal A\setminus\{Y\}}\Bigr],
+\end{aligned}
+\end{equation}
+with sums over eligible families and ordered pairs of distinct $Y,Y'\in\mathcal A$. The first line is $[z_1z_2]\mathcal H^0_{N,p,m}$. It keeps the marked forced terms $k_{i,Y}$, which enter through the same eligible families as the unmarked activities. The second line is removed, and its normalized integral is the stopping error for two marks. On a configuration without flags only the empty family is eligible, and the coefficient reduces to $e^{\Phi_m}(f_1f_2+\sum_Xh_X)$.
+
+The next estimate bounds the effect of omitting all components with two or more marks. Its quantifiers are those needed in~\eqref{eq:E-three-term}, where $m$ is chosen before the cutoffs; so the constant~$F_0$ below must not depend on $m$ or~$N$. Convergence at each fixed level does not supply such a bound, since it concerns $C_{N,p,m}$ and not its distance from the cutoff moment.
 \begin{lemma}[Stopping estimate]\label{lem:E-stopping}
 For fixed $p,v,x$, there are $F_0<\infty$ and $m_0$ such that, for each $m\ge m_0$ and every sufficiently large $N$,
 \begin{equation}\label{eq:E-stop-error}
@@ -44,7 +68,11 @@ For fixed $p,v,x$, there are $F_0<\infty$ and $m_0$ such that, for each $m\ge m_
 \end{equation}
 The constant $F_0$ is independent of $m,N$; the cutoff threshold may depend on~$m$.
 \end{lemma}
-Every mode with at least two marks has support covering number at least $B_m/64$, by Lemma~\ref{lem:E-cover}. All such modes can therefore be multiplied by a complex~$z$ with $|z|<e^{B_m/64}$, at the cost of two units of support exponent. The normalized integral $F_m(z)$ is then holomorphic and bounded by a constant $F_0$ fixed at a base level~$k_0$, independent of~$m$; $F_m(1)$ is the cutoff moment and $F_m(0)=C_{N,p,m}$, so Cauchy's estimate gives $|F_m(1)-F_m(0)|\le2F_0e^{-B_m/64}$.
+Every mode with at least two marks has support covering number at least $B_m/64$, by Lemma~\ref{lem:E-cover}. Multiply all such modes, and only those, by a complex~$z$. The complete singleton functions, the original forced eligibility tests and the unmarked representation are unchanged. Two units of support exponent pay for $|z|<r_m=e^{B_m/64}$, so the normalized integral $F_m(z)$ is holomorphic on this disk, with $F_m(1)$ the cutoff moment and $F_m(0)=C_{N,p,m}$. Carried back to one base level~$k_0$ chosen before~$m$, it is bounded by a constant $F_0$ computed at that level. Cauchy's estimate on circles of radius $r_m/2$ centered on $[0,1]$ gives
+\begin{equation*}
+ |F_m(1)-F_m(0)|\le\frac{F_0}{r_m/2}=2F_0e^{-B_m/64}.
+\end{equation*}
+The error is the bound on the disk divided by half its radius; it is small because the radius grows with~$m$ while the bound does not.
 \begin{proof}
 The expansion is that of~\eqref{eq:E-source-form} for the exact source evolution~\eqref{eq:E-multiple-density}; the bounds at the base level come from Lemma~\ref{lem:E-replication} and the singleton bounds of Lemma~\ref{lem:E-fixed-level}. Choose a base level~$k_0$ above the reference levels and the grid containing~$x$. At all sufficiently fine levels, distinct ancestral sites have separation at least $B_i^2$: their separation is a fixed positive physical number divided by~$a_i$, while $B_i^2$ grows only as a power of $\log\widehat\beta_i$. Their occupancy is one. Enlarge $k_0$ so these assertions and all required positive source allowances hold thereafter.
 

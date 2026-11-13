@@ -21,17 +21,23 @@ Fix~$\mathsf p$, $\mathsf q$, $P$ and~$S$ from now on.
 \item A further refinement fixes finitely many coefficient maps in each degree. This auxiliary subsequence concerns finite-dimensional coefficients only; the limits of the correlations are the full ultraviolet limits already established.
 \end{enumerate}
 
-The coefficient maps are needed because the normalization $a_N^{-d}\mathsf Z_{N,p,d}^{-1}$ depends on the degree. The same $c\in V_d\subset V_e$ defines different lattice fields as $(d,c)$ and as $(e,c)$, and a lattice difference of a degree-$d$ insertion is a degree-$(d+1)$ object with yet another normalization; the naive inclusion $V_d\to V_e$ does not preserve correlations. Lemma~\ref{lem:F2} constructs linear \emph{corrected coefficient maps} relating these normalizations, and they induce the inclusions and derivatives of the next proposition. Its dimension statement uses the free comparison space.
+The coefficient maps are needed because the normalization $a_N^{-d}\mathsf Z_{N,p,d}^{-1}$ depends on the degree. The same $c\in V_d\subset V_e$ defines different lattice fields as $(d,c)$ and as $(e,c)$, and a lattice difference of a degree-$d$ insertion is a degree-$(d+1)$ object with yet another normalization; the naive inclusion $V_d\to V_e$ does not preserve correlations. Lemma~\ref{lem:F2} constructs linear \emph{corrected coefficient maps} relating these normalizations, and they induce the inclusions and derivatives of the next proposition. Its dimension statement uses a Gaussian comparison theory, introduced by its covariance.
 
 \begin{definition}[Free Maxwell comparison]\label{def:D11}
-For $\dimG$ independent colours, take
+For $\dimG$ independent colours, let $A_a^\alpha$ be centred generalized Gaussian fields on~$\R^4$ with
 \begin{equation*}
 \mathbb E A_a^\alpha(x)A_b^\beta(y)
 =\delta_{\alpha\beta}\delta_{ab}\Gamma(x-y),\qquad
-\Gamma(x)=\frac1{4\pi^2|x|^2},\qquad F_{ab}=\partial_aA_b-\partial_bA_a\,.
+\Gamma(x)=\frac1{4\pi^2|x|^2},\qquad F_{ab}=\partial_aA_b-\partial_bA_a\,,
 \end{equation*}
-Let $\maxwellspace{d}$ consist of the complex $\operatorname{Ad}(G)$-invariant Wick polynomials in curvature jets of weight at most~$d$, modulo antisymmetry, the linear Bianchi identities and $\sum_a\partial_aF_{ab}=0$. Their separated Wick correlations are~$\maxwellcorr$.
+the derivatives taken in the sense of distributions. Let $\maxwellspace{d}$ consist of the complex $\operatorname{Ad}(G)$-invariant Wick polynomials in curvature jets of weight at most~$d$, modulo antisymmetry, the linear Bianchi identities and $\sum_a\partial_aF_{ab}=0$. Their separated Wick correlations are~$\maxwellcorr$.
 \end{definition}
+
+Each component of~$A$ is a massless free field, with covariance $(-\Delta)^{-1}$ since $-\Delta\Gamma=\delta_0$, and $F$ is the free Maxwell field. Wick polynomials in curvature jets at distinct points have smooth correlations, computed by Wick's theorem from derivatives of~$\Gamma$ at nonzero arguments. The relations are of two kinds. Antisymmetry and the Bianchi identities $\partial_aF_{bc}+\partial_bF_{ca}+\partial_cF_{ab}=0$ hold identically, since $F$ is a derivative of~$A$. The equation $\sum_a\partial_aF_{ab}=0$ holds only in separated correlations: by $-\Delta\Gamma=\delta_0$,
+\begin{equation*}
+\mathbb E\Bigl(\sum_a\partial_aF^\alpha_{ab}\Bigr)(x)\,F^\beta_{cd}(y)=\delta_{\alpha\beta}\bigl(\delta_{bd}\partial_{x^c}-\delta_{bc}\partial_{x^d}\bigr)\delta_0(x-y)\,,
+\end{equation*}
+which vanishes for $x\ne y$, so every separated Wick correlation with a factor of the divergence vanishes; but the divergence is not the zero distribution, since its covariance is $\delta_{\alpha\beta}(\partial_b\partial_d-\delta_{bd}\Delta)\delta_0(x-y)$. The quotient by this equation thus records a relation among separated correlations, not an identity of distributions. The comparison of Proposition~\ref{prop:MC} likewise concerns separated correlations at short distances; it does not identify the constructed fields with this Gaussian reference.
 
 The constant one is the Maxwell unit, coefficient conjugation gives the real structure, and inclusions keep the same polynomial at a larger weight bound. Free differentiation is $\partial_a^{\rm Max}(:P:)=:\partial_aP:$, and the rotation action $R_d^{\rm Max}(h)(:P:)=:hP:$ is determined by $hF_{ab}^\alpha=\sum_{i,j}h_{ia}h_{jb}F_{ij}^\alpha$ and $h\partial_a=\sum_ih_{ia}\partial_ih$ for $h\in O(4)$; these operations preserve the defining relations.
 
@@ -78,7 +84,13 @@ S_n(\scaleframe{k}{d_i}u_i;r_k\,\cdot\,)\longrightarrow\maxwellcorr_n(u;\cdot)
 
 \emph{Idea of the proof} (Lemma~\ref{lem:G2.1}). The lattice comparison stops near the requested physical scale and compares the correlations with the free Gaussian ones. Finitely many separating correlations make the comparison maps injective, the upper bound $\dim_\C F_d\le\dim_\C\maxwellspace{d}$ of Proposition~\ref{prop:FC} makes them isomorphisms, and finite-dimensional corrections impose the eventual equalities. Local $L^1$ convergence is equivalent, by duality and smooth approximation on slightly larger separated compact sets, to convergence uniform over smooth tests with $\|f\|_\infty\le1$ and fixed compact support. This weaker form is used to construct and normalize the conserved current, before the stress tensor exists.
 
-To read translation and angular charge, integrate a conserved symmetric tensor through a shell surrounding one insertion. We normalize the stress tensor so that its translation flux acts as $+\partial_{x_0^b}$ on the enclosed insertion; with the minus sign in the flux below, this gives the negative of the usual Euclidean canonical Maxwell tensor (displayed after Theorem~\ref{prop:ST}). Let $A\in F_d$, let $\boldsymbol B$ be a list of~$n$ spectator fields at~$x$, and take $(x_0,x)\in\Conf{n+1}$.
+To read translation and angular charge, integrate a conserved symmetric tensor through a shell surrounding one insertion. In a free model the shell integral can be computed, and it differentiates the enclosed correlation. Let $\phi$ be a massless free scalar field with covariance~$\Gamma$, write $\langle\cdot\rangle$ for its Wick correlations, and put $T^\phi_{ab}=-{:}\partial_a\phi\,\partial_b\phi{:}+\frac12\delta_{ab}{:}|\nabla\phi|^2{:}$, the negative of the canonical tensor. With $\Gamma_0=\Gamma(y-x_0)$ and $\Gamma_1=\Gamma(y-x)$,
+\begin{equation*}
+\langle T^\phi_{ab}(y)\phi(x_0)\phi(x)\rangle=-\partial_a\Gamma_0\,\partial_b\Gamma_1-\partial_b\Gamma_0\,\partial_a\Gamma_1+\delta_{ab}\nabla\Gamma_0\cdot\nabla\Gamma_1\,,
+\end{equation*}
+whose divergence in~$y$ vanishes away from $x_0$ and~$x$, where $\Delta\Gamma_0=\Delta\Gamma_1=0$. Take a smooth compactly supported $\chi$ equal to one on the ball of radius $\epsilon<|x-x_0|$ about~$x_0$ and vanishing near~$x$. The divergence theorem turns the flux $-\sum_a\int\partial_a\chi(y)\langle T^\phi_{ab}(y)\phi(x_0)\phi(x)\rangle\,dy$ into the integral of $\sum_a\langle T^\phi_{ab}(y)\phi(x_0)\phi(x)\rangle n_a$ over the boundary sphere of that ball, with outer normal~$n$. There $\nabla\Gamma_0=-n/(2\pi^2\epsilon^3)$, the last two terms cancel, and the integrand is $\partial_b\Gamma_1/(2\pi^2\epsilon^3)$. The sphere has area $2\pi^2\epsilon^3$ and $\partial_b\Gamma(\cdot-x)$ is harmonic on the ball, so the mean value property gives the flux $\partial_b\Gamma(x_0-x)=\partial_{x_0^b}\langle\phi(x_0)\phi(x)\rangle$. This free calculation illustrates the identity that Theorem~\ref{prop:ST} establishes for the constructed fields by a different route.
+
+We normalize the stress tensor in the same way, so that its translation flux acts as $+\partial_{x_0^b}$ on the enclosed insertion; with the minus sign in the flux below, this gives the negative of the usual Euclidean canonical Maxwell tensor (displayed after Theorem~\ref{prop:ST}). Let $A\in F_d$, let $\boldsymbol B$ be a list of~$n$ spectator fields at~$x$, and take $(x_0,x)\in\Conf{n+1}$.
 
 \begin{definition}[Shell fluxes]\label{def:D13}
 For $J_{ab}=J_{ba}\in F_4$ with $\sum_a\partial_aJ_{ab}=0$ and $K_{\rm rot}\in\mathfrak{so}(4)$, choose a real shell cutoff $\chi\in C_c^\infty(\R^4)$ equal to one near~$x_0$ and supported away from the spectators. Define
