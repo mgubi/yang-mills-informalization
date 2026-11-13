@@ -299,6 +299,25 @@ def equation_tags(x):
     return x
 
 
+# lengths in pt (11pt document: 1fn = 11pt)
+PT = {'pt': 1.0, 'fn': 11.0, 'em': 11.0, 'mm': 72.27 / 25.4, 'cm': 72.27 / 2.54, 'in': 72.27}
+
+
+def cell_length(v):
+    """<plus|1fn|2pt> as the value of a cwith (the importer writes it for
+    a row raised with \\\\[2pt]): one length, since the HTML export of
+    tables accepts only plain lengths (it stops with a Scheme error)"""
+    if not is_node(v, 'plus') or not all(isinstance(a, str) for a in v[1:]):
+        raise SystemExit(f'tex_post: unsupported table length {v}')
+    parts = [re.fullmatch(r'(-?[0-9.]+)([a-z]+)', a) for a in v[1:]]
+    if not all(parts) or not all(m.group(2) in PT for m in parts):
+        raise SystemExit(f'tex_post: unsupported table length {v}')
+    units = {m.group(2) for m in parts}
+    if len(units) == 1:
+        return f'{sum(float(m.group(1)) for m in parts):g}{units.pop()}'
+    return f'{sum(float(m.group(1)) * PT[m.group(2)] for m in parts):g}pt'
+
+
 def rewrite(x):
     """markers, renamed macros, bibliography, <le> etc."""
     if isinstance(x, list) and x[0].startswith('tmrename'):
@@ -307,6 +326,8 @@ def rewrite(x):
         return SYM_RE.sub(lambda m: SYMS[m.group(0)], x)
     if len(x) == 1 and x[0] in MARKERS:
         return [MARKERS[x[0]]]
+    if x[0] == 'cwith' and len(x) == 7 and not isinstance(x[6], str):
+        return x[:6] + [cell_length(x[6])]
     if x[0] == 'tmfigure' and len(x) == 2 and isinstance(x[1], str) and x[1].isdigit():
         # a TikZ picture (tex_prep.py), rendered by figures.py next to the document
         svg = os.path.join(TEXDIR, 'figures', f'fig-{x[1]}.svg')

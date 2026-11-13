@@ -81,6 +81,14 @@
         (ahash-set! acc (string->symbol (string-append "@def:" (cadr s))) #t))
     (for-each (lambda (x) (ym-collect-tags x acc)) (cdr s))))
 
+;; Built-in primitives (arithmetic and logic on values and lengths) are not
+;; style macros, so style-has? does not know them; the importer writes some
+;; of them itself, e.g. <plus|1fn|2pt> for a table cell height.
+(define ym-primitives
+  '(plus minus times over div mod merge length range number
+    equal unequal less lesseq greater greatereq and or xor not if case
+    find-file is-tuple look-up))
+
 (define (ym-tagcheck-all f)
   (ym-each f (lambda (in out)
                (let ((u (string->url in)) (acc (make-ahash-table)))
@@ -89,7 +97,7 @@
                  (ym-collect-tags (tree->stree (buffer-tree)) acc)
                  (for-each (lambda (kv)
                              (let ((n (symbol->string (car kv))))
-                               (if (and (not (style-has? n)) (not (string-starts? n "@def:")) (not (ahash-ref acc (string->symbol (string-append "@def:" n)))))
+                               (if (and (not (style-has? n)) (not (memq (car kv) ym-primitives)) (not (string-starts? n "@def:")) (not (ahash-ref acc (string->symbol (string-append "@def:" n)))))
                                    (display* "YM-UNDEF " in " " n "\n"))))
                            (ahash-table->list acc))))))
 

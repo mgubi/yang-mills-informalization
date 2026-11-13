@@ -20,6 +20,8 @@ Patches:
     subsection): markers \\tmsectionsAlph and \\tmtheoremsbysubsection;
   * \\setcounter{maintheorem}{N}: marker \\tmsetmaintheorem{N};
   * \\equationalias{X} after a display: \\label{X} inside it;
+  * "[" after whitespace following \\begin{aligned}/{gathered}: \\lbrack
+    (text, not the optional position argument);
   * longtable: a table float with a tabular (repeated headers dropped);
     displayed formulas in its cells become inline displays, one per line;
     \\begingroup, \\endgroup, \\setlength, \\raggedright dropped;
@@ -653,6 +655,13 @@ def main():
     s = bibliography_group(s)
     s = groups(s)
     s = longtables(s)
+    # \begin{aligned} followed by whitespace and "[": amsmath reads an
+    # optional position argument only right after the \begin, so "[...]"
+    # there is text (e.g. a coefficient [z_1z_2]H); the importer skips the
+    # whitespace and takes it as the argument, a malformed aligned that
+    # stops the HTML export (also with {} in between, and {[} is taken as
+    # the argument too). \\lbrack keeps the LaTeX meaning.
+    s = re.sub(r'(\\begin\{(?:aligned|gathered)\})(\s+)\[', r'\1\2\\lbrack ', s)
     s = pagination(s)
     s = re.sub(r'(\\begin\{(?:enumerate|itemize|description)\})\[[^\]]*\]', r'\1', s)
     s = titles(s)
