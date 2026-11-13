@@ -21,8 +21,11 @@ esac
 
 if ! ls "$dir"/.TinyTeX/bin/*/tlmgr >/dev/null 2>&1; then
   mkdir -p "$dir"
-  tag=$(curl -fsSL https://api.github.com/repos/rstudio/tinytex-releases/releases/latest \
-        | python3 -c 'import json,sys; print(json.load(sys.stdin)["tag_name"])')
+  # the tag of the latest release from the redirect of the web page (the
+  # REST API refuses unauthenticated calls from shared runners: rate limit)
+  tag=$(curl -fsSI --retry 3 https://github.com/rstudio/tinytex-releases/releases/latest \
+        | sed -n 's|^[Ll]ocation:.*/tag/\([^[:space:]]*\).*|\1|p')
+  [[ -n $tag ]] || { echo "install-tex: latest TinyTeX release not found" >&2; exit 1; }
   url=https://github.com/rstudio/tinytex-releases/releases/download/$tag/TinyTeX-1-$plat-$tag.tar.xz
   echo "install-tex: $url" >&2
   curl -fsSL --retry 3 "$url" | tar -xJ -C "$dir"
