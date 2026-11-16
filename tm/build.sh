@@ -24,7 +24,7 @@
 # Environment:
 #   TEXMACS_BIN    TeXmacs Upsilon (Qt port) executable; default: searched in
 #                  /Applications, ~/Applications and ~/Downloads
-#                  ("TeXmacs Upsilon Qt.app" or "TeXmacs Upsilon.app").
+#                  ("TeXmacs Upsilon Qt.app" first, then "TeXmacs Upsilon.app").
 #   MAX_HTML_DIR   the max-html plugin; default ~/.TeXmacs/plugins/max-html.
 #   YM_BUILD_DIR   scratch folder (kept after the run if given).
 #   YM_TIMEOUT     seconds allowed per TeXmacs run (default 1800).
@@ -60,9 +60,11 @@ done
 # --- TeXmacs and the max-html plugin ---------------------------------------
 tm_bin=${TEXMACS_BIN:-}
 if [[ -z "$tm_bin" ]]; then
-  for c in "/Applications/TeXmacs Upsilon Qt.app" "/Applications/TeXmacs Upsilon.app" \
-           "$HOME/Applications/TeXmacs Upsilon Qt.app" "$HOME/Applications/TeXmacs Upsilon.app" \
-           "$HOME/Downloads/TeXmacs Upsilon Qt.app" "$HOME/Downloads/TeXmacs Upsilon.app"; do
+  # the Qt port first, wherever it is: only it runs without a window
+  # (QT_QPA_PLATFORM=offscreen); a plain "TeXmacs Upsilon.app" may be another port
+  for c in "/Applications/TeXmacs Upsilon Qt.app" "$HOME/Applications/TeXmacs Upsilon Qt.app" \
+           "$HOME/Downloads/TeXmacs Upsilon Qt.app" "/Applications/TeXmacs Upsilon.app" \
+           "$HOME/Applications/TeXmacs Upsilon.app" "$HOME/Downloads/TeXmacs Upsilon.app"; do
     if [[ -x "$c/Contents/MacOS/TeXmacs" ]]; then tm_bin="$c/Contents/MacOS/TeXmacs"; break; fi
   done
 fi
