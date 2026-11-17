@@ -21,42 +21,47 @@
     it is written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
     <no-break><pageref|auto-2>>>
 
+    <with|par-left|2tab|<with|font-size|0.92|<locus|<id|%1-4>|<link|hyperlink|<id|%1-4>|<url|manuscript/HumanizeYM_v2/index.tm>>|Trishen
+    Gunaratnam's revision: HumanizeYM_v2>
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-3>>>
+
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|The proof at
     five levels of detail> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-3><vspace|0.5fn>
+    <no-break><pageref|auto-4><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|In
     collaboration with <with|font-shape|italic|Humanise Yang\UMills>>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-4><vspace|0.5fn>
+    <no-break><pageref|auto-5><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|The theorem, in
     brief> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-5><vspace|0.5fn>
+    <no-break><pageref|auto-6><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|The proof at a
     glance> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-6><vspace|0.5fn>
+    <no-break><pageref|auto-7><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|How the map was
     made> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-7><vspace|0.5fn>
+    <no-break><pageref|auto-8><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|Status>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-8><vspace|0.5fn>
+    <no-break><pageref|auto-9><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|Compiled Lean
     files> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-9><vspace|0.5fn>
+    <no-break><pageref|auto-10><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|How to cite>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-10><vspace|0.5fn>
+    <no-break><pageref|auto-11><vspace|0.5fn>
 
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|License>
     <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-    <no-break><pageref|auto-11><vspace|0.5fn>
+    <no-break><pageref|auto-12><vspace|0.5fn>
   </table-of-contents>
 
   <strong|A map of OpenAI's Lean proof of the construction of
@@ -131,6 +136,21 @@
     every finding is recorded with its decision. <strong|<hlink|The process,
     what it has caught so far, and what it does not establish
     \<rightarrow\>|manuscript/PROCESS.tm>>
+  </quotation>
+
+  <\quotation>
+    <subsubsection|<hlink|Trishen Gunaratnam's revision:
+    HumanizeYM_v2|manuscript/HumanizeYM_v2/index.tm>>
+
+    A revision of the third draft by Trishen Gunaratnam, written with AI
+    assistance (<hlink|PDF|https://github.com/scottnarmstrong/yang-mills-informalization/blob/main/manuscript/HumanizeYM_v2/HumanizeYM_v2.pdf>,
+    306 pages, 17 November 2026). It corrects several local arguments, among
+    them the free two-form transfer in Section 11, adapts material from
+    humanise-yang-mills, and adds figures of a blocking step, observable
+    transport and the cutoff comparison. Its <hlink|proof-status
+    note|manuscript/HumanizeYM_v2/PROOF-STATUS.tm> lists the estimates whose
+    written proofs are still to be supplied; <hlink|sources and
+    licenses|manuscript/HumanizeYM_v2/ATTRIBUTION.tm>.
   </quotation>
 
   <section|The proof at five levels of detail><label|the-proof-at-five-levels-of-detail>
@@ -438,25 +458,26 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|2>>
-    <associate|auto-10|<tuple|8|8>>
-    <associate|auto-11|<tuple|9|8>>
+    <associate|auto-10|<tuple|7|7>>
+    <associate|auto-11|<tuple|8|7>>
+    <associate|auto-12|<tuple|9|8>>
     <associate|auto-2|<tuple|2|2>>
-    <associate|auto-3|<tuple|1|3>>
-    <associate|auto-4|<tuple|2|4>>
-    <associate|auto-5|<tuple|3|5>>
-    <associate|auto-6|<tuple|4|5>>
-    <associate|auto-7|<tuple|5|6>>
-    <associate|auto-8|<tuple|6|7>>
-    <associate|auto-9|<tuple|7|7>>
+    <associate|auto-3|<tuple|3|2>>
+    <associate|auto-4|<tuple|1|2>>
+    <associate|auto-5|<tuple|2|4>>
+    <associate|auto-6|<tuple|3|4>>
+    <associate|auto-7|<tuple|4|5>>
+    <associate|auto-8|<tuple|5|6>>
+    <associate|auto-9|<tuple|6|7>>
     <associate|compiled-lean-files|<tuple|7|7>>
     <associate|how-the-map-was-made|<tuple|5|6>>
-    <associate|how-to-cite|<tuple|8|8>>
+    <associate|how-to-cite|<tuple|8|7>>
     <associate|in-collaboration-with-humanise-yangmills|<tuple|2|4>>
     <associate|license|<tuple|9|8>>
     <associate|status|<tuple|6|7>>
     <associate|the-proof-at-a-glance|<tuple|4|5>>
-    <associate|the-proof-at-five-levels-of-detail|<tuple|1|3>>
-    <associate|the-theorem-in-brief|<tuple|3|5>>
+    <associate|the-proof-at-five-levels-of-detail|<tuple|1|2>>
+    <associate|the-theorem-in-brief|<tuple|3|4>>
     <associate|yangmills-informalization|<tuple|?|1>>
   </collection>
 </references>
@@ -474,42 +495,47 @@
       it is written> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-2>>>
 
+      <with|par-left|<quote|2tab>|<with|font-size|<quote|0.92>|<locus|<id|%1-4>|<link|hyperlink|<id|%1-4>|<url|manuscript/HumanizeYM_v2/index.tm>>|Trishen
+      Gunaratnam's revision: HumanizeYM_v2>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-3>>>
+
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
       proof at five levels of detail> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-3><vspace|0.5fn>
+      <no-break><pageref|auto-4><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|In
       collaboration with <with|font-shape|<quote|italic>|Humanise
       Yang\UMills>> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-4><vspace|0.5fn>
-
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
-      theorem, in brief> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-5><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
-      proof at a glance> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      theorem, in brief> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-6><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|The
+      proof at a glance> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-7><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|How
       the map was made> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-7><vspace|0.5fn>
+      <no-break><pageref|auto-8><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|Status>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-8><vspace|0.5fn>
+      <no-break><pageref|auto-9><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|Compiled
       Lean files> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-9><vspace|0.5fn>
+      <no-break><pageref|auto-10><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|How
       to cite> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-10><vspace|0.5fn>
+      <no-break><pageref|auto-11><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|License>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-11><vspace|0.5fn>
+      <no-break><pageref|auto-12><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
