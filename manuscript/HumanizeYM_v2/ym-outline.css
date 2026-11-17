@@ -1,0 +1,47 @@
+/* ym-outline: the collection's additions to max-html.css (loaded after it). */
+
+/* Navigation bars (ym-nav, ym-unit-nav in ym-outline.ts). */
+.ym-nav { font-size: 15px; line-height: 1.6; margin: 0 0 .4em;
+          padding: .35em 0 .45em; border-bottom: 1px solid var(--rule); }
+.ym-nav, .ym-nav p { text-align: left; }
+.ym-nav p { margin: 0; }
+.ym-sep { color: var(--rule); margin: 0 .45em; }
+.ym-here { font-weight: 600; color: var(--strong); }
+.ym-unit-nav { font-size: 15px; display: flex; justify-content: space-between;
+               gap: 1em; margin: .3em 0 1em; }
+.ym-unit-nav > * { flex: 1 1 0; text-align: left; }
+.ym-part { text-align: center; flex: 0 0 auto !important; }
+.ym-next { text-align: right; }
+body > .ym-unit-nav:last-of-type { margin-top: 2.5em; padding-top: .6em;
+                                   border-top: 1px solid var(--rule); }
+@media (max-width: 640px) {
+  .ym-unit-nav { flex-direction: column; gap: .2em; }
+  .ym-part, .ym-next { text-align: left; }
+}
+
+/* Page title. */
+h1 { font-size: 1.75em; color: var(--strong); margin: .6em 0 .6em; line-height: 1.2; }
+
+/* Wide tables (Markdown tables): scroll instead of overflowing on phones. */
+body > table, body > div > table, center > table { display: block; overflow-x: auto; }
+table { border-collapse: collapse; }
+td { vertical-align: top; padding: .25em .6em; text-align: left; }
+
+/* Code: Lean names and source blocks. */
+tt, code, pre { font-size: .86em; }
+pre { overflow-x: auto; white-space: pre; text-align: left; line-height: 1.35; background: var(--panel); padding: .6em .8em; border-radius: 4px; }
+blockquote { border-left: 3px solid var(--rule); margin-left: 0; padding-left: 1em; }
+
+/* Collapsible blocks (ym-details). */
+details { margin: 1em 0; padding: .3em .8em; border: 1px solid var(--rule); border-radius: 4px; }
+details > summary { cursor: pointer; font-weight: 600; color: var(--strong); }
+details[open] > summary { margin-bottom: .4em; }
+
+/* Prominent link (ym-manuscript-link). */
+.ym-callout { margin: 1.2em 0; padding: .6em 1em; border-left: .4em solid var(--frame);
+              background: var(--panel); font-weight: 600; }
+
+/* Revision note at the top of the home page (tm/scripts/stamp.py). */
+.ym-revision { font-size: 13px; color: #555; margin: .2em 0 .8em;
+  padding: .3em .6em; border-left: 3px solid #bbb; background: #f6f6f6; text-align: left; }
+.ym-revision code { font-size: 12px; }
