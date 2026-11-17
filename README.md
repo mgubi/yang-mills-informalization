@@ -22,6 +22,9 @@ The outline is a rough draft written by machines. Its purpose is to be checked, 
 > ### [The manuscript: third draft](manuscript/) · [how it is written](manuscript/PROCESS.md)
 > **A third draft of the full proof is now available** ([PDF](manuscript/main.pdf), 278 pages): Part I states the theorem and the architecture of its proof, Part II gives the proofs. It was written entirely by AI agents from the Lean code, and is still being revised. Statements are fixed first and kept short. Every statement is reviewed against the Lean by a separate reviewer, a fresh reader and a sentence-by-sentence truth check, and every finding is recorded with its decision. **[The process, what it has caught so far, and what it does not establish →](manuscript/PROCESS.md)**
 
+> ### [Trishen Gunaratnam's revision: HumanizeYM_v2](manuscript/HumanizeYM_v2/)
+> A revision of the third draft by Trishen Gunaratnam, written with AI assistance ([PDF](manuscript/HumanizeYM_v2/HumanizeYM_v2.pdf), 306 pages, 17 November 2026). It corrects several local arguments, among them the free two-form transfer in Section 11, adapts material from humanise-yang-mills, and adds figures of a blocking step, observable transport and the cutoff comparison. Its [proof-status note](manuscript/HumanizeYM_v2/PROOF-STATUS.md) lists the estimates whose written proofs are still to be supplied; [sources and licenses](manuscript/HumanizeYM_v2/ATTRIBUTION.md).
+
 ## The proof at five levels of detail
 
 The repository presents the same proof at five levels of detail. Each level links down to the next, and everything from level 3 down is linked to the exact lines of the Lean source. Start at the top and go down as far as you need.
